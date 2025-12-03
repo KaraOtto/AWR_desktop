@@ -1,0 +1,255 @@
+﻿###########################
+# Capitulation Events
+###########################
+
+add_namespace = zizhinews
+news_event = {#告法国人民书
+	id = zizhinews.26
+	title = zizhinews.26.t
+	desc = zizhinews.26.desc
+	picture = GFX_event_ziyoufaguo
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	
+	}
+
+	immediate = {
+	    hidden_effect = {
+		play_song = "appeal_of_18th_of_june"
+		}
+	}
+
+	option = {
+		name = zizhinews.26.a
+		trigger = {
+			OR = {
+			has_war_with = GER
+			is_democratic_type = yes
+			}
+			NOT = { TAG = FRA }
+		}
+		add_war_support = 0.025
+	}
+	
+	option = {
+		name = zizhinews.26.b
+		trigger = {
+		OR = {
+			TAG = GER
+			is_in_faction_with = GER
+			has_war_together_with = GER
+			}
+		}
+	}
+	
+	option = {
+		name = zizhinews.26.c
+		trigger = {
+			NOT = {
+			has_war_with = GER
+			is_democratic_type = yes
+			TAG = GER
+			is_in_faction_with = GER
+			has_war_together_with = GER
+			TAG = FRA
+			has_focus_tree = vichy_french_focus
+			}
+		}
+	}
+	
+	option = {
+		name = zizhinews.26.d
+		trigger = {
+			TAG = FRA
+		}
+		add_war_support = 0.05
+	}
+	
+	option = {
+		name = zizhinews.26.e
+		trigger = {
+			has_focus_tree = vichy_french_focus
+		}
+		add_war_support = -0.02
+	}
+}
+
+news_event = {#英国军队占领冰岛
+	id = zizhinews.5
+	title = zizhinews.5.t
+	desc = zizhinews.5.desc
+		
+	
+	picture = GFX_event_fork_operation
+	major = yes
+	is_triggered_only = yes
+	
+	option = {			
+		name = zizhinews.5.a
+		trigger = {
+		
+			
+			tag = ENG
+			
+		}
+	}
+	
+	option = {
+		name = zizhinews.5.b
+		trigger = {
+			
+			 has_war_with = ENG
+				
+				
+			
+		}
+	}
+	
+	option = {
+		name = zizhinews.5.c
+		trigger = {
+			
+				
+				
+			NOT = { 
+			tag = ENG 
+			has_war_with = ENG
+			}
+				
+			
+		}
+	}
+}
+
+country_event = { #for eng
+	id = ice_duli.2
+	title = ice_duli.2.t
+	desc = ice_duli.2.desc
+
+    fire_only_once = yes
+	is_triggered_only = yes
+
+    trigger = {
+        has_global_flag = fork_operation
+        NOT = { country_exists = ICE }
+        owns_state = 100
+        is_democratic_type = yes
+		has_war_with = GER
+		USA = {
+		is_democratic_type = yes
+		is_subject = no
+		is_major = yes
+		not = { has_war_with = root }
+		}
+    }
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = ice_duli.2.a
+		USA = {
+		country_event = { id = ice_duli.3 days = 1 }
+		}
+	}
+	
+	option = {
+		ai_chance = { factor = 0 }
+		name = ice_duli.2.b
+		add_political_power = -25
+	}
+}
+
+country_event = { #for usa
+	id = ice_duli.3
+	title = ice_duli.3.t
+	desc = ice_duli.3.desc
+
+    fire_only_once = yes
+	is_triggered_only = yes
+
+    trigger = {
+        
+    }
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = ice_duli.3.a
+		transfer_state = 100
+		give_military_access = ENG
+		ENG = { give_military_access = ROOT }
+		hidden_effect = {
+		every_controlled_state = {
+			limit = {
+                is_core_of = ICE
+			}
+			add_compliance = 100
+        }
+		}
+	}
+	
+	option = {
+		ai_chance = { factor = 0 }
+		name = ice_duli.3.b
+	}
+}
+	
+country_event = {#冰岛战后独立
+	id = ice_duli.12
+	title = ice_duli.12
+	desc = ice_duli.12D
+
+    fire_only_once = yes
+
+    trigger = {
+        has_global_flag = fork_operation
+        NOT = { country_exists = ICE }
+        owns_state = 100
+        is_democratic_type = yes
+		NOT = { has_war_with = GER }
+		is_subject = no
+		has_global_flag = ger_zhanbai
+    }
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = ice_duli.12.1
+		release_on_controlled = ICE
+		ICE = {
+		set_politics = { ruling_party = democratic elections_allowed = yes election_frequency = 48 }
+		set_popularities = {
+		        fascism = 0
+		        communism = 0
+		        neutrality = 0
+				democratic = 80
+				n_socialism = 20
+	        }
+		}
+		faction_leader = { add_to_faction = ICE }
+		add_political_power = 50 #This is the right thing to do, you get a refund (intentionally higher than cost)
+	}
+
+	option = {
+		ai_chance = { factor = 0 }
+		name = ice_duli.12.2
+                                add_stability = -0.05
+                                add_war_support = -0.05
+add_political_power = -50
+                                reduce_current_party_support_ratio = yes
+                                add_popularity = {
+                                                           ideology = communism  
+                                                           popularity = 0.05
+                                }
+                                every_controlled_state = {
+				limit = {                                                                      
+                                                                                is_core_of = ICE
+				}
+                                                                add_resistance_target = {
+					amount = 75
+				}
+				add_compliance = -100
+                                 }
+    }       
+}

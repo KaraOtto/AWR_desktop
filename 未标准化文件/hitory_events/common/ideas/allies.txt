@@ -1,0 +1,827 @@
+ideas = {
+	country = {
+		prc_last_war = {
+		    picture = prc_ccw_the_chairmans_will
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+                               NOT = {
+                                 PRC = {
+                                     has_war_with = JAP
+                                     }
+                              }
+			}
+
+			traits = {
+				minus_point_5_per_week #MODDED
+			}
+
+			removal_cost = -1
+
+
+			modifier = {
+				planning_speed = 0.5
+				max_planning = 0.15
+				no_supply_grace = 84
+				army_speed_factor = 0.1
+				ammunition_consumption_factor = 0.20
+				equipment_capture = 0.15
+				org_loss_when_moving = -0.15
+				army_org_factor = 0.15
+				army_morale_factor = 0.15
+				out_of_supply_factor = -0.15
+                supply_consumption_factor = -0.15
+				command_power_gain = 0.5
+	            max_command_power = 25
+				cas_damage_reduction = 0.15
+				enemy_army_bonus_air_superiority_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.20
+				breakthrough_bonus_against = 0.20
+				defense_bonus_against = 0.20
+			}
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = ECA
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = EHB
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RRC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RFM
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = JNC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+
+		}
+		rcm_jap_imperial_japanese_army = {
+		    picture = jap_flag_soldier
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+			OR = {
+			    has_government = neutrality
+				has_government = fascism
+				}
+			is_subject = no	
+			}
+			
+			cancel = {
+				OR = {
+					has_global_flag = JAP_defeated
+					has_government = communism
+					has_government = n_socialism
+					is_puppet = yes					
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = -0.2
+				army_attack_factor = 0.05
+				army_org_factor = 0.05
+				army_defence_factor = 0.05
+				training_time_army_factor = -0.05
+				experience_gain_army_factor = 0.05
+				experience_gain_navy_factor = 0.05
+				experience_gain_air_factor = 0.05
+			}
+		}
+		rcm_jap_imperial_japanese_army2 = {
+		    picture = jap_flag_soldier
+			
+			allowed = {
+			    always = no
+			}
+			available = {
+			OR = {
+			    has_government = neutrality
+				has_government = fascism
+				}
+			is_subject = no	
+			}						
+			cancel = {
+				OR = {
+					has_global_flag = JAP_defeated
+					has_government = communism
+					has_government = n_socialism
+					is_puppet = yes						
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = -0.5
+				army_attack_factor = 0.2
+				army_org_factor = 0.2
+				army_defence_factor = 0.2
+				training_time_army_factor = -0.2
+				experience_gain_army_factor = 0.2
+				experience_gain_navy_factor = 0.2
+				experience_gain_air_factor = 0.2
+			}
+		}		
+		CHI_blood_chit_idea = {
+		    picture = chi_blood_chits
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				event_target:WTT_current_china_leader = {
+					NOT = {
+			    		has_war_with = JAP
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_loss_factor = -0.1
+				army_morale_factor = 0.05
+			}
+		}
+		chi_anti_japanese_sentiment_1 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+
+			on_add = {
+				scoped_play_song = "EYWOR_Dadao_March"
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.02
+				army_org_regain = 0.02
+				army_morale_factor = 0.02
+				land_reinforce_rate = 0.01
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.02
+				defense_bonus_against = 0.02
+				breakthrough_bonus_against = 0.02
+			}
+		}
+		chi_anti_japanese_sentiment_2 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.04
+				army_org_regain = 0.04
+				army_morale_factor = 0.04
+				land_reinforce_rate = 0.02
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.04
+				defense_bonus_against = 0.04
+				breakthrough_bonus_against = 0.04
+			}
+		}
+		chi_anti_japanese_sentiment_3 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.06
+				army_org_regain = 0.06
+				army_morale_factor = 0.06
+				land_reinforce_rate = 0.03
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.06
+				defense_bonus_against = 0.06
+				breakthrough_bonus_against = 0.06
+			}
+		}
+		chi_anti_japanese_sentiment_4 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.08
+				army_org_regain = 0.08
+				army_morale_factor = 0.08
+				land_reinforce_rate = 0.04
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.08
+				defense_bonus_against = 0.08
+				breakthrough_bonus_against = 0.08
+			}
+		}
+		chi_anti_japanese_sentiment_5 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.1
+				army_org_regain = 0.1
+				army_morale_factor = 0.1
+				land_reinforce_rate = 0.05
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
+			}
+		}
+		chi_anti_japanese_sentiment_6 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.12
+				army_org_regain = 0.12
+				army_morale_factor = 0.12
+				land_reinforce_rate = 0.06
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.12
+				defense_bonus_against = 0.12
+				breakthrough_bonus_against = 0.12
+			}
+		}
+		chi_anti_japanese_sentiment_7 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.14
+				army_org_regain = 0.14
+				army_morale_factor = 0.14
+				land_reinforce_rate = 0.07
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.14
+				defense_bonus_against = 0.14
+				breakthrough_bonus_against = 0.14
+			}
+		}
+		chi_anti_japanese_sentiment_8 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.16
+				army_org_regain = 0.16
+				army_morale_factor = 0.16
+				land_reinforce_rate = 0.08
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.16
+				defense_bonus_against = 0.16
+				breakthrough_bonus_against = 0.16
+			}
+		}
+		chi_anti_japanese_sentiment_9 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.18
+				army_org_regain = 0.18
+				army_morale_factor = 0.18
+				land_reinforce_rate = 0.09
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.18
+				defense_bonus_against = 0.18
+				breakthrough_bonus_against = 0.18
+			}
+		}
+		chi_anti_japanese_sentiment_10 = {
+		    picture = anti_japanese_idea
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.2
+				army_org_regain = 0.2
+				army_morale_factor = 0.2
+				land_reinforce_rate = 0.1
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+				breakthrough_bonus_against = 0.2
+			}
+		}
+		CHI_disrupted_factories = {
+		    picture = POL_disjointed_industry
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				CHI = {
+					exists = no
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = -0.15
+				production_speed_buildings_factor = -0.1
+				resistance_activity = 0.15
+				supply_consumption_factor = 0.05
+			}
+			targeted_modifier = {
+				tag = CHI
+				defense_bonus_against = 0.03
+			}
+		}
+	Jap_pei_ji_1 = {
+		    picture = raj_risk_of_famine
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+            NOT = {
+			has_idea = JAP_jie
+			}
+            has_war_with = CHI				
+			}
+			
+			cancel = {
+			has_war = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.05
+                supply_consumption_factor = 0.05
+                attrition = 0.05
+			}
+		}
+	Jap_pei_ji_2 = {
+		    picture = raj_risk_of_famine
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+            NOT = {
+			has_idea = JAP_jie
+			}
+            has_war_with = CHI			
+			}
+			
+			cancel = {
+			has_war = no			
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.10
+                supply_consumption_factor = 0.1
+                attrition = 0.1
+			}
+		}
+	chi_december_ninth_movement_1 = {
+		    picture = ICE_general_strike
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.15
+				political_power_gain = -0.25
+				democratic_drift = 0.1
+				communism_drift = 0.1
+			}
+		}
+		chi_december_ninth_movement_2 = {
+		    picture = ICE_general_strike
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.1
+				political_power_gain = -0.2
+				democratic_drift = 0.07
+				communism_drift = 0.07
+			}
+		}
+		chi_december_ninth_movement_3 = {
+		    picture = ICE_general_strike
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = -0.1
+				democratic_drift = 0.03
+				communism_drift = 0.03
+			}
+		}
+		chi_martial_law_idea_eywor = {
+		    picture = kmt_gun
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_weekly_factor = 0.001
+				drift_defence_factor = 0.05
+				monthly_population = -0.25
+				neutrality_drift = 0.1
+				communism_drift = -0.1
+			}
+		}
+		chi_zhou_enlai_idea_1 = {
+		    picture = prc_zhou_enlai_advisor
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				PRC = {
+					NOT = {
+						is_in_faction_with = CHI
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = chi_zhou_enlai_idea_desc
+				stability_factor = 0.05
+				war_support_weekly_factor = 0.001
+				weekly_convoys_war_support = 0.001
+				weekly_bombing_war_support = 0.001
+				improve_relations_maintain_cost_factor = -0.1
+				communism_acceptance = 10
+				drift_defence_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = JAP
+				defense_bonus_against = 0.01
+			}
+			targeted_modifier = {
+				tag = PRC
+				trade_cost_for_target_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = SOV
+				trade_cost_for_target_factor = -0.05
+			}
+		}
+		chi_zhou_enlai_idea_2 = {
+		    picture = prc_zhou_enlai_advisor
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				PRC = {
+					NOT = {
+						is_in_faction_with = CHI
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = chi_zhou_enlai_idea_desc
+				stability_factor = 0.1
+				war_support_weekly_factor = 0.0015
+				weekly_convoys_war_support = 0.002
+				weekly_bombing_war_support = 0.002
+				improve_relations_maintain_cost_factor = -0.15
+				communism_acceptance = 10
+				drift_defence_factor = -0.1
+				communism_drift = 0.03
+			}
+			targeted_modifier = {
+				tag = JAP
+				defense_bonus_against = 0.025
+			}
+			targeted_modifier = {
+				tag = PRC
+				trade_cost_for_target_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = SOV
+				trade_cost_for_target_factor = -0.1
+			}
+		}
+		chi_zhou_enlai_idea_3 = {
+		    picture = prc_zhou_enlai_advisor
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				PRC = {
+					NOT = {
+						is_in_faction_with = CHI
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = chi_zhou_enlai_idea_desc
+				stability_factor = 0.15
+				war_support_weekly_factor = 0.002
+				weekly_convoys_war_support = 0.003
+				weekly_bombing_war_support = 0.003
+				improve_relations_maintain_cost_factor = -0.2
+				communism_acceptance = 10
+				drift_defence_factor = -0.15
+				communism_drift = 0.06
+			}
+			targeted_modifier = {
+				tag = JAP
+				defense_bonus_against = 0.05
+			}
+			targeted_modifier = {
+				tag = PRC
+				trade_cost_for_target_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = SOV
+				trade_cost_for_target_factor = -0.15
+			}
+		}
+		CHI_student_army = {
+		    picture = chi_student_army
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_war_with = JAP
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				war_support_factor = 0.1
+				attrition = -0.1
+				no_supply_grace = 72
+				custom_modifier_tooltip = goes_away_when_at_peace_with_JAP_tt
+			}
+		}
+		
+		CHI_chinese_national_mobilization = {
+		    picture = chinese_war_effort_roc
+			
+			allowed = {
+			}
+
+			available = {
+				NOT = {
+						has_idea = CHI_dongyuanfa
+				}
+			}
+			
+			cancel = {
+			    NOT = { has_war_with = JAP }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+                drift_defence_factor = 0.1				
+				war_support_factor = 0.15
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				line_change_production_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				industry_repair_factor = 0.1
+				industry_free_repair_factor = 0.1						
+				custom_modifier_tooltip = goes_away_when_at_peace_with_JAP_tt
+			}
+
+		}
+		
+		CHI_dongyuanfa = {
+		    picture = roc_jihad_japan
+			
+			allowed = {
+			}
+			
+			cancel = {
+			    NOT = { has_war_with = JAP }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.1	
+                drift_defence_factor = 0.2				
+				war_support_factor = 0.2					
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				line_change_production_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				industry_repair_factor = 0.15
+				industry_free_repair_factor = 0.15		
+				custom_modifier_tooltip = goes_away_when_at_peace_with_JAP_tt
+			}
+
+		}		
+		
+	}
+}

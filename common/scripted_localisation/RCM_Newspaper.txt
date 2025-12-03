@@ -1,0 +1,342 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+defined_text = {
+	name = GetNewsIcon
+	text = {
+		trigger = {
+			TAG = GER
+			has_government = fascism
+		}
+		localization_key = RCM_NEWS.GER
+	}
+	text = {
+		trigger = {
+			TAG = GER
+			has_government = neutrality
+		}
+		localization_key = RCM_NEWS.KAS
+	}
+	text = {
+		trigger = {
+			OR = {
+				TAG = GER
+				TAG = DDR
+			}
+			has_government = communism
+		}
+		localization_key = RCM_NEWS.DDR
+	}
+	text = {
+		trigger = {
+			OR = {
+				TAG = GER
+				TAG = WGR
+			}
+			has_government = democratic
+		}
+		localization_key = RCM_NEWS.WGR
+	}
+	text = {
+		trigger = {
+			TAG = SOV
+		}
+		localization_key = RCM_NEWS.SOV
+	}
+	text = {
+		trigger = {
+			TAG = SOV
+			NOT = {
+				has_government = communism
+			}
+		}
+		localization_key = RCM_NEWS.RUS
+	}
+	text = {
+		trigger = {
+			TAG = USA
+			NOT = {
+				has_completed_focus = USA_the_call_focus
+				has_completed_focus = USA_america_first
+				has_completed_focus = USA_the_socialist_appeal_focus
+				has_completed_focus = USA_the_new_leader_focus
+				#has_completed_focus = USA_the_daily_worker
+			}
+		}
+		localization_key = RCM_NEWS.USA
+	}
+	text = {
+		trigger = {
+			TAG = ENG
+		}
+		localization_key = RCM_NEWS.ENG
+	}
+	text = {
+		trigger = {
+			TAG = FRA
+			NOT = {
+				has_government = fascism
+			}
+		}
+		localization_key = RCM_NEWS.FRA
+	}
+	text = {
+		trigger = {
+			TAG = FRA
+			has_government = fascism
+		}
+		localization_key = RCM_NEWS.VIC
+	}
+	text = {
+		trigger = {
+			OR = {
+				is_warlord = yes
+				AND = {
+					tag = MAN
+					has_completed_focus = MAN_assertiveness
+					is_subject = no
+				}
+				tag = event_target:WTT_current_china_leader
+			}
+			NOT = {
+				OR = {
+					is_subject_of = JAP
+					has_government = communism
+				}
+			}
+		}
+		localization_key = RCM_NEWS.CHI
+	}
+	text = {
+		trigger = {
+			AND = {
+				tag = MAN
+				has_completed_focus = MAN_Manshu_Nippo_focus
+			}
+		}
+		localization_key = RCM_NEWS.MAN_NIP
+	}
+	text = {
+		trigger = {
+			AND = {
+				tag = MAN
+				has_completed_focus = MAN_manchuria_daily_news_focus
+			}
+		}
+		localization_key = RCM_NEWS.MAN_DN
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag = SIK
+			}
+			OR = {
+				is_warlord = yes
+				tag = event_target:WTT_communist_china
+			}
+			has_government = communism
+			NOT = {
+				OR = {
+					has_global_flag = Xinhua_news_created
+					has_global_flag = jiefang_daily_created
+				}
+			}
+		}
+		localization_key = RCM_NEWS.PRC
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag = SIK
+			}
+			OR = {
+				is_warlord = yes
+				tag = event_target:WTT_communist_china
+			}
+			has_global_flag = Xinhua_news_created
+			NOT = {
+				has_global_flag = jiefang_daily_created
+			}
+			has_government = communism
+		}
+		localization_key = RCM_NEWS.PRC_xinhua
+	}
+	text = {
+		trigger = {
+			NOT = {
+				tag = SIK
+			}
+			OR = {
+				is_warlord = yes
+				tag = event_target:WTT_communist_china
+			}
+			has_global_flag = jiefang_daily_created
+			has_government = communism
+		}
+		localization_key = RCM_NEWS.PRC_jiefang
+	}
+	
+
+	text = {
+		trigger = {
+			tag = SIK
+		}
+		localization_key = RCM_NEWS.SIK
+	}
+	text = {
+		trigger = {
+			TAG = KOR
+		}
+		localization_key = RCM_NEWS.KOR
+	}
+	text = {
+		trigger = {
+			OR = {
+				TAG = JAP
+				AND = {
+					is_subject_of = JAP
+					any_owned_state = {
+						is_capital = yes
+						is_on_continent = asia
+					}
+				}
+			}
+		}
+		localization_key = RCM_NEWS.JAP
+	}
+
+	text = {
+		trigger = {
+			TAG = ITA
+		}
+		localization_key = RCM_NEWS.ITA
+	}
+
+	text = {
+		trigger = {
+			TAG = USA
+			has_completed_focus = USA_the_call_focus
+		}
+		localization_key = RCM_NEWS.USA_TC
+	}
+	text = {
+		trigger = {
+			TAG = USA
+			has_completed_focus = USA_america_first
+		}
+		localization_key = RCM_NEWS.USA_SJ
+	}
+	text = {
+		trigger = {
+			TAG = USA
+			has_completed_focus = USA_the_socialist_appeal_focus
+		}
+		localization_key = RCM_NEWS.USA_TSA
+	}
+	text = {
+		trigger = {
+			TAG = USA
+			has_completed_focus = USA_the_new_leader_focus
+		}
+		localization_key = RCM_NEWS.USA_TNL
+	}
+	#text = { #unused
+	#	trigger = {
+	#		TAG = USA
+	#		has_completed_focus = USA_the_daily_worker
+	#	}
+	#	localization_key = RCM_NEWS.USA_TDW
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = SWE
+	#	}
+	#	localization_key = RCM_NEWS.SWE
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = FIN
+	#	}
+	#	localization_key = RCM_NEWS.FIN
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = SPA
+	#	}
+	#	localization_key = RCM_NEWS.SPA
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = CAN
+	#	}
+	#	localization_key = RCM_NEWS.CAN
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = ROM
+	#	}
+	#	localization_key = RCM_NEWS.ROM
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = HUN
+	#	}
+	#	localization_key = RCM_NEWS.HUN
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = BUL
+	#	}
+	#	localization_key = RCM_NEWS.BUL
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = CRO
+	#	}
+	#	localization_key = RCM_NEWS.CRO
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = GRE
+	#	}
+	#	localization_key = RCM_NEWS.GRE
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = DEN
+	#	}
+	#	localization_key = RCM_NEWS.DEN
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = NOR
+	#	}rc
+	#	localization_key = RCM_NEWS.NOR
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = IRE
+	#	}
+	#	localization_key = RCM_NEWS.IRE
+	#}
+	#text = {
+	#	trigger = {
+	#		TAG = POR
+	#	}
+	#	localization_key = RCM_NEWS.POR
+	#}
+	text = {
+		trigger = {
+			#NOT = {
+			#	has_custom_newspaper = yes
+			#}
+		}
+		localization_key = RCM_NEWS.GENERIC
+	}
+}

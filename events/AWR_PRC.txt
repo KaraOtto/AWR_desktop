@@ -1,0 +1,205 @@
+add_namespace = AWR_PRC
+country_event = { #漫漫黄沙中的无线电波
+	id = AWR_PRC.1
+	title = AWR_PRC.t
+	desc = AWR_PRC.1.desc
+	picture = GFX_report_event_song_qingling_prc
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_PRC.1.a
+		ai_chance = {
+			base = 1
+		}
+		
+		add_ideas = PRC_songqingling
+		custom_effect_tooltip = AWR_PRC.1.TT
+		country_event = {
+			id = AWR_PRC.2	
+		}		  
+	}
+}
+
+country_event = {#林育英同志传达共产国际七大指示精神
+	id = AWR_PRC.2
+	title = AWR_PRC.2.t
+	desc = AWR_PRC.2.desc
+	picture = GFX_report_event_wayaobao
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_PRC.2.a
+		ai_chance = {
+			base = 1
+		}
+		add_stability = 0.01
+		country_event = {
+			id = AWR_PRC.3
+		}
+	}
+	
+}
+
+country_event = {#张闻天同志作《中央关于目前政治形势与党的任务决议》报告
+	id = AWR_PRC.3
+	title = AWR_PRC.3.t
+	desc = AWR_PRC.3.desc
+	picture = GFX_report_event_wayaobao
+
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_PRC.3.a
+		ai_chance = {
+			base = 1
+		}
+
+		add_political_power = 25
+		country_event = PRC_linyuying.19
+	}
+	
+}
+
+country_event = {#毛泽东同志作《中央关于军事战略问题的决议》报告
+	id = AWR_PRC.4
+	title = AWR_PRC.4.t
+	desc = AWR_PRC.4.desc
+	picture = GFX_report_event_wayaobao
+
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_PRC.4.a
+		ai_chance = {
+			base = 1
+		}
+		activate_mission = prc_kuodahongjun_mission
+		activate_mission = prc_dongzheng_mission 
+		activate_mission = prc_datongsulian_mission
+		add_war_support = 0.05
+		add_command_power = 25
+		army_experience = 5
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.025 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		country_event = PRC_linyuying.20
+	}
+	option = {
+		name = AWR_PRC.4.b
+		ai_chance = {
+			base = 0
+		}
+		activate_mission = prc_kuodahongjun_mission
+		activate_mission = prc_dongzheng_mission
+		activate_mission = prc_datongsulian_mission
+		PRC_liuzhidan = { 
+			unit_leader_event = { 
+				id = PRC_linyuying.20 
+			} 
+		}
+	}
+}
+
+country_event = {#刘志丹同志定性问题
+	id = AWR_PRC.5
+	title = AWR_PRC.5.t
+	desc = AWR_PRC.5.desc
+	picture = GFX_report_event_wayaobao
+		
+	trigger = {
+	    #
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.5.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = no
+			}
+		}
+		country_event = PRC_linyuying.21
+	}
+	option = {
+		name = AWR_PRC.5.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -50
+		set_global_flag = PRC_liuzhidan_pingfan
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = PRC_liuzhidan
+		country_event = PRC_linyuying.21
+	}
+	
+}
+
+country_event = {#《关于张国焘同志成立“第二中央”的决定》
+	id = AWR_PRC.6
+	title = AWR_PRC.6.t
+	desc = AWR_PRC.6.desc
+	picture = GFX_report_event_wayaobao
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_PRC.6.a
+		ai_chance = {
+			base = 1
+		}
+		swap_ideas = {
+			remove_idea = line_struggle0
+			add_idea = line_struggle1
+		}
+		add_political_power = 20
+	}
+	option = {
+		name = AWR_PRC.6.b
+		ai_chance = {
+			base = 0
+		}
+		swap_ideas = {
+			remove_idea = line_struggle0
+			add_idea = line_struggle1
+		}
+		add_political_power = -20
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.025 
+			tooltip = ZHANG_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+	}
+	
+}

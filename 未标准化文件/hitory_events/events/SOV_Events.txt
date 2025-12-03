@@ -1,0 +1,308 @@
+﻿###########################
+# Capitulation Events
+###########################
+
+add_namespace = history_hide
+news_event = {########莫斯科保卫战
+	id = history_hide.1
+	title = history_hide.1.t
+	desc = history_hide.1.desc
+	picture = GFX_event_mosikebaoweizhan
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+    immediate = {
+		set_global_flag = mosikebaoweizhan
+                                hidden_effect = {
+	                    play_song = "march_of_the_defenders" 
+	                }
+										
+	}
+
+                
+	
+                option = {
+		name = history_hide.1.a
+		trigger = { 		
+                                                OR = {
+                                                original_tag = SOV
+                                               
+                                                is_in_faction_with = SOV
+                                                }
+		}
+		       
+					
+					if = {
+					limit = { 
+					is_ai = no
+					TAG = SOV
+					}
+					add_ideas = sov_defense_player
+					}
+					
+	}
+                option = {
+		name = history_hide.1.b
+		trigger = { 
+			has_war_with = SOV
+                                                #has_government = fascism
+                                                #OR = {                                               
+                                                #original_tag = GER
+                                                #is_in_faction_with = GER
+                                                #}
+		}
+	}
+	option = {
+		name = history_hide.1.c
+		trigger = { 
+			NOT = {
+                                                original_tag = SOV
+                                                is_in_faction_with = SOV
+												has_war_with = SOV
+                                                }
+		}
+	}
+}
+
+##托洛茨基回国
+country_event = {
+	id = history_hide.13
+	title = history_hide.13.t
+	desc = history_hide.13.d
+	picture = GFX_report_event_soviet_tank_parade
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = history_hide.13.a
+		ai_chance = { factor = 999 }
+		add_ideas = SOV_lev_trotsky
+		add_field_marshal_role = { #GUO
+				character = SOV_lev_trotsky
+				traits = { adaptable  brilliant_strategist  war_hero  harsh_leader trait_reckless  logistics_wizard   media_personality organisational_leader }
+				skill = 5
+				attack_skill = 5
+				defense_skill = 4
+				planning_skill = 4
+				logistics_skill = 4
+			}
+			complete_national_focus = SOV_depoliticize_the_military
+
+
+	}
+
+}
+
+add_namespace = SOV_recover_the_North_Sakhalin_oil
+
+country_event = {#jap
+	id = SOV_recover_the_North_Sakhalin_oil.1
+	title = SOV_recover_the_North_Sakhalin_oil.1.t
+	desc = SOV_recover_the_North_Sakhalin_oil.1.d
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.1.1
+		ai_chance = {
+			base = 10
+			modifier = {
+				#MODDED
+				add = 1000
+				SOV = { is_ai = yes }
+				is_historical_focus_on = yes
+			}	
+			modifier = {
+				#MODDED
+				add = 1000
+				date > 1942.6.1
+			JAP = { has_war_with = USA }
+			634 = { controller = { has_war_with = JAP } }
+			737 = { controller = { has_war_with = JAP } }
+			523 = { controller = { has_war_with = JAP } }
+			648 = { controller = { has_war_with = JAP } }
+			646 = { controller = { has_war_with = JAP } }
+			}
+			
+			modifier = {
+				#MODDED
+				add = 1000
+				date > 1940.1.1
+			JAP = { has_war_with = event_target:WTT_current_china_leader }
+			event_target:WTT_current_china_leader = {
+			surrender_progress < 0.05
+			}
+			
+			}
+		}
+		add_political_power = -50
+                                add_war_support = -0.025
+								add_stability = -0.025
+								
+								reduce_current_party_support_ratio = yes
+								
+								SOV = { country_event = { id = SOV_recover_the_North_Sakhalin_oil.2 hours = 6 } }
+	}
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.1.2
+		trigger = {
+		if = {
+		limit = { is_ai = yes }
+		SOV = { is_ai = no }
+		}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				#MODDED
+				factor = 0
+				SOV = { is_ai = yes }
+				is_historical_focus_on = yes
+			}	
+			
+		}
+		add_opinion_modifier = { target = SOV modifier = hostile_status }
+		send_embargo = SOV
+		add_war_support = 0.05
+		add_ai_strategy = {
+		                                         type = antagonize
+		                                         id = SOV
+		                                         value = 250
+	                                                }
+													add_ai_strategy = {
+		                                         type = alliance
+		                                         id = SOV
+		                                         value = -250
+	                                                }
+													SOV = { country_event = { id = SOV_recover_the_North_Sakhalin_oil.3 hours = 6 } }
+	}
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.1.3
+		trigger = {
+		if = {
+		limit = { is_ai = yes }
+		SOV = { is_ai = no }
+		}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				#MODDED
+				factor = 0
+				SOV = { is_ai = yes }
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				#MODDED
+				factor = 0
+				SOV = { surrender_progress < 0.05 }
+			}
+			modifier = {
+				#MODDED
+				add = 999
+				SOV = { has_war = yes }
+			SOV = {
+			surrender_progress > 0.5
+			}
+			
+			}
+		}
+		effect_tooltip = {
+		SOV = {
+		create_wargoal = { target = JAP type = annex_everything }
+		}
+		}
+		add_war_support = 0.1
+		create_wargoal = { target = SOV type = annex_everything }
+		add_ai_strategy = {
+		                                         type = antagonize
+		                                         id = SOV
+		                                         value = 999
+	                                                }
+													add_ai_strategy = {
+		                                         type = declare_war
+		                                         id = SOV
+		                                         value = 999
+	                                                }
+													SOV = { country_event = { id = SOV_recover_the_North_Sakhalin_oil.4 hours = 0 } }
+	}
+}
+
+country_event = {
+	id = SOV_recover_the_North_Sakhalin_oil.2
+	title = SOV_recover_the_North_Sakhalin_oil.2.t
+	desc = SOV_recover_the_North_Sakhalin_oil.2.d
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.2.1
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = SOV_recover_the_North_Sakhalin_oil.3
+	title = SOV_recover_the_North_Sakhalin_oil.3.t
+	desc = SOV_recover_the_North_Sakhalin_oil.3.d
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.3.1
+		ai_chance = {
+			base = 100
+		}
+		effect_tooltip = {
+		JAP = {
+		add_opinion_modifier = { target = SOV modifier = hostile_status }
+		send_embargo = SOV
+		}
+		}
+		add_opinion_modifier = { target = JAP modifier = hostile_status }
+		send_embargo = JAP
+		add_war_support = 0.05
+		add_ai_strategy = {
+		                                         type = antagonize
+		                                         id = JAP
+		                                         value = 250
+	                                                }
+													add_ai_strategy = {
+		                                         type = alliance
+		                                         id = JAP
+		                                         value = -250
+	                                                }
+	}
+}
+
+country_event = {
+	id = SOV_recover_the_North_Sakhalin_oil.4
+	title = SOV_recover_the_North_Sakhalin_oil.4.t
+	desc = SOV_recover_the_North_Sakhalin_oil.4.d
+	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = SOV_recover_the_North_Sakhalin_oil.4.1
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.1
+		effect_tooltip = {
+		JAP = {
+		create_wargoal = { target = SOV type = annex_everything }
+		}
+		}
+		create_wargoal = { target = JAP type = annex_everything }
+		
+	}
+}
