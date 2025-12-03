@@ -1,0 +1,154 @@
+﻿division_template = {
+	name = "Luchün Shih" #around 10000 men for shandong
+	division_names_group = SHD_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+	}
+}
+
+division_template = {
+	name = "T'iaocheng Shih" #11026 men in total(甲種1937)			
+	division_names_group = SHD_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		infantry = { x = 3 y = 0 }
+		artillery_brigade = { x = 4 y = 0 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Chengli Shih" #8652 men in total(乙種1937)		
+	division_names_group = SHD_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Tuli Lü"	
+	division_names_group = CHI_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+	}
+}
+
+division_template = {
+	name = "Paoan T'uan"	
+	division_names_group = WRL_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+}
+
+### OOB ###
+units = {	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 10072 #山東兗州（濟寧）
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 1
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 10102 #山東周村（淄博）
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 29
+		}
+		location = 1069 #山東濟南
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 74
+		}
+		location = 1069 #山東濟南
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 81
+		}
+		location = 12074 #山東濰縣（濰坊）
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	division = { #第三路手槍旅 (吳化文)
+	    name = "Luchün Ti 3 Lu Chün Shouch'iang Lü"
+		location = 1069 #山東濟南
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+}
+
+### STARTING PRODUCTION ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "SHD"
+		}
+		requested_factories = 1
+		progress = 0.79
+		efficiency = 100
+	}	
+}

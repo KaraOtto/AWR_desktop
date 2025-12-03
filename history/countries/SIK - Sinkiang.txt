@@ -1,0 +1,147 @@
+﻿capital = 617
+
+oob = "SIK_1936"
+
+recruit_character = SIK_sheng_shicai
+recruit_character = SIK_ospan_batyr
+recruit_character = SIK_muhammad_amin_bughra
+recruit_character = SIK_hoja_niyaz
+recruit_character = SIK_sheng_shiqi
+#recruit_character = SIK_mahmut_muhiti
+recruit_character = SIK_sheng_shiji
+recruit_character = SIK_jiang_deyu
+recruit_character = SIK_qiu_zongjun
+recruit_character = SIK_Ishaq_Beg_munonov
+#recruit_character = SIK_Manchukezhabu
+recruit_character = SIK_liu_zhengxin
+recruit_character = SIK_liu_pin
+recruit_character = SIK_chiang_yufen
+#recruit_character = SIK_shariphan_zhenishkhanuly_kogedaev
+recruit_character = SIK_li_rong
+recruit_character = SIK_masud_sabri
+recruit_character = SIK_abdulkerim_abbas
+recruit_character = SIK_Elihan_Tore
+
+add_war_support = 0.15
+add_stability = 0.15
+
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+	mass_assault = 1
+}
+#add_equipment_to_stockpile = {
+#	type = infantry_equipment
+#	amount = 3100
+#}
+
+add_opinion_modifier = {
+	target = TNG
+	modifier = hostile_status
+}
+
+add_ideas = {
+	#Chinese_Warlord
+	#limited_conscription
+	#unbalanced_industry_1
+	SIK_Autocracy
+	SIK_Support_idea
+	SIK_Conflict_with_the_local_people
+	SIK_Neutral
+	MAN_unbalanced_industry
+}
+
+
+#diplomatic_relation = { country = KHR relation = non_aggression_pact }
+#diplomatic_relation = { country = TNG relation = non_aggression_pact }
+#set_truce = { target = TNG days = 483 }
+#set_truce = { target = KHR days = 483 }
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "SIK_1936_air_bba"
+	else = {
+		set_air_oob = "SIK_1936_air_legacy"
+	    set_technology = {
+			#early_fighter = 1
+			early_bomber = 1
+		}
+	}
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+
+
+	complete_national_focus = SIK_Six_major_policies
+	complete_national_focus = SIK_Destroy_the_Hotan_warlord
+	complete_national_focus = SIK_Befriend_CHI
+	complete_national_focus = SIK_Befriend_SOV
+	unlock_national_focus = SIK_Refused_entry
+	complete_national_focus = SIK_Soviet_support
+	complete_national_focus = SIK_USSR_investment
+	complete_national_focus = SIK_Provincial_Army
+	complete_national_focus = SIK_Battlefield_equipment
+	complete_national_focus = SIK_Soviet_equipment
+	complete_national_focus = SIK_Soviet_Car
+	complete_national_focus = SIK_Soviet_aircraft
+	complete_national_focus = Sinkiang_Road_Construction
+	complete_national_focus = SIK_Light_Industry
+	complete_national_focus = SIK_New_currency
+
+	oob = "SIK_1939"
+	set_technology = {
+		#doctrines
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+}
+
+set_popularities = {
+	democratic = 5
+	fascism = 5
+	communism = 60
+	neutrality = 30
+
+}
+set_politics = {
+
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+1939.1.1 = {
+	set_popularities = {
+		democratic = 0
+		fascism = 0
+		communism = 100
+	}
+	set_politics = {
+
+		ruling_party = communism
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+}

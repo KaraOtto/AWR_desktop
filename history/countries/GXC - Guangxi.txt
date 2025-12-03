@@ -1,0 +1,157 @@
+﻿capital = 594
+
+oob = "GXC_1936"
+
+recruit_character = GXC_bai_chongxi
+recruit_character = GXC_chen_xiong
+recruit_character = GXC_cheng_siyuan
+recruit_character = GXC_huang_xuchu
+recruit_character = GXC_huang_zhongyue
+recruit_character = GXC_lei_peihong
+recruit_character = GXC_lei_yin
+recruit_character = GXC_li_pinxian
+recruit_character = GXC_li_zongren
+recruit_character = GXC_liao_lei
+recruit_character = GXC_lin_weicheng
+recruit_character = GXC_liu_fei
+recruit_character = GXC_liu_shiyi
+recruit_character = GXC_qiu_changwei
+recruit_character = GXC_su_xixun
+recruit_character = GXC_wei_yunshong
+recruit_character = GXC_xia_wei
+recruit_character = GXC_zhang_gan
+recruit_character = GXC_zhou_zuhuang
+recruit_character = GXC_jiang_guangnai
+recruit_character = GXC_cai_tingkai
+recruit_character = GXC_chen_mingshu
+recruit_character = GXC_Li_Jishen
+recruit_character = GXC_qu_shounian
+
+add_stability = 0.08
+add_war_support = 0.1
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+	mass_assault = 1
+}
+
+add_ideas = {
+	EFM_Southwest_two_agencies
+	GXC_old_officals
+	GXC_Guangxi_economy
+	GXC_org
+	GXC_Iron_will
+	GXC_New_guangxi_clique
+	GXC_Militia_system
+	GXC_Baojia_system
+	GXC_Japanese_consultant
+}
+
+#add_opinion_modifier = { target = JAP modifier = hostile_status } #MODDED
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "GXC_1936_air_bba"
+	else = {
+		set_air_oob = "GXC_1936_air_legacy"
+	    set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+		}
+	}
+}
+
+
+1939.1.1 = { #MODDED
+	add_to_war = { #MODDED
+		targeted_alliance = CHI #MODDED
+		enemy = JAP #MODDED
+	} #MODDED
+
+	add_political_power = 1198 #MODDED
+	if = {
+		limit = {
+			NOT = { #MODDED
+				has_dlc = "Waking the Tiger"
+			}
+		}
+		#generic focuses #MODDED
+		complete_national_focus = GXC_army_effort
+		complete_national_focus = GXC_equipment_effort
+		complete_national_focus = GXC_motorization_effort #MODDED
+		complete_national_focus = GXC_aviation_effort
+		complete_national_focus = GXC_construction_effort_2
+		complete_national_focus = GXC_production_effort_2 #MODDED
+		complete_national_focus = GXC_infrastructure_effort
+		complete_national_focus = GXC_industrial_effort
+		complete_national_focus = GXC_construction_effort
+		complete_national_focus = GXC_production_effort #MODDED
+	}
+
+	oob = "GXC_1939"
+	set_technology = {
+		#doctrines
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		synth_oil_experiments = 1
+		oil_processing = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+	set_popularities = {
+	democratic = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+
+}
+set_politics = {
+
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+	}
+}
+
+set_popularities = {
+	democratic = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+
+}
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+create_country_leader = {
+	name = "Huang Shaohong"
+	desc = ""
+	picture = "Portrait_GXC_Huang_Shaohong.dds"
+	expire = "1969.1.13"
+	ideology = marxism
+	traits = {
+		#
+	}
+}

@@ -1,0 +1,55 @@
+﻿capital = 592
+
+oob = "GUD_1936"
+
+recruit_character = GUD_chen_jitang
+recruit_character = GUD_yu_hanmou
+recruit_character = GUD_li_hanhun
+recruit_character = GUD_deng_longguang
+recruit_character = GUD_huang_guangrui
+
+add_stability = 0.12
+add_war_support = -0.05
+
+set_convoys = 5 #MODDED
+
+set_research_slots = 2
+
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+	basic_train = 1
+	mass_assault = 1
+}
+
+add_ideas = {
+    EFM_Southwest_two_agencies
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "GUD_1936_air_bba"
+	else = {
+		set_air_oob = "GUD_1936_air_legacy"
+	    set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+		}
+	}
+}
+
+set_popularities = {
+	democratic = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+
+}
+set_politics = {
+
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+
+}

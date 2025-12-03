@@ -1,0 +1,64 @@
+﻿division_template = {
+	name = "Burma Rifle Division"
+    division_names_group = RCM_COLONY_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 } #2nd Battalion, The King's Own Yorkshire Light Infantry 
+		infantry = { x = 0 y = 1 } #3rd Batallion, The Burma Rifles
+        infantry = { x = 1 y = 0 } #4th Batallion, The Burma Rifles
+		infantry = { x = 1 y = 1 } #2nd Batallion, The Burma Rifles
+	}
+	support = {
+       	artillery = { x = 0 y = 0 } #10th (Abbottabad) Mountain Battery, Indian Artillery
+	}
+}
+
+division_template = {
+	name = "Burma Rifle Brigade"
+    division_names_group = RCM_COLONY_INFB_01
+	regiments = {
+		infantry = { x = 0 y = 0 } #1st Batallion, King's Royal Rifle Company
+		infantry = { x = 0 y = 1 } #1st Batallion, The Burma Rifles
+	}
+}
+
+units = {
+	#HQ Army
+	
+	division= {	
+		name = "Maymyo Infantry Brigade"
+		location = 1492
+		division_template = "Burma Rifle Division"
+		start_experience_factor = 0.2
+
+	}
+	division= {	
+		name = "Rangoon Infantry Brigade"
+		location = 1330
+		division_template = "Burma Rifle Brigade"
+		start_experience_factor = 0.2
+
+	}
+}
+
+##### Starting Production #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "BUR"
+		}
+		requested_factories = 1
+		progress = 0.42
+		efficiency = 100	
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "BUR"
+		}
+		requested_factories = 1
+		progress = 0.02
+		efficiency = 100
+	}
+}

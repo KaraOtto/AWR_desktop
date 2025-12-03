@@ -1,0 +1,167 @@
+﻿division_template = {
+	name = "Luchün Shih" #7000~8000 men for guangxi			
+	division_names_group = GXC_INF_00
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+	}
+	support = {
+	}
+}
+
+division_template = {
+	name = "T'iaocheng Shih" #11026 men in total(甲種1937)			
+	division_names_group = GXC_INF_00
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		infantry = { x = 3 y = 0 }
+		artillery_brigade = { x = 4 y = 0 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Chengli Shih" #8652 men in total(乙種1937)		
+	division_names_group = GXC_INF_00
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Tuli Lü"	
+	division_names_group = GXC_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+	}
+}
+
+division_template = {
+	name = "Mint'uan"
+	division_names_group = GXC_INF_05 #
+	is_locked = yes
+	force_allow_recruiting = no
+	division_cap = 30
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		#militia = { x = 1 y = 0 }
+		#militia = { x = 1 y = 1 }
+    }
+}
+
+division_template = {
+	name = "Fei Chêngkuei Chün"
+	division_names_group = GXC_INF_04
+	is_locked = yes
+	force_allow_recruiting = no
+	division_cap = 15
+	regiments = {
+		irregular_infantry = { x = 0 y = 0 }
+		irregular_infantry = { x = 0 y = 1 }
+		irregular_infantry= {  x = 1 y = 0 }
+		irregular_infantry = { x = 1 y = 1 }
+    }
+}
+
+### OOB ###
+units = {
+    #around 30000 men
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 170
+		}
+		location = 1597 #柳州
+		division_template = "Luchün Shih"	
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 172
+		}
+		location = 1597 #柳州
+		division_template = "Luchün Shih"	
+		start_equipment_factor = 0.75	
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 173
+		}
+		location = 10404 #桂林
+		division_template = "Luchün Shih"	
+		start_equipment_factor = 0.75	
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 174
+		}
+		location = 10404 #桂林
+		division_template = "Luchün Shih"	
+		start_equipment_factor = 0.75	
+		start_experience_factor = 0.2
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 175
+		}
+		location = 10404 #桂林
+		division_template = "Luchün Shih"	
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+}
+
+### STARTING PRODUCTION ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "GXC"
+		}
+		requested_factories = 5
+		progress = 0.79
+		efficiency = 100
+	}	
+}

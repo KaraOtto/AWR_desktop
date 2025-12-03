@@ -1,0 +1,191 @@
+﻿capital = 330
+
+oob = "MON_1936"
+
+recruit_character = MON_khorloogiin_choibalsan
+recruit_character = RUS_grigory_semyonov
+recruit_character = RUS_vladimir_kislitsin
+recruit_character = RUS_grigory_verzhbitsky
+recruit_character = RUS_innokenty_smolin
+recruit_character = RUS_ivan_mikhailov
+recruit_character = RUS_ivan_serebrennikov
+recruit_character = MON_Sambadondogiin_Tserendorj
+recruit_character = MON_gelegdorjiin_demid
+recruit_character = MON_yumjaagiin_tsedenbal
+recruit_character = MON_zhamyangiin_lkhagvasuren
+recruit_character = MON_suuriin_baldan
+recruit_character = MON_donroviin_damdinkhuu
+recruit_character = MON_sandivyn_ravdan
+recruit_character = MON_batyn_dorj
+recruit_character = MON_gendengiin_rendoo
+recruit_character = MON_dandar_baatar
+recruit_character = MON_shaariibuu
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+}
+
+add_ideas = {
+	limited_conscription
+	MON_power_struggle
+	MON_nomadic
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "MON_1936_air_bba"
+	else = {
+		set_air_oob = "MON_1936_air_legacy"
+	}
+}
+
+if = {
+    limit = {
+        has_dlc = "La Resistance"
+    }
+    set_technology = {
+        armored_car1 = 1
+    }
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+
+	#generic focuses
+	complete_national_focus = MON_republicanism
+	complete_national_focus = MON_SOV_focus
+	complete_national_focus = MON_communism_focus
+	complete_national_focus = MON_repressions
+	complete_national_focus = MON_industry_effort
+	complete_national_focus = MON_resource_effort
+	complete_national_focus = MON_electrification
+	complete_national_focus = MON_metals_effort
+	complete_national_focus = MON_oil_effort
+	complete_national_focus = MON_mechanization
+	complete_national_focus = MON_revolutions_experience
+	complete_national_focus = MON_cavalry_modernization
+	complete_national_focus = MON_small_arms
+	complete_national_focus = MON_likbez_focus
+	complete_national_focus = MON_national_education
+	complete_national_focus = MON_artillery
+	complete_national_focus = MON_indoctrination
+
+	oob = "MON_1939"
+	set_technology = {
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		air_superiority = 1
+
+		mass_assault = 1
+		pocket_defence = 1
+		defence_in_depth = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+	}
+}
+
+set_popularities = {
+	democratic = 0
+	fascism = 5
+	communism = 85
+	neutrality = 10
+}
+set_politics = {
+
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+create_country_leader = {
+	name = MON_Anandyn_Amar 
+	desc = "POLITICS_ANANDYN_AMAR_DESC"
+	picture = "gfx/leaders/MON/Portrait_MON_Anandyn_Amar.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = MON_Sambadondogiin_Tserendorj 
+	desc = "POLITICS_TSERENDORJ_DESC"
+	picture = "gfx/leaders/MON/Portrait_Tserendorj.dds"
+	expire = "1965.1.1"
+	ideology = centrism
+	traits = {
+		pillar_of_nation
+	}
+}
+create_country_leader = {
+	name = MON_Sambadondogiin_Tserendorj 
+	desc = "POLITICS_TSERENDORJ_DESC"
+	picture = "gfx/leaders/MON/Portrait_Tserendorj.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		pillar_of_nation
+	}
+}
+create_country_leader = {
+	name = MON_Jamsrangiin_Tseveen
+	desc = "POLITICS_TSEVEEN_DESC"
+	picture = "gfx/leaders/MON/Portrait_Tseveen.dds"
+	expire = "1965.1.1"
+	ideology = socialism
+	traits = {
+		#
+	}
+}
+
+1939.1.1 = {
+
+	add_ideas = {
+	limited_conscription
+	}
+
+	set_popularities = {
+		democratic = 0
+		fascism = 0
+		communism = 100
+		neutrality = 0
+	}
+	set_politics = {
+		ruling_party = communism
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	create_country_leader = {
+		name = "Khorloogiin Choibalsan"
+		desc = "POLITICS_KHORLOOGIIN_CHOIBALSAN_DESC"
+		picture = "gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+		expire = "1952.1.1"
+		ideology = stalinism
+		traits = {
+			dictator
+		}
+	}
+}

@@ -1,0 +1,145 @@
+﻿capital = 325
+oob = "YUN_1936"
+
+recruit_character = YUN_an_enpu
+recruit_character = YUN_ding_zhaoguan
+recruit_character = YUN_gao_yinhuai
+recruit_character = YUN_gong_zizhi
+recruit_character = YUN_hu_ying
+recruit_character = YUN_li_peitian
+recruit_character = YUN_liu_peiquan
+recruit_character = YUN_long_yun
+recruit_character = YUN_lu_chongren
+recruit_character = YUN_lu_daoyuan
+recruit_character = YUN_lu_han
+recruit_character = YUN_ma_ying
+recruit_character = YUN_miao_yuntai
+recruit_character = YUN_sun_du
+recruit_character = YUN_yang_ruxuan
+recruit_character = YUN_yuan_piyou
+recruit_character = YUN_zhang_banghan
+recruit_character = YUN_zhang_chong
+recruit_character = YUN_zhao_jinwen
+
+set_technology = {
+	infantry_weapons = 1
+    gw_artillery = 1
+	mass_assault = 1
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		#CHI_ineffective_bureaucracy_warlord #MODDED
+	}
+}
+
+
+add_ideas = {
+	#EFM_Chinese_warlord
+	#EFM_Chinese_warlord_materiel_manufacturer
+	#EFM_Chinese_warlord_tank_manufacturer
+	#EFM_Chinese_warlord_aircraft_manufacturer
+	#EFM_Chinese_warlord_naval_manufacturer
+	#EFM_Chinese_warlord_industrial_concern
+	#YUN_Borderland
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "YUN_1936_air_bba"
+	else = {
+		set_air_oob = "YUN_1936_air_legacy"
+	    set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+		}
+	}
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	 #MODDED
+	CHI = { add_to_faction = PREV }
+	add_to_war = {
+		targeted_alliance = CHI
+		enemy = JAP
+		hostility_reason = asked_to_join
+	}
+	if = { #MODDED
+		limit = {
+			NOT = {
+				has_dlc = "Waking the Tiger"
+			}
+		}
+		#generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = construction_effort_2
+		complete_national_focus = production_effort_2
+		complete_national_focus = infrastructure_effort
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort
+	}
+
+	oob = "YUN_1939"
+
+	set_technology = {
+		#doctrines
+		grand_battle_plan = 1
+		trench_warfare = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+}
+
+set_popularities = { #MODDED
+	democratic = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+
+} #MODDED
+set_politics = {
+
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+1939.1.1 = { #MODDED
+	set_popularities = {
+	democratic = 0
+	fascism = 20
+	communism = 0
+	neutrality = 80
+
+}
+set_politics = {
+
+	ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+}

@@ -1,0 +1,59 @@
+﻿division_template = {
+	name = "Tuli T'uan"	
+	division_names_group = WRL_INF_02
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		#infantry = { x = 0 y = 1 }
+		#infantry = { x = 1 y = 0 }
+		#infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Tuli Lü"	
+	division_names_group = WRL_INF_02
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Tuli Ch'iping Lü"	
+	division_names_group = WRL_CAV_02
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Paoan T'uan"	
+	division_names_group = WRL_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	#阿山歸化軍自衛隊
+	division = {
+		name = "Ashan Kueihuachün Tzuweitui" 
+		location = 4823 #阿爾泰
+		division_template = "Tuli T'uan"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+}
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "ATM"
+		}
+		requested_factories = 1
+		progress = 0.52
+		efficiency = 100
+	}
+}

@@ -1,0 +1,49 @@
+﻿division_template = {
+	name = "Strelkovaya Polk"		# Army was a single infantry regiment of militia	
+
+	division_names_group = TAN_INF_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Morit Polk"			# Cavalry
+    division_names_group = TAN_CAV_01
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		#cavalry = { x = 0 y = 1 }
+		#cavalry = { x = 0 y = 2 }
+	}
+	#support = {
+    #    artillery = { x = 0 y = 0 }
+	#}
+}
+
+#source: https://forum.paradoxplaza.com/forum/threads/oob-resarch-thread.1043984/page-2#post-23302664 
+#The People's Revolutionary Regiment (Cavalry), 489 soldiers.
+units = {
+	##### Natsional'naya Revolyutsionnaya Armiya Tuvy #####
+	division = {
+		name = "Arattyts Revolystyg Polka Sherii"
+		location = 10627
+		division_template = "Morit Polk"		
+		start_equipment_factor = 0.489
+	    #start_manpower_factor = 0.489
+	}
+}
+
+##### No air force #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "TAN"
+		}
+		requested_factories = 1
+		progress = 0.31
+		efficiency = 100
+	}
+}
