@@ -5,4 +5,6 @@ tags={
 	"Historical"
 }
 name="全面抗战"
+replace_path="history/states"
+replace_path="map/strategicregions"
 supported_version="1.17.1.1"
