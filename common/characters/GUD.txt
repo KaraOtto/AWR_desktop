@@ -1,0 +1,198 @@
+characters={
+
+	GUD_chen_jitang={
+		name=GUD_chen_jitang #陳濟棠，1890年1月23日生於廣東省防城縣，廣東陸軍速成學校，1935年4月2日一級上將，1954年11月3日於台北病逝
+		portraits={
+			civilian={
+				large="gfx/leaders/GUD/Portrait_GUD_Chen_Jitang.dds"
+			}
+			army = {
+				large="gfx/leaders/GUD/Portrait_GUD_Chen_Jitang.dds"
+				small="GFX_idea_CHI_chen_jitang"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1954.11.3"
+			id=-1
+		}
+		advisor={
+			slot = army_chief 
+			idea_token = GUD_chen_jitang
+			allowed = {
+				original_tag = GUD
+			}			
+			traits = {
+				army_chief_defensive_2
+			}
+			cost = 100				
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		field_marshal={
+			traits={ logistics_wizard NRA_General_1stRank }
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=4
+			legacy_id=2001
+			desc=GUD_chen_jitang_desc
+			visible = { 
+				if = {
+					limit = {
+						NOT = {
+							original_tag = GUD
+						}
+					}
+					has_global_flag = joined_chi_GUD
+				}
+			} 
+		}
+	}
+
+	GUD_yu_hanmou={
+		name=GUD_yu_hanmou #余漢謀，1896年9月22日生於廣東省高要縣，保定6期步科，1936年1月22日陸軍中將，1936年9月12日加上將銜，1946年6月13日二級上將，1981年12月27日於台北病逝
+		portraits={
+			civilian={
+				large="gfx/leaders/GUD/Portrait_GUD_Yu_Hanmou.dds"
+			}
+			army={
+				large="gfx/leaders/GUD/Portrait_GUD_Yu_Hanmou.dds"
+				small="GFX_idea_CHI_yu_hanmou"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+            traits={ suijing_gongshu difangshilipai infantry_officer }			
+			id=-1
+		}		
+		advisor={		
+			slot = high_command
+			idea_token = GUD_yu_hanmou
+			ledger = army
+			allowed = {
+				original_tag = GUD
+			}
+			traits = {
+				army_infantry_2
+			}
+			cost = 100				
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ career_officer infantry_officer NRA_Major_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+
+	GUD_li_hanhun={
+		name=GUD_li_hanhun #李漢魂，1895年11月23日生於廣東省吳川縣，保定6期步科，1936年1月25日陸軍中將，1949年2月21日加上將銜，1987年6月30日於紐約病逝
+		portraits={
+			army={
+				large="gfx/leaders/GUD/Portrait_GUD_Li_Hanhun.dds"
+			}
+		}
+		corps_commander={
+			traits={ extra_specialized_skill NRA_Major_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+
+	GUD_deng_longguang={
+		name=GUD_deng_longguang  #鄧龍光，1896年11月22日生於廣東省茂名縣，保定6期步科，1936年1月25日陸軍中將，1979年2月3日於台北病逝
+		portraits={
+			army={
+				large="gfx/leaders/GUD/Portrait_GUD_Deng_Longguang.dds"
+			}
+		}
+		corps_commander={
+			traits={ extra_specialized_skill NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	
+	GUD_huang_guangrui={ #黃光銳，1898年6月5日生於廣東省台山縣，廣東空軍總司令、中央航空學校校長、空軍軍士學校校長、空軍總指揮部軍政廳廳長、航空研究所所長，1986年7月8日於洛杉磯逝世
+		name =GUD_huang_guangrui
+		portraits = {
+			army = { small="GFX_idea_GUD_Huang_Guangrui" }
+		}
+		advisor={
+			slot = air_chief
+			idea_token = GUD_huang_guangrui
+			allowed = {
+				original_tag = GUD
+			}
+			traits = { air_chief_reform_2 }
+			cost = 100
+		}
+		advisor={
+			slot = high_command 
+			idea_token = CHI_huang_guangrui
+			visible = {
+				has_global_flag = huang_guangrui_defects
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes				
+			}
+			traits = { air_pilot_training_2 }
+			cost = 100			
+		}		
+	}	
+}

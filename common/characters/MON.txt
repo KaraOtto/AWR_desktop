@@ -1,0 +1,450 @@
+characters={
+
+	MON_khorloogiin_choibalsan={
+		name=MON_khorloogiin_choibalsan # (Marshal 1936.2.21)
+		portraits={
+			civilian={
+				large="gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+			}
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+				small="GFX_idea_choibalsan"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MON_choibalsan_army_chief
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = MON_communists_purged }				
+			}			
+			traits = { army_chief_morale_2 }
+			cost = 150
+			ai_will_do = {
+				factor = 100
+			}			
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MON_choibalsan_political_advisor
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = MON_communists_purged }				
+			}
+			traits = { prince_of_terror }
+		    ai_will_do = {
+				factor = 2
+				modifier = {
+				    factor = 1000
+				    is_historical_focus_on = yes
+				}
+			}	
+		}
+		field_marshal={
+			traits={ inspirational_leader }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=821895			
+		}
+	}
+	
+	RUS_grigory_semyonov = {                        
+		name = SOV_grigory_semyonov		
+		portraits = {
+			civilian={
+				large="gfx/leaders/MON/Portrait_RUS_Grigory_Semyonov.dds"
+			}		
+			army = {
+				small = "GFX_idea_SOV_grigory_semyonov"
+				large = "GFX_portrait_SOV_grigory_semyonov"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = RUS_grigory_semyonov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_approach_semyonov
+			}
+			available = {
+				has_completed_focus = MON_approach_semyonov
+			}
+			traits = { army_chief_old_guard }
+		}		
+		field_marshal = {
+			traits = { old_guard cavalry_officer cavalry_leader winter_specialist }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			visible = {
+				if = { has_completed_focus =MON_approach_semyonov }				
+			}
+		}		
+	}
+	
+	RUS_vladimir_kislitsin={ 
+		name=RUS_vladimir_kislitsin
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_RUS_Vladimir_Kislitsin.dds"
+			}
+		}
+		corps_commander={
+			traits={ old_guard cavalry_officer winter_specialist }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			visible = {
+				if = { has_completed_focus = MON_white_officers }				
+			}
+		}
+	}
+
+	RUS_grigory_verzhbitsky={ 
+		name=RUS_grigory_verzhbitsky
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_RUS_Grigory_Verzhbitsky.dds"
+			}
+		}
+		corps_commander={
+			traits={ old_guard infantry_officer trait_engineer winter_specialist }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			visible = {
+				if = { has_completed_focus = MON_white_officers }				
+			}			
+		}
+	}	
+
+	RUS_innokenty_smolin={
+		name=RUS_innokenty_smolin
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_RUS_Innokenty_Smolin.dds"
+			}
+		}
+		corps_commander={
+			traits={ old_guard infantry_officer winter_specialist }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			visible = {
+				if = { has_completed_focus = MON_white_officers }				
+			}			
+		}
+	}
+	
+	RUS_ivan_mikhailov={
+		name=ivan_mikhailov
+		portraits={
+			civilian={
+				small="GFX_idea_RUS_ivan_mikhailov"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = RUS_ivan_mikhailov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_white_officers
+			}
+			available = {
+				has_completed_focus = MON_white_officers
+			}			
+			traits = { financial_expert } #Minister of Finance of the Russian State 1918-1919
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	
+	RUS_ivan_serebrennikov={
+		name=RUS_ivan_serebrennikov
+		portraits={
+			civilian={
+				small="GFX_idea_RUS_ivan_serebrennikov"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = RUS_ivan_serebrennikov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_white_officers
+			}
+			available = {
+				has_completed_focus = MON_white_officers
+			}			
+			traits = { economist } #Minister of Supplies of the Russian State 1918-1918
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}	
+
+	MON_Sambadondogiin_Tserendorj={
+		name=MON_Sambadondogiin_Tserendorj
+		portraits={
+			civilian={
+				small="GFX_idea_generic_political_advisor_asia_3"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MON_Sambadondogiin_Tserendorj
+			allowed = {
+				original_tag = MON
+			}
+			traits = {
+				staunch_monarchist
+			}
+		    ai_will_do  = {
+			    factor = 1
+			    modifier  = {
+			        is_historical_focus_on  = yes 
+			        factor = 0
+		        }
+            }
+		}
+	} 
+
+    MON_gelegdorjiin_demid={ #1900-1937 (Marshal 1936.2.21)
+		name=MON_gelegdorjiin_demid 
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Gelegdorjiin_Demid.dds"
+			}
+		}
+		field_marshal={
+			traits={ organisational_leader cavalry_leader extra_specialized_skill }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2		
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MON_gelegdorjiin_demid
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = gelegdorjiin_demid_dead }
+				NOT = { has_completed_focus = MON_russian_colony }				
+			}			
+			traits = { army_chief_organizational_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}			
+		}		
+	}
+	
+    MON_yumjaagiin_tsedenbal={ #1916-1991 (Lieut-General 1944.4.28)
+		name= MON_yumjaagiin_tsedenbal
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Yumjaagiin_Tsedenbal.dds"
+			}
+		}
+		corps_commander={
+			traits={ politically_connected }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2		
+		}
+	}	
+	
+    MON_zhamyangiin_lkhagvasuren={ #1912-1982 (Lieut-General 1944.4.28) Political Council and Deputy Supreme Commander-in-Chief of the Mongolian People's Revolutionary Army in 1939, took part in the ww2
+		name=MON_zhamyangiin_lkhagvasuren 
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Zhamyangiin_Lkhagvasuren.dds"
+			}
+		}
+		corps_commander={
+			traits={ infantry_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1		
+		}
+	}
+	
+    MON_suuriin_baldan={ # 1912-1994 (Major-General 1944.4.28)  
+		name=MON_suuriin_baldan
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Suuriin_Baldan.dds"
+			}
+		}
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1		
+		}
+	}
+	
+    MON_donroviin_damdinkhuu={ # 1906-1993 (Major-General 1944.4.28)
+		name= MON_donroviin_damdinkhuu 
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Donroviin_Damdinkhuu.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MON_donroviin_damdinkhuu
+			ledger = army	
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				has_completed_focus = MON_military_academy
+				NOT = { has_completed_focus = MON_russian_colony }				
+			}
+			traits = { army_cavalry_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}			
+		}		
+		corps_commander={
+			traits={ cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1		
+		}
+	}
+	
+    MON_sandivyn_ravdan={ # 1907-1972 (Major-General 1944.4.28)
+		name=MON_sandivyn_ravdan 
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Sandivyn_Ravdan.dds"
+			}
+		}
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1			
+		}
+	}	
+	
+	MON_batyn_dorj={ # 1914-1982 (Major-General 1944.4.28) Served as a division commander in 1938~1940, took part in the ww2 and the Battle of Baitag Bogd
+		name=MON_batyn_dorj
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Batyn_Dorj.dds"
+			}
+		}
+		corps_commander={
+			traits={ career_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+	
+	MON_gendengiin_rendoo={ # 1906-1976 (Major-General 1944.4.28)
+		name=MON_gendengiin_rendoo 
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Gendengiin_Rendoo.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MON_gendengiin_rendoo
+			ledger = army	
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				has_completed_focus = MON_military_academy
+				NOT = { has_completed_focus = MON_russian_colony }				
+			}
+			traits = { army_artillery_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}			
+		}		
+		corps_commander={
+			traits={ artillery_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}	
+
+	MON_dandar_baatar={ #1914~1986 #division commander of the 6th cavalry division (1939/5)
+		name=MON_dandar_baatar #(Dandar The Hero)
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Dandar_Baatar.dds"
+			}
+		}	
+		corps_commander={
+			traits={ cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}	
+	
+	MON_shaariibuu={ #1909~1939 #division commander of the 6th cavalry division (KIA)
+		name=MON_shaariibuu
+		portraits={
+			army={
+				large="gfx/leaders/MON/Portrait_MON_Shaariibuu.dds"
+			}
+		}	
+		corps_commander={
+			traits={ cavalry_officer trait_reckless extra_specialized_skill }
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+		}
+	}	
+}
+
+
+
