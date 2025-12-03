@@ -1,0 +1,133 @@
+@tier1 = 30
+@tier2 = 20
+@tier3 = 10
+
+@experience_gain_low = 0.03
+@experience_gain_medium = 0.06
+@experience_gain_high = 0.08
+
+@chief_experience_gain_low = 0.20
+@chief_experience_gain_medium = 0.30 
+@chief_experience_gain_high = 0.40
+
+###Todo remove commented advisor experience gains
+
+leader_traits = {
+	钢铁教条继承人 = {
+		sprite = 10
+		random = no
+		
+		political_power_factor = 0.15
+		production_speed_buildings_factor = 0.1
+		production_factory_max_efficiency_factor = 0.05
+		army_morale_factor = 0.05
+		#political_advisor_cost_factor = -0.15
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	部长会议主席 = {
+		sprite = 10
+		random = no
+		
+		political_power_factor = 0.25
+		research_speed_factor = 0.05
+		stability_weekly = -0.001
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+    苏联重工业奠基者 = {
+		sprite = 10
+		random = no
+		production_factory_efficiency_gain_factor = -0.05
+		production_factory_max_efficiency_factor = 0.05
+		production_speed_industrial_complex_factor = 0.05
+		production_speed_arms_factory_factor = 0.1
+		production_speed_rail_way_factor = 0.1
+		industrial_capacity_factory = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+    染血的反间谍工作者 = {
+		random = no
+		sprite = 15
+		operative_slot = 2
+		new_operative_slot_bonus = 2
+		enemy_operative_detection_chance = 10
+		enemy_operative_capture_chance_factor = 0.1
+		army_intel_to_others = -10
+		intel_network_gain_factor = 0.1
+	}
+
+    最高苏维埃中央书记 = {
+		random = no
+		sprite = 15
+		political_power_factor = 0.1
+		stability_factor = 0.1
+		command_power_gain = 0.05
+		attrition = -0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+		
+	武器工业人民委员 = {
+		sprite = 10
+		random = no
+		fuel_gain_factor = 0.15
+		local_resources_factor = 0.1
+		production_speed_synthetic_refinery_factor = 0.1
+		production_speed_nuclear_reactor_factor = 0.1
+		min_export = -0.2
+	}
+	SOV_zhukov_traits = {#朱可夫特质
+		sprite = 7
+	    random = no
+		experience_gain_army = 0.4
+		army_org_factor = 0.15
+		army_morale_factor = 0.2
+		training_time_factor = -0.1
+		supply_consumption_factor = -0.05
+		combat_width_factor = -0.05
+		acclimatization_cold_climate_gain_factor = 0.2
+		winter_attrition_factor = -0.1
+		dig_in_speed_factor = 0.1
+		max_dig_in = 5
+		army_core_defence_factor = 0.1
+	}
+	SOV_rokossovsky_traits = {#罗科索夫斯基
+		sprite = 7
+	    random = no
+		army_armor_attack_factor = 0.15
+		army_armor_defence_factor = 0.15
+		army_intel_to_others = -10
+		airforce_intel_to_others = -10
+		encryption = 20
+	}
+	ivan_konev_traits = {#科涅夫
+		sprite = 7
+	    random = no
+		breakthrough_factor = 0.15
+		army_artillery_attack_factor = 0.15
+		army_artillery_defence_factor = 0.15
+		occupation_cost = -0.1
+		army_speed_factor = 0.15
+		org_loss_when_moving = -0.15
+	}
+	SOV_aleksandr_vasilevsky_traits = {#华西列夫斯基
+		sprite = 7
+	    random = no
+		max_planning = 0.15
+		planning_speed = -0.1
+		out_of_supply_factor = -0.1
+		supply_consumption_factor = -0.1
+		no_supply_grace = 48
+	}
+}	
