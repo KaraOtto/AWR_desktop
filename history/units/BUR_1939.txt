@@ -1,0 +1,94 @@
+﻿division_template = {
+	name = "Burma Rifle Division"
+    division_names_group = BRENGL_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 } #11th Battalion, The Burma Rifles
+		infantry = { x = 0 y = 1 } #4rd Batallion, The Burma Rifles
+        infantry = { x = 1 y = 0 } #2nd Battalion, The King's Own Yorkshire Light Infantry
+		infantry = { x = 1 y = 1 } #3rd Batallion, The Burma Rifles
+	}
+	support = {
+       	engineer = { x = 0 y = 0 } #13th Field Company, Madras Sappers and Miners
+		military_police = { x = 0 y = 1 } #The Mandalay Battalion, Burma Military Police
+		artillery = { x = 0 y = 2 } #2nd Mountain Battery, Indian Artillery
+	}
+}
+
+division_template = {
+	name = "Burma Rifle Brigade"
+    division_names_group = BRENGL_INFB_01
+	regiments = {
+		infantry = { x = 0 y = 0 } #12th Batallion, The Burma Rifles
+		infantry = { x = 0 y = 1 } #1st Batallion, The Gloucestershire Regiment
+		infantry = { x = 0 y = 2 } #1st Batallion, The Burma Rifles
+		infantry = { x = 1 y = 0 } #Tenasserim Battalion, Burma Auxiliary Force & Burma Railways Battalion, Burma Auxiliary Force
+		infantry = { x = 1 y = 1 } #Rangoon Battalion, Burma Auxiliary Force & Rangoon University Training Corps, Burma Territorial Force
+	}
+	support = {
+       	artillery = { x = 0 y = 0 } #Rangoon Field Brigade, Royal Artillery, Burma Auxiliary Force
+		military_police = { x = 0 y = 1 } #1st & 2nd Rangoon Battalion, Burma Military Police	
+	}
+}
+
+division_template = {
+	name = "Burma Frontier Force"			
+    division_names_group = BRENGL_INF_01								
+	regiments = {  
+		infantry = { x = 0 y = 0 } #Bhamo Battalion, Burma Frontier Force
+		infantry = { x = 0 y = 1 } #Chin Hills Battalion, Burma Frontier Force
+		infantry = { x = 0 y = 2 } #Northern Shan States Battalion, Burma Frontier Force
+		infantry = { x = 0 y = 0 } #Myitkyina Battalion, Burma Frontier Force
+		infantry = { x = 0 y = 1 } #Reserve Battalion, Burma Frontier Force
+		infantry = { x = 0 y = 2 } #Southern Shan States Battalion, Burma Frontier Force
+	}
+	priority = 0
+}
+
+units = {
+	#Burma Army Command
+	
+	division= {	
+		name = "Maymyo Infantry Brigade"
+		location = 1492
+		division_template = "Burma Rifle Division"
+		start_experience_factor = 0.4
+
+	}
+	division= {	
+		name = "Rangoon Infantry Brigade"
+		location = 1330
+		division_template = "Burma Rifle Brigade"
+		start_experience_factor = 0.5
+
+	}
+	division= {	
+		name = "Burma Frontier Force"
+		location = 4425
+		division_template = "Burma Frontier Force"
+		start_experience_factor = 0.1
+
+	}
+}
+
+##### Starting Production #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "BUR"
+		}
+		requested_factories = 1
+		progress = 0.94
+		efficiency = 100	
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "BUR"
+		}
+		requested_factories = 1
+		progress = 0.16
+		efficiency = 100
+	}
+}

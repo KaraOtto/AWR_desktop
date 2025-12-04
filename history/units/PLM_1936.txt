@@ -1,0 +1,85 @@
+﻿division_template = {
+	name = "Tuli Lü"				#Militia-level training and equipment
+	division_names_group = SHX_INF_02
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Ch'iping Lü"			# Cavalry Division
+	division_names_group = SHX_CAV_02
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+		cavalry = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Paoan Tui"	
+	division_names_group = ECA_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		#militia = { x = 1 y = 0 }
+		#militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	#at least 1000+ in 1936
+	division = {
+		name = "Mêngku Tifang Paoan Tui"
+		location = 12331
+		division_template = "Paoan Tui"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+	}
+	#division = {
+	#	name = "Paoan Ti 2 Tui"
+	#	location = 7545
+	#	division_template = "Paoan Tui"
+	#	start_experience_factor = 0.2
+	#	start_equipment_factor = 0.7
+	#}
+	#division = {
+	#	name = "Paoan Ti 3 Tui"
+	#	location = 11752
+	#	division_template = "Paoan Tui"
+	#	start_experience_factor = 0.2
+	#	start_equipment_factor = 0.4
+	#}
+	#division = {
+	#	name = "Ch'iping Ti 1 Shih"
+	#	location = 4525
+	#	division_template = "Ch'iping Shih"
+	#	start_equipment_factor = 0.4
+	#	start_experience_factor = 0.3
+	#}
+	#division = {
+	#	name = "Ch'iping 2. Shih"
+	#	location = 10424
+	#	division_template = "Ch'iping Shih"
+	#	start_equipment_factor = 0.5
+	#	start_experience_factor = 0.2
+	#}
+
+}
+
+##### STARTING PRODUCTION #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "PLM"
+		}
+		requested_factories = 1
+		progress = 0.82
+		efficiency = 100
+	}
+}

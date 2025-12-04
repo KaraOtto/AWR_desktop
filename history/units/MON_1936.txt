@@ -1,0 +1,152 @@
+﻿division_template = {
+	name = "Morit Diviziin"			# Cavalry Division
+    division_names_group = MON_CAV_01
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		#cavalry = { x = 0 y = 2 }
+	}
+	support = {
+        artillery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Motorjuulsan Diviziin"
+	division_names_group = MON_MOT_01
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Khuyagt Brigad"
+	division_names_group = MON_ARM_01
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		#motorized = { x = 0 y = 1 }
+		#motorized = { x = 0 y = 2 }
+		#armored_car = { x = 1 y = 0 }
+		#armored_car = { x = 1 y = 1 }
+	}
+	support = {
+        artillery = { x = 0 y = 0 }
+		armored_car_recon = { x = 0 y = 1 }  
+	}
+}
+
+
+division_template = {
+	name = "Strelkovaya Diviziin"
+	division_names_group = MON_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+	    infantry = { x = 1 y = 0 }
+	}
+}
+
+units = {
+	##### Mongol Ardyn Armiin #####
+	#4 Cavalry Divisions(5th~8th, 1500 men per division) + 1 Armored Brigade(Armored Cars + Trucks?) in 1939
+	division = {
+		#name = "1-r Morit Diviziin"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 4801
+		division_template = "Morit Diviziin"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.75
+	}
+	division = {
+		#name = "2-p Morit Diviziin"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 4792
+		division_template = "Morit Diviziin"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.75
+	}
+	division = {
+		#name = "3-p Morit Diviziin"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 12557
+		division_template = "Morit Diviziin"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.75
+	}
+	division = {
+		#name = "4-p Morit Diviziin"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 1743
+		division_template = "Morit Diviziin"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.75
+	}
+	#division = {
+	#	#name = "5-p Morit Diviziin"
+	#	location = 4873
+	#	division_template = "Morit Diviziin"
+	#	start_experience_factor = 0.1
+	#	start_equipment_factor = 0.5
+	#}
+	division = {
+		#name = "1-r Motorjuulsan Diviziin"
+        name = "Khuyagt Brigad"
+		location = 4801
+		division_template = "Khuyagt Brigad"
+		#force_equipment_variants = { motorized_equipment_1 = { owner = "SOV" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.7
+	}
+	#division = {
+	#	name = "6-p Morit Diviziin"
+	#	location = 10575
+	#	division_template = "Morit Diviziin"
+	#	start_experience_factor = 0.1
+	#	start_equipment_factor = 0.5
+	#}
+	#division = {
+	#	name = "7-p Morit Diviziin"
+	#	location = 4856
+	#	division_template = "Morit Diviziin"
+	#	start_experience_factor = 0.1
+	#	start_equipment_factor = 0.5
+    #
+	#}
+
+	#division = {
+	#	name = "8-p Morit Diviziin"
+	#	location = 1723
+	#	division_template = "Morit Diviziin"
+	#	start_experience_factor = 0.1
+	#	start_equipment_factor = 0.5
+	#}
+}
+
+#assign_all_forces_to = "Khorloogiin Choibalsan"
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "MON"
+		}
+		requested_factories = 1
+		progress = 0.20
+		efficiency = 100
+	}
+}

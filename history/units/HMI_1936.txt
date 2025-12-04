@@ -1,0 +1,59 @@
+﻿division_template = {
+	name = "Tuli Lü"	
+	division_names_group = HMI_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		#infantry = { x = 1 y = 0 }
+		#infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Tuli Ch'iping Lü"	
+	division_names_group = WRL_CAV_02
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		#cavalry = { x = 1 y = 0 }
+		#cavalry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Paoan T'uan"	
+	division_names_group = WRL_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+}
+
+### OOB ###
+units = {
+	#2000+ (or 5000) in 1937, Hami Uyghur 1st Brigade
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 13393 # Hami
+		division_template = "Tuli Lü"		 
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+	}
+}
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "HMI"
+		}
+		requested_factories = 1
+		progress = 0.5
+		efficiency = 100
+	}
+}
+
+
