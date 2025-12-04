@@ -7,4 +7,5 @@ tags={
 name="全面抗战"
 replace_path="history/states"
 replace_path="map/strategicregions"
+replace_path="gfx/loadingscreens"
 supported_version="1.17.1.1"
