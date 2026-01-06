@@ -1,0 +1,531 @@
+JAP_manchukuo_player_plan = {
+	name = "Japan Plan for Player manchukuo"
+	desc = "Build Up manchukuo"
+
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		is_historical_focus_on = no
+		MAN = {
+			is_ai = no
+		}
+		#MODDED no need
+	}
+	abort = {
+		MAN = {
+			NOT = { is_subject_of = JAP }
+			NOT = { is_in_faction_with = JAP }
+		}
+	}
+
+	focus_factors = {
+		#MODDED no need
+	}
+
+	ai_strategy = {
+		type = support
+		id = "MAN"
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+
+JAP_manchukuo_player_historical_plan = {
+	name = "Historical Japan Plan for Player manchukuo"
+	desc = "Build up manchukuo to help out, otherwise historical"
+
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		is_historical_focus_on = yes		
+		MAN = {
+			is_ai = no
+		}
+		#MODDED no need
+	}
+	abort = {
+		MAN = {
+			NOT = { is_subject_of = JAP }
+			NOT = { is_in_faction_with = JAP }
+		}
+	}
+
+	ai_national_focuses = {
+		#MODDEDv
+		JAP_army_expansion_law #10
+		JAP_army_expansion #10
+		JAP_placate_military_focus #5
+		JAP_purge_the_kodoha_faction #7
+		pressure_pm_focus #7
+		JAP_konoe_cabinet_focus #10
+		JAP_guide_the_zaibatsus
+		JAP_aggressive_china_politics_focus #10
+		JAP_intervene_in_china #10
+		spiritual_mobilization_focus #October 20 1942
+		JAP_liaison_conference
+		nat_mob_law
+		JAP_second_konoe_cabinet_focus
+		oust_germans_focus
+		JAP_sign_tripartite_pact #August 30 1940
+		southern_expansion_focus #November 20 1939
+		JAP_greater_east_asian_co_prosperity_sphere
+		JAP_Soviet_Japanese_Neutrality_Pact_focus
+		tojo_cabinet_focus
+		strike_usa_focus	
+		JAP_new_naval_estimates	#10
+		JAP_small_arms_modernization #10
+		student_movement_focus
+		industrial_effort_focus
+		JAP_supremacy_of_technology #10
+		JAP_fighter_modernization #10
+		oust_soviet
+		JAP_carrier_warfare_experiments #10
+		JAP_cruiser_modernization #February 20 1938
+		#unit_731
+		JAP_torpedo_cruisers #September 10 1939
+		JAP_agility_focus #January 30 1940
+		JAP_first_air_fleet #April 10 1940R
+		JAP_the_zero #June 20 1940
+		JAP_bomber_modernization #November 10 1940
+		JAP_range_focus #January 20 1941
+		 #March 30 1941
+		JAP_modern_artillery #June 10 1941
+		southern_expansion_focus #October 30 1941
+		#JAP_alliance_with_siam #January 10
+		JAP_strategic_bomber_effort #March 20 1942
+		JAP_modern_escorts #May 30 1942
+		JAP_warrior_spirit #December 30 1942
+		#JAP_exploit_the_southern_resource_area #May 20 1943
+		JAP_secure_china #July 30 1943
+		JAP_jet_prototypes
+		JAP_armored_divisions
+		#MODDED^
+	}
+
+	ai_strategy = {
+		type = support
+		id = "MAN"
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+#everything below MODDEDvvvvvvv
+JAP_KODOHA_plan = {
+	name = "Japan Kōdōha plan"
+	desc = "Kōdōha behavior for Japan"
+	
+	enable = {
+	    OR = {
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = SONNO_TOKAN
+			}
+		    has_global_flag = kodoha_won
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		JAP_Sonno_Tokkan_focus #5
+		JAP_purge_the_kodoha_faction #7
+		showa_restoration_focus #7
+		JAP_a_new_empire_focus #10
+		JAP_Japans_lifeline_focus
+		JAP_revise_hirota_sangesoku_focus #10
+		JAP_non_aggression_pact_with_china #10 1937 JUL 7
+		JAP_intervene_in_china  #10 1937 sept 17
+		JAP_redefine_national_polity_focus #10 1937 nov 27
+		JAP_unite_china_focus #10 1938 FEB 7
+		JAP_secure_china
+		JAP_new_naval_estimates	#10
+		JAP_small_arms_modernization #10
+		northern_expansion_focus
+		JAP_prepare_for_war_with_the_soviet_union #August 30 1940
+		jap_military_youth
+		JAP_challenge_the_zaibatsus
+		man_factory1 #November 20 1939
+		man_steel
+		JAP_fortress_manchuria_focus
+		JAP_build_up_the_manchurian_army	#10
+		JAP_small_arms_modernization #10
+		JAP_create_a_manchurian_imperial_air_force
+		JAP_preemptive_war
+		JAP_supremacy_of_technology #10
+		JAP_fighter_modernization #10
+		JAP_japanization_focus
+		man_oil_exploration
+		research_in_man #10
+		JAP_cruiser_modernization #February 20 1938
+		#unit_731#October 20 1942
+		JAP_torpedo_cruisers #September 10 1939
+		JAP_agility_focus #January 30 1940
+		JAP_first_air_fleet #April 10 1940
+		JAP_the_zero #June 20 1940
+		JAP_bomber_modernization #November 10 1940
+		JAP_range_focus #January 20 1941
+		 #March 30 1941
+		JAP_modern_artillery #June 10 1941
+ 		samurai_with_rifles #October 30 1941
+ 		#JAP_alliance_with_siam #January 10
+ 		JAP_strategic_bomber_effort #March 20 1942
+		imperial_glory_kodoha
+ 		JAP_modern_escorts #May 30 1942
+ 		#JAP_exploit_the_southern_resource_area #May 20 1943
+ 		JAP_jet_prototypes
+ 		JAP_armored_divisions
+	}
+
+	research = {
+		
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+JAP_TREATY_FACTION_plan = {
+	name = "Japan treaty faction plan"
+	desc = "treaty faction behavior for Japan, Placate military route"
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		#is_historical_focus_on = yes
+		OR = {
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = PLACATE_MILITARY_YONAIS_CABINET
+			}
+			has_country_flag = JAP_AI_RANDOM_FASCIST #simply uses fscist weight
+		}
+	}
+	abort = {
+	}
+
+	ai_national_focuses = {
+		JAP_warrior_spirit #December 30 1942
+		JAP_army_expansion_law #10
+		JAP_army_expansion #10
+		JAP_placate_military_focus #5
+		student_movement_focus
+		industrial_effort_focus
+		JAP_purge_the_kodoha_faction #7
+		pressure_pm_focus #7
+		JAP_konoe_cabinet_focus #10
+		JAP_aggressive_china_politics_focus #10
+		JAP_intervene_in_china #10 1937 JUL 7
+		JAP_secure_china
+		JAP_unite_china_focus #in case china accept hiro
+		spiritual_mobilization_focus  #10 1937 sept 17
+		JAP_liaison_conference #10 1937 nov 27			
+		JAP_guide_the_zaibatsus
+		nat_mob_law #10 1938 FEB 7
+		JAP_new_naval_estimates	#10		
+		JAP_small_arms_modernization #10
+		oust_germans_focus		
+		JAP_sign_tripartite_pact #August 30 1940
+
+
+
+		JAP_consolidate_yonai_cabinet_focus
+		JAP_purge_pro_axis_militarists_focus
+		JAP_Soviet_Japanese_Neutrality_Pact_focus
+		oust_soviet #November 20 1939	#10 #10
+		JAP_supremacy_of_technology #10
+		JAP_fighter_modernization #10				
+		JAP_carrier_warfare_experiments #10
+		JAP_cruiser_modernization #February 20 1938
+		JAP_torpedo_cruisers #September 10 1939
+		JAP_long_lance_torpedoes
+		JAP_agility_focus #January 30 1940
+		JAP_first_air_fleet #April 10 1940
+		JAP_the_zero #June 20 1940
+		JAP_bomber_modernization #November 10 1940
+		JAP_range_focus #January 20 1941
+		 #March 30 1941
+		JAP_modern_artillery #June 10 1941 #October 30 1941
+ 		#JAP_alliance_with_siam #January 10
+ 		JAP_strategic_bomber_effort #March 20 1942
+ 		JAP_modern_escorts #May 30 1942
+ 		#JAP_exploit_the_southern_resource_area #May 20 1943
+ 		#JAP_secure_china #July 30 1943
+ 		JAP_jet_prototypes
+ 		JAP_armored_divisions
+	}
+	focus_factors = {
+		JAP_second_konoe_cabinet_focus = 0 
+	}
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+
+
+JAP_OKADA_STAYS_TREATY_FACTION_plan = {
+	name = "Japan Okada stays - treaty faction"
+	desc = "Japan Okada stays - treaty faction"
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		NOT = {
+			has_global_flag = pm_killed
+		}
+		OR = {
+			has_country_flag = JAP_AI_RANDOM_DEMOCRATIC
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = OKADA_STAYS_TREATY_FACTION
+			}
+		}
+	}
+	abort = {
+		has_global_flag = pm_killed
+	}
+	focus_factors = {
+		JAP_left_reform_focus = 0 
+	}
+	ai_national_focuses = {
+		JAP_strengthen_civilian_government
+		JAP_Constitutional_Reform_focus
+		JAP_purge_pro_axis_militarists_focus
+		JAP_deradicalization_of_young_officers
+	}
+
+	research = {
+		
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+JAP_OKADA_STAYS_STATE_SOCIALISM_plan = {
+	name = "Japan Okada stays - State Socialism"
+	desc = "Japan Okada stays - State Socialism"
+
+	enable = {
+		original_tag = JAP
+		NOT = {
+			has_global_flag = pm_killed
+		}
+		OR = {
+			has_country_flag = JAP_AI_RANDOM_DEMOCRATIC
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = OKADA_STAYS_STATE_SOCIALISM
+			}
+		}
+	}
+	abort = {
+		has_global_flag = pm_killed
+	}
+	focus_factors = {
+		JAP_Constitutional_Reform_focus = 0
+		JAP_horseshoe_theory_focus = 0
+		JAP_Release_Kyuichi_Tokuda_focus = 0
+	}
+	ai_national_focuses = {
+		JAP_strengthen_civilian_government
+		JAP_left_reform_focus
+		JAP_agrarian_reform_focus
+		JAP_purge_pro_axis_militarists_focus
+	}
+
+	research = {
+		
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+JAP_OKADA_STAYS_TOHOKAI_plan = {
+	name = "Japan Okada stays - Tohokai"
+	desc = "Japan Okada stays - Tohokai"
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		NOT = {
+			has_global_flag = pm_killed
+		}
+		OR = {
+			has_country_flag = JAP_AI_RANDOM_DEMOCRATIC #no body can tell, simply uses democratic's random weight
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = OKADA_STAYS_TOHOKAI
+			}
+		}
+	}
+	abort = {
+		has_global_flag = pm_killed
+	}
+	focus_factors = {
+		JAP_Constitutional_Reform_focus = 0
+		JAP_agrarian_reform_focus = 0
+		JAP_Release_Kyuichi_Tokuda_focus = 0
+	}
+	ai_national_focuses = {
+		JAP_strengthen_civilian_government
+		JAP_left_reform_focus
+		JAP_horseshoe_theory_focus	
+		JAP_usurp_the_left_focus
+		JAP_approach_the_young_officers
+		JAP_agrarian_reform_focus
+		JAP_cooperate_with_labor_union_focus
+		JAP_subsidize_the_middle_class_focus
+		JAP_nationalize_the_zaibatsus
+		JAP_back_to_where_we_were_heading_focus	
+	}
+
+	research = {
+		
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+JAP_OKADA_STAYS_COMMUNISM_plan = {
+	name = "Japan Okada stays - Communism"
+	desc = "Japan Okada stays - Communism"
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		NOT = {
+			has_global_flag = pm_killed
+		}
+		OR = {
+			has_country_flag = JAP_AI_RANDOM_COMMUNIST #no body can tell, simply uses democratic's random weight
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = OKADA_STAYS_COMMUNISM
+			}
+		}
+	}
+	abort = {
+		has_global_flag = pm_killed
+	}
+	focus_factors = {
+		JAP_Constitutional_Reform_focus = 0
+		JAP_agrarian_reform_focus = 0
+		JAP_horseshoe_theory_focus = 0
+	}
+	ai_national_focuses = {
+		JAP_strengthen_civilian_government
+		JAP_left_reform_focus
+		JAP_Release_Kyuichi_Tokuda_focus	
+		JAP_approach_the_young_officers
+		JAP_exchange_the_exiles		
+		JAP_cast_the_die
+		JAP_the_fate_of_the_imperial_family
+		JAP_nationalize_the_zaibatsus
+		JAP_rebuild_the_civil_service
+		JAP_reeducation_campaign
+		JAP_finish_the_fight
+		JAP_red_brigades
+		JAP_a_deal_with_CPC
+		JAP_Chinese_revolution_focus
+		JAP_communist_volunteers
+		JAP_expand_the_revolutions_focus	
+	}
+
+	research = {
+		
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
