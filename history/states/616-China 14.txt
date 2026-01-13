@@ -1,47 +1,73 @@
+state = {
+	id = 616
+	name = "STATE_616"
 
-state={
-	id=616
-	name="STATE_616" # Ningsia
-
-	resources={
-		steel=2.000
-		coal = 18
+	resources = {
+		coal = 2
 	}
 
-	history={
-		owner = NXM
-		add_core_of = NXM
+	history = {
+
+		owner = XSM
+		add_core_of = XSM
 		add_core_of = CHI
+		add_core_of = PRC
+
 		buildings = {
 			infrastructure = 1
-			arms_factory = 1			
-			industrial_complex = 1
 
+			8127 = {
+				landmark_great_wall_section = {
+				    level = 1
+				    allowed = {
+				        has_dlc = "No Compromise, No Surrender"
+				    }
+				}
+			}
 		}
+
 		victory_points = {
-			10724 5
+			8127 3 # Yinchuan
 		}
+
 		victory_points = {
-			8055 2
+			5031 1 # Alxa Right Banner
 		}
-		victory_points = {
-			12776 1
+
+		1936.1.1 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender" 
+				}
+				NXM = { transfer_state = PREV }
+				add_core_of = NXM
+				remove_core_of = XSM
+			}
 		}
-		victory_points = {
-			3742 1
-		}
+
+
 		1938.10.25 = {
-			owner = NXM
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "Waking the Tiger" 
+					}
+				}
+				CHI = {
+					transfer_state = PREV
 
+				}
+			}
 		}
 
 	}
 
-	provinces={
-		3742 4783 4786 5031 7511 7803 8055 8127 10724 10770 10899 12750 12776 13503
+	provinces = {
+		3742 5031 7511 8055 8081 8127 10724 12750  
 	}
-	manpower=489000 # (978000 x0.5)
-	buildings_max_level_factor=1.000
-	state_category=rural
-	local_supplies=0.000
+	manpower = 1077600
+	buildings_max_level_factor = 1.000
+	state_category = pastoral
+
+	local_supplies = 0.0 
 }
