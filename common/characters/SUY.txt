@@ -1,0 +1,281 @@
+characters={
+
+	SUY_an_chunshan={
+		name=SUY_an_chunshan #安春山
+		portraits={
+			army={
+				large="gfx/leaders/SUY/Portrait_SUY_An_Chunshan.dds"
+			}
+		}
+		#corps_commander={
+		#	visible = { has_country_flag = SUY_generals_1940_flag } 
+		#	traits={ NRA_Major_General }
+		#	skill=2
+		#	attack_skill=2
+		#	defense_skill=2
+		#	planning_skill=2
+		#	logistics_skill=1
+		#	legacy_id=-1
+		#}
+	}
+
+	SUY_guo_jingyun={
+		name=SUY_guo_jingyun #郭景雲
+		portraits={
+			army={
+				large="gfx/leaders/SUY/Portrait_SUY_Guo_Jingyun.dds"
+			}
+		}
+		#corps_commander={
+		#	visible = { has_country_flag = SUY_generals_1940_flag } 
+		#	traits={ NRA_Major_General }
+		#	skill=2
+		#	attack_skill=2
+		#	defense_skill=3
+		#	planning_skill=1
+		#	logistics_skill=1
+		#	legacy_id=-1
+		#}
+	}
+
+	SUY_ma_zhanshan={
+		name=SUY_ma_zhanshan #马占山
+		portraits={
+			army={
+				large="gfx/leaders/SUY/Portrait_SUY_Ma_Zhanshan.dds"
+				small="GFX_idea_ma_zhanshan"
+			}
+		}
+		corps_commander={
+			visible = { always = yes } 
+			traits={ NRA_Lieut_General }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+
+	SUY_yuan_qingrong={
+		name=SUY_yuan_qingrong #袁慶榮
+		portraits={
+			army={
+				large="gfx/leaders/SUY/Portrait_SUY_Yuan_Qingrong.dds"
+			}
+		}
+		#corps_commander={
+		#	visible = { has_country_flag = SUY_generals_1940_flag } 
+		#	traits={ NRA_Lieut_General }
+		#	skill=2
+		#	attack_skill=2
+		#	defense_skill=1
+		#	planning_skill=2
+		#	logistics_skill=2
+		#	legacy_id=-1
+		#}	
+	}
+
+	#advisors
+	SUY_feng_xi={
+		name=SUY_feng_xi #馮曦1880~1960
+		portraits={
+			army={
+				small="GFX_idea_feng_xi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_feng_xi
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				wrl_technocrat #建設廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_li_juyi={
+		name=SUY_li_juyi #李居義1885~1972
+		portraits={
+			army={
+				small="GFX_idea_li_juyi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_li_juyi
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				economist #財政廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_yan_wei={
+		name=SUY_yan_wei #閻偉1895~1985
+		portraits={
+			army={
+				small="GFX_idea_yan_wei"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_yan_wei
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				wrl_education_reformer #教育廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_yuan_qingzeng={
+		name=SUY_yuan_qingzeng #袁慶曾1895~1977 袁慶榮的兄長(袁氏三雄)
+		portraits={
+			army={
+				small="GFX_idea_yuan_qingzeng"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_yuan_qingzeng
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				captain_of_industry #民政廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	
+	SUY_zeng_houzai={
+		name=SUY_zeng_houzai #曾厚載
+		portraits={
+			army={
+				small="GFX_idea_zeng_houzai"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_zeng_houzai
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				editor #秘書長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_shakeduerzhabu={
+		name=SUY_shakeduerzhabu #沙克都爾扎布(沙王)1873~1945
+		portraits={
+			army={
+				small="GFX_idea_shakeduerzhabu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_shakeduerzhabu
+			allowed  = {
+				original_tag = SUY
+			}
+			available = {
+				NOT = {
+					has_completed_focus = SUY_ikechao_incident
+				}
+			}
+			traits  = {
+				propaganda_expert
+			}
+			ai_will_do = {
+				factor = 80
+			}
+		}
+	}
+	#theorist and high commands
+	
+	SUY_e_yousan={
+		name=SUY_e_yousan #鄂友三
+		portraits={
+			army={
+				small="GFX_idea_e_yousan"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = SUY_e_yousan
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}			
+			traits = {
+				mass_assault_expert
+			}
+			cost = 100
+		}
+	}
+
+	SUY_chi_shentian={
+		name=SUY_chi_shentian #郗莘田
+		portraits={
+			army={
+				small="GFX_idea_chi_shentian"
+			}
+		}
+		advisor={
+			allowed = {
+				original_tag = SUY
+			}	
+			slot = high_command
+			ledger = army
+			idea_token = SUY_chi_shentian
+			traits = {
+				army_entrenchment_2
+			}
+			cost = 100	
+		}
+	}
+
+	SUY_xu_zizhen={
+		name=SUY_xu_zizhen #徐子珍
+		portraits={
+			army={
+				small="GFX_idea_xu_zizhen"
+			}
+		}
+		advisor={
+			allowed = {
+				original_tag = SUY
+			}	
+			slot = high_command
+			ledger = army
+			idea_token = SUY_xu_zizhen
+			traits = {
+				army_logistics_2
+			}	
+			cost = 100
+		}
+	}
+}

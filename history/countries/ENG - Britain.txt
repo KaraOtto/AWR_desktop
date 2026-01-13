@@ -238,7 +238,50 @@ add_ideas = {
 	
 
 set_convoys = 1000
+every_state = {
+	limit = { 
+		or = {
+		is_core_of = EGY
+		is_core_of = SUD
+		}
+	 }
+	 add_core_of = EGY
+	 EGY = { transfer_state = PREV }
+}
+every_state = {
+	limit = { 
+		or = {
+		is_core_of = VIN
+		is_core_of = LAO
+		is_core_of = CAM
+		}
+	 }
+	 add_core_of = FIC
+	 FIC = { transfer_state = PREV }
+}
+FRA = {
+	set_autonomy = {
+		target = FIC
+		autonomous_state = autonomy_colony
+		freedom_level = 0.25
+	}
+}
+FIC = {
+	set_popularities = {
+		fascism = 5
+		democratic = 18
+		n_socialism = 7
+		communism = 3
+		neutrality = 67
+	}
 
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+}
 # DIPLOMACY
 if = {
 	limit = {
@@ -256,6 +299,70 @@ if = {
 		autonomous_state = autonomy_colony
 		freedom_level = 0.35
 	}
+	set_autonomy = {
+		target = SAB
+		autonomous_state = autonomy_colony
+		freedom_level = 0.35
+	}
+	SAB = { 
+		set_popularities = {
+			fascism = 5
+			democratic = 18
+			n_socialism = 7
+			communism = 3
+			neutrality = 67
+		}
+	
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_cosmetic_tag = SAB_british
+	 }
+	 set_autonomy = {
+		target = SAR
+		autonomous_state = autonomy_colony
+		freedom_level = 0.35
+	}
+	SAR = { 
+		set_popularities = {
+			fascism = 5
+			democratic = 18
+			n_socialism = 7
+			communism = 3
+			neutrality = 67
+		}
+	
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+	 }
+	 set_autonomy = {
+		target = BRN
+		autonomous_state = autonomy_colony
+		freedom_level = 0.35
+	}
+	BRN = { 
+		set_popularities = {
+			fascism = 5
+			democratic = 18
+			n_socialism = 7
+			communism = 3
+			neutrality = 67
+		}
+	
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+	 }
 	set_autonomy = {
 		target = CAN
 		autonomous_state = autonomy_dominion
@@ -281,6 +388,11 @@ if = {
 		autonomous_state = autonomy_dominion
 		freedom_level = 0.2
 	}
+	set_autonomy = {
+		target = BRM
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.2
+	}
 
 
 	else = {
@@ -288,6 +400,7 @@ if = {
 		puppet = RAJ
 	}
 }
+
 
 
 if = {
