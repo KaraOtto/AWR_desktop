@@ -1,9 +1,4 @@
 idea_categories = {
-	# ledger can be define for idea > idea slot > idea category
-	# first one overrides the others
-	# multiple ledgers can be defined, in that case will show on all
-	# possible values : army, air, navy, military (shows on all military ledgers), civilian, all (shows up everywhere), hidden (does not show up)
-	
 
 	hidden_ideas = {
 		hidden = yes
@@ -24,18 +19,14 @@ idea_categories = {
 	}
 
 	laws_government = {	#guo
-		slot = inflation		#MODDED
-		slot = mobilization_laws
-		slot = trade_laws
-		slot = economy
-		#character_slot = political_advisor		#MODDED
-		#character_slot = political_advisor
-		#character_slot = political_advisor
-		#character_slot = political_advisor
-		slot = tax_rate
-		slot = military_expenditure
-		slot = research_expenditure
-		slot = social_management_and_welfare_expenditure
+		slot = economy_situation	#经济状况
+		slot = mobilization_laws #征兵
+		slot = trade_laws	#贸易
+		slot = economy		#经济
+		slot = tax_rate		#税收
+		slot = military_expenditure	#军事支持
+		slot = research_expenditure	#研究加成
+		slot = social_management_and_welfare_expenditure	#社会福利
 		
 		ledger = civilian
 		
@@ -43,7 +34,7 @@ idea_categories = {
 		removal_cost = 0
 	}
 	
-	political_advisor_zz = { #guo
+	political_advisor_zz = { #政治顾问
 		character_slot = political_advisor		#MODDED
 		character_slot = political_advisor
 		character_slot = political_advisor
@@ -59,7 +50,7 @@ idea_categories = {
 		removal_cost = 0
 	}
 
-	designer_foreign_advisors = {
+	designer_foreign_advisors = {#外国顾问
 		slot = tank_manufacturer
 		slot = tank_manufacturer
 		slot = naval_manufacturer
@@ -75,7 +66,7 @@ idea_categories = {
 		removal_cost = 0
 	}
 
-	production_theorist = {
+	production_theorist = {	
 		slot = materiel_manufacturer
 		slot = materiel_manufacturer	
 		slot = materiel_manufacturer
@@ -230,7 +221,6 @@ slot_ledgers = {
 	theorist = invalid # must be overridden
 	high_command = invalid # must be overridden
 	foreign_advisor = civilian
-	
 	
 	mobilization_laws = civilian
 }

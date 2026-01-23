@@ -724,7 +724,6 @@ FIN = {
                                 			
 		complete_effect = {
         set_global_flag = operation_barbarossa
-		remove_ideas = GER_barbar_prepare
 
 every_state = {
 limit = {
@@ -759,10 +758,7 @@ add_timed_idea = {
 
 if = {
 limit = { is_ai = yes }
-add_timed_idea = {
-	idea = GER_barbarossa_ai
-	days = 180
-}
+add_ideas = balance_idea_ger_more_gun
 }	
 									
 diplomatic_relation = {
@@ -871,11 +867,15 @@ country_event = super.5
 	    }	
                                 			
 		complete_effect = {
-			every_country = {
-				limit = {
-					original_tag = POL
-				}
-				ROOT = { declare_war_on = { target = PREV type = annex_everything } }
+
+
+add_timed_idea = {
+        idea = ger_attack_poland
+        days = 60
+    }
+        IF = {
+				limit = { POL = { has_civil_war = no } }
+				declare_war_on = { target = POL type = annex_everything }
 			}
 		}
     }
@@ -1119,7 +1119,3 @@ operations = {
 		}
 	}
 }
-
-
-
-

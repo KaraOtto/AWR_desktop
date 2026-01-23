@@ -15,7 +15,6 @@ country_event = { #漫漫黄沙中的无线电波
 		ai_chance = {
 			base = 1
 		}
-		
 		add_ideas = PRC_songqingling
 		custom_effect_tooltip = AWR_PRC.1.TT
 		country_event = {
@@ -202,4 +201,173 @@ country_event = {#《关于张国焘同志成立“第二中央”的决定》
 		modify_parliament_seat = yes
 	}
 	
+}
+
+country_event = {#刘志丹同志的任命去向
+	id = AWR_PRC.7
+	title = AWR_PRC.7.t
+	desc = AWR_PRC.7.desc
+	picture = GFX_report_event_liuzhidan
+	
+	trigger = {
+		PRC = { 
+			has_character = PRC_liuzhidan 
+		}
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.7.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = no
+			}
+		}
+		army_experience = 5
+		add_command_power = 30
+    	hidden_effect = {		
+        	country_event = { 
+				id = AWR_PRC.9
+				days = 5 
+			}
+        }		
+	}
+	option = {
+		name = AWR_PRC.7.b
+		ai_chance = {
+			base = 0
+		}
+		set_global_flag = PRC_liuzhidan_stay_in_shanbei
+		effect_tooltip = {
+		    swap_ideas = {
+				add_idea = PRC_dongzheng_idea_no_liu
+				remove_idea = PRC_dongzheng_idea
+		    }
+		}
+		add_political_power = -50
+		add_command_power = -30
+        hidden_effect = {		
+        	country_event = { 
+				id = AWR_PRC.9
+				days = 5 
+			}
+        }
+	}
+}
+
+country_event = {#军阀应对中共进攻
+	id = AWR_PRC.8
+	title = AWR_PRC.8.t
+	desc = AWR_PRC.8.desc
+
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.8.a
+		ai_chance = {
+			base = 65
+			modifier = {
+				factor = 0
+				has_global_flag = PRC_liuzhidan_stay_in_shanbei
+			}
+		}
+		PRC = {
+			PRC_liuzhidan = { 
+				unit_leader_event = AWR_PRC.10
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC.8.b
+		ai_chance = {
+			base = 35
+		}
+		PRC = {
+			PRC_liuzhidan = { 
+				unit_leader_event = AWR_PRC.11
+			}
+		}
+	}
+}
+
+country_event = {#沁园春，雪
+	id = AWR_PRC.9
+	title = AWR_PRC.9.t
+	desc = AWR_PRC.9.d
+	picture = GFX_mao_dongzheng
+	fire_only_once = yes	
+	is_triggered_only = yes	
+	immediate = {
+		hidden_effect = {	
+			if = {
+				limit = {
+					PRC = { 
+						is_ai = no 
+					}  
+				}	
+				play_song = "沁园春，雪"	
+			}
+		}		
+	}	
+	option = {
+		name = AWR_PRC.9.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = 5			
+	}
+}	
+
+unit_leader_event = {#刘志丹同志壮烈牺牲
+	id = AWR_PRC.10
+	title = AWR_PRC.10.t
+	desc = AWR_PRC.10.desc
+	
+	trigger = {
+		has_character = PRC_liuzhidan
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.10.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = PRC_liuzhidan
+		set_province_name = { 
+			id = 13402 
+			name = "志丹" 
+		}
+        1067 = { 
+			set_state_name = wuqizhenzhidan 
+		}		
+		army_experience = -5
+		set_global_flag = zhidan_death
+	}
+}
+
+unit_leader_event = {#刘志丹同志转危为安
+	id = AWR_PRC.11
+	title = AWR_PRC.11.t
+	desc = AWR_PRC.11.desc
+	
+	trigger = {
+		has_character = PRC_liuzhidan
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.11.a
+		ai_chance = {
+			base = 100
+		}
+		PRC_liuzhidan = {
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 365
+			}
+		}
+	}
 }

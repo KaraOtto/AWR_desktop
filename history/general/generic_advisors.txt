@@ -1,0 +1,809 @@
+every_possible_country = {
+
+	generate_character = {
+		token_base = generic_communist_revolutionary
+		portraits = { 
+			army = { small = GFX_idea_generic_communist_revolutionary  }
+		}
+		advisor={
+			slot = political_advisor			
+			allowed = {	#MODDEDvv, but needs edit when update
+				NOT = { OR = { tag = PRC tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = ROM tag = CHI tag = MAN tag = MEX tag = HOL original_tag = POL tag = FIN tag = ECA tag = EHB tag = RFM tag = SCG tag = CCP tag = NSG tag = FIC } }
+				NOT = {
+					tag = PLM #MODDED
+				}
+				NOT = { is_originally_warlord = yes } #MODDED
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }
+			}
+			available = {
+				if = {
+					limit = {
+						original_tag = NZL
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = NZL_the_lee_affair
+				}
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			
+			traits = { communist_revolutionary }
+	
+			on_add = {
+				#country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_democratic_reformer 
+		portraits = { 
+			army = { small = GFX_idea_generic_democratic_reformer   }
+		}
+		advisor={
+			slot = political_advisor					
+			allowed = { #MODDEDvv, but needs edit when update
+				NOT = { OR = { tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = PRC tag = CHI tag = MAN tag = MEX tag = HOL original_tag = POL tag = FIN tag = FIC } }
+				NOT = {
+					tag = PLM #MODDED
+				}
+				NOT = { is_originally_warlord = yes } #MODDED
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }
+			}			
+			available = {
+				if = {
+					limit = {
+						original_tag = NZL
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_constitution_amendment_act
+					}
+				}
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+				if = {
+					limit = { has_dlc = "La Resistance" }	
+					NOT = { original_tag = POR }
+				}
+				if = {
+					limit = {	#MODDEDv
+						original_tag = SIK
+					}
+					NOT = {
+						has_country_leader = {
+							name = "Sheng Shicai" ruling_only = yes
+						}
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							original_tag = ECA
+							original_tag = EHB
+							original_tag = RFM
+							original_tag = CCP
+							original_tag = NSG
+							original_tag = SCG
+						}
+					}
+					is_puppet = no
+				}	#MODDED^
+			}
+
+			
+			traits = { democratic_reformer }
+	
+			on_add = {
+				#country_event = political.13
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_fascist_demagogue 
+		portraits = { 
+			army = { small = GFX_idea_generic_fascist_demagogue  }
+		}
+		advisor={
+			slot = political_advisor								
+			allowed = {	#MODDEDvv, but needs edit when update
+				NOT = { OR = { tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = ROM tag = CZE tag = PRC tag = CHI tag = MAN tag = MEX tag = HOL original_tag = POL tag = FIN original_tag = POR tag = FIC } }
+				NOT = {
+					tag = PLM #MODDED
+				}
+				NOT = { is_originally_warlord = yes } #MODDED
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }			
+			}			
+			available = {
+				if = {
+					limit = {
+						original_tag = NZL
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = NZL_in_the_darkness
+				}
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+				if = { #MODDED
+					limit = {
+						original_tag = SIK
+					}
+					NOT = {
+						has_country_leader = {
+							name = "Sheng Shicai" ruling_only = yes
+						}
+					}
+				} #MODDED
+			}
+			
+			traits = { fascist_demagogue }
+	
+			on_add = {
+				#country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			ai_will_do = { #MODDED
+				factor = 1
+			    #MODDED
+				modifier = {
+				    factor = 1500
+				    is_historical_focus_on = yes
+			        tag = IRQ
+				    date > 1939.6.1
+				    is_subject = no
+				}
+			    #MODDED
+				modifier = {
+				    factor = 0
+				    is_historical_focus_on = yes
+			        NOT = { tag = IRQ }
+				}
+			    #MODDED
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_socialist_idealist 
+		portraits = { 
+			army = { small = GFX_idea_generic_socialist_idealist }
+		}
+		advisor={
+			slot = political_advisor		
+			allowed = { #MODDED
+				#MODDEDvvvvv
+				#NOT = { is_originally_warlord = yes } #MODDED
+				#NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA  } } #MODDED
+				NOT = {  
+				    #MODDEDvvv
+				    original_tag = ENG 
+				    original_tag = AST
+				    original_tag = CAN
+				    original_tag = NZL
+				    original_tag = RAJ
+				    original_tag = SAF
+			    }
+				NOT = {
+					is_originally_warlord = yes #MODDED
+					tag = PLM #MODDED
+					tag = CHI #MODDED
+					tag = USA #MODDED
+					tag = MAN #MODDED
+					tag = JAP #MODDED
+					tag = PRC #MODDED
+					tag = ECA #MODDED
+					tag = EHB #MODDED
+					tag = RFM #MODDED
+					tag = SCG #MODDED
+					tag = CCP #MODDED
+					tag = NSG #MODDED
+					tag = FIC #MODDED
+				} #MODDED
+			} #MODDED
+			available = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+				if = {
+					limit = {
+						original_tag = SIK
+					}
+					NOT = {
+						has_country_leader = {
+							name = "Sheng Shicai" ruling_only = yes
+						}
+					}
+				}
+			}
+			traits = { socialist_idealist }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_head_of_intelligence
+		portraits = { 
+			army = { small = GFX_idea_generic_head_of_intelligence }
+		}
+		advisor={
+			slot = political_advisor	
+			allowed = { 
+				has_dlc = "La Resistance"
+				# china gets a special one via focus
+				NOT = { OR = { tag = ENG  tag = FRA tag = GER tag = ITA tag = JAP tag = SOV tag = USA tag = CHI tag = PRC tag = GXC tag = SHX tag = SIC tag = YUN tag = SUY tag = MAN} }
+				#NOT = { is_chinese_warlord = yes } #MODDED
+				if = {
+					limit = {
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = {
+						tag = GRE
+						tag = TUR
+					}
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }			
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = { head_of_intelligence }
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					has_intelligence_agency = no
+					factor = 0
+				}
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_wartime_propagantist
+		allowed_civil_war = {
+			always = yes
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_army_chief_off }
+		}
+		advisor={
+			slot = political_advisor
+			allowed = {
+				is_using_RCM_advisors = yes
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { OR = { tag = CHI tag = JAP } }
+				NOT = { tag = TUR }
+			    NOT = { original_tag = POR }
+			    NOT = { original_tag = POL tag = FIN } 
+			}
+			available = {
+				OR = {
+					has_government = fascism
+					has_government = communism
+					#has_government = n_socialism
+				}
+			}
+			traits = { wartime_propagantist }
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 0 #MODDED
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_staunch_patriot
+		allowed_civil_war = {
+			always = yes
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_fascist_demagogue }
+		}
+		advisor={
+			slot = political_advisor
+			allowed = {
+				is_using_RCM_advisors = yes
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { OR = { tag = CHI tag = JAP } }
+				NOT = { tag = TUR }
+			    NOT = { original_tag = POR }
+			    NOT = { original_tag = POL tag = FIN } 
+			}
+			traits = { staunch_patriot }
+			available = {
+				OR = {
+					has_government = fascism
+					#has_government = n_socialism
+					has_government = neutrality
+				}
+			}
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_progressive_activist
+		allowed_civil_war = {
+			always = yes
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_democratic_reformer }
+		}
+		advisor={
+			slot = political_advisor
+			allowed = {
+				is_using_RCM_advisors = yes
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { OR = { tag = CHI tag = JAP } }
+				NOT = { tag = TUR }
+			    NOT = { original_tag = POR }
+			    NOT = { original_tag = POL tag = FIN } 
+			}
+			traits = { progressive_activist }
+			available = {
+				OR = {
+					has_government = democratic
+					has_government = n_socialism
+					#has_government = neutrality
+				}
+			}
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_revolutionary_syndicalist
+		allowed_civil_war = {
+			always = yes
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_communist_revolutionary }
+		}
+		advisor={
+			slot = political_advisor
+			allowed = {
+				is_using_RCM_advisors = yes
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { tag = TUR }			
+			    NOT = { original_tag = POR }
+			    NOT = { original_tag = POL tag = FIN } 
+			}
+			available = {
+				OR = {
+					has_government = communism
+					has_government = n_socialism
+					#has_government = neutrality
+				}
+			}
+			traits = { revolutionary_syndicalist }
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_robber_baron
+		allowed_civil_war = {
+			always = yes
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_robber_baron_south_america }
+		}
+		advisor={
+			slot = political_advisor		
+			allowed = {
+				is_using_RCM_advisors = yes
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = CHI tag = FRA tag = ITA tag = JAP tag = USA } }
+			}
+			available = {
+				OR = {
+					#has_government = communism
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			traits = { robber_baron }
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = generic_captain_of_industry
+		advisor={
+			slot = political_advisor	
+			allowed = {
+				is_using_generic_advisors = yes #these are all MODDED
+			}			
+			traits = { captain_of_industry }
+		}
+	    portraits = { 
+			army = { small = GFX_idea_generic_captain_of_industry }
+		}
+	}
+
+	generate_character = {
+		token_base = generic_fortification_engineer 
+		advisor={
+			slot = political_advisor					
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+			}			
+			traits = { fortification_engineer }
+		}
+	    portraits = { 
+			army = { small = GFX_idea_generic_fortification_engineer }
+		}
+	}
+
+	generate_character = {
+		token_base = generic_war_industrialist
+		advisor={
+			slot = political_advisor	
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+			}			
+			traits = { war_industrialist }
+		}
+	    portraits = { 
+			army = { small = GFX_idea_generic_war_industrialist }
+		}
+	}
+
+	generate_character = {
+		token_base = generic_army_chief_off 
+		advisor={
+			slot = army_chief								
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = army_chief_offensive_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = army_chief_offensive_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { army_chief_offensive_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_army_chief_def
+		advisor={
+			slot = army_chief					
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = army_chief_defensive_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = army_chief_defensive_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { army_chief_defensive_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_navy_chief_decisive_bat
+		advisor={
+			slot = navy_chief						
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = navy_chief_decisive_battle_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = navy_chief_decisive_battle_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { navy_chief_decisive_battle_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_navy_anti_submarine
+		advisor={
+			slot = navy_chief						
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = navy_anti_submarine_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = navy_anti_submarine_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { navy_anti_submarine_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_close_air_sup
+		advisor={
+			slot = air_chief						
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = air_close_air_support_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = air_close_air_support_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { air_close_air_support_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_chief_all_weather
+		advisor={
+			slot = air_chief							
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = air_chief_all_weather_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = air_chief_all_weather_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { air_chief_all_weather_1 }
+		    cost = 50
+		}
+	}
+    #MODDED, EYWOR ADDED
+	generate_character = {
+		token_base = generic_air_ground_support
+		advisor = {
+			slot = high_command
+			allowed = {
+				NOT = { OR = { tag = PRC tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = ROM tag = CHI tag = MAN tag = MEX tag = HOL original_tag = POL tag = FIN tag = ECA tag = EHB tag = RFM tag = SCG tag = CCP tag = NSG tag = FIC } }
+				NOT = {
+					tag = PLM #MODDED
+				}
+				NOT = { is_originally_warlord = yes } #MODDED
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }
+			}	
+			traits = { air_chief_ground_support_1 }
+			cost = 50
+		}
+	}
+	#MODDED, EYWOR ADDED
+	generate_character = {
+		token_base = generic_army_commando
+		advisor = {
+			slot = high_command
+			allowed = {
+				NOT = { OR = { tag = PRC tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = ROM tag = CHI tag = MAN tag = MEX tag = HOL original_tag = POL tag = FIN tag = ECA tag = EHB tag = RFM tag = SCG tag = CCP tag = NSG tag = FIC } }
+				NOT = {
+					tag = PLM #MODDED
+				}
+				NOT = { is_originally_warlord = yes } #MODDED
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			    if = {
+			        limit = { has_dlc = "By Blood Alone" }
+			        NOT = { OR = { tag = ETH tag = SWI } }
+		        }
+			}	
+			traits = { army_commando_1 }
+			cost = 50
+		}
+	}
+	
+	generate_character = {
+		token_base = generic_army_art
+		advisor={
+			slot = high_command				
+			ledger = army			
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = army_artillery_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = army_artillery_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { army_artillery_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_army_log
+		advisor={
+			slot = high_command				
+			ledger = army			
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = army_logistics_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = army_logistics_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { army_logistics_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_navy_fleet_log
+		advisor={
+			slot = high_command	
+			ledger = navy
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = navy_fleet_logistics_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = navy_fleet_logistics_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { navy_fleet_logistics_1 }
+		    cost = 50		
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_air_combat_trainer
+		advisor={
+			slot = high_command	
+			ledger = air
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+				NOT = {
+					OR = {
+						has_allowed_idea_with_traits = { idea = air_air_combat_training_2  characters = yes }
+						has_allowed_idea_with_traits = { idea = air_air_combat_training_3  characters = yes }
+					}										
+				}
+			}			
+			traits = { air_air_combat_training_1 }
+		    cost = 50
+		}
+	}
+
+	generate_character = {
+		token_base = generic_military_theorist
+		advisor={
+			slot = theorist	
+			ledger = army			
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+			}						
+			traits = { military_theorist }
+		    cost = 100		
+		}
+	}
+
+	generate_character = {
+		token_base = generic_naval_theorist
+		advisor={
+			slot = theorist		
+			ledger = navy			
+			allowed = {
+				is_using_generic_advisors = yes #MODDED
+			}						
+			traits = { naval_theorist }
+		    cost = 100		
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_warfare_theorist
+		advisor={
+			slot = theorist	
+			ledger = air			
+			allowed = {
+				is_using_generic_advisors = yes  #these are all MODDED
+			}
+			traits = { air_warfare_theorist }
+		    cost = 100		
+		}
+	}
+}

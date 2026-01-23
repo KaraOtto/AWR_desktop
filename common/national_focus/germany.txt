@@ -14450,9 +14450,20 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_ANNEXATION }
 
-				select_effect = {				
+				select_effect = {
+		if = {
+            limit = { is_ai = yes }					
 			add_ideas = GER_barbar_prepare
             add_ideas = GER_barbar_east_waijunchu 
+        }
+        if = {
+            limit = { is_ai = no }		
+			#add_timed_idea = {
+				#idea =GER_barbar_prepare_player
+				#days = 435
+			#}			
+            add_ideas = GER_barbar_east_waijunchu 
+        }
 		}
 
 		completion_reward = {
@@ -14567,7 +14578,7 @@ focus_tree = {
 		icon = GFX_goal_molotov_ribbentrop_pact
 		alternate_icon = GFX_focus_GER_molotov_ribbentrop_pact
 
-		prerequisite = { focus = GER_reorganize_the_wehrmacht focus = GER_heed_von_neuraths_concerns }
+		prerequisite = { focus = GER_reorganize_the_wehrmacht }
 		mutually_exclusive = { focus = GER_anti_soviet_pact }
 		x = -1
 		y = 1
@@ -14614,14 +14625,6 @@ focus_tree = {
 			SOV = {
 				country_event = { id = germany.11 days = 1 }
 				custom_effect_tooltip = GER_mol_rib_pact_tt
-				effect_tooltip = {
-					GER = {
-						add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
-						capital_scope = {#资源
-							add_dynamic_modifier = { modifier = SOV_soviet_imports }
-						}
-					}
-				}
 				custom_effect_tooltip = needs_approval
 			}
 		}

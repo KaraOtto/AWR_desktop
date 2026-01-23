@@ -1,0 +1,195 @@
+every_possible_country = {
+
+	generate_character = {
+		token_base = generic_usa_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_usa_advisor }
+		}
+		advisor={
+			slot = foreign_advisor
+			ledger = army
+			allowed = {
+				NOT = { original_tag = CHI }
+				NOT = { original_tag = USA }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = USA
+					is_subject_of = USA
+				}
+				country_exists = USA
+			}
+			traits = { firepower_advisory_team }
+			cost = 100 #MODDED
+		}
+	}		
+		
+	generate_character = {
+		token_base = generic_eng_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_eng_advisor }
+		}
+		advisor={
+			slot = foreign_advisor		
+			ledger = navy
+			allowed = {
+				NOT = { original_tag = ENG }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = ENG
+					is_subject_of = ENG
+				}
+				country_exists = ENG
+			}
+			traits = { naval_advisory_team }
+			cost = 100 #MODDED
+		}
+	}				
+
+	generate_character = {
+		token_base = generic_ger_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_ger_advisor }
+		}
+		advisor={
+			slot = foreign_advisor		
+			ledger = army
+			allowed = {
+				NOT = { original_tag = CHI }
+				NOT = { original_tag = GER }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = GER
+					is_subject_of = GER
+				}
+				country_exists = GER
+			}
+			traits = { mobile_warfare_mission }
+			modifier = {
+				training_time_army_factor = -0.1
+			}
+			cost = 100 #MODDED
+		}
+	}				
+		
+	generate_character = {
+		token_base = generic_sov_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_sov_advisor }
+		}
+		advisor={
+			slot = foreign_advisor				
+			ledger = army
+			allowed = {
+				NOT = { original_tag = SOV }
+			}
+			available = {
+				if = {
+					limit = {
+						original_tag = SIK
+					}
+					has_completed_focus = SIK_Soviet_advisers
+					OR = {
+						has_idea = SIK_Support_idea
+						has_idea = SIK_Weakened_ussr_influence
+					}
+					NOT = {
+						has_war_with = SOV
+					}
+				}
+				else_if = {
+					limit = {
+						original_tag = TNG
+					}
+					has_completed_focus = TNG_send_more_officers_to_ussr
+					NOT = {
+						has_war_with = SOV
+					}
+				}
+				else = {
+					OR = {
+						is_in_faction_with = SOV
+						is_subject_of = SOV
+					}
+				}
+				country_exists = SOV
+			}
+			traits = { mass_assault_mission }
+			cost = 100 #MODDED
+		}
+	}		
+	
+	generate_character = {
+		token_base = generic_ita_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_ita_advisor }
+		}
+		advisor={
+			slot = foreign_advisor			
+			ledger = army
+			allowed = {
+				NOT = { original_tag = ITA }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = ITA
+					is_subject_of = ITA
+				}
+				country_exists = ITA
+			}
+			traits = { field_artillery_specialists }
+			research_bonus = {
+				artillery = 0.15
+			}
+			cost = 100 #MODDED
+		}
+	}					
+		
+	generate_character = {
+		token_base = generic_fra_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_fra_advisor }
+		}
+		advisor={
+			slot = foreign_advisor		
+			ledger = army
+			allowed = {
+				NOT = { original_tag = FRA }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = FRA
+					is_subject_of = FRA
+				}
+				country_exists = FRA
+			}
+			traits = { military_advisory_team }
+			cost = 100 #MODDED
+		}
+	}				
+		
+	generate_character = {
+		token_base = generic_jap_advisor	
+		portraits = { 
+			army = { small = GFX_idea_generic_jap_advisor }
+		}
+		advisor={
+			slot = foreign_advisor		
+			ledger = navy
+			allowed = {
+				NOT = { original_tag = JAP }
+			}
+			available = {
+				OR = {
+					is_in_faction_with = JAP
+					is_subject_of = JAP
+				}
+				country_exists = JAP
+			}
+			traits = { battle_plan_mission }
+			cost = 100 #MODDED
+		}
+	}
+}		

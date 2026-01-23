@@ -1,0 +1,37 @@
+# Characters shared by the chinese countries
+# for each country, generate one instance of the characters
+every_possible_country = {
+	limit = {
+		OR = {
+			tag = GXC 
+			tag = SHX 
+			tag = YUN
+			tag = SIC
+			tag = SUY
+		}
+	}
+
+	generate_character = {
+		token_base = generic_navy_chief_wrl
+		portraits = { 
+			navy = { small = GFX_idea_generic_navy_chief_commerce_raiding }
+		}
+		advisor={
+			slot = navy_chief
+			traits = { navy_chief_commerce_raiding_1 }
+            cost = 50 
+		}
+	}
+
+	generate_character = {
+		token_base = generic_navy_chief_wrl_2
+		portraits = { 
+			navy = { small = GFX_idea_generic_navy_chief_reform}
+		}
+		advisor={
+			slot = navy_chief
+			traits = { navy_chief_reform_1 }
+            cost = 50 
+		}
+	}
+}

@@ -1,0 +1,34 @@
+# Characters shared by the chinese countries
+# for each country, generate one instance of the characters
+every_possible_country = {
+	limit = {
+		OR = {
+			tag = SIC
+			tag = SUY
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_chief_wrl
+		portraits = { 
+			army = { small = GFX_idea_generic_air_chief_ground_support }
+		}
+		advisor={
+			slot = air_chief
+			traits = { air_chief_ground_support_1 }
+            cost = 50             
+		}
+	}
+
+	generate_character = {
+		token_base = generic_air_chief_wrl_2
+		portraits = { 
+			army = { small = GFX_idea_generic_air_chief_reform }
+		}
+		advisor={
+			slot = air_chief
+			traits = { air_chief_reform_1 }
+            cost = 50 
+		}
+	}
+}

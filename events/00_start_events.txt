@@ -78,7 +78,18 @@ country_event = { #欢迎来到八年抗战
 		}
 		else_if = {#其他国家
 			limit = {
-				date < 1939.1.1
+				NOT = {
+					tag = USA
+					tag =ENG
+					tag = FRA
+					tag = GER
+					tag = JAP
+					tag = ITA
+					tag = CHI
+					tag = PRC
+					tag = SOV
+
+				}
 			}
 			country_event = {
 				id = start_events.8
@@ -602,12 +613,12 @@ country_event = {#主要国家数值决定
 		trigger = {
 			is_ai = no
 		}
-		set_global_flag = be_stronger
 	}
 	option = {#我希望数值保守些
 		name = start_events.10.b
 		trigger = {
 			is_ai = no
 		}
+		set_global_flag = be_lower
 	}
 }

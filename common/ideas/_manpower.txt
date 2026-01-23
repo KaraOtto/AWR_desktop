@@ -4,38 +4,36 @@ ideas = {
 		law = yes
 		use_list_view = yes
 
-		disarmed_nation = {
+		disarmed_nation = {#非军事化国家
 						
 			cost = 150
 			removal_cost = -1
 			level = 7
 			
 			available = {
-				#has_manpower_for_recruit_change_to = { value = 0.005 group = mobilization_laws }
+				#
 			}
 
-			modifier = { #GUO
+			modifier = { 
 				conscription = 0.01
 				research_speed_factor = 0.1
-				stability_factor = 0.15
 				stability_weekly = 0.002
-				industrial_capacity_factory = 0.15
-				industrial_capacity_dockyard = 0.15
-				production_speed_buildings_factor = 0.15
-				training_time_factor = -0.2
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
+				production_speed_buildings_factor = 0.10
+				training_time_factor = -0.10
 			}
 			
 			cancel_if_invalid = no
 		}
 		
-		volunteer_only = {
+		volunteer_only = {#志愿兵役制
 						
 			cost = 150
 			removal_cost = -1
 			level = 6
 			
 			available = {
-				#has_manpower_for_recruit_change_to =  { value = 0.015 group = mobilization_laws }
 				if = {
 					limit = {
 						original_tag = HUN
@@ -51,20 +49,19 @@ ideas = {
    				factor = 1
 
    				modifier = {
-					factor = 60 # being disarmed is bad in a wargame yo
+					factor = 60 
 					has_idea = disarmed_nation 
 				}
 			}
 
-			modifier = { #guo
+			modifier = { 
 				conscription = 0.015
 				research_speed_factor = 0.05
-				stability_factor = 0.1
 				stability_weekly = 0.001
-				industrial_capacity_factory = 0.1
-				industrial_capacity_dockyard = 0.1
-				production_speed_buildings_factor = 0.1
-				training_time_factor = -0.1
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_buildings_factor = 0.05
+				training_time_factor = -0.05
 			}
 			
 			default = yes
@@ -72,14 +69,13 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		limited_conscription = {
+		limited_conscription = {#有限征兵
 					
 			cost = 150
 			removal_cost = -1
 			level = 5
 
 			available = {
-				#has_manpower_for_recruit_change_to =  { value = 0.025 group = mobilization_laws }
 				has_war_support > 0.1
 				NOT = { has_idea = undisturbed_isolation }
 				NOT = { has_idea = isolation }
@@ -138,17 +134,11 @@ ideas = {
 
 			modifier = { #guo
 				conscription = 0.025
-				stability_factor = 0.05
-				industrial_capacity_factory = 0.05
-				industrial_capacity_dockyard = 0.05
-				production_speed_buildings_factor = 0.05
-				training_time_factor = -0.05
 			}
 
 			ai_will_do = {
    				factor = 1
 				modifier = {
-					#Prio if low on manpower
 					factor = 20
 					manpower_per_military_factory <  1000
 				}
@@ -162,10 +152,9 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		extensive_conscription = {
+		extensive_conscription = {#广泛征兵
 			
 			available = {
-				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
 				OR = {
 					has_government = fascism
 					has_government = communism
@@ -181,17 +170,11 @@ ideas = {
 						}
 					}
 					else = {
-						hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+						hidden_trigger = { always = no } 
 					}
 					AND = {
 						has_war = yes
 						enemies_strength_ratio > 0.5
-						#any_enemy_country = {
-						#	strength_ratio = {
-						#		tag = ROOT
-						#		ratio > 0.5
-						#	}
-						#}
 					}
 
 					if = {
@@ -302,7 +285,7 @@ ideas = {
 					factor = 50
 				}
 
-				modifier = { # china relies a lot on throwing bodies at the enemy
+				modifier = { 
 					factor = 3
 					#MODDED
 					OR = {
@@ -325,44 +308,27 @@ ideas = {
 				}
 			}
 			
-			traits = { #MODDED
-				SC_cap_90_percent
-			}
-			on_add = { #MODDED
-				custom_effect_tooltip = SC_cap_90_percent_tt
-			} #MODDED
-
 			cost = 150
 			removal_cost = -1
 			level = 4
 			
 			modifier = {
 				conscription = 0.05
-				#industrial_capacity_factory = -0.1
-				#production_speed_buildings_factor = -0.1
 				training_time_factor = 0.1
 			}
 			
 			cancel_if_invalid = no
 		}
 		
-		service_by_requirement = {
-			
+		service_by_requirement = {#义务兵役制
 			
 			available = {
-				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
 				OR = {
 					has_government = fascism
 					has_government = communism
 					AND = {
 						has_war = yes
 						enemies_strength_ratio > 0.6
-						#any_enemy_country = {
-						#	strength_ratio = {
-						#		tag = ROOT 
-						#		ratio > 0.6
-						#	}
-						#}
 					}
 				}
 				OR = {
@@ -489,14 +455,7 @@ ideas = {
 				#}
 
 			}
-			#MODDEDv
-			traits = {
-				SC_cap_80_percent
-			}
-			on_add = {
-				custom_effect_tooltip = SC_cap_80_percent_tt
-			}
-			#MODDED^
+
 			cost = 150
 			removal_cost = -1
 			level = 3
@@ -512,23 +471,15 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		all_adults_serve = {
-			
+		all_adults_serve = {#所有成人服兵役
 			
 			available = {
-				#has_manpower_for_recruit_change_to =  { value = 0.2 group = mobilization_laws }
 				has_war = yes
 				OR = {
 					has_war_support > 0.7
 					surrender_progress > 0
 				}
 				enemies_strength_ratio > 0.75
-				#any_enemy_country = {
-				#	strength_ratio = {
-				#		tag = ROOT 
-				#		ratio > 0.75
-				#	}
-				#}
 
 				if = {
 					limit = {
@@ -635,14 +586,7 @@ ideas = {
 					has_manpower >  250000
 				}
 			}
-			#MODDEDv
-			traits = {
-				SC_cap_70_percent
-			}
-			on_add = {
-				custom_effect_tooltip = SC_cap_70_percent_tt
-			}
-			#MODDED^
+
 			cost = 150
 			removal_cost = -1
 			level = 2
@@ -659,23 +603,17 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		scraping_the_barrel = {
+		scraping_the_barrel = { #榨干他们
 			
 			
 			available = {
-				#has_manpower_for_recruit_change_to =  { value = 0.25 group = mobilization_laws }
 				has_war = yes
 				OR = {
 					has_war_support > 0.85
 					surrender_progress > 0.25
 				}
 				enemies_strength_ratio > 1
-				#any_enemy_country = {
-				#	strength_ratio = {
-				#		tag = ROOT 
-				#		ratio > 1
-				#	}
-				#}
+
 				if = {
 					limit = {
 						original_tag = AST
@@ -744,13 +682,7 @@ ideas = {
 				}
 			}
 			#MODDED
-			traits = {
-				SC_cap_60_percent
-			}
-			on_add = {
-				custom_effect_tooltip = SC_cap_60_percent_tt
-			}
-			#MODDED^
+
 			ai_will_do = {
    				factor = 1
 				modifier = {
@@ -790,8 +722,8 @@ ideas = {
 			
 			cancel_if_invalid = no
 		}
-		### Ethiopian National Levy
-		ETH_chitet_law = {
+	
+		ETH_chitet_law = {#契特
 			picture = ETH_chitet_law
 			cost = 150
 			removal_cost = -1
@@ -820,7 +752,8 @@ ideas = {
 
 			cancel_if_invalid = no
 		}
-		ETH_chitet_law_peace_time = {
+
+		ETH_chitet_law_peace_time = {#契特
 			picture = ETH_chitet_law
 
 			cost = 150
@@ -853,7 +786,7 @@ ideas = {
 
 		### Swiss Citizen Militia ###
 
-		SWI_citizen_militia_1 = {
+		SWI_citizen_militia_1 = {#瑞士公民民兵
 			cost = 200
 			picture = citizen_militia_1
 			removal_cost = -1
@@ -879,7 +812,7 @@ ideas = {
 			}
 		}
 
-		SWI_citizen_militia_2 = {
+		SWI_citizen_militia_2 = {#扩大瑞士公民民兵
 			picture = citizen_militia_2
 			cost = 200
 			removal_cost = -1
