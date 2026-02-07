@@ -1,13 +1,13 @@
 characters={
 
-	############################## POLITICAL ##############################
+	############################## 政治顾问 ##############################
 
 	prc_zhang_wentian = {
-		name=prc_zhang_wentian#张闻天
+		name=prc_zhang_wentian #张闻天
 		portraits={#张闻天
 			civilian={
-				large="gfx/leaders/PRC/Zhang_Wentian.dds"
-				small="GFX_idea_prc_zhang_wentian"
+				large= "GFX_Zhang_Wentian"
+				small= "GFX_prc_zhang_wentian"
 			}
 		}
 		country_leader={
@@ -15,6 +15,7 @@ characters={
 			traits={ 
 				PRC_zhang_trait 
 				desperate_gambit 
+				maoists_trait_zhang_wentian 
 			}
 			expire="1965.1.1.1"
 			id=-1
@@ -39,6 +40,12 @@ characters={
 					}
 					tag = event_target:WTT_communist_china
 				}
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						name = prc_zhangwentian
+					}
+				}
 			}
 			allowed = {
 				#OR = { is_literally_china = yes TAG = SOV }
@@ -46,8 +53,12 @@ characters={
 			on_add = {
 				owner = {
 					hidden_effect = {
-						set_variable = { prc_zhang_wentian_counter = 15 } #first increase after 15 days
-						add_to_variable = { mao_total = 0.5 } #monthly for locs
+						set_variable = { 
+							prc_zhang_wentian_counter = 15 
+						} 
+						add_to_variable = { 
+							mao_total = 0.5 
+						} 
 					}
 				}	
 			}
@@ -83,28 +94,34 @@ characters={
 	}
 
 	prc_mao_zedong={
-		name="毛泽东"
+		name= prc_mao_zedong
 		portraits={ #毛泽东
 			civilian={
-				large="gfx/leaders/PRC/Portrait_PRC_Mao_Zedong.dds"
+				large="GFX_Portrait_PRC_Mao_Zedong"
 				small="GFX_idea_prc_mao_zedong"
 			}
 			army = {
-				large="gfx/leaders/PRC/maozedong0.dds"
+				large="gfx/characters/PRC/Mao_Zedong/maozedong0.dds"
 				small="GFX_idea_prc_mao_zedong"
 			}
 		}
 		country_leader={
 			ideology = marxism
-			traits={ cornered_fox youjizhandashi }
+			traits={ 
+				cornered_fox 
+				youjizhandashi 
+			}
 			expire="1976.9.9"
 			id=-1
-			desc=prc_mao_zedong_desc
+			desc = prc_mao_zedong_desc
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_mao_zedong
-			traits = { red_army_organizer maoists_trait_mao_zedong }
+			traits = { 
+				red_army_organizer 
+				maoists_trait_mao_zedong 
+			}
 			visible = {
 				OR = {
 					OR = { 
@@ -114,9 +131,15 @@ characters={
 					}
 					tag = event_target:WTT_communist_china
 				}
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						name = prc_mao_zedong
+					}
+				}
 			}
 			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+				#
 			}
 			available = {
 				if = {
@@ -197,7 +220,7 @@ characters={
 	}
 
 	PRC_hezizhen={
-		name =PRC_hezizhen#贺子珍
+		name =PRC_hezizhen #贺子珍
 		portraits = {#贺子珍
 			civilian = { 
 			small="GFX_idea_PRC_hezizhen" 
@@ -207,10 +230,14 @@ characters={
 		advisor={
 			slot = political_advisor
 			idea_token = PRC_hezizhen
-			traits = { mi_shu }
+			traits = { 
+				mi_shu 
+			}
 			visible = {
+				#
 			}
 			allowed = {
+				#
 			}
 			available = {
 		        has_idea = prc_mao_zedong							
@@ -219,7 +246,7 @@ characters={
 	}
 
 	PRC_yangzilie={
-		name =PRC_yangzilie#杨子烈
+		name =PRC_yangzilie #杨子烈
 		portraits = {#杨子烈
 			civilian = { 
 			small="GFX_idea_PRC_yangzilie" 
@@ -229,10 +256,14 @@ characters={
 		advisor={
 			slot = political_advisor
 			idea_token = PRC_yangzilie
-			traits = { di_xia }
+			traits = { 
+				di_xia 
+			}
 			visible = {
+				#
 			}
 			allowed = {
+				#
 			}
 			available = {
 		        has_idea = PRC_zhang_guotao								
@@ -241,24 +272,28 @@ characters={
 	}
 
 	PRC_sanrentuan={#三人团
-		name=PRC_sanrentuan
+		name= PRC_sanrentuan
 		portraits={
 			civilian={
-			large="gfx/leaders/prc/sanrentuan.png"
-			small="gfx/leaders/prc/sanrentuan.png"
+				large="gfx/leaders/prc/sanrentuan.png"
+				small="gfx/leaders/prc/sanrentuan.png"
 			}
 		}
 		country_leader={
 			ideology = marxism
-			traits = { youjizhandashi nanchangqiyi smooth_talking_charmer }
+			traits = { 
+				youjizhandashi 
+				nanchangqiyi 
+				smooth_talking_charmer 
+			}
 			expire="1965.1.1"
 			id=-1
-			desc=PRC_sanrentuan_desc
+			desc = PRC_sanrentuan_desc
 		}
 	}
 
-	PRC_zhou_enlai_2 = {
-		name=PRC_zhou_enlai#周恩来
+	PRC_zhou_enlai = {
+		name=PRC_zhou_enlai #周恩来
 		portraits={#周恩来
 			civilian={
 			small="GFX_idea_PRC_zhou_enlai"
@@ -284,49 +319,51 @@ characters={
 			slot = political_advisor
 			idea_token = PRC_zhou_enlai
 			available = {
-			NOT = { has_global_flag = zhou_enlai_marginalized }
-			NOT = {
-			has_global_flag = zhou_enlai_in_moscow
-			}
-		    if = {
-		    limit = {
-		    CHI = {
-            has_idea = chi_zhou_enlai_idea_1
-		    	}
-		    }
-			NOT = {
-            CHI = {				
-            has_idea = chi_zhou_enlai_idea_1
-					}				
-				}	
-		    }
-		    if = {
-		    limit = {
-		    CHI = {
-            has_idea = chi_zhou_enlai_idea_2
+				NOT = { 
+					has_global_flag = zhou_enlai_marginalized 
+				}
+				NOT = {
+					has_global_flag = zhou_enlai_in_moscow
+				}
+		    	if = {
+		    		limit = {
+		    			CHI = {
+            				has_idea = chi_zhou_enlai_idea_1
+		    			}
 		    		}
-		    	}	
-			NOT = {
-            CHI = {				
-            has_idea = chi_zhou_enlai_idea_2
+					NOT = {
+            			CHI = {				
+            				has_idea = chi_zhou_enlai_idea_1
+						}				
+					}	
+		    	}
+		    	if = {
+		    		limit = {
+		    			CHI = {
+            				has_idea = chi_zhou_enlai_idea_2
+		    			}
+		    		}	
+					NOT = {
+            			CHI = {				
+            				has_idea = chi_zhou_enlai_idea_2
 						}				
 					}
 		   		 }
-		    if = {
-		    limit = {
-		    CHI = {
-            has_idea = chi_zhou_enlai_idea_3
-		    }
-		    }
-			NOT = {
-            CHI = {				
-            has_idea = chi_zhou_enlai_idea_3
-		   			 	}				
+		    	if = {
+		    		limit = {
+		    			CHI = {
+            				has_idea = chi_zhou_enlai_idea_3
+		   	 			}
+		    		}
+					NOT = {
+           	 			CHI = {				
+            				has_idea = chi_zhou_enlai_idea_3
+		   				}				
 					}
 		    	}				
 			}
 			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+				#
 			}
 			ai_will_do = {
 				factor = 600
@@ -354,7 +391,7 @@ characters={
 				owner = {
 					if = {
 						limit = {
-						has_idea = CHI_communist_in_government
+							has_idea = CHI_communist_in_government
 						}	
 						PRC_support_up = yes
 					}
@@ -364,13 +401,14 @@ characters={
 				owner = {
 					if = {
 						limit = {
-						has_idea = CHI_communist_in_government
+							has_idea = CHI_communist_in_government
 						}	
 						PRC_support_down = yes
 					}
 				}
 			}
 		}
+
 		field_marshal={
 			skill=4
 			attack_skill=4
@@ -379,30 +417,38 @@ characters={
 			logistics_skill=5
 			legacy_id =-1
 			
-		    traits = { logistics_wizard youji_hero inspirational_leader Tzxx_imperturbable_strategist war_hero media_personality }
+		    traits = { 
+				logistics_wizard 
+				youji_hero 
+				inspirational_leader 
+				Tzxx_imperturbable_strategist 
+				war_hero media_personality 
+			}
 		
 		    visible = {
-		    if = {
-				limit = {
-				original_tag = PRC
-				}
-				NOT = { has_global_flag = zhou_enlai_marginalized }
-				NOT = {
-				has_global_flag = zhou_enlai_in_moscow
+		    	if = {
+					limit = {
+						original_tag = PRC
+					}
+					NOT = { 
+						has_global_flag = zhou_enlai_marginalized 
+					}
+					NOT = {
+						has_global_flag = zhou_enlai_in_moscow
 					}
 				}
 		    }
 			
-			desc=PRC_zhou_enlai_desc
+			desc = PRC_zhou_enlai_desc
 		}
 	}
 
 	PRC_zhou_enlai_2 = {#周恩来（2）
-		name=PRC_zhou_enlai#周恩来2
+		name=PRC_zhou_enlai #周恩来2
 		portraits={
 			civilian={
-			small="GFX_idea_PRC_zhou_enlai"
-			large="gfx/leaders/PRC/Portrait_China_zongli.png"
+				small="GFX_idea_PRC_zhou_enlai"
+				large="gfx/leaders/PRC/Portrait_China_zongli.png"
 			}
 		}
 		
@@ -411,24 +457,26 @@ characters={
 			idea_token = PRC_zhou_enlai_2
 			available = {
 				NOT = {
-				has_global_flag = zhou_enlai_in_moscow
+					has_global_flag = zhou_enlai_in_moscow
 				}
 			}
 			allowed = {
-				
+				#
 			}
 			ai_will_do = {
-			factor = 2500
+				factor = 2500
 			}
 			visible = {
-            if = {
-			limit = {
-			original_tag = PRC
-			}
-			has_completed_focus = PRC_reunite_the_group_of_three_focus
+            	if = {
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_reunite_the_group_of_three_focus
                 }
 			}
-			traits = { pingyijinrendegemingjia }
+			traits = { 
+				pingyijinrendegemingjia 
+			}
 			modifier = {
 				political_power_factor = 0.10
 				conscription_factor = 0.15
@@ -466,10 +514,10 @@ characters={
 	}
 	
 	PRC_dengyingchao= {#邓颖超
-		name=PRC_dengyingchao
+		name = PRC_dengyingchao
 		portraits={#邓颖超
 			civilian = {
-			small="gfx/interface/ideas/PRC_dengyingchao.png"
+				small="gfx/interface/ideas/PRC_dengyingchao.png"
 			}
 		}
 		gender = female
@@ -479,29 +527,41 @@ characters={
 			
 			visible = {
 					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
+						OR = { 
+							has_idea = CHI_communist_in_government 
+							TAG = event_target:WTT_current_china_leader 
+							TAG = SOV 
+						}
 						original_tag = PRC
 					}
 			}
 			available = {
-			if = {
-			limit = {
-			original_tag = PRC
-			}
+				if = {
+					limit = {
+						original_tag = PRC
+					}
 			
-			or = {
-			custom_trigger_tooltip = {
-			tooltip = has_idea_PRC_zhou_enlai
-				or = { has_idea = PRC_zhou_enlai has_idea = PRC_zhou_enlai_2 }
-			}
-			has_country_leader = { character = PRC_zhou_enlai ruling_only = yes	}
+					or = {
+						custom_trigger_tooltip = {
+							tooltip = has_idea_PRC_zhou_enlai
+							or = { 
+								has_idea = PRC_zhou_enlai 
+								has_idea = PRC_zhou_enlai_2 
+							}
+						}
+						has_country_leader = { 
+							character = PRC_zhou_enlai 
+							ruling_only = yes	
+						}
 					}
 			
 				}
 			}
-			traits = { SWE_suffragette_research }			
+			traits = { 
+				SWE_suffragette_research 
+			}			
 			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+				#
 			}
 			on_add = {
 				owner = {
@@ -529,40 +589,50 @@ characters={
 			}
 		}
 	}
+
+
+	############################## 陆军将领 ##############################
+
 	
-	PRC_li_zhen= { 
-		name="李贞"
+	PRC_li_zhen= { #李贞
+		name= PRC_li_zhen
 		gender = female
 		portraits={
 			army={
-			large="gfx/leaders/PRC/lizhen.jpg"
+				large="gfx/leaders/PRC/lizhen.jpg"
 			}
 		}
 		corps_commander={
-			traits={ youji_hero military_political_commissar } 
+			traits={ 
+				youji_hero 
+				military_political_commissar 
+			} 
 			skill=1
 			attack_skill=1
 			defense_skill=2
 			planning_skill=2
 			logistics_skill=3
 			legacy_id=-2
-			desc=lizhen_desc
+			desc = lizhen_desc
 			visible = {
-            has_country_flag = union_of_the_three_armies
+            	has_country_flag = union_of_the_three_armies
 			}			
 		}			
 	}
 
-	PRC_zhang_qinqiu={ #张琴秋
-		name="张琴秋"
+	PRC_zhang_qinqiu = { #张琴秋
+		name= PRC_zhang_qinqiu
 		gender = female
-		portraits={#张琴秋
+		portraits={
 			army={
-			large="gfx/leaders/PRC/zhangqinqiuhongjun.dds"
+				large="gfx/leaders/PRC/zhangqinqiuhongjun.dds"
 			}
 		}
 		corps_commander={
-			traits={ youji_hero military_political_commissar } 
+			traits={ 
+				youji_hero 
+				military_political_commissar 
+			} 
 			skill=2
 			attack_skill=2
 			defense_skill=2
@@ -915,8 +985,8 @@ characters={
 		}
 	}
 		
-	PRC_lin_bojiu = {#林伯渠 注：前文拼音可能有错		
-		name=PRC_lin_bojiu
+	PRC_lin_boqu = {#林伯渠 注：前文拼音可能有错		
+		name=PRC_lin_boqu
 		portraits={#林伯渠
 			civilian={
 				small="GFX_idea_PRC_lin_bojiu"
@@ -1357,7 +1427,7 @@ characters={
 		}
 	}
 		
-	prc_tsai_shufan = {#蔡树藩				
+	prc_cai_shufan = {#蔡树藩				
 		name=prc_tsai_shufan
 		portraits={#蔡树藩
 			civilian={
@@ -2267,7 +2337,7 @@ characters={
 			    }
 			}
 			allowed = {
-				
+				#
 			}
 			on_add = {
 				owner = {
@@ -3473,19 +3543,24 @@ characters={
                     small="GFX_idea_jin_richeng"	
                 }	
             }					 
-		available = {				  				  					  
-            }
-			allowed = {
-			}	 			
+		available = {	
+			#			  				  					  
+        }
+		allowed = {
+			#
+		}	 			
 		corps_commander={		
- 	    traits = { youji_hero military_political_commissar PAK_SUN }
-	                 skill=2		
- 	                 attack_skill=4
-	                 defense_skill=2
-	                 planning_skill=3 
-	                 logistics_skill=3					 
-			         legacy_id=1			 
-                          }
+ 	   		traits = { 
+				youji_hero military_political_commissar 
+				PAK_SUN 
+			}
+	        skill=2		
+ 	        attack_skill=4
+	        defense_skill=2
+	        planning_skill=3 
+	        logistics_skill=3					 
+			legacy_id=1			 
+       	}
 	}
 
 	plm_yun_jixian={#云继先
@@ -3569,10 +3644,9 @@ characters={
 		}
 	}
 
-	characters={
 
-    PRC_chenguang={
-		name=PRC_chenguang
+    PRC_chenguang={#陈光
+		name = PRC_chenguang
 		portraits={
 			army={
 				large="gfx/leaders/PRC/chenguang.jpg"
@@ -3938,6 +4012,51 @@ characters={
 			logistics_skill=3
 			legacy_id=0
 			visible = { has_global_flag = union_of_the_three_armies }
+		}
+	}
+
+	prc_shen_junru={ #沈钧儒
+		name=prc_shen_junru
+		portraits={
+			civilian = {
+				large="gfx/leaders/CHI/Portrait_CHI_Shen_Junru.dds"
+				small="GFX_idea_CHI_shen_junru"
+			}
+		}
+		country_leader={
+			ideology = n_socialism_ideology
+			traits={ social_reformer humanist }
+			expire="1965.1.1.1"
+			desc=prc_shen_junru_desc
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = prc_shen_junru
+			
+			visible = {
+					OR = {
+						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
+						original_tag = PRC
+					}
+			}
+			available = {
+			if = {
+			limit = {
+			original_tag = PRC
+			}
+			has_completed_focus = PRC_zhengxiehuiyi_1st
+			}
+			}
+			traits = { renminfayuan }			
+			allowed = {
+				#OR = { is_literally_china = yes TAG = SOV }
+			}
+			
+			ai_will_do = {
+				factor = 1
+				
+			}
 		}
 	}
 

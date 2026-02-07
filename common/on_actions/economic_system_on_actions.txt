@@ -16,6 +16,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 100
 					}
+					add_ideas = normal_life
 				}
 
 				if = {
@@ -26,6 +27,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 75
 					}
+					add_ideas = little_poverty
 				}
 
 				if = {
@@ -36,6 +38,51 @@ on_actions = {
 						var = economy_situation_index
 						value = 80
 					}
+					add_ideas = little_poverty
+				}
+
+				if = {
+					limit = {
+						tag = SOV
+					}
+					add_to_variable = {
+						var = economy_situation_index
+						value = 70
+					}
+					add_ideas = little_poverty
+				}
+
+				if = {
+					limit = {
+						tag = USA
+					}
+					add_to_variable = {
+						var = economy_situation_index
+						value = 115
+					}
+					add_ideas = normal_life
+				}
+
+				if = {
+					limit = {
+						tag = ENG
+					}
+					add_to_variable = {
+						var = economy_situation_index
+						value = 120
+					}
+					add_ideas = normal_life
+				}
+
+				if = {
+					limit = {
+						tag = FRA
+					}
+					add_to_variable = {
+						var = economy_situation_index
+						value = 90
+					}
+					add_ideas = little_poverty
 				}
 
 				if = {
@@ -46,6 +93,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 10
 					}
+					add_ideas = extreme_poverty
 				}
 
 				if = {
@@ -56,6 +104,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 25
 					}
+					add_ideas = extreme_poverty
 				}
 
 				if = {
@@ -85,6 +134,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 90
 					}
+					add_ideas = little_poverty
 				}
 
 				if = {
@@ -118,6 +168,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 20
 					}
+					add_ideas = extreme_poverty
 				}
 
 				if = {
@@ -141,6 +192,7 @@ on_actions = {
 						var = economy_situation_index
 						value = 0
 					}
+					add_ideas = extreme_poverty
 				}
 			}
 		}
@@ -543,6 +595,81 @@ on_actions = {
 					var = economy_situation_index
 					min = 0
 					max = 300
+				}
+			}
+		}
+	}
+
+	on_daily = {
+		effect = {
+			every_country = {
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value < 21
+						}
+					}
+					add_ideas = extreme_poverty
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 20
+							value < 51
+						}
+					}
+					add_ideas = poverty
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 50
+							value < 91
+						}
+					}
+					add_ideas = little_poverty
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 90
+							value < 141
+						}
+					}
+					add_ideas = normal_life
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 140
+							value < 201
+						}
+					}
+					add_ideas = well_of_society
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 200
+							value < 271
+						}
+					}
+					add_ideas = rich_society
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = economy_situation_index
+							value > 270
+						}
+					}
+					add_ideas = prosperous_society
 				}
 			}
 		}

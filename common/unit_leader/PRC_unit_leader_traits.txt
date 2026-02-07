@@ -1,0 +1,100 @@
+leader_traits = {
+	youji_hero = {#游击英雄
+		type = land
+		trait_type = personality_trait
+		
+		allowed = {
+			FROM = {
+			    has_government = communism
+				original_tag = PRC
+			}
+		}
+		
+		modifier = {
+			terrain_penalty_reduction = 0.15
+			org_loss_when_moving = -0.05
+			modifier_army_sub_unit_infantry_speed_factor = 0.05
+			modifier_army_sub_unit_irregular_infantry_speed_factor = 0.05
+			modifier_army_sub_unit_cavalry_speed_factor = 0.05
+			equipment_capture = 0.05
+			no_supply_grace = 48
+			out_of_supply_factor = -0.15
+			pocket_penalty = -0.35
+			supply_consumption_factor = -0.10
+			intel_from_combat_factor = 0.15
+			recon_factor = 0.25
+			acclimatization_hot_climate_gain_factor = 0.15 #炎热适应度增长率
+			acclimatization_cold_climate_gain_factor = 0.15 #寒冷适应度增长率
+			land_night_attack = 0.10
+			enemy_army_bonus_air_superiority_factor = -0.10
+			reassignment_duration_factor = -0.80
+			sickness_chance = -0.25
+			command_abilities_cost_factor = -0.15
+		}
+		
+		logistics_skill_factor = 1
+		attack_skill_factor = 1
+		
+		trait_xp_factor = {
+			trickster = 1     #+100%
+			winter_specialist = 1     #+100%
+			commando = 1     #+100%
+			swamp_fox = 1     #+100%
+			ranger = 1     #+100%
+			hill_fighter = 1     #+100%
+			desert_fox = 1     #+100%
+			trait_mountaineer = 1     #+100%
+			jungle_rat = 1     #+100%
+		}
+
+		new_commander_weight = {
+			base = 0
+			
+			modifier = {
+				add = 9999
+				FROM = { #Looks like the allowed parameter is doing NOTHING :D 
+					OR = {
+						original_tag = PRC
+					}
+					has_government = communism
+				}
+			}
+		}
+	}
+
+	military_political_commissar = {#军事政治委员
+		type = land
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = {	
+			    has_government = communism
+			}
+		}
+		modifier = {
+			army_morale_factor = 0.08
+		}
+		non_shared_modifier = {
+			reassignment_duration_factor = -0.25 
+			trait_skilled_staffer_xp_gain_factor = 0.25
+		}
+		new_commander_weight = {
+			factor = 1
+
+			modifier = { 
+				FROM = { 
+					has_idea = SOV_purged_junior_army_officers_3 
+				}
+				factor = 0
+			}			
+			modifier = {
+				FROM = { 
+					NOT = { 
+						has_government = communism 
+					} 
+				}
+				factor = 0
+			}			
+		}
+	}	
+}

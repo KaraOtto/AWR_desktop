@@ -1,0 +1,175 @@
+# Valid unit modifiers are not exhaustive
+# Currently supported:
+# army_morale
+# army_morale_factor
+# army_org
+# army_org_factor
+# supply_consumption_factor
+# equipment_capture
+# equipment_capture_factor
+# army_fuel_capacity_factor
+# army_fuel_consumption_factor
+# recon_factor
+# recon_factor_while_entrenched
+# transport_capacity (?)
+# breakthrough_factor
+# armor_factor
+# army_strength_factor
+# experience_loss_factor
+# leader_modifier applies unit modifiers to all units under them as a general, similarly to traits.
+# army_attack_factor
+# army_defence_factor
+# max_dig_in
+# max_dig_in_factor
+
+@cost = 30
+
+unit_medals = {
+	
+	national_glory= {
+		
+		available = { should_have_chinese_medals_trigger = yes }
+		frame = 1
+		icon = "GFX_medal_icon_chi"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			army_org_factor = 0.08 #MODDED
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	blue_sky_and_white_sun = {
+		
+		available = { should_have_chinese_medals_trigger = yes }
+		frame = 2
+		icon = "GFX_medal_icon_chi"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			army_attack_factor = 0.08
+            army_defence_factor = 0.08
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	sacred_tripod = {
+		
+		available = { should_have_chinese_medals_trigger = yes }
+		frame = 3
+		icon = "GFX_medal_icon_chi"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			army_fuel_consumption_factor = -0.1 #MODDED
+			supply_consumption_factor = -0.1 #MODDED
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	cloud_and_banner = {
+		
+		available = { should_have_chinese_medals_trigger = yes }
+		frame = 4
+		icon = "GFX_medal_icon_chi"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			breakthrough_factor = 0.08
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+    #
+	reorganized_medal = {
+		available = { 
+			should_have_chinese_reform_medals_trigger = yes 
+			always = no #
+		}
+		frame = 5
+		icon = "GFX_medal_icon_chi"
+		
+		cost = 9999
+		
+		unit_modifiers = {
+			army_attack_factor = 0.2
+            army_defence_factor = 0.2
+			army_org_factor = 0.2
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+	}
+	organized_medal = {
+		available = { 
+			should_have_chinese_reform_medals_trigger = yes 
+			always = no #
+		}
+		frame = 2 #didnt add
+		icon = "GFX_medal_icon_chi"
+		
+		cost = 9999
+		
+		unit_modifiers = {
+			army_attack_factor = 0.05
+            army_defence_factor = 0.05
+			army_org_factor = 0.05
+		}
+
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}	
+	}
+	adjusted_medal = {
+		available = { 
+			should_have_chinese_reform_medals_trigger = yes 
+			custom_trigger_tooltip = {
+				tooltip = at_most_60_german_style_units_tt
+				check_variable = { global.rcm_chi_german_div_count < 61 }
+			}	
+			has_idea = CHI_german_coop
+			always = no #
+	    }
+		frame = 6
+		icon = "GFX_medal_icon_chi"
+		
+		cost = 9999
+		
+		unit_modifiers = {
+			army_attack_factor = 0.15
+            army_defence_factor = 0.15
+			army_org_factor = 0.12
+		}
+
+		one_time_effect = {
+			#add_to_variable = {
+			#	var = global.rcm_chi_german_div_count
+			#	value = 1
+			#}
+			#add_to_variable = {
+			#	var = im_german_style_div
+			#	value = 1
+			#}
+		}	
+	}
+}

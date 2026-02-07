@@ -1,0 +1,380 @@
+ideas = {
+	national_concept_base = {
+		law = yes
+		use_list_view = yes
+
+		extreme_materialism = {#极端唯物
+			picture = extreme_materialism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = materialism
+				has_stability > 0.75
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.25
+				stability_weekly = -0.003
+			}
+
+			on_add = {
+				add_stability = -0.25
+			}
+			
+		}
+
+		materialism = {#唯物
+			picture = materialism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				OR = {
+					has_idea = both_materfialism_and_idealism
+					has_idea = extreme_materialism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.10
+			}
+
+			on_add = {
+				add_stability = -0.10
+			}
+		}
+
+		both_materfialism_and_idealism = {#二者均有
+			picture = both_materfialism_and_idealism
+			available = {
+				OR = {
+					has_idea = materialism
+					has_idea = idealism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				#
+			}
+		}
+
+		idealism = {#唯心主义
+			picture = idealism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_idea = both_materfialism_and_idealism
+					has_idea = extreme_idealism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.15
+				war_support_factor = 0.10
+				stability_factor = 0.10
+			}
+
+			on_remove = {
+				add_stability = -0.10
+			}
+		}
+
+		extreme_idealism = {#极端唯心
+			picture = extreme_idealism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = idealism
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.30
+				war_support_factor = 0.25
+				stability_factor = 0.25
+				research_speed_factor = -0.10
+			}
+			
+			on_remove = {
+				add_stability = -0.25
+			}
+		}
+	}
+
+	national_concept_diplomacy = {
+		law = yes
+		use_list_view = yes
+
+		extreme_friendly = {#极端亲外
+			picture = extreme_friendly
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = friendly
+				has_stability > 0.75
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.25
+			}
+
+			on_add = {
+				add_stability = -0.25
+			}
+			
+		}
+
+		friendly = {#亲外主义
+			picture = friendly
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				OR = {
+					has_idea = neither_friendly_nor_unfriendly
+					has_idea = extreme_friendly
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.10
+			}
+
+			on_add = {
+				add_stability = -0.10
+			}
+		}
+
+		neither_friendly_nor_unfriendly = {#二者均无
+			picture = neither_friendly_nor_unfriendly
+			available = {
+				OR = {
+					has_idea = friendly
+					has_idea = unfriendly
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				#
+			}
+		}
+
+		unfriendly = {#排外主义
+			picture = unfriendly
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_idea = neither_friendly_nor_unfriendly
+					has_idea = extreme_unfriendly
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.15
+				war_support_factor = 0.10
+				stability_factor = 0.10
+			}
+
+			on_remove = {
+				add_stability = -0.10
+			}
+		}
+
+		extreme_unfriendly = {#极端排外
+			picture = extreme_idealism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = idealism
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.30
+				war_support_factor = 0.25
+				stability_factor = 0.25
+				research_speed_factor = -0.10
+			}
+			
+			on_remove = {
+				add_stability = -0.25
+			}
+		}
+	}
+
+	national_concept_war = {
+		law = yes
+		use_list_view = yes
+
+		extreme_pacifism = {#极端和平主义
+			picture = extreme_pacifism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = pacifism
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.25
+				stability_weekly = -0.003
+			}
+
+			on_add = {
+				add_stability = -0.25
+			}
+			
+		}
+
+		pacifism = {#和平主义
+			picture = pacifism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				OR = {
+					has_idea = between_pacifism_and_militarism
+					has_idea = extreme_pacifism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				research_speed_factor = 0.10
+			}
+
+			on_add = {
+				add_stability = -0.10
+			}
+		}
+
+		between_pacifism_and_militarism = {#二者均无
+			picture = between_pacifism_and_militarism
+			available = {
+				OR = {
+					has_idea = materialism
+					has_idea = idealism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				#
+			}
+		}
+
+		militarism = {#军国主义
+			picture = militarism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_idea = between_pacifism_and_militarism
+					has_idea = extreme_militarism
+				}
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.15
+				war_support_factor = 0.10
+				stability_factor = 0.10
+			}
+
+			on_remove = {
+				add_stability = -0.10
+			}
+		}
+
+		extreme_militarism= {#极端军国
+			picture = extreme_militarism
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			availiable = {
+				has_idea = militarism
+			}
+
+			cost = 150
+
+			modifier = {
+				political_power_factor = 0.30
+				war_support_factor = 0.25
+				stability_factor = 0.25
+				research_speed_factor = -0.10
+			}
+			
+			on_remove = {
+				add_stability = -0.25
+			}
+		}
+	}
+}

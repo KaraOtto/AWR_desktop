@@ -1,0 +1,321 @@
+leader_traits = {#政治
+	junxiaoxiaozhang = {#军校校长
+		sprite = 14
+		land_doctrine_cost_factor = -0.15
+		experience_gain_army_factor = 0.10
+		max_planning = 0.10
+		planning_speed = 0.15
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	beifashuangjie = {#北伐双杰
+		random = no
+		sprite = 12
+		
+		#army_morale_factor = 0.05
+		army_org_factor = 0.05
+		breakthrough_factor = 0.08
+		land_night_attack = 0.05
+		
+		custom_modifier_tooltip = beifashuangjie_desc
+		
+		command_cap = @tier3
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				command_power < @tier3
+			}
+		}
+	}
+
+	mingyuzhuxi = {#国民党名誉主席
+		random = no
+		sprite = 12
+		
+		stability_factor = 0.15
+		war_support_factor = 0.15
+		political_power_factor = 0.15
+		political_advisor_cost_factor = -0.25
+		stability_weekly = 0.002
+		war_support_weekly = 0.002
+	}
+
+	dangweiduizuigaolingxiu = {#党卫队最高领袖
+	    random = no
+		
+		consumer_goods_factor = -0.15
+		stability_factor = 0.05
+		conscription = 0.02
+		training_time_factor = -0.10
+		experience_gain_army_unit_factor = 0.10
+		enemy_operative_capture_chance_factor = 0.10
+		enemy_operative_detection_chance_factor = 0.10
+		army_morale_factor = 0.10
+	}
+
+	minzhuzhilan = {#民主之澜（张澜）
+		random = no
+		sprite = 12
+		
+		research_speed_factor = 0.08
+		compliance_gain = 0.04
+		opinion_gain_monthly_factor = 0.25
+		political_advisor_cost_factor = -0.15 #政治顾问花费
+		trade_laws_cost_factor = -0.15 #贸易法案花费
+		economy_cost_factor = -0.15 #经济法案花费
+		stability_weekly = 0.001
+	}
+
+	zhishifenzi = { #自由主义知识分子
+		random = no
+		sprite = 12
+		political_power_factor = 0.10		
+		stability_factor = 0.15	
+		war_support_factor = -0.05
+    	consumer_goods_factor = 0.1		
+    	research_speed_factor = 0.05
+	}
+
+		#汪精卫
+	xingzhengyuanzhang = { #行政院长
+	    sprite = 13
+	    random = no
+		stability_factor = 0.1
+		party_popularity_stability_factor = 0.1
+		political_power_factor = 0.15
+		political_advisor_cost_factor = -0.15
+	}
+	
+	quxianjiuguo = {	#曲线求国
+	    random = no
+		war_stability_factor = 0.1
+		war_support_factor = -0.1
+		resistance_growth = -0.1
+		surrender_limit = 0.15
+	}
+	wencaiyiyi = {	#文采奕奕
+	    random = no
+		political_power_gain = 0.15
+		political_advisor_cost_factor = -0.15
+		research_speed_factor = 0.025
+	}
+
+	wushinuli = {	#武士奴隶
+	    random = no
+		consumer_goods_factor = -0.3
+		cic_to_overlord_factor = 0.15
+		mic_to_overlord_factor = 0.15
+		extra_trade_to_overlord_factor = 0.5
+		license_subject_master_purchase_cost = -0.25
+		fascism_drift = 0.25
+		autonomy_gain_trade_factor = -0.5
+		industrial_capacity_factory = 0.15
+		production_speed_buildings_factor = 0.05
+		#autonomy_gain = -1
+		drift_defence_factor = 0.5
+		fascism_acceptance = 200
+		ai_focus_defense_factor = 0.5
+		#autonomy_manpower_share = 0.5
+	}
+
+	guofuzhizi = {#国父之子
+	    random = no
+		political_power_factor = 0.15
+		stability_factor = 0.15
+		drift_defence_factor = 0.5
+		democratic_drift = 0.05
+		political_advisor_cost_factor = -0.33 #政治顾问花费
+		trade_laws_cost_factor = -0.33 #贸易法案花费
+		economy_cost_factor = -0.33 #经济法案花费
+	}
+
+	xianfazhifu = {#宪法之父
+	    random = no
+		political_power_factor = 0.15
+		stability_factor = 0.1
+		drift_defence_factor = 0.5
+		democratic_drift = 0.05
+		political_advisor_cost_factor = -0.33 #政治顾问花费
+		stability_weekly = 0.002
+		research_speed_factor = 0.08
+	}
+
+	kmt_zongcai = {#中国国民党总裁
+	    random = no
+		political_power_factor = 0.15
+		war_stability_factor = 0.2
+		ai_desired_divisions_factor = 0.25
+	}
+
+	kmt_zuigaotongshuai = {#最高统帅
+	    random = no
+		max_command_power = 50
+		command_power_gain_mult = 0.15
+		army_org_factor = 0.05
+		planning_speed = 0.1
+		air_mission_efficiency = 0.05
+		war_stability_factor = 0.1
+		
+		ai_desired_divisions_factor = 0.5
+	}
+
+	dangdeyuanlao = {#党的元老
+	    random = no
+		political_power_factor = 0.1
+		party_popularity_stability_factor = 0.1
+		army_org_factor = 0.1
+	}
+
+	qiangtoucao = {#墙头草
+	    random = no
+		political_power_factor = 0.1
+		stability_factor = -0.05
+		war_support_factor = -0.05
+	}
+
+	qinliqinwei = { #蒋介石亲力亲为
+		random = no
+		command_power_gain_mult = 0.15
+		max_command_power = 30
+		army_morale_factor = 0.10
+	}
+	
+	junduiguanlian = { #蒋介石军队关联
+		random = yes
+		high_command_cost_factor = -0.15 #总司令花费
+		air_chief_cost_factor = -0.15 #空军部长花费
+		navy_chief_cost_factor = -0.15 #海军部长花费
+		army_chief_cost_factor = -0.15 #陆军部长花费
+		theorist_cost_factor = -0.15 #理论家花费
+		
+	}
+
+	CHI_dislikes_chiang = {#与蒋不和
+	    random = no
+		ai_strategy = {
+			type = antagonize
+			id = "CHI"
+			value = 100
+		}
+		custom_modifier_tooltip = CHI_dislikes_chiang_desc
+	}
+
+	CHI_veteran_of_central_plains_war = {#中原大战老兵
+	    random = no
+		targeted_modifier = {
+			tag = CHI
+			attack_bonus_against = 0.05
+			defense_bonus_against = 0.05
+		}		
+		army_morale_factor = 0.05
+		custom_modifier_tooltip = CHI_veteran_of_central_plains_war_desc
+	}
+
+	CHI_zongtong = {#总统
+	    random = no
+		stability_factor = 0.25
+		political_power_factor = 0.25
+		custom_modifier_tooltip = CHI_zongtong_desc
+	}
+
+	ROC_red_general = {#反共堡垒
+	    random = no
+		ai_badass_factor = 0.4
+		consumer_goods_factor = 0.025
+		trade_opinion_factor = -0.15
+		targeted_modifier = {
+			tag = PRC
+			attack_bonus_against = 0.025
+			defense_bonus_against = 0.025
+		}
+	}
+
+}
+
+leader_traits = {#军事
+	anti_communist_foreign_advisor_zz = {#反共
+	    sprite = 5
+		random = no
+	}
+
+	china_zhanqu_canmouzhang_weidemai = {#魏德玛
+	    sprite = 5
+		random = no
+		
+		command_cap_increase = @tier3
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				command_power < @tier3
+			}
+		}
+	}
+
+	china_zhanqu_canmouzhang = {#中国战区参谋长
+	    sprite = 5
+		random = no
+		
+		command_cap_increase = @tier3
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				command_power < @tier3
+			}
+		}
+	}
+
+	army_eastern_rommel = { #东方隆美尔
+		sprite = 8
+		army_speed_factor = 0.10
+		org_loss_when_moving = -0.05
+		army_morale_factor = 0.1
+		land_reinforce_rate = 0.05
+		army_armor_attack_factor = 0.05
+		army_armor_defence_factor = 0.05
+		coordination_bonus = 0.05
+
+		command_cap_increase = @tier3
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				command_power < @tier3
+			}
+		}
+	}
+
+	CHI_waiguolilunjia_2 = {#外国理论家
+        sprite = 5	
+		random = no
+        land_reinforce_rate = 0.05	
+        army_morale_factor = 0.05
+        army_org_factor = 0.05	
+        army_defence_factor = 0.05		
+        experience_loss_factor = 0.025		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	CHI_kouliu = {#扣留中
+		random = no
+        political_power_factor = -0.5		
+	}
+
+	EHB_xuanchuan = {#宣传
+		random = no
+		war_support_factor = 0.1
+		conscription = 0.01			
+		propaganda_mission_factor = 0.1 #政治宣传任务成果	
+	}
+}

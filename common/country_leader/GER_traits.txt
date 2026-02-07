@@ -1,0 +1,296 @@
+@tier1 = 30
+@tier2 = 20
+@tier3 = 10
+
+@experience_gain_low = 0.03
+@experience_gain_medium = 0.06
+@experience_gain_high = 0.08
+
+@chief_experience_gain_low = 0.20
+@chief_experience_gain_medium = 0.30 
+@chief_experience_gain_high = 0.40
+
+###Todo remove commented advisor experience gains
+
+leader_traits = {
+	shamozhihu = {#沙漠之狐
+	    random = no
+		supply_consumption_factor = -0.15
+		out_of_supply_factor = -0.15
+		army_speed_factor = 0.10
+		org_loss_when_moving = -0.10
+		enemy_army_bonus_air_superiority_factor = -0.25
+		army_armor_attack_factor = 0.15
+		army_armor_defence_factor = 0.15
+		army_morale_factor = 0.15
+		recon_factor = 0.5
+		
+		heat_attrition_factor = -0.5
+		acclimatization_hot_climate_gain_factor = 0.5
+	}
+
+	nazi_zhanshouguan = {#纳粹斩首官
+		sprite = 13
+		random = no
+		
+		resistance_damage_to_garrison = -0.25
+		foreign_subversive_activites = -0.5
+		non_core_manpower = 0.03
+		operative_slot = 1
+		resistance_growth = -0.20
+		resistance_target = -0.10
+		required_garrison_factor = -0.15
+		enemy_operative_capture_chance_factor = 0.15
+		enemy_operative_detection_chance_factor = 0.15
+
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	dangweiduizuigaolingxiu = {#希特勒特质
+	    random = no
+		
+		consumer_goods_factor = -0.15
+		stability_factor = 0.05
+		conscription = 0.02
+		training_time_factor = -0.10
+		experience_gain_army_unit_factor = 0.10
+		enemy_operative_capture_chance_factor = 0.10
+		enemy_operative_detection_chance_factor = 0.10
+		army_morale_factor = 0.08
+		#army_core_attack_factor = 0.10
+		#army_core_defence_factor = 0.10
+	}
+
+	GER_erich_von_manstein_traits = {#曼斯坦因
+		sprite = 14
+	    random = no
+		cat_mobile_warfare_cost_factor = -0.15
+		max_planning = 0.15
+		planning_speed = 0.1
+		out_of_supply_factor = -0.1
+		supply_consumption_factor = -0.1
+		no_supply_grace = 48
+	}
+
+	GER_heinz_guderian_traits = {#古德里安
+		sprite = 7
+	    random = no
+		org_loss_when_moving = -0.15
+		breakthrough_factor = 0.15
+		equipment_bonus = {
+			armor = {
+				instant = yes
+				maximum_speed = 0.10
+			}
+		}
+	}
+
+	GER_erwin_rommel_traits = {#隆美尔
+		sprite = 7
+	    random = no
+		army_armor_attack_factor = 0.15
+		army_armor_defence_factor = 0.15
+		mechanized_attack_factor = 0.15
+		mechanized_defence_factor = 0.15
+		motorized_attack_factor = 0.15
+		motorized_defence_factor = 0.15
+	}
+
+	racist_zz = {#狂热的种族主义者
+	    random = no
+		sprite = 13
+		political_power_factor = 0.15
+		stability_factor = -0.1
+		conscription_factor = -0.15
+	}
+
+	deguozaizao = {#德国再造者
+	    random = no
+		ai_strategy = {
+			type = befriend
+			id = "USA"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "USA"
+			value = 200
+		}
+		ai_strategy = {
+			type = support
+			id = "USA"
+			value = 100
+		}
+		
+		ai_strategy = {
+			type = befriend
+			id = "ENG"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "ENG"
+			value = 100
+		}
+		ai_strategy = {
+			type = support
+			id = "ENG"
+			value = 100
+		}
+		
+		ai_strategy = {
+			type = befriend
+			id = "FRA"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "FRA"
+			value = 100
+		}
+		ai_strategy = {
+			type = support
+			id = "FRA"
+			value = 100
+		}
+		
+		political_power_factor = 0.15
+		stability_factor = 0.15
+		stability_weekly = 0.003
+		trade_opinion_factor = 0.25
+		ai_desired_divisions_factor = -0.5
+	}
+
+	lujunsiling = {#陆军司令
+	    random = no
+		sprite = 14
+		army_attack_factor = 0.1
+		army_defence_factor = 0.1
+		breakthrough_factor = 0.1
+		army_org_factor = 0.1
+		political_power_factor = 0.1
+		land_reinforce_rate = 0.05
+	}
+
+	kuangrejingong = {#狂热的进攻者
+	    random = no
+		ai_focus_aggressive_factor = 0.5
+	}
+   
+	Soviet_Officer = {#苏占军管委员会委员长
+	    random = no
+		ai_strategy = {
+			type = befriend
+			id = "SOV"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "SOV"
+			value = 500
+		}
+		ai_strategy = {
+			type = support
+			id = "SOV"
+			value = 500
+		}
+		
+		political_power_factor = 0.1
+		stability_factor = 0.15
+		communism_drift = 0.5
+		disabled_ideas = 1
+		drift_defence_factor = 0.5
+		stability_weekly = 0.002
+		conscription_factor = -1
+		training_time_factor = 100
+		ai_desired_divisions_factor = -1
+	}
+
+	ally_Officer = {#盟军军管委员会委员长
+	    random = no
+		ai_strategy = {
+			type = befriend
+			id = "USA"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "USA"
+			value = 500
+		}
+		ai_strategy = {
+			type = support
+			id = "USA"
+			value = 500
+		}
+		
+		ai_strategy = {
+			type = befriend
+			id = "ENG"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "ENG"
+			value = 500
+		}
+		ai_strategy = {
+			type = support
+			id = "ENG"
+			value = 500
+		}
+		
+		ai_strategy = {
+			type = befriend
+			id = "FRA"
+			value = 500
+		}
+		ai_strategy = {
+			type = alliance
+			id = "FRA"
+			value = 500
+		}
+		ai_strategy = {
+			type = support
+			id = "FRA"
+			value = 500
+		}
+		
+		political_power_factor = 0.1
+		stability_factor = 0.15
+		democratic_drift = 0.5
+		disabled_ideas = 1
+		drift_defence_factor = 0.5
+		stability_weekly = 0.002
+		conscription_factor = -1
+		training_time_factor = 100
+		ai_desired_divisions_factor = -1
+	}
+
+	GER_daducaizhe = {#大独裁者
+		random = no
+        drift_defence_factor = 0.1
+        justify_war_goal_time = -0.1
+		max_command_power = 15		
+	}
+
+	GER_xuanchuantiancai = {#宣传天才
+		random = no
+		war_support_factor = 0.3
+		propaganda_mission_factor = 0.25 #政治宣传任务成果
+		boost_ideology_mission_factor = 0.25 #加强意识形态任务成果
+		operation_collaboration_government_outcome = 0.25 #筹备合作政府效率 
+		operation_collaboration_government_cost = -0.25 #筹备合作政府花费 
+		operation_coup_government_outcome = 0.25 #进行颠覆效率 
+		operation_coup_government_cost = -0.25 #进行颠覆花费		
+	}
+
+	GER_haijunyuanshuai = {#海军元帅
+		random = no
+		naval_speed_factor = 0.10		
+ 		production_speed_naval_base_factor = 0.10
+        production_speed_dockyard_factor = 0.10 
+	}
+}	

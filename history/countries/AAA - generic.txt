@@ -26105,7 +26105,7 @@ FRA = {
     add_ideas = free_trade
 }
 USA = {
-	add_timed_idea = { idea = USA_paihua days = 2875 }
+	add_timed_idea = { idea = USA_paihua days = 2906 }
     #news_event = { #AFC #guo
     #    days = 1708
     #    id = rcmUSA.9
@@ -26150,7 +26150,7 @@ USA = {
 			level = 4
 			instant_build = yes
 		}
-	}	
+	}
 }
 CHI = {
 	#605 = {
@@ -26887,6 +26887,7 @@ CHI = {
 	#	}
 	#}
 	save_global_event_target_as = WTT_current_china_leader
+	puppet = NEA
 	every_state = {
 		limit = {
 			is_core_of = CHI
@@ -26900,12 +26901,6 @@ CHI = {
 		level = 3
 		instant_build = yes
 	}
-}
-CHI = {
-	give_military_access = NEA
-}
-NEA = {
-	give_military_access = CHI
 }
 MAN = {
     every_owned_state = {
@@ -27050,34 +27045,51 @@ NXM = {
 IRQ = {
     give_military_access = ENG
 }
-USA = { set_autonomy = {
-	 target = PHI
-	 autonomous_state = autonomy_USA_baohuguo
-} 
-}
-PHI = { 
-set_party_name = {
-ideology = democratic
-name = "菲律宾国民党"
-long_name = "菲律宾国民党"					
-}
-}
 ENG = {
 	if = {
 		limit = {
 			has_dlc = "Together for Victory"
 		}
-		set_autonomy = { target = SRL autonomy_state = autonomy_ENG_baohuguo freedom_level = 0.50  }
-	    set_autonomy = { target = MAL autonomy_state = autonomy_ENG_baohuguo freedom_level = 0.50  }
-	    set_autonomy = { target = SST autonomy_state = autonomy_ENG_baohuguo freedom_level = 0.50  }
-						set_autonomy = { target = SAR autonomy_state = autonomy_ENG_baohuguo freedom_level = 0.50  }
-						set_autonomy = { target = BOR autonomy_state = autonomy_ENG_baohuguo freedom_level = 0.50  }
-						set_autonomy = { target = CAN autonomy_state = autonomy_BRITISH_wangguan freedom_level = 0.50  }
-						set_autonomy = { target = AST autonomy_state = autonomy_BRITISH_wangguan freedom_level = 0.50  }
-						set_autonomy = { target = SAF autonomy_state = autonomy_BRITISH_wangguan freedom_level = 0.50  }
-						set_autonomy = { target = NZL autonomy_state = autonomy_BRITISH_wangguan freedom_level = 0.50  }
-						set_autonomy = { target = EGY autonomy_state = autonomy_BRITISH_wangguan freedom_level = 0.50  }
-						set_autonomy = { target = RAJ autonomy_state = autonomy_wangguan freedom_level = 0.50  }
+		set_autonomy = {
+			target = NZL
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = AST
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = CAN
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = SAF
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = EGY
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = OMA
+			autonomous_state = autonomy_dominion
+		}
+		set_autonomy = {
+			target = SST
+			autonomous_state = autonomy_integrated_puppet
+		}
+		set_autonomy = {
+			target = BUR
+			autonomous_state = autonomy_colony
+		}
+		set_autonomy = {
+			target = BOR
+			autonomous_state = autonomy_colony
+		}
+		set_autonomy = {
+			target = SAR
+			autonomous_state = autonomy_colony
+		}
 		else = {
 			#puppet = NZL
 			#puppet = CAN

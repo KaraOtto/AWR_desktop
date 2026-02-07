@@ -837,5 +837,50 @@ ideas = {
 				ai_desired_divisions_factor = 2
 			}
 		}
-	}
+		
+		propaganda_recruits = {#政治宣传
+
+			picture = PRC_volunteer_mobilization
+
+			allowed = {
+				OR = {
+            		TAG = event_target:WTT_communist_china
+            		TAG = PRC
+            	}
+			}
+            visible = {
+                OR = {
+            		TAG = event_target:WTT_communist_china
+            		TAG = PRC
+            	}
+            }
+            available = {
+                  has_government = communism                                 
+            }
+			removal_cost = -1
+            cost = 150
+            level = 6
+            ai_will_do = {
+   				factor = 9999
+			}
+			modifier = {
+				conscription = 0.065
+				political_power_factor = -0.1
+				training_time_factor = 0.15
+				communism_drift = 0.05
+				army_morale_factor = 0.1
+                army_org_factor = 0.05
+				experience_gain_army_factor = 0.05
+				drift_defence_factor = 0.5
+                command_power_gain_mult = 0.15
+				land_reinforce_rate = 0.05
+				mobilization_speed = 0.50
+				non_core_manpower = 0.10
+				weekly_manpower = 1500
+			}
+
+			cancel_if_invalid = no
+		}
+    }
+	
 }
