@@ -6,12 +6,38 @@ every_owned_state = {
 		scope = event_target:WTT_communist_china 
 	} 
 }
-add_ideas = PRC_guerilla_warfare  #游击战经济
-add_ideas = tax_rate_0	#正常税收
-add_ideas = propaganda_recruits	#落后的工业
-add_ideas = military_commission_zhonggejunwei
-add_ideas = PRC_zhengzhibaoweiju
-add_ideas = military_expenditure_0
+
+add_ideas = {
+	PRC_guerilla_warfare_economy  #游击战经济
+	propaganda_recruits #政治宣传
+	free_trade #自由贸易
+	tax_rate_0	#正常税收
+	military_expenditure_0
+	research_expenditure_0
+	social_management_and_welfare_expenditure_0
+}
+
+add_ideas = {
+	iliterate_population_1		#文盲人口
+	incompetent_heavy_industry_1	#落后的重工业
+	unbalanced_industry_1		#不平衡的工业
+	military_commission_zhonggejunwei #中央军委
+	PRC_zhengzhibaoweiju		#政治保卫局
+}
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	democratic = 0
+	fascism = 0
+	communism = 100
+	neutrality = 0
+}
 
 create_country_leader = {
 	name = prc_zhang_wentian #张闻天
@@ -57,7 +83,7 @@ recruit_character = prc_wang_fanxi
 recruit_character = prc_wang_shiwei
 recruit_character = prc_shen_junru
 recruit_character = prc_zhang_qinqiu
-
+#陆军将领
 recruit_character = PRC_zhu_de
 recruit_character = PRC_peng_dehuai
 recruit_character = PRC_lin_biao
@@ -90,12 +116,7 @@ recruit_character = PRC_fu_zuoyi
 recruit_character = PRC_gao_jingting
 recruit_character = PRC_hezizhen
 recruit_character = PRC_yangzilie
-			
-#land
-recruit_character = PRC_pengdehuai111
-recruit_character = PRC_liu_bocheng111 
-recruit_character = PRC_yejianying111 
-recruit_character = PRC_huangkecheng
+recruit_character = PRC_huang_kecheng
 recruit_character = PRC_tanzheng
 recruit_character = PRC_zhangyunyi
 recruit_character = PRC_gaogang
@@ -403,21 +424,6 @@ if = {
 }
 
 
-complete_national_focus = PRC_Red_Army
-
-remove_ideas = Long_March_2
-
-add_ideas = {
-	civilian_economy
-	extensive_conscription	
-}
-
-set_politics = {
-	ruling_party = communism
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
 
 1939.1.1 = {
 	set_popularities = {
@@ -463,33 +469,10 @@ set_politics = {
 	}
 }
 
-add_ideas = {
-	free_trade
-	extensive_conscription
-	#partial_economic_mobilisation
-	civilian_economy
-	#PRC_Mobile_Warfare
-	PRC_Isolated_status
-	Long_March_1
-	PRC_no_skilled_personnel_1
-	no_proper_equipment_design
-	incompetent_heavy_industry
-	unbalanced_industry
-	iliterate_population
-	PRC_Poor_Air
-	PRC_Poor_navy
-    nea_idea_PRC_untrained_soldiers_1	
-    PRC_militia_idea
-    PRC_reorganized_departments_CHI	
-	PRC_communal_economy	
-}
-
 add_opinion_modifier = { 
 	target = CHI 
 	modifier = hostile_status 
 }
-
-
 
 create_country_leader = {
 	name = "None"

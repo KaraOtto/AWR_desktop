@@ -11,7 +11,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				has_idea = materialism
 				has_stability > 0.75
 			}
@@ -19,13 +19,17 @@ ideas = {
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.25
-				stability_weekly = -0.003
+				research_speed_factor = 0.30
+				SPECIAL_PROJECT_SPEED_FACTOR = 1.00
+				TECHNOLOGY_RESEARCH_BREAKTHROUGH_BONUS = 0.02
+				stability_factor = -0.10
 			}
 
 			on_add = {
 				add_stability = -0.25
 			}
+
+			cancel_if_invalid = no
 			
 		}
 
@@ -37,7 +41,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				OR = {
 					has_idea = both_materfialism_and_idealism
 					has_idea = extreme_materialism
@@ -48,27 +52,39 @@ ideas = {
 
 			modifier = {
 				research_speed_factor = 0.10
+				SPECIAL_PROJECT_SPEED_FACTOR = 0.50
+				TECHNOLOGY_RESEARCH_BREAKTHROUGH_BONUS = 0.01
 			}
 
 			on_add = {
 				add_stability = -0.10
 			}
+
+			cancel_if_invalid = no
 		}
 
-		both_materfialism_and_idealism = {#二者均有
+		both_materfialism_and_idealism = {#实用主义
 			picture = both_materfialism_and_idealism
 			available = {
 				OR = {
 					has_idea = materialism
 					has_idea = idealism
+					has_government = communism
 				}
 			}
 
 			cost = 150
 
 			modifier = {
-				#
+				research_speed_factor = 0.05
+				SPECIAL_PROJECT_SPEED_FACTOR = 0.10
+				political_power_factor = 0.05
+				stability_factor = 0.05
 			}
+
+			default = yes
+
+			cancel_if_invalid = no
 		}
 
 		idealism = {#唯心主义
@@ -84,6 +100,9 @@ ideas = {
 					has_idea = both_materfialism_and_idealism
 					has_idea = extreme_idealism
 				}
+				NOT = {
+					has_government = communism
+				}
 			}
 
 			cost = 150
@@ -97,6 +116,8 @@ ideas = {
 			on_remove = {
 				add_stability = -0.10
 			}
+
+			cancel_if_invalid = no
 		}
 
 		extreme_idealism = {#极端唯心
@@ -107,8 +128,12 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+
+			available = {
 				has_idea = idealism
+				NOT = {
+					has_government = communism
+				}
 			}
 
 			cost = 150
@@ -118,11 +143,14 @@ ideas = {
 				war_support_factor = 0.25
 				stability_factor = 0.25
 				research_speed_factor = -0.10
+				SPECIAL_PROJECT_SPEED_FACTOR = -0.10
 			}
 			
 			on_remove = {
 				add_stability = -0.25
 			}
+
+			cancel_if_invalid = no
 		}
 	}
 
@@ -138,20 +166,31 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				has_idea = friendly
-				has_stability > 0.75
+				NOT = {
+					has_government =  fascism
+				}
 			}
 
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.25
+				operation_infiltrate_outcome = 0.50
+				operation_infiltrate_risk = -0.25
+				COMPLIANCE_GROWTH = 0.30
+				resistance_growth = -0.30
+				weekly_manpower = 3000
+				operation_infiltrate_risk = 0.30
+				stability_factor = -0.15
+				ENEMY_OPERATIVE_CAPTURE_CHANCE_FACTOR = -0.30
 			}
 
 			on_add = {
-				add_stability = -0.25
+				add_stability = -0.10
 			}
+
+			cancel_if_invalid = no
 			
 		}
 
@@ -163,25 +202,36 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				OR = {
 					has_idea = neither_friendly_nor_unfriendly
 					has_idea = extreme_friendly
+				}
+				NOT = {
+					has_government =  fascism
 				}
 			}
 
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.10
+				operation_infiltrate_outcome = 0.25
+				operation_infiltrate_risk = -0.15
+				COMPLIANCE_GROWTH = 0.15
+				resistance_growth = -0.15
+				weekly_manpower = 1500
+				stability_factor = -0.05
+				ENEMY_OPERATIVE_CAPTURE_CHANCE_FACTOR = -0.15
 			}
 
 			on_add = {
-				add_stability = -0.10
+				add_stability = -0.05
 			}
+
+			cancel_if_invalid = no
 		}
 
-		neither_friendly_nor_unfriendly = {#二者均无
+		neither_friendly_nor_unfriendly = {#孤立主义
 			picture = neither_friendly_nor_unfriendly
 			available = {
 				OR = {
@@ -195,6 +245,10 @@ ideas = {
 			modifier = {
 				#
 			}
+
+			default = yes
+
+			cancel_if_invalid = no
 		}
 
 		unfriendly = {#排外主义
@@ -215,14 +269,18 @@ ideas = {
 			cost = 150
 
 			modifier = {
-				political_power_factor = 0.15
-				war_support_factor = 0.10
+				ENEMY_OPERATIVE_INTEL_EXTRACTION_RATE = -0.25
+				COMPLIANCE_GROWTH = -0.15
+				resistance_growth = 0.15
 				stability_factor = 0.10
+				war_support_factor = 0.10
 			}
 
 			on_remove = {
-				add_stability = -0.10
+				add_stability = -0.05
 			}
+
+			cancel_if_invalid = no
 		}
 
 		extreme_unfriendly = {#极端排外
@@ -233,22 +291,25 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				has_idea = idealism
 			}
 
 			cost = 150
 
 			modifier = {
-				political_power_factor = 0.30
-				war_support_factor = 0.25
+				ENEMY_OPERATIVE_INTEL_EXTRACTION_RATE = -0.50
+				COMPLIANCE_GROWTH = -0.30
+				resistance_growth = 0.30
 				stability_factor = 0.25
-				research_speed_factor = -0.10
+				war_support_factor = 0.25
 			}
 			
 			on_remove = {
-				add_stability = -0.25
+				add_stability = -0.10
 			}
+
+			cancel_if_invalid = no
 		}
 	}
 
@@ -264,19 +325,35 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				has_idea = pacifism
+				NOT = {
+					has_government = fascism
+				}
 			}
 
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.25
-				stability_weekly = -0.003
+				guarantee_tension = 100
+				justify_war_goal_time = 100
+				enemy_justify_war_goal_time = 1.0
+				industrial_capacity_factory = 0.3
+				factory_energy_consumption = -0.30
+				global_building_slots_factor = 0.20
+				production_speed_buildings_factor = 0.3
+				stability_factor = 0.10
+				war_support_factor = -0.25
+				defensive_war_stability_factor = 0.25
+				offensive_war_stability_factor = -1.00
+				army_core_defence_factor = 0.10
+				army_core_attack_factor = 0.10
+
 			}
 
-			on_add = {
-				add_stability = -0.25
+			rule = {
+				can_only_justify_war_on_threat_country = yes
+				can_create_factions = no
 			}
 			
 		}
@@ -289,30 +366,47 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
+			available = {
 				OR = {
-					has_idea = between_pacifism_and_militarism
+					has_idea = between_pacifism_and_expansionism
 					has_idea = extreme_pacifism
+				}
+				NOT = {
+					has_government = fascism
 				}
 			}
 
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.10
+				guarantee_tension = 1.00
+				justify_war_goal_time = 1.00
+				industrial_capacity_factory = 0.15
+				factory_energy_consumption = -0.15
+				global_building_slots_factor = 0.10
+				production_speed_buildings_factor = 0.15
+				stability_factor = 0.05
+				war_support_factor = -0.10
+				defensive_war_stability_factor = 0.25
+				offensive_war_stability_factor = -0.25
+				army_core_defence_factor = 0.20
+				army_core_attack_factor = 0.20
 			}
 
-			on_add = {
-				add_stability = -0.10
+			rule = {
+				can_only_justify_war_on_threat_country = yes
 			}
+
+			cancel_if_invalid = no
+
 		}
 
-		between_pacifism_and_militarism = {#二者均无
-			picture = between_pacifism_and_militarism
+		between_pacifism_and_expansionism = {#有限战争
+			picture = between_pacifism_and_expansionism
 			available = {
 				OR = {
-					has_idea = materialism
-					has_idea = idealism
+					has_idea = pacifism
+					has_idea = expansionism
 				}
 			}
 
@@ -321,9 +415,13 @@ ideas = {
 			modifier = {
 				#
 			}
+
+			default = yes
+
+			cancel_if_invalid = no
 		}
 
-		militarism = {#军国主义
+		expansionism = {#扩张主义
 			picture = militarism
 			allowed = {
 				always = yes
@@ -333,25 +431,32 @@ ideas = {
 			}
 			available = {
 				OR = {
-					has_idea = between_pacifism_and_militarism
-					has_idea = extreme_militarism
+					has_idea = between_pacifism_and_expansionism
+					has_idea = extreme_expansionism
+				}
+				NOT = {
+					has_government = democratic
 				}
 			}
 
 			cost = 150
 
 			modifier = {
-				political_power_factor = 0.15
-				war_support_factor = 0.10
-				stability_factor = 0.10
+				offensive_war_stability_factor = 0.25
+				justify_war_goal_time = -0.25
+				army_claim_attack_factor = 0.15
+				army_claim_defence_factor = 0.15
+				army_org_factor = 0.10
+				training_time_army_factor = -0.10
+				naval_invasion_division_cap = 0.50
+				air_invasion_division_cap = 0.50
 			}
 
-			on_remove = {
-				add_stability = -0.10
-			}
+			cancel_if_invalid = no
+
 		}
 
-		extreme_militarism= {#极端军国
+		extreme_expansionism = {#极端扩张
 			picture = extreme_militarism
 			allowed = {
 				always = yes
@@ -359,22 +464,27 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			availiable = {
-				has_idea = militarism
+			available = {
+				has_idea = expansionism
+				NOT = {
+					has_government = democratic
+				}
 			}
 
 			cost = 150
 
 			modifier = {
-				political_power_factor = 0.30
-				war_support_factor = 0.25
-				stability_factor = 0.25
-				research_speed_factor = -0.10
+				offensive_war_stability_factor = 0.50
+				justify_war_goal_time = -0.5
+				army_claim_attack_factor = 0.25
+				army_claim_defence_factor = 0.25
+				army_org_factor = 0.20
+				training_time_army_factor = -0.20
+				naval_invasion_division_cap = 1.0
+				air_invasion_division_cap = 1.00
 			}
 			
-			on_remove = {
-				add_stability = -0.25
-			}
+			cancel_if_invalid = no
 		}
 	}
 }
