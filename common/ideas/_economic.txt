@@ -1668,6 +1668,133 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
+
+		PRC_Isolated_status = { #封锁状态
+			visible = {
+				tag = PRC
+				NOT = {
+					is_in_faction_with = event_target:WTT_current_china_leader
+					is_in_faction_with = SOV
+					or = { 
+						is_neighbor_of = SOV 
+						any_allied_country = { 
+							is_neighbor_of = SOV 
+						} 
+					}
+                    or = { 
+						is_neighbor_of = MON 
+						any_allied_country = { 
+							is_neighbor_of = MON 
+						} 
+					}
+                    or = { 
+						is_neighbor_of = SIK 
+						any_allied_country = { 
+							is_neighbor_of = SIK 
+						} 
+					}
+					
+				}
+			}
+
+			available = {
+				#
+			}
+
+			modifier = {
+				ai_get_ally_desire_factor = -100
+                min_export = -1.0
+			    trade_opinion_factor = -1.0
+			}
+
+			rule = {
+				can_join_factions = no
+				can_access_market = no
+				can_only_justify_war_on_threat_country = yes
+			}
+
+			allowed_to_remove = {
+				OR = {
+                    is_in_faction_with = event_target:WTT_current_china_leader
+					is_in_faction_with = SOV
+					or = { 
+						is_neighbor_of = SOV 
+						any_allied_country = { 
+							is_neighbor_of = SOV 
+						} 
+					}
+                    or = { 
+						is_neighbor_of = MON 
+						any_allied_country = { 
+							is_neighbor_of = MON 
+						} 
+					}
+                    or = { 
+						is_neighbor_of = SIK 
+						any_allied_country = { 
+							is_neighbor_of = SIK 
+						} 
+					}
+
+			    }
+				OR = { 
+					NOT = { 
+						has_war_with = XSM 
+					} 
+					XSM = {
+						 has_capitulated = yes 
+					} 
+				}
+
+				OR = { 
+					NOT = { 
+						has_war_with = GSM 
+					} 
+					GSM = { 
+						has_capitulated = yes 
+					} 
+				}
+
+				OR = { 
+					NOT = { 
+						has_war_with = NXM 
+					} 
+					NXM = { 
+						has_capitulated = yes 
+					} 
+				}
+
+				OR = { 
+					NOT = { 
+						has_war_with = XSM 
+					} 
+					XSM = {
+						 has_capitulated = yes 
+					} 
+				}
+
+				OR = { 
+					NOT = { 
+						has_war_with = GSM 
+					} 
+					GSM = { 
+						has_capitulated = yes 
+					} 
+				}
+
+				OR = { 
+					NOT = { 
+						has_war_with = NXM 
+					} 
+					NXM = { 
+						has_capitulated = yes 
+					} 
+				}
+			}
+
+			removal_cost = 0
+
+		}
 	}
 
 	economy_situation = {#民生系统
