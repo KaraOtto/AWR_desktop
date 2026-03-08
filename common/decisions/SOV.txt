@@ -5352,7 +5352,7 @@ SOV_diplomacy_baltic_decision_category = {
 		days_remove = SOV_ultimatum_days
 
 		#cost = SOV_send_ultimatum_to_country_cost
-		cost = 30 #MODDED
+		cost = 30  
 
 		remove_effect = {
 			if = {
@@ -6461,7 +6461,7 @@ SOV_diplomacy_middle_east_decision_category = {
 			always = no
 		}
 
-		days_mission_timeout = 60 #MODDED
+		days_mission_timeout = 60  
 
 		timeout_effect = { #FAIL -> Lose some stuff and Iran wants to enter an alliance
 			add_political_power = -25
@@ -6505,9 +6505,9 @@ SOV_diplomacy_middle_east_decision_category = {
 						transfer_state = 419 #Tibriz (AZB)
 						transfer_state = 420 #Gilan (AZB)
 						transfer_state = 416 #Khorasan
-					    transfer_state = 998 #MODDED
-			            transfer_state = 416 #MODDED
-			            transfer_state = 417 #MODDED
+					    transfer_state = 998  
+			            transfer_state = 416  
+			            transfer_state = 417  
 					}
 					give_resource_rights = { receiver = SOV state = 411 }
 					give_resource_rights = { receiver = SOV state = 412 }
@@ -6519,16 +6519,16 @@ SOV_diplomacy_middle_east_decision_category = {
 					}
 					ENG = {
 						 puppet = PER #ENG gets to puppet Iran
-					     transfer_state = 413 #MODDED
-			             transfer_state = 412 #MODDED
+					     transfer_state = 413  
+			             transfer_state = 412  
 					}
 					SOV = {
 						transfer_state = 419 #Tibriz (AZB)
 						transfer_state = 420 #Gilan (AZB)
 						transfer_state = 416 #Khorasan
-					    transfer_state = 998 #MODDED
-			            transfer_state = 416 #MODDED
-			            transfer_state = 417 #MODDED
+					    transfer_state = 998  
+			            transfer_state = 416  
+			            transfer_state = 417  
 					}
 					PER = {
 						give_resource_rights = { receiver = SOV state = 411 }
@@ -6570,13 +6570,13 @@ SOV_diplomacy_asia_decision_category = {
 					has_equipment = { support_equipment < 600 }
 				}
 			}
-			modifier = { #MODDED will not send guns to CHI during chinese civil war
+			modifier = {   will not send guns to CHI during chinese civil war
 				factor = 0
 				has_completed_focus = SOV_support_the_kuomintang
 				CHI = {
 					has_war_with = PRC
 				}
-			} #MODDED
+			}  
 		}
 
 		targets = { PRC CHI }
@@ -11871,10 +11871,10 @@ SOV_great_patriotic_war = {
 		icon = generic_army_support
 
 		ai_will_do = {
-			factor = 20 #MODDED
+			factor = 20  
 			modifier = {
-				surrender_progress > 0.3 #MODDED
-				factor = 1000 #MODDED
+				surrender_progress > 0.3  
+				factor = 1000  
 			}
 		}
 
@@ -11886,10 +11886,10 @@ SOV_great_patriotic_war = {
 			surrender_progress > 0.15
 		}
 
-		ai_hint_pp_cost = 30 #MODDED
+		ai_hint_pp_cost = 30  
 		custom_cost_trigger = {
-			command_power > 19 #MODDED
-			has_political_power > 29 #MODDED
+			command_power > 19  
+			has_political_power > 29  
 		}
 		custom_cost_text = decision_cost_CP_50_pp_50
 
@@ -11911,8 +11911,8 @@ SOV_great_patriotic_war = {
 
 		complete_effect = {
 			hidden_effect = {
-				add_command_power = -20 #MODDED
-				add_political_power = -30 #MODDED
+				add_command_power = -20  
+				add_political_power = -30  
 			}
 			set_country_flag = SOV_order_227_flag
 			custom_effect_tooltip = SOV_order_227_decisions_tt
@@ -17427,11 +17427,11 @@ operations = {
 		}
 
 		available = {
-			#MODDED>#JAP = { has_completed_focus = JAP_pre_emptive_coup } #august storm
+			 >#JAP = { has_completed_focus = JAP_pre_emptive_coup } #august storm
 
-			MAN = { is_subject_of = JAP } #MODDED
+			MAN = { is_subject_of = JAP }  
 			NOT = {
-				has_war_with = JAP #MODDED
+				has_war_with = JAP  
 			}
 		}
 
@@ -17439,7 +17439,7 @@ operations = {
 		days_remove = 40 #<MODDED#
 		fire_only_once = yes
 		visible = {
-			#MODDEDv#
+			 v#
 			has_global_flag = had_yalta_conference
 			#GER = {
 			#	has_war_with = ROOT
@@ -17458,16 +17458,16 @@ operations = {
 			#	}
 			#	GER = { has_capitulated = yes }
 			#}
-			#MODDED^#
-			#MODDED>#JAP = { has_completed_focus = JAP_strengthen_civilian_government }
+			 ^#
+			 >#JAP = { has_completed_focus = JAP_strengthen_civilian_government }
 			MAN = {
-				exists = yes #MODDED^#
-				is_subject_of = JAP #MODDED^#
-			} #MODDED^#
+				exists = yes  ^#
+				is_subject_of = JAP  ^#
+			}  ^#
 		}
 
 		complete_effect = {
-			if = {		#MODDEDv
+			if = {		 v
 				limit = {
 					JAP = {
 						has_idea = jap_sov_pact
@@ -17476,21 +17476,21 @@ operations = {
 				JAP = {
 					remove_ideas = jap_sov_pact
 				}
-			}		#MODDED^
+			}		 ^
 			create_wargoal = {
-				target = JAP #MODDED
+				target = JAP  
 				type = annex_everything
 			}
-			#MODDEDv#
+			 v#
 			hidden_effect = {
 				news_event = news.414
 			}
-			#MODDED^#
+			 ^#
 		}
 
 		ai_will_do = {
 			factor = 30 #<MODDED#
-			#MODDEDv#
+			 v#
 			modifier = {
 				MAN = {
 					is_ai = no #<MODDED#
@@ -17510,7 +17510,7 @@ operations = {
 				}
 				factor = 0 #we're mean but not that mean
 			}
-			#MODDED^#
+			 ^#
 			modifier = {
 				threat < 0.25
 				factor = 0
@@ -17604,8 +17604,8 @@ political_actions = {
 					1015 = { is_controlled_by = FROM }
 					600 = { is_controlled_by = FROM }
 					1042 = { is_controlled_by = FROM }
-					751 = { is_controlled_by = FROM }	#MODDED
-					1034 = { is_controlled_by = FROM }	#MODDED
+					751 = { is_controlled_by = FROM }	 
+					1034 = { is_controlled_by = FROM }	 
 					602 = { is_controlled_by = FROM }
 					603 = { is_controlled_by = FROM }
 					605 = { is_controlled_by = FROM }
@@ -17633,11 +17633,11 @@ political_actions = {
 			}
 		}
 
-		# VPI by Yard1 #MODDED
-		target_root_trigger = {		#MODDEDv
+		# VPI by Yard1  
+		target_root_trigger = {		 v
 			has_event_target = WTT_communist_china
-		} #MODDED
-		targets = { PRC CHI SIK PLM GXC YUN SHX XSM XIK SIC GUD HPC NEA SHD NXM SHC GSM TNG HMI KHR XIA KRS ATM SUY } #MODDED
+		}  
+		targets = { PRC CHI SIK PLM GXC YUN SHX XSM XIK SIC GUD HPC NEA SHD NXM SHC GSM TNG HMI KHR XIA KRS ATM SUY }  
 		targets_dynamic = yes
 
 		target_trigger = {

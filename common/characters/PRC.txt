@@ -1000,7 +1000,7 @@ characters = { ############################## 政治顾问 #####################
 	}
 
 	prc_cai_shufan = {#蔡树藩				
-		name=prc_tsai_shufan
+		name = prc_tsai_shufan
 		portraits={#蔡树藩
 			civilian={
 				small= "GFX_idea_prc_tsai_shufan"
@@ -1009,39 +1009,20 @@ characters = { ############################## 政治顾问 #####################
 		advisor={
 			slot = political_advisor
 			idea_token = prc_tsai_shufan	
-			traits = { silent_workhorse }
+			traits = { 
+				silent_workhorse 
+			}
 			available = {
 				#
 			}
 			visible = {
 				OR = {
-						has_idea = CHI_communist_in_government
-						tag = PRC has_government = communism
-						tag = event_target:WTT_current_china_leader
-					}
-			}
-            on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
+					has_idea = CHI_communist_in_government
+					AND = {
+						tag = PRC 
+						has_government = communism
 					}
 				}
-			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
 			}			
 			ai_will_do = {
 				factor = 9999
@@ -1050,7 +1031,7 @@ characters = { ############################## 政治顾问 #####################
 	}
 
 	PRC_kang_sheng = {#康生		
-		name=PRC_kang_sheng 
+		name = PRC_kang_sheng 
 		portraits={#康生
 			civilian={
 				small="GFX_idea_PRC_kang_sheng"
@@ -1059,7 +1040,11 @@ characters = { ############################## 政治顾问 #####################
 		advisor={
 			slot = political_advisor
 			idea_token = PRC_kang_sheng
-			traits = { prince_of_terror backroom_backstabber maoists_trait_kang_sheng }	
+			traits = { 
+				prince_of_terror 
+				backroom_backstabber 
+				maoists_trait_kang_sheng 
+			}	
 			available = {
 				has_global_flag = PRC_kang_sheng_returned_flag
 				
@@ -1072,14 +1057,18 @@ characters = { ############################## 政治顾问 #####################
 						}
 					}
 					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
+						OR = { 
+							has_idea = CHI_communist_in_government 
+							AND = {
+								tag = PRC
+								has_government = communism
+							}
+						}
 						tag = PRC has_government = communism
 					}
 				}
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}
+			
 			cost = 150
 			ai_will_do = {
 				factor = 1500
@@ -1093,41 +1082,6 @@ characters = { ############################## 政治顾问 #####################
 					}
 				}
 			}
-			on_add = {
-				owner = {
-				    hidden_effect = {
-					    set_variable = { PRC_kang_sheng_counter = 15 } #first increase after 15 days
-					    add_to_variable = { mao_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-				    hidden_effect = {
-					    subtract_from_variable = { mao_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
 		}
 	}
 
@@ -1135,16 +1089,18 @@ characters = { ############################## 政治顾问 #####################
 		name=prc_deng_fa
 		portraits={#邓发
 			civilian={
-				small="GFX_idea_prc_deng_fa"
+				small = "GFX_idea_prc_deng_fa"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_deng_fa
-			traits = { head_of_intelligence army_radio_intelligence_3 }	
+			traits = { 
+				head_of_intelligence 
+				army_radio_intelligence_3 
+			}	
 			available = {
 				NOT = {
-					#has_global_flag = Deng_Fa_killed_in_flight
 					has_global_flag = deng_fa_to_USSR
 					has_global_flag = deng_fa_to_SIK
 				}
@@ -1152,35 +1108,11 @@ characters = { ############################## 政治顾问 #####################
 			}
 			visible = {
 				OR = {
-						has_idea = CHI_communist_in_government
-						tag = PRC has_government = communism
-						tag = event_target:WTT_current_china_leader
-					}
-			}
-            on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
-					}
+					has_idea = CHI_communist_in_government
+					tag = PRC has_government = communism
+					tag = event_target:WTT_current_china_leader
 				}
-			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-				#has_dlc = "La Resistance" 
-			}			
+			}		
 		}
 	}
 
@@ -1188,65 +1120,30 @@ characters = { ############################## 政治顾问 #####################
 		name=prc_bo_gu 
 		portraits={#博古
 			civilian={
-				large="gfx/leaders/PRC/Portrait_China_Bo_Gu.dds"
+				large="GFX_Portrait_China_Bo_Gu"
 				small="GFX_idea_prc_bo_gu"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_bo_gu
-			traits = { editor twenty_eight_bolshevik_bo_gu }
+			traits = { 
+				editor 
+				twenty_eight_bolshevik_bo_gu 
+			}
 			available = {
-				NOT = { has_global_flag = bo_gu_marginalized }
-				#NOT = {
-				#	has_global_flag = bo_gu_killed_in_flight
-				#}
+				NOT = { 
+					has_global_flag = bo_gu_marginalized 
+				}
 			}
 			visible = {
 				OR = {
-						has_idea = CHI_communist_in_government
-						tag = PRC has_government = communism
-						tag = event_target:WTT_current_china_leader
-					}
-			}
-			on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
-					}
+					has_idea = CHI_communist_in_government
+					tag = PRC has_government = communism
+					tag = event_target:WTT_current_china_leader
 				}
 			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}			
-			on_add = {
-				owner = {
-				    hidden_effect = {
-					    set_variable = { prc_bo_gu_counter = 15 } #first increase after 15 days
-					    add_to_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-				    hidden_effect = {
-					    subtract_from_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
+			
 			can_be_fired = no 
 		}
 	}	
@@ -1255,63 +1152,33 @@ characters = { ############################## 政治顾问 #####################
 		name=prc_wang_ming
 		portraits={#王明
 			civilian={
-				large="gfx/leaders/PRC/Portrait_China_Wang_Ming.dds"
+				large="Portrait_China_Wang_Ming"
 				small="GFX_idea_prc_wang_ming"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_wang_ming
-			traits = { ideological_crusader twenty_eight_bolshevik_wang_ming }
+			traits = { 
+				ideological_crusader 
+				twenty_eight_bolshevik_wang_ming 
+			}
 			available = {
-			NOT = { has_global_flag = Wang_ming_marginalized }
-			has_global_flag = PRC_wang_ming_returned_flag
+				NOT = { 
+					has_global_flag = Wang_ming_marginalized 
+				}
+				has_global_flag = PRC_wang_ming_returned_flag
 			}
 			visible = {
 				OR = {
-						has_idea = CHI_communist_in_government
-						tag = PRC has_government = communism
-						tag = event_target:WTT_current_china_leader
-					}
-			}
-			on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
+					has_idea = CHI_communist_in_government
+					AND = {
+						tag = PRC 
+						has_government = communism
 					}
 				}
 			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}			
-			on_add = {
-				owner = {
-				    hidden_effect = {
-					    set_variable = { prc_wang_ming_counter = 15 } #first increase after 15 days
-					    add_to_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-				    hidden_effect = {
-					    subtract_from_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}	
+	
 			ai_will_do  = {
 				factor = 1.000
 				modifier  = {
@@ -1326,61 +1193,30 @@ characters = { ############################## 政治顾问 #####################
 		name=prc_meng_qingshu	
 		portraits={#孟庆树	
 			civilian={
-				small="GFX_idea_prc_meng_qingshu"
+				small = "GFX_idea_prc_meng_qingshu"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_meng_qingshu
-			traits = { diyifuren twenty_eight_bolshevik_meng_qingshu }
+			traits = { 
+				diyifuren 
+				twenty_eight_bolshevik_meng_qingshu 
+			}
 			available = {
-				has_country_leader = { character = prc_wang_ming ruling_only = yes	}
+				has_country_leader = { 
+					character = prc_wang_ming 
+					ruling_only = yes	
+				}
 			}
 			visible = {
 				OR = {
-						has_idea = CHI_communist_in_government
-						tag = PRC has_government = communism
-						tag = event_target:WTT_current_china_leader
-					}
-			}
-			on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
-					}
+					has_idea = CHI_communist_in_government
+					tag = PRC has_government = communism
+					tag = event_target:WTT_current_china_leader
 				}
 			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}			
-			on_add = {
-				owner = {
-				    hidden_effect = {
-					    set_variable = { prc_meng_qingshu_counter = 15 } #first increase after 15 days
-					    add_to_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-				    hidden_effect = {
-					    subtract_from_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
+			
 			ai_will_do  = {
 				factor = 1.000
 				modifier  = {
@@ -1392,20 +1228,23 @@ characters = { ############################## 政治顾问 #####################
 	}
 
 	prc_chen_changhao = {#陈昌浩
-		name=prc_chen_changhao
+		name = prc_chen_changhao
 		portraits={#陈昌浩
 			civilian={
-				small="GFX_idea_prc_chen_changhao"
+				small= "GFX_idea_prc_chen_changhao"
 			}
 			army={
-				large="gfx/leaders/PRC/chenchanghao.jpg"
-				
+				large= "GFX_idea_chenchanghao.jpg"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = prc_chen_changhao
-			traits = { political_commissar ZHANG_FACTION_trait_chen_changhao twenty_eight_bolshevik_chen_changhao }
+			traits = { 
+				political_commissar 
+				ZHANG_FACTION_trait_chen_changhao 
+				twenty_eight_bolshevik_chen_changhao 
+			}
 			available = {
 				NOT = {
 					has_global_flag = prc_chen_changhao_go_to_soviet_union
@@ -1422,44 +1261,7 @@ characters = { ############################## 政治顾问 #####################
 						tag = event_target:WTT_current_china_leader
 					}
 			}
-			on_add = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_up = yes
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-					if = {
-						limit = {
-						    has_idea = CHI_communist_in_government
-						}	
-						PRC_support_down = yes
-					}
-				}
-			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}			
-			on_add = {
-				owner = {
-				    hidden_effect = {
-					    set_variable = { prc_chen_changhao_counter = 15 } #first increase after 15 days
-					    add_to_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
-			on_remove = {
-				owner = {
-				    hidden_effect = {
-					    subtract_from_variable = { teb_total = 0.5 } #monthly for locs
-					}
-				}
-			}
+			
 			ai_will_do  = {
 				factor = 1.000
 				modifier  = {
@@ -1469,7 +1271,12 @@ characters = { ############################## 政治顾问 #####################
 			}	
 		}
 		corps_commander={
-			traits={ youji_hero trait_cautious  hill_fighter military_political_commissar }
+			traits={ 
+				youji_hero 
+				trait_cautious  
+				hill_fighter 
+				military_political_commissar 
+			}
 			skill=3
 			attack_skill=3
 			defense_skill=3
@@ -1980,6 +1787,63 @@ characters = { ############################## 政治顾问 #####################
 			
 			ai_will_do = {
 				factor = 1
+			}
+		}
+	}
+
+	PRC_song_qingling={ #宋庆龄
+		name= PRC_song_qingling
+		portraits={
+			civilian={
+			    small="GFX_idea_wrl_song_qingling"
+				large="gfx/leaders/PRC/ PRC_song_qingling.png"
+			}
+		}	
+		gender = female
+		country_leader = {
+			ideology = sanmin_constitutional_government
+			traits={ 
+				PRC_national_treasures 
+				social_reformer 
+				guofuyishuang 
+			}
+			expire="1965.1.1.1"
+			id=-1
+			desc= PRC_song_qingling_desc
+		}
+		advisor={
+			slot = political_advisor
+			idea_token =  PRC_song_qingling
+			
+			visible = {
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
+					}
+
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_wayaobaohuiyi_end
+				}
+			}
+			traits = { 
+				liaison_of_comintern 
+				plus_point_1_per_week 
+			}			
+			allowed = {
+				#OR = { is_literally_china = yes TAG = SOV }
+			}
+			
+			ai_will_do = {
+				factor = 1
+				
 			}
 		}
 	}
@@ -3518,7 +3382,7 @@ characters = { ############################## 陆军将领 #####################
 				
 			}
 			available = {
-				DPR = {
+				KOR = {
 					exists = no
 				}		
 			}

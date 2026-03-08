@@ -1,5 +1,5 @@
-#CHECK FOR #MODDED
-#MODDED for socialism and BOR SST SAR and a bug which vanilla confuses MAL with MLT
+#CHECK FOR  
+  for socialism and BOR SST SAR and a bug which vanilla confuses MAL with MLT
 ### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -15,7 +15,7 @@ focus_tree = {
 		factor = 0
 		
 		modifier = {
-			add = 100 #MODDED
+			add = 100  
 			tag = ENG
 		}
 	}
@@ -81,12 +81,12 @@ focus_tree = {
 	focus = {
 		id = tizard_mission_focus
 		available = {
-		    	#MODDEDv
+		    	 v
 			OR = {
 				has_government = democratic
 				has_government = n_socialism
 			}
-			#MODDED^
+			 ^
 			any_other_country = {
 				has_war_with = ROOT
 				NOT = { has_government = democratic }
@@ -96,12 +96,12 @@ focus_tree = {
 				has_war_with = USA
 			}
 			USA = {
-				#MODDEDv
+				 v
 	 			OR = {
 	 				has_government = democratic
 	 				has_government = n_socialism
 	 			}
-	 			#MODDED^
+	 			 ^
 				has_war = no
 				NOT = {
 					OR = {
@@ -223,7 +223,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = ENG_limited_rearmament_focus_2IC }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -420,7 +420,7 @@ focus_tree = {
 			}
 			if = {
 				limit = { NOT = { has_country_flag = air_defense_focus_built_max } }
-				every_owned_state = { #MODDED
+				every_owned_state = {  
 					limit = { has_state_flag = ENG_air_defense_focus_built_2 }
 					add_building_construction = {
 						type = anti_air_building
@@ -990,7 +990,7 @@ focus_tree = {
 			}
 		}
 		complete_tooltip = {
-			every_owned_state = {  #MODDED
+			every_owned_state = {   
 				limit = { has_state_flag = royal_ordinance_focus_2AF }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -1141,7 +1141,7 @@ focus_tree = {
 		}
 
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = air_rearmament_focus_2AirBase }
 				add_building_construction = {
 					type = air_base
@@ -1574,7 +1574,7 @@ focus_tree = {
 		}
 
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = ENG_naval_rearmament_focus_1dockyard }
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -1940,7 +1940,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = ENG_expand_the_repair_yards_2dockyard }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -2362,7 +2362,7 @@ focus_tree = {
 					}
 				}
 			}
-			if = { #MODDED
+			if = {  
 				limit = {
 					has_government = n_socialism
 				}
@@ -2382,7 +2382,7 @@ focus_tree = {
 						add_opinion_modifier = { target = PREV modifier = socialist_leanings_bad }
 					}
 				}
-			} #MODDED
+			}  
 			hidden_effect = {
 				news_event = { hours = 5 id = news.224 }
 			}
@@ -2669,14 +2669,14 @@ focus_tree = {
 		completion_reward = {
 			# + relations with TUR - they become more democratic and like fascist/commies less
 			if = {
-				#MODDEDv
+				 v
 				limit = {
 					OR = {
 						has_government = democratic
 						has_government = n_socialism
 					}
 				}
-				#MODDED^
+				 ^
 				TUR = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					add_timed_idea = { idea = democratic_influence days = 1095 }
@@ -2684,14 +2684,14 @@ focus_tree = {
 				}
 				every_other_country = {
 					limit = {
-						#MODDEDv
+						 v
 						NOT = {
 							OR = {
 								has_government = democratic
 								has_government = n_socialism
 							}
 						}
-						#MODDED^
+						 ^
 						num_of_factories > 30
 					}
 					add_opinion_modifier = { target = TUR modifier = democratic_leanings_bad }
@@ -2727,7 +2727,7 @@ focus_tree = {
 					add_opinion_modifier = { target = TUR modifier = neutrality_leanings_bad }
 				}
 			}
-			if = { #MODDED
+			if = {  
 				limit = { has_government = n_socialism }
 				TUR = {
 					add_opinion_modifier = { target = ENG modifier = socialist_leanings_good }
@@ -2742,7 +2742,7 @@ focus_tree = {
 					}
 					add_opinion_modifier = { target = TUR modifier = socialist_leanings_bad }
 				}
-			} #MODDED
+			}  
 			hidden_effect = {
 				news_event = { hours = 6 id = news.225 }
 			}
@@ -2777,7 +2777,7 @@ focus_tree = {
 				}
 				every_other_country = {
 					limit = {
-						#MODDEDv
+						 v
 							NOT = {
 								OR = {
 									has_government = democratic
@@ -2785,7 +2785,7 @@ focus_tree = {
 								}
 
 							}
-						#MODDED^
+						 ^
 						num_of_factories > 30
 					}
 					add_opinion_modifier = { target = GRE modifier = democratic_leanings_bad }
@@ -2821,7 +2821,7 @@ focus_tree = {
 					add_opinion_modifier = { target = GRE modifier = neutrality_leanings_bad }
 				}
 			}
-			if = { #MODDED
+			if = {  
 				limit = { has_government = n_socialism }
 				GRE = {
 					add_opinion_modifier = { target = ENG modifier = socialist_leanings_good }
@@ -2836,7 +2836,7 @@ focus_tree = {
 					}
 					add_opinion_modifier = { target = GRE modifier = socialist_leanings_bad }
 				}
-			} #MODDED
+			}  
 			hidden_effect = {
 				news_event = { hours = 6 id = news.226 }
 			}
@@ -3067,7 +3067,7 @@ focus_tree = {
 					hidden_effect = { country_event = { id =  mtg_britain.17 hours = 6 } }
 				}
 			}
-			#MODDEDv
+			 v
 			BOR = {
 				if = {
 					limit = {
@@ -3114,7 +3114,7 @@ focus_tree = {
 					hidden_effect = { country_event = { id =  mtg_britain.17 hours = 6 } }
 				}
 			}
-			#MODDED^
+			 ^
 		}
 	}
 
@@ -3235,7 +3235,7 @@ focus_tree = {
 
 		complete_tooltip = {
 			RAJ = {
-				every_owned_state = { #MODDED
+				every_owned_state = {  
 					limit = { has_state_flag = ENG_foundations_for_an_indian_state_2IC }
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
@@ -3347,7 +3347,7 @@ focus_tree = {
                                     fascism = 10
                                     communism = 2
                                     neutrality = 23
-									n_socialism = 0 #MODDED
+									n_socialism = 0  
                                 }
 								every_other_country = {
 									limit = {
@@ -3375,7 +3375,7 @@ focus_tree = {
                                     fascism = 2
                                     communism = 1
                                     neutrality = 80
-									n_socialism = 0 #MODDED
+									n_socialism = 0  
                                 }
 								every_other_country = {
 									limit = {
@@ -4916,7 +4916,7 @@ focus_tree = {
 				}
 				set_autonomy = { target = MAL autonomy_state = autonomy_dominion }
 			}
-			####MODDEDv####
+			### v####
 			if = {
 				limit = {
 					has_dlc = "Together for Victory"
@@ -4977,7 +4977,7 @@ focus_tree = {
 				retire_country_leader = yes
 			}
 			
-			#####MODDED^####
+			#### ^####
 			RAJ = {
 				transfer_state = 733
 			}
@@ -5119,18 +5119,18 @@ focus_tree = {
 							tag = AST
 							tag = NZL
 							tag = MAL
-							#MODDEDv
+							 v
 							tag = BOR
 							tag = SST
 							tag = SAR
-							#MODDED^
+							 ^
 						}
 					}
 					OR = {
 						has_government = ROOT
-						#MODDEDv
+						 v
 						has_government = n_socialism
-						#MODDED^
+						 ^
 						has_government = neutrality
 					}
 				}
@@ -5170,11 +5170,11 @@ focus_tree = {
 							tag = AST
 							tag = NZL
 							tag = MAL
-							#MODDEDv
+							 v
 							tag = BOR
 							tag = SST
 							tag = SAR
-							#MODDED^
+							 ^
 						}
 					}
 					NOT = {
@@ -5516,7 +5516,7 @@ focus_tree = {
 					size < 1
 				}
 			}
-			####MODDEDv
+			### v
 			1040 = {
 				free_building_slots = {
 					building = infrastructure
@@ -5529,7 +5529,7 @@ focus_tree = {
 					size < 1
 				}
 			}
-			####MODDED^
+			### ^
 			1042 = {
 				free_building_slots = {
 					building = infrastructure
@@ -5545,7 +5545,7 @@ focus_tree = {
 					include_locked = yes
 				}
 			}
-			####MODDEDv
+			### v
 			752 = {
 				free_building_slots = {
 					building = infrastructure
@@ -5576,7 +5576,7 @@ focus_tree = {
 					include_locked = yes
 				}
 			}
-			####MODDED^
+			### ^
 		}
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
@@ -5645,9 +5645,9 @@ focus_tree = {
 							event_target:WTT_current_china_leader = { controls_state = 325 }
 							any_other_country = {
 								is_in_faction_with = event_target:WTT_current_china_leader
-								########MODDEDv
+								####### v
 								controls_state = 325
-								########MODDED^? originally it reads 640, but seems like typo.
+								####### ^? originally it reads 640, but seems like typo.
 							}
 						}
 					}
@@ -5669,7 +5669,7 @@ focus_tree = {
 					set_state_flag = CHI_needed_for_burma_road #guo
 				}
 			}
-			########MODDEDv
+			####### v
 			1040 = {
 				if = {
 					limit = {
@@ -5681,7 +5681,7 @@ focus_tree = {
 							}
 						}
 					}
-					add_building_construction = { #MODDED
+					add_building_construction = {  
 						type = infrastructure
 						level = 2
 						instant_build = yes
@@ -5705,7 +5705,7 @@ focus_tree = {
 							}
 						}
 					}
-					add_building_construction = { #MODDED
+					add_building_construction = {  
 						type = infrastructure
 						level = 2
 						instant_build = yes
@@ -5724,11 +5724,11 @@ focus_tree = {
 						OR = {
 							event_target:WTT_current_china_leader = { controls_state = 752 }
 							any_other_country = {
-								is_in_faction_with = event_target:WTT_current_china_leader #MODDED
+								is_in_faction_with = event_target:WTT_current_china_leader  
 								controls_state = 752
 							}
 						} }
-					add_building_construction = { #MODDED
+					add_building_construction = {  
 						type = infrastructure
 						level = 2
 						instant_build = yes
@@ -5747,8 +5747,8 @@ focus_tree = {
 					
 					set_state_flag = CHI_needed_for_burma_road #guo
 				}
-			} #MODDED
-			751 = { #MODDED
+			}  
+			751 = {  
 				if = {
 					limit = {
 						OR = {
@@ -5778,13 +5778,13 @@ focus_tree = {
 					set_state_flag = CHI_needed_for_burma_road #guo
 				}
 			}
-			#########MODDED^
+			######## ^
 			1042 = {
 				if = {
 					limit = {
 						OR = {
-							event_target:WTT_current_china_leader = { controls_state = 1042 } #MODDED
-							any_other_country = { #MODDED
+							event_target:WTT_current_china_leader = { controls_state = 1042 }  
+							any_other_country = {  
 								is_in_faction_with = event_target:WTT_current_china_leader
 								controls_state = 1042
 							}
@@ -5796,7 +5796,7 @@ focus_tree = {
 					}
 					add_building_construction = {
 						type = air_base
-						level = 1 #MODDED
+						level = 1  
 						instant_build = yes
 					}
 					add_building_construction = {
@@ -6028,7 +6028,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = bunker
-					level = 2 #MODDED
+					level = 2  
 					province = 12299
 					instant_build = yes
 				}
@@ -6065,7 +6065,7 @@ focus_tree = {
 			factor = 1
 		}
 		available = {
-			1055 = { #MODDED
+			1055 = {  
 				CONTROLLER = {
 					OR = {
 						tag = ENG
@@ -6078,7 +6078,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			1055 = { #MODDED
+			1055 = {  
 				add_building_construction = {
 					type = bunker
 					level = 3
@@ -6291,14 +6291,14 @@ focus_tree = {
 			}
 			every_other_country = {
 				limit = {
-					#MODDEDv
+					 v
 					NOT = {
 						OR = {
 							has_government = democratic
 							has_government = n_socialism
 						}
 					}
-					#MODDED^
+					 ^
 					num_of_factories > 30
 				}
 				add_opinion_modifier = { target = CHI modifier = democratic_leanings_bad }
@@ -6311,29 +6311,29 @@ focus_tree = {
 		prerequisite = { focus = uk_colonial_focus }
 		available = {
 			OR = {
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = NZL #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = NZL  
+					exists = yes     
 					is_in_faction_with = ROOT
 				}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = SAF #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = SAF  
+					exists = yes     
 					is_in_faction_with = ROOT
 				}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = RAJ #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = RAJ  
+					exists = yes     
 					is_in_faction_with = ROOT
 				}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = AST #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = AST  
+					exists = yes     
 					is_in_faction_with = ROOT
 				}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = NZL #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = NZL  
+					exists = yes     
 					is_in_faction_with = ROOT
 				}
 			}
@@ -6493,9 +6493,9 @@ focus_tree = {
 		id = uk_india_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = RAJ #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = RAJ  
+				exists = yes     
 				is_in_faction_with = ROOT
 			}
 		}
@@ -6529,7 +6529,7 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 				add_opinion_modifier = { target = ENG modifier = aided_industry }
-				every_owned_state = { limit = { has_state_flag = ENG_uk_india_focus_2IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_india_focus_2IC }  
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -6537,7 +6537,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_india_focus_1IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_india_focus_1IC }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -6775,9 +6775,9 @@ focus_tree = {
 		id = uk_australia_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = AST #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = AST  
+				exists = yes     
 				is_in_faction_with = ROOT
 			}
 		}
@@ -6824,7 +6824,7 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 				add_opinion_modifier = { target = ENG modifier = aided_industry }
-				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_1IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_1IC }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -6832,7 +6832,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_2dockyards } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_2dockyards }  
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = dockyard
@@ -6840,7 +6840,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_1dockyard } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_australia_focus_1dockyard }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = dockyard
@@ -6937,9 +6937,9 @@ focus_tree = {
 		id = uk_new_zealand_focus
 		prerequisite = { focus = uk_australia_focus }
 		available = {
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = NZL #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = NZL  
+				exists = yes     
 				is_in_faction_with = ROOT
 			}
 		}
@@ -6985,7 +6985,7 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 				add_opinion_modifier = { target = ENG modifier = aided_industry }
-				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_1IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_1IC }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -6993,7 +6993,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_2dockyards } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_2dockyards }  
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = dockyard
@@ -7001,7 +7001,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_1dockyard } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_new_zealand_focus_1dockyard }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = dockyard
@@ -7098,9 +7098,9 @@ focus_tree = {
 		id = uk_canada_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = CAN #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = CAN  
+				exists = yes     
 				is_in_faction_with = ROOT
 			}
 		}
@@ -7146,7 +7146,7 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 				add_opinion_modifier = { target = ENG modifier = aided_industry }
-				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_2IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_2IC }  
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -7154,7 +7154,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_1IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_1IC }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -7162,7 +7162,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_1dockyard } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_canada_focus_1dockyard }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = dockyard
@@ -7258,9 +7258,9 @@ focus_tree = {
 		id = uk_south_africa_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = SAF #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = SAF  
+				exists = yes     
 				is_in_faction_with = ROOT
 			}
 		}
@@ -7306,7 +7306,7 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 				add_opinion_modifier = { target = ENG modifier = aided_industry }
-				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_2IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_2IC }  
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -7314,7 +7314,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_1IC } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_1IC }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -7322,7 +7322,7 @@ focus_tree = {
 						instant_build = yes
 					}
 				}
-				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_1dockyard } #MODDED
+				every_owned_state = { limit = { has_state_flag = ENG_uk_south_africa_focus_1dockyard }  
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = dockyard
@@ -7493,7 +7493,7 @@ focus_tree = {
 				OR = {
 					AND = {
 						is_subject_of = ENG
-						#MODDEDv
+						 v
 						if = {
 							limit = {
 								ROOT = {
@@ -7511,7 +7511,7 @@ focus_tree = {
 								has_government = ROOT
 							}
 						}
-						#MODDED^
+						 ^
 					}
 					exists = no
 				}
@@ -7520,7 +7520,7 @@ focus_tree = {
 				OR = {
 					AND = {
 						is_subject_of = ENG
-						#MODDEDv
+						 v
 						if = {
 							limit = {
 								ROOT = {
@@ -7538,7 +7538,7 @@ focus_tree = {
 								has_government = ROOT
 							}
 						}
-						#MODDED^
+						 ^
 					}
 					exists = no
 				}
@@ -7547,7 +7547,7 @@ focus_tree = {
 				OR = {
 					AND = {
 						is_subject_of = ENG
-						#MODDEDv
+						 v
 						if = {
 							limit = {
 								ROOT = {
@@ -7565,7 +7565,7 @@ focus_tree = {
 								has_government = ROOT
 							}
 						}
-						#MODDED^
+						 ^
 					}
 					exists = no
 				}
@@ -7574,7 +7574,7 @@ focus_tree = {
 				OR = {
 					AND = {
 						is_subject_of = ENG
-						#MODDEDv
+						 v
 						if = {
 							limit = {
 								ROOT = {
@@ -7592,7 +7592,7 @@ focus_tree = {
 								has_government = ROOT
 							}
 						}
-						#MODDED^
+						 ^
 					}
 					exists = no
 				}
@@ -8172,11 +8172,11 @@ focus_tree = {
 			    target = CAN
 			    transfer_troops = yes
 			}
-			CAN = {  #MODDED
+			CAN = {   
 				every_core_state = { 
 					add_core_of = ENG
 				} 
-			}  #MODDED
+			}   
 			SAF = {
 				every_unit_leader = {
 					set_nationality = ENG
@@ -8190,7 +8190,7 @@ focus_tree = {
 				limit = {
 					SAF = { has_completed_focus = SAF_police_windhoek }
 				}
-				SAF = {  #MODDED
+				SAF = {   
 					every_core_state = {
 						limit = {
                             NOT = {
@@ -8199,7 +8199,7 @@ focus_tree = {
 						}
 						add_core_of = ENG
 					}
-				}  #MODDED
+				}   
 			}
 			if = {
 				limit = {
@@ -8241,11 +8241,11 @@ focus_tree = {
 			    target = AST
 			    transfer_troops = yes
 			}	
-			AST = {  #MODDED
+			AST = {   
 				every_core_state = {
 					add_core_of = ENG	
 				}	
-			}  #MODDED
+			}   
 			NZL = {
 				every_unit_leader = {
 					set_nationality = ENG
@@ -8255,11 +8255,11 @@ focus_tree = {
 			    target = NZL
 			    transfer_troops = yes
 			}
-			NZL = { #MODDED
+			NZL = {  
 				every_core_state = {
 					add_core_of = ENG	
 				}	
-			}  #MODDED
+			}   
 			MAL = {
 				every_unit_leader = {
 					set_nationality = ENG
@@ -8269,7 +8269,7 @@ focus_tree = {
 			    target = MAL
 			    transfer_troops = yes
 			}
-			####MODDEDv####
+			### v####
 			SAR = {
 				every_unit_leader = {
 					set_nationality = ENG
@@ -8297,7 +8297,7 @@ focus_tree = {
 			    target = SST
 			    transfer_troops = yes
 			}
-			####MODDED^####
+			### ^####
 		}
 	}
 
@@ -8486,10 +8486,10 @@ focus_tree = {
 						OR = {
 							is_controlled_by = ROOT
 							AND = {
-								#MODDEDv
+								 v
 								is_controlled_by = SST
 								SST = { is_in_faction_with = ROOT }
-								#MODDED^
+								 ^
 							}
 						}
 					}
@@ -8580,11 +8580,11 @@ focus_tree = {
 						OR = {
 							is_controlled_by = ROOT
 							AND = {
-							#MODDEDv, vanilla confuses MAL with MLT
+							 v, vanilla confuses MAL with MLT
 								is_controlled_by = MLT
 								MLT = { is_in_faction_with = ROOT }
 							}
-							#MODDED^, vanilla confuses MAL with MLT
+							 ^, vanilla confuses MAL with MLT
 						}
 					}
 					add_building_construction = {
@@ -8739,7 +8739,7 @@ focus_tree = {
 			factor = 1
 		}
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = kickstart_the_war_industry_2AF }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -8870,9 +8870,9 @@ focus_tree = {
 		}
 		bypass = {
 			NOT = {
-				any_of_scopes = {  #MODDED
-					array = ENG.subjects #MODDED
-					exists = yes #MODDED
+				any_of_scopes = {   
+					array = ENG.subjects  
+					exists = yes  
 				}
 			}
 			NOT = {
@@ -9238,26 +9238,26 @@ focus_tree = {
 					communism > 0.2
 			 		fascism > 0.2
 			 	}
-			    #is_subject = no #MODDED
+			    #is_subject = no  
 			}
-		    hidden_trigger = { #MODDED
-				NOT = { #MODDED
-					AND = { #MODDED
+		    hidden_trigger = {  
+				NOT = {  
+					AND = {  
 						is_historical_focus_on = yes 
 						is_ai = yes
-					} #MODDED
-				} #MODDED
-			} #MODDED
+					}  
+				}  
+			}  
 		} #UK at war with fascist/commie. iraq is fascist/commie
 
-        #MODDED
+         
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
 			}
-			#MODDED
+			 
 		}
 
 		bypass = {
@@ -9299,7 +9299,7 @@ focus_tree = {
 					communism > 0.2
 			 		fascism > 0.2
 			 	}
-			    #is_subject = no #MODDED
+			    #is_subject = no  
 			}    
 		} #UK at war with fascist/commie. iran is fascist/commie
 
@@ -9307,14 +9307,14 @@ focus_tree = {
 			PER = { exists = no }
 		}
 		
-		#MODDED
+		 
 		ai_will_do = {
 			factor = 1
 			modifier = {
 			    is_historical_focus_on = yes
 			    factor = 0
 			}
-			#MODDED
+			 
 		}
 
 		will_lead_to_war_with = PER
@@ -9594,8 +9594,8 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		    modifier = {
-				factor = 0 #MODDED
-				is_historical_focus_on = yes #MODDED
+				factor = 0  
+				is_historical_focus_on = yes  
 			}
 		}
 		completion_reward = {
@@ -10757,9 +10757,9 @@ focus_tree = {
 				limit = {
 					NOT = { has_dlc = "La Resistance" }
 				}
-			any_country_with_original_tag = { #MODDED
-				original_tag_to_check = SPR #MODDED
-				exists = yes #MODDED  #MODDED
+			any_country_with_original_tag = {  
+				original_tag_to_check = SPR  
+				exists = yes     
 				has_government = fascism
 				exists = yes
 				NOT = { is_in_faction_with = ENG }
@@ -10818,9 +10818,9 @@ focus_tree = {
 				limit = {
 					NOT = { has_dlc = "La Resistance" }
 				}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = SPR #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = SPR  
+					exists = yes     
 					has_government = fascism
 					exists = yes
 					NOT = { is_in_faction_with = ENG }
@@ -10845,9 +10845,9 @@ focus_tree = {
 					NOT = { has_dlc = "La Resistance" }
 				}
 			NOT = {
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = SPR #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = SPR  
+					exists = yes     
 					has_government = fascism
 					exists = yes
 				}
@@ -10880,9 +10880,9 @@ focus_tree = {
 					limit = {
 						NOT = { has_dlc = "La Resistance" }
 					}
-				any_country_with_original_tag = { #MODDED
-					original_tag_to_check = SPR #MODDED
-					exists = yes #MODDED  #MODDED
+				any_country_with_original_tag = {  
+					original_tag_to_check = SPR  
+					exists = yes     
 					has_government = fascism
 					exists = yes
 					is_in_faction_with = GER
@@ -10980,7 +10980,7 @@ focus_tree = {
 			factor = 1
 		}
 		complete_tooltip = {
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = enact_the_mosley_memorandum_2IC }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -10989,7 +10989,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			every_owned_state = { #MODDED
+			every_owned_state = {  
 				limit = { has_state_flag = enact_the_mosley_memorandum_2AF }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -11176,12 +11176,12 @@ focus_tree = {
 		}
 		completion_reward = {
 			ENG_mosley_pacifism_level_down = yes
-			PAK = { #MODDED
+			PAK = {  
 				every_core_state = {
 					add_claim_by = ENG
 				}
-			} #MODDED
-			RAJ = { #MODDED
+			}  
+			RAJ = {  
 				every_core_state = {
 					limit = {
 						NOT = { state = 321 }
@@ -11189,12 +11189,12 @@ focus_tree = {
 					}
 					add_claim_by = ENG
 				}
-			} #MODDED
-			BRM = { #MODDED
+			}  
+			BRM = {  
 				every_core_state = {
 					add_claim_by = ENG
 				}
-			} #MODDED
+			}  
 			if = {
 				limit = {
 					country_exists = RAJ
@@ -11579,11 +11579,11 @@ focus_tree = {
 					NOT = { is_in_faction_with = CAN }
 					is_ai = no
 				}
-				CAN = { #MODDED
+				CAN = {  
 				    every_core_state = {
 					    add_claim_by = ENG
 				    }	
-			    }  #MODDED
+			    }   
 				create_wargoal = {
 					type = annex_everything
 					target = CAN
@@ -11595,11 +11595,11 @@ focus_tree = {
 					NOT = { is_in_faction_with = SAF }
 					is_ai = no
 				}
-				SAF = { #MODDED
+				SAF = {  
 				    every_core_state = {
 					    add_claim_by = ENG
 				    }	
-			    }  #MODDED
+			    }   
 				create_wargoal = {
 					type = annex_everything
 					target = SAF
@@ -11611,11 +11611,11 @@ focus_tree = {
 					NOT = { is_in_faction_with = AST }
 					is_ai = no
 				}
-				AST = { #MODDED
+				AST = {  
 				    every_core_state = {
 					    add_claim_by = ENG
 				    }	
-			    }  #MODDED
+			    }   
 				create_wargoal = {
 					type = annex_everything
 					target = AST
@@ -12389,17 +12389,17 @@ focus_tree = {
 							owns_state = 525
 							has_full_control_of_state = 525
 							owns_state = 999
-							has_full_control_of_state = 999 #MODDED
+							has_full_control_of_state = 999  
 							owns_state = 1000
-							has_full_control_of_state = 1000	#MODDED
+							has_full_control_of_state = 1000	 
 							owns_state = 1001
-							has_full_control_of_state = 1001	#MODDED
+							has_full_control_of_state = 1001	 
 							owns_state = 1002
-							has_full_control_of_state = 1002	#MODDED
+							has_full_control_of_state = 1002	 
 							owns_state = 1003
-							has_full_control_of_state = 1003	#MODDED
+							has_full_control_of_state = 1003	 
 							owns_state = 1004
-							has_full_control_of_state = 1004	#MODDED
+							has_full_control_of_state = 1004	 
 						}
 						AND = {
 							original_tag = JAP
