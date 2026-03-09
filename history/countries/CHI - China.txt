@@ -152,6 +152,26 @@ recruit_character = CHI_yang_jie
 recruit_character = CHI_xiong_shihui
 recruit_character = CHI_wu_dayou
 
+recruit_character = CHI_yasuji_okamura_zz
+recruit_character = CHI_lizongren_no_general
+recruit_character = CHI_baichongxi_no_general
+recruit_character = CHI_ariani_li
+recruit_character = CHI_sun_yuanliang
+recruit_character = CHI_fang_xianjue
+recruit_character = CHI_chen_yi
+recruit_character = PRC_lisiguang
+1078 = {
+add_manpower = -750000
+build_railway = { 
+		path = { 7014 13505 }				
+}
+add_building_construction = {
+		type = supply_node
+		level = 1
+		province = 13505
+		instant_build = yes
+	}	
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "CHI_1936_naval_mtg"
@@ -197,7 +217,11 @@ set_technology = {
 	basic_train = 1
 	militia_tech = 1
 }
- 
+diplomatic_relation = {
+	    country = SHD
+		relation = docking_rights
+		active = yes
+    } 
 
 set_variable = { var = duration_of_infra value = 120 } #teir 1
 set_variable = { var = duration_of_infra_reenable value = 70 }
@@ -209,23 +233,152 @@ add_war_support = 0.2
 
 create_import = {
 	resource = steel
-	factories = 3  
+	factories = 3 #MODDED
 	exporter = SOV
+}
+create_intelligence_agency = {
+	icon = GFX_kmt_biaozhi
+	name="中华民族复兴社"
+}
+recruit_character = CHI_dengbaoshan
+recruit_character = CHI_chenmingren
+recruit_character = CHI_hulian
+recruit_character = CHI_guorugui
+recruit_character = CHI_huangbaitao
+recruit_character = CHI_wangjingwei_zz
+
+give_guarantee = TIB
+
+add_country_leader_trait = anti_communist
+add_country_leader_trait = qinliqinwei
+
+add_ideas = german_advisorszz
+
+if = { #guo
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name="戴笠"
+		GFX = GFX_Portrait_CHI_daili
+		traits = { operative_brilliant_spy operative_infiltrator operative_commando operative_master_interrogator operative_safe_cracker }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="姜毅英"
+		GFX = GFX_Portrait_CHI_jiangyiying
+		traits = { operative_linguist operative_commando operative_safe_cracker }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}	
+	create_operative_leader = {
+		name="毛人凤"
+		GFX = GFX_Portrait_CHI_maorenfeng
+		traits = { operative_brilliant_spy operative_infiltrator operative_commando operative_master_interrogator operative_safe_cracker }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}	
+	create_operative_leader = {
+		name="池步洲"
+		GFX = GFX_Portrait_CHI_chibuzhou
+		traits = { operative_brilliant_spy operative_infiltrator operative_linguist operative_commando operative_safe_cracker }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}	
+	create_operative_leader = {
+		#沈之岳
+		name="沈之岳"
+		GFX = GFX_Portrait_CHI_Shen_Jhihyue
+		traits = {  operative_brilliant_spy operative_linguist operative_safe_cracker operative_infiltrator operative_double_agent }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI PRC }
+	}
+	create_operative_leader = {
+		name="沈醉"
+		GFX = GFX_Portrait_CHI_shenzui
+		traits = { operative_infiltrator operative_master_interrogator operative_demolition_expert operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="郑介民"
+		GFX = GFX_Portrait_CHI_zhengjiemin
+		traits = { operative_infiltrator operative_commando operative_safe_cracker operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		#actually was a CCP member before 1937 #谷正文
+		name="谷正文"
+		GFX = GFX_Portrait_CHI_Gu_Jhengwun
+		traits = {  operative_infiltrator operative_commando operative_double_agent operative_safe_cracker }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="毛森"
+		GFX = GFX_Portrait_CHI_maosen
+		traits = { operative_infiltrator operative_escape_artist operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="唐纵"
+		GFX = GFX_Portrait_CHI_tangzong
+		traits = { operative_infiltrator operative_safe_cracker operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="康泽"
+		GFX = GFX_Portrait_CHI_kangze
+		traits = { operative_infiltrator operative_master_interrogator operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
+	create_operative_leader = {
+		name="徐远举"
+		GFX = GFX_Portrait_CHI_xuyuanju
+		traits = { operative_infiltrator operative_master_interrogator operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = no
+		nationalities = { CHI }
+	}
 }
 
 add_ideas = {
-	CHI_army_corruption_000
-	CHI_superior_to_the_wrl_000
-	CHI_superior_to_the_wrl_000_for_tt
+	incompetent_heavy_industry
+	no_proper_equipment_design
+	NBIS_spy_family
+	China_whole_legal_government
+	navy_power_start_from_fujian
+	air_power_start_from_guangzhou
+	G4_the_robber
+	nea_idea_CHI_shanghai_ceasefire_agreement #淞沪停战协定
+	nea_idea_CHI_he_umezu_agreement #何梅协定
+	military_unable_to_organize
+	victory_of_Great_war_of_Zhongyuan
 	i_will_defend #hidden ideas for defensive AI
 	free_trade
 	CHI_alexander_von_falkenhausen
 	CHI_lin_sen
 	yang_yongtai
 	#CHI_communist_uprisings
-	prince_de_defect
-	CHI_fractured_administration_idea_1
-	appeasement_policy
+	# prince_de_defect
+	China_weak_control_of_the_land
+	appeasement_policy #绥靖政策
 	chiang
 	#CHI_nanking_decade_idea
 	unstable_economy
@@ -238,7 +391,7 @@ add_ideas = {
 	#collectivist_ethos_focus
 }
 
-add_timed_idea = { idea = chi_nanfang days = 553 }
+add_timed_idea = { name = chi_nanfang days = 553 }
 
 #607 = { # Western Honan
 	#add_dynamic_modifier = { modifier = PRC_dihoukangrigenjudi }
@@ -273,6 +426,17 @@ if = {
 }
 
 set_convoys = 40
+
+# CHI = {
+
+
+
+
+# add_ideas = CHI_zhengxue
+# add_ideas = CHI_huangpu
+# add_ideas = CHI_tumu
+
+# }
 
 1939.1.1 = {
 	add_ideas = CHI_sov_pact
