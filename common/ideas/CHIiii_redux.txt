@@ -1,0 +1,47 @@
+ideas = {
+	country = {
+		CHI_timed_eighty_attack = {#光头攻势，新加的80攻防buff
+			picture = generic_morale_bonus
+		    modifier = {
+				army_attack_factor = 0.8
+				army_defence_factor = 0.8
+				army_speed_factor = 0.25
+			}
+			cancel = {
+				has_war_with = JAP
+			}
+		}
+		CHI_time_is_not_enough = {#光头攻势失败了的debuff，猖獗的反蒋势力
+			picture = the_war_to_end_all_wars
+			modifier = {
+				political_advisor_cost_factor = 1
+				political_power_gain = -0.5
+				air_cas_efficiency = -0.5
+				air_accidents_factor = 0.5
+				army_speed_factor = -0.1
+				max_commander_army_size = -6
+				training_time_army_factor = 0.5
+				max_dig_in_factor = -0.5
+			}
+			cancel = {
+				NOT = {
+					has_country_leader = CHI_chiang_kai_shek
+				}
+			}
+		}
+		CHI_united_on_time = {#光头攻势成功了的荡平军阀buff
+			picture = idea_ETH_conservative_high_command
+			modifier = {
+				political_power_gain = 2
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+				army_org_regain = 0.1
+				max_dig_in_factor = 0.5
+				stability_factor = 0.15
+				war_support_factor = 0.15
+			}
+		}
+		
+	}
+
+}

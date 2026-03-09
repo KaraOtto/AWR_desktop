@@ -1,0 +1,128 @@
+China_government_reform_decisions = {
+	China_government_reform_decisions_2g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land
+				add_idea = China_weak_control_of_the_land_2
+			}
+		}
+	}
+
+	China_government_reform_decisions_3g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_2
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_2
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_2
+				add_idea = China_weak_control_of_the_land_3
+			}
+		}
+	}
+	China_government_reform_decisions_4g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_3
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_3
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_3
+				add_idea = China_weak_control_of_the_land_4
+			}
+		}
+	}
+	China_government_reform_decisions_5g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_4
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_4
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_4
+				add_idea = China_weak_control_of_the_land_5
+			}
+		}
+	}
+}
+
+CHI_spy_family_NBIS_recharge_cat = {
+	CHI_spy_family_NBIS_recharge = {
+		icon = generic_nationalism
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = yes
+		available = {
+			agency_upgrade_number > 6
+		}
+		visible = {
+			tag = CHI
+			
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = NBIS_spy_family
+				add_idea = NBIS_spy_family_guy
+			}
+		}
+	}
+	CHI_restore_power_to_clean_up_G4_robber = {
+		icon = generic_wall_line
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = yes
+		available = {
+			has_political_power  > 1000
+			surrender_progress > 0.6
+		}
+		visible = {
+			
+			tag = CHI
+			
+			
+		}
+		complete_effect = {
+			add_political_power = -1000
+			custom_effect_tooltip = this_is_a_hard_road_to_victory
+			country_event = CHI_right_line.31 
+		}
+	}
+}

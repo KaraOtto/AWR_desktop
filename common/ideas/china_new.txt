@@ -1,0 +1,670 @@
+ideas = {
+	country = {
+		#-------------------------以下是开局的buff------------------------------
+		military_unable_to_organize = { #臃肿且派系林立的匪帮
+			picture = chi_army_corruption
+			allowed_civil_war = { always = yes }
+			modifier = {
+				army_attack_against_major_factor = -0.45
+				army_defence_against_major_factor = -0.45
+				army_attack_factor = -0.45
+				army_defence_factor = -0.45
+				land_night_attack = -0.5
+				consumer_goods_factor = 0.3
+				production_lack_of_resource_penalty_factor = 0.3
+				special_forces_training_time_factor = 10
+				training_time_army_factor = 0.5
+				army_speed_factor = -0.1
+				experience_gain_army_factor = 0.05
+				pocket_penalty = 0.5
+				production_speed_bunker_factor = 0.25
+				land_reinforce_rate = -0.02
+			}
+		}
+
+		victory_of_Great_war_of_Zhongyuan = { #中原大战的胜利者
+			picture = generic_victors_of_ww1
+			allowed_civil_war = { always = yes }
+			modifier = {
+				 experience_gain_air_factor = 0.05
+				 conscription = -0.003
+				 global_building_slots_factor = 0.2
+				 land_doctrine_cost_factor = 0.3
+				 enemy_justify_war_goal_time = 0.25
+			}
+			 
+		}
+		G4_the_robber = { #四大家族
+			picture = chi_hyper_inflation5
+			modifier = {
+				mobilization_speed = -0.75
+				license_purchase_cost = -0.7
+				license_production_speed = 0.5
+				political_power_gain = -1
+				supply_node_range = -0.25
+				truck_attrition_factor = 1
+				intelligence_agency_defense = -1
+				required_garrison_factor = 0.25
+				license_infantry_eq_tech_difference_speed_factor = -0.5
+				license_artillery_eq_tech_difference_speed_factor = -0.5
+				license_light_tank_eq_tech_difference_speed_factor = -0.5
+				license_anti_tank_eq_tech_difference_speed_factor = -0.5
+				military_factory_donations = 10
+				industrial_factory_donations = 20
+				enemy_justify_war_goal_time = -0.25
+				trade_opinion_factor = 0.2
+				production_speed_buildings_factor = -0.35
+				stability_factor = 0.1
+				political_advisor_cost_factor = -0.35
+				monthly_population = -0.4
+				production_factory_max_efficiency_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.2
+				industrial_capacity_factory = -0.5
+			}
+		}
+		air_power_start_from_guangzhou = { #新生的中国空军
+			picture = CHI_air_force 
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_accidents_factor = 0.3
+				air_ace_bonuses_factor = 0.2
+				air_advisor_cost_factor = -0.35
+				air_cas_efficiency = -0.3
+				air_fuel_consumption_factor = 0.3
+				air_doctrine_cost_factor = -0.1
+				air_range_factor = -0.1
+			}
+		}
+		navy_power_start_from_fujian = { #老旧的海军
+			picture = generic_coastal_navy
+			allowed_civil_war = { always = yes }
+
+			modifier = {
+				navy_advisor_cost_factor = -0.35
+				navy_anti_air_attack_factor = -0.2
+				navy_max_range_factor = -0.25
+				navy_leader_start_level = 3
+				navy_screen_attack_factor = -0.35
+				navy_org_factor = 0.4
+			}
+		}
+		China_whole_legal_government = { #目前唯一的中国合法政府
+			picture = chi_chinese_unity
+			modifier = {
+				political_power_gain = 1
+				army_attack_against_minor_factor = 0.3
+				army_defence_against_minor_factor = 0.3
+				global_building_slots_factor = 0.2
+				production_speed_buildings_factor = 0.25
+				stability_factor = 0.2
+				command_power_gain = 0.25
+				industrial_capacity_factory = 0.3
+				send_volunteer_size = 24
+				air_volunteer_cap = 25
+			}
+		}
+		NBIS_spy_family = { #统计局
+			picture = CHI_blue_shirt_society
+			modifier = {
+				operative_slot = 5
+				resistance_target_on_our_occupied_states = 0.25
+				compliance_growth_on_our_occupied_states = -0.25
+				recon_factor = 0.05
+				stability_weekly = -0.001
+				war_support_weekly = -0.001
+				party_popularity_stability_factor = 0.1
+				crypto_strength = 5
+				decryption_power = 5
+				intel_network_gain_factor = 0.4
+				own_operative_detection_chance_factor = -0.15
+				enemy_operative_detection_chance_factor = -0.15
+				civilian_intel_factor = -0.25
+				army_intel_factor = -0.25
+				navy_intel_factor = -0.25
+				airforce_intel_factor = -0.25
+				intelligence_agency_defense = 1
+			}
+		}
+		CHI_industrial_start = { #起步的中国工业
+			picture = POL_disjointed_industry
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_factory_efficiency_gain_factor = -0.25
+				production_factory_max_efficiency_factor = -0.25
+				consumer_goods_factor = -0.05
+				land_bunker_effectiveness_factor = -0.45
+				coastal_bunker_effectiveness_factor = -0.45
+				resource_trade_cost_bonus_per_factory = -3
+			}
+		}
+		China_weak_control_of_the_land = { #孱弱的行政机构
+			picture = chi_warlord_integration
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.3
+				stability_factor = -0.3
+				war_support_factor = -0.3
+				conscription_factor = -0.75
+				production_speed_infrastructure_factor = -0.2
+				research_speed_factor = -0.25
+			}
+		}
+		#-------------------------以下是点国策给的buff------------------------------
+		Five_power_Constitution = { #五权宪法
+			picture = MEN_pailingmiao_council
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_gain = 2
+				democratic_drift = 0.1
+				production_factory_max_efficiency_factor = 0.25
+				production_factory_efficiency_gain_factor = 0.25
+				consumer_goods_factor = 0.1
+				global_building_slots_factor = 0.5
+				conscription = 0.03
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+				research_speed_factor = 0.2
+				production_speed_buildings_factor = 0.25
+			}
+		}
+		real_sanmin_start_from_steps = { #实行宪政
+			picture = CHI_three_principles_of_the_people
+			allowed_civil_war = { always = yes }
+			modifier = {
+				conscription_factor = 0.78
+				mobilization_speed = 1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				# mechanized_attack_factor = 0.1
+				# mechanized_defence_factor = 0.1
+				supply_node_range = 0.5
+
+			}
+		}
+		new_equal_trade = { #新平等条约
+			picture = BRA_dasp
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				trade_opinion_factor = 0.1
+			}
+		}
+		
+		CHI_railway_plan_start = { #中国铁路计划
+			picture = generic_build_infrastructure
+			allowed_civil_war = { always = yes }
+			modifier = {
+				mobilization_speed = 0.5
+				repair_speed_rail_way_factor = 0.5
+				production_speed_rail_way_factor = 0.5
+			}
+		}
+	
+		land_of_unity_and_warmth = { #自强的国度，温暖的家园
+			picture = chi_warlord_integration5
+			allowed_civil_war = { always = yes }
+			modifier = {
+				consumer_goods_factor = 0.1
+				political_power_gain = 1
+				democratic_drift = 0.15
+				communism_drift = 0.15
+				stability_weekly = 0.1
+				war_support_weekly = 0.1
+				terrain_penalty_reduction = 0.5
+				monthly_population = 3
+			}
+		}
+		blue_shirt_become_T_shirt = { #实施军政
+			picture = CHI_a_new_middle_kingdom
+			modifier = {
+				experience_loss_factor = -0.15
+				consumer_goods_factor = -0.3
+				conscription = 0.05
+				monthly_population = -0.3
+				production_factory_max_efficiency_factor = 0.25
+				production_factory_efficiency_gain_factor = 0.25
+				industrial_capacity_factory = 0.3
+				army_speed_factor = 0.25
+				land_reinforce_rate = 0.04
+				political_power_gain = -1
+				operative_slot = 3
+				operation_risk = -0.5
+				resistance_growth = 0.3
+				compliance_growth = -0.3
+				justify_war_goal_time = -0.25
+			}
+		}
+		resource_exploit_committee_start = { #资源委员会
+			picture = ast_all_in
+			allowed_civil_war = { always = yes }
+			modifier = {
+				local_resources_factor = 0.2
+				min_export = -0.2
+				production_speed_infrastructure_factor = 0.15
+			}
+		}
+		resource_exploit_committee_end = { #资源委员会
+			picture = ast_all_in
+			allowed_civil_war = { always = yes }
+			modifier = {
+				local_resources_factor = 0.5
+				min_export = -0.4
+				production_speed_infrastructure_factor = 0.3
+				consumer_goods_factor = 0.1
+			}
+		}
+		navy_marine_establish = { #海军陆战队
+			picture = CHI_kiangnan
+			modifier = {
+				invasion_preparation = -0.5
+				naval_invasion_penalty = -0.3
+				shore_bombardment_bonus = 1
+			}
+		}
+		G4_the_robber_worse = { #更猖獗的四大家族
+			picture = chi_hyper_inflation5
+			modifier = {
+				consumer_goods_factor = 9
+				mobilization_speed = -1
+				license_purchase_cost = -0.7
+				license_production_speed = 0.5
+				political_power_gain = -10
+				supply_node_range = -0.25
+				truck_attrition_factor = 1
+				intelligence_agency_defense = -11
+				required_garrison_factor = 0.25
+				license_infantry_eq_tech_difference_speed_factor = -0.5
+				license_artillery_eq_tech_difference_speed_factor = -0.5
+				license_light_tank_eq_tech_difference_speed_factor = -0.5
+				license_anti_tank_eq_tech_difference_speed_factor = -0.5
+				military_factory_donations = 10
+				industrial_factory_donations = 50
+				enemy_justify_war_goal_time = -0.75
+				trade_opinion_factor = 2
+				production_speed_buildings_factor = -0.65
+				stability_factor = 0.2
+				political_advisor_cost_factor = 1
+				monthly_population = -1.5
+				production_factory_max_efficiency_factor = -0.4
+				production_factory_efficiency_gain_factor = -0.4
+				industrial_capacity_factory = -0.5
+			}
+		}
+		
+		#-------------------------以下是换线的支持率buff------------------------
+		sanmin_fascism_change_line = { #极速右转
+			picture = CHI_a_new_middle_kingdom
+			modifier = {
+				fascism_drift = 0.3
+				democratic_drift = -0.3
+				neutrality_drift = -0.3
+				communism_drift = -0.3
+			}
+		}
+		
+		sanmin_communist_and_socialist_accept = { #接纳左翼
+			picture = gre_agricultural_communes
+			modifier = {
+				fascism_drift = -0.3
+				democratic_drift = 0.3
+				neutrality_drift = -0.3
+				communism_drift = 0.3
+			}
+		}
+
+
+		#-------------------------以下是改进的buff------------------------------
+		military_unable_to_organize_2 = { #臃肿且派系林立的军队
+			picture = chi_army_corruption2
+			allowed_civil_war = { always = yes }
+			modifier = {
+				army_attack_against_major_factor = -0.3
+				army_defence_against_major_factor = -0.3
+				army_attack_factor = -0.3
+				army_defence_factor = -0.3
+				land_night_attack = -0.25
+				consumer_goods_factor = 0.6
+				production_lack_of_resource_penalty_factor = 0.6
+				special_forces_training_time_factor = 10
+				training_time_army_factor = 0.25
+				army_speed_factor = -0.05
+				experience_gain_army_factor = 0.15
+				pocket_penalty = 0.35
+				production_speed_bunker_factor = 0.15
+				initiative_factor = 0.05
+			}
+		}
+		military_unable_to_organize_3 = { #军事改革进入深水区
+			picture = chi_army_corruption3
+			allowed_civil_war = { always = yes }
+			modifier = {
+				army_attack_against_major_factor = -0.15
+				army_defence_against_major_factor = -0.15
+				army_attack_factor = -0.15
+				army_defence_factor = -0.15
+				land_night_attack = -0.15
+				consumer_goods_factor = 0.9
+				production_lack_of_resource_penalty_factor = 0.6
+				special_forces_training_time_factor = 10
+				training_time_army_factor = -0.15
+				army_speed_factor = 0.05
+				experience_gain_army_factor = 0.35
+				pocket_penalty = 0.1
+				production_speed_bunker_factor = -0.15
+				initiative_factor = 0.1
+				land_reinforce_rate = 0.05
+			}
+		}
+		military_unable_to_organize_4 = { #进行现代化改革
+			picture = CHI_protracted_warfare
+			allowed_civil_war = { always = yes }
+			modifier = {
+				army_attack_against_major_factor = 0.05
+				army_defence_against_major_factor = 0.05
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				land_night_attack = 0.05
+				training_time_army_factor = 0.15
+				army_speed_factor = 0.15
+				experience_gain_army_factor = 0.05
+				pocket_penalty = -0.05
+				initiative_factor = 0.2
+				land_reinforce_rate = 0.1
+				army_artillery_attack_factor = 0.15
+				mechanized_attack_factor = 0.15
+				army_defence_factor = 0.15
+				mechanized_defence_factor = 0.15
+				army_armor_attack_factor = 0.15
+				army_armor_speed_factor = 0.05
+				army_armor_defence_factor = 0.15
+				planning_speed = 0.15
+				max_planning_factor = 0.1
+			}
+		}
+		military_unable_to_organize_5 = { #黄埔精神
+			picture = chi_whampoa_military_academy
+			allowed_civil_war = { always = yes }
+			modifier = {
+				army_attack_against_major_factor = 0.05
+				army_defence_against_major_factor = 0.05
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				land_night_attack = 0.35
+				training_time_army_factor = 0.5
+				army_speed_factor = 0.15
+				experience_gain_army_factor = 0.05
+				pocket_penalty = -0.3
+				initiative_factor = 0.2
+				land_reinforce_rate = 0.1
+				army_artillery_attack_factor = 0.15
+				mechanized_attack_factor = 0.15
+				army_defence_factor = 0.15
+				mechanized_defence_factor = 0.15
+				army_armor_attack_factor = 0.15
+				army_armor_speed_factor = 0.05
+				army_armor_defence_factor = 0.15
+				supply_node_range = 0.25
+				political_power_gain = -0.1
+				mobilization_laws_cost_factor = -0.33
+				planning_speed = 0.25
+				max_planning_factor = 0.15
+			}
+		}
+
+		air_power_start_from_guangzhou_2 = { #后备充足的中国空军
+			picture = CHI_air_force 
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_accidents_factor = 0.15
+				air_ace_bonuses_factor = 0.3
+				air_advisor_cost_factor = -0.35
+				air_cas_efficiency = -0.15
+				air_volunteer_cap = 5
+				air_agility_factor = 0.05
+				air_fuel_consumption_factor = 0.5
+				air_doctrine_cost_factor = -0.2
+				air_range_factor = 0.05
+			}
+		}
+		air_power_start_from_guangzhou_3 = { #技术高超的中国空军
+			picture = CHI_air_force 
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_bombing_targetting = 0.25
+				air_ace_bonuses_factor = 0.5
+				air_advisor_cost_factor = -0.15
+				air_cas_efficiency = 0.05
+				air_nav_efficiency = 0.05
+				air_escort_efficiency = 0.05
+				air_volunteer_cap = 5
+				air_agility_factor = 0.15
+				air_fuel_consumption_factor = 0.25
+				air_doctrine_cost_factor = -0.35
+				air_range_factor = 0.15
+			}
+		}
+		air_power_start_from_guangzhou_4 = { #美丽的锦绣河山！辉映着无敌机群！
+			picture = CHI_air_force 
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_bombing_targetting = 0.5
+				air_ace_bonuses_factor = 0.5
+				air_advisor_cost_factor = -0.05
+				air_cas_efficiency = 0.35
+				air_nav_efficiency = 0.35
+				air_escort_efficiency = 0.25
+				air_volunteer_cap = 5
+				air_agility_factor = 0.25
+				air_fuel_consumption_factor = 0.25
+				air_doctrine_cost_factor = -0.35
+				air_range_factor = 0.15
+			}
+		}
+		China_air_focus_on_day_bombing = { #专注于日间轰炸
+			picture = man_five_year_plan_air
+			allowed_civil_war = { always = yes }
+			modifier = {
+				strategic_bomb_visibility = 0.1
+				air_strategic_bomber_bombing_factor = 0.5
+			}
+		}
+		China_air_focus_on_night_bombing = { #专注于夜间轰炸
+			picture = man_five_year_plan_air
+			allowed_civil_war = { always = yes }
+			modifier = {
+				strategic_bomb_visibility = -0.3
+				air_strategic_bomber_bombing_factor = 0.2
+				air_strategic_bomber_night_penalty = -0.8
+			}
+		}
+		navy_power_start_from_fujian_2 = { #重组海军
+			picture = CHI_republic_of_china_navy
+			allowed_civil_war = { always = yes }
+
+			modifier = {
+				navy_advisor_cost_factor = -0.35
+				navy_anti_air_attack_factor = -0.2
+				navy_max_range_factor = -0.25
+				navy_leader_start_level = 3
+				navy_screen_attack_factor = -0.15
+				navy_org_factor = 0.2
+				production_speed_dockyard_factor = 1
+				consumer_goods_factor = 0.2
+			}
+		}
+		China_navy_expand_plan = { #海军扩张计划
+			picture = PRC_shipbuilding_industry_bureau
+			allowed_civil_war = { always = yes }
+
+			modifier = {
+				industrial_capacity_dockyard_powered = 0.6
+				production_speed_dockyard_factor = 0.3
+				
+			}
+		}
+		navy_power_start_from_fujian_31 = { #中国海军：破交防守方案
+			picture = CHI_republic_of_china_navy
+			allowed_civil_war = { always = yes }
+
+			modifier = {
+				navy_advisor_cost_factor = -0.35
+				navy_anti_air_attack_factor = -0.05
+				navy_max_range_factor = 0.15
+				navy_leader_start_level = 3
+				navy_screen_attack_factor = 0.05
+				navy_org_factor = 0.4
+				navy_submarine_attack_factor = 0.25
+				navy_submarine_defence_factor = 0.25
+				improved_submarine_cost_factor = -0.35
+				advanced_submarine_cost_factor = -0.35
+			}
+		}
+		navy_power_start_from_fujian_32 = { #中国海军：航母进攻方案
+			picture = CHI_republic_of_china_navy
+			allowed_civil_war = { always = yes }
+
+			modifier = {
+				carrier_traffic = 0.25
+				air_carrier_night_penalty_reduction_factor = 1
+				navy_carrier_air_targetting_factor = 0.15
+				navy_carrier_air_agility_factor = 0.15
+				navy_carrier_air_attack_factor = 0.15
+				improved_carrier_cost_factor = -0.35
+				advanced_carrier_cost_factor = -0.35
+				navy_advisor_cost_factor = -0.35
+				navy_anti_air_attack_factor = 0.2
+				navy_max_range_factor = 0.05
+				navy_leader_start_level = 3
+				navy_screen_attack_factor = 0.15
+				navy_org_factor = 0.2
+				
+				
+			}
+		}
+
+		NBIS_spy_family_guy = { #国防部保密局
+			picture = CHI_blue_shirt_society
+			modifier = {
+				operative_slot = 5
+				resistance_target_on_our_occupied_states = 0.25
+				compliance_growth_on_our_occupied_states = -0.25
+				recon_factor = 0.05
+				
+				party_popularity_stability_factor = 0.3
+				crypto_strength = 5
+				decryption_power = 5
+				intel_network_gain_factor = 0.4
+				own_operative_detection_chance_factor = -0.15
+				enemy_operative_detection_chance_factor = 0.15
+				
+				intelligence_agency_defense = 3
+			}
+		}
+
+		CHI_industrial_progress_1 = { #发展中的中国工业
+			picture = ARG_civilian_economy_boost
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_factory_efficiency_gain_factor = -0.2
+				production_factory_max_efficiency_factor = -0.2
+				consumer_goods_factor = -0.05
+				land_bunker_effectiveness_factor = 0.05
+				coastal_bunker_effectiveness_factor = 0.05
+				resource_trade_cost_bonus_per_factory = -2
+				industrial_capacity_factory = 0.1
+			}
+		}
+		CHI_industrial_progress_2 = { #快速进步中的中国工业
+			picture = ARG_construction_guilds
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_max_efficiency_factor = -0.15
+				consumer_goods_factor = -0.1
+				land_bunker_effectiveness_factor = 0.25
+				coastal_bunker_effectiveness_factor = 0.25
+				resource_trade_cost_bonus_per_factory = -1
+				industrial_capacity_factory = 0.2
+			}
+		}
+		CHI_industrial_progress_3 = { #自给自足的中国工业
+			picture = ARG_economic_reactivation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				consumer_goods_factor = -0.2
+				land_bunker_effectiveness_factor = 0.25
+				coastal_bunker_effectiveness_factor = 0.25
+				resource_trade_cost_bonus_per_factory = 2
+				industrial_capacity_factory = 0.25
+			}
+		}
+		China_weak_control_of_the_land_2 = { #得以恢复的行政机构
+			picture = chi_warlord_integration2
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				conscription_factor = -0.50
+				production_speed_infrastructure_factor = -0.15
+				research_speed_factor = -0.20
+			}
+		}
+		China_weak_control_of_the_land_3 = { #步入正轨的行政机构
+			picture = chi_warlord_integration3
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.1
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				conscription_factor = -0.25
+				production_speed_infrastructure_factor = -0.1
+				research_speed_factor = -0.15
+			}
+		}
+		China_weak_control_of_the_land_4 = { #运转正常的行政机构
+			picture = chi_warlord_integration4
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				conscription_factor = 0.05
+				production_speed_infrastructure_factor = -0.05
+				research_speed_factor = -0.05
+			}
+		}
+		China_weak_control_of_the_land_5 = { #高效运行的行政机构
+			picture = chi_warlord_integration5
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.25
+				production_speed_infrastructure_factor = 0.15
+				research_speed_factor = 0.15
+			}
+		}
+		#-------------------------以下是处于内战或抗战期间的buff-----------------
+		CHI_inner_affair_no_fiction = { #中国事务
+			picture = chi_chinese_unity
+			modifier = {
+				surrender_limit = 5
+			}
+			cancel = {
+				
+				has_global_flag = china_last_civil_war_has_ended
+			}
+			rule = {
+				can_join_factions = no
+				can_be_called_to_war = no
+				can_be_spymaster = no
+				can_create_factions = no
+				
+			}
+		}
+	}
+}
