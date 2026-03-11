@@ -156,4 +156,69 @@ leader_traits = {
 			factor = 0 
 		}
 	}
+
+	advantaged_operational_experts = {	#优势破敌的战略家
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			planning_speed = -0.15
+			max_planning = 0.20
+			army_attack_factor = 0.05
+			experience_loss_factor = -0.15
+		}
+		
+		new_commander_weight = {
+			factor = 0
+		}
+		
+		trait_xp_factor = {
+			organizer = 1     #+100%
+			
+		}
+		
+		planning_skill_factor = 1
+	}
+
+	rising_young_officer = {	#冉冉升起的新星
+		type = land
+		trait_type = personality_trait
+		
+		non_shared_modifier = {
+			experience_gain_factor = 0.25
+		}
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+
+	rising_young_officer_2 = {	#独当一面的将军
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			army_org_factor = 0.1 #陆军组织度
+			army_morale_factor = 0.1 #陆军组织度恢复
+			land_reinforce_rate = 0.05
+			experience_loss_factor = -0.05
+		}
+		
+		trait_xp_factor = {
+			organizer = 1     #+100%
+			trickster = 1     #+100%
+			infantry_leader = 1     #+100%
+			skilled_staffer = 1     #+100%
+		}
+		
+		logistics_skill_factor = 1
+		planning_skill_factor = 1
+		attack_skill_factor = 1
+		
+		non_shared_modifier = {
+			experience_gain_factor = 0.10
+		}
+		new_commander_weight = {
+			factor = 0
+		}
+	}
 }
