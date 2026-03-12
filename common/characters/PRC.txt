@@ -1787,6 +1787,7 @@ characters = {
 			traits = {
 				CMU_principal
 			}
+			desc = hecheng_desc
 		}
 
 		corps_commander={
@@ -1806,7 +1807,7 @@ characters = {
 				}
 			}			
 		}		
-
+		desc = hecheng_desc
 	}
 }
 ############################## 陆军将领 ##############################
@@ -2535,13 +2536,13 @@ characters = {
 			}					 
         }
 	}
-	#做到这里
+	
 	PRC_huang_kecheng={ #黄克诚
 		name= prc_huang_kecheng
 		portraits={
 			army={
-				large="gfx/leaders/PRC/huangkecheng.jpg"
-				small="GFX_idea_PRC_huangkecheng"
+				large="GFX_huang_kecheng"
+				small="GFX_idea_PRC_huang_kecheng"
 			}
 		}
 			
@@ -2561,86 +2562,100 @@ characters = {
 			NOT = {
 					has_global_flag = prc_mianzhi_huang
 			    }
-		    }	
-			desc = gaojingting_desc		
+		    }		
 		}
 	}
 
 	PRC_xiang_ying={#项英
-		name=PRC_xiang_ying #項英
+		name=PRC_xiang_ying 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Xiang_Ying.dds"
-				small="gfx/interface/ideas/PRC_xiang_ying.png"
+				large="GFX_Portrait_PRC_Xiang_Ying"
+				small="GFX_idea_PRC_xiang_ying"
 			}
 		}
 		advisor={
 			slot = army_chief
 			idea_token = PRC_xiang_ying
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
 			
 			available = {
-				OR = { has_completed_focus = PRC_Join_the_war date > 1939.1.1 }
+				OR = { 
+					has_completed_focus = PRC_Join_the_war 
+					date > 1939.1.1 
+				}
 			}
                 
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+			traits = { 
+				army_chief_old_guard 
+				trait_28b_trait_PRC_xiang_ying 
 			}
-			traits = { army_chief_old_guard trait_28b_trait_PRC_xiang_ying }
 			cost = 50
 			ai_will_do = {
 				factor = 0
 			}
 		}
 		field_marshal={
-			traits={ youji_hero irregulars_leader old_guard scavenger military_political_commissar }
+			traits={ 
+				youji_hero 
+				irregulars_leader 
+				old_guard scavenger 
+				military_political_commissar 
+			}
 			skill=3
 			attack_skill=3
 			defense_skill=3
 			planning_skill=3
 			logistics_skill=3
 			legacy_id=-1
-			visible = { OR = { has_completed_focus = PRC_Join_the_war date > 1939.1.1 } }
+			visible = { 
+				OR = { 
+					has_completed_focus = PRC_Join_the_war 
+					date > 1939.1.1 
+				} 
+			}
 		}
 	}
 	
 	PRC_xiao_ke={#萧克
-		name=PRC_xiao_ke#蕭克
+		name=PRC_xiao_ke
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Xiao_Ke.dds"
+				large="GFX_Portrait_PRC_Xiao_Ke.dds"
 			}
 		}
 		corps_commander={
-			traits={ youji_hero career_officer infantry_officer }
+			traits={ 
+				youji_hero 
+				career_officer 
+				infantry_officer 
+			}
 			skill=3
 			attack_skill=3  
 			defense_skill=3
 			planning_skill=3
 			logistics_skill=3
 			legacy_id=-1
-			visible = { has_global_flag = union_of_the_three_armies } 			
+			visible = { 
+				has_global_flag = union_of_the_three_armies 
+			} 			
 		}
 	}	
 	
 	PRC_su_yu={#粟裕
-		name=PRC_su_yu #粟裕
+		name=PRC_su_yu 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Su_Yu.dds"
-				small="GFX_idea_PRC_su_yu"
+				large= "GFX_Portrait_PRC_Su_Yu"
+				small= "GFX_idea_PRC_su_yu"
 			}
 		}
 		advisor={
@@ -2648,29 +2663,29 @@ characters = {
 			idea_token = PRC_su_yu
 			ledger = army			
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
 			available = {	
-                OR = { has_completed_focus = PRC_Join_the_war date > 1939.1.1 }				  				  					  
+                OR = { 
+					has_completed_focus = PRC_Join_the_war 
+					date > 1939.1.1 
+				}				  				  					  
             }
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+			
+			traits = { 
+				army_speed_battlefield_3 
 			}
-			traits = { army_speed_battlefield_3 }
 			cost = 200
 			ai_will_do = {
 				factor = 450
 			}
+
 			desc=suyu_desc
 		}
 		corps_commander={
@@ -2688,7 +2703,7 @@ characters = {
 				trickster  
 			}
 			skill = 5
-			attack_skill = 8
+			attack_skill = 10
 			defense_skill = 4
 			planning_skill = 5
 			logistics_skill = 4
@@ -2704,11 +2719,11 @@ characters = {
 	}
 	
 	PRC_xu_haidong={#徐海东
-		name=PRC_xu_haidong #徐海東
+		name=PRC_xu_haidong 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Xu_Haidong.dds"
-				small="GFX_idea_PRC_xu_haidong"
+				large= "GFX_Portrait_PRC_Xu_Haidong"
+				small= "GFX_idea_PRC_xu_haidong"
 			}
 		}
 		advisor={
@@ -2716,29 +2731,29 @@ characters = {
 			idea_token = PRC_xu_haidong
 			ledger = army	
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+			
+			traits = { 
+				army_concealment_2 
 			}
-			traits = { army_concealment_2 }
 			cost = 100
 			ai_will_do = {
 				factor = 1
 			}
 		}
 		corps_commander={
-			traits={  irregulars_leader youji_hero trait_mountaineer trickster }
+			traits={  
+				irregulars_leader 
+				youji_hero trait_mountaineer 
+				trickster 
+			}
 			skill=4
 			attack_skill=4
 			defense_skill=4
@@ -2749,10 +2764,10 @@ characters = {
 	}	
 	
 	PRC_chen_geng={#陈赓
-		name=PRC_chen_geng #陳賡
+		name=PRC_chen_geng 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Chen_Geng.dds"
+				large="GFX_Portrait_PRC_Chen_Geng"
 				small="GFX_idea_PRC_chen_geng"
 			}
 		}
@@ -2761,26 +2776,28 @@ characters = {
 			idea_token = PRC_chen_geng
 			ledger = army		
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+			
+			traits = { 
+				army_commando_3 
 			}
-			traits = { army_commando_3 }
 			cost = 100				
 		}
 		corps_commander={
-			traits={ rising_young_officer youji_hero career_officer infantry_officer trickster brilliant_strategist  }
+			traits={ 
+				rising_young_officer 
+				youji_hero career_officer 
+				infantry_officer 
+				trickster 
+				brilliant_strategist  
+			}
 			skill=4
 			attack_skill=4
 			defense_skill=3
@@ -2791,15 +2808,20 @@ characters = {
 	}
 
 	PRC_xiao_jinguang={#萧劲光
-		name=PRC_xiao_jinguang #蕭勁光
+		name=PRC_xiao_jinguang 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Xiao_Jinguang.dds"
-				small="GFX_idea_PRC_ziao_jingguang"
+				large="GFX_portrait_PRC_Xiao_Jinguang"
+				small="GFX_idea_prc_xiao_jinguang"
 			}
 		}
 		corps_commander={
-			traits={  rising_young_officer career_officer infantry_officer youji_hero }
+			traits={  
+				rising_young_officer 
+				career_officer 
+				infantry_officer 
+				youji_hero 
+			}
 			skill=3
 			attack_skill=4
 			defense_skill=4
@@ -2807,36 +2829,43 @@ characters = {
 			logistics_skill=3
 			legacy_id=-1
 			visible = {
-			NOT = { has_completed_focus = PRC_Establish_the_naval }
+				NOT = { 
+					has_completed_focus = PRC_Establish_the_naval 
+				}
 			}
 		}
 	}
 	
 	PRC_wang_shusheng={#王树声
-		name=PRC_wang_shusheng #王樹聲
+		name=PRC_wang_shusheng 
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Wang_Shusheng.dds"
+				large="GFX_Portrait_PRC_Wang_Shusheng"
 			}
 		}
 		corps_commander={
-			traits={ youji_hero trait_reckless }
+			traits={ 
+				youji_hero 
+				trait_reckless 
+			}
 			skill=3
 			attack_skill=3
 			defense_skill=3
 			planning_skill=3
 			logistics_skill=3
 			legacy_id=-1
-			visible = { has_global_flag = union_of_the_three_armies } 				
+			visible = { 
+				has_global_flag = union_of_the_three_armies 
+			} 				
 		}
 	}	
 
 	PRC_xu_guangda={#许光达
-		name=PRC_xu_guangda #許光達
+		name=PRC_xu_guangda 
 		portraits={
 			army={
+				large="GFX_Portrait_PRC_Xu_Guangda"
 				small="GFX_idea_PRC_xu_guangda"
-				large="gfx/leaders/PRC/xuguangda.jpg"
 			}
 		}
 		advisor={	
@@ -2844,27 +2873,21 @@ characters = {
 			idea_token = PRC_xu_guangda
 			ledger = army
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}
+			
 			available = {
 			    if = {
-				limit = {
-				original_tag = PRC
-				}
-				has_completed_focus = PRC_Tank
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_Tank
 				}
 			}				
 			traits = {
@@ -2873,7 +2896,13 @@ characters = {
 			cost = 100
 		}
 		corps_commander={
-			traits={ youji_hero career_officer armor_officer artillery_officer trait_reckless }
+			traits={ 
+				youji_hero 
+				career_officer 
+				armor_officer 
+				artillery_officer 
+				trait_reckless 
+			}
 			skill=4
 			attack_skill=4
 			defense_skill=4
@@ -2882,10 +2911,10 @@ characters = {
 			legacy_id=0
 			visible = {
 			    if = {
-				limit = {
-				original_tag = PRC
-				}
-				has_completed_focus = PRC_Tank
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_Tank
 				}
 			}
 		}
@@ -2895,7 +2924,7 @@ characters = {
 		name=prc_zuo_quan #左權
 		portraits={
 			army={
-				large="gfx/leaders/PRC/Portrait_PRC_Zuo_Quan.dds"
+				large="GFX_Portrait_PRC_Zuo_Quan"
 				small="GFX_idea_prc_zuo_quan"
 			}
 		}
@@ -2904,26 +2933,29 @@ characters = {
 			idea_token = prc_zuo_quan
 			ledger = army
 			visible = {
-				if = {
-					limit = {
-						NOT = {
-							tag = PRC has_government = communism
-						}
-					}
-					OR = {
-						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
-						tag = PRC has_government = communism
+				OR = {
+					has_idea = CHI_communist_in_government 
+					AND = {
+						tag = PRC
+						has_government = communism
 					}
 				}
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
+			
+			traits = { 
+				grand_battle_plan_expert 
 			}
-			traits = { grand_battle_plan_expert }
 			cost = 150				
 		}
 		corps_commander={
-			traits={ rising_young_officer brilliant_strategist  career_officer infantry_officer  expert_improviser youji_hero }
+			traits={ 
+				rising_young_officer 
+				brilliant_strategist  
+				career_officer 
+				infantry_officer  
+				expert_improviser 
+				youji_hero 
+			}
 			skill=4
 			attack_skill=3
 			defense_skill=3
@@ -3218,7 +3250,8 @@ characters = {
 		}	 			
 		corps_commander={		
  	   		traits = { 
-				youji_hero military_political_commissar 
+				youji_hero 
+				military_political_commissar 
 				PAK_SUN 
 			}
 	        skill=2		
@@ -3281,9 +3314,7 @@ characters = {
 		advisor={
 			slot = foreign_advisor
 			idea_token = PRC_mu_chong
-			allowed = {
-				
-			}
+			
 			available = {
 				KOR = {
 					exists = no

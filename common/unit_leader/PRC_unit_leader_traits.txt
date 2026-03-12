@@ -221,4 +221,62 @@ leader_traits = {
 			factor = 0
 		}
 	}
+
+	suyu_operational_experts = { #用兵如神
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			planning_speed = 0.25
+			max_planning = 0.10
+			army_attack_factor = 0.05
+			army_attack_speed_factor = 0.05
+			army_morale_factor = -0.10
+			terrain_penalty_reduction = 0.15
+			breakthrough_factor = 0.05
+		}
+		
+		new_commander_weight = {
+			factor = 0
+		}
+		
+		trait_xp_factor = {
+			trickster = 1     #+100%
+			
+		}
+		
+		attack_skill_factor = 1
+	}
+
+	artillery_officer = { #炮兵军官
+		type = land
+		trait_type = personality_trait 
+		
+		new_commander_weight = {
+			factor = 1
+			
+			modifier = {
+				FROM = { 
+					has_idea = superior_firepower_academy_spirit
+				}
+				factor = 2
+			}			
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+				factor = 0
+			}			
+		}
+		modifier = {
+			army_artillery_attack_factor = 0.05
+		}
+		attack_skill_factor = 2 #guo
+	}
 }
