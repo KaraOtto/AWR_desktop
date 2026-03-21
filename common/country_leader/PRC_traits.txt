@@ -190,7 +190,12 @@ leader_traits = {#政治
 		sprite = 10
 		random = no
 		
-		
+		local_resources_factor = 0.15
+		production_lack_of_resource_penalty_factor = -0.15
+		production_speed_synthetic_refinery_factor = 0.15
+		production_speed_fuel_silo_factor = 0.15
+		max_fuel_factor = 0.25 #燃料容量
+		fuel_gain_factor = 0.25 #石油转换燃料效率
 		ai_will_do = {
 			factor = 1
 		}
@@ -1300,4 +1305,18 @@ leader_traits = {#军事
 			factor = 1
 		}
 	}	
+
+	kong_qian_kuai = {	#“空潜快”理论家
+		random = no
+		sprite = 3
+		submarine_attack = 0.10
+		navy_submarine_defence_factor = 0.10
+		navy_screen_attack_factor = 0.10
+		navy_screen_defence_factor = 0.10
+		naval_strike = 0.10
+		nav_bomber_equipment_design_cost_factor = -0.75
+		experience_gain_navy = @chief_experience_gain_medium
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
+	}
 }
