@@ -1,0 +1,487 @@
+PRC_border_conflict_NXM_select = {
+	hidden_effect = {
+		clear_variable = test_defender_state_temp
+		clear_variable = test_attacker_state_temp
+		clear_variable = defender_state_temp
+		clear_variable = attack_dir_state_temp
+		clear_variable = attacker_state_temp
+		NXM = {
+			random_owned_controlled_state = {
+				limit = {
+					state = 1029
+					set_temp_variable = { 
+						test_defender_state_temp = id 
+					}
+					any_neighbor_state = {
+
+						set_temp_variable = { 
+							test_attacker_state_temp = id 
+						}
+						
+					}
+				}
+				save_event_target_as = defender_state
+				set_variable = { 
+					NXM.defender_state_vs_@ROOT = id 
+				}
+				set_temp_variable = {
+					defender_state_temp = id 
+				}
+				set_state_flag = border_incident_active
+			}
+		}
+	    random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				set_temp_variable = { 
+					attack_dir_state_temp = id 
+				}
+				ROOT = {
+					divisions_in_border_state = {
+						state = var:attack_dir_state_temp
+						border_state = var:NXM.defender_state_vs_@ROOT
+						size > 0
+					}
+				}
+              	any_neighbor_state = {
+					state = var:NXM.defender_state_vs_@ROOT
+				}
+			}
+			save_event_target_as = attacker_state
+			set_variable = { 
+				NXM.attacker_state_vs_@ROOT = id 
+			}
+			set_temp_variable = { 
+				attacker_state_temp = id 
+			}
+			set_state_flag = border_incident_active
+        }
+	}
+	custom_effect_tooltip = RCM_border_incident_delay_until_new_incident_180
+	NXM = {
+		country_event = { 
+			id = RCM_border_incident_defender_warning.1 
+			hours = 1 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_incident_warning_defender 
+		}
+	}
+}
+PRC_border_conflict_NXM_option_second_time = {
+	hidden_effect = {
+		clear_variable = test_defender_state_temp
+		clear_variable = test_attacker_state_temp
+		clear_variable = defender_state_temp
+		clear_variable = attack_dir_state_temp
+		clear_variable = attacker_state_temp
+		NXM = {
+			random_owned_controlled_state = {
+				limit = {
+					state = 1044
+					set_temp_variable = { 
+						test_defender_state_temp = id 
+					}
+					
+					any_neighbor_state = {
+						set_temp_variable = { 
+							test_attacker_state_temp = id 
+						}
+					}
+				}
+				save_event_target_as = defender_state
+				set_variable = { 
+					NXM.defender_state_vs_@ROOT = id 
+				}
+				set_temp_variable = { 
+					defender_state_temp = id 
+				}
+				set_state_flag = border_incident_active
+			}
+		}
+	    random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				set_temp_variable = { 
+					attack_dir_state_temp = id 
+				}
+				
+              	any_neighbor_state = {
+					state = var:NXM.defender_state_vs_@ROOT
+				}
+			}
+			save_event_target_as = attacker_state
+			set_variable = { 
+				NXM.attacker_state_vs_@ROOT = id 
+			}
+			set_temp_variable = { 
+				attacker_state_temp = id 
+			}
+			set_state_flag = border_incident_active
+		}
+	}
+
+	NXM = {
+		country_event = { 
+			id = RCM_border_incident_defender_warning.1 
+			hours = 1 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_incident_warning_defender 
+		}
+	}
+}
+PRC_border_conflict_NXM_option_937_w_939 = {
+	hidden_effect = {
+		clear_variable = test_defender_state_temp
+		clear_variable = test_attacker_state_temp
+		clear_variable = defender_state_temp
+		clear_variable = attack_dir_state_temp
+		clear_variable = attacker_state_temp
+		NXM = {
+			random_owned_controlled_state = {
+				limit = {
+					state = 1031
+					set_temp_variable = { 
+						test_defender_state_temp = id 
+					}
+					
+					any_neighbor_state = {
+						set_temp_variable = { 
+							test_attacker_state_temp = id 
+						}
+					}
+				}
+				save_event_target_as = defender_state
+				set_variable = { 
+					NXM.defender_state_vs_@ROOT = id 
+				}
+				set_temp_variable = { 
+					defender_state_temp = id 
+				}
+				set_state_flag = border_incident_active
+			}
+		}
+	    random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				set_temp_variable = { 
+					attack_dir_state_temp = id 
+				}
+				
+              	any_neighbor_state = {
+					state = var:NXM.defender_state_vs_@ROOT
+				}
+			}
+			save_event_target_as = attacker_state
+			set_variable = { 
+				NXM.attacker_state_vs_@ROOT = id 
+			}
+			set_temp_variable = {
+				attacker_state_temp = id 
+			}
+			set_state_flag = border_incident_active
+		}
+	}
+	
+	NXM = {
+		country_event = { 
+			id = RCM_border_incident_defender_warning.1 
+			hours = 1 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_incident_warning_defender 
+		}
+	}
+}
+PRC_border_conflict_NXM = {
+	hidden_effect = {
+		var:NXM.defender_state_vs_@ROOT = {
+			save_event_target_as = defender_state
+		}
+		var:NXM.attacker_state_vs_@ROOT = {
+			save_event_target_as = attacker_state
+		}
+		random_state = {
+			limit = {
+				is_owned_and_controlled_by = NXM
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				any_neighbor_state = {
+					is_fully_controlled_by = ROOT
+					has_ROOT_at_least_1_div_in_current_state_scope = yes
+					hidden_trigger = { 
+						NOT = { 
+							has_state_flag = border_incident_active 
+						} 
+					}
+				}
+			}
+			set_temp_variable = { 
+				defender_state_temp = id 
+			}
+		}
+		random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				has_ROOT_at_least_1_div_in_current_state_scope = yes
+				any_neighbor_state = {
+					state = var:NXM.defender_state_vs_@ROOT
+				}
+			}
+			set_temp_variable = { 
+				attacker_state_temp = id 
+			}
+		}
+	}
+
+	start_border_war = {
+		change_state_after_war = no
+		attacker = {
+			state = var:NXM.attacker_state_vs_@ROOT
+			num_provinces = 4
+			on_win = RCM_border_conflict_won_attacker.1
+			on_lose = RCM_border_conflict_lost_attacker.1
+			on_cancel = RCM_border_conflict_canceled_attacker.1
+		}
+
+		defender = {
+			state = var:NXM.defender_state_vs_@ROOT
+			num_provinces = 4
+			on_win = RCM_border_conflict_won_defender.1
+			on_lose = RCM_border_conflict_lost_defender.1
+			on_cancel = RCM_border_conflict_canceled_defender.1
+		}
+	}
+	hidden_effect = { 
+		NXM = { 
+			remove_targeted_decision = { 
+				target = ROOT decision = RCM_border_conflict_escalation_warning_defender 
+			} 
+		} 
+	}
+	NXM = {
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_escalate_conflict 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_time_until_cancelled 
+		}
+	}
+	activate_targeted_decision = { 
+		target = NXM 
+		decision = RCM_border_conflict_escalate_conflict 
+	}
+	activate_targeted_decision = { 
+		target = NXM 
+		decision = RCM_border_conflict_time_until_cancelled 
+	}
+}
+
+PRC_border_conflict_SHX_select = {
+	clear_variable = test_defender_state_temp
+	clear_variable = test_attacker_state_temp
+	clear_variable = defender_state_temp
+	clear_variable = attack_dir_state_temp
+	clear_variable = attacker_state_temp
+	hidden_effect = {
+		SHX = {
+			random_owned_controlled_state = {
+				limit = {
+					state = 998
+					set_temp_variable = { 
+						test_defender_state_temp = id 
+					}
+					
+					any_neighbor_state = {
+						
+						set_temp_variable = { 
+							test_attacker_state_temp = id 
+						}
+						
+					}
+				}
+				save_event_target_as = defender_state
+				set_variable = { 
+					SHX.defender_state_vs_@ROOT = id 
+				}
+				set_temp_variable = { 
+					defender_state_temp = id 
+				}
+				set_state_flag = border_incident_active
+			}
+		}
+		random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				state = 622
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				set_temp_variable = { 
+					attack_dir_state_temp = id 
+				}
+				ROOT = {
+					divisions_in_border_state = {
+						state = var:attack_dir_state_temp
+						border_state = var:SHX.defender_state_vs_@ROOT
+						size > 0
+					}
+				}
+				any_neighbor_state = {
+					state = var:SHX.defender_state_vs_@ROOT
+				}
+			}
+			save_event_target_as = attacker_state
+			set_variable = { 
+				SHX.attacker_state_vs_@ROOT = id 
+			}
+			set_temp_variable = { 
+				attacker_state_temp = id 
+			}
+			set_state_flag = border_incident_active
+		}
+	}
+	custom_effect_tooltip = RCM_border_incident_delay_until_new_incident_180
+	SHX = {
+		country_event = { 
+			id = RCM_border_incident_defender_warning.1 
+			hours = 1 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_incident_warning_defender 
+		}
+	}
+}
+PRC_border_conflict_SHX = {
+	hidden_effect = {
+		var:SHX.defender_state_vs_@ROOT = {
+			save_event_target_as = defender_state
+		}
+		var:SHX.attacker_state_vs_@ROOT = {
+			save_event_target_as = attacker_state
+		}
+		random_state = {
+			limit = {
+				state = 998
+				is_owned_and_controlled_by = SHX
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				any_neighbor_state = {
+					is_fully_controlled_by = ROOT
+					has_ROOT_at_least_1_div_in_current_state_scope = yes
+					hidden_trigger = { 
+						NOT = { 
+							has_state_flag = border_incident_active 
+						} 
+					}
+				}
+			}
+			set_temp_variable = { 
+				defender_state_temp = id 
+			}
+		}
+		random_state = {
+			limit = {
+				state = 622
+				is_fully_controlled_by = ROOT
+				hidden_trigger = { 
+					NOT = { 
+						has_state_flag = border_incident_active 
+					} 
+				}
+				has_ROOT_at_least_1_div_in_current_state_scope = yes
+				any_neighbor_state = {
+					state = var:SHX.defender_state_vs_@ROOT
+				}
+			}
+			set_temp_variable = { 
+				attacker_state_temp = id 
+			}
+		}
+	}
+	start_border_war = {#GUO
+		change_state_after_war = no
+		combat_width = 120
+		minimum_duration_in_days = 75
+		attacker = {
+			state = var:SHX.attacker_state_vs_@ROOT
+			num_provinces = 4
+			on_win = PRC_luobinghui.300 #guo
+			on_lose = RCM_border_conflict_lost_attacker.1
+			on_cancel = PRC_luobinghui.3 #guo
+
+			leader_score = { 
+				base = 100 
+			}
+		}
+
+		defender = {
+			state = var:SHX.defender_state_vs_@ROOT
+			num_provinces = 4
+			on_win = RCM_border_conflict_won_defender.1
+			on_lose = RCM_border_conflict_lost_defender.1
+			on_cancel = RCM_border_conflict_canceled_defender.1
+		}
+	}
+	hidden_effect = { 
+		SHX = { 
+			remove_targeted_decision = { 
+				target = ROOT 
+				decision = RCM_border_conflict_escalation_warning_defender 
+			} 
+		} 
+	}
+	SHX = {
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_escalate_conflict 
+		}
+		activate_targeted_decision = { 
+			target = ROOT 
+			decision = RCM_border_conflict_time_until_cancelled 
+		}
+	}
+	activate_targeted_decision = { 
+		target = SHX 
+		decision = RCM_border_conflict_escalate_conflict 
+	}
+	activate_targeted_decision = { 
+		target = SHX 
+		decision = RCM_border_conflict_time_until_cancelled 
+	}
+}

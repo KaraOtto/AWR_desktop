@@ -1,0 +1,32 @@
+CHI_border_clashes = {
+	picture = generic_border_conflicts
+	icon = border_conflicts
+	allowed = {
+		NOT = {		#MODDED
+			tag = MAN
+		}
+		is_literally_china = yes
+		has_dlc = "Waking the Tiger"		#MODDED
+	}
+	
+	visible = { #guo
+		if = {
+			limit = {
+				TAG = PRC
+			}
+			has_completed_focus = PRC_Red_Army
+		}
+	}
+}
+
+PRC_border_clashes = {
+	picture = generic_border_conflicts
+	priority = {
+		base = 50
+		modifier = {
+			add = 900
+			tag = PRC
+		}
+	}
+	icon = border_conflicts
+}

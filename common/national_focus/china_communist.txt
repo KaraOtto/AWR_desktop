@@ -18,7 +18,7 @@ focus_tree = {
 	
 	focus = {#瓦窑堡会议闭幕
 		id = PRC_wayaobaohuiyi_end
-		icon = GFX_focus_PRC_wayaobaohuiyi_end_ssdd
+		icon = GFX_focus_PRC_wayaobaohuiyi_end
 		cost = 1
 		x = 3
 		y = 0
@@ -31,6 +31,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			add_political_power = 50
 			country_event = {
 				id = AWR_PRC.1
 			}
@@ -40,7 +41,7 @@ focus_tree = {
 	
 	focus = {#东征
 		id = PRC_East_conquest
-		icon = GFX_Focus_Crusade_Against_NRA
+		icon = GFX_PRC_East_conquest
 		cost = 4.29
 		prerequisite = {
 			focus = PRC_wayaobaohuiyi_end
@@ -54,7 +55,7 @@ focus_tree = {
 		select_effect = {
 			PRC_border_conflict_SHX_select = yes
 			country_event = { 
-				id = PRC_liu_zhidan.4 
+				id = AWR_PRC.7
 				days = 8 
 			}
 		}
@@ -102,7 +103,7 @@ focus_tree = {
 						}
 					}
 					country_event = { 
-						id = PRC_liu_zhidan.3 
+						id = AWR_PRC.8 
 						days = 72 
 					}
 				}
@@ -124,7 +125,7 @@ focus_tree = {
 				add_ideas = PRC_dongzheng_idea_no_liu 
 			}
 			
-			prc_mao_zedong = {
+			PRC_mao_zedong = {
 				add_max_trait = 2
 				boost_planning = 10
 			}
@@ -140,7 +141,11 @@ focus_tree = {
 				}
 			}
 			every_army_leader = {
-			    limit = { not = { has_trait = expert_improviser } }
+			    limit = { 
+					not = { 
+						has_trait = expert_improviser 
+					} 
+				}
 				add_timed_unit_leader_trait = {
 					trait = expert_improviser
 					days = 90
@@ -162,7 +167,8 @@ focus_tree = {
 						}
 					}
 					country_event = {
-						days = 20 id = RCM_comchina_west_expedition.3
+						days = 20 
+						id = RCM_comchina_west_expedition.3
 					}
 				}
 			}
@@ -184,22 +190,32 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = PRC_East_conquest
-		prerequisite = { focus = PRC_East_conquest }
+		prerequisite = { 
+			focus = PRC_East_conquest 
+		}
 		
 		ai_will_do = { factor = 0 }
 		
 		available = {
-			not = { has_global_flag = CHI_unite_PRC }
+			not = { 
+				has_global_flag = CHI_unite_PRC 
+			}
 			controls_state = 998
 			country_exists = SHX
-			NOT = { is_in_faction_with = SHX }
+			NOT = { 
+				is_in_faction_with = SHX 
+			}
 		}
 		will_lead_to_war_with = SHX
 		bypass = {
 			OR = {
 				has_war_with = SHX
-				NOT = { country_exists = SHX }
-				SHX = { has_government = root }
+				NOT = { 
+					country_exists = SHX 
+				}
+				SHX = { 
+					has_government = root 
+				}
 				is_in_faction_with = SHX
 				has_global_flag = CHI_unite_PRC
                 has_global_flag = PRC_wang_ruofei_has_been_rescued
@@ -215,13 +231,15 @@ focus_tree = {
 			SHX = {
 			
 			if = {
-			limit = {
-			has_character = SHX_Bo_Yibo
-			not = { has_government = communism }
-			}
-			SHX_Bo_Yibo = {
-			    set_nationality = event_target:WTT_communist_china
-            }
+				limit = {
+					has_character = SHX_Bo_Yibo
+					not = { 
+						has_government = communism 
+					}
+				}
+				SHX_Bo_Yibo = {
+					set_nationality = event_target:WTT_communist_china
+				}
 			}
 			
 			}
@@ -273,7 +291,10 @@ focus_tree = {
 				target = EGM
 			}
 			activate_mission = PRC_attack_ma_hongbin_mission
-			add_timed_idea = { idea = CCP_go_west days = 90 }
+			add_timed_idea = { 
+				idea = CCP_go_west
+				days = 90 
+			}
 		    hidden_effect = {	
 		    NXM = {	
             add_ideas = NXM_sending_reinforcement
@@ -1153,15 +1174,7 @@ focus_tree = {
 			add_ideas = xingxingzhihuo_keyiliaoyuan
 			show_ideas_tooltip = blank
 			set_global_flag = PRC_Red_Army_Recovery_focus_flag
-			custom_effect_tooltip = gain_base_supp_cond_p10_tt
-			add_to_variable = {
-		    var = This.supply_condition
-			value = 10  
-		    }
-		    add_to_variable = {
-			var = This.supply_condition_base
-			value = 10  
-		    }
+
 			add_to_variable = {
 				Root.supply_condition_base = 10
 			}
@@ -1376,7 +1389,7 @@ focus_tree = {
 			hidden_effect = {
 			if = {
 				limit = {			
-			    has_country_leader = { ruling_only = yes character = prc_zhang_wentian }	
+			    has_country_leader = { ruling_only = yes character = PRC_zhang_wentian }	
 			    }				
 		        promote_character = PRC_lin_bojiu		
 			    }				
@@ -1567,15 +1580,7 @@ focus_tree = {
 		completion_reward = {
 		    if = {
 			limit = { is_ai = no }
-		    custom_effect_tooltip = gain_base_supp_cond_n20_tt
-		    add_to_variable = {
-		    var = This.supply_condition
-			value = -20  
-		    }
-		    add_to_variable = {
-			var = This.supply_condition_base
-			value = -20  
-		    }
+
 			add_timed_idea = {
 				idea = PRC_hundred_regiment_offensive days = 108
 			}			
@@ -1943,15 +1948,7 @@ focus_tree = {
 					remove_idea = PRC_guerilla_warfare_zz
 				}
         	}
-			custom_effect_tooltip = gain_base_supp_cond_p10_tt
-			add_to_variable = {
-			    var = This.supply_condition
-				value = 10  
-		    }
-		    add_to_variable = {
-				var = This.supply_condition_base
-				value = 10  
-		    }
+
 		}
 	}
 	
@@ -2665,7 +2662,7 @@ focus_tree = {
 		available = {
 		    has_idea = PRC_zhang_guotao
 			NOT = {
-				has_idea = Chinese_Red_Army
+				has_idea = Chinese_decentralized_government
 			}
 			NOT = {
 				is_in_faction_with = NXM
@@ -2984,7 +2981,7 @@ focus_tree = {
 			if = {
 			limit = {
                         OR = {
-			has_country_leader = { ruling_only = yes character = prc_zhang_wentian }
+			has_country_leader = { ruling_only = yes character = PRC_zhang_wentian }
 			has_country_leader = { ruling_only = yes character = PRC_lin_bojiu }
                             }
 			}
@@ -3164,17 +3161,17 @@ focus_tree = {
 			set_global_flag = PRC_challenge_the_first_red_army_focus_focus_flag
 			
 			remove_trait = {
-					character = prc_zhang_wentian
+					character = PRC_zhang_wentian
 					slot = political_advisor
 					trait = popular_figurehead
 				}
 			add_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = hongsejiaoshou
 			}
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = maoists_trait_zhang_wentian
 			}			
@@ -3569,7 +3566,7 @@ focus_tree = {
 		}
 		available = {
 			NOT = { 
-				has_idea = Chinese_Red_Army 
+				has_idea = Chinese_decentralized_government 
 			}
 			has_war_with = JAP
 			if = {
@@ -3613,7 +3610,7 @@ focus_tree = {
 				add_idea = xingxingzhihuo_keyiliaoyuan_2
 				remove_idea = xingxingzhihuo_keyiliaoyuan
 			}
-		    prc_mao_zedong = {
+		    PRC_mao_zedong = {
             	add_country_leader_trait = tiancaidesixiangjia		
 	        }			
 			set_temp_variable = { 
@@ -3626,13 +3623,13 @@ focus_tree = {
 			modify_parliament_seat = yes
 			
 	        hidden_effect = {
-		    	prc_mao_zedong = {
+		    	PRC_mao_zedong = {
             		add_country_leader_trait = { 
             			ideology = marxism
             			trait = tiancaidesixiangjia		
 	        		}		
 	        	}
-		   		prc_mao_zedong = {
+		   		PRC_mao_zedong = {
             		add_country_leader_trait = { 
             			ideology = maoism
             			trait = tiancaidesixiangjia		
@@ -3642,7 +3639,7 @@ focus_tree = {
 		}
 		available = {
 			leader_is_maoist = yes			
-			has_idea = prc_mao_zedong
+			has_idea = PRC_mao_zedong
 		    set_temp_variable = { 
 				temp_faction_support = 30 
 			}
@@ -3697,7 +3694,7 @@ focus_tree = {
 		}
 		available = {
 			leader_is_maoist = yes
-			has_idea = prc_mao_zedong
+			has_idea = PRC_mao_zedong
 			NOT = {
 				has_idea = PRC_unity_over_autonomy_idea
 			}
@@ -3762,7 +3759,7 @@ focus_tree = {
 		available = {
 			has_war = yes
 			leader_is_maoist = yes
-			has_idea = prc_mao_zedong
+			has_idea = PRC_mao_zedong
 			set_temp_variable = { 
 				temp_faction_support = 45 
 			}
@@ -3834,7 +3831,7 @@ focus_tree = {
 				}
 				has_idea = PRC_kang_sheng
 			}
-			has_idea = prc_mao_zedong
+			has_idea = PRC_mao_zedong
 			set_temp_variable = { 
 				temp_faction_support = 45 
 			}
@@ -4264,17 +4261,17 @@ focus_tree = {
 			set_global_flag = PRC_zhou_enlai_2_done
 			
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = popular_figurehead
 			}
 			add_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = hongsejiaoshou
 			}	
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = maoists_trait_zhang_wentian
 			}	
@@ -4405,17 +4402,17 @@ focus_tree = {
 			}
 			
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = popular_figurehead
 			}
 			add_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = hongsejiaoshou
 			}
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = maoists_trait_zhang_wentian
 			}
@@ -4551,7 +4548,7 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_country_leader = { ruling_only = yes character = prc_mao_zedong }
+				has_country_leader = { ruling_only = yes character = PRC_mao_zedong }
 			}
 		}
 		available = {
@@ -4701,12 +4698,12 @@ focus_tree = {
 			}
 			
 			remove_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = popular_figurehead
 			}
 			add_trait = {
-				character = prc_zhang_wentian
+				character = PRC_zhang_wentian
 				slot = political_advisor
 				trait = hongsejiaoshou
 			}
@@ -6957,13 +6954,13 @@ focus_tree = {
 				limit = {
 					has_country_leader = { 
 						ruling_only = yes 
-						character = prc_mao_zedong 
+						character = PRC_mao_zedong 
 					}
 			}
 			set_country_leader_portrait = {
                 portrait = GFX_Mao_1946
             }
-			prc_mao_zedong = {
+			PRC_mao_zedong = {
 					set_portraits = {
 						army={
 							large="GFX_Mao_1946"
@@ -6993,13 +6990,13 @@ focus_tree = {
 					limit = {
 						has_country_leader = { 
 							ruling_only = yes 
-							character = prc_mao_zedong 
+							character = PRC_mao_zedong 
 						}
 					}
 					set_country_leader_portrait = {
                 		portrait = "gfx/leaders/PRC/mao_jiefangzhanzheng.jpg"
             		}
-					prc_mao_zedong = {
+					PRC_mao_zedong = {
 			    		set_portraits = {
 							army = {
 								large = "gfx/leaders/PRC/mao_jiefangzhanzheng.jpg"
@@ -7408,12 +7405,12 @@ focus_tree = {
 				set_country_leader_ideology = maoism
 			
 				remove_trait = {
-					character = prc_zhang_wentian
+					character = PRC_zhang_wentian
 					slot = political_advisor
 					trait = popular_figurehead
 				}
 				add_trait = {
-					character = prc_zhang_wentian
+					character = PRC_zhang_wentian
 					slot = political_advisor
 					trait = hongsejiaoshou
 				}
@@ -8078,7 +8075,7 @@ focus_tree = {
 				limit = { 
 					has_country_leader = { 
 						ruling_only = yes 
-						character = prc_mao_zedong 
+						character = PRC_mao_zedong 
 					} 
 				}
 				add_mao_advisor_trait = yes
@@ -8169,7 +8166,7 @@ focus_tree = {
 			factor = 999
 			modifier = {
 				factor = 0
-				has_country_leader = { ruling_only = yes character = prc_mao_zedong }
+				has_country_leader = { ruling_only = yes character = PRC_mao_zedong }
 			}
 		}
 		available_if_capitulated = yes
@@ -15218,7 +15215,7 @@ focus_tree = {
 				factor = 0
 				has_country_leader = { 
 					ruling_only = yes 
-					character = prc_mao_zedong 
+					character = PRC_mao_zedong 
 				}
 			}
 		}
@@ -15573,7 +15570,7 @@ focus_tree = {
        		     	limit = { 
 						not = { 
 							has_country_leader = { 
-								ruling_only = yes character = prc_mao_zedong 
+								ruling_only = yes character = PRC_mao_zedong 
 							} 
 						} 
 					}
@@ -15582,7 +15579,7 @@ focus_tree = {
             	if = {
             	    limit = { 
 						has_country_leader = { 
-							ruling_only = yes character = prc_mao_zedong 
+							ruling_only = yes character = PRC_mao_zedong 
 						}  
 					}
             	    add_ideas = prc_50s_ideas_economic_devastation_13
@@ -16348,10 +16345,10 @@ focus_tree = {
                 	limit = { 
 						has_country_leader = { 
 							ruling_only = yes 
-							character = prc_mao_zedong 
+							character = PRC_mao_zedong 
 						} 
 					}
-			    	prc_mao_zedong = {
+			    	PRC_mao_zedong = {
 		        		add_country_leader_role = {
 			    	    	country_leader = {
 				 		   	    expire = "1965.1.1"
@@ -18365,7 +18362,7 @@ focus_tree = {
 			modifier = {
 			add = 1000
 			has_country_leader = { 
-				ruling_only = yes character = prc_mao_zedong 
+				ruling_only = yes character = PRC_mao_zedong 
 			}
 			SOV = { 
 				NOT = { 
@@ -18477,7 +18474,7 @@ focus_tree = {
 			or = {
 				has_country_leader = { 
 					ruling_only = yes 
-					character = prc_mao_zedong 
+					character = PRC_mao_zedong 
 				}
 				leader_is_trotskyist = yes
 			}

@@ -923,5 +923,220 @@ ideas = {
 			}
 		}
 
+		PRC_communist_support_low = { #政府内的共产党影响
+
+			picture = prc_low_popular_support #to do
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+
+		PRC_communist_support_med = { ##政府内的共产党影响
+
+			picture = prc_low_popular_support2 #to do
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.1
+			}
+		}
+
+		PRC_communist_support_high = {	##政府内的共产党影响
+
+			picture = prc_low_popular_support3 #to do
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.15
+			}
+		}
+
+		PRC_dongzheng_idea = {	#东征
+			removal_cost = -1
+
+			picture = soviet_military_cooperation_zz
+
+			allowed = {
+				always = no
+			}
+			
+			available = { 
+				has_border_war_with = SHX 
+				SHX = {
+					is_ai = yes
+				}					
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			targeted_modifier = {
+				tag = SHX
+				attack_bonus_against = 7.5
+				defense_bonus_against = 7.5
+				breakthrough_bonus_against = 7.5
+			}
+
+			modifier = {
+				army_org_factor = 0.6
+				experience_loss_factor = -0.90
+				org_loss_at_low_org_factor = -0.90
+				army_morale_factor = 0.6
+				terrain_penalty_reduction = 1
+				land_reinforce_rate = 1
+				army_strength_factor = 0.6
+				land_night_attack = 0.6
+				recon_factor = 1
+				ammunition_factor = 0.8
+			}
+		}
+
+		PRC_dongzheng_idea_no_liu = {	#东征（无刘志丹）
+			removal_cost = -1
+			name = PRC_dongzheng_idea
+
+			picture = soviet_military_cooperation_zz
+
+			allowed = {
+				always = no
+			}
+			
+			available = { has_border_war_with = SHX is_ai = no }
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			targeted_modifier = {
+				tag = SHX
+				attack_bonus_against = 6.5
+				defense_bonus_against = 6.5
+				breakthrough_bonus_against = 6.5
+			}
+
+			modifier = {
+				army_org_factor = 0.5
+				experience_loss_factor = -0.80
+				org_loss_at_low_org_factor = -0.80
+				army_morale_factor = 0.5
+				terrain_penalty_reduction = 0.9
+				land_reinforce_rate = 0.9
+				army_strength_factor = 0.5
+				land_night_attack = 0.5
+				recon_factor = 0.9
+				ammunition_factor = 0.8
+			}
+		}
+
+		line_struggle3 = {	#党内斗争
+			name = line_struggle
+			picture = line_struggle3
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.05
+			}
+		}
+
+		line_struggle2 = {
+			name = line_struggle
+			picture = line_struggle2
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.10
+			}
+		}
+
+		line_struggle1 = {
+			name = line_struggle
+			picture = line_struggle1
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.15
+			}
+		}
+
+		line_struggle0 = {
+			name = line_struggle
+			picture = line_struggle1
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.20
+				stability_factor = -0.20
+			}
+		}
+
 	}
 }
+

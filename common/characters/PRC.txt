@@ -1,12 +1,12 @@
 ############################## 政治顾问 ##############################
 characters = { 
 
-	prc_zhang_wentian = { #张闻天
-		name = prc_zhang_wentian 
+	PRC_zhang_wentian = { #张闻天
+		name = PRC_zhang_wentian 
 		portraits={#张闻天
 			civilian={
 				large= "GFX_Zhang_Wentian"
-				small= "GFX_prc_zhang_wentian"
+				small= "GFX_PRC_zhang_wentian"
 			}
 		}
 		country_leader={
@@ -18,17 +18,22 @@ characters = {
 			}
 			expire="1965.1.1.1"
 			id=-1
-			desc=prc_zhang_wentian_desc
+			desc=PRC_zhang_wentian_desc
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = prc_zhang_wentian
+			idea_token = PRC_zhang_wentian
 			traits = { 
 				popular_figurehead 
 				maoists_trait_zhang_wentian 
 			}
 			available = {
-				#
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						name = PRC_zhang_wentian
+					}
+				}
 			}
 			visible = {
 				OR = {
@@ -49,16 +54,16 @@ characters = {
 		}		
 	}
 
-	prc_mao_zedong = { #毛泽东
-		name= prc_mao_zedong
+	PRC_mao_zedong = { #毛泽东
+		name= PRC_mao_zedong
 		portraits={ 
 			civilian={
-				large="GFX_Portrait_PRC_Mao_Zedong"
-				small="GFX_idea_prc_mao_zedong"
+				large="GFX_Portrait_PRC_mao_zedong"
+				small="GFX_idea_PRC_mao_zedong"
 			}
 			army = {
 				large="GFX_maozedong0"
-				small="GFX_idea_prc_mao_zedong"
+				small="GFX_idea_PRC_mao_zedong"
 			}
 		}
 		country_leader={
@@ -70,11 +75,11 @@ characters = {
 			}
 			expire="1976.9.9"
 			id=-1
-			desc = prc_mao_zedong_desc
+			desc = PRC_mao_zedong_desc
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = prc_mao_zedong
+			idea_token = PRC_mao_zedong
 			traits = { 
 				red_army_organizer 
 				maoists_trait_mao_zedong 
@@ -91,7 +96,7 @@ characters = {
 				NOT = {
 					has_country_leader = {
 						ruling_only = yes
-						name = prc_mao_zedong
+						name = PRC_mao_zedong
 					}
 				}
 			}
@@ -109,7 +114,7 @@ characters = {
 
 			can_be_fired = no 
 
-			desc=prc_mao_zedong_desc
+			desc=PRC_mao_zedong_desc
 		}
 
 		field_marshal={
@@ -140,7 +145,7 @@ characters = {
 					}
 				}
 			}
-			desc = prc_mao_zedong_desc
+			desc = PRC_mao_zedong_desc
 		}
 	}
 
@@ -165,7 +170,7 @@ characters = {
 				#
 			}
 			available = {
-		        has_idea = prc_mao_zedong							
+		        has_idea = PRC_mao_zedong							
 			}
 		}			
 	}
@@ -998,16 +1003,16 @@ characters = {
 		}
 	}
 
-	prc_cai_shufan = {#蔡树藩				
-		name = prc_tsai_shufan
+	PRC_cai_shufan = {#蔡树藩				
+		name = PRC_cai_shufan
 		portraits={#蔡树藩
 			civilian={
-				small= "GFX_idea_prc_tsai_shufan"
+				small= "GFX_idea_PRC_cai_shufan"
 			}
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = prc_tsai_shufan	
+			idea_token = PRC_cai_shufan	
 			traits = { 
 				silent_workhorse 
 			}
@@ -2135,7 +2140,7 @@ characters = {
 					has_completed_focus = PRC_kuodaxuanchuan
 					has_country_leader = { 
 						ruling_only = yes 
-						character = prc_mao_zedong 
+						character = PRC_mao_zedong 
 					}
 				}
 				NOT = {
@@ -2456,7 +2461,7 @@ characters = {
 					has_completed_focus = PRC_kuodaxuanchuan
 					has_country_leader = { 
 						ruling_only = yes 
-						character = prc_mao_zedong 
+						character = PRC_mao_zedong 
 					}
 				}					
 			}
@@ -2498,7 +2503,7 @@ characters = {
 				OR = { 
 					has_country_leader = { 
 						ruling_only = yes 
-						character = prc_mao_zedong 
+						character = PRC_mao_zedong 
 					} 
 				}				
 			}
@@ -2590,7 +2595,7 @@ characters = {
 			available = { #MODDED
 			
 				NOT = { 
-					has_idea = Chinese_Red_Army 
+					has_idea = Chinese_decentralized_government 
 				}
 			
 			} #MODDED
@@ -7206,6 +7211,80 @@ characters = {
 				small="GFX_idea_PRC_qian_xuesen"
 			}
 		}
+		advisor={
+			slot = theorist
+			idea_token = PRC_qianxuesen
+			ledger = army	
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					OR = {
+						OR = { 
+							has_idea = CHI_communist_in_government 
+							TAG = event_target:WTT_current_china_leader 
+							TAG = SOV 
+						}
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+            available = {
+				OR = {			
+					if = { 
+						limit = { 
+							original_tag = PRC 
+						} 
+						has_country_flag = PRC_Establish_state_or_independent_government 
+					}
+					has_completed_focus = PRC_lighthouse_of_democracy_focus	
+					has_completed_focus = PRC_Federal_Republic	
+					has_completed_focus = PRC_For_the_Soviets				
+				}				
+				if = {
+					limit = {
+						country_exists = USA
+						not = { 
+							has_global_flag = PRC_qianxuesen_back_to_china 
+						}
+					}
+					USA = {
+						NOT = {
+							has_war_with = ROOT
+						}
+						or = {
+							NOT = { 
+								has_idea_with_trait = anti_communist_crusader 
+							}
+							has_opinion = {
+								target = root
+								value > 19
+							}
+						}
+					}	
+				}
+			}
+			on_add = {
+				set_global_flag = PRC_qianxuesen_back_to_china
+			}
+			allowed = {
+				#OR = { is_literally_china = yes TAG = SOV }
+			}
+			research_bonus = {
+				rocketry = 0.5 #guo
+			}
+			traits = {
+				rocket_scientist
+				PRC_Founder_of_the_aerospace_industry
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 3
+			}
+		}	
 		scientist = {
 			traits = {
 				famous_scientist_air
@@ -7311,6 +7390,50 @@ characters = {
 		portraits = {
 			army = {
 				large = "GFX_scientist_PRC_Deng_Jiaxian"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = PRC_dengjiaxian
+			ledger = army
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					OR = {
+						OR = { has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader TAG = SOV }
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+            available = {
+				OR = {			
+                if = { limit = { original_tag = PRC } has_country_flag = PRC_Establish_state_or_independent_government }
+                has_completed_focus = PRC_lighthouse_of_democracy_focus	
+                has_completed_focus = PRC_Federal_Republic	
+                has_completed_focus = PRC_For_the_Soviets				
+				}			
+            }   
+			allowed = {
+				#OR = { is_literally_china = yes TAG = SOV }
+			}
+			research_bonus = {
+				nuclear = 0.5
+			}
+			modifier = {
+				nuclear_production_factor = 0.20
+				production_speed_nuclear_reactor_factor = 0.20
+			}
+			traits = {
+				nuclear_scientist 
+				hewuqixianqu
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 0.5
 			}
 		}
 		scientist = {

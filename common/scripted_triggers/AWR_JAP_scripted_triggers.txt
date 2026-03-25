@@ -1,0 +1,747 @@
+NOT_controlled_by_player_MAN = {
+	NOT = {
+		controller = {
+			tag = MAN
+			is_ai = no
+		}
+	}
+}
+
+sign_triparti_pact_bypass_trigger = {
+	OR = {
+		custom_trigger_tooltip = {
+			tooltip = JAP_sign_tripartite_pact_bypass_tt
+			OR = {
+				NOT = {
+					any_country_with_original_tag = { #MODDED
+						original_tag_to_check = GER #MODDED
+						exists = yes #MODDED
+						has_government = fascism
+					}
+				}
+				any_country_with_original_tag = { #MODDED
+					original_tag_to_check = GER #MODDED
+					exists = yes #MODDED
+					has_government = fascism
+					has_war_with = JAP
+				}
+				NOT = {
+					any_country_with_original_tag = { #MODDED
+						original_tag_to_check = ITA #MODDED
+						exists = yes #MODDED
+						has_government = fascism
+					}
+				}
+				any_country_with_original_tag = { #MODDED
+					original_tag_to_check = ITA #MODDED
+					exists = yes #MODDED
+					has_government = fascism
+					has_war_with = JAP
+				}
+			}
+		}
+		CHI = {
+			has_war_with = JAP
+			has_idea = CHI_german_coop
+		}
+	}
+}
+
+hull_note_visible_trigger = { #ROOT is USA
+	JAP = {
+		has_war_with = event_target:WTT_current_china_leader
+		NOT = {
+			has_war_with = USA
+		}
+	}
+	USA = {
+		NOT = {
+			OR = {
+				is_in_faction_with = JAP
+				has_government = fascism
+			}
+		}
+		OR = {
+			has_country_flag = hull_note_flag
+			AND = {
+				JAP = {
+					OR = {
+						#has_idea = JAP_interservice_rivalry_army_dominant
+						#has_completed_focus = JAP_second_konoe_cabinet_focus
+						AND = {
+							has_completed_focus = JAP_sign_tripartite_pact
+							NOT = {
+								sign_triparti_pact_bypass_trigger = yes
+							}
+						}
+						AND = {
+							has_completed_focus = southern_expansion_focus
+							sign_triparti_pact_bypass_trigger = yes
+						}
+						AND = {
+							has_completed_focus = JAP_intervene_in_china
+							has_completed_focus = northern_expansion_focus
+						}
+					}
+				}
+				event_target:WTT_current_china_leader = {
+					has_defensive_war_with = JAP
+					NOT = {
+						AND = {
+							is_in_faction_with = GER
+							GER = {
+								has_government = fascism
+							}
+						}
+						has_war_with = ROOT
+					}
+					OR = {
+						date > 1940.8.5
+						surrender_progress > 0.5
+						AND = {
+							JAP = {
+								is_ai = no
+							}
+							surrender_progress > 0.35
+						}
+					}
+				}
+			}
+		}
+		if = { #if Japan is crazy, no need to check other things
+			limit = {
+				JAP = {
+					has_added_tension_amount > 0.4
+				}
+			}
+			JAP = {
+				has_added_tension_amount > 0.4
+			}
+		}
+		else = {
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					AND = {
+						is_in_faction_with = GER
+						GER = {
+							has_government = fascism
+						}
+					}
+				}
+				has_war_with = event_target:WTT_current_china_leader
+				has_war_with = FIC
+			}
+		}
+	}
+}
+
+hull_note_available_trigger = {
+	threat > 0.4
+	if = { #if Japan is crazy, no need to check other things
+		limit = {
+			JAP = {
+				has_added_tension_amount > 0.4
+			}
+		}
+		JAP = {
+			has_added_tension_amount > 0.4
+		}
+	}
+	else = {
+		
+		JAP = {
+			any_enemy_country = {
+				tag = event_target:WTT_current_china_leader
+				surrender_progress > 0.25
+			}
+		}
+		JAP = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				OR = {
+					JAP = {
+						has_offensive_war = yes
+						has_war_with = FIC
+					}
+					988 = {
+						is_controlled_by = JAP
+					}
+					986 = {
+						is_controlled_by = JAP
+					}
+				}
+			}
+		}
+	}
+}
+ECA_transfer_state_trigger = {
+	controller = {
+		#has_full_control_of_state = PREV
+		OR = {
+			tag = JAP
+			is_subject_of = JAP
+		}
+	}
+	OR = {
+		is_claimed_by = ECA
+		is_core_of = ECA
+	}
+	NOT = {
+		OR = {
+			is_owned_by = NSG
+			is_owned_by = SCG
+		    is_owned_by = PLM #MODDED
+		}
+	}
+}
+
+independent_war_china_or_china_died = {
+	has_completed_focus = JAP_intervene_in_china
+	is_subject = no
+	OR = {
+		has_war_with = event_target:WTT_current_china_leader
+		NOT = {
+			country_exists = event_target:WTT_current_china_leader
+		}
+	}
+}
+
+is_rrc = {
+	AND = {
+		OR = {
+			tag = RFM
+			tag = EHB
+			tag = HPC
+		}
+		has_country_flag = im_rrc_now
+	}
+}
+
+is_owned_by_CHI_PRC_WARLORD_SIK = {
+	OR = {
+		is_owned_by = CHI
+		is_owned_by = PRC
+		is_owned_by = SHX
+		is_owned_by = HPC
+		is_owned_by = SIK
+		is_owned_by = XSM
+		is_owned_by = XIK
+		is_owned_by = SIC
+		is_owned_by = GUD
+		is_owned_by = GXC
+		is_owned_by = NEA
+		is_owned_by = TNG
+		is_owned_by = HMI
+		is_owned_by = NXM
+		is_owned_by = SHC
+		is_owned_by = GSM
+		is_owned_by = EGM
+		is_owned_by = SHD
+		is_owned_by = KHR
+		is_owned_by = XIA
+		is_owned_by = KRS
+		is_owned_by = ATM
+		is_owned_by = SUY
+	}
+}
+RFM_is_ai = {
+	OR = {
+		AND = {
+			EHB = {
+				is_ai = no
+			}
+			RFM = {
+				is_ai = yes
+			}
+		}
+		AND = {
+			EHB = {
+				is_ai = yes
+			}
+			RFM = {
+				is_ai = yes
+			}
+		}
+	}
+}
+
+JAP_or_its_puppet_has_full_control_over_prev_states = {
+	custom_trigger_tooltip = {
+		tooltip = JAP_or_its_puppet_has_full_control_over_prev_states_TT
+		controller = {
+			OR = {
+				is_subject_of = JAP
+				tag = JAP
+			}
+			has_full_control_of_state = PREV
+		}
+	}
+}
+
+is_not_a_core_of_japanese_subject = {
+	custom_trigger_tooltip = {
+		tooltip = is_not_a_core_of_japanese_subject_tt
+		any_of_scopes = {
+			array = Root.subjects
+			PREV = {
+				NOT = { is_core_of = PREV }
+			}
+		}
+		NOT = { AND = { is_core_of = MAN MAN = { is_subject_of = JAP } } }
+		NOT = { AND = { is_core_of = HPC HPC = { is_subject_of = JAP } } }
+		NOT = { AND = { is_core_of = EHB EHB = { is_subject_of = JAP } } }
+		NOT = { AND = { is_core_of = NSG NSG = { is_subject_of = JAP } } }
+		NOT = { AND = { is_core_of = SCG SCG = { is_subject_of = JAP } } }
+		NOT = { AND = { is_core_of = ECA ECA = { is_subject_of = JAP } } }
+	}
+}
+
+is_capital_of_japan_puppet = {
+	is_capital = yes
+	owner = {
+		is_subject_of = JAP
+	}
+}
+max_man_kt_infra_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = infra_JAP_MAN_KT_MAX_tt
+		is_controlled_by_jap_or_its_puppet = yes
+		is_owned_by_jap_or_its_puppet = yes
+		free_building_slots = {
+			building = infrastructure
+			size < 1
+		}
+	}
+}
+max_man_infra_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = infra_JAP_MAN_MAX_tt
+		is_owned_and_controlled_by = MAN
+		free_building_slots = {
+			building = infrastructure
+			size < 1
+		}
+	}
+}
+is_controlled_by_jap_or_its_puppet = {
+	custom_trigger_tooltip = {
+		tooltip = is_controlled_by_jap_or_its_puppet_tt
+		controller = {
+			OR = {
+				is_puppet_of = JAP
+				TAG = JAP
+			}
+		}
+	}
+}
+is_not_controlled_by_jap_or_its_puppet = {
+	custom_trigger_tooltip = {
+		tooltip = is_NOT_controlled_by_jap_or_its_puppet_tt
+		controller = {
+			NOT = {
+				OR = {
+					is_puppet_of = JAP
+					TAG = JAP
+				}
+			}
+		}
+	}
+}
+is_owned_by_jap_or_its_puppet = {
+	custom_trigger_tooltip = {
+		tooltip = is_owned_by_jap_or_its_puppet_tt
+		owner = {
+			OR = {
+				is_puppet_of = JAP
+				TAG = JAP
+			}
+		}
+	}
+}
+is_manchuria_state = {
+	OR = {
+		state = 761
+		state = 715
+		state = 716
+		state = 1008
+		state = 610
+		state = 328
+		state = 1037
+		state = 1009
+		state = 1007
+		state = 1006
+		state = 1036
+		state = 714
+		state = 717
+		state = 1005
+	}
+}
+the_overall_cap_is_reached = {
+	JAP = {
+		OR = {
+			AND = {
+				has_country_flag = constitional_religious_freedom
+				has_country_flag = persecution_banned
+				check_variable = {
+					Root.current_christian_acceptance > 100
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = constitional_religious_freedom }
+				has_country_flag = persecution_banned
+				check_variable = {
+					Root.current_christian_acceptance > 60
+				}
+			}
+			AND = {
+				NOT = { has_country_flag = constitional_religious_freedom }
+				NOT = { has_country_flag = persecution_banned }
+				check_variable = {
+					Root.current_christian_acceptance > 40
+				}
+			}
+		}
+	}
+}
+is_manchuria_state_count_triggers = {
+	custom_trigger_tooltip = {
+		tooltip = is_manchuria_state_count_triggers_tt
+		count_triggers = {
+			amount = 3
+			761 = { is_controlled_by_jap_or_its_puppet = yes }
+			715 = { is_controlled_by_jap_or_its_puppet = yes }
+			716 = { is_controlled_by_jap_or_its_puppet = yes }
+			1008 = { is_controlled_by_jap_or_its_puppet = yes }
+			610 = { is_controlled_by_jap_or_its_puppet = yes }
+			328 = { is_controlled_by_jap_or_its_puppet = yes }
+			1037 = { is_controlled_by_jap_or_its_puppet = yes }
+			1009 = { is_controlled_by_jap_or_its_puppet = yes }
+			1007 = { is_controlled_by_jap_or_its_puppet = yes }
+			1006 = { is_controlled_by_jap_or_its_puppet = yes }
+			1036 = { is_controlled_by_jap_or_its_puppet = yes }
+			714 = { is_controlled_by_jap_or_its_puppet = yes }
+			717 = { is_controlled_by_jap_or_its_puppet = yes }
+			1005 = { is_controlled_by_jap_or_its_puppet = yes }
+		}
+	}
+
+}
+
+#HOW MANY MAJORS LIKE YOU
+at_least_one_major_like_us = {
+	custom_trigger_tooltip = {
+		tooltip = at_least_one_major_like_us_tt
+		count_triggers = {
+			amount = 1
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			SOV = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			JAP = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+		}
+	}
+}
+
+at_least_two_major_like_us = {
+	custom_trigger_tooltip = {
+		tooltip = at_least_two_major_like_us_tt
+		count_triggers = {
+			amount = 2
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			SOV = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			JAP = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+		}
+	}
+}
+
+at_least_three_major_like_us = {
+	custom_trigger_tooltip = {
+		tooltip = at_least_three_major_like_us_tt
+		count_triggers = {
+			amount = 3
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			SOV = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			JAP = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+		}
+	}
+}
+
+at_least_four_major_like_us = {
+	custom_trigger_tooltip = {
+		tooltip = at_least_four_major_like_us_tt
+		count_triggers = {
+			amount = 4
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			SOV = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			JAP = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+		}
+	}
+}
+at_least_five_major_like_us = {
+	custom_trigger_tooltip = {
+		tooltip = at_least_five_major_like_us_tt
+		count_triggers = {
+			amount = 5
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			SOV = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+			JAP = {
+				has_opinion = {
+					target = ROOT
+					value > 59
+				}
+			}
+		}
+	}
+}
+not_affacted_by_illegal_regime_JPG = {
+	custom_trigger_tooltip = {
+		tooltip = not_affacted_by_illegal_regime_JPG_tt
+		NOT = {
+			OR = {
+				has_idea = JPG_illegal_regime_1
+				has_idea = JPG_illegal_regime_2
+				has_idea = JPG_illegal_regime_3
+				has_idea = JPG_illegal_regime_4
+				has_idea = JPG_illegal_regime_5
+			}
+		}
+	}
+}
+
+NOT_has_army_purge_idea = {
+	custom_trigger_tooltip = {
+		tooltip = NOT_has_army_purge_idea_tt
+		AND = {
+			NOT = { has_idea = officer_purged_jap }
+			NOT = { has_idea = officer_purged_jap_1 }
+			NOT = { has_idea = officer_purged_jap_2 }
+			NOT = { has_idea = officer_purged_jap_3 }
+			NOT = { has_idea = officer_purged_jap_4 }
+		}
+	}
+}
+NOT_has_kodoha_plot_idea = {
+	custom_trigger_tooltip = {
+		tooltip = NOT_has_kodoha_plot_idea_tt
+		AND = {
+			NOT = { has_idea = JAP_kodoha_plot }
+			NOT = { has_idea = JAP_kodoha_plot_2 }
+		}
+	}
+}
+
+has_army_purge_idea = {
+	custom_trigger_tooltip = {
+		tooltip = has_army_purge_idea_tt
+		OR = {
+			has_idea = officer_purged_jap
+			has_idea = officer_purged_jap_1
+			has_idea = officer_purged_jap_2
+			has_idea = officer_purged_jap_3
+			has_idea = officer_purged_jap_4
+		}
+	}
+}
+
+has_USA_sanction_idea = {
+	custom_trigger_tooltip = {
+		tooltip = has_USA_sanction_idea_tt
+		OR = {
+			has_idea = JAP_USA_sanctions_idea_1
+			has_idea = JAP_USA_sanctions_idea_2
+			has_idea = JAP_USA_sanctions_idea_3
+			has_idea = JAP_USA_sanctions_idea_4
+		}
+	}
+}
+		
