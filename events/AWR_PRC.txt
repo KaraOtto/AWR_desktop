@@ -375,3 +375,57 @@ unit_leader_event = {#刘志丹同志转危为安
 		}
 	}
 }
+
+country_event = {	#中国工农红军第二、第四方面军抵达！
+	id = AWR_PRC.12
+	title = AWR_PRC.12.t
+	desc = AWR_PRC.12.d
+	picture = GFX_report_event_china_mao
+
+	is_triggered_only = yes
+
+	option = { 
+		name = AWR_PRC.12.a
+		activate_mission = PRC_Survival_crisis #guo
+		remove_ideas = Chinese_decentralized_government
+		add_timed_idea = {
+		idea = prc_youqinzhuyi
+		days = 160
+		}		
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.275 
+			tooltip = ZHANG_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = PRC_zhang_guotao
+
+        add_ideas = PRC_zhang_guotao #guo
+		
+		custom_effect_tooltip = available_theorist #guo
+		show_ideas_tooltip = prc_ren_bishi	
+		custom_effect_tooltip = available_chief_of_army
+		show_ideas_tooltip = PRC_he_long			
+		custom_effect_tooltip = available_theorist
+		show_ideas_tooltip = PRC_liu_bocheng				
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = PRC_xu_xiangqian				
+		custom_effect_tooltip = PRC_west_road_army_tt
+        set_country_flag = union_of_the_three_armies
+		set_global_flag = union_of_the_three_armies #guo
+        custom_effect_tooltip = zhu_de_becomes_marshal		
+        custom_effect_tooltip = liu_bocheng_becomes_general	
+        custom_effect_tooltip = he_long_becomes_general	
+        custom_effect_tooltip = xu_xiangqian_becomes_general
+        custom_effect_tooltip = xiao_ke_becomes_general
+        custom_effect_tooltip = wang_shusheng_becomes_general
+        custom_effect_tooltip = zhangqinqiu_general			
+        custom_effect_tooltip = lizhen_general			
+		hidden_effect = {
+			load_oob = PRC_west_route_army
+		}
+	}
+}

@@ -1,0 +1,172 @@
+#政治顾问
+characters = {	
+	SHX_yan_xishan = {	#阎锡山
+		name=SHX_yan_xishan 
+		portraits={
+			civilian={
+				large="GFX_Portrait_SHX_Yan_Xishan"
+			}
+			army={
+				large="GFX_Portrait_SHX_Yan_Xishan"
+				small="GFX_idea_SHX_yan_xishan"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1960.5.23"
+			#traits={ xishan_doctrine }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1960.5.23"
+			#traits={ xishan_doctrine }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1960.5.23"
+			#traits={ xishan_doctrine }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1960.5.23"
+			#traits={ xishan_doctrine }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1960.5.23"
+			#traits={ xishan_doctrine }
+			id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = SHX_yan_xishan
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				army_chief_old_guard
+			}
+			ai_will_do = {
+				factor = 100
+			}		
+		}
+		field_marshal={
+			traits={ 
+				old_guard 
+				logistics_wizard 
+				NRA_General_1stRank 
+			}
+			skill=3
+			attack_skill=1
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=4
+			legacy_id=4003
+			desc=SHX_yan_xishan_desc
+		}
+	}
+
+	SHX_bo_yibo={ #guo
+		name= SHX_bo_yibo
+		portraits={
+			army={
+				large="GFX_Portrait_SHX_Bo_Yibo"
+				small="GFX_idea_SHX_bo_yibo"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_Bo_Yibo
+			
+			available = {
+				if = {
+					limit = {
+						original_tag = SHX
+						not = { 
+							has_government = communism 
+						}
+					}
+					has_global_flag = has_completed_focus_SHX_United_front
+					not = { 
+						has_war_with = PRC
+					}
+				}
+				not = { 
+					has_idea = PRC_gaowin 
+				}				
+			}
+			traits = { 
+				lieutenant_of_industry 
+			}			
+			
+			on_add = {
+				owner = {
+					if = {
+						limit = {
+						    has_idea = CHI_communist_in_government
+						}	
+						PRC_support_up = yes
+					}
+				}
+			}
+			on_remove = {
+				owner = {
+					if = {
+						limit = {
+						    has_idea = CHI_communist_in_government
+						}	
+					}
+					PRC_support_down = yes
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				
+			}
+			desc=boyibo_miaoshu
+		}
+		corps_commander={
+			traits={ 
+				rising_young_officer 
+				youji_hero 
+				politically_connected 
+				media_personality 
+			}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			desc=boyibo_miaoshu
+			visible = { 
+				OR = { 
+					has_global_flag = has_completed_focus_SHX_United_front 
+					has_government = communism 
+					has_idea = CHI_communist_in_government 
+					TAG = event_target:WTT_current_china_leader 
+				}
+				if = {
+					limit = {
+						original_tag = SHX
+						not = { 
+							has_government = communism 
+						}
+					}
+					has_global_flag = has_completed_focus_SHX_United_front
+					not = { 
+						has_war_with = event_target:WTT_communist_china 
+					}
+				}
+			}
+		}
+	}
+}
+
+#军事顾问
+characters = {
+	#
+}

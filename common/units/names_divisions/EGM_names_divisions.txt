@@ -1,0 +1,65 @@
+﻿EGM_INF_01 = 
+{
+	name = "Divisions"
+
+	for_countries = { NXM EGM }
+
+	can_use = { 
+        OR = {
+			tag = EGM
+			AND = {
+				tag = NXM
+				NOT = {
+					country_exists = EGM
+				}
+			}
+		}
+	}
+
+	division_types = { "infantry" "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { NXM_INF_02 }
+
+	fallback_name = "Luchün Ti %d Shih"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		60 = { "Luchün Chanpien Ti 60 Shih" }     
+	}
+}
+
+EGM_INF_02 = 
+{
+	name = "Brigades"
+
+	for_countries = { NXM EGM }
+
+	can_use = { 
+        OR = {
+			tag = EGM
+			AND = {
+				tag = NXM
+				NOT = {
+					country_exists = EGM
+				}
+			}
+		}
+	}
+
+	division_types = { "infantry" "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { NXM_INF_02 }
+
+	fallback_name = "Ningsia Ti %d Lü"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		35 = { "Luchün Tuli Ti 35 Lü" }     
+	}
+}

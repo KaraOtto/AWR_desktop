@@ -5,7 +5,6 @@ oob = "SHX_1936"
 recruit_character = SHX_chen_changjie
 recruit_character = SHX_chu_xichun
 recruit_character = SHX_fan_xiangli
-#recruit_character = SHX_fu_zuoyi
 recruit_character = SHX_ji_gongquan
 recruit_character = SHX_jia_jingde
 recruit_character = SHX_li_fuying
@@ -22,11 +21,22 @@ recruit_character = SHX_zhao_daiwen
 recruit_character = SHX_zhong_jihan
 recruit_character = SHX_zhou_dai
 recruit_character = SHX_zhu_shouguang
-#recruit_character = SHX_Dong_Qiwu
-#recruit_character = SHX_Sun_Lanfeng
 recruit_character = SHX_Peng_Yubin
-#recruit_character = SHX_Lu_Yinglin
 recruit_character = SHX_Bo_Yibo
+
+set_popularities = {
+	democratic = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
 
 # Starting tech
 set_technology = {
@@ -42,17 +52,21 @@ add_ideas = {
 	#SHX_Taiyuan_arsenal
 }
 
-#if = {
-#	limit = { 
-#	    NOT = {
-#		    has_dlc = "By Blood Alone" 
-#		}
-#	}
-#	set_technology = {
-#		early_fighter = 1
-#		early_bomber = 1
-#    }
-#}
+SHX = {
+	1013 = {
+		add_victory_points = { 
+			province = 1027
+			value = -3
+		}
+	}
+}
+
+SHX = {
+	set_autonomy = {
+		target = SUY
+		autonomy_state = autonomy_rcm_national_revolutionary_army
+	}
+}
 
 add_war_support = 0.15
 add_stability = 0.2
@@ -66,14 +80,12 @@ add_stability = 0.2
 	
 	add_political_power = 1198
 
-			#generic focuses
 	if = {
 		limit = {
 			NOT = {
 				has_dlc = "Waking the Tiger"
 			}
 		}
-		#generic focuses
 		complete_national_focus = army_effort
 		complete_national_focus = equipment_effort
 		complete_national_focus = motorization_effort
@@ -118,33 +130,20 @@ add_stability = 0.2
 	}
 	oob = "SHX_1939"
 	set_popularities = {
-	democratic = 0
-	fascism = 0
-	communism = 0
-	neutrality = 100
-
-}
-set_politics = {
-	ruling_party = neutrality
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
+		democratic = 0
+		fascism = 0
+		communism = 0
+		neutrality = 100
+	}
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
 	}
 }
 
-set_popularities = {
-	democratic = 0
-	fascism = 0
-	communism = 0
-	neutrality = 100
 
-}
-set_politics = {
-	ruling_party = neutrality
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
 
 
 

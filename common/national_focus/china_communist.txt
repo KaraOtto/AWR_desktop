@@ -168,7 +168,7 @@ focus_tree = {
 					}
 					country_event = {
 						days = 20 
-						id = RCM_comchina_west_expedition.3
+						id = AWR_PRC_hidden.1
 					}
 				}
 			}
@@ -194,7 +194,9 @@ focus_tree = {
 			focus = PRC_East_conquest 
 		}
 		
-		ai_will_do = { factor = 0 }
+		ai_will_do = { 
+			factor = 0 
+		}
 		
 		available = {
 			not = { 
@@ -229,19 +231,17 @@ focus_tree = {
 			}
 			
 			SHX = {
-			
-			if = {
-				limit = {
-					has_character = SHX_Bo_Yibo
-					not = { 
-						has_government = communism 
+				if = {
+					limit = {
+						has_character = SHX_Bo_Yibo
+						not = { 
+							has_government = communism 
+						}
+					}
+					SHX_Bo_Yibo = {
+						set_nationality = event_target:WTT_communist_china
 					}
 				}
-				SHX_Bo_Yibo = {
-					set_nationality = event_target:WTT_communist_china
-				}
-			}
-			
 			}
 			
 			custom_effect_tooltip = when_war_is_declared_tt
@@ -253,7 +253,7 @@ focus_tree = {
 	
 	focus = {#西征
 		id = PRC_Western_expedition
-		icon = GFX_Focus_Attack_KMT
+		icon = GFX_Focus_PRC_Western_expedition
 		cost = 4.29
 		prerequisite = {
 			focus = PRC_wayaobaohuiyi_end
@@ -296,9 +296,9 @@ focus_tree = {
 				days = 90 
 			}
 		    hidden_effect = {	
-		    NXM = {	
-            add_ideas = NXM_sending_reinforcement
-		    }
+				NXM = {	
+					add_ideas = NXM_sending_reinforcement
+				}
 		    }			
 		}
 		will_lead_to_war_with = EGM
@@ -349,7 +349,9 @@ focus_tree = {
 				idea = prc_youqinzhuyi
 				days = 158
 			} 
-		    country_event = RCM_comchina_west_expedition.1
+		    country_event = {
+				id = AWR_PRC.12
+			}
 		}
 		available = {
 			custom_trigger_tooltip = {

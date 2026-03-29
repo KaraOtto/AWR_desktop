@@ -1976,3 +1976,48 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 }
+
+PRC_western_campaigns_cat = {	#西征
+	PRC_attack_ma_hongbin_mission = {	#西征
+		icon = infiltrate_state
+
+		available = {
+			1044 = {
+				is_owned_and_controlled_by = ROOT
+			}		
+		}
+
+		activation = {
+			always = no
+		}
+
+		is_good = no
+
+		days_mission_timeout = 90
+
+		timeout_effect = {
+			every_controlled_state = {
+				limit = {
+					is_owned_by = EGM
+				}
+				transfer_state_to = ROOT
+			}
+			white_peace = EGM
+		}
+
+		complete_effect = {
+            add_war_support = 0.05
+			add_political_power = 75
+			if = {
+				limit = {
+					EGM = {
+						exists = yes
+					}
+				}
+				annex_country = {
+					target = EGM transfer_troops = no
+				}
+			}
+		}
+	}
+}

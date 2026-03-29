@@ -574,16 +574,13 @@ country_event = {
 	}
 }
 
+
 add_namespace = PRC_luobinghui
 country_event = { #
 	id = PRC_luobinghui.300
 	title = PRC_luobinghui.3.t
 	desc = PRC_luobinghui.3.desc
 	picture = GFX_report_event_dongzheng_back
-	
-	trigger = {
-	    
-	}
 	
 	is_triggered_only = yes
 	
@@ -601,7 +598,10 @@ country_event = { #
 			save_event_target_as = their_state
 			clr_state_flag = border_incident_active
 		}
-		remove_targeted_decision = { target = event_target:their_country decision = RCM_border_conflict_time_until_cancelled }
+		remove_targeted_decision = { 
+			target = event_target:their_country 
+			decision = RCM_border_conflict_time_until_cancelled 
+		}
 		
 		#moved to here 
 		if = {

@@ -1,0 +1,104 @@
+leader_traits = {
+	NRA_General_2ndRank = {
+		type = field_marshal
+		trait_type = status_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			has_trait = recently_promoted
+		}		
+		field_marshal_modifier = {
+			hidden_modifier = {
+				max_army_group_size = -2
+			}
+		}
+		custom_effect_tooltip = max_army_group_size_3		
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}		
+		ai_will_do = {
+			factor = 1
+		}
+		gui_row = 9
+		gui_column = 2		
+	}
+
+	NRA_General_1stRank = {
+		type = field_marshal
+		trait_type = assignable_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = NRA_General_2ndRank
+			NOT = {
+			    has_trait = minimum_time_in_grade
+			}		
+		}
+		
+		custom_effect_tooltip = max_army_group_size_5			
+
+		on_add = {
+			if = {
+				limit = {
+					date > 1936.01.01
+				}
+				remove_unit_leader_trait = NRA_General_2ndRank
+			}
+		}											
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}		
+		ai_will_do = {
+			factor = 1
+		}
+		gui_row = 10
+		gui_column = 2			
+	}
+
+	NRA_Generallissimo = {
+		type = field_marshal
+		trait_type = personality_trait
+
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+			FROM = { 
+			    OR = {
+				    tag = event_target:WTT_current_china_leader
+					original_tag = CHI
+				}
+				NOT = { has_government = communism } 
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}
+		}			
+		field_marshal_modifier = {
+			max_army_group_size = +3
+		}		
+		ai_will_do = {
+			factor = 1
+		}
+		gui_row = 11
+		gui_column = 2		
+	}
+}

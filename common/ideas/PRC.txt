@@ -1137,6 +1137,44 @@ ideas = {
 			}
 		}
 
+		CCP_go_west = { #西征战役
+            picture = chi_army_corruption3
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+            
+            cancel = {
+				OR = {
+					1044 = {
+						is_owned_and_controlled_by = ROOT
+					}
+					EGM = {
+						exists = no
+					}
+				}
+			}
+			
+		    targeted_modifier = {
+			    tag = EGM
+				attack_bonus_against = 0.35
+				defense_bonus_against = 0.35
+			    breakthrough_bonus_against = 0.30
+            }
+
+			modifier = {
+				army_org_factor = 0.15
+				terrain_penalty_reduction = 0.25
+				ammunition_factor = 0.5
+				ammunition_consumption_factor = -0.8
+			}
+        }
 	}
 }
 

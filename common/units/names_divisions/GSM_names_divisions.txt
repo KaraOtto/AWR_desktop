@@ -1,0 +1,53 @@
+﻿GSM_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { XSM GSM }
+
+	can_use = { 
+		OR = {
+			tag = GSM
+			AND = {
+				tag = XSM
+				GSM = {
+					exists = no 
+				}
+			}
+		}
+	}
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { XSM_INF_01 }
+
+	fallback_name = "Luchün Ch'iping Ti %d Shih"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		2 = { "Luchün Chanpien Ch'iping Ti 2 Shih" }      
+	}
+}
+
+GSM_INF_03 = 
+{
+	name = "Security Forces"
+
+	for_countries = { GSM }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PLM_INF_01 }
+
+	fallback_name = "Hosi Paoan Ti %d T'uan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered = {
+	}
+}
