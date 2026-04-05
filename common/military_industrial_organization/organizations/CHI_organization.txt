@@ -1,0 +1,186 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+
+CHI_sino_german_technical_mission_organization = {
+	include = generic_heavy_tank_organization
+	icon = GFX_idea_porsche
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes #MODDED
+		has_dlc = "Waking the Tiger"
+	}
+	available = {
+		owner = {
+			if = { #MODDED
+				limit = {
+					NOT = {
+						OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+						}
+					}
+				}
+				NOT = {
+					has_global_flag = falkenhausen_recalled
+				}
+			} #MODDED
+			#OR = { #MODDED
+				has_completed_focus = CHI_axis_help_focus  #MODDED
+			#}  #MODDED
+			NOT = {
+				has_war_with = GER
+			}
+		}
+	}
+}
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+CHI_jiangnan_shipyard_group_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_generic_naval_manufacturer_3
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { controls_state = 613 }
+	}
+}
+
+CHI_dagu_shipyard_organization = { #大沽船塢(大沽造船所)
+	include = generic_raider_ship_organization
+	icon = GFX_idea_dagu_shipyard
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes #MODDED
+		has_dlc = "Waking the Tiger"
+	}
+	available = {
+		owner = { controls_state = 608 }
+	}
+}
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+
+CHI_camco_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_CHI_camco
+	allowed = {	
+		always = no #MODDED
+	}
+}
+CHI_camco_medium_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_CHI_camco
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { #MODDED
+			#has_completed_focus = CHI_camco 
+			OR = { 
+				has_completed_focus = CHI_land_focus
+				has_completed_focus = CHI_coast_focus
+			}
+		} #MODDED
+	}
+}
+CHI_camco_fighter_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_CHI_camco
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { 
+			#has_completed_focus = CHI_local_fighter_production
+			has_completed_focus = CHI_reorganization_of_the_air_force_focus #MODDED
+	    }
+	}
+}
+CHI_camco_bomber_organization = {
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_CHI_camco
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { 
+			#has_completed_focus = CHI_local_bomber_production 
+			has_completed_focus = CHI_reorganization_of_the_air_force_focus #MODDED
+		}
+	}
+}
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+CHI_taiyuan_arsenal_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_artillery_manufacturer_1
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { controls_state = 615 }
+	}
+}
+CHI_liaoning_arsenal_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_1
+	allowed = {	
+		always = no #its shenyang
+	}
+	available = {
+		owner = { controls_state = 715 }
+	}
+}
+CHI_hanyan_arsenal_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
+	allowed = {	
+		always = no #MODDED
+	}
+	available = {
+		owner = { controls_state = 1034 } #MODDED
+	}
+}
+CHI_mukden_arsenal_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
+	allowed = {	
+		always = no #its shenyang
+	}
+	available = {
+		owner = { controls_state = 716 }
+	}
+}

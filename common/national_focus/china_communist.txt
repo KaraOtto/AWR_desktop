@@ -405,7 +405,7 @@ focus_tree = {
 	
 	focus = {#重申三大纪律八项注意
 		id = PRC_chongshensandajilv
-		icon = GFX_goal_PRC_chongshensandajilv
+		icon = GFX_focus_PRC_chongshensandajilv
 		cost = 5
 		x = 0
 		y = 1
@@ -420,21 +420,28 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_political_power = 25
-			add_stability = 0.05
-			add_popularity = {
-				ideology = communism
-				popularity = 0.05
-			}
-			swap_ideas = {
-				remove_idea = PRC_reorganized_departments_CHI
-				add_idea = PRC_reorganized_departments_CHI_2
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				swap_ideas = {
+					remove_idea = three_rules_and_eight_notices_idea
+					add_idea = three_rules_and_eight_notices_idea_high
+				}
+				add_stability = 0.05
+				else = {
+					swap_ideas = {
+						remove_idea = three_rules_and_eight_notices_idea
+						add_idea = three_rules_and_eight_notices_idea_2
+					}
+				}
 			}
 		}
 	}
 
 	focus = {#扩大红军宣传队
 		id = PRC_kuodaxuanchuan
-		icon = GFX_goal_PRC_the_kuodaxuanchuan
+		icon = GFX_focus_PRC_kuodaxuanchuan
 		cost = 5
 		x = 0
 		y = 2
@@ -457,7 +464,7 @@ focus_tree = {
 				popularity = 0.1
 			}
 
-			show_ideas_tooltip = blank
+			#show_ideas_tooltip = blank
 			
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = PRC_chen_boda
@@ -471,7 +478,7 @@ focus_tree = {
 	
 	focus = {#成立中央特别工作委员会
 		id = PRC_baoweiweiyuanhui
-		icon = GFX_goal_PRC_baoweiweiyuanhui
+		icon = GFX_focus_PRC_baoweiweiyuanhui
 		cost = 5
 		x = 6
 		y = 1
@@ -491,11 +498,9 @@ focus_tree = {
 				remove_idea = PRC_zhengzhibaoweiju
 				add_idea = PRC_zhengzhibaoweiju_2
 			}
-			hidden_effect = {
-				create_intelligence_agency = {
-					name="中央特别工作委员会"
-					icon = GFX_intelligence_agency_logo_generic_9
-				}
+			create_intelligence_agency = {
+				name= "中央特别工作委员会"
+				icon = GFX_intelligence_agency_logo_generic_9
 			}
 		}
 		available = {
@@ -512,7 +517,7 @@ focus_tree = {
 
 	focus = {#扩大军委二局
 		id = tzxx_PRC_Reorganize_Sixth_Intelligence
-		icon = GFX_goal_tzxx_PRC_Reorganize_Sixth_Intelligence
+		icon = GFX_focus_tzxx_PRC_Reorganize_Sixth_Intelligence
 		cost = 5
 		x = -1
 		y = 1
@@ -528,48 +533,63 @@ focus_tree = {
 		completion_reward = {
 			upgrade_intelligence_agency = upgrade_decryption_boost
 			upgrade_intelligence_agency = upgrade_decryption_boost
-			add_ideas = prc_qingbao_2ju
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				add_ideas = prc_qingbao_2ju_high
+				else = {
+					add_ideas = prc_qingbao_2ju
+				}
+			}
 			
-				add_intel = {
-					target = CHI
-					civilian_intel = 75
-					army_intel = 75
+			add_intel = {
+				target = CHI
+				civilian_intel = 75
+				army_intel = 75
+			}
+			add_decryption = {
+				target = CHI
+				ratio = 0.75
+			}
+			
+			custom_effect_tooltip = huoqu_riben_qingbao
+			random_enemy_country = {
+				limit = { 
+					tag = JAP 
 				}
-				add_decryption = {
-					target = CHI
-					ratio = 0.75
-				}
-				
-				custom_effect_tooltip = huoqu_riben_qingbao
-				random_enemy_country = {
-					limit = { tag = JAP }
-					root = {
-						add_intel = {
-							target = PREV
-							civilian_intel = 15
-							army_intel = 15
-						}
-						add_decryption = {
-							target = PREV
-							ratio = 0.15
-						}
+				root = {
+					add_intel = {
+						target = PREV
+						civilian_intel = 15
+						army_intel = 15
+					}
+					add_decryption = {
+						target = PREV
+						ratio = 0.15
 					}
 				}
-				random_enemy_country = {
-					limit = { or = { tag = EHB tag = RRC } is_japan_faction_country = yes }
-					root = {
-						add_intel = {
-							target = PREV
-							civilian_intel = 50
-							army_intel = 50
-						}
-						add_decryption = {
-							target = PREV
-							ratio = 0.50
-						}
+			}
+			random_enemy_country = {
+				limit = { 
+					or = { 
+						tag = EHB 
+						tag = RRC 
+					} 
+					is_in_faction_with = JAP
+				}
+				root = {
+					add_intel = {
+						target = PREV
+						civilian_intel = 50
+						army_intel = 50
+					}
+					add_decryption = {
+						target = PREV
+						ratio = 0.50
 					}
 				}
-				
+			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = PRC_zeng_xisheng
 		}
@@ -577,7 +597,7 @@ focus_tree = {
 
 	focus = {#成立中央社会部
 		id = PRC_shehuibu
-		icon = GFX_goal_PRC_shehuibu
+		icon = GFX_focus_PRC_shehuibu
 		cost = 5
 		x = 1
 		y = 1
@@ -616,7 +636,7 @@ focus_tree = {
 	
 	focus = {#中国人民抗日军事政治大学
 		id = PRC_kangda_focus
-		icon = GFX_focus_kangda
+		icon = GFX_focus_PRC_kangda
 		cost = 10
 		x = -5
 		y = 1
@@ -671,26 +691,28 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_cic = 500
-		
-			show_ideas_tooltip = PRC_blank
-			add_timed_idea = { idea = PRC_idea_Nation_economic_recovery_period days = 365 }
 
-			show_ideas_tooltip = PRC_blank
-			add_timed_idea = { idea = PRC_idea_demobilize days = 365 }
-			
-			show_ideas_tooltip = PRC_blank
-			
+			add_timed_idea = { 
+				idea = PRC_idea_Nation_economic_recovery_period 
+				days = 360
+			}
+
+			add_timed_idea = { 
+				idea = PRC_idea_demobilize 
+				days = 360
+			}
+
 			prc_manmuchuangyi_level_down = yes
+
 			
-			show_ideas_tooltip = PRC_blank
+			unlock_decision_tooltip = PRC_huifuguominjingji_jiaofei 
+			unlock_decision_tooltip = PRC_huifuguominjingji_nongye 
+			unlock_decision_tooltip = PRC_huifuguominjingji_gongye 
+			unlock_decision_tooltip = PRC_huifuguominjingji_jiaotong 
+			unlock_decision_tooltip = PRC_huifuguominjingji_shangye 
 			
-			unlock_decision_tooltip = PRC_huifuguominjingji_jiaofei #POL_looming_peasants_strike
-			unlock_decision_tooltip = PRC_huifuguominjingji_nongye #POL_looming_peasants_strike
-			unlock_decision_tooltip = PRC_huifuguominjingji_gongye #generic_factory
-			unlock_decision_tooltip = PRC_huifuguominjingji_jiaotong #SWI_isolate_switzerland
-			unlock_decision_tooltip = PRC_huifuguominjingji_shangye #hol_attract_foreign_investors
         	hidden_effect = {			
-       			 716 = {
+       			716 = {
             		remove_core_of = XIA
         		}
         		1010 = {
@@ -738,25 +760,27 @@ focus_tree = {
 			}		
 		}
 		available = {
-		OR = {
-			has_idea = prc_manmuchuangyi		
-			has_country_flag = PRC_Establish_state_or_independent_government
-            has_completed_focus = PRC_lighthouse_of_democracy_focus	
-            has_completed_focus = PRC_Federal_Republic	
-            has_completed_focus = PRC_For_the_Soviets
-			has_government = neutrality			
+			OR = {
+				has_idea = prc_manmuchuangyi		
+				has_country_flag = PRC_Establish_state_or_independent_government
+				has_completed_focus = PRC_lighthouse_of_democracy_focus	
+				has_completed_focus = PRC_Federal_Republic	
+				has_completed_focus = PRC_For_the_Soviets
+				has_government = neutrality			
             }			
 		}
 		bypass = {
 			has_country_flag = PRC_Establish_state_or_independent_government
-			not = { has_idea = prc_manmuchuangyi }
+			not = { 
+				has_idea = prc_manmuchuangyi 
+			}
 		}
 
 	}
 	
 	focus = {#一五计划
 		id = PRC_Five_year_plans_of_China
-		icon = GFX_goal_PRC_Five_year_plans_of_China
+		icon = GFX_focus_PRC_Five_year_plans_of_China
 		cost = 5.00
 		x = 0
 		y = 1
@@ -771,29 +795,58 @@ focus_tree = {
 		completion_reward = {
 			add_cic = 1000
 			set_global_flag = PRC_Five_year_plans_of_China_focus_flag
-			add_timed_idea = {
-				idea = PRC_Five_year_plans_of_China
-				days = 1825
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+
+				add_timed_idea = {
+					idea = PRC_Five_year_plans_of_China_high
+					days = 1800
+				}
+
+				add_tech_bonus = {
+					name = industry
+					ahead_reduction = 2
+					bonus = 1
+					uses = 3
+					category = industry
+				}
+				add_tech_bonus = {
+					name = electronics
+					ahead_reduction = 2
+					bonus = 1
+					uses = 3
+					category = electronics
+				}
+
+				else = {
+					add_timed_idea = {
+						idea = PRC_Five_year_plans_of_China_high
+						days = 1800
+					}
+					add_tech_bonus = {
+						name = industry
+						ahead_reduction = 2
+						bonus = 1
+						uses = 1
+						category = industry
+					}
+					add_tech_bonus = {
+						name = electronics
+						ahead_reduction = 2
+						bonus = 1
+						uses = 1
+						category = electronics
+					}
+				}
 			}
 			show_ideas_tooltip = a_fraction_of_forces_will_desert_tt
-			add_tech_bonus = {
-				name = industry
-				ahead_reduction = 2
-				bonus = 1
-				uses = 3
-				category = industry
-			}
-			add_tech_bonus = {
-				name = electronics
-				ahead_reduction = 2
-				bonus = 1
-				uses = 3
-				category = electronics
-			}
-			show_ideas_tooltip = a_fraction_of_forces_will_desert_tt
+			
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
+					has_global_flag = be_high
 				}
 				custom_effect_tooltip = available_mio_tt
 				show_mio_tooltip = PRC_shenyang_tank_manufacturer
@@ -919,6 +972,7 @@ focus_tree = {
 					add_mio_funds = 2000
 				}
 			}
+			unlock_decision_category_tooltip = PRC_military_industrial_organization
 			
 		}
 		available = {
@@ -11367,7 +11421,7 @@ focus_tree = {
 	focus = {#航空母舰的初步设想
 		id = PRC_Carriers
 		icon = GFX_focus_carrier_construction
-		cost = 5
+		cost = 2.14
 		prerequisite = {
 			focus = PRC_Train_naval_officers
 		}
@@ -11448,7 +11502,7 @@ focus_tree = {
 	focus = {#以航母为核心
 		id = PRC_carriers_center
 		icon = GFX_focus_PRC_carriers_center
-		cost = 2.14
+		cost = 5
 		prerequisite = {
 			focus = PRC_Carriers_made_by_ourselves
 		}

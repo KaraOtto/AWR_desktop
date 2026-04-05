@@ -99,3 +99,37 @@ leader_is_trotskyist = {
 		}
 	}
 }
+
+X_xchinese_propaganda_poster_slot_available = {
+	custom_trigger_tooltip = {
+		tooltip = Xpand_propaganda_poster_slot_available_tt
+		OR = {
+			check_variable = { 
+				X_xchinese_poster_left_icon_frame = X_xchinese_propaganda_empty_slot_index 
+			}
+			check_variable = { 
+				X_xchinese_poster_center_icon_frame = X_xchinese_propaganda_empty_slot_index 
+			}
+			check_variable = { 
+				X_xchinese_poster_right_icon_frame = X_xchinese_propaganda_empty_slot_index 
+			}
+		}
+	}
+}
+
+xchinese_country = {
+	is_literally_china = yes
+}
+
+has_long_march_idea = {
+	custom_trigger_tooltip = {
+		tooltip = not_affected_by_longmarch_tt
+		OR = {
+			has_idea = Long_March_1
+			has_idea = Long_March_2
+			has_idea = Long_March_3
+			has_idea = Long_March_4
+			has_idea = Long_March_5
+		}
+	}
+}

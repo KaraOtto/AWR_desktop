@@ -674,4 +674,29 @@ on_actions = {
 			}
 		}
 	}
+
+	on_monthly = {
+		effect = {
+			if = {
+				limit = {	#恢复国民经济
+					has_idea = PRC_idea_Nation_economic_recovery_period
+					check_variable = {
+						var = economy_situation_index
+						value < 141
+					}
+				}
+
+				add_to_variable = {
+					var = economy_situation_index
+					value = 1
+				}
+
+				clamp_variable = { 
+					var = economy_situation_index
+					min = 0
+					max = 300
+				}
+			}
+		}
+	}
 }

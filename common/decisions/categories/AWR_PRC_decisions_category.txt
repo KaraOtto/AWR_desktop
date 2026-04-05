@@ -1,4 +1,4 @@
-parliament_gui_decision_category = {
+parliament_gui_decision_category = {	#全国人大
 	icon = generic_communism
 
 
@@ -22,3 +22,64 @@ parliament_gui_decision_category = {
 	visible_when_empty = yes
 }
 
+PRC_western_campaigns_cat = {	#西征
+	priority = 180
+	icon = generic_communism
+}
+
+X_xchinese_propaganda_campaigns = {	#宣传鼓动部
+	priority = 100
+	icon = SOV_propaganda
+	scripted_gui = xchinese_propaganda_campaigns_ui
+	allowed = {
+		or = { 
+			is_literally_china = yes 
+			original_tag = SIK 
+		}
+	}
+
+	visible = {
+		has_civil_war = no
+		is_subject = no
+		or = { 
+			tag = event_target:WTT_communist_china 
+			tag = event_target:WTT_current_china_leader 
+		}
+		if = {
+			limit = { 
+				original_tag = PRC 
+			}
+			has_completed_focus = PRC_kuodaxuanchuan
+		}
+		if = {
+			limit = { 
+				original_tag = CHI 
+			}
+			has_completed_focus = CHI_compulsory_education_chi
+		}
+	}
+}
+
+specialized_training_decision = { #特殊项目训练
+
+	icon = generic_prospect_for_resources
+
+	allowed = { 
+		original_tag = PRC 
+	}
+
+	priority = 10
+
+}
+
+PRC_military_industrial_organization = {	#中国军工机构发展计划
+	icon = generic_prospect_for_resources
+	allowed = { 
+		original_tag = PRC 
+	}
+	visible = {
+		has_completed_focus = PRC_Five_year_plans_of_China
+	}
+	priority = 1
+
+}

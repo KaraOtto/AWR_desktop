@@ -93,8 +93,6 @@ recruit_character = PRC_zhang_lan
 recruit_character = PRC_huang_yanpei
 recruit_character = prc_shen_junru
 recruit_character = PRC_he_xiangning
-recruit_character = PRC_wanghongwen
-recruit_character = PRC_yaowenyuan
 recruit_character = PRC_zhang_chunqiao
 recruit_character = PRC_jiang_qing
 
@@ -142,7 +140,6 @@ recruit_character = PRC_wu_faxian
 recruit_character = PRC_teng_daiyuan 
 recruit_character = PRC_zhang_yunyi
 recruit_character = PRC_song_shilun
-#做到这里
 recruit_character = PRC_xu_shiyou
 recruit_character = PRC_tan_zhenlin
 recruit_character = PRC_han_xianchu
@@ -171,37 +168,19 @@ recruit_character = PRC_liang_xingchu #解放战争
 recruit_character = PRC_peng_shaohui #会师
 recruit_character = PRC_luo_binghui #会师
 recruit_character = PRC_mao_anying 
-recruit_character = PRC_lvzhengcao
-recruit_character = PRC_zhoukun
 recruit_character = PRC_xiao_hua #解放战争
 recruit_character = PRC_yang_shangkun
 recruit_character = PRC_song_renqiong
 recruit_character = PRC_li_lisan #1946年1月26日回国
 recruit_character = PRC_li_tianyou
 recruit_character = PRC_huang_yongsheng
-recruit_character = PRC_zhouzikun #会师
-recruit_character = PRC_fuqiutao #新四军第一支队副司令员 #新四军出场
-recruit_character = PRC_chenbojun #359旅旅长 #会师出场
 recruit_character = PRC_ni_zhiliang #129师参谋长 #会师出场
 recruit_character = PRC_lai_chuanzhu #皖南事变后任新四军参谋长 #开局出场
 recruit_character = PRC_zhang_dingcheng #新四军第二支队司令员 #新四军出场
 recruit_character = PRC_yang_jingyu #东北抗联总司令 #1940年2月23日牺牲
 recruit_character = PRC_xuan_xiafu #八路军高级参议 #1938年7月31日于西安被国民党特务暗杀
-recruit_character = PRC_lijingquan #358旅副旅长 #会师出场
-recruit_character = PRC_wangweizhou #385旅副旅长 #会师出场
-recruit_character = PRC_zhoujianping #343旅副旅长 #1936年底到达陕北 #1938年6月30日因脊髓炎逝世
-recruit_character = PRC_hebingyan #38年任358旅副旅长 #会师出场
-recruit_character = PRC_ludongsheng #苏联对日宣战后回东北 #1945年12月13日于哈尔滨被违纪苏军枪杀
-recruit_character = PRC_wangjinshan
-recruit_character = PRC_qinjiwei 
 recruit_character = PRC_xie_fuzhi 
-recruit_character = PRC_hongxuezhi
-recruit_character = PRC_pidingjun
 recruit_character = PRC_li_zuopeng
-recruit_character = PRC_guomoruo 
-
-
-
 
 
 #foreign advisor
@@ -290,36 +269,53 @@ create_country_leader = {
 	}
 }
 
-
-
-
-
-	
 #各动态修正的初始属性
 	
 #三大改造
-add_to_variable = { PRC_sandagaizao_global_building_slots_factor = 0.10 }#
-add_to_variable = { PRC_sandagaizao_global_building_slots = 5 }#
-add_to_variable = { PRC_sandagaizao_consumer_goods_factor = -0.15 }#
+add_to_variable = { 
+	PRC_sandagaizao_global_building_slots_factor = 0.10 
+}#
+add_to_variable = { 
+	PRC_sandagaizao_global_building_slots = 5 
+}#
+add_to_variable = { 
+	PRC_sandagaizao_consumer_goods_factor = -0.15 
+}#
 	
 #社会主义工业化
-add_to_variable = { PRC_gongyehua_production_speed_buildings_factor = 0.05 }#
-add_to_variable = { PRC_gongyehua_production_factory_max_efficiency_factor = 0.05 }#
-add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.05 }#
+add_to_variable = { 
+	PRC_gongyehua_production_speed_buildings_factor = 0.05
+}
+add_to_variable = { 
+	PRC_gongyehua_production_factory_max_efficiency_factor = 0.05 
+}
+add_to_variable = { 
+	PRC_gongyehua_industrial_capacity_factory = 0.05 
+}
 	
 #陆军
-add_to_variable = { PRC_jiefangjunlujun_army_org_factor = 0.05 }#
-add_to_variable = { PRC_jiefangjunlujun_army_morale_factor = 0.05 }#
-add_to_variable = { PRC_jiefangjunlujun_army_attack_against_major_factor = 0.05 }#
-add_to_variable = { PRC_jiefangjunlujun_army_defence_against_major_factor = 0.05 }#
-add_to_variable = { PRC_jiefangjunlujun_army_breakthrough_against_major_factor = 0.05 }#	
+add_to_variable = { 
+	PRC_jiefangjunlujun_army_org_factor = 0.05 
+}
+add_to_variable = { 
+	PRC_jiefangjunlujun_army_morale_factor = 0.05 
+}
+add_to_variable = { 
+	PRC_jiefangjunlujun_army_attack_against_major_factor = 0.05 
+}
+add_to_variable = { 
+	PRC_jiefangjunlujun_army_defence_against_major_factor = 0.05 
+}
+add_to_variable = { 
+	PRC_jiefangjunlujun_army_breakthrough_against_major_factor = 0.05 
+}
 
 if = {
 	limit = {
 		has_dlc = "La Resistance"
 	}
 	create_intelligence_agency = {
-		name="国家政治保卫局" #军委总参谋部二局
+		name= "国家政治保卫局" #军委总参谋部二局
 		icon = GFX_intelligence_agency_logo_generic_9
 	}
 	upgrade_intelligence_agency = upgrade_form_department
@@ -354,7 +350,11 @@ if = {
 		}
 		bypass_recruitment = no
 		available_to_spy_master = no
-		nationalities = { PRC CHI JAP }
+		nationalities = { 
+			PRC 
+			CHI 
+			JAP 
+		}
 	}	
 	create_operative_leader = { #李克农
 		name="李克农"
@@ -374,15 +374,26 @@ if = {
 		name="沈安娜"
 		GFX = GFX_Portrait_PRC_guanlu
 		female = yes
-		traits = { operative_infiltrator operative_linguist operative_safe_cracker operative_well_groomed  }
+		traits = { 
+			operative_infiltrator 
+			operative_linguist 
+			operative_safe_cracker 
+			operative_well_groomed  
+		}
 		bypass_recruitment = no
 		available_to_spy_master = no
-		nationalities = { PRC CHI }
+		nationalities = { 
+			PRC CHI 
+		}
 	}
 	create_operative_leader = { #李白（永不消逝的电波主角原型）
 		name="李白"
 		GFX = GFX_Portrait_PRC_libai
-		traits = { operative_infiltrator operative_tough operative_safe_cracker  }
+		traits = { 
+			operative_infiltrator 
+			operative_tough 
+			operative_safe_cracker  
+		}
 		bypass_recruitment = no
 		available_to_spy_master = no
 		nationalities = { PRC }
@@ -390,10 +401,16 @@ if = {
 	create_operative_leader = { #董健吾
 		name="董健吾"
 		GFX = GFX_Portrait_PRC_dongjianwu
-		traits = { operative_infiltrator operative_safe_cracker operative_linguist  }
+		traits = { 
+			operative_infiltrator 
+			operative_safe_cracker 
+			operative_linguist  
+		}
 		bypass_recruitment = no
 		available_to_spy_master = no
-		nationalities = { PRC }
+		nationalities = { 
+			PRC 
+		}
 	}
 	create_operative_leader = { #卢志英
 		name="卢志英"

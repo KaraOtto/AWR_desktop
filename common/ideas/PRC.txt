@@ -501,7 +501,9 @@ ideas = {
 
 			picture = untrained_soldiers
 
-			allowed = { original_tag = PRC }
+			allowed = { 
+				original_tag = PRC 
+			}
 
 			removal_cost = -1
 			modifier = {
@@ -606,7 +608,7 @@ ideas = {
 
 		PRC_militia_idea = { #群众武装
 			removal_cost = -1
-			picture = PRC_reorganized_departments_CHI
+			picture = three_rules_and_eight_notices_idea
 			allowed = {
 				always = no
 			}
@@ -628,7 +630,7 @@ ideas = {
 		PRC_militia_idea_2 = {
 			removal_cost = -1
 
-			picture = PRC_reorganized_departments_CHI
+			picture = three_rules_and_eight_notices_idea
 
 			allowed = {
 				always = no
@@ -667,11 +669,11 @@ ideas = {
 				army_org_factor = 0.01	
                 conscription_factor = 0.05				
 				stability_factor = 0.05		
-				compliance_gain = 0.25
-				resistance_target = -0.25
-				resistance_growth = -0.25
-				resistance_damage_to_garrison = -0.25
-				required_garrison_factor = -0.25
+				compliance_gain = 0.10
+				resistance_target = -0.10
+				resistance_growth = -0.10
+				resistance_damage_to_garrison = -0.10
+				required_garrison_factor = -0.10
 				conscription_factor = 0.05
 									
 			}
@@ -692,16 +694,44 @@ ideas = {
 			}
 			
 			modifier = {
-				army_org_factor = 0.025
-                war_support_factor = 0.1			
+				army_org_factor = 0.020
+                war_support_factor = 0.05
+				stability_factor = 0.05				
 				required_garrison_factor = -0.05
-				stability_factor = 0.05
-				compliance_gain = 0.5
-				resistance_target = -0.5
-				resistance_growth = -0.5
-				resistance_damage_to_garrison = -0.5
-				required_garrison_factor = -0.5
+				compliance_gain = 0.20
+				resistance_target = -0.20
+				resistance_growth = -0.20
+				resistance_damage_to_garrison = -0.20
+				required_garrison_factor = -0.20
 				conscription_factor = 0.10		
+			}
+		}
+
+		three_rules_and_eight_notices_idea_high = {	#高数值
+			removal_cost = -1
+			name = three_rules_and_eight_notices_idea
+
+			picture = three_rules_and_eight_notices_idea
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			modifier = {
+				army_org_factor = 0.030
+                war_support_factor = 0.10
+				stability_factor = 0.10			
+				required_garrison_factor = -0.05
+				compliance_gain = 0.50
+				resistance_target = -0.50
+				resistance_growth = -0.50
+				resistance_damage_to_garrison = -0.50
+				required_garrison_factor = -0.50
+				conscription_factor = 0.20
 			}
 		}
 
@@ -821,7 +851,7 @@ ideas = {
 				own_operative_capture_chance_factor = -0.1
 				own_operative_detection_chance_factor = -0.1
 				operation_infiltrate_outcome = 0.1 #渗透效率
-				operation_outcome = 0.1 #行动效率				
+				operation_outcome = 0.10 #行动效率				
 				foreign_subversive_activites = -0.1
 				drift_defence_factor = 0.1
 			}
@@ -1031,7 +1061,10 @@ ideas = {
 				always = no
 			}
 			
-			available = { has_border_war_with = SHX is_ai = no }
+			available = { 
+				has_border_war_with = SHX 
+				is_ai = no 
+			}
 
 			allowed_civil_war = {
 				always = yes
@@ -1175,6 +1208,349 @@ ideas = {
 				ammunition_consumption_factor = -0.8
 			}
         }
+
+		PRC_youqinzhuyi = {	#南下路线红军分裂的阴影
+    
+            name = PRC_youqinzhuyi
+    
+            picture = PRC_youqinzhuyi
+            
+            cancel = {
+            has_completed_focus = PRC_West_road_army_victory				
+            }
+
+            removal_cost = -1
+          
+            modifier = {
+				stability_factor = -0.05		
+				land_reinforce_rate = -0.05
+				army_org_factor = -0.05
+            }
+    	}
+
+		prc_qingbao_2ju_high = {	#军委二局
+			name = prc_qingbao_2ju
+			removal_cost = -1
+
+			picture = GER_Enigma_Machine
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			modifier = {
+				encryption = 10
+				
+				decryption_power = 100 #破译能力
+				army_intel_decryption_bonus = 15 #破译陆军密码加成
+				navy_intel_decryption_bonus = 15 #破译海军密码加成
+				airforce_intel_decryption_bonus = 15 #破译的空军密码加成
+				
+				army_intel_factor = 0.3
+				civilian_intel_factor = 0.3
+				
+				crypto_strength = 5
+				
+				decryption_factor = 0.3
+				encryption_factor = 0.3
+			}
+		}
+
+		prc_qingbao_2ju = {	#军委二局
+			name = prc_qingbao_2ju
+			removal_cost = -1
+
+			picture = GER_Enigma_Machine
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			modifier = {
+				decryption_power = 3 #破译能力
+				army_intel_decryption_bonus = 1 #破译陆军密码加成
+				navy_intel_decryption_bonus = 1 #破译海军密码加成
+				airforce_intel_decryption_bonus = 1 #破译的空军密码加成
+				
+				army_intel_factor = 0.15
+				civilian_intel_factor = 0.15
+				
+				crypto_strength = 3
+				
+				decryption_factor = 0.3
+				encryption_factor = 0.3
+			}
+		}
+
+		PRC_idea_Nation_economic_recovery_period = {	#恢复国民经济
+			picture = generic_goods_red_bonus
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				industry_repair_factor = 0.25 #工厂修复速度
+				industry_free_repair_factor = 0.25 #免费维修
+				production_speed_industrial_complex_factor = 0.10
+				production_speed_infrastructure_factor = 0.10
+				custom_modifier_tooltip = modifier_1_point_each_month_under_well_of_society
+			}
+		}
+
+		PRC_idea_demobilize = {	#军队复员
+			picture = generic_goods_red_bonus
+			allowed = { 
+				original_tag = PRC 
+			}
+			cancel = { 
+				has_war = yes 
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_weekly = -0.008
+				stability_weekly = 0.001
+				generate_wargoal_tension = 1
+				ai_join_ally_desire_factor = -5000
+				training_time_factor = 0.50
+				conscription_factor = -0.50
+				mobilization_speed = -0.50
+				production_factory_efficiency_gain_factor = 0.10
+				industrial_capacity_factory = 0.10
+				political_power_gain = 0.15
+			}
+		}
+
+		prc_manmuchuangyi = {	#满目疮痍
+			picture = prc_manmuchuangyi
+			name = prc_manmuchuangyi
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.50
+				war_support_factor = -0.50
+				stability_weekly = -0.005
+				
+				political_power_cost = 0.50
+				consumer_goods_factor = 0.50
+				
+				research_speed_factor = -0.30
+				local_resources_factor = -0.30
+				production_speed_buildings_factor = -0.30
+				industrial_capacity_factory = -0.30
+				industrial_capacity_dockyard = -0.30
+				production_factory_efficiency_gain_factor = -0.30
+				production_factory_max_efficiency_factor = -0.30
+				line_change_production_efficiency_factor = -0.30
+			}
+		}
+
+		prc_manmuchuangyi_2 = {		
+			picture = prc_manmuchuangyi
+			name = prc_manmuchuangyi
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.40
+				war_support_factor = -0.40
+				stability_weekly = -0.004
+				
+				political_power_cost = 0.40
+				consumer_goods_factor = 0.40
+				
+				research_speed_factor = -0.24
+				local_resources_factor = -0.24
+				production_speed_buildings_factor = -0.24
+				industrial_capacity_factory = -0.24
+				industrial_capacity_dockyard = -0.24
+				production_factory_efficiency_gain_factor = -0.24
+				production_factory_max_efficiency_factor = -0.24
+				line_change_production_efficiency_factor = -0.24
+			}
+		}
+
+		prc_manmuchuangyi_3 = {
+			picture = prc_manmuchuangyi
+			name = prc_manmuchuangyi
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.30
+				war_support_factor = -0.30
+				stability_weekly = -0.003
+				
+				political_power_cost = 0.30
+				consumer_goods_factor = 0.30
+				
+				research_speed_factor = -0.18
+				local_resources_factor = -0.18
+				production_speed_buildings_factor = -0.18
+				industrial_capacity_factory = -0.18
+				industrial_capacity_dockyard = -0.18
+				production_factory_efficiency_gain_factor = -0.18
+				production_factory_max_efficiency_factor = -0.18
+				line_change_production_efficiency_factor = -0.18
+			}
+		}
+
+		prc_manmuchuangyi_4 = {
+			picture = prc_manmuchuangyi
+			name = prc_manmuchuangyi
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.20
+				war_support_factor = -0.20
+				stability_weekly = -0.002
+				
+				political_power_cost = 0.20
+				consumer_goods_factor = 0.20
+				
+				research_speed_factor = -0.12
+				local_resources_factor = -0.12
+				production_speed_buildings_factor = -0.12
+				industrial_capacity_factory = -0.12
+				industrial_capacity_dockyard = -0.12
+				production_factory_efficiency_gain_factor = -0.12
+				production_factory_max_efficiency_factor = -0.12
+				line_change_production_efficiency_factor = -0.12
+			}
+		}
+
+		prc_manmuchuangyi_5 = {
+			picture = prc_manmuchuangyi
+			name = prc_manmuchuangyi
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.10
+				stability_weekly = -0.001
+				
+				political_power_cost = 0.10
+				consumer_goods_factor = 0.10
+				
+				research_speed_factor = -0.06
+				local_resources_factor = -0.06
+				production_speed_buildings_factor = -0.06
+				industrial_capacity_factory = -0.06
+				industrial_capacity_dockyard = -0.06
+				production_factory_efficiency_gain_factor = -0.06
+				production_factory_max_efficiency_factor = -0.06
+				line_change_production_efficiency_factor = -0.06
+			}
+		}
+
+		PRC_baifei = {	#白匪
+			picture = generic_spy_political
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.008
+				industry_repair_factor = -0.5
+				production_speed_buildings_factor = -0.15
+				command_power_gain = -0.50
+				max_command_power = -100
+				local_resources_factor = -0.15
+			}
+		}
+
+		PRC_Five_year_plans_of_China_high = {	#一五计划
+
+			name = PRC_Five_year_plans_of_China
+
+			picture = generic_production_bonus
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = { #guo
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+				production_speed_arms_factory_factor = 0.15
+				research_speed_factor = 0.15
+				industrial_concern_cost_factor = -0.15
+ 				tank_manufacturer_cost_factor = -0.15
+ 				materiel_manufacturer_cost_factor = -0.15
+ 				aircraft_manufacturer_cost_factor = -0.15
+ 				naval_manufacturer_cost_factor = -0.15
+				military_industrial_organization_design_team_assign_cost = -0.15
+			}
+		}
+
+		PRC_Five_year_plans_of_China = {	#一五计划
+
+			name = PRC_Five_year_plans_of_China
+
+			picture = generic_production_bonus
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = { #guo
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+				production_speed_arms_factory_factor = 0.15
+			}
+		}
+	}
+
+	hidden_ideas = {
+		communist_influence_aazz = {	#共产主义影响
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			cancel = { 
+				communism > 0.50 
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.60
+			}
+		}
 	}
 }
 
