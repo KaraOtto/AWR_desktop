@@ -3763,7 +3763,7 @@ recovery_effort = {	#恢复工作
 }
 
 PRC_military_industrial_organization = {	#中国军工机构发展计划
-
+	#船
 	establish_PRC_jiangnan_shipyard_group = {	#成立江南造船厂
 		icon = generic_factory
 		fire_only_once = yes
@@ -3921,6 +3921,815 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		}
 		remove_effect = {
 			mio:PRC_dalian_shipyard_group = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_State_Shipbuilding = {	#成立中国船舶重工集团
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_State_Shipbuilding
+				has_idea = PRC_Poor_navy
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_State_Shipbuilding
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_State_Shipbuilding
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_State_Shipbuilding = {	#投资中国船舶重工集团
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_State_Shipbuilding
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_State_Shipbuilding = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_LiaoNan_Shipbuilding = {	#成立中国人民解放军第4810厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_LiaoNan_Shipbuilding
+				has_idea = PRC_Poor_navy
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_LiaoNan_Shipbuilding
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_LiaoNan_Shipbuilding
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_LiaoNan_Shipbuilding = {	#投资中国人民解放军第4810厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_LiaoNan_Shipbuilding
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_LiaoNan_Shipbuilding = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+	#飞机
+	establish_PRC_xian_air = {	#成立国营172厂（西飞）
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_PRC_xian_air
+				has_idea = PRC_Poor_Air
+				has_idea = PRC_Poor_Air_2
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_PRC_xian_air
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = PRC_xian_air
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_PRC_xian_air = {	#投资国营172厂（西飞）
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_PRC_xian_air
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:PRC_xian_air = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_Shenyang_Aircraft  = {	#成立国营112厂(沈飞）
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_Shenyang_Aircraft 
+				has_idea = PRC_Poor_Air
+				has_idea = PRC_Poor_Air_2
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_Shenyang_Aircraft 
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_Shenyang_Aircraft 
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_Shenyang_Aircraft  = {	#投资国营112厂(沈飞）
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_Shenyang_Aircraft 
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_Shenyang_Aircraft  = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_Chengdu_Aircraft = {	#成立国营132厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_Chengdu_Aircraft
+				has_idea = PRC_Poor_Air
+				has_idea = PRC_Poor_Air_2
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_Chengdu_Aircraft
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_Chengdu_Aircraft
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_Chengdu_Aircraft = {	#投资国营132厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_Chengdu_Aircraft
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_Chengdu_Aircraft = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_Shanghai_Aircraft = {	#成立上海飞机制造厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_Shanghai_Aircraft
+				has_idea = PRC_Poor_Air
+				has_idea = PRC_Poor_Air_2
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_Shanghai_Aircraft
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_Shanghai_Aircraft
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_Shanghai_Aircraft = {	#投资上海飞机制造厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_Shanghai_Aircraft
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_Shanghai_Aircraft = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+	#坦克
+	establish_PRC_shenyang_tank_manufacturer = {	#成立国营618厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_PRC_shenyang_tank_manufacturer
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_PRC_shenyang_tank_manufacturer
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = PRC_shenyang_tank_manufacturer
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_PRC_shenyang_tank_manufacturer = {	#投资国营618厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_PRC_shenyang_tank_manufacturer
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:PRC_shenyang_tank_manufacturer = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_PRC_harbin_tank_manufacturer = {	#成立国营674厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_PRC_harbin_tank_manufacturer
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_PRC_harbin_tank_manufacturer
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = PRC_harbin_tank_manufacturer
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_PRC_harbin_tank_manufacturer = {	#投资国营674厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_PRC_harbin_tank_manufacturer
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:PRC_harbin_tank_manufacturer = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_PRC_xian_tank_manufacturer = {	#成立国营617厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_PRC_xian_tank_manufacturer
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_PRC_xian_tank_manufacturer
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = PRC_xian_tank_manufacturer
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_PRC_xian_tank_manufacturer = {	#投资国营617厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_PRC_xian_tank_manufacturer
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:PRC_xian_tank_manufacturer = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_South_Industry = {	#成立中国兵器装备集团
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_South_Industry
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_South_Industry
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_South_Industry
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_South_Industry = {	#投资中国兵器装备集团
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_South_Industry
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_South_Industry = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	#汽车厂
+
+	establish_CHI_North_Heavy_Industry = {	#成立北方重工业集团
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_North_Heavy_Industry
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_North_Heavy_Industry
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_North_Heavy_Industry
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_North_Heavy_Industry = {	#投资北方重工业集团
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_North_Heavy_Industry
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_North_Heavy_Industry = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_CHI_First_Motor = {	#成立第一汽车制造厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_First_Motor
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_First_Motor
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_First_Motor
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_First_Motor = {	#投资第一汽车制造厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_First_Motor
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_First_Motor = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	#枪厂
+	establish_CHI_Six_two_six = {	#成立国营626厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_Six_two_six
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_Six_two_six
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_Six_two_six
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_Six_two_six = {	#投资国营626厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_Six_two_six
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_Six_two_six = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	establish_huangyadong_arsenal_mio = {	#成立黄崖洞兵工厂
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_huangyadong_arsenal_mio
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_huangyadong_arsenal_mio
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = huangyadong_arsenal_mio
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_huangyadong_arsenal_mio = {	#投资黄崖洞兵工厂
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_huangyadong_arsenal_mio
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:huangyadong_arsenal_mio = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	#炮厂
+	establish_CHI_North_Industry = {	#成立中国兵器工业集团
+		icon = generic_factory
+		fire_only_once = yes
+		days_remove = 90 
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			tag = PRC
+			NOT = {
+				has_global_flag = establish_CHI_North_Industry
+			}
+		}
+		available = {
+			industrial_complex > 10
+		}
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			set_global_flag = establish_CHI_North_Industry
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = CHI_North_Industry
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+	}
+
+	invest_in_CHI_North_Industry = {	#投资中国兵器工业集团
+		icon = generic_factory
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30 
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			OR = {
+				has_global_flag = establish_CHI_North_Industry
+				has_global_flag = be_high
+			}
+		}
+		
+		complete_effect = {
+			#
+		}
+		remove_effect = {
+			mio:CHI_North_Industry = {
 				add_mio_funds = 1000
 			}
 		}

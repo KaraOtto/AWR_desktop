@@ -318,7 +318,7 @@ generic_tank_organization = {
 }
 	
 
-# INFANTRY TANK DESIGNER  - Based on Renault (FRA)
+# 步兵坦克  - Based on Renault (FRA)
 generic_infantry_tank_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_3
 
@@ -927,7 +927,7 @@ generic_assault_guns_organization = {
 
 }
 
-# MOBILE TANK DESIGNER / FAST TANK DESIGNER - Based on Hotchkiss (FRA)
+# 机动坦克 / FAST TANK DESIGNER - Based on Hotchkiss (FRA)
 generic_mobile_tank_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_3
 
@@ -1148,7 +1148,7 @@ generic_mobile_tank_organization = {
 }
 
 
-# MEDIUM TANK DESIGNER - Based on Army Ordnance Department (USA)
+# 中坦 - Based on Army Ordnance Department (USA)
 generic_medium_tank_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_2
 
@@ -1385,7 +1385,7 @@ generic_medium_tank_organization = {
 }
 
 
-# HEAVY TANK DESIGNER - Based on KV (SOV)
+# 重坦 - Based on KV (SOV)
 generic_heavy_tank_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_3
 
@@ -1636,7 +1636,7 @@ generic_heavy_tank_organization = {
 }
 
 
-### TANK REFURBISHMENT PLANT - Based on Mytishchi
+### 坦克大规模生产 - Based on 梅季希
 generic_tank_refurbishment_plant_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_3
 
@@ -4257,7 +4257,6 @@ generic_aircraft_carrier_organization = {
 		icon = GFX_generic_mio_trait_icon_anti_air_attack
 
 		position = { x=7 y=0 }
-		relative_position_id = generic_mio_trait_fleet_escorts
 
 		mutually_exclusive = { generic_mio_trait_escort_in_force }
 
@@ -4267,9 +4266,9 @@ generic_aircraft_carrier_organization = {
 	}
 
 	trait = {
-		token = generic_mio_trait_add_carrier_based_aircraft
-		name = generic_mio_trait_add_carrier_based_aircraft
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
+		token = generic_mio_add_carrier_based_aircraft
+		name = generic_mio_add_carrier_based_aircraft
+		icon = GFX_generic_mio_add_carrier_based_aircraft
 		available = { 
             has_mio_size > 5 
         }
@@ -4293,10 +4292,10 @@ generic_aircraft_carrier_organization = {
 		icon = GFX_generic_mio_department_icon_facilities
 		
 		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_add_carrier_based_aircraft
+		relative_position_id = generic_mio_add_carrier_based_aircraft
 		
 		all_parents = {
-			generic_mio_trait_add_carrier_based_aircraft
+			generic_mio_add_carrier_based_aircraft
 		}
 		
 		organization_modifier = {
@@ -4305,9 +4304,9 @@ generic_aircraft_carrier_organization = {
 	}
 
 	trait = {
-		token = generic_mio_trait_add_carrier_based_aircraft_2
-		name = generic_mio_trait_add_carrier_based_aircraft
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
+		token = generic_mio_add_carrier_based_aircraft_2
+		name = generic_mio_add_carrier_based_aircraft
+		icon = GFX_generic_mio_add_carrier_based_aircraft
 
 		position = { x=-1 y=1 }
 
@@ -4345,15 +4344,15 @@ generic_aircraft_carrier_organization = {
 	}
 
 	trait = {
-		token = generic_mio_trait_add_carrier_based_aircraft_3
-		name = generic_mio_trait_add_carrier_based_aircraft
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
+		token = generic_mio_add_carrier_based_aircraft_3
+		name = generic_mio_add_carrier_based_aircraft
+		icon = GFX_generic_mio_add_carrier_based_aircraft
 
 		position = { x=1 y=1 }
 
-		relative_position_id = generic_mio_trait_add_carrier_based_aircraft_2
+		relative_position_id = generic_mio_add_carrier_based_aircraft_2
 		any_parent = {
-			generic_mio_trait_add_carrier_based_aircraft_2
+			generic_mio_add_carrier_based_aircraft_2
 			generic_mio_advanced_materials_2
 		}
 
@@ -4379,7 +4378,7 @@ generic_aircraft_carrier_organization = {
 
 
 
-#GENERAL AIRCRAFT MANUFACTURER - Based on Focker (HOL)
+#通用机 - Based on Focker (HOL)
 generic_general_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
@@ -4762,7 +4761,7 @@ generic_general_aircraft_organization = {
 	}
 }
 
-#LIGHT AIRCRAFT MANUFACTURER - Based on MESSERSCHMIDT (GER)
+#轻型机 - Based on 梅塞施密特 (GER)
 generic_light_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
@@ -5104,7 +5103,7 @@ generic_light_aircraft_organization = {
 }
 
 
-#MEDIUM AIRCRAFT MANUFACTURER - Based on Dornier / Caproni / de Havilland
+#中型机 - Based on Dornier / Caproni / de Havilland
 generic_medium_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_3
 
@@ -5427,7 +5426,7 @@ generic_medium_aircraft_organization = {
 }
 
 
-#HEAVY AIRCRAFT MANUFACTURER - Based on John Brown (ENG)
+#重型机 - Based on John Brown (ENG)
 generic_heavy_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_2
 
@@ -5722,7 +5721,7 @@ generic_heavy_aircraft_organization = {
 }
 
 
-#CAS AIRCRAFT MANUFACTURER - Based on Junkers / Ilyushin
+#近地支援机 - Based on Junkers / Ilyushin
 generic_cas_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
@@ -5979,7 +5978,7 @@ generic_cas_aircraft_organization = {
 }
 
 
-#NAVAL AIRCRAFT MANUFACTURER - Based on Junkers / Ilyushin
+#舰载机 - Based on Junkers / Ilyushin
 generic_naval_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
@@ -6265,7 +6264,7 @@ generic_naval_aircraft_organization = {
 
 
 
-#MULTI-ROLE AIRCRAFT MANUFACTURER - Based on Savoia Marchetti (ITA) & Republic
+#多功能飞机 - Based on Savoia Marchetti (ITA) & Republic
 generic_multi_role_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_3
 
@@ -6617,7 +6616,7 @@ generic_multi_role_aircraft_organization = {
 }
 
 
-#HIGH AGILITY FIGHTER AIRCRAFT MANUFACTURER - Based on Supermarine (ENG)
+#高机动战机（超级马林）
 generic_high_agility_fighter_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
@@ -6893,12 +6892,12 @@ generic_high_agility_fighter_aircraft_organization = {
 }
 
 
-#RANGE FOCUSED AIRCRAFT MANUFACTURER - Based on North American, Lockheed, Fiat Aviazione
+#长程机
 generic_range_focused_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
 
 	allowed = {
-		always = no # Archetype only - countries using it have their own verisons
+		always = no 
 	}
 
 	equipment_type = {

@@ -1478,7 +1478,7 @@ ideas = {
 
 			name = PRC_Five_year_plans_of_China
 
-			picture = generic_production_bonus
+			picture = five_years_plan
 
 			allowed = {
 				always = no
@@ -1508,7 +1508,7 @@ ideas = {
 
 			name = PRC_Five_year_plans_of_China
 
-			picture = generic_production_bonus
+			picture = five_years_plan
 
 			allowed = {
 				always = no
@@ -1524,6 +1524,187 @@ ideas = {
 				production_speed_industrial_complex_factor = 0.15
 				production_speed_infrastructure_factor = 0.15
 				production_speed_arms_factory_factor = 0.15
+			}
+		}
+
+		changjiang_bureau = {	#长江局
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = changjiang_bureau
+
+			modifier = {
+				custom_modifier_tooltip = TEB_faction_1_monthly_tt #guo
+				political_power_factor = 0.05
+				conscription_factor = 0.05
+				command_power_gain_mult = 0.05
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						changjiang_bureau_counter = 15 
+					} 
+					add_to_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+		}
+
+		changjiang_bureau_2 = {	#长江局
+			name = changjiang_bureau
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = changjiang_bureau
+			
+			modifier = {
+				custom_modifier_tooltip = TEB_faction_monthly_tt_1_5_percent #guo
+				political_power_factor = 0.1
+				conscription_factor = 0.1
+				command_power_gain_mult = 0.1
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						changjiang_bureau_2_counter = 15 
+					} 
+					add_to_variable = { 
+						teb_total = 1 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 1 
+					} 
+				}
+			}
+		}
+
+		yanan_rect_1 = {	#延安整风
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			
+
+			modifier = {
+				political_power_factor = 0.1
+			}
+			do_effect = {
+				leader_is_maoist = yes
+			}
+		}
+
+		yanan_rect_2 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			do_effect = {
+				leader_is_maoist = yes
+			}	
+
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						yanan_rect_2_counter = 15 
+					} 
+					add_to_variable = { 
+						mao_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						mao_total = 0.5 
+					} 
+				}
+			}
+		}
+		
+		yanan_rect_3 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			
+			do_effect = {
+				leader_is_maoist = yes
+			}
+			modifier = {
+				army_morale_factor = 0.15
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				political_power_factor = 0.20
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						yanan_rect_3_counter = 15 
+					} 
+					add_to_variable = { 
+						mao_total = 1 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						mao_total = 1 
+					}
+				}
 			}
 		}
 	}

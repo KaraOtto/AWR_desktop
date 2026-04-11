@@ -1,0 +1,85 @@
+add_namespace = AWR_CHI
+country_event = { #张国焘前来投奔
+	id = AWR_CHI.1000
+	title = AWR_CHI.1000.t
+	desc = AWR_CHI.1000.desc
+	picture = GFX_report_event_zhang_guotao #to do	
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_CHI.1000.a
+		ai_chance = {
+			base = 100
+		}
+		event_target:WTT_communist_china = {
+			PRC_zhang_guotao = { 
+				set_nationality = root 
+			}
+		}
+		create_operative_leader = { #张国焘
+			name= PRC_zhang_guotao
+			GFX = GFX_Portrait_PRC_zhangguotao
+			traits = { 
+				operative_master_interrogator 
+			}
+			bypass_recruitment = no
+			available_to_spy_master = no
+			nationalities = { 
+				CHI 
+			}
+	    }
+		add_political_power = 100
+	}
+	option = {
+		name = AWR_CHI.1000.b
+		ai_chance = {
+			base = 0
+		}
+		event_target:WTT_communist_china = {
+			retire_character = PRC_zhang_guotao
+		}
+		add_political_power = -15
+		add_stability = 0.01
+	}
+}
+
+country_event = {	#据称张学良与共产党停战
+	id = AWR_CHI.1001
+	title = AWR_CHI.1001.t
+	desc = AWR_CHI.1001.d
+	picture = GFX_report_event_chiang_inspecting
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CHI
+		country_exists = PRC
+		has_global_flag = tacit_truce_flag
+		NOT = { 
+			has_war_with = JAP 
+		}
+		NOT = { 
+			has_war_with = NEA 
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_global_flag = chiang_in_xian
+		}
+	}
+	option = {
+		name = AWR_CHI.1001.a
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			NEA = {
+				country_event = {
+					id = AWR_NEA.2
+					days = 1 
+				}
+			}
+		}
+	}
+}

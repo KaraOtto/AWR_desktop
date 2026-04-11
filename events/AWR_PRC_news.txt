@@ -1,0 +1,52 @@
+add_namespace = AWR_PRC_news
+news_event = {	#《红星照耀中国》今日出版
+	id = AWR_PRC_news.1
+	title = AWR_PRC_news.1.t
+	desc = AWR_PRC_news.1.desc
+		
+	
+	picture = GFX_event_red_star_shining_china
+	major = yes
+	is_triggered_only = yes
+	
+	option = {			
+		name = AWR_PRC_news.1.a
+		trigger = {
+			TAG = event_target:WTT_communist_china
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.b
+		trigger = {
+			TAG = event_target:WTT_current_china_leader
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.c
+		trigger = {
+			NOT = {
+				TAG = event_target:WTT_communist_china
+				TAG = event_target:WTT_current_china_leader
+				has_War_with = event_target:WTT_communist_china
+				has_government = fascism
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.d
+		trigger = {
+		    or = {
+				has_War_with = event_target:WTT_communist_china
+				has_government = fascism
+			}
+		}
+		
+	}
+	
+}

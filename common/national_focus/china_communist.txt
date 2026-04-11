@@ -996,7 +996,10 @@ focus_tree = {
 			factor = 999
 		}
 		select_effect = {
-			country_event = { id = RCM_comchina.1 days = 2 }
+			country_event = { 
+				id = AWR_PRC.13 
+				days = 2 
+			}
 		}
 		available_if_capitulated = yes
 		completion_reward = {
@@ -1006,7 +1009,9 @@ focus_tree = {
 				remove_idea = line_struggle1
 				add_idea = line_struggle2
 			}
-			country_event = RCM_comchina.23
+			country_event = {
+				id = AWR_PRC.14
+			}
 			custom_effect_tooltip = a_meeting_for_wang_ming
 			effect_tooltip = {
 				add_ideas = changjiang_bureau
@@ -1028,7 +1033,7 @@ focus_tree = {
 	focus = {#中国共产党六届六中全会
 		id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
 		icon = GFX_focus_prc_important_conference
-		cost = 7.19
+		cost = 5
 		x = 0
 		y = 1
 		prerequisite = {
@@ -1046,12 +1051,20 @@ focus_tree = {
 						option = HISTORICAL
 					}
 				}
-				set_temp_variable = { temp_faction_support = 40 }
-				set_temp_variable = { temp_greater_or_smaller = 0 } #1 greater 0 smaller
-				set_temp_variable = { temp_get_faction = 3 }
+				set_temp_variable = { 
+					temp_faction_support = 40 
+				}
+				set_temp_variable = { 
+					temp_greater_or_smaller = 0 
+				} 
+				set_temp_variable = { 
+					temp_get_faction = 3 
+				}
 				custom_trigger_tooltip = {
 					tooltip = CHECK_FACTION_SUPPORT_tt
-					check_variable = { parliament_seat_array_adjusted^2 < 40 }
+					check_variable = { 
+						parliament_seat_array_adjusted^2 < 40 
+					}
 				}
 			}
 		}
@@ -1067,7 +1080,9 @@ focus_tree = {
 				limit = {
 					has_global_flag = wang_jiaxiang_return_from_soviet
 				}
-				country_event = RCM_comchina.27
+				country_event = {
+					id = AWR_PRC.18
+				}
 				if = {
 					limit = {
 						leader_is_maoist = yes
@@ -1080,40 +1095,51 @@ focus_tree = {
 					limit = {
 						leader_is_maoist = yes
 					}
-					country_event = RCM_comchina.28
+					country_event = {
+						id = AWR_PRC.19
+					}
 					custom_effect_tooltip = PRC_6th_plenary_mao
 				}
 				else_if = {
 					limit = {
 						leader_is_zhang_guotao = yes
 					}
-					country_event = RCM_comchina.29
+					country_event = {
+						id = AWR_PRC.20
+					}
 				}
 				else_if = {
 					limit = {
 						leader_is_28b = yes
 					}
-					country_event = RCM_comchina.30
+					country_event = {
+						id = AWR_PRC.21
+					}
 				}
 				else_if = {
 					limit = {
 						leader_is_trotskyist = yes
 					}
-					country_event = RCM_comchina.29
+					country_event = {
+						id = AWR_PRC.20
+					}
 				}
 			}
 			custom_effect_tooltip = sixth_plenum_tt
 		}
 		available = {
-			OR = { date > 1938.9.1 has_global_flag = wang_jiaxiang_return_from_soviet }
+			OR = { 
+				date > 1938.9.1 
+				has_global_flag = wang_jiaxiang_return_from_soviet 
+			}
 		}
 
 	}
 
 	focus = {#中央政治局扩大会议
 		id = PRC_enlarged_central_politburo_conference_focus
-		icon = GFX_focus_prc_large_soviet_conference
-		cost = 7.19
+		icon = GFX_focus_PRC_enlarged_central_politburo_conference_focus
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
@@ -1136,7 +1162,9 @@ focus_tree = {
 			set_global_flag = PRC_enlarged_central_politburo_conference_focus_focus_flag
 			add_political_power = 125
 			remove_ideas = line_struggle3
-			country_event = RCM_comchina.34
+			country_event = {
+				id = AWR_PRC.24
+			}
 			custom_effect_tooltip = forced_to_admit_errors
 		}
 	}
@@ -1166,13 +1194,13 @@ focus_tree = {
             set_global_flag = PRC_contact_Zhang_Xueliang_focus_focus_flag
 		    hidden_effect = { #guo
 				country_event = { 
-					id = PRC_Edgar_Snow.1 
+					id = AWR_PRC.33 
 					days = 80 
 				}
 			}
 			NEA = {
 				country_event = {
-					id = EFM_Comchina.11
+					id = AWR_NEA.1
 				}
 			}
 			custom_effect_tooltip = if_they_accept_tt
@@ -1183,15 +1211,15 @@ focus_tree = {
 				1053 = {
 					set_demilitarized_zone = yes
 				}
-				show_ideas_tooltip = blank
+				#show_ideas_tooltip = blank
 				add_political_power = 100
 				add_stability = 0.05
 				
 				custom_effect_tooltip = gain_base_supp_cond_n5_tt
 				add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 2500
-				producer = NEA
+					type = infantry_equipment
+					amount = 2500
+					producer = NEA
 				}
 			}
 		}
@@ -1215,7 +1243,7 @@ focus_tree = {
 	
 	focus = {#星星之火，可以燎原
 		id = PRC_Red_Army_Recovery
-		icon = GFX_goal_PRC_Red_Army_Recovery
+		icon = GFX_focus_PRC_Red_Army_Recovery
 		cost = 7.19
 		prerequisite = {
 			focus = PRC_contact_Zhang_Xueliang_focus
@@ -1228,7 +1256,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_ideas = xingxingzhihuo_keyiliaoyuan
-			show_ideas_tooltip = blank
+			#show_ideas_tooltip = blank
 			set_global_flag = PRC_Red_Army_Recovery_focus_flag
 
 			add_to_variable = {
@@ -1242,6 +1270,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			#
 		}
 
 	}
@@ -6269,14 +6298,18 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			swap_ideas = { remove_idea = CHI_optimized_equipment_production_idea add_idea = CHI_optimized_equipment_production_idea_2 }
-			
-			IF = {
+			swap_ideas = { 
+				remove_idea = CHI_optimized_equipment_production_idea 
+				add_idea = CHI_optimized_equipment_production_idea_2 
+			}
+			set_global_flag = establish_huangyadong_arsenal_mio
+			if = {
 				limit = {
+					has_global_flag = be_high
 					has_dlc = "Arms Against Tyranny"
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = huangyadong_arsenal_mio
+				show_mio_tooltip = huangyadong_arsenal_mio	
 				mio:huangyadong_arsenal_mio = {
 					add_mio_size = 5
 					add_mio_funds = 2000
@@ -6285,8 +6318,14 @@ focus_tree = {
 					add_mio_funds_gain_factor = 0.25
 					add_mio_design_team_change_cost = -0.25
 				}
+				else_if = {
+					limit = {
+						has_dlc = "Arms Against Tyranny"
+					}
+					custom_effect_tooltip = available_mio_tt
+					show_mio_tooltip = huangyadong_arsenal_mio	
+				}
 			}
-			
 			show_ideas_tooltip = a_fraction_of_forces_will_desert_tt
 			add_tech_bonus = {
 				name = infantry_weapons_bonus
@@ -15804,7 +15843,7 @@ focus_tree = {
 		id = PRC_jiefang_xinjiang
 		icon = GFX_focus_war_sinkiang
 		cost = 4.29
-		x = -1.5
+		x = -2
 		y = 1
 		prerequisite = {
 			focus = PRC_reunification_of_china
@@ -16140,7 +16179,7 @@ focus_tree = {
 			focus = PRC_reunification_of_china
 			focus = PRC_Domestic_truce_agreement
 		}
-		x = 1.5
+		x = 1
 		y = 1
 		ai_will_do = {
 			factor = 1

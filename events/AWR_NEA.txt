@@ -1,0 +1,106 @@
+add_namespace = AWR_NEA
+country_event = {	#共产党人希望安排默许停战以避免伤亡
+	id = AWR_NEA.1
+	title = AWR_NEA.1.t
+	desc = AWR_NEA.1.d
+	picture = GFX_report_event_zhou_and_zhangxueliang
+	is_triggered_only = yes
+	option = {
+		name = AWR_NEA.1.a
+		
+		ai_chance = {#guo
+			factor = 10
+			modifier = {
+				factor = 100
+				has_global_flag = PRC_East_conquest_focus_flag
+			}
+		}
+		effect_tooltip = {
+			1030 = { 
+				set_demilitarized_zone = yes 
+			}
+			1053 = { 
+				set_demilitarized_zone = yes 
+			}
+		}
+		add_political_power = 20
+		add_stability = 0.05
+		set_global_flag = tacit_truce_flag
+
+		hidden_effect = {
+			CHI = {
+				country_event = {
+					id = AWR_CHI.1001
+					days = 70 
+				}
+			}
+
+		}
+		PRC = {
+			country_event = {
+				id = AWR_PRC.36
+				days = 1 
+			}
+		}
+	}
+	option = {
+		name = AWR_NEA.1.b
+		
+		ai_chance = {#guo
+			factor = 90
+			modifier = {
+				factor = 0
+				has_global_flag = PRC_East_conquest_focus_flag
+			}
+		}
+		add_stability = -0.05
+		add_political_power = -50
+		PRC = {
+			country_event = {
+				id = AWR_PRC.37
+				days = 1
+			}
+		}
+		hidden_effect = {
+
+			set_global_flag = zhang_refuses_tacit_truce
+		}
+	}
+	option = {
+		name = AWR_NEA.1.c
+		trigger = {
+			
+			always = no
+		}
+		ai_chance = {
+			factor = 100
+		}
+		add_stability = -0.2
+		add_political_power = -10
+		PRC = {
+			country_event = {
+				days = 1 
+				id = AWR_PRC.37
+			}
+		}
+		hidden_effect = {
+			set_global_flag = zhang_refuses_tacit_truce
+		}
+	}
+}
+
+country_event = {	#蒋介石抵达西安
+	id = AWR_NEA.2
+	title = AWR_NEA.2.t
+	desc = AWR_NEA.2.d
+	picture = GFX_report_event_arrive_xian
+
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_NEA.2.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

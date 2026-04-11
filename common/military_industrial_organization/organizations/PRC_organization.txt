@@ -1,6 +1,6 @@
 #船
 PRC_jiangnan_shipyard_group = {	#江南造船厂
-	include = generic_submarine_organization
+	include = generic_escort_ship_organization
 	icon = GFX_idea_prc_chuan_icon
 	allowed = {
 	    OR = {
@@ -18,10 +18,118 @@ PRC_jiangnan_shipyard_group = {	#江南造船厂
 			has_global_flag = establish_PRC_jiangnan_shipyard_group
 		}
 	}
+
+	equipment_type = {
+		capital_ship
+		screen_ship
+	}
+
+	add_trait = {
+		token = mio_trait_icon_against_submarine
+		name = mio_trait_icon_against_submarine
+		icon = GFX_generic_mio_trait_icon_sub_visibility
+		
+		position = { x=9 y=2 }
+		
+		available = {
+			has_completed_focus = PRC_guochanquzhujian
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_jiang_nan
+				}
+			}
+		}
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_against_submarine_of_escort_ship
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_jiang_nan
+			}
+		}
+		
+		special_trait_background = yes
+
+		equipment_bonus = {
+			sub_detection = 0.10
+			mines_sweeping = 0.10
+			sub_attack = 0.10
+		}
+	}
+
+	add_trait = {
+		token = mio_trait_against_air
+		name = mio_trait_against_air
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_offense
+
+		available = {
+			has_completed_focus = PRC_guochanquzhujian
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_jiang_nan
+				}
+			}
+		}
+
+		position = { x=9 y=4 }
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_against_air_of_escort_ship
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_jiang_nan
+			}
+		}
+
+		position = { x=9 y=3 }
+		
+		special_trait_background = yes
+
+		equipment_bonus = {
+			anti_air_attack = 0.10
+			lg_attack = 0.10
+		}
+	}
+
+	add_trait = {
+		token = mio_trait_production_speed
+		name = mio_trait_production_speed
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_production
+		available = {
+			has_completed_focus = PRC_guochanquzhujian
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_jiang_nan
+				}
+			}
+		}
+
+		position = { x=9 y=4 }
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_production_speed_of_escort_ship
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_jiang_nan
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.10
+			production_efficiency_cap_factor = 0.05
+			production_conversion_speed_factor = 0.50
+		}
+	}
 }
 
 PRC_bohai_shipyard_group = {	#渤海造船厂
-	include = generic_task_force_ship_organization
+	include = generic_submarine_organization
 	icon = GFX_idea_prc_chuan_icon
 	allowed = {
 	    OR = {
@@ -36,6 +144,110 @@ PRC_bohai_shipyard_group = {	#渤海造船厂
 		OR = {
 			has_global_flag = be_high
 			has_global_flag = establish_PRC_bohai_shipyard_group
+		}
+	}
+
+	equipment_type = {
+		submarine
+	}
+
+	add_trait = {
+		token = generic_mio_trait_decalin_fueled_torpedo_2
+		name = generic_mio_trait_decalin_fueled_torpedo_2
+		icon = GFX_generic_mio_trait_icon_torpedo_attack
+		
+		position = { x=9 y=2 }
+		
+		available = {
+			has_completed_focus = PRC_submarine_center
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_bo_hai
+				}
+			}
+		}
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_torpedo_attack_of_submarine
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_bo_hai
+			}
+		}
+		
+		special_trait_background = yes
+
+		equipment_bonus = {
+			torpedo_attack = 0.15
+			naval_torpedo_hit_chance_factor = 0.15
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_conservative_designs
+		name = generic_mio_trait_conservative_designs
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		available = {
+			has_completed_focus = PRC_carriers_center
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_bo_hai
+				}
+			}
+		}
+
+		position = { x=9 y=4 }
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_cost_of_carrier
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_bo_hai
+			}
+		}
+
+		position = { x=9 y=3 }
+		
+		special_trait_background = yes
+
+		equipment_bonus = {
+			reliability = 0.20
+		}
+	}
+
+	add_trait = {
+		token = generic_mio_trait_radar_warning_receiver_2
+		name = generic_mio_trait_radar_warning_receiver_2
+		icon = GFX_generic_mio_trait_icon_sub_visibility
+		available = {
+			has_completed_focus = PRC_submarine_center
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_bo_hai
+				}
+			}
+		}
+
+		position = { x=9 y=4 }
+		
+		special_trait_background = yes
+
+		on_complete = {
+			custom_effect_tooltip = choose_airctaft_of_carrier
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_bo_hai
+			}
+		}
+
+		equipment_bonus = {
+			sub_visibility = -0.05
+			naval_speed = 0.05
 		}
 	}
 }
@@ -71,7 +283,7 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
-					has_country_flag = complete_choice_of_special_flag
+					has_country_flag = complete_choice_of_special_flag_da_lian
 				}
 			}
 		}
@@ -81,7 +293,7 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 		on_complete = {
 			custom_effect_tooltip = choose_num_of_carrier
 			PRC = {
-				set_country_flag = complete_choice_of_special_flag
+				set_country_flag = complete_choice_of_special_flag_da_lian
 			}
 		}
 		
@@ -89,36 +301,6 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 
 		production_bonus = {
 			production_capacity_factor = 0.15
-		}
-	}
-
-	add_trait = {
-		token = generic_mio_trait_add_carrier_based_aircraft_4
-		name = generic_mio_trait_add_carrier_based_aircraft
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-		available = {
-			has_completed_focus = PRC_carriers_center
-			has_mio_size > 10
-			PRC = {
-				NOT = { 
-					has_country_flag = complete_choice_of_special_flag
-				}
-			}
-		}
-
-		position = { x=9 y=4 }
-		
-		special_trait_background = yes
-
-		on_complete = {
-			custom_effect_tooltip = choose_airctaft_of_carrier
-			PRC = {
-				set_country_flag = complete_choice_of_special_flag
-			}
-		}
-
-		equipment_bonus = {
-			carrier_size = 2
 		}
 	}
 
@@ -132,7 +314,7 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
-					has_country_flag = complete_choice_of_special_flag
+					has_country_flag = complete_choice_of_special_flag_da_lian
 				}
 			}
 		}
@@ -144,7 +326,7 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 		on_complete = {
 			custom_effect_tooltip = choose_cost_of_carrier
 			PRC = {
-				set_country_flag = complete_choice_of_special_flag
+				set_country_flag = complete_choice_of_special_flag_da_lian
 			}
 		}
 
@@ -157,1038 +339,34 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 			production_cost_factor = -0.10
 		}
 	}
-}
 
-
-#飞机
-PRC_xian_air = { #国营172厂 西安飞机工业集团
-	include = generic_cas_aircraft_organization
-	icon = GFX_idea_generic_aircraft_support
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
+	add_trait = {
+		token = generic_mio_add_carrier_based_aircraft_4
+		name = generic_mio_add_carrier_based_aircraft
+		icon = GFX_generic_mio_add_carrier_based_aircraft
+		available = {
+			has_completed_focus = PRC_carriers_center
+			has_mio_size > 10
+			PRC = {
+				NOT = { 
+					has_country_flag = complete_choice_of_special_flag_da_lian
+				}
+			}
 		}
-	}
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_PRC_xian_air
-		}
-	}
-}
 
-#坦克
-PRC_shenyang_tank_manufacturer = { #国营618厂
-	include = generic_infantry_tank_organization
-	icon = GFX_idea_prc_junxie_icon
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_PRC_shenyang_tank_manufacturer
-		}
-	}
-}
-
-PRC_harbin_tank_manufacturer = { #国营674厂
-	include = generic_mobile_tank_organization
-	icon = GFX_idea_prc_junxie_icon
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_PRC_harbin_tank_manufacturer
-		}
-	}
-}
-
-PRC_xian_tank_manufacturer = { #国营617厂
-	include = generic_medium_tank_organization
-	icon = GFX_idea_prc_junxie_icon
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_PRC_xian_tank_manufacturer
-		}
-	}
-}
-
-
-#新制造商#
-#####################
-
-###  ##  #  # # #  ## 
- #  #  # ## # # # #   
- #  #### # ## ##   #  
- #  #  # #  # # #   # 
- #  #  # #  # # # ## 
-
-##################### 
-
-CHI_South_Industry = {#中国兵器装备集团
-	icon = GFX_idea_generic_acquire_tanks
-	
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_CHI_South_Industry
-		}
-	}
-
-	equipment_type = {
-		armor
-		support_equipment
-		train_equipment
-		railway_gun_equipment
-	}
-
-	research_categories = {
-		armor
-		support_tech
-		train_tech
-	}
-
-	tree_header_text = {
-		text = mio_header_armor
-		x = 1
-	}
-
-	tree_header_text = {
-		text = mio_header_weapons
-		x = 4
-	}
-
-	tree_header_text = {
-		text = mio_header_trains
-		x = 7
-	}
-
-	initial_trait = {
-		name = CHI_South_Industry_name
+		position = { x=9 y=4 }
 		
-		production_bonus = {
-			production_cost_factor = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_1
-		name = CHI_mio_trait_1
-		icon = GFX_generic_mio_trait_icon_build_cost_ic
-
-		position = { x = 1 y = 0 }
-		limit_to_equipment_type = { armor }
-		production_bonus = {
-			production_cost_factor = -0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_2
-		name = CHI_mio_trait_2
-		icon = GFX_generic_mio_trait_icon_resources
-
-		position = { x=-1 y =1 }
-		relative_position_id = CHI_mio_trait_1
-
-		any_parent = { CHI_mio_trait_1 }
-
-		limit_to_equipment_type = { armor }
-		production_bonus = {
-			production_resource_need_factor = -0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_3
-		name = CHI_mio_trait_3
-		icon = GFX_generic_mio_trait_icon_fuel_consumption
-
-		position = { x=1 y=1 }
-		relative_position_id = CHI_mio_trait_1
-
-		any_parent = { CHI_mio_trait_1 }
-
-		limit_to_equipment_type = { armor }
-		equipment_bonus = {
-			fuel_consumption = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_4
-		name = CHI_mio_trait_4
-		icon = GFX_generic_mio_department_icon_tank_general_production
-		position = { x=-1 y=1 }
-		relative_position_id = CHI_mio_trait_3
-
-		all_parents = { CHI_mio_trait_2 CHI_mio_trait_3 }
-
-		limit_to_equipment_type = { armor }
-		production_bonus = {
-			production_efficiency_gain_factor = 0.15
-			production_conversion_speed_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_5
-		name = CHI_mio_trait_5
-		icon = GFX_generic_mio_trait_icon_production_capacity
-		position = { x=0 y=2 }
-		relative_position_id = CHI_mio_trait_4
-
-		any_parent = { CHI_mio_trait_4 }
-		limit_to_equipment_type = { armor }
-		production_bonus = {
-			production_efficiency_cap_factor = 0.15
-			production_capacity_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_6
-		name = CHI_mio_trait_6
-		icon = GFX_generic_mio_department_icon_facilities
-		position = { x=3 y=0 }
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_7
-		name = CHI_mio_trait_7
-		icon = GFX_generic_mio_trait_icon_supply_consumption
-		position = { x=5 y=0 }
-
-		limit_to_equipment_type = {
-			support_equipment
-			train_equipment
-		}
-
-		equipment_bonus = {
-			reliability = 0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_8
-		name = CHI_mio_trait_8
-		icon = GFX_generic_mio_trait_icon_production_capacity
-
-		relative_position_id = CHI_mio_trait_6
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_6 CHI_mio_trait_7 }
-
-		limit_to_equipment_type = {
-			support_equipment
-			train_equipment
-		}
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_9
-		name = CHI_mio_trait_9
-		icon = GFX_generic_mio_trait_icon_hardness
-
-		relative_position_id = CHI_mio_trait_8
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_8 CHI_mio_trait_3 }
-
-		equipment_bonus = {
-			reliability = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_10
-		name = CHI_mio_trait_10
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_8
-		position = { x=1 y=1 }
-
-		any_parent = { CHI_mio_trait_8 }
-
-		limit_to_equipment_type = {
-			support_equipment
-			train_equipment
-		}
-
-		equipment_bonus = {
-			build_cost_ic = -0.10
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_11
-		name = CHI_mio_trait_11
-		icon = GFX_generic_mio_trait_icon_night_penalty
-
-		relative_position_id = CHI_mio_trait_8
-		position = { x=0 y=3 }
-
-		any_parent = { CHI_mio_trait_8 }
-
-		limit_to_equipment_type = {
-			support_equipment
-			train_equipment
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_12
-		name = CHI_mio_trait_12
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		position = { x=7 y=0 }
-
-		limit_to_equipment_type = {
-			train_equipment
-			railway_gun_equipment
-		}
-
-		equipment_bonus = {
-			armor_value = 0.05
-			air_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_13
-		name = CHI_mio_trait_13
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_12
-		position = { x=0 y=4 }
-
-		all_parents = { CHI_mio_trait_10 CHI_mio_trait_12 }
-
-		limit_to_equipment_type = {
-			train_equipment
-			railway_gun_equipment
-		}
-
-		equipment_bonus = {
-			armor_value = 0.05
-			build_cost_ic = -0.15
-		}
-	}
-}
-
-CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
-	icon = GFX_idea_prc_junxie_icon
-	#include = generic_medium_tank_organization
-	
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_CHI_North_Heavy_Industry
-		}
-	}
-
-	equipment_type = { 
-		mio_cat_eq_all_light_tank
-		mio_cat_eq_all_medium_tank
-	}
-
-	research_categories = { 
-		mio_cat_tech_light_armor_and_modules
-		mio_cat_tech_medium_armor_and_modules 
-	}
-
-	tree_header_text = {
-		text = mio_header_engines
-		x = 1
-	}
-
-	tree_header_text = {
-		text = mio_header_design
-		x = 4
-	}
-
-	tree_header_text = {
-		text = mio_header_armor
-		x = 7
-	}
-
-	initial_trait = {
-		name = CHI_North_Heavy_Industry_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.15
-			military_industrial_organization_design_team_assign_cost = 0.5
-			military_industrial_organization_size_up_requirement = -0.25
-			military_industrial_organization_funds_gain = 0.25
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_14
-		name = CHI_mio_trait_14
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		position = { x=1 y=0 }
-
-		equipment_bonus = {
-			maximum_speed = 0.1
-		}
-
-		mutually_exclusive = { CHI_mio_trait_15 }
-	}
-
-	trait = {
-		token = CHI_mio_trait_15
-		name = CHI_mio_trait_15
-		icon = GFX_generic_mio_trait_icon_armor_value
-	
-		position = { x=7 y=0 }
-
-		mutually_exclusive = { CHI_mio_trait_14 }
-
-		equipment_bonus = {
-			armor_value = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_16
-		name = CHI_mio_trait_16
-		icon = GFX_generic_mio_trait_icon_fuel_consumption
-
-		relative_position_id = CHI_mio_trait_14
-		position = { x=-1 y=1 }
-
-		equipment_bonus = {
-			fuel_consumption = -0.1
-		}
-
-		all_parents = { CHI_mio_trait_14 }
-	}
-
-	trait = {
-		token = CHI_mio_trait_17
-		name = CHI_mio_trait_17
-		icon = GFX_generic_mio_trait_icon_build_cost_ic
-
-		relative_position_id = CHI_mio_trait_14
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_14 }
-
-		equipment_bonus = {
-			build_cost_ic = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_18
-		name = CHI_mio_trait_18
-		icon = GFX_generic_mio_trait_icon_hardness
-
-		position = { x=4 y=1 }
-
-		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
-
-		equipment_bonus = {
-			reliability = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_19
-		name = CHI_mio_trait_19
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_15
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_15 }
-
-		equipment_bonus = {
-			breakthrough = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_20
-		name = CHI_mio_trait_20
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_15
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_15 }
-
-		equipment_bonus = {
-			defense = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_21
-		name = CHI_mio_trait_21
-		icon = GFX_generic_mio_trait_icon_efficiency_gain
-
-		relative_position_id = CHI_mio_trait_18
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_18 }
-
-		production_bonus = {
-			production_efficiency_cap_factor = 0.08
-			production_efficiency_gain_factor = 0.08
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_22
-		name = CHI_mio_trait_22
-		icon = GFX_generic_mio_trait_icon_resources
-
-		relative_position_id = CHI_mio_trait_18
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_18 }
-
-		production_bonus = {
-			production_capacity_factor = 0.08
-			production_resource_need_factor = -0.10
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_23
-		name = CHI_mio_trait_23
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_18
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_21 CHI_mio_trait_22 }
-
-		equipment_bonus = {
-			armor_value = 0.1
-			breakthrough = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_24
-		name = CHI_mio_trait_24
-		icon = GFX_generic_mio_trait_icon_soft_attack
-
-		relative_position_id = CHI_mio_trait_23
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_23 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_25
-		name = CHI_mio_trait_25
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		relative_position_id = CHI_mio_trait_23
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_23 }
-
-		equipment_bonus = {
-			hard_attack = 0.1
-			ap_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_89
-		name = CHI_mio_trait_89
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
-
-		relative_position_id = CHI_mio_trait_14
-		position = { x=1 y=1 }
-		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
-
-		limit_to_equipment_type = { 
-			light_tank_aa_chassis 
-			medium_tank_aa_chassis
-			modern_tank_aa_chassis
-		}
-
-		equipment_bonus = {
-			armor_value = 0.1
-			air_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_90
-		name = CHI_mio_trait_90
-		icon = GFX_generic_mio_department_icon_tank_general_weapons
-
-		relative_position_id = CHI_mio_trait_15
-		position = { x=-1 y=1 }
-		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
-
-		limit_to_equipment_type = {
-			light_tank_chassis
-			medium_tank_chassis
-			modern_tank_chassis
-		}
-
-		equipment_bonus = {
-			soft_attack = 0.1
-			defense = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_91
-		name = CHI_mio_trait_91
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
-
-		relative_position_id = CHI_mio_trait_89
-		position = { x=0 y=2 }
-		all_parents = { CHI_mio_trait_89 }
-
-		limit_to_equipment_type = { 
-			light_tank_destroyer_chassis
-			medium_tank_destroyer_chassis
-			modern_tank_destroyer_chassis
-		}
-
-		equipment_bonus = {
-			ap_attack = 0.15
-			hard_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_92
-		name = CHI_mio_trait_92
-		icon = GFX_generic_mio_department_icon_tank_general_quality
-
-		relative_position_id = CHI_mio_trait_90
-		position = { x=0 y=2 }
-		all_parents = { CHI_mio_trait_90 }
-
-		limit_to_equipment_type = {
-			light_tank_chassis
-			medium_tank_chassis
-			modern_tank_chassis
-		}
-
 		special_trait_background = yes
 
-		equipment_bonus = {
-			soft_attack = 0.15
-			armor_value = 0.15
-			maximum_speed = 0.1
+		on_complete = {
+			custom_effect_tooltip = choose_airctaft_of_carrier
+			PRC = {
+				set_country_flag = complete_choice_of_special_flag_da_lian
+			}
 		}
-	}
-
-}
-
-#####################
-
- ## #  # ### ###   ## 
-#   #  #  #  #  # #   
- #  ####  #  ###   #  
-  # #  #  #  #      # 
-##  #  # ### #    ##  
- 
-#####################
-
-CHI_Dalian_Shipbuilding = {#大连船舶重工集团#特遣舰队
-	icon = GFX_idea_generic_navy_carrier_bonus
-	
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_CHI_Dalian_Shipbuilding
-		}
-	}
-
-	equipment_type = {
-		mio_cat_eq_all_carrier
-		mio_cat_eq_all_cruiser
-	}
-
-	research_categories = {
-		mio_cat_tech_all_carrier_and_modules
-		mio_cat_tech_all_cruiser_and_modules
-	}
-
-	initial_trait = {
-		name = CHI_Dalian_Shipbuilding_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.15
-			military_industrial_organization_funds_gain = 0.15
-		}
-
-		equipment_bonus = {
-			naval_speed = 0.05
-			naval_range = 0.05
-		}
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_carrier
-		x = 1.5
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_cruiser
-		x = 6
-	}
-
-	trait = {
-		token = CHI_mio_trait_93
-		name = CHI_mio_trait_93
-		icon = GFX_generic_mio_department_icon_facilities
-
-		position = { x=1 y=0 }
-
-		production_bonus = {
-			production_cost_factor = -0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_94
-		name = CHI_mio_trait_94
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_93
-		position = { x=-1 y=1 }
-		all_parents = { CHI_mio_trait_93 }
-
-		production_bonus = {
-			production_capacity_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_95
-		name = CHI_mio_trait_95
-		icon = GFX_generic_mio_department_icon_ship_general_production
-
-		relative_position_id = CHI_mio_trait_94
-		position = { x=0 y=2 }
-		all_parents = { CHI_mio_trait_94 }
-
-		limit_to_equipment_type = { mio_cat_eq_all_carrier }
-
-		equipment_bonus = {
-			build_cost_ic = -0.25
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_96
-		name = CHI_mio_trait_96
-		icon = GFX_generic_mio_trait_icon_resources
-
-		relative_position_id = CHI_mio_trait_93
-		position = { x=0 y=2 }
-		all_parents = { CHI_mio_trait_93 }
-
-		production_bonus = {
-			production_resource_need_factor = -0.35
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_97
-		name = CHI_mio_trait_97
-		icon = GFX_generic_mio_department_icon_ship_carrier_offense
-
-		relative_position_id = CHI_mio_trait_96
-		position = { x=0 y=2 }
-		all_parents = { CHI_mio_trait_96 }
-
-		special_trait_background = yes
-
-		limit_to_equipment_type = { mio_cat_eq_all_carrier }
 
 		equipment_bonus = {
 			carrier_size = 2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_98
-		name = CHI_mio_trait_98
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		relative_position_id = CHI_mio_trait_93
-		position = { x=1 y=1 }
-		all_parents = { CHI_mio_trait_93 }
-
-		limit_to_equipment_type = { mio_cat_eq_all_carrier }
-
-		equipment_bonus = {
-			anti_air_attack = 0.1
-			reliability = 0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_99
-		name = CHI_mio_trait_99
-		icon = GFX_generic_mio_trait_icon_naval_torpedo_damage_reduction_factor
-
-		relative_position_id = CHI_mio_trait_98
-		position = { x=1 y=1 }
-		all_parents = { CHI_mio_trait_98 CHI_mio_trait_103 }
-
-		limit_to_equipment_type = { mio_cat_eq_all_carrier }
-
-		equipment_bonus = {
-			naval_torpedo_enemy_critical_chance_factor = -0.05
-			naval_torpedo_damage_reduction_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_100
-		name = CHI_mio_trait_100
-		icon = GFX_generic_mio_department_icon_ship_capital_screen_armor
-
-		relative_position_id = CHI_mio_trait_99
-		position = { x=0 y=1 }
-		all_parents = { CHI_mio_trait_99 }
-
-		limit_to_equipment_type = { mio_cat_eq_all_carrier }
-
-		equipment_bonus = {
-			naval_range = 0.1
-			naval_speed = 0.1
-			naval_morale_factor = 0.15 #这玩意为啥没起效？
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_101
-		name = CHI_mio_trait_101
-		icon = GFX_generic_mio_trait_icon_naval_range
-
-		position = { x=3 y=0 }
-		
-		mutually_exclusive = { CHI_mio_trait_102 }
-
-		equipment_bonus = {
-			naval_range = 0.1
-			fuel_consumption = 0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_102
-		name = CHI_mio_trait_102
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		relative_position_id = CHI_mio_trait_101
-		position = { x=2 y=0 }
-		
-		mutually_exclusive = { CHI_mio_trait_101 }
-		
-		equipment_bonus = {
-			naval_speed = 0.1
-			fuel_consumption = 0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_103
-		name = CHI_mio_trait_103
-		icon = GFX_generic_mio_trait_icon_max_strength
-
-		relative_position_id = CHI_mio_trait_101
-		position = { x=1 y=1 }
-		any_parent = { CHI_mio_trait_101 CHI_mio_trait_102 }
-
-		equipment_bonus = {
-			max_strength = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_104
-		name = CHI_mio_trait_104
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		position = { x=7 y=0 }
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			anti_air_attack = 0.15
-			naval_light_gun_hit_chance_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_105
-		name = CHI_mio_trait_105
-		icon = GFX_generic_mio_trait_icon_lg_attack
-
-		relative_position_id = CHI_mio_trait_104
-		position = { x=0 y=1 }
-		all_parents = { CHI_mio_trait_104 }
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			lg_attack = 0.15
-			lg_armor_piercing = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_106
-		name = CHI_mio_trait_106
-		icon = GFX_generic_mio_trait_icon_detection
-
-		relative_position_id = CHI_mio_trait_105
-		position = { x=-1 y=1 }
-		all_parents = { CHI_mio_trait_105 }
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			surface_detection = 0.15
-			lg_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_107
-		name = CHI_mio_trait_107
-		icon = GFX_generic_mio_trait_icon_sub_detection
-
-		relative_position_id = CHI_mio_trait_105
-		position = { x=1 y=1 }
-		all_parents = { CHI_mio_trait_105 }
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			sub_detection = 0.15
-			sub_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_108
-		name = CHI_mio_trait_108
-		icon = GFX_generic_mio_trait_icon_armor_value
-
-		relative_position_id = CHI_mio_trait_105
-		position = { x=0 y=2 }
-		any_parent = { CHI_mio_trait_106 CHI_mio_trait_107 }
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			armor_value = 0.1
-			max_strength = 0.1
-			reliability = 0.15
-		}
-	}
-	
-	trait = {
-		token = CHI_mio_trait_109
-		name = CHI_mio_trait_109
-		icon = GFX_generic_mio_department_icon_ship_capital_screen_utility
-
-		relative_position_id = CHI_mio_trait_108
-		position = { x=0 y=1 }
-		all_parents = { CHI_mio_trait_108 }
-
-		special_trait_background = yes
-
-		limit_to_equipment_type = { light_cruiser }
-
-		equipment_bonus = {
-			patrol_coordination = 0.15
 		}
 	}
 }
@@ -1209,7 +387,7 @@ CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_State_Shipbuilding
+			has_global_flag = establish_CHI_State_Shipbuilding
 		}
 	}
 
@@ -1544,7 +722,7 @@ CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
 	}
 }
 
-CHI_LiaoNan_Shipbuilding = {#辽南船厂#巡洋舰#航程专精
+CHI_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专精
 	icon = GFX_idea_generic_coastal_defense_ships2
 	
 	allowed = {
@@ -1560,7 +738,7 @@ CHI_LiaoNan_Shipbuilding = {#辽南船厂#巡洋舰#航程专精
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_LiaoNan_Shipbuilding
+			has_global_flag = establish_CHI_LiaoNan_Shipbuilding
 		}
 	}
 
@@ -1606,14 +784,7 @@ CHI_LiaoNan_Shipbuilding = {#辽南船厂#巡洋舰#航程专精
 			sub_detection = 0.05
 		}
 
-		# limit_to_equipment_type = {
-		# 	convoy
-		# }
-
-		# equipment_bonus = {
-		# 	surface_visibility = -0.3
-		# 	max_strength = 0.2
-		# }
+		
 	}
 
 	trait = {
@@ -1983,44 +1154,30 @@ CHI_LiaoNan_Shipbuilding = {#辽南船厂#巡洋舰#航程专精
 	}
 }
 
-CHI_Bohai_HeavyIndustry = {#渤海船舶重工#潜艇专精
-	icon = GFX_idea_generic_coastal_navy
-	include = generic_submarine_organization
-	
+#飞机
+PRC_xian_air = { #国营172厂 西安飞机工业集团
+	include = generic_heavy_aircraft_organization
+	icon = GFX_idea_generic_aircraft_support
 	allowed = {
 	    OR = {
 		    tag = PRC
 		    tag = event_target:WTT_communist_china
 		}
 	}
-
 	available = {
 		owner = { 
 			has_completed_focus = PRC_Five_year_plans_of_China 
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Bohai_HeavyIndustry
+			has_global_flag = establish_PRC_xian_air
 		}
 	}
 }
-
-
-
-###########################
-
-###  #    ##  #  # ###  ## 
-#  # #   #  # ## # #   #   
-###  #   #### # ## ##   #  
-#    #   #  # #  # #     # 
-#    ### #  # #  # ### ##  
-
-###########################
 
 CHI_Shenyang_Aircraft = {#国营112厂#战斗机#对空专精
 	icon = GFX_idea_prc_feiji_icon
-	#合并601所#机动改进
-	
+	include = generic_medium_aircraft_organization
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -2034,328 +1191,16 @@ CHI_Shenyang_Aircraft = {#国营112厂#战斗机#对空专精
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Shenyang_Aircraft
+			has_global_flag = establish_CHI_Shenyang_Aircraft
 		}
 	}
 
-	equipment_type = {
-		mio_cat_eq_only_light_fighter_no_cv
-		small_plane_cas_airframe
-	}
-
-	research_categories = {	
-		mio_cat_all_light_aircraft_and_modules 
-	}
-
-	tree_header_text = {
-		text = mio_header_production
-		x = 1
-	}
-
-	tree_header_text = {
-		text = mio_header_engines
-		x = 4
-	}
-
-	tree_header_text = {
-		text = mio_header_weapons
-		x = 8
-	}
-
-	initial_trait = {
-		name = CHI_Shenyang_Aircraft_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
-		}
-
-		equipment_bonus = {
-			air_agility = 0.10
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_56
-		name = CHI_mio_trait_56
-		icon = GFX_generic_mio_department_icon_plane_fighter_production
-		
-		position = { x=0 y=0 }
-
-		mutually_exclusive = { CHI_mio_trait_57 }
-
-		production_bonus = {
-			production_cost_factor = -0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_57
-		name = CHI_mio_trait_57
-		icon = GFX_generic_mio_department_icon_plane_general_engine
-
-		relative_position_id = CHI_mio_trait_56
-		position = { x=2 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-			small_plane_cas_airframe
-		}
-
-		mutually_exclusive = { CHI_mio_trait_56 }
-
-		equipment_bonus = {
-			thrust = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_58
-		name = CHI_mio_trait_58
-		icon = GFX_generic_mio_department_icon_plane_general_production
-
-		relative_position_id = CHI_mio_trait_56
-		position = { x=1 y=1 }
-
-		any_parent = { CHI_mio_trait_56 CHI_mio_trait_57 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.15
-			production_efficiency_cap_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_59
-		name = CHI_mio_trait_59
-		icon = GFX_generic_mio_trait_icon_air_agility
-
-		position = { x=4 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			air_agility = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_60
-		name = CHI_mio_trait_60
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		relative_position_id = CHI_mio_trait_59
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_59 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_61
-		name = CHI_mio_trait_61
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		relative_position_id = CHI_mio_trait_60
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_60 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_62
-		name = CHI_mio_trait_62
-		icon = GFX_generic_mio_trait_icon_air_agility
-
-		relative_position_id = CHI_mio_trait_60
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_60 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-		}
-
-		equipment_bonus = {
-			air_agility = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_63
-		name = CHI_mio_trait_63
-		icon = GFX_generic_mio_department_icon_plane_fighter_combat
-
-		relative_position_id = CHI_mio_trait_60
-		position = { x=3 y=1 }
-
-		special_trait_background = yes
-		all_parents = { CHI_mio_trait_60 CHI_mio_trait_67 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-		}
-
-		equipment_bonus = {
-			air_superiority = 0.25
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_64
-		name = CHI_mio_trait_64
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_59
-		position = { x=2 y=1 }
-
-		any_parent = { CHI_mio_trait_59 CHI_mio_trait_65 }
-
-		equipment_bonus = {
-			reliability = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_65
-		name = CHI_mio_trait_65
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		position = { x=8 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-		}
-		
-		equipment_bonus = {
-			air_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_66
-		name = CHI_mio_trait_66
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_65
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_65 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			air_defence = 0.05
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_67
-		name = CHI_mio_trait_67
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		relative_position_id = CHI_mio_trait_66
-		position = { x=-1 y=1 }
-
-		mutually_exclusive = { CHI_mio_trait_68 }
-		all_parents = { CHI_mio_trait_66 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-		}
-
-		equipment_bonus = {
-			air_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_68
-		name = CHI_mio_trait_68
-		icon = GFX_generic_mio_trait_icon_air_ground_attack
-
-		relative_position_id = CHI_mio_trait_66
-		position = { x=1 y=1 }
-
-		mutually_exclusive = { CHI_mio_trait_67 }
-		all_parents = { CHI_mio_trait_66 }
-
-		limit_to_equipment_type = {
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			air_ground_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_69
-		name = CHI_mio_trait_69
-		icon = GFX_generic_mio_trait_icon_air_ground_attack
-
-		relative_position_id = CHI_mio_trait_68
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_68 }
-
-		limit_to_equipment_type = {
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			air_defence = 0.1
-			air_ground_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_70
-		name = CHI_mio_trait_70
-		icon = GFX_generic_mio_department_icon_plane_fighter_engine
-
-		relative_position_id = CHI_mio_trait_58
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_58 }
-		special_trait_background = yes
-
-		limit_to_equipment_type = {
-			mio_cat_eq_only_light_fighter_no_cv
-			small_plane_cas_airframe
-		}
-
-		equipment_bonus = {
-			weight = -0.15
-		}
-	}
+	
 }
 
-CHI_Chengdu_Aircraft = {#国营132厂#战斗机#航程专精
+CHI_Chengdu_Aircraft = {#国营132厂#战斗机 #高机动
 	icon = GFX_idea_generic_air_research
-	#合并606所#发动机改进
-	
+	include = generic_high_agility_fighter_aircraft_organization
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -2373,405 +1218,7 @@ CHI_Chengdu_Aircraft = {#国营132厂#战斗机#航程专精
 		}
 	}
 
-	equipment_type = {
-		mio_cat_eq_all_medium_plane 
-		transport_plane_equipment
-	}
-
-	research_categories = { 
-		mio_cat_all_medium_aircraft_and_modules 
-	}
-
-	initial_trait = {
-		name = CHI_Chengdu_Aircraft_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.15
-		}
-
-		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
-
-		equipment_bonus = {
-			air_range = 0.10
-		}
-	}
-
-	tree_header_text = {
-		text = mio_header_production
-		x = 1
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_design
-		x = 5
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_Heavy_Fighter
-		x = 7
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_Bomber
-		x = 9
-	}
-
-	trait = {
-		token = CHI_mio_trait_71
-		name = CHI_mio_trait_71
-		icon = GFX_generic_mio_department_icon_plane_general_production
-
-		position = { x=1 y=0 }
-		special_trait_background = yes
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-			transport_plane_equipment
-		}
-
-		equipment_bonus = {
-			build_cost_ic = -0.25
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_72
-		name = CHI_mio_trait_72
-		icon = GFX_generic_mio_department_icon_air_transport_production
-
-		relative_position_id = CHI_mio_trait_71
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_71 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.15
-			production_efficiency_cap_factor = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_73
-		name = CHI_mio_trait_73
-		icon = GFX_generic_mio_trait_icon_resources
-
-		relative_position_id = CHI_mio_trait_71
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_71 }
-
-		production_bonus = {
-			production_resource_need_factor = -0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_74
-		name = CHI_mio_trait_74
-		icon = GFX_generic_mio_department_icon_facilities
-
-		relative_position_id = CHI_mio_trait_71
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_72 CHI_mio_trait_73 }
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_75
-		name = CHI_mio_trait_75
-		icon = GFX_generic_mio_trait_icon_naval_range
-
-		relative_position_id = CHI_mio_trait_74
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_74 }
-
-		limit_to_equipment_type = {
-			transport_plane_equipment
-		}
-
-		equipment_bonus = {
-			air_range = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_76
-		name = CHI_mio_trait_76
-		icon = GFX_generic_mio_trait_icon_naval_range
-
-		position = { x=5 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_range = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_77
-		name = CHI_mio_trait_77
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_76
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_76 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_defence = 0.1
-			air_range = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_78
-		name = CHI_mio_trait_78
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_77
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_77 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			reliability = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_79
-		name = CHI_mio_trait_79
-		icon = GFX_generic_mio_trait_icon_maximum_speed
-
-		relative_position_id = CHI_mio_trait_77
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_77 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.1
-			air_range = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_80
-		name = CHI_mio_trait_80
-		icon = GFX_generic_mio_department_icon_plane_general_engine
-
-		relative_position_id = CHI_mio_trait_77
-		position = { x=0 y=2 }
-
-		special_trait_background = yes
-
-		all_parents = { CHI_mio_trait_78 CHI_mio_trait_79 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_defence = 0.1
-			air_agility = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_81
-		name = CHI_mio_trait_81
-		icon = GFX_generic_mio_department_icon_plane_fighter_combat
-
-		relative_position_id = CHI_mio_trait_76
-		position = { x=1 y=1 }
-
-		special_trait_background = yes
-		all_parents = { CHI_mio_trait_76 CHI_mio_trait_83 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_superiority = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_82
-		name = CHI_mio_trait_82
-		icon = GFX_generic_mio_trait_icon_air_agility
-
-		relative_position_id = CHI_mio_trait_81
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_81 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_agility = 0.05
-			maximum_speed = 0.1
-		}
-	}
 	
-	trait = {
-		token = CHI_mio_trait_83
-		name = CHI_mio_trait_83
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-
-		position = { x=7 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_84
-		name = CHI_mio_trait_84
-		icon = GFX_generic_mio_department_icon_plane_fighter_combat
-
-		relative_position_id = CHI_mio_trait_83
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_83 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_attack = 0.1
-			air_range = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_85
-		name = CHI_mio_trait_85
-		icon = GFX_generic_mio_trait_icon_night_penalty
-
-		relative_position_id = CHI_mio_trait_84
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_84 CHI_mio_trait_88 }
-
-		special_trait_background = yes
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			night_penalty = -0.25
-			air_range = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_86
-		name = CHI_mio_trait_86
-		icon = GFX_generic_mio_trait_icon_air_ground_attack
-
-		position = { x=9 y=0 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_ground_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_87
-		name = CHI_mio_trait_87
-		icon = GFX_generic_mio_department_icon_plane_medium_combat
-
-		relative_position_id = CHI_mio_trait_86
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_86 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_ground_attack = 0.1
-			air_bombing = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_88
-		name = CHI_mio_trait_88
-		icon = GFX_generic_mio_trait_icon_strategic_attack
-
-		relative_position_id = CHI_mio_trait_87
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_87 }
-
-		limit_to_equipment_type = {
-			mio_cat_eq_all_medium_plane
-		}
-
-		equipment_bonus = {
-			air_bombing = 0.2
-			
-		}
-	}
-}
-
-CHI_Xian_Aircraft = {#西安飞机工业集团#战略轰炸机
-	icon = GFX_idea_generic_air_manufacturer_1
-	include = generic_heavy_aircraft_organization
-	#合并一飞院
-	
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_country_flag = establish_CHI_Xian_Aircraft
-		}
-	}
 }
 
 CHI_Shanghai_Aircraft = { #上海飞机制造厂#海军飞机
@@ -2791,22 +1238,74 @@ CHI_Shanghai_Aircraft = { #上海飞机制造厂#海军飞机
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Shanghai_Aircraft
+			has_global_flag = establish_CHI_Shanghai_Aircraft
 		}
 	}
 }
 
-################################### 
-
-#   #  ##  ### ### ###  ### ### #   
-## ## #  #  #  #   #  #  #  #   #   
-# # # ####  #  ##  ###   #  ##  #   
-#   # #  #  #  #   #  #  #  #   #   
-#   # #  #  #  ### #  # ### ### ### 
-
-###################################
-CHI_Six_two_six = {#国营626厂 庆华
+#坦克
+PRC_shenyang_tank_manufacturer = { #国营618厂
+	include = generic_infantry_tank_organization
 	icon = GFX_idea_prc_junxie_icon
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_global_flag = establish_PRC_shenyang_tank_manufacturer
+		}
+	}
+}
+
+PRC_harbin_tank_manufacturer = { #国营674厂
+	include = generic_tank_refurbishment_plant_organization
+	icon = GFX_idea_prc_junxie_icon
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_global_flag = establish_PRC_harbin_tank_manufacturer
+		}
+	}
+}
+
+PRC_xian_tank_manufacturer = { #国营617厂
+	include = generic_medium_tank_organization
+	icon = GFX_idea_prc_junxie_icon
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_global_flag = establish_PRC_xian_tank_manufacturer
+		}
+	}
+}
+
+CHI_South_Industry = {#中国兵器装备集团
+	icon = GFX_idea_generic_acquire_tanks
 	
 	allowed = {
 	    OR = {
@@ -2821,299 +1320,141 @@ CHI_Six_two_six = {#国营626厂 庆华
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Six_two_six
+			has_global_flag = establish_CHI_South_Industry
 		}
 	}
 
 	equipment_type = {
-		infantry_equipment
+		armor
+		support_equipment
+		train_equipment
+		railway_gun_equipment
 	}
-	research_categories = { 
-		infantry_weapons 
+
+	research_categories = {
+		armor
+		support_tech
+		train_tech
 	}
 
 	tree_header_text = {
-		text = CHI_mio_header_1
+		text = mio_header_armor
 		x = 1
 	}
 
 	tree_header_text = {
-		text = CHI_mio_header_2
+		text = mio_header_weapons
 		x = 4
 	}
 
 	tree_header_text = {
-		text = CHI_mio_header_3
+		text = mio_header_trains
 		x = 7
 	}
 
 	initial_trait = {
-		name = CHI_Six_two_six_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
+		name = CHI_South_Industry_name
+		
+		production_bonus = {
+			production_cost_factor = -0.1
 		}
+	}
 
+	trait = {
+		token = CHI_mio_trait_1
+		name = CHI_mio_trait_1
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		position = { x = 1 y = 0 }
+		limit_to_equipment_type = { armor }
 		production_bonus = {
 			production_cost_factor = -0.05
 		}
-
 	}
 
 	trait = {
-		token = CHI_mio_trait_26
-		name = CHI_mio_trait_26
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		token = CHI_mio_trait_2
+		name = CHI_mio_trait_2
+		icon = GFX_generic_mio_trait_icon_resources
 
-		position = { x=4 y=0 }
+		position = { x=-1 y =1 }
+		relative_position_id = CHI_mio_trait_1
 
+		any_parent = { CHI_mio_trait_1 }
+
+		limit_to_equipment_type = { armor }
 		production_bonus = {
-			production_capacity_factor = 0.1
+			production_resource_need_factor = -0.2
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_27
-		name = CHI_mio_trait_27
-		icon = GFX_generic_mio_trait_icon_defense
+		token = CHI_mio_trait_3
+		name = CHI_mio_trait_3
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
 
-		relative_position_id = CHI_mio_trait_26
-		position = { x=-3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			soft_attack = 0.1
-			defense = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_28
-		name = CHI_mio_trait_28
-		icon = GFX_generic_mio_trait_icon_ap_attack
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			hard_attack = 0.1
-			ap_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_29
-		name = CHI_mio_trait_29
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			reliability = 0.2
-			maximum_speed = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_30
-		name = CHI_mio_trait_30
-		icon = GFX_generic_mio_trait_icon_soft_attack
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_27 }
-		mutually_exclusive = { CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_31
-		name = CHI_mio_trait_31
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_27
 		position = { x=1 y=1 }
+		relative_position_id = CHI_mio_trait_1
 
-		any_parent = { CHI_mio_trait_27 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_30 }
+		any_parent = { CHI_mio_trait_1 }
 
+		limit_to_equipment_type = { armor }
 		equipment_bonus = {
-			soft_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
+			fuel_consumption = -0.1
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_32
-		name = CHI_mio_trait_32
-		icon = GFX_generic_mio_trait_icon_breakthrough
+		token = CHI_mio_trait_4
+		name = CHI_mio_trait_4
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		position = { x=-1 y=1 }
+		relative_position_id = CHI_mio_trait_3
 
-		relative_position_id = CHI_mio_trait_27
-		position = { x=0 y=2 }
+		all_parents = { CHI_mio_trait_2 CHI_mio_trait_3 }
 
-		any_parent = { CHI_mio_trait_30 CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_33
-		name = CHI_mio_trait_33
-		icon = GFX_generic_mio_trait_icon_conversion_speed
-
-		relative_position_id = CHI_mio_trait_29
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_29 }
-
+		limit_to_equipment_type = { armor }
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_efficiency_gain_factor = 0.15
 			production_conversion_speed_factor = 0.15
 		}
+	}
 
-		equipment_bonus = {
-			maximum_speed = 0.15
+	trait = {
+		token = CHI_mio_trait_5
+		name = CHI_mio_trait_5
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		position = { x=0 y=2 }
+		relative_position_id = CHI_mio_trait_4
+
+		any_parent = { CHI_mio_trait_4 }
+		limit_to_equipment_type = { armor }
+		production_bonus = {
+			production_efficiency_cap_factor = 0.15
+			production_capacity_factor = 0.15
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_34
-		name = CHI_mio_trait_34
+		token = CHI_mio_trait_6
+		name = CHI_mio_trait_6
 		icon = GFX_generic_mio_department_icon_facilities
-
-		relative_position_id = CHI_mio_trait_33
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_33 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_35
-		name = CHI_mio_trait_35
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=-1 y=1 }
-
-		any_parent = { CHI_mio_trait_28 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_36
-		name = CHI_mio_trait_36
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_28 }
-		mutually_exclusive = { CHI_mio_trait_35 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			ap_attack = 0.25
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_37
-		name = CHI_mio_trait_37
-		icon = GFX_generic_mio_trait_icon_hardness
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_35 CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
-}
-
-CHI_North_Industry = {#中国兵器工业集团
-	icon = GFX_idea_prc_junxie_icon
-	
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_country_flag = establish_CHI_North_Industry
-		}
-	}
-
-	equipment_type = {
-		artillery_equipment
-		anti_tank_equipment
-		anti_air_equipment
-		rocket_artillery_equipment
-	}
-
-	research_categories = {
-		mio_cat_all_artillery_equipment
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_line
-		x = 1
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_weapons
-		x = 6
-	}
-
-	initial_trait = {
-		name = CHI_North_Industry_name
+		position = { x=3 y=0 }
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_7
+		name = CHI_mio_trait_7
+		icon = GFX_generic_mio_trait_icon_supply_consumption
+		position = { x=5 y=0 }
+
+		limit_to_equipment_type = {
+			support_equipment
+			train_equipment
 		}
 
 		equipment_bonus = {
@@ -3122,84 +1463,74 @@ CHI_North_Industry = {#中国兵器工业集团
 	}
 
 	trait = {
-		token = CHI_mio_trait_129
-		name = CHI_mio_trait_129
-		icon = GFX_generic_mio_trait_icon_efficiency_gain
-
-		position = { x=1 y=0 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_130
-		name = CHI_mio_trait_130
-		icon = GFX_generic_mio_department_icon_facilities
-
-		relative_position_id = CHI_mio_trait_129
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_129 }
-
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.15
-			military_industrial_organization_design_team_assign_cost = -0.15
-		}
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_131
-		name = CHI_mio_trait_131
+		token = CHI_mio_trait_8
+		name = CHI_mio_trait_8
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
-		relative_position_id = CHI_mio_trait_130
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_130 }
-		mutually_exclusive = { CHI_mio_trait_132 }
-
-		production_bonus = {
-			production_cost_factor = -0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_132
-		name = CHI_mio_trait_132
-		icon = GFX_generic_mio_trait_icon_resources
-
-		relative_position_id = CHI_mio_trait_130
+		relative_position_id = CHI_mio_trait_6
 		position = { x=1 y=1 }
 
-		all_parents = { CHI_mio_trait_130 }
-		mutually_exclusive = { CHI_mio_trait_131 }
+		all_parents = { CHI_mio_trait_6 CHI_mio_trait_7 }
+
+		limit_to_equipment_type = {
+			support_equipment
+			train_equipment
+		}
 
 		production_bonus = {
-			production_resource_need_factor = -0.15
-			production_conversion_speed_factor = 0.25
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_133
-		name = CHI_mio_trait_133
-		icon = GFX_generic_mio_trait_icon_reliability
+		token = CHI_mio_trait_9
+		name = CHI_mio_trait_9
+		icon = GFX_generic_mio_trait_icon_hardness
 
-		relative_position_id = CHI_mio_trait_130
-		position = { x=0 y=3 }
+		relative_position_id = CHI_mio_trait_8
+		position = { x=-1 y=1 }
 
-		any_parent = { CHI_mio_trait_131 CHI_mio_trait_132 }
+		all_parents = { CHI_mio_trait_8 CHI_mio_trait_3 }
 
 		equipment_bonus = {
 			reliability = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_10
+		name = CHI_mio_trait_10
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = CHI_mio_trait_8
+		position = { x=1 y=1 }
+
+		any_parent = { CHI_mio_trait_8 }
+
+		limit_to_equipment_type = {
+			support_equipment
+			train_equipment
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.10
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_11
+		name = CHI_mio_trait_11
+		icon = GFX_generic_mio_department_icon_tank_general_production
+
+		relative_position_id = CHI_mio_trait_8
+		position = { x=0 y=3 }
+
+		any_parent = { CHI_mio_trait_8 }
+
+		limit_to_equipment_type = {
+			support_equipment
+			train_equipment
 		}
 
 		production_bonus = {
@@ -3208,229 +1539,339 @@ CHI_North_Industry = {#中国兵器工业集团
 	}
 
 	trait = {
-		token = CHI_mio_trait_134
-		name = CHI_mio_trait_134
-		icon= GFX_generic_mio_trait_icon_soft_attack
+		token = CHI_mio_trait_12
+		name = CHI_mio_trait_12
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
 
-		position = { x=5 y=0 }
-		mutually_exclusive = { CHI_mio_trait_135 }
-
-		equipment_bonus = {
-			soft_attack = 0.1
-			defense = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_135
-		name = CHI_mio_trait_135
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		relative_position_id = CHI_mio_trait_134
-		position = { x=2 y=0 }
-		mutually_exclusive = { CHI_mio_trait_134 }
-
-		equipment_bonus = {
-			hard_attack = 0.1
-			ap_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_136
-		name = CHI_mio_trait_136
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_134
-		position = { x=1 y=1 }
-
-		any_parent = { CHI_mio_trait_134 CHI_mio_trait_135 }
-
-		equipment_bonus = {
-			build_cost_ic = -0.1
-			breakthrough = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_137
-		name = CHI_mio_trait_137
-		icon = GFX_generic_mio_department_icon_anti_air
-
-		relative_position_id = CHI_mio_trait_136
-		position = { x=-2 y=1 }
-
-		all_parents = { CHI_mio_trait_136 }
+		position = { x=7 y=0 }
 
 		limit_to_equipment_type = {
-			anti_air_equipment
+			train_equipment
+			railway_gun_equipment
 		}
 
 		equipment_bonus = {
-			soft_attack = 0.1
+			armor_value = 0.05
 			air_attack = 0.1
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_138
-		name = CHI_mio_trait_138
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
+		token = CHI_mio_trait_13
+		name = CHI_mio_trait_13
+		icon = GFX_generic_mio_trait_icon_defense
 
-		relative_position_id = CHI_mio_trait_137
-		position = { x=-1 y=1 }
+		relative_position_id = CHI_mio_trait_12
+		position = { x=0 y=4 }
 
-		all_parents = { CHI_mio_trait_137 }
+		all_parents = { CHI_mio_trait_10 CHI_mio_trait_12 }
 
 		limit_to_equipment_type = {
-			anti_air_equipment
+			train_equipment
+			railway_gun_equipment
 		}
 
 		equipment_bonus = {
-			air_attack = 0.15
+			armor_value = 0.05
+			build_cost_ic = -0.15
+		}
+	}
+}
+
+#汽车厂
+CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
+	icon = GFX_idea_prc_junxie_icon
+	#include = generic_medium_tank_organization
+	
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_global_flag = establish_CHI_North_Heavy_Industry
+		}
+	}
+
+	equipment_type = { 
+		mio_cat_eq_all_light_tank
+		mio_cat_eq_all_medium_tank
+	}
+
+	research_categories = { 
+		mio_cat_tech_light_armor_and_modules
+		mio_cat_tech_medium_armor_and_modules 
+	}
+
+	tree_header_text = {
+		text = mio_header_engines
+		x = 1
+	}
+
+	tree_header_text = {
+		text = mio_header_design
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_header_armor
+		x = 7
+	}
+
+	initial_trait = {
+		name = CHI_North_Heavy_Industry_name
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.15
+			military_industrial_organization_design_team_assign_cost = 0.5
+			military_industrial_organization_size_up_requirement = -0.25
+			military_industrial_organization_funds_gain = 0.25
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_139
-		name = CHI_mio_trait_139
-		icon = GFX_generic_mio_trait_icon_ap_attack
+		token = CHI_mio_trait_14
+		name = CHI_mio_trait_14
+		icon = GFX_generic_mio_trait_icon_maximum_speed
 
-		relative_position_id = CHI_mio_trait_137
+		position = { x=1 y=0 }
+
+		equipment_bonus = {
+			maximum_speed = 0.1
+		}
+
+		mutually_exclusive = { CHI_mio_trait_15 }
+	}
+
+	trait = {
+		token = CHI_mio_trait_15
+		name = CHI_mio_trait_15
+		icon = GFX_generic_mio_trait_icon_armor_value
+	
+		position = { x=7 y=0 }
+
+		mutually_exclusive = { CHI_mio_trait_14 }
+
+		equipment_bonus = {
+			armor_value = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_16
+		name = CHI_mio_trait_16
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
+
+		relative_position_id = CHI_mio_trait_14
+		position = { x=-1 y=1 }
+
+		equipment_bonus = {
+			fuel_consumption = -0.1
+		}
+
+		all_parents = { CHI_mio_trait_14 }
+	}
+
+	trait = {
+		token = CHI_mio_trait_17
+		name = CHI_mio_trait_17
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+
+		relative_position_id = CHI_mio_trait_14
 		position = { x=0 y=2 }
 
-		all_parents = { CHI_mio_trait_137 }
-		special_trait_background = yes
-		mutually_exclusive = { CHI_mio_trait_144 }
-
-		limit_to_equipment_type = {
-			anti_air_equipment
-		}
+		all_parents = { CHI_mio_trait_14 }
 
 		equipment_bonus = {
-			ap_attack = 1
-			hard_attack = 0.2
+			build_cost_ic = -0.1
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_140
-		name = CHI_mio_trait_140
-		icon = GFX_generic_mio_department_icon_artillery
+		token = CHI_mio_trait_18
+		name = CHI_mio_trait_18
+		icon = GFX_generic_mio_trait_icon_hardness
 
-		relative_position_id = CHI_mio_trait_136
-		position = { x=0 y=1 }
+		position = { x=4 y=1 }
 
-		all_parents = { CHI_mio_trait_136 }
+		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
 
-		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-		}
-		
 		equipment_bonus = {
-			soft_attack = 0.1
-			hard_attack = 0.15
+			reliability = 0.15
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_141
-		name = CHI_mio_trait_141
-		icon = GFX_generic_mio_trait_icon_soft_attack
+		token = CHI_mio_trait_19
+		name = CHI_mio_trait_19
+		icon = GFX_generic_mio_trait_icon_breakthrough
 
-		relative_position_id = CHI_mio_trait_140
-		position = { x=-1 y=1 }
+		relative_position_id = CHI_mio_trait_15
+		position = { x=1 y=1 }
 
-		all_parents = { CHI_mio_trait_140 }
+		all_parents = { CHI_mio_trait_15 }
 
-		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
+		equipment_bonus = {
+			breakthrough = 0.1
 		}
-		
+	}
+
+	trait = {
+		token = CHI_mio_trait_20
+		name = CHI_mio_trait_20
+		icon = GFX_generic_mio_trait_icon_defense
+
+		relative_position_id = CHI_mio_trait_15
+		position = { x=0 y=2 }
+
+		all_parents = { CHI_mio_trait_15 }
+
 		equipment_bonus = {
 			defense = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_21
+		name = CHI_mio_trait_21
+		icon = GFX_generic_mio_trait_icon_efficiency_gain
+
+		relative_position_id = CHI_mio_trait_18
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_18 }
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.08
+			production_efficiency_gain_factor = 0.08
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_22
+		name = CHI_mio_trait_22
+		icon = GFX_generic_mio_trait_icon_resources
+
+		relative_position_id = CHI_mio_trait_18
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_18 }
+
+		production_bonus = {
+			production_capacity_factor = 0.08
+			production_resource_need_factor = -0.10
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_23
+		name = CHI_mio_trait_23
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_18
+		position = { x=0 y=2 }
+
+		any_parent = { CHI_mio_trait_21 CHI_mio_trait_22 }
+
+		equipment_bonus = {
+			armor_value = 0.1
+			breakthrough = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_24
+		name = CHI_mio_trait_24
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = CHI_mio_trait_23
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_23 }
+
+		equipment_bonus = {
 			soft_attack = 0.15
 		}
 	}
 
 	trait = {
-		token = CHI_mio_trait_142
-		name = CHI_mio_trait_142
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_140
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_140 }
-
-		limit_to_equipment_type = {
-			artillery_equipment
-			rocket_artillery_equipment
-		}
-		
-		equipment_bonus = {
-			breakthrough = 0.15
-			hard_attack = 1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_143
-		name = CHI_mio_trait_143
-		icon = GFX_generic_mio_department_icon_anti_tank
-
-		relative_position_id = CHI_mio_trait_136
-		position = { x=2 y=1 }
-
-		all_parents = { CHI_mio_trait_136 }
-
-		limit_to_equipment_type = {
-			anti_tank_equipment
-		}
-
-		equipment_bonus = {
-			ap_attack = 0.1
-			hard_attack = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_144
-		name = CHI_mio_trait_144
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_143
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_143 }
-		special_trait_background = yes
-		mutually_exclusive = { CHI_mio_trait_139 }
-
-		limit_to_equipment_type = {
-			anti_tank_equipment
-		}
-
-		equipment_bonus = {
-			defense = 0.15
-			soft_attack = 1
-		}
-
-	}
-
-	trait = {
-		token = CHI_mio_trait_145
-		name = CHI_mio_trait_145
+		token = CHI_mio_trait_25
+		name = CHI_mio_trait_25
 		icon = GFX_generic_mio_trait_icon_hard_attack
 
-		relative_position_id = CHI_mio_trait_143
+		relative_position_id = CHI_mio_trait_23
 		position = { x=1 y=1 }
 
-		all_parents = { CHI_mio_trait_143 }
+		all_parents = { CHI_mio_trait_23 }
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_89
+		name = CHI_mio_trait_89
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
+
+		relative_position_id = CHI_mio_trait_14
+		position = { x=1 y=1 }
+		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
+
+		limit_to_equipment_type = { 
+			light_tank_aa_chassis 
+			medium_tank_aa_chassis
+			modern_tank_aa_chassis
+		}
+
+		equipment_bonus = {
+			armor_value = 0.1
+			air_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_90
+		name = CHI_mio_trait_90
+		icon = GFX_generic_mio_department_icon_tank_general_weapons
+
+		relative_position_id = CHI_mio_trait_15
+		position = { x=-1 y=1 }
+		any_parent = { CHI_mio_trait_14 CHI_mio_trait_15 }
 
 		limit_to_equipment_type = {
-			anti_tank_equipment
+			light_tank_chassis
+			medium_tank_chassis
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			defense = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_91
+		name = CHI_mio_trait_91
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+
+		relative_position_id = CHI_mio_trait_89
+		position = { x=0 y=2 }
+		all_parents = { CHI_mio_trait_89 }
+
+		limit_to_equipment_type = { 
+			light_tank_destroyer_chassis
+			medium_tank_destroyer_chassis
+			modern_tank_destroyer_chassis
 		}
 
 		equipment_bonus = {
@@ -3438,6 +1879,31 @@ CHI_North_Industry = {#中国兵器工业集团
 			hard_attack = 0.15
 		}
 	}
+
+	trait = {
+		token = CHI_mio_trait_92
+		name = CHI_mio_trait_92
+		icon = GFX_generic_mio_department_icon_tank_general_quality
+
+		relative_position_id = CHI_mio_trait_90
+		position = { x=0 y=2 }
+		all_parents = { CHI_mio_trait_90 }
+
+		limit_to_equipment_type = {
+			light_tank_chassis
+			medium_tank_chassis
+			modern_tank_chassis
+		}
+
+		special_trait_background = yes
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			armor_value = 0.15
+			maximum_speed = 0.1
+		}
+	}
+
 }
 
 CHI_First_Motor = {#一汽
@@ -3880,6 +2346,917 @@ CHI_First_Motor = {#一汽
 		equipment_bonus = {
 			maximum_speed = 0.1
 			fuel_consumption = -0.1
+		}
+	}
+}
+
+#枪厂
+CHI_Six_two_six = {#国营626厂 庆华
+	icon = GFX_idea_prc_junxie_icon
+	
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_country_flag = establish_CHI_Six_two_six
+		}
+	}
+
+	equipment_type = {
+		infantry_equipment
+	}
+	research_categories = { 
+		infantry_weapons 
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_1
+		x = 1
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_2
+		x = 4
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_3
+		x = 7
+	}
+
+	initial_trait = {
+		name = CHI_Six_two_six_name
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+
+	}
+
+	trait = {
+		token = CHI_mio_trait_26
+		name = CHI_mio_trait_26
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=4 y=0 }
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_27
+		name = CHI_mio_trait_27
+		icon = GFX_generic_mio_trait_icon_defense
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=-3 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			defense = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_28
+		name = CHI_mio_trait_28
+		icon = GFX_generic_mio_trait_icon_ap_attack
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=3 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_29
+		name = CHI_mio_trait_29
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			reliability = 0.2
+			maximum_speed = 0.2
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_30
+		name = CHI_mio_trait_30
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_27 }
+		mutually_exclusive = { CHI_mio_trait_31 }
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_31
+		name = CHI_mio_trait_31
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=1 y=1 }
+
+		any_parent = { CHI_mio_trait_27 CHI_mio_trait_29 }
+		mutually_exclusive = { CHI_mio_trait_30 }
+
+		equipment_bonus = {
+			soft_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_32
+		name = CHI_mio_trait_32
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=0 y=2 }
+
+		any_parent = { CHI_mio_trait_30 CHI_mio_trait_31 }
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_33
+		name = CHI_mio_trait_33
+		icon = GFX_generic_mio_trait_icon_conversion_speed
+
+		relative_position_id = CHI_mio_trait_29
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_29 }
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_conversion_speed_factor = 0.15
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_34
+		name = CHI_mio_trait_34
+		icon = GFX_generic_mio_department_icon_facilities
+
+		relative_position_id = CHI_mio_trait_33
+		position = { x=0 y=2 }
+
+		all_parents = { CHI_mio_trait_33 }
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_35
+		name = CHI_mio_trait_35
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=-1 y=1 }
+
+		any_parent = { CHI_mio_trait_28 CHI_mio_trait_29 }
+		mutually_exclusive = { CHI_mio_trait_36 }
+
+		equipment_bonus = {
+			hard_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_36
+		name = CHI_mio_trait_36
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_28 }
+		mutually_exclusive = { CHI_mio_trait_35 }
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			ap_attack = 0.25
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_37
+		name = CHI_mio_trait_37
+		icon = GFX_generic_mio_trait_icon_hardness
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=0 y=2 }
+
+		any_parent = { CHI_mio_trait_35 CHI_mio_trait_36 }
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+}
+
+huangyadong_arsenal_mio = {#黄崖洞兵工厂
+	name = huangyadong_arsenal
+	icon = GFX_idea_huangyadong_arsenal
+	available = {
+		owner = {
+			has_government = communism
+			if = {
+			limit = { 
+				original_tag = PRC 
+			}
+			has_completed_focus = PRC_Type_81_ma
+			}
+		}
+		615 = { 
+			or = { 
+				has_state_flag = commie_ridden_states 
+				has_dynamic_modifier = { 
+					modifier = PRC_dihoukangrigenjudi 
+					scope = JAP 
+				} 
+				is_controlled_by = FROM is_core_of = FROM 
+			} 
+		}
+	}
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+	
+	equipment_type = {
+		infantry_equipment
+	}
+	research_categories = { 
+		infantry_weapons 
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_1
+		x = 1
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_2
+		x = 4
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_3
+		x = 7
+	}
+
+	initial_trait = {
+		name = CHI_Six_two_six_name
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+
+	}
+
+	trait = {
+		token = CHI_mio_trait_26
+		name = CHI_mio_trait_26
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=4 y=0 }
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_27
+		name = CHI_mio_trait_27
+		icon = GFX_generic_mio_trait_icon_defense
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=-3 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			defense = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_28
+		name = CHI_mio_trait_28
+		icon = GFX_generic_mio_trait_icon_ap_attack
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=3 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_29
+		name = CHI_mio_trait_29
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			reliability = 0.2
+			maximum_speed = 0.2
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_30
+		name = CHI_mio_trait_30
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_27 }
+		mutually_exclusive = { CHI_mio_trait_31 }
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_31
+		name = CHI_mio_trait_31
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=1 y=1 }
+
+		any_parent = { CHI_mio_trait_27 CHI_mio_trait_29 }
+		mutually_exclusive = { CHI_mio_trait_30 }
+
+		equipment_bonus = {
+			soft_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_32
+		name = CHI_mio_trait_32
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=0 y=2 }
+
+		any_parent = { CHI_mio_trait_30 CHI_mio_trait_31 }
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_33
+		name = CHI_mio_trait_33
+		icon = GFX_generic_mio_trait_icon_conversion_speed
+
+		relative_position_id = CHI_mio_trait_29
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_29 }
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_conversion_speed_factor = 0.15
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_34
+		name = CHI_mio_trait_34
+		icon = GFX_generic_mio_department_icon_facilities
+
+		relative_position_id = CHI_mio_trait_33
+		position = { x=0 y=2 }
+
+		all_parents = { CHI_mio_trait_33 }
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_35
+		name = CHI_mio_trait_35
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=-1 y=1 }
+
+		any_parent = { CHI_mio_trait_28 CHI_mio_trait_29 }
+		mutually_exclusive = { CHI_mio_trait_36 }
+
+		equipment_bonus = {
+			hard_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_36
+		name = CHI_mio_trait_36
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_28 }
+		mutually_exclusive = { CHI_mio_trait_35 }
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			ap_attack = 0.25
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_37
+		name = CHI_mio_trait_37
+		icon = GFX_generic_mio_trait_icon_hardness
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=0 y=2 }
+
+		any_parent = { CHI_mio_trait_35 CHI_mio_trait_36 }
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+}
+
+#炮厂
+CHI_North_Industry = {#中国兵器工业集团
+	icon = GFX_idea_prc_junxie_icon
+	
+	allowed = {
+	    OR = {
+		    tag = PRC
+		    tag = event_target:WTT_communist_china
+		}
+	}
+
+	available = {
+		owner = { 
+			has_completed_focus = PRC_Five_year_plans_of_China 
+		}
+		OR = {
+			has_global_flag = be_high
+			has_country_flag = establish_CHI_North_Industry
+		}
+	}
+
+	equipment_type = {
+		artillery_equipment
+		anti_tank_equipment
+		anti_air_equipment
+		rocket_artillery_equipment
+	}
+
+	research_categories = {
+		mio_cat_all_artillery_equipment
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_line
+		x = 1
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_weapons
+		x = 6
+	}
+
+	initial_trait = {
+		name = CHI_North_Industry_name
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_129
+		name = CHI_mio_trait_129
+		icon = GFX_generic_mio_trait_icon_efficiency_gain
+
+		position = { x=1 y=0 }
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_130
+		name = CHI_mio_trait_130
+		icon = GFX_generic_mio_department_icon_facilities
+
+		relative_position_id = CHI_mio_trait_129
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_129 }
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+			military_industrial_organization_design_team_assign_cost = -0.15
+		}
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_131
+		name = CHI_mio_trait_131
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		relative_position_id = CHI_mio_trait_130
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_130 }
+		mutually_exclusive = { CHI_mio_trait_132 }
+
+		production_bonus = {
+			production_cost_factor = -0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_132
+		name = CHI_mio_trait_132
+		icon = GFX_generic_mio_trait_icon_resources
+
+		relative_position_id = CHI_mio_trait_130
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_130 }
+		mutually_exclusive = { CHI_mio_trait_131 }
+
+		production_bonus = {
+			production_resource_need_factor = -0.15
+			production_conversion_speed_factor = 0.25
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_133
+		name = CHI_mio_trait_133
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = CHI_mio_trait_130
+		position = { x=0 y=3 }
+
+		any_parent = { CHI_mio_trait_131 CHI_mio_trait_132 }
+
+		equipment_bonus = {
+			reliability = 0.1
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_134
+		name = CHI_mio_trait_134
+		icon= GFX_generic_mio_trait_icon_soft_attack
+
+		position = { x=5 y=0 }
+		mutually_exclusive = { CHI_mio_trait_135 }
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			defense = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_135
+		name = CHI_mio_trait_135
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = CHI_mio_trait_134
+		position = { x=2 y=0 }
+		mutually_exclusive = { CHI_mio_trait_134 }
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_136
+		name = CHI_mio_trait_136
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_134
+		position = { x=1 y=1 }
+
+		any_parent = { CHI_mio_trait_134 CHI_mio_trait_135 }
+
+		equipment_bonus = {
+			build_cost_ic = -0.1
+			breakthrough = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_137
+		name = CHI_mio_trait_137
+		icon = GFX_generic_mio_department_icon_anti_air
+
+		relative_position_id = CHI_mio_trait_136
+		position = { x=-2 y=1 }
+
+		all_parents = { CHI_mio_trait_136 }
+
+		limit_to_equipment_type = {
+			anti_air_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			air_attack = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_138
+		name = CHI_mio_trait_138
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		relative_position_id = CHI_mio_trait_137
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_137 }
+
+		limit_to_equipment_type = {
+			anti_air_equipment
+		}
+
+		equipment_bonus = {
+			air_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_139
+		name = CHI_mio_trait_139
+		icon = GFX_generic_mio_trait_icon_ap_attack
+
+		relative_position_id = CHI_mio_trait_137
+		position = { x=0 y=2 }
+
+		all_parents = { CHI_mio_trait_137 }
+		special_trait_background = yes
+		mutually_exclusive = { CHI_mio_trait_144 }
+
+		limit_to_equipment_type = {
+			anti_air_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 1
+			hard_attack = 0.2
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_140
+		name = CHI_mio_trait_140
+		icon = GFX_generic_mio_department_icon_artillery
+
+		relative_position_id = CHI_mio_trait_136
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_136 }
+
+		limit_to_equipment_type = {
+			artillery_equipment
+			rocket_artillery_equipment
+		}
+		
+		equipment_bonus = {
+			soft_attack = 0.1
+			hard_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_141
+		name = CHI_mio_trait_141
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = CHI_mio_trait_140
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_140 }
+
+		limit_to_equipment_type = {
+			artillery_equipment
+			rocket_artillery_equipment
+		}
+		
+		equipment_bonus = {
+			defense = 0.1
+			soft_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_142
+		name = CHI_mio_trait_142
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_140
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_140 }
+
+		limit_to_equipment_type = {
+			artillery_equipment
+			rocket_artillery_equipment
+		}
+		
+		equipment_bonus = {
+			breakthrough = 0.15
+			hard_attack = 1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_143
+		name = CHI_mio_trait_143
+		icon = GFX_generic_mio_department_icon_anti_tank
+
+		relative_position_id = CHI_mio_trait_136
+		position = { x=2 y=1 }
+
+		all_parents = { CHI_mio_trait_136 }
+
+		limit_to_equipment_type = {
+			anti_tank_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 0.1
+			hard_attack = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_144
+		name = CHI_mio_trait_144
+		icon = GFX_generic_mio_trait_icon_defense
+
+		relative_position_id = CHI_mio_trait_143
+		position = { x=0 y=2 }
+
+		all_parents = { CHI_mio_trait_143 }
+		special_trait_background = yes
+		mutually_exclusive = { CHI_mio_trait_139 }
+
+		limit_to_equipment_type = {
+			anti_tank_equipment
+		}
+
+		equipment_bonus = {
+			defense = 0.15
+			soft_attack = 1
+		}
+
+	}
+
+	trait = {
+		token = CHI_mio_trait_145
+		name = CHI_mio_trait_145
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = CHI_mio_trait_143
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_143 }
+
+		limit_to_equipment_type = {
+			anti_tank_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 0.15
+			hard_attack = 0.15
 		}
 	}
 }
