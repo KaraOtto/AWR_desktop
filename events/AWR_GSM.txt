@@ -1,0 +1,35 @@
+add_namespace = AWR_GSM
+country_event = {  #共产党军队被击退
+	id = AWR_GSM.1
+	title = AWR_GSM.1.t
+	desc = AWR_GSM.1.d
+	picture = GFX_report_event_west_route_army_failed
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AWR_GSM.1.a
+		add_stability = 0.05
+		add_political_power = 100
+	}
+}
+
+country_event = {  #共产党军队撤退
+	id = AWR_GSM.2
+	title = AWR_GSM.2.t
+	desc = AWR_GSM.2.d
+	picture = GFX_report_event_west_route_army_failed
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AWR_GSM.2.a
+		effect_tooltip = {
+			NXM = {
+				transfer_state = 1044
+			}
+		   
+		}
+	    
+	}
+}

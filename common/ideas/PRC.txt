@@ -167,6 +167,7 @@ ideas = {
 		}
 
 		line_struggle2 = { #党内斗争
+			name = line_struggle
 			picture = line_struggle
 			allowed = {
 				has_government = communism
@@ -185,6 +186,8 @@ ideas = {
 		}
 
 		line_struggle3 = { #党内斗争
+
+			name = line_struggle
 			picture = line_struggle
 
 			allowed = {
@@ -1617,8 +1620,6 @@ ideas = {
 
 			removal_cost = -1
 
-			
-
 			modifier = {
 				political_power_factor = 0.1
 			}
@@ -1707,7 +1708,532 @@ ideas = {
 				}
 			}
 		}
+
+		PRC_Fight_guidelines_high = { #迎击方针
+			name = PRC_Fight_guidelines
+
+			picture = PRC_Fight_guidelines
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.08
+				dig_in_speed_factor = 0.10
+				mobilization_speed = 0.05
+				conscription_factor = 0.10
+				defensive_war_stability_factor = 0.20
+				max_dig_in = 2
+			}
+		}
+
+		PRC_Fight_guidelines = { #迎击方针
+			name = PRC_Fight_guidelines
+
+			picture = GFX_PRC_Fight_guidelines
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.05
+				dig_in_speed_factor = 0.05
+				mobilization_speed = 0.05
+				conscription_factor = 0.10
+			}
+		}
+
+		PRC_For_the_china_high = { #前赴后继的共产党员
+			name = PRC_For_the_china
+			picture = GFX_idea_PRC_For_the_china
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.08
+				army_org_factor = 0.05
+				org_loss_at_low_org_factor = -0.08
+				land_reinforce_rate = 0.08
+				experience_loss_factor = 0.05
+				initiative_factor = 0.05
+			}
+		}
+
+		PRC_For_the_china = { #前赴后继的共产党员
+			name = PRC_For_the_china
+
+			picture = GFX_idea_PRC_For_the_china
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.03
+				army_org_factor = 0.05
+				org_loss_at_low_org_factor = -0.05
+				land_reinforce_rate = 0.05
+			}
+		}
+
+		PRC_hundred_regiment_offensive_high = { #百团大战
+			picture = generic_japanese_conflict
+
+			allowed = { always = no }
+
+			removal_cost = -1
+			available = {
+				has_war_with = JAP
+			}
+			
+			on_remove = {
+				news_event = { 
+					id = AWR_PRC_news.2 
+					days = 1 
+				}
+				set_global_flag = baituandazhan_OVERZZ
+				set_global_flag = baituandazhan
+				set_global_flag = GFX_event_kangri_hundred_regiments_campaign
+			}
+
+			modifier = {
+				planning_speed = 0.5
+				max_planning = 0.15
+				no_supply_grace = 84
+				army_speed_factor = 0.1
+				equipment_capture = 0.15
+				org_loss_when_moving = -0.15
+				army_org_factor = 0.15
+				army_morale_factor = 0.15
+				out_of_supply_factor = -0.15
+                supply_consumption_factor = -0.15
+				command_power_gain = 0.5
+	            max_command_power = 25
+				cas_damage_reduction = 0.15
+				enemy_army_bonus_air_superiority_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = ECA
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = EHB
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RRC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RFM
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = JNC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		PRC_hundred_regiment_offensive = { #百团大战
+			picture = generic_japanese_conflict
+
+			allowed = { always = no }
+
+			removal_cost = -1
+			available = {
+				has_war_with = JAP
+			}
+			
+			on_remove = {
+			news_event = { 
+				id = AWR_PRC_news.2 
+				days = 1 
+			}
+			set_global_flag = baituandazhan_OVERZZ
+	        set_global_flag = baituandazhan
+	        set_global_flag = GFX_event_kangri_hundred_regiments_campaign
+			}
+
+			modifier = {
+				planning_speed = 0.25
+				max_planning = 0.075
+				no_supply_grace = 42
+				army_speed_factor = 0.05
+				ammunition_consumption_factor = 0.20
+				equipment_capture = 0.075
+				org_loss_when_moving = -0.075
+				army_org_factor = 0.075
+				army_morale_factor = 0.075
+				out_of_supply_factor = -0.075
+                supply_consumption_factor = -0.075
+				command_power_gain = 0.25
+	            max_command_power = 12.5
+				cas_damage_reduction = 0.075
+				enemy_army_bonus_air_superiority_factor = -0.075
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = ECA
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = EHB
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RRC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = RFM
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = JNC
+				attack_bonus_against = 0.15
+				breakthrough_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		PRC_Mobile_Warfare_high = {	#运动战
+			name = PRC_Mobile_Warfare
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = PRC_Mobile_Warfare
+
+			modifier = {
+				planning_speed = 0.05
+				army_core_attack_factor = 0.05
+                army_speed_factor = 0.05 					
+			}
+		}
+
+		PRC_Mobile_Warfare = {	#运动战
+
+			name = PRC_Mobile_Warfare
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = PRC_Mobile_Warfare
+
+			modifier = {
+				planning_speed = 0.05
+				army_core_attack_factor = 0.05
+                army_speed_factor = 0.05 					
+			}
+		}
+
+		PRC_Mobile_Warfare_2 = {	#战术优势
+
+			picture = GFX_idea_PRC_Mobile_Warfare_2
+
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = 0.03
+				army_speed_factor = 0.05
+				RECON_FACTOR = 0.10
+				org_loss_when_moving = -0.05
+				army_morale_factor = 0.05
+			}
+		}
+
+		PRC_Mobile_Warfare_3 = {
+
+			picture = PRC_Mobile_Warfare_2
+
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = 0.05
+				army_core_attack_factor = 0.05
+				army_speed_factor = 0.15
+				RECON_FACTOR = 0.15
+				org_loss_when_moving = -0.1
+				army_morale_factor = 0.1
+			}
+		}
+
+		land_redistribution = {	#土地再分配
+
+			picture = land_redistribution
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			
+
+			modifier = {
+                conscription_factor = 0.05				
+				consumer_goods_factor = 0.05
+                stability_factor = 0.05
+				war_support_factor = 0.05				
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		PRC_Growth_guidelines = { #发展方针
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_production_bonus
+
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_lack_of_resource_penalty_factor = -0.2
+                ai_desired_divisions_factor = 0.5
+				research_speed_factor = 0.05
+				attrition = -0.10
+				min_export  = -0.10
+			}
+		}
+
+		PRC_fight_our_way_out = {	#打通路线
+
+			picture = PRC_fight_our_way_out
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			targeted_modifier = {
+				tag = GSM
+				attack_bonus_against = 0.25
+			}
+			targeted_modifier = {
+				tag = NXM
+				attack_bonus_against = 0.25
+			}
+			
+		}
+
+		PRC_Victory_in_the_west = { #西征的胜利
+
+			picture = PRC_Victory_in_the_west
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			available = {
+			has_character = PRC_zhang_guotao
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				custom_modifier_tooltip = ZHANG_faction_monthly_tt_1_percent
+			}
+		}
+
+		prc_ducai = {	#张氏独裁
+            name = prc_ducai		
+			picture = ducai
+			allowed = {
+				always = no
+			}
+			available = {
+			leader_is_zhang_guotao = yes			
+			}
+			removal_cost = -1
+			modifier = {
+				war_stability_factor = 0.2
+				political_power_factor = 0.15
+				resistance_growth = -0.2
+				drift_defence_factor = 0.2
+				war_support_factor = 0.10
+			}
+		}
+
+		prc_qiangzhihuidang = {		#枪指挥党			
+    
+            name = prc_qiangzhihuidang
+    
+            picture = qiangzhihuidang
+            
+            available = {
+			leader_is_zhang_guotao = yes			
+            }
+
+            removal_cost = -1
+              
+            modifier = {
+                political_power_factor = -0.10			
+			    army_attack_factor = 0.05
+				army_defence_factor = 0.05
+                army_org_factor = -0.05				
+                supply_consumption_factor = -0.05				
+			    experience_loss_factor = 0.10
+				conscription = 0.05				
+				consumer_goods_factor = -0.1			
+            }
+    	}
+
+		PRC_zhongjiemajiajun = {	#终结马家军
+
+			picture = chi_army_corruption3
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			targeted_modifier = {
+				tag = XSM
+				attack_bonus_against = 0.15
+			}
+			targeted_modifier = {
+				tag = NXM
+				attack_bonus_against = 0.15
+			}
+			
+		}
+
+		PRC_zhongjiemajiajun_high = {	#终结马家军
+
+			name = PRC_zhongjiemajiajun
+
+			picture = chi_army_corruption3
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			targeted_modifier = {
+				tag = XSM
+				attack_bonus_against = 0.30
+			}
+			targeted_modifier = {
+				tag = NXM
+				attack_bonus_against = 0.30
+			}
+			
+		}
 	}
+
+	
 
 	hidden_ideas = {
 		communist_influence_aazz = {	#共产主义影响
@@ -1731,6 +2257,47 @@ ideas = {
 			modifier = {
 				communism_drift = 0.60
 			}
+		}
+
+		PRC_War_of_Liberation = {
+
+			picture = FRA_scw_intervention_republicans_focus
+
+			allowed = {
+			    always = no			
+			}
+
+			available = {
+				PRC = {
+					is_ai = yes
+				}
+				CHI = {
+					is_ai = yes
+				}
+				GXC = {
+					is_ai = yes
+				}			
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_org = 0.30
+				army_morale_factor = 0.1
+				army_infantry_attack_factor = 0.1
+				army_infantry_defence_factor = 0.1
+			    industrial_capacity_factory = 0.15
+                war_support_weekly = 0.003
+				stability_weekly = 0.003
+			    ai_focus_defense_factor = 10
+			}
+			cancel = {
+				#
+			}			
 		}
 	}
 }

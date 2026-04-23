@@ -1272,12 +1272,11 @@ focus_tree = {
 		available = {
 			#
 		}
-
 	}
 
 	focus = {#中国人民抗日红军大学
 		id = PRC_makeshift_research_facility
-		icon = GFX_focus_PRC_hongda
+		icon = GFX_focus_PRC_makeshift_research_facility
 		cost = 5
 		prerequisite = {
 			focus = PRC_Red_Army_Recovery
@@ -1288,7 +1287,9 @@ focus_tree = {
 			factor = 1
 		}
 		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_RESEARCH}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
 		completion_reward = {
 			set_global_flag = PRC_makeshift_research_facility_focus_flag
 			add_research_slot = 1
@@ -1307,6 +1308,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			#
 		}
 
 	}
@@ -1353,12 +1355,15 @@ focus_tree = {
 		}
 		
 		available_if_capitulated = yes
+
 		completion_reward = {
-			country_event = PRC_lin_yuying.24
+			country_event = {
+				id = AWR_PRC.38
+			}
 			custom_effect_tooltip = PRC_linboqu_tt			
 			custom_effect_tooltip = PRC_Join_the_war_tt_zz
 			
-			show_ideas_tooltip = blank
+			#show_ideas_tooltip = blank
 			
 			set_global_flag = PRC_Join_the_war_focus_flag
 			set_country_flag = PRC_joined_CHI_against_JAP
@@ -1369,15 +1374,13 @@ focus_tree = {
 							is_faction_leader = yes
 							has_war_with = event_target:WTT_current_china_leader
 						}
-						#event_target:WTT_current_china_leader = {
-						#	has_completed_focus = ack_hiro_sen_focus
-						#}
+						
 					}
 				}
                 event_target:WTT_current_china_leader = {
 					custom_effect_tooltip = PRC_Join_the_war_tt
 					country_event = {
-						id = rcmchina.106
+						id = AWR_CHI.1002
 					}
 					add_to_faction = ROOT
 					PRC = {
@@ -1406,16 +1409,6 @@ focus_tree = {
 				}
 			}
 			
-			#for_each_scope_loop = {
-			#    array = controlled_states
-            #
-			#    ROOT = {
-			#       delete_unit = {
-			#            state = PREV
-			#            disband = yes # or no
-			#        }
-			#   }    
-			#}   #guo
 			delete_unit_template_and_units = {
 				division_template = "红一方面军军团级编制"
 				disband = yes #will refund equipment and manpower
@@ -1461,63 +1454,46 @@ focus_tree = {
 			custom_effect_tooltip = chinese_red_army_to_eighth_route_army
 			custom_effect_tooltip = red_army_guerrillas_to_new_fourth_army
 			
-            #custom_effect_tooltip = ye_ting_becomes_general
-            #custom_effect_tooltip = xiang_ying_becomes_general
-            #custom_effect_tooltip = chen_yi_becomes_general	
-            #custom_effect_tooltip = su_yu_becomes_general	
-			
 			show_unit_leaders_tooltip = PRC_ye_ting
 			show_unit_leaders_tooltip = PRC_xiang_ying
 			show_unit_leaders_tooltip = PRC_chen_yi
 			show_unit_leaders_tooltip = PRC_su_yu
 			show_unit_leaders_tooltip = PRC_gao_jingting
 			hidden_effect = {
-			if = {
-				limit = {			
-			    has_country_leader = { ruling_only = yes character = PRC_zhang_wentian }	
-			    }				
-		        promote_character = PRC_lin_bojiu		
-			    }				
-			if = {
-				limit = {
-					NOT = {
-			        has_global_flag = PRC_hongjungaibianle_flag2
+				if = {
+					limit = {			
+						has_country_leader = { 
+							ruling_only = yes 
+							character = PRC_zhang_wentian 
+						}	
+					}				
+					promote_character = PRC_lin_boqu		
+				}				
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = PRC_hongjungaibianle_flag2
+						}
+					}			
+					load_oob = PRC_eighth_route_army
+					load_oob = PRC_new_fourth_army
+				}
+			
+				PRC_zhu_de = {
+					set_portraits = {
+						army={
+							large= GFX_Portrait_PRC_Zhu_De
+						}
 					}
 				}			
-				load_oob = PRC_eighth_route_army
-				load_oob = PRC_new_fourth_army
+				set_global_flag = PRC_hongjungaibianle_flag			
 			}
-            PRC_lin_biao = {
-            set_portraits = {
-            army={
-            large="gfx/leaders/PRC/Portrait_PRC_Lin_Biao.dds"
-            }
-            }
-            }
-            PRC_zhu_de = {
-            set_portraits = {
-            army={
-            large="gfx/leaders/PRC/Portrait_PRC_Zhu_De.dds"
-            }
-            }
-            }			
-			set_global_flag = PRC_hongjungaibianle_flag			
-			}
-			#if = {
-			#	limit = {
-			#		NOT = {
-			#			has_war_with = SOV
-			#		}
-			#	}
-			#	#no need 823
-			#	hidden_effect = {
-			#		load_oob = "PRC_SOV_reinforcements"
-			#	}
-			#	custom_effect_tooltip = rcmchina.104_PRC_SOV_reinforcements
-			#}
+			
 			custom_effect_tooltip = chinese_sov_rep_dissolves
 			hidden_effect = {
-				hidden_effect = { drop_cosmetic_tag = yes }
+				hidden_effect = { 
+					drop_cosmetic_tag = yes 
+				}
 				set_cosmetic_tag = PRC_SGN
 				if = {
 					limit = {
@@ -1537,30 +1513,35 @@ focus_tree = {
 			
 			set_country_flag = PRC_United_front_was_established
 		}
+
 		bypass = { #guo
 		    OR = {
 			
-			has_global_flag = CHI_JAP_COMM_yes_tt
-			
-			#has_global_flag = xibeiguofangzhengfu_FOUND
-			
-		    NOT = { country_exists = event_target:WTT_current_china_leader }
-			
-			AND = {
-				has_global_flag = xibeiguofangzhengfu_FOUND
-				NOT = { country_exists = CHI }
-			}
-			
-			AND = {
-			date > 1939.1.1
-		    OR = {
-			has_war_with = JAP
-			has_war_with = event_target:WTT_current_china_leader
-			num_of_controlled_states > 10
-			has_army_manpower = { size > 199999 }
-			}
-			}
-			
+				has_global_flag = CHI_JAP_COMM_yes_tt
+				
+				NOT = { 
+					country_exists = event_target:WTT_current_china_leader 
+				}
+				
+				AND = {
+					has_global_flag = xibeiguofangzhengfu_FOUND
+					NOT = { 
+						country_exists = CHI 
+					}
+				}
+				
+				AND = {
+					date > 1939.1.1
+					OR = {
+						has_war_with = JAP
+						has_war_with = event_target:WTT_current_china_leader
+						num_of_controlled_states > 10
+						has_army_manpower = { 
+							size > 199999 
+						}
+					}
+				}
+				
 			}
 		}
 		
@@ -1601,7 +1582,7 @@ focus_tree = {
 	
 	focus = {#抗战动员
 		id = PRC_Confrontation_Focus
-		icon = GFX_focus_por_workers_of_iberia
+		icon = GFX_focus_PRC_Confrontation
 		cost = 5
 		prerequisite = {
 			focus = PRC_Join_the_war
@@ -1614,17 +1595,27 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			set_global_flag = PRC_Confrontation_Focus_focus_flag
-			add_ideas = PRC_Fight_guidelines
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				add_ideas = PRC_Fight_guidelines_high
+
+				else = {
+					add_ideas = PRC_Fight_guidelines
+				}
+			}
 		}
 		available = {
+			#
 		}
 
 	}
 
 	focus = {#党员先锋模范作用
 		id = PRC_for_china
-		icon = GFX_goal_PRC_for_china
-		cost = 5.8
+		icon = GFX_focus_PRC_for_china
+		cost = 5
 		prerequisite = {
 			focus = PRC_Confrontation_Focus
 		}
@@ -1636,9 +1627,17 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 		    custom_effect_tooltip = PRC_jiesuo_jinshendongyuan
-			add_ideas = PRC_For_the_china
 			custom_effect_tooltip = CHI_50_cheaper_force_attack
 			set_country_flag = CHI_dare_to_die_corps_flag
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				add_ideas = PRC_For_the_china_high
+				else = {
+					add_ideas = PRC_For_the_china
+				}
+			}
 		}
 		available = {
 			has_war = yes
@@ -1649,9 +1648,13 @@ focus_tree = {
 	focus = {#百团大战
 		id = PRC_Japan_war_focus
 		icon = GFX_focus_PRC_Japan_war_focus
-		cost = 5
+		cost = 2.19
 		prerequisite = {
 			focus = PRC_for_china
+		}
+
+		prerequisite = {
+			focus = PRC_Breaking_operations
 		}
 		x = 0
 		y = 7
@@ -1659,40 +1662,47 @@ focus_tree = {
 			factor = 1
 		}
 		historical_ai = { #guo
-		date > 1940.1.1
+			date > 1940.1.1
 	    }
 		available_if_capitulated = yes
 		completion_reward = {
 		    if = {
-			limit = { is_ai = no }
+				limit = { 
+					is_ai = no 
+					has_global_flag = be_high
+				}
 
-			add_timed_idea = {
-				idea = PRC_hundred_regiment_offensive days = 108
-			}			
+				add_timed_idea = {
+					idea = PRC_hundred_regiment_offensive 
+					days = 108
+				}		
+				else = {
+					add_timed_idea = {
+						idea = PRC_hundred_regiment_offensive
+						days = 108
+					}	
+				}	
 			}
-		    if = {
-			limit = { is_ai = yes }
-		    custom_effect_tooltip = gain_base_supp_cond_n20_tt
-			add_timed_idea = {
-				idea = PRC_hundred_regiment_offensive2 days = 108
-			}			
-			}
+		    
 		}
 
 		available = {
-			has_completed_focus = PRC_Underground_bunker
-			has_army_manpower = { size > 299999 }
+			has_army_manpower = { 
+				size > 299999 
+			}
 			has_war_with = JAP
 		}
 		bypass = {
-		NOT = { has_war_with = JAP }
+			NOT = { 
+				has_war_with = JAP 
+			}
 		}
 	}
 
 	focus = {#推广铁道游击队经验
 		id = PRC_Breaking_operations
-		icon = GFX_goal_PRC_infrastructure_effort_ii
-		cost = 5.8
+		icon = GFX_focus_PRC_Breaking_operations
+		cost = 5
 		prerequisite = {
 			focus = PRC_Confrontation_Focus
 		}
@@ -1716,12 +1726,14 @@ focus_tree = {
 			}
 			custom_effect_tooltip = PRC_Breaking_operations_tt_aazz	
 		hidden_effect = {
-		if = {
-			limit = {
-			PRC = { is_ai = no }  
-			}	
-			play_song = "弹起我心爱的土琵琶（老版）"
-		}				
+			if = {
+				limit = {
+					PRC = { 
+						is_ai = no 
+					}  
+				}	
+				play_song = "弹起我心爱的土琵琶（老版）"
+			}				
 		}			
 		}
 		available = {
@@ -1731,9 +1743,9 @@ focus_tree = {
 	}
 
 	focus = {#运动战
-		id = PRC_Block_enemy
-		icon = GFX_goal_PRC_Block_enemy_SSDD
-		cost = 4.29
+		id = PRC_mobile_warfare
+		icon = GFX_focus_PRC_mobile_warfare	
+		cost = 2.19
 		prerequisite = {
 			focus = PRC_Breaking_operations
 		}
@@ -1744,8 +1756,16 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			add_command_power = 90
-			add_ideas = PRC_mobile_warfare			
+			add_command_power = 90					
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				add_ideas = PRC_Mobile_Warfare_high
+				else = {
+					add_ideas = PRC_mobile_warfare
+				}
+			}	
 		}		
 		available = {
 			has_war = yes
@@ -1757,30 +1777,38 @@ focus_tree = {
 	
 	focus = {#转移中央机关驻地至延安
 		id = PRC_jinzhuyanan
-		icon = GFX_focus_prc_agrarian_socialism
+		icon = GFX_focus_PRC_jinzhuyanan
 		cost = 3.00
 		x = 1
 		y = 1
-		relative_position_id = PRC_Block_enemy
+		relative_position_id = PRC_mobile_warfare
 		ai_will_do = {
 			factor = 9999
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			country_event = prc_yanan.1
+			country_event = {
+				id = AWR_PRC.42
+			}
 			custom_effect_tooltip = PRC_jinzhuyanan_tt
 			hidden_effect = {
 		    if = {
-			limit = { is_ai = no }			
-	        play_song = "nea_yanansong"	
+				limit = { 
+					is_ai = no 
+				}			
+				play_song = "nea_yanansong"	
 			}				
 		}			
 		}
 		available = {
 			OR = {
 				has_global_flag = CHI_unite_PRC
-				CHI = { has_completed_focus = CHI_Truce_of_the_Civil_War }
-				1030 = { is_controlled_by = root }
+				CHI = { 
+					has_completed_focus = CHI_Truce_of_the_Civil_War 
+				}
+				1030 = { 
+					is_controlled_by = root 
+				}
 			}
 		}
 
@@ -1788,13 +1816,19 @@ focus_tree = {
 	
 	focus = {#大西北联盟
 		id = PRC_daxibeilianmeng
-		icon = GFX_focus_xibeilianmeng
-		prerequisite = { focus = PRC_jinzhuyanan }
+		icon = GFX_focus_PRC_daxibeilianmeng
+		prerequisite = { 
+			focus = PRC_jinzhuyanan 
+		}
 		available = {
-		has_character = NEA_zhang_xueliang			
-		has_completed_focus = PRC_grand_northwest_alliance_focus
-        744 = { is_controlled_by = PRC }		
-        NOT = { country_exists = NEA }     
+			has_character = NEA_zhang_xueliang			
+			has_completed_focus = PRC_grand_northwest_alliance_focus
+			744 = { 
+				is_controlled_by = PRC 
+			}		
+			NOT = { 
+				country_exists = NEA 
+			}     
 		}		
 		relative_position_id = PRC_jinzhuyanan
 		x = -2
@@ -1815,7 +1849,9 @@ focus_tree = {
 		completion_reward = {
 				add_political_power = 150
 				add_stability = 0.10		
-			    country_event = ccw.680
+			    country_event = {
+					id =  AWR_PRC.43
+				}
 			delete_unit_template_and_units = {
 				division_template = "红一方面军军团级编制"
 				disband = yes #will refund equipment and manpower
@@ -1836,77 +1872,26 @@ focus_tree = {
 				division_template = "红四方面军军级编制"
 				disband = yes #will refund equipment and manpower
 			}
-			hidden_effect = {
-				delete_unit_template_and_units = {
-					division_template = "Ti 1 Fangmienchün Chüntuan"
-					disband = yes #will refund equipment and manpower
-				}
-				delete_unit_template_and_units = {
-					division_template = "Ti 1 Fangmienchün Chün"
-					disband = yes #will refund equipment and manpower
-				}
-				delete_unit_template_and_units = {
-					division_template = "Ti 2 Fangmienchün"
-					disband = yes #will refund equipment and manpower
-				}
-				delete_unit_template_and_units = {
-					division_template = "Ti 4 Fangmienchün Chüntuan"
-					disband = yes #will refund equipment and manpower
-				}
-				delete_unit_template_and_units = {
-					division_template = "Ti 4 Fangmienchün Chün"
-					disband = yes #will refund equipment and manpower
-				}
-			}
-			
-            #custom_effect_tooltip = ye_ting_becomes_general
-            #custom_effect_tooltip = xiang_ying_becomes_general
-            #custom_effect_tooltip = chen_yi_becomes_general	
-            #custom_effect_tooltip = su_yu_becomes_general	
-			
+
 			show_unit_leaders_tooltip = PRC_ye_ting
 			show_unit_leaders_tooltip = PRC_xiang_ying
 			show_unit_leaders_tooltip = PRC_chen_yi
 			show_unit_leaders_tooltip = PRC_su_yu
 			show_unit_leaders_tooltip = PRC_gao_jingting
 			hidden_effect = {
-			if = {
-				limit = {
-					NOT = {
-			        has_global_flag = PRC_hongjungaibianle_flag
-					}
-				}			
-				load_oob = PRC_eighth_route_army
-				load_oob = PRC_new_fourth_army
+				if = {
+					limit = {
+						NOT = {
+						has_global_flag = PRC_hongjungaibianle_flag
+						}
+					}			
+					load_oob = PRC_eighth_route_army
+					load_oob = PRC_new_fourth_army
+				}
+			
+				set_global_flag = PRC_hongjungaibianle_flag2			
 			}
-            PRC_lin_biao = {
-            set_portraits = {
-            army={
-            large="gfx/leaders/PRC/Portrait_PRC_Lin_Biao.dds"
-            }
-            }
-            }
-            PRC_zhu_de = {
-            set_portraits = {
-            army={
-            large="gfx/leaders/PRC/Portrait_PRC_Zhu_De.dds"
-            }
-            }
-            }			
-			set_global_flag = PRC_hongjungaibianle_flag2			
-			}
-			#if = {
-			#	limit = {
-			#		NOT = {
-			#			has_war_with = SOV
-			#		}
-			#	}
-			#	#no need 823
-			#	hidden_effect = {
-			#		load_oob = "PRC_SOV_reinforcements"
-			#	}
-			#	custom_effect_tooltip = rcmchina.104_PRC_SOV_reinforcements
-			#}
+
 			hidden_effect = {
 				if = {
 					limit = {
@@ -1927,8 +1912,8 @@ focus_tree = {
 	}
 
 	focus = {#改组苏维埃政权
-		id = nea_PRC_reshuffle_soviet_government
-		icon = GFX_focus_nea_PRC_reshuffle_soviet_government
+		id = PRC_reshuffle_soviet_government
+		icon = GFX_focus_PRC_reshuffle_soviet_government
 		prerequisite = { 
 			focus = PRC_jinzhuyanan 
 		}
@@ -1947,22 +1932,21 @@ focus_tree = {
 			has_government = communism		
 		}
 
-		bypass = {
-
-		}
 
 		available_if_capitulated = yes
 
 		completion_reward = {
 			add_political_power = 100
 			add_stability = 0.05		
-			country_event = srt.1
+			country_event = {
+				id = AWR_PRC.44
+			}
 		}
 	}
 
 	focus = {#批判张国焘
 		id = prc_pipanzhangguotao
-		icon = GFX_goal_pipanzhangguotao
+		icon = GFX_focus_pipanzhangguotao
 		prerequisite = { 
 			focus = PRC_jinzhuyanan 
 		}
@@ -1977,7 +1961,7 @@ focus_tree = {
 		}
 
 		available = {
-        has_completed_focus = PRC_West_road_army_victory		
+        	has_completed_focus = PRC_West_road_army_victory		
 		}
 
 		bypass = {
@@ -1990,11 +1974,63 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-        	country_event = RCM_comchina_zhang.999
+        	country_event = {
+				id = AWR_PRC.5699
+			}
 		}
 	}
 		
 	#边区政府#
+
+	focus = {#解决农民土地问题
+		id = PRC_Peasant_class
+		icon = GFX_focus_PRC_Peasant_class
+		cost = 7.19
+		prerequisite = {
+			focus = PRC_contact_Zhang_Xueliang_focus
+		}
+		x = 4
+		y = 3
+		available_if_capitulated = yes
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = land_redistribution
+		}
+		ai_will_do = {
+			factor = 1
+		}
+
+	}
+
+	focus = {#继续推进土地改革
+		id = PRC_Land_reform
+		icon = GFX_focus_PRC_Land_reform
+		cost = 5.00
+		prerequisite = {
+			focus = PRC_Peasant_class
+		}
+		x = 5
+		y = 4
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+            add_stability = 0.05
+			add_ideas = prc_jianzujianxi
+			custom_effect_tooltip = RCM_amass_local_communist_support_tishi
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = prc_wang_guanlan
+			set_global_flag = PRC_Land_reform_done
+			multiply_variable = { 
+				RCM_communist_amass_support_mission_time_zz = 0.5 
+			}
+			multiply_variable = { 
+				RCM_communist_amass_support_mission_cost_zz = 0.5 
+			}
+		}
+	}
+	
 	focus = {#巩固陕甘宁根据地
 		id = PRC_Developing_Focus
 		icon = GFX_focus_generic_land_reclamation
@@ -2010,7 +2046,8 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 	    	country_event = {
-				id = ccw.359
+				id = AWR_PRC.45
+				days = 3
 			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = PRC_deng_xiaoping
@@ -2026,11 +2063,11 @@ focus_tree = {
 			set_country_flag = concentrate_on_develop
         	if = {
         	    limit = { 
-					has_idea = PRC_guerilla_warfare_zz 
+					has_idea = PRC_guerilla_warfare_economy 
 				}
     			swap_ideas = {
-					add_idea = PRC_guerilla_warfare_zz_2
-					remove_idea = PRC_guerilla_warfare_zz
+					add_idea = PRC_guerilla_warfare_economy_2
+					remove_idea = PRC_guerilla_warfare_economy
 				}
         	}
 
@@ -2039,8 +2076,8 @@ focus_tree = {
 	
 	focus = {#修缮黄河水利
 		id = PRC_Establish_traffic_network
-		icon = GFX_goal_PRC_Establish_traffic_network
-		cost = 5.8
+		icon = GFX_focus_PRC_Establish_traffic_network
+		cost = 5
 		prerequisite = {
 			focus = PRC_Developing_Focus
 		}
@@ -2398,7 +2435,7 @@ focus_tree = {
 	
 	focus = {#建设小作坊
 		id = PRC_Expand_production
-		icon = GFX_focus_SOV_organize_wreckers
+		icon = GFX_focus_PRC_Expand_production
 		cost = 6.45
 		prerequisite = {
 			focus = PRC_Establish_traffic_network
@@ -2419,7 +2456,7 @@ focus_tree = {
 	focus = {#苏联军援
 		id = PRC_Soviet_armed
 		icon = GFX_focus_PRC_Soviet_armed
-		cost = 5.8
+		cost = 5
 		prerequisite = {
 			focus = PRC_Developing_Focus
 		}
@@ -2445,11 +2482,11 @@ focus_tree = {
 				category = artillery
 			}
 			add_tech_bonus = {
-			name = support_tech #(取研究类型名开头即可)
-			 
-			bonus = 0.5 #研究加成(1 = +100%)
-			uses = 1 #次数(正整数)
-			category = support_tech #研究类型
+				name = support_tech 
+				
+				bonus = 0.5
+				uses = 1 
+				category = support_tech 
 		    }
 			
 			capital_scope = {
@@ -2524,10 +2561,15 @@ focus_tree = {
 
 		available = {
 			if = {
-			limit = {
-			SOV = { has_country_leader = { ruling_only = yes character = SOV_iosif_stalin } }
-			}
-			leader_is_trotskyist = no
+				limit = {
+					SOV = { 
+						has_country_leader = { 
+							ruling_only = yes 
+							character = SOV_iosif_stalin 
+						} 
+					}
+				}
+				leader_is_trotskyist = no
 			}
 		
 		    SOV = {
@@ -2541,20 +2583,34 @@ focus_tree = {
 				}
 			}
 			or = {
-				or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK }
-				any_subject_country = { or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK } }
-				any_allied_country = { or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK } }
+				or = { 
+					is_neighbor_of = SOV 
+					is_neighbor_of = MON 
+					is_neighbor_of = SIK 
+				}
+				any_subject_country = { 
+					or = { 
+						is_neighbor_of = SOV 
+						is_neighbor_of = MON 
+						is_neighbor_of = SIK 
+					} 
+				}
+				any_allied_country = { 
+					or = { 
+						is_neighbor_of = SOV 
+						is_neighbor_of = MON 
+						is_neighbor_of = SIK 
+					} 
+				}
 			}
 		}
 
-        bypass = {
-		}
 	}
 
 	focus = {#成立军事工业局
 		id = PRC_Weapon_production
-		icon = GFX_goal_generic_construct_mil_factory
-		cost = 6.45
+		icon = GFX_focus_PRC_Weapon_production
+		cost = 5
 		prerequisite = {
 			focus = PRC_Soviet_armed
 		}
@@ -2569,68 +2625,12 @@ focus_tree = {
 			one_random_arms_factory = yes
 			one_random_arms_factory = yes
 		}
-		available = {
-		}
 
-	}
-
-	focus = {#解决农民土地问题
-		id = PRC_Peasant_class
-		icon = GFX_focus_feed_the_peasants
-		cost = 7.19
-		prerequisite = {
-			focus = PRC_contact_Zhang_Xueliang_focus
-		}
-		x = 4
-		y = 3
-		available_if_capitulated = yes
-		completion_reward = {
-			add_stability = 0.05
-			add_ideas = PRC_Farmer_Focus
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		available = {
-		}
-		bypass = {
-			
-		}
-
-	}
-
-	focus = {#继续推进土地改革
-		id = PRC_Land_reform
-		icon = GFX_focus_PRC_Land_reform_aa
-		cost = 5.00
-		prerequisite = {
-			focus = PRC_Peasant_class
-		}
-		x = 5
-		y = 4
-		ai_will_do = {
-			factor = 1
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-            add_stability = 0.05
-			add_ideas = prc_jianzujianxi
-			custom_effect_tooltip = RCM_amass_local_communist_support_tishi
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = prc_wang_guanlan
-			set_global_flag = PRC_Land_reform_done
-			multiply_variable = { 
-				RCM_communist_amass_support_mission_time_zz = 0.5 
-			}
-			multiply_variable = { 
-				RCM_communist_amass_support_mission_cost_zz = 0.5 
-			}
-		}
 	}
 
 	focus = {#打通国际路线
 		id = PRC_West_road_army_victory
-		icon = GFX_goal_xizheng
+		icon = GFX_focus_PRC_West_road_army_victory
 		cost = 17.89
 		prerequisite = {
 			focus = PRC_Western_expedition
@@ -2642,7 +2642,7 @@ focus_tree = {
 			factor = 25000
 		}
 		select_effect = {
-                        activate_mission = PRC_West_Xizheng_shibai
+            activate_mission = PRC_West_Xizheng_shibai
 			if = {
 				limit = {
 					has_idea = CCP_go_west
@@ -2658,27 +2658,23 @@ focus_tree = {
 					always = yes
 				}
 				country_event = {
-					id = EFM_Comchina.211
+					id = AWR_PRC.46
 				}
 				country_event = {
 					days = 120
-					id = EFM_Comchina.2119
+					id = AWR_PRC.50
 				}
 				country_event = {
 					days = 120
-					id = EFM_Comchina.2120
+					id = AWR_PRC.51
 				}
 				country_event = {
 					days = 120
-					id = EFM_Comchina_GSM.2117
+					id = AWR_PRC.57
 				}
 				country_event = {
 					days = 120
-					id = EFM_Comchina_GSM.2119
-				}
-				country_event = {
-					days = 120
-					id = EFM_Comchina_GSM.2120
+					id = AWR_PRC.58
 				}
 				
 				PRC_dong_zhentang = {
@@ -2722,8 +2718,13 @@ focus_tree = {
 				custom_effect_tooltip = PRC_open_suppy_tt
 				custom_effect_tooltip = if_successful_tt
 				effect_tooltip = {
-					set_temp_variable = { temp_member = 1 }
-					set_temp_variable = { temp_seats = 0.30 tooltip = ZHANG_faction_support_tt } #guo
+					set_temp_variable = { 
+						temp_member = 1 
+					}
+					set_temp_variable = { 
+						temp_seats = 0.30 
+						tooltip = ZHANG_faction_support_tt 
+					} 
 					modify_parliament_seat = yes
 					add_ideas = PRC_Victory_in_the_west
 					add_stability = 0.05
@@ -2761,7 +2762,8 @@ focus_tree = {
 				limit = {
 					not = { 
 						focus_progress = { 
-							focus = PRC_West_road_army_victory progress > 0.000 
+							focus = PRC_West_road_army_victory 
+							progress > 0.000 
 						} 
 					}
 					not = { 
@@ -2914,10 +2916,12 @@ focus_tree = {
 			retire_character = prc_wang_jiaxiang #王稼祥
 			retire_character = PRC_liu_zhidan #刘志丹	
 			set_temp_variable = { 
-				temp_seats = 0.15 tooltip = ZHANG_faction_support_tt 
+				temp_seats = 0.15 
+				tooltip = ZHANG_faction_support_tt 
 			}		
 			add_timed_idea = { 
-				idea = prc_sufan days = 70 
+				idea = prc_sufan 
+				days = 70 
 			}		
 			add_ideas = prc_ducai
 			add_ideas = prc_qiangzhihuidang					
@@ -2945,10 +2949,12 @@ focus_tree = {
 				tooltip = ZHANG_faction_support_tt 
 			}		
 			add_timed_idea = { 
-				idea = prc_nanxia days = 150 
+				idea = prc_nanxia 
+				days = 150 
 			}
 			add_timed_idea = { 
-				idea = prc_suijing days = 150 
+				idea = prc_suijing 
+				days = 150 
 			}
 			if = {
 				limit = {
@@ -2983,7 +2989,7 @@ focus_tree = {
 
 	focus = {#三位一体计划
 		id = PRC_grand_northwest_alliance_focus
-		icon = GFX_goal_PRC_the_zhang_ally
+		icon = GFX_focus_PRC_the_zhang_ally
 		cost = 5.00
 		prerequisite = {
 			focus = PRC_contact_Zhang_Xueliang_focus
@@ -3010,35 +3016,65 @@ focus_tree = {
 				NOT = {
 					country_exists = NEA
 				}
-				#has_war_together_with = NEA
+				
 				is_in_faction_with = NEA
 				NEA = {
 				is_puppet = yes
 				}
 				NEA = {
-	            has_country_leader = { name = "孙蔚如" ruling_only = yes }
+	            	has_country_leader = { 
+						name = "孙蔚如" 
+						ruling_only = yes 
+					}
 				}				
 			}
 		}
 		completion_reward = {
             custom_effect_tooltip = GFX_report_focus_sanweiyiti_tt		
-			country_event = RCM_comchina_zhang.6
+			country_event = {
+				id = AWR_PRC.54
+			}
 			custom_effect_tooltip = if_they_accept_green
 			custom_effect_tooltip = NORTHWEST_ALLIANCE_FORM_TT
 			custom_effect_tooltip = nea_PRC_instigate_rebellion_of_northeastern_army_tt
 			unlock_decision_tooltip = PRC_NORTHWEST_ALLIANCE_FORM_ZZ
-			#country_lock_all_division_template = no
-			
-			#NEA = { custom_effect_tooltip = improve_ai_thought }
+
+			create_faction_from_template = {
+				template = faction_template_regional_anti_democratic
+				name = the_Great_Northwest_Alliance
+			}
+
 			hidden_effect = {
 				NEA = {
-					#add_ai_strategy = { type = diplo_action_desire id = PRC target = send_expeditionary_force value = 5000 }
-					add_ai_strategy = { type = alliance id = PRC value = 5000 }
-					add_ai_strategy = { type = befriend id = PRC value = 500 }
-					add_ai_strategy = { type = support id = PRC value = 5000 }
-					add_ai_strategy = { type = send_volunteers_desire id = PRC value = 5000 }
-					add_ai_strategy = { type = send_lend_lease_desire id = PRC value = 5000 }
-					add_ai_strategy = { type = protect id = PRC value = 5000 }
+					add_ai_strategy = { 
+						type = alliance 
+						id = PRC value = 5000 
+					}
+					add_ai_strategy = { 
+						type = befriend 
+						id = PRC 
+						value = 500 
+					}
+					add_ai_strategy = { 
+						type = support 
+						id = PRC 
+						value = 5000 
+					}
+					add_ai_strategy = { 
+						type = send_volunteers_desire 
+						id = PRC 
+						value = 5000 
+					}
+					add_ai_strategy = { 
+						type = send_lend_lease_desire 
+						id = PRC 
+						value = 5000 
+					}
+					add_ai_strategy = { 
+						type = protect 
+						id = PRC 
+						value = 5000 
+					}
 				}
 			}
 		}
@@ -3048,7 +3084,7 @@ focus_tree = {
 	focus = {#派遣任弼时前往莫斯科
 		id = PRC_dispatch_ren_bishi_to_moscow_focus
 		icon = GFX_focus_ren_to_moscow
-		cost = 3.59
+		cost = 5
 		prerequisite = {			
 			focus = PRC_found_the_military_commission_general_political_department_focus
 			focus = PRC_West_road_army_victory
@@ -3061,36 +3097,45 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			country_event = RCM_comchina.7
+			country_event = {
+				id = AWR_PRC.59
+			}
 			custom_effect_tooltip = allow_wang_jixiang_return
 			if = {
 			limit = {
-                        OR = {
-			has_country_leader = { ruling_only = yes character = PRC_zhang_wentian }
-			has_country_leader = { ruling_only = yes character = PRC_lin_bojiu }
-                            }
+				OR = {
+					has_country_leader = { 
+						ruling_only = yes 
+						character = PRC_zhang_wentian 
+					}
+					has_country_leader = { 
+						ruling_only = yes 
+						character = PRC_lin_boqu 
+					}
+				}
 			}
 			custom_effect_tooltip = promote_maozz
 			}
 		}
 		available = {
 		    if = {
-			limit = { is_ai = no }
-			has_idea = prc_ren_bishi
-			custom_trigger_tooltip = {
-				tooltip = prc_ren_bishi_is_theorist
-				always = yes
-			}
+				limit = { 
+					is_ai = no 
+				}
+				has_idea = prc_ren_bishi
+				custom_trigger_tooltip = {
+					tooltip = prc_ren_bishi_is_theorist
+					always = yes
+				}
 			}
 			has_global_flag = prc_wang_jiaxiang_go_to_soviet_union
-			#has_available_idea_with_traits = { idea = army_chief_old_guard limit = 1 }
 		}
 
 	}
 	
 	focus = {#终结马家军
 		id = PRC_finish_off_the_ma_cliques_focus
-		icon = GFX_COOP_war_on_the_northwest
+		icon = GFX_focus_PRC_finish_off_the_ma_cliques
 		cost = 2.15
 		prerequisite = {
 			focus = PRC_West_road_army_victory
@@ -3108,7 +3153,22 @@ focus_tree = {
 		
 		available_if_capitulated = yes
 		completion_reward = {
-			add_timed_idea = { idea = PRC_zhongjiemajiajun days = 60 }		
+			
+			if = {
+				limit = {
+					has_global_flag = be_high
+				}
+				add_timed_idea = { 
+					idea = PRC_zhongjiemajiajun_high 
+					days = 60 
+				}	
+				else = {
+					add_timed_idea = { 
+						idea = PRC_zhongjiemajiajun 
+						days = 60 
+					}	
+				}
+			}	
 			if = {
 				limit = {
 					XSM = { 
@@ -3148,44 +3208,34 @@ focus_tree = {
 					}
 				}
 				create_wargoal = {
-					target = GSM type = liberate_wargoal
+					target = GSM 
+					type = liberate_wargoal
 				}
 			}
-			#if = {
-			#	limit = {
-			#		TNG = { 
-			#			exists = yes
-			#			NOT = {
-			#				has_war_with = ROOT
-			#				is_in_faction_with = ROOT
-			#			}
-			#		}
-			#	}
-			#	create_wargoal = {
-			#		target = TNG type = annex_everything
-			#	}
-			#}
-			#if = {
-			#	limit = {
-			#		HMI = { 
-			#			exists = yes
-			#			NOT = {
-			#				has_war_with = ROOT
-			#				is_in_faction_with = ROOT
-			#			}
-			#		}
-			#	}
-			#	create_wargoal = {
-			#		target = HMI type = annex_everything
-			#	}
-			#}
+			
 		}
 		
 		available = {
 			or = {
-				or = { is_neighbor_of = XSM is_neighbor_of = NXM is_neighbor_of = GSM }
-				any_subject_country = { or = { is_neighbor_of = XSM is_neighbor_of = NXM is_neighbor_of = GSM } }
-				any_allied_country = { or = { is_neighbor_of = XSM is_neighbor_of = NXM is_neighbor_of = GSM } }
+				or = { 
+					is_neighbor_of = XSM 
+					is_neighbor_of = NXM 
+					is_neighbor_of = GSM 
+				}
+				any_subject_country = { 
+					or = { 
+						is_neighbor_of = XSM 
+						is_neighbor_of = NXM 
+						is_neighbor_of = GSM 
+					} 
+				}
+				any_allied_country = { 
+					or = { 
+						is_neighbor_of = XSM 
+						is_neighbor_of = NXM 
+						is_neighbor_of = GSM 
+					} 
+				}
 			}
 		}
 		
@@ -3211,27 +3261,14 @@ focus_tree = {
 					is_in_faction_with = ROOT
 				}
 			}
-			#TNG = { 
-			#	OR = {
-			#		exists = no
-			#		has_war_with = ROOT
-			#		is_in_faction_with = ROOT
-			#	}
-			#}
-			#HMI = { 
-			#	OR = {
-			#		exists = no
-			#		has_war_with = ROOT
-			#		is_in_faction_with = ROOT
-			#	}
-			#}
+			
 		}
 	}
 
 	focus = {#挑战红一军
 		id = PRC_challenge_the_first_red_army_focus
 		icon = GFX_focus_challenge_first_red_army
-		cost = 7.19
+		cost = 5
 		prerequisite = {
 			focus = PRC_grand_northwest_alliance_focus
 		}
@@ -3261,15 +3298,20 @@ focus_tree = {
 				trait = maoists_trait_zhang_wentian
 			}			
 			
-			country_event = RCM_comchina_zhang.10
+			country_event = {
+				id = AWR_PRC.61
+			}
 			effect_tooltip = {
 				create_country_leader = {
-					name = "张国焘"
+					name = PRC_zhang_guotao
 					desc = "POLITICS_Zhang_Guotao_DESC"
 					picture = "Portrait_China_Zhang_Guotao.dds"
 					expire = "1965.1.1"
 					ideology = marxism
-					traits = { RCM_propaganda_expert comintern_celebrity dangdeyuanlao } #guo
+					traits = { 
+						AWR_propaganda_expert 
+						comintern_celebrity dangdeyuanlao 
+					} 
 				}
 			}
 			add_trait = {
@@ -3296,27 +3338,39 @@ focus_tree = {
 			set_global_flag = PRC_xu_xiangqian_now_be_zhang
 		}
 		available = {
-			#set_temp_variable = { temp_faction_support = 35 }
-			#set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			#set_temp_variable = { temp_get_faction = 1 }
-			#custom_trigger_tooltip = {
-			#	tooltip = CHECK_FACTION_SUPPORT_tt
-			#	check_variable = { parliament_seat_array_adjusted^0 > 35 }
-			#}
-			set_temp_variable = { temp_faction_support = 35 }
-			set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			set_temp_variable = { temp_get_faction = 1 }
+			
+			set_temp_variable = { 
+				temp_faction_support = 35 
+			}
+			set_temp_variable = { 
+				temp_greater_or_smaller = 1 
+			} 
+			set_temp_variable = { 
+				temp_get_faction = 1 
+			}
 			custom_trigger_tooltip = {
 				tooltip = CHECK_FACTION_SUPPORT_tt
-				check_variable = { parliament_seat_array_adjusted^0 > 35 }
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > 35 
+				}
 			}
-			set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			set_temp_variable = { temp_get_faction = 1 }
+			set_temp_variable = { 
+				temp_greater_or_smaller = 1 
+			} 
+			set_temp_variable = { 
+				temp_get_faction = 1 
+			}
 			custom_trigger_tooltip = {
 				tooltip = CHECK_FACTION_SUPPORT_compare_all_tt
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^1 }
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^2 }
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^3 }
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^1 
+				}
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^2 
+				}
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^3 
+				}
 			}
 		}
 
@@ -3337,7 +3391,7 @@ focus_tree = {
 			add_political_power = -150
 			
 			unlock_decision_category_tooltip = PRC_request_SOV_aid_decision_cat
-			show_ideas_tooltip = a_fraction_of_forces_will_desert_tt
+
 			
 			if = {
 				limit = {
@@ -3350,32 +3404,43 @@ focus_tree = {
 			}
 			
 			if = {
-					limit = {
-						has_dlc = "Arms Against Tyranny"
-					}
-				    add_equipment_subsidy = {
-						cic = 2500
-						equipment_type = infantry_equipment
-						seller_tags = { SOV }
-					}
-					add_equipment_subsidy = {
-						cic = 2500
-						equipment_type = support_equipment
-						seller_tags = { SOV }
-					}
-					add_equipment_subsidy = {
-						cic = 2500
-						equipment_type = artillery_equipment
-						seller_tags = { SOV }
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 2500
+					equipment_type = infantry_equipment
+					seller_tags = { 
+						SOV 
 					}
 				}
+				add_equipment_subsidy = {
+					cic = 2500
+					equipment_type = support_equipment
+					seller_tags = { 
+						SOV 
+					}
+				}
+				add_equipment_subsidy = {
+					cic = 2500
+					equipment_type = artillery_equipment
+					seller_tags = { 
+						SOV 
+					}
+				}
+			}
 		}
 		available = {
 			if = {
-			limit = {
-			SOV = { has_country_leader = { ruling_only = yes character = SOV_iosif_stalin } }
-			}
-			leader_is_trotskyist = no
+				limit = {
+					SOV = { 
+						has_country_leader = { 
+							ruling_only = yes 
+							character = SOV_iosif_stalin 
+						} 
+					}
+				}
+				leader_is_trotskyist = no
 			}
 		
 		    SOV = {
@@ -3390,16 +3455,32 @@ focus_tree = {
 			}
 			
 			or = {
-				or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK }
-				any_subject_country = { or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK } }
-				any_allied_country = { or = { is_neighbor_of = SOV is_neighbor_of = MON is_neighbor_of = SIK } }
+				or = { 
+					is_neighbor_of = SOV 
+					is_neighbor_of = MON 
+					is_neighbor_of = SIK 
+				}
+				any_subject_country = { 
+					or = { 
+						is_neighbor_of = SOV 
+						is_neighbor_of = MON 
+						is_neighbor_of = SIK 
+					} 
+				}
+				any_allied_country = { 
+					or = { 
+						is_neighbor_of = SOV 
+						is_neighbor_of = MON 
+						is_neighbor_of = SIK 
+					} 
+				}
 			}
 		}
 	}
 
 	focus = {#对抗中央政府
-		id = PRC_confront_zhang_xueliang_focus
-		icon = GFX_focus_prc_contront_zhang_xueliang
+		id = PRC_oppose_the_central_government
+		icon = GFX_focus_PRC_oppose_the_central_government
 		cost = 5
 		prerequisite = {
 			focus = PRC_nanxia
@@ -3424,7 +3505,9 @@ focus_tree = {
 						has_government = communism
 					}
 				}
-				country_event = RCM_comchina_zhang.11
+				country_event = {
+					id = AWR_PRC.62
+				}
 				custom_effect_tooltip = ask_sinkiang_tt
 			}
 			
@@ -3438,23 +3521,21 @@ focus_tree = {
 					limit = {
 						is_core_of = ROOT
 						WTT_is_potential_political_struggle_state = yes
-					}
-					#Add random state support for ROOT
+					}					
 					WTT_random_support_chance_increase_for_ROOT_in_state = yes
 					hidden_effect = {
-						#Save relevant event targets. Need to be done before updating state support
 						save_event_target_as = state
 						random_country = {
 							limit = {
-								PREV = { has_state_flag = majority_political_platform_@PREV }
+								PREV = { 
+									has_state_flag = majority_political_platform_@PREV 
+								}
 							}
 							save_event_target_as = majority_country
 						}
-						#Update state support
+						
 						WTT_recalculate_state_support_for_ROOT = yes
-						#Status events
 						WTT_fire_add_support_status_events = yes
-						#Recalc all support
 						WTT_political_struggle_recalculate_support = yes
 					}
 				}
@@ -3465,43 +3546,46 @@ focus_tree = {
 						is_core_of = ROOT
 						WTT_is_potential_political_struggle_state = yes
 					}
-					#Add random state support for ROOT
+
 					WTT_random_support_chance_increase_for_ROOT_in_state = yes
 				}
 			}
-		hidden_effect = {
-                if = {
-                limit = { has_country_leader = { ruling_only = yes character = PRC_zhang_guotao } }
-			    set_country_leader_portrait = {
-				ideology = communism
-				portrait = "gfx/leaders/PRC/PRC_zhangguotao_weiyuanzhang.jpg"
-			    }				
-				}		
-		PRC_zhang_guotao = {
-			set_portraits = {
-				army={
-					large="gfx/leaders/PRC/PRC_zhangguotao_weiyuanzhang.jpg"
-				}
-			}
-		}
-		}		
+	
             set_cosmetic_tag = CHI_warlord_leader_communism			
 		}
 		available = {
-			set_temp_variable = { temp_faction_support = 40 }
-			set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			set_temp_variable = { temp_get_faction = 1 }
+			set_temp_variable = { 
+				temp_faction_support = 40 
+			}
+			set_temp_variable = { 
+				temp_greater_or_smaller = 1 
+			} 
+			set_temp_variable = { 
+				temp_get_faction = 1 
+			}
 			custom_trigger_tooltip = {
 				tooltip = CHECK_FACTION_SUPPORT_tt
-				check_variable = { parliament_seat_array_adjusted^0 > 40 }
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > 40 
+				}
 			}
-			set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			set_temp_variable = { temp_get_faction = 1 }
+			set_temp_variable = { 
+				temp_greater_or_smaller = 1 
+			} 
+			set_temp_variable = { 
+				temp_get_faction = 1 
+			}
 			custom_trigger_tooltip = {
 				tooltip = CHECK_FACTION_SUPPORT_compare_all_tt
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^1 }
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^2 }
-				check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^3 }
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^1 
+				}
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^2 
+				}
+				check_variable = { 
+					parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^3 
+				}
 			}
 		}
 
@@ -3520,26 +3604,37 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			SIK = {
-				country_event = EFM_independent.3
+				country_event = {
+					id = EFM_independent.3
+				}
 			}
 			custom_effect_tooltip = acceptance_will_depend_on_stuff_tt
 		}
 		available = {
 			if = {
-			limit = {
-			SOV = { has_country_leader = { ruling_only = yes character = SOV_iosif_stalin } }
-			}
-			leader_is_trotskyist = no
+				limit = {
+					SOV = { 
+						has_country_leader = { 
+							ruling_only = yes 
+							character = SOV_iosif_stalin 
+						} 
+					}
+				}
+				leader_is_trotskyist = no
 			}
 			
 			OR = {
 				is_neighbor_of = SIK
-				any_subject_country = { is_neighbor_of = SIK }
+				any_subject_country = { 
+					is_neighbor_of = SIK 
+				}
 			}
 		
 			SIK = {
 				has_government = communism
-				not = { has_opinion_modifier = guanxiehua }
+				not = { 
+					has_opinion_modifier = guanxiehua 
+				}
 			}
 			OR = {
 				AND = {
@@ -3548,42 +3643,29 @@ focus_tree = {
 					}
 					custom_trigger_tooltip = {
 						tooltip = ROOT_more_support_than_SIK_tt
-						check_variable = { Root.total_political_support_points > SIK.total_political_support_points }
+						check_variable = { 
+							Root.total_political_support_points > SIK.total_political_support_points 
+						}
 					}
 				}
 				
 				AND = {
-				SOV = {
-                has_opinion = {
-			    target = ROOT
-			    value > 89
-				}
-				}
-				SIK = {
-                has_opinion = {
-			    target = ROOT
-			    value > 89
-				}
-				}
+					SOV = {
+						has_opinion = {
+							target = ROOT
+							value > 89
+						}
+					}
+					SIK = {
+						has_opinion = {
+							target = ROOT
+							value > 89
+						}
+					}
 				}
 				
 				is_legit_china = yes
 			}
-			#set_temp_variable = { temp_faction_support = 45 }
-			#set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			#set_temp_variable = { temp_get_faction = 1 }
-			#custom_trigger_tooltip = {
-			#	tooltip = CHECK_FACTION_SUPPORT_tt
-			#	check_variable = { parliament_seat_array_adjusted^0 > 45 }
-			#}
-			#set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			#set_temp_variable = { temp_get_faction = 1 }
-			#custom_trigger_tooltip = {
-			#	tooltip = CHECK_FACTION_SUPPORT_compare_all_tt
-			#	check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^1 }
-			#	check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^2 }
-			#	check_variable = { parliament_seat_array_adjusted^0 > parliament_seat_array_adjusted^3 }
-			#}
 		}
 
 	}
@@ -7089,12 +7171,12 @@ focus_tree = {
 						}
 					}
 					set_country_leader_portrait = {
-                		portrait = "gfx/leaders/PRC/mao_jiefangzhanzheng.jpg"
+                		portrait = "GFX_PRC_Mao_Zedong_jiefangzhanzheng"
             		}
 					PRC_mao_zedong = {
 			    		set_portraits = {
 							army = {
-								large = "gfx/leaders/PRC/mao_jiefangzhanzheng.jpg"
+								large = "GFX_PRC_Mao_Zedong_jiefangzhanzheng"
 							}
 			    		}
             		}
@@ -10185,7 +10267,7 @@ focus_tree = {
 	
 	focus = {#现代空战
 		id = PRC_mordern_air_combat
-		icon = GFX_goal_PRC_PRC_mordern_air_combat
+		icon = GFX_focus_PRC_PRC_mordern_air_combat
 		cost = 5
 		prerequisite = {
 			focus = PRC_PLAAF
@@ -10650,7 +10732,7 @@ focus_tree = {
 	
 	focus = {#音速时代
 		id = PRC_the_sonic_age
-		icon = GFX_goal_PRC_the_sonic_age
+		icon = GFX_focus_PRC_the_sonic_age
 		cost = 5
 		prerequisite = {
 			focus = PRC_yingjichangkong

@@ -930,3 +930,39 @@ prc_manmuchuangyi_level_down = {	#满目疮痍
 			value = 10 #MODDED
 		    }
 }
+
+PRC_personnel_shortage_down = {	#缓解缺乏技术人才
+	if = {
+		limit = {
+			has_idea = PRC_no_skilled_personnel_1
+		}
+		swap_ideas = {
+			remove_idea = PRC_no_skilled_personnel_1
+			add_idea = PRC_no_skilled_personnel_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_no_skilled_personnel_2
+		}
+		swap_ideas = {
+			remove_idea = PRC_no_skilled_personnel_2
+			add_idea = PRC_no_skilled_personnel_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_no_skilled_personnel_3
+		}
+		swap_ideas = {
+			remove_idea = PRC_no_skilled_personnel_3
+			add_idea = PRC_no_skilled_personnel_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_no_skilled_personnel_4
+		}
+		remove_ideas = PRC_no_skilled_personnel_4
+	}
+}

@@ -1,12 +1,10 @@
 parliament_gui_decision_category = {	#全国人大
 	icon = generic_communism
 
-
 	allowed = { 
 		original_tag = PRC 
 	}
 
-	priority = 1000
 	visible = {
 		NOT = { 
 			has_country_leader = { 
@@ -18,9 +16,14 @@ parliament_gui_decision_category = {	#全国人大
 			has_completed_focus = PRC_7th_National_Congress_focus 
 		} 
 	}
+
+	priority = 1000
+	
 	scripted_gui = parliament_gui
 	visible_when_empty = yes
 }
+
+
 
 PRC_western_campaigns_cat = {	#西征
 	priority = 180
@@ -28,7 +31,7 @@ PRC_western_campaigns_cat = {	#西征
 }
 
 X_xchinese_propaganda_campaigns = {	#宣传鼓动部
-	priority = 100
+	priority = 997
 	icon = SOV_propaganda
 	scripted_gui = xchinese_propaganda_campaigns_ui
 	allowed = {
@@ -68,8 +71,16 @@ specialized_training_decision = { #特殊项目训练
 		original_tag = PRC 
 	}
 
-	priority = 10
+	priority = 1001
 
+}
+
+recovery_effort = {	#恢复工作
+	icon = generic_communism
+	priority = 1002 #guo
+	allowed = { 
+	    tag = PRC
+	}
 }
 
 PRC_military_industrial_organization = {	#中国军工机构发展计划
@@ -77,9 +88,37 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 	allowed = { 
 		original_tag = PRC 
 	}
-	visible = {
-		has_completed_focus = PRC_Five_year_plans_of_China
-	}
+	
 	priority = 1
 
+}
+
+RCM_communist_infiltration = {	#游击队攻势
+	allowed = {
+		is_literally_china = yes
+	}
+	icon = infiltration
+	priority = 999
+	picture = GFX_decision_cat_picture_chi_infiltration
+}
+
+AWR_PRC_land_reform = {	#土地改革
+	allowed = {
+		original_tag = PRC
+	}
+	icon = infiltration
+	priority = 998
+	picture = GFX_decision_cat_picture_chi_infiltration
+}
+
+PRC_Northwest_Alliance_decisions = {	#大西北联盟
+	visible = {
+		#
+	}
+	priority = 997
+}
+
+PRC_request_SOV_aid_decision_cat = {
+	priority = 150
+	icon = generic_communism
 }

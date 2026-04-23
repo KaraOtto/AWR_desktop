@@ -1,0 +1,71 @@
+snl_PRC_dyn_land_reform_1 = {	#土地改革
+	icon = GFX_state_constructions
+	enable = {
+		ROOT = {
+			OR = {
+				is_controlled_by = event_target:WTT_communist_china
+				controller = { 
+					is_subject_of = event_target:WTT_communist_china 
+				}
+			}
+		}
+	}
+    remove_trigger = {
+	    or = { 
+			not = { 
+				country_exists = event_target:WTT_communist_china 
+			} 
+			ROOT = { 
+				has_dynamic_modifier = { 
+					modifier = snl_PRC_dyn_land_reform_2 
+					scope = event_target:WTT_communist_china 
+				} 
+			}
+		}
+	}
+	
+	state_resources_factor = 0.10 #当地可用资源
+	state_production_speed_supply_node_factor = 0.35 #补给中心建造速度
+	out_of_supply_factor = -0.15
+    supply_consumption_factor = -0.15
+	local_supplies_for_controller = 0.25
+    SUPPLY_FACTOR = 0.15
+	supply_node_range = 0.15
+    local_building_slots = 5
+    local_factories = 0.10 #当地工业值
+	state_production_speed_buildings_factor = 0.10
+	industry_repair_factor = 0.15
+	enemy_operative_detection_chance_factor_over_occupied_tag = 0.15
+}
+snl_PRC_dyn_land_reform_2 = {	#土地改革
+	icon = GFX_state_constructions
+	enable = {
+		ROOT = {
+			OR = {
+				is_controlled_by = event_target:WTT_communist_china
+				controller = { 
+					is_subject_of = event_target:WTT_communist_china 
+				}
+			}
+		}
+	}
+    remove_trigger = {
+	    not = { 
+			country_exists = event_target:WTT_communist_china 
+		}
+	}
+	
+	state_resources_factor = 0.15 #当地可用资源
+	state_production_speed_supply_node_factor = 0.50 #补给中心建造速度
+	out_of_supply_factor = -0.20
+    supply_consumption_factor = -0.20
+	army_speed_factor_for_controller = 0.20
+	local_supplies_for_controller = 0.50
+    SUPPLY_FACTOR = 0.20
+	SUPPLY_NODE_RANGE = 0.20
+    local_building_slots = 10
+    local_factories = 0.15 #当地工业值
+	state_production_speed_buildings_factor = 0.15
+	industry_repair_factor = 0.20
+	enemy_operative_detection_chance_factor_over_occupied_tag = 0.20
+}

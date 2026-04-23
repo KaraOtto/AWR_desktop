@@ -50,3 +50,52 @@ news_event = {	#《红星照耀中国》今日出版
 	}
 	
 }
+
+news_event = {
+	id = AWR_PRC_news.2
+	title = AWR_PRC_news.2.t
+	desc = AWR_PRC_news.2.desc
+	picture = GFX_event_kangri_hundred_regiments_campaign
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	immediate = {
+	set_global_flag = baituandazhan_OVERZZ
+	set_global_flag = baituandazhan
+	set_global_flag = GFX_event_kangri_hundred_regiments_campaign
+	}
+
+	option = {
+		name = AWR_PRC_news.2.a
+		trigger = { 
+			OR = {
+				TAG = PRC
+				is_in_faction_with = event_target:WTT_current_china_leader
+			}
+		}
+		
+	}
+    option = {
+		name = AWR_PRC_news.2.b
+		trigger = { 
+			has_war = yes
+			OR = {                                               
+				original_tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.2.c
+		trigger = { 
+			NOT = {
+				is_in_faction_with = event_target:WTT_current_china_leader
+				is_in_faction_with = JAP
+				TAG = event_target:WTT_communist_china
+            }
+		}
+	}
+}
+

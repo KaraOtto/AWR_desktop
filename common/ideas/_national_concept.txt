@@ -19,7 +19,7 @@ ideas = {
 			cost = 150
 
 			modifier = {
-				research_speed_factor = 0.30
+				research_speed_factor = 0.25
 				SPECIAL_PROJECT_SPEED_FACTOR = 0.50
 				TECHNOLOGY_RESEARCH_BREAKTHROUGH_BONUS = 0.02
 				stability_factor = -0.25
@@ -334,7 +334,7 @@ ideas = {
 				war_support_factor = -0.25
 				offensive_war_stability_factor = -1.00
 
-				industrial_capacity_factory = 0.3
+				industrial_capacity_factory = 0.15
 				factory_energy_consumption = -0.30
 				global_building_slots_factor = 0.20
 				production_speed_buildings_factor = 0.3
@@ -369,6 +369,12 @@ ideas = {
 				}
 				NOT = {
 					has_government = fascism
+					AND = {
+						NOT = {
+							has_idea = extreme_pacifism
+						}
+						has_war = yes
+					}
 				}
 			}
 
@@ -377,7 +383,8 @@ ideas = {
 			modifier = {
 				guarantee_tension = 1.00
 				justify_war_goal_time = 1.00
-				industrial_capacity_factory = 0.15
+
+				industrial_capacity_factory = 0.05
 				factory_energy_consumption = -0.15
 				global_building_slots_factor = 0.10
 				production_speed_buildings_factor = 0.15
@@ -413,7 +420,7 @@ ideas = {
 				defensive_war_stability_factor = 0.10
 				army_claim_attack_factor = 0.05
 				army_claim_defence_factor = 0.05
-				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.10
 			}
 
 			default = yes
@@ -442,13 +449,16 @@ ideas = {
 			cost = 150
 
 			modifier = {
-				offensive_war_stability_factor = 0.25
+				offensive_war_stability_factor = 0.10
 				justify_war_goal_time = -0.25
-				army_claim_attack_factor = 0.15
-				army_claim_defence_factor = 0.15
-				army_org_factor = 0.10
-				army_attack_factor = 0.10
+				army_claim_attack_factor = 0.10
+				army_claim_defence_factor = 0.10
+				army_org_factor = 0.05
+				army_attack_factor = 0.05
 				training_time_army_factor = -0.10
+				
+				production_speed_buildings_factor = -0.05
+				stability_factor = -0.05
 			}
 
 			cancel_if_invalid = no
@@ -473,15 +483,18 @@ ideas = {
 			cost = 150
 
 			modifier = {
-				offensive_war_stability_factor = 0.50
+				offensive_war_stability_factor = 0.20
 				justify_war_goal_time = -0.5
-				army_claim_attack_factor = 0.25
-				army_claim_defence_factor = 0.25
-				army_org_factor = 0.20
-				army_attack_factor = 0.20
+				army_claim_attack_factor = 0.20
+				army_claim_defence_factor = 0.20
+				army_org_factor = 0.10
+				army_attack_factor = 0.10
 				training_time_army_factor = -0.20
 				naval_invasion_division_cap = 1.0
 				air_invasion_division_cap = 1.00
+
+				production_speed_buildings_factor = -0.15
+				stability_factor = -0.15
 			}
 			
 			cancel_if_invalid = no

@@ -1,0 +1,62 @@
+add_namespace = AWR_SIK
+country_event = {
+	id = AWR_SIK.1
+	title = AWR_SIK.1.t
+	desc = AWR_SIK.1.d
+	picture = GFX_report_event_assembly_china #to do
+	is_triggered_only = yes
+
+	option = { 
+		name = AWR_SIK.1.a
+		ai_chance = {
+			factor = 1
+		}
+		custom_effect_tooltip = enable_power_struggle
+		hidden_effect = {
+			WTT_setup_political_struggle = yes
+			WTT_add_ROOT_to_political_struggle = yes
+		}
+		every_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				WTT_is_potential_political_struggle_state = yes
+			}
+			WTT_random_support_chance_increase_for_ROOT_in_state = yes
+			hidden_effect = {
+				save_event_target_as = state
+				random_country = {
+					limit = {
+						PREV = { 
+							has_state_flag = majority_political_platform_@PREV 
+						}
+					}
+					save_event_target_as = majority_country
+				}
+				WTT_recalculate_state_support_for_ROOT = yes
+				WTT_fire_add_support_status_events = yes
+				WTT_political_struggle_recalculate_support = yes
+			}
+		}
+		PRC ={
+			country_event = {
+				id = AWR_PRC.64
+				days = 2
+			}
+		}
+	}
+	option = { #nah
+		name = AWR_SIK.1.b
+		ai_chance = {
+			factor = 1
+		}
+		set_country_flag = warlord_supports_PRC
+		WTT_political_struggle_recalculate_support = yes		
+		PRC ={
+			country_event = {
+				id = AWR_PRC.65
+				days = 2
+			}
+		}
+	}
+}
+

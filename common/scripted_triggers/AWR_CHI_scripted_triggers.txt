@@ -65,3 +65,120 @@ is_literally_china_including_chinese_puppets = {
 		original_tag = SUY
 	}
 }
+
+is_legit_china = {	#是被承认的中国政府
+	custom_trigger_tooltip = {
+		tooltip = is_legit_china_tt
+		OR = {
+			tag = event_target:WTT_current_china_leader			
+			AND = {
+				is_subject = no
+				is_literally_china = yes
+				NOT = {
+					country_exists = event_target:WTT_current_china_leader
+				}
+				NOT = {
+					any_of_scopes = { 
+						array = global.literally_china_countries
+						ROOT = {
+							strength_ratio = { 
+						        tag = PREV
+						        ratio < 1
+						    } 
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+CKS_in_charge = {
+	custom_trigger_tooltip = {#guo
+		tooltip = has_country_leader_CKS_tt
+		or = { 
+			has_country_leader = { 
+				ruling_only = yes 
+				character = CHI_chiang_kai_shek 
+			} has_country_leader = { 
+				ruling_only = yes 
+				name = "蒋中正" 
+			} 
+			has_country_leader = {
+				ruling_only = yes 
+				name = "蒋介石" 
+			}
+			AND = { 
+				tag = event_target:WTT_communist_china 
+				or = { 
+					has_country_leader = { 
+						ruling_only = no 
+						character = CHI_chiang_kai_shek 
+					} 
+					has_country_leader = { 
+						ruling_only = no 
+						name = "蒋中正" 
+					} 
+					has_country_leader = { 
+						ruling_only = no 
+						name = "蒋介石" 
+					} 
+				} 
+			}
+		}
+	}
+}
+
+is_warlord = {	#是军阀
+	custom_trigger_tooltip = {
+		tooltip = is_warlord_tt
+		OR = {
+			has_country_flag = im_warlord_now
+			tag = GXC
+			tag = YUN
+			tag = SHX
+			tag = XSM
+			tag = XIK
+			tag = SIC
+			tag = GUD
+			tag = HPC
+			tag = NEA
+			tag = SHD
+			tag = NXM
+			tag = SHC
+			tag = GSM
+			tag = EGM
+			tag = HMI
+			tag = TNG
+		    tag = PLM
+		    tag = KHR
+			tag = XIA
+			tag = KRS
+		    tag = ATM
+			tag = SUY
+		}
+	}
+}
+
+is_MAN_state_for_liberation = {	#伪满控制区
+	OR = {
+		state = 715
+		state = 716
+		state = 1008
+		state = 328
+		state = 1007
+		state = 714
+		state = 717
+		state = 1062
+		state = 1005
+		state = 610
+		state = 745
+		state = 1012
+		state = 612
+	    state = 1006
+		state = 1009
+		state = 1011
+		state = 1010
+        state = 761		
+	}
+}

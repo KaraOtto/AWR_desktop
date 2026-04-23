@@ -1,7 +1,9 @@
 add_namespace = AWR_PRC
+add_namespace = PRC_liu_zhidan
+add_namespace = PRC_dong_zhentang
 country_event = { #漫漫黄沙中的无线电波
 	id = AWR_PRC.1
-	title = AWR_PRC.t
+	title = AWR_PRC.1.t
 	desc = AWR_PRC.1.desc
 	picture = GFX_report_event_song_qingling_prc
 	is_triggered_only = yes
@@ -31,10 +33,6 @@ country_event = {#林育英同志传达共产国际七大指示精神
 	
 	is_triggered_only = yes
 	
-	immediate = {
-	    #
-	}
-	
 	option = {
 		name = AWR_PRC.2.a
 		ai_chance = {
@@ -56,10 +54,6 @@ country_event = {#张闻天同志作《中央关于目前政治形势与党的�
 
 	is_triggered_only = yes
 	
-	immediate = {
-	    #
-	}
-	
 	option = {
 		name = AWR_PRC.3.a
 		ai_chance = {
@@ -67,7 +61,9 @@ country_event = {#张闻天同志作《中央关于目前政治形势与党的�
 		}
 
 		add_political_power = 25
-		country_event = AWR_PRC.4
+		country_event = {
+			id = AWR_PRC.4
+		}
 	}
 	
 }
@@ -79,11 +75,7 @@ country_event = {#毛泽东同志作《中央关于军事战略问题的决议�
 	picture = GFX_report_event_wayaobao
 
 	is_triggered_only = yes
-	
-	immediate = {
-	    #
-	}
-	
+
 	option = {
 		name = AWR_PRC.4.a
 		ai_chance = {
@@ -279,7 +271,7 @@ country_event = {#军阀应对中共进攻
 		}
 		PRC = {
 			PRC_liu_zhidan = { 
-				unit_leader_event = AWR_PRC.10
+				unit_leader_event = PRC_liu_zhidan.1
 			}
 		}
 	}
@@ -290,7 +282,7 @@ country_event = {#军阀应对中共进攻
 		}
 		PRC = {
 			PRC_liu_zhidan = { 
-				unit_leader_event = AWR_PRC.11
+				unit_leader_event = PRC_liu_zhidan.2
 			}
 		}
 	}
@@ -324,57 +316,7 @@ country_event = {#沁园春，雪
 	}
 }	
 
-unit_leader_event = {#刘志丹同志壮烈牺牲
-	id = AWR_PRC.10
-	title = AWR_PRC.10.t
-	desc = AWR_PRC.10.desc
-	
-	trigger = {
-		has_character = PRC_liu_zhidan
-	}
-	is_triggered_only = yes
-	
-	option = {
-		name = AWR_PRC.10.a
-		ai_chance = {
-			base = 100
-		}
-		retire_character = PRC_liu_zhidan
-		set_province_name = { 
-			id = 13402 
-			name = "志丹" 
-		}
-        1067 = { 
-			set_state_name = wuqizhenzhidan 
-		}		
-		army_experience = -5
-		set_global_flag = zhidan_death
-	}
-}
 
-unit_leader_event = {#刘志丹同志转危为安
-	id = AWR_PRC.11
-	title = AWR_PRC.11.t
-	desc = AWR_PRC.11.desc
-	
-	trigger = {
-		has_character = PRC_liu_zhidan
-	}
-	is_triggered_only = yes
-	
-	option = {
-		name = AWR_PRC.11.a
-		ai_chance = {
-			base = 100
-		}
-		PRC_liu_zhidan = {
-			add_timed_unit_leader_trait = {
-				trait = wounded
-				days = 365
-			}
-		}
-	}
-}
 
 country_event = {	#中国工农红军第二、第四方面军抵达！
 	id = AWR_PRC.12
@@ -787,10 +729,6 @@ country_event = {	#王稼祥宣布共产国际指示精神
 	}
 	picture = GFX_report_event_sixth_central_committee_6th_plenary_session
 	is_triggered_only = yes
-	#trigger = {
-	#	has_global_flag = wang_jiaxiang_return_from_soviet
-	#}
-	#fire_only_once = yes
 	option = {
 		name = AWR_PRC.18.a
 		ai_chance = {
@@ -828,9 +766,9 @@ country_event = {	#王稼祥宣布共产国际指示精神
 			temp_seats = -0.035 
 			tooltip = TEB_faction_support_tt 
 		}
-		#percentage
+		
 		modify_parliament_seat = yes
-		#add_political_power = -15
+		
 		if = {
 			limit = {
 				leader_is_maoist = yes
@@ -893,7 +831,7 @@ country_event = {	#王稼祥宣布共产国际指示精神
 			temp_seats = -0.055 
 			tooltip = TEB_faction_support_tt 
 		}
-		#percentage
+		
 		modify_parliament_seat = yes
 		add_political_power = -15
 		if = {
@@ -967,7 +905,7 @@ country_event = {	#王稼祥宣布共产国际指示精神
 			temp_seats = -0.075 
 			tooltip = TEB_faction_support_tt 
 		}
-		#percentage
+		
 		modify_parliament_seat = yes
 		add_political_power = -25
 		if = {
@@ -2214,3 +2152,1215 @@ country_event = {	#东北军拒绝我们的要求
 		add_stability = -0.05
 	}
 }
+
+country_event = {	#《中共中央关于目前形势与党的任务的决定》
+	id = AWR_PRC.38
+	title = AWR_PRC.38.t
+	desc = AWR_PRC.38.desc
+	picture = GFX_report_event_luochuanhuiyi
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.38.a
+		ai_chance = {
+			base = 1
+		}
+		add_political_power = 25
+		activate_mission = prc_kuodagenjudi_mission
+		country_event = {
+			id = AWR_PRC.39
+		}
+	}
+}
+
+country_event = {	#毛泽东同志作《为动员一切力量争取抗战胜利而斗争》报告
+	id = AWR_PRC.39
+	title = AWR_PRC.39.t
+	desc = AWR_PRC.39.desc
+	picture = GFX_report_event_luochuanhuiyi
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.39.a
+		ai_chance = {
+			base = 1
+		}
+		add_stability = 0.01
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.01 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		country_event = {
+			id = AWR_PRC.40
+		}
+	}
+	option = {
+		name = AWR_PRC.39.b
+		ai_chance = {
+			base = 0
+		}
+		country_event = {
+			id = AWR_PRC.40
+		}
+	}
+}
+
+country_event = {	#《抗日救国十大纲领》
+	id = AWR_PRC.40
+	title = AWR_PRC.40.t
+	desc = AWR_PRC.40.desc
+	picture = GFX_report_event_luochuanhuiyi
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.40.a
+		ai_chance = {
+			base = 1
+		}
+		add_war_support = 0.01
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.01 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+	}
+	option = {
+		name = AWR_PRC.40.b
+		ai_chance = {
+			base = 0
+		}
+		
+	}
+}
+
+country_event = {	#土改
+	id = AWR_PRC.41
+	title = AWR_PRC.41.t
+	desc = {
+		text = AWR_PRC.41.d_PRC
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_PRC.41.d_CHI
+		trigger = {
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+	is_triggered_only = yes
+	
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	
+	option = { #OH NO!(to JAP and pups)
+		name = AWR_PRC.41.a
+		trigger = {
+			OR = {
+				tag = event_target:WTT_current_china_leader
+				is_warlord = yes
+				tag = JAP
+				is_subject_of = JAP
+			}
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_nationalist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_nationalist_owned_by_us_tt
+				}
+			}
+		}
+	}
+	option = { #OH YEA!(to PRC)
+		name = AWR_PRC.41.b
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_communist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_communist_owned_by_nat_tt
+				}
+			}
+		}
+	}
+}
+
+country_event = { #进驻延安
+	id = AWR_PRC.42
+	title = AWR_PRC.42.t
+	desc = AWR_PRC.42.desc
+	picture = GFX_event_prc_yanan
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.42.a
+		ai_chance = {
+			base = 100
+		}
+		
+		hidden_effect = {
+			1030 = {
+				teleport_armies = { 
+					to_state = 744
+				}
+			}
+			if = {
+				limit = {
+					not = { 
+						controls_state = 622 
+					}
+				}
+				622 = {
+					set_demilitarized_zone = no
+					clr_state_flag = I_choose_this_state_to_DMZ
+					remove_core_of = NEA
+					teleport_armies = { 
+						to_state = 744
+					}
+				}
+				transfer_state = 622
+			}
+		}
+
+		hidden_effect = {
+			1030 = {
+				set_demilitarized_zone = no
+				clr_state_flag = I_choose_this_state_to_DMZ
+				remove_core_of = NEA
+			}
+		}
+		set_province_name = { 
+			id = 13405 
+			name = "延安" 
+		}
+		
+		transfer_state = 1030
+		set_capital = { 
+			state = 1030 
+		}
+		
+		1030 = {
+			set_victory_points = {
+				province = 13405
+				value = 10
+			}
+			
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = industrial_complex level = 2 
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory level = 1 
+				instant_build = yes
+			}
+		}
+		
+		add_political_power = 25
+		
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = NEA
+		}
+
+		add_to_variable = { 
+			ammunition_variable = 6 
+		}			
+	}
+	
+}
+
+country_event = { #大西北联盟
+	id = AWR_PRC.43
+	title = AWR_PRC.43.t
+	desc = AWR_PRC.43.desc
+	picture = GFX_report_event_zhou_and_zhangxueliang	
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.43.a
+		add_political_power = 150
+		set_party_name = {
+		ideology = communism
+		name = "中国共产党"
+		long_name = "中国共产党"
+		}			
+	}
+	option = {
+		name = AWR_PRC.43.b
+		add_ideas = prc_zhangxueliang
+		add_ideas = NEA_918_918		
+		set_politics = {   #设置意识形态
+			ruling_party = neutrality
+			elections_allowed = yes   
+		}
+		set_capital = {
+			state = 744
+			remember_old_capital = no
+		}
+		set_cosmetic_tag = PRC_minzhu			
+	}	
+}
+
+country_event = {	#成立三人团
+	id = AWR_PRC.44
+	title = AWR_PRC.44.t
+	desc = AWR_PRC.44.d
+	is_triggered_only = yes
+	picture = GFX_sanrentuan
+	fire_only_once = yes
+	option = {
+		name = AWR_PRC.44.a
+		add_political_power = 50
+	}
+	option = {
+		name = AWR_PRC.44.b
+		retire_country_leader = yes
+		recruit_character = PRC_sanrentuan
+		promote_character = PRC_sanrentuan
+	}
+}
+
+country_event = {	#大生产运动
+	id = AWR_PRC.45
+	title = AWR_PRC.45.t
+	desc = AWR_PRC.45.d
+	picture = GFX_nanniwan	
+	is_triggered_only = yes	
+	fire_only_once = yes				   
+
+	immediate = {	
+		hidden_effect = {	
+			if = {
+				limit = {
+					PRC = { 
+						is_ai = no 
+					}  
+				}			
+				play_song = "nea_nanniwan"		
+			}
+		}		
+    }
+	option = {
+		name = AWR_PRC.45.a
+		add_political_power = 100	
+		add_stability = 0.10
+		1030 = {		
+	    	add_extra_state_shared_building_slots = 3	
+        }		
+	}
+}
+
+country_event = {	#打通国际路线
+	id = AWR_PRC.46
+	title = AWR_PRC.46.t
+	desc = EFM_Comchina.227.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.46.a
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT		
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		trigger = {
+			country_exists = NXM
+			NOT = {
+				is_in_faction_with = NXM
+			}
+		}
+		country_event = {
+			id = AWR_PRC.47
+			days = 3
+		}
+	}
+}
+
+country_event = { #打通河西走廊
+	id = AWR_PRC.47
+	title = AWR_PRC.47.t
+	desc = AWR_PRC.47.d
+	picture = GFX_report_event_zhang_guotao
+	is_triggered_only = yes	
+	fire_only_once = yes				   
+	option = {
+		name = AWR_PRC.47.a
+		trigger = {
+			country_exists = GSM
+			NOT = {
+				is_in_faction_with = GSM
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50			
+		set_country_flag = went_with_gansu_plan
+		declare_war_on = { 
+			target = GSM 
+			type = annex_everything 
+		}
+        hidden_effect = {		
+        	country_event = { 
+				id = AWR_PRC.48 
+				days = 20 
+			}
+        }		
+	}
+}
+
+country_event = { #宁夏战役失败
+	id = AWR_PRC.48
+	title = AWR_PRC.48.t
+	desc = AWR_PRC.48.d
+	picture = GFX_report_event_west_route_army_failed
+	is_triggered_only = yes	
+	fire_only_once = yes				   
+    mean_time_to_happen = {
+        days = 3
+    }
+	option = {
+		name = AWR_PRC.48.a 	
+		ai_chance = {
+			factor = 100
+		}		
+		NXM = {
+			transfer_state = 1044
+            add_state_core = 1044			
+		}
+	    hidden_effect = {		
+			set_global_flag = zhi_da_yi_ge 		
+			CHI = { 
+				country_event = { 
+					id = AWR_CHI.1003 
+				} 
+			}
+			NEA = { 
+				country_event = { 
+					id = AWR_NEA.3 
+				} 
+			}	
+			NXM = { 
+				country_event = { 
+					id = AWR_NXM.1 
+				} 
+			}		
+		}		
+	}
+	option = {
+		name = AWR_PRC.48.b
+		ai_chance = {
+			factor = 0
+		}
+		trigger = {
+			country_exists = NXM
+			NOT = {
+				is_in_faction_with = NXM
+			}
+		}
+		add_stability = -0.10
+		modify_parliament_seat = yes		
+		set_country_flag = went_with_ningxia_plan
+		declare_war_on = { 
+			target = NXM 
+			type = annex_everything 
+		}		
+	}
+}
+
+country_event = {  #我军获胜了
+	id = AWR_PRC.49
+	title = AWR_PRC.49.t
+	desc = AWR_PRC.49.d
+	picture = GFX_huishi
+
+	fire_only_once = yes
+	trigger = {
+        has_completed_focus = PRC_West_road_army_victory			
+	}
+	option = {
+		name = AWR_PRC.49.a
+		add_ideas = PRC_Victory_in_the_west
+		add_stability = 0.05
+		add_political_power = 100
+		PRC = {
+			transfer_state = 1044
+		}		
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.30 
+			tooltip = ZHANG_faction_support_tt 
+		}
+
+		modify_parliament_seat = yes
+		hidden_effect = {
+			set_country_flag = PRC_west_expedition_victory		
+		}
+	}
+}
+
+country_event = { #军阀发动反击
+	id = AWR_PRC.50
+	title = AWR_PRC.50.t
+	desc = AWR_PRC.50.d
+	picture = GFX_report_event_west_route_army_failed
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+	option = {
+		name = AWR_PRC.50.a
+		white_peace = NXM
+		add_political_power = -50
+		add_stability = -0.1
+		add_manpower = -10000
+		NXM = { 
+			country_event = { 
+				id = AWR_NXM.2 
+			} 
+		}
+		CHI = { 
+			country_event = { 
+				id = AWR_CHI.1004 
+			} 
+		}		
+		CHI = {
+			transfer_state = 1044
+		}
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.15 
+			tooltip = ZHANG_faction_support_tt 
+		}
+
+		modify_parliament_seat = yes
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+}
+
+country_event = { #远征计划失败
+	id = AWR_PRC.51
+	title = AWR_PRC.51.t
+	desc = AWR_PRC.51.d
+	picture = GFX_report_event_west_route_army_failed
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		country_exists = NXM
+		has_country_flag = went_with_ningxia_plan
+		1044 = {
+			is_controlled_by = PRC
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+	option = {
+		name = AWR_PRC.51.a
+		white_peace = NXM
+		add_political_power = -50
+		add_stability = -0.1
+		add_manpower = -3000
+		NXM = { 
+			country_event = { 
+				id = AWR_NXM.3 
+			} 
+		}
+		NXM = {
+			transfer_state = 1044
+		}
+		
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.15 
+			tooltip = ZHANG_faction_support_tt 
+		}
+
+		modify_parliament_seat = yes
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+}
+
+country_event = {	#大西北联盟
+	id = AWR_PRC.54
+	title = AWR_PRC.54.t
+	desc = AWR_PRC.54.d
+	picture = GFX_report_event_zang_yang_attack #to do
+	is_triggered_only = yes
+
+	option = { 
+		name = AWR_PRC.54.a
+		ai_chance = {
+			factor = 1
+		}
+		
+		NEA ={
+			country_event = {
+				id = AWR_NEA.4
+			}
+		}
+	}
+}
+
+country_event = {	#接受大西北联盟计划
+	id = AWR_PRC.55
+	title = AWR_PRC.55.t
+	desc = AWR_PRC.55.d
+	picture = GFX_report_event_zang_yang_attack #to do
+	is_triggered_only = yes
+
+
+	option = { 
+		name = AWR_PRC.55.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = 50
+		custom_effect_tooltip = gain_base_supp_cond_n10_tt
+			add_to_variable = {
+		    var = This.supply_condition
+			value = 10 #MODDED
+		    }
+		    add_to_variable = {
+			var = This.supply_condition_base
+			value = 10 #MODDED
+		    }
+			add_to_variable = {
+				Root.supply_condition_base = 10
+			}
+				add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5000
+				producer = NEA
+				}
+				add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 350
+				producer = NEA
+				}
+				add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 100
+				producer = NEA
+				}
+		
+		custom_effect_tooltip = NORTHWEST_ALLIANCE_LATER_TT
+		unlock_decision_tooltip = PRC_NORTHWEST_ALLIANCE_FORM_ZZ
+		set_global_flag = Secret_Northwest_Alliance
+	}
+}
+
+country_event = {	#拒绝大西北联盟计划
+	id = AWR_PRC.56
+	title = AWR_PRC.56.t
+	desc = AWR_PRC.56.d
+	picture = GFX_report_event_arrive_xian #to do
+	is_triggered_only = yes
+	
+
+	option = {  #Well...Fine...
+		name = AWR_PRC.56.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = -25
+	}
+}
+
+
+country_event = { #军阀发动反击
+	id = AWR_PRC.57
+	title = AWR_PRC.57.t
+	desc = AWR_PRC.57.d
+	picture = GFX_report_event_west_route_army_failed
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		country_exists = GSM
+		NOT = {
+			GSM = {
+				has_capitulated = yes
+			}
+		}
+		has_country_flag = went_with_gansu_plan
+		NOT = {
+			1044 = {
+				is_controlled_by = PRC
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+	option = {
+		name = AWR_PRC.57.a
+		white_peace = GSM
+		add_political_power = -50
+		add_stability = -0.1
+		custom_effect_tooltip = disband_all_troops_in_hosi_tt
+		delete_unit = {
+			state = 756
+			disband = yes 
+		}
+		GSM = { 
+			country_event = { 
+				id = AWR_GSM.1 
+			} 
+		}
+		if = {
+			limit = {
+				1053 = {
+					is_controlled_by = CHI
+				}
+			}
+			CHI = { 
+				transfer_state = 1044
+			}
+		}
+		if = {
+			limit = {
+				NEA = {
+					is_ai = yes
+				}			
+				1053 = {
+					is_controlled_by = XII
+				}
+			}
+			XII = { 
+				transfer_state = 1044
+			}
+			1044 = {
+				add_core_of = XII
+			}		
+		}
+		if = {
+			limit = {
+				NEA = {
+					is_ai = yes
+				}			
+				1053 = {
+					is_controlled_by = NEA
+				}
+			}
+			NEA = { 
+				transfer_state = 1044
+			}
+			1044 = {
+				add_core_of = NEA
+			}		
+		}		
+
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.15 
+			tooltip = ZHANG_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+}
+
+country_event = { #远征计划失败
+	id = AWR_PRC.58
+	title = AWR_PRC.58.t
+	desc = AWR_PRC.58.d
+	picture = GFX_report_event_west_route_army_failed
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		country_exists = GSM
+		NOT = {
+			GSM = {
+				has_capitulated = yes
+			}
+		}
+		has_country_flag = went_with_gansu_plan
+		1044 = {
+			is_controlled_by = PRC
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+	option = {
+		name = AWR_PRC.58.a
+		white_peace = GSM
+		add_political_power = -50
+		add_stability = -0.1
+
+		custom_effect_tooltip = disband_all_troops_in_hosi_tt
+		delete_unit = {
+			state = 756
+			disband = yes 
+		}
+		GSM = { 
+			country_event = { 
+				id = AWR_GSM.2 
+			} 
+		}
+		NXM = {
+			transfer_state = 1044
+		}
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.15 
+			tooltip = ZHANG_faction_support_tt 
+		}
+
+		modify_parliament_seat = yes
+		hidden_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+	        set_country_flag = PRC_zhangqinqiubeifu				
+		}
+	}
+}
+
+country_event = {	#任弼时被派往莫斯科担任代表
+	id = AWR_PRC.59
+	title = AWR_PRC.59.t
+	desc = AWR_PRC.59.d
+	picture = GFX_report_event_ren_bishi_to_ussr
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = ren_bishi_in_moscow
+		hidden_effect = { 
+			country_event = { 
+				id = AWR_PRC.60 
+				days = 60 
+			} 
+		}
+	}
+	option = { #Good luck, comrade!
+		name = AWR_PRC.59.a
+		ai_chance = {
+			factor = 1
+		}
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.02 
+			tooltip = MAOIST_faction_support_tt 
+		}
+
+		modify_parliament_seat = yes
+
+		custom_effect_tooltip = remove_political_advisor
+		show_ideas_tooltip = prc_ren_bishi
+	}
+	option = { #Yeah, go away.
+		name = AWR_PRC.59.b
+		ai_chance = {
+			factor = 0
+		}
+		
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.03 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+
+		add_political_power = -20
+		custom_effect_tooltip = remove_political_advisor
+		show_ideas_tooltip = prc_ren_bishi
+	}
+}
+
+country_event = {	#王稼祥同志从莫斯科归来
+	id = AWR_PRC.60
+	title = AWR_PRC.60.t
+	desc = AWR_PRC.60.d
+	picture = GFX_report_event_wang_jiaxiang_1
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = wang_jiaxiang_return_from_soviet
+		clr_global_flag = prc_wang_jiaxiang_go_to_soviet_union
+	}
+
+	option = { 
+		name = AWR_PRC.60.a
+		ai_chance = {
+			factor = 1
+		}
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.015 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		add_political_power = 15
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = prc_wang_jiaxiang
+	}
+	option = { #ugh why is he back
+		name = AWR_PRC.60.b
+		ai_chance = {
+			factor = 0
+		}
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.001 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = prc_wang_jiaxiang
+	}
+}
+
+country_event = {	#张国焘挑战红一方面军
+	id = AWR_PRC.61
+	title = AWR_PRC.61.t
+	desc = AWR_PRC.61.d
+	picture = GFX_report_event_zhang_guotao #to do
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.61.a
+		ai_chance = {
+			factor = 1
+		}
+		retire_country_leader = yes
+		PRC_zhang_guotao = {
+            add_country_leader_role = {
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = anti_revisionism
+					desc=PRC_zhang_guotao_desc
+					traits = {
+						comintern_celebrity #guo
+						AWR_propaganda_expert
+						dangdeyuanlao
+					}
+				}
+				promote_leader = yes
+			}   
+		}
+	}
+}
+
+country_event = {	#挑战中央政权
+	id = AWR_PRC.62
+	title = AWR_PRC.62.t
+	desc = AWR_PRC.62.d
+	picture = GFX_report_event_assembly_china 
+	is_triggered_only = yes
+
+	option = { 
+		name = AWR_PRC.62.a
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = {
+				tag = PRC
+			}
+			country_event = {
+				id = AWR_PRC.63
+			}
+		}				
+		SIK ={
+			country_event = {
+				id = AWR_SIK.1
+				days = 2
+			}
+		}
+		custom_effect_tooltip = enable_power_struggle
+		hidden_effect = {
+			WTT_setup_political_struggle = yes
+			WTT_add_ROOT_to_political_struggle = yes
+		}
+		every_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				WTT_is_potential_political_struggle_state = yes
+			}
+			
+			WTT_random_support_chance_increase_for_ROOT_in_state = yes
+			hidden_effect = {
+				
+				save_event_target_as = state
+				random_country = {
+					limit = {
+						PREV = { 
+							has_state_flag = majority_political_platform_@PREV 
+						}
+					}
+					save_event_target_as = majority_country
+				}
+
+				WTT_recalculate_state_support_for_ROOT = yes
+				WTT_fire_add_support_status_events = yes
+				WTT_political_struggle_recalculate_support = yes
+			}
+		}
+	}
+}
+
+country_event = {	#沿用国号
+	id = AWR_PRC.63
+	title = AWR_PRC.63.t
+	desc = AWR_PRC.63.d
+    picture = GFX_sunyili
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.63.a
+		set_cosmetic_tag = CHI_warlord_leader_communism	
+		ai_chance = { 
+		    factor = 100
+		}	
+	}
+	option = {
+    name = AWR_PRC.63.b	
+		ai_chance = { 
+		    factor = 0
+		}	
+	}	
+}
+
+country_event = {	#新疆决定和我们一起挑战中央
+	id = AWR_PRC.64
+	title = AWR_PRC.64.t
+	desc = AWR_PRC.64.d
+	picture = GFX_report_event_the_king_of_sinkiang_sheng_shicai 
+	is_triggered_only = yes
+	option = { 
+		name = AWR_PRC.64.a
+		ai_chance = {
+			factor = 1
+		}
+		
+		effect_tooltip = {
+			SIK = {	
+				set_country_flag = warlord_supports_PRC
+				WTT_political_struggle_recalculate_support = yes
+			}
+		}
+	}
+}
+
+country_event = {	#新疆拒绝加入，但会提供支持
+	id = AWR_PRC.65
+	title = AWR_PRC.65.t
+	desc = AWR_PRC.65.d
+	picture = GFX_report_event_political_hearing 
+	is_triggered_only = yes
+
+	option = { 
+		name = AWR_PRC.65.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+
+unit_leader_event = {#刘志丹同志壮烈牺牲
+	id = PRC_liu_zhidan.1
+	title = PRC_liu_zhidan.1.t
+	desc = PRC_liu_zhidan.1.desc
+	
+	trigger = {
+		has_character = PRC_liu_zhidan
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = PRC_liu_zhidan.1.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = PRC_liu_zhidan
+		set_province_name = { 
+			id = 13402 
+			name = "志丹" 
+		}
+        1067 = { 
+			set_state_name = wuqizhenzhidan 
+		}		
+		army_experience = -5
+		set_global_flag = zhidan_death
+	}
+}
+
+unit_leader_event = {#刘志丹同志转危为安
+	id = PRC_liu_zhidan.2
+	title = PRC_liu_zhidan.2.t
+	desc = PRC_liu_zhidan.2.desc
+	
+	trigger = {
+		has_character = PRC_liu_zhidan
+	}
+	is_triggered_only = yes
+	
+	option = {
+		name = PRC_liu_zhidan.2.a
+		ai_chance = {
+			base = 100
+		}
+		PRC_liu_zhidan = {
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 365
+			}
+		}
+	}
+}
+
+unit_leader_event = { #董振堂同志壮烈牺牲
+	id = PRC_dong_zhentang.1
+	title = PRC_dong_zhentang.1.t
+	desc = PRC_dong_zhentang.1.desc
+	
+	trigger = {
+		has_character = PRC_dong_zhentang
+		
+		OR = {
+			AND = {
+				country_exists = GSM
+				GSM = { 
+					has_capitulated = no 
+				}
+				has_country_flag = went_with_gansu_plan
+			}
+			AND = {
+				country_exists = NXM
+				NXM = { 
+					has_capitulated = no 
+				}
+				has_country_flag = went_with_ningxia_plan
+			}
+		}
+	}
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = no_PRC_west_expedition_victory
+		set_country_flag = PRC_zhangqinqiubeifu		
+	}
+	
+	option = {
+		name = PRC_dong_zhentang.1.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = PRC_dong_zhentang
+	}
+}
+
+unit_leader_event = { #NXM
+	id = PRC_dong_zhentang.2
+	title = PRC_dong_zhentang.2.t
+	desc = PRC_dong_zhentang.2.desc
+	
+	trigger = {
+		has_character = PRC_dong_zhentang
+		
+	}
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = no_PRC_west_expedition_victory
+		set_country_flag = PRC_zhangqinqiubeifu		
+	}
+	
+	option = {
+		name = PRC_dong_zhentang.2.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = PRC_dong_zhentang
+	}
+}
+

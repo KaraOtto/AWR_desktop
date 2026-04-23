@@ -83,3 +83,65 @@ country_event = {	#据称张学良与共产党停战
 		}
 	}
 }
+
+country_event = {	#共产党加入统一战线
+	id = AWR_CHI.1002
+	title = AWR_CHI.1002.t
+	desc = AWR_CHI.1002.d
+	picture = GFX_report_event_chinese_army_training
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		remove_ideas = chi_nanfang			
+			if = {
+				limit = {
+					FROM = {
+						tag = PRC
+					}
+				}
+				FROM = {
+					add_to_war = {
+						targeted_alliance = ROOT
+						enemy = JAP
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = AWR_CHI.1002.a
+		hidden_effect = {
+			remove_ideas = chi_nanfang
+		}		
+	}
+}
+
+country_event = { #击退共产党民兵
+	id = AWR_CHI.1003
+	title = AWR_CHI.1003.t
+	desc = AWR_CHI.1003.d
+	picture = GFX_report_event_west_route_army_failed
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AWR_CHI.1003.a
+		add_stability = 0.05
+		add_political_power = 100
+	}
+}
+
+country_event = {  #共产党民兵撤退了
+	id = AWR_CHI.1004
+	title = AWR_CHI.1004.t
+	desc = AWR_CHI.1004.d
+	picture = GFX_report_event_west_route_army_failed
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AWR_CHI.1004.a
+		add_stability = 0.05
+		add_political_power = 100
+	}
+}

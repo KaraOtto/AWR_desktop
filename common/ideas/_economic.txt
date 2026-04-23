@@ -13,7 +13,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.50
 				production_speed_industrial_complex_factor = -0.5
 				production_speed_arms_factory_factor = -0.5
@@ -61,7 +61,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.4
 				production_speed_industrial_complex_factor = -0.4
 				production_speed_arms_factory_factor = -0.4
@@ -105,7 +105,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.35
 				production_speed_industrial_complex_factor = -0.3
 				production_speed_arms_factory_factor = -0.3
@@ -218,7 +218,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.3
 				production_speed_industrial_complex_factor = -0.1
 				production_speed_arms_factory_factor = -0.1
@@ -327,7 +327,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.25
 				production_speed_arms_factory_factor = 0.1
 				conversion_cost_civ_to_mil_factor= -0.1
@@ -415,13 +415,20 @@ ideas = {
 							has_idea = PHI_ties_with_nationalist_spain_2
 						}
 						else = {
-							hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+							hidden_trigger = { 
+								always = no 
+							} 
 						}
 					}
 					else = {
-						hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+						hidden_trigger = { 
+							always = no 
+						} 
 					}
-					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
+					custom_trigger_tooltip = { 
+						tooltip = or_clarification_tooltip 
+						always = no 
+					}
 					AND = {
 						has_war = yes
 						any_enemy_country = {
@@ -515,7 +522,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.2
 				production_speed_arms_factory_factor = 0.2
 				conversion_cost_civ_to_mil_factor= -0.2
@@ -746,7 +753,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				conscription = -0.03
 				production_speed_arms_factory_factor = 0.3
@@ -781,7 +788,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				conscription = -0.02
 				production_speed_arms_factory_factor = 0.2
@@ -828,7 +835,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				production_speed_arms_factory_factor = 0.3
 				conversion_cost_civ_to_mil_factor= -0.3
@@ -848,14 +855,16 @@ ideas = {
 			allowed_to_remove = {
 				OR = {
 					surrender_progress > 0.75
-					NOT = { has_government = communism }
+					NOT = { 
+						has_government = communism 
+					}
 				}
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				production_speed_buildings_factor = -0.15
 				factory_energy_consumption = 0.25
@@ -879,14 +888,16 @@ ideas = {
 			allowed_to_remove = {
 				OR = {
 					surrender_progress > 0.75
-					NOT = { has_government = communism }
+					NOT = { 
+						has_government = communism 
+					}
 				}
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.10
 				production_speed_buildings_factor = -0.2
 				global_building_slots_factor = 0.1
@@ -913,7 +924,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				production_speed_industrial_complex_factor = 0.15
 				conversion_cost_civ_to_mil_factor = -0.4
@@ -923,7 +934,6 @@ ideas = {
 				stability_factor = -0.15
 				political_power_factor = -0.1
 				factory_energy_consumption = 0.35
-
 			}
 
 			cancel_if_invalid = no
@@ -943,14 +953,16 @@ ideas = {
 			allowed_to_remove = {
 				OR = {
 					surrender_progress > 0.75
-					NOT = { has_government = communism }
+					NOT = { 
+						has_government = communism 
+					}
 				}
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				operative_slot = 3
+				 
 				consumer_goods_expected_value = 0.15
 				production_speed_industrial_complex_factor = -0.1
 				global_building_slots_factor = 0.1
@@ -1020,7 +1032,7 @@ ideas = {
 				conversion_cost_mil_to_civ_factor = 0.25
 				war_stability_factor = 0.25
 				military_leader_cost_factor = -0.25
-				operative_slot = 3
+				 
 				weekly_manpower = 500
 				non_core_manpower = 0.05
 				min_export = -0.25
@@ -1075,10 +1087,63 @@ ideas = {
 				production_lack_of_resource_penalty_factor = -0.50
 				global_building_slots_factor = 0.15
 				consumer_goods_expected_value = 0.1
-				custom_modifier_tooltip = remove_PRC_guerilla_warfare_zz
-				operative_slot = 3
+				custom_modifier_tooltip = remove_PRC_guerilla_warfare_economy
 			}
 
+			cancel_if_invalid = yes
+                                                
+			allowed_to_remove = {
+				num_of_controlled_states > 10
+			}
+		}
+
+		PRC_guerilla_warfare_economy_2 = { #guo
+			name = PRC_guerilla_warfare_economy
+			removal_cost = -1
+			cost = 0
+			level = 1 
+			picture = nea_idea_national_model
+
+			allowed = {
+				original_tag = PRC
+			}
+
+			visible = {
+				original_tag = PRC
+				num_of_controlled_states < 10
+				has_country_flag = concentrate_on_develop
+			}
+			available = {
+				num_of_controlled_states < 10
+			}
+			ai_will_do = {
+				base = 100
+				modifier = {
+					add = -1000
+					num_of_controlled_states > 10
+				}
+            }
+			modifier = {
+				SUPPLY_NODE_RANGE = 0.40
+				attrition = -0.20
+				min_export = -0.50
+				pocket_penalty = -0.50
+				supply_consumption_factor = -0.50
+				out_of_supply_factor = -0.50
+				no_supply_grace = 96
+				industrial_capacity_factory = -0.05
+				production_speed_buildings_factor = -0.05
+				production_lack_of_resource_penalty_factor = -0.5
+				global_building_slots_factor = 0.25
+				consumer_goods_expected_value = 0.05
+				conversion_cost_civ_to_mil_factor = -0.90
+				conversion_cost_mil_to_civ_factor = -0.90
+				factory_energy_consumption = -0.70
+				custom_modifier_tooltip = remove_PRC_guerilla_warfare_economy
+			}
+
+
+			
 			cancel_if_invalid = yes
                                                 
 			allowed_to_remove = {
@@ -2260,7 +2325,7 @@ ideas = {
 				intel_from_operatives_factor = 0.6
 				target_sabotage_factor = 0.6
 				boost_resistance_factor = 0.6
-				operative_slot = 3
+				 
 				intel_network_gain = 0.6
 				decryption_power_factor = 0.6
 				supply_node_range = 0.30
