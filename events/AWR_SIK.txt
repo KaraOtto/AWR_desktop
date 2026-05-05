@@ -60,3 +60,139 @@ country_event = {
 	}
 }
 
+country_event = {	#中共想要整合我们
+	id = AWR_SIK.2
+	title = AWR_SIK.2.t
+	desc = AWR_SIK.2.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			base = 100
+			
+			modifier = {
+				factor = 0.75
+				has_war = no
+				FROM = {
+					has_war = yes
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					is_major = no
+				}
+			}
+		}
+		name = AWR_SIK.2.a
+		every_army_leader = { #GUO
+			set_nationality = FROM
+		}
+		every_unit_leader = { #GUO
+			set_nationality = FROM
+		}
+		every_character = { #GUO
+			set_nationality = FROM
+		}
+		
+		FROM = { 
+			annex_country = { 
+				target = ROOT 
+				transfer_troops = yes 
+			} 
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+	}
+	option = {
+		ai_chance = {
+			factor = 25 #GUO
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 65
+				}
+			}
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 35
+				}
+			}
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 5
+				}
+			}
+			
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 35
+				}
+			}
+			
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 65
+				}
+			}
+			
+			modifier = {
+				factor = 0.1
+				has_war = yes
+				FROM = {
+					has_war = no
+				}
+			}
+			
+			modifier = {
+				factor = 0.1
+				FROM = {
+					is_major = yes
+				}
+			}
+		}
+		name = AWR_SIK.2.b
+		FROM = { 
+			set_autonomy = { 
+				target = ROOT 
+				autonomy_state = autonomy_CHI_zongduxiaqu 
+			} 
+		}
+		FROM = { 
+			country_event = { 
+				id = AWR_SIK.3 
+				days = 1 
+			} 
+		}
+	}
+}
+
+country_event = {	#中共决定让我们保留最低限度的自治权
+	id = AWR_SIK.3
+	title = AWR_SIK.3.t
+	desc = AWR_SIK.3.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_SIK.3.a
+	}
+
+}
+
+
+

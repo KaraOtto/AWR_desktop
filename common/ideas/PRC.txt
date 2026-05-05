@@ -2229,7 +2229,336 @@ ideas = {
 				tag = NXM
 				attack_bonus_against = 0.30
 			}
+		}
+
+		prc_idea_presidium = {	#由主席团管理
+
+			picture = prc_idea_presidium
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.1
+				
+			}
+		}
+
+		PRC_autonomy_over_unity_idea = {	#自治高于统一
+			picture = PRC_autonomy_over_unity_idea
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
 			
+
+			modifier = {
+				max_command_power = 15
+				command_power_gain_mult = 0.05
+				stability_factor = -0.05
+				land_reinforce_rate = 0.05
+				INITIATIVE_FACTOR = 0.05
+				coordination_bonus = 0.05
+			}
+		}
+
+		PRC_unity_over_autonomy_idea = {	#团结高于自治
+			picture = PRC_unity_over_autonomy_idea
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			available = {
+				country_exists = event_target:WTT_current_china_leader
+				event_target:WTT_current_china_leader = {
+					NOT = {
+						has_government = communism
+					}
+				}
+			}
+
+			modifier = {
+				max_command_power = -15
+				command_power_gain_mult = -0.05
+				stability_factor = 0.1
+			}
+		}
+
+		on_protracted_war = { #论持久战
+
+			picture = on_protracted_war
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			available = { 
+				leader_is_maoist = yes 
+			}
+
+			removal_cost = -1
+
+			
+			modifier = {
+			    custom_modifier_tooltip = MAO_faction_monthly_tt
+				political_power_gain = 0.15
+				attrition = -0.10
+				experience_gain_army_unit_factor = 0.10
+				resistance_growth_on_our_occupied_states = 0.20
+				experience_loss_factor = -0.10
+				max_command_power = 30
+				command_power_gain_mult = 0.03
+				supply_combat_penalties_on_core_factor = -0.5
+			}
+
+		}
+
+		PRC_yan_an_zheng_feng_jing_yan = {	#延安整风的经验
+            allowed = {
+                tag = PRC
+            }
+            cancel = {
+                always = no
+            }
+            removal_cost = -1 
+            modifier = {
+                stability_factor = 0.10
+                political_power_gain = 0.15
+                political_power_factor = 0.1
+                research_speed_factor = 0.05
+			}
+        }
+
+		PRC_The_Republican = {	#中央政府
+
+			picture = generic_central_management
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = { #guo
+				industry_repair_factor = 0.15
+				trade_laws_cost_factor = -0.15
+				political_advisor_cost_factor = -0.15
+				economy_cost_factor = -0.15
+				industrial_concern_cost_factor = -0.15
+				conversion_cost_civ_to_mil_factor = -0.15
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_dockyard_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				local_resources_factor = 0.1
+			}
+		}
+
+		prc_idea_secretariat = {	#集中统一领导
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {				
+				war_support_factor = 0.1
+				stability_factor = 0.05
+			}
+		}
+
+		PRC_cooperate_with_4th_international = {	#与第四国际合作
+
+			picture = fourth_international 
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = TROT_faction_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						PRC_cooperate_with_4th_international_counter = 15 
+					} 
+					add_to_variable = { 
+						trotskyist_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						trotskyist_total = 0.5 
+					}
+				}
+			}
+		}
+
+		PRC_uncertainty_of_new_theory = {	#新理论的不确定性
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_morale_factor = -0.1
+				land_doctrine_cost_factor = 0.1
+				political_power_factor = -0.1
+				experience_gain_army_factor = 0.15
+			}			
+		}
+
+		PRC_zhendizhan = {	#阵地战
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_fortify_the_borders
+			modifier = {
+				army_core_defence_factor = 0.05
+				land_reinforce_rate = 0.025
+                dig_in_speed_factor = 0.10
+				max_dig_in_factor = 0.10
+				pocket_penalty = -0.1
+				army_org_factor = 0.025
+				army_speed_factor = -0.03
+			}
+		}
+
+		PRC_gongjianzhan = {	#攻坚战
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = hol_expand_the_colonial_army
+			modifier = {
+				planning_speed = 0.2
+				max_planning = 0.1
+				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
+				org_loss_when_moving = -0.05
+				army_org_factor = 0.025
+			}
+		}
+
+		PRC_maybe_theory_is_ok = {	#对新理论有信心
+			removal_cost = -1
+
+			picture = nkvd
+
+			allowed = {
+				always = no
+			}
+
+			cancel = {
+				surrender_progress > 0.5
+			}
+
+			modifier = {
+				army_org_factor = 0.05
+				army_morale_factor = 0.05
+				experience_gain_army_factor = 0.05
+				land_doctrine_cost_factor = -0.1
+			}
+		}
+
+		PRC_swift_victory_idea_new = {	#快速胜利学说
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_victors_of_ww1
+			modifier = {
+				army_core_defence_factor = 0.10
+				land_reinforce_rate = 0.05
+                dig_in_speed_factor = 0.15
+				max_dig_in_factor = 0.15
+				pocket_penalty = -0.25
+				army_org_factor = 0.1
+				planning_speed = 0.25
+				max_planning = 0.25
+				army_attack_factor = 0.1
+				army_core_attack_factor = 0.1
+				breakthrough_factor = 0.1
+				org_loss_when_moving = -0.10
+			}
+		}
+
+		PRC_The_federation = {	#联邦政府
+
+			picture = generic_agrarian_reform
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = { #guo
+				research_speed_factor = 0.10
+				non_core_manpower = 0.15
+				conscription = 0.01
+				resistance_target = -0.1
+				resistance_growth = -0.1
+				resistance_damage_to_garrison = -0.1
+				compliance_gain = 0.05
+				production_speed_infrastructure_factor = 0.10
+				production_speed_industrial_complex_factor = 0.10
+			}
 		}
 	}
 

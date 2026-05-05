@@ -1,0 +1,647 @@
+on_actions = {  #整风运动
+	on_daily = {
+		effect = {
+            if = {
+                limit = {
+                    check_variable = {
+                        variable = yan_an_zheng_feng_prog_var
+                        value > 100
+                    }
+                }
+                set_variable = {
+                    variable = yan_an_zheng_feng_prog_var
+                    value = 100
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        variable = yan_an_zheng_feng_prog_var
+                        value < 0
+                    }
+                }
+                set_variable = {
+                    variable = yan_an_zheng_feng_prog_var
+                    value = 0
+                }
+            }
+        }
+    }
+}
+
+on_actions = {  #毛泽东支持者
+    on_monthly_PRC = {
+
+        effect = {
+            if = {
+                limit = {
+                    leader_is_maoist = yes
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_zhang_wentian
+                    PRC_zhang_wentian = {
+                        has_trait = maoists_trait_zhang_wentian
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_mao_zedong
+                    PRC_mao_zedong = {
+                        has_trait = maoists_trait_mao_zedong
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_chen_yun
+                    PRC_chen_yun = {
+                        has_trait = maoists_trait_chen_yun
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_kang_sheng
+                    PRC_kang_sheng = {
+                        has_trait = maoists_trait_kang_sheng
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_wang_jiaxiang
+                    PRC_wang_jiaxiang = {
+                        has_trait = maoists_trait_wang_jiaxiang
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_guan_xiangying
+                    PRC_guan_xiangying = {
+                        has_trait = maoists_trait_guan_xiangying
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_lin_yuying
+                    PRC_lin_yuying = {
+                        has_trait = maoists_trait_lin_yuying
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_li_fuchun
+                    PRC_li_fuchun = {
+                        has_trait = maoists_trait_li_fuchun
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_peng_zhen
+                    PRC_peng_zhen = {
+                        has_trait = maoists_trait_peng_zhen
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_liu_shaoqi
+                    PRC_liu_shaoqi = {
+                        has_trait = maoists_trait_liu_shaoqi
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_ren_bishi
+                    PRC_ren_bishi = {
+                        has_trait = maoists_trait_ren_bishi
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_zhou_enlai
+                    PRC_zhou_enlai = {
+                        has_trait = maoists_trait_zhou_enlai
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_zhu_de
+                    PRC_zhu_de = {
+                        has_trait = maoists_trait_zhu_de
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_deng_xiaoping
+                    PRC_deng_xiaoping = {
+                        has_trait = maoists_trait_deng_xiaoping
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 2 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = MAOIST_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+        }
+    }
+}
+
+on_actions = {  #28个半布尔什维克支持者
+    on_monthly_PRC = {
+
+        effect = {
+
+            if = {
+                limit = {
+                    leader_is_28b = yes
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_li_de
+                    PRC_li_de = {
+                        has_trait = trait_28b_trait_PRC_li_de_2
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_kai_feng
+                    PRC_kai_feng = {
+                        has_trait = trait_28b_trait_PRC_kai_feng
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_guan_xiangying
+                    PRC_guan_xiangying = {
+                        has_trait = trait_28b_trait_PRC_xiang_ying
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_bo_gu
+                    PRC_bo_gu = {
+                        has_trait = trait_28b_trait_bo_gu
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_wang_ming
+                    PRC_wang_ming = {
+                        has_trait = trait_28b_trait_wang_ming
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_meng_qingshu
+                    PRC_meng_qingshu = {
+                        has_trait = trait_28b_trait_meng_qingshu
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_chen_changhao
+                    PRC_chen_changhao = {
+                        has_trait = trait_28b_trait_chen_changhao
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_wang_shengrong
+                    PRC_wang_shengrong = {
+                        has_trait = trait_28b_trait_wang_shengrong
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_zhou_enlai
+                    PRC_zhou_enlai = {
+                        has_trait = trait_28b_trait_PRC_zhou_enlai_2
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 3 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TEB_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+        }
+    }
+}
+
+on_action = {   #张国焘支持者
+    on_monthly_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    leader_is_zhang_guotao = yes
+                }
+                set_temp_variable = { 
+                    temp_member = 1 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = ZHANG_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_zhang_guotao
+                    PRC_zhang_guotao = {
+                        has_trait = zhang_trait_zhang_guotao
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 1 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = ZHANG_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_chen_changhao
+                    PRC_chen_changhao = {
+                        has_trait = zhang_trait_chen_changhao
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 1 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = ZHANG_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_xu_xiangqian
+                    PRC_xu_xiangqian = {
+                        has_trait = zhang_trait_PRC_xu_xiangqian
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 1 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = ZHANG_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+        }
+    }
+}
+
+on_actions = {  #托派支持者
+    on_monthly_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    leader_is_trotskyist = yes
+                }
+                set_temp_variable = { 
+                    temp_member = 4
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            } 
+
+            if = {
+                limit = {
+                    has_idea = PRC_chen_duxiu
+                    PRC_chen_duxiu = {
+                        has_trait = trotskyist_chen_duxiu
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 4 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_peng_shuzhi
+                    PRC_peng_shuzhi = {
+                        has_trait = trotskyist_peng_shuzhi
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 4 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_zheng_chaolin
+                    PRC_zheng_chaolin = {
+                        has_trait = trotskyist_zheng_chaolin
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 4 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_wang_fanxi
+                    PRC_wang_fanxi = {
+                        has_trait = trotskyist_wang_fanxi
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 4 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+
+            if = {
+                limit = {
+                    has_idea = PRC_wang_shiwei
+                    PRC_wang_shiwei = {
+                        has_trait = trotskyist_wang_shiwei
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 4 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = TORT_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+        }
+    }
+}
+
+
+
+			
+				
+				
+				

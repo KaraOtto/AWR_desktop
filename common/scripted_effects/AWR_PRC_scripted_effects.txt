@@ -203,7 +203,7 @@ modify_parliament_seat = {
 				NOT = { check_variable = { parliament_seat_array^3 = 200 } } #Not the dominant one
 				OR = {
 					has_country_leader = { character = prc_peng_shuzhi ruling_only = yes } #has 0% minority leader
-					has_country_leader = { character = prc_chen_duxiu ruling_only = yes	} 
+					has_country_leader = { character = PRC_chen_duxiu ruling_only = yes	} 
 				}
 			}
 			add_to_temp_array = { temp_array = 3 } #trot reemerge
@@ -965,4 +965,33 @@ PRC_personnel_shortage_down = {	#缓解缺乏技术人才
 		}
 		remove_ideas = PRC_no_skilled_personnel_4
 	}
+}
+
+#整风运动
+CPC_mao_zheng_feng_clamper = {	
+    clamp_variable = {
+        var  = yan_an_zheng_feng_prog_var
+        min = 0
+        max = 100
+	}
+    if = {
+        limit = {
+            check_variable = {
+                yan_an_zheng_feng_prog_var > 100
+            }
+        }
+        set_variable = {
+            yan_an_zheng_feng_prog_var = 100
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                yan_an_zheng_feng_prog_var < 0
+            }
+        }
+        set_variable = {
+            yan_an_zheng_feng_prog_var = 0
+        }
+    }
 }

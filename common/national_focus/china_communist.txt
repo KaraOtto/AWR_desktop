@@ -2904,12 +2904,12 @@ focus_tree = {
 			remove_trait = {
 				character = PRC_zhu_de #朱德	
 				slot = political_advisor
-				trait = maoists_trait_zhude
+				trait = maoists_trait_zhu_de
 			}
 			remove_trait = {
 				character = PRC_lin_yuying
 				slot = political_advisor
-				trait = maoists_trait_linyuying
+				trait = maoists_trait_lin_yuying
 			}					
             retire_character = PRC_lin_biao #林彪	
 			retire_character = PRC_he_long #贺龙
@@ -3605,7 +3605,7 @@ focus_tree = {
 		completion_reward = {
 			SIK = {
 				country_event = {
-					id = EFM_independent.3
+					id = AWR_SIK.2
 				}
 			}
 			custom_effect_tooltip = acceptance_will_depend_on_stuff_tt
@@ -3700,7 +3700,7 @@ focus_tree = {
 	
 	focus = {#中共中央革命军事委员会
 		id = PRC_found_the_military_commission_general_political_department_focus
-		icon = GFX_focus_war_communism
+		icon = GFX_focus_PRC_found_the_military_commission_general_political_department_focus
 		cost = 7.15
 		x = -2
 		y = 0
@@ -3724,7 +3724,9 @@ focus_tree = {
 			
 			add_command_power = 50
 			
-			set_temp_variable = { temp_member = 2 }
+			set_temp_variable = { 
+				temp_member = 2 
+			}
 			set_temp_variable = { 
 				temp_seats = 0.025 
 				tooltip = MAOIST_faction_support_tt 
@@ -3753,14 +3755,16 @@ focus_tree = {
 		
 		bypass = {
 			date > 1939.1.1
-			not = { has_war_with = JAP }
+			not = { 
+				has_war_with = JAP 
+			}
 		}
 
 	}
 
 	focus = {#实践论与矛盾论
 		id = PRC_great_troskyist_purge_focus
-		icon = GFX_focus_PRC_wayaobaohuiyi_end
+		icon = GFX_focus_PRC_great_troskyist_purge_focus
 		cost = 7.15
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
@@ -3774,8 +3778,8 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			swap_ideas = {
-				add_idea = xingxingzhihuo_keyiliaoyuan_2
 				remove_idea = xingxingzhihuo_keyiliaoyuan
+				add_idea = xingxingzhihuo_keyiliaoyuan_2
 			}
 		    PRC_mao_zedong = {
             	add_country_leader_trait = tiancaidesixiangjia		
@@ -3827,7 +3831,7 @@ focus_tree = {
 
 	focus = {#有限的统一战线
 		id = PRC_disrespect_the_united_front_focus
-		icon = GFX_focus_disrespect_the_united_front
+		icon = GFX_focus_PRC_disrespect_the_united_front_focus
 		cost = 10
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
@@ -3851,7 +3855,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_ideas = PRC_autonomy_over_unity_idea
-			country_event = prc.232922
+			country_event = {
+				id = AWR_PRC.66
+			}
 			if = {
 				limit = {
 					has_global_flag = PRC_xianshiwenben
@@ -3885,7 +3891,7 @@ focus_tree = {
 
 	focus = {#论持久战
 		id = PRC_promote_prolonged_warfare_focus
-		icon = GFX_focus_promote_prolonged_warfare
+		icon = GFX_focus_PRC_promote_prolonged_warfare_focus
 		cost = 10
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
@@ -3901,7 +3907,9 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			country_event = prc.1111117222
+			country_event = {
+				id = AWR_PRC.67
+			}
 			effect_tooltip = { 
 				add_ideas = on_protracted_war 
 			}
@@ -3968,15 +3976,21 @@ focus_tree = {
 		continue_if_invalid = yes
 		available_if_capitulated = yes
 		select_effect = {
-			country_event = RCM_comchina_mao.3
+			country_event = {
+				id = AWR_PRC.68
+			}
 		}
 		completion_reward = {
 			hidden_effect = {		
-				country_event = ccw.910	
+				country_event = {
+					id = AWR_PRC.69	
+				}
             }			
 			custom_effect_tooltip = focus_selected
 			effect_tooltip = {
-				country_event = RCM_comchina_mao.3
+				country_event = {
+					id = AWR_PRC.68
+				}
 				swap_ideas = {
 					add_idea = yanan_rect_2
 					remove_idea = yanan_rect_1
@@ -4087,7 +4101,9 @@ focus_tree = {
 			}
 			
 			set_global_flag = PRC_expand_changjiang_bureau_focus_focus_flag
-			country_event = RCM_comchina_wang_ming.4
+			country_event = {
+				id = AWR_PRC.80
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = changjiang_bureau
@@ -4132,7 +4148,7 @@ focus_tree = {
 
 	focus = {#陈独秀问题
 		id = PRC_question_of_chen_duxiu_focus
-		icon = GFX_focus_chen_duxiu
+		icon = GFX_focus_PRC_question_of_chen_duxiu
 		cost = 3.6
 		x = 6
 		y = 0
@@ -4149,7 +4165,7 @@ focus_tree = {
 			add_political_power = 25
 			PRC = {
 				country_event = {
-					id = RCM_comchina_trot.4
+					id = AWR_PRC.81
 				}
 			}
 			custom_effect_tooltip = CHEN_WILL_ONLY_ACCEPT_WHEN_TROT_IS_HIGH_ENOUGH_TT
@@ -4252,7 +4268,7 @@ focus_tree = {
 
 	focus = {#要求重返中国共产党
 		id = PRC_demand_reentry_of_cpc_focus
-		icon = GFX_focus_demand_reentry
+		icon = GFX_focus_demand_reentry_of_cpc
 		cost = 10
 		prerequisite = {
 			focus = PRC_majority_faction_focus
@@ -4263,7 +4279,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_political_power = 75
-			country_event = RCM_comchina_trot.5
+			country_event = {
+				id = AWR_PRC.84
+			}
 			effect_tooltip = {
 				if = {
 					limit = {
@@ -4278,7 +4296,8 @@ focus_tree = {
 						temp_member = 4 
 					}
 					set_temp_variable = { 
-						temp_seats = 0.075 tooltip = TROT_faction_support_tt 
+						temp_seats = 0.075 
+						tooltip = TROT_faction_support_tt 
 					}
 					modify_parliament_seat = yes			
 				}
@@ -4309,8 +4328,7 @@ focus_tree = {
 
 	focus = {#将托派送到新疆
 		id = PRC_send_trotskyists_to_sinkiang_focus
-		icon = GFX_COOP_sinkiang_offer
-		cost = 7.15
+		icon = GFX_focus_PRC_send_trotskyists_to_sinkiang
 		prerequisite = {
 			focus = PRC_demand_another_politburo_meeting_focus
 		}
@@ -4334,14 +4352,17 @@ focus_tree = {
 				}			
 			}
 		
-			country_event = RCM_comchina_wang_ming.5
+			country_event = {
+				id = AWR_PRC.85
+			}
 			effect_tooltip = {
 				add_political_power = 100
 				set_temp_variable = { 
 					temp_member = 4 
 				}
 				set_temp_variable = { 
-					temp_seats = -0.02 tooltip = TROT_faction_support_tt 
+					temp_seats = -0.02 
+					tooltip = TROT_faction_support_tt 
 				}
 				modify_parliament_seat = yes
 				add_manpower = -300
@@ -4399,7 +4420,7 @@ focus_tree = {
 
 	focus = {#重新团结三人团
 		id = PRC_reunite_the_group_of_three_focus
-		icon = GFX_focus_group_of_three
+		icon = GFX_focus_reunite_the_group_of_three
 		cost = 10
 		prerequisite = {
 			focus = PRC_send_trotskyists_to_sinkiang_focus
@@ -4423,7 +4444,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = zhengzhiju_gui_will_change
 			country_event = {
-				id = RCM_comchina_wang_ming.8
+				id = AWR_PRC.87
 			}
 			set_global_flag = PRC_zhou_enlai_2_done
 			
@@ -4445,7 +4466,7 @@ focus_tree = {
 			remove_trait = {
 				character = PRC_lin_yuying
 				slot = political_advisor
-				trait = maoists_trait_linyuying
+				trait = maoists_trait_lin_yuying
 			}				
 			add_trait = {
 				character = prc_bo_gu
@@ -4460,7 +4481,7 @@ focus_tree = {
 			}
 			set_global_flag = PRC_zhou_enlai_2_now_be_28b
 			add_trait = {
-				character = PRC_li_de_2
+				character = PRC_li_de
 				slot = political_advisor
 				trait = trait_28b_trait_PRC_li_de_2
 			}
@@ -4543,7 +4564,7 @@ focus_tree = {
 
 	focus = {#巩固王明权威
 		id = PRC_consolidate_wang_mings_authority_focus
-		icon = GFX_focus_wang_ming
+		icon = GFX_focus_consolidate_wang_mings_authority
 		cost = 10
 		prerequisite = {
 			focus = PRC_send_trotskyists_to_sinkiang_focus
@@ -4565,7 +4586,7 @@ focus_tree = {
 			custom_effect_tooltip = zhengzhiju_gui_will_change
 
 			country_event = {
-				id = RCM_comchina_wang_ming.7
+				id = AWR_PRC.88
 			}
 			
 			remove_trait = {
@@ -4586,7 +4607,7 @@ focus_tree = {
 			remove_trait = {
 				character = PRC_lin_yuying
 				slot = political_advisor
-				trait = maoists_trait_linyuying
+				trait = maoists_trait_lin_yuying
 			}			
 			effect_tooltip = {
 				set_temp_variable = { 
@@ -4661,8 +4682,8 @@ focus_tree = {
 	
 	focus = {#共和制
 		id = PRC_Republican
-		icon = GFX_goal_PRC_Republican
-		cost = 7.19
+		icon = GFX_focus_PRC_Republican
+		cost = 5
 		prerequisite = {
 			focus = PRC_consolidate_wang_mings_authority_focus
 			focus = PRC_reunite_the_group_of_three_focus
@@ -4715,7 +4736,10 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_country_leader = { ruling_only = yes character = PRC_mao_zedong }
+				has_country_leader = { 
+					ruling_only = yes 
+					character = PRC_mao_zedong 
+				}
 			}
 		}
 		available = {
@@ -4747,9 +4771,15 @@ focus_tree = {
 				has_idea = prc_wang_fanxi
 				has_idea = prc_zheng_chaolin
 			}
-			set_temp_variable = { temp_faction_support = 30 }
-			set_temp_variable = { temp_greater_or_smaller = 1 } #1 greater 0 smaller
-			set_temp_variable = { temp_get_faction = 4 }
+			set_temp_variable = { 
+				temp_faction_support = 30 
+			}
+			set_temp_variable = { 
+				temp_greater_or_smaller = 1 
+			} 
+			set_temp_variable = { 
+				temp_get_faction = 4 
+			}
 			custom_trigger_tooltip = {
 				tooltip = CHECK_FACTION_SUPPORT_tt
 				check_variable = { 
@@ -4760,7 +4790,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			country_event = {
-				id = RCM_comchina_trot.6
+				id = AWR_PRC.89
 			}
 			effect_tooltip = {
 				add_ideas =  PRC_cooperate_with_4th_international
@@ -4861,7 +4891,7 @@ focus_tree = {
 
 			custom_effect_tooltip = PRC_trotskyist_coup_jiesuo_chuilaba
 			country_event = {
-				id = RCM_comchina_trot.7
+				id = AWR_PRC.90
 			}
 			
 			remove_trait = {
@@ -4884,9 +4914,9 @@ focus_tree = {
 						}
 					}
 					create_country_leader = {
-						name = "陈独秀"
+						name = PRC_chen_duxiu
 						desc = "POLITICS_CHEN_DUXIU_DESC"
-						picture = "Portrait_China_Chen_Duxiu.dds"
+						picture = "GFX_Portrait_China_Chen_Duxiu"
 						expire = "1965.1.1"
 						ideology = trotskyism
 						traits = { 
@@ -4903,7 +4933,7 @@ focus_tree = {
 						}
 					}
 					create_country_leader = {
-						name = "彭述之"
+						name = PRC_peng_shuzhi
 						desc = "POLITICS_PENG_SHUZHI_DESC"
 						picture = "Portrait_China_Peng_Shuzhi.dds"
 						expire = "1965.1.1"
@@ -4925,7 +4955,7 @@ focus_tree = {
 						name = PRC_Chinese_communist_league
 					}
 					create_country_leader = {
-						name = "王凡西"
+						name = PRC_wang_fanxi
 						desc = "POLITICS_WANG_FANGXI_DESC"
 						picture = "Portrait_PRC_Wang_Fanxi.dds"
 						expire = "1965.1.1"
@@ -4942,7 +4972,7 @@ focus_tree = {
 	
 	focus = { #重拾正面战场
 		id = PRC_zhengmianzhanchang
-		icon = GFX_focus_generic_provoke_border_clashes
+		icon = GFX_focus_zhengmianzhanchang
 		cost = 10
 		prerequisite = {
 			focus = PRC_consolidate_wang_mings_authority_focus
@@ -4967,7 +4997,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			country_event = {
-				id = prc_zhengmian.1
+				id = AWR_PRC.91
 			}
 			army_experience = 25
 			add_ideas =  PRC_uncertainty_of_new_theory
@@ -4976,7 +5006,7 @@ focus_tree = {
 
 	focus = { #阵地战
 		id = PRC_zhendizhan_focus
-		icon = GFX_goal_generic_defence
+		icon = GFX_focus_zhendizhan
 		cost = 5
 		prerequisite = {
 			focus = PRC_zhengmianzhanchang
@@ -5014,7 +5044,7 @@ focus_tree = {
 
 	focus = {#攻坚战
 		id = PRC_gongjianzhan_focus
-		icon = GFX_goal_generic_major_war
+		icon = GFX_focus_gongjianzhan
 		cost = 5
 		prerequisite = {
 			focus = PRC_zhengmianzhanchang
@@ -5052,7 +5082,7 @@ focus_tree = {
 
 	focus = {#提高新理论的可行性
 		id = PRC_tigaolilun_focus
-		icon = GFX_focus_generic_strike_at_democracy1
+		icon = GFX_focus_rise_the_feasibiliyt_of_new_theory
 		cost = 10
 		prerequisite = {
 			focus = PRC_gongjianzhan_focus
@@ -5122,8 +5152,8 @@ focus_tree = {
 	
 	focus = {#联邦制
 		id = PRC_federation
-		icon = GFX_goal_PRC_federation
-		cost = 7.19
+		icon = GFX_focus_PRC_federation
+		cost = 5
 		prerequisite = {
 			focus = PRC_consolidate_wang_mings_authority_focus
 			focus = PRC_reunite_the_group_of_three_focus
