@@ -82,15 +82,9 @@ leader_traits = {#政治
 	mi_shu = { #机要秘书
 		random = no
 		sprite = 12
-		political_power_factor = 0.05
-        war_support_factor = 0.1		
-        experience_gain_army_factor = 0.05
-        army_core_attack_factor = 0.05
-        conscription = 0.01
-        justify_war_goal_time = -0.1
-        drift_defence_factor = 0.5
-		command_power_gain = 0.05
-        planning_speed = 0.05				
+		political_power_factor = 0.10
+        war_support_factor = 0.10		
+        justify_war_goal_time = -0.15				
 		
 		ai_will_do = {
 			factor = 1
@@ -895,6 +889,56 @@ leader_traits = {#政治
 		experience_loss_factor = -0.05
 
 	}
+
+	institutional_designer_of_PRC = {	#党的理论建设和制度设计师
+		sprite = 13
+		random = no
+		stability_factor = 0.10
+		political_power_factor = 0.10
+	}
+	
+	advocate_of_cooperative_economy = {	#合作社经济倡导者
+		sprite = 6
+		random = no 
+		consumer_goods_factor = -0.15
+		state_production_speed_infrastructure_factor = 0.20
+		repair_speed_infrastructure_factor = 0.20
+		production_speed_industrial_complex_factor = 0.20
+		energy_gain_factor = 0.15
+	}
+
+	triumphant_revolutionary = { #革命胜利
+		random = no
+		justify_war_goal_time = -0.25
+		subversive_activites_upkeep = -0.25
+		operation_coup_government_outcome = 0.25 #进行颠覆效率
+		operation_collaboration_government_outcome = 0.25 #筹备合作政府效率
+		max_command_power = 50
+
+		drift_defence_factor = 0.15
+		command_power_gain_mult = 0.15
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	minister_of_the_CSAD = {	#中央社会部部长
+		random = no
+		resistance_damage_to_garrison = -0.25
+		foreign_subversive_activites = -0.3
+		drift_defence_factor = 0.30
+		operative_slot = 2
+	}
+
+	cruel_purifier_under_theory = {		#理论伪装下的残酷整肃者
+		random = no
+		stability_factor = -0.10
+		war_support_factor = -0.05
+		intelligence_agency_defense = 0.20
+		enemy_operative_capture_chance_factor = 0.20
+		enemy_operative_detection_chance = 0.20
+	}
 }
 
 leader_traits = {#军事
@@ -907,7 +951,6 @@ leader_traits = {#军事
 		political_power_factor = 0.05
 		org_loss_at_low_org_factor = -0.10
 		experience_loss_factor = -0.10
-
 		communism_drift = 0.05
 
 		ai_will_do = {
@@ -1182,7 +1225,6 @@ leader_traits = {#军事
 		max_planning = 0.15
 		planning_speed = -0.10
 		equipment_capture = 0.05
-		#experience_gain_army = @chief_experience_gain_high
 
 		command_cap_increase = @tier2
 
@@ -1295,8 +1337,6 @@ leader_traits = {#军事
 	guerilla_warfare_strategist = { #游击战专家
 		random = no
 		sprite = 13
-		command_power_gain_mult = 0.15
-		max_command_power = 35
 		operation_boost_resistance_outcome = 0.25 #加强抵抗组织效率
 		operation_make_resistance_contacts_cost = -0.25
 		compliance_growth_on_our_occupied_states = -0.15 #我们被敌人占领地区的顺从度增长速度
@@ -1310,6 +1350,14 @@ leader_traits = {#军事
 		ai_will_do = {
 			factor = 3
 		}
+	}
+
+	NFA_political_commissar = {	#新四军政委
+		random = no
+		sprite = 13
+		command_power_gain_mult = 0.15
+		max_command_power = 35
+		supply_consumption_factor = -0.05
 	}
 
 	head_of_political_commissar = { #红军政委
@@ -1347,5 +1395,11 @@ leader_traits = {#军事
 		ai_will_do = {
 			factor = 1
 		}
+	}
+
+	coordinated_operation = {
+		sprite = 5
+		coordination_bonus = 0.10
+		land_reinforce_rate = 0.05
 	}
 }

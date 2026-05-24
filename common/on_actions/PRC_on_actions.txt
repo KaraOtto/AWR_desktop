@@ -639,7 +639,72 @@ on_actions = {  #托派支持者
     }
 }
 
+on_actions = {  #将领事件
+    on_monthly_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    date > 1938.2.1
+                    date < 1938.3.1
+                    NOT = {
+                        has_global_flag = lu_dongsheng_has_gone_to_Moscow
+                    }
+                }
+                
+                PRC_lu_dongsheng = {
+                    unit_leader_event = { 
+                        id = PRC_lu_dongsheng.1
+                    }
+                }
 
+            }
+        }
+    }
+}
+
+on_actions = {  #解放战争
+    on_war_relation_added = {   #抢占主动权
+		effect = {
+			if = {
+				limit = {
+					ROOT = { 
+                        tag = PRC 
+                    }
+					FROM = { 
+                        tag = CHI 
+                    }
+					NOT = { 
+                        has_global_flag = the_Chinese_civil_war
+                    } 
+                    date > 1938.1.1
+				}
+				set_global_flag = the_Chinese_civil_war
+				complete_national_focus = PRC_seize_the_initiative
+			}
+		}
+	}
+
+    on_war_relation_added = {   #战略防御
+		effect = {
+			if = {
+				limit = {
+					ROOT = { 
+                        tag = CHI 
+                    }
+					FROM = { 
+                        tag = PRC 
+                    }
+					NOT = { 
+                        has_global_flag = the_Chinese_civil_war 
+                    } 
+                    date > 1938.1.1
+				}
+				set_global_flag = the_Chinese_civil_war
+				complete_national_focus = PRC_strategic_defense
+			}
+		}
+	}
+}
 
 			
 				

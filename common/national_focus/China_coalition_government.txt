@@ -1,0 +1,615 @@
+focus_tree = {
+	id = China_coalition_government_Focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 2000
+			tag = CHI
+			has_country_flag = China_coalition_government
+		}
+	}
+
+	#联合政府国策分支#
+	focus = {#主导联合政府
+		id = PRC_zhangwozhudongquan
+		icon = GFX_focus_chi_united_front
+		cost = 1.00
+		allow_branch = {
+			NOT = { 
+				has_global_flag = PRC_civil_war_started 
+			}
+			NOT = { 
+				has_global_flag = kmt_jujue_lianhe 
+			}
+			NOT = { 
+				has_completed_focus = PRC_bukebimiandeneizhan 
+			}
+		}
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_global_flag = prc_kmt_lianhezhengfu
+			}
+		}
+		prerequisite = {
+			#focus = PRC_7th_National_Congress_focus
+		}
+		mutually_exclusive = { focus = PRC_bukebimiandeneizhan }
+		x = 10
+		y = 20
+		#relative_position_id = PRC_7th_National_Congress_focus
+		ai_will_do = {
+			factor = 50000
+		}
+		available_if_capitulated = yes
+		continue_if_invalid = yes
+		cancel_if_invalid = no
+		completion_reward = {
+			custom_effect_tooltip = jiesuo_sanminguoce
+			add_political_power = 75
+		    set_global_flag = PRC_zhangwozhudongquan_flag
+			custom_effect_tooltip = PRC_zhangwozhudongquan_flag_tt
+			event_target:WTT_current_china_leader = { country_event = PRC_lin_yuying.27 }
+			
+			
+			#mark_focus_tree_layout_dirty = yes
+		}
+		available = {
+			event_target:WTT_current_china_leader = {
+				is_subject = no
+				NOT = { has_war_with = root has_completed_focus = CHI_political_consultative_assembly_focus }
+				communism > 0.35
+				or = { strength_ratio = { tag = PRC ratio < 1 } event_target:WTT_communist_china = { has_army_manpower = { size > 2499999 } } }
+			}			
+			event_target:WTT_current_china_leader = {
+				NOT = {
+					OR = {
+						has_war_with = JAP
+						has_war_together_with = ROOT
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = jap_small_china_tt
+					NOT = {
+						any_of_scopes = {
+							array = global.small_china
+							hidden_trigger = {
+								NOT = { 
+									state = 326
+									state = 728
+									state = 729
+								}
+							}
+							is_controlled_by_jap_or_its_puppet = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						has_government = fascism
+						has_government = communism
+						has_government = n_socialism
+					}
+				}
+			}
+		}		
+		cancel = { has_war_with = event_target:WTT_current_china_leader }
+	}
+
+	focus = {#第一届全国人民代表大会
+		id = PRC_lighthouse_of_democracy_focus			
+		icon = GFX_focus_PRC_lighthouse_of_democracy_focus
+		cost = 7.19
+		allow_branch = { has_completed_focus = PRC_zhangwozhudongquan }
+		relative_position_id = PRC_zhangwozhudongquan
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 999
+		}
+		select_effect = {
+			set_country_flag = { 
+				flag = no_election_event_for_now_flag 
+				value = 1 
+				days = 80 
+			}
+			country_event = rcmchina_nomination_convention.1
+			set_country_flag = election_about_to_start
+			
+			country_event = PRC_lin_yuying.29
+		}
+		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = AWR_PRC.93
+				}			
+	        	play_song = "nea_songbie"				
+			}				
+			add_political_power = -100
+			country_event = rcmchina_elections.0
+			custom_effect_tooltip = election_result_depends_on_popularity_tt
+			if = {
+				limit = {
+					always = yes
+				}
+				add_ideas = CHI_will_of_sun_yat_sen
+			}
+		}
+		cancel_if_invalid = no
+		available = {
+			has_idea = prc_kmt_lianhezhengfu
+			if = {
+				limit = {
+					has_country_flag = election_about_to_start
+				}
+				has_country_flag = nomination_process_is_done
+			}
+			custom_trigger_tooltip = {
+            	tooltip = reunite_china
+				is_subject = no
+				num_of_controlled_states > 20
+		    	MAN = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				CHI = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				SHX = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				GXC = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				GUD = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				YUN = {
+					OR = {
+					exists = no
+					is_subject_of = root
+					is_puppet_of = root
+					}
+				}
+			
+				XSM = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				SIK = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				TNG = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+				TIB = {
+					OR = {
+						exists = no
+						is_subject_of = root
+						is_puppet_of = root
+					}
+				}
+			
+			}
+		}
+		cancel = {
+			#
+		}
+	}
+
+	focus = {#三民主义
+		id = PRC_three_principle_of_the_people
+		icon = GFX_three_principle_focus
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_lighthouse_of_democracy_focus
+		}
+		relative_position_id = PRC_lighthouse_of_democracy_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = sanmin_doctrine		
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#民生主义
+		id = PRC_CHI_civilianism_idea_focus
+		icon = GFX_goal_generic_consumer_goods
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_three_principle_of_the_people
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = -3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CHI_civilianism_idea
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#乔治主义税制改革
+		id = PRC_georgist_tax_reform
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_CHI_civilianism_idea_focus
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = -3
+		y = 2
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = CHI_civilianism_idea2
+				remove_idea = CHI_civilianism_idea
+			}
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#医疗保健计划
+		id = PRC_health_care_program
+		icon = GFX_focus_healthcare_program
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_georgist_tax_reform
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = -3
+		y = 3
+		ai_will_do = {
+			factor = 20
+		}
+		#search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = CHI_civilianism_idea3
+				remove_idea = CHI_civilianism_idea2
+			}
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#国立大学
+		id = PRC_CHI_State-run_uni_focus
+		icon = GFX_focus_generic_university
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_health_care_program
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = -3
+		y = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			num_of_factories > 100
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {#民权主义
+		id = PRC_democratism_focus
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_three_principle_of_the_people
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = democratic_influence
+		}
+		available = {
+			if = {
+				limit = {
+					JAP = {
+						is_subject = no
+						is_fascism_type = yes
+					}
+				}
+				NOT = {
+					is_in_faction_with = JAP
+				}
+			}
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#民族主义
+		id = PRC_ethnicism_focus
+		icon = GFX_focus_PRC_ethnicism_focus
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_three_principle_of_the_people
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CHI_Minzuism
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {#政治和治理
+		id = PRC_CHI_politics_and_governance_focus
+		icon = GFX_Goal_Control_Yuan
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_democratism_focus
+		}
+		prerequisite = {
+			focus = PRC_CHI_civilianism_idea_focus
+		}
+		prerequisite = {
+			focus = PRC_ethnicism_focus
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 150
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {#进口代替工业化
+		id = PRC_CHI_import_substitution_industrialization_focus
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_ethnicism_focus
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 3
+		y = 2
+		completion_reward = {
+			add_ideas = import_substitution_industrialization_idea
+		}
+		available = {
+			num_of_factories > 45
+		}
+	}
+
+	focus = {#行政改革
+		id = PRC_CHI_unification_decree
+		icon = GFX_goal_PRC_federation
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_CHI_import_substitution_industrialization_focus
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 3
+		y = 3
+		completion_reward = {
+			add_political_power = -150
+			add_ideas = CHI_executive_yuan
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {#立法机构改革
+		id = PRC_CHI_legislative_reforms
+		icon = GFX_focus_chi_legislative_yuan
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_CHI_politics_and_governance_focus
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 0
+		y = 3
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CHI_legislative_yuan
+			add_political_power = 50
+		}
+		available = {
+			fascism < 0.25
+			neutrality < 0.3
+		}
+		bypass = {
+			#has_government = fascism
+		}
+	}
+
+	focus = {#确立集体领导制度
+		id = PRC_jitilingdao
+		icon = GFX_goal_PRC_Republican
+		cost = 4.29
+		prerequisite = {
+			focus = PRC_CHI_unification_decree
+		}
+		prerequisite = {
+			focus = PRC_CHI_legislative_reforms
+		}
+		relative_position_id = PRC_three_principle_of_the_people
+		x = 0
+		y = 4
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						ruling_only = yes 
+						character = PRC_mao_zedong 
+					} 
+				}
+				add_mao_advisor_trait = yes
+			}
+			if = {
+				limit = { 
+					has_country_leader = { 
+						ruling_only = yes 
+						character = PRC_zhou_enlai 
+					} 
+				}
+				add_trait = {
+					character = PRC_zhou_enlai
+					slot = political_advisor
+					trait = legitimate_heir
+				}
+				add_trait = {
+					character = PRC_zhou_enlai
+					slot = political_advisor
+					trait = dangdeyuanlao
+				}
+				add_trait = {
+					character = PRC_zhou_enlai
+					slot = political_advisor
+					trait = guojizhengzhihuodongjia
+				}
+				add_trait = {
+					character = PRC_zhou_enlai
+					slot = political_advisor
+					trait = nanchangqiyi
+				}
+				add_trait = {
+					character = PRC_zhou_enlai
+					slot = political_advisor
+					trait = tongyizhanxianzhichi
+				}
+				hidden_effect = {
+					add_trait = {
+						character = PRC_zhou_enlai_2
+						slot = political_advisor
+						trait = legitimate_heir
+					}
+					add_trait = {
+						character = PRC_zhou_enlai_2
+						slot = political_advisor
+						trait = dangdeyuanlao
+					}
+					add_trait = {
+						character = PRC_zhou_enlai_2
+						slot = political_advisor
+						trait = guojizhengzhihuodongjia
+					}
+					add_trait = {
+						character = PRC_zhou_enlai_2
+						slot = political_advisor
+						trait = nanchangqiyi
+					}
+					add_trait = {
+						character = PRC_zhou_enlai_2
+						slot = political_advisor
+						trait = tongyizhanxianzhichi
+					}
+				}
+			}
+			
+			promote_character = PRC_quanguorenda
+		}
+		available = {
+			fascism < 0.25
+			neutrality < 0.3
+		}
+		bypass = {
+			#
+		}
+	}
+}
+

@@ -1,4 +1,4 @@
-version="1.17"
+version="1.18"
 tags={
 	"Events"
 	"Gameplay"
@@ -8,4 +8,5 @@ name="全面抗战"
 replace_path="history/states"
 replace_path="map/strategicregions"
 replace_path="gfx/loadingscreens"
-supported_version="1.17.1.1"
+supported_version="1.18.2.0"
+remote_file_id="3527743303"

@@ -1,0 +1,4109 @@
+@offsive_days = 30
+CHI_civil_war_offensives = {	#内战攻势
+
+	chi_northern_man_offensive = {	#北满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+			}
+			NOT = {
+                has_active_mission = chi_northern_man_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_northern_man_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 242
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 242
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 242
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}   
+			}
+			modifier = {
+				factor = 200
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+
+	chi_eastern_man_offensive = {	#东满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 243
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+			}
+			NOT = {
+                has_active_mission = chi_eastern_man_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_eastern_man_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 243
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			#if = {
+			#	limit = {
+			#		has_completed_focus = SPA_tackle_the_vulnerable_fronts
+			#		171 = { is_controlled_by = SPD }
+			#	}
+			#	add_timed_idea = { idea = SPA_anti_republican_offensive days = 30 }
+			#}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 243
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 243
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 200
+				tag = event_target:WTT_communist_china
+			}
+			#modifier = {
+			#	factor = 10
+			#	divisions_in_state = {
+			#		state = 171
+			#		size > 0
+			#	}
+			#	NOT = {
+			#		has_full_control_of_state = 171
+			#	}
+			#}
+		}
+	}
+
+	chi_western_man_offensive = {	#西满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 155
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+			}
+			NOT = {
+				has_active_mission = chi_western_man_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_western_man_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 155
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 155
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 200
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+
+    chi_north_china_offensive = {	#华北
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_143
+					region = 143
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { has_active_mission = chi_preparing_offensive }
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_143
+					region = 143
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 143
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_143
+					region = 143
+				}
+			}
+			NOT = {
+                has_active_mission = chi_north_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_north_china_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 143
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 143
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 143
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 180
+				tag = event_target:WTT_communist_china
+			}
+			
+		}
+	}
+
+	chi_inner_mon_offensive = {		#内蒙
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_244
+					region = 244
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_244
+					region = 244
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 244
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_244
+					region = 244
+				}
+			}
+			NOT = {
+                has_active_mission = chi_inner_mon_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_inner_mon_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 244
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 244
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 244
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			
+		}
+	}
+
+	chi_outer_mon_offensive = {		#外蒙
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_152
+					region = 152
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_152
+					region = 152
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 152
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_152
+					region = 152
+				}
+			}
+			NOT = {
+                has_active_mission = chi_outer_mon_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_outer_mon_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 152
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 152
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 152
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+		}
+	}
+
+	chi_tuva_offensive = {		#图瓦
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_266
+					region = 266
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_266
+					region = 266
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 266
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_266
+					region = 266
+				}
+			}
+			NOT = {
+                has_active_mission = chi_tuva_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_tuva_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 266
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 266
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 266
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			
+		}
+	}
+
+	chi_northwest_offensive = {		#西北
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_144
+					region = 144
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_144
+					region = 144
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 144
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_144
+					region = 144
+				}
+			}
+			NOT = {
+                has_active_mission = chi_north_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_northwest_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 144
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 144
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 144
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			
+		}
+	}
+
+	chi_tsinghai_offensive = {	#青海
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_200
+					region = 200
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_200
+					region = 200
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 200
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_200
+					region = 200
+				}
+			}
+			NOT = {
+                has_active_mission = chi_tsinghai_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_tsinghai_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 200
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 200
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 200
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 5
+				tag = event_target:WTT_communist_china
+			}
+			
+		}
+	}
+
+	chi_northern_sik_offensive = {	#北疆
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_252
+					region = 252
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_252
+					region = 252
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 252
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_252
+					region = 252
+				}
+			}
+			NOT = {
+                has_active_mission = chi_northern_sik_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_northern_sik_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 252
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 252
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 252
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 5
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+
+	chi_southern_sik_offensive = {	#南疆
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_145
+					region = 145
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_145
+					region = 145
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				region = 145
+				has_state_flag = chi_unplanned_offensive_flag
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_145
+					region = 145
+				}
+			}
+			NOT = {
+                has_active_mission = chi_southern_sik_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_southern_sik_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 145
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 145
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 145
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 5
+				tag = event_target:WTT_communist_china
+			}
+			
+		}
+	}
+
+	chi_tibet_offensive = {		#西藏
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_146
+					region = 146
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_146
+					region = 146
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 146
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_146
+					region = 146
+				}
+			}
+			NOT = {
+                has_active_mission = chi_tibet_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_tibet_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 146
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 146
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 146
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 200
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+  
+    chi_kham_offensive = {	#西康
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_250
+					region = 250
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_250
+					region = 250
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 250
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_250
+					region = 250
+				}
+			}
+			NOT = {
+                has_active_mission = chi_kham_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_kham_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 150
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 250
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 250
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 200
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+
+	chi_west_china_offensive = {	#华西
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_165
+					region = 165
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_165
+					region = 165
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 165
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_165
+					region = 165
+				}
+			}
+			NOT = {
+                has_active_mission = chi_west_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_west_china_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 165
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 165
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 165
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 100
+				tag = event_target:WTT_communist_china
+				any_of_scopes = {
+					array = global.big_china
+					has_state_flag = chi_unplanned_offensive_flag
+					region = 165
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+					controller = {
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+	}
+
+    chi_shaan_offensive = {		#陕甘宁
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_245
+					region = 245
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_245
+					region = 245
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 245
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_245
+					region = 245
+				}
+			}
+			NOT = {
+                has_active_mission = chi_shaan_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_shaan_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 245
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 245
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 245
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+		}
+	}
+
+	chi_central_china_offensive = {		#华中
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_246
+					region = 246
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_246
+					region = 246
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 246
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_246
+					region = 246
+				}
+			}
+			NOT = {
+                has_active_mission = chi_central_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_central_china_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 246
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 246
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 246
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+		}
+	}
+
+	chi_east_china_offensive = {	#华东
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_247
+					region = 247
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_247
+					region = 247
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 247
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_247
+					region = 247
+				}
+			}
+			NOT = {
+                has_active_mission = chi_east_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_east_china_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 247
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 247
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 247
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			modifier = {
+				factor = 100
+				tag = event_target:WTT_communist_china
+				any_of_scopes = {
+					array = global.big_china
+					has_state_flag = chi_unplanned_offensive_flag
+					region = 247
+					controller = {
+						has_war_with = ROOT
+					}
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 2
+					}
+				}
+			}
+		}
+	}
+
+    chi_southeast_offensive = {		#东南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_164
+					region = 164
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_164
+					region = 164
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 164
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_164
+					region = 164
+				}
+			}
+			NOT = {
+                has_active_mission = chi_southeast_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_southeast_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 164
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 164
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 164
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+			
+		}
+	}
+
+	chi_south_china_offensive = {	#华南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_248
+					region = 248
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_248
+					region = 248
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 248
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_248
+					region = 248
+				}
+			}
+			NOT = {
+                has_active_mission = chi_south_china_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_south_china_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 248
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 248
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 248
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+		}
+	}
+
+    chi_southwest_offensive = {		#西南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_249
+					region = 249
+				}
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			NOT = { 
+				has_active_mission = chi_preparing_offensive 
+			}
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_249
+					region = 249
+				}
+				OR = {
+					is_controlled_by = ROOT
+					num_owned_neighbour_states = {
+						owner = ROOT
+						count > 0
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 249
+			}
+
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = 0
+
+		fire_only_once = yes
+
+		days_remove = @offsive_days
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_global_flag = CHI_no_longer_united_flag
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_249
+					region = 249
+				}
+			}
+			NOT = {
+                has_active_mission = chi_southwest_offensive_mission
+			}
+		}
+
+		complete_effect = {
+			activate_mission = chi_preparing_offensive
+			set_country_flag = chi_preparing_offensive_in_progress_flag
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = event_target:WTT_current_china_leader
+						tag = event_target:WTT_communist_china
+					}
+				}
+				activate_mission = chi_southwest_offensive_mission
+			}
+		}
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 249
+					}
+					clr_state_flag = chi_unplanned_offensive_flag
+					remove_dynamic_modifier = {
+						modifier = prc_unplanned_offensive
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 0
+				OR = {
+					all_of_scopes = {
+						array = global.big_china
+						has_state_flag = chi_unplanned_offensive_flag
+						region = 249
+						is_fully_controlled_by = ROOT	
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.big_china
+							has_state_flag = chi_unplanned_offensive_flag
+							region = 249
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}  
+			}
+		}
+	}
+
+	chi_preparing_offensive = {		#准备攻势
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			has_country_flag = chi_preparing_offensive_in_progress_flag
+		}
+
+		timeout_effect = {
+			clr_country_flag = chi_preparing_offensive_in_progress_flag
+		}
+	}
+
+ 	prc_northern_man_offensive_mission = {		#北满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { 
+				always = no 
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 242
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 242
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_western_man_offensive_mission = {	#西满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 155
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 155
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_eastern_man_offensive_mission = {	#东满
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 243
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 243
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_north_china_offensive_mission = {	#华北
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 143
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_143
+					region = 143
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+				for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 143
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_inner_mon_offensive_mission = {		#内蒙
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 244
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_244
+					region = 244
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 244
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_outer_mon_offensive_mission = {		#外蒙
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 152
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_152
+					region = 152
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 152
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_tuva_offensive_mission = {	#图瓦
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 266
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_266
+					region = 266
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 266
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_northwest_offensive_mission = {	#西北
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 144
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_144
+					region = 144
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 144
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_tsinghai_offensive_mission = {	#青海
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 200
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_200
+					region = 200
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 200
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_northern_sik_offensive_mission = {	#北疆
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 252
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_252
+					region = 252
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 252
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_southern_sik_offensive_mission = {	#南疆
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 145
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_145
+					region = 145
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 145
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_shaan_offensive_mission = {	#陕甘宁
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 245
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_245
+					region = 245
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 245
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_west_china_offensive_mission = {	#华西
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 165
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_165
+					region = 165
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 165
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_southeast_offensive_mission = {		#东南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 164
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_164
+					region = 164
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 164
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_kham_offensive_mission = {	#康区
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 250
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_250
+					region = 250
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 250
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_tibet_offensive_mission = {		#西藏
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 146
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_146
+					region = 146
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 146
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_central_china_offensive_mission = {		#华中
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 246
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_246
+					region = 246
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 246
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_east_china_offensive_mission = {	#华东
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 247
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_247
+					region = 247
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 247
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_south_china_offensive_mission = {	#华南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 248
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_248
+					region = 248
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 249 
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	prc_southwest_offensive_mission = {		#西南
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = { 
+				has_state_flag = chi_unplanned_offensive_flag
+				region = 249
+			}
+ 			highlight_color_before_active = 1
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = yes
+
+		days_mission_timeout = @offsive_days
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = event_target:WTT_current_china_leader
+			has_war_with = event_target:WTT_communist_china
+			any_of_scopes = {
+				array = global.big_china
+				tooltip = big_china_tt
+				has_state_flag = chi_unplanned_offensive_flag
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_249
+					region = 249
+				}
+			}
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+                for_each_scope_loop = {
+					array = global.big_china
+					if = {
+						limit = {
+							region = 249
+						}
+						clr_state_flag = chi_unplanned_offensive_flag
+						remove_dynamic_modifier = {
+							modifier = prc_unplanned_offensive
+						}
+					}
+				}
+			}
+		}
+	}
+}

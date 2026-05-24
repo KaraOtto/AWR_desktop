@@ -1,6 +1,7 @@
 add_namespace = AWR_PRC
 add_namespace = PRC_liu_zhidan
 add_namespace = PRC_dong_zhentang
+add_namespace = PRC_lu_dongsheng
 country_event = { #漫漫黄沙中的无线电波
 	id = AWR_PRC.1
 	title = AWR_PRC.1.t
@@ -316,7 +317,65 @@ country_event = {#沁园春，雪
 	}
 }	
 
+country_event = {	#贺子珍请求离开延安
+	id = AWR_PRC.10
+	title = AWR_PRC.10.t
+	desc = AWR_PRC.10.d
+	picture = GFX_AWR_PRC.10
+	fire_only_once = yes
+	trigger = {
+		date > 1937.10.1
+		date < 1937.11.1
+		tag = PRC
+	}
 
+	option = {
+		name = AWR_PRC.10.a
+		set_global_flag = He_Zizhen_go_to_SOV
+	}
+}
+
+country_event = {	#毛泽东与江青
+	id = AWR_PRC.11
+	title = AWR_PRC.11.t
+	desc = AWR_PRC.11.d
+	picture = GFX_report_event_mao_and_jiang
+	fire_only_once = yes
+    trigger = {
+		tag = PRC
+		has_government = communism	
+		has_global_flag = He_Zizhen_go_to_SOV
+		date > 1938.11.1
+		date < 1938.11.28		
+	}	
+	option = {
+		name = AWR_PRC.11.a
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -55
+		retire_character = PRC_jiang_qing
+	}
+	option = {
+		name = AWR_PRC.11.b
+		ai_chance = {
+			factor = 1
+		}		
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		set_global_flag = PRC_jiangqing_Married 
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = PRC_jiang_qing
+		
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.035 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+	}
+}
 
 country_event = {	#中国工农红军第二、第四方面军抵达！
 	id = AWR_PRC.12
@@ -605,7 +664,6 @@ country_event = {	#如何继续抗战并取得胜利 王明
 	}
 }
 
-#mao rebuttle
 country_event = {	#毛泽东发表反驳
 	id = AWR_PRC.16
 	title = AWR_PRC.16.t
@@ -686,9 +744,6 @@ country_event = {	#长江局成立！
 		add_ideas = changjiang_bureau
 	}
 }
-
-#############
-#1938.9.29 6th6
 
 country_event = {	#王稼祥宣布共产国际指示精神
 	id = AWR_PRC.18
@@ -1566,7 +1621,7 @@ country_event = {	#张国焘叛逃
 		custom_effect_tooltip = remove_political_advisor
 		show_ideas_tooltip = PRC_zhang_guotao
 		hidden_effect = { 
-			retire_character = PRC_yangzilie 
+			retire_character = PRC_yang_zilie 
 		}				
 		
 		event_target:WTT_current_china_leader = {
@@ -4083,23 +4138,64 @@ country_event = {	#核心党员抗议抢救运动
 	}
 }
 
-country_event = {	#扩编长江局
+country_event = {	#改造我们的学习
 	id = AWR_PRC.80
 	title = AWR_PRC.80.t
 	desc = AWR_PRC.80.d
-	picture = GFX_report_event_changjiang_big_three 
-	is_triggered_only = yes
+	picture = GFX_report_event_mao_speak_2
+	fire_only_once = yes	
+    is_triggered_only = yes	
+	immediate = {
+		set_global_flag = RCM_comchina_mao2_happen
+	}	
 	option = {
 		name = AWR_PRC.80.a
 		ai_chance = {
 			factor = 1
 		}
-		swap_ideas = {
-			remove_idea = changjiang_bureau
-			add_idea = changjiang_bureau_2
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		add_ideas = yanan_rect_1
+		add_political_power = -25
+		set_temp_variable = { 
+			temp_member = 2 
 		}
-		custom_effect_tooltip = TEB_faction_monthly_tt
-		custom_effect_tooltip = allows_direct_boost_of_ideology
+		set_temp_variable = { 
+			temp_seats = 0.02 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+	}
+	option = {
+		name = AWR_PRC.80.b
+		ai_chance = {
+			factor = 0
+		}
+		add_ideas = yanan_rect_1
+		
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.015 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+	}
+	option = {
+		name = AWR_PRC.80.c
+		ai_chance = {
+			factor = 0
+		}
+		add_ideas = yanan_rect_1
+		add_political_power = -25
+		set_temp_variable = { 
+			temp_member = 2 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.01 
+			tooltip = MAOIST_faction_support_tt 
+		}
+		modify_parliament_seat = yes
 	}
 }
 
@@ -4560,6 +4656,651 @@ country_event = {	#中央军委扩大会议——谈正面战场的重要性
 	}
 }
 
+country_event = {	#中国人民政治协商会议第一届全体会议
+	id = AWR_PRC.92
+	title = AWR_PRC.92.t
+	desc = AWR_PRC.92.desc
+	picture = GFX_report_event_zhengxiehuiyi
+
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.92.a
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = AWR_PRC.92_tootip
+		if = {
+		limit = { 
+			is_ai = no 
+			leader_is_maoist = yes 
+		}
+		hidden_effect = { 
+			play_song = "renminyingxiongjinianbei" 
+		}
+		}
+	}
+	
+}
+
+country_event = { #末代皇帝的命运
+	id = AWR_PRC.93
+	title = AWR_PRC.93.t
+	desc = AWR_PRC.93.desc
+	picture = GFX_report_event_puyi_in_camp	
+	trigger = {
+		AND = {
+			NOT = { 
+				country_exists = MAN 
+			}
+			NOT = { 
+				has_global_flag = fall_of_puyi 
+			}	
+		}		
+	}			
+    immediate = {
+		set_global_flag = fall_of_kangde
+	}	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.93.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = aisin_gioro_puyi_jianyu_zz
+		add_stability = 0.025
+		add_political_power = 50
+	}
+}
+
+country_event = {	#中华联邦
+	id = AWR_PRC.94
+	title = AWR_PRC.94.t
+	desc = AWR_PRC.94.d
+	picture = GFX_report_event_sinkiang_join_PRC
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.94.a
+		set_capital = { 
+			state = 744 
+		} 
+		1030 = { 
+        set_victory_points = {
+				province = 7301
+				value = 50
+			}
+        }
+		add_political_power = 75 
+		add_stability = 0.05 
+	}
+}
+
+country_event = {	#《在中国共产党第七届中央委员会第二次全体会议上的报告》
+	id = AWR_PRC.95
+	title = AWR_PRC.95.t
+	desc = AWR_PRC.95.desc
+	picture = GFX_report_event_xibaipo
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_leader = { 
+						ruling_only = yes 
+						character = prc_mao_zedong 
+					}
+				}	
+				set_country_leader_portrait = {
+					ideology = communism
+					portrait = "gfx/leaders/PRC/Mao_Zedong_1943.dds"
+				}
+				prc_mao_zedong = {
+					set_portraits = {
+						army={
+							large="gfx/leaders/PRC/Mao_Zedong_1943.dds"
+						}
+					}
+				}
+			}							
+		}	
+	}	
+	option = {
+		name = AWR_PRC.95.a
+		ai_chance = {
+			base = 100
+		}		
+		custom_effect_tooltip = GFX_report_event_xibaipo_tt
+	}
+}
+
+country_event = {	#扩编长江局
+	id = AWR_PRC.96
+	title = AWR_PRC.96.t
+	desc = AWR_PRC.96.d
+	picture = GFX_report_event_changjiang_big_three 
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.96.a
+		ai_chance = {
+			factor = 1
+		}
+		swap_ideas = {
+			remove_idea = changjiang_bureau
+			add_idea = changjiang_bureau_2
+		}
+		custom_effect_tooltip = TEB_faction_monthly_tt
+		custom_effect_tooltip = allows_direct_boost_of_ideology
+	}
+}
+
+country_event = { 	#东北之争
+	id = AWR_PRC.97
+	title = AWR_PRC.97.t
+	desc = AWR_PRC.97.d
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = event_target:WTT_current_china_leader
+				}
+				activate_mission = CHI_occupy_northeast_timer
+			}
+			if = {
+				limit = {
+					tag = event_target:WTT_communist_china
+				}
+				activate_mission = PRC_occupy_northeast_timer
+			}			
+		}	
+	}
+	option = {
+		name = AWR_PRC.97.a    
+		ai_chance = { 
+		    factor = 100
+		}
+		custom_effect_tooltip = the_process_takes_250_days_and_effect_takes_place_then_china
+		custom_effect_tooltip = demand_northeast_tt
+		custom_effect_tooltip = ne_tut_tt
+		effect_tooltip = {
+			SOV = { 
+				country_event = northeast_takeover.7 
+			}
+			if = {
+				limit = {
+					tag = event_target:WTT_current_china_leader
+				}
+				activate_mission = CHI_occupy_northeast_timer
+			}
+			if = {
+				limit = {
+					tag = event_target:WTT_communist_china
+				}
+				activate_mission = PRC_occupy_northeast_timer
+			}
+		}
+	}
+}
+
+country_event = { #强制总结大集合
+	id = AWR_PRC.98
+	title = AWR_PRC.98.t
+	desc = AWR_PRC.98.desc
+	
+	trigger = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+	    or = {
+			focus_progress = { 
+				focus = PRC_War_of_Liberation progress > 0.000 
+			}
+			not = { 
+				country_exists = event_target:WTT_current_china_leader 
+			}
+			has_global_flag = roc_in_taiwan_flag
+			has_country_flag = PRC_Establish_state_or_independent_government
+		}
+	}
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.98.a
+		ai_chance = {
+			base = 100
+		}
+		set_global_flag = PRC_War_of_Liberation_has_been_selected
+		hidden_effect = {
+			PRC_lin_biao = {
+				set_portraits = {
+					army={
+						large= "GFX_PRC_linbiao_jiefang"
+					}
+				}
+			}
+			PRC_zhou_enlai = {
+				set_portraits = {
+					army={
+						large= "GFX_Portrait_China_zongli"
+					}
+				}
+			}
+			PRC_zhu_de = {
+				set_portraits = {
+					army={
+					large= "GFX_Portrait_PRC_Zhu_De"
+					}
+				}
+			}		
+			SHX = {
+				
+				if = {
+					limit = {
+						has_character = SHX_Bo_Yibo
+						not = { 
+							has_government = communism 
+						}
+					}
+					
+					remove_trait = {
+						character = SHX_Bo_Yibo
+						slot = political_advisor
+						trait = lieutenant_of_industry
+					}
+					add_trait = {
+						character = SHX_Bo_Yibo
+						slot = political_advisor
+						trait = caizhengbuzhang_new
+					}
+					
+					SHX_Bo_Yibo = {
+						
+						set_nationality = event_target:WTT_communist_china
+					}
+				}
+			
+			}
+		}
+	}
+}
+
+country_event = {	#毛岸英同志回国
+	id = AWR_PRC.99
+	title = AWR_PRC.99.t
+	desc = AWR_PRC.99.desc
+	picture = GFX_event_PRC_maoanying
+	
+	trigger = {
+		leader_is_maoist = yes
+		NOT = { 
+			has_war_with = SOV 
+		}
+		has_government = SOV
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.99.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = PRC_maoanying
+		add_political_power = 50
+		set_global_flag = PRC_maoanying_become_political
+	}
+	option = {
+		name = AWR_PRC.99.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = PRC_maoanying_become_general
+		army_experience = 5
+		set_global_flag = PRC_maoanying_become_general
+	}
+}
+
+country_event = {	#李立三同志回国
+	id = AWR_PRC.100
+	title = AWR_PRC.100.t
+	desc = AWR_PRC.100.desc
+	
+	trigger = {
+		NOT = { 
+			has_war_with = SOV 
+		}
+		has_government = SOV
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.100.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = PRC_li_lisan
+		add_political_power = 50
+		set_global_flag = PRC_li_lisan_back
+	}
+	
+}
+
+country_event = {	#解放战争
+	id = AWR_PRC.101
+	title = AWR_PRC.101.t
+	desc = AWR_PRC.101.d
+	picture = GFX_report_event_chinese_soldiers
+
+	fire_only_once = yes
+
+	is_triggered_only = yes 
+    immediate = {
+		hidden_effect = {
+            every_state = {
+				limit = {
+					OR = {
+						#northeast
+						region = 242
+						region = 243
+						region = 155
+						#north china
+						region = 143
+						#inner mongolia
+						region = 244
+						#outter mongolia
+						region = 152
+						region = 266
+						#northwest
+						region = 144
+						region = 200
+						#sinkiang
+						region = 252
+						region = 145
+						#shaan-gan-ning
+						region = 245
+						#kham and tibet
+						region = 250
+						region = 146
+						#west china
+						region = 165
+						#central china 
+						region = 246
+						#east china
+						region = 247
+						#southeast
+						region = 164
+						#south china
+						region = 248
+						#southwest
+						region = 249
+					}
+					owner = {
+						is_literally_china = yes
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = prc_unplanned_offensive
+				}
+				set_state_flag = chi_unplanned_offensive_flag
+			}
+		}
+	}
+	 
+	option = {
+		name = AWR_PRC.101.a
+		event_target:WTT_current_china_leader = {
+			country_event = { 
+				id = AWR_PRC.102 
+			}
+		}
+		set_global_flag = CCW_restarts
+		every_country = { 
+			limit = {
+				NOT = { 
+					tag = event_target:WTT_current_china_leader 
+				}
+				is_warlord = yes
+				is_puppet = no
+			}
+			country_event = { 
+				id = RCM_chinese_civil_war.8 
+			}
+		}
+		custom_effect_tooltip = gain_base_supp_cond_p20_tt
+		add_to_variable = {
+			Root.supply_condition_base = 20
+		}
+		custom_effect_tooltip = blank_line
+		declare_war_on = { 
+			target = event_target:WTT_current_china_leader 
+			type = annex_everything 
+		}
+		effect_tooltip = {
+			every_state = {
+				limit = {
+					OR = {
+						#northeast
+						region = 242
+						region = 243
+						region = 155
+						#north china
+						region = 143
+						#inner mongolia
+						region = 244
+						#outter mongolia
+						region = 152
+						region = 266
+						#northwest
+						region = 144
+						region = 200
+						#sinkiang
+						region = 252
+						region = 145
+						#shaan-gan-ning
+						region = 245
+						#kham and tibet
+						region = 250
+						region = 146
+						#west china
+						region = 165
+						#central china 
+						region = 246
+						#east china
+						region = 247
+						#southeast
+						region = 164
+						#south china
+						region = 248
+						#southwest
+						region = 249
+					}
+					owner = {
+						is_literally_china = yes
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = prc_unplanned_offensive
+				}
+			}
+		}
+	}
+}
+
+country_event = {	#重启内战
+	id = AWR_PRC.102
+	title = AWR_PRC.102.t
+	desc = AWR_PRC.102.d
+	picture = GFX_report_event_chinese_soldiers
+
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			original_tag = FRA
+			any_enemy_country = {
+				original_tag = FRA
+				is_subject = yes
+			}
+		}
+	}
+
+	option = {
+		name = AWR_PRC.102.a
+		custom_effect_tooltip = states_with_communist_support_will_join_commie
+		hidden_effect = {
+			every_owned_state = {
+				limit = {
+					is_core_of = event_target:WTT_communist_china
+					is_controlled_by = ROOT
+				    NOT = { 
+						has_state_flag = we_will_help_the_legit_government 
+					}
+					NOT = {
+						is_MAN_state_for_liberation = yes
+					}
+				}
+				event_target:WTT_communist_china = {
+					transfer_state = PREV
+				}
+			}
+			
+			if = {
+				limit = { 
+					event_target:WTT_current_china_leader = { is_ai = no }
+					has_country_flag = SOV_reinforcement_flag
+				}
+				event_target:WTT_communist_china = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 50000
+						producer = SOV
+					}  
+					add_equipment_to_stockpile = {
+					   type = artillery_equipment
+					   amount = 15000
+                       producer = SOV
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 15000
+						producer = SOV
+					}
+				}   
+			}
+			if = {
+				limit = { 
+					event_target:WTT_current_china_leader = { is_ai = no }
+					NOT = {
+						has_country_flag = SOV_reinforcement_flag
+					}
+				}
+				event_target:WTT_communist_china = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 25000
+					}  
+					add_equipment_to_stockpile = {
+					   type = artillery_equipment
+					   amount = 5000
+
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 5000
+					}
+				}    
+			}
+			1053 = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			283 = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			1030 = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			744 = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			607 = {
+				add_core_of = event_target:WTT_communist_china
+			}
+		}
+		if = {
+			limit = {
+				event_target:WTT_communist_china = { #Soviet transfer Manchuria
+					has_country_flag = SOV_reinforcement_flag
+				}
+			}
+			custom_effect_tooltip = gain_base_supp_cond_n30_tt
+			add_to_variable = {
+				Root.supply_condition_base = -30
+			}
+			set_equipment_fraction = 0.8
+		}
+		custom_effect_tooltip = blank_line		
+		RCM_increase_inflation_2_levels = yes
+		add_ideas = RCM_civil_war_economy_idea
+		effect_tooltip = {
+			every_state = {
+				limit = {
+					OR = {
+						#northeast
+						region = 242
+						region = 243
+						region = 155
+						#north china
+						region = 143
+						#inner mongolia
+						region = 244
+						#outter mongolia
+						region = 152
+						region = 266
+						#northwest
+						region = 144
+						region = 200
+						#sinkiang
+						region = 252
+						region = 145
+						#shaan-gan-ning
+						region = 245
+						#kham and tibet
+						region = 250
+						region = 146
+						#west china
+						region = 165
+						#central china 
+						region = 246
+						#east china
+						region = 247
+						#southeast
+						region = 164
+						#south china
+						region = 248
+						#southwest
+						region = 249
+					}
+					owner = {
+						is_literally_china = yes
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = prc_unplanned_offensive
+				}
+			}
+		}
+	}
+}
+
 unit_leader_event = {#刘志丹同志壮烈牺牲
 	id = PRC_liu_zhidan.1
 	title = PRC_liu_zhidan.1.t
@@ -4676,5 +5417,52 @@ unit_leader_event = { #NXM
 		}
 		retire_character = PRC_dong_zhentang
 	}
+}
+
+unit_leader_event = {	#陆冬生去莫斯科
+	id = PRC_lu_dongsheng.1
+	title = PRC_lu_dongsheng.1.t
+	desc = PRC_lu_dongsheng.1.d
+	trigger = {
+		has_character = PRC_lu_dongsheng
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = PRC_lu_dongsheng.1.a
+		set_global_flag = lu_dongsheng_has_gone_to_Moscow
+	}
+}
+
+unit_leader_event = {	#陆冬生回国
+	id = PRC_lu_dongsheng.2
+	title = PRC_lu_dongsheng.2.t
+	desc = PRC_lu_dongsheng.2.d
+	
+	is_triggered_only = yes
+
+	option = {
+		name = PRC_lu_dongsheng.2.a
+		crl_global_flag = lu_dongsheng_has_gone_to_Moscow
+		set_global_flag = lu_dongsheng_is_back
+	}
+}
+
+unit_leader_event = {	##陆冬生遇害
+	id = PRC_lu_dongsheng.3
+	title = PRC_lu_dongsheng.3.t
+	desc = PRC_lu_dongsheng.3.d
+	fire_only_once = yes	
+	is_triggered_only = yes		
+	option = {
+		name = PRC_lu_dongsheng.3.a	
+		custom_effect_tooltip = ludongshengshishi_tt	
+        hidden_effect = {
+	        retire_character = PRC_ludongsheng	
+	    }		
+		ai_chance = { 
+		    factor = 100
+		}		
+	}	
 }
 

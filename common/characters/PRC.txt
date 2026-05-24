@@ -149,42 +149,46 @@ characters = {
 		}
 	}
 
-	PRC_hezizhen={ #贺子珍
+	PRC_he_zizhen={ #贺子珍
 		name =PRC_he_zizhen 
 		portraits = {#贺子珍
 			civilian = { 
-				large = "GFX_Portrait_Sichuan_hezizhen"
 				small = "GFX_idea_PRC_he_zizhen" 
 			}
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = PRC_hezizhen
+			idea_token = PRC_he_zizhen
 			traits = { 
 				mi_shu 
 			}
 			visible = {
-				#
+				NOT = {
+					has_global_flag = He_Zizhen_go_to_SOV
+				}
 			}
-			allowed = {
-				#
-			}
+
 			available = {
-		        has_idea = PRC_mao_zedong							
+		        OR = {
+					has_idea = PRC_mao_zedong
+					has_country_leader = {
+						name = PRC_mao_zedong
+					}
+				}							
 			}
 		}			
 	}
 
-	PRC_yangzilie={ #杨子烈
-		name =PRC_yangzilie 
+	PRC_yang_zilie={ #杨子烈
+		name =PRC_yang_zilie 
 		portraits = {#杨子烈
 			civilian = { 
-				small="GFX_idea_PRC_yangzilie" 
+				small="GFX_idea_PRC_yang_zilie" 
 			}
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = PRC_yangzilie
+			idea_token = PRC_yang_zilie
 			traits = { 
 				di_xia 
 			}
@@ -756,7 +760,8 @@ characters = {
 			slot = political_advisor
 			idea_token = PRC_liu_shaoqi
 			traits = { 
-				guerilla_warfare_strategist 
+				NFA_political_commissar 
+				institutional_designer_of_PRC
 			}
 			available = {
 
@@ -940,7 +945,7 @@ characters = {
 		name=prc_wang_guanlan
 		portraits={#王观澜
 			civilian={
-				small="GFX_idea_prc_wang_guanlan"
+				small="GFX_idea_PRC_wang_guanlan"
 			}
 		}
 		advisor={
@@ -1045,8 +1050,8 @@ characters = {
 			slot = political_advisor
 			idea_token = PRC_kang_sheng
 			traits = { 
-				prince_of_terror 
-				backroom_backstabber 
+				minister_of_the_CSAD
+				cruel_purifier_under_theory
 				maoists_trait_kang_sheng 
 			}	
 			available = {
@@ -1157,7 +1162,7 @@ characters = {
 		name=prc_wang_ming
 		portraits={#王明
 			civilian={
-				large="Portrait_China_Wang_Ming"
+				large="GFX_Portrait_China_Wang_Ming"
 				small="GFX_idea_prc_wang_ming"
 			}
 		}
@@ -2304,11 +2309,10 @@ characters = {
 		}
 	}
 
-	PRC_zhang_lan={ #张澜
+	PRC_zhang_lan = { #张澜
 		name=PRC_zhang_lan
 		portraits={
 			civilian = {
-
 				small="GFX_idea_PRC_zhang_lan"
 			}
 		}
@@ -2325,13 +2329,13 @@ characters = {
 						has_government = communism
 					}
 				}
+				has_completed_focus = PRC_zhengxiehuiyi_1st
 			}
 			available = {
 				if = {
 					limit = {
 						original_tag = PRC
 					}
-					has_completed_focus = PRC_zhengxiehuiyi_1st
 				}
 			}
 			traits = { 
@@ -2959,6 +2963,44 @@ characters = {
 			desc=PRC_yang_jingyu_desc
 		}
 	}
+
+	PRC_guo_moruo = {	#郭沫若
+		name= PRC_guo_moruo
+		portraits={
+			civilian = {
+				small = "GFX_idea_PRC_guo_moruo"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRC_guo_moruo
+			traits = { 
+				PRC_brilliant_secret_Communist  
+			}
+			visible = {
+				OR = {
+					OR = { 
+						has_idea = CHI_communist_in_government 
+						TAG = SOV 
+					}
+					tag = PRC
+				}
+				
+			}
+
+			available = {
+				if = {
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_zhengxiehuiyi_1st
+				}
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}		
+	}
 }
 ############################## 陆军将领 ##############################
 characters = { 
@@ -2968,7 +3010,7 @@ characters = {
 		gender = female
 		portraits={
 			army={
-				large = "GFX_idea_PRC_li_zhen"
+				large = "GFX_Army_PRC_li_zhen"
 			}
 		}
 		corps_commander={
@@ -4220,8 +4262,8 @@ characters = {
 		}		
 	}
 
-	PRC_zhu_rui={ #朱瑞
-		name=PRC_zhu_rui #朱瑞
+	PRC_zhu_rui = { #朱瑞
+		name = PRC_zhu_rui #朱瑞
 		portraits={
 			army={
 				large="GFX_Portrait_PRC_Zhu_Rui"
@@ -4240,6 +4282,7 @@ characters = {
 						has_government = communism
 					}
 				}
+				has_completed_focus = PRC_Huangyadong_Arsenal
 			}
 			
 			available = {
@@ -4268,6 +4311,7 @@ characters = {
 						has_government = communism
 					}
 				}
+				has_completed_focus = PRC_Huangyadong_Arsenal
 			}
 			
 			available = {
@@ -4375,7 +4419,7 @@ characters = {
 		portraits={
 			army={
 				large="GFX_Army_zhao_shangzhi"
-                small="GFX_idea_zhao_shangzhi"
+                small="GFX_idea_PRC_zhao_shangzhi"
 			}
 		}
 		available = {	
@@ -5835,7 +5879,7 @@ characters = {
 	}
 
 	PRC_li_zuopeng = {	#李作鹏
-		name=PRC_li_zuopeng
+		name = PRC_li_zuopeng
 		portraits={
 			army={
 				large="GFX_Army_PRC_li_zuopeng"
@@ -5865,6 +5909,52 @@ characters = {
 					has_country_flag = prc_mianzhi_linbiaojituan 
 				}			
 			}
+		}
+	}
+
+	PRC_lu_dongsheng = {	#卢冬生
+		name = PRC_lu_dongsheng
+		
+		portraits={
+			army={
+				large = "GFX_Army_PRC_Lu_Dongsheng"
+				small = "GFX_idea_PRC_lu_dongsheng"
+			}
+			
+		}	
+		advisor = {
+			slot = theorist
+			traits = {
+				mass_assault_expert
+				coordinated_operation
+			}
+
+			visible = {
+				NOT = {
+					has_global_flag = lu_hansheng_has_gone_to_Moscow
+				}
+				has_global_flag = lu_hansheng_is_back
+			}
+			desc = PRC_lu_dongsheng_desc
+		}
+		corps_commander={
+			traits={  
+				youji_hero   
+				trickster   
+			}
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=0
+
+			visible = {
+				NOT = {
+					has_global_flag = lu_hansheng_has_gone_to_Moscow
+				}
+			}
+			desc = PRC_lu_dongsheng_desc
 		}
 	}
 }
@@ -7292,9 +7382,7 @@ characters = {
 			on_add = {
 				set_global_flag = PRC_qianxuesen_back_to_china
 			}
-			allowed = {
-				#OR = { is_literally_china = yes TAG = SOV }
-			}
+			
 			research_bonus = {
 				rocketry = 0.5 #guo
 			}
@@ -7311,6 +7399,7 @@ characters = {
 			traits = {
 				famous_scientist_air
 				two_bombs_pinoneer_rocket
+				rocket_expert
 			}
 			skills = { 
 				specialization_air = 3
@@ -7328,10 +7417,15 @@ characters = {
 		scientist = {
 			traits = {
 				famous_scientist_air
-				rocket_expert
+				famous_scientist_nuclear
+				two_bombs_pinoneer_rocket
+				two_bombs_pinoneer_nuclear
 			}
 			skills = { 
-				specialization_air = 2
+				specialization_air = 3
+			}
+			skills = {
+				specialization_nuclear = 3
 			}
 		}
 	}

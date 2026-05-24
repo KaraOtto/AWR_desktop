@@ -185,7 +185,11 @@ tactic_yejiantuji = { #夜间突击国策
 		}
 		hardness < 0.25
 		night = yes
-		OWNER = { NOT = { has_tactic = tactic_yejiantuji_2 } }
+		OWNER = { 
+			NOT = { 
+				has_tactic = tactic_yejiantuji_2 
+			} 
+		}
 	}
 	
 	active = no
@@ -429,7 +433,11 @@ tactic_zhanshuchuancha = {
 		}
 		hardness < 0.50
 		skill > 3
-		OWNER = { NOT = { has_tactic = tactic_zhanshuchuancha_2 } }
+		OWNER = { 
+			NOT = { 
+				has_tactic = tactic_zhanshuchuancha_2 
+			} 
+		}
 	}
 	
 	active = no
@@ -568,22 +576,20 @@ tactic_zhanshuchuancha_2 = {
 	attacker = 0.25
 	attacker_movement_speed = 1
 }
-#guo#
-
-
-
 
 tactic_basic_attack = {
 
 	is_attacker = yes
-	trigger = { # combined scope for both country and combatant
+	trigger = { 
 		is_attacker = yes
 		phase = no
 	}
 	
 	active = yes
 
-	base =  { factor = 4 }
+	base =  { 
+		factor = 4 
+	}
 	picture = attack
 	
 	countered_by = tactic_counterattack
@@ -600,13 +606,15 @@ tactic_basic_defend = {
 	
 	active = yes
 	
-	base =  { factor = 4 }
+	base =  { 
+		factor = 4 
+	}
 	picture = defend
 	
 	defender = 0.05
 }
 
-tactic_counterattack = { # counters basic attack, assault
+tactic_counterattack = { 
 	is_attacker = no
 	trigger = {
 		is_attacker = no
@@ -650,19 +658,21 @@ tactic_assault = {
 		modifier = {
 			factor = 0.2
 
-			NOT = { is_fighting_in_terrain = urban }
+			NOT = { 
+				is_fighting_in_terrain = urban 
+			}
 		}
 
-	} #Revisit ideally this should be more common in urban terrain
+	} 
 	
 	picture = assault
 	countered_by = tactic_counterattack
 	
-	phase = close_combat #changes phase to close combat
+	phase = close_combat 
 	
-	attacker = 0.25			#attacker gets a bonus to doing damage
+	attacker = 0.25			
 }
-###close combat tactics here
+
 tactic_cc_attack = { 
 	is_attacker = yes
 	trigger = {
@@ -672,11 +682,13 @@ tactic_cc_attack = {
 	
 	active = yes
 	
-	base =  { factor = 4 }
+	base =  { 
+		factor = 4 
+	}
 	picture = cc_attack
 	display_phase = close_combat
 
-	attacker = 0.1			#attacker gets a bonus to doing damage
+	attacker = 0.1			
 	defender = 0.05
 }
 tactic_cc_defend = { 
@@ -693,7 +705,7 @@ tactic_cc_defend = {
 	display_phase = close_combat
 
 	attacker = 0.05
-	defender = 0.1			#defender gets a bonus to doing damage
+	defender = 0.1			
 }
 tactic_cc_storm = { 
 	is_attacker = yes
@@ -708,7 +720,7 @@ tactic_cc_storm = {
 	picture = cc_storm
 	display_phase = close_combat
 
-	attacker = 0.2			#attacker gets a bonus to doing damage
+	attacker = 0.2			
 	defender = 0.2
 }
 tactic_cc_local_strong_point = { 
