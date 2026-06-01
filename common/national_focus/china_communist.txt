@@ -1196,7 +1196,9 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			country_event = RCM_comchina.41
+			country_event = {
+				id = AWR_PRC.104
+			}
 			swap_ideas = {
 				remove_idea = xingxingzhihuo_keyiliaoyuan_2
 				add_idea = xingxingzhihuo_keyiliaoyuan_3
@@ -1290,7 +1292,7 @@ focus_tree = {
 	focus = { #中共七大
 		id = PRC_7th_National_Congress_focus
 		icon = GFX_focus_PRC_7th_National_Congress_focus
-		cost = 5
+		cost = 7.15
 		prerequisite = {
 			focus = PRC_7th_plenary_session_of_the_6th_CPC_central_committee_focus
 		}
@@ -1304,10 +1306,11 @@ focus_tree = {
 		cancel_if_invalid = no
 		continue_if_invalid = yes
 		select_effect = {
-			country_event = RCM_comchina.42
+			country_event = {
+				id = AWR_PRC.105
+			}
 		}
 		completion_reward = {
-			#团结的大会、胜利的大会
 			custom_effect_tooltip = PRC_kaizhonggongqida #"当选择此项时，召开为期§Y50§!天的§G中国共产党第七次全国代表大会§!"
 			custom_effect_tooltip = PRC_timeaxis_98_tooltip #"§C这次大注定会作为“团结的大会、胜利的大会”而载入史册§!"
 			
@@ -1315,38 +1318,56 @@ focus_tree = {
 			if = {
 				limit = { 
 					country_exists = event_target:WTT_current_china_leader 
+					ROOT = {
+						NOT = {
+							has_war_with = CHI
+						}
+					}
 				}
-				country_event = mod_china_timeaxis.94
+				country_event = {
+					id = AWR_PRC.108
+				}
 				custom_effect_tooltip = PRC_timeaxis_94_tooltip
-				show_ideas_tooltip = PRC_blank
 			}
 			#论解放区战场
-			country_event = {
-				id = mod_china_timeaxis.95
+			if = {
+				limit = {
+					PRC = {
+						has_war_with = JAP
+						NOT = {
+							has_war_with = CHI
+						}
+					}
+				}
+				country_event = {
+					id = AWR_PRC.109
+				}
+				custom_effect_tooltip = PRC_timeaxis_95_tooltip
 			}
-			custom_effect_tooltip = PRC_timeaxis_95_tooltip
-            show_ideas_tooltip = PRC_blank
 			#论统一战线
 			if = {
 				limit = { 
 					not = { 
 						has_global_flag = zhou_enlai_marginalized 
+						ROOT = {
+							is_in_faction_with = CHI
+						}
 					} 
 				}
 				country_event = {
-					id = mod_china_timeaxis.97
+					id = AWR_PRC.110
 				}
 				custom_effect_tooltip = PRC_timeaxis_97_tooltip
-				show_ideas_tooltip = PRC_blank
 			}
 			#党的干部的成长
 			country_event = {
-				id = mod_china_timeaxis.82
+				id = AWR_PRC.111
 			}
 			custom_effect_tooltip = PRC_timeaxis_82_tooltip
-			show_ideas_tooltip = PRC_blank
 			#关于修改党章
-			country_event = RCM_comchina.43
+			country_event = {
+				id = AWR_PRC.112
+			}
 			custom_effect_tooltip = PRC_timeaxis_96_tooltip
 			if = {
 				limit = {
@@ -2228,8 +2249,13 @@ focus_tree = {
 		}
 
 		available = {
-        	has_completed_focus = PRC_West_road_army_victory		
+        	has_completed_focus = PRC_West_road_army_victory	
+			NOT = {
+				has_completed_focus = PRC_challenge_the_first_red_army_focus
+			}	
 		}
+		
+		available_if_capitulated = yes
 
 		bypass = {
 			OR = {
@@ -2241,8 +2267,10 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-        	country_event = {
-				id = AWR_PRC.5699
+        	PRC_zhang_guotao = {
+				unit_leader_event = {
+					id = PRC_zhang_guotao.1
+				}
 			}
 		}
 	}
@@ -4338,14 +4366,16 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			country_event = RCM_comchina_wang_ming.1
+			country_event = {
+				id = AWR_PRC.103
+			}
 		}
 		available = {
 			has_idea = changjiang_bureau
 			date > 1938.1.25
 		}
 		bypass = {
-		has_government = neutrality
+			has_government = neutrality
 		}		
 
 	}
@@ -4982,6 +5012,12 @@ focus_tree = {
 					has_completed_focus = PRC_route_struggle_focus
 				}
 				has_global_flag = mao_becomes_chairman
+			}
+			if = {
+				limit = {
+					leader_is_maoist = yes
+				}
+				has_completed_focus = PRC_7th_National_Congress_focus
 			}
 		}
 
@@ -5810,6 +5846,78 @@ focus_tree = {
 			has_government = neutrality
 		}		
 
+	}
+
+	focus = {#联络国民党地方官员
+		id = PRC_contact_cheng_qian_focus
+		icon = GFX_focus_contact_cheng_qian
+		cost = 2.15
+		prerequisite = {
+			focus = PRC_xibaipo
+		}
+		x = -2
+		y = 1
+		allow_branch = {
+			NOT = { 
+				has_global_flag = prc_kmt_lianhezhengfu 
+			}
+		}
+		relative_position_id = PRC_xibaipo
+		ai_will_do = {
+			factor = 9999
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			set_global_flag = PRC_contact_cheng_qian_focus_focus_flag
+			add_political_power = 100
+			unlock_decision_category_tooltip = PRC_contact_wrl_cat	
+		}
+		available = {
+			is_subject = no
+			NOT = {
+				has_long_march_idea = yes
+			}
+		    has_global_flag = PRC_civil_war_started
+            has_war = yes
+			OR = {
+				event_target:WTT_current_china_leader = {
+					custom_trigger_tooltip = {
+						tooltip = has_cheng_qian_tt
+						any_unit_leader = {
+							has_id = 3031
+						}
+					}
+				    OR = {
+						OR = {
+							controls_state = 750
+						    controls_state = 1035
+						    controls_state = 602
+						}
+						GXC = {
+							OR = {
+								controls_state = 750
+								controls_state = 1035
+								controls_state = 602
+							}
+						}
+					}
+				}
+				any_enemy_country = {
+					OR = {
+						tag = SUY
+						tag = NXM
+						tag = SHC
+						tag = SIK
+						tag = YUN
+						tag = SIC
+						tag = XIK	
+					}
+					NOT = {
+						has_war_with = event_target:WTT_current_china_leader
+					}
+				}
+			}
+		}
 	}
 
 	focus = {#会师西柏坡
@@ -7272,7 +7380,7 @@ focus_tree = {
 			modifier = { #guo
 				factor = 0
 				event_target:WTT_current_china_leader = { 
-					has_idea = lianheguojiaxuanyan 
+					#has_idea = lianheguojiaxuanyan 
 				}
 			}
 		}
@@ -7490,10 +7598,10 @@ focus_tree = {
 			event_target:WTT_current_china_leader = {
 			    if = { #guo
 				limit = { 
-					has_idea = lianheguojiaxuanyan 
+					#has_idea = lianheguojiaxuanyan 
 				}
 				not = { 
-					has_idea = lianheguojiaxuanyan 
+					#has_idea = lianheguojiaxuanyan 
 				}
 				}
 				NOT = {
@@ -7729,7 +7837,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			#
+			unlock_decision_tooltip = start_Liaoshen_campaign
 		}
 
 		available = {
@@ -7750,7 +7858,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			#
+			unlock_decision_tooltip = start_Huaihai_campaign
 		}
 
 		available = {
@@ -7771,7 +7879,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			#
+			unlock_decision_tooltip = start_Pingjin_campaign
 		}
 
 		available = {
@@ -7798,7 +7906,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			#
+			unlock_decision_tooltip = PRC_the_Yangtze_River_campaign
 		}
 
 		available = {
@@ -8112,7 +8220,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			#
+			unlock_decision_tooltip = PRC_the_Yangtze_River_campaign
 		}
 
 		available = {
@@ -8154,82 +8262,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {#联络国民党地方官员
-		id = PRC_contact_cheng_qian_focus
-		icon = GFX_focus_contact_cheng_qian
-		cost = 2.15
-		prerequisite = {
-			focus = PRC_xibaipo
-		}
-		x = -2
-		y = 1
-		allow_branch = {
-			NOT = { 
-				has_global_flag = prc_kmt_lianhezhengfu 
-			}
-		}
-		relative_position_id = PRC_xibaipo
-		ai_will_do = {
-			factor = 9999
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			set_global_flag = PRC_contact_cheng_qian_focus_focus_flag
-			add_political_power = 100
-			unlock_decision_category_tooltip = PRC_contact_wrl_cat	
-		}
-		available = {
-			is_subject = no
-			NOT = {
-				has_long_march_idea = yes
-			}
-		    has_global_flag = PRC_civil_war_started
-            has_war = yes
-			OR = {
-				event_target:WTT_current_china_leader = {
-					custom_trigger_tooltip = {
-						tooltip = has_cheng_qian_tt
-						any_unit_leader = {
-							has_id = 3031
-						}
-					}
-				    OR = {
-						OR = {
-							controls_state = 750
-						    controls_state = 1035
-						    controls_state = 602
-						}
-						GXC = {
-							OR = {
-								controls_state = 750
-								controls_state = 1035
-								controls_state = 602
-							}
-						}
-					}
-				}
-				any_enemy_country = {
-					OR = {
-						tag = SUY
-						tag = NXM
-						tag = SHC
-						tag = SIK
-						tag = YUN
-						tag = SIC
-						tag = XIK	
-					}
-					NOT = {
-						has_war_with = event_target:WTT_current_china_leader
-					}
-				}
-			}
-		}
-	}
+	
 	
 	#中国人民解放军   三军线
 	focus = {#中国人民解放军
 		id = PRC_PLA
-		icon = GFX_Goal_PLA
+		icon = GFX_focus_PRC_PLAC
 		cost = 5.00
 		mutually_exclusive = {
 			focus = PRC_New_Red_Army
@@ -8267,6 +8305,8 @@ focus_tree = {
 			custom_effect_tooltip = switch_to_pla_flag_TT
 			army_experience = 50
 			remove_ideas = {
+				PRC_Victory_in_the_west
+				PRC_Victory_in_the_west_no_zhang
 				PRC_Fight_guidelines
 				PRC_Mobile_Warfare
 				PRC_Reorganize_troops
@@ -8298,10 +8338,10 @@ focus_tree = {
 				PRC_jiefangjunlujun_army_speed_factor = 0.15
 			}
 			set_variable = {
-				PRC_jiefangjunlujun_army_org_factor = 0.30
+				PRC_jiefangjunlujun_army_org_factor = 0.35
 			}
 			set_variable = {
-				PRC_jiefangjunlujun_army_morale_factor = 0.35
+				PRC_jiefangjunlujun_army_morale_factor = 0.50
 			}
 			set_variable = {
 				PRC_jiefangjunlujun_org_loss_when_moving = -0.10
@@ -8351,7 +8391,25 @@ focus_tree = {
 			set_variable = {
 				PRC_jiefangjunlujun_supply_consumption_factor = 0.10
 			}
+			if = {
+				limit = {
+					has_global_flag = be_high
+					PRC = {
+						is_ai = no
+					}
+				}
+				set_variable = { 
+					PRC_jiefangjunlujun_army_attack_factor = 0.25
+				}
+				set_variable = { 
+					PRC_jiefangjunlujun_army_defence_factor = 0.25
+				}
+				set_variable = { 
+					PRC_jiefangjunlujun_breakthrough_factor = 0.25
+				}
+			}
 		}
+		
 		available = {
         	has_government = communism		
 			has_completed_focus = PRC_War_of_Liberation
@@ -8361,12 +8419,12 @@ focus_tree = {
 	
 	focus = {#中央人民政府人民革命军事委员会
 		id = PRC_military_commission_new_country_focus
-		icon = GFX_Goal_PRC_military_commission_new_country_focus
+		icon = GFX_focus_PRC_military_commission_new_country_focus
 		cost = 5.00
 		prerequisite = {
 			focus = PRC_PLA
 		}
-		x = -7
+		x = -6
 		y = 1
 		relative_position_id = PRC_PLA
 		ai_will_do = {
@@ -8382,20 +8440,20 @@ focus_tree = {
 			add_command_power = 100
 		}
 		available = {
-		OR = {		
-			has_country_flag = PRC_Establish_state_or_independent_government
-            has_completed_focus = PRC_lighthouse_of_democracy_focus	
-            has_completed_focus = PRC_Federal_Republic	
-            has_completed_focus = PRC_For_the_Soviets		
-            }			
+			OR = {		
+				has_country_flag = PRC_Establish_state_or_independent_government
+				has_completed_focus = PRC_lighthouse_of_democracy_focus	
+				has_completed_focus = PRC_Federal_Republic	
+				has_completed_focus = PRC_For_the_Soviets		
+			}			
 		}
 
 	}
 	
 	focus = {#成立人民武装部
 		id = PRC_wuzhuangbu
-		icon = GFX_Goal_PRC_wuzhuangbu
-		cost = 3.6
+		icon = GFX_focus_PRC_wuzhuangbu
+		cost = 2.15
 		prerequisite = {
 			focus = PRC_military_commission_new_country_focus
 		}
@@ -8410,8 +8468,6 @@ focus_tree = {
 			upgrade_intelligence_agency = upgrade_portable_radios
 			upgrade_intelligence_agency = upgrade_plastic_explosives
 			
-			show_ideas_tooltip = blank
-			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
@@ -8419,37 +8475,57 @@ focus_tree = {
 					add_idea = PRC_jiefangjunlujun_tooltip_original_1
 				}
 			}
-			custom_effect_tooltip = hongjun_buff_same
+			 
 			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_mobilization_speed = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_conscription_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_war_stability_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_training_time_factor = -0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_militia_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_militia_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_militia_max_org_factor = 0.10 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			#add_to_variable = { PRC_gongyehua_min_export = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_org_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_militia_attack_factor = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_militia_defence_factor = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_militia_max_org_factor = 0.05
+			}
 			
-			show_ideas_tooltip = blank
+			if = {
+				limit = {
+					has_global_flag = be_high
+					PRC = {
+						is_ai = no
+					}
+				}
+
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_attack_factor = 0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_defence_factor = 0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_militia_attack_factor = 0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_militia_defence_factor = 0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_modifier_army_sub_unit_militia_max_org_factor = 0.10 
+				}
+			}
 		}
 		available = {
 			#
@@ -8459,7 +8535,7 @@ focus_tree = {
 	
 	focus = {#成立中央人民政府公安部
 		id = PRC_gonganbu
-		icon = GFX_Goal_PRC_gonganbu
+		icon = GFX_focus_PRC_gonganbu
 		cost = 3.6
 		prerequisite = {
 			focus = PRC_military_commission_new_country_focus
@@ -8490,8 +8566,8 @@ focus_tree = {
 	
 	focus = {#中国人民解放军军事学院
 		id = PRC_jiefangjunjunshixueyuan
-		icon = GFX_Goal_PRC_jiefangjunjunshixueyuan
-		cost = 4.29
+		icon = GFX_focus_PRC_jiefangjunjunshixueyuan
+		cost = 5
 		prerequisite = {
 			focus = PRC_military_commission_new_country_focus
 		}
@@ -8512,52 +8588,10 @@ focus_tree = {
 				slot = theorist
 				trait = junxiaoxiaozhang
 			}
+
+			add_ideas = PRC_jiefangjunjunshixueyuan_1
 			
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_2
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			add_to_variable = { PRC_jiefangjunlujun_experience_gain_army_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_land_doctrine_cost_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_training_time_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_gain_army_unit_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_gain_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_gain_infantry_combat_factor = 0.10 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
+			unlock_decision_category_tooltip = PRC_Army_Reform_category
 		}
 		available = {
 			#
@@ -8567,8 +8601,8 @@ focus_tree = {
 	
 	focus = {#拥抱现代战争
 		id = PRC_yongbaoxiandaizhanzheng
-		icon = GFX_Goal_PRC_yongbaoxiandaizhanzheng
-		cost = 4.29
+		icon = GFX_focus_PRC_yongbaoxiandaizhanzheng
+		cost = 5
 		prerequisite = {
 			focus = PRC_jiefangjunjunshixueyuan
 		}
@@ -8582,28 +8616,28 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = armor
-				ahead_reduction = 2
+				ahead_reduction = 1
 				bonus = 1
 				uses = 1
 				category = armor
 			}
 			add_tech_bonus = {
 				name = infantry_weapons
-				ahead_reduction = 2
+				ahead_reduction = 1
 				bonus = 1
 				uses = 1
 				category = infantry_weapons
 			}
 			add_tech_bonus = {
 				name = support_tech
-				ahead_reduction = 2
+				ahead_reduction = 1
 				bonus = 1
 				uses = 1
 				category = support_tech
 			}
 			add_tech_bonus = {
 				name = artillery
-				ahead_reduction = 2
+				ahead_reduction = 1
 				bonus = 1
 				uses = 1
 				category = artillery
@@ -8619,7 +8653,9 @@ focus_tree = {
 			
 		}
 		available = {
-			not = { has_idea = incompetent_heavy_industry }
+			not = { 
+				has_idea = incompetent_heavy_industry 
+			}
 			num_of_factories > 100
 		}
 
@@ -8658,26 +8694,8 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 3
 				category = cat_mobile_warfare
-			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_5
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_army_armor_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_ARMY_ARMOR_DEFENCE_FACTOR = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_ARMY_ARMOR_SPEED_FACTOR = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_medium_armor_design_cost_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_modern_armor_design_cost_factor = -0.10 }
-			
-			show_ideas_tooltip = blank
+			}	
+
 		}
 		available = {
 			#
@@ -8701,29 +8719,17 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = mechanised_infantry
-				uses = 2
-				ahead_reduction = 3
-				category = mechanised_infantry
+				uses = 1
+				ahead_reduction = 1
+				category = cat_mechanized_equipment
 			}
 
 			add_tech_bonus = {
 				name = mechanised_infantry
 				uses = 1
 				bonus = 1.0
-				category = mechanised_infantry
+				category = cat_mechanized_equipment
 			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_6
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -8731,8 +8737,8 @@ focus_tree = {
 	}
 
 	focus = {#国产坦克
-		id = PRC_jixiehua
-		icon = GFX_focus_PRC_jixiehua
+		id = PRC_domestic_Tank
+		icon = GFX_focus_PRC_domestic_Tank
 		cost = 3.6
 		prerequisite = {
 			focus = PRC_mechanization
@@ -8746,11 +8752,34 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_tech_bonus = {
-				name = motorized_bonus
+				name = PRC_domestic_Tank_bonus
 				bonus = 1.0
-				uses = 2
-				category = motorized_equipment
+				uses = 1
+				category = cat_light_armor
 			}
+
+			add_tech_bonus = {
+				name = PRC_domestic_Tank_bonus
+				bonus = 1.0
+				uses = 1
+				category = cat_medium_armor
+			}
+
+			add_tech_bonus = {
+				name = PRC_domestic_Tank_bonus
+				bonus = 1.0
+				uses = 1
+				category = cat_heavy_armor
+			}
+
+			add_tech_bonus = {
+				name = PRC_domestic_Tank_bonus
+				ahead_reduction = 1
+				uses = 1
+				category = armor
+			}
+
+			add_ideas = homemade_tank
 
 		}
 		available = {
@@ -8782,28 +8811,15 @@ focus_tree = {
 			add_tech_bonus = {
 				name = artillery
 				bonus = 1
-				uses = 1
+				uses = 2
 				category = artillery
 			}
-			
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 3
-				category = cat_superior_firepower
+
+			swap_ideas = {
+				remove_idea = homemade_artillery
+				add_idea = new_homemade_artillery
 			}
 			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_7
-				}
-			}
-			
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -8811,8 +8827,8 @@ focus_tree = {
 	}
 
 	focus = {#中国人民解放军炮兵学校
-		id = PRC_kuodapaobingxuexiao
-		icon = GFX_focus_generic_military_academy
+		id = PRC_PLA_paobingxuexiao
+		icon = GFX_focus_PRC_PLA_paobingxuexiao
 		cost = 3.6
 		prerequisite = {
 			focus = PRC_xiandaipaobing
@@ -8828,56 +8844,9 @@ focus_tree = {
 			add_tech_bonus = {
 				name = artillery
 				bonus = 1
-				uses = 2
+				uses = 3
 				category = artillery
-			}
-			
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_superior_firepower
-			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_7
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_army_artillery_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_artillery_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_artillery_brigade_design_cost_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_mot_artillery_brigade_design_cost_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_rocket_artillery_brigade_design_cost_factor = -0.10 }
-			add_to_variable = { PRC_gongyehua_global_building_slots = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
+			}	
 		}
 		available = {
 			#
@@ -8889,11 +8858,11 @@ focus_tree = {
 		icon = GFX_focus_PRC_dierpaobing
 		cost = 3.6
 		prerequisite = {
-			focus = PRC_kuodapaobingxuexiao
+			focus = PRC_PLA_paobingxuexiao
 		}
 		x = 0
 		y = 1
-		relative_position_id = PRC_kuodapaobingxuexiao
+		relative_position_id = PRC_PLA_paobingxuexiao
 		ai_will_do = {
 			factor = 10
 		}
@@ -8902,50 +8871,15 @@ focus_tree = {
 			add_tech_bonus = {
 				name = rocketry
 				ahead_reduction = 1
-				bonus = 1
-				uses = 2
+				bonus = 3
+				uses = 1
 				category = rocketry
 			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_8
-				}
+
+			add_timed_idea = {
+				idea = dierpaobing
 			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_air_bombing_targetting = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_air_strategic_bomber_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_rocket_attack_factor = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_strategic_bomb_visibility = -0.15 }
-			add_to_variable = { PRC_gongyehua_consumer_goods_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_global_building_slots = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
 			
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -8977,7 +8911,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = infantry_weapons
 				bonus = 1
-				uses = 1
+				uses = 2
 				category = infantry_weapons
 			}
 			add_tech_bonus = {
@@ -8986,53 +8920,6 @@ focus_tree = {
 				uses = 1
 				category = support_tech
 			}
-			
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 3
-				category = cat_grand_battle_plan
-			}
-			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_9
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_army_infantry_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_infantry_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_land_reinforce_rate = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_org_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_morale_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_unit_infantry_design_cost_factor = -0.10 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -9059,55 +8946,19 @@ focus_tree = {
 			unlock_tactic = tactic_sansanzhi_2
 
 			custom_effect_tooltip = tactic_sansanzhi_2_tt
-			
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 2
-				#category =  cat_grand_battle_plan
-			    technology = infantry_offensive
-				technology = infiltration_assault
+			add_tech_bonus = {
+				name = infantry_weapons
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = support_tech
+				bonus = 1
+				uses = 1
+				category = support_tech
 			}
 			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_10
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_cas_damage_reduction = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_combat_width_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_org_loss_when_moving = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_loss_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_infantry_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_infantry_defence_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_land_reinforce_rate = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_org_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_morale_factor = 0.05 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -9131,13 +8982,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			upgrade_intelligence_agency = upgrade_commando_training
-			hidden_effect = {
-				set_technology = { yejiantuji_2 = 1 popup = no }
-			}
+			unlock_tactic = tactic_yejiantuji_2 
+			unlock_tactic = tactic_zhanshuchuancha_2 
 			custom_effect_tooltip = tactic_yejiantuji_2_tt
-			hidden_effect = {
-				set_technology = { zhanshuchuancha_2 = 1 popup = no }
-			}
 			custom_effect_tooltip = tactic_zhanshuchuancha_2_tt
 			
 			add_doctrine_cost_reduction = {
@@ -9146,45 +8993,8 @@ focus_tree = {
 				category = special_forces_doctrine
 			}
 			
-			show_ideas_tooltip = blank
-			
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_11
-				}
-			}
-			custom_effect_tooltip = hongjun_buff_same
-			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_land_night_attack = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_speed_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_terrain_penalty_reduction = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_out_of_supply_factor = -0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_special_forces_cap = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_recon_factor = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_modifier_army_sub_unit_category_special_forces_max_org_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_SPECIAL_FORCES_TRAINING_TIME_FACTOR = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_SPECIAL_FORCES_ATTACK_FACTOR = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_SPECIAL_FORCES_DEFENCE_FACTOR = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_SPECIAL_FORCES_NO_SUPPLY_GRACE = 72 }
-			add_to_variable = { PRC_jiefangjunlujun_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = -0.10 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
+			unlock_decision_tooltip = PRC_Army_Reform_special_forces
+
 		}
 		available = {
 			#
@@ -9195,10 +9005,10 @@ focus_tree = {
 	focus = {#多兵种协同作战
 		id = PRC_duobingzhongxietong
 		icon = GFX_focus_PRC_duobingzhongxietong
-		cost = 4.29
+		cost = 5
 		prerequisite = {
 			focus = PRC_dierpaobing
-			focus = PRC_jixiehua
+			focus = PRC_domestic_Tank
 			focus = PRC_tezhongbudui
 		}	
 		x = 0
@@ -9209,50 +9019,34 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			hidden_effect = {
-				set_technology = { jianmiezhan_2 = 1 popup = no }
-			}
+
+			unlock_tactic = tactic_jianmiezhan_2
 			custom_effect_tooltip = tactic_jianmiezhan_2_tt
-			
-			show_ideas_tooltip = blank
 			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_12
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
 				}
 			}
-			custom_effect_tooltip = hongjun_buff_same
+			 
 			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_army_attack_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_defence_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_breakthrough_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_combat_width_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_max_planning = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_planning_speed = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_max_command_power = 50 }
-			add_to_variable = { PRC_jiefangjunlujun_command_power_gain_mult = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_army_bonus_air_superiority_factor = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_air_superiority_bonus_in_combat = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_INITIATIVE_FACTOR = 0.15 }
-			add_to_variable = { PRC_jiefangjunlujun_coordination_bonus = 0.15 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
 			
-			show_ideas_tooltip = blank
+			add_to_variable = { 
+				PRC_jiefangjunlujun_coordination_bonus = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_land_reinforce_rate = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_max_planning = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_planning_speed = 0.15 
+			}
+
+
 		}
 		available = {
 			#
@@ -9262,7 +9056,7 @@ focus_tree = {
 	
 	focus = {#血战到底
 		id = PRC_xuezhandaodi
-		icon = GFX_focus_PRC_CCW_passive_defense
+		icon = GFX_focus_PRC_xuezhandaodi
 		cost = 3.6
 		prerequisite = {
 			focus = PRC_duobingzhongxietong
@@ -9288,45 +9082,21 @@ focus_tree = {
 				category = cat_grand_battle_plan
 			}
 			
-			show_ideas_tooltip = blank
-			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_13
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
 				}
 			}
-			custom_effect_tooltip = hongjun_buff_same
+			 
 			#真正的动态修正 {  }#
 			add_to_variable = { PRC_jiefangjunlujun_max_dig_in = 10.0 }
 			add_to_variable = { PRC_jiefangjunlujun_land_reinforce_rate = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_attack_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_out_of_supply_factor = -0.15 }
 			add_to_variable = { PRC_jiefangjunlujun_experience_loss_factor = 0.10 }
 			add_to_variable = { PRC_jiefangjunlujun_org_loss_at_low_org_factor = -0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_dig_in_speed_factor = 0.25 }
+			add_to_variable = { PRC_jiefangjunlujun_dig_in_speed_factor = 0.10 }
 			add_to_variable = { PRC_jiefangjunlujun_army_morale_factor = 0.05 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
 		}
 		available = {
 			#
@@ -9341,8 +9111,12 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_duobingzhongxietong
 		}
-		mutually_exclusive = { focus = PRC_xuezhandaodi }
-		mutually_exclusive = { focus = PRC_huoliyazhi }
+		mutually_exclusive = { 
+			focus = PRC_xuezhandaodi 
+		}
+		mutually_exclusive = { 
+			focus = PRC_huoliyazhi 
+		}
 		x = 0
 		y = 1
 		relative_position_id = PRC_duobingzhongxietong
@@ -9358,45 +9132,27 @@ focus_tree = {
 				category = special_forces_doctrine
 			}
 			
-			show_ideas_tooltip = blank
-			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_14
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
 				}
 			}
-			custom_effect_tooltip = hongjun_buff_same
+			 
 			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_land_night_attack = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_supply_consumption_factor = -0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_loss_factor = -0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_recon_factor = 0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_enemy_army_bonus_air_superiority_factor = -0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_cas_damage_reduction = 0.05 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
-			
-			show_ideas_tooltip = blank
+			add_to_variable = { 
+				PRC_jiefangjunlujun_land_night_attack = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_experience_loss_factor = -0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_recon_factor = 0.25 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_enemy_army_bonus_air_superiority_factor = -0.05 
+			}
 		}
 		available = {
 			#
@@ -9406,7 +9162,7 @@ focus_tree = {
 
 	focus = {#优势火力
 		id = PRC_huoliyazhi
-		icon = GFX_goal_PRC_huoliyazhi
+		icon = GFX_focus_PRC_huoliyazhi
 		cost = 3.6
 		prerequisite = {
 			focus = PRC_duobingzhongxietong
@@ -9425,52 +9181,35 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = cat_superior_firepower
-			}
-			
-			show_ideas_tooltip = blank
 			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = PRC_jiefangjunlujun_tooltip_original
-					add_idea = PRC_jiefangjunlujun_tooltip_original_15
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
 				}
 			}
-			custom_effect_tooltip = hongjun_buff_same
+			 
 			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_experience_loss_factor = -0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_artillery_attack_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_breakthrough_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_terrain_penalty_reduction = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_army_bonus_air_superiority_factor = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_air_superiority_bonus_in_combat = 0.05 }
-			add_to_variable = { PRC_gongyehua_political_power_gain = 0.0 }
-			add_to_variable = { PRC_gongyehua_research_speed_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_local_resources_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_factory_start_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_line_change_production_efficiency_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_lack_of_resource_penalty_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_industrial_complex_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_arms_factory_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_infrastructure_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_factory = 0.0 }
-			add_to_variable = { PRC_gongyehua_industrial_capacity_dockyard = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_civ_to_mil_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_conversion_cost_mil_to_civ_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_political_power_cost = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_weekly = 0.0 }
-			add_to_variable = { PRC_gongyehua_stability_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_equipment_conversion_speed = 0.0 }
-			add_to_variable = { PRC_gongyehua_industry_industry_repair_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_rail_way_factor = 0.0 }
-			add_to_variable = { PRC_gongyehua_production_speed_supply_node_factor = 0.0 }
+			add_to_variable = { 
+				PRC_jiefangjunlujun_experience_loss_factor = -0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_artillery_attack_factor = 0.10 
+			}
+
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_artillery_attack_factor = 0.10 
+			}
+
+			add_to_variable = { 
+				PRC_jiefangjunlujun_superior_firepower_mastery_gain_factor = 0.15
+			}
 			
-			show_ideas_tooltip = blank
+			swap_ideas = {
+				remove_idea = homemade_tank
+				add_idea = homemade_tank_1
+			}
 		}
 		available = {
 			#
@@ -9480,7 +9219,7 @@ focus_tree = {
 	
 	focus = {#现代化人民军队
 		id = PRC_xiandaihuarenminjundui
-		icon = GFX_goal_PRC_xiandaihuarenminjundui
+		icon = GFX_focus_PRC_xiandaihuarenminjundui
 		cost = 5
 		prerequisite = {
 			focus = PRC_xuezhandaodi
@@ -9506,6 +9245,8 @@ focus_tree = {
 				remove_unit_leader_trait = youji_hero
 				add_unit_leader_trait = xiandaijunguan
 			}
+
+			unlock_decision_tooltip = PRC_Army_Reform_modernization
 			
 		}
 		available = {
@@ -9523,7 +9264,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_PLA
 		}
-		x = 9
+		x = 8
 		y = 1
 		relative_position_id = PRC_PLA
 		ai_will_do = {
@@ -10025,11 +9766,13 @@ focus_tree = {
 				uses = 3
 				category = radar_tech
 			}
-		}
-		add_breakthrough_points = {
+
+			add_breakthrough_points = {
 				specialization = specialization_air
-			    value = 1
+				value = 1
 			}
+		}
+		
 		available = {
 			#
 		}
@@ -10524,7 +10267,7 @@ focus_tree = {
 
 		available = {
 			ROOT = {
-				is_special_project_completed = sp_air_jet_engine
+				is_special_project_completed = sp:sp_air_jet_engine
 			}
 		}
 
@@ -11604,7 +11347,7 @@ focus_tree = {
 		available = {
 			has_completed_focus = PRC_carriers_center
 			ROOT = {
-				is_special_project_completed = sp_nuclear_engines
+				is_special_project_completed = sp:sp_nuclear_engines
 			}
 		}
 	}
@@ -11625,7 +11368,7 @@ focus_tree = {
 		available = {
 			has_completed_focus = PRC_battleships_center
 			ROOT = {
-				is_special_project_completed = sp_nuclear_engines
+				is_special_project_completed = sp:sp_nuclear_engines
 			}
 		}
 	}
@@ -11646,7 +11389,7 @@ focus_tree = {
 		available = {
 			has_completed_focus = PRC_submarine_center
 			ROOT = {
-				is_special_project_completed = sp_nuclear_engines
+				is_special_project_completed = sp:sp_nuclear_engines
 			}
 		}
 	}

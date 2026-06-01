@@ -148,7 +148,7 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 	}
 }
 
-PRC_civil_war_offensives = {
+PRC_civil_war_offensives = {	#内战攻势
 	icon = GFX_decision_category_border_conflicts
 	allowed = {
 		is_literally_china = yes
@@ -156,4 +156,29 @@ PRC_civil_war_offensives = {
 
 	scripted_gui = CHI_civil_war_map
 	priority = 1001
+}
+
+PRC_contact_wrl_cat = {
+	priority = 1200
+	icon = GFX_decision_category_generic_crisis
+	
+	visible = { 
+		not = { 
+			has_global_flag = roc_in_taiwan_flag 
+		} 
+	}#guo
+}
+
+PRC_Army_Reform_category = {	#军事改革
+	priority = 994
+	icon = PRC_Army_Reform
+
+	visible = {
+		has_completed_focus = PRC_jiefangjunjunshixueyuan
+		NOT = {
+			has_country_flag = PRC_Army_Reform_OVER
+		}
+	}
+
+	visible_when_empty = yes
 }

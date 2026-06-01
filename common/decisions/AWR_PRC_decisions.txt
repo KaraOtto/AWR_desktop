@@ -11142,4 +11142,1532 @@ PRC_civil_war_offensives = {	#内战攻势
 			}
 		}
 	}
+
+	start_liaoshen_campaign = {	#发动辽沈战役
+		icon = hol_draw_up_staff_plans
+		visible = {
+			has_completed_focus = PRC_liaoshen_campaign
+			tag = PRC
+			716 = {
+				num_owned_neighbour_states = {
+					owner = ROOT
+					count > 0
+				}
+
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+					}
+
+					add_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+						has_dynamic_modifier = {
+							modifier = PRC_regional_offensive
+						}
+					}
+
+					remove_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+	}
+
+	start_Huaihai_campaign = {	#发动淮海战役
+		icon = hol_draw_up_staff_plans
+		visible = {
+			has_completed_focus = PRC_Huaihai_campaign
+			tag = PRC
+			
+		}
+
+		available = {
+			1080 = {
+				num_owned_neighbour_states = {
+					owner = ROOT
+					count > 0
+				}
+
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+					}
+
+					add_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+						has_dynamic_modifier = {
+							modifier = PRC_regional_offensive
+						}
+					}
+
+					remove_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+	}
+
+	start_Pingjin_campaign = {	#发动平津战役
+		icon = hol_draw_up_staff_plans
+		visible = {
+			has_completed_focus = PRC_Pingjin_campaign
+			tag = PRC
+			
+		}
+
+		available = {
+			608 = {
+				num_owned_neighbour_states = {
+					owner = ROOT
+					count > 0
+				}
+
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+					}
+
+					add_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			for_each_scope_loop = {
+				array = global.big_china
+				if = {
+					limit = {
+						region = 155
+						has_dynamic_modifier = {
+							modifier = PRC_regional_offensive
+						}
+					}
+
+					remove_dynamic_modifier = {
+						modifier = PRC_regional_offensive
+					}
+				}
+			}
+		}
+	}
+
+	PRC_the_Yangtze_River_campaign = {	#开始渡长江行动
+		icon = hol_draw_up_staff_plans
+		visible = {
+			OR = {
+				has_completed_focus = PRC_Nanjing_campaign
+				has_completed_focus = PRC_attack_Nanjing
+			}
+			tag = PRC
+			
+		}
+
+		available = {
+			1015 = {
+				num_owned_neighbour_states = {
+					owner = ROOT
+					count > 0
+				}
+
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+			OR = {
+				997 = {	#苏南
+					is_controlled_by = ROOT
+				}
+
+				606 = {	#皖北
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			add_ideas = PRC_million_army_cross_river
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			remove_ideas = PRC_million_army_cross_river
+		}
+	}
+	
+}
+
+PRC_contact_wrl_cat = {		#联络地方官员
+	PRC_contact_fu_zuoyi_decision = { #傅作义
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				tag = SUY
+				is_neighbor_of = ROOT
+				has_cosmetic_tag = huabei_bandit_supression_hq
+				controls_state = 608
+			}
+		}
+		available = {
+			controls_state = 611
+			controls_state = 716
+			controls_state = 328
+			any_enemy_country = {
+				tag = SUY
+				is_neighbor_of = ROOT
+				has_cosmetic_tag = huabei_bandit_supression_hq
+				controls_state = 608
+				OR = {
+					casualties_k > 150
+					strength_ratio = {
+						tag = ROOT
+						ratio < 0.3
+					}
+				}
+			}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+			}
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+			#
+		}
+
+		remove_effect = {
+			SUY = {
+				country_event = {
+					id = nhq.1
+				}
+			}
+			custom_effect_tooltip = if_they_accept_green 
+			effect_tooltip = {
+				SUY = {
+					white_peace = ROOT
+					retire_character = SHX_fu_zuoyi
+					SHX_Dong_Qiwu = {
+						add_country_leader_role = {
+							promote_leader = yes
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = despotism
+								traits = { }            
+							} 
+						} 
+					}
+					every_owned_state = {
+						limit = {
+							NOT = { #suiyuan
+								state = 621
+								state = 746
+								state = 1165
+								state = 1159
+							}
+						}
+						ROOT = {
+							transfer_state = PREV
+						}
+					} 
+				} 
+			}
+		}
+		complete_effect = {
+			#
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	
+	PRC_contact_suy_decision = { #四川
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			hidden_trigger = {
+                any_neighbor_country = {
+					tag = SUY
+					has_capitulated = no
+					has_country_leader = {
+						character = SHX_Dong_Qiwu ruling_only = yes
+					}
+				}
+			}
+		}
+		available = {
+			controls_state = 608
+			controls_state = 609
+			any_neighbor_country = {
+				tag = SUY
+				has_capitulated = no
+			    has_country_leader = {
+					character = SHX_Dong_Qiwu ruling_only = yes
+				}
+			}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				#is_neighbor_of = ROOT
+				NOT = {
+					controls_state = 1160
+					controls_state = 613
+				}
+			}
+		}
+
+		cost = 25
+		days_remove = 90
+		days_re_enable = 0
+		fire_only_once = yes
+
+        cancel_trigger = { #will abort
+		    NOT = {
+			   country_exists = SUY
+		    }
+	    }
+
+		modifier = {
+			#
+		}
+
+		remove_effect = {
+			SUY = {
+				country_event = {
+					id = nhq.3
+				}
+			}
+			custom_effect_tooltip = if_they_accept_green 
+			effect_tooltip = {
+				annex_country = { 
+					target = SUY transfer_troops = yes 
+				}	
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = SUY
+					}
+				}
+				custom_effect_tooltip = if_they_refuse_red
+			    effect_tooltip = {
+				    create_wargoal = {
+						type = annex_everything
+						target = SUY
+					}
+			    }
+			}
+		}
+		complete_effect = {
+			#
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_cheng_qian_decision = {		#程潜
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			NOT = {
+				AND = {
+					controls_state = 750
+					controls_state = 1181
+					controls_state = 602
+				}
+			}
+		}
+		available = {
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				is_neighbor_of = ROOT
+				custom_trigger_tooltip = {
+					tooltip = has_cheng_qian_tt
+					any_unit_leader = {
+						has_id = 3031
+					}
+				}
+				#owns_state = 1160
+				OR = {
+					controls_state = 750
+					controls_state = 1181
+					controls_state = 602
+					GXC = {	
+						OR = {
+							controls_state = 750
+							controls_state = 1181
+							controls_state = 602
+						}
+					}
+				}
+				#surrender_progress > 0.5
+			}
+			OR = {
+				750 = {
+					any_neighbor_state = { 
+						is_controlled_by = ROOT 
+					}
+				}
+				1181 = {
+					any_neighbor_state = { 
+						is_controlled_by = ROOT 
+					}
+				}
+				602 = {
+					any_neighbor_state = { 
+						is_controlled_by = ROOT 
+					}
+				}
+			}
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+			#
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = PRC_contact_cheng_qian_focus_tt
+			event_target:WTT_current_china_leader = {
+				country_event = {
+					id = EFM_Comchina.46
+				}
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						NOT = {
+							tag = event_target:WTT_current_china_leader
+						}
+						OR = {
+							controls_state = 750
+							controls_state = 1181
+							controls_state = 602
+						}
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						NOT = {
+							tag = event_target:WTT_current_china_leader
+						}
+						OR = {
+							controls_state = 750
+							controls_state = 1181
+							controls_state = 602
+						}
+					}
+					country_event = {
+					    id = EFM_Comchina.46
+					}
+				}
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_kweichow_decision = {	
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			NOT = {
+				AND = {
+					controls_state = 748
+					controls_state = 603
+				}
+			}
+		}
+		available = {
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				is_neighbor_of = ROOT
+				#owns_state = 1160
+				OR = {
+					controls_state = 748
+					controls_state = 603
+				}
+				#surrender_progress > 0.5
+			}
+			OR = {
+				748 = {
+					any_neighbor_state = { is_controlled_by = ROOT }
+				}
+				603 = {
+					any_neighbor_state = { is_controlled_by = ROOT }
+				}
+			}
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = PRC_contact_kweichow_tt
+			event_target:WTT_current_china_leader = {
+				country_event = {
+					id = EFM_Comchina.48
+				}
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_sik_decision = {	#新疆
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				tag = SIK
+				NOT = {
+					OR = {
+						has_country_flag = I_am_turkestan
+						has_idea = SIK_For_the_TAR_revolution
+					}
+				}
+				OR = {
+					has_government = neutrality
+				    is_subject_of = event_target:WTT_current_china_leader
+				}
+			}
+		}
+		available = {
+			any_enemy_country = {
+				tag = SIK
+				NOT = {
+					OR = {
+						has_country_flag = I_am_turkestan
+						has_idea = SIK_For_the_TAR_revolution
+					}
+				}
+				OR = {
+					has_government = neutrality
+				    is_subject_of = event_target:WTT_current_china_leader
+				}
+				is_neighbor_of = ROOT
+			}
+			#OR = {
+			#	any_other_country = {
+			#		original_tag = SIK
+			#		exists = yes
+			#		NOT = {
+            #            OR = {
+			#				has_country_flag = I_am_turkestan
+			#				has_idea = SIK_For_the_TAR_revolution
+			#			}
+			#		}
+			#	    is_subject_of = event_target:WTT_current_china_leader
+			#		is_neighbor_of = ROOT
+			#	}
+			#    AND = {
+			#		controls_state = 756
+			#		controls_state = 608
+			#		controls_state = 1160
+			#		NOT = {
+			#			any_other_country = {
+			#				original_tag = SIK
+			#				exists = yes
+			#				NOT = {
+			#					OR = {
+			#						has_country_flag = I_am_turkestan
+			#						has_idea = SIK_For_the_TAR_revolution
+			#					}
+			#				}
+			#				is_subject_of = event_target:WTT_current_china_leader
+			#			}
+			#		}
+			#		event_target:WTT_current_china_leader = {
+			#		    any_owned_state = {
+			#				is_controlled_by = event_target:WTT_current_china_leader
+			#				OR = {
+			#					custom_trigger_tooltip = {
+			#						tooltip = is_in_strat_252
+			#						region = 252
+			#					}
+			#				    custom_trigger_tooltip = {
+			#						tooltip = is_in_strat_145
+			#						region = 145
+			#					}
+			#				}
+			#			}
+			#		}
+			#	}
+			#}
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+		}
+
+		remove_effect = {
+			#custom_effect_tooltip = PRC_contact_zhang_zhizong_focus_tt
+			#MODDED
+			SIK = {
+			    country_event = {
+					id = EFM_Comchina_SIK.45
+			    }
+		    }
+			custom_effect_tooltip = if_they_accept_green
+			effect_tooltip = {
+				annex_country = { target = SIK transfer_troops = yes }
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_xik_decision = {	#西康
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				OR = {
+					tag = XIK
+					tag = SIC
+				}
+			}
+		}
+		available = {
+			#always = no ###this needs some work
+			any_enemy_country = {
+				OR = {
+					tag = XIK
+					tag = SIC
+				}
+				has_capitulated = no
+			}
+			#NOT = {
+			#	country_exists = SIC
+			#}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				#is_neighbor_of = ROOT
+				NOT = {
+					controls_state = 1160
+					controls_state = 613
+				}
+				OR = {
+					controls_state = 605
+					controls_state = 751
+					controls_state = 753
+					controls_state = 1187
+					has_subject = SIC
+				}
+			}
+			controls_state = 608
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+
+		}
+
+		remove_effect = {
+			#custom_effect_tooltip = PRC_contact_cheng_qian_focus_tt
+			if = {
+				limit = {
+					any_enemy_country = {
+						tag = XIK
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						OR = {
+							tag = XIK
+							#tag = SIC
+						}
+					}
+					country_event = {
+						id = rcmchina.214
+					}
+				}
+				custom_effect_tooltip = if_they_accept_green 
+			    custom_effect_tooltip = all_of_their_units_join_us_tt
+			    effect_tooltip = {
+				    event_target:WTT_current_china_leader = { 
+						annex_country = { target = XIK transfer_troops = no }	
+					}
+			    }
+			}
+			if = {
+				limit = {
+					any_enemy_country = {
+						tag = SIC
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						OR = {
+							tag = SIC
+						}
+					}
+					country_event = {
+						id = rcmchina.214
+					}
+				}
+				custom_effect_tooltip = if_they_accept_green 
+			    effect_tooltip = {
+				   annex_country = { target = SIC transfer_troops = no }
+			    }
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_yun_decision = {	#云南
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				tag = YUN
+			}
+		}
+		available = {
+			any_enemy_country = {
+				tag = YUN
+				has_capitulated = no
+				#is_neighbor_of = ROOT
+			}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				#is_neighbor_of = ROOT
+				NOT = {
+					controls_state = 1160
+					controls_state = 613
+				}
+			}
+			controls_state = 608
+		}
+
+		cost = 25
+		days_remove = 10
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+
+		}
+
+		remove_effect = {
+			YUN = {
+				country_event = rcmchina.213
+			}
+			custom_effect_tooltip = if_they_accept_green 
+			effect_tooltip = {
+				annex_country = { target = YUN transfer_troops = yes }	
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_egm_decision = {	#
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				tag = EGM
+			}
+		}
+		available = {
+			any_enemy_country = {
+				tag = EGM
+				is_neighbor_of = ROOT
+				has_capitulated = no
+			}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				#is_neighbor_of = ROOT
+				#NOT = {
+					#controls_state = 613
+				#}
+			}
+			controls_state = 608
+			controls_state = 1160
+			OR = {
+				NXM = {
+					exists = no
+				}
+				NXM = {
+					has_war_with = EGM
+				}
+				NXM = {
+				    surrender_progress > 0
+				}
+			}
+		}
+
+		cost = 25
+		days_remove = 5
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+
+		}
+
+		remove_effect = {
+			EGM = {
+				country_event = {
+					id = EFM_Comchina.50
+				}
+			}
+			custom_effect_tooltip = if_they_accept_green 
+			effect_tooltip = {
+				annex_country = { target = EGM transfer_troops = yes }	
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	PRC_contact_shc_decision = {	
+		icon = GFX_decision_generic_political_discourse
+		allowed = {
+			is_literally_china = yes
+		}
+		visible = {
+			has_completed_focus = PRC_contact_cheng_qian_focus
+			any_enemy_country = {
+				tag = SHC
+			}
+		}
+		available = {
+			any_enemy_country = {
+				tag = SHC
+				has_capitulated = no
+				is_neighbor_of = ROOT
+			    surrender_progress > 0.01
+				#has_war_support < 0.8
+			}
+			event_target:WTT_current_china_leader = {
+				has_war_with = ROOT
+				#is_neighbor_of = ROOT
+			}
+			controls_state = 608
+			controls_state = 614
+			controls_state = 1070
+			controls_state = 597
+			controls_state = 1161
+			controls_state = 1175
+		}
+
+		cost = 25
+		days_remove = 10
+		days_re_enable = 0
+		fire_only_once = yes
+
+		modifier = {
+
+		}
+
+		remove_effect = {
+			SHC = {
+				country_event = rcmchina.213
+			}
+			custom_effect_tooltip = if_they_accept_green 
+			effect_tooltip = {
+				annex_country = { 
+					target = SHC transfer_troops = yes 
+				}	
+			}
+		}
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+}
+
+PRC_Army_Reform_category = {	#陆军改革
+	PRC_Army_Reform_standardiaztion = {	#军事训练标准化
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_completed_focus = PRC_jiefangjunjunshixueyuan
+		}
+
+		available = {
+			
+			has_army_experience > 99
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_1
+				add_idea = PRC_jiefangjunjunshixueyuan_2
+			}
+		}
+	}
+
+	PRC_Army_Reform_specialization = {	#军事训练专业化
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_idea = PRC_jiefangjunjunshixueyuan_2
+		}
+		available = {
+			has_completed_focus = PRC_jiefangjunjunshixueyuan
+			has_army_experience > 99
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+		}
+
+		days_remove = 90
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_2
+				add_idea = PRC_jiefangjunjunshixueyuan_3
+			}
+		}
+	}
+
+	PRC_Army_Reform_choose_new_mobile_warfare = {	#选择机动作战学说
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_idea = PRC_jiefangjunjunshixueyuan_3
+			NOT = {
+				has_country_flag = has_chosen_doctrine
+			}
+		}
+
+		available = {
+			#
+		}
+
+		cost = 50
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_3
+				add_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+			}
+			set_country_flag = has_chosen_doctrine
+		}
+		
+	}
+
+	PRC_Army_Reform_choose_superior_firepower = {	#选择优火
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_idea = PRC_jiefangjunjunshixueyuan_3
+			NOT = {
+				has_country_flag = has_chosen_doctrine
+			}
+		}
+
+		available = {
+			#
+		}
+
+		cost = 50
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_3
+				add_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+			}
+			set_country_flag = has_chosen_doctrine
+		}
+		
+	}
+
+	PRC_Army_Reform_choose_grand_battleplan = {	#选择决战
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_idea = PRC_jiefangjunjunshixueyuan_3
+			NOT = {
+				has_country_flag = has_chosen_doctrine
+			}
+		}
+
+		available = {
+			#
+		}
+
+		cost = 50
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_3
+				add_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+			}
+			set_country_flag = has_chosen_doctrine
+		}
+		
+	}
+
+	PRC_Army_Reform_choose_mass_assault = {	#选择人海
+		icon = generic_army_support
+		fire_only_once = yes
+
+		visible = {
+			has_idea = PRC_jiefangjunjunshixueyuan_3
+			NOT = {
+				has_country_flag = has_chosen_doctrine
+			}
+		}
+
+		available = {
+			#
+		}
+
+		cost = 50
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunjunshixueyuan_3
+				add_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+			set_country_flag = has_chosen_doctrine
+		}
+		
+	}
+
+	PRC_Army_Reform_armor = {	#军改——装甲
+		icon = generic_army_support
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_xiandaihuarenminjundui
+			OR = {
+				has_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+				has_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+				has_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+				has_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+			
+		}
+		available = {
+			has_completed_focus = PRC_xiandaihuarenminjundui
+			has_army_experience > 99
+			OR = {
+				has_90_full_mech_and_armor_battalions = yes
+				has_country_flag = the_mechanized_armor_troops_have_been_formed
+			}
+			NOT = {
+				has_country_flag = PRC_Army_Reform_artillery
+				has_country_flag = PRC_Army_Reform_infantry
+			}
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = PRC_Army_Reform_armor
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = the_mechanized_armor_troops_have_been_formed
+					}
+				}
+				country_event = {
+					id = AWR_PRC.113
+				}
+			}
+			
+			PRC_xu_guangda = {
+				unit_leader_event = {
+					id = PRC_xu_guangda.1
+					days = 10
+				}
+			}
+		}
+
+		days_re_enable = 90
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = full_speed_ahead
+				}
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+
+				add_to_variable = { 
+					PRC_jiefangjunlujun_army_armor_attack_factor = 0.10
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_army_armor_defence_factor = 0.10
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_mechanized_attack_factor = 0.10
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_mechanized_defence_factor = 0.10
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_army_fuel_consumption_factor = 0.10
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_unit_medium_armor_design_cost_factor = -0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_unit_modern_armor_design_cost_factor = -0.10 
+				}
+
+			}
+
+			if = {
+				limit = {
+					has_country_flag = go_ahead_with_stability
+				}
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+
+				add_to_variable = { 
+					PRC_jiefangjunlujun_army_armor_attack_factor = 0.05
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_army_armor_defence_factor = 0.05
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_mechanized_attack_factor = 0.05
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_mechanized_defence_factor = 0.05
+				}
+
+				add_to_variable = { 
+					PRC_jiefangjunlujun_unit_medium_armor_design_cost_factor = -0.10 
+				}
+				add_to_variable = { 
+					PRC_jiefangjunlujun_unit_modern_armor_design_cost_factor = -0.10 
+				}
+			}
+		}
+
+		
+	}
+
+	PRC_Army_Reform_artillery = {	#军改——炮兵
+		icon = generic_army_support
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_xiandaihuarenminjundui
+			OR = {
+				has_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+				has_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+				has_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+				has_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+			NOT = {
+				has_country_flag = PRC_Army_Reform_armor
+				has_country_flag = PRC_Army_Reform_infantry
+			}
+			
+		}
+		available = {
+			has_completed_focus = PRC_jiefangjunjunshixueyuan
+			has_army_experience > 99
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = PRC_Army_Reform_artillery 
+		}
+
+		days_re_enable = 90
+
+		remove_effect = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_artillery_attack_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_artillery_defence_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_unit_artillery_brigade_design_cost_factor = -0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_unit_mot_artillery_brigade_design_cost_factor = -0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_category_rocket_artillery_attack_factor = 0.10 
+			}
+		}
+
+		
+	}
+
+	PRC_Army_Reform_infantry = {	#军改——步兵
+		icon = generic_army_support
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_xiandaihuarenminjundui
+			OR = {
+				has_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+				has_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+				has_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+				has_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+			NOT = {
+				has_country_flag = PRC_Army_Reform_armor
+				has_country_flag = PRC_Army_Reform_artillery
+			}
+			
+		}
+		available = {
+			has_completed_focus = PRC_jiefangjunjunshixueyuan
+			has_army_experience > 99
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = PRC_Army_Reform_infantry
+		}
+
+		days_re_enable = 90
+
+		remove_effect = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_infantry_attack_factor = 0.20 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_infantry_defence_factor = 0.20
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_land_reinforce_rate = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_org_factor = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_morale_factor = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_unit_infantry_design_cost_factor = -0.10 
+			}
+		}
+
+		
+	}
+
+	PRC_Army_Reform_special_forces = {	#军改——特种部队
+		icon = generic_army_support
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_tezhongbudui
+			OR = {
+				has_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+				has_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+				has_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+				has_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+			
+		}
+		available = {
+			has_completed_focus = PRC_tezhongbudui
+			has_army_experience > 99
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost
+
+		complete_effect = {
+			army_experience = -100
+		}
+
+		days_re_enable = 90
+
+		remove_effect = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = { 
+				PRC_jiefangjunlujun_land_night_attack = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_terrain_penalty_reduction = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_special_forces_cap = 0.25 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_recon_factor = 0.25 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_modifier_army_sub_unit_category_special_forces_max_org_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_SPECIAL_FORCES_TRAINING_TIME_FACTOR = -0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_SPECIAL_FORCES_ATTACK_FACTOR = 0.15 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_SPECIAL_FORCES_DEFENCE_FACTOR = 0.15 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_SPECIAL_FORCES_NO_SUPPLY_GRACE = 72 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = -0.10 
+			}
+		}
+	}
+
+	PRC_Army_Reform_modernization = {	#现代化
+		icon = generic_army_support
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_xiandaihuarenminjundui
+			OR = {
+				has_idea = PRC_jiefangjunjunshixueyuan_new_mobile_warfare
+				has_idea = PRC_jiefangjunjunshixueyuan_superior_firepower
+				has_idea = PRC_jiefangjunjunshixueyuan_grand_battleplan
+				has_idea = PRC_jiefangjunjunshixueyuan_mass_assault
+			}
+		}
+		available = {
+			has_completed_focus = PRC_jiefangjunjunshixueyuan
+			has_army_experience > 149
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 149
+		}
+
+		custom_cost_text = PRC_Army_army_xp_decision_cost_2
+
+		complete_effect = {
+			army_experience = -150
+		}
+
+		days_remove = 180
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunlujun_tooltip_original
+				add_idea = PRC_jiefangjunlujun_tooltip_original_1
+			}
+
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_attack_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_defence_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_breakthrough_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_supply_consumption_factor = -0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_org_factor = 0.10 
+			}
+
+			set_country_flag = PRC_Army_Reform_OVER
+		}
+	}
 }

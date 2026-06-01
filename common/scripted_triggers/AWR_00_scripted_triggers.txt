@@ -7,3 +7,133 @@ is_controlled_by_ROOT_or_puppet = {
 		}
 	}
 }
+
+
+has_90_full_mech_and_armor_battalions = {	#机械化装甲部队
+    custom_trigger_tooltip = {
+        tooltip = has_90_full_mech_and_armor_battalions_tt
+
+        # 机械化步兵营 ≥ 90
+        # HOI4 的 > 是“严格大于”，所以至少 90 写 > 89
+        check_variable = { 
+			num_battalions_with_type@mechanized > 89 
+		}
+
+        # 装甲类营总数 ≥ 90
+        set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@light_armor #轻坦
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@light_sp_anti_air_brigade #轻防空
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@light_sp_artillery_brigade #轻自火
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@light_tank_destroyer_brigade #轻坦歼
+		}
+        add_to_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@medium_armor #中坦
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@medium_sp_anti_air_brigade #中防空
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@medium_sp_artillery_brigade #中自火
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@medium_tank_destroyer_brigade #中坦歼
+		}
+        add_to_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@heavy_armor #重坦
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@heavy_sp_anti_air_brigade #重防空
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@heavy_sp_artillery_brigade #重自火
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@heavy_tank_destroyer_brigade #重坦歼
+		}
+        add_to_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@super_heavy_armor #超重坦
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@super_heavy_sp_anti_air_brigade #轻防空
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@super_heavy_sp_artillery_brigade #轻自火
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@super_heavy_tank_destroyer_brigade #轻坦歼
+		}
+        add_to_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@modern_armor #现代坦
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@modern_sp_anti_air_brigade #现代防空
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@modern_sp_artillery_brigade #现代自火
+		}
+		set_temp_variable = { 
+			var = armor_bat_count 
+			value = num_battalions_with_type@modern_tank_destroyer_brigade #现代坦歼
+		}
+
+        check_variable = { 
+			armor_bat_count > 89 
+		}
+
+        # 满编检查：
+        # 所有含机械化/装甲类营的师，强度都必须 ≥ 99%
+        NOT = {
+            any_country_division = {
+                unit_strength < 0.99
+                OR = {
+                    division_has_battalion_in_template = mechanized
+                    division_has_battalion_in_template = light_armor
+					division_has_battalion_in_template = light_sp_anti_air_brigade
+					division_has_battalion_in_template = light_sp_artillery_brigade
+					division_has_battalion_in_template = light_tank_destroyer_brigade
+                    division_has_battalion_in_template = medium_armor
+					division_has_battalion_in_template = medium_sp_anti_air_brigade
+					division_has_battalion_in_template = medium_sp_artillery_brigade
+					division_has_battalion_in_template = medium_tank_destroyer_brigade
+                    division_has_battalion_in_template = heavy_armor
+					division_has_battalion_in_template = heavy_sp_anti_air_brigade
+					division_has_battalion_in_template = heavy_sp_artillery_brigade
+					division_has_battalion_in_template = heavy_tank_destroyer_brigade
+                    division_has_battalion_in_template = super_heavy_armor
+					division_has_battalion_in_template = super_heavy_sp_anti_air_brigade
+					division_has_battalion_in_template = super_heavy_sp_artillery_brigade
+					division_has_battalion_in_template = super_heavy_tank_destroyer_brigade
+                    division_has_battalion_in_template = modern_armor
+					division_has_battalion_in_template = modern_sp_anti_air_brigade
+					division_has_battalion_in_template = modern_sp_artillery_brigade
+					division_has_battalion_in_template = modern_tank_destroyer_brigade
+                }
+            }
+        }
+    }
+}

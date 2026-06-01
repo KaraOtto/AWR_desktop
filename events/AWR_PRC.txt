@@ -2,6 +2,8 @@ add_namespace = AWR_PRC
 add_namespace = PRC_liu_zhidan
 add_namespace = PRC_dong_zhentang
 add_namespace = PRC_lu_dongsheng
+add_namespace = PRC_zhang_guotao
+add_namespace = PRC_xu_guangda
 country_event = { #漫漫黄沙中的无线电波
 	id = AWR_PRC.1
 	title = AWR_PRC.1.t
@@ -5301,6 +5303,350 @@ country_event = {	#重启内战
 	}
 }
 
+country_event = {	#中央政治局会议——王明谈统一战线和政治自由的重要性
+	id = AWR_PRC.103
+	title = AWR_PRC.103.t
+	desc = AWR_PRC.103.d
+	picture = GFX_report_event_wang_ming
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.103.a
+		ai_chance = {
+			factor = 0
+		}
+		set_temp_variable = { 
+			temp_member = 3 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.035 
+			tooltip = TEB_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		add_political_power = -45
+	}
+	option = {
+		name = AWR_PRC.103.b
+		ai_chance = {
+			factor = 0
+		}
+		set_temp_variable = { 
+			temp_member = 3 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.025 
+			tooltip = TEB_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		add_political_power = -25
+	}
+	option = {
+		name = AWR_PRC.103.c
+		ai_chance = {
+			factor = 1
+		}
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		set_temp_variable = { 
+			temp_member = 3 
+		}
+		set_temp_variable = { 
+			temp_seats = 0.015 
+			tooltip = TEB_faction_support_tt 
+		}
+		modify_parliament_seat = yes
+		add_political_power = -10
+	}
+}
+
+country_event = {	#《关于若干历史问题的决议》通过
+	id = AWR_PRC.104
+	title = AWR_PRC.104.t
+	desc = {
+		text = AWR_PRC.104.d
+		trigger = {
+			leader_is_maoist = yes
+		}
+	}
+	desc = {
+		text = AWR_PRC.104.dnomao
+		trigger = {
+			leader_is_maoist = no
+		}
+	}
+	picture = GFX_report_event_conference_of_soviet_regions
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.104.a
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = {
+				leader_is_zhang_guotao = yes
+			}
+			add_ideas = CCP_question_history_zhang
+		}
+		if = {
+			limit = {
+				leader_is_maoist = yes
+			}
+			add_ideas = CCP_question_history_mao
+		}
+		if = {
+			limit = {
+				leader_is_28b = yes
+			}
+			add_ideas = CCP_question_history_teb
+		}
+		if = {
+			limit = {
+				leader_is_trotskyist = yes
+			}
+			add_ideas = CCP_question_history_trot
+		}
+	}
+}
+
+country_event = {	#中国共产党的第七次全国代表大会
+	id = AWR_PRC.105
+	title = AWR_PRC.105.t
+	desc = AWR_PRC.105.d
+	picture = GFX_report_event_conference_of_soviet_regions
+	is_triggered_only = yes
+	#fire_only_once = yes
+	immediate = {
+		set_global_flag = its_seventh_now
+	}
+	option = {
+		name = AWR_PRC.105.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = 25
+		country_event = {
+			id = AWR_PRC.106
+		}
+	}
+}
+
+country_event = {	#《两个中国之命运》
+	id = AWR_PRC.106
+	title = AWR_PRC.106.t
+	desc = AWR_PRC.106.desc
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.106.a
+		ai_chance = {
+			base = 100
+		}	
+		hidden_effect = { 
+			country_event = {
+				id = AWR_PRC.107
+			} 
+		}
+	}
+}
+
+country_event = {	#《两个中国之命运》
+	id = AWR_PRC.107
+	title = AWR_PRC.107.t
+	desc = AWR_PRC.107.desc
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.107.a
+		ai_chance = {
+			base = 0
+		}
+
+		hidden_effect = { 
+			country_event = {
+				id = AWR_PRC.106
+			} 
+		}
+	}
+
+	option = {
+		name = AWR_PRC.107.b
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = GFX_report_event_lianggemingyun
+	}
+}
+
+country_event = {	#《论联合政府》
+	id = AWR_PRC.108
+	title = AWR_PRC.108.t
+	desc = AWR_PRC.108.d
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.108.a
+		add_timed_idea = {
+			idea = PRC_idea_lunlianhezhengfu
+			days = 180
+		}
+	}
+}
+
+country_event = {	#论解放区战场#
+	id = AWR_PRC.109
+	title = AWR_PRC.109.t
+	desc = AWR_PRC.109.d
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = be_high
+			}
+			add_timed_idea = {
+				idea = PRC_idea_lunjiefangquzhanchang_high
+				days = 180
+			}
+			else = {
+				add_timed_idea = {
+					idea = PRC_idea_lunjiefangquzhanchang
+					days = 180
+				}
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC.109.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		name = AWR_PRC.109.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+country_event = {	#论统一战线#
+	id = AWR_PRC.110
+	title = AWR_PRC.110.t
+	desc = AWR_PRC.110.d
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.110.a
+		add_timed_idea = {
+			idea = PRC_idea_luntongyizhanxian
+			days = 180
+		}
+	}
+}
+
+country_event = {	#党的干部成长#
+	id = AWR_PRC.111
+	title = AWR_PRC.111.t
+	desc = AWR_PRC.111.d 
+	picture = GFX_report_event_boyibo
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.111.a
+		every_army_leader = {
+			limit = { 
+				has_trait = rising_young_officer 
+			}
+			remove_unit_leader_trait = rising_young_officer
+			add_unit_leader_trait = rising_young_officer_2
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		if = {
+			limit = { 
+				has_character = SHX_Bo_Yibo 
+			}
+			remove_trait = {
+				character = SHX_Bo_Yibo
+				slot = political_advisor
+				trait = lieutenant_of_industry
+			}
+			add_trait = {
+				character = SHX_Bo_Yibo
+				slot = political_advisor
+				trait = caizhengbuzhang_new
+			}
+		}
+		
+		army_experience = 50
+	}
+}
+
+country_event = {	#《关于修改党章的报告》
+	id = AWR_PRC.112
+	title = AWR_PRC.112.t
+	desc = AWR_PRC.112.d
+	picture = GFX_report_event_7th_plenum
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.112.a
+		ai_chance = {
+			factor = 1
+		}
+		if = {
+			limit = {
+				leader_is_zhang_guotao = yes
+			}
+			add_ideas = CCP_constitution_zhang
+		}
+		if = {
+			limit = {
+				leader_is_maoist = yes
+			}
+			add_ideas = CCP_constitution_mao
+		}
+		if = {
+			limit = {
+				leader_is_28b = yes
+			}
+			add_ideas = CCP_constitution_28b
+		}
+		if = {
+			limit = {
+				leader_is_trotskyist = yes
+			}
+			add_ideas = CCP_constitution_trot
+		}
+	}
+}
+
+country_event = {	#中国人民解放军机械化部队组建完成
+	id = AWR_PRC.113
+	title = AWR_PRC.113.t
+	desc = AWR_PRC.113.d
+	picture = GFX_report_event_7th_plenum
+	trigger = {
+		has_90_full_mech_and_armor_battalions = yes
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = the_mechanized_armor_troops_have_been_formed
+	}
+
+	option = {
+		name = AWR_PRC.113.a
+		ai_chance = {
+			factor = 1
+		}
+		add_war_support = 0.05
+	}
+}
+
+
+#人物事件
 unit_leader_event = {#刘志丹同志壮烈牺牲
 	id = PRC_liu_zhidan.1
 	title = PRC_liu_zhidan.1.t
@@ -5443,7 +5789,7 @@ unit_leader_event = {	#陆冬生回国
 
 	option = {
 		name = PRC_lu_dongsheng.2.a
-		crl_global_flag = lu_dongsheng_has_gone_to_Moscow
+		clr_global_flag = lu_dongsheng_has_gone_to_Moscow
 		set_global_flag = lu_dongsheng_is_back
 	}
 }
@@ -5464,5 +5810,54 @@ unit_leader_event = {	##陆冬生遇害
 		    factor = 100
 		}		
 	}	
+}
+
+unit_leader_event = {	##批判张国焘
+	id = PRC_zhang_guotao.1
+	title = PRC_zhang_guotao.1.t
+	desc = PRC_zhang_guotao.1.d
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		set_global_flag = zhangguotao_yibeipipan
+	}	
+
+	option = { 
+		name = PRC_zhang_guotao.1.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = -35
+		set_temp_variable = { 
+			temp_member = 1 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.1 
+			tooltip = ZHANG_faction_support_tt 
+		} 
+		modify_parliament_seat = yes
+		remove_ideas = PRC_zhang_guotao
+	}
+}
+
+unit_leader_event = {	#解放军机械化路线
+	id = PRC_xu_guangda.1
+	title = PRC_xu_guangda.1.t
+	desc = PRC_xu_guangda.1.d
+	
+	is_triggered_only = yes
+
+	option = {
+		name = PRC_xu_guangda.1.a
+		set_country_flag = full_speed_ahead
+	}
+
+	option = {
+		name = PRC_xu_guangda.2.a
+		set_country_flag = go_ahead_with_stability
+	}
 }
 

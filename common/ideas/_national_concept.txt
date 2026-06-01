@@ -12,11 +12,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				has_idea = materialism
-				has_stability > 0.75
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				research_speed_factor = 0.25
@@ -38,13 +37,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = both_materfialism_and_idealism
-					has_idea = extreme_materialism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				research_speed_factor = 0.10
@@ -55,17 +51,13 @@ ideas = {
 			cancel_if_invalid = no
 		}
 
-		both_materfialism_and_idealism = {#实用主义
-			picture = both_materfialism_and_idealism
+		pragmatism = {#实用主义
+			picture = pragmatism
 			available = {
-				OR = {
-					has_idea = materialism
-					has_idea = idealism
-					has_government = communism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				research_speed_factor = 0.05
@@ -88,16 +80,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = both_materfialism_and_idealism
-					has_idea = extreme_idealism
-				}
-				NOT = {
-					has_government = communism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				political_power_factor = 0.15
@@ -122,13 +108,10 @@ ideas = {
 			}
 
 			available = {
-				has_idea = idealism
-				NOT = {
-					has_government = communism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				political_power_factor = 0.30
@@ -159,13 +142,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				has_idea = friendly
-				NOT = {
-					has_government =  fascism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				operation_infiltrate_outcome = 0.50
@@ -195,16 +175,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = neither_friendly_nor_unfriendly
-					has_idea = extreme_friendly
-				}
-				NOT = {
-					has_government =  fascism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				operation_infiltrate_outcome = 0.25
@@ -225,14 +199,12 @@ ideas = {
 
 		neither_friendly_nor_unfriendly = {#孤立主义
 			picture = neither_friendly_nor_unfriendly
+
 			available = {
-				OR = {
-					has_idea = friendly
-					has_idea = unfriendly
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				operation_infiltrate_outcome = 0.05
@@ -253,13 +225,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = neither_friendly_nor_unfriendly
-					has_idea = extreme_unfriendly
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				ENEMY_OPERATIVE_INTEL_EXTRACTION_RATE = -0.25
@@ -285,10 +254,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				has_idea = idealism
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				ENEMY_OPERATIVE_INTEL_EXTRACTION_RATE = -0.50
@@ -319,13 +288,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				has_idea = pacifism
-				NOT = {
-					has_government = fascism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				guarantee_tension = 100
@@ -363,22 +329,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = between_pacifism_and_expansionism
-					has_idea = extreme_pacifism
-				}
-				NOT = {
-					has_government = fascism
-					AND = {
-						NOT = {
-							has_idea = extreme_pacifism
-						}
-						has_war = yes
-					}
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				guarantee_tension = 1.00
@@ -407,13 +361,10 @@ ideas = {
 		between_pacifism_and_expansionism = {#有限战争
 			picture = between_pacifism_and_expansionism
 			available = {
-				OR = {
-					has_idea = pacifism
-					has_idea = expansionism
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				offensive_war_stability_factor = 0.10
@@ -437,16 +388,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				OR = {
-					has_idea = between_pacifism_and_expansionism
-					has_idea = extreme_expansionism
-				}
-				NOT = {
-					has_government = democratic
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				offensive_war_stability_factor = 0.10
@@ -474,13 +419,10 @@ ideas = {
 				always = yes
 			}
 			available = {
-				has_idea = expansionism
-				NOT = {
-					has_government = democratic
-				}
+				always = no
 			}
 
-			cost = 150
+			cost = 0
 
 			modifier = {
 				offensive_war_stability_factor = 0.20

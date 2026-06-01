@@ -1054,9 +1054,9 @@ ideas = {
 				command_power_gain_mult = 0.05
 				max_command_power = 10
 				planning_speed = 0.15
-				max_planning = 0.06
-				land_reinforce_rate = 0.08
-				coordination_bonus = 0.08
+				max_planning = 0.05
+				land_reinforce_rate = 0.05
+				coordination_bonus = 0.05
 				army_leader_cost_factor = -0.25
 				army_chief_cost_factor = -0.15  
 				theorist_cost_factor = -0.15  
@@ -1086,8 +1086,8 @@ ideas = {
 				experience_gain_factor = 0.15 #guo
 				planning_speed = 0.20
 				max_planning = 0.10
-				land_reinforce_rate = 0.12
-				coordination_bonus = 0.12
+				land_reinforce_rate = 0.10
+				coordination_bonus = 0.10
 				army_leader_cost_factor = -0.5
 				army_chief_cost_factor = -0.25  
 				theorist_cost_factor = -0.25  
@@ -2410,6 +2410,25 @@ ideas = {
 			}
 		}
 
+		PRC_Victory_in_the_west_no_zhang = {	#鼓舞人心的胜利
+			removal_cost = -1
+
+			picture = air_support_focus
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_factor = 0.05
+				army_morale_Factor = 0.15
+			}			
+		}
+
 		prc_ducai = {	#张氏独裁
             name = prc_ducai		
 			picture = ducai
@@ -3205,7 +3224,7 @@ ideas = {
 		}
 
 		PRC_ideas_shandizuozhanzhuanjia = {	#山地游击战
-		    picture = generic_mountain_warfare
+		    picture = shandiyoujizhan
 			
 			allowed_civil_war = {
 				always = yes
@@ -3226,7 +3245,7 @@ ideas = {
 		prc_north_development_south_defence = {	#向北发展，向南防御
 			removal_cost = -1
 
-			picture = CZE_planning_bonus
+			picture = prc_north_development_south_defence
 
 			allowed = {
 				always = no
@@ -3247,7 +3266,7 @@ ideas = {
 
 		War_of_Liberation = {	#解放战争
 
-			picture = FRA_scw_intervention_republicans_focus
+			picture = War_of_Liberation_idea
 
 			allowed_civil_war = {
 				always = yes
@@ -3270,7 +3289,7 @@ ideas = {
 
 		PRC_War_of_Liberation_defense = {	#解放战争——战略防御
 
-			picture = PRC_morale
+			picture = PRC_War_of_Liberation_defense
 
 			allowed = {
 				always = no
@@ -3300,7 +3319,7 @@ ideas = {
 
 		PRC_War_of_Liberation_attack = {	#解放战争——战略进攻
 
-			picture = PRC_morale
+			picture = PRC_War_of_Liberation_attack
 
 			allowed = {
 				always = no
@@ -3341,6 +3360,761 @@ ideas = {
 				tag = CHI
 				army_defence_factor = 0.05
 				army_attack_factor = 0.05
+			}
+		}
+
+		prc_idea_politburo = {	#强化政治局
+
+			picture = prc_idea_politburo
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.1
+			}
+		}
+
+		CCP_question_history_zhang = {	#历史问题——张国焘
+			picture = CCP_question_history
+			name = CCP_question_history
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = ZHANG_faction_neg_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { CCP_question_history_mao_counter = 15 } 
+					set_variable = { CCP_question_history_teb_counter = 15 } 
+					set_variable = { CCP_question_history_trot_counter = 15 } 
+					add_to_variable = { mao_total = -0.5 }
+					add_to_variable = { teb_total = -0.5 } 
+					add_to_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { mao_total = -0.5 } 
+					subtract_from_variable = { teb_total = -0.5 } 
+					subtract_from_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+		}
+
+		CCP_question_history_mao = {	##历史问题——毛泽东
+			picture = CCP_question_history
+			name = CCP_question_history
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = MAO_faction_neg_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { CCP_question_history_zhang_counter = 15 } 
+					set_variable = { CCP_question_history_teb_counter = 15 } 
+					set_variable = { CCP_question_history_trot_counter = 15 } 
+					add_to_variable = { zhang_total = -0.5 } 
+					add_to_variable = { teb_total = -0.5 }
+					add_to_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { zhang_total = -0.5 } 
+					subtract_from_variable = { teb_total = -0.5 } 
+					subtract_from_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+		}
+
+		CCP_question_history_teb = {	#历史问题——二十八个半布尔什维克
+			picture = CCP_question_history
+			name = CCP_question_history
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = TEB_faction_neg_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { CCP_question_history_zhang_counter = 15 } 
+					set_variable = { CCP_question_history_mao_counter = 15 } 
+					set_variable = { CCP_question_history_trot_counter = 15 } 
+					add_to_variable = { zhang_total = -0.5 } 
+					add_to_variable = { mao_total = -0.5 } 
+					add_to_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { zhang_total = -0.5 } 
+					subtract_from_variable = { mao_total = -0.5 } 
+					subtract_from_variable = { trotskyist_total = -0.5 } 
+				}
+			}
+		}
+
+		CCP_question_history_trot = {	#历史问题——托派
+			picture = CCP_question_history
+			name = CCP_question_history
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			
+
+			modifier = {
+				custom_modifier_tooltip = TROT_faction_neg_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { CCP_question_history_zhang_counter = 15 } 
+					set_variable = { CCP_question_history_mao_counter = 15 } 
+					set_variable = { CCP_question_history_teb_counter = 15 } 
+					add_to_variable = { zhang_total = -0.5 } 
+					add_to_variable = { mao_total = -0.5 } 
+					add_to_variable = { teb_total = -0.5 }
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { zhang_total = -0.5 } 
+					subtract_from_variable = { mao_total = -0.5 } 
+					subtract_from_variable = { teb_total = -0.5 } 
+				}
+			}
+		}
+
+		CCP_constitution_zhang = {
+			name = CCP_constitution
+			picture = CCP_constitution
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+
+			modifier = {
+				custom_modifier_tooltip = ZHANG_faction_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						CCP_constitution_zhang_counter = 15 
+					}
+					add_to_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 0.5 
+					}
+				}
+			}
+		}
+
+		CCP_constitution_mao = {
+			name = CCP_constitution
+			picture = CCP_constitution
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+
+			modifier = {
+				custom_modifier_tooltip = MAO_faction_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						CCP_constitution_mao_counter = 15 
+					} 
+					add_to_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+		}
+
+		CCP_constitution_28b = {
+			name = CCP_constitution
+			picture = CCP_constitution
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+
+			modifier = {
+				custom_modifier_tooltip = TEB_faction_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						CCP_constitution_28b_counter = 15 
+					} 
+					add_to_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+		}
+
+		CCP_constitution_trot = {
+			name = CCP_constitution
+			picture = CCP_constitution
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+
+			modifier = {
+				custom_modifier_tooltip = TROT_faction_monthly_tt
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { 
+						CCP_constitution_trot_counter = 15 
+					} 
+					
+					add_to_variable = { 
+						teb_total = 0.5 
+					} 
+					
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					subtract_from_variable = { 
+						teb_total = 0.5 
+					} 
+				}
+			}
+		}
+
+		PRC_idea_lunlianhezhengfu = { #论联合政府
+			picture = lunlianhezhengfu
+			allowed = { 
+				original_tag = PRC 
+			}
+			cancel = { 
+				has_war_with = event_target:WTT_current_china_leader 
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.5
+			}
+		}
+
+		PRC_idea_lunjiefangquzhanchang_high = { #论解放区战场
+			name = PRC_idea_lunjiefangquzhanchang
+			picture = lunjiefangquzhanchang
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				army_morale_Factor = 0.10
+				army_org_factor = 0.10
+				land_reinforce_rate = 0.05
+				army_core_attack_factor = 0.10 #核心领土单位攻击
+				army_core_defence_factor = 0.10 #核心领土单位防御
+				breakthrough_factor = 0.10
+			}
+		}
+
+		PRC_idea_lunjiefangquzhanchang = { #论解放区战场
+			name = PRC_idea_lunjiefangquzhanchang
+			picture = lunjiefangquzhanchang
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				army_morale_Factor = 0.05
+				army_org_factor = 0.05
+				army_core_attack_factor = 0.05 #核心领土单位攻击
+				army_core_defence_factor = 0.05 #核心领土单位防御
+				breakthrough_factor = 0.05
+			}
+		}
+
+		PRC_idea_luntongyizhanxian = { #论统一战线
+			picture = luntongyizhanxian
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				party_popularity_stability_factor = 0.15
+			}
+		}
+
+		PRC_million_army_cross_river = {	#百万雄师过大江
+
+			picture = PRC_million_army_cross_river
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				river_crossing_factor = -0.50
+				army_org_factor = 0.05
+				army_morale_factor = 0.05
+				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_1 = {		#解放军军事学院
+			name = PRC_jiefangjunjunshixueyuan
+
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_2 = {		#解放军军事学院
+			name = PRC_jiefangjunjunshixueyuan
+
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_3 = {		#解放军军事学院
+			name = PRC_jiefangjunjunshixueyuan
+
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+				max_training = 0.45
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_new_mobile_warfare = {		#解放军军事学院 机动
+			name = PRC_jiefangjunjunshixueyuan
+			
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+				new_mobile_warfare_mastery_gain_factor = 0.15
+				max_training = 0.45
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_superior_firepower = {		#解放军军事学院 优火
+			name = PRC_jiefangjunjunshixueyuan
+			
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+				superior_firepower_mastery_gain_factor = 0.15
+				max_training = 0.45
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_grand_battleplan = {		#解放军军事学院 决战
+			name = PRC_jiefangjunjunshixueyuan
+			
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+				grand_battleplan_mastery_gain_factor = 0.15
+				max_training = 0.45
+			}
+		}
+
+		PRC_jiefangjunjunshixueyuan_mass_assault = {		#解放军军事学院 人海
+			name = PRC_jiefangjunjunshixueyuan
+			
+			picture = PRC_jiefangjunjunshixueyuan
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				training_time_army_factor = -0.15
+				mass_assault_mastery_gain_factor = 0.15
+				max_training = 0.45
+			}
+		}
+
+		new_homemade_artillery = {	#国产火炮
+			picture = homemade_artillery
+
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = -0.15
+					soft_attack = 0.05
+					hard_attack = 0.05
+					reliability = 0.05
+					instant = yes
+				}
+
+				anti_air_equipment = {
+					build_cost_ic = -0.15
+					soft_attack = 0.05
+					hard_attack = 0.05
+					reliability = 0.05
+					instant = yes
+				}
+
+				anti_tank_equipment = {
+					build_cost_ic = -0.15
+					soft_attack = -0.05
+					hard_attack = -0.05
+					reliability = -0.05
+					instant = yes
+				}
+			}
+		}
+
+		homemade_tank = {	#国产坦克
+			picture = homemade_tank
+
+			equipment_bonus = {
+
+				light_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+				}
+				light_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				light_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.10
+				}
+				light_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.05
+					ap_attack = 0.05
+				}
+
+				medium_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+				}
+				medium_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				medium_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.10
+				}
+				medium_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.05
+					ap_attack = 0.05
+				}
+
+				heavy_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+				}
+				heavy_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				heavy_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.10
+				}
+				heavy_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.05
+					ap_attack = 0.05
+				}
+				
+				modern_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.15
+					soft_attack = 0.05
+					hard_attack = 0.05
+					ap_attack = 0.05
+				}
+				modern_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.15
+				}
+				modern_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.15
+				}
+				modern_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.10
+					ap_attack = 0.10
+				}
+			}
+		}
+
+		homemade_tank_1 = {	#国产坦克
+			name = homemade_tank
+			picture = homemade_tank
+
+			equipment_bonus = {
+
+				light_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+					soft_attack = 0.05
+					hard_attack = 0.05
+				}
+				light_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				light_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.20
+				}
+				light_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.10
+					ap_attack = 0.10
+				}
+
+				medium_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+					soft_attack = 0.05
+				}
+				medium_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				medium_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.20
+				}
+				medium_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.10
+					ap_attack = 0.10
+				}
+
+				heavy_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.10
+					soft_attack = 0.05
+					hard_attack = 0.05
+				}
+				heavy_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				heavy_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.10
+				}
+				heavy_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.10
+					ap_attack = 0.10
+				}
+				
+				modern_tank_chassis = {
+					build_cost_ic = -0.05
+					breakthrough = 0.15
+					soft_attack = 0.10
+					hard_attack = 0.10
+					ap_attack = 0.10
+				}
+				modern_tank_aa_chassis = {
+					build_cost_ic = -0.05
+					air_attack = 0.10
+				}
+				modern_tank_artillery_chassis = {
+					build_cost_ic = -0.05
+					soft_attack = 0.25
+				}
+				modern_tank_destroyer_chassis = {
+					build_cost_ic = -0.05
+					hard_attack = 0.15
+					ap_attack = 0.15
+				}
+			}
+		}
+
+		dierpaobing = {
+			picture = dierpaobing
+			modifier = {
+				sp_tag_rocket_speed_factor = 0.30
 			}
 		}
 	}
@@ -3410,6 +4184,26 @@ ideas = {
 			cancel = {
 				#
 			}			
+		}
+
+		PRC_jiefangjunlujun_tooltip_original = {	#假idea 中国人民解放军
+			allowed = {
+			    always = no			
+			}
+
+			modifier = {
+				#
+			}
+		}
+
+		PRC_jiefangjunlujun_tooltip_original_1 = {	##假idea 中国人民解放军
+			allowed = {
+			    always = no			
+			}
+
+			modifier = {
+				#
+			}
 		}
 	}
 }

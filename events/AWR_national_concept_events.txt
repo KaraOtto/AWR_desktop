@@ -1,0 +1,599 @@
+add_namespace = extreme_materialism
+# =========================================================
+# 事件A：极端唯物主义实验结果
+# 用于随机触发 B / C / D / E
+# =========================================================
+country_event = {
+    id = extreme_materialism.1
+    title = extreme_materialism.1.t
+    desc = extreme_materialism.1.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    trigger = {
+        extreme_materialism_current_land_sp_exists = yes
+    }
+
+    option = {
+        name = extreme_materialism.1.a
+
+        hidden_effect = {
+            random_list = {
+                20 = {
+                    country_event = { 
+						id = extreme_materialism.2 
+                        days = 90
+					} # 重大突破
+                }
+                30 = {
+                    country_event = { 
+						id = extreme_materialism.3 
+                        days = 90
+					} # 成功
+                }
+                30 = {
+                    country_event = { 
+						id = extreme_materialism.4 
+                        days = 90
+					} # 部分成功
+                }
+                20 = {
+                    country_event = { 
+						id = extreme_materialism.5 
+                        days = 90
+					} # 失败
+                }
+            }
+        }
+    }
+}
+
+# =========================================================
+# 事件B：重大突破
+# 当前研究的陆军工程特殊项目进度 +100%
+# 研究此项目的科学家等级 +2
+# 概率：20%
+# =========================================================
+country_event = {
+    id = extreme_materialism.2
+    title = extreme_materialism.2.t
+    desc = extreme_materialism.2.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.2.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_land_sp_1 = yes
+
+            extreme_materialism_add_level_to_current_land_sp_scientist = yes
+        }
+    }
+}
+
+# =========================================================
+# 事件C：成功
+# 当前研究的陆军工程特殊项目进度 +30%
+# 根据项目类型赠送 100% 陆军研究加成卡
+# 概率：30%
+# =========================================================
+country_event = {
+    id = extreme_materialism.3
+    title = extreme_materialism.3.t
+    desc = extreme_materialism.3.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.3.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_land_sp_2 = yes
+
+            extreme_materialism_add_land_sp_research_bonus_1 = yes
+        }
+    }
+}
+
+# =========================================================
+# 事件D：部分成功
+# 当前研究的陆军工程特殊项目进度 +15%
+# 根据项目类型赠送 50% 陆军研究加成卡
+# 概率：30%
+# =========================================================
+country_event = {
+    id = extreme_materialism.4
+    title = extreme_materialism.4.t
+    desc = extreme_materialism.4.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.4.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_land_sp_3 = yes
+
+            extreme_materialism_add_land_sp_research_bonus_2 = yes
+        }
+    }
+}
+
+# =========================================================
+# 事件E：失败
+# 研究此陆军工程的研究所损坏 80%
+# 稳定度 -0.05
+# 持续 140 天，每周稳定度 +0.0025
+# 概率：20%
+# =========================================================
+country_event = {
+    id = extreme_materialism.5
+    title = extreme_materialism.5.t
+    desc = extreme_materialism.5.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.5.a
+
+        add_stability = -0.05
+
+        add_timed_idea = {
+            idea = extreme_materialism_failed_experiment_recovery
+            days = 140
+        }
+
+        hidden_effect = {
+            extreme_materialism_damage_current_land_sp_facility = yes
+        }
+    }
+}
+
+# =========================================================
+# 海军事件A：随机触发海军 B / C / D / E
+# =========================================================
+country_event = {
+    id = extreme_materialism.101
+    title = extreme_materialism.101.t
+    desc = extreme_materialism.101.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    trigger = {
+        extreme_materialism_current_naval_sp_exists = yes
+    }
+
+    option = {
+        name = extreme_materialism.101.a
+
+        hidden_effect = {
+            random_list = {
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.102 
+                        days = 90
+                    } 
+                } # 重大突破
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.103 
+                        days = 90
+                    } 
+                } # 成功
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.104 
+                        days = 90
+                    } 
+                } # 部分成功
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.105 
+                        days = 90
+                    } 
+                } # 失败
+            }
+        }
+    }
+}
+
+# 海军B：重大突破
+country_event = {
+    id = extreme_materialism.102
+    title = extreme_materialism.102.t
+    desc = extreme_materialism.102.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.102.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_naval_sp_1 = yes
+
+            extreme_materialism_add_level_to_current_naval_sp_scientist = yes
+        }
+    }
+}
+
+# 海军C：成功
+country_event = {
+    id = extreme_materialism.103
+    title = extreme_materialism.103.t
+    desc = extreme_materialism.103.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.103.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_naval_sp_2 = yes
+
+            extreme_materialism_add_naval_sp_research_bonus_1 = yes
+        }
+    }
+}
+
+# 海军D：部分成功
+country_event = {
+    id = extreme_materialism.104
+    title = extreme_materialism.104.t
+    desc = extreme_materialism.104.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.104.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_naval_sp_3 = yes
+
+            extreme_materialism_add_naval_sp_research_bonus_2 = yes
+        }
+    }
+}
+
+# 海军E：失败
+country_event = {
+    id = extreme_materialism.105
+    title = extreme_materialism.105.t
+    desc = extreme_materialism.105.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.105.a
+
+        add_stability = -0.05
+
+        add_timed_idea = {
+            idea = extreme_materialism_failed_experiment_recovery
+            days = 140
+        }
+
+        hidden_effect = {
+            extreme_materialism_damage_current_naval_sp_facility = yes
+        }
+    }
+}
+
+# =========================================================
+# 空军事件A：随机触发空军 B / C / D / E
+# =========================================================
+country_event = {
+    id = extreme_materialism.201
+    title = extreme_materialism.201.t
+    desc = extreme_materialism.201.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    trigger = {
+        extreme_materialism_current_air_sp_exists = yes
+    }
+
+    option = {
+        name = extreme_materialism.201.a
+
+        hidden_effect = {
+            random_list = {
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.202 
+                        days = 90
+                    } 
+                }
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.203 
+                        days = 90
+                    } 
+                }
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.204 
+                        days = 90
+                    } 
+                }
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.205 
+                        days = 90
+                    } 
+                }
+            }
+        }
+    }
+}
+
+# 空军B：重大突破
+country_event = {
+    id = extreme_materialism.202
+    title = extreme_materialism.202.t
+    desc = extreme_materialism.202.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.202.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_air_sp_1 = yes
+
+            extreme_materialism_add_level_to_current_air_sp_scientist = yes
+        }
+    }
+}
+
+# 空军C：成功
+country_event = {
+    id = extreme_materialism.203
+    title = extreme_materialism.203.t
+    desc = extreme_materialism.203.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.203.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_air_sp_2 = yes
+
+            extreme_materialism_add_air_sp_research_bonus_1 = yes
+        }
+    }
+}
+
+# 空军D：部分成功
+country_event = {
+    id = extreme_materialism.204
+    title = extreme_materialism.204.t
+    desc = extreme_materialism.204.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.204.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_air_sp_3 = yes
+
+            extreme_materialism_add_air_sp_research_bonus_2 = yes
+        }
+    }
+}
+
+# 空军E：失败
+country_event = {
+    id = extreme_materialism.205
+    title = extreme_materialism.205.t
+    desc = extreme_materialism.205.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.205.a
+
+        add_stability = -0.05
+
+        add_timed_idea = {
+            idea = extreme_materialism_failed_experiment_recovery
+            days = 140
+        }
+
+        hidden_effect = {
+            extreme_materialism_damage_current_air_sp_facility = yes
+        }
+    }
+}
+
+# =========================================================
+# 核能事件A：随机触发核能 B / C / D / E
+# =========================================================
+country_event = {
+    id = extreme_materialism.301
+    title = extreme_materialism.301.t
+    desc = extreme_materialism.301.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    trigger = {
+        extreme_materialism_current_nuclear_sp_exists = yes
+    }
+
+    option = {
+        name = extreme_materialism.301.a
+
+        hidden_effect = {
+            random_list = {
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.302 
+                        days = 90
+                    } 
+                }
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.303 
+                        days = 90
+                    } 
+                }
+                30 = { 
+                    country_event = { 
+                        id = extreme_materialism.304 
+                        days = 90
+                    }
+                }
+                20 = { 
+                    country_event = { 
+                        id = extreme_materialism.305 
+                        days = 90
+                    } 
+                }
+            }
+        }
+    }
+}
+
+# 核能B：重大突破
+country_event = {
+    id = extreme_materialism.302
+    title = extreme_materialism.302.t
+    desc = extreme_materialism.302.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.302.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_nuclear_sp_1 = yes
+
+            extreme_materialism_add_level_to_current_nuclear_sp_scientist = yes
+        }
+    }
+}
+
+# 核能C：成功
+country_event = {
+    id = extreme_materialism.303
+    title = extreme_materialism.303.t
+    desc = extreme_materialism.303.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.303.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_nuclear_sp_2 = yes
+        }
+    }
+}
+
+# 核能D：部分成功
+country_event = {
+    id = extreme_materialism.304
+    title = extreme_materialism.304.t
+    desc = extreme_materialism.304.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.304.a
+
+        hidden_effect = {
+            extreme_materialism_add_progress_to_current_nuclear_sp_3 = yes
+        }
+    }
+}
+
+# 核能E：失败
+country_event = {
+    id = extreme_materialism.305
+    title = extreme_materialism.305.t
+    desc = extreme_materialism.305.d
+    picture = GFX_report_event_scientist
+
+    is_triggered_only = yes
+
+    option = {
+        name = extreme_materialism.305.a
+
+        add_stability = -0.05
+
+        add_timed_idea = {
+            idea = extreme_materialism_failed_experiment_recovery
+            days = 140
+        }
+
+        hidden_effect = {
+            extreme_materialism_damage_current_nuclear_sp_facility = yes
+        }
+    }
+}
+
+
+
+add_namespace = idealism
+
+country_event = {	#选择国教
+	id = idealism.1
+	title = idealism.1.t
+	desc = idealism.1.desc
+	picture = GFX_choose_religion
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = idealism.1.a
+		ROOT = {
+			set_country_flag = Christianity
+		} 
+	}
+
+	option = {
+		name = idealism.1.b
+		ROOT = {
+			set_country_flag = Buddhism
+		} 
+	}
+
+	option = {
+		name = idealism.1.c
+		ROOT = {
+			set_country_flag = Islam
+		} 
+	}
+
+	option = {
+		name = idealism.1.d
+		ROOT = {
+			set_country_flag = local_religion
+		} 
+	}
+}
+

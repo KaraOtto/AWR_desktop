@@ -25,6 +25,63 @@ on_actions = {  #整风运动
                     value = 0
                 }
             }
+            if = {
+				limit = {
+					has_idea = yanan_rect_2 
+				}
+				add_to_variable = { 
+                    yanan_rect_2_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                yanan_rect_2_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 2 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.005 
+                        tooltip = MAOIST_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        yanan_rect_2_counter = 0 
+                    }		
+				}			
+			}
+			
+			if = {
+				limit = {
+					has_idea = yanan_rect_3 
+				}
+				add_to_variable = { 
+                    yanan_rect_3_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                yanan_rect_3_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 2 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.01 
+                        tooltip = MAOIST_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        yanan_rect_3_counter = 0 
+                    }		
+				}			
+			}
         }
     }
 }
@@ -635,6 +692,257 @@ on_actions = {  #托派支持者
                 }
 				modify_parliament_seat = yes
             }
+        }
+    }
+}
+
+on_actions = {  #党章
+    on_daily = {
+        effect = {
+            if = {
+				limit = {
+					has_idea = CCP_constitution_mao 
+				}
+				add_to_variable = { 
+                    CCP_constitution_mao_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_constitution_mao_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 2 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.005 
+                        tooltip = MAOIST_faction_support_tt 
+                    }
+
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_constitution_mao_counter = 0 
+                    }		
+				}			
+			}
+			
+			if = {
+				limit = {
+					OR = {
+						has_idea = CCP_question_history_zhang 
+						has_idea = CCP_question_history_teb 
+						has_idea = CCP_question_history_trot 
+					}
+				}
+				add_to_variable = { 
+                    CCP_question_history_mao_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_question_history_mao_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 2 
+                    }
+					set_temp_variable = { 
+                        temp_seats = -0.005 
+                        tooltip = MAOIST_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_question_history_mao_counter = 0 
+                    }		
+				}			
+			}
+
+            if = {
+				limit = {
+					has_idea = CCP_constitution_zhang 
+				}
+				add_to_variable = { 
+                    CCP_constitution_zhang_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_constitution_zhang_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 1 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.01 
+                        tooltip = TEB_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_constitution_zhang_counter = 0 
+                    }		
+				}			
+			}
+
+            if = {
+				limit = {
+					has_idea = CCP_question_history_zhang
+					has_idea = CCP_question_history_teb
+					has_idea = CCP_question_history_trot 
+				}
+				add_to_variable = { 
+                    CCP_question_history_mao_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_question_history_mao_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 1 
+                    }
+					set_temp_variable = { 
+                        temp_seats = -0.005 
+                        tooltip = TEB_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_question_history_mao_counter = 0 
+                    }		
+				}			
+			}
+
+            if = {
+				limit = {
+					has_idea = CCP_constitution_trot 
+				}
+				add_to_variable = { 
+                    CCP_constitution_trot_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_constitution_trot_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 4 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.005 
+                        tooltip = TROT_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_constitution_trot_counter = 0 
+                    }		
+				}			
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_idea = CCP_question_history_zhang 
+						has_idea = CCP_question_history_mao 
+						has_idea = CCP_question_history_teb 
+					}
+				}
+				add_to_variable = { CCP_question_history_trot_counter = 1 }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_question_history_trot_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 4 
+                    }
+					set_temp_variable = { 
+                        temp_seats = -0.005 
+                        tooltip = TROT_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_question_history_trot_counter = 0 
+                    }		
+				}			
+			}
+
+            if = {
+				limit = {
+					has_idea = CCP_constitution_28b 
+				}
+				add_to_variable = { 
+                    CCP_constitution_28b_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_constitution_28b_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 3 
+                    }
+					set_temp_variable = { 
+                        temp_seats = 0.005 
+                        tooltip = TROT_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_constitution_28b_counter = 0 
+                    }		
+				}			
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_idea = CCP_question_history_zhang 
+						has_idea = CCP_question_history_mao 
+						has_idea = CCP_question_history_trot 
+					}
+				}
+				add_to_variable = { 
+                    CCP_question_history_teb_counter = 1 
+                }
+				if = {
+					limit = {
+						NOT = { 
+                            check_variable = { 
+                                CCP_question_history_teb_counter < 30 
+                            } 
+                        }
+					}
+					set_temp_variable = { 
+                        temp_member = 3 
+                    }
+					set_temp_variable = { 
+                        temp_seats = -0.005 
+                        tooltip = teb_faction_support_tt 
+                    }
+					modify_parliament_seat = yes
+					set_variable = { 
+                        CCP_question_history_teb_counter = 0 
+                    }		
+				}			
+			}
         }
     }
 }
