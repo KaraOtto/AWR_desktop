@@ -12,123 +12,206 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			#designer = no
-			equipment_bonus = { 
-				artillery_equipment = {#牵引式火炮
-					build_cost_ic = 0.5
-					soft_attack = -0.1
-					hard_attack = -0.1
-					instant = yes
-				}				
-				armor = {#装甲
-					build_cost_ic = 30.0
+
+			equipment_bonus = {	
+				#####一级 步兵装备
+				infantry_equipment = {	#枪
+					build_cost_ic = 0.10
+					reliability = -0.10
 					instant = yes
 				}
-				
-				train_equipment = {#火车
-					build_cost_ic = 1.0
+				support_equipment = {	#支援装备
+					build_cost_ic = 0.10
+					reliability = -0.10
 					instant = yes
 				}
-				railway_gun_equipment = {#列车炮
-					build_cost_ic = 30.0
+				artillery_equipment = {	#火炮
+					build_cost_ic = 0.50
+					reliability = -0.10
 					instant = yes
 				}
-				mechanized_equipment = {#机械化
-					build_cost_ic = 30.0
+				anti_air_equipment = {	#防空炮
+					build_cost_ic = 0.50
+					reliability = -0.10
 					instant = yes
 				}
-				armored_car_equipment = {#装甲车
-					build_cost_ic = 3.0
+				anti_tank_equipment = {	#AT炮
+					build_cost_ic = 0.50
+					reliability = -0.10
 					instant = yes
 				}
-				motorized_equipment = {#摩托化
-					build_cost_ic = 3.0
+				rocket_artillery_equipment = {	#火箭炮
+					build_cost_ic = 0.50
+					reliability = -0.10
 					instant = yes
 				}
-				anti_air_equipment = {#防空炮
-					build_cost_ic = 10.0
+				motorized_equipment = {	#卡车
+					build_cost_ic = 0.50
+					reliability = -0.10
 					instant = yes
 				}
-				anti_tank_equipment = {#反坦克炮
-					build_cost_ic = 10.0
+
+				#####二级 陆军机械化装备及一些高科技步兵装备
+				motorized_rocket_equipment = {	#自行火箭炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_airframe = {#小型机身
-				    build_cost_ic = 30.0
+				super_heavy_artillery_equipment = {	#超重炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_airframe = {#小型支援机机身
-				    build_cost_ic = 30.0
+				self_propelled_super_heavy_artillery_equipment = {	#自行超重炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				#机械化部队
+				amphibious_mechanized_equipment = {	#两栖登陆车
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				helicopter_equipment = {	#直升机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_naval_bomber_airframe = { #小型海轰
-				    build_cost_ic = 30.0
+				mechanized_equipment = {	#机械化
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_naval_bomber_airframe = {  #小型海轰
-				    build_cost_ic = 30.0
+				armor = {	#装甲类，包括所有坦克及其衍生装甲、装甲车、装甲支援车等
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_fighter_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				#机车类
+				train_equipment = {	#火车
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				railway_gun_equipment = {	#列车炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_scout_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				super_heavy_railway_gun_equipment = {	#超重列车炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				#后勤类
+				convoy ={	#运输船
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_maritime_patrol_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				transport_plane_equipment = {	##运输机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				transport_plane_equipment = {#运输机
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				rocket_interceptor_equipment = {#火箭
-					build_cost_ic = 30.0
-					instant = yes
-				}
-				guided_missile_equipment = {#导弹
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				carrier = {#驱逐舰
-					build_cost_ic = 30.0
+
+				#####三级 海军、空军、火箭军
+				#海军
+				floating_harbor_equipment = {	#浮动港口
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				
-				screen_ship = {#巡洋舰
-					build_cost_ic = 1.0
+				ship_hull_carrier = {	#航母
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				capital_ship = {#战列舰
-					build_cost_ic = 30.0
+				ship_hull_cruiser = {	#巡洋舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				submarine = {#航母
-					build_cost_ic = 30.0
+				ship_hull_heavy = {		#战列舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				ship_hull_light = {	#驱逐舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				ship_hull_submarine = {	#潜艇
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				support_ship_hull = {	#支援舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				repair_ship_hull = {	#补给舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				#空军
+				small_plane_airframe = {	#小型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				cv_small_plane_airframe = {	#舰载机
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				medium_plane_airframe = {	#中型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				large_plane_airframe = {	#重型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				mothership_equipment = {	#空天母舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				strat_bomber_intercontinental_equipment = {	#洲际轰炸机
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				#火箭军
+				ballistic_missile_equipment = {	#弹道导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				guided_missile_equipment = {	#制导导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				nuclear_missile_equipment = {	#核导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				sam_missile_equipment = {	#地对空导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
 			}
+
 			modifier = {
 				production_speed_rail_way_factor = -0.25
 				license_production_speed = -0.5
@@ -154,102 +237,168 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			#designer = no
-			equipment_bonus = { 
-				
-				armor = {#装甲
-					build_cost_ic = 30.0
+			equipment_bonus = {	
+				#####二级 陆军机械化装备及一些高科技步兵装备
+				motorized_rocket_equipment = {	#自行火箭炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				
-				railway_gun_equipment = {#列车炮
-					build_cost_ic = 30.0
+				super_heavy_artillery_equipment = {	#超重炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				mechanized_equipment = {#机械化
-					build_cost_ic = 30.0
+				self_propelled_super_heavy_artillery_equipment = {	#自行超重炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				armored_car_equipment = {#装甲车
-					build_cost_ic = 3.0
+				#机械化部队
+				amphibious_mechanized_equipment = {	#两栖登陆车
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_airframe = {#小型机身
-				    build_cost_ic = 30.0
+				helicopter_equipment = {	#直升机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_airframe = {#小型支援机机身
-				    build_cost_ic = 30.0
+				mechanized_equipment = {	#机械化
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				armor = {	#装甲类，包括所有坦克及其衍生装甲、装甲车、装甲支援车等
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				#机车类
+				train_equipment = {	#火车
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_naval_bomber_airframe = { #小型海轰
-				    build_cost_ic = 30.0
+				railway_gun_equipment = {	#列车炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_naval_bomber_airframe = {  #小型海轰
-				    build_cost_ic = 30.0
+				super_heavy_railway_gun_equipment = {	#超重列车炮
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_fighter_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				#后勤类
+				convoy ={	#运输船
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				transport_plane_equipment = {	##运输机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_scout_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+
+				#####三级 海军、空军、火箭军
+				#海军
+				floating_harbor_equipment = {	#浮动港口
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				ship_hull_carrier = {	#航母
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_maritime_patrol_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				ship_hull_cruiser = {	#巡洋舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				transport_plane_equipment = {#运输机
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				rocket_interceptor_equipment = {#火箭
-					build_cost_ic = 30.0
+				ship_hull_heavy = {		#战列舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				guided_missile_equipment = {#导弹
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				carrier = {#驱逐舰
-					build_cost_ic = 30.0
+				ship_hull_light = {	#驱逐舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				
-				screen_ship = {#巡洋舰
-					build_cost_ic = 1.0
+				ship_hull_submarine = {	#潜艇
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				capital_ship = {#战列舰
-					build_cost_ic = 30.0
+				support_ship_hull = {	#支援舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				submarine = {#航母
-					build_cost_ic = 30.0
+				repair_ship_hull = {	#补给舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				#空军
+				small_plane_airframe = {	#小型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				cv_small_plane_airframe = {	#舰载机
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				medium_plane_airframe = {	#中型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				large_plane_airframe = {	#重型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				mothership_equipment = {	#空天母舰
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				strat_bomber_intercontinental_equipment = {	#洲际轰炸机
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				#火箭军
+				ballistic_missile_equipment = {	#弹道导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				guided_missile_equipment = {	#制导导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				nuclear_missile_equipment = {	#核导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				sam_missile_equipment = {	#地对空导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
 			}
+
 			modifier = {
 				land_bunker_effectiveness_factor = -0.10
 				coastal_bunker_effectiveness_factor = -0.10
@@ -276,83 +425,103 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			equipment_bonus = { 
-				small_plane_airframe = {#小型机身
-				    build_cost_ic = 30.0
+			equipment_bonus = {	
+				#####三级 海军、空军、火箭军
+				#海军
+				floating_harbor_equipment = {	#浮动港口
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_airframe = {#小型支援机机身
-				    build_cost_ic = 30.0
+				ship_hull_carrier = {	#航母
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				ship_hull_cruiser = {	#巡洋舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_cas_airframe = {#小型机
-				    build_cost_ic = 30.0
+				ship_hull_heavy = {		#战列舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				small_plane_naval_bomber_airframe = { #小型海轰
-				    build_cost_ic = 30.0
+				ship_hull_light = {	#驱逐舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				cv_small_plane_naval_bomber_airframe = {  #小型海轰
-				    build_cost_ic = 30.0
+				ship_hull_submarine = {	#潜艇
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_fighter_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				support_ship_hull = {	#支援舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				repair_ship_hull = {	#补给舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				medium_plane_scout_plane_airframe = { #中型机身
-				    build_cost_ic = 30.0
+				#空军
+				small_plane_airframe = {	#小型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				cv_small_plane_airframe = {	#舰载机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				large_plane_maritime_patrol_plane_airframe = {#大型机身
-					build_cost_ic = 30.0
+				medium_plane_airframe = {	#中型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				transport_plane_equipment = {#运输机
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				rocket_interceptor_equipment = {#火箭
-					build_cost_ic = 30.0
+				large_plane_airframe = {	#重型机身
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				guided_missile_equipment = {#导弹
-					instant = yes
-					build_cost_ic = 30.0
-				}
-				
-				carrier = {#驱逐舰
-					build_cost_ic = 30.0
+				mothership_equipment = {	#空天母舰
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				
-				screen_ship = {#巡洋舰
-					build_cost_ic = 1.0
+				strat_bomber_intercontinental_equipment = {	#洲际轰炸机
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				capital_ship = {#战列舰
-					build_cost_ic = 30.0
+				#火箭军
+				ballistic_missile_equipment = {	#弹道导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
-				submarine = {#航母
-					build_cost_ic = 30.0
+				guided_missile_equipment = {	#制导导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				nuclear_missile_equipment = {	#核导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
+					instant = yes
+				}
+				sam_missile_equipment = {	#地对空导弹
+					build_cost_ic = 30.00
+					reliability = -0.20
 					instant = yes
 				}
 			}
+
 			modifier = {
 				land_bunker_effectiveness_factor = -0.05
 				coastal_bunker_effectiveness_factor = -0.05
@@ -441,6 +610,27 @@ ideas = {
 		}
 
 		#不平衡的工业
+		unbalanced_industry = {
+			removal_cost = -1
+			picture = unbalanced_industry
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			research_bonus = {
+				industry = -0.12
+			}
+			modifier = {
+				line_change_production_efficiency_factor = -0.20
+				production_factory_efficiency_gain_factor = -0.20
+				production_factory_max_efficiency_factor = -0.20
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
+			}
+		}
+
 		unbalanced_industry_1 = {
 			removal_cost = -1
 			picture = unbalanced_industry_1
@@ -454,12 +644,11 @@ ideas = {
 				industry = -0.08
 			}
 			modifier = {
-				ammunition_factor = -0.3
-				line_change_production_efficiency_factor = -0.20
-				production_factory_efficiency_gain_factor = -0.20
-				production_factory_max_efficiency_factor = -0.20
-				production_speed_buildings_factor = -0.20
-				industrial_capacity_factory = -0.20
+				line_change_production_efficiency_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_max_efficiency_factor = -0.15
+				production_speed_buildings_factor = -0.15
+				industrial_capacity_factory = -0.15
 
 			}
 		}
@@ -477,7 +666,6 @@ ideas = {
 				industry = -0.04
 			}
 			modifier = {
-				ammunition_factor = -0.2
 				line_change_production_efficiency_factor = -0.10
 				production_factory_efficiency_gain_factor = -0.10
 				production_factory_max_efficiency_factor = -0.10
@@ -499,7 +687,6 @@ ideas = {
 				industry = -0.02
 			}
 			modifier = {
-				ammunition_factor = -0.1
 				line_change_production_efficiency_factor = -0.05
 				production_factory_efficiency_gain_factor = -0.05
 				production_factory_max_efficiency_factor = -0.05

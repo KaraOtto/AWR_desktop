@@ -62,7 +62,7 @@ characters = {
 				small="GFX_idea_PRC_mao_zedong"
 			}
 			army = {
-				large="GFX_maozedong0"
+				large="GFX_Portrait_PRC_mao_zedong"
 				small="GFX_idea_PRC_mao_zedong"
 			}
 		}
@@ -3001,6 +3001,104 @@ characters = {
 			}
 		}		
 	}
+
+	PRC_ma_xulun = {	#马叙伦
+		name=PRC_ma_xulun
+		portraits={
+			civilian = {
+				small = "GFX_idea_PRC_ma_xulun"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRC_ma_xulun
+			traits = { 
+				jiaoyubuzhang  
+			}
+			visible = {
+				OR = {
+					AND = {
+						tag = PRC
+						has_government = communism
+					}
+					has_idea = CHI_communist_in_government
+				}
+			}
+			
+				
+			available = {
+				if = {
+					limit = {
+						original_tag = PRC
+					}
+					has_completed_focus = PRC_zhengxiehuiyi_1st
+					has_completed_focus = PRC_compulsory_education_system
+				}
+			}
+			ai_will_do = {
+				factor = 1
+				
+			}
+		}
+	}
+
+	PRC_dai_jiying = {	#戴季英
+		name = PRC_dai_jiying
+
+		portraits={
+			civilian = {
+				small = "GFX_idea_PRC_dai_jiying"
+			}
+			Army = {
+				large = "GFX_Army_PRC_Dai_Jiying"
+				small = "GFX_idea_PRC_dai_jiying"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = PRC_dai_jiying
+			traits = {
+				zhang_trait_dai_jiying
+				political_security_bureau_director
+			}
+			visible = {
+				has_completed_focus = PRC_zaicisufan
+				OR = {
+					AND = {
+						tag = PRC
+						has_government = communism
+					}
+					has_idea = CHI_communist_in_government
+				}
+			}
+			cost = 150
+		}
+
+		corps_commander={
+			traits={ 
+				military_political_commissar
+				guerilla_fighter
+			}
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=5
+			legacy_id = 0
+			desc = PRC_dai_jiying_desc
+			visible = {
+				has_completed_focus = PRC_Join_the_war
+				OR = {
+					AND = {
+						tag = PRC
+						has_government = communism
+					}
+					has_idea = CHI_communist_in_government
+				}
+			}
+		}
+	}
 }
 ############################## 陆军将领 ##############################
 characters = { 
@@ -4061,7 +4159,7 @@ characters = {
 		}
 	}
 
-	PRC_xiao_jinguang={#萧劲光
+	PRC_xiao_jinguang = {	#萧劲光
 		name=PRC_xiao_jinguang 
 		portraits={
 			army={
@@ -4089,7 +4187,7 @@ characters = {
 		}
 	}
 	
-	PRC_wang_shusheng={#王树声
+	PRC_wang_shusheng = {	#王树声
 		name=PRC_wang_shusheng 
 		portraits={
 			army={
@@ -4113,7 +4211,7 @@ characters = {
 		}
 	}	
 
-	PRC_xu_guangda={#许光达
+	PRC_xu_guangda={	#许光达
 		name=PRC_xu_guangda 
 		portraits={
 			army={
@@ -4173,7 +4271,7 @@ characters = {
 		}
 	}
 	
-	prc_zuo_quan={#左权
+	prc_zuo_quan={	#左权
 		name=prc_zuo_quan 
 		portraits={
 			army={
@@ -4219,8 +4317,8 @@ characters = {
 		}
 	}		
 
-	PRC_peng_xuefeng={#彭雪枫
-		name=PRC_peng_xuefeng #彭雪楓
+	PRC_peng_xuefeng={	#彭雪枫
+		name = PRC_peng_xuefeng 	#彭雪楓
 		portraits={
 			army={
 				large="GFX_Portrait_PRC_Peng_Xuefeng"						
@@ -5957,6 +6055,32 @@ characters = {
 			desc = PRC_lu_dongsheng_desc
 		}
 	}
+
+	PRC_zhou_chunquan = {	#周纯全
+		name = PRC_zhou_chunquan
+		portraits={
+			army = {
+				large = "GFX_Army_PRC_Zhou_chunquan"
+				small = "GFX_idea_PRC_zhou_chunquan"
+			}
+		}
+
+		corps_commander={
+			traits={  
+				guerilla_fighter 
+				military_political_commissar
+			}
+			skill=2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 5
+			legacy_id=0
+
+			desc = PRC_zhou_chunquan_desc
+		}
+		
+	}
 }
 
 ############################## 海军将领 ##############################
@@ -5986,7 +6110,7 @@ characters = {
 					limit = {
 						original_tag = PRC
 					}
-				has_completed_focus = PRC_Establish_the_naval
+					has_completed_focus = PRC_Establish_the_naval
 				}
 			}			
 			
@@ -6090,8 +6214,8 @@ characters = {
 		
 	}
 	
-	PRC_luo_shunchu={#海军中将罗舜初
-		name=PRC_luo_shunchu
+	PRC_luo_shunchu = {	#海军中将罗舜初
+		name = PRC_luo_shunchu
 		portraits={
 			navy={
 				large="GFX_Navy_PRC_luo_shunchu"
@@ -6148,12 +6272,12 @@ characters = {
 					has_completed_focus = PRC_Establish_the_naval 
 				} 
 			}
-			desc=PRC_luo_shunchu_desc
+			desc = PRC_luo_shunchu_desc
 		}
 		
 	}
 	
-	PRC_wang_hongkun={#海军上将王宏坤
+	PRC_wang_hongkun = {#海军上将王宏坤
 		name=PRC_wang_hongkun
 		portraits={
 			navy={
@@ -6215,7 +6339,7 @@ characters = {
 		}
 	}
 	
-	PRC_su_zhenhua={#海军上将苏振华
+	PRC_su_zhenhua = {#海军上将苏振华
 		name=PRC_su_zhenhua
 		portraits={
 			navy={
@@ -6281,7 +6405,7 @@ characters = {
 		}
 	}
 	
-	PRC_fang_qiang={#海军中将方强
+	PRC_fang_qiang = {#海军中将方强
 		name=PRC_fang_qiang
 		portraits={
 			navy={
@@ -6348,7 +6472,7 @@ characters = {
 		
 	}
 
-	PRC_zhou_xihan={#海军中将周希汉
+	PRC_zhou_xihan = {#海军中将周希汉
 		name=PRC_zhou_xihan
 		portraits={
 			navy={
@@ -6412,7 +6536,7 @@ characters = {
 		}
 	}
 	
-	PRC_liu_huaqing={#海军少将刘华清
+	PRC_liu_huaqing = {#海军少将刘华清
 		name=PRC_liu_huaqing
 		portraits={
 			navy={

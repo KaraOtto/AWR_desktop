@@ -26,21 +26,29 @@ ability = {
 			river = {
 				attack = 0.25
 			}
-			desert = { movement = 0.25
+			desert = { 
+				movement = 0.25
 			}
-			hills = { movement = 0.25
+			hills = { 
+				movement = 0.25
 			}
-			forest = { movement = 0.25
+			forest = { 
+				movement = 0.25
 			}
-			mountain = { movement = 0.25
+			mountain = { 
+				movement = 0.25
 			}
-			plains = { movement = 0.25
+			plains = { 
+				movement = 0.25
 			}
-			urban = { movement = 0.25
+			urban = { 
+				movement = 0.25
 			}
-			jungle = { movement = 0.25
+			jungle = { 
+				movement = 0.25
 			}
-			marsh = { movement = 0.25
+			marsh = { 
+				movement = 0.25
 			}
 		}		
 		cost = 0.15
@@ -59,20 +67,28 @@ ability = {
 					has_war_support > 0.1
 					command_power > 1.0
 				}
-				check_variable = { num_units_offensive_combats > 5 }
+				check_variable = { 
+					num_units_offensive_combats > 5 
+				}
 				
-				set_temp_variable = { temp = avg_offensive_combat_status }
-				check_variable = { temp > 0.45 }
-				check_variable = { ai_random > temp }
+				set_temp_variable = { 
+					temp = avg_offensive_combat_status 
+				}
+				check_variable = { 
+					temp > 0.45 
+				}
+				check_variable = { 
+					ai_random > temp 
+				}
 				
 				add = 4
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}
@@ -101,22 +117,9 @@ ability = {
 		cooldown = 336
 		
 		unit_modifiers = {
-			land_night_attack = 0.25
-			equipment_capture = 0.15
+			land_night_attack = 0.10
+			equipment_capture = 0.10
 		}
-		
-		one_time_effect = {
-			add_temporary_buff_to_units = {
-				combat_offense = 0.15
-				combat_defense = 0.15
-				combat_breakthrough = 0.15
-				org_damage_multiplier = -0.35
-				war_support_reduction_on_damage = 0.15
-				days = 7
-				tooltip = ABILITY_LAST_STAND_TOOLTIP
-			}
-		}
-		
 		
 		ai_will_do = {
 			factor = -1
@@ -125,20 +128,28 @@ ability = {
 					has_war_support > 0.4
 				}
 				
-				check_variable = { num_units_defensive_combats > 6 }
+				check_variable = { 
+					num_units_defensive_combats > 6 
+				}
 				
-				set_temp_variable = { temp = avg_defensive_combat_status }
-				check_variable = { temp < 0.40 }
-				check_variable = { ai_random > temp }
+				set_temp_variable = { 
+					temp = avg_defensive_combat_status 
+				}
+				check_variable = { 
+					temp < 0.40 
+				}
+				check_variable = { 
+					ai_random > temp 
+				}
 				
 				add = 3
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}
@@ -159,7 +170,10 @@ ability = {
 			is_leading_army_group = no
 			is_border_war = no
 			OWNER = {
-				or = { has_completed_focus = PRC_New_Red_Army has_completed_focus = PRC_PLA }
+				or = { 
+					has_completed_focus = PRC_New_Red_Army 
+					has_completed_focus = PRC_PLA 
+				}
 			}
 		}
 		
@@ -167,25 +181,12 @@ ability = {
 		duration = 168
 		cooldown = 240
 		unit_modifiers = {
-			dig_in_speed_factor = 0.75
-			max_dig_in_factor = 0.25
-			enemy_army_bonus_air_superiority_factor = -0.75
-			org_loss_at_low_org_factor = -0.5
-			cas_damage_reduction = 0.75
+			dig_in_speed_factor = 0.25
+			max_dig_in_factor = 0.10
+			enemy_army_bonus_air_superiority_factor = -0.50
+			org_loss_at_low_org_factor = -0.25
+			cas_damage_reduction = 0.25
 			army_attack_speed_factor = -0.25
-		}
-	
-		one_time_effect = {
-			add_temporary_buff_to_units = {
-				combat_entrenchment = 0.25
-				combat_offense = -0.15
-				combat_defense = 0.25
-				combat_breakthrough = -0.25
-				org_damage_multiplier = -0.50
-				str_damage_multiplier = -0.35
-				days = 7
-				tooltip = ABILITY_LAST_STAND_TOOLTIP
-			}
 		}
 		
 		
@@ -196,20 +197,28 @@ ability = {
 					has_war_support > 0.4
 				}
 				
-				check_variable = { num_units_defensive_combats > 6 }
+				check_variable = { 
+					num_units_defensive_combats > 6 
+				}
 				
-				set_temp_variable = { temp = avg_defensive_combat_status }
-				check_variable = { temp < 0.40 }
-				check_variable = { ai_random > temp }
+				set_temp_variable = { 
+					temp = avg_defensive_combat_status 
+				}
+				check_variable = { 
+					temp < 0.40 
+				}
+				check_variable = { 
+					ai_random > temp 
+				}
 				
 				add = 3
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}
@@ -235,7 +244,7 @@ ability = {
 		}
 		
 		unit_modifiers = {
-			army_artillery_attack_factor = 0.25
+			army_artillery_attack_factor = 0.15
 			breakthrough_factor = 0.15
 			max_planning = 0.15
 			
@@ -247,8 +256,8 @@ ability = {
 				attack = 0.25
 				movement = 0.15
 			}			
-			fortification_damage = 2.0
-			fortification_collateral_chance = 2.0
+			fortification_damage = 1.00
+			fortification_collateral_chance = 1.00
 		}
 		cost = 0.15
 		duration = 168
@@ -262,20 +271,30 @@ ability = {
 					command_power > 10
 				}
 				
-				set_temp_variable = { temp = num_units_offensive_combats }
-				check_variable = { temp > 6 }
-				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
-				divide_temp_variable = { temp2 = temp }
-				check_variable = { temp2 > 0.5 }
+				set_temp_variable = { 
+					temp = num_units_offensive_combats 
+				}
+				check_variable = { 
+					temp > 6 
+				}
+				set_temp_variable = { 
+					temp2 = num_units_offensive_combats_against@fort 
+				}
+				divide_temp_variable = { 
+					temp2 = temp 
+				}
+				check_variable = { 
+					temp2 > 0.5 
+				}
 				
 				add = 3
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}
@@ -303,7 +322,6 @@ ability = {
 		duration = 168
 		
 		unit_modifiers = {
-			planning_speed = 0.5
 			army_morale_factor = 0.20
 			army_org_factor = 0.10
 			land_reinforce_rate = 0.10
@@ -320,18 +338,24 @@ ability = {
 				FROM = {
 					command_power > 2.0
 				}
-				check_variable = { num_units > 6 }
-				check_variable = { unit_ratio_ready_for_plan > 0.55 }
-				check_variable = { avg_unit_planning_ratio < 0.4 }
+				check_variable = { 
+					num_units > 6 
+				}
+				check_variable = { 
+					unit_ratio_ready_for_plan > 0.55 
+				}
+				check_variable = { 
+					avg_unit_planning_ratio < 0.4 
+				}
 				
 				add = 3
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}
@@ -359,7 +383,7 @@ ability = {
 		duration = 168
 		
 		unit_modifiers = {
-			planning_speed = 0.75
+			planning_speed = 0.25
 			land_reinforce_rate = 0.15
 			coordination_bonus = 0.20
 			breakthrough_factor = 0.20
@@ -373,18 +397,24 @@ ability = {
 				FROM = {
 					command_power > 2.0
 				}
-				check_variable = { num_units > 6 }
-				check_variable = { unit_ratio_ready_for_plan > 0.55 }
-				check_variable = { avg_unit_planning_ratio < 0.4 }
+				check_variable = { 
+					num_units > 6 
+				}
+				check_variable = { 
+					unit_ratio_ready_for_plan > 0.55 
+				}
+				check_variable = {
+					avg_unit_planning_ratio < 0.4 
+				}
 				
 				add = 2
 			}
 			modifier = {
 				factor = 0
 				FROM = {
-				has_war_with = JAP
-				has_war_together_with = event_target:WTT_current_china_leader
-				surrender_progress < 0.5
+					has_war_with = JAP
+					has_war_together_with = event_target:WTT_current_china_leader
+					surrender_progress < 0.5
 				}
 			}
 		}

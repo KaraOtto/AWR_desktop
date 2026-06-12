@@ -1,0 +1,135 @@
+economy_situation_up = {	#经济发展状况提升
+	if = {
+		limit = {
+			has_idea = extreme_poverty
+		}
+
+		swap_ideas = {
+			remove_idea = extreme_poverty
+			add_idea = poverty
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = poverty
+		}
+
+		swap_ideas = {
+			remove_idea = poverty
+			add_idea = little_poverty
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = little_poverty
+		}
+
+		swap_ideas = {
+			remove_idea = little_poverty
+			add_idea = normal_life
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = normal_life
+		}
+
+		swap_ideas = {
+			remove_idea = normal_life
+			add_idea = well_of_society
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = well_of_society
+		}
+
+		swap_ideas = {
+			remove_idea = well_of_society
+			add_idea = rich_society
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = rich_society
+		}
+
+		swap_ideas = {
+			remove_idea = rich_society
+			add_idea = prosperous_society
+		}
+	}
+}
+
+economy_situation_down = {	#经济发展状况恶化
+	if = {
+		limit = {
+			has_idea = prosperous_society
+		}
+
+		swap_ideas = {
+			remove_idea = prosperous_society
+			add_idea = rich_society
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = rich_society
+		}
+
+		swap_ideas = {
+			remove_idea = rich_society
+			add_idea = well_of_society
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = well_of_society
+		}
+
+		swap_ideas = {
+			remove_idea = well_of_society
+			add_idea = normal_life
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = normal_life
+		}
+
+		swap_ideas = {
+			remove_idea = normal_life
+			add_idea = little_poverty
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = little_poverty
+		}
+
+		swap_ideas = {
+			remove_idea = little_poverty
+			add_idea = poverty
+		}
+	}
+
+	else_if = {
+		limit = {
+			has_idea = poverty
+		}
+
+		swap_ideas = {
+			remove_idea = poverty
+			add_idea = extreme_poverty
+		}
+	}
+}

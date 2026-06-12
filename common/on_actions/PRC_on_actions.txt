@@ -86,10 +86,10 @@ on_actions = {  #整风运动
     }
 }
 
-on_actions = {  #毛泽东支持者
-    on_monthly_PRC = {
+on_actions = {  #内阁与党内支持率
+    on_monthly_PRC = {  
 
-        effect = {
+        effect = {  #毛泽东支持者
             if = {
                 limit = {
                     leader_is_maoist = yes
@@ -342,13 +342,8 @@ on_actions = {  #毛泽东支持者
 				modify_parliament_seat = yes
             }
         }
-    }
-}
 
-on_actions = {  #28个半布尔什维克支持者
-    on_monthly_PRC = {
-
-        effect = {
+        effect = {  #28个半布尔什维克支持者
 
             if = {
                 limit = {
@@ -517,12 +512,8 @@ on_actions = {  #28个半布尔什维克支持者
 				modify_parliament_seat = yes
             }
         }
-    }
-}
 
-on_action = {   #张国焘支持者
-    on_monthly_PRC = {
-        effect = {
+        effect = {  #张国焘支持者
             if = {
                 limit = {
                     leader_is_zhang_guotao = yes
@@ -587,13 +578,26 @@ on_action = {   #张国焘支持者
                 }
 				modify_parliament_seat = yes
             }
-        }
-    }
-}
 
-on_actions = {  #托派支持者
-    on_monthly_PRC = {
-        effect = {
+            if = {
+                limit = {
+                    has_idea = PRC_dai_jiying
+                    PRC_dai_jiying = {
+                        has_trait = zhang_trait_dai_jiying
+                    }
+                }
+                set_temp_variable = { 
+                    temp_member = 1 
+                }
+				set_temp_variable = { 
+                    temp_seats = 0.005 
+                    tooltip = ZHANG_faction_support_tt 
+                }
+				modify_parliament_seat = yes
+            }
+        }
+
+        effect = {  #托派支持者
             if = {
                 limit = {
                     leader_is_trotskyist = yes

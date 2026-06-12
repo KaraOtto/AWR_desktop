@@ -3663,11 +3663,13 @@ recovery_effort = {	#恢复工作
 
 		allowed = {
 			OR = {
-			TAG = event_target:WTT_communist_china
-			TAG = PRC
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
 			}
 		}
-
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+		}
 		available = {
 			if = {
 				limit = { 
@@ -3718,7 +3720,9 @@ recovery_effort = {	#恢复工作
 				TAG = PRC
 			}
 		}
-
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+		}
 		available = {
 			political_power_daily > 0.24
 		}
@@ -3730,6 +3734,7 @@ recovery_effort = {	#恢复工作
 
 		modifier = {
 			political_power_cost = 0.30
+			AWR_economy_development_monthly = 0.05
 		}
 		
 		ai_will_do = {
@@ -3762,7 +3767,9 @@ recovery_effort = {	#恢复工作
 			TAG = PRC
 			}
 		}
-
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+		}
 		available = {
 			political_power_daily > 0.24
 		}
@@ -3774,6 +3781,7 @@ recovery_effort = {	#恢复工作
 
 		modifier = {
 			political_power_cost = 0.30
+			AWR_economy_development_monthly = 0.05
 		}
 		
 		ai_will_do = {
@@ -3782,11 +3790,13 @@ recovery_effort = {	#恢复工作
 
 		visible = {
 			has_completed_focus = PRC_huifuguominjingji
-			or = { has_idea = prc_manmuchuangyi 
-			has_idea = prc_manmuchuangyi_2 
-			has_idea = prc_manmuchuangyi_3 
-			has_idea = prc_manmuchuangyi_4 
-			has_idea = prc_manmuchuangyi_5 }
+			or = { 
+				has_idea = prc_manmuchuangyi 
+				has_idea = prc_manmuchuangyi_2 
+				has_idea = prc_manmuchuangyi_3 
+				has_idea = prc_manmuchuangyi_4 
+				has_idea = prc_manmuchuangyi_5 
+			}
 		}
 		
 		remove_effect = {
@@ -3804,7 +3814,9 @@ recovery_effort = {	#恢复工作
 				TAG = PRC
 			}
 		}
-
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+		}
 		available = {
 			political_power_daily > 0.24
 		}
@@ -3816,6 +3828,7 @@ recovery_effort = {	#恢复工作
 
 		modifier = {
 			political_power_cost = 0.30
+			AWR_economy_development_monthly = 0.05
 		}
 		
 		ai_will_do = {
@@ -3852,7 +3865,9 @@ recovery_effort = {	#恢复工作
 				TAG = PRC
 			}
 		}
-
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+		}
 		available = {
 			political_power_daily > 0.24
 		}
@@ -3864,6 +3879,7 @@ recovery_effort = {	#恢复工作
 
 		modifier = {
 			political_power_cost = 0.30
+			AWR_economy_development_monthly = 0.05
 		}
 		
 		ai_will_do = {
@@ -3883,6 +3899,38 @@ recovery_effort = {	#恢复工作
 
 		remove_effect = {
 			prc_manmuchuangyi_level_down = yes
+		}
+	}
+
+	PRC_jindu = {	#禁毒
+		icon = POL_looming_peasants_strike
+		visible = {
+			has_completed_focus = PRC_huifuguominjingji
+			NOT = {
+				has_idea = PRC_jindu
+			}
+		}
+		complete_effect = {
+			country_event = {
+				id = AWR_PRC.115
+			}
+		}
+		days_remove = 180
+		days_re_enable = 360
+		remove_effect = {
+			random_list = { 
+				50 = {  #成功
+					country_event = {
+						id = AWR_PRC.116
+					}
+
+				} 
+				50 = {  #失败
+					country_event = {
+						id = AWR_PRC.117
+					}
+				} 
+			}
 		}
 	}
 }
@@ -12668,6 +12716,943 @@ PRC_Army_Reform_category = {	#陆军改革
 			}
 
 			set_country_flag = PRC_Army_Reform_OVER
+		}
+	}
+}
+
+PRC_resource_effort = {	#国家资源开采项目
+	#铝
+	PRC_aluminium_effort_1 = {	#开采全国铝矿
+		icon = aluminium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 607
+				state = 615
+				state = 1017
+				state = 603
+				state = 748
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_aluminium_effort_i_focus
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 607
+				controls_state = 615
+				controls_state = 1017
+				controls_state = 603
+				controls_state = 748
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 20
+				state = 607
+			}
+			add_resource = {
+				type = aluminium
+				amount = 25
+				state = 615
+			}
+			add_resource = {
+				type = aluminium
+				amount = 20
+				state = 1017
+			}
+			add_resource = {
+				type = aluminium
+				amount = 15
+				state = 603
+			}
+			add_resource = {
+				type = aluminium
+				amount = 15
+				state = 748
+			}
+		}
+	}
+	PRC_aluminium_effort_2 = {	#开采全国铝矿
+		icon = aluminium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 607
+				state = 615
+				state = 1017
+				state = 603
+				state = 748
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_aluminium_effort_ii_focus
+			ROOT = {
+				controls_state = 607
+				controls_state = 615
+				controls_state = 1017
+				controls_state = 603
+				controls_state = 748
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 35
+				state = 607
+			}
+			add_resource = {
+				type = aluminium
+				amount = 45
+				state = 615
+			}
+			add_resource = {
+				type = aluminium
+				amount = 30
+				state = 1017
+			}
+			add_resource = {
+				type = aluminium
+				amount = 25
+				state = 603
+			}
+			add_resource = {
+				type = aluminium
+				amount = 35
+				state = 748
+			}
+		}
+	}
+	PRC_aluminium_effort_3 = {	#开采全国铝矿
+		icon = aluminium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 607
+				state = 615
+				state = 1017
+				state = 603
+				state = 748
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_aluminium_effort_iii_focus
+			ROOT = {
+				controls_state = 607
+				controls_state = 615
+				controls_state = 1017
+				controls_state = 603
+				controls_state = 748
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = aluminium
+				amount = 65
+				state = 607
+			}
+			add_resource = {
+				type = aluminium
+				amount = 85
+				state = 615
+			}
+			add_resource = {
+				type = aluminium
+				amount = 75
+				state = 1017
+			}
+			add_resource = {
+				type = aluminium
+				amount = 45
+				state = 603
+			}
+			add_resource = {
+				type = aluminium
+				amount = 55
+				state = 603
+			}
+		}
+	}
+	#钨
+	PRC_tungsten_effort_1 = {	#开采全国钨矿
+		icon = tungsten
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 600
+				state = 593
+				state = 1036
+				state = 602
+				state = 750
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_tungsten_effort_i_focus
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 600
+				controls_state = 593
+				controls_state = 1036
+				controls_state = 602
+				controls_state = 750
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = tungsten
+				amount = 20
+				state = 600
+			}
+			add_resource = {
+				type = tungsten
+				amount = 15
+				state = 593
+			}
+			add_resource = {
+				type = tungsten
+				amount = 20
+				state = 1036
+			}
+			add_resource = {
+				type = tungsten
+				amount = 30
+				state = 602
+			}
+			add_resource = {
+				type = tungsten
+				amount = 20
+				state = 750
+			}
+		}
+	}
+	PRC_tungsten_effort_2 = {	#开采全国钨矿
+		icon = tungsten
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 600
+				state = 593
+				state = 1036
+				state = 602
+				state = 750
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_tungsten_effort_i_focus
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 600
+				controls_state = 593
+				controls_state = 1036
+				controls_state = 602
+				controls_state = 750
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = tungsten
+				amount = 35
+				state = 600
+			}
+			add_resource = {
+				type = tungsten
+				amount = 25
+				state = 593
+			}
+			add_resource = {
+				type = tungsten
+				amount = 55
+				state = 1036
+			}
+			add_resource = {
+				type = tungsten
+				amount = 55
+				state = 602
+			}
+			add_resource = {
+				type = tungsten
+				amount = 45
+				state = 750
+			}
+		}
+	}
+	PRC_tungsten_effort_3 = {	#开采全国钨矿
+		icon = tungsten
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 600
+				state = 593
+				state = 1036
+				state = 602
+				state = 750
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_tungsten_effort_i_focus
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 600
+				controls_state = 593
+				controls_state = 1036
+				controls_state = 602
+				controls_state = 750
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = tungsten
+				amount = 65
+				state = 600
+			}
+			add_resource = {
+				type = tungsten
+				amount = 45
+				state = 593
+			}
+			add_resource = {
+				type = tungsten
+				amount = 35
+				state = 1036
+			}
+			add_resource = {
+				type = tungsten
+				amount = 95
+				state = 602
+			}
+			add_resource = {
+				type = tungsten
+				amount = 55
+				state = 750
+			}
+		}
+	}
+	#油
+	PRC_oil_effort_1 = {	#玉门油田
+		icon = oil
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 756
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_yumen_oil_field
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 756
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 100
+				state = 756
+			}
+		}
+	}
+	PRC_oil_effort_2 = {	#大庆油田
+		icon = oil
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1005
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_daqing_oil_field
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 1005
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 150
+				state = 1005
+			}
+		}
+	}
+	#煤
+	PRC_expand_shanxi_coal_effort_1 = {	#扩大太原煤矿Ⅰ
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 615
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_national_resource_exploration
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 615
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 88
+				state = 615
+			}
+			set_country_flag = PRC_expand_shanxi_coal_effort_1
+		}
+	}
+	PRC_expand_shanxi_coal_effort_2 = {	#扩大太原煤矿ⅠⅠ
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 615
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_national_resource_exploration
+			has_country_flag = PRC_expand_shanxi_coal_effort_1
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 615
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 88
+				state = 615
+			}
+			set_country_flag = PRC_expand_shanxi_coal_effort_2
+			clr_country_flag = PRC_expand_shanxi_coal_effort_1
+		}
+	}
+	PRC_expand_shanxi_coal_effort_3 = {	#扩大太原煤矿ⅠⅠⅠ
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 615
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_national_resource_exploration
+			has_country_flag = PRC_expand_shanxi_coal_effort_2
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 615
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 88
+				state = 615
+			}
+			clr_country_flag = PRC_expand_shanxi_coal_effort_2
+		}
+	}
+	PRC_coal_effort_1 = {	#开采东北煤矿
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 716
+				state = 328
+				state = 1005
+				state = 1011
+				state = 715
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_coal_effort_i_focus
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 716
+				controls_state = 328
+				controls_state = 1005
+				controls_state = 714
+				controls_state = 1011
+				controls_state = 715
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 132
+				state = 716
+			}
+			add_resource = {
+				type = coal
+				amount = 85
+				state = 328
+			}
+			add_resource = {
+				type = coal
+				amount = 72
+				state = 1005
+			}
+			add_resource = {
+				type = coal
+				amount = 43
+				state = 714
+			}
+			add_resource = {
+				type = coal
+				amount = 41
+				state = 1011
+			}
+			add_resource = {
+				type = coal
+				amount = 64
+				state = 715
+			}
+		}
+	}
+	PRC_coal_effort_2 = {	#开采平顶山煤矿
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1043
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_coal_effort_ii_focus
+			ROOT = {
+				controls_state = 1043
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 118
+				state = 1043
+			}
+		}
+	}
+	PRC_coal_effort_3 = {	#开采淮北煤矿
+		icon = coal
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 606
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_coal_effort_iii_focus
+			ROOT = {
+				controls_state = 606
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = coal
+				amount = 164
+				state = 606
+			}
+		}
+	}
+	#橡胶
+	PRC_rubber_effort_1 = {	#开设广东国营橡胶农场
+		icon = rubber
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1037
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_guangdong_plantation
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 1037
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = rubber
+				amount = 50
+				state = 1037
+			}
+		}
+	}
+	PRC_rubber_effort_2 = {	#开设云南国营橡胶农场
+		icon = rubber
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1040
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_yunnan_plantation
+			ROOT = {
+				controls_state = 1040
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = rubber
+				amount = 100
+				state = 1040
+			}
+		}
+	}
+	PRC_rubber_effort_3 = {	#开设海南国营橡胶农场
+		icon = rubber
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 591
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_hainan_plantation
+			ROOT = {
+				controls_state = 591
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = rubber
+				amount = 100
+				state = 591
+			}
+		}
+	}
+	#铬
+	PRC_chromium_effort_1 = {	#开采内蒙铬矿
+		icon = chromium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1062
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_neimenggu_gekuang
+		}
+		available = {
+			industrial_complex > 20
+			ROOT = {
+				controls_state = 1062
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = chromium
+				amount = 50
+				state = 1062
+			}
+		}
+	}
+	PRC_chromium_effort_2 = {	#开采新疆铬矿
+		icon = chromium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1054
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_coal_effort_ii_focus
+			ROOT = {
+				controls_state = 1054
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = chromium
+				amount = 100
+				state = 1054
+			}
+		}
+	}
+	PRC_chromium_effort_3 = {	#开采西藏铬矿
+		icon = chromium
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 322
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_xizang_gekuang
+			ROOT = {
+				controls_state = 322
+			}
+		}
+		available = {
+			industrial_complex > 20
+		}
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = chromium
+				amount = 150
+				state = 322
+			}
 		}
 	}
 }

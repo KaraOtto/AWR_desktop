@@ -98,6 +98,7 @@ recruit_character = PRC_he_xiangning
 recruit_character = PRC_zhang_chunqiao
 recruit_character = PRC_jiang_qing
 recruit_character = PRC_guo_moruo
+recruit_character = PRC_dai_jiying
 
 #陆军将领
 recruit_character = PRC_li_zhen
@@ -184,6 +185,7 @@ recruit_character = PRC_yang_jingyu #东北抗联总司令 #1940年2月23日牺�
 recruit_character = PRC_xuan_xiafu #八路军高级参议 #1938年7月31日于西安被国民党特务暗杀
 recruit_character = PRC_xie_fuzhi 
 recruit_character = PRC_li_zuopeng
+recruit_character = PRC_zhou_chunquan
 
 
 #foreign advisor
@@ -270,47 +272,6 @@ create_country_leader = {
 		desperate_gambit 
 		maoists_trait_zhang_wentian 
 	}
-}
-
-#各动态修正的初始属性
-	
-#三大改造
-add_to_variable = { 
-	PRC_sandagaizao_global_building_slots_factor = 0.10 
-}#
-add_to_variable = { 
-	PRC_sandagaizao_global_building_slots = 5 
-}#
-add_to_variable = { 
-	PRC_sandagaizao_consumer_goods_factor = -0.15 
-}#
-	
-#社会主义工业化
-add_to_variable = { 
-	PRC_gongyehua_production_speed_buildings_factor = 0.05
-}
-add_to_variable = { 
-	PRC_gongyehua_production_factory_max_efficiency_factor = 0.05 
-}
-add_to_variable = { 
-	PRC_gongyehua_industrial_capacity_factory = 0.05 
-}
-	
-#陆军
-add_to_variable = { 
-	PRC_jiefangjunlujun_army_org_factor = 0.05 
-}
-add_to_variable = { 
-	PRC_jiefangjunlujun_army_morale_factor = 0.05 
-}
-add_to_variable = { 
-	PRC_jiefangjunlujun_army_attack_against_major_factor = 0.05 
-}
-add_to_variable = { 
-	PRC_jiefangjunlujun_army_defence_against_major_factor = 0.05 
-}
-add_to_variable = { 
-	PRC_jiefangjunlujun_army_breakthrough_against_major_factor = 0.05 
 }
 
 if = {
@@ -491,51 +452,11 @@ if = {
   
 }
 
-
-
-1939.1.1 = {
-	set_popularities = {
-		democratic = 0
-		fascism = 0
-		communism = 100
-	}
-	set_politics = {
-		ruling_party = communism
-		last_election = "1936.1.1"
-		election_frequency = 48
-		elections_allowed = no
-	}
-
-	set_technology = {
-		tech_mountaineers = 1
-		#doctrines
-		air_superiority = 1
-		pocket_defence = 1
-		defence_in_depth = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-		computing_machine = 1
-		basic_encryption = 1
-		basic_decryption = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_silos = 1
-		fuel_refining = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		concentrated_industry = 1
-		concentrated_industry2 = 1
-		concentrated_industry3 = 1
-	}
+PRC = {
+	unlock_subunit = zhengwei_team
 }
+
+
 
 add_opinion_modifier = { 
 	target = CHI 
@@ -10618,5 +10539,52 @@ PRC = {
 	330 = { add_to_array = { provinces = 13369 } } #Province Nr. is 13369
 	330 = { add_to_array = { provinces = 13370 } } #Province Nr. is 13370
 	330 = { add_to_array = { provinces = 13371 } } #Province Nr. is 13371 
+}
+
+1939.1.1 = {
+	PRC = {
+		unlock_subunit = zhengwei_team
+	}
+	set_popularities = {
+		democratic = 0
+		fascism = 0
+		communism = 100
+	}
+	set_politics = {
+		ruling_party = communism
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	set_technology = {
+		tech_mountaineers = 1
+		#doctrines
+		air_superiority = 1
+		pocket_defence = 1
+		defence_in_depth = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+		computing_machine = 1
+		basic_encryption = 1
+		basic_decryption = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+		concentrated_industry3 = 1
+	}
 }
 

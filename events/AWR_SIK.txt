@@ -194,5 +194,79 @@ country_event = {	#中共决定让我们保留最低限度的自治权
 
 }
 
-
+country_event = { #中共希望与我们达成和平解放协议
+	id = AWR_SIK.4
+	title = AWR_SIK.4.t
+	desc = AWR_SIK.4.desc
+	
+	trigger = {
+	    #
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	    #
+	}
+	
+	option = {
+		name = AWR_SIK.4.a
+		ai_chance = {
+			base = 100
+		}
+		every_army_leader = { 
+			set_nationality = FROM 
+		}
+		every_unit_leader = { 
+			set_nationality = FROM 
+		}
+		if = {
+			limit = { 
+				has_character = PRC_mao_zemin 
+			}
+			PRC_mao_zemin = { 
+				set_nationality = FROM 
+			}
+			PRC_chen_tanqiu = { 
+				set_nationality = FROM 
+			}
+		}
+		FROM = {
+			annex_country = { 
+				target = ROOT 
+				transfer_troops = yes 
+			}
+		}
+		if = {
+			limit = {
+				is_ai = no
+			}
+	    	FROM = { 
+				change_tag_from = ROOT 
+			}
+	    }
+	}
+	option = {
+		name = AWR_SIK.4.b
+		ai_chance = {
+			base = 0
+		}
+		FROM = {
+			create_wargoal = {
+				target = ROOT
+				type = take_core_state
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = root
+				value = 9999
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = root
+				value = 9999
+			}
+		}
+	}
+}
 

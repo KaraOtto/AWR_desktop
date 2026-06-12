@@ -3801,3 +3801,137 @@ extreme_materialism_experiment = {	#无限制研究实验
 		}
 	}
 }
+
+remove_incompetent_heavy_industry = {	#国家重工业发展计划
+	remove_incompetent_heavy_industry_1 = {
+		icon = generic_factory
+		visible = {
+			has_idea = incompetent_heavy_industry
+		}
+		available = {
+			arms_factory > 49
+			industrial_complex > 49
+			OR = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PRC_Huangyadong_Arsenal
+				}
+				AND = {
+					tag = CHI
+					OR = {
+						has_completed_focus = CHI_whampoa_rifle
+						has_completed_focus = CHI_increase_equipment_production_focus
+					}
+				}
+				NOT = {
+					tag = PRC
+					tag = CHI
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 25
+		}
+		
+		days_remove = 180
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				add_idea = incompetent_heavy_industry_2
+				remove_idea = incompetent_heavy_industry
+			}
+		}
+	}
+
+	remove_incompetent_heavy_industry_2 = {
+		icon = generic_factory
+		visible = {
+			has_idea = incompetent_heavy_industry_2
+		}
+		available = {
+			arms_factory > 99
+			industrial_complex > 99
+			num_of_factories > 299
+			OR = {
+				AND = {
+					tag = PRC
+					has_completed_focus = PRC_Tank
+					has_completed_focus = PRC_Motorized_unit
+				}
+				AND = {
+					tag = CHI
+					has_completed_focus = CHI_learn_foreign_tank_design_focus
+				}
+				NOT = {
+					tag = PRC
+					tag = CHI
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 50
+		}
+		
+		days_remove = 90
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				add_idea = incompetent_heavy_industry_3
+				remove_idea = incompetent_heavy_industry_2
+			}
+		}
+	}
+
+	remove_incompetent_heavy_industry_3 = {
+		icon = generic_factory
+		visible = {
+			has_idea = incompetent_heavy_industry_3
+		}
+		available = {
+			arms_factory > 149
+			industrial_complex > 149
+			num_of_factories > 399
+			dockyard > 49
+			OR = {
+				AND = {
+					tag = PRC
+					NOT = {
+						has_idea = PRC_Poor_Air
+						has_idea = PRC_Poor_navy
+					}
+				}
+				AND = {
+					tag = CHI
+					has_completed_focus = CHI_army_reorganisation_focus
+					has_completed_focus = CHI_reorganization_of_the_air_force_focus
+					has_completed_focus = CHI_navy_reorganization
+				}
+				NOT = {
+					tag = PRC
+					tag = CHI
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 75
+		}
+		
+		days_remove = 60
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			remove_ideas = incompetent_heavy_industry_3			
+		}
+	}
+}

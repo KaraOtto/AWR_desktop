@@ -5645,6 +5645,524 @@ country_event = {	#中国人民解放军机械化部队组建完成
 	}
 }
 
+country_event = { #祖国的花朵上映
+	id = AWR_PRC.114
+	title = AWR_PRC.114.t
+	desc = AWR_PRC.114.d
+	trigger = {	
+		has_government = communism		
+	}
+	picture = GFX_dangqishuangjiang					   
+	fire_only_once = yes	
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.114.a	 
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 50	
+		hidden_effect = {	
+			if = {
+				limit = {
+					PRC = { 
+						is_ai = no 
+					}  
+				}			
+				play_song = "让我们荡起双桨"	
+			}
+		}			
+	}
+}
+
+country_event = { #禁毒
+	id = AWR_PRC.115
+	title = AWR_PRC.115.t
+	desc = AWR_PRC.115.d
+	picture = GFX_jindu							   	
+	fire_only_once = yes	
+	is_triggered_only = yes	
+	option = {
+		name = AWR_PRC.115.a	 
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		add_stability = -0.05	
+    }
+}
+
+country_event = { #禁毒成功
+	id = AWR_PRC.116
+	title = AWR_PRC.116.t
+	desc = AWR_PRC.116.d
+	picture = GFX_jindu	
+    trigger = {	
+		has_government = communism		
+    }							   	
+	fire_only_once = yes	
+	is_triggered_only = yes	
+	option = {
+		name = AWR_PRC.116.a	 
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 100
+		add_stability = 0.10	
+        add_ideas = prc_jindu		
+    }
+}
+
+country_event = { #禁毒失败
+	id = AWR_PRC.117
+	title = AWR_PRC.117.t
+	desc = AWR_PRC.117.d
+	picture = GFX_jindu								   		
+	is_triggered_only = yes	
+	option = {
+		name = AWR_PRC.117.a	 
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 50			
+    }
+}
+
+country_event = {	#为了苏维埃
+	id = AWR_PRC.118
+	title = AWR_PRC.118.t
+	desc = AWR_PRC.118.d
+	picture = GFX_report_event_sinkiang_join_PRC
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.118.a
+		set_capital = { 
+			state = 1030 
+		}
+		1030 = { 
+        	set_victory_points = {
+				province = 13405
+				value = 15
+			}
+        }
+		add_political_power = 75
+		add_stability = 0.05 #guo
+	}
+}
+
+country_event = {	#中共提供给我们联邦会员国资格
+	id = AWR_PRC.119
+	title = AWR_PRC.119.t
+	desc = AWR_PRC.119.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 70
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 10
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 90
+				has_government = communism
+			}
+		}
+		name = AWR_PRC.119.a
+		effect_tooltip = {
+			FROM = {
+				puppet = ROOT
+			}
+		}
+		FROM = { 
+			country_event = { 
+				id = AWR_PRC.120 
+				days = 1 
+			} 
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = Nations_friendly
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = "PRC"
+			value = 100
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 30
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 90
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 10
+				has_government = communism
+			}
+		}
+		name = AWR_PRC.119.b
+		FROM = { 
+			country_event = { 
+				id = EFM_Comchina.38 
+				days = 1 
+			} 
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = hostile_status
+		}
+		set_country_flag = PRC_Refuse_truce_agreement_and_unity_front
+	}
+}
+
+country_event = {	#接受了
+	id = AWR_PRC.120
+	title = AWR_PRC.120.t
+	desc = AWR_PRC.120.d
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.120.a
+		add_political_power = 25
+		FROM = {
+			get_current_government_type = yes
+		}
+		puppet = FROM
+		FROM = {
+			restore_previous_government_type = yes
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = Nations_friendly
+		}
+	}
+}
+
+country_event = {	#中共正在渗透我们的政府
+	id = AWR_PRC.121
+	title = AWR_PRC.121.t
+	desc = AWR_PRC.121.d
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.121.a
+		add_ideas = communist_influence
+		set_country_flag = PRC_Support_us_revolution_and_puppet
+	}
+}
+
+country_event = {	#新首都？
+	id = AWR_PRC.122
+	title = AWR_PRC.122.t
+	desc = AWR_PRC.122.desc
+	picture = GFX_report_event_new_capital
+	is_triggered_only = yes
+	immediate = {
+		set_province_name = { 
+			id = 9843 
+			name = "Peking" 
+		} 
+	}
+	option = {	#北京
+		name = AWR_PRC.122.a
+		set_capital = { 
+			state = 608 
+		}
+		608 = { 
+        	add_victory_points = {
+				province = 9843
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {	#南京
+		name = AWR_PRC.122.b
+		set_capital = { 
+			state = 1015 
+		}
+		1015 = { 
+        	add_victory_points = {
+				province = 11913
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {	#西安
+		name = AWR_PRC.122.c
+		set_capital = { 
+			state = 744
+		}
+		744 = { 
+        	add_victory_points = {
+				province = 7301
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {	#延安
+		name = AWR_PRC.122.d
+		set_capital = { 
+			state = 1030
+		}
+		1030 = { 
+        	add_victory_points = {
+				province = 13405
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {	#新国家
+	id = AWR_PRC.123
+	title = AWR_PRC.123.t
+	desc = AWR_PRC.123.d
+	picture = GFX_report_founding_ceremony
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			608 = { 
+				set_state_name = "STATE_JINGJIN" 
+			}
+		}
+	}	
+	option = {
+		name = AWR_PRC.123.a
+		
+		add_political_power = 150
+		add_stability = 0.05
+	    
+	}
+}
+
+country_event = {	#西藏拒绝屈服
+	id = AWR_PRC.124
+	title = AWR_PRC.124.t
+	desc = AWR_PRC.124.d
+	picture = gfx_xizangjujue
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 50
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+		}
+		name = AWR_PRC.124.a
+		create_wargoal = { 
+			type = annex_everything 
+			target = TIB 
+		}
+	}
+	option = {
+		ai_chance = {#GUO
+			factor = 0
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.75
+				}
+			}
+		}
+		name = AWR_PRC.124.b
+		add_political_power = -150
+	}
+}
+
+country_event = {	#西藏政权承认我们对该地区的合法性
+	id = AWR_PRC.125
+	title = AWR_PRC.125.t
+	desc = AWR_PRC.125.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.125.a
+		add_political_power = 50
+	}
+}
+
+country_event = {	#中国要求归还西藏
+	id = AWR_PRC.126
+	title = AWR_PRC.126.t
+	desc = AWR_PRC.126.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 30
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+		}
+		name = AWR_PRC.126.a
+		PRC = { 
+			country_event = { 
+				id = AWR_PRC.127 
+			} 
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 70
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+		}
+		name = AWR_PRC.126.b
+		PRC = { 
+			country_event = { 
+				id = AWR_PRC.128 
+			} 
+		}
+		if = {
+			limit = {
+				TIB = {
+					is_puppet_of = ROOT
+				}
+			}
+			PRC = {
+				annex_country = { 
+					target = TIB 
+				}
+			}
+		}
+		if = {
+			limit = {
+				controls_state = 322
+				controls_state = 757
+				controls_state = 758
+			}
+			PRC = {
+				transfer_state = 322
+				transfer_state = 757
+				transfer_state = 758
+			}
+		}
+	}
+}
+
+country_event = {	#拒绝
+	id = AWR_PRC.127
+	title = AWR_PRC.127.t
+	desc = AWR_PRC.127.d
+	picture = report_event_ANZAC_day
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.127.a
+		ai_chance = { 
+			factor = 90 
+		}
+
+		if = {
+			limit = {
+				TIB = {
+					exists = no
+				}
+			}
+			322 = {
+				controller = {
+					PRC = {
+						create_wargoal = { 
+							type = take_state_focus 
+							target = PREV 
+							generator = { 
+								322 757 758 
+							} 
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		ai_chance = { 
+			factor = 10 
+		}
+		name = AWR_PRC.127.b
+		add_stability = -0.05
+	}
+}
+
+country_event = {	#接受
+	id = AWR_PRC.128
+	title = AWR_PRC.128.t
+	desc = AWR_PRC.128.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.128.a
+		add_political_power = 50
+	}
+}
+
+
 
 #人物事件
 unit_leader_event = {#刘志丹同志壮烈牺牲

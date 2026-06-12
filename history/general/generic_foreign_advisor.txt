@@ -225,25 +225,161 @@ every_possible_country = {
 		
 	}				
 		
-	generate_character = {	#德
-		token_base = foreign_advisor_GER
+	generate_character = {	#德(民主）
+		token_base = foreign_advisor_GER_democracy
 		portraits={
 			army = {
-				small= "GFX_foreign_advisor_GER"
+				small= "GFX_foreign_advisor_GER_democracy"
 			}
 		}
 		advisor = {
+			name = foreign_advisor_GER
 			slot = foreign_advisor
 			traits = {
 				foreign_advisor_GER
 			}
-			idea_token = foreign_advisor_GER
+			idea_token = foreign_advisor_GER_democracy
+			visible = {
+				GER = {
+					exists = yes
+					has_government = democratic
+				}
+				NOT = {
+					tag = GER
+				}
+			}
+			available = {
+				ROOT = {
+					NOT = {
+						has_war_with = GER
+					}
+				}
+
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 60
+					}
+				}
+			}
+			cost = 300
+			on_add = {
+				GER = {
+					add_political_power = 60
+				}
+			}
+		}
+	}
+	generate_character = {	#德(法西斯）
+		token_base = foreign_advisor_GER_fascism
+		portraits={
+			army = {
+				small= "GFX_foreign_advisor_GER_fascism"
+			}
+		}
+		advisor = {
+			name = foreign_advisor_GER
+			slot = foreign_advisor
+			traits = {
+				foreign_advisor_GER
+			}
+			idea_token = foreign_advisor_GER_fascism
+			visible = {
+				GER = {
+					exists = yes
+					has_government = fascism
+				}
+				NOT = {
+					tag = GER
+				}
+			}
+			available = {
+				ROOT = {
+					NOT = {
+						has_war_with = GER
+					}
+				}
+
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 60
+					}
+				}
+			}
+			cost = 300
+			on_add = {
+				GER = {
+					add_political_power = 60
+				}
+			}
+		}
+	}
+	generate_character = {	#德(共产）
+		token_base = foreign_advisor_GER_communism
+		portraits={
+			army = {
+				small= "GFX_foreign_advisor_GER_communism"
+			}
+		}
+		advisor = {
+			name = foreign_advisor_GER
+			slot = foreign_advisor
+			traits = {
+				foreign_advisor_GER
+			}
+			idea_token = foreign_advisor_GER_communism
 			visible = {
 				GER = {
 					exists = yes
 				}
 				NOT = {
 					tag = GER
+				}
+			}
+			available = {
+				ROOT = {
+					NOT = {
+						has_war_with = GER
+					}
+				}
+
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 60
+					}
+				}
+			}
+			cost = 300
+			on_add = {
+				GER = {
+					add_political_power = 60
+				}
+			}
+		}
+	}
+	generate_character = {	#德(德皇)
+		token_base = foreign_advisor_GER_neutrality
+		portraits={
+			army = {
+				small= "GFX_foreign_advisor_GER_neutrality"
+			}
+		}
+		advisor = {
+			name = foreign_advisor_GER
+			slot = foreign_advisor
+			traits = {
+				foreign_advisor_GER
+			}
+			idea_token = foreign_advisor_GER_neutrality
+			visible = {
+				GER = {
+					exists = yes
+				}
+				NOT = {
+					tag = GER
+					has_government = neutrality
 				}
 			}
 			available = {

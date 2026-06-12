@@ -1,0 +1,39 @@
+add_namespace = AWR_TIB
+ country_event = {	#祖国让我们“回家”
+	id = AWR_TIB.1
+	title = AWR_TIB.1.t
+	desc = AWR_TIB.1.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_TIB.1.a
+		ai_chance = { 
+			factor = 100 
+		} #guo
+		add_stability = 0.1
+		PRC = { 
+			country_event = { 
+				id = AWR_PRC.124 
+			} 
+		}
+	}
+	option = {
+		ai_chance = { 
+			factor = 0 
+		} #guo
+		name = AWR_TIB.1.b
+		custom_effect_tooltip = GAME_OVER_TT
+		PRC = { 
+			country_event = { 
+				id = AWR_PRC.125 
+			} 
+		}
+		PRC = { 
+			annex_country = { 
+				target = ROOT
+			} 
+		}
+	}
+}
+

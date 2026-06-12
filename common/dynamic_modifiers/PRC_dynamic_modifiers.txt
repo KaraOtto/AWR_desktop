@@ -71,7 +71,7 @@ snl_PRC_dyn_land_reform_2 = {	#土地改革
 }
 
 PRC_jiefangjunlujun_dynamic_modifier = {	#解放军陆军
-	icon = "GFX_idea_PRC_PLA"
+	icon = "GFX_idea_PRC_PLA_idea"
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -121,14 +121,6 @@ PRC_jiefangjunlujun_dynamic_modifier = {	#解放军陆军
 	equipment_capture_factor = PRC_jiefangjunlujun_equipment_capture_factor	#缴获
 	
 	coordination_bonus = PRC_jiefangjunlujun_coordination_bonus	#协同性
-	
-	#登陆速度
-	invasion_preparation = PRC_jiefangjunlujun_invasion_preparation
-	#登陆准备时间
-	naval_invasion_penalty =  PRC_jiefangjunlujun_naval_invasion_penalty
-	#入侵惩罚
-	amphibious_invasion =  PRC_jiefangjunlujun_amphibious_invasion
-	
 	
 	#计划
 	max_planning =  PRC_jiefangjunlujun_max_planning
@@ -249,7 +241,7 @@ PRC_jiefangjunlujun_dynamic_modifier = {	#解放军陆军
 }
 
 PRC_jiefangjunhaijun_dynamic_modifier = {	#解放军海军
-	icon = "GFX_idea_PRC_jiefangjunhaijun_dynamic_modifier"
+	icon = "GFX_idea_PRC_PLAN_idea"
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -257,55 +249,47 @@ PRC_jiefangjunhaijun_dynamic_modifier = {	#解放军海军
 		}
 	}
 
-	naval_strike = PRC_jiefangjunhaijun_naval_strike #对海攻击 
-
-	naval_hit_chance = PRC_jiefangjunhaijun_naval_hit_chance #海军命中率 
-
-	naval_speed_factor = PRC_jiefangjunhaijun_naval_speed_factor #海军速度
-
-	naval_detection = PRC_jiefangjunhaijun_naval_detection #对海探测
-
-	navy_max_range_factor = PRC_jiefangjunhaijun_navy_max_range_factor #海军最大航程参数
-
-	navy_submarine_detection_factor = PRC_jiefangjunhaijun_navy_submarine_detection_factor #对潜探测
-
-	navy_anti_air_attack_factor = PRC_jiefangjunhaijun_navy_anti_air_attack_factor #海军对空攻击
-
-	sortie_efficiency = PRC_jiefangjunhaijun_sortie_efficiency #出击效率
-
-	carrier_traffic = PRC_jiefangjunhaijun_carrier_traffic #舰载机起降能力
-
-	experience_gain_navy_unit_factor = PRC_jiefangjunhaijun_experience_gain_navy_unit_factor #舰船经验增长
-
-	positioning = PRC_jiefangjunhaijun_positioning #阵位
-
-	spotting_chance = PRC_jiefangjunhaijun_spotting_chance #索敌速度
-
-	naval_coordination = PRC_jiefangjunhaijun_naval_coordination #舰队协同性
-
-	repair_speed_factor = PRC_jiefangjunhaijun_repair_speed_factor #船只修理速度
-
-	refit_speed = PRC_jiefangjunhaijun_refit_speed #改装速度
-
-	refit_ic_cost = PRC_jiefangjunhaijun_refit_ic_cost #改装成本
-
-	screening_efficiency = PRC_jiefangjunhaijun_screening_efficiency #屏卫效率
-
-	mines_planting_by_fleets_factor = PRC_jiefangjunhaijun_mines_planting_by_fleets_factor #海军布雷效率
-
-	mines_sweeping_by_fleets_factor = PRC_jiefangjunhaijun_mines_sweeping_by_fleets_factor  #海军扫雷效率
-
-	naval_mines_effect_reduction = PRC_jiefangjunhaijun_naval_mines_effect_reduction #规避水雷
-
-	naval_mines_damage_factor = PRC_jiefangjunhaijun_naval_mines_damage_factor #水雷伤害
-
-	naval_accidents_chance = PRC_jiefangjunhaijun_naval_accidents_chance #海军事故几率
-
-	naval_mine_hit_chance = PRC_jiefangjunhaijun_naval_mine_hit_chance #水雷命中率
+	experience_gain_navy_factor = PRC_jiefangjunhaijun_experience_gain_navy_factor
+	experience_gain_navy_unit_factor = PRC_jiefangjunhaijun_experience_gain_navy_unit_factor
+	repair_speed_factor = PRC_jiefangjunhaijun_repair_speed_factor
+	naval_accidents_chance = PRC_jiefangjunhaijun_naval_accidents_chance
+	strike_force_movement_org_loss = PRC_jiefangjunhaijun_strike_force_movement_org_loss
+	naval_has_potf_in_combat_attack = PRC_jiefangjunhaijun_naval_has_potf_in_combat_attack
+	naval_has_potf_in_combat_defense = PRC_jiefangjunhaijun_naval_has_potf_in_combat_defense
+	naval_coordination = PRC_jiefangjunhaijun_naval_coordination
+	naval_critical_score_chance_factor = PRC_jiefangjunhaijun_naval_critical_score_chance_factor
+	invasion_preparation = PRC_jiefangjunhaijun_invasion_preparation	#登陆准备时间
+	naval_invasion_capacity = PRC_jiefangjunhaijun_naval_invasion_capacity	#登陆作战上限
+	naval_invasion_penalty = PRC_jiefangjunhaijun_naval_invasion_penalty	#登陆惩罚
+	amphibious_invasion = PRC_jiefangjunhaijun_amphibious_invasion	#登陆速度
+	amphibious_invasion_defence = PRC_jiefangjunhaijun_amphibious_invasion_defence
+	naval_detection = PRC_jiefangjunhaijun_naval_detection
+	navy_capital_ship_attack_factor = PRC_jiefangjunhaijun_navy_capital_ship_attack_factor
+	naval_hit_chance = PRC_jiefangjunhaijun_naval_hit_chance
+	ships_at_battle_start = PRC_jiefangjunhaijun_ships_at_battle_start
+	navy_submarine_attack_factor = PRC_jiefangjunhaijun_navy_submarine_attack_factor
+	sub_retreat_speed = PRC_jiefangjunhaijun_sub_retreat_speed
+	naval_mine_hit_chance = PRC_jiefangjunhaijun_naval_mine_hit_chance
+	naval_mines_damage_factor = PRC_jiefangjunhaijun_naval_mines_damage_factor
+	navy_screen_attack_factor = PRC_jiefangjunhaijun_navy_screen_attack_factor
+	naval_torpedo_cooldown_factor = PRC_jiefangjunhaijun_naval_torpedo_cooldown_factor
+	positioning = PRC_jiefangjunhaijun_positioning
+	screening_efficiency = PRC_jiefangjunhaijun_screening_efficiency
+	naval_damage_factor = PRC_jiefangjunhaijun_naval_damage_factor
+	naval_defense_factor = PRC_jiefangjunhaijun_naval_defense_factor
+	naval_morale_factor = PRC_jiefangjunhaijun_naval_morale_factor
+	naval_speed_factor = PRC_jiefangjunhaijun_naval_speed_factor
+	sortie_efficiency = PRC_jiefangjunhaijun_sortie_efficiency
+	navy_carrier_air_agility_factor = PRC_jiefangjunhaijun_navy_carrier_air_agility_factor
+	navy_carrier_air_attack_factor = PRC_jiefangjunhaijun_navy_carrier_air_attack_factor
+	navy_carrier_air_targetting_factor = PRC_jiefangjunhaijun_navy_carrier_air_targetting_factor
+	new_base_strike_mastery_gain_factor = PRC_jiefangjunhaijun_new_base_strike_mastery_gain_factor	#基地打击
+	new_convoy_raiding_mastery_gain_factor = PRC_jiefangjunhaijun_new_convoy_raiding_mastery_gain_factor	#贸易阻断
+	new_fleet_in_being_mastery_gain_factor = PRC_jiefangjunhaijun_new_fleet_in_being_mastery_gain_factor	#存在舰队
 }
 
 PRC_jiefangjunkongjun_dynamic_modifier = {	#解放军空军
-	icon = "GFX_idea_PRC_jiefangjunhaijun_dynamic_modifier"
+	icon = "GFX_idea_PRC_PLAF_idea"
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -323,15 +307,13 @@ PRC_jiefangjunkongjun_dynamic_modifier = {	#解放军空军
 
 	air_detection = PRC_jiefangjunkongjun_air_detection #对空探测
 
-	air_accidents = PRC_jiefangjunkongjun_air_accidents #空军事故概率
-
 	air_accidents_factor = PRC_jiefangjunkongjun_air_accidents_factor #空军事故概率
 
 	air_mission_efficiency = PRC_jiefangjunkongjun_air_mission_efficiency #空军任务效率
 
-	air_bombing_targetting = PRC_jiefangjunkongjun_ #对地攻击瞄准
+	air_bombing_targetting = PRC_jiefangjunkongjun_air_bombing_targetting #对地攻击瞄准
 
-	naval_strike_targetting_factor = PRC_jiefangjunkongjun_air_bombing_targetting #对海攻击瞄准
+	naval_strike_targetting_factor = PRC_jiefangjunkongjun_naval_strike_targetting_factor #对海攻击瞄准
 
 	air_superiority_detect_factor = PRC_jiefangjunkongjun_air_superiority_detect_factor #战机侦测能力
 
@@ -348,305 +330,140 @@ PRC_jiefangjunkongjun_dynamic_modifier = {	#解放军空军
 	mines_planting_by_air_factor = PRC_jiefangjunkongjun_mines_planting_by_air_factor #空中布雷效率
 
 	mines_sweeping_by_air_factor = PRC_jiefangjunkongjun_mines_sweeping_by_air_factor #空中扫雷效率
+
+	air_training_xp_gain_factor = PRC_jiefangjunkongjun_air_training_xp_gain_factor
+
+	air_wing_xp_loss_when_killed_factor = PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor
+
+	air_ace_generation_chance_factor = PRC_jiefangjunkongjun_air_ace_generation_chance_factor
+
+	air_mission_xp_gain_factor = PRC_jiefangjunkongjun_air_mission_xp_gain_factor
+
+	new_battlefield_support_mastery_gain_factor = PRC_jiefangjunkongjun_new_battlefield_support_mastery_gain_factor	#战场支援
+	new_operational_integrity_mastery_gain_factor = PRC_jiefangjunkongjun_new_operational_integrity_mastery_gain_factor	#连续作战
+	new_strategic_destruction_mastery_gain_factor = PRC_jiefangjunkongjun_new_strategic_destruction_mastery_gain_factor	#持续轰炸
+	
+	
 }
 
-PRC_renminzhanzheng = {#麻雀战 #地道战 #地雷战 #水上游击战 #破袭战
-	icon = "GFX_idea_PRC_renminzhanzheng"
+PRC_sandagaizao_dynamic_modifier = {	#三大改造
+	icon = "GFX_idea_PRC_sandagaizao_dynamic_modifier"
 	enable = { 
 		always = yes 
 	}
-
-	army_core_attack_factor = PRC_renminzhanzheng_army_core_attack_factor #地雷战 #破袭战
-	breakthrough_factor = PRC_renminzhanzheng_breakthrough_factor #破袭战
-	RECON_FACTOR = PRC_renminzhanzheng_RECON_FACTOR #麻雀战 #水上游击战
-	RECON_FACTOR_WHILE_ENTRENCHED = PRC_renminzhanzheng_RECON_FACTOR_WHILE_ENTRENCHED #地道战
-	resistance_growth_on_our_occupied_states = PRC_renminzhanzheng_resistance_growth_on_our_occupied_states #麻雀战 #地道战 #地雷战 #水上游击战 #破袭战
-	attrition = PRC_renminzhanzheng_attrition #地道战
-	pocket_penalty = PRC_renminzhanzheng_pocket_penalty #地道战
-	no_supply_grace = PRC_renminzhanzheng_no_supply_grace #地道战
-	out_of_supply_factor = PRC_renminzhanzheng_out_of_supply_factor#地道战
-	army_core_defence_factor = PRC_renminzhanzheng_army_core_defence_factor #地雷战
-	army_morale_factor = PRC_renminzhanzheng_army_morale_factor #水上游击战
-	army_speed_factor = PRC_renminzhanzheng_army_speed_factor #麻雀战 #水上游击战
-	land_night_attack = PRC_renminzhanzheng_land_night_attack #麻雀战 #地雷战
-	terrain_penalty_reduction = PRC_renminzhanzheng_terrain_penalty_reduction #破袭战
-	org_loss_when_moving = PRC_renminzhanzheng_org_loss_when_moving #破袭战
-	supply_consumption_factor = PRC_renminzhanzheng_supply_consumption_factor #地道战
-	river_crossing_factor = PRC_renminzhanzheng_river_crossing_factor #水上游击战
-	industry_air_damage_factor = PRC_renminzhanzheng_industry_air_damage_factor #地道战
-	cas_damage_reduction = PRC_renminzhanzheng_cas_damage_reduction #地道战 #麻雀战
-	enemy_army_bonus_air_superiority_factor = PRC_renminzhanzheng_enemy_army_bonus_air_superiority_factor #地道战 #麻雀战
-	experience_loss_factor = PRC_renminzhanzheng_experience_loss_factor #麻雀战
-	equipment_capture = PRC_renminzhanzheng_equipment_capture #麻雀战 #地道战 #地雷战 #水上游击战 #破袭战
-	WEEKLY_BOMBING_WAR_SUPPORT = PRC_renminzhanzheng_WEEKLY_BOMBING_WAR_SUPPORT #地道战
 	
-    conscription_factor = 0.10
-    mobilization_speed = 0.25
-    defensive_war_stability_factor = 0.15
-	attrition = -0.05   
-    compliance_growth_on_our_occupied_states = -0.25 #我们被敌人占领地区的顺从度增长速度
-    resistance_decay_on_our_occupied_states = -0.25 #我们被敌人占领地区的抵抗下降速度
-    resistance_growth_on_our_occupied_states = 0.25 #我们被敌人占领地区的抵抗增长速度
-    resistance_damage_to_garrison_on_our_occupied_states = 0.15
-    resistance_target_on_our_occupied_states = 0.15    
-	dig_in_speed_factor = PRC_renminzhanzheng_dig_in_speed_factor #地道战
-	max_dig_in_factor = PRC_renminzhanzheng_max_dig_in_factor #地道战
+	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor	#生产效率增长
+	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor		#生产效率上限
+	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor	#基础生产效率
+	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor		#生产效率保持
+
+	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor	#建设速度
+	production_speed_industrial_complex_factor  = PRC_sandagaizao_production_speed_industrial_complex_factor	#民用工厂建设速度
+	production_speed_arms_factory_factor  = PRC_sandagaizao_production_speed_arms_factory_factor	#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor	#船坞建设速度
+	production_speed_infrastructure_factor  = PRC_sandagaizao_production_speed_infrastructure_factor	#基础设施建设速度
+	conversion_cost_civ_to_mil_factor  = PRC_sandagaizao_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor  = PRC_sandagaizao_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
+
+	industrial_capacity_factory  = PRC_sandagaizao_industrial_capacity_factory	#工厂产出
+	industrial_capacity_dockyard  = PRC_sandagaizao_industrial_capacity_dockyard	#海军船坞产出
+	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed #改装速度加成
+
+	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor		#地区最大工厂数
+	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor	#生活消费品工厂系数
+	
+	local_resources_factor = PRC_sandagaizao_local_resources_factor	#战略资源获取效率
+	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
+	
+	political_power_gain = PRC_sandagaizao_political_power_gain		#每日政治点数获取
+	political_power_cost  = PRC_sandagaizao_political_power_cost	#每日消耗的政治点数
+	stability_factor = PRC_sandagaizao_stability_factor		#稳定度
+	AWR_economy_development_monthly =  PRC_sandagaizao_AWR_economy_development_monthly #月度经济变化
+}
+
+PRC_shehuizhuyi_dynamic_modifier = {	#中国式社会主义
+	icon = "GFX_idea_PRC_sandagaizao_dynamic_modifier"
+	enable = { 
+		always = yes 
+	}
+	
+	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor	#生产效率增长
+	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor		#生产效率上限
+	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor	#基础生产效率
+	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor		#生产效率保持
+
+	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor	#建设速度
+	production_speed_industrial_complex_factor  = PRC_sandagaizao_production_speed_industrial_complex_factor	#民用工厂建设速度
+	production_speed_arms_factory_factor  = PRC_sandagaizao_production_speed_arms_factory_factor	#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor	#船坞建设速度
+	production_speed_infrastructure_factor  = PRC_sandagaizao_production_speed_infrastructure_factor	#基础设施建设速度
+	conversion_cost_civ_to_mil_factor  = PRC_sandagaizao_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor  = PRC_sandagaizao_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
+
+	industrial_capacity_factory  = PRC_sandagaizao_industrial_capacity_factory	#工厂产出
+	industrial_capacity_dockyard  = PRC_sandagaizao_industrial_capacity_dockyard	#海军船坞产出
+	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed #改装速度加成
+
+	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor		#地区最大工厂数
+	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor	#生活消费品工厂系数
+	
+	local_resources_factor = PRC_sandagaizao_local_resources_factor	#战略资源获取效率
+	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
+	
+	political_power_gain = PRC_sandagaizao_political_power_gain		#每日政治点数获取
+	political_power_cost  = PRC_sandagaizao_political_power_cost	#每日消耗的政治点数
+	stability_factor = PRC_sandagaizao_stability_factor		#稳定度
+	AWR_economy_development_monthly =  PRC_sandagaizao_AWR_economy_development_monthly #月度经济变化
 }
 
 PRC_gongyehua_dynamic_modifier = {	#社会主义工业化
 	icon = "GFX_idea_PRC_gongyehua_dynamic_modifier"
 	enable = { always = yes }
 	
-	production_factory_efficiency_gain_factor = PRC_gongyehua_production_factory_efficiency_gain_factor
-	production_factory_max_efficiency_factor = PRC_gongyehua_production_factory_max_efficiency_factor
-	production_speed_buildings_factor = PRC_gongyehua_production_speed_buildings_factor
-	global_building_slots_factor = PRC_gongyehua_global_building_slots_factor
-	consumer_goods_factor = PRC_gongyehua_consumer_goods_factor
-	global_building_slots = PRC_gongyehua_global_building_slots
-	political_power_gain = PRC_gongyehua_political_power_gain
-	research_speed_factor = PRC_gongyehua_research_speed_factor
-	local_resources_factor = PRC_gongyehua_local_resources_factor
-	production_factory_start_efficiency_factor = PRC_gongyehua_production_factory_start_efficiency_factor
-	line_change_production_efficiency_factor = PRC_gongyehua_line_change_production_efficiency_factor
-	production_lack_of_resource_penalty_factor = PRC_gongyehua_production_lack_of_resource_penalty_factor
-	production_speed_industrial_complex_factor  = PRC_gongyehua_production_speed_industrial_complex_factor
-	production_speed_arms_factory_factor  = PRC_gongyehua_production_speed_arms_factory_factor
-	production_speed_infrastructure_factor  = PRC_gongyehua_production_speed_infrastructure_factor
-	industrial_capacity_factory  = PRC_gongyehua_industrial_capacity_factory
-	industrial_capacity_dockyard  = PRC_gongyehua_industrial_capacity_dockyard
-	conversion_cost_civ_to_mil_factor  = PRC_gongyehua_conversion_cost_civ_to_mil_factor
-	conversion_cost_mil_to_civ_factor  = PRC_gongyehua_conversion_cost_mil_to_civ_factor
-	#min_export  = PRC_gongyehua_#min_export
-	political_power_cost  = PRC_gongyehua_political_power_cost
-	stability_weekly = PRC_gongyehua_stability_weekly
-	stability_factor = PRC_gongyehua_stability_factor
+	production_factory_efficiency_gain_factor = PRC_gongyehua_production_factory_efficiency_gain_factor	#生产效率增长
+	production_factory_max_efficiency_factor = PRC_gongyehua_production_factory_max_efficiency_factor		#生产效率上限
+	production_factory_start_efficiency_factor = PRC_gongyehua_production_factory_start_efficiency_factor	#基础生产效率
+	line_change_production_efficiency_factor = PRC_gongyehua_line_change_production_efficiency_factor		#生产效率保持
+
+	production_speed_buildings_factor = PRC_gongyehua_production_speed_buildings_factor	#建设速度
+	production_speed_industrial_complex_factor  = PRC_gongyehua_production_speed_industrial_complex_factor	#民用工厂建设速度
+	production_speed_arms_factory_factor  = PRC_gongyehua_production_speed_arms_factory_factor	#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_gongyehua_production_speed_dockyard_factor	#船坞建设速度
+	production_speed_infrastructure_factor  = PRC_gongyehua_production_speed_infrastructure_factor	#基础设施建设速度
+	conversion_cost_civ_to_mil_factor  = PRC_gongyehua_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor  = PRC_gongyehua_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
+	production_speed_rail_way_factor = PRC_gongyehua_production_speed_rail_way_factor	#铁路建设速度
+	production_speed_naval_base_factor = PRC_gongyehua_production_speed_naval_base_factor	#海军基地建设速度
+	production_speed_synthetic_refinery_factor = PRC_gongyehua_production_speed_synthetic_refinery_factor	#合成炼油厂建设速度
+	production_speed_nuclear_reactor_factor = PRC_gongyehua_production_speed_nuclear_reactor_factor	#核反应堆建设速度
+
+
+	industrial_capacity_factory  = PRC_gongyehua_industrial_capacity_factory	#工厂产出
+	industrial_capacity_dockyard  = PRC_gongyehua_industrial_capacity_dockyard	#海军船坞产出
+	repair_speed_factor = PRC_gongyehua_repair_speed_factor	#船坞修理速度
 	equipment_conversion_speed = PRC_gongyehua_equipment_conversion_speed #改装速度加成
-	industry_repair_factor = PRC_gongyehua_industry_industry_repair_factor
-	production_speed_rail_way_factor = PRC_gongyehua_production_speed_rail_way_factor
-	production_speed_supply_node_factor = PRC_gongyehua_production_speed_supply_node_factor
+
+	global_building_slots_factor = PRC_gongyehua_global_building_slots_factor		#地区最大工厂数
+
+	consumer_goods_factor = PRC_gongyehua_consumer_goods_factor	#生活消费品工厂系数
+	
+	local_resources_factor = PRC_gongyehua_local_resources_factor	#战略资源获取效率
+	production_lack_of_resource_penalty_factor = PRC_gongyehua_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
+	
+	political_power_gain = PRC_gongyehua_political_power_gain		#每日政治点数获取
+	political_power_cost  = PRC_gongyehua_political_power_cost	#每日消耗的政治点数
+	stability_weekly = PRC_gongyehua_stability_weekly		#每周稳定度
+	stability_factor = PRC_gongyehua_stability_factor		#稳定度
+
+	research_speed_factor = PRC_gongyehua_research_speed_factor	#研究速度
+	production_speed_facility_factor = PRC_gongyehua_production_speed_facility_factor	#设施建设速度
+	production_speed_naval_facility_factor = PRC_gongyehua_production_speed_naval_facility_factor	#海军设施建设速度
+	production_speed_nuclear_facility_factor = PRC_gongyehua_production_speed_nuclear_facility_factor	#核设施建设速度
+	production_speed_air_facility_factor = PRC_gongyehua_production_speed_air_facility_factor	#空军设施建设速度
+	production_speed_land_facility_factor = PRC_gongyehua_production_speed_land_facility_factor	#陆军设施建设速度
+
+	AWR_economy_development_monthly =  PRC_gongyehua_AWR_economy_development_monthly #月度经济变化
 }	
-
-PRC_dihoukangrigenjudi = {#PRC_dihoukangrigenjudi_flag #for jap #麻雀战 #地道战 #地雷战 #水上游击战 #破袭战
-	icon = GFX_modifiers_kangrigenjudi
-
-	enable = {
-		ROOT = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-	}
-    remove_trigger = {
-	    or = {
-			JAP = {
-				NOT = { 
-					has_war_with = event_target:WTT_communist_china 
-				}
-			}
-			ROOT = {
-				not = { 
-					has_state_flag = PRC_dihoukangrigenjudi_flag 
-				}
-			}
-		}
-	}
-
-	army_speed_factor_for_controller = -0.03
-    local_org_regain = -0.03
-    dig_in_speed_factor = -0.05
-	max_dig_in_factor = -0.03
-    org_loss_when_moving = 0.03
-    army_org_factor = -0.03
-    compliance_growth = -0.07
-	resistance_growth = 0.07
-	resistance_target = 0.07
-	resistance_decay = -0.07
-	required_garrison_factor = 0.07
-	state_resources_factor = -0.12
-	resistance_damage_to_garrison = 0.08
-    local_manpower = -0.12
-    local_building_slots_factor = -0.12
-    local_factories = -0.12
-	state_production_speed_buildings_factor = -0.07
-	industry_repair_factor = -0.07
-	local_factory_sabotage = 0.07
-}
-
-PRC_dihoukangrigenjudi_2 = {#PRC_dihoukangrigenjudi_flag #for jap #麻雀战 #地道战 #地雷战 #水上游击战 #破袭战
-	icon = GFX_modifiers_kangrigenjudi
-	enable = {
-		ROOT = {
-			#has_state_flag = commie_ridden_states
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-	}
-    remove_trigger = {
-	    or = {
-			JAP = {
-				NOT = { 
-					has_war_with = event_target:WTT_communist_china 
-				}
-			}
-			ROOT = {
-				not = { 
-					has_state_flag = PRC_dihoukangrigenjudi_flag 
-				}
-			}
-		}
-	}
-   
-	army_speed_factor_for_controller = -0.06
-    local_org_regain = -0.06
-    dig_in_speed_factor = -0.10
-	max_dig_in_factor = -0.06
-    org_loss_when_moving = 0.06
-    army_org_factor = -0.06
-	
-    compliance_growth = -0.14
-	resistance_growth = 0.14
-	resistance_target = 0.14
-	resistance_decay = -0.14
-	required_garrison_factor = 0.14
-	state_resources_factor = -0.24
-	resistance_damage_to_garrison = 0.16
-    local_manpower = -0.24
-    local_building_slots_factor = -0.24
-    local_factories = -0.24
-	state_production_speed_buildings_factor = -0.14
-	industry_repair_factor = -0.14
-	local_factory_sabotage = 0.14
-}
-
-PRC_dihoukangrigenjudi_3 = {
-	icon = GFX_modifiers_kangrigenjudi
-    enable = {
-		ROOT = {
-			#has_state_flag = commie_ridden_states
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-	}
-    remove_trigger = {
-	    or = {
-			JAP = {
-				NOT = { 
-					has_war_with = event_target:WTT_communist_china 
-				}
-			}
-			ROOT = {
-				not = { 
-					has_state_flag = PRC_dihoukangrigenjudi_flag 
-				}
-			}
-		}
-	}
-	
-	
-	army_speed_factor_for_controller = -0.09
-    local_org_regain = -0.09
-    dig_in_speed_factor = -0.15
-	max_dig_in_factor = -0.09
-    org_loss_when_moving = 0.09
-    army_org_factor = -0.09
-	
-    compliance_growth = -0.21
-	resistance_growth = 0.21
-	resistance_target = 0.21
-	resistance_decay = -0.21
-	required_garrison_factor = 0.21
-	state_resources_factor = -0.36
-	resistance_damage_to_garrison = 0.24
-    local_manpower = -0.36
-    local_building_slots_factor = -0.36
-    local_factories = -0.36
-	state_production_speed_buildings_factor = -0.21
-	industry_repair_factor = -0.21
-	local_factory_sabotage = 0.21
-}
-
-PRC_dihoukangrigenjudi_4 = {
-	
-    enable = {
-		ROOT = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-	}
-    remove_trigger = {
-	    or = {
-			JAP = {
-				NOT = { 
-					has_war_with = PRC
-				}
-			}
-			ROOT = {
-				not = { 
-					has_state_flag = PRC_dihoukangrigenjudi_flag 
-				}
-			}
-		}
-	}
-	icon = GFX_modifiers_kangrigenjudi
-	
-	army_speed_factor_for_controller = -0.12
-    local_org_regain = -0.12
-    dig_in_speed_factor = -0.20
-	max_dig_in_factor = -0.12
-    org_loss_when_moving = 0.12
-    army_org_factor = -0.12
-    compliance_growth = -0.28
-	resistance_growth = 0.28
-	resistance_target = 0.28
-	resistance_decay = -0.28
-	required_garrison_factor = 0.28
-	state_resources_factor = -0.48
-	resistance_damage_to_garrison = 0.32
-    local_manpower = -0.48
-    local_building_slots_factor = -0.48
-    local_factories = -0.48
-	state_production_speed_buildings_factor = -0.28
-	industry_repair_factor = -0.28
-	local_factory_sabotage = 0.28	
-}
-
-PRC_dihoukangrigenjudi_5 = {
-	icon = GFX_modifiers_kangrigenjudi
-	enable = {
-		ROOT = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-	}
-    remove_trigger = {
-	    or = {
-			JAP = {
-				NOT = { 
-					has_war_with = PRC
-				}
-			}
-			ROOT = {
-				not = { 
-					has_state_flag = PRC_dihoukangrigenjudi_flag 
-				}
-			}
-		}
-	}
-	
-	army_speed_factor_for_controller = -0.15
-    local_org_regain = -0.15
-    dig_in_speed_factor = -0.25
-	max_dig_in_factor = -0.15
-    org_loss_when_moving = 0.15
-    army_org_factor = -0.15
-    compliance_growth = -0.35
-	resistance_growth = 0.35
-	resistance_target = 0.35
-	resistance_decay = -0.35
-	required_garrison_factor = 0.35
-	state_resources_factor = -0.6
-	resistance_damage_to_garrison = 0.40
-    local_manpower = -0.6
-    local_building_slots_factor = -0.6 #地区最大工业值
-    local_factories = -0.6 #当地工业值
-	state_production_speed_buildings_factor = -0.35
-	industry_repair_factor = -0.35
-	local_factory_sabotage = 0.35
-}
 
 communist_stronghold = {	#军爱民，民拥军
 	enable = { 
