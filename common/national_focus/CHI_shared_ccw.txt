@@ -1,0 +1,1269 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+## CCW ##
+shared_focus = {
+		id = CHI_neizhanzongdongyuan
+		icon = GFX_goal_CHI_ZXDZBYB
+	        x = 49
+	        y = 8
+		cost = 1.00
+
+	ai_will_do = {
+		base = 15
+	}
+		available_if_capitulated = yes
+		completion_reward = {
+        add_political_power = 100
+		add_ideas = chi_kanluan
+		}
+		available = {
+            has_war_with = PRC
+		    NOT = { has_idea = prc_kmt_shuangshixieding }
+		    NOT = { has_war_with = JAP }		
+			has_completed_focus = CHI_political_consultative_assembly_focus		
+			has_global_flag = CHI_no_longer_united_flag
+		}
+}
+shared_focus = {
+	id = CHI_CCW_directing_our_operations
+	icon = GFX_focus_CHI_CCW_directing_our_operations
+	relative_position_id = CHI_neizhanzongdongyuan
+	prerequisite = { focus = CHI_neizhanzongdongyuan }
+	x = 0
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_ccw_ministry_of_national_defence
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_end_the_ko_hsin_movement
+	icon = GFX_goal_CHI_XDD
+	relative_position_id = CHI_CCW_directing_our_operations
+	mutually_exclusive = { focus = CHI_CCW_continue_the_ko_hsin_movement }
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -1
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_idea = new_life
+	}
+
+	bypass = {
+		NOT = { has_idea = new_life }
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		add_political_power = 100
+		add_stability = -0.25
+		remove_ideas = new_life
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_continue_the_ko_hsin_movement
+	icon = GFX_goal_CHI_YDZ
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	mutually_exclusive = { focus = CHI_CCW_end_the_ko_hsin_movement }
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = 2
+	y = 0
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 0
+	}
+
+	available = {
+		has_idea = new_life
+	}
+
+	bypass = {
+		NOT = { has_idea = new_life }
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = -100
+		add_stability = 0.25
+			swap_ideas = {
+				remove_idea = new_life
+				add_idea = new_life2
+			}		
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_temporary_provisions
+	icon = GFX_focus_CHI_50s_politics_reform
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 0
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_dongyuankanluan
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_call_up_domestic_militias
+	icon = GFX_focus_CHI_CCW_call_up_domestic_militias
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 3
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 5
+			has_war = yes
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+	    add_ideas = chi_huanxiangtuan2
+		custom_effect_tooltip = create_2_divs_in_state_tt
+		division_template = {
+			name = "Sanchiao Minping"
+			#is_locked = yes
+			regiments = {
+        		irregular_infantry = { x = 0 y = 0 }
+        		irregular_infantry = { x = 0 y = 1 }
+       			irregular_infantry = { x = 1 y = 0 }
+    		}
+		}
+		every_controlled_state = {
+			limit = {
+				state_population_k > 1500
+			}
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.2 start_equipment_factor = 1 start_manpower_factor = 0.6"
+    			owner = CHI
+				count = 2
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_anti_communist_crusade
+	icon = GFX_focus_CHI_CCW_anti_communist_crusade
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = -1
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+   		add_timed_idea = {
+			idea = chi_ccw_anti_communist_idea
+			days = 365
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_mobilize_to_suppress_bandits
+	icon = GFX_goal_YUN_army_expansion
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 2
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_war_support = 0.05
+		add_manpower = 550000
+		swap_ideas = {
+		remove_idea = chi_kanluan
+		add_idea = chi_kanluan2
+		}		
+		if = {
+			limit = {
+				has_idea = chi_initial_offensive_buff
+			}
+			modify_timed_idea = {
+				idea = chi_initial_offensive_buff
+				days = 90
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_left_stranded
+	icon = GFX_goal_CHI_BFXC
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 0
+	}
+
+	available = {
+		has_idea = chi_zhongmeitiaoyue
+		CHI = {
+        is_ai = no			
+		}		
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = this_will_have_zainan_consequences_tt
+		USA = {
+			country_event = {
+				id = ccw.773
+				days = 1
+			}			
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_a_quick_and_swift_war
+	icon = GFX_focus_CHI_CCW_a_quick_and_swift_war
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -6
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 5
+			has_war_with = PRC
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+   		add_timed_idea = {
+			idea = chi_jingong
+			days = 365
+		}	
+		if = {
+			limit = {
+				has_idea = chi_initial_offensive_buff
+			}
+			modify_timed_idea = {
+				idea = chi_initial_offensive_buff
+				days = 60
+			}
+		}
+		army_experience = 50
+		add_command_power = 50
+		CHI_sun_liren = {
+			gain_xp = 1500
+			add_defense = 1
+			add_attack = 1
+			add_planning = 1
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_take_over_dongbei
+	icon = GFX_focus_CHI_CCW_take_over_dongbei
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -2
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+			}
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = prc_northeast_offensive
+					scope = PRC
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			any_controlled_state = {
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_242
+						region = 242
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_243
+						region = 243
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_155
+						region = 155
+					}
+				}
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_take_over_dongbei_mission
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				or = {
+					region = 242
+					region = 155
+					region = 243
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_blitz_yenan
+	icon = GFX_focus_CHI_CCW_blitz_yenan
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = 0
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		NOT = { has_active_mission = eywor_chi_battle_of_yanan }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 622
+					state = 1030
+					state = 1067
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 622
+				controls_state = 1030
+				controls_state = 1067
+			}
+		}
+	}
+
+	bypass = {
+		AND = {
+             OR = {
+				1030 = { is_controlled_by = ROOT }
+				1030 = { 
+					controller = { has_war_with = event_target:WTT_communist_china }
+				}
+			}
+			OR = {
+				622 = { is_controlled_by = ROOT }
+				622 = { 
+					controller = { has_war_with = event_target:WTT_communist_china }
+				}
+			}
+		}  
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_blitz_yenan
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 622
+					state = 1030
+					state = 1067
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_shantung_campaign
+	icon = GFX_focus_CHI_CCW_shantung_campaign
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -1
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 597
+					state = 1079
+					state = 1077
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 597
+				controls_state = 1079
+				controls_state = 1077
+				controls_state = 598
+				controls_state = 1080
+				controls_state = 997
+				controls_state = 607
+				controls_state = 1043
+				controls_state = 606
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_shantung_campaign
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 597
+					state = 1079
+					state = 1077
+					state = 598
+					state = 1080
+					state = 997
+					state = 607
+					state = 1043
+					state = 606
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_hopeh_campaign
+	icon = GFX_focus_CHI_CCW_hopeh_campaign
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -3
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 614
+					state = 608
+					state = 609
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 614
+				controls_state = 608
+				controls_state = 609
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_hopeh_offensive
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 614
+					state = 608
+					state = 609
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_northwest_insurgency
+	icon = GFX_focus_CHI_CCW_northwest_insurgency
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = 2
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		TNG = {exists = no }
+		XSM = {
+			any_controlled_state = {
+				any_neighbor_state = {
+					controller = { tag = PRC }
+				}
+			}
+			has_war_together_with = ROOT
+			exists = yes
+		}
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		TNG = {
+			TNG_ma_hushan = { set_nationality = XSM }
+			TNG_ma_yanliang = { set_nationality = XSM }
+			#TNG_ma_shengkui = { set_nationality = XSM } #Decommissioned in 1937?
+			TNG_ma_rulong = { set_nationality = XSM }
+			TNG_la_shouli = { set_nationality = XSM }
+			TNG_ma_fuyuan = { set_nationality = XSM }
+			TNG_xian_fuhai = { set_nationality = XSM }
+			TNG_maifusi = { set_nationality = XSM }
+			TNG_bai_zili = { set_nationality = XSM }
+			TNG_ma_zhancang = { set_nationality = XSM }
+			TNG_wang_haifeng = { set_nationality = XSM }
+			TNG_ge_jiyun = { set_nationality = XSM }
+			TNG_su_jishan = { set_nationality = XSM }
+			TNG_zheng_yijun = { set_nationality = XSM }
+		}
+		XSM = {
+			add_ideas = XSM_northwest_insurgency
+			add_manpower = 350000
+			division_template = {
+				name = "Sanchiao Minping"
+				regiments = {
+        			irregular_infantry = { x = 0 y = 0 }
+        			irregular_infantry = { x = 0 y = 1 }
+       				irregular_infantry = { x = 0 y = 2 }
+					irregular_infantry = { x = 0 y = 3 }
+					irregular_infantry = { x = 1 y = 0 }
+    			}
+			}
+		}
+		604 = {
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.1"
+    			owner = XSM
+				count = 8
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_arm_the_insurgents
+	icon = GFX_goal_YUN_arms_scavenging
+	relative_position_id = CHI_CCW_northwest_insurgency
+	prerequisite = { focus = CHI_CCW_northwest_insurgency }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		XSM = {
+		swap_ideas = {
+			remove_idea = XSM_northwest_insurgency
+			add_idea = XSM_northwest_insurgency2
+		}		
+			add_equipment_to_stockpile = {
+				type = infantry_equipment 
+				amount = 25000
+				producer = CHI
+			}
+			add_manpower = 150000
+		}
+		604 = {
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.1"
+    			owner = XSM
+				count = 4
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_promote_ma_hushan
+	icon = GFX_focus_CHI_CCW_promote_ma_hushan
+	relative_position_id = CHI_CCW_northwest_insurgency
+	prerequisite = { focus = CHI_CCW_northwest_insurgency }
+	x = 1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		TNG = {
+		NOT = {
+		has_country_leader = { character = TNG_ma_hushan ruling_only = yes }	
+		}					
+		}
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+            CHI = {
+                   set_autonomy = { target = XSM autonomy_state = autonomy_CHI_zongduxiaqu freedom_level = 0.50  }
+            }	
+		XSM = {
+			promote_character = {
+    			character = TNG_ma_hushan
+    			ideology = despotism
+			}
+			add_country_leader_trait = baizhanlaobing
+			add_country_leader_trait = ROC_red_general			
+		}
+		if = {
+			limit = {
+			283 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    283 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}
+		if = {
+			limit = {
+			1045 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    1045 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}	
+		if = {
+			limit = {
+			1053 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    1053 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}				
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_ching_kuos_shanghai_adventure
+	icon = GFX_focus_CHI_CCW_ching_kuos_shanghai_adventure
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -3
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 20
+	}
+
+	available = {
+		1078 = { is_owned_and_controlled_by = ROOT }
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = ching_kuo_start_mayhem_in_shanghai_tt
+					country_event = {
+						id = ccw.754
+					}	
+		custom_effect_tooltip = if_successful_tt
+		effect_tooltip = {
+        add_timed_idea = { idea = CHI_minxinjinshi days = 50 }
+				CHI = {
+					country_event = {
+						id = ccw.759
+					}
+				}		
+		}
+		custom_effect_tooltip = if_unsuccessful_tt
+		effect_tooltip = {				
+        add_timed_idea = { idea = CHI_bengkui days = 50 }					
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_the_retreat_to_taipei
+	icon = GFX_focus_CHI_CCW_the_retreat_to_taipei
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = 5
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		controls_state = 524
+		has_war_with = PRC
+	    has_global_flag = event_huaihaizhanyifashengle
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_ccw_fighting_retreat_idea
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_plunder_the_cities
+	icon = GFX_focus_BRA_utilize_security_law
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_the_retreat_to_taipei }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		every_controlled_state = {
+			limit = {
+				is_controlled_by = ROOT
+				NOT = {
+					state = 524
+				}
+			}
+			damage_building = {
+				type = infrastructure
+    			damage = 5
+			}
+			damage_building = {
+				type = arms_factory
+    			damage = 8
+			}
+			damage_building = {
+				type = industrial_complex
+    			damage = 5
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_seize_the_gold
+	icon = GFX_focus_usa_reestablish_the_gold_standard
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_the_retreat_to_taipei }
+	x = 1
+	y = 1
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_timed_idea = {
+			idea = chi_ccw_seize_the_gold_idea
+			days = 180
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = prc_ccw_seize_the_gold_idea
+				days = 180
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_further_monetary_transfer
+	icon = GFX_focus_mex_privatisation
+	relative_position_id = CHI_CCW_seize_the_gold
+	prerequisite = { focus = CHI_CCW_seize_the_gold }
+	x = 1
+	y = 1
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 15
+			has_completed_focus = CHI_CCW_seize_the_gold
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		if = {
+			limit = {
+				has_idea = chi_ccw_seize_the_gold_idea
+			}
+			modify_timed_idea = {
+				idea = chi_ccw_seize_the_gold_idea
+				days = 180
+			}
+			PRC = {
+				modify_timed_idea = {
+					idea = prc_ccw_seize_the_gold_idea
+					days = 180
+				}
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_fighting_retreat
+	icon = GFX_goal_YUN_dadao_march
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_plunder_the_cities focus = CHI_CCW_seize_the_gold }
+	x = 0
+	y = 2
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = chi_ccw_fighting_retreat_idea
+			add_idea = chi_ccw_fighting_retreat_upgrade_idea
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_CCW_destroy_industrial_sites
+	icon = GFX_focus_CHI_CCW_destroy_industrial_sites
+	relative_position_id = CHI_CCW_plunder_the_cities
+	prerequisite = { focus = CHI_CCW_plunder_the_cities }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = destroy_industrial_sites_tt
+		custom_effect_tooltip = if_successful_tt
+		effect_tooltip = {
+			add_political_power = 125		
+			add_stability = 0.1
+			add_war_support = 0.1
+			every_controlled_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = {
+						state = 524
+					}
+				}
+				damage_building = {
+					type = infrastructure
+    				damage = 5
+				}
+				damage_building = {
+					type = arms_factory
+    				damage = 8
+				}
+				damage_building = {
+					type = industrial_complex
+    				damage = 5
+				}
+			}
+		}
+		custom_effect_tooltip = if_unsuccessful_tt
+		effect_tooltip = {
+			add_political_power = -250
+			add_stability = -0.2
+			add_war_support = -0.25
+			every_controlled_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = {
+						state = 524
+					}
+				}
+				damage_building = {
+					type = infrastructure
+    				damage = 2
+				}
+				damage_building = {
+					type = arms_factory
+    				damage = 2
+				}
+				damage_building = {
+					type = industrial_complex
+    				damage = 2
+				}
+			}
+		}
+		hidden_effect = {
+			random_list = {
+				70 = {
+					country_event = cw_ccw_events.22
+				}
+				30 = {
+					country_event = cw_ccw_events.23
+				}
+			}
+		}
+	}
+}

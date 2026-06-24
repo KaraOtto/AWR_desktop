@@ -29,11 +29,11 @@ CHI_border_clashes = {
 				AND = {
 					has_country_flag = CHI_institute_cross_border_raids
 					NOT = { 
-						tag = event_target:WTT_current_china_leader 
+						tag = CHI 
 					}
 					FROM = { 
 						NOT = { 
-							tag = event_target:WTT_current_china_leader 
+							tag = CHI 
 						} 
 					}
 				}
@@ -41,7 +41,7 @@ CHI_border_clashes = {
 				AND = {
 					has_country_flag = CHI_provoke_border_clashes
 					FROM = { 
-						tag = event_target:WTT_current_china_leader 
+						tag = CHI 
 					}
 				}
 
@@ -49,7 +49,7 @@ CHI_border_clashes = {
 					FROM = { 
 						has_country_flag = CHI_provoke_border_clashes 
 					}
-					tag = event_target:WTT_current_china_leader
+					tag = CHI
 				}
 				
 				AND = {
@@ -175,12 +175,12 @@ CHI_border_clashes = {
 		}
 
 		target_root_trigger = {
-			is_literally_china = yes
+			tag = CHI
 		}
 
 		target_trigger = {
 			FROM = { 
-				is_literally_china = yes 
+				tag = CHI 
 				any_neighbor_country = {
 					OR = {
 						tag = ROOT 

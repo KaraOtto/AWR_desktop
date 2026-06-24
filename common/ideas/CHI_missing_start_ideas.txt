@@ -1,0 +1,249 @@
+ideas = {
+	country = {
+				CHI_army_corruption_000 = {
+
+					picture = chi_army_corruption00
+
+					name = CHI_army_corruption_0
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+					research_bonus = {				
+						marine_tech = -0.6
+						mountaineers_tech = -0.6
+						para_tech = -0.6
+					}
+					removal_cost = -1
+					modifier = {
+						army_defence_factor = -0.75
+						army_attack_factor = -0.75
+						ammunition_consumption_factor = 0.5
+						#army_org_factor = -0.25
+						#army_morale_factor = -0.25
+						#mobilization_speed = -0.25
+						command_power_gain_mult = -0.2
+						experience_gain_army_factor = -0.35
+						special_forces_training_time_factor = 10
+						conscription_factor = -0.5
+						mobilization_speed = -0.5
+					}#
+
+				}
+
+				CHI_superior_to_the_wrl_000 = {
+
+					name = CHI_superior_to_the_wrl_0
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+					targeted_modifier = {
+						tag = HPC
+						attack_bonus_against = 0.6
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = PLM
+						attack_bonus_against = 0.6
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SHX
+						attack_bonus_against = 0.6
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SHD
+						attack_bonus_against = 0.6
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SHC
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = NEA
+						attack_bonus_against = 0.6
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SIC
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = XIK
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = XSM
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = GSM
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = EGM
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = NXM
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = GXC
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = GUD
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = YUN
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = XIA
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SIK
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = HMI
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = TNG
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = KHR
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = KRS
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = ATM
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+					targeted_modifier = {
+						tag = SUY
+						attack_bonus_against = 0.6 
+						defense_bonus_against = 0.6
+		            }
+				}
+
+				CHI_superior_to_the_wrl_000_for_tt = {
+
+					picture = generic_victors_of_ww1
+
+					name = CHI_superior_to_the_wrl_0
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+					modifier = {
+						custom_modifier_tooltip = have_buff_against_wrls_000_tt
+					}
+				}
+				i_will_defend = {
+					available = {
+						JAP = {
+							is_ai = no
+							NOT = {
+								has_completed_focus = JAP_strengthen_civilian_government
+							}
+						}
+
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					#traits = {
+					#	stout_defender
+					#}
+					modifier = {
+						#industrial_capacity_factory = 0.025
+						#max_planning = 0.35
+						ai_focus_defense_factor = 0.5
+					}
+					removal_cost = -1
+				}
+				unstable_economy = {
+					allowed = {
+						always = no
+					}
+					on_add = {#MODDEDV
+						custom_effect_tooltip = plus_point_1_per_week_tt
+					}
+					traits = {
+						plus_point_1_per_week
+					}
+					removal_cost = -1
+					level = 2
+					modifier = {
+						consumer_goods_expected_value = 0.4
+						war_stability_factor = -0.1
+						production_speed_infrastructure_factor = 0.1
+						production_speed_industrial_complex_factor = -0.35
+						production_speed_arms_factory_factor = -0.35
+						production_speed_dockyard_factor = -0.35
+						conversion_cost_civ_to_mil_factor = 0.35
+						conversion_cost_mil_to_civ_factor = 0.35
+						production_factory_efficiency_gain_factor = -0.2
+						line_change_production_efficiency_factor = -0.2
+						max_fuel_factor = -0.3
+						fuel_gain_factor = -0.4
+						ammunition_capacity_factor = -0.3
+						ammunition_factor = -0.4
+					}
+					allowed_to_remove = {
+						custom_trigger_tooltip = {
+							tooltip = has_taken_monetary_reform_decision_tt
+							has_country_flag = has_taken_monetary_reform_decision
+						}
+						#has_completed_focus = CHI_monetary_reform
+					}
+
+					cancel_if_invalid = no
+				}
+	}
+}

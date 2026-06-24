@@ -1,0 +1,1324 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+## WOR ##
+shared_focus = { 
+	id = CHI_WOR_the_war_of_resistance
+	x = 30
+	y = 14
+	icon = {
+		trigger = {
+			has_country_leader = {
+				character = CHI_chiang_kai_shek
+				ruling_only = yes
+			}
+		}
+        value = GFX_focus_CHI_WOR_lushan_declaration
+    }
+	icon = {
+        value = GFX_goal_YUN_second_sino_japanese_war
+    }
+	dynamic = yes
+
+	cost = 0.01
+
+	ai_will_do = {
+		base = 1
+	}
+
+
+	allow_branch = {
+			has_civil_war = no
+			has_war_with = JAP
+			has_defensive_war = yes
+	}
+
+	available = {
+			has_civil_war = no
+			has_war_with = JAP
+			has_defensive_war = yes
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+                CHI_increase_anti_japanese_sentiment = yes
+		unlock_decision_category_tooltip = RCM_CHI_WOR
+                hidden_effect = {
+		set_global_flag = chi_war_of_resistance_flag
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = chi_war_of_resistance_tt
+			add_dynamic_modifier = { modifier = CHI_war_of_resistance_modifier }
+			add_to_variable = {
+    			var = CHI_war_of_resistance_modifier_army_attack_factor
+    			value = -0.10
+			}
+		        add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.10
+		         }
+			add_to_variable = {
+				var = CHI_war_of_resistance_modifier_experience_loss_factor
+				value = 0.1
+			}
+			add_to_variable = {
+				var = CHI_war_of_resistance_modifier_war_stability_factor
+				value = 0.05
+			}
+			add_to_variable = {
+				var = CHI_war_of_resistance_modifier_army_advisor_cost_factor
+				value = -0.25
+			}
+                   }
+	}
+}
+shared_focus = {
+	id = CHI_WOR_defensive_fortifications
+	icon = GFX_focus_CHI_WOR_defensive_fortifications
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = 3
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 5000 #Do this ASAP
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+                CHI_increase_anti_japanese_sentiment = yes
+		add_war_support = 0.05
+		unlock_decision_tooltip = CHI_fortify_north_hunan
+		unlock_decision_tooltip = CHI_fortify_fujian
+		unlock_decision_tooltip = CHI_fortify_zhejiang
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_static_defense
+	icon = GFX_focus_CHI_WOR_static_defense
+	relative_position_id = CHI_WOR_defensive_fortifications
+	prerequisite = { focus = CHI_WOR_defensive_fortifications }
+	x = 3
+	y = 1
+
+	cost = 7
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+                CHI_increase_anti_japanese_sentiment = yes
+		custom_effect_tooltip = CHI_WOR_static_defense_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.025
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_max_dig_in_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_speed_factor
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_mountain_warfare
+	icon = GFX_focus_AUS_osterreichische_gebirgsjager
+	relative_position_id = CHI_WOR_defensive_fortifications
+	prerequisite = { focus = CHI_WOR_defensive_fortifications }
+	x = 1
+	y = 1
+
+	cost = 7
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+                CHI_increase_anti_japanese_sentiment = yes
+		custom_effect_tooltip = CHI_WOR_mountain_warfare_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_terrain_penalty_reduction
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.025
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_scorched_earth
+	icon = GFX_focus_CHI_WOR_scorched_earth
+	relative_position_id = CHI_WOR_defensive_fortifications
+	prerequisite = { focus = CHI_WOR_defensive_fortifications }
+	x = -1
+	y = 1
+
+	cost = 7
+
+	ai_will_do = {
+		base = 500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		every_possible_country = {
+			limit = {
+				OR = {
+					tag = RFM
+					tag = CCP
+					tag = EHB
+				}
+			}
+			add_ideas = CHI_disrupted_factories
+		}
+		custom_effect_tooltip = CHI_WOR_scorched_earth_tt
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_the_big_sword_march
+	icon = GFX_goal_YUN_dadao_march
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+                CHI_increase_anti_japanese_sentiment = yes
+		custom_effect_tooltip = CHI_WOR_the_big_sword_march_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_attack_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_org_loss_at_low_org_factor
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_night_raid
+	icon = GFX_focus_CHI_WOR_night_raid
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_night_raid_tt
+		add_to_variable = {
+    		var = CHI_war_of_resistance_modifier_land_night_attack
+    		value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_org_loss_when_moving
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_solicit_international_goodwill
+	icon = GFX_focus_CHI_WOR_solicit_international_goodwill
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = 5
+	y = 1
+
+	cost = 2.2
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 120
+		custom_effect_tooltip = CHI_WOR_solicit_international_goodwill_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_war_stability_factor
+			value = 0.05
+		}
+		unlock_decision_tooltip = CHI_issue_blood_chits
+		custom_effect_tooltip = CHI_issue_blood_chits_tt
+		show_ideas_tooltip = CHI_blood_chit_idea
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_1938_operations
+	icon = GFX_focus_CHI_WOR_1938_operations
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_big_sword_march }
+	prerequisite = { focus = CHI_WOR_night_raid }
+	x = 0
+	y = 2
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_1938_operations_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_attack_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.025
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_psychological_warfare
+	icon = GFX_focus_generic_whispers
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = { focus = CHI_WOR_1938_operations }
+	x = -2
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_psychological_warfare_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_intel_from_combat_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_intel_to_others
+			value = -15
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_ambush_tactics
+	icon = GFX_focus_CHI_WOR_ambush_tactics
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = { focus = CHI_WOR_1938_operations }
+	x = 2
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_ambush_tactics_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_recon_factor_while_entrenched
+			value = 0.15
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_dig_in_speed_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_supply_consumption_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_attrition
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_fearmonger_chinese_retribution
+	icon = GFX_goal_YUN_nanjing_demands_central_authority
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = { focus = CHI_WOR_1938_operations }
+	x = 0
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_fearmonger_chinese_retribution_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_attack_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_war_stability_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_1939_1940_offensive
+	icon = GFX_focus_CHI_WOR_1939_1940_offensive
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = {
+		focus = CHI_WOR_psychological_warfare
+		focus = CHI_WOR_fearmonger_chinese_retribution
+		focus = CHI_WOR_ambush_tactics
+	}
+	x = 0
+	y = 2
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_1939_1940_offensive_tt
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_patriotism
+	icon = GFX_focus_CHI_WOR_patriotism
+	relative_position_id = CHI_WOR_1939_1940_offensive
+	prerequisite = { focus = CHI_WOR_1939_1940_offensive }
+	x = -1
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_patriotism_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_war_stability_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_attack_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_marytrdom
+	icon = GFX_focus_CHI_WOR_marytrdom
+	relative_position_id = CHI_WOR_1939_1940_offensive
+	prerequisite = { focus = CHI_WOR_1939_1940_offensive }
+	x = 1
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_marytrdom_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_war_stability_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_attack_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_japan_is_defeated
+	icon = GFX_focus_CHI_WOR_japan_is_defeated
+	relative_position_id = CHI_WOR_1939_1940_offensive
+	prerequisite = { focus = CHI_WOR_1939_1940_offensive }
+	x = 0
+	y = 2
+
+	cost = 1
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 120
+		add_stability = 0.1
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_war_of_attrition
+	icon = GFX_focus_CHI_WOR_war_of_attrition
+	relative_position_id = CHI_WOR_1939_1940_offensive
+	prerequisite = { focus = CHI_WOR_1939_1940_offensive }
+	x = -3
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_war_of_attrition_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_org_loss_at_low_org_factor
+			value = -0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_experience_loss_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_dig_in_speed_factor
+			value = 0.025
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.025
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_prolonged_war
+	icon = GFX_focus_CHI_WOR_prolonged_war
+	relative_position_id = CHI_WOR_war_of_attrition
+	prerequisite = { focus = CHI_WOR_war_of_attrition }
+	x = -1
+	y = 1
+
+	cost = 6
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_prolonged_war_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_max_dig_in_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_dig_in_speed_factor
+			value = 0.025
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_defence_factor
+			value = 0.025
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_strategic_retreat
+	icon = GFX_focus_CHI_WOR_strategic_retreat
+	relative_position_id = CHI_WOR_war_of_attrition
+	prerequisite = { focus = CHI_WOR_war_of_attrition }
+	x = 1
+	y = 1
+
+	cost = 6
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_strategic_retreat_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_speed_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_org_loss_when_moving
+			value = -0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_max_dig_in_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_experience_loss_factor
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_magnetic_warfare
+	icon = GFX_focus_CHI_WOR_magnetic_warfare
+	relative_position_id = CHI_WOR_1939_1940_offensive
+	prerequisite = { focus = CHI_WOR_1939_1940_offensive }
+	x = 3
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_magnetic_warfare_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_max_planning_factor
+			value = 0.1
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_cut_off_enemy_supply
+	icon = GFX_focus_CHI_WOR_cut_off_enemy_supply
+	relative_position_id = CHI_WOR_magnetic_warfare
+	prerequisite = { focus = CHI_WOR_magnetic_warfare }
+	x = 1
+	y = 1
+
+	cost = 6
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_cut_off_enemy_supply_tt
+		effect_tooltip = {
+			add_dynamic_modifier = { modifier = chi_wor_jap_supply_issue scope = JAP }
+		}
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						region = 164
+						region = 248
+						region = 247
+						region = 246
+						region = 245
+						region = 144
+						region = 200
+						region = 1023
+						region = 143
+						region = 165
+						state = 748
+						state = 603
+					}
+					NOT = {
+						state = 751
+					}
+				}
+				add_dynamic_modifier = { modifier = chi_wor_jap_supply_issue scope = JAP}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_encircle_the_enemy
+	icon = GFX_focus_CHI_WOR_encircle_the_enemy
+	relative_position_id = CHI_WOR_magnetic_warfare
+	prerequisite = { focus = CHI_WOR_magnetic_warfare }
+	x = -1
+	y = 1
+
+	cost = 6
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_encircle_the_enemy_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_land_night_attack
+			value = 0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_supply_consumption_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_attrition
+			value = -0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_battle_of_wuhan
+	icon = GFX_focus_CHI_WOR_battle_of_wuhan
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = { focus = CHI_WOR_1938_operations }
+	x = -4
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_battle_of_changsha
+	icon = GFX_focus_CHI_WOR_battle_of_changsha
+	relative_position_id = CHI_WOR_1938_operations
+	prerequisite = { focus = CHI_WOR_1938_operations }
+	x = 4
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_changsha_great_victory
+	icon = GFX_focus_CHI_WOR_army_victory
+	relative_position_id = CHI_WOR_battle_of_changsha
+	mutually_exclusive = { focus = CHI_WOR_changsha_defeat }
+	prerequisite = { focus = CHI_WOR_battle_of_changsha }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_a_great_victory_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_morale_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_changsha_defeat
+	icon = GFX_focus_CHI_WOR_army_defeat
+	relative_position_id = CHI_WOR_battle_of_changsha
+	mutually_exclusive = { focus = CHI_WOR_changsha_great_victory }
+	prerequisite = { focus = CHI_WOR_battle_of_changsha }
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_wuhan_great_victory
+	icon = GFX_focus_CHI_WOR_army_victory
+	relative_position_id = CHI_WOR_battle_of_wuhan
+	mutually_exclusive = { focus = CHI_WOR_wuhan_defeat }
+	prerequisite = { focus = CHI_WOR_battle_of_wuhan }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_a_great_victory_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_morale_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_wuhan_defeat
+	icon = GFX_focus_CHI_WOR_army_defeat
+	relative_position_id = CHI_WOR_battle_of_wuhan
+	mutually_exclusive = { focus = CHI_WOR_wuhan_great_victory }
+	prerequisite = { focus = CHI_WOR_battle_of_wuhan }
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_god_of_war
+	icon = GFX_focus_CHI_WOR_god_of_war
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = -6
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 2500
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		CHI_hsueh_yueh = {
+			gain_xp = 3000
+			add_unit_leader_trait = brilliant_strategist
+			add_unit_leader_trait = trickster
+			add_attack = 3
+			add_defense = 3
+			add_planning = 3
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_battle_of_shanghai
+	icon = GFX_focus_CHI_WOR_battle_of_shanghai
+	relative_position_id = CHI_WOR_the_war_of_resistance
+	prerequisite = { focus = CHI_WOR_the_war_of_resistance }
+	x = -4
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_a_great_victory
+	icon = GFX_focus_CHI_WOR_army_victory
+	relative_position_id = CHI_WOR_battle_of_shanghai
+	mutually_exclusive = { focus = CHI_WOR_a_bitter_defeat }
+	prerequisite = { focus = CHI_WOR_battle_of_shanghai }
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_a_great_victory_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_morale_factor
+			value = 0.05
+		}
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_a_bitter_defeat
+	icon = GFX_focus_CHI_WOR_army_defeat
+	relative_position_id = CHI_WOR_battle_of_shanghai
+	mutually_exclusive = { focus = CHI_WOR_a_great_victory }
+	prerequisite = { focus = CHI_WOR_battle_of_shanghai }
+	x = -2
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+		           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		hidden_effect = {
+		}
+	}
+}
+shared_focus = {
+	id = CHI_WOR_asess_shanghai_performance
+	icon = GFX_focus_CHI_WOR_asess_shanghai_performance
+	relative_position_id = CHI_WOR_battle_of_shanghai
+	prerequisite = { focus = CHI_WOR_battle_of_shanghai }
+	x = 2
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		base = 1
+	}
+
+	available = {
+           always = no
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = CHI_WOR_asess_shanghai_performance_tt
+		add_to_variable = {
+			var = CHI_war_of_resistance_modifier_army_advisor_cost_factor
+			value = -0.05
+		}
+		if = {
+			limit = {
+				CHI_chiang_kai_shek = {
+					is_field_marshal = yes
+				}
+			}
+			CHI_chiang_kai_shek = { gain_xp = 500 }
+		}
+		CHI_chen_cheng = { gain_xp = 500 }
+		CHI_zhang_zhizhong = { gain_xp = 750 }
+		army_experience = 30
+		air_experience = 25
+		add_command_power = 50
+		hidden_effect = {
+		}
+	}
+}
