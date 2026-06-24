@@ -1,4396 +1,8787 @@
-# shared_focus_china_warlord 国策整理
-
-# 来源：common/national_focus/china_warlord.txt
-focus_tree = { #HEAVILY MODDED FILE, didn't label most
-	id = china_warlord_focus
-
-	country = {
-		factor = 0
-
-		modifier = {
-			add = 50	#MODDED
-			is_originally_warlord = yes	# MODDED
-			has_dlc = "Waking the Tiger"
-		    NOT = { tag = GXC } # MODDED
-			NOT = { tag = SHX } # MODDED
-		}
-	}
-
-	default = no
-
-	continuous_focus_position = { x = 50 y = 1480 }	# MODDED
-#	focus = {
-#		id = CHI_
-#		icon = GFX_
-#		prerequisite = { focus = }
-#		mutually_exclusive = { focus =  }
-#		x = -3
-#		y = 0
-#		relative_position_id =
-#
-#		cost = 10
-#
-#		ai_will_do = {
-#			factor = 1
-#		}
-#
-#		available = {
-#
-#		}
-#
-#		bypass = {
-#
-#		}
-#
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-#		available_if_capitulated = yes
-#
-#		complete_tooltip = {
-#
-#		}
-#
-#		completion_reward = {
-#
-#		}
-#	}
-	#side branch
-	focus = {
-		id = WRL_army_expansion
-		icon = GFX_goal_generic_COOP_army_guy
-		cost = 10.00
-		x = 19
-		y = 0
-		ai_will_do = {
-			factor = 1
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_war_support = 0.05
-			army_experience = 20
-			if = {
-				limit = {
-					OR = {
-						has_idea = generic_disarmed_nation
-						has_idea = generic_volunteer_only
-					}
-				}
-				add_ideas = generic_limited_conscription
-			}
-		}
-	}
-		
-	focus = {
-		id = WRL_local_arms_workshops
-		icon = GFX_goal_generic_production
-		cost = 10.00
-		prerequisite = { focus = WRL_army_expansion }
-		x = 18
-		y = 1
-		ai_will_do = {
-			factor = 1
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = generic_JPG_local_arms_workshops_idea
-		}
-	}
-	
-	
-	focus = {
-		id = WRL_take_what_we_can_take
-		icon = GFX_goal_generic_combined_arms
-		cost = 10.00
-		prerequisite = { focus = WRL_local_arms_workshops }
-		x = 18
-		y = 2
-		completion_reward = {
-			set_country_flag = JPG_allow_weapon_scavenging
-			unlock_decision_tooltip = JPG_weapon_scavenging
-			custom_effect_tooltip = JPG_only_show_up_in_war_time_tt
-		}
-	}
-	
-	focus = {
-		id = WRL_small_arms_development
-		icon = GFX_goal_generic_small_arms
-		cost = 10.00
-		prerequisite = { focus = WRL_local_arms_production }
-		x = 20
-		y = 2
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = infantry_weapons
-			}
-		}
-	}
-	
-	focus = {
-		id = WRL_modernise_support_equipment
-		icon = GFX_goal_generic_army_artillery2
-		cost = 10.00
-		ai_will_do = {
-			factor = 1
-		}
-		prerequisite = { focus = WRL_small_arms_development }
-		prerequisite = { focus = WRL_public_education_reform }
-		x = 21
-		y = 3
-		completion_reward = {
-			add_breakthrough_progress = {
-				specialization = specialization_land
-				value = 0.5
-			}		
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = artillery
-				category = support_tech
-			}
-		}
-	}
-	
-	focus = {
-		id = WRL_armoured_vehicle_experiment
-		icon = GFX_goal_generic_army_tanks
-		cost = 10.00
-		prerequisite = { focus = WRL_modernise_support_equipment }
-		x = 21
-		y = 4
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = armor
-			}
-		}
-	}
-	
-	#### industrial branch ####
-	
-	focus = {
-		id = WRL_industrial_investment
-		icon = GFX_goal_generic_construct_civ_factory
-		cost = 10.00
-		x = 21
-		y = 0
-		ai_will_do = {
-			factor = 4
-		}
-		available_if_capitulated = yes
-		complete_tooltip = {
-			random_state = {
-				limit = {
-					has_state_flag = WRL_industrial_investment_IC
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = industrial_complex
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = WRL_industrial_investment_IC
-			}
-		}
-	}
-	
-	focus = {
-		id = WRL_local_arms_production
-		icon = GFX_goal_generic_construct_mil_factory
-		cost = 10.00
-		prerequisite = { focus = WRL_industrial_investment }
-		prerequisite = { focus = WRL_army_expansion }
-		x = 20
-		y = 1
-		ai_will_do = {
-			factor = 4
-		}
-		available_if_capitulated = yes
-		complete_tooltip = {
-			random_owned_controlled_state = {
-				limit = {
-					has_state_flag = CHI_local_arms_production_AF
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = arms_factory
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = CHI_local_arms_production_AF
-			}
-		}
-	}
-	
-	focus = {
-		id = WRL_long_term_economic_planning
-		icon = GFX_goal_generic_industry_3
-		cost = 10.00
-		prerequisite = { focus = WRL_industrial_investment }
-		x = 22
-		y = 1
-		ai_will_do = {
-			factor = 4
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_long_term_economic_planning
-		}
-	}
-	
-	focus = {
-		id = WRL_improve_infrastructure
-		icon = GFX_goal_generic_construct_civilian
-		cost = 5
-		prerequisite = { focus = WRL_long_term_economic_planning }
-		x = 23
-		y = 3
-		ai_will_do = {
-			factor = 4
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					infrastructure < 5
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					air_base < 10
-				}
-				add_building_construction = {
-					type = air_base
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	
-	focus = {
-		id = WRL_public_education_reform
-		icon = GFX_goal_generic_military_academy
-		cost = 10.00
-		prerequisite = { focus = WRL_long_term_economic_planning }
-		x = 22
-		y = 2
-		ai_will_do = {
-			factor = 10
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-
-	##########################
-	focus = {
-		id = CHI_secure_internal_politics
-		icon = GFX_goal_generic_major_alliance
-		x = 7
-		y = 0
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					tag = NEA
-					country_exists = PRC
-				}
-				set_country_flag = I_can_do_xian_incident
-				unlock_decision_category_tooltip = CHI_xian_incident
-			}
-			#if = {
-			#	limit = {
-			#		tag = GXC
-			#	}
-			#	unlock_decision_category_tooltip = liangguang_incident
-			#}
-			#if = {
-			#	limit = {
-			#		tag = KHR
-			#	}
-			#	unlock_decision_category_tooltip = kashgar_rebellion
-			#}
-			add_political_power = 120
-		}
-	}
-
-	#########################
-	##### Nationalists ######
-	#########################
-
-	focus = {
-		id = CHI_cooperation_with_the_nationalists
-		icon = GFX_goal_generic_chi_cooperation_with_the_nationalists
-		prerequisite = { focus = CHI_secure_internal_politics }
-		mutually_exclusive = { focus = CHI_cooperation_with_the_communists focus = CHI_opposition }
-		x = -5
-		y = 1
-		relative_position_id = CHI_secure_internal_politics
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 100
-			#modifier = {
-			#	factor = 0
-			#	OR = {
-			#		original_tag = GUD
-			#		original_tag = GXC
-			#		original_tag = NEA
-			#	}
-			#}
-		}
-
-		available = {
-			OR = {
-				is_subject = no
-				OVERLORD = {
-					OR = {
-						is_warlord = yes
-						is_legit_china = yes
-					}
-					#is_in_array = { global.literally_chinese_countries = THIS }
-					NOT = {
-						has_government = fascism
-						has_government = communism
-					}
-				}
-			}
-			NOT = { has_war_with = CHI }
-		}
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					has_opinion_modifier = tacit_agreement
-				}
-				remove_opinion_modifier = { target = PRC modifier = tacit_agreement }
-				PRC = {
-					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
-				}
-				remove_opinion_modifier = { target = NEA modifier = tacit_agreement }
-				NEA = {
-					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
-				}
-			}	
-			if = {
-				limit = {
-					NOT = {
-						tag = SHC
-						tag = SHD
-						tag = NEA
-					    tag = KHR
-						tag = ATM
-					}
-				}
-				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
-			}
-			if = {
-				limit = {
-					tag = KHR
-				}
-				custom_effect_tooltip = a_kuomintang_affiliated_warlord_flag_will_be_adopted_tt
-				set_cosmetic_tag = KHR_KMT
-			}
-			set_country_flag = cooperation_with_nationalist_flag
-			#custom_effect_tooltip = CHI_cooperation_with_the_nationalists_effect_tooltip
-			CHI = { add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_positive target = ROOT } }
-			PRC = { add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_negative target = ROOT } }
-			add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_negative target = PRC }
-		}
-	}
-
-	focus = {
-		id = CHI_anti_opposition_campaigns
-		icon = GFX_goal_generic_provoke_border_clashes
-		prerequisite = { focus = CHI_cooperation_with_the_nationalists focus = CHI_cooperation_with_the_communists }
-		x = 2
-		y = 1
-		relative_position_id = CHI_cooperation_with_the_nationalists
-		mutually_exclusive = {
-			focus = CHI_new_model_province
-		}
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-	
-		completion_reward = {			
-			#custom_effect_tooltip = 60_to_40_opinion_tt
-			every_country = {
-				limit = {
-					is_neighbor_of = ROOT
-					OR = {
-						is_warlord = yes
-						tag = event_target:WTT_communist_china
-					}
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = WRL_conflict_of_interest
-				}
-			}
-			custom_effect_tooltip = opinion_worsen_over_time_tt
-			custom_effect_tooltip = remove_insult_cd
-			set_variable = {
-				Root.insult_cd = 0
-			}
-			set_variable = {
-				Root.insult_cost = 40
-			}
-		}
-	}
-	focus = {
-		id = CHI_clash_with_the_central_government_focus
-		icon = GFX_goal_generic_provoke_border_clashes
-		prerequisite = { focus = CHI_anti_opposition_campaigns }
-		x = 2
-		y = 3
-		relative_position_id = CHI_cooperation_with_the_nationalists
-		cost = 10
-
-		ai_will_do = {
-			factor = 2
-		}
-
-		available = {
-			#is_neighbor_of = event_target:WTT_current_china_leader
-			has_opinion = {
-				target = event_target:WTT_current_china_leader
-				value < -19
-			}
-			event_target:WTT_current_china_leader = {
-				has_opinion = {
-					target = ROOT
-					value < -19
-				}
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			event_target:WTT_current_china_leader = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = WRL_conflict_of_interest
-				}
-				custom_effect_tooltip = opinion_worsen_over_time_tt
-			}
-			custom_effect_tooltip = CHI_provoke_border_clashes_effect_tooltip
-		}
-	}
-	focus = {
-		id = CHI_technological_cooperation
-		icon = GFX_goal_generic_scientific_exchange
-		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
-		x = -2
-		y = 1
-		relative_position_id = CHI_cooperation_with_the_nationalists
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = {
-						CHI = { is_in_tech_sharing_group = CHI_technological_cooperation_tech_group } }
-				}
-				CHI = { add_to_tech_sharing_group = CHI_technological_cooperation_tech_group }
-			}
-			add_to_tech_sharing_group = CHI_technological_cooperation_tech_group
-		}
-	}
-
-	focus = {
-		id = CHI_new_model_province
-		icon = GFX_goal_generic_last_ditch
-		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
-		mutually_exclusive = {
-			focus = CHI_anti_opposition_campaigns
-		}
-		x = 0
-		y = 1
-		relative_position_id = CHI_cooperation_with_the_nationalists
-
-		cost = 10
-
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				tag = SHX
-			}
-			modifier = {
-				factor = 0
-				tag = HPC #cause bugs
-			}
-			modifier = {
-				factor = 0
-				num_of_controlled_states < 4
-			}
-			modifier = {
-				add = 2
-				tag = YUN
-				NOT = {
-					country_exists = GXC
-					country_exists = GUD
-				}
-			}
-		}
-
-		available = {
-                            is_ai = no	
-			#num_of_controlled_states > 3
-			custom_trigger_tooltip = {
-				tooltip = is_not_supporting_someone_in_political_struggle
-				NOT = {
-					any_country = {
-						ROOT = { has_country_flag = warlord_supports_@PREV }
-					}
-				}
-			}
-			is_neighbor_of = CHI
-			is_subject = no
-			NOT = { has_war_with = CHI }
-			if = {
-				limit = {
-					WTT_not_taking_over_national_leadership = no
-				}
-				WTT_not_taking_over_national_leadership = yes
-			}
-			if = {
-				limit = {
-					WTT_not_china_leader_refused_to_give_up_national_leadership = no
-				}
-				WTT_not_china_leader_refused_to_give_up_national_leadership = yes
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			custom_effect_tooltip = enable_power_struggle
-			
-			hidden_effect = {
-				WTT_setup_political_struggle = yes
-				WTT_add_ROOT_to_political_struggle = yes
-			}
-			every_controlled_state = { #MODDED
-				limit = {
-					is_core_of = ROOT
-					WTT_is_potential_political_struggle_state = yes #MODDED
-				}
-				#Add random state support for ROOT
-				WTT_random_support_chance_increase_for_ROOT_in_state = yes #MODDED
-				hidden_effect = {
-					#Save relevant event targets. Need to be done before updating state support
-					save_event_target_as = state
-					random_country = {
-						limit = {
-							PREV = { has_state_flag = majority_political_platform_@PREV }
-						}
-						save_event_target_as = majority_country
-					}
-					#Update state support
-					WTT_recalculate_state_support_for_ROOT = yes #MODDED
-					#Status events
-					WTT_fire_add_support_status_events = yes #MODDED
-					#Recalc all support
-					WTT_political_struggle_recalculate_support = yes #MODDED
-				}
-			} #MODDED
-		}
-	}
-
-	focus = {
-		id = CHI_root_out_corruption
-		icon = GFX_goal_generic_demand_sudetenland
-		prerequisite = { focus = CHI_new_model_province focus = CHI_anti_opposition_campaigns }
-		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
-		mutually_exclusive = { focus = CHI_embrace_the_opium_trade }
-		x = 1
-		y = 1
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 5
-		}
-
-		available = {
-			#has_completed_focus = CHI_cooperation_with_the_nationalists
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			remove_ideas = generic_PRC_government_corruption
-		}
-	}
-	#focus = {
-	#	id = test
-	#	icon = GFX_name
-	#	cost = time_cost
-	#
-	#	x = 0
-	#	y = 0
-	#	bypass = {
-	#		focus_progress = {
-	#			focus = CHI_secure_internal_politics
-	#			progress > 0.2
-	#		}
-	#	}
-	#	completion_reward = {
-	#		
-	#		
-	#	}
-	#}
-	focus = {
-		id = CHI_embrace_the_opium_trade
-		icon = GFX_goal_generic_trade
-		prerequisite = { focus = CHI_new_model_province focus = CHI_anti_opposition_campaigns }
-		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
-		mutually_exclusive = { focus = CHI_root_out_corruption }
-		x = -1
-		y = 1
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			#has_completed_focus = CHI_cooperation_with_the_nationalists
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_embrace_the_opium_trade
-		}
-	}
-
-	focus = {
-		id = CHI_land_reform
-		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = CHI_root_out_corruption }
-		x = 0
-		y = 2
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			every_owned_state = {
-				limit = {
-					is_controlled_by = ROOT
-				}
-				add_extra_state_shared_building_slots = 1
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_reform_the_administration
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = CHI_root_out_corruption focus = CHI_embrace_the_opium_trade }
-		x = -2
-		y = 2
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_political_power = 50
-			fractured_administration_level_down = yes
-		}
-	}
-
-	focus = {
-		id = CHI_join_the_republican_government
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = CHI_land_reform focus = CHI_reform_the_administration }
-		x = -1
-		y = 3
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			OR = {
-				fascism > 0.4
-				neutrality > 0.4
-				democratic > 0.4
-			}
-			event_target:WTT_current_china_leader = {
-				is_subject = no
-			}
-			if = {
-				limit = {
-					is_subject = yes
-				}
-				OVERLORD = {
-					OR = {
-						tag = event_target:WTT_current_china_leader
-						has_completed_focus = CHI_cooperation_with_the_nationalists
-					}
-				}
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			hidden_effect = { #fix a weird bug
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-							    tag = event_target:WTT_current_china_leader
-						        tag = PLM
-						        tag = SHX
-							    tag = HMI
-								tag = KHR
-							    tag = TNG
-								#has_cosmetic_tag = SIK_KMT
-							}
-						}
-					}
-					#set_cosmetic_tag = ROOT #MODDED disabled
-				}
-			}
-			if = {
-				limit = {
-					fascism > party_popularity@democratic
-					fascism > party_popularity@neutrality
-				}
-				custom_effect_tooltip = KMT_will_become_a_fascist_party_tt
-				#custom_effect_tooltip = current_leader_joins_BSS
-				#custom_effect_tooltip = BSS_become_ruling_party_politics_tt
-				hidden_effect = {
-					warlord_becomes_fascist = yes
-					set_party_name = {
-						ideology = fascism
-						long_name = CHI_neutrality_party_long
-						name = CHI_neutrality_party
-					}
-					Warlord_becomes_military_government = yes #make them have cosmetic tag of NRA
-				}
-			}
-			else_if = {
-				limit = {
-					democratic > party_popularity@fascism
-					democratic > party_popularity@neutrality
-				}
-				custom_effect_tooltip = current_leader_joins_CNSP
-				custom_effect_tooltip = CNSP_become_ruling_party_politics_tt
-				hidden_effect = {
-					warlord_becomes_democratic = yes
-					set_party_name = {
-						ideology = democratic
-						long_name = CHI_democratic_party_long
-						name = CHI_democratic_party
-					}
-				}
-
-			}
-			else = {
-				custom_effect_tooltip = we_will_reorganize_auth_acc_to_pop_supp_tt
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_power_struggle
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = CHI_join_the_republican_government }
-		x = -1
-		y = 4
-		relative_position_id = CHI_new_model_province
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			event_target:WTT_current_china_leader = {
-				is_subject = no
-			}
-			if = {
-				limit = {
-					is_subject = yes
-				}
-				OVERLORD = {
-					OR = {
-						tag = event_target:WTT_current_china_leader
-						has_completed_focus = CHI_cooperation_with_the_nationalists
-					}
-				}
-			}
-			#OR = {
-			#	WTT_has_politcal_support_points_30 = yes
-				is_legit_china = yes
-			#}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			load_focus_tree = { tree = warlord_generic_nationalist keep_completed = yes }
-			#set_cosmetic_tag = CHI_warlord_leader
-			#create_faction = WRL_leader_generic_faction
-			for_each_scope_loop = {
-				array = global.small_china #MODDED
-				tooltip = small_china_effect_tt
-				add_core_of = ROOT
-			}
-			effect_tooltip = {
-				for_each_scope_loop = {
-					array = global.big_china #MODDED
-					tooltip = big_china_effect_tt
-					add_claim_by = PREV
-				}
-			}
-			hidden_effect = {
-										every_state = {
-											limit = {
-											OR = {
-											is_claimed_by = CHI
-											is_core_of = CHI
-											}											
-											}
-											add_claim_by = ROOT
-		                                    add_core_of = ROOT										
-											}			
-				for_each_scope_loop = {
-					array = global.big_china #MODDED
-					tooltip = big_china_effect_tt
-					if = {
-						limit = {
-							NOT = {
-								is_core_of = ROOT
-							}
-						}
-						add_claim_by = PREV
-					}
-				}
-			}
-			#every_state = {
-			#	limit = {
-			#		has_state_flag = is_chinese_states_flag
-			#	}
-			#	add_core_of = ROOT
-			#}
-
-			custom_effect_tooltip = warn_focus_change_tt
-				hidden_effect = {
-                        remove_ideas = CHI_warlord_state_idea
-                        remove_ideas = CHI_warlord_state_idea_2
-                        remove_ideas = CHI_warlord_state_idea_cav
-                        remove_ideas = CHI_warlord_state_idea_mnt						
-				}			
-		}
-	}
-
-	#######################
-	##### Communists ######
-	#######################
-
-	focus = {
-		id = CHI_cooperation_with_the_communists
-		icon = GFX_goal_generic_chi_cooperation_with_the_communists
-		prerequisite = { focus = CHI_secure_internal_politics }
-		mutually_exclusive = { focus = CHI_cooperation_with_the_nationalists focus = CHI_opposition }
-		x = 0
-		y = 1
-		relative_position_id = CHI_secure_internal_politics
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 10
-				OR = {
-					original_tag = SIC
-					original_tag = SIK
-				}
-			}
-			#modifier = {
-			#	factor = 100
-			#	original_tag = NEA
-			#}
-		}
-
-		available = {
-			OR = {
-				tag = NEA
-				is_subject = no
-				is_subject_of = event_target:WTT_communist_china
-			}
-			OR = {
-				NOT = {
-					has_war_with = PRC
-				}
-				AND = {
-					tag = NEA
-					has_global_flag = tacit_truce_flag
-				}
-			}
-			NOT = { has_war_with = SOV }
-			custom_trigger_tooltip = {
-                tooltip = has_anti_communist_trait_tt
-				NOT = {
-					has_country_leader_with_trait = generic_anti_communist
-				}
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					OR = {
-						tag = NEA
-						tag = SHC
-						tag = ATM
-					}
-				}
-				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
-			}
-			add_popularity = { ideology = n_socialism popularity = 0.1 }
-			add_popularity = { ideology = communism popularity = 0.1 }
-			#custom_effect_tooltip = CHI_cooperation_with_the_communists_effect_tooltip
-			set_country_flag = cooperation_with_communist_flag
-			SOV = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RCM_cooperation_with_the_communists_positive
-				}
-				add_ai_strategy = {
-					type = send_volunteers_desire #TODO_WTT_CD lend lease desire
-					id = ROOT
-					value = 100
-				}
-			}
-			PRC = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RCM_cooperation_with_the_communists_positive
-				}
-			}
-			CHI = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RCM_cooperation_with_the_communists_negative
-				}
-			}
-			custom_effect_tooltip = blank_line
-			add_timed_idea = {
-				idea = generic_communist_influence days = 240
-			}
-			add_timed_idea = {
-				idea = generic_socialist_influence days = 240
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_land_redistribution
-		icon = GFX_goal_generic_soviet_construction
-		prerequisite = { focus = CHI_cooperation_with_the_communists }
-		x = 0
-		y = 1
-		relative_position_id = CHI_cooperation_with_the_communists
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 4
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			every_owned_state = {
-				limit = {
-					is_controlled_by = ROOT
-				}
-				add_extra_state_shared_building_slots = 1
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_ideological_education
-		icon = GFX_goal_generic_socialist_science
-		prerequisite = { focus = CHI_land_redistribution }
-		x = -1
-		y = 1
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_subject = no
-			if = {
-				limit = { is_subject = yes }
-				OVERLORD = {
-					OR = {
-						has_government = communism
-						has_government = n_socialism
-					}
-				}
-			}
-			OR = {
-				has_idea_with_trait = CHI_socialist_idealist
-				has_idea_with_trait = TNG_communist_revolutionary
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					has_idea_with_trait = TNG_communist_revolutionary
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.15
-				}
-				add_ideas = CHI_ideological_education
-			}
-			else_if = {
-				limit = {
-					has_idea_with_trait = CHI_socialist_idealist
-				}
-				add_popularity = {
-					ideology = n_socialism
-					popularity = 0.15
-				}
-				add_ideas = generic_ideological_education_socialism				
-			}
-			else = {
-				effect_tooltip = {
-					add_popularity = {
-						ideology = communism
-						popularity = 0.15
-					}
-					add_ideas = CHI_ideological_education
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_land_value_tax
-		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = CHI_land_redistribution }
-		x = 1
-		y = 1
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 4
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_land_value_tax
-		}
-	}
-
-	focus = {
-		id = CHI_judiciary_reforms
-		icon = GFX_goal_generic_forceful_treaty
-		prerequisite = { focus = CHI_ideological_education }
-		x = -1
-		y = 2
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			remove_ideas = generic_PRC_government_corruption
-		}
-	}
-
-	focus = {
-		id = CHI_communist_administrators
-		icon = GFX_goal_generic_soviet_politics
-		prerequisite = { focus = CHI_land_value_tax }
-		x = 1
-		y = 2
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_subject = no
-			if = {
-				limit = { is_subject = yes }
-				OVERLORD = {
-					OR = {
-						has_government = communism
-						has_government = n_socialism
-					}
-				}
-			}
-			OR = {
-				has_idea_with_trait = CHI_socialist_idealist
-				has_idea_with_trait = TNG_communist_revolutionary
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					has_idea_with_trait = TNG_communist_revolutionary
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.15
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea_with_trait = CHI_socialist_idealist
-				}
-				add_popularity = {
-					ideology = n_socialism
-					popularity = 0.15
-				}
-				else = {
-					effect_tooltip = {
-						add_popularity = {
-							ideology = communism
-							popularity = 0.15
-						}
-					}
-				}
-			}
-			add_political_power = 50
-			fractured_administration_level_down = yes
-		}
-	}
-
-	focus = {
-		id = CHI_join_the_chinese_soviet
-		icon = GFX_goal_generic_war_with_comintern
-		prerequisite = { focus = CHI_judiciary_reforms focus = CHI_communist_administrators }
-		x = 0
-		y = 3
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				event_target:WTT_communist_china = {
-					is_ai = no
-				}
-			}
-			modifier = {
-				factor = 0.1
-				is_historical_focus_on = yes
-			}
-		}
-
-		available = {
-			OR = {
-				n_socialism > 0.4
-				communism > 0.4
-			}
-			if = {
-				limit = {
-					country_exists = event_target:WTT_communist_china
-					NOT = { tag = SIK }
-				}
-				any_neighbor_country = {
-					tag = event_target:WTT_communist_china
-				}
-			}
-			NOT = { has_war_with = PRC }
-			NOT = { has_war_with = SOV }
-			SOV = { has_government = communism }
-			is_subject = no
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_opinion_modifier = { target = SOV modifier = CHI_join_the_chinese_soviet }
-			SOV = { add_opinion_modifier = { target = ROOT modifier = CHI_join_the_chinese_soviet } }
-
-			if = {
-				limit = {
-					event_target:WTT_communist_china = {
-						NOT = { is_in_faction_with = ROOT }
-						is_in_faction = no
-					}
-				}
-				event_target:WTT_communist_china = {
-					set_rule = { can_create_factions = yes }
-					create_faction = CHI_the_peoples_front
-					add_to_faction = event_target:WTT_communist_china
-					add_to_faction = ROOT
-					country_event = AWR_CHI.4566
-				}
-			}	
-
-			if = {
-				limit = {
-					communism > party_popularity@n_socialism
-				}
-				custom_effect_tooltip = current_leader_joins_CPC
-				custom_effect_tooltip = CPC_become_ruling_party_politics_tt
-				hidden_effect = {
-					warlord_becomes_communist = yes
-					#set_party_name = { #MODDED
-					#	ideology = communism
-					#	long_name = CPC_party_long
-					#	name = CPC_party
-					#}
-					set_party_name = {
-						ideology = communism
-						name = PRC_communism_party
-						long_name = PRC_communism_party_long
-					}
-					Warlord_becomes_RBA = yes
-				}
-			}
-			else_if = {
-				limit = {
-					communism < party_popularity@n_socialism
-				}
-				custom_effect_tooltip = current_leader_create_socialist_party
-				custom_effect_tooltip = Socialist_become_ruling_party_politics_tt
-				hidden_effect = {
-					set_cosmetic_tag = CHI_FJR
-					warlord_becomes_socialist = yes
-					set_party_name = {
-						ideology = n_socialism
-						long_name = SOL_party_long
-						name = SOL_party
-					}
-				}
-			}
-			else = {
-				custom_effect_tooltip = we_will_reorganize_auth_acc_to_pop_supp_tt
-			}			
-			
-		}
-	}
-
-	focus = {
-		id = CHI_the_yanan_incident
-		icon = GFX_goal_generic_support_communism
-		prerequisite = { focus = CHI_join_the_chinese_soviet }
-		x = 0
-		y = 4
-		relative_position_id = CHI_land_redistribution
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.1
-				is_historical_focus_on = yes
-			}
-		}
-
-		available = {
-			#MODDED
-			SOV = {
-				has_opinion = {
-					target = ROOT
-					value > 50
-				}
-			}
-			#MODDED
-			is_subject = no
-			NOT = { has_war_with = PRC }
-			NOT = { has_war_with = SOV }
-			SOV = { has_government = communism }
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			custom_effect_tooltip = CHI_the_yanan_incident_effect_tt
-			save_event_target_as = warlord
-			add_ideas = PRC_soviet_tribute_1
-			SOV = { country_event = { id = AWR_CHI.4547 } }
-			custom_effect_tooltip = warn_focus_change_tt
-				hidden_effect = {
-										every_state = {
-											limit = {
-											OR = {
-											is_claimed_by = CHI
-											is_core_of = CHI
-											}											
-											}
-											add_claim_by = ROOT
-		                                    add_core_of = ROOT										
-											}				
-                        remove_ideas = CHI_warlord_state_idea
-                        remove_ideas = CHI_warlord_state_idea_2
-                        remove_ideas = CHI_warlord_state_idea_cav
-                        remove_ideas = CHI_warlord_state_idea_mnt						
-				}			
-		}
-	}
-
-	#############################
-	##### Opposition/Share ######
-	#############################
-
-	focus = {
-		id = CHI_opposition
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = CHI_secure_internal_politics }
-		mutually_exclusive = { focus = CHI_cooperation_with_the_communists focus = CHI_cooperation_with_the_nationalists }
-		x = 5
-		y = 1
-		relative_position_id = CHI_secure_internal_politics
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 0 
-			#modifier = {
-			#	factor = 100
-			#	tag = GXC
-			#}
-		}
-
-		available = {
-			if = {
-				limit = {
-					tag = SHD
-				}
-	        is_subject = no	
-			}			
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					OR = {
-						tag = SHD
-					    tag = KHR
-					}
-				}
-				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
-			}
-			if = {
-				limit = {
-					tag = HPC
-				}
-				custom_effect_tooltip = opposition_allowed_independence_tt
-			}
-			else = {
-				custom_effect_tooltip = opposition_allowed_staying_out_tt
-			}
-			if = {
-				limit = {
-					tag = SHD
-				}
-				custom_effect_tooltip = shd_han_debuff_tt
-			}
-			if = {
-				limit = {
-					tag = SHD
-					NOT = {
-						has_war_with = SIC
-					}
-					country_exists = SIC
-				}
-				country_event = AWR_CHI.3863
-			}
-			if = {
-				limit = {
-					has_opinion_modifier = tacit_agreement
-				}
-				remove_opinion_modifier = { target = PRC modifier = tacit_agreement }
-				PRC = {
-					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
-				}
-				remove_opinion_modifier = { target = NEA modifier = tacit_agreement }
-				NEA = {
-					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
-				}
-			}
-			add_popularity = { ideology = neutrality popularity = -0.3 }
-			CHI = { add_opinion_modifier = { modifier = RCM_opposition target = ROOT } }
-			custom_effect_tooltip = blank_line
-			add_timed_idea = {
-				idea = generic_fascist_influence
-				days = 240
-			}
-			add_timed_idea = {
-				idea = generic_socialist_influence
-				days = 240
-			}
-			add_timed_idea = {
-				idea = generic_communist_influence
-				days = 240
-			}
-			set_country_flag = CHI_opposition_flag
-			if = {
-				limit = {
-					is_subject = yes
-					OVERLORD = {
-						is_literally_china = yes
-					}
-				}
-				OVERLORD = {
-					create_wargoal = {
-						target = ROOT
-						type = puppet_wargoal_focus
-					}
-				}
-				set_autonomy = { target = ROOT autonomy_state = autonomy_free }
-			}
-			if = {
-				limit = { 
-				    is_faction_leader = yes 
-				    NOT = { 
-						OR = {
-							tag = KHR 
-							tag = TNG						   
-					    }
-					}
-				}
-				every_country = {
-					limit = { is_literally_china = yes }
-					ROOT = { remove_from_faction = PREV }
-				}
-			}
-			else_if = {
-				limit = {
-					ROOT = {
-						any_allied_country = { #MODDED
-							is_literally_china = yes #MODDED
-						}
-					    NOT = { 
-						    OR = {
-							    tag = KHR 
-							    tag = TNG
-							    tag = HMI
-							}
-						}
-					}
-				}
-				random_country = {
-					limit = {
-						is_in_faction_with = ROOT
-						is_faction_leader = yes
-					}
-					remove_from_faction = ROOT
-				}
-			}
-			
-		}
-
-	}
-
-	focus = {
-		id = CHI_institute_cross_border_raids
-		icon = GFX_goal_generic_provoke_border_clashes
-		prerequisite = { focus = CHI_opposition }
-		x = 0
-		y = 1
-		relative_position_id = CHI_opposition
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_subject = no
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			#custom_effect_tooltip = 60_to_40_opinion_tt
-			every_country = {
-				limit = {
-					is_neighbor_of = ROOT
-					OR = {
-						is_warlord = yes
-						tag = event_target:WTT_communist_china
-					}
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = WRL_conflict_of_interest
-				}
-			}
-			custom_effect_tooltip = opinion_worsen_over_time_tt
-			custom_effect_tooltip = remove_insult_cd
-			set_variable = {
-				Root.insult_cd = 0
-			}
-			set_variable = {
-				Root.insult_cost = 40
-			}
-		}
-	}
-
-
-	focus = {
-		id = CHI_public_works
-		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = { focus = CHI_cooperation_with_the_communists focus = CHI_opposition }
-		x = -1
-		y = 2
-		relative_position_id = CHI_opposition
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_public_works
-		}
-	}
-
-	focus = {
-		id = CHI_labor_reform
-		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = CHI_public_works }
-		x = -1
-		y = 1
-		relative_position_id = CHI_public_works
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_labor_reform
-		}
-	}
-
-	focus = {
-		id = CHI_rural_militias
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = CHI_public_works }
-		x = 1
-		y = 1
-		relative_position_id = CHI_public_works
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_rural_militias
-		}
-	}
-
-	focus = {
-		id = CHI_war_taxes
-		icon = GFX_goal_generic_consumer_goods
-		prerequisite = { focus = CHI_opposition }
-		x = 2
-		y = 1
-		relative_position_id = CHI_opposition
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_war_taxes
-		}
-	}
-
-	#focus = {
-	#	id = CHI_seek_japanese_support
-	#	icon = GFX_focus_chi_collaboration_with_the_japanese
-	#	prerequisite = { focus = CHI_war_taxes }
-	#	x = 2
-	#	y = 1
-	#	relative_position_id = CHI_war_taxes
-#
-	#	cost = 10
-#
-	#	ai_will_do = {
-	#		factor = 1
-	#	}
-#
-	#	available = {
-	#		is_subject = no
-	#		JAP = {
-	#			has_opinion = {
-	#				target = ROOT
-	#				value > 9
-	#			}
-	#		}
-	#		NOT = { has_war_with = JAP }
-	#	}
-#
-	#	bypass = {
-#
-	#	}
-#
-	#	cancel_if_invalid = yes
-	#	continue_if_invalid = no
-	#	available_if_capitulated = yes
-	#	completion_reward = {
-	#		unlock_decision_category_tooltip = CHI_seek_japanese_support
-	#	}
-	#}
-
-	focus = {
-		id = CHI_personal_leadership
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = CHI_war_taxes }
-		x = 1
-		y = 1
-		relative_position_id = CHI_war_taxes
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			neutrality < 0.6
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_country_leader_trait = generic_generallissimo
-			set_country_flag = leader_is_generallissimo
-		}
-	}
-
-	focus = {
-		id = CHI_cult_of_personality
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = CHI_war_taxes }
-		x = -1
-		y = 1
-		relative_position_id = CHI_war_taxes
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_war_support = 0.1
-		}
-	}
-
-	focus = {
-		id = CHI_provoke_border_clashes
-		icon = GFX_goal_generic_provoke_border_clashes
-		prerequisite = { focus = CHI_personal_leadership }
-		mutually_exclusive = { focus = CHI_defensive_posture }
-		x = -1
-		y = 1
-		relative_position_id = CHI_personal_leadership
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_neighbor_of = event_target:WTT_current_china_leader
-			has_opinion = {
-				target = event_target:WTT_current_china_leader
-				value < -19
-			}
-			event_target:WTT_current_china_leader = {
-				has_opinion = {
-					target = ROOT
-					value < -19
-				}
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		completion_reward = {
-			event_target:WTT_current_china_leader = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = WRL_conflict_of_interest
-				}
-				custom_effect_tooltip = opinion_worsen_over_time_tt
-			}
-			custom_effect_tooltip = CHI_provoke_border_clashes_effect_tooltip
-		}
-	}
-
-	focus = {
-		id = CHI_defensive_posture
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = CHI_personal_leadership }
-		mutually_exclusive = { focus = CHI_provoke_border_clashes }
-		x = 1
-		y = 1
-		relative_position_id = CHI_personal_leadership
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = CHI_defensive_posture
-		}
-	}
-
-	focus = {
-		id = CHI_rapid_mobilization
-		icon = GFX_goal_generic_more_territorial_claims
-		prerequisite = { focus = CHI_provoke_border_clashes focus = CHI_defensive_posture }
-		x = 0
-		y = 2
-		relative_position_id = CHI_personal_leadership
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			add_ideas = CHI_rapid_mobilization
-		}
-	}
-	focus = {
-		id = CHI_leaves_the_KMT
-		icon = GFX_goal_generic_rom_parties_end
-		prerequisite = {
-			focus = CHI_cult_of_personality
-		}
-		prerequisite = {
-			focus = CHI_rural_militias
-			focus = CHI_provoke_border_clashes
-		}
-		x = 1
-		y = 1
-		relative_position_id = CHI_rural_militias
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			if = {
-			    limit = {
-				    tag = SHD 
-					is_historical_focus_on = yes
-				}
-			    hidden_trigger = {
-				    is_ai = no
-				}
-			}
-			is_subject = no
-			OR = {
-				fascism > 0.4
-				n_socialism > 0.4
-				communism > 0.4
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = {
-					is_subject = yes
-				}
-			    set_autonomy = { target = ROOT autonomy_state = autonomy_free }
-			}
-			set_country_flag = I_left_kmt
-			if = {
-				limit = {
-					NOT = {
-						n_socialism > 0.5
-					}
-				}
-				custom_effect_tooltip = reorganizing_ruling_party_according_to_the_most_popular_party_tt
-			}
-
-			if = { #FOR TOOLTIPS
-				limit = {
-					neutrality > party_popularity@n_socialism
-					neutrality > party_popularity@communism
-					neutrality > party_popularity@fascism
-				}
-				leave_kuomintang_becomes_clique = yes
-				add_war_support = -0.05
-				add_political_power = 150
-			}
-			else_if = {
-				limit = {
-					communism > party_popularity@n_socialism
-					communism > party_popularity@neutrality
-					communism > party_popularity@fascism
-				}
-				hidden_effect = {
-					warlord_becomes_communist = yes
-				}
-				CLIQUE_becomes_communist = yes
-				hidden_effect = {
-					Warlord_becomes_PR = yes
-				}
-				custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
-				add_war_support = -0.05
-				add_political_power = 150
-			}
-			else_if = {
-				limit = {
-					n_socialism > party_popularity@communism
-					n_socialism > party_popularity@neutrality
-					n_socialism > party_popularity@fascism
-				}
-				hidden_effect = {
-					warlord_becomes_socialist = yes
-					CLIQUE_becomes_socialist = yes
-					set_party_name = {
-						ideology = n_socialism
-						name = Zhi_gong_party
-						long_name = Zhi_gong_party_long
-					}
-					Warlord_becomes_ZG = yes
-				}
-
-				custom_effect_tooltip = current_leader_join_zhi_gong_party_tt
-				custom_effect_tooltip = Socialist_zhi_gong_become_ruling_party_politics_tt
-				#custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
-				#special case fro opposition socialism
-				add_war_support = -0.05
-				add_political_power = 150
-			}
-			else_if = {
-				limit = {
-					fascism > party_popularity@n_socialism
-					fascism > party_popularity@neutrality
-					fascism > party_popularity@communism
-				}
-				hidden_effect = {
-					warlord_becomes_fascist = yes
-				}
-				CLIQUE_becomes_fascist = yes
-				hidden_effect = { #sometimes the name won't change, this seems to fix it		  
-					if = {
-					    limit = {
-						    NOT = {
-							    OR = {
-						            tag = PLM
-						            #tag = SHX
-							        tag = HMI
-								    tag = KHR
-							        tag = TNG
-								    #has_cosmetic_tag = SIK_KMT
-							    }
-							}
-						}
-					}
-					#set_cosmetic_tag = ROOT #MODDED disabled
-				}
-			    custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
-			    add_war_support = -0.05
-			    add_political_power = 150
-			}
-		}
-	}
-	focus = {
-		id = CHI_proclaim_rival_government
-		icon = GFX_goal_generic_chi_proclaim_rival_government
-		prerequisite = { focus = CHI_leaves_the_KMT }
-		prerequisite = { focus = CHI_rapid_mobilization }
-		x = 2
-		y = 2
-		relative_position_id = CHI_rural_militias
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_subject = no
-			OR = {
-				WTT_is_ROOT_current_leader_of_china = yes
-				custom_trigger_tooltip = {
-					tooltip = army_stronger_at_least_half_as_strong_as_china_tt
-					strength_ratio = {
-						tag = event_target:WTT_current_china_leader
-						ratio > 0.5
-					}
-				}
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			for_each_scope_loop = {
-				array = global.small_china #MODDED
-				tooltip = small_china_effect_tt
-				add_core_of = ROOT
-			}
-			effect_tooltip = {
-				for_each_scope_loop = {
-					array = global.big_china #MODDED
-					tooltip = big_china_effect_tt
-					add_claim_by = PREV
-				}
-			}
-			hidden_effect = {
-										every_state = {
-											limit = {
-											OR = {
-											is_claimed_by = CHI
-											is_core_of = CHI
-											}											
-											}
-											add_claim_by = ROOT
-		                                    add_core_of = ROOT										
-											}			
-				for_each_scope_loop = {
-					array = global.big_china #MODDED
-					tooltip = big_china_effect_tt
-					if = {
-						limit = {
-							NOT = {
-								is_core_of = ROOT
-							}
-						}
-						add_claim_by = PREV
-					}
-				}
-			}
-			country_event = {
-				id = AWR_CHI.2540
-			}
-			#start a coalition against current gov if exist
-			if = {
-				limit = {
-					has_government = communism
-				}
-				set_rule = { can_create_factions = yes }
-				create_faction = CHI_the_peoples_front
-			}
-			else_if = {
-				limit = {
-					has_government = n_socialism
-				}
-				set_rule = { can_create_factions = yes }
-				create_faction = CHI_zhi_gong_front
-			}
-			else_if = {
-				limit = {
-					has_government = fascism
-					NOT = {
-						tag = TNG
-						tag = XSM
-					}
-				}
-				set_rule = { can_create_factions = yes }
-				create_faction = CHI_concordia_sinica
-			}
-			else = {
-				set_rule = { can_create_factions = yes }
-				custom_effect_tooltip = create_generic_faction_tt
-				meta_effect = {
-					ROOT_NAME = "[Root.GetAdjective]" 
-					text = {
-						create_faction = "[ROOT_NAME] Coalition"				
-					}			
-				}
-			}
-			if = {
-				limit = {
-					country_exists = event_target:WTT_current_china_leader
-					NOT = {
-						tag = event_target:WTT_current_china_leader
-						has_war_with = event_target:WTT_current_china_leader
-					}
-				}
-				create_wargoal = {
-					target = event_target:WTT_current_china_leader
-					type = annex_everything
-					expire = 0
-				}
-			}
-			#Switch to dominant ideology or split into 2 focus
-			#set_cosmetic_tag = CHI_second_republic
-			if = {
-				limit = {
-					OR = {
-						has_government = communism
-						has_government = n_socialism
-						communism > 0.5
-						n_socialism > 0.5
-					}
-					#NOT = { neutrality > 0.5 }
-				}
-				load_focus_tree = { tree = warlord_generic_communist keep_completed = yes }
-			}
-			else = {
-				load_focus_tree = { tree = warlord_generic_nationalist keep_completed = yes }
-			}
-			custom_effect_tooltip = warn_focus_change_tt
-				hidden_effect = {
-                        remove_ideas = CHI_warlord_state_idea
-                        remove_ideas = CHI_warlord_state_idea_2
-                        remove_ideas = CHI_warlord_state_idea_cav
-                        remove_ideas = CHI_warlord_state_idea_mnt						
-				}			
-			
-		}
-	}
-
-####### Japanese Puppet #######
-	focus = {
-		id = CHI_change_to_japanese_puppet
-		icon = GFX_goal_generic_chi_collaboration_with_the_japanese
-		x = 8
-		y = 1
-		relative_position_id = CHI_secure_internal_politics
-		prerequisite = {
-			focus = CHI_secure_internal_politics
-		}
-		cost = 10
-
-		ai_will_do = {
-			factor = 10
-		}
-		allow_branch = {
-			tag = HPC
-		}
-		available = { is_subject_of = JAP }
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		completion_reward = {
-			load_focus_tree = { tree = japan_puppet_focus keep_completed = yes }
-		}
-	}
-	
-	### WARLORD NATIONAL SPIRIT-RELATED FOCUSES ###
-
-	focus = {
-		id = CHI_strenghten_warlord_authority
-		icon = GFX_goal_generic_military_dictatorship
-		x = 20
-		y = 5
-
-		cost = 10
-
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			IF = {
-				limit = {
-					has_idea = CHI_warlord_state_idea
-				}
-				swap_ideas = {
-					remove_idea = CHI_warlord_state_idea
-					add_idea = CHI_warlord_state_idea_2
-				}	
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_uplift_the_cavalry_regiments
-		icon = GFX_goal_generic_cavalry
-		x = -1
-		y = 1
-
-		cost = 10
-
-		prerequisite = { focus = CHI_strenghten_warlord_authority }
-
-		relative_position_id = CHI_strenghten_warlord_authority
-
-		mutually_exclusive = {
-			focus = CHI_uplift_the_mountain_brigades
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = {  }
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = CHI_warlord_state_idea_2
-				add_idea = CHI_warlord_state_idea_cav
-			}	
-		}
-	}
-
-	focus = {
-		id = CHI_uplift_the_mountain_brigades
-		icon = GFX_goal_generic_secret_rearmament
-		x = 1
-		y = 1
-
-		cost = 10
-
-		prerequisite = { focus = CHI_strenghten_warlord_authority }
-
-		relative_position_id = CHI_strenghten_warlord_authority
-
-		mutually_exclusive = {
-			focus = CHI_uplift_the_cavalry_regiments
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = {  }
-		completion_reward = {
-
-			swap_ideas = {
-				remove_idea = CHI_warlord_state_idea_2
-				add_idea = CHI_warlord_state_idea_mnt
-			}
-
-			add_tech_bonus = {
-				name = CHI_uplift_the_mountain_brigades
-				bonus = 0.75
-				uses = 1
-				category = mountaineers_tech
-			}	
-		}
-	}	
-	#Sinkiang warlords - does not include SIK
-	shared_focus = SIK_the_defeat_of_sheng_shicai
-	shared_focus = SUY_suiyuan_province_reclamation_plan
-	shared_focus = SUY_suiyuan_army
-}
-
-
-# 来源：common/national_focus/RCM_sik_shared.txt
-    #TO DO
-	#The Defeat of Sheng Shicai
-	shared_focus = {
-		allow_branch = {
-			OR = {
-			    #tag = TNG
-				tag = HMI
-				tag = KHR
-				tag = KRS
-				tag = ATM
-			}
-	    }
-		id = SIK_the_defeat_of_sheng_shicai
-		icon = GFX_goal_generic_SIK_sheng_down
-		x = -4
-		y = 0
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			OR = {	
-				all_other_country = {
-					NOT = {
-						has_country_leader = {
-							character = SIK_sheng_shicai ruling_only = yes
-						}
-					}
-				    exists = yes		
-				}
-				all_other_country = {
-					original_tag = SIK
-					has_country_leader = {
-						character = SIK_sheng_shicai ruling_only = yes
-					}
-					NOT = {	
-						owns_state = 617	
-					}
-				}
-			} 			     
-		}
-		completion_reward = {
-			if = {
-			    limit = {
-				    owns_state = 617
-					controls_state = 617
-				}
-			    country_event = AWR_SIK.96
-			}
-			add_political_power = 150
-			add_stability = 0.1
-			add_war_support = -0.1
-		    #if = {
-			#    limit = {
-			#	    tag = TNG
-			#	}
-			    unlock_decision_category_tooltip = sik_warlord_decisions
-			#}
-		    add_timed_idea = { idea = generic_rebuild_the_province days = 365 }
-		}
-	}
-	
-	#The Next King of Sinkiang
-	shared_focus = {
-		id = SIK_the_next_king_of_sinkiang
-		icon = GFX_goal_generic_rom_royal_dictatorship
-		x = -5
-		y = 1
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = SIK_the_defeat_of_sheng_shicai  }
-		mutually_exclusive = { focus = SIK_united_province_of_sinkiang  }
-		ai_will_do = { 
-			factor = 1
-            modifier = {
-				factor = 30
-				is_historical_focus_on = no
-			}
-		}
-		will_lead_to_war_with = KHR
-		will_lead_to_war_with = TNG
-		will_lead_to_war_with = HMI
-		will_lead_to_war_with = KRS
-		will_lead_to_war_with = ATM
-		will_lead_to_war_with = SIK
-		available = {
-			any_other_country = {
-				exists = yes
-				OR = {
-				    original_tag = KHR
-					original_tag = TNG
-					original_tag = HMI
-					original_tag = KRS
-					original_tag = ATM
-					original_tag = SIK
-				}
-			}
-		}
-		completion_reward = {
-			add_war_support = 0.1
-			if = {   
-			    limit = {
-				    NOT = { tag = TNG }
-				    country_exists = TNG
-				}
-				create_wargoal = {
-				    type = annex_everything
-				    target = TNG
-			    }
-			}
-			if = {   
-			    limit = {
-				    NOT = { tag = KHR }
-				    country_exists = KHR
-				} 
-				create_wargoal = {
-				    type = annex_everything
-				    target = KHR
-			    }
-			}
-			if = {   
-			    limit = {
-				    NOT = { tag = HMI }
-				    country_exists = HMI
-				} 
-				create_wargoal = {
-				    type = annex_everything
-				    target = HMI
-			    }
-			}
-			if = {   
-			    limit = {
-				    NOT = { tag = KRS }
-				    country_exists = KRS
-				} 
-				create_wargoal = {
-				    type = annex_everything
-				    target = KRS
-			    }
-			}
-			if = {   
-			    limit = {
-				    NOT = { tag = ATM }
-				    country_exists = ATM
-				} 
-				create_wargoal = {
-				    type = annex_everything
-				    target = ATM
-			    }
-			}
-			if = {   
-			    limit = {
-				    any_other_country = {
-						original_tag = SIK
-						exists = yes
-					}
-				} 
-				create_wargoal = {
-				    type = annex_everything
-				    target = PREV
-			    }
-			}
-		}
-		bypass = {
-			NOT = {
-			    any_other_country = {
-				exists = yes
-				    OR = {
-				        original_tag = KHR
-					    original_tag = TNG
-					    original_tag = HMI
-						original_tag = KRS
-					    original_tag = ATM
-						original_tag = SIK
-				    }
-			    }
-			}
-		}
-	}
-
-	#United Province of Sinkiang
-	shared_focus = {
-		id = SIK_united_province_of_sinkiang
-		icon = GFX_goal_generic_neutrality_focus
-		x = -3
-		y = 1
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_the_defeat_of_sheng_shicai  }
-	    mutually_exclusive = { focus = SIK_the_next_king_of_sinkiang  }
-		ai_will_do = { factor = 100 }
-		available = {
-			has_war = no
-		    any_other_country = {
-				exists = yes
-				OR = {
-				    original_tag = KHR
-					original_tag = TNG
-					original_tag = HMI
-					original_tag = KRS
-					original_tag = ATM
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = { NOT = { has_idea = generic_neutrality_idea } }
-				add_ideas = generic_neutrality_idea
-			}
-			add_ideas = generic_deterrence
-			add_war_support = -0.1
-		}	
-	}
-	
-	#Develop Sinkiang
-	shared_focus = {
-		id = SIK_develop_sinkiang
-		icon = GFX_goal_generic_construction2
-		x = -3
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = SIK_the_next_king_of_sinkiang  focus = SIK_united_province_of_sinkiang  }
-		ai_will_do = { factor = 100 }
-		available = {
-			any_owned_state = {
-				#hidden_trigger = {
-				#    is_capital = yes
-				#}
-				is_controlled_by = ROOT
-			    is_core_of = ROOT
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					#is_capital = yes
-				}
-				add_extra_state_shared_building_slots = 2
-			}
-		}
-	}
-
-	#Rail Transport
-	shared_focus = {
-		id = SIK_rail_transport
-		icon = GFX_goal_generic_construct_infrastructure
-		x = -2
-		y = 3
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = SIK_develop_sinkiang  }
-		ai_will_do = { factor = 100 }
-		available = {
-			  
-		}
-		completion_reward = {
-			add_timed_idea = {
-				idea = generic_railway_idea
-				days = 730
-			}
-		}
-	}
-
-	#Pacify The Unrests
-	shared_focus = {
-		id = SIK_pacify_the_unrests
-		icon = GFX_goal_generic_TUR_loosen_the_laws_on_secularism
-		x = -5
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = SIK_the_next_king_of_sinkiang  focus = SIK_united_province_of_sinkiang  }
-		ai_will_do = { factor = 100 }
-		available = {
-		}
-		completion_reward = {
-			add_stability = 0.05
-		}
-	}
-	
-	#Suppress Separatism
-	shared_focus = {
-		id = SIK_suppress_separatism
-		icon = GFX_goal_generic_eng_move_to_secure_the_dominions
-		x = -4
-		y = 3
-		cost = 9
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_pacify_the_unrests  }
-		mutually_exclusive = { focus = SIK_the_new_east_turkestan  }
-		ai_will_do = { factor = 100 }
-		available = {
-			if = {
-				limit = {
-					original_tag = KRS
-				}
-				always = yes
-			    else = {
-                    OR = {
-						has_completed_focus = CHI_cooperation_with_the_nationalists
-						has_completed_focus = CHI_cooperation_with_the_communists
-					}
-				}
-			}	
-		}
-		completion_reward = {
-			add_stability = 0.1
-			add_political_power = 50
-		}
-	}
-	
-	#A New Provincial Government #TO DO
-	shared_focus = {
-		id = SIK_a_new_provincial_government
-		icon = GFX_goal_generic_china1
-		x = -4
-		y = 4
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_suppress_separatism }
-		ai_will_do = { factor = 100 }
-		available = {
-			owns_state = 617
-			controls_state = 617
-			#if = {
-			#	limit = {
-			#	    has_completed_focus = CHI_cooperation_with_the_communists
-			#	}
-			#	has_completed_focus = CHI_join_the_chinese_soviet
-			#}
-		}
-		completion_reward = {
-			set_capital = { state = 617 }
-			drop_cosmetic_tag = yes
-			if = {
-				limit = {
-					NOT = {
-						has_completed_focus = CHI_join_the_chinese_soviet
-					}
-				}
-			    set_cosmetic_tag = SIK_KMT
-			}
-			if = {
-				limit = {
-					has_completed_focus = CHI_cooperation_with_the_communists
-				    has_government = communism
-				}
-			    #set_cosmetic_tag = SIK_KMT
-			}
-			SIK = {
-				every_core_state = {
-					add_core_of = ROOT 
-				}
-			}
-		}
-	}
-
-	shared_focus = { #TO DO BELOW #unused for now
-		id = SIK_ma_return
-		allow_branch = {
-			has_country_flag = ma_zhongying_return
-	    }
-		icon = GFX_goal_generic_horse_studs
-		x = -3
-		y = 5
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_a_new_provincial_government }
-		ai_will_do = { factor = 100 }
-		available = {
-			
-		}
-		completion_reward = {
-		}
-	}
-
-	shared_focus = {
-		id = SIK_ma_rule
-		icon = GFX_goal_generic_rom_royal_dictatorship
-		prerequisite = { focus = SIK_ma_return }
-		x = -3
-		y = 6
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			
-		}
-		completion_reward = {
-		}
-	}
-
-	shared_focus = {
-		id = SIK_befriend_xsm
-		icon = GFX_goal_generic_COOP_northwest_mediation
-		prerequisite = { focus = SIK_ma_return }
-		mutually_exclusive = {
-			focus = SIK_strike_xsm
-		}
-		x = -2
-		y = 7
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			OR = {
-				is_neighbor_of = XSM
-				is_neighbor_of = GSM
-			}
-			OR = {
-				is_subject_of = XSM
-				is_subject_of = GSM
-			    is_subject = no
-			}
-			OR = {
-				XSM = {
-				    is_subject = no
-			    }
-				GSM = {
-				    is_subject = no
-			    }
-			}
-		}
-		bypass = {
-			NOT = {
-				country_exists = XSM
-			}
-			NOT = {
-				country_exists = GSM
-			}
-		}
-		completion_reward = {
-		}
-	}
-
-	shared_focus = {
-		id = SIK_strike_xsm
-		icon = GFX_goal_generic_COOP_war_on_the_northwest
-		prerequisite = { focus = SIK_ma_return }
-		mutually_exclusive = {
-			focus = SIK_befriend_xsm
-		}
-		x = -4
-		y = 7
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		will_lead_to_war_with = XSM
-		available = {
-			OR = {
-				is_neighbor_of = XSM
-				is_neighbor_of = GSM
-			}
-			is_subject = no
-		}
-		bypass = {
-			has_war_with = XSM	
-			has_war_with = GSM 
-		}
-		completion_reward = {
-		}
-	    
-	}
-
-	shared_focus = {
-		id = SIK_jihad_on_ussr
-		icon = GFX_goal_generic_attack_soviet
-		prerequisite = { focus = SIK_befriend_xsm focus = SIK_strike_xsm }
-		mutually_exclusive = {
-			focus = SIK_befriend_ussr
-		}
-		x = -4
-		y = 8
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		will_lead_to_war_with = SOV
-		available = {
-			is_neighbor_of = SOV 
-			is_subject = no
-		}
-		completion_reward = {
-		}  
-	}
-
-	shared_focus = {
-		id = SIK_befriend_ussr
-		icon = GFX_goal_generic_chi_mission_to_the_soviet_union
-		prerequisite = { focus = SIK_befriend_xsm focus = SIK_strike_xsm}
-		mutually_exclusive = {
-			focus = SIK_jihad_on_ussr
-		}
-		x = -2
-		y = 8
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			is_neighbor_of = SOV 
-			is_subject = no
-		}
-		completion_reward = {
-		}
-	    
-	}
-	#maybe strike soviet too
-	#The New East Turkestan
-	shared_focus = {
-		id = SIK_the_new_east_turkestan
-		icon = GFX_goal_generic_TUR_turanist_ambition
-		x = -6
-		y = 3
-		cost = 9
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_pacify_the_unrests  }
-		mutually_exclusive = { focus = SIK_suppress_separatism  }
-		ai_will_do = { factor = 100 }
-		available = {
-		    NOT = {
-				original_tag = KRS
-			}
-			has_completed_focus = CHI_opposition
-		}
-		completion_reward = {
-			add_ideas = generic_Turkic_land
-			add_opinion_modifier = {
-				target = event_target:WTT_current_china_leader
-				modifier = hostile_status
-			}
-			event_target:WTT_current_china_leader = {
-				add_opinion_modifier = {
-					target = SIK
-					modifier = hostile_status
-				}
-			}
-			add_opinion_modifier = {
-				target = XSM
-				modifier = hostile_status
-			}
-			XSM = {
-				add_opinion_modifier = {
-					target = SIK
-					modifier = hostile_status
-				}
-			}
-		}
-	}
-	
-	#Declare Independence From China
-	shared_focus = {
-		id = SIK_declare_independence_from_china
-		icon = GFX_goal_generic_rise_of_turks
-		x = -6
-		y = 4
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_the_new_east_turkestan  }
-		available = {
-			is_subject = no
-			has_completed_focus = CHI_leaves_the_KMT
-		}
-		completion_reward = {
-			#mark_focus_tree_layout_dirty = yes
-			#unused for now
-			#effect_tooltip = {
-			#	unlock_national_focus = SIK_foreign_support_focus
-			#}
-			add_ideas = generic_Turkic_compatriots
-			drop_cosmetic_tag = yes
-			set_cosmetic_tag = ETR
-			#every_state = {
-			#    limit = {
-			#	    is_core_of = SIK
-			#	}
-			#	add_core_of = ROOT 
-			#}
-			SIK = {
-				every_core_state = {
-					add_core_of = ROOT 
-				}
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SIK_foreign_support_focus
-		icon = GFX_goal_generic_improve_relations
-		cost = 5
-		x = -6
-		y = 5
-		allow_branch = {
-			has_completed_focus = SIK_declare_independence_from_china
-			always = no
-		}
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_timed_idea = {
-				idea = generic_diplomatic_effort_idea
-				days = 180
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SIK_befriend_afg
-		icon = GFX_goal_generic_befriend_afghanistan
-		x = -5
-		y = 6
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_foreign_support_focus }
-		available = {
-			is_subject = no
-			NOT = {
-				has_war_with = AFG
-			}
-		}
-		completion_reward = {
-			AFG = {
-				#country_event = 
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SIK_befriend_uk
-		icon = GFX_goal_generic_chi_british_cooperation
-		x = -7
-		y = 5
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_foreign_support_focus }
-		available = {
-			is_subject = no
-			NOT = {
-				any_enemy_country = {
-					is_ally_with = ENG
-				}
-			}
-			RAJ = {
-				is_subject_of = ENG
-			    is_neighbor_of = ROOT
-			}
-		}
-		completion_reward = {
-			ENG = {
-				#country_event = 
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SIK_strike_ma_clique
-		icon = GFX_goal_generic_COOP_war_on_the_northwest
-		x = -6
-		y = 6
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_befriend_afg focus = SIK_befriend_uk }
-		will_lead_to_war_with = XSM
-		available = {
-			is_subject = no
-			country_exists = XSM
-			is_neighbor_of = XSM
-			NOT = {
-				has_war_with = XSM
-			}
-			NOT = {
-				is_ally_with = XSM
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = XSM
-				NOT = { country_exists = XSM }
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					country_exists = GSM 
-					NOT = {
-						has_war_with = GSM 
-					}
-					NOT = {
-						is_ally_with = GSM
-					}
-				}
-			    create_wargoal = {
-					type = annex_everything
-					target = GSM 
-				}
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = XSM
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SIK_strike_china
-		icon = GFX_goal_generic_attack_china
-		x = -6
-		y = 7
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = SIK_strike_ma_clique }
-		will_lead_to_war_with = CHI
-		will_lead_to_war_with = NEA
-		available = {
-			is_subject = no
-			controls_state = 756
-			country_exists = event_target:WTT_current_china_leader
-			NOT = {
-				has_war_with = event_target:WTT_current_china_leader
-			}
-			NOT = {
-				is_ally_with = event_target:WTT_current_china_leader
-			}
-			NOT = {
-				tag = event_target:WTT_current_china_leader
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = event_target:WTT_current_china_leader
-				tag = event_target:WTT_current_china_leader
-				NOT = { country_exists = event_target:WTT_current_china_leader }
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					country_exists = NEA
-					NEA = {
-						is_ally_with = event_target:WTT_current_china_leader
-					}
-					NOT = {
-						has_war_with = NEA 
-					}
-					NOT = {
-						is_ally_with = NEA 
-					}
-				}
-			    create_wargoal = {
-					type = annex_everything
-					target = NEA
-				}
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = event_target:WTT_current_china_leader
-			}
-		}
-	}
-
-
-# 来源：common/national_focus/RCM_suiyuan_army.txt
-### search_filters = FOCUS_FILTER_POLITICAL
-### search_filters = FOCUS_FILTER_RESEARCH
-### search_filters = FOCUS_FILTER_INDUSTRY
-### search_filters = FOCUS_FILTER_STABILITY
-### search_filters = FOCUS_FILTER_WAR_SUPPORT
-### search_filters = FOCUS_FILTER_MANPOWER
-### search_filters = FOCUS_FILTER_ANNEXATION
-	shared_focus = {
-		allow_branch = {
-			tag = SUY
-	    }	
-		id = SUY_suiyuan_province_reclamation_plan #绥远省垦务计划
-		icon = GFX_goal_generic_self_management
-		x = -4
-		y = 0
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-		}
-		completion_reward = {
-			add_political_power = 50
-			add_stability = 0.05
-		}
-	}
-
-	shared_focus = {
-		id = SUY_suiyuan_demand_uncultivated_lands
-		icon = GFX_goal_generic_land_reclamation
-		x = -4
-		y = 1
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_suiyuan_province_reclamation_plan
-		}
-		#available_if_capitulated = yes
-		available = {
-			any_owned_state = {
-				is_core_of = ROOT
-				is_controlled_by = ROOT
-			}
-		}
-		completion_reward = {
-            random_owned_controlled_state = {
-				limit = {		
-					is_core_of = ROOT
-					state = 1020
-				}
-				add_extra_state_shared_building_slots = 1
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					NOT = {
-						state = 1020
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_water_supply_system
-		icon = GFX_goal_generic_hydroelectric_energy
-		x = -6
-		y = 2
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 10
-		prerequisite = {
-			focus = SUY_suiyuan_demand_uncultivated_lands
-		}
-		#available_if_capitulated = yes
-		available = {
-			has_tech = basic_machine_tools
-		}
-		completion_reward = {
-            add_tech_bonus = {
-				name = industrial_bonus
-				bonus = 0.25
-				uses = 2
-				category = industry
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = infrastructure
-						size > 0
-					}
-					OR = {
-						is_in_home_area = yes
-						NOT = {
-							owner = {
-								any_owned_state = {
-									free_building_slots = {
-										building = infrastructure
-										size > 0
-									}
-									is_in_home_area = yes
-								}
-							}
-						}
-					}
-				}
-               1019 = {
-                add_building_construction = {
-                    type = dam
-                    level = 1
-                    instant_build = yes
-                    province = {
-                        id = 13399
-                    }
-                }
-                custom_effect_tooltip = {
-                    localization_key = building_state_modifier|dam
-                    INDENT = "    "
-                }
-              }				
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_tunken
-		icon = GFX_goal_generic_DEN_schleswigian_farmers
-		x = -4
-		y = 2
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_suiyuan_demand_uncultivated_lands
-		}
-		#available_if_capitulated = yes
-		available = {
-			any_owned_state = {
-				is_core_of = ROOT
-				is_fully_controlled_by = ROOT
-				#ROOT = {
-				#	army_manpower_in_state = {
-				#	    #type = support
-				#	    amount > 9999
-				#	    state = PREV
-				#    }
-				#}
-			}
-		}
-		completion_reward = {
-            #add_stability = 0.05
-			#add_to_variable = {
-			#	This.supply_condition_base = 20 tooltip = gain_base_supp_cond_p20_tt
-			#}
-			unlock_decision_category_tooltip = suiyuan_tunken_cat
-		}
-	}
-
-	shared_focus = {
-		id = SUY_improve_agriculture
-		icon = GFX_goal_generic_agricultural_subsidies
-		x = -2
-		y = 2
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 10
-		prerequisite = {
-			focus = SUY_suiyuan_demand_uncultivated_lands
-		}
-		#available_if_capitulated = yes
-		available = {
-			any_owned_state = {
-				free_building_slots = {
-					building = industrial_complex
-					size > 0
-					include_locked = yes
-				}
-				is_core_of = ROOT
-				is_controlled_by = ROOT
-			}
-		}
-		completion_reward = {
-            random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-					OR = {
-						is_in_home_area = yes
-						NOT = {
-							owner = {
-								any_owned_state = {
-									free_building_slots = {
-										building = industrial_complex
-										size > 0
-										include_locked = yes
-									}
-									is_in_home_area = yes
-								}
-							}
-						}
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_a_good_farmland
-		icon = GFX_goal_generic_farmland
-		x = -4
-		y = 3
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_tunken
-		}
-		prerequisite = {
-			focus = SUY_water_supply_system
-		}
-		prerequisite = {
-			focus = SUY_improve_agriculture
-		}
-		#available_if_capitulated = yes
-		available = {
-			
-		}
-		completion_reward = {
-            add_ideas = generic_farmland_idea
-		}
-	}
-
-	shared_focus = {
-		id = SUY_baiyun_ebo
-		icon = GFX_goal_generic_mining_industry
-		x = -5
-		y = 4
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		cost = 15
-		prerequisite = {
-			focus = SUY_a_good_farmland
-		}
-		#available_if_capitulated = yes
-		available = {
-			has_tech = excavation1
-			1014 = {
-				is_owned_and_controlled_by = ROOT
-			}
-			#1020 = {
-			#	is_owned_and_controlled_by = ROOT
-			#}
-		}
-		select_effect = {
-			add_ideas = generic_steelmaking
-			add_ideas = generic_under_construction
-		}
-		completion_reward = {
-			custom_effect_tooltip = debuff_tt
-			show_ideas_tooltip = generic_steelmaking
-			show_ideas_tooltip = generic_under_construction
-			custom_effect_tooltip = blank_line
-			hidden_effect = {
-				remove_ideas = generic_steelmaking
-				remove_ideas = generic_under_construction
-			}
-			add_resource = {
-				type = steel
-				amount = 25
-				state = 1014
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_central_arms
-		icon = GFX_goal_generic_reorient_production
-		x = -3
-		y = 4
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_a_good_farmland
-		}
-		#available_if_capitulated = yes
-		available = {
-			NOT = {
-				tag = event_target:WTT_current_china_leader
-				has_war_with = event_target:WTT_current_china_leader
-			}
-		}
-		completion_reward = {
-            add_offsite_building = { type = arms_factory level = 1 }
-		}
-	}
-
-	shared_focus = {
-		allow_branch = {
-			tag = SUY
-	    }	
-		id = SUY_suiyuan_army 
-		icon = GFX_goal_generic_limited_social_mobilization #GFX_focus_NRA
-		x = -10
-		y = 0
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
- 
-		}
-		completion_reward = {
-			add_ideas = generic_militarism_focus
-			add_war_support = 0.05
-			#add_command_power = 25
-		}
-	}
-
-	shared_focus = {
-		id = SUY_recruit_former_mongolian_troops
-		icon = GFX_goal_generic_FIN_parmis_devils
-		x = -8
-		y = 1
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_suiyuan_army
-		}
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-            OR = {
-				has_global_flag = shx_plm_won_suiyuan
-				1014 = {
-					is_owned_and_controlled_by = ROOT
-				}
-			}
-			#all_enemy_country = {
-			#	NOT = {
-			#		tag = PLM
-			#		tag = ECA
-			#	}
-			#}
-			num_of_controlled_states > 1
-		}
-		completion_reward = {
-			add_manpower = 12000
-		}
-		bypass = {
-            num_of_controlled_states < 2
-		}
-	}
-
-	shared_focus = {	
-		id = SUY_imitate_the_communists
-		icon = GFX_goal_generic_NOR_moscows_education_centers
-		x = -8
-		y = 2
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_recruit_former_mongolian_troops
-		}
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-            any_neighbor_country = {
-				has_government = communism
-				NOT = {
-					has_war_with = ROOT
-				}
-			}
-			any_enemy_country = {
-				is_major = yes
-			}
-		}
-		completion_reward = {
-			add_popularity = {
-				ideology = communism
-				popularity = 0.1
-			}
-			add_war_support = 0.1
-			if = {
-				limit = {
-					num_of_controlled_states < 6
-				}
-				add_ideas = generic_combat_idea
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_struggle_high_school #奮鬥中學
-		icon = GFX_goal_generic_scientific_exchange #GFX_focus_generic_military_academy
-		x = -8
-		y = 3
-		cost = 10
-		prerequisite = {
-			focus = SUY_imitate_the_communists
-		}
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-
-		}
-		completion_reward = {
-			add_ideas = generic_struggle_school_idea
-		}
-	}
-
-	shared_focus = {	
-		id = SUY_northeastern_advance_army #東北挺進軍
-		icon = GFX_goal_generic_cavalry #GFX_focus_jap_cast_the_die
-		x = -10
-		y = 1
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_suiyuan_army
-		}
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-            OR = {
-                MAN = {
-					exists = yes
-				}
-				event_target:WTT_current_china_leader = {
-					any_core_state = {
-						OR = {
-							custom_trigger_tooltip = {
-								tooltip = is_in_strat_242
-								region = 242
-							}
-							custom_trigger_tooltip = {
-								tooltip = is_in_strat_243
-								region = 243
-							}
-		                    custom_trigger_tooltip = {
-								tooltip = is_in_strat_155
-								region = 155
-							}
-						}
-						is_controlled_by_jap_or_its_puppet = yes
-					}
-				}
-			}
-			OR = {
-				has_war_with = JAP
-				has_war_with = MAN
-			}
-			if = {
-				limit = {
-					event_target:WTT_current_china_leader = {
-						exists = yes
-					}
-					NOT = {
-						tag = event_target:WTT_current_china_leader
-					}
-				}
-				NOT = {
-					has_war_with = event_target:WTT_current_china_leader 
-				}
-			}
-			746 = {
-				controller = {
-					OR = {
-						tag = ROOT
-						is_in_faction_with = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					event_target:WTT_current_china_leader = {
-						exists = yes
-					}
-					NOT = {
-						tag = event_target:WTT_current_china_leader
-					}
-				}
-				event_target:WTT_current_china_leader = {
-					country_event = {
-						id = AWR_CHI.3888 hours = 12
-					}
-				}
-				custom_effect_tooltip = if_approved_tt
-				custom_effect_tooltip = recruit_ne_advance_army_tt
-				effect_tooltip = {
-					add_corps_commander_role = {
-						character = SUY_ma_zhanshan
-						traits={ generic_NRA_Major_General }
-						skill=3
-						attack_skill=2
-						defense_skill=3
-						planning_skill=3
-						logistics_skill=2
-						legacy_id=-1
-					}
-					SUY_ma_zhanshan = {
-						add_advisor_role = {
-							activate = yes
-							advisor = {
-								slot = high_command
-								ledger = army
-								cost = 100
-								idea_token = SUY_ma_zhanshan
-								traits = {
-									generic_army_cavalry_2
-								}
-							}
-						}
-					}	
-				}
-				else = {
-                    country_event = {
-			           id = AWR_CHI.3888 hours = 12
-			        }
-					effect_tooltip = {
-						add_corps_commander_role = {
-							character = SUY_ma_zhanshan
-							traits={ generic_NRA_Major_General }
-							skill=3
-							attack_skill=2
-							defense_skill=3
-							planning_skill=3
-							logistics_skill=2
-							legacy_id=-1
-						}
-						SUY_ma_zhanshan = {
-							add_advisor_role = {
-								activate = yes
-								advisor = {
-									slot = high_command
-									ledger = army
-									cost = 100
-									idea_token = SUY_ma_zhanshan
-									traits = {
-										generic_army_cavalry_2
-									}
-								}
-							}
-						}	
-					}
-				    custom_effect_tooltip = recruit_ne_advance_army_tt
-				}
-			}				
-		}
-		
-		bypass = {
-			OR = {
-				AND = {
-					has_global_flag = JAP_defeated
-					NOT = {
-						country_exists = MAN
-					}
-				}
-				event_target:WTT_current_china_leader = {
-					all_core_state = {
-						OR = {
-							custom_trigger_tooltip = {
-								tooltip = is_in_strat_242
-								region = 242
-							}
-							custom_trigger_tooltip = {
-								tooltip = is_in_strat_243
-								region = 243
-							}
-		                    custom_trigger_tooltip = {
-								tooltip = is_in_strat_155
-								region = 155
-							}
-						}
-						is_not_controlled_by_jap_or_its_puppet = yes
-						NOT = {
-							is_controlled_by = MAN
-						}
-					}
-				}
-			}
-		}
-	}
-
-	shared_focus = {
-		id = SUY_west_suiyuan_campaigns
-		icon = GFX_goal_generic_AST_war_japan
-		x = -10
-		y = 2
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_northeastern_advance_army
-		}
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			has_war_with = JAP
-			#OR = {
-                any_core_state = {
-					OR = {
-						state = 1019
-						NOT = {
-							is_fully_controlled_by = ROOT
-						}
-						AND = {
-                            state = 746
-							is_controlled_by_jap_or_its_puppet = yes
-						}
-						#AND = {
-                        #   state = 621
-						#	is_controlled_by_jap_or_its_puppet = yes
-						#}
-					}	
-				}
-				#any_core_state = {
-				#	OR = {
-				#		state = 1019
-				#		state = 746
-				#		state = 621
-				#	}
-				#	NOT = {
-				#		is_fully_controlled_by = ROOT
-				#	}
-				#}
-				#any_enemy_country = {
-				#	OR = {
-				#		original_tag = JAP
-				#		is_in_faction_with = JAP
-				#	}
-				#	OR = {
-                #        controls_province = 2087
-				#		controls_province = 13399
-				#	}	
-				#}
-			#}	
-		}
-		completion_reward = {
-			unlock_decision_category_tooltip = war_in_suiyuan_cat
-			activate_mission = SUY_counter_attack_jap
-			every_core_state = {
-				limit = {
-					region = 244
-					OR = {
-						state = 1019
-						NOT = {
-							is_fully_controlled_by = ROOT
-						}
-						AND = {
-                            state = 746
-							is_controlled_by_jap_or_its_puppet = yes
-						}
-						AND = {
-                            state = 621
-							is_controlled_by_jap_or_its_puppet = yes
-						}
-					}		
-				}
-				add_dynamic_modifier = { modifier = suiyuan_offensive scope = ROOT }
-			}
-		}
-		bypass = {
-			has_global_flag = JAP_defeated
-		}
-	}
-	
-	shared_focus = {
-		id = SUY_twelfth_military_region #1945~1947
-		icon = GFX_goal_generic_position_armies
-		x = -10
-		y = 3
-		cost = 5
-		prerequisite = {
-			focus = SUY_west_suiyuan_campaigns
-		}
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			NOT = {
-				has_war_with = JAP
-				has_war_with = event_target:WTT_current_china_leader
-				has_government = communism
-			}
-			if = {
-				limit = {
-					event_target:WTT_communist_china = {
-						exists = yes
-						NOT = {
-							tag = ROOT
-						}
-					}
-				}
-                any_neighbor_country = {
-					tag = event_target:WTT_communist_china
-					NOT = {
-						is_in_faction_with = ROOT
-					}
-				}
-			}
-		}
-		completion_reward = {
-			event_target:WTT_current_china_leader = {
-				every_core_state = {
-					limit = {
-						NOT = {
-							is_core_of = ROOT
-						}
-						OR = {
-							#state = 610
-							state = 1018
-							region = 244
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			if = {
-				limit = {
-					is_subject_of = event_target:WTT_current_china_leader 
-					NOT = {
-						is_subject_of = SHX
-						has_cosmetic_tag = huabei_bandit_supression_hq
-					}
-				}
-				event_target:WTT_current_china_leader  = {
-                    set_autonomy = { target = ROOT autonomy_state = autonomy_free }
-				}
-			}
-			event_target:WTT_current_china_leader = { add_opinion_modifier = { modifier = RCM_special_affiliation target = ROOT } }
-		    add_opinion_modifier = { modifier = RCM_special_affiliation target = event_target:WTT_current_china_leader }
-		}
-		#bypass = {
-		#	event_target:WTT_current_china_leader = {
-		#		all_core_state = {
-		#			OR = {
-		#				state = 610
-		#				state = 1018
-		#				custom_trigger_tooltip = {
-		#					tooltip = is_in_strat_244
-		#					region = 244
-		#				}
-		#			}
-		#			is_core_of = ROOT
-		#		}
-		#	}
-		#	is_subject = no
-		#}
-	}
-	
-	shared_focus = {
-		id = SUY_ping_sui_railway_campaign
-		icon = GFX_goal_generic_Attack_CCP
-		x = -10
-		y = 4
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_twelfth_military_region
-		}
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		will_lead_to_war_with = PRC
-		ai_will_do = { factor = 100 }
-		available = {
-			NOT = {
-				has_government = communism
-				has_border_war_with = event_target:WTT_communist_china
-			}
-			any_neighbor_country = {
-				tag = event_target:WTT_communist_china
-				NOT = {
-			        is_in_faction_with = ROOT
-					has_war_with = ROOT
-				}
-				controls_state = 1020
-			}
-			any_owned_state = {
-				is_fully_controlled_by = ROOT
-				OR = {
-					state = 621
-					state = 746
-				}
-			}
-		}
-		select_effect = {
-			event_target:WTT_communist_china = {
-                country_event = { id = AWR_TIB.8 hours = 12 }
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-                    746 = {
-						is_owned_by = ROOT
-						is_fully_controlled_by = ROOT
-					}
-				}
-				start_border_war = {
-					change_state_after_war = yes
-					attacker = {
-						state = 746	
-						num_provinces = 2
-						on_win = AWR_CHI.2148
-						on_lose = AWR_CHI.2150
-						on_cancel = AWR_CHI.2152
-					}
-	
-					defender = {
-						state = 1020
-						num_provinces = 2
-						on_win = AWR_CHI.2149
-						on_lose = AWR_CHI.2151
-						on_cancel = AWR_CHI.2153
-					}
-				}
-				else_if = {
-					limit = {
-						621 = {
-							is_owned_by = ROOT
-							is_fully_controlled_by = ROOT
-						}
-					}
-				}
-				start_border_war = {
-					change_state_after_war = yes
-					attacker = {
-						state = 621	
-						num_provinces = 1
-						on_win = AWR_CHI.2148
-						on_lose = AWR_CHI.2150
-						on_cancel = AWR_CHI.2152
-					}
-	
-					defender = {
-						state = 1020
-						num_provinces = 2
-						on_win = AWR_CHI.2149
-						on_lose = AWR_CHI.2151
-						on_cancel = AWR_CHI.2153
-					}
-				}
-			}
-			1020 = {
-				add_dynamic_modifier = { modifier = suiyuan_offensive_pingsui scope = ROOT }
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = event_target:WTT_communist_china
-                1020 = {
-					is_owned_and_controlled_by = ROOT
-				}
-			}
-		}
-	}
-
-	shared_focus = {	
-		id = SUY_ambush_kalgan
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		x = -10
-		y = 5
-		cost = 5
-		prerequisite = {
-			focus = SUY_ping_sui_railway_campaign
-		}
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			has_war_with = event_target:WTT_communist_china
-			611 = {
-				is_controlled_by = event_target:WTT_communist_china
-				num_owned_neighbour_states = {
-					owner = ROOT
-					count > 0
-				}
-			}
-		}
-		completion_reward = {
-			611 = {
-				add_dynamic_modifier = { modifier = suiyuan_offensive_ccw scope = ROOT }
-			}
-			activate_mission = SUY_ambush_kalgan_mission
-		}
-	}
-
-	shared_focus = {
-		id = SUY_mongolian_issues
-		icon = GFX_goal_generic_horse_studs
-		x = -12
-		y = 1
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_suiyuan_army
-		}
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-            any_owned_state = {
-				has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
-			}
-		}
-		completion_reward = {
-			unlock_decision_category_tooltip = suiyuan_mongolian_autonomy_cat
-		}
-	}
-
-	shared_focus = {
-		id = SUY_ikechao_incident
-		icon = GFX_goal_generic_FIN_the_lone_wolf
-		x = -12
-		y = 2
-		cost = 7.15
-		prerequisite = {
-			focus = SUY_mongolian_issues
-		}
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { factor = 100 }
-		available = {
-			1020 = {
-				is_controlled_by_jap_or_its_puppet = yes
-			}
-			746 = {
-				is_owned_and_controlled_by = ROOT
-				OR = {
-					has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
-					has_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
-				}
-			}
-			#num_battalions_in_states = {
-			#	count > 4
-			#	states = { 746 }
-			#	#exclude = { irregular_infantry }
-			#}
-			army_manpower_in_state = {
-				#type = support
-				amount > 11999
-				state = 746
-			}
-		}
-		completion_reward = {
-			country_event = {
-				id = AWR_CHI.3892 hours = 12
-			}
-		}
-	}
+﻿# shared_focus_china_warlord 国策整理
+
+
+
+# 来源：common/national_focus/china_warlord.txt
+
+focus_tree = { #HEAVILY MODDED FILE, didn't label most
+
+	id = china_warlord_focus
+
+
+
+	country = {
+
+		factor = 0
+
+
+
+		modifier = {
+
+			add = 50	#MODDED
+
+			is_originally_warlord = yes	# MODDED
+
+			has_dlc = "Waking the Tiger"
+
+		    NOT = { tag = GXC } # MODDED
+
+			NOT = { tag = SHX } # MODDED
+
+		}
+
+	}
+
+
+
+	default = no
+
+
+
+	continuous_focus_position = { x = 50 y = 1480 }	# MODDED
+
+#	focus = {
+
+#		id = CHI_
+
+#		icon = GFX_
+
+#		prerequisite = { focus = }
+
+#		mutually_exclusive = { focus =  }
+
+#		x = -3
+
+#		y = 0
+
+#		relative_position_id =
+
+#
+
+#		cost = 10
+
+#
+
+#		ai_will_do = {
+
+#			factor = 1
+
+#		}
+
+#
+
+#		available = {
+
+#
+
+#		}
+
+#
+
+#		bypass = {
+
+#
+
+#		}
+
+#
+
+#		cancel_if_invalid = yes
+
+#		continue_if_invalid = no
+
+#		available_if_capitulated = yes
+
+#
+
+#		complete_tooltip = {
+
+#
+
+#		}
+
+#
+
+#		completion_reward = {
+
+#
+
+#		}
+
+#	}
+
+	#side branch
+
+	focus = {
+
+		id = WRL_army_expansion
+
+		icon = GFX_goal_generic_COOP_army_guy
+
+		cost = 10.00
+
+		x = 19
+
+		y = 0
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_war_support = 0.05
+
+			army_experience = 20
+
+			if = {
+
+				limit = {
+
+					OR = {
+
+						has_idea = generic_disarmed_nation
+
+						has_idea = generic_volunteer_only
+
+					}
+
+				}
+
+				add_ideas = generic_limited_conscription
+
+			}
+
+		}
+
+	}
+
+		
+
+	focus = {
+
+		id = WRL_local_arms_workshops
+
+		icon = GFX_goal_generic_production
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_army_expansion }
+
+		x = 18
+
+		y = 1
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = generic_JPG_local_arms_workshops_idea
+
+		}
+
+	}
+
+	
+
+	
+
+	focus = {
+
+		id = WRL_take_what_we_can_take
+
+		icon = GFX_goal_generic_combined_arms
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_local_arms_workshops }
+
+		x = 18
+
+		y = 2
+
+		completion_reward = {
+
+			set_country_flag = JPG_allow_weapon_scavenging
+
+			unlock_decision_tooltip = JPG_weapon_scavenging
+
+			custom_effect_tooltip = JPG_only_show_up_in_war_time_tt
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_small_arms_development
+
+		icon = GFX_goal_generic_small_arms
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_local_arms_production }
+
+		x = 20
+
+		y = 2
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		completion_reward = {
+
+			add_tech_bonus = {
+
+				bonus = 1
+
+				uses = 1
+
+				category = infantry_weapons
+
+			}
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_modernise_support_equipment
+
+		icon = GFX_goal_generic_army_artillery2
+
+		cost = 10.00
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		prerequisite = { focus = WRL_small_arms_development }
+
+		prerequisite = { focus = WRL_public_education_reform }
+
+		x = 21
+
+		y = 3
+
+		completion_reward = {
+
+			add_breakthrough_progress = {
+
+				specialization = specialization_land
+
+				value = 0.5
+
+			}		
+
+			add_tech_bonus = {
+
+				bonus = 1
+
+				uses = 1
+
+				category = artillery
+
+				category = support_tech
+
+			}
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_armoured_vehicle_experiment
+
+		icon = GFX_goal_generic_army_tanks
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_modernise_support_equipment }
+
+		x = 21
+
+		y = 4
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		completion_reward = {
+
+			add_tech_bonus = {
+
+				bonus = 1
+
+				uses = 1
+
+				category = armor
+
+			}
+
+		}
+
+	}
+
+	
+
+	#### industrial branch ####
+
+	
+
+	focus = {
+
+		id = WRL_industrial_investment
+
+		icon = GFX_goal_generic_construct_civ_factory
+
+		cost = 10.00
+
+		x = 21
+
+		y = 0
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+			random_state = {
+
+				limit = {
+
+					has_state_flag = WRL_industrial_investment_IC
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+				add_building_construction = {
+
+					type = industrial_complex
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_fully_controlled_by = ROOT
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 3
+
+				add_building_construction = {
+
+					type = industrial_complex
+
+					level = 3
+
+					instant_build = yes
+
+				}
+
+				set_state_flag = WRL_industrial_investment_IC
+
+			}
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_local_arms_production
+
+		icon = GFX_goal_generic_construct_mil_factory
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_industrial_investment }
+
+		prerequisite = { focus = WRL_army_expansion }
+
+		x = 20
+
+		y = 1
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					has_state_flag = CHI_local_arms_production_AF
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+				add_building_construction = {
+
+					type = arms_factory
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_fully_controlled_by = ROOT
+
+					free_building_slots = {
+
+						building = arms_factory
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 3
+
+				add_building_construction = {
+
+					type = arms_factory
+
+					level = 3
+
+					instant_build = yes
+
+				}
+
+				set_state_flag = CHI_local_arms_production_AF
+
+			}
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_long_term_economic_planning
+
+		icon = GFX_goal_generic_industry_3
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_industrial_investment }
+
+		x = 22
+
+		y = 1
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_long_term_economic_planning
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_improve_infrastructure
+
+		icon = GFX_goal_generic_construct_civilian
+
+		cost = 5
+
+		prerequisite = { focus = WRL_long_term_economic_planning }
+
+		x = 23
+
+		y = 3
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					infrastructure < 5
+
+				}
+
+				add_building_construction = {
+
+					type = infrastructure
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					air_base < 10
+
+				}
+
+				add_building_construction = {
+
+					type = air_base
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+	focus = {
+
+		id = WRL_public_education_reform
+
+		icon = GFX_goal_generic_military_academy
+
+		cost = 10.00
+
+		prerequisite = { focus = WRL_long_term_economic_planning }
+
+		x = 22
+
+		y = 2
+
+		ai_will_do = {
+
+			factor = 10
+
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_research_slot = 1
+
+		}
+
+	}
+
+
+
+	##########################
+
+	focus = {
+
+		id = CHI_secure_internal_politics
+
+		icon = GFX_goal_generic_major_alliance
+
+		x = 7
+
+		y = 0
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					tag = NEA
+
+					country_exists = PRC
+
+				}
+
+				set_country_flag = I_can_do_xian_incident
+
+				unlock_decision_category_tooltip = CHI_xian_incident
+
+			}
+
+			#if = {
+
+			#	limit = {
+
+			#		tag = GXC
+
+			#	}
+
+			#	unlock_decision_category_tooltip = liangguang_incident
+
+			#}
+
+			#if = {
+
+			#	limit = {
+
+			#		tag = KHR
+
+			#	}
+
+			#	unlock_decision_category_tooltip = kashgar_rebellion
+
+			#}
+
+			add_political_power = 120
+
+		}
+
+	}
+
+
+
+	#########################
+
+	##### Nationalists ######
+
+	#########################
+
+
+
+	focus = {
+
+		id = CHI_cooperation_with_the_nationalists
+
+		icon = GFX_goal_generic_chi_cooperation_with_the_nationalists
+
+		prerequisite = { focus = CHI_secure_internal_politics }
+
+		mutually_exclusive = { focus = CHI_cooperation_with_the_communists focus = CHI_opposition }
+
+		x = -5
+
+		y = 1
+
+		relative_position_id = CHI_secure_internal_politics
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 100
+
+			#modifier = {
+
+			#	factor = 0
+
+			#	OR = {
+
+			#		original_tag = GUD
+
+			#		original_tag = GXC
+
+			#		original_tag = NEA
+
+			#	}
+
+			#}
+
+		}
+
+
+
+		available = {
+
+			OR = {
+
+				is_subject = no
+
+				OVERLORD = {
+
+					OR = {
+
+						is_warlord = yes
+
+						is_legit_china = yes
+
+					}
+
+					#is_in_array = { global.literally_chinese_countries = THIS }
+
+					NOT = {
+
+						has_government = fascism
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+			NOT = { has_war_with = CHI }
+
+		}
+
+
+
+		bypass = {
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					has_opinion_modifier = tacit_agreement
+
+				}
+
+				remove_opinion_modifier = { target = PRC modifier = tacit_agreement }
+
+				PRC = {
+
+					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
+
+				}
+
+				remove_opinion_modifier = { target = NEA modifier = tacit_agreement }
+
+				NEA = {
+
+					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
+
+				}
+
+			}	
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						tag = SHC
+
+						tag = SHD
+
+						tag = NEA
+
+					    tag = KHR
+
+						tag = ATM
+
+					}
+
+				}
+
+				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+			}
+
+			if = {
+
+				limit = {
+
+					tag = KHR
+
+				}
+
+				custom_effect_tooltip = a_kuomintang_affiliated_warlord_flag_will_be_adopted_tt
+
+				set_cosmetic_tag = KHR_KMT
+
+			}
+
+			set_country_flag = cooperation_with_nationalist_flag
+
+			#custom_effect_tooltip = CHI_cooperation_with_the_nationalists_effect_tooltip
+
+			CHI = { add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_positive target = ROOT } }
+
+			PRC = { add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_negative target = ROOT } }
+
+			add_opinion_modifier = { modifier = RCM_cooperation_with_the_nationalists_negative target = PRC }
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_anti_opposition_campaigns
+
+		icon = GFX_goal_generic_provoke_border_clashes
+
+		prerequisite = { focus = CHI_cooperation_with_the_nationalists focus = CHI_cooperation_with_the_communists }
+
+		x = 2
+
+		y = 1
+
+		relative_position_id = CHI_cooperation_with_the_nationalists
+
+		mutually_exclusive = {
+
+			focus = CHI_new_model_province
+
+		}
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+
+
+	
+
+		completion_reward = {			
+
+			#custom_effect_tooltip = 60_to_40_opinion_tt
+
+			every_country = {
+
+				limit = {
+
+					is_neighbor_of = ROOT
+
+					OR = {
+
+						is_warlord = yes
+
+						tag = event_target:WTT_communist_china
+
+					}
+
+				}
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = WRL_conflict_of_interest
+
+				}
+
+			}
+
+			custom_effect_tooltip = opinion_worsen_over_time_tt
+
+			custom_effect_tooltip = remove_insult_cd
+
+			set_variable = {
+
+				Root.insult_cd = 0
+
+			}
+
+			set_variable = {
+
+				Root.insult_cost = 40
+
+			}
+
+		}
+
+	}
+
+	focus = {
+
+		id = CHI_clash_with_the_central_government_focus
+
+		icon = GFX_goal_generic_provoke_border_clashes
+
+		prerequisite = { focus = CHI_anti_opposition_campaigns }
+
+		x = 2
+
+		y = 3
+
+		relative_position_id = CHI_cooperation_with_the_nationalists
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 2
+
+		}
+
+
+
+		available = {
+
+			#is_neighbor_of = event_target:WTT_current_china_leader
+
+			has_opinion = {
+
+				target = event_target:WTT_current_china_leader
+
+				value < -19
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				has_opinion = {
+
+					target = ROOT
+
+					value < -19
+
+				}
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+
+
+		completion_reward = {
+
+			event_target:WTT_current_china_leader = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = WRL_conflict_of_interest
+
+				}
+
+				custom_effect_tooltip = opinion_worsen_over_time_tt
+
+			}
+
+			custom_effect_tooltip = CHI_provoke_border_clashes_effect_tooltip
+
+		}
+
+	}
+
+	focus = {
+
+		id = CHI_technological_cooperation
+
+		icon = GFX_goal_generic_scientific_exchange
+
+		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
+
+		x = -2
+
+		y = 1
+
+		relative_position_id = CHI_cooperation_with_the_nationalists
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						CHI = { is_in_tech_sharing_group = CHI_technological_cooperation_tech_group } }
+
+				}
+
+				CHI = { add_to_tech_sharing_group = CHI_technological_cooperation_tech_group }
+
+			}
+
+			add_to_tech_sharing_group = CHI_technological_cooperation_tech_group
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_new_model_province
+
+		icon = GFX_goal_generic_last_ditch
+
+		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
+
+		mutually_exclusive = {
+
+			focus = CHI_anti_opposition_campaigns
+
+		}
+
+		x = 0
+
+		y = 1
+
+		relative_position_id = CHI_cooperation_with_the_nationalists
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 0
+
+				tag = SHX
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				tag = HPC #cause bugs
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				num_of_controlled_states < 4
+
+			}
+
+			modifier = {
+
+				add = 2
+
+				tag = YUN
+
+				NOT = {
+
+					country_exists = GXC
+
+					country_exists = GUD
+
+				}
+
+			}
+
+		}
+
+
+
+		available = {
+
+                            is_ai = no	
+
+			#num_of_controlled_states > 3
+
+			custom_trigger_tooltip = {
+
+				tooltip = is_not_supporting_someone_in_political_struggle
+
+				NOT = {
+
+					any_country = {
+
+						ROOT = { has_country_flag = warlord_supports_@PREV }
+
+					}
+
+				}
+
+			}
+
+			is_neighbor_of = CHI
+
+			is_subject = no
+
+			NOT = { has_war_with = CHI }
+
+			if = {
+
+				limit = {
+
+
+				}
+
+
+			}
+
+			if = {
+
+				limit = {
+
+
+				}
+
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+
+			
+
+			hidden_effect = {
+
+				WTT_setup_political_struggle = yes
+
+				WTT_add_ROOT_to_political_struggle = yes
+
+			}
+
+			every_controlled_state = { #MODDED
+
+				limit = {
+
+					is_core_of = ROOT
+
+					WTT_is_potential_political_struggle_state = yes #MODDED
+
+				}
+
+				#Add random state support for ROOT
+
+				WTT_random_support_chance_increase_for_ROOT_in_state = yes #MODDED
+
+				hidden_effect = {
+
+					#Save relevant event targets. Need to be done before updating state support
+
+					save_event_target_as = state
+
+					random_country = {
+
+						limit = {
+
+							PREV = { has_state_flag = majority_political_platform_@PREV }
+
+						}
+
+						save_event_target_as = majority_country
+
+					}
+
+					#Update state support
+
+					WTT_recalculate_state_support_for_ROOT = yes #MODDED
+
+					#Status events
+
+					WTT_fire_add_support_status_events = yes #MODDED
+
+					#Recalc all support
+
+					WTT_political_struggle_recalculate_support = yes #MODDED
+
+				}
+
+			} #MODDED
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_root_out_corruption
+
+		icon = GFX_goal_generic_demand_sudetenland
+
+		prerequisite = { focus = CHI_new_model_province focus = CHI_anti_opposition_campaigns }
+
+		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
+
+		mutually_exclusive = { focus = CHI_embrace_the_opium_trade }
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 5
+
+		}
+
+
+
+		available = {
+
+			#has_completed_focus = CHI_cooperation_with_the_nationalists
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			remove_ideas = generic_PRC_government_corruption
+
+		}
+
+	}
+
+	#focus = {
+
+	#	id = test
+
+	#	icon = GFX_name
+
+	#	cost = time_cost
+
+	#
+
+	#	x = 0
+
+	#	y = 0
+
+	#	bypass = {
+
+	#		focus_progress = {
+
+	#			focus = CHI_secure_internal_politics
+
+	#			progress > 0.2
+
+	#		}
+
+	#	}
+
+	#	completion_reward = {
+
+	#		
+
+	#		
+
+	#	}
+
+	#}
+
+	focus = {
+
+		id = CHI_embrace_the_opium_trade
+
+		icon = GFX_goal_generic_trade
+
+		prerequisite = { focus = CHI_new_model_province focus = CHI_anti_opposition_campaigns }
+
+		prerequisite = { focus = CHI_cooperation_with_the_nationalists }
+
+		mutually_exclusive = { focus = CHI_root_out_corruption }
+
+		x = -1
+
+		y = 1
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			#has_completed_focus = CHI_cooperation_with_the_nationalists
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_embrace_the_opium_trade
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_land_reform
+
+		icon = GFX_goal_generic_position_armies
+
+		prerequisite = { focus = CHI_root_out_corruption }
+
+		x = 0
+
+		y = 2
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = ROOT
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_reform_the_administration
+
+		icon = GFX_goal_generic_propaganda
+
+		prerequisite = { focus = CHI_root_out_corruption focus = CHI_embrace_the_opium_trade }
+
+		x = -2
+
+		y = 2
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_political_power = 50
+
+			fractured_administration_level_down = yes
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_join_the_republican_government
+
+		icon = GFX_goal_generic_national_unity
+
+		prerequisite = { focus = CHI_land_reform focus = CHI_reform_the_administration }
+
+		x = -1
+
+		y = 3
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			OR = {
+
+				fascism > 0.4
+
+				neutrality > 0.4
+
+				democratic > 0.4
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				is_subject = no
+
+			}
+
+			if = {
+
+				limit = {
+
+					is_subject = yes
+
+				}
+
+				OVERLORD = {
+
+					OR = {
+
+						tag = event_target:WTT_current_china_leader
+
+						has_completed_focus = CHI_cooperation_with_the_nationalists
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			hidden_effect = { #fix a weird bug
+
+				if = {
+
+					limit = {
+
+						NOT = {
+
+							OR = {
+
+							    tag = event_target:WTT_current_china_leader
+
+						        tag = PLM
+
+						        tag = SHX
+
+							    tag = HMI
+
+								tag = KHR
+
+							    tag = TNG
+
+								#has_cosmetic_tag = SIK_KMT
+
+							}
+
+						}
+
+					}
+
+					#set_cosmetic_tag = ROOT #MODDED disabled
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					fascism > party_popularity@democratic
+
+					fascism > party_popularity@neutrality
+
+				}
+
+				custom_effect_tooltip = KMT_will_become_a_fascist_party_tt
+
+				#custom_effect_tooltip = current_leader_joins_BSS
+
+				#custom_effect_tooltip = BSS_become_ruling_party_politics_tt
+
+				hidden_effect = {
+
+					warlord_becomes_fascist = yes
+
+					set_party_name = {
+
+						ideology = fascism
+
+						long_name = CHI_neutrality_party_long
+
+						name = CHI_neutrality_party
+
+					}
+
+					Warlord_becomes_military_government = yes #make them have cosmetic tag of NRA
+
+				}
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					democratic > party_popularity@fascism
+
+					democratic > party_popularity@neutrality
+
+				}
+
+				custom_effect_tooltip = current_leader_joins_CNSP
+
+				custom_effect_tooltip = CNSP_become_ruling_party_politics_tt
+
+				hidden_effect = {
+
+					warlord_becomes_democratic = yes
+
+					set_party_name = {
+
+						ideology = democratic
+
+						long_name = CHI_democratic_party_long
+
+						name = CHI_democratic_party
+
+					}
+
+				}
+
+
+
+			}
+
+			else = {
+
+				custom_effect_tooltip = we_will_reorganize_auth_acc_to_pop_supp_tt
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_power_struggle
+
+		icon = GFX_goal_generic_demand_territory
+
+		prerequisite = { focus = CHI_join_the_republican_government }
+
+		x = -1
+
+		y = 4
+
+		relative_position_id = CHI_new_model_province
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			event_target:WTT_current_china_leader = {
+
+				is_subject = no
+
+			}
+
+			if = {
+
+				limit = {
+
+					is_subject = yes
+
+				}
+
+				OVERLORD = {
+
+					OR = {
+
+						tag = event_target:WTT_current_china_leader
+
+						has_completed_focus = CHI_cooperation_with_the_nationalists
+
+					}
+
+				}
+
+			}
+
+			#OR = {
+
+			#	WTT_has_politcal_support_points_30 = yes
+
+				is_legit_china = yes
+
+			#}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			load_focus_tree = { tree = warlord_generic_nationalist keep_completed = yes }
+
+			#set_cosmetic_tag = CHI_warlord_leader
+
+			#create_faction = WRL_leader_generic_faction
+
+			for_each_scope_loop = {
+
+				array = global.small_china #MODDED
+
+				tooltip = small_china_effect_tt
+
+				add_core_of = ROOT
+
+			}
+
+			effect_tooltip = {
+
+				for_each_scope_loop = {
+
+					array = global.big_china #MODDED
+
+					tooltip = big_china_effect_tt
+
+					add_claim_by = PREV
+
+				}
+
+			}
+
+			hidden_effect = {
+
+										every_state = {
+
+											limit = {
+
+											OR = {
+
+											is_claimed_by = CHI
+
+											is_core_of = CHI
+
+											}											
+
+											}
+
+											add_claim_by = ROOT
+
+		                                    add_core_of = ROOT										
+
+											}			
+
+				for_each_scope_loop = {
+
+					array = global.big_china #MODDED
+
+					tooltip = big_china_effect_tt
+
+					if = {
+
+						limit = {
+
+							NOT = {
+
+								is_core_of = ROOT
+
+							}
+
+						}
+
+						add_claim_by = PREV
+
+					}
+
+				}
+
+			}
+
+			#every_state = {
+
+			#	limit = {
+
+			#		has_state_flag = is_chinese_states_flag
+
+			#	}
+
+			#	add_core_of = ROOT
+
+			#}
+
+
+
+			custom_effect_tooltip = warn_focus_change_tt
+
+				hidden_effect = {
+
+                        remove_ideas = CHI_warlord_state_idea
+
+                        remove_ideas = CHI_warlord_state_idea_2
+
+                        remove_ideas = CHI_warlord_state_idea_cav
+
+                        remove_ideas = CHI_warlord_state_idea_mnt						
+
+				}			
+
+		}
+
+	}
+
+
+
+	#######################
+
+	##### Communists ######
+
+	#######################
+
+
+
+	focus = {
+
+		id = CHI_cooperation_with_the_communists
+
+		icon = GFX_goal_generic_chi_cooperation_with_the_communists
+
+		prerequisite = { focus = CHI_secure_internal_politics }
+
+		mutually_exclusive = { focus = CHI_cooperation_with_the_nationalists focus = CHI_opposition }
+
+		x = 0
+
+		y = 1
+
+		relative_position_id = CHI_secure_internal_politics
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				OR = {
+
+					original_tag = SIC
+
+					original_tag = SIK
+
+				}
+
+			}
+
+			#modifier = {
+
+			#	factor = 100
+
+			#	original_tag = NEA
+
+			#}
+
+		}
+
+
+
+		available = {
+
+			OR = {
+
+				tag = NEA
+
+				is_subject = no
+
+				is_subject_of = event_target:WTT_communist_china
+
+			}
+
+			OR = {
+
+				NOT = {
+
+					has_war_with = PRC
+
+				}
+
+				AND = {
+
+					tag = NEA
+
+					has_global_flag = tacit_truce_flag
+
+				}
+
+			}
+
+			NOT = { has_war_with = SOV }
+
+			custom_trigger_tooltip = {
+
+                tooltip = has_anti_communist_trait_tt
+
+				NOT = {
+
+					has_country_leader_with_trait = generic_anti_communist
+
+				}
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					OR = {
+
+						tag = NEA
+
+						tag = SHC
+
+						tag = ATM
+
+					}
+
+				}
+
+				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+			}
+
+			add_popularity = { ideology = n_socialism popularity = 0.1 }
+
+			add_popularity = { ideology = communism popularity = 0.1 }
+
+			#custom_effect_tooltip = CHI_cooperation_with_the_communists_effect_tooltip
+
+			set_country_flag = cooperation_with_communist_flag
+
+			SOV = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = RCM_cooperation_with_the_communists_positive
+
+				}
+
+				add_ai_strategy = {
+
+					type = send_volunteers_desire #TODO_WTT_CD lend lease desire
+
+					id = ROOT
+
+					value = 100
+
+				}
+
+			}
+
+			PRC = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = RCM_cooperation_with_the_communists_positive
+
+				}
+
+			}
+
+			CHI = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = RCM_cooperation_with_the_communists_negative
+
+				}
+
+			}
+
+			custom_effect_tooltip = blank_line
+
+			add_timed_idea = {
+
+				idea = generic_communist_influence days = 240
+
+			}
+
+			add_timed_idea = {
+
+				idea = generic_socialist_influence days = 240
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_land_redistribution
+
+		icon = GFX_goal_generic_soviet_construction
+
+		prerequisite = { focus = CHI_cooperation_with_the_communists }
+
+		x = 0
+
+		y = 1
+
+		relative_position_id = CHI_cooperation_with_the_communists
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = ROOT
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_ideological_education
+
+		icon = GFX_goal_generic_socialist_science
+
+		prerequisite = { focus = CHI_land_redistribution }
+
+		x = -1
+
+		y = 1
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			is_subject = no
+
+			if = {
+
+				limit = { is_subject = yes }
+
+				OVERLORD = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+			OR = {
+
+				has_idea_with_trait = CHI_socialist_idealist
+
+				has_idea_with_trait = TNG_communist_revolutionary
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					has_idea_with_trait = TNG_communist_revolutionary
+
+				}
+
+				add_popularity = {
+
+					ideology = communism
+
+					popularity = 0.15
+
+				}
+
+				add_ideas = CHI_ideological_education
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					has_idea_with_trait = CHI_socialist_idealist
+
+				}
+
+				add_popularity = {
+
+					ideology = n_socialism
+
+					popularity = 0.15
+
+				}
+
+				add_ideas = generic_ideological_education_socialism				
+
+			}
+
+			else = {
+
+				effect_tooltip = {
+
+					add_popularity = {
+
+						ideology = communism
+
+						popularity = 0.15
+
+					}
+
+					add_ideas = CHI_ideological_education
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_land_value_tax
+
+		icon = GFX_goal_generic_position_armies
+
+		prerequisite = { focus = CHI_land_redistribution }
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 4
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_land_value_tax
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_judiciary_reforms
+
+		icon = GFX_goal_generic_forceful_treaty
+
+		prerequisite = { focus = CHI_ideological_education }
+
+		x = -1
+
+		y = 2
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			remove_ideas = generic_PRC_government_corruption
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_communist_administrators
+
+		icon = GFX_goal_generic_soviet_politics
+
+		prerequisite = { focus = CHI_land_value_tax }
+
+		x = 1
+
+		y = 2
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			is_subject = no
+
+			if = {
+
+				limit = { is_subject = yes }
+
+				OVERLORD = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+			OR = {
+
+				has_idea_with_trait = CHI_socialist_idealist
+
+				has_idea_with_trait = TNG_communist_revolutionary
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					has_idea_with_trait = TNG_communist_revolutionary
+
+				}
+
+				add_popularity = {
+
+					ideology = communism
+
+					popularity = 0.15
+
+				}
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					has_idea_with_trait = CHI_socialist_idealist
+
+				}
+
+				add_popularity = {
+
+					ideology = n_socialism
+
+					popularity = 0.15
+
+				}
+
+				else = {
+
+					effect_tooltip = {
+
+						add_popularity = {
+
+							ideology = communism
+
+							popularity = 0.15
+
+						}
+
+					}
+
+				}
+
+			}
+
+			add_political_power = 50
+
+			fractured_administration_level_down = yes
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_join_the_chinese_soviet
+
+		icon = GFX_goal_generic_war_with_comintern
+
+		prerequisite = { focus = CHI_judiciary_reforms focus = CHI_communist_administrators }
+
+		x = 0
+
+		y = 3
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				event_target:WTT_communist_china = {
+
+					is_ai = no
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 0.1
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+
+
+		available = {
+
+			OR = {
+
+				n_socialism > 0.4
+
+				communism > 0.4
+
+			}
+
+			if = {
+
+				limit = {
+
+					country_exists = event_target:WTT_communist_china
+
+					NOT = { tag = SIK }
+
+				}
+
+				any_neighbor_country = {
+
+					tag = event_target:WTT_communist_china
+
+				}
+
+			}
+
+			NOT = { has_war_with = PRC }
+
+			NOT = { has_war_with = SOV }
+
+			SOV = { has_government = communism }
+
+			is_subject = no
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_opinion_modifier = { target = SOV modifier = CHI_join_the_chinese_soviet }
+
+			SOV = { add_opinion_modifier = { target = ROOT modifier = CHI_join_the_chinese_soviet } }
+
+
+
+			if = {
+
+				limit = {
+
+					event_target:WTT_communist_china = {
+
+						NOT = { is_in_faction_with = ROOT }
+
+						is_in_faction = no
+
+					}
+
+				}
+
+				event_target:WTT_communist_china = {
+
+					set_rule = { can_create_factions = yes }
+
+					create_faction = CHI_the_peoples_front
+
+					add_to_faction = event_target:WTT_communist_china
+
+					add_to_faction = ROOT
+
+					country_event = AWR_CHI.4566
+
+				}
+
+			}	
+
+
+
+			if = {
+
+				limit = {
+
+					communism > party_popularity@n_socialism
+
+				}
+
+				custom_effect_tooltip = current_leader_joins_CPC
+
+				custom_effect_tooltip = CPC_become_ruling_party_politics_tt
+
+				hidden_effect = {
+
+					warlord_becomes_communist = yes
+
+					#set_party_name = { #MODDED
+
+					#	ideology = communism
+
+					#	long_name = CPC_party_long
+
+					#	name = CPC_party
+
+					#}
+
+					set_party_name = {
+
+						ideology = communism
+
+						name = PRC_communism_party
+
+						long_name = PRC_communism_party_long
+
+					}
+
+					Warlord_becomes_RBA = yes
+
+				}
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					communism < party_popularity@n_socialism
+
+				}
+
+				custom_effect_tooltip = current_leader_create_socialist_party
+
+				custom_effect_tooltip = Socialist_become_ruling_party_politics_tt
+
+				hidden_effect = {
+
+					set_cosmetic_tag = CHI_FJR
+
+					warlord_becomes_socialist = yes
+
+					set_party_name = {
+
+						ideology = n_socialism
+
+						long_name = SOL_party_long
+
+						name = SOL_party
+
+					}
+
+				}
+
+			}
+
+			else = {
+
+				custom_effect_tooltip = we_will_reorganize_auth_acc_to_pop_supp_tt
+
+			}			
+
+			
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_the_yanan_incident
+
+		icon = GFX_goal_generic_support_communism
+
+		prerequisite = { focus = CHI_join_the_chinese_soviet }
+
+		x = 0
+
+		y = 4
+
+		relative_position_id = CHI_land_redistribution
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0.1
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+
+
+		available = {
+
+			#MODDED
+
+			SOV = {
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > 50
+
+				}
+
+			}
+
+			#MODDED
+
+			is_subject = no
+
+			NOT = { has_war_with = PRC }
+
+			NOT = { has_war_with = SOV }
+
+			SOV = { has_government = communism }
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			custom_effect_tooltip = CHI_the_yanan_incident_effect_tt
+
+			save_event_target_as = warlord
+
+			add_ideas = PRC_soviet_tribute_1
+
+			SOV = { country_event = { id = AWR_CHI.4547 } }
+
+			custom_effect_tooltip = warn_focus_change_tt
+
+				hidden_effect = {
+
+										every_state = {
+
+											limit = {
+
+											OR = {
+
+											is_claimed_by = CHI
+
+											is_core_of = CHI
+
+											}											
+
+											}
+
+											add_claim_by = ROOT
+
+		                                    add_core_of = ROOT										
+
+											}				
+
+                        remove_ideas = CHI_warlord_state_idea
+
+                        remove_ideas = CHI_warlord_state_idea_2
+
+                        remove_ideas = CHI_warlord_state_idea_cav
+
+                        remove_ideas = CHI_warlord_state_idea_mnt						
+
+				}			
+
+		}
+
+	}
+
+
+
+	#############################
+
+	##### Opposition/Share ######
+
+	#############################
+
+
+
+	focus = {
+
+		id = CHI_opposition
+
+		icon = GFX_goal_generic_demand_territory
+
+		prerequisite = { focus = CHI_secure_internal_politics }
+
+		mutually_exclusive = { focus = CHI_cooperation_with_the_communists focus = CHI_cooperation_with_the_nationalists }
+
+		x = 5
+
+		y = 1
+
+		relative_position_id = CHI_secure_internal_politics
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 0 
+
+			#modifier = {
+
+			#	factor = 100
+
+			#	tag = GXC
+
+			#}
+
+		}
+
+
+
+		available = {
+
+			if = {
+
+				limit = {
+
+					tag = SHD
+
+				}
+
+	        is_subject = no	
+
+			}			
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					OR = {
+
+						tag = SHD
+
+					    tag = KHR
+
+					}
+
+				}
+
+				custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+			}
+
+			if = {
+
+				limit = {
+
+					tag = HPC
+
+				}
+
+				custom_effect_tooltip = opposition_allowed_independence_tt
+
+			}
+
+			else = {
+
+				custom_effect_tooltip = opposition_allowed_staying_out_tt
+
+			}
+
+			if = {
+
+				limit = {
+
+					tag = SHD
+
+				}
+
+				custom_effect_tooltip = shd_han_debuff_tt
+
+			}
+
+			if = {
+
+				limit = {
+
+					tag = SHD
+
+					NOT = {
+
+						has_war_with = SIC
+
+					}
+
+					country_exists = SIC
+
+				}
+
+				country_event = AWR_CHI.3863
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_opinion_modifier = tacit_agreement
+
+				}
+
+				remove_opinion_modifier = { target = PRC modifier = tacit_agreement }
+
+				PRC = {
+
+					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
+
+				}
+
+				remove_opinion_modifier = { target = NEA modifier = tacit_agreement }
+
+				NEA = {
+
+					remove_opinion_modifier = { target = ROOT modifier = tacit_agreement }
+
+				}
+
+			}
+
+			add_popularity = { ideology = neutrality popularity = -0.3 }
+
+			CHI = { add_opinion_modifier = { modifier = RCM_opposition target = ROOT } }
+
+			custom_effect_tooltip = blank_line
+
+			add_timed_idea = {
+
+				idea = generic_fascist_influence
+
+				days = 240
+
+			}
+
+			add_timed_idea = {
+
+				idea = generic_socialist_influence
+
+				days = 240
+
+			}
+
+			add_timed_idea = {
+
+				idea = generic_communist_influence
+
+				days = 240
+
+			}
+
+			set_country_flag = CHI_opposition_flag
+
+			if = {
+
+				limit = {
+
+					is_subject = yes
+
+					OVERLORD = {
+
+						is_literally_china = yes
+
+					}
+
+				}
+
+				OVERLORD = {
+
+					create_wargoal = {
+
+						target = ROOT
+
+						type = puppet_wargoal_focus
+
+					}
+
+				}
+
+				set_autonomy = { target = ROOT autonomy_state = autonomy_free }
+
+			}
+
+			if = {
+
+				limit = { 
+
+				    is_faction_leader = yes 
+
+				    NOT = { 
+
+						OR = {
+
+							tag = KHR 
+
+							tag = TNG						   
+
+					    }
+
+					}
+
+				}
+
+				every_country = {
+
+					limit = { is_literally_china = yes }
+
+					ROOT = { remove_from_faction = PREV }
+
+				}
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					ROOT = {
+
+						any_allied_country = { #MODDED
+
+							is_literally_china = yes #MODDED
+
+						}
+
+					    NOT = { 
+
+						    OR = {
+
+							    tag = KHR 
+
+							    tag = TNG
+
+							    tag = HMI
+
+							}
+
+						}
+
+					}
+
+				}
+
+				random_country = {
+
+					limit = {
+
+						is_in_faction_with = ROOT
+
+						is_faction_leader = yes
+
+					}
+
+					remove_from_faction = ROOT
+
+				}
+
+			}
+
+			
+
+		}
+
+
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_institute_cross_border_raids
+
+		icon = GFX_goal_generic_provoke_border_clashes
+
+		prerequisite = { focus = CHI_opposition }
+
+		x = 0
+
+		y = 1
+
+		relative_position_id = CHI_opposition
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			is_subject = no
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			#custom_effect_tooltip = 60_to_40_opinion_tt
+
+			every_country = {
+
+				limit = {
+
+					is_neighbor_of = ROOT
+
+					OR = {
+
+						is_warlord = yes
+
+						tag = event_target:WTT_communist_china
+
+					}
+
+				}
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = WRL_conflict_of_interest
+
+				}
+
+			}
+
+			custom_effect_tooltip = opinion_worsen_over_time_tt
+
+			custom_effect_tooltip = remove_insult_cd
+
+			set_variable = {
+
+				Root.insult_cd = 0
+
+			}
+
+			set_variable = {
+
+				Root.insult_cost = 40
+
+			}
+
+		}
+
+	}
+
+
+
+
+
+	focus = {
+
+		id = CHI_public_works
+
+		icon = GFX_goal_generic_construct_infrastructure
+
+		prerequisite = { focus = CHI_cooperation_with_the_communists focus = CHI_opposition }
+
+		x = -1
+
+		y = 2
+
+		relative_position_id = CHI_opposition
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_public_works
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_labor_reform
+
+		icon = GFX_goal_generic_construction2
+
+		prerequisite = { focus = CHI_public_works }
+
+		x = -1
+
+		y = 1
+
+		relative_position_id = CHI_public_works
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_labor_reform
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_rural_militias
+
+		icon = GFX_goal_generic_military_sphere
+
+		prerequisite = { focus = CHI_public_works }
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_public_works
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_rural_militias
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_war_taxes
+
+		icon = GFX_goal_generic_consumer_goods
+
+		prerequisite = { focus = CHI_opposition }
+
+		x = 2
+
+		y = 1
+
+		relative_position_id = CHI_opposition
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_war_taxes
+
+		}
+
+	}
+
+
+
+	#focus = {
+
+	#	id = CHI_seek_japanese_support
+
+	#	icon = GFX_focus_chi_collaboration_with_the_japanese
+
+	#	prerequisite = { focus = CHI_war_taxes }
+
+	#	x = 2
+
+	#	y = 1
+
+	#	relative_position_id = CHI_war_taxes
+
+#
+
+	#	cost = 10
+
+#
+
+	#	ai_will_do = {
+
+	#		factor = 1
+
+	#	}
+
+#
+
+	#	available = {
+
+	#		is_subject = no
+
+	#		JAP = {
+
+	#			has_opinion = {
+
+	#				target = ROOT
+
+	#				value > 9
+
+	#			}
+
+	#		}
+
+	#		NOT = { has_war_with = JAP }
+
+	#	}
+
+#
+
+	#	bypass = {
+
+#
+
+	#	}
+
+#
+
+	#	cancel_if_invalid = yes
+
+	#	continue_if_invalid = no
+
+	#	available_if_capitulated = yes
+
+	#	completion_reward = {
+
+	#		unlock_decision_category_tooltip = CHI_seek_japanese_support
+
+	#	}
+
+	#}
+
+
+
+	focus = {
+
+		id = CHI_personal_leadership
+
+		icon = GFX_goal_generic_political_pressure
+
+		prerequisite = { focus = CHI_war_taxes }
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_war_taxes
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			neutrality < 0.6
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_country_leader_trait = generic_generallissimo
+
+			set_country_flag = leader_is_generallissimo
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_cult_of_personality
+
+		icon = GFX_goal_generic_propaganda
+
+		prerequisite = { focus = CHI_war_taxes }
+
+		x = -1
+
+		y = 1
+
+		relative_position_id = CHI_war_taxes
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_war_support = 0.1
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_provoke_border_clashes
+
+		icon = GFX_goal_generic_provoke_border_clashes
+
+		prerequisite = { focus = CHI_personal_leadership }
+
+		mutually_exclusive = { focus = CHI_defensive_posture }
+
+		x = -1
+
+		y = 1
+
+		relative_position_id = CHI_personal_leadership
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			is_neighbor_of = event_target:WTT_current_china_leader
+
+			has_opinion = {
+
+				target = event_target:WTT_current_china_leader
+
+				value < -19
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				has_opinion = {
+
+					target = ROOT
+
+					value < -19
+
+				}
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+
+
+		completion_reward = {
+
+			event_target:WTT_current_china_leader = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = WRL_conflict_of_interest
+
+				}
+
+				custom_effect_tooltip = opinion_worsen_over_time_tt
+
+			}
+
+			custom_effect_tooltip = CHI_provoke_border_clashes_effect_tooltip
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_defensive_posture
+
+		icon = GFX_goal_generic_defence
+
+		prerequisite = { focus = CHI_personal_leadership }
+
+		mutually_exclusive = { focus = CHI_provoke_border_clashes }
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_personal_leadership
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_ideas = CHI_defensive_posture
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_rapid_mobilization
+
+		icon = GFX_goal_generic_more_territorial_claims
+
+		prerequisite = { focus = CHI_provoke_border_clashes focus = CHI_defensive_posture }
+
+		x = 0
+
+		y = 2
+
+		relative_position_id = CHI_personal_leadership
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+
+
+		complete_tooltip = {
+
+		}
+
+
+
+		completion_reward = {
+
+			add_ideas = CHI_rapid_mobilization
+
+		}
+
+	}
+
+	focus = {
+
+		id = CHI_leaves_the_KMT
+
+		icon = GFX_goal_generic_rom_parties_end
+
+		prerequisite = {
+
+			focus = CHI_cult_of_personality
+
+		}
+
+		prerequisite = {
+
+			focus = CHI_rural_militias
+
+			focus = CHI_provoke_border_clashes
+
+		}
+
+		x = 1
+
+		y = 1
+
+		relative_position_id = CHI_rural_militias
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			if = {
+
+			    limit = {
+
+				    tag = SHD 
+
+					is_historical_focus_on = yes
+
+				}
+
+			    hidden_trigger = {
+
+				    is_ai = no
+
+				}
+
+			}
+
+			is_subject = no
+
+			OR = {
+
+				fascism > 0.4
+
+				n_socialism > 0.4
+
+				communism > 0.4
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					is_subject = yes
+
+				}
+
+			    set_autonomy = { target = ROOT autonomy_state = autonomy_free }
+
+			}
+
+			set_country_flag = I_left_kmt
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						n_socialism > 0.5
+
+					}
+
+				}
+
+				custom_effect_tooltip = reorganizing_ruling_party_according_to_the_most_popular_party_tt
+
+			}
+
+
+
+			if = { #FOR TOOLTIPS
+
+				limit = {
+
+					neutrality > party_popularity@n_socialism
+
+					neutrality > party_popularity@communism
+
+					neutrality > party_popularity@fascism
+
+				}
+
+				leave_kuomintang_becomes_clique = yes
+
+				add_war_support = -0.05
+
+				add_political_power = 150
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					communism > party_popularity@n_socialism
+
+					communism > party_popularity@neutrality
+
+					communism > party_popularity@fascism
+
+				}
+
+				hidden_effect = {
+
+					warlord_becomes_communist = yes
+
+				}
+
+				CLIQUE_becomes_communist = yes
+
+				hidden_effect = {
+
+					Warlord_becomes_PR = yes
+
+				}
+
+				custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
+
+				add_war_support = -0.05
+
+				add_political_power = 150
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					n_socialism > party_popularity@communism
+
+					n_socialism > party_popularity@neutrality
+
+					n_socialism > party_popularity@fascism
+
+				}
+
+				hidden_effect = {
+
+					warlord_becomes_socialist = yes
+
+					CLIQUE_becomes_socialist = yes
+
+					set_party_name = {
+
+						ideology = n_socialism
+
+						name = Zhi_gong_party
+
+						long_name = Zhi_gong_party_long
+
+					}
+
+					Warlord_becomes_ZG = yes
+
+				}
+
+
+
+				custom_effect_tooltip = current_leader_join_zhi_gong_party_tt
+
+				custom_effect_tooltip = Socialist_zhi_gong_become_ruling_party_politics_tt
+
+				#custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
+
+				#special case fro opposition socialism
+
+				add_war_support = -0.05
+
+				add_political_power = 150
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					fascism > party_popularity@n_socialism
+
+					fascism > party_popularity@neutrality
+
+					fascism > party_popularity@communism
+
+				}
+
+				hidden_effect = {
+
+					warlord_becomes_fascist = yes
+
+				}
+
+				CLIQUE_becomes_fascist = yes
+
+				hidden_effect = { #sometimes the name won't change, this seems to fix it		  
+
+					if = {
+
+					    limit = {
+
+						    NOT = {
+
+							    OR = {
+
+						            tag = PLM
+
+						            #tag = SHX
+
+							        tag = HMI
+
+								    tag = KHR
+
+							        tag = TNG
+
+								    #has_cosmetic_tag = SIK_KMT
+
+							    }
+
+							}
+
+						}
+
+					}
+
+					#set_cosmetic_tag = ROOT #MODDED disabled
+
+				}
+
+			    custom_effect_tooltip = the_party_will_be_the_ruling_party_and_warlord_becomes_the_leader_tt
+
+			    add_war_support = -0.05
+
+			    add_political_power = 150
+
+			}
+
+		}
+
+	}
+
+	focus = {
+
+		id = CHI_proclaim_rival_government
+
+		icon = GFX_goal_generic_chi_proclaim_rival_government
+
+		prerequisite = { focus = CHI_leaves_the_KMT }
+
+		prerequisite = { focus = CHI_rapid_mobilization }
+
+		x = 2
+
+		y = 2
+
+		relative_position_id = CHI_rural_militias
+
+
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+			is_subject = no
+
+			OR = {
+
+				WTT_is_ROOT_current_leader_of_china = yes
+
+				custom_trigger_tooltip = {
+
+					tooltip = army_stronger_at_least_half_as_strong_as_china_tt
+
+					strength_ratio = {
+
+						tag = event_target:WTT_current_china_leader
+
+						ratio > 0.5
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			for_each_scope_loop = {
+
+				array = global.small_china #MODDED
+
+				tooltip = small_china_effect_tt
+
+				add_core_of = ROOT
+
+			}
+
+			effect_tooltip = {
+
+				for_each_scope_loop = {
+
+					array = global.big_china #MODDED
+
+					tooltip = big_china_effect_tt
+
+					add_claim_by = PREV
+
+				}
+
+			}
+
+			hidden_effect = {
+
+										every_state = {
+
+											limit = {
+
+											OR = {
+
+											is_claimed_by = CHI
+
+											is_core_of = CHI
+
+											}											
+
+											}
+
+											add_claim_by = ROOT
+
+		                                    add_core_of = ROOT										
+
+											}			
+
+				for_each_scope_loop = {
+
+					array = global.big_china #MODDED
+
+					tooltip = big_china_effect_tt
+
+					if = {
+
+						limit = {
+
+							NOT = {
+
+								is_core_of = ROOT
+
+							}
+
+						}
+
+						add_claim_by = PREV
+
+					}
+
+				}
+
+			}
+
+			country_event = {
+
+				id = AWR_CHI.2540
+
+			}
+
+			#start a coalition against current gov if exist
+
+			if = {
+
+				limit = {
+
+					has_government = communism
+
+				}
+
+				set_rule = { can_create_factions = yes }
+
+				create_faction = CHI_the_peoples_front
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					has_government = n_socialism
+
+				}
+
+				set_rule = { can_create_factions = yes }
+
+				create_faction = CHI_zhi_gong_front
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					has_government = fascism
+
+					NOT = {
+
+						tag = TNG
+
+						tag = XSM
+
+					}
+
+				}
+
+				set_rule = { can_create_factions = yes }
+
+				create_faction = CHI_concordia_sinica
+
+			}
+
+			else = {
+
+				set_rule = { can_create_factions = yes }
+
+				custom_effect_tooltip = create_generic_faction_tt
+
+				meta_effect = {
+
+					ROOT_NAME = "[Root.GetAdjective]" 
+
+					text = {
+
+						create_faction = "[ROOT_NAME] Coalition"				
+
+					}			
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					country_exists = event_target:WTT_current_china_leader
+
+					NOT = {
+
+						tag = event_target:WTT_current_china_leader
+
+						has_war_with = event_target:WTT_current_china_leader
+
+					}
+
+				}
+
+				create_wargoal = {
+
+					target = event_target:WTT_current_china_leader
+
+					type = annex_everything
+
+					expire = 0
+
+				}
+
+			}
+
+			#Switch to dominant ideology or split into 2 focus
+
+			#set_cosmetic_tag = CHI_second_republic
+
+			if = {
+
+				limit = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+						communism > 0.5
+
+						n_socialism > 0.5
+
+					}
+
+					#NOT = { neutrality > 0.5 }
+
+				}
+
+				load_focus_tree = { tree = warlord_generic_communist keep_completed = yes }
+
+			}
+
+			else = {
+
+				load_focus_tree = { tree = warlord_generic_nationalist keep_completed = yes }
+
+			}
+
+			custom_effect_tooltip = warn_focus_change_tt
+
+				hidden_effect = {
+
+                        remove_ideas = CHI_warlord_state_idea
+
+                        remove_ideas = CHI_warlord_state_idea_2
+
+                        remove_ideas = CHI_warlord_state_idea_cav
+
+                        remove_ideas = CHI_warlord_state_idea_mnt						
+
+				}			
+
+			
+
+		}
+
+	}
+
+
+
+####### Japanese Puppet #######
+
+	focus = {
+
+		id = CHI_change_to_japanese_puppet
+
+		icon = GFX_goal_generic_chi_collaboration_with_the_japanese
+
+		x = 8
+
+		y = 1
+
+		relative_position_id = CHI_secure_internal_politics
+
+		prerequisite = {
+
+			focus = CHI_secure_internal_politics
+
+		}
+
+		cost = 10
+
+
+
+		ai_will_do = {
+
+			factor = 10
+
+		}
+
+		allow_branch = {
+
+			tag = HPC
+
+		}
+
+		available = { is_subject_of = JAP }
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			load_focus_tree = { tree = japan_puppet_focus keep_completed = yes }
+
+		}
+
+	}
+
+	
+
+	### WARLORD NATIONAL SPIRIT-RELATED FOCUSES ###
+
+
+
+	focus = {
+
+		id = CHI_strenghten_warlord_authority
+
+		icon = GFX_goal_generic_military_dictatorship
+
+		x = 20
+
+		y = 5
+
+
+
+		cost = 10
+
+
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = no
+
+
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+
+			IF = {
+
+				limit = {
+
+					has_idea = CHI_warlord_state_idea
+
+				}
+
+				swap_ideas = {
+
+					remove_idea = CHI_warlord_state_idea
+
+					add_idea = CHI_warlord_state_idea_2
+
+				}	
+
+			}
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_uplift_the_cavalry_regiments
+
+		icon = GFX_goal_generic_cavalry
+
+		x = -1
+
+		y = 1
+
+
+
+		cost = 10
+
+
+
+		prerequisite = { focus = CHI_strenghten_warlord_authority }
+
+
+
+		relative_position_id = CHI_strenghten_warlord_authority
+
+
+
+		mutually_exclusive = {
+
+			focus = CHI_uplift_the_mountain_brigades
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = no
+
+
+
+		search_filters = {  }
+
+		completion_reward = {
+
+			swap_ideas = {
+
+				remove_idea = CHI_warlord_state_idea_2
+
+				add_idea = CHI_warlord_state_idea_cav
+
+			}	
+
+		}
+
+	}
+
+
+
+	focus = {
+
+		id = CHI_uplift_the_mountain_brigades
+
+		icon = GFX_goal_generic_secret_rearmament
+
+		x = 1
+
+		y = 1
+
+
+
+		cost = 10
+
+
+
+		prerequisite = { focus = CHI_strenghten_warlord_authority }
+
+
+
+		relative_position_id = CHI_strenghten_warlord_authority
+
+
+
+		mutually_exclusive = {
+
+			focus = CHI_uplift_the_cavalry_regiments
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+
+
+		available = {
+
+
+
+		}
+
+
+
+		bypass = {
+
+
+
+		}
+
+
+
+		cancel_if_invalid = yes
+
+		continue_if_invalid = no
+
+		available_if_capitulated = no
+
+
+
+		search_filters = {  }
+
+		completion_reward = {
+
+
+
+			swap_ideas = {
+
+				remove_idea = CHI_warlord_state_idea_2
+
+				add_idea = CHI_warlord_state_idea_mnt
+
+			}
+
+
+
+			add_tech_bonus = {
+
+				name = CHI_uplift_the_mountain_brigades
+
+				bonus = 0.75
+
+				uses = 1
+
+				category = mountaineers_tech
+
+			}	
+
+		}
+
+	}	
+
+	#Sinkiang warlords - does not include SIK
+
+	shared_focus = SIK_the_defeat_of_sheng_shicai
+
+	shared_focus = SUY_suiyuan_province_reclamation_plan
+
+	shared_focus = SUY_suiyuan_army
+
+}
+
+
+
+
+
+# 来源：common/national_focus/RCM_sik_shared.txt
+
+    #TO DO
+
+	#The Defeat of Sheng Shicai
+
+	shared_focus = {
+
+		allow_branch = {
+
+			OR = {
+
+			    #tag = TNG
+
+				tag = HMI
+
+				tag = KHR
+
+				tag = KRS
+
+				tag = ATM
+
+			}
+
+	    }
+
+		id = SIK_the_defeat_of_sheng_shicai
+
+		icon = GFX_goal_generic_SIK_sheng_down
+
+		x = -4
+
+		y = 0
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			OR = {	
+
+				all_other_country = {
+
+					NOT = {
+
+						has_country_leader = {
+
+							character = SIK_sheng_shicai ruling_only = yes
+
+						}
+
+					}
+
+				    exists = yes		
+
+				}
+
+				all_other_country = {
+
+					original_tag = SIK
+
+					has_country_leader = {
+
+						character = SIK_sheng_shicai ruling_only = yes
+
+					}
+
+					NOT = {	
+
+						owns_state = 617	
+
+					}
+
+				}
+
+			} 			     
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+			    limit = {
+
+				    owns_state = 617
+
+					controls_state = 617
+
+				}
+
+			    country_event = AWR_SIK.96
+
+			}
+
+			add_political_power = 150
+
+			add_stability = 0.1
+
+			add_war_support = -0.1
+
+		    #if = {
+
+			#    limit = {
+
+			#	    tag = TNG
+
+			#	}
+
+			    unlock_decision_category_tooltip = sik_warlord_decisions
+
+			#}
+
+		    add_timed_idea = { idea = generic_rebuild_the_province days = 365 }
+
+		}
+
+	}
+
+	
+
+	#The Next King of Sinkiang
+
+	shared_focus = {
+
+		id = SIK_the_next_king_of_sinkiang
+
+		icon = GFX_goal_generic_rom_royal_dictatorship
+
+		x = -5
+
+		y = 1
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_ANNEXATION
+
+		}
+
+		prerequisite = { focus = SIK_the_defeat_of_sheng_shicai  }
+
+		mutually_exclusive = { focus = SIK_united_province_of_sinkiang  }
+
+		ai_will_do = { 
+
+			factor = 1
+
+            modifier = {
+
+				factor = 30
+
+				is_historical_focus_on = no
+
+			}
+
+		}
+
+		will_lead_to_war_with = KHR
+
+		will_lead_to_war_with = TNG
+
+		will_lead_to_war_with = HMI
+
+		will_lead_to_war_with = KRS
+
+		will_lead_to_war_with = ATM
+
+		will_lead_to_war_with = SIK
+
+		available = {
+
+			any_other_country = {
+
+				exists = yes
+
+				OR = {
+
+				    original_tag = KHR
+
+					original_tag = TNG
+
+					original_tag = HMI
+
+					original_tag = KRS
+
+					original_tag = ATM
+
+					original_tag = SIK
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			add_war_support = 0.1
+
+			if = {   
+
+			    limit = {
+
+				    NOT = { tag = TNG }
+
+				    country_exists = TNG
+
+				}
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = TNG
+
+			    }
+
+			}
+
+			if = {   
+
+			    limit = {
+
+				    NOT = { tag = KHR }
+
+				    country_exists = KHR
+
+				} 
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = KHR
+
+			    }
+
+			}
+
+			if = {   
+
+			    limit = {
+
+				    NOT = { tag = HMI }
+
+				    country_exists = HMI
+
+				} 
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = HMI
+
+			    }
+
+			}
+
+			if = {   
+
+			    limit = {
+
+				    NOT = { tag = KRS }
+
+				    country_exists = KRS
+
+				} 
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = KRS
+
+			    }
+
+			}
+
+			if = {   
+
+			    limit = {
+
+				    NOT = { tag = ATM }
+
+				    country_exists = ATM
+
+				} 
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = ATM
+
+			    }
+
+			}
+
+			if = {   
+
+			    limit = {
+
+				    any_other_country = {
+
+						original_tag = SIK
+
+						exists = yes
+
+					}
+
+				} 
+
+				create_wargoal = {
+
+				    type = annex_everything
+
+				    target = PREV
+
+			    }
+
+			}
+
+		}
+
+		bypass = {
+
+			NOT = {
+
+			    any_other_country = {
+
+				exists = yes
+
+				    OR = {
+
+				        original_tag = KHR
+
+					    original_tag = TNG
+
+					    original_tag = HMI
+
+						original_tag = KRS
+
+					    original_tag = ATM
+
+						original_tag = SIK
+
+				    }
+
+			    }
+
+			}
+
+		}
+
+	}
+
+
+
+	#United Province of Sinkiang
+
+	shared_focus = {
+
+		id = SIK_united_province_of_sinkiang
+
+		icon = GFX_goal_generic_neutrality_focus
+
+		x = -3
+
+		y = 1
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_the_defeat_of_sheng_shicai  }
+
+	    mutually_exclusive = { focus = SIK_the_next_king_of_sinkiang  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			has_war = no
+
+		    any_other_country = {
+
+				exists = yes
+
+				OR = {
+
+				    original_tag = KHR
+
+					original_tag = TNG
+
+					original_tag = HMI
+
+					original_tag = KRS
+
+					original_tag = ATM
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+				limit = { NOT = { has_idea = generic_neutrality_idea } }
+
+				add_ideas = generic_neutrality_idea
+
+			}
+
+			add_ideas = generic_deterrence
+
+			add_war_support = -0.1
+
+		}	
+
+	}
+
+	
+
+	#Develop Sinkiang
+
+	shared_focus = {
+
+		id = SIK_develop_sinkiang
+
+		icon = GFX_goal_generic_construction2
+
+		x = -3
+
+		y = 2
+
+		cost = 5
+
+		search_filters = {
+
+			FOCUS_FILTER_INDUSTRY
+
+		}
+
+		prerequisite = { focus = SIK_the_next_king_of_sinkiang  focus = SIK_united_province_of_sinkiang  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			any_owned_state = {
+
+				#hidden_trigger = {
+
+				#    is_capital = yes
+
+				#}
+
+				is_controlled_by = ROOT
+
+			    is_core_of = ROOT
+
+			}
+
+		}
+
+		completion_reward = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_core_of = ROOT
+
+					#is_capital = yes
+
+				}
+
+				add_extra_state_shared_building_slots = 2
+
+			}
+
+		}
+
+	}
+
+
+
+	#Rail Transport
+
+	shared_focus = {
+
+		id = SIK_rail_transport
+
+		icon = GFX_goal_generic_construct_infrastructure
+
+		x = -2
+
+		y = 3
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_INDUSTRY
+
+		}
+
+		prerequisite = { focus = SIK_develop_sinkiang  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			  
+
+		}
+
+		completion_reward = {
+
+			add_timed_idea = {
+
+				idea = generic_railway_idea
+
+				days = 730
+
+			}
+
+		}
+
+	}
+
+
+
+	#Pacify The Unrests
+
+	shared_focus = {
+
+		id = SIK_pacify_the_unrests
+
+		icon = GFX_goal_generic_TUR_loosen_the_laws_on_secularism
+
+		x = -5
+
+		y = 2
+
+		cost = 5
+
+		search_filters = {
+
+			FOCUS_FILTER_STABILITY
+
+		}
+
+		prerequisite = { focus = SIK_the_next_king_of_sinkiang  focus = SIK_united_province_of_sinkiang  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+		}
+
+		completion_reward = {
+
+			add_stability = 0.05
+
+		}
+
+	}
+
+	
+
+	#Suppress Separatism
+
+	shared_focus = {
+
+		id = SIK_suppress_separatism
+
+		icon = GFX_goal_generic_eng_move_to_secure_the_dominions
+
+		x = -4
+
+		y = 3
+
+		cost = 9
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_pacify_the_unrests  }
+
+		mutually_exclusive = { focus = SIK_the_new_east_turkestan  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			if = {
+
+				limit = {
+
+					original_tag = KRS
+
+				}
+
+				always = yes
+
+			    else = {
+
+                    OR = {
+
+						has_completed_focus = CHI_cooperation_with_the_nationalists
+
+						has_completed_focus = CHI_cooperation_with_the_communists
+
+					}
+
+				}
+
+			}	
+
+		}
+
+		completion_reward = {
+
+			add_stability = 0.1
+
+			add_political_power = 50
+
+		}
+
+	}
+
+	
+
+	#A New Provincial Government #TO DO
+
+	shared_focus = {
+
+		id = SIK_a_new_provincial_government
+
+		icon = GFX_goal_generic_china1
+
+		x = -4
+
+		y = 4
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_suppress_separatism }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			owns_state = 617
+
+			controls_state = 617
+
+			#if = {
+
+			#	limit = {
+
+			#	    has_completed_focus = CHI_cooperation_with_the_communists
+
+			#	}
+
+			#	has_completed_focus = CHI_join_the_chinese_soviet
+
+			#}
+
+		}
+
+		completion_reward = {
+
+			set_capital = { state = 617 }
+
+			drop_cosmetic_tag = yes
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_completed_focus = CHI_join_the_chinese_soviet
+
+					}
+
+				}
+
+			    set_cosmetic_tag = SIK_KMT
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_completed_focus = CHI_cooperation_with_the_communists
+
+				    has_government = communism
+
+				}
+
+			    #set_cosmetic_tag = SIK_KMT
+
+			}
+
+			SIK = {
+
+				every_core_state = {
+
+					add_core_of = ROOT 
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = { #TO DO BELOW #unused for now
+
+		id = SIK_ma_return
+
+		allow_branch = {
+
+			has_country_flag = ma_zhongying_return
+
+	    }
+
+		icon = GFX_goal_generic_horse_studs
+
+		x = -3
+
+		y = 5
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_a_new_provincial_government }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			
+
+		}
+
+		completion_reward = {
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_ma_rule
+
+		icon = GFX_goal_generic_rom_royal_dictatorship
+
+		prerequisite = { focus = SIK_ma_return }
+
+		x = -3
+
+		y = 6
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			
+
+		}
+
+		completion_reward = {
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_befriend_xsm
+
+		icon = GFX_goal_generic_COOP_northwest_mediation
+
+		prerequisite = { focus = SIK_ma_return }
+
+		mutually_exclusive = {
+
+			focus = SIK_strike_xsm
+
+		}
+
+		x = -2
+
+		y = 7
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			OR = {
+
+				is_neighbor_of = XSM
+
+				is_neighbor_of = GSM
+
+			}
+
+			OR = {
+
+				is_subject_of = XSM
+
+				is_subject_of = GSM
+
+			    is_subject = no
+
+			}
+
+			OR = {
+
+				XSM = {
+
+				    is_subject = no
+
+			    }
+
+				GSM = {
+
+				    is_subject = no
+
+			    }
+
+			}
+
+		}
+
+		bypass = {
+
+			NOT = {
+
+				country_exists = XSM
+
+			}
+
+			NOT = {
+
+				country_exists = GSM
+
+			}
+
+		}
+
+		completion_reward = {
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_strike_xsm
+
+		icon = GFX_goal_generic_COOP_war_on_the_northwest
+
+		prerequisite = { focus = SIK_ma_return }
+
+		mutually_exclusive = {
+
+			focus = SIK_befriend_xsm
+
+		}
+
+		x = -4
+
+		y = 7
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		will_lead_to_war_with = XSM
+
+		available = {
+
+			OR = {
+
+				is_neighbor_of = XSM
+
+				is_neighbor_of = GSM
+
+			}
+
+			is_subject = no
+
+		}
+
+		bypass = {
+
+			has_war_with = XSM	
+
+			has_war_with = GSM 
+
+		}
+
+		completion_reward = {
+
+		}
+
+	    
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_jihad_on_ussr
+
+		icon = GFX_goal_generic_attack_soviet
+
+		prerequisite = { focus = SIK_befriend_xsm focus = SIK_strike_xsm }
+
+		mutually_exclusive = {
+
+			focus = SIK_befriend_ussr
+
+		}
+
+		x = -4
+
+		y = 8
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		will_lead_to_war_with = SOV
+
+		available = {
+
+			is_neighbor_of = SOV 
+
+			is_subject = no
+
+		}
+
+		completion_reward = {
+
+		}  
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_befriend_ussr
+
+		icon = GFX_goal_generic_chi_mission_to_the_soviet_union
+
+		prerequisite = { focus = SIK_befriend_xsm focus = SIK_strike_xsm}
+
+		mutually_exclusive = {
+
+			focus = SIK_jihad_on_ussr
+
+		}
+
+		x = -2
+
+		y = 8
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			is_neighbor_of = SOV 
+
+			is_subject = no
+
+		}
+
+		completion_reward = {
+
+		}
+
+	    
+
+	}
+
+	#maybe strike soviet too
+
+	#The New East Turkestan
+
+	shared_focus = {
+
+		id = SIK_the_new_east_turkestan
+
+		icon = GFX_goal_generic_TUR_turanist_ambition
+
+		x = -6
+
+		y = 3
+
+		cost = 9
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_pacify_the_unrests  }
+
+		mutually_exclusive = { focus = SIK_suppress_separatism  }
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+		    NOT = {
+
+				original_tag = KRS
+
+			}
+
+			has_completed_focus = CHI_opposition
+
+		}
+
+		completion_reward = {
+
+			add_ideas = generic_Turkic_land
+
+			add_opinion_modifier = {
+
+				target = event_target:WTT_current_china_leader
+
+				modifier = hostile_status
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				add_opinion_modifier = {
+
+					target = SIK
+
+					modifier = hostile_status
+
+				}
+
+			}
+
+			add_opinion_modifier = {
+
+				target = XSM
+
+				modifier = hostile_status
+
+			}
+
+			XSM = {
+
+				add_opinion_modifier = {
+
+					target = SIK
+
+					modifier = hostile_status
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+	#Declare Independence From China
+
+	shared_focus = {
+
+		id = SIK_declare_independence_from_china
+
+		icon = GFX_goal_generic_rise_of_turks
+
+		x = -6
+
+		y = 4
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_the_new_east_turkestan  }
+
+		available = {
+
+			is_subject = no
+
+			has_completed_focus = CHI_leaves_the_KMT
+
+		}
+
+		completion_reward = {
+
+			#mark_focus_tree_layout_dirty = yes
+
+			#unused for now
+
+			#effect_tooltip = {
+
+			#	unlock_national_focus = SIK_foreign_support_focus
+
+			#}
+
+			add_ideas = generic_Turkic_compatriots
+
+			drop_cosmetic_tag = yes
+
+			set_cosmetic_tag = ETR
+
+			#every_state = {
+
+			#    limit = {
+
+			#	    is_core_of = SIK
+
+			#	}
+
+			#	add_core_of = ROOT 
+
+			#}
+
+			SIK = {
+
+				every_core_state = {
+
+					add_core_of = ROOT 
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_foreign_support_focus
+
+		icon = GFX_goal_generic_improve_relations
+
+		cost = 5
+
+		x = -6
+
+		y = 5
+
+		allow_branch = {
+
+			has_completed_focus = SIK_declare_independence_from_china
+
+			always = no
+
+		}
+
+		ai_will_do = {
+
+			factor = 10
+
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+
+			add_timed_idea = {
+
+				idea = generic_diplomatic_effort_idea
+
+				days = 180
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_befriend_afg
+
+		icon = GFX_goal_generic_befriend_afghanistan
+
+		x = -5
+
+		y = 6
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_foreign_support_focus }
+
+		available = {
+
+			is_subject = no
+
+			NOT = {
+
+				has_war_with = AFG
+
+			}
+
+		}
+
+		completion_reward = {
+
+			AFG = {
+
+				#country_event = 
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_befriend_uk
+
+		icon = GFX_goal_generic_chi_british_cooperation
+
+		x = -7
+
+		y = 5
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_foreign_support_focus }
+
+		available = {
+
+			is_subject = no
+
+			NOT = {
+
+				any_enemy_country = {
+
+					is_ally_with = ENG
+
+				}
+
+			}
+
+			RAJ = {
+
+				is_subject_of = ENG
+
+			    is_neighbor_of = ROOT
+
+			}
+
+		}
+
+		completion_reward = {
+
+			ENG = {
+
+				#country_event = 
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_strike_ma_clique
+
+		icon = GFX_goal_generic_COOP_war_on_the_northwest
+
+		x = -6
+
+		y = 6
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_befriend_afg focus = SIK_befriend_uk }
+
+		will_lead_to_war_with = XSM
+
+		available = {
+
+			is_subject = no
+
+			country_exists = XSM
+
+			is_neighbor_of = XSM
+
+			NOT = {
+
+				has_war_with = XSM
+
+			}
+
+			NOT = {
+
+				is_ally_with = XSM
+
+			}
+
+		}
+
+		bypass = {
+
+			OR = {
+
+				has_war_with = XSM
+
+				NOT = { country_exists = XSM }
+
+			}
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					country_exists = GSM 
+
+					NOT = {
+
+						has_war_with = GSM 
+
+					}
+
+					NOT = {
+
+						is_ally_with = GSM
+
+					}
+
+				}
+
+			    create_wargoal = {
+
+					type = annex_everything
+
+					target = GSM 
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = annex_everything
+
+				target = XSM
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SIK_strike_china
+
+		icon = GFX_goal_generic_attack_china
+
+		x = -6
+
+		y = 7
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		prerequisite = { focus = SIK_strike_ma_clique }
+
+		will_lead_to_war_with = CHI
+
+		will_lead_to_war_with = NEA
+
+		available = {
+
+			is_subject = no
+
+			controls_state = 756
+
+			country_exists = event_target:WTT_current_china_leader
+
+			NOT = {
+
+				has_war_with = event_target:WTT_current_china_leader
+
+			}
+
+			NOT = {
+
+				is_ally_with = event_target:WTT_current_china_leader
+
+			}
+
+			NOT = {
+
+				tag = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+		bypass = {
+
+			OR = {
+
+				has_war_with = event_target:WTT_current_china_leader
+
+				tag = event_target:WTT_current_china_leader
+
+				NOT = { country_exists = event_target:WTT_current_china_leader }
+
+			}
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					country_exists = NEA
+
+					NEA = {
+
+						is_ally_with = event_target:WTT_current_china_leader
+
+					}
+
+					NOT = {
+
+						has_war_with = NEA 
+
+					}
+
+					NOT = {
+
+						is_ally_with = NEA 
+
+					}
+
+				}
+
+			    create_wargoal = {
+
+					type = annex_everything
+
+					target = NEA
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = annex_everything
+
+				target = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+	}
+
+
+
+
+
+# 来源：common/national_focus/RCM_suiyuan_army.txt
+
+### search_filters = FOCUS_FILTER_POLITICAL
+
+### search_filters = FOCUS_FILTER_RESEARCH
+
+### search_filters = FOCUS_FILTER_INDUSTRY
+
+### search_filters = FOCUS_FILTER_STABILITY
+
+### search_filters = FOCUS_FILTER_WAR_SUPPORT
+
+### search_filters = FOCUS_FILTER_MANPOWER
+
+### search_filters = FOCUS_FILTER_ANNEXATION
+
+	shared_focus = {
+
+		allow_branch = {
+
+			tag = SUY
+
+	    }	
+
+		id = SUY_suiyuan_province_reclamation_plan #绥远省垦务计划
+
+		icon = GFX_goal_generic_self_management
+
+		x = -4
+
+		y = 0
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+		}
+
+		completion_reward = {
+
+			add_political_power = 50
+
+			add_stability = 0.05
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_suiyuan_demand_uncultivated_lands
+
+		icon = GFX_goal_generic_land_reclamation
+
+		x = -4
+
+		y = 1
+
+		search_filters = {
+
+			FOCUS_FILTER_INDUSTRY
+
+		}
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_province_reclamation_plan
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			any_owned_state = {
+
+				is_core_of = ROOT
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+		completion_reward = {
+
+            random_owned_controlled_state = {
+
+				limit = {		
+
+					is_core_of = ROOT
+
+					state = 1020
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+			}
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_core_of = ROOT
+
+					NOT = {
+
+						state = 1020
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_water_supply_system
+
+		icon = GFX_goal_generic_hydroelectric_energy
+
+		x = -6
+
+		y = 2
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		cost = 10
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_demand_uncultivated_lands
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			has_tech = basic_machine_tools
+
+		}
+
+		completion_reward = {
+
+            add_tech_bonus = {
+
+				name = industrial_bonus
+
+				bonus = 0.25
+
+				uses = 2
+
+				category = industry
+
+			}
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = infrastructure
+
+						size > 0
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = infrastructure
+
+										size > 0
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+               1019 = {
+
+                add_building_construction = {
+
+                    type = dam
+
+                    level = 1
+
+                    instant_build = yes
+
+                    province = {
+
+                        id = 13399
+
+                    }
+
+                }
+
+                custom_effect_tooltip = {
+
+                    localization_key = building_state_modifier|dam
+
+                    INDENT = "    "
+
+                }
+
+              }				
+
+				add_building_construction = {
+
+					type = infrastructure
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_tunken
+
+		icon = GFX_goal_generic_DEN_schleswigian_farmers
+
+		x = -4
+
+		y = 2
+
+		search_filters = {
+
+			FOCUS_FILTER_RESEARCH
+
+		}
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_demand_uncultivated_lands
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			any_owned_state = {
+
+				is_core_of = ROOT
+
+				is_fully_controlled_by = ROOT
+
+				#ROOT = {
+
+				#	army_manpower_in_state = {
+
+				#	    #type = support
+
+				#	    amount > 9999
+
+				#	    state = PREV
+
+				#    }
+
+				#}
+
+			}
+
+		}
+
+		completion_reward = {
+
+            #add_stability = 0.05
+
+			#add_to_variable = {
+
+			#	This.supply_condition_base = 20 tooltip = gain_base_supp_cond_p20_tt
+
+			#}
+
+			unlock_decision_category_tooltip = suiyuan_tunken_cat
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_improve_agriculture
+
+		icon = GFX_goal_generic_agricultural_subsidies
+
+		x = -2
+
+		y = 2
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		cost = 10
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_demand_uncultivated_lands
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			any_owned_state = {
+
+				free_building_slots = {
+
+					building = industrial_complex
+
+					size > 0
+
+					include_locked = yes
+
+				}
+
+				is_core_of = ROOT
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+		completion_reward = {
+
+            random_owned_controlled_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = industrial_complex
+
+										size > 0
+
+										include_locked = yes
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 1
+
+				add_building_construction = {
+
+					type = industrial_complex
+
+					level = 1
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_a_good_farmland
+
+		icon = GFX_goal_generic_farmland
+
+		x = -4
+
+		y = 3
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_tunken
+
+		}
+
+		prerequisite = {
+
+			focus = SUY_water_supply_system
+
+		}
+
+		prerequisite = {
+
+			focus = SUY_improve_agriculture
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			
+
+		}
+
+		completion_reward = {
+
+            add_ideas = generic_farmland_idea
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_baiyun_ebo
+
+		icon = GFX_goal_generic_mining_industry
+
+		x = -5
+
+		y = 4
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		cost = 15
+
+		prerequisite = {
+
+			focus = SUY_a_good_farmland
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			has_tech = excavation1
+
+			1014 = {
+
+				is_owned_and_controlled_by = ROOT
+
+			}
+
+			#1020 = {
+
+			#	is_owned_and_controlled_by = ROOT
+
+			#}
+
+		}
+
+		select_effect = {
+
+			add_ideas = generic_steelmaking
+
+			add_ideas = generic_under_construction
+
+		}
+
+		completion_reward = {
+
+			custom_effect_tooltip = debuff_tt
+
+			show_ideas_tooltip = generic_steelmaking
+
+			show_ideas_tooltip = generic_under_construction
+
+			custom_effect_tooltip = blank_line
+
+			hidden_effect = {
+
+				remove_ideas = generic_steelmaking
+
+				remove_ideas = generic_under_construction
+
+			}
+
+			add_resource = {
+
+				type = steel
+
+				amount = 25
+
+				state = 1014
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_central_arms
+
+		icon = GFX_goal_generic_reorient_production
+
+		x = -3
+
+		y = 4
+
+		search_filters = {
+
+			FOCUS_FILTER_INDUSTRY
+
+		}
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_a_good_farmland
+
+		}
+
+		#available_if_capitulated = yes
+
+		available = {
+
+			NOT = {
+
+				tag = event_target:WTT_current_china_leader
+
+				has_war_with = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+		completion_reward = {
+
+            add_offsite_building = { type = arms_factory level = 1 }
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		allow_branch = {
+
+			tag = SUY
+
+	    }	
+
+		id = SUY_suiyuan_army 
+
+		icon = GFX_goal_generic_limited_social_mobilization #GFX_focus_NRA
+
+		x = -10
+
+		y = 0
+
+		cost = 10
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+ 
+
+		}
+
+		completion_reward = {
+
+			add_ideas = generic_militarism_focus
+
+			add_war_support = 0.05
+
+			#add_command_power = 25
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_recruit_former_mongolian_troops
+
+		icon = GFX_goal_generic_FIN_parmis_devils
+
+		x = -8
+
+		y = 1
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_army
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_MANPOWER
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+            OR = {
+
+				has_global_flag = shx_plm_won_suiyuan
+
+				1014 = {
+
+					is_owned_and_controlled_by = ROOT
+
+				}
+
+			}
+
+			#all_enemy_country = {
+
+			#	NOT = {
+
+			#		tag = PLM
+
+			#		tag = ECA
+
+			#	}
+
+			#}
+
+			num_of_controlled_states > 1
+
+		}
+
+		completion_reward = {
+
+			add_manpower = 12000
+
+		}
+
+		bypass = {
+
+            num_of_controlled_states < 2
+
+		}
+
+	}
+
+
+
+	shared_focus = {	
+
+		id = SUY_imitate_the_communists
+
+		icon = GFX_goal_generic_NOR_moscows_education_centers
+
+		x = -8
+
+		y = 2
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_recruit_former_mongolian_troops
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_WAR_SUPPORT
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+            any_neighbor_country = {
+
+				has_government = communism
+
+				NOT = {
+
+					has_war_with = ROOT
+
+				}
+
+			}
+
+			any_enemy_country = {
+
+				is_major = yes
+
+			}
+
+		}
+
+		completion_reward = {
+
+			add_popularity = {
+
+				ideology = communism
+
+				popularity = 0.1
+
+			}
+
+			add_war_support = 0.1
+
+			if = {
+
+				limit = {
+
+					num_of_controlled_states < 6
+
+				}
+
+				add_ideas = generic_combat_idea
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_struggle_high_school #奮鬥中學
+
+		icon = GFX_goal_generic_scientific_exchange #GFX_focus_generic_military_academy
+
+		x = -8
+
+		y = 3
+
+		cost = 10
+
+		prerequisite = {
+
+			focus = SUY_imitate_the_communists
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_MANPOWER
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+
+
+		}
+
+		completion_reward = {
+
+			add_ideas = generic_struggle_school_idea
+
+		}
+
+	}
+
+
+
+	shared_focus = {	
+
+		id = SUY_northeastern_advance_army #東北挺進軍
+
+		icon = GFX_goal_generic_cavalry #GFX_focus_jap_cast_the_die
+
+		x = -10
+
+		y = 1
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_army
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_MANPOWER
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+            OR = {
+
+                MAN = {
+
+					exists = yes
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					any_core_state = {
+
+						OR = {
+
+							custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_242
+
+								region = 242
+
+							}
+
+							custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_243
+
+								region = 243
+
+							}
+
+		                    custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_155
+
+								region = 155
+
+							}
+
+						}
+
+						is_controlled_by_jap_or_its_puppet = yes
+
+					}
+
+				}
+
+			}
+
+			OR = {
+
+				has_war_with = JAP
+
+				has_war_with = MAN
+
+			}
+
+			if = {
+
+				limit = {
+
+					event_target:WTT_current_china_leader = {
+
+						exists = yes
+
+					}
+
+					NOT = {
+
+						tag = event_target:WTT_current_china_leader
+
+					}
+
+				}
+
+				NOT = {
+
+					has_war_with = event_target:WTT_current_china_leader 
+
+				}
+
+			}
+
+			746 = {
+
+				controller = {
+
+					OR = {
+
+						tag = ROOT
+
+						is_in_faction_with = ROOT
+
+						is_subject_of = ROOT
+
+					}
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+					event_target:WTT_current_china_leader = {
+
+						exists = yes
+
+					}
+
+					NOT = {
+
+						tag = event_target:WTT_current_china_leader
+
+					}
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					country_event = {
+
+						id = AWR_CHI.3888 hours = 12
+
+					}
+
+				}
+
+				custom_effect_tooltip = if_approved_tt
+
+				custom_effect_tooltip = recruit_ne_advance_army_tt
+
+				effect_tooltip = {
+
+					add_corps_commander_role = {
+
+						character = SUY_ma_zhanshan
+
+						traits={ generic_NRA_Major_General }
+
+						skill=3
+
+						attack_skill=2
+
+						defense_skill=3
+
+						planning_skill=3
+
+						logistics_skill=2
+
+						legacy_id=-1
+
+					}
+
+					SUY_ma_zhanshan = {
+
+						add_advisor_role = {
+
+							activate = yes
+
+							advisor = {
+
+								slot = high_command
+
+								ledger = army
+
+								cost = 100
+
+								idea_token = SUY_ma_zhanshan
+
+								traits = {
+
+									generic_army_cavalry_2
+
+								}
+
+							}
+
+						}
+
+					}	
+
+				}
+
+				else = {
+
+                    country_event = {
+
+			           id = AWR_CHI.3888 hours = 12
+
+			        }
+
+					effect_tooltip = {
+
+						add_corps_commander_role = {
+
+							character = SUY_ma_zhanshan
+
+							traits={ generic_NRA_Major_General }
+
+							skill=3
+
+							attack_skill=2
+
+							defense_skill=3
+
+							planning_skill=3
+
+							logistics_skill=2
+
+							legacy_id=-1
+
+						}
+
+						SUY_ma_zhanshan = {
+
+							add_advisor_role = {
+
+								activate = yes
+
+								advisor = {
+
+									slot = high_command
+
+									ledger = army
+
+									cost = 100
+
+									idea_token = SUY_ma_zhanshan
+
+									traits = {
+
+										generic_army_cavalry_2
+
+									}
+
+								}
+
+							}
+
+						}	
+
+					}
+
+				    custom_effect_tooltip = recruit_ne_advance_army_tt
+
+				}
+
+			}				
+
+		}
+
+		
+
+		bypass = {
+
+			OR = {
+
+				AND = {
+
+					has_global_flag = JAP_defeated
+
+					NOT = {
+
+						country_exists = MAN
+
+					}
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					all_core_state = {
+
+						OR = {
+
+							custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_242
+
+								region = 242
+
+							}
+
+							custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_243
+
+								region = 243
+
+							}
+
+		                    custom_trigger_tooltip = {
+
+								tooltip = is_in_strat_155
+
+								region = 155
+
+							}
+
+						}
+
+						is_not_controlled_by_jap_or_its_puppet = yes
+
+						NOT = {
+
+							is_controlled_by = MAN
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_west_suiyuan_campaigns
+
+		icon = GFX_goal_generic_AST_war_japan
+
+		x = -10
+
+		y = 2
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_northeastern_advance_army
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_WAR_SUPPORT
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			has_war_with = JAP
+
+			#OR = {
+
+                any_core_state = {
+
+					OR = {
+
+						state = 1019
+
+						NOT = {
+
+							is_fully_controlled_by = ROOT
+
+						}
+
+						AND = {
+
+                            state = 746
+
+							is_controlled_by_jap_or_its_puppet = yes
+
+						}
+
+						#AND = {
+
+                        #   state = 621
+
+						#	is_controlled_by_jap_or_its_puppet = yes
+
+						#}
+
+					}	
+
+				}
+
+				#any_core_state = {
+
+				#	OR = {
+
+				#		state = 1019
+
+				#		state = 746
+
+				#		state = 621
+
+				#	}
+
+				#	NOT = {
+
+				#		is_fully_controlled_by = ROOT
+
+				#	}
+
+				#}
+
+				#any_enemy_country = {
+
+				#	OR = {
+
+				#		original_tag = JAP
+
+				#		is_in_faction_with = JAP
+
+				#	}
+
+				#	OR = {
+
+                #        controls_province = 2087
+
+				#		controls_province = 13399
+
+				#	}	
+
+				#}
+
+			#}	
+
+		}
+
+		completion_reward = {
+
+			unlock_decision_category_tooltip = war_in_suiyuan_cat
+
+			activate_mission = SUY_counter_attack_jap
+
+			every_core_state = {
+
+				limit = {
+
+					region = 244
+
+					OR = {
+
+						state = 1019
+
+						NOT = {
+
+							is_fully_controlled_by = ROOT
+
+						}
+
+						AND = {
+
+                            state = 746
+
+							is_controlled_by_jap_or_its_puppet = yes
+
+						}
+
+						AND = {
+
+                            state = 621
+
+							is_controlled_by_jap_or_its_puppet = yes
+
+						}
+
+					}		
+
+				}
+
+				add_dynamic_modifier = { modifier = suiyuan_offensive scope = ROOT }
+
+			}
+
+		}
+
+		bypass = {
+
+			has_global_flag = JAP_defeated
+
+		}
+
+	}
+
+	
+
+	shared_focus = {
+
+		id = SUY_twelfth_military_region #1945~1947
+
+		icon = GFX_goal_generic_position_armies
+
+		x = -10
+
+		y = 3
+
+		cost = 5
+
+		prerequisite = {
+
+			focus = SUY_west_suiyuan_campaigns
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_ANNEXATION
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			NOT = {
+
+				has_war_with = JAP
+
+				has_war_with = event_target:WTT_current_china_leader
+
+				has_government = communism
+
+			}
+
+			if = {
+
+				limit = {
+
+					event_target:WTT_communist_china = {
+
+						exists = yes
+
+						NOT = {
+
+							tag = ROOT
+
+						}
+
+					}
+
+				}
+
+                any_neighbor_country = {
+
+					tag = event_target:WTT_communist_china
+
+					NOT = {
+
+						is_in_faction_with = ROOT
+
+					}
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			event_target:WTT_current_china_leader = {
+
+				every_core_state = {
+
+					limit = {
+
+						NOT = {
+
+							is_core_of = ROOT
+
+						}
+
+						OR = {
+
+							#state = 610
+
+							state = 1018
+
+							region = 244
+
+						}
+
+					}
+
+					add_core_of = ROOT
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					is_subject_of = event_target:WTT_current_china_leader 
+
+					NOT = {
+
+						is_subject_of = SHX
+
+						has_cosmetic_tag = huabei_bandit_supression_hq
+
+					}
+
+				}
+
+				event_target:WTT_current_china_leader  = {
+
+                    set_autonomy = { target = ROOT autonomy_state = autonomy_free }
+
+				}
+
+			}
+
+			event_target:WTT_current_china_leader = { add_opinion_modifier = { modifier = RCM_special_affiliation target = ROOT } }
+
+		    add_opinion_modifier = { modifier = RCM_special_affiliation target = event_target:WTT_current_china_leader }
+
+		}
+
+		#bypass = {
+
+		#	event_target:WTT_current_china_leader = {
+
+		#		all_core_state = {
+
+		#			OR = {
+
+		#				state = 610
+
+		#				state = 1018
+
+		#				custom_trigger_tooltip = {
+
+		#					tooltip = is_in_strat_244
+
+		#					region = 244
+
+		#				}
+
+		#			}
+
+		#			is_core_of = ROOT
+
+		#		}
+
+		#	}
+
+		#	is_subject = no
+
+		#}
+
+	}
+
+	
+
+	shared_focus = {
+
+		id = SUY_ping_sui_railway_campaign
+
+		icon = GFX_goal_generic_Attack_CCP
+
+		x = -10
+
+		y = 4
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_twelfth_military_region
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_ANNEXATION
+
+		}
+
+		will_lead_to_war_with = PRC
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			NOT = {
+
+				has_government = communism
+
+				has_border_war_with = event_target:WTT_communist_china
+
+			}
+
+			any_neighbor_country = {
+
+				tag = event_target:WTT_communist_china
+
+				NOT = {
+
+			        is_in_faction_with = ROOT
+
+					has_war_with = ROOT
+
+				}
+
+				controls_state = 1020
+
+			}
+
+			any_owned_state = {
+
+				is_fully_controlled_by = ROOT
+
+				OR = {
+
+					state = 621
+
+					state = 746
+
+				}
+
+			}
+
+		}
+
+		select_effect = {
+
+			event_target:WTT_communist_china = {
+
+                country_event = { id = AWR_TIB.8 hours = 12 }
+
+			}
+
+		}
+
+		completion_reward = {
+
+			if = {
+
+				limit = {
+
+                    746 = {
+
+						is_owned_by = ROOT
+
+						is_fully_controlled_by = ROOT
+
+					}
+
+				}
+
+				start_border_war = {
+
+					change_state_after_war = yes
+
+					attacker = {
+
+						state = 746	
+
+						num_provinces = 2
+
+						on_win = AWR_CHI.2148
+
+						on_lose = AWR_CHI.2150
+
+						on_cancel = AWR_CHI.2152
+
+					}
+
+	
+
+					defender = {
+
+						state = 1020
+
+						num_provinces = 2
+
+						on_win = AWR_CHI.2149
+
+						on_lose = AWR_CHI.2151
+
+						on_cancel = AWR_CHI.2153
+
+					}
+
+				}
+
+				else_if = {
+
+					limit = {
+
+						621 = {
+
+							is_owned_by = ROOT
+
+							is_fully_controlled_by = ROOT
+
+						}
+
+					}
+
+				}
+
+				start_border_war = {
+
+					change_state_after_war = yes
+
+					attacker = {
+
+						state = 621	
+
+						num_provinces = 1
+
+						on_win = AWR_CHI.2148
+
+						on_lose = AWR_CHI.2150
+
+						on_cancel = AWR_CHI.2152
+
+					}
+
+	
+
+					defender = {
+
+						state = 1020
+
+						num_provinces = 2
+
+						on_win = AWR_CHI.2149
+
+						on_lose = AWR_CHI.2151
+
+						on_cancel = AWR_CHI.2153
+
+					}
+
+				}
+
+			}
+
+			1020 = {
+
+				add_dynamic_modifier = { modifier = suiyuan_offensive_pingsui scope = ROOT }
+
+			}
+
+		}
+
+		bypass = {
+
+			OR = {
+
+				has_war_with = event_target:WTT_communist_china
+
+                1020 = {
+
+					is_owned_and_controlled_by = ROOT
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	shared_focus = {	
+
+		id = SUY_ambush_kalgan
+
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+
+		x = -10
+
+		y = 5
+
+		cost = 5
+
+		prerequisite = {
+
+			focus = SUY_ping_sui_railway_campaign
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_ANNEXATION
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			has_war_with = event_target:WTT_communist_china
+
+			611 = {
+
+				is_controlled_by = event_target:WTT_communist_china
+
+				num_owned_neighbour_states = {
+
+					owner = ROOT
+
+					count > 0
+
+				}
+
+			}
+
+		}
+
+		completion_reward = {
+
+			611 = {
+
+				add_dynamic_modifier = { modifier = suiyuan_offensive_ccw scope = ROOT }
+
+			}
+
+			activate_mission = SUY_ambush_kalgan_mission
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_mongolian_issues
+
+		icon = GFX_goal_generic_horse_studs
+
+		x = -12
+
+		y = 1
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_suiyuan_army
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+            any_owned_state = {
+
+				has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+			}
+
+		}
+
+		completion_reward = {
+
+			unlock_decision_category_tooltip = suiyuan_mongolian_autonomy_cat
+
+		}
+
+	}
+
+
+
+	shared_focus = {
+
+		id = SUY_ikechao_incident
+
+		icon = GFX_goal_generic_FIN_the_lone_wolf
+
+		x = -12
+
+		y = 2
+
+		cost = 7.15
+
+		prerequisite = {
+
+			focus = SUY_mongolian_issues
+
+		}
+
+		search_filters = {
+
+			FOCUS_FILTER_POLITICAL
+
+		}
+
+		ai_will_do = { factor = 100 }
+
+		available = {
+
+			1020 = {
+
+				is_controlled_by_jap_or_its_puppet = yes
+
+			}
+
+			746 = {
+
+				is_owned_and_controlled_by = ROOT
+
+				OR = {
+
+					has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+					has_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+				}
+
+			}
+
+			#num_battalions_in_states = {
+
+			#	count > 4
+
+			#	states = { 746 }
+
+			#	#exclude = { irregular_infantry }
+
+			#}
+
+			army_manpower_in_state = {
+
+				#type = support
+
+				amount > 11999
+
+				state = 746
+
+			}
+
+		}
+
+		completion_reward = {
+
+			country_event = {
+
+				id = AWR_CHI.3892 hours = 12
+
+			}
+
+		}
+
+	}
+

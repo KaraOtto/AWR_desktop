@@ -1,4 +1,4 @@
-ideas = {
+﻿ideas = {
 
 	mobilization_laws = { 
 		law = yes
@@ -722,166 +722,123 @@ ideas = {
 			cancel_if_invalid = no
 		}
 	
-		ETH_chitet_law = {#契特
-			picture = ETH_chitet_law
-			cost = 150
-			removal_cost = -1
-			level = 6
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
-				always = no
-			}
-
-			ai_will_do = {
-   				factor = 0
-			}
-
-			modifier = {
-				conscription = 0.045
-				custom_modifier_tooltip = ETH_chitet_law_tt
-				industrial_capacity_factory = -0.05
-				industrial_capacity_dockyard = -0.05
-				production_speed_buildings_factor = -0.05
-				AWR_economy_development_monthly = -0.015
-			}
-
-			default = yes
-
-			cancel_if_invalid = no
-		}
-
-		ETH_chitet_law_peace_time = {#契特
-			picture = ETH_chitet_law
-
-			cost = 150
-			removal_cost = -1
-			level = 6
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
-				always = no
-			}
-
-			ai_will_do = {
-   				factor = 0
-			}
-
-			modifier = {
-				conscription = 0.005
-				custom_modifier_tooltip = ETH_chitet_law_tt
-				industrial_capacity_factory = 0.05
-				industrial_capacity_dockyard = 0.05
-				production_speed_buildings_factor = 0.05
-				AWR_economy_development_monthly = -0.005
-			}
-
-			default = yes
-
-			cancel_if_invalid = no
-		}
-
-		SWI_citizen_militia_1 = {#瑞士公民民兵
-			cost = 200
-			picture = citizen_militia_1
-			removal_cost = -1
-			level = 6
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
-				has_completed_focus = SWI_professionalize_militias
-				has_completed_focus = SWI_join_the_allies
-				has_completed_focus = SWI_join_france
-				has_completed_focus = SWI_jump_into_action
-			}
-			ai_will_do = {
-				factor = 0
-			}
-
-			modifier = {
-				conscription = 0.1
-				custom_modifier_tooltip = SWI_army_limitations_TT
-				ai_desired_divisions_factor = 1
-				AWR_economy_development_monthly = 0.03
-			}
-		}
-
-		SWI_citizen_militia_2 = {#扩大瑞士公民民兵
-			picture = citizen_militia_2
-			cost = 200
-			removal_cost = -1
-			level = 6
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
- 				has_completed_focus = SWI_professionalize_militias
-				has_completed_focus = SWI_join_the_allies
-				has_completed_focus = SWI_join_france
-				has_completed_focus = SWI_jump_into_action
-			}
-			ai_will_do = {
-				factor = 0
-			}
-
-			modifier = {
-				conscription = 0.2
-				custom_modifier_tooltip = SWI_army_limitations_TT
-				ai_desired_divisions_factor = 2
-				AWR_economy_development_monthly = 0.02
-			}
-		}
 		
-		propaganda_recruits = {#政治宣传
 
-			picture = PRC_volunteer_mobilization
+		ETH_chitet_law = {
+					picture = ETH_chitet_law
+					cost = 150
+					removal_cost = -1
+					level = 6
+		
+					allowed = {
+						always = no
+					}
+					allowed_to_remove = {
+						always = no
+					}
+		
+					ai_will_do = {
+		   				factor = 0
+					}
+		
+					modifier = {
+						conscription = 0.045
+						custom_modifier_tooltip = ETH_chitet_law_tt
+						industrial_capacity_factory = -0.05
+						industrial_capacity_dockyard = -0.05
+						production_speed_buildings_factor = -0.05
+					}
+		
+					default = yes
+		
+					cancel_if_invalid = no
+				}
 
-			allowed = {
-				OR = {
-            		TAG = event_target:WTT_communist_china
-            		TAG = PRC
-            	}
-			}
-            visible = {
-                OR = {
-            		TAG = event_target:WTT_communist_china
-            		TAG = PRC
-            	}
-            }
-            available = {
-                  has_government = communism                                 
-            }
-			removal_cost = -1
-            cost = 150
-            ai_will_do = {
-   				factor = 9999
-			}
-			modifier = {
-				conscription = 0.065
-				political_power_factor = -0.1
-				training_time_factor = 0.15
-				communism_drift = 0.05
-				army_morale_factor = 0.1
-                army_org_factor = 0.05
-				experience_gain_army_factor = 0.05
-				drift_defence_factor = 0.5
-                command_power_gain_mult = 0.15
-				land_reinforce_rate = 0.05
-				mobilization_speed = 0.50
-				non_core_manpower = 0.10
-				weekly_manpower = 1500
-				AWR_economy_development_monthly = 0.020
-			}
 
-			cancel_if_invalid = no
-		}
-    }
+		ETH_chitet_law_peace_time = {
+					picture = ETH_chitet_law
+		
+					cost = 150
+					removal_cost = -1
+					level = 6
+		
+					allowed = {
+						always = no
+					}
+					allowed_to_remove = {
+						always = no
+					}
+		
+					ai_will_do = {
+		   				factor = 0
+					}
+		
+					modifier = {
+						conscription = 0.005
+						custom_modifier_tooltip = ETH_chitet_law_tt
+						industrial_capacity_factory = 0.05
+						industrial_capacity_dockyard = 0.05
+						production_speed_buildings_factor = 0.05
+					}
+		
+					default = yes
+		
+					cancel_if_invalid = no
+				}
+
+
+		SWI_citizen_militia_1 = {
+					cost = 200
+					picture = citizen_militia_1
+					removal_cost = -1
+					level = 6
+		
+					allowed = {
+						always = no
+					}
+					allowed_to_remove = {
+						has_completed_focus = SWI_professionalize_militias
+						has_completed_focus = SWI_join_the_allies
+						has_completed_focus = SWI_join_france
+						has_completed_focus = SWI_jump_into_action
+					}
+					ai_will_do = {
+						factor = 0
+					}
+		
+					modifier = {
+						conscription = 0.1
+						custom_modifier_tooltip = SWI_army_limitations_TT
+						ai_desired_divisions_factor = 1
+					}
+				}
+
+
+		SWI_citizen_militia_2 = {
+					picture = citizen_militia_2
+					cost = 200
+					removal_cost = -1
+					level = 6
+		
+					allowed = {
+						always = no
+					}
+					allowed_to_remove = {
+		 				has_completed_focus = SWI_professionalize_militias
+						has_completed_focus = SWI_join_the_allies
+						has_completed_focus = SWI_join_france
+						has_completed_focus = SWI_jump_into_action
+					}
+					ai_will_do = {
+						factor = 0
+					}
+		
+					modifier = {
+						conscription = 0.2
+						custom_modifier_tooltip = SWI_army_limitations_TT
+						ai_desired_divisions_factor = 2
+					}
+				}
+}
 	
 }
