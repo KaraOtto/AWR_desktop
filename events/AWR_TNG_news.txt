@@ -1,0 +1,4457 @@
+# TNG 新闻事件
+
+add_namespace = AWR_TNG_news
+
+country_event = {
+
+				id = AWR_TNG.32 days = 7
+
+			}
+
+country_event = {
+
+	id = AWR_TNG.2 #邀请马仲英?
+
+	title = tng.1.t
+
+	desc = tng.1.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.1.a
+
+		#yes we want him back
+
+		custom_effect_tooltip = if_they_accept_green
+
+		effect_tooltip = {
+
+		    retire_country_leader = yes
+
+		    #create_country_leader = {
+
+			#	name = TNG_ma_zhongying
+
+			#	desc = "POLITICS_Ma_Zhongying_DESC"
+
+			#	picture = "gfx/leaders/TNG/Portrait_Ma_Zhongying.dds"
+
+			#	expire = "1960.7.22"
+
+			#	ideology = despotism
+
+			#	traits = {
+
+			#		
+
+			#	}
+
+			#}
+
+			TNG_ma_zhongying = {
+
+				add_country_leader_role = {
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = despotism
+
+						traits = {
+
+						}
+
+					}
+
+					promote_leader = yes
+
+				}   
+
+			} 
+
+		    #unlock_national_focus = SIK_ma_return
+
+			add_opinion_modifier = {
+
+	            target = ROOT
+
+	            modifier = tng_accept_our_request
+
+            }
+
+		    custom_effect_tooltip = if_they_refuse_red
+
+			add_opinion_modifier = {
+
+	            target = ROOT
+
+	            modifier = hostile_status
+
+            }
+
+		} 
+
+	    SOV = { 
+
+		    country_event = { id = AWR_TNG.4 days = 10 }
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.1.b
+
+		trigger = {
+
+			NOT = {
+
+				has_completed_focus = TNG_befriend_soviet
+
+			}
+
+		}
+
+		#ma hushan stay
+
+		add_stability = 0.05
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_TNG.4 #[From.GetLeader] 要求马仲英回归
+
+	title = tng.2.t
+
+	desc = tng.2.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.2.a
+
+		#yes send him back
+
+		ai_chance = { base = 100 }
+
+		effect_tooltip = {
+
+		    TNG = {
+
+			    # retire_country_leader = yes
+
+				TNG_ma_zhongying = {
+
+					add_country_leader_role = {
+
+						country_leader = {
+
+							expire = "1965.1.1"
+
+							ideology = despotism
+
+							traits = {
+
+							}
+
+						}
+
+						promote_leader = yes
+
+					}   
+
+				} 
+
+		        #unlock_national_focus = SIK_ma_return
+
+				add_opinion_modifier = {
+
+	                target = ROOT
+
+	                modifier = tng_accept_our_request
+
+                }
+
+		    } 
+
+		}
+
+		
+
+	    FROM = { 
+
+		    country_event = { id = AWR_TNG.7 days = 7 }
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.2.b
+
+		trigger = {
+
+			NOT = {
+
+				TNG = {
+
+					has_completed_focus = TNG_send_ma_hushan_to_ussr
+
+				}
+
+			}
+
+		}
+
+		#dont
+
+		FROM = { 
+
+		    country_event = { id = AWR_TNG.8 days = 7 }
+
+		}
+
+		effect_tooltip = { 
+
+			add_opinion_modifier = {
+
+	            target = ROOT
+
+	            modifier = hostile_status
+
+            }
+
+        }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_TNG.7 #马仲英归来
+
+	title = tng.3.t
+
+	desc = tng.3.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.3.a
+
+		retire_country_leader = yes
+
+		set_country_flag = ma_zhongying_return
+
+		#mark_focus_tree_layout_dirty = yes
+
+		effect_tooltip = {
+
+		    #unlock_national_focus = SIK_ma_return
+
+			add_corps_commander_role = {
+
+				character = TNG_ma_zhongying
+
+				traits={ cavalry_leader harsh_leader }
+
+				skill=2
+
+				attack_skill=2 #3
+
+				defense_skill=2
+
+				planning_skill=2
+
+				logistics_skill=1
+
+				legacy_id=-1
+
+			}	
+
+		}
+
+		if = {
+
+			limit = {
+
+				#has_completed_focus = CHI_cooperation_with_the_nationalists
+
+				has_government = neutrality
+
+			}
+
+			TNG_ma_zhongying = {
+
+			    add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = despotism
+
+				        traits = { }            
+
+			        } 
+
+			    } 
+
+			    add_country_leader_trait = youngster_commander
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_completed_focus = CHI_cooperation_with_the_communists
+
+			}
+
+			TNG_ma_zhongying = {
+
+			    add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = marxism
+
+				        traits = {
+
+				              
+
+					    }
+
+			        } 
+
+			    }
+
+			    add_country_leader_trait = youngster_commander
+
+			}
+
+		}		
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_TNG.8 #[FROM.GetName] 拒绝交出马仲英
+
+	title = tng.4.t
+
+	desc = tng.4.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.4.a
+
+	    add_opinion_modifier = {
+
+	        target = FROM
+
+	        modifier = hostile_status
+
+        }
+
+	}
+
+}
+
+country_event = { #dis is not tng, Mahmut Muhiti returns
+
+	id = AWR_TNG.9 #麻木提·穆依提的归来
+
+	title = tng.5.t
+
+	desc = tng.5.d
+
+	picture = GFX_report_event_36th_division
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.5.a
+
+		effect_tooltip = {
+
+		    KHR_Mahmut_Muhiti = {
+
+			    set_nationality = ROOT
+
+				add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = despotism
+
+				        traits = { }            
+
+			        } 
+
+			    } 
+
+			}
+
+		}
+
+		hidden_effect = { 
+
+            KHR_Mahmut_Muhiti = {
+
+			    set_nationality = ROOT
+
+				add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = despotism
+
+				        traits = { }            
+
+			        } 
+
+			    }  
+
+			    add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = marxism
+
+				        traits = {
+
+				              
+
+					    }
+
+			        } 
+
+			    }
+
+                add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = n_socialism_ideology
+
+				        traits = {
+
+				              
+
+					    }
+
+			        } 
+
+			    }
+
+                add_country_leader_role = {
+
+			        promote_leader = yes
+
+			        country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = sanmin_military_rule
+
+				        traits = { }
+
+			        } 
+
+			    }	
+
+                add_country_leader_role = {
+
+			        promote_leader = yes
+
+				    country_leader = {
+
+				        expire = "1965.1.1"
+
+				        ideology = conservatism
+
+				        traits = {}
+
+			        } 
+
+			    }			
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #part of N36D defect to SIK
+
+	id = AWR_TNG.10 #我方部队叛逃！
+
+	title = tng.6.t
+
+	desc = tng.6.d
+
+	picture = GFX_report_event_36th_division
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.6.a
+
+		effect_tooltip = {
+
+			transfer_units_fraction = {
+
+			    target = SIK         # the recipient
+
+			    size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+			    army_ratio = 0.2       # [0,1] Overrides size modifier for army
+
+			    #stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+			    #navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+			    #air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+			    keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+				    always = yes
+
+			    }
+
+		    } 
+
+			if = {
+
+				limit = {
+
+					has_character = TNG_ma_shengkui
+
+				}
+
+				TNG_ma_shengkui = {
+
+					set_nationality = SIK
+
+				}
+
+			}
+
+		}
+
+		add_war_support = -0.1
+
+		SIK = { 
+
+			country_event = AWR_TNG.11
+
+		}
+
+	}
+
+}
+
+country_event = { #army defect to SIK
+
+	id = AWR_TNG.11 #一些新编第三十六师部队投向我方
+
+	title = tng.7.t
+
+	desc = tng.7.d
+
+	picture = GFX_report_event_36th_division
+
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.7.a
+
+		FROM = {
+
+			transfer_units_fraction = {
+
+			    target = SIK         # the recipient
+
+			    size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+			    army_ratio = 0.2       # [0,1] Overrides size modifier for army
+
+			    #stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+			    #navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+			    #air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+			    keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+				    always = yes
+
+			    }
+
+		    } 
+
+			if = {
+
+				limit = {
+
+					has_character = TNG_ma_shengkui
+
+				}
+
+				TNG_ma_shengkui = {
+
+					set_nationality = SIK
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #Ma hushan flees
+
+	id = AWR_TNG.12 #马虎山离开新疆
+
+	title = tng.8.t
+
+	desc = tng.8.d
+
+	picture = GFX_report_event_36th_division_officers
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = TNG
+
+		has_government = neutrality
+
+		has_war_with = SIK
+
+		OR = {
+
+            AND = {
+
+				is_ally_with = KHR
+
+				SIK = { 
+
+					has_volunteers_amount_from = {
+
+						tag = SOV
+
+						count > 0
+
+					}
+
+					has_full_control_of_state = 617
+
+					controls_state = 619
+
+					controls_state = 990
+
+				}
+
+			}
+
+			SIK = { 
+
+				has_volunteers_amount_from = {
+
+					tag = SOV
+
+					count > 0
+
+				}
+
+				has_full_control_of_state = 617
+
+				controls_state = 759
+
+			}
+
+			surrender_progress > 0.7
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.8.a
+
+		retire_character = TNG_ma_hushan
+
+		retire_character = TNG_bai_zili
+
+		hidden_effect = {
+
+			create_country_leader = {
+
+		        name = TNG_n36d_officers
+
+			    desc = "POLITICS_N36_DESC"
+
+			    picture = "gfx/leaders/TNG/Portrait_N36D_Officers.dds"
+
+			    expire = "1965.1.1"
+
+			    ideology = despotism
+
+			    traits = { N36d_hq }
+
+		    }
+
+		    create_country_leader = {
+
+		        name = TNG_n36d_officers
+
+			    desc = "POLITICS_N36_DESC"
+
+			    picture = "gfx/leaders/TNG/Portrait_N36D_Officers.dds"
+
+			    expire = "1965.1.1"
+
+			    ideology = fascism_ideology
+
+			    traits = { }
+
+		    }
+
+		    create_country_leader = {
+
+		        name = TNG_n36d_officers
+
+			    desc = "POLITICS_N36_DESC"
+
+			    picture = "gfx/leaders/TNG/Portrait_N36D_Officers.dds"
+
+			    expire = "1965.1.1"
+
+			    ideology = conservatism
+
+			    traits = { }
+
+		    }
+
+		    create_country_leader = {
+
+		        name = TNG_n36d_officers
+
+			   desc = "POLITICS_N36_DESC"
+
+			    picture = "gfx/leaders/TNG/Portrait_N36D_Officers.dds"
+
+			    expire = "1965.1.1"
+
+			    ideology = n_socialism_ideology
+
+			    traits = { }
+
+		    }
+
+		    create_country_leader = {
+
+		       name = TNG_n36d_officers 
+
+			    desc = "POLITICS_N36_DESC"
+
+			    picture = "gfx/leaders/TNG/Portrait_N36D_Officers.dds"
+
+			    expire = "1965.1.1"
+
+			    ideology = marxism
+
+			    traits = { }
+
+		    }
+
+		}		
+
+		add_stability = -0.1
+
+		add_war_support = -0.1
+
+		set_global_flag = ma_hushan_flees
+
+	}
+
+}
+
+country_event = { #Ma hushen arrives qinghai
+
+	id = AWR_TNG.13
+
+	title = tng.9.t
+
+	desc = tng.9.d
+
+	picture = GFX_report_event_ma_hushan_2
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = XSM
+
+		has_global_flag = ma_hushan_flees
+
+		NOT = { country_exists = TNG }
+
+		always = no ###disabled
+
+	}
+
+	mean_time_to_happen = {
+
+      	days = 270
+
+	}
+
+	option = {
+
+		name = tng.9.a
+
+		#general
+
+		TNG_ma_hushan = { set_nationality = ROOT }
+
+	}
+
+	option = {
+
+		name = tng.9.b
+
+		#advisor #TO DO 
+
+	}
+
+}
+
+country_event = { #Ma hushan returns
+
+	id = AWR_TNG.14 #马虎山归来
+
+	title = tng.99.t
+
+	desc = tng.99.d
+
+	picture = GFX_report_event_ma_hushan_2
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = TNG
+
+		is_subject = no
+
+		has_global_flag = ma_hushan_flees
+
+		NOT = { has_war_with = SIK }
+
+		has_government = neutrality
+
+	}
+
+	option = {
+
+		name = tng.99.a
+
+		#general
+
+		retire_country_leader = yes
+
+		TNG_ma_hushan = {
+
+			set_nationality = ROOT
+
+			add_country_leader_role = {
+
+				promote_leader = yes
+
+				country_leader = {
+
+					expire = "1965.1.1"
+
+					ideology = despotism
+
+					traits = { }            
+
+				} 
+
+			} 
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.9.b
+
+		#advisor #TO DO 
+
+	}
+
+}
+
+country_event = { #N36D, peace with sik
+
+	id = AWR_TNG.15 #向省政府投降？
+
+	title = tng.10.t
+
+	desc = tng.10.d
+
+	picture = GFX_report_event_sinkiang_and_soviet_officers
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = TNG
+
+		has_government = neutrality
+
+		has_global_flag = ma_hushan_flees
+
+		#NOT = { has_full_control_of_state = 1049 }
+
+		SIK = { 
+
+			has_volunteers_amount_from = {
+
+                tag = SOV
+
+                count > 0
+
+            }
+
+		    #has_full_control_of_state = 617
+
+		    controls_state = 619
+
+		}	
+
+	}
+
+	option = {
+
+		name = tng.10.a
+
+		#YES
+
+		ai_chance = {
+
+			base = 20
+
+			modifier = {
+
+				factor = 200
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		custom_effect_tooltip = if_they_accept_green
+
+		effect_tooltip = {		
+
+		    SIK = {
+
+				puppet = {
+
+                    target = ROOT
+
+                    end_wars = yes
+
+				}
+
+            }
+
+			every_state = {
+
+				limit = { 
+
+					is_owned_by = TNG 
+
+					NOT = { state = 1049 }
+
+				}
+
+				SIK = { transfer_state = PREV }
+
+			}
+
+		}
+
+		SIK = { country_event = AWR_TNG.16 }
+
+	}
+
+	option = {
+
+		name = tng.10.b
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		#NEVER!
+
+	}
+
+}
+
+country_event = { #N36D, peace with sik, TO SIK
+
+	id = AWR_TNG.16 #[From.GetName] 提议进行新一次和平谈判
+
+	title = tng.11.t
+
+	desc = tng.11.d
+
+	picture = GFX_report_event_sinkiang_and_soviet_officers
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.11.a
+
+		ai_chance = {
+
+			base = 50
+
+			modifier = {
+
+				factor = 500
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		#KILL THEM ALL!
+
+		add_war_support = 0.05
+
+		FROM = { country_event = AWR_TNG.17 }
+
+	}
+
+	option = {
+
+		name = tng.11.b
+
+		#YES
+
+		ai_chance = {
+
+			base = 50
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		effect_tooltip = {		
+
+		    puppet = {
+
+                target = FROM
+
+                end_wars = yes
+
+            }
+
+		    FROM = {
+
+				every_owned_state = {
+
+					limit = { 
+
+						NOT = { state = 1049 }
+
+					}
+
+				    SIK = { transfer_state = PREV }
+
+				}
+
+			}
+
+		}	
+
+	    FROM = { country_event = AWR_TNG.18 }
+
+	}
+
+}
+
+country_event = { #N36D, peace with sik, refused
+
+	id = AWR_TNG.17 #[From.GetName]拒绝
+
+	title = tng.12.t
+
+	desc = tng.12.d
+
+	picture = GFX_report_event_sinkiang_and_soviet_officers
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.12.a
+
+	}
+
+}
+
+country_event = { #N36D, peace with sik, accepted
+
+	id = AWR_TNG.18 #与[From.GetName]的和平协议
+
+	title = tng.13.t
+
+	desc = tng.13.d
+
+	picture = GFX_report_event_sinkiang_and_soviet_officers
+
+	is_triggered_only = yes
+
+	option = {
+
+	    FROM = {		
+
+		    puppet = {
+
+                target = ROOT
+
+                end_wars = yes
+
+            }
+
+		}
+
+		every_owned_state = {
+
+			limit = { 
+
+				NOT = { state = 1049 }
+
+			}
+
+			SIK = { transfer_state = PREV }
+
+		}
+
+		hidden_effect = { 
+
+			set_politics = {
+
+				ruling_party = neutrality
+
+				elections_allowed = no
+
+			} 
+
+		}
+
+		remove_country_leader_trait = N36d_hq
+
+		name = tng.13.a
+
+	}
+
+}
+
+country_event = { #KHR gives kashi to TNG, move to Aksu
+
+	id = AWR_TNG.19 #喀什问题
+
+	title = tng.14.t
+
+	desc = tng.14.d
+
+	picture = GFX_report_event_6th_division_officers
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = KHR
+
+		is_ally_with = TNG
+
+		#OR = {
+
+		#	controls_state = 1050
+
+		#	any_allied_country = {
+
+		#		controls_state = 1050
+
+		#	}
+
+		#}
+
+		controls_state = 619
+
+        has_war_with = SIK
+
+		owns_state = 990
+
+	}
+
+	option = {
+
+		name = tng.14.a
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		ai_chance = {
+
+			base = 50
+
+			modifier = {
+
+				factor = 500
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		#yes
+
+		add_political_power = 100
+
+		#add_state_core = 1050
+
+		#transfer_state = 1050
+
+		990 = {
+
+			add_extra_state_shared_building_slots = 1
+
+			add_building_construction = {
+
+				type = arms_factory
+
+				level = 1
+
+				instant_build = yes
+
+			}	
+
+		}
+
+		add_manpower = 15000
+
+		TNG = { country_event = AWR_TNG.20 }
+
+		effect_tooltip = {
+
+			TNG = {
+
+				add_state_core = 619
+
+				transfer_state = 619
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.14.b
+
+		ai_chance = {
+
+			base = 15
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		#no
+
+		add_political_power = -100
+
+	}
+
+}
+
+country_event = { #KHR gives kashi to TNG, move to Aksu TO TNG
+
+	id = AWR_TNG.20 #[FROM.GetLeader]离开喀什，迁往阿克苏
+
+	title = tng.15.t
+
+	desc = tng.15.d
+
+	picture = GFX_report_event_6th_division_officers
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.15.a
+
+		#set 619 as captial as well
+
+		ai_chance = {
+
+			base = 50
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		add_state_core = 619
+
+		transfer_state = 619
+
+		set_capital = { state = 619 }
+
+		add_war_support = 0.05
+
+		effect_tooltip = {
+
+			#FROM = {
+
+				#add_state_core = 1050
+
+		        #transfer_state = 1050
+
+			#}
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.15.b
+
+		#
+
+		add_state_core = 619
+
+		transfer_state = 619
+
+		effect_tooltip = {
+
+			#FROM = {
+
+			#	add_state_core = 1050
+
+		    #    transfer_state = 1050
+
+			#}
+
+		}
+
+	}
+
+}
+
+country_event = { #Rescue Ma Shaowu! Kasghar
+
+	id = AWR_TNG.21 #马绍武获救
+
+	title = tng.16.t
+
+	desc = tng.16.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		always = no ###
+
+		original_tag = KHR 
+
+		has_war_with = SIK
+
+		has_capitulated = no
+
+		has_completed_focus = CHI_cooperation_with_the_nationalists
+
+		has_government = neutrality
+
+		OR = {
+
+			NOT = {
+
+				SIK = {
+
+				    controls_state = 1051
+
+			    }
+
+			}
+
+			NOT = {
+
+				SIK = {
+
+				    controls_state = 1050
+
+			    }
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.16.a
+
+		ai_chance = {
+
+			base = 15
+
+		}
+
+		#yes
+
+	    add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = -100
+
+		}
+
+		add_manpower = -200
+
+		random_list = {
+
+			80 = {
+
+				country_event = {
+
+					id = AWR_TNG.24 days = 3
+
+				}
+
+			}
+
+			20 = {
+
+				country_event = {
+
+					id = AWR_TNG.25 days = 3
+
+				}
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.16.b
+
+		ai_chance = {
+
+			base = 30
+
+		}
+
+		#NOPE!
+
+	}
+
+}
+
+country_event = {
+
+					id = AWR_TNG.24 days = 3
+
+				}
+
+country_event = {
+
+					id = AWR_TNG.25 days = 3
+
+				}
+
+country_event = { #Rescue Ma Shaowu!
+
+	id = AWR_TNG.24 #马绍武在行动中死亡
+
+	title = tng.17.t
+
+	desc = tng.17.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.17.a
+
+		#yes
+
+		add_political_power = 50
+
+		add_manpower = 150
+
+		retire_country_leader = yes
+
+		KHR_Ma_Shaowu = {
+
+			add_country_leader_role = {
+
+				promote_leader = yes
+
+				country_leader = {
+
+					expire = "1965.1.1"
+
+					ideology = despotism
+
+					traits = { }            
+
+				} 
+
+			}  
+
+		}	   
+
+		effect_tooltip = {
+
+		    create_corps_commander = {
+
+			    name = "Ma Shaowu"
+
+			    picture = "gfx/leaders/SIK/Portrait_Ma_Shaowu.dds"
+
+			    traits = { harsh_leader }
+
+			    skill = 2
+
+			    attack_skill = 2
+
+			    defense_skill = 2
+
+			    planning_skill = 1
+
+			    logistics_skill = 1
+
+		    }
+
+		}
+
+		set_party_name = {
+
+			ideology = neutrality
+
+			name = "KMT"
+
+			long_name = "Kuomintang"
+
+		} 
+
+		set_global_flag = ma_shaowu_return
+
+	}
+
+}
+
+country_event = { #Rescue Ma Shaowu fail
+
+	id = AWR_TNG.25
+
+	title = tng.18.t
+
+	desc = tng.18.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = tng.17.a
+
+		#yes
+
+		add_manpower = 120
+
+		add_war_support = -0.01
+
+	}
+
+}
+
+country_event = { #9th division - disband?
+
+	id = AWR_TNG.26
+
+	title = tng.19.t
+
+	desc = tng.19.d
+
+	picture = GFX_report_event_36th_division
+
+	fire_only_once = yes
+
+	is_triggered_only = yes ###unused
+
+	trigger = {
+
+		tag = TNG
+
+		has_template = "Ch'iping Lü (Hsinpien Ti 9 Shih)"
+
+		date > 1936.12.1
+
+		SIK = {
+
+			exists = yes
+
+            NOT = {
+
+				has_war_with = ROOT 
+
+			}
+
+			is_subject = no
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = tng.19.a
+
+		#yes
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		delete_unit_template_and_units = {
+
+			division_template = "Ch'iping Lü (Hsinpien Ti 9 Shih)"
+
+			disband = yes #will refund equipment and manpower
+
+		}
+
+	}
+
+}
+
+country_event = { #9th division submits
+
+	id = AWR_TNG.27 #杨正中前往[WTT_current_china_leader.Capital.GetCapitalVictoryPointName]
+
+	title = tng.20.t
+
+	desc = tng.20.d
+
+	picture = GFX_report_event_ma_army_training
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#trigger = { ###
+
+	#	tag = TNG
+
+	#    date > 1936.4.1
+
+	#	NOT = {
+
+	#		has_war_with = event_target:WTT_current_china_leader
+
+	#	}
+
+	#	has_template = "Ch'iping Lü (Hsinpien Ti 9 Shih)"
+
+    #   OR = {
+
+	#		has_war_with = SIK
+
+	#		NOT = {
+
+	#			country_exists = SIK
+
+	#		}
+
+	#		SIK = {
+
+	#			is_subject = yes
+
+	#		}
+
+	#	}
+
+	#}
+
+	option = {
+
+		name = tng.20.a
+
+		set_global_flag = yang_left_sinkiang
+
+		#yes
+
+		#set_division_template_lock = {
+
+		#	division_template = "Ch'iping Lü (Hsinpien Ti 9 Shih)"
+
+		#	is_locked = no
+
+		#}
+
+		if = {
+
+			limit = {
+
+				has_idea = TNG_8th_division
+
+			}
+
+			remove_ideas = TNG_8th_division
+
+		}
+
+		#add_manpower = 5925
+
+		#add_equipment_to_stockpile = {
+
+		#	type = infantry_equipment
+
+		#	amount = 3260
+
+		#	producer = TNG
+
+		#}
+
+		add_war_support = 0.1
+
+		add_political_power = 50
+
+		#if = {
+
+		#	limit = {
+
+		#		NOT = {
+
+		#			has_template = "Ch'iping Lü (Hsinpien Ti 9 Shih)" 
+
+		#		}
+
+		#	}
+
+		#    division_template = {
+
+		#		name = "Ch'iping Lü (Hsinpien Ti 9 Shih)"	
+
+		#		division_names_group = TNG_CAV_01
+
+				#is_locked = yes
+
+				#force_allow_recruiting = no
+
+		#		regiments = {
+
+		#			cavalry = { x = 0 y = 0 }
+
+		#			cavalry = { x = 0 y = 1 }
+
+		#		}
+
+		#	}
+
+		#}
+
+		#if = {
+
+		#	limit = {
+
+		#		1049 = {
+
+		#			is_owned_and_controlled_by = ROOT
+
+		#		}
+
+		#	}
+
+		#	1049 = {
+
+		#		create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 1 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#		create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 2 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#		create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 3 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#	}
+
+		#    else = {
+
+        #        random_owned_controlled_state = {
+
+		#			create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 1 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#			create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 2 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#			create_unit = { division = "name = \"Luchün Hsinpien Ti 9 Shih Ti 3 Lü\" division_template = \"Ch'iping Lü (Hsinpien Ti 9 Shih)\" start_experience_factor = 0.2 start_equipment_factor = 0.55" owner = ROOT }
+
+		#		}
+
+		#	}
+
+		#}
+
+	}
+
+}
+
+country_event = { #truce with tng to sik
+
+	id = AWR_TNG.28 #签订和平协议？
+
+	title = tng.21.t
+
+	desc = tng.21.d
+
+	picture = GFX_report_event_ma_hushan
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#trigger = { ###
+
+	#	tag = SIK
+
+	#	is_subject = no
+
+	#	TNG = {
+
+	#		exists = yes
+
+	#		NOT = {
+
+	#			has_war_with = ROOT
+
+	#			has_border_war_with = ROOT
+
+	#		}
+
+	#	}
+
+	#	SOV = {
+
+	#		exists = yes
+
+	#		NOT = {
+
+	#			has_war_with = TNG
+
+	#			has_war_with = ROOT
+
+	#		}
+
+	#	}
+
+	#	OR = {
+
+	#		has_idea = SIK_Support_idea
+
+	#		has_idea = SIK_Weakened_ussr_influence
+
+	#	}
+
+	#	date > 1936.7.1
+
+	#}
+
+	
+
+	option = {
+
+		name = tng.21.a
+
+		#yes
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		remove_opinion_modifier = {
+
+			target = TNG
+
+			modifier = hostile_status
+
+		}
+
+		effect_tooltip = {
+
+            add_timed_idea = {
+
+				idea = SIK_tng_truce_agreement days = 1095
+
+			}
+
+		}
+
+		TNG = {
+
+			country_event = AWR_TNG.29
+
+		}
+
+		effect_tooltip = {
+
+			TNG = {
+
+				remove_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = hostile_status
+
+				}
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement_tng days = 1095
+
+				}
+
+			}	
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = tng.21.b
+
+		#no
+
+		add_stability = -0.1
+
+		declare_war_on = {
+
+		target = TNG
+
+		type = annex_everything
+
+		}
+
+	}
+
+}
+
+country_event = { #truce with sik to tng
+
+	id = AWR_TNG.29 #和平协议签订
+
+	title = tng.22.t
+
+	desc = tng.22.d
+
+	picture = GFX_report_event_ma_hushan
+
+	is_triggered_only = yes
+
+    immediate = {
+
+		hidden_effect = {
+
+			SIK = {
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement days = 1095
+
+				}
+
+			}
+
+			TNG = {
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement_tng days = 1095
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = tng.22.a
+
+		#change name to historical
+
+		#custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		set_cosmetic_tag = TNG_khotan
+
+		remove_opinion_modifier = {
+
+			target = SIK
+
+			modifier = hostile_status
+
+		}
+
+		effect_tooltip = {
+
+            add_timed_idea = {
+
+				idea = SIK_tng_truce_agreement_tng days = 1095
+
+			}
+
+		    FROM = {
+
+				remove_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = hostile_status
+
+				}
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement days = 1095
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = tng.22.b
+
+		#change name to n36d
+
+		set_cosmetic_tag = TNG_n36d
+
+		remove_opinion_modifier = {
+
+			target = SIK
+
+			modifier = hostile_status
+
+		}
+
+		effect_tooltip = {
+
+            add_timed_idea = {
+
+				idea = SIK_tng_truce_agreement_tng days = 1095
+
+			}
+
+		    FROM = {
+
+				remove_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = hostile_status
+
+				}
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement days = 1095
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = tng.22.c
+
+		#tunganistan
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		remove_opinion_modifier = {
+
+			target = SIK
+
+			modifier = hostile_status
+
+		}
+
+		effect_tooltip = {
+
+            add_timed_idea = {
+
+				idea = SIK_tng_truce_agreement_tng days = 1095
+
+			}
+
+		    FROM = {
+
+				remove_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = hostile_status
+
+				}
+
+				add_timed_idea = {
+
+					idea = SIK_tng_truce_agreement days = 1095
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #sinicization 1
+
+	id = AWR_TNG.30 #汉化的进度
+
+	title = tng.23.t
+
+	desc = tng.23.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = TNG
+
+		has_idea = TNG_push_sinicization
+
+		has_idea = TNG_Conflict_1 
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 150
+
+	}
+
+	immediate = {
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					has_idea = TNG_Conflict_1
+
+				}
+
+				swap_ideas = {
+
+					remove_idea = TNG_Conflict_1
+
+					add_idea = TNG_Conflict_2
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = tng.23.a
+
+		#yes
+
+		effect_tooltip = {
+
+			swap_ideas = {
+
+				remove_idea = TNG_Conflict_1
+
+				add_idea = TNG_Conflict_2
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #sinicization 2
+
+	id = AWR_TNG.31 #汉化完成
+
+	title = tng.24.t
+
+	desc = tng.24.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = TNG
+
+		NOT = {
+
+			has_idea = TNG_push_sinicization
+
+		}
+
+		has_idea = TNG_Conflict_2
+
+	}
+
+	immediate = {
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = tng.24.a
+
+		#yes
+
+		if = {
+
+			limit = {
+
+				has_idea = TNG_Conflict_2
+
+			}
+
+			remove_ideas = TNG_Conflict_2
+
+		}
+
+	}
+
+}
+
+country_event = { #ma yanliang returns
+
+	id = AWR_TNG.32 #马彦良回国
+
+	title = tng.25.t
+
+	desc = tng.25.d
+
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = tng.25.a
+
+		#yes
+
+		set_country_flag = ma_yanliang_return
+
+		effect_tooltip = {
+
+			add_corps_commander_role = {
+
+				character = TNG_ma_yanliang
+
+				traits={}
+
+			    skill=1
+
+			    attack_skill=1
+
+			    defense_skill=1
+
+			    planning_skill=1
+
+			    logistics_skill=1
+
+				legacy_id =-1 
+
+			}	
+
+		}
+
+		add_popularity = {
+
+			ideology = communism
+
+			popularity = 0.15
+
+		}
+
+		unlock_national_focus = TNG_kashgar_issue	
+
+	}
+
+}
+
+country_event = { #peace with sov to sov
+
+	id = AWR_TNG.33 #与[From.GetName]和谈
+
+	title = tng.26.t
+
+	desc = tng.26.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = tng.26.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		FROM = {
+
+			country_event = AWR_TNG.34
+
+		}
+
+		effect_tooltip = {
+
+            every_owned_state = {
+
+				limit = {
+
+					OR = {
+
+						is_controlled_by = FROM
+
+						controller = {
+
+							is_ally_with = FROM
+
+						}
+
+					}
+
+				}
+
+				transfer_state_to = FROM
+
+			}
+
+			white_peace = FROM
+
+			every_other_country = {
+
+				limit = {
+
+					is_ally_with = ROOT
+
+				}
+
+				white_peace = FROM
+
+			}
+
+			every_enemy_country = {
+
+				limit = {
+
+					is_ally_with = FROM
+
+				}
+
+				white_peace = ROOT
+
+			}
+
+		}
+
+        add_political_power = -100
+
+	}
+
+
+
+	option = {
+
+		name = tng.26.b
+
+		#no
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		FROM = {
+
+			country_event = AWR_CHI.3923
+
+		}
+
+		add_war_support = 0.05
+
+	}
+
+}
+
+country_event = { #peace with sov yes to tng
+
+	id = AWR_TNG.34 #与[From.GetName]的和平协议
+
+	title = tng.27.t
+
+	desc = tng.27.d
+
+	picture = GFX_report_event_Ma_zhongying
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = tng.27.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		FROM = {
+
+            every_owned_state = {
+
+				limit = {
+
+					OR = {
+
+						is_controlled_by = ROOT
+
+						controller = {
+
+							is_ally_with = ROOT
+
+						}
+
+					}
+
+				}
+
+				transfer_state_to = ROOT
+
+			}
+
+		}
+
+		white_peace = FROM
+
+		every_other_country = {
+
+			limit = {
+
+				is_ally_with = ROOT
+
+			}
+
+			white_peace = FROM
+
+		}
+
+		every_enemy_country = {
+
+			limit = {
+
+				is_ally_with = FROM
+
+			}
+
+			white_peace = ROOT
+
+		}
+
+		add_political_power = 100
+
+		add_stability = 0.1
+
+	} 
+
+}
+
+country_event = { #west route army wants to enter kumul
+
+	id = AWR_TNG.35 #西路军抵达星星峡
+
+	title = tng.28.t
+
+	desc = tng.28.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = HMI
+
+		is_subject = no
+
+		760 = {
+
+			is_owned_and_controlled_by = ROOT
+
+		}
+
+		PRC = {
+
+			exists = yes
+
+			has_country_flag = went_with_gansu_plan
+
+			has_country_flag = no_PRC_west_expedition_victory
+
+		}
+
+		any_neighbor_country = {
+
+			original_tag = SIK
+
+			has_government = communism
+
+			NOT = {
+
+				is_subject = yes
+
+				is_ally_with = ROOT
+
+				has_war_with = PRC
+
+				focus_progress = {
+
+					focus = SIK_Refused_entry
+
+					progress > 0.000
+
+				}
+
+				has_completed_focus = SIK_Refused_entry
+
+			}
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 25
+
+	}
+
+
+
+	option = {
+
+		name = tng.28.a
+
+		#yes, they can enter
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				NOT = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+		}
+
+		remove_opinion_modifier = {
+
+			target = PRC
+
+			modifier = hostile_status
+
+		}
+
+		add_popularity = {
+
+			ideology = communism
+
+			popularity = 0.15
+
+		}
+
+		add_popularity = {
+
+			ideology = n_socialism
+
+			popularity = 0.05
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+			add_stability = -0.15
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = tng.28.b
+
+		#no
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 300
+
+				NOT = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		random_neighbor_country = {
+
+			limit = {
+
+				original_tag = SIK
+
+			    has_government = communism
+
+			    NOT = {
+
+				    is_subject = yes
+
+				    is_ally_with = ROOT
+
+				    has_war_with = PRC
+
+			    }
+
+			}    
+
+		    country_event = {
+
+				id = AWR_TNG.37 hours = 24
+
+		    }
+
+		}	
+
+		custom_effect_tooltip = sik_and_west_route_army_may_attack_tt
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_TNG.37 hours = 24
+
+		    }
+
+country_event = { #west route army wants to enter kumul, hmi refuses, to SIK
+
+	id = AWR_TNG.37 #[HMI.GetName]阻挡西路军
+
+	title = tng.29.t
+
+	desc = tng.29.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = tng.29.a
+
+		#attack HMI with the WRA
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 500
+
+				has_government = communism
+
+			}
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		declare_war_on = { target = HMI type = annex_everything }
+
+		add_manpower = 400
+
+		#if = {
+
+		#	limit = {
+
+		#		NOT = {
+
+		#			has_template = "Hsiluchün Tso Chihtui"
+
+		#		}
+
+		#	}
+
+		#	division_template = {
+
+		#		name = "Hsiluchün Tso Chihtui" 			
+
+		#		division_names_group = SIK_GAR_01
+
+		#		regiments = {
+
+		#			infantry = { x = 0 y = 0 }
+
+		#		}
+
+		#	}
+
+		#}
+
+		#760 = {
+
+		#	create_unit = { division = "name = \"Hsiluchün Tso Chihtui\" division_template = \"Hsiluchün Tso Chihtui\" start_experience_factor = 0.5 start_manpower_factor = 0.4" owner = SIK allow_spawning_on_enemy_provs = yes prioritize_location = 13288 }
+
+		#}
+
+	}
+
+
+
+	option = {
+
+		name = tng.29.b
+
+		#no
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 200
+
+				NOT = {
+
+					OR = {
+
+						has_government = communism
+
+						has_government = n_socialism
+
+					}
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_TNG.39 hours = 12
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_TNG.39 hours = 12
+
+			}
+
+country_event = { #sik attacks! to hmi
+
+	id = AWR_TNG.39 #[FROM.GetName]跟西路军发动了攻击
+
+	title = tng.30.t
+
+	desc = tng.30.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = tng.30.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				declare_war_on = { target = HMI type = annex_everything }
+
+				#760 = {
+
+				#	create_unit = { division = "name = \"Hsiluchün Tso Chihtui\" division_template = \"Hsiluchün Tso Chihtui\" start_experience_factor = 0.5 start_manpower_factor = 0.4" owner = SIK allow_spawning_on_enemy_provs = yes prioritize_location = 13288 }
+
+				#}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #sik is not attacking hmi to hmi
+
+	id = AWR_TNG.40 #[FROM.GetName]同意我们的举动
+
+	title = tng.31.t
+
+	desc = tng.31.d
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = tng.31.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+	}
+
+}
+
+country_event = { #purge n36d remains
+
+	id = AWR_TNG.41 #新编第三十六师的命运
+
+	title = tng.32.t
+
+	desc = tng.32.d
+
+	picture = GFX_report_event_36th_division
+
+	fire_only_once = yes
+
+	is_triggered_only = no
+
+	trigger = {
+
+		original_tag = SIK
+
+		has_character = TNG_ma_shengkui
+
+		TNG = {
+
+			exists = no
+
+		}
+
+	}
+
+	option = {
+
+		name = tng.32.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_character = TNG_ma_shengkui
+
+			}
+
+			retire_character = TNG_ma_shengkui
+
+		}
+
+		add_manpower = -5000
+
+		add_stability = 0.12
+
+	}
+
+	option = {
+
+		name = tng.32.b
+
+		add_political_power = -50
+
+		add_stability = -0.05
+
+	}
+
+}
+
+country_event = { #normal khotan nephrites
+
+	id = AWR_TNG.42 #和阗玉出土
+
+	title = tng_mining.1.t
+
+	desc = tng_mining.1.d
+
+	picture = GFX_report_event_khotan_mining
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.1.a
+
+		add_timed_idea = {
+
+			idea = TNG_khotan_nephrite days = 150
+
+		}
+
+	}
+
+}
+
+country_event = { #no khotan nephrite
+
+	id = AWR_TNG.43 #没能发现和阗玉
+
+	title = tng_mining.2.t
+
+	desc = tng_mining.2.d
+
+	picture = GFX_report_event_ma_hushan
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.2.a
+
+		
+
+	}
+
+}
+
+country_event = { #few khotan nephrites
+
+	id = AWR_TNG.44 #出土少量和阗玉
+
+	title = tng_mining.3.t
+
+	desc = tng_mining.3.d
+
+	picture = GFX_report_event_khotan_mining
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.3.a
+
+		add_timed_idea = {
+
+			idea = TNG_less_khotan_nephrite days = 150
+
+		}
+
+	}
+
+}
+
+country_event = { #giant khotan nephrite 
+
+	id = AWR_TNG.45 #一颗巨大的和阗玉出土
+
+	title = tng_mining.4.t
+
+	desc = tng_mining.4.d
+
+	picture = GFX_report_event_khotan_large_nephrite
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.4.a
+
+		add_political_power = 100
+
+		add_timed_idea = {
+
+			idea = TNG_large_khotan_nephrite days = 150
+
+		}
+
+	}
+
+}
+
+country_event = { #fossil?
+
+	id = AWR_TNG.46 #"龙骨"出土
+
+	title = tng_mining.5.t
+
+	desc = tng_mining.5.d
+
+	picture = GFX_report_event_khotan_fossil
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.5.a
+
+		add_political_power = 100
+
+		add_timed_idea = {
+
+			idea = TNG_fossil days = 150
+
+		}
+
+	}
+
+}
+
+country_event = { #ancient antique A
+
+	id = AWR_TNG.47
+
+	title = tng_mining.6.t
+
+	desc = tng_mining.6.d
+
+	picture = GFX_report_event_ma_hushan
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.6.a
+
+		
+
+	}
+
+}
+
+country_event = { #ancient antique B
+
+	id = AWR_TNG.48
+
+	title = tng_mining.7.t
+
+	desc = tng_mining.7.d
+
+	picture = GFX_report_event_ma_hushan
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.7.a
+
+		
+
+	}
+
+}
+
+country_event = { #ancient antique C
+
+	id = AWR_TNG.49
+
+	title = tng_mining.8.t
+
+	desc = tng_mining.8.d
+
+	picture = GFX_report_event_ma_hushan
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_mining.8.a
+
+		
+
+	}
+
+}
+
+country_event = { #unlock trade
+
+	id = AWR_TNG.50 #开始与[From.GetName]的贸易
+
+	title = tng_trade.0.t
+
+	desc = tng_trade.0.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.0.a
+
+		
+
+	}
+
+}
+
+country_event = { #trade with xsm
+
+	id = AWR_TNG.51 #与[XSM.GetName]的贸易
+
+	title = tng_trade.1.t	
+
+	desc = tng_trade.1.desc
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.1.a
+
+		#get 3k ammo with 200 guns
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 30
+
+				has_political_power > 200
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		custom_effect_tooltip = receive_3k_ammo
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = 200
+
+			producer = XSM
+
+		}
+
+		add_to_variable = { TNG.ammunition_variable = 3 }
+
+		XSM = {
+
+			country_event = AWR_TNG.52
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_XSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_XSM_trade
+
+		}
+
+		set_global_flag = tng_trade_xsm_1_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.1.b
+
+		#get 1k ammo with 70 guns
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 100
+
+			}
+
+		}
+
+		add_political_power = -50
+
+        custom_effect_tooltip = receive_1k_ammo
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = 70
+
+			producer = XSM
+
+		}
+
+		add_to_variable = { TNG.ammunition_variable = 1 }
+
+		XSM = {
+
+			country_event = AWR_TNG.52
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_XSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_XSM_trade
+
+		}
+
+		set_global_flag = tng_trade_xsm_2_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.1.c
+
+		ai_chance = {
+
+			factor = 15
+
+		}
+
+		#not interested!
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_XSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_XSM_trade
+
+		}
+
+	}
+
+	option = {
+
+		name = tng_trade.1.d
+
+		#stop trading
+
+		custom_effect_tooltip = trading_will_be_disabled_tt
+
+	}
+
+}
+
+country_event = { #trade with xsm to xsm
+
+	id = AWR_TNG.52 #与[From.GetName]的贸易
+
+	title = tng_trade.2.t
+
+	desc = tng_trade.2.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.2.a
+
+		#1
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_xsm_1_flag
+
+			}
+
+			clr_global_flag = tng_trade_xsm_1_flag
+
+			add_political_power = 100
+
+		}
+
+		#2
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_xsm_2_flag
+
+			}
+
+			clr_global_flag = tng_trade_xsm_2_flag
+
+			add_political_power = 50
+
+		}
+
+	}
+
+}
+
+country_event = { #trade with gsm
+
+	id = AWR_TNG.53 #与[GSM.GetName]的贸易
+
+	title = tng_trade.3.t	
+
+	desc = tng_trade.3.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.3.a
+
+		#get 200 guns
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 30
+
+				has_political_power > 200
+
+			}
+
+		}
+
+		add_political_power = -75
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = 200
+
+			producer = GSM
+
+		}
+
+		GSM = {
+
+			country_event = AWR_TNG.54
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_GSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_GSM_trade
+
+		}
+
+		set_global_flag = tng_trade_gsm_1_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.3.b
+
+		#get 50 guns
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 100
+
+			}
+
+		}
+
+		add_political_power = -25
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = 50
+
+			producer = GSM
+
+		}
+
+		GSM = {
+
+			country_event = AWR_TNG.54
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_GSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_GSM_trade
+
+		}
+
+		set_global_flag = tng_trade_gsm_2_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.3.c
+
+		#not interested!
+
+		ai_chance = {
+
+			factor = 15
+
+		}
+
+        if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_GSM_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_GSM_trade
+
+		}
+
+	}
+
+	option = {
+
+		name = tng_trade.1.d
+
+		#stop trading
+
+		custom_effect_tooltip = trading_will_be_disabled_tt
+
+	}
+
+}
+
+country_event = { #trade with gsm to gsm
+
+	id = AWR_TNG.54 #与[From.GetName]的贸易
+
+	title = tng_trade.4.t
+
+	desc = tng_trade.4.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.4.a
+
+		#1
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_gsm_1_flag
+
+			}
+
+			clr_global_flag = tng_trade_gsm_1_flag
+
+			add_political_power = 75
+
+		}
+
+		#2
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_gsm_2_flag
+
+			}
+
+			clr_global_flag = tng_trade_gsm_2_flag
+
+			add_political_power = 25
+
+		}
+
+	}
+
+}
+
+country_event = { #trade with RAJ
+
+	id = AWR_TNG.55 #与[RAJ.GetName]的贸易
+
+	title = tng_trade.5.t	
+
+	desc = tng_trade.5.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.5.a
+
+		#arms bonus
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 200
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		add_tech_bonus = {
+
+			name = infantry_artillery_bonus
+
+			bonus = 0.5
+
+			uses = 1
+
+			category = infantry_weapons
+
+			category = artillery
+
+		}
+
+		RAJ = {
+
+			country_event = AWR_TNG.56
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_RAJ_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_RAJ_trade
+
+		}
+
+		set_global_flag = tng_trade_raj_1_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.5.b
+
+		#get industrial bonus
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 100
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		add_tech_bonus = {
+
+			name = industrial_bonus
+
+			bonus = 0.5
+
+			uses = 1
+
+			category = industry
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_RAJ_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_RAJ_trade
+
+		}
+
+		set_global_flag = tng_trade_raj_2_flag
+
+	}
+
+	
+
+	#option = {
+
+	#	name = tng_trade.5.c
+
+	#	#get 50 guns
+
+	#	add_political_power = -100
+
+	#	add_tech_bonus = {
+
+	#		name = industrial_bonus
+
+	#		bonus = 0.5
+
+	#		uses = 1
+
+	#		category = industry
+
+	#	}
+
+	#	activate_mission = TNG_RAJ_trade
+
+	#	set_global_flag = tng_trade_raj_3_flag
+
+	#}
+
+	option = {
+
+		name = tng_trade.5.c
+
+		ai_chance = {
+
+			factor = 15
+
+		}
+
+		#not interested!
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_RAJ_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_RAJ_trade
+
+		}
+
+	}
+
+	option = {
+
+		name = tng_trade.1.d
+
+		#stop trading
+
+		custom_effect_tooltip = trading_will_be_disabled_tt
+
+	}
+
+}
+
+country_event = { #trade with raj to raj
+
+	id = AWR_TNG.56 #与[From.GetName]的贸易
+
+	title = tng_trade.6.t
+
+	desc = tng_trade.6.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.6.a
+
+		#1
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_raj_1_flag
+
+			}
+
+			clr_global_flag = tng_trade_raj_1_flag
+
+			add_political_power = 100
+
+		}
+
+		#2
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_raj_2_flag
+
+			}
+
+			clr_global_flag = tng_trade_raj_2_flag
+
+			add_political_power = 100
+
+		}
+
+	}
+
+}
+
+country_event = { #trade with SOV
+
+	id = AWR_TNG.57 #与[SOV.GetName]的贸易
+
+	title = tng_trade.7.t	
+
+	desc = tng_trade.7.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.7.a
+
+		#artillery
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 200
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		add_equipment_to_stockpile = {
+
+			type = artillery_equipment
+
+			amount = 30
+
+		}
+
+		SOV = {
+
+			country_event = AWR_TNG.58
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_SOV_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_SOV_trade
+
+		}
+
+		set_global_flag = tng_trade_sov_1_flag
+
+	}
+
+	option = {
+
+		name = tng_trade.7.b
+
+		#support equipment
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				has_political_power > 100
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		add_equipment_to_stockpile = {
+
+			type = support_equipment
+
+			amount = 50
+
+		}
+
+		SOV = {
+
+			country_event = AWR_TNG.58
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_SOV_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_SOV_trade
+
+		}
+
+		set_global_flag = tng_trade_sov_2_flag
+
+	}
+
+	
+
+	#option = {
+
+	#	name = tng_trade.5.c
+
+	#	#get 50 guns
+
+	#	add_political_power = -100
+
+	#	add_tech_bonus = {
+
+	#		name = industrial_bonus
+
+	#		bonus = 0.5
+
+	#		uses = 1
+
+	#		category = industry
+
+	#	}
+
+	#	activate_mission = TNG_RAJ_trade
+
+	#	set_global_flag = tng_trade_raj_3_flag
+
+	#}
+
+	option = {
+
+		name = tng_trade.7.c
+
+		ai_chance = {
+
+			factor = 15
+
+		}
+
+		#not interested!
+
+        if = {
+
+			limit = {
+
+				NOT = {
+
+					has_active_mission = TNG_SOV_trade
+
+				}
+
+			}
+
+		    activate_mission = TNG_SOV_trade
+
+		}
+
+	}
+
+	option = {
+
+		name = tng_trade.1.d
+
+		#stop trading
+
+		custom_effect_tooltip = trading_will_be_disabled_tt
+
+	}
+
+}
+
+country_event = { #trade with sov to sov
+
+	id = AWR_TNG.58 #与[From.GetName]的贸易
+
+	title = tng_trade.8.t
+
+	desc = tng_trade.8.d
+
+	
+
+	picture = GFX_report_event_yugoslavian_cavalry
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = tng_trade.8.a
+
+		#1
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_sov_1_flag
+
+			}
+
+			clr_global_flag = tng_trade_sov_1_flag
+
+			add_political_power = 100
+
+		}
+
+		#2
+
+		if = {
+
+			limit = {
+
+				has_global_flag = tng_trade_sov_2_flag
+
+			}
+
+			clr_global_flag = tng_trade_sov_2_flag
+
+			add_political_power = 100
+
+		}
+
+	}
+
+}

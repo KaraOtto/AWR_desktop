@@ -1,7 +1,5 @@
-﻿capital = 330
-
+capital = 330
 oob = "MON_1936"
-
 recruit_character = MON_khorloogiin_choibalsan
 recruit_character = RUS_grigory_semyonov
 recruit_character = RUS_vladimir_kislitsin
@@ -20,21 +18,17 @@ recruit_character = MON_batyn_dorj
 recruit_character = MON_gendengiin_rendoo
 recruit_character = MON_dandar_baatar
 recruit_character = MON_shaariibuu
-
-# Starting tech
 set_technology = {
 	infantry_weapons = 1
 	tech_trucks = 1
 	motorised_infantry = 1
 	gw_artillery = 1
 }
-
 add_ideas = {
-	limited_conscription
+	generic_limited_conscription
 	MON_power_struggle
-	MON_nomadic
+	generic_nomadic
 }
-
 if = {
 	limit = { has_dlc = "By Blood Alone" }
 		set_air_oob = "MON_1936_air_bba"
@@ -42,7 +36,6 @@ if = {
 		set_air_oob = "MON_1936_air_legacy"
 	}
 }
-
 if = {
     limit = {
         has_dlc = "La Resistance"
@@ -51,12 +44,8 @@ if = {
         armored_car1 = 1
     }
 }
-
 1939.1.1 = {
-
 	add_political_power = 1198
-
-	#generic focuses
 	complete_national_focus = MON_republicanism
 	complete_national_focus = MON_SOV_focus
 	complete_national_focus = MON_communism_focus
@@ -74,19 +63,14 @@ if = {
 	complete_national_focus = MON_national_education
 	complete_national_focus = MON_artillery
 	complete_national_focus = MON_indoctrination
-
 	oob = "MON_1939"
 	set_technology = {
 		support_weapons = 1
 		gw_artillery = 1
-
-		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
 		radio_detection = 1
 		mechanical_computing = 1
-
-		#industry
 		basic_machine_tools = 1
 		improved_machine_tools = 1
 		advanced_machine_tools = 1
@@ -96,7 +80,6 @@ if = {
 		concentrated_industry2 = 1
 	}
 }
-
 set_popularities = {
 	democratic = 0
 	fascism = 5
@@ -104,27 +87,24 @@ set_popularities = {
 	neutrality = 10
 }
 set_politics = {
-
 	ruling_party = communism
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
-
 create_country_leader = {
-	name = MON_Anandyn_Amar 
+	name = MON_Anandyn_Amar
 	desc = "POLITICS_ANANDYN_AMAR_DESC"
-	picture = "gfx/leaders/MON/Portrait_MON_Anandyn_Amar.dds"
+	picture = "gfx/leaders/MON_leader_mon_anandyn_amar.dds"
 	expire = "1965.1.1"
 	ideology = marxism
 	traits = {
-		#
 	}
 }
 create_country_leader = {
-	name = MON_Sambadondogiin_Tserendorj 
+	name = MON_Sambadondogiin_Tserendorj
 	desc = "POLITICS_TSERENDORJ_DESC"
-	picture = "gfx/leaders/MON/Portrait_Tserendorj.dds"
+	picture = "gfx/leaders/MON_leader_mon_sambadondogiin_tserendorj.dds"
 	expire = "1965.1.1"
 	ideology = centrism
 	traits = {
@@ -132,9 +112,9 @@ create_country_leader = {
 	}
 }
 create_country_leader = {
-	name = MON_Sambadondogiin_Tserendorj 
+	name = MON_Sambadondogiin_Tserendorj
 	desc = "POLITICS_TSERENDORJ_DESC"
-	picture = "gfx/leaders/MON/Portrait_Tserendorj.dds"
+	picture = "gfx/leaders/MON_leader_mon_sambadondogiin_tserendorj.dds"
 	expire = "1965.1.1"
 	ideology = fascism_ideology
 	traits = {
@@ -144,20 +124,16 @@ create_country_leader = {
 create_country_leader = {
 	name = MON_Jamsrangiin_Tseveen
 	desc = "POLITICS_TSEVEEN_DESC"
-	picture = "gfx/leaders/MON/Portrait_Tseveen.dds"
+	picture = "gfx/leaders/MON_leader_mon_jamsrangiin_tseveen.dds"
 	expire = "1965.1.1"
 	ideology = socialism
 	traits = {
-		#
 	}
 }
-
 1939.1.1 = {
-
 	add_ideas = {
-	limited_conscription
+	generic_limited_conscription
 	}
-
 	set_popularities = {
 		democratic = 0
 		fascism = 0
@@ -170,11 +146,10 @@ create_country_leader = {
 		election_frequency = 48
 		elections_allowed = no
 	}
-
 	create_country_leader = {
 		name = "Khorloogiin Choibalsan"
 		desc = "POLITICS_KHORLOOGIIN_CHOIBALSAN_DESC"
-		picture = "gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+		picture = "gfx/leaders/MON_leader_khorloogiin_choibalsan.dds"
 		expire = "1952.1.1"
 		ideology = stalinism
 		traits = {

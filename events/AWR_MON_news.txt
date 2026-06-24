@@ -1,0 +1,8741 @@
+# MON 新闻事件
+
+add_namespace = AWR_MON_news
+
+country_event = {
+
+	id = AWR_MON.1
+
+	title = NSB_soviet_for_the_common_good.1.t
+
+	desc = NSB_soviet_for_the_common_good.1.desc
+
+	picture = GFX_report_event_SOV_demands
+
+	
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			if = { #sUBJECT EFFECTS
+
+				limit = {
+
+					is_subject_of = FROM
+
+				}
+
+				add_ideas = SOV_for_the_common_good_subjects
+
+				add_autonomy_score = {
+
+					value = -100
+
+					localization = SOV_for_the_common_good
+
+				}
+
+			}
+
+			else = { #ALLY EFFECTS
+
+				add_ideas = SOV_for_the_common_good_allies
+
+				if = {
+
+					limit = {
+
+						has_dlc = "Death or Dishonor"
+
+					}
+
+					add_relation_modifier = {
+
+						target = ROOT
+
+						modifier = SOV_for_the_common_good_relation
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_for_the_common_good.1.a
+
+
+
+		effect_tooltip = {
+
+			if = { #sUBJECT EFFECTS
+
+				limit = {
+
+					is_subject_of = FROM
+
+				}
+
+				add_ideas = SOV_for_the_common_good_subjects
+
+				add_autonomy_score = {
+
+					value = -100
+
+					localization = SOV_for_the_common_good
+
+				}
+
+			}
+
+			else = { #ALLY EFFECTS
+
+				add_ideas = SOV_for_the_common_good_allies
+
+				if = {
+
+					limit = {
+
+						has_dlc = "Death or Dishonor"
+
+					}
+
+					add_relation_modifier = {
+
+						target = ROOT
+
+						modifier = SOV_for_the_common_good_relation
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.2
+
+	title = NSB_soviet_civil_war_common.001.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.001.desc_left 
+
+		trigger = { SOV_is_left_opposition = yes }
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.001.desc_right_concessions 
+
+		trigger = { 
+
+			SOV_is_right_opposition = yes 
+
+			OR = {
+
+				has_country_flag = SOV_CSW_transfer_vladivostok_flag
+
+				has_country_flag = SOV_CSW_transfer_sakhalin_flag 
+
+				has_country_flag = SOV_CSW_baku_oil_flag 
+
+				has_country_flag = SOV_CSW_ukraine_germany_flag 
+
+				has_country_flag = SOV_CSW_belarus_uk_flag  
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.001.desc_right_no_concessions 
+
+		trigger = { 
+
+			SOV_is_right_opposition = yes 
+
+			NOT = { has_country_flag = SOV_CSW_transfer_vladivostok_flag }
+
+			NOT = { has_country_flag = SOV_CSW_transfer_sakhalin_flag }
+
+			NOT = { has_country_flag = SOV_CSW_baku_oil_flag }
+
+			NOT = { has_country_flag = SOV_CSW_ukraine_germany_flag }
+
+			NOT = { has_country_flag = SOV_CSW_belarus_uk_flag  }
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.001.desc_exiles
+
+		trigger = { 
+
+			SOV_is_exiles = yes 
+
+		}
+
+	}
+
+	picture = GFX_report_event_generic_ruins
+
+
+
+	is_triggered_only = yes
+
+
+
+	
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.001.a
+
+
+
+		# Vladivostok 
+
+		IF = {
+
+			limit = {
+
+				has_country_flag = SOV_CSW_transfer_vladivostok_flag 
+
+				owns_state = 408
+
+			}
+
+			JAP = {
+
+				transfer_state = 408
+
+			}
+
+		}
+
+
+
+		# Send Japanese General home
+
+		every_army_leader = {
+
+			limit = {
+
+				has_character_flag = japanese_expeditionary_leader_flag
+
+			}
+
+			set_nationality = JAP
+
+		}
+
+
+
+		# North Sakhalin 
+
+		IF = {
+
+			limit = {
+
+				has_country_flag = SOV_CSW_transfer_sakhalin_flag 
+
+				owns_state = 655
+
+			}
+
+			JAP = {
+
+				transfer_state = 655
+
+			}
+
+		}
+
+
+
+		# Baku Oil
+
+		IF = {
+
+			limit = {
+
+				has_country_flag = SOV_CSW_baku_oil_flag 
+
+				owns_state = 229
+
+			}
+
+			give_resource_rights = { receiver = GER state = 229 }
+
+		}
+
+
+
+		# Send advisors home
+
+		every_army_leader = {
+
+			limit = {
+
+				has_trait = trait_SOV_foreign_military_advisor
+
+			}
+
+			set_nationality = GER
+
+			remove_unit_leader_trait = trait_SOV_foreign_military_advisor
+
+		}
+
+
+
+		# Ukrainian oil for Germany 
+
+		IF = {
+
+			limit = {
+
+				has_country_flag = SOV_CSW_ukraine_germany_flag 
+
+				UKR = { owns_state = 192 }
+
+			}
+
+			UKR = { give_resource_rights = { receiver = GER state = 229 } }
+
+		}
+
+
+
+		# Independence for Belarus
+
+		
+
+		IF = {
+
+			limit = {
+
+				has_country_flag = SOV_CSW_belarus_uk_flag 
+
+			}
+
+			release = BLR
+
+		}
+
+
+
+
+
+		# Set capital 
+
+		country_event = {
+
+			id = AWR_MON.5
+
+			days = 7
+
+			random_days = 5
+
+		}
+
+		# De-stalinization 
+
+		country_event = {
+
+			id = AWR_MON.10
+
+			days = 21
+
+			random_days = 7
+
+		}
+
+		hidden_effect = {
+
+			news_event = { id = AWR_CHI_news.512 hours = 8 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+			id = AWR_MON.5
+
+			days = 7
+
+			random_days = 5
+
+		}
+
+country_event = {
+
+			id = AWR_MON.10
+
+			days = 21
+
+			random_days = 7
+
+		}
+
+country_event = {
+
+	id = AWR_MON.5
+
+	title = NSB_soviet_civil_war_common.002.t
+
+	desc = NSB_soviet_civil_war_common.002.desc
+
+	picture = GFX_report_event_generic_ruins 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Moscow
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.a
+
+		ai_chance = {
+
+			base = 10
+
+			modifier = {
+
+				factor = 1.5
+
+				SOV_is_right_opposition = yes 
+
+			}
+
+			modifier = {
+
+				factor = 2
+
+				has_country_leader = { character = SOV_lev_kamenev }
+
+			}
+
+		}
+
+		trigger = {
+
+			219 = { 
+
+				is_owned_by = ROOT 
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+		set_capital = { state = 219 }
+
+
+
+	}
+
+	# Leningrad
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.b
+
+		ai_chance = {
+
+			base = 5
+
+			modifier = {
+
+				factor = 3
+
+				has_country_leader = { character = SOV_grigory_zinovyev }
+
+			}
+
+		}
+
+		trigger = {
+
+			195 = { 
+
+				is_owned_by = ROOT 
+
+				is_controlled_by = ROOT
+
+			}
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+		set_capital = { state = 195 }
+
+	}
+
+	# Petrograd
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.c
+
+		ai_chance = {
+
+			base = 5
+
+			modifier = {
+
+				factor = 4
+
+				has_country_leader = { character = SOV_lev_trotsky }
+
+			}
+
+		}
+
+		trigger = {
+
+			195 = { 
+
+				is_owned_by = ROOT 
+
+				is_controlled_by = ROOT
+
+			}
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+		195 = { set_state_name = SOV_petrograd }
+
+		set_province_name = {
+
+			id = 3151
+
+			name = SOV_petrograd
+
+		}
+
+		set_capital = { state = 195 }
+
+	}
+
+	# Keep the one we have
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.d
+
+		ai_chance = {
+
+			base = 1
+
+		}
+
+		trigger = {
+
+			var:SOV_civil_war_start_state = { is_owned_by = ROOT }
+
+		}
+
+		set_capital = { state = var:SOV_civil_war_start_state }
+
+	}
+
+	# Vladivostok
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.e
+
+		ai_chance = {
+
+			base = 2
+
+		}
+
+		trigger = {
+
+			408 = { 
+
+				is_owned_by = ROOT 
+
+				is_controlled_by = ROOT
+
+			}
+
+			SOV_is_exiles = yes
+
+		}
+
+		set_capital = { state = 408 }
+
+	}
+
+	# St. Petersburg
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.002.f
+
+		ai_chance = {
+
+			base = 10
+
+		}
+
+		trigger = {
+
+			195 = { 
+
+				is_owned_by = ROOT 
+
+				is_controlled_by = ROOT
+
+			}
+
+			SOV_is_exiles = yes
+
+		}
+
+		195 = { set_state_name = SOV_StPetersburg }
+
+		set_province_name = {
+
+			id = 3151
+
+			name = SOV_StPetersburg
+
+		}
+
+		set_capital = { state = 195 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.6
+
+	title = NSB_soviet_civil_war_common.003.t
+
+	desc = NSB_soviet_civil_war_common.003.desc
+
+	picture = GFX_report_event_soviet_soldiers
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Here we go
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.003.a
+
+		IF = { 
+
+			limit = {
+
+				SOV_is_left_opposition = yes 
+
+			}
+
+			country_event = {
+
+				id = AWR_CHI.2041
+
+				hours = 1
+
+			}
+
+		}
+
+		ELSE_IF = { 
+
+			limit = {
+
+				SOV_is_right_opposition = yes 
+
+			}
+
+			country_event = {
+
+				id = AWR_CHI.2042
+
+				hours = 1
+
+			}
+
+		}
+
+		ELSE_IF = { 
+
+			limit = {
+
+				SOV_is_exiles = yes 
+
+			}
+
+			country_event = {
+
+				id = AWR_CHI.2043
+
+				hours = 1
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.7
+
+	title = NSB_soviet_civil_war_common.004.t
+
+	desc = NSB_soviet_civil_war_common.004.desc  
+
+	# # Hidden event, no need for picture
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+	trigger = {
+
+		SOV_soviet_civil_war_not_started = yes # Don't run if war has already started
+
+	}
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.004.a
+
+		IF = { 
+
+			limit = { 
+
+				NOT = { has_global_flag = SOV_soviet_civil_war_over } # Sanity check, in order not to activate more missions once the war has started
+
+			}
+
+			random_list = {
+
+				# Secure loyalty of a General
+
+				10 = {
+
+					random_army_leader = {
+
+						limit = {
+
+							NOT = { has_trait = trait_SOV_stalinist }
+
+							NOT = { has_trait = trait_SOV_bukharinist }
+
+							NOT = { has_trait = trait_SOV_trotskyist }
+
+							NOT = { has_trait = trait_SOV_monarchist_sympathizer }
+
+						}
+
+						set_variable = { SOV.SOV_selected_general_stalin = THIS }
+
+
+
+					}
+
+					activate_mission = SOV_align_general_stalin
+
+				}
+
+				10 = {
+
+					random_navy_leader = {
+
+						limit = {
+
+							NOT = { has_trait = trait_SOV_stalinist }
+
+							NOT = { has_trait = trait_SOV_bukharinist }
+
+							NOT = { has_trait = trait_SOV_trotskyist }
+
+							NOT = { has_trait = trait_SOV_monarchist_sympathizer }
+
+						}
+
+						set_variable = { SOV.SOV_selected_admiral_stalin = THIS }
+
+
+
+					}
+
+					activate_mission = SOV_align_admiral_stalin
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.8
+
+	title = NSB_soviet_civil_war_common.005.t
+
+	desc = NSB_soviet_civil_war_common.005.desc 
+
+	# picture =  # Hidden event, no need for picture
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+	trigger = {
+
+		SOV_soviet_civil_war_not_started = yes # Don't run if war has already started
+
+	}
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.004.a
+
+		IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_stalin_constitution_completed_flag }}
+
+			activate_mission = SOV_the_stalin_constitution_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_zinovyevite_terrorist_center_completed_flag }}
+
+			activate_mission = SOV_the_zinovyevite_terrorist_center_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_anti_soviet_trotskyist_center_completed_flag }}
+
+			activate_mission = SOV_the_anti_soviet_trotskyist_center_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_workers_dictatorship_completed_flag }}
+
+			activate_mission = SOV_the_workers_dictatorship_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_military_conspiracy_completed_flag }}
+
+			activate_mission = SOV_the_military_conspiracy_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_socialism_in_one_country_completed_flag }}
+
+			activate_mission = SOV_socialism_in_one_country_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_secure_the_administration_completed_flag }}
+
+			activate_mission = SOV_secure_the_administration_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_the_bloc_of_rights_and_trotskyites_completed_flag }}
+
+			activate_mission = SOV_the_bloc_of_rights_and_trotskyites_mission
+
+		}
+
+		ELSE_IF = {
+
+			limit = { NOT = { has_country_flag = SOV_behead_the_snake_completed_flag }}
+
+			activate_mission = SOV_behead_the_snake_mission
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.9
+
+	title = NSB_soviet_civil_war_common.006.t
+
+	desc = NSB_soviet_civil_war_common.006.desc
+
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.006.a
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		custom_effect_tooltip = SOV_popular_uprising_units_tt
+
+		hidden_effect = { SOV_popular_uprising_units = yes }
+
+		
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.10
+
+	title = NSB_soviet_civil_war_common.010.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.010_right_opposition
+
+		trigger = { SOV_is_right_opposition = yes }
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.010_left_opposition
+
+		trigger = { SOV_is_left_opposition = yes }
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.010_exiles
+
+		trigger = { SOV_is_exiles = yes }
+
+	}
+
+
+
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+
+		
+
+	}
+
+	# Volgograd
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.010.a
+
+		
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		trigger = {
+
+			always = yes 
+
+		}
+
+		# Stalingrad
+
+		set_province_name = {
+
+			id = 3529
+
+			name = SOV_Volgograd
+
+		}
+
+		hidden_effect = { 217 = { set_state_name = SOV_Volgograd } }
+
+		# Stalino / Donetsk / Yuzovka / Trotsk 
+
+		set_province_name = {
+
+			id = 6474
+
+			name = SOV_Donetsk
+
+		}
+
+		hidden_effect = { 227 = { set_state_name = SOV_Donetsk } }
+
+		# Stalinabad / Dushanbe
+
+		set_province_name = {
+
+			id = 1384
+
+			name = SOV_Dushanbe
+
+		}
+
+		hidden_effect = { 742 = { set_state_name = SOV_Dushanbe set_state_flag = dushanbe_flag } }
+
+		# Kalinin / Tver
+
+		IF = {
+
+			limit = { NOT = { has_character = SOV_mikhail_kalinin } }
+
+			set_province_name = {
+
+				id = 6245
+
+				name = SOV_Tver
+
+			}
+
+			hidden_effect = { 247 = { set_state_name = SOV_Tver } }
+
+		}
+
+		# Leningrad / Petrograd / St. Petersburg
+
+		IF = {
+
+			limit = {
+
+				195 = { is_capital = no }
+
+				SOV_is_exiles = yes 
+
+			}
+
+			set_province_name = {
+
+				id = 3151
+
+				name = SOV_StPetersburg
+
+			}
+
+			hidden_effect = { 195 = { set_state_name = SOV_StPetersburg } }
+
+		}
+
+		# Engels / Pokrovsk / Kosakenstadt + Marksshtadt / Yekaterinograd / Baronsk
+
+		IF = {
+
+			limit = {
+
+				SOV_is_exiles = yes 
+
+			}
+
+			set_province_name = {
+
+				id = 11523
+
+				name = SOV_Pokrovsk
+
+			}
+
+			set_province_name = {
+
+				id = 9432
+
+				name = SOV_Baronsk
+
+			}
+
+			hidden_effect = { 829 = { set_state_name = SOV_Pokrovsk } }
+
+		}
+
+		# Kirov / Vyatka
+
+		set_province_name = {
+
+			id = 6124
+
+			name = SOV_Vyatka
+
+		}
+
+		hidden_effect = { 400 = { set_state_name = SOV_Vyatka } }
+
+
+
+
+
+		# Gorky / Nizhny Novgorod
+
+		set_province_name = {
+
+			id = 11375
+
+			name = SOV_Nizhny_Novgorod
+
+		}
+
+		hidden_effect = { 252 = { set_state_name = SOV_Nizhny_Novgorod } }
+
+
+
+		# Ordzhonikidze / Vladikavkaz
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9628
+
+				name = SOV_Vladikavkaz
+
+			}
+
+		}
+
+
+
+		# Frunze / Bishkek / Bishkek
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 12583
+
+				name = SOV_Bishkek
+
+			}
+
+		}
+
+		# Yoshkar-Ola / Tsaryovokokshaysk / Krasnokokshaysk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9402
+
+				name = SOV_Krasnokokshaysk
+
+			}
+
+		}
+
+		# Kyzil / Belotsarsk / Khem-Beldir
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 10627
+
+				name = SOV_Khem-Beldir
+
+			}
+
+		}
+
+		# Makhachkala / Petrovskoye / Petrovsk-Port
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 6701
+
+				name = SOV_Petrovsk-Port
+
+			}
+
+		}
+
+
+
+		# Sverdlovsk / Yekaterinburg /  
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 1821
+
+				name = SOV_Yekaterinburg
+
+			}
+
+			hidden_effect = { 653 = { set_state_name = SOV_Yekaterinburg } }
+
+		}
+
+
+
+		# Dnipropetrovsk / Dnipro / Yekaterinoslav
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 11437
+
+				name = SOV_Dnipro
+
+			}
+
+			hidden_effect = { 226 = { set_state_name = SOV_Dnipro } }
+
+		}
+
+
+
+		# Voroshilovgrad / Luhansk / Luhansk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9461
+
+				name = SOV_Luhansk
+
+			}
+
+			hidden_effect = { 228 = { set_state_name = SOV_Luhansk } }
+
+		}
+
+
+
+		# Krasnodar / Yekaterinodar / Yekaterinodar
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 3734
+
+				name = SOV_Yekaterinodar
+
+			}
+
+			hidden_effect = { 234 = { set_state_name = SOV_Yekaterinodar } }
+
+		}
+
+
+
+		# Kuybyshev / Samara / Samara
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 11225
+
+				name = SOV_Samara
+
+			}
+
+			hidden_effect = { 251 = { set_state_name = SOV_Samara } }
+
+		}
+
+
+
+		# Ulyanovsk / Simbirsk / Simbirsk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 392
+
+				name = SOV_Simbirsk
+
+			}
+
+			hidden_effect = { 250 = { set_state_name = SOV_Simbirsk } }
+
+		}
+
+
+
+	}
+
+	# Tsaritsyn
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.010.b
+
+		
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		trigger = {
+
+			SOV_is_exiles = yes 
+
+		}
+
+		# Stalingrad
+
+		set_province_name = {
+
+			id = 3529
+
+			name = SOV_Tsaritsyn
+
+		}
+
+		hidden_effect = { 217 = { set_state_name = SOV_Tsaritsyn } }
+
+		# Stalino / Donetsk / Yuzovka / Trotsk 
+
+		set_province_name = {
+
+			id = 6474
+
+			name = SOV_Yuzovka
+
+		}
+
+		hidden_effect = { 227 = { set_state_name = SOV_Yuzovka } }
+
+		# Stalinabad / Dushanbe
+
+		set_province_name = {
+
+			id = 1384
+
+			name = SOV_Dushanbe
+
+		}
+
+		hidden_effect = { 742 = { set_state_name = SOV_Dushanbe set_state_flag = dushanbe_flag } }
+
+		# Kalinin / Tver
+
+		IF = {
+
+			set_province_name = {
+
+				id = 6245
+
+				name = SOV_Tver
+
+			}
+
+			hidden_effect = { 247 = { set_state_name = SOV_Tver } }
+
+		}
+
+		# Leningrad / Petrograd / St. Petersburg
+
+		IF = {
+
+			limit = {
+
+				195 = { is_capital = no }
+
+				SOV_is_exiles = yes 
+
+			}
+
+			set_province_name = {
+
+				id = 3151
+
+				name = SOV_StPetersburg
+
+			}
+
+			hidden_effect = { 195 = { set_state_name = SOV_StPetersburg } }
+
+		}
+
+		# Engels / Pokrovsk / Kosakenstadt + Marksshtadt / Yekaterinograd / Baronsk
+
+		IF = {
+
+			limit = {
+
+				SOV_is_exiles = yes 
+
+			}
+
+			set_province_name = {
+
+				id = 11523
+
+				name = SOV_Kosakenstadt
+
+			}
+
+			set_province_name = {
+
+				id = 9432
+
+				name = SOV_Yekaterinograd
+
+			}
+
+			hidden_effect = { 829 = { set_state_name = SOV_Yekaterinograd } }
+
+		}
+
+		# Kirov / Vyatka
+
+		set_province_name = {
+
+			id = 6124
+
+			name = SOV_Vyatka
+
+		}
+
+		hidden_effect = { 400 = { set_state_name = SOV_Vyatka } }
+
+
+
+		# Gorky / Nizhny Novgorod
+
+		set_province_name = {
+
+			id = 11375
+
+			name = SOV_Nizhny_Novgorod
+
+		}
+
+		hidden_effect = { 252 = { set_state_name = SOV_Nizhny_Novgorod } }
+
+
+
+		# Ordzhonikidze / Vladikavkaz
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9628
+
+				name = SOV_Vladikavkaz
+
+			}
+
+		}
+
+
+
+		# Frunze / Bishkek / Bishkek
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 12583
+
+				name = SOV_Bishkek
+
+			}
+
+		}
+
+		# Yoshkar-Ola / Tsaryovokokshaysk / Krasnokokshaysk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9402
+
+				name = SOV_Tsaryovokokshaysk
+
+			}
+
+		}
+
+		# Kyzil / Belotsarsk / Khem-Beldir
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 10627
+
+				name = SOV_Belotsarsk
+
+			}
+
+		}
+
+		# Makhachkala / Petrovskoye / Petrovsk-Port
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 6701
+
+				name = SOV_Petrovskoye
+
+			}
+
+		}
+
+		# Anadyr / Novo-Mariinsk /
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 13063
+
+				name = SOV_Novo-Mariinsk
+
+			}
+
+		}
+
+
+
+		# Sverdlovsk / Yekaterinburg /  
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 1821
+
+				name = SOV_Yekaterinburg
+
+			}
+
+			hidden_effect = { 653 = { set_state_name = SOV_Yekaterinburg } }
+
+		}
+
+
+
+		# Dnipropetrovsk / Dnipro / Yekaterinoslav
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 11437
+
+				name = SOV_Yekaterinoslav
+
+			}
+
+			hidden_effect = { 226 = { set_state_name = SOV_Yekaterinoslav } }
+
+		}
+
+
+
+		# Voroshilovgrad / Luhansk / Luhansk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 9461
+
+				name = SOV_Luhansk
+
+			}
+
+			hidden_effect = { 228 = { set_state_name = SOV_Luhansk } }
+
+		}
+
+
+
+		# Krasnodar / Yekaterinodar / Yekaterinodar
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 3734
+
+				name = SOV_Yekaterinodar
+
+			}
+
+			hidden_effect = { 234 = { set_state_name = SOV_Yekaterinodar } }
+
+		}
+
+
+
+		# Kuybyshev / Samara / Samara
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 11225
+
+				name = SOV_Samara
+
+			}
+
+			hidden_effect = { 251 = { set_state_name = SOV_Samara } }
+
+		}
+
+
+
+		# Ulyanovsk / Simbirsk / Simbirsk
+
+		IF = {
+
+			limit = { SOV_is_exiles = yes }
+
+			set_province_name = {
+
+				id = 392
+
+				name = SOV_Simbirsk
+
+			}
+
+			hidden_effect = { 250 = { set_state_name = SOV_Simbirsk } }
+
+		}
+
+	
+
+		
+
+	}
+
+	# Trotskygrad
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.010.c
+
+		
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		trigger = {
+
+			SOV_is_left_opposition = yes
+
+		}
+
+		
+
+		# Stalingrad
+
+		set_province_name = {
+
+			id = 3529
+
+			name = SOV_Trotskygrad
+
+		}
+
+		hidden_effect = { 217 = { set_state_name = SOV_Trotskygrad } }
+
+		
+
+		# Stalino / Donetsk / Yuzovka / Trotsk 
+
+		set_province_name = {
+
+			id = 6474
+
+			name = SOV_Trotsk
+
+		}
+
+		hidden_effect = { 227 = { set_state_name = SOV_Trotsk } }
+
+		# Stalinabad / Dushanbe
+
+		set_province_name = {
+
+			id = 1384
+
+			name = SOV_Smirnovabad
+
+		}
+
+		hidden_effect = { 742 = { set_state_name = SOV_Smirnovabad } }
+
+		# Kalinin / Tver
+
+		IF = {
+
+			limit = { NOT = { has_character = SOV_mikhail_kalinin } }
+
+			IF = {
+
+				limit = { has_character = SOV_grigory_zinovyev}
+
+				set_province_name = {
+
+					id = 6245
+
+					name = SOV_zinovyev
+
+				}
+
+				hidden_effect = { 247 = { set_state_name = SOV_zinovyev } }
+
+			}
+
+			ELSE = {
+
+				set_province_name = {
+
+					id = 6245
+
+					name = SOV_Tver
+
+				}
+
+				hidden_effect = { 247 = { set_state_name = SOV_Tver } }
+
+			}
+
+		}
+
+		# Kirov / Vyatka
+
+		set_province_name = {
+
+			id = 6124
+
+			name = SOV_Vyatka
+
+		}
+
+		hidden_effect = { 400 = { set_state_name = SOV_Vyatka } }
+
+
+
+		# Gorky / Nizhny Novgorod
+
+		set_province_name = {
+
+			id = 11375
+
+			name = SOV_Nizhny_Novgorod
+
+		}
+
+		hidden_effect = { 252 = { set_state_name = SOV_Nizhny_Novgorod } }
+
+		
+
+	}
+
+	# Bukharino - Only if Right opposition, but Bukharin has been killed
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.010.d
+
+		
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		trigger = {
+
+			SOV_is_right_opposition = yes
+
+			SOV = { NOT = { has_character = SOV_nikolay_bukharin } }
+
+		}
+
+		# Stalingrad
+
+		set_province_name = {
+
+			id = 3529
+
+			name = SOV_Bukharino
+
+		}
+
+		hidden_effect = { 217 = { set_state_name = SOV_Bukharino } }
+
+		# Stalino / Donetsk / Yuzovka / Trotsk 
+
+		set_province_name = {
+
+			id = 6474
+
+			name = SOV_Donetsk
+
+		}
+
+		hidden_effect = { 227 = { set_state_name = SOV_Donetsk }}
+
+		# Stalinabad / Dushanbe
+
+		set_province_name = {
+
+			id = 1384
+
+			name = SOV_Dushanbe
+
+		}
+
+		hidden_effect = { 742 = { set_state_name = SOV_Dushanbe set_state_flag = dushanbe_flag } }
+
+		# Kalinin / Tver
+
+		IF = {
+
+			limit = { NOT = { has_character = SOV_mikhail_kalinin } }
+
+			set_province_name = {
+
+				id = 6245
+
+				name = SOV_Rykovgrad
+
+			}
+
+			hidden_effect = { 247 = { set_state_name = SOV_Rykovgrad } }
+
+		}
+
+		# Kirov / Vyatka
+
+		set_province_name = {
+
+			id = 6124
+
+			name = SOV_Vyatka
+
+		}
+
+		hidden_effect = { 400 = { set_state_name = SOV_Vyatka } }		
+
+
+
+		# Gorky / Nizhny Novgorod
+
+		set_province_name = {
+
+			id = 11375
+
+			name = SOV_Nizhny_Novgorod
+
+		}
+
+		hidden_effect = { 252 = { set_state_name = SOV_Nizhny_Novgorod } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.11
+
+	title = NSB_soviet_civil_war_common.100.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.100.desc  
+
+		trigger = {
+
+			SOV = { SOV_is_exiles = no }
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.100_exiles.desc  
+
+		trigger = {
+
+			SOV = { SOV_is_exiles = yes }
+
+		}
+
+	}
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_army_leader = {
+
+				set_variable = { SOV.SOV_japanese_general = THIS } 
+
+			}
+
+		}
+
+	}
+
+
+
+	picture = "[GetJapaneseNegotiationsPicture]" 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Japan Agrees
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.100.a
+
+		ai_chance = {
+
+			base = 2 # Japan should be pretty eager to say yes to this deal
+
+			modifier = {
+
+				factor = 5 # Military wants this!
+
+				JAP = { 
+
+					has_government = fascism
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.5
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		trigger = {
+
+			NOT = { has_manpower < 80000 } # Don't show if not having the troops avaialable
+
+		}
+
+		add_manpower = -80000 # 80k seems to be the standard Japanese Russian Far East expeditionary force size, so why not this time around as well...
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.14
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			var:SOV.SOV_japanese_general = { set_character_flag = japanese_expeditionary_leader_flag }
+
+		}
+
+		custom_effect_tooltip = vladivostock_concession_tt
+
+	}
+
+	# Japan Refuses
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.100.b
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 0 # A fascist / militarist Japan, not already at war won't say no. 
+
+				JAP = { 
+
+					has_war = no
+
+					NOT = { has_government = democratic }
+
+					NOT = { has_government = communism }
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 1.5 # A non-fascist / militarist Japan, at war will be slightly more inclined not to commit manpower elsewhere
+
+				JAP = { 
+
+					has_war = yes 
+
+					NOT = { has_government = democratic }
+
+					NOT = { has_government = communism }
+
+				}
+
+			}
+
+		}
+
+		
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.15
+
+				hours = 8
+
+				random_hours = 12
+
+			}
+
+		}
+
+
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.14
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_MON.15
+
+				hours = 8
+
+				random_hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_MON.14
+
+	title = NSB_soviet_civil_war_common.101.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.101.desc  
+
+		trigger = {
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.101.desc_exiles
+
+		trigger = {
+
+			SOV_is_exiles = yes
+
+		}
+
+	}
+
+	picture = "[GetJapaneseNegotiationsPicture]" 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Japan Agrees
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.101.a
+
+		set_country_flag = SOV_CSW_transfer_vladivostok_flag
+
+		# If war is already raging
+
+		IF = {
+
+			limit = {
+
+				has_global_flag = SOV_soviet_civil_war
+
+				
+
+			}
+
+			hidden_effect = { SOV_set_up_japanese_troops = yes }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.15
+
+	title = NSB_soviet_civil_war_common.102.t
+
+	desc = NSB_soviet_civil_war_common.102.desc 
+
+	picture = "[GetJapaneseNegotiationsPicture]" 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Japan refuses
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.102.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.16
+
+	title = NSB_soviet_civil_war_common.103.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.103.desc_exiles
+
+		trigger = { SOV_is_exiles = yes } 
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.103.desc  
+
+		trigger = {
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+	}
+
+	picture = "[GetJapaneseNegotiationsPicture]" 
+
+	immediate = {
+
+		# Count Rifles!
+
+		set_variable = { SOV.SOV_japanese_rifles = JAP.num_equipment@infantry_equipment }
+
+		clamp_variable = {
+
+			var = SOV.SOV_japanese_rifles
+
+			min = 0
+
+			max = 4000
+
+		}
+
+		# Annie get your gun
+
+		set_variable = { SOV.SOV_japanese_guns = JAP.num_equipment@artillery_equipment }
+
+		clamp_variable = {
+
+			var = SOV.SOV_japanese_guns
+
+			min = 0
+
+			max = 1000
+
+		}
+
+		# Re:zero
+
+		set_variable = { SOV.SOV_japanese_fighters = JAP.num_equipment@small_plane_airframe }
+
+		clamp_variable = {
+
+			var = SOV.SOV_japanese_fighters
+
+			min = 0
+
+			max = 200
+
+		}
+
+	}
+
+	is_triggered_only = yes
+
+
+
+	# We has loads, have a bunch!
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.103.a
+
+		ai_chance = {
+
+			base = 2 # Japan should be pretty eager to say yes to this deal
+
+			modifier = {
+
+				factor = 5 # Military wants this!
+
+				JAP = { 
+
+					has_government = fascism
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.5
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		trigger = {
+
+			has_equipment = {
+
+				infantry_equipment   > 400
+
+			}
+
+		}
+
+		
+
+		IF = {
+
+			limit = { 
+
+				SOV_soviet_civil_war_not_started = yes 
+
+			}
+
+			set_temp_variable = { temp_rifles = SOV.SOV_japanese_rifles }
+
+			multiply_temp_variable = {temp_rifles = -1 }
+
+			set_temp_variable = { temp_guns = SOV.SOV_japanese_guns }
+
+			multiply_temp_variable = {temp_guns = -1 }
+
+			set_temp_variable = { temp_fighters = SOV.SOV_japanese_fighters }
+
+			multiply_temp_variable = {temp_fighters = -1 }
+
+			# Storing equipment for a later date...
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = var:temp_rifles
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = artillery_equipment
+
+				amount = var:temp_guns
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = small_plane_airframe
+
+				amount = var:temp_fighters
+
+			}
+
+		}
+
+		ELSE = {
+
+			# If war is raging, just send the stuff
+
+			send_equipment = {
+
+				equipment = infantry_equipment
+
+				amount = SOV.SOV_japanese_rifles
+
+				target = SOV
+
+			}
+
+			send_equipment = {
+
+				equipment = artillery_equipment
+
+				amount = SOV.SOV_japanese_guns
+
+				target = SOV
+
+			}
+
+			send_equipment = {
+
+				equipment = small_plane_airframe
+
+				amount = SOV.SOV_japanese_fighters
+
+				target = SOV
+
+			}
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_transfer_sakhalin_flag
+
+			country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8
+
+				random_hours = 12
+
+			}
+
+		}
+
+		custom_effect_tooltip = sakhalin_concession_tt
+
+	}
+
+
+
+	# We should be able to spare rifles at least
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.103.b
+
+		ai_chance = {
+
+			base = 1 # Japan should be pretty eager to say yes to this deal
+
+			modifier = {
+
+				factor = 2 # Military wants this!
+
+				JAP = { 
+
+					has_government = fascism
+
+				}
+
+			}
+
+		}
+
+		trigger = {
+
+			has_equipment = {
+
+				infantry_equipment > 199
+
+			}
+
+		}
+
+		IF = {
+
+			limit = { 
+
+				OR = {
+
+					SOV_soviet_civil_war_not_started = yes 
+
+					# TODO Add relevant trigger for Fascist Civil war or simply remove this if using same...
+
+				}
+
+			}
+
+			# Storing equipment for a later date...
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -200
+
+			}
+
+			set_variable = { SOV.SOV_japanese_rifles = 200 }
+
+			set_variable = { SOV.SOV_japanese_guns = 0 }
+
+			set_variable = { SOV.SOV_japanese_fighters = 0 }
+
+		}
+
+		ELSE = {
+
+			# If war is raging, just send the stuff
+
+			send_equipment = {
+
+				equipment = infantry_equipment
+
+				amount = 200
+
+				target = SOV
+
+			}
+
+			
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_transfer_sakhalin_flag
+
+			country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+		}
+
+		custom_effect_tooltip = sakhalin_concession_tt
+
+	}
+
+	# No but we can buy some!
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.103.c
+
+		ai_chance = {
+
+			base = 1 # Japan should be pretty eager to say yes to this deal
+
+			modifier = {
+
+				factor = 3 # Military wants this!
+
+				JAP = { 
+
+					has_government = fascism
+
+				}
+
+			}
+
+		}
+
+		trigger = {
+
+			NOT = { 
+
+				has_equipment = {
+
+					infantry_equipment > 400
+
+				}
+
+			}
+
+		}
+
+		ROOT = { 
+
+			add_timed_idea = { 
+
+				idea = SOV_arms_purchases_idea 
+
+				days = 365 
+
+			} 
+
+		}
+
+		set_variable = { SOV.SOV_japanese_rifles = 2500 }
+
+		set_variable = { SOV.SOV_japanese_guns = 200 }
+
+		set_variable = { SOV.SOV_japanese_fighters = 150 }
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_transfer_sakhalin_flag
+
+			country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+		}
+
+		custom_effect_tooltip = sakhalin_concession_tt
+
+		hidden_effect = {
+
+			IF = {
+
+				limit = {
+
+					OR = {
+
+						has_global_flag = SOV_soviet_civil_war 
+
+					}
+
+				}
+
+				FROM = {
+
+					add_equipment_to_stockpile = {
+
+						type = infantry_equipment
+
+						amount =  SOV.SOV_japanese_rifles
+
+						producer = JAP
+
+					}
+
+					add_equipment_to_stockpile = {
+
+						type = artillery_equipment
+
+						amount = SOV.SOV_japanese_guns
+
+						producer = JAP
+
+					}
+
+					add_equipment_to_stockpile = {
+
+						type = small_plane_airframe
+
+						amount = SOV.SOV_japanese_fighters
+
+						producer = SOV
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	# It ain't worth it
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.103.d
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 0 # A fascist / militarist Japan, not already at war won't say no. 
+
+				JAP = { 
+
+					has_war = no
+
+					NOT = { has_government = democratic }
+
+					NOT = { has_government = communism }
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 1.25 # A non-fascist / militarist Japan, at war will be slightly more inclined not to commit equipment elsewhere
+
+				JAP = { 
+
+					has_war = yes 
+
+					NOT = { has_government = democratic }
+
+					NOT = { has_government = communism }
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.22
+
+				days = 2
+
+				random_hours = 12 
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8
+
+				random_hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_MON.21
+
+				hours = 8 
+
+				random_hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_MON.22
+
+				days = 2
+
+				random_hours = 12 
+
+			}
+
+country_event = {
+
+	id = AWR_MON.21
+
+	title = NSB_soviet_civil_war_common.104.t
+
+	desc = NSB_soviet_civil_war_common.104.desc 
+
+	picture = "[GetJapaneseNegotiationsPicture]" 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Japan Agrees
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.104.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.22
+
+	title = NSB_soviet_civil_war_common.105.t
+
+	desc = NSB_soviet_civil_war_common.105.desc 
+
+	picture = "[GetJapaneseNegotiationsPicture]"  
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Japan refuses
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.105.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.23
+
+	title = NSB_soviet_civil_war_common.106.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.106.desc_right_opp_before 
+
+		trigger = { 
+
+			SOV_soviet_civil_war_not_started = yes 
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.106.desc_right_opp_civil_war 
+
+		trigger = { 
+
+			has_global_flag = SOV_soviet_civil_war 
+
+			NOT = { SOV_is_exiles = yes }
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.106.desc_exiles_before 
+
+		trigger = { 
+
+			SOV_soviet_civil_war_not_started = yes 
+
+			SOV_is_exiles = yes
+
+		}
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.106.desc_exiles_civil_war 
+
+		trigger = { 
+
+			has_global_flag = SOV_soviet_civil_war 
+
+			SOV_is_exiles = yes 
+
+		}
+
+	}
+
+	
+
+	picture =  GFX_report_event_generic_read_write
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Yes plz
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.106.a
+
+		ai_chance = {
+
+			base = 4 # It's most likely worth it
+
+			modifier = {
+
+				factor = 1.5 # fascists are extra keen to get hands on more oil
+
+				GER = { 
+
+					has_government = fascism
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 0.8
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		ROOT = {
+
+			custom_effect_tooltip = SOV_baku_oil_fields_tt
+
+			add_timed_idea = {
+
+				idea = SOV_covert_military_buildup_idea
+
+				days = 60
+
+			}
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_baku_oil_flag
+
+			country_event = {
+
+				id = AWR_MON.27
+
+				hours = 1
+
+			}
+
+			IF = {
+
+				limit = { 
+
+					SOV_soviet_civil_war_not_started = no 
+
+				}
+
+				IF = {
+
+					limit = {
+
+						NOT = {
+
+							has_dlc = "No Step Back"
+
+						}
+
+					}
+
+					SOV = { add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 100 producer = GER } }
+
+				}
+
+				ELSE = { 
+
+					SOV = { add_equipment_to_stockpile = { type = light_tank_chassis_2 amount = 100 producer = GER variant_name = "Panzer II Ausf. a" } }
+
+				}
+
+				SOV = { add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 200 producer = GER } }
+
+			}
+
+		}	
+
+	}
+
+	# Yes plz - and let's send som "advisors"
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.106.b
+
+		ai_chance = {
+
+			base = 4 # It's most likely worth it
+
+			modifier = {
+
+				factor = 0.5 # Probably not as easy to motivate if democratic
+
+				GER = { 
+
+					has_government = democratic
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 2 # More likely if both are going down the fascist path
+
+				GER = { has_government = fascism }
+
+				SOV = { SOV_is_exiles = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				GER = { 
+
+					has_war = yes
+
+				}
+
+			}
+
+		}
+
+		ROOT = {
+
+			custom_effect_tooltip = SOV_baku_oil_fields_tt
+
+			custom_effect_tooltip = SOV_german_advisors_tt
+
+			add_timed_idea = {
+
+				idea = SOV_covert_military_buildup_idea
+
+				days = 120
+
+			}
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_baku_oil_flag
+
+			set_country_flag = SOV_CSW_german_advisors_flag
+
+			country_event = {
+
+				id = AWR_MON.27
+
+				hours = 6
+
+			}	
+
+		}
+
+	}
+
+	# Refuse
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.106.c
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 5
+
+				GER = { 
+
+					has_war = yes 
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.29
+
+				hours = 6
+
+			}	
+
+		}	
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.27
+
+				hours = 1
+
+			}
+
+country_event = {
+
+				id = AWR_MON.27
+
+				hours = 6
+
+			}
+
+country_event = {
+
+				id = AWR_MON.29
+
+				hours = 6
+
+			}
+
+country_event = {
+
+	id = AWR_MON.27
+
+	title = NSB_soviet_civil_war_common.107.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.107.desc_advisors 
+
+		trigger = { has_country_flag = SOV_CSW_german_advisors_flag }
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.107.desc_normal 
+
+		trigger = { NOT = { has_country_flag = SOV_CSW_german_advisors_flag } }
+
+	}
+
+	picture = GFX_report_event_generic_sign_treaty1  
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.107.a	
+
+		IF = {
+
+			limit = { 
+
+				has_country_flag = SOV_soviet_civil_war 
+
+				has_country_flag = SOV_CSW_german_advisors_flag 
+
+			}
+
+			GER = {
+
+				country_event = {
+
+					id = AWR_MON.30
+
+					hours = 6
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+}
+
+country_event = {
+
+					id = AWR_MON.30
+
+					hours = 6
+
+				}
+
+country_event = {
+
+	id = AWR_MON.29
+
+	title = NSB_soviet_civil_war_common.108.t
+
+	desc = NSB_soviet_civil_war_common.108.desc
+
+	picture =  GFX_report_event_german_reichstag_gathering
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.108.a	
+
+	}
+
+	
+
+}
+
+country_event = {
+
+	id = AWR_MON.30
+
+	title = NSB_soviet_civil_war_common.109.t
+
+	desc = NSB_soviet_civil_war_common.109.desc 
+
+	picture = GFX_report_event_german_inspect_troops
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_army_leader = {
+
+				# limit = { is_high_command = no }
+
+				add_unit_leader_trait = trait_SOV_foreign_military_advisor
+
+				set_variable = { ROOT.SOV_foreign_military_advisor_1 = THIS }
+
+			}
+
+			random_army_leader = {
+
+				limit = { 
+
+					# is_high_command = no 
+
+					NOT = { has_trait = trait_SOV_foreign_military_advisor }
+
+				}
+
+				add_unit_leader_trait = trait_SOV_foreign_military_advisor
+
+				set_variable = { ROOT.SOV_foreign_military_advisor_2 = THIS }
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.109.a	
+
+		#var:ROOT.SOV_foreign_military_advisor_1 = { set_nationality = SOV }
+
+		#var:ROOT.SOV_foreign_military_advisor_2 = { set_nationality = SOV }
+
+		every_army_leader = {
+
+			limit = {
+
+				has_trait = trait_SOV_foreign_military_advisor
+
+			}
+
+			set_nationality = SOV
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.31
+
+	title = NSB_soviet_civil_war_common.110.t
+
+	desc = NSB_soviet_civil_war_common.110.desc 
+
+	picture =  GFX_report_event_generic_read_write
+
+
+
+	is_triggered_only = yes
+
+	# Germany supports militia
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.110.a
+
+		ai_chance = {
+
+			base = 5 # in general Germany should be pretty interested in wrecking havoc in the USSR
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 0.8
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		ROOT = {
+
+			custom_effect_tooltip = SOV_ukraine_insurrection_tt
+
+			add_timed_idea = {
+
+				idea = SOV_covert_ukrainian_military_buildup_idea
+
+				days = 180
+
+			}
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_ukraine_germany_flag
+
+			country_event = {
+
+				id = AWR_MON.34
+
+				hours = 6
+
+			}
+
+		}	
+
+	}
+
+	# Not interested
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.110.b	
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 2 # Not as interested if already involved in a war
+
+				ROOT = { 
+
+					has_war = yes 
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 2 # Even less interested if already involved in a war and democratic
+
+				ROOT = { 
+
+					has_war = yes 
+
+					has_government = democratic
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 3 # Even less interested if already involved in a war with a major country
+
+				any_country = {
+
+					is_major = yes
+
+					has_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.35
+
+				hours = 6
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.34
+
+				hours = 6
+
+			}
+
+country_event = {
+
+				id = AWR_MON.35
+
+				hours = 6
+
+			}
+
+country_event = {
+
+	id = AWR_MON.34
+
+	title = NSB_soviet_civil_war_common.111.t
+
+	desc = NSB_soviet_civil_war_common.111.desc 
+
+	picture =  GFX_report_event_generic_sign_treaty1
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.111.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.35
+
+	title = NSB_soviet_civil_war_common.112.t
+
+	desc = NSB_soviet_civil_war_common.112.desc 
+
+	picture =  GFX_report_event_german_reichstag_gathering
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.112.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.36
+
+	title = NSB_soviet_civil_war_common.113.t
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.113.desc_before
+
+		trigger = { SOV_soviet_civil_war_not_started = yes } 
+
+	}
+
+	desc = {
+
+		text = NSB_soviet_civil_war_common.113.desc_started
+
+		trigger = { 
+
+			OR = {
+
+				has_global_flag = SOV_soviet_civil_war
+
+				has_global_flag = SOV_soviet_civil_war_over
+
+			}
+
+		} 
+
+	}
+
+
+
+	picture =  GFX_report_event_gre_rural_rebels
+
+
+
+	is_triggered_only = yes
+
+
+
+	# Ukraine attacks Stalin now
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.113.a	
+
+		trigger = {
+
+			has_global_flag = SOV_soviet_civil_war  
+
+		}
+
+		country_event = {
+
+			id = AWR_MON.39
+
+			hours = 6
+
+		}
+
+	}
+
+	# Ukrainians are ready to strike when war breaks out
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.113.b	
+
+		trigger = {
+
+			SOV_soviet_civil_war_not_started = yes 
+
+		}
+
+		set_country_flag = SOV_CSW_ukraine_germany_ready_flag
+
+	}
+
+	# Civil war over, the Ukrainians will launch the rebellion anyhow
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.114.b	
+
+		trigger = {
+
+			has_global_flag = SOV_soviet_civil_war_over 
+
+		}
+
+		country_event = {
+
+			id = AWR_MON.39
+
+			hours = 6
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+			id = AWR_MON.39
+
+			hours = 6
+
+		}
+
+country_event = {
+
+			id = AWR_MON.39
+
+			hours = 6
+
+		}
+
+country_event = {
+
+	id = AWR_MON.39
+
+	title = NSB_soviet_civil_war_common.114.t
+
+	desc = NSB_soviet_civil_war_common.114.desc 
+
+	picture =  GFX_report_event_generic_rally2
+
+
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		hidden_effect = {
+
+			every_country = {
+
+				limit = {
+
+					original_tag = SOV
+
+				}
+
+				every_owned_state = {
+
+					limit = { is_core_of = UKR }
+
+					UKR = { transfer_state = PREV }
+
+				}
+
+			}
+
+		}
+
+		UKR = {
+
+			division_template = {
+
+			    name = "German Trained Division"
+
+				is_locked = yes
+
+				priority = 1
+
+				template_counter = 3
+
+				regiments = {
+
+					infantry = { x = 0 y = 0 }
+
+					infantry = { x = 0 y = 1 }
+
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+
+					infantry = { x = 1 y = 1 }
+
+					infantry = { x = 1 y = 2 }
+
+					artillery_brigade = { x= 2 y = 0}
+
+				}
+
+				is_locked = yes 
+
+			}
+
+			every_owned_state = {
+
+				limit = { is_core_of = UKR }
+
+				create_unit = { 
+
+					division = "name = \"German Division\" division_template = \"German Trained Division\" start_experience_factor = 0.2 start_equipment_factor = 0.95" owner = UKR 
+
+				}
+
+			}
+
+
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.114.a	
+
+		trigger = {
+
+			has_global_flag = SOV_soviet_civil_war_over 
+
+		}
+
+		
+
+		declare_war_on = {
+
+			target = UKR
+
+			type = annex_everything
+
+		} 
+
+	}
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.114.b	
+
+		trigger = {
+
+			has_global_flag = SOV_soviet_civil_war_over 
+
+		}
+
+	}
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.114.c	
+
+		trigger = {
+
+			NOT = { has_global_flag = SOV_soviet_civil_war_over }
+
+		}
+
+		SOS = {
+
+			declare_war_on = {
+
+				target = UKR
+
+				type = annex_everything
+
+			} 
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.40
+
+	title = NSB_soviet_civil_war_common.115.t
+
+	desc = NSB_soviet_civil_war_common.115.desc
+
+	picture =  GFX_report_event_generic_read_write
+
+
+
+	is_triggered_only = yes
+
+	# UK agrees
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.115.a
+
+		ai_chance = {
+
+			base = 5 # in general the UK should be pretty interested in restoring Belarus
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 0.8
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		ROOT = {
+
+			custom_effect_tooltip = SOV_belarus_tt
+
+			add_timed_idea = {
+
+				idea = SOV_arms_purchases_idea
+
+				days = 150 # TODO set correct number of days
+
+			}
+
+			add_timed_idea = {
+
+				idea = SOV_covert_military_buildup_idea
+
+				days = 180 # TODO set correct number of days
+
+			}
+
+		}
+
+		FROM = {
+
+			set_country_flag = SOV_CSW_belarus_uk_flag
+
+			country_event = {
+
+				id = AWR_MON.43
+
+				hours = 1
+
+			}
+
+		}	
+
+	}
+
+	# Not interested
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.115.b	
+
+		ai_chance = {
+
+			base = 1
+
+			modifier = {
+
+				factor = 5 # Not as interested if already involved in a war
+
+				ROOT = { 
+
+					has_war = yes 
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 2 # Even less interested if already involved in a war with a major country
+
+				any_country = {
+
+					is_major = yes
+
+					has_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.44
+
+				hours = 1
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.43
+
+				hours = 1
+
+			}
+
+country_event = {
+
+				id = AWR_MON.44
+
+				hours = 1
+
+			}
+
+country_event = {
+
+	id = AWR_MON.43
+
+	title = NSB_soviet_civil_war_common.116.t
+
+	desc = NSB_soviet_civil_war_common.116.desc 
+
+	picture =  GFX_report_event_generic_sign_treaty1
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.116.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.44
+
+	title = NSB_soviet_civil_war_common.117.t
+
+	desc = NSB_soviet_civil_war_common.117.desc 
+
+	picture =  GFX_report_event_generic_parliament
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.117.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.45
+
+	title = NSB_soviet_civil_war_common.118.t
+
+	desc = NSB_soviet_civil_war_common.118.desc
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	
+
+	is_triggered_only = yes
+
+
+
+	# Give them a lot
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.118.a
+
+		ai_chance = { 
+
+			base = 40
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.5
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_maksim_litvinov
+
+				}
+
+			}
+
+			modifier = { #Appropriate PC for Foreign Affairs
+
+				factor = 1.2
+
+				FROM = {
+
+					SOV_is_opposition = yes
+
+					has_idea = SOV_vyacheslav_molotov
+
+				}
+
+			}
+
+		}
+
+		trigger = {
+
+			has_equipment = {
+
+				infantry_equipment > 199
+
+			}
+
+		}
+
+		IF = {
+
+			limit = { 
+
+				SOV_soviet_civil_war_not_started = yes 
+
+			}
+
+			add_to_array = {
+
+				array = SOV.many_weapons_array
+
+				value = ROOT
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -200
+
+			}
+
+		}
+
+		ELSE = {
+
+			# If war is raging, just send the stuff
+
+			send_equipment = {
+
+				equipment = infantry_equipment
+
+				amount = 200
+
+				target = SOV
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+		}
+
+		set_country_flag = SOV_supporting_trotsky_flag
+
+	}
+
+
+
+	# Give them some
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.118.b
+
+		ai_chance = { 
+
+			base = 20
+
+		}
+
+		trigger = {
+
+			has_equipment = {
+
+				infantry_equipment > 49
+
+			}
+
+		}
+
+		IF = {
+
+			limit = { 
+
+				SOV_soviet_civil_war_not_started = yes 
+
+			}
+
+			add_to_array = {
+
+				array = SOV.some_weapons_array
+
+				value = ROOT
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -50
+
+			}
+
+		}
+
+		ELSE = {
+
+			# If war is raging, just send the stuff
+
+			send_equipment = {
+
+				equipment = infantry_equipment
+
+				amount = 50
+
+				target = SOV
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+		}
+
+		set_country_flag = SOV_supporting_trotsky_flag
+
+	}
+
+	# we can buy some
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.118.c
+
+		ai_chance = { 
+
+			base = 20
+
+		}
+
+		trigger = {
+
+			has_equipment = {
+
+				infantry_equipment < 50
+
+			}
+
+		}
+
+		ROOT = { add_timed_idea = { idea = SOV_arms_purchases_idea days = 365 } }
+
+		IF = {
+
+			limit = { 
+
+				SOV_soviet_civil_war_not_started = yes 
+
+			}
+
+			add_to_array = {
+
+				array = SOV.some_weapons_array
+
+				value = ROOT
+
+			}
+
+			
+
+		}
+
+		ELSE = {
+
+			# If war is raging, just send the stuff
+
+			hidden_effect = {
+
+				FROM = {
+
+					add_equipment_to_stockpile = {
+
+						type = infantry_equipment
+
+						amount = 200
+
+						producer = ROOT
+
+					}
+
+				}
+
+			}	
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+		}
+
+		set_country_flag = SOV_supporting_trotsky_flag
+
+	}
+
+	
+
+
+
+	# Don't give them any
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.118.d
+
+		ai_chance = { 
+
+			base = 10
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.51
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+country_event = {
+
+				id = AWR_MON.50
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+country_event = {
+
+				id = AWR_MON.51
+
+				days = 1
+
+				random_days = 5
+
+			}
+
+country_event = {
+
+	id = AWR_MON.50
+
+	title = NSB_soviet_civil_war_common.119.t
+
+	desc = NSB_soviet_civil_war_common.119.desc 
+
+	picture =  GFX_report_event_generic_sign_treaty1
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.119.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.51
+
+	title = NSB_soviet_civil_war_common.120.t
+
+	desc = NSB_soviet_civil_war_common.120.desc
+
+	picture =  GFX_report_event_generic_conference
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.120.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.52
+
+	title = NSB_soviet_civil_war_common.121.t
+
+	desc = NSB_soviet_civil_war_common.121.desc
+
+	picture =  "[GetJapaneseNegotiationsPicture]" 
+
+
+
+	is_triggered_only = yes
+
+
+
+	# hai
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.121.a
+
+		ai_chance = { 
+
+			base = 50
+
+			modifier = {
+
+				factor = 10
+
+				has_government = FROM
+
+			}
+
+		}
+
+		trigger = {
+
+			NOT = { has_government = communism }
+
+			NOT = { has_government = democratic }
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.55
+
+				days = 1
+
+				random_days = 2
+
+			}
+
+		}	
+
+	}
+
+	# iie
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.121.b	
+
+		ai_chance = { 
+
+			base = 10
+
+			modifier = {
+
+				factor = 2
+
+				has_war = yes
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_MON.56
+
+				days = 1
+
+				random_days = 2
+
+			}
+
+		}	
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_MON.55
+
+				days = 1
+
+				random_days = 2
+
+			}
+
+country_event = {
+
+				id = AWR_MON.56
+
+				days = 1
+
+				random_days = 2
+
+			}
+
+country_event = {
+
+	id = AWR_MON.55
+
+	title = NSB_soviet_civil_war_common.122.t
+
+	desc = NSB_soviet_civil_war_common.122.desc
+
+	picture =  GFX_report_event_japanese_transport_soldiers
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.122.a
+
+		# Get Ideology Support
+
+		set_variable = { SOV_communist_support_before_puppet = party_popularity_100@communism }
+
+		set_variable = { SOV_democratic_support_before_puppet = party_popularity_100@democratic }
+
+		set_variable = { SOV_fascist_support_before_puppet = party_popularity_100@fascism }
+
+		set_variable = { SOV_neutrality_support_before_puppet = party_popularity_100@neutrality }
+
+		JAP = {
+
+			add_to_war = { 
+
+			    targeted_alliance = ROOT 
+
+				enemy = SOS 
+
+				hostility_reason = asked_to_join
+
+			}
+
+		}
+
+		IF = {
+
+			limit = {
+
+				has_dlc = "Together for Victory"
+
+				NOT = { has_dlc = "Waking the Tiger" }
+
+			}
+
+			FROM = {
+
+				set_autonomy = {
+
+					target = ROOT
+
+					autonomous_state = autonomy_integrated_puppet
+
+					end_wars  = no 
+
+					end_civil_wars = no
+
+				}
+
+			}
+
+		}
+
+		ELSE_IF = {
+
+			limit = { 
+
+				NOT = {
+
+					has_dlc = "Waking the Tiger"
+
+					has_dlc = "Together for Victory"
+
+				}
+
+			}
+
+			FROM = {
+
+				set_autonomy = {
+
+					target = ROOT
+
+					autonomous_state = autonomy_puppet
+
+					end_wars  = no 
+
+					end_civil_wars = no
+
+				}
+
+			}
+
+		}
+
+		ELSE_IF = {
+
+			limit = { 
+
+				has_dlc = "Waking the Tiger"
+
+			}
+
+			FROM = {
+
+				set_autonomy = {
+
+					target = ROOT
+
+					autonomous_state = autonomy_wtt_imperial_protectorate
+
+					end_wars  = no 
+
+					end_civil_wars = no
+
+				}
+
+			}
+
+		}
+
+		# Ensure Provisional government stays Non-aligned
+
+		hidden_effect = {
+
+			ROOT = {
+
+				set_politics = {
+
+					ruling_party = neutrality
+
+				}
+
+			}
+
+			# Reset popluarities to what they were before puppeting 
+
+			set_popularities = {
+
+				communism = SOV.SOV_communist_support_before_puppet
+
+				democratic = SOV.SOV_democratic_support_before_puppet
+
+				fascism = SOV.SOV_fascist_support_before_puppet
+
+				neutrality = SOV.SOV_neutrality_support_before_puppet
+
+			}
+
+			clear_variable = SOV.SOV_communist_support_before_puppet
+
+			clear_variable = SOV.SOV_democratic_support_before_puppet
+
+			clear_variable = SOV.SOV_fascist_support_before_puppet
+
+			clear_variable = SOV.SOV_neutrality_support_before_puppet
+
+		}	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.56
+
+	title = NSB_soviet_civil_war_common.123.t
+
+	desc = NSB_soviet_civil_war_common.123.desc
+
+	picture =  GFX_report_event_military_planning
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.123.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.57
+
+	title = NSB_soviet_civil_war_common.124.t
+
+	desc = NSB_soviet_civil_war_common.124.desc
+
+	picture =  GFX_report_event_generic_factory
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.124.a	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.58
+
+	title = NSB_soviet_civil_war_common.125.t
+
+	desc = NSB_soviet_civil_war_common.125.desc
+
+	picture = GFX_report_event_soviet_soldiers_tank
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		NOT = { SOS = { has_capitulated = yes }}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.125.a
+
+		custom_effect_tooltip = SOS_army_desertions_tt	
+
+		hidden_effect = {
+
+			every_state = {
+
+				limit = {
+
+					OR = {
+
+						is_owned_by = SOV 
+
+						is_owned_by = SOS
+
+					}
+
+				}
+
+				damage_units = {
+
+					state = THIS 
+
+					limit = { tag = SOS } 
+
+					damage = 0.1
+
+					ratio = yes  
+
+					army = yes
+
+				}
+
+			}
+
+
+
+			SOS = {
+
+				transfer_units_fraction= {
+
+					target = SOV
+
+					target_organization = 1
+
+					source_organization = 1
+
+					size = 0
+
+					stockpile_ratio = 0
+
+					army_ratio = 0.05
+
+					navy_ratio = 0
+
+					air_ratio = 0
+
+					keep_unit_leaders_trigger = {
+
+						always = yes 
+
+					}
+
+				}
+
+
+
+			}
+
+			SOV = { clr_country_flag = SOV_defections_army_flag }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.59
+
+	title = NSB_soviet_civil_war_common.126.t
+
+	desc = NSB_soviet_civil_war_common.126.desc
+
+	picture =  GFX_report_event_generic_rifles
+
+
+
+	is_triggered_only = yes
+
+	trigger = {
+
+		NOT = { SOS = { has_capitulated = yes }}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.126.a	
+
+		
+
+		SOV = { 
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = 200
+
+				producer = SOS
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = support_equipment
+
+				amount = 50
+
+				producer = SOS
+
+			}	
+
+		}
+
+		SOS = {
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -200
+
+				producer = SOS
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = support_equipment
+
+				amount = -50
+
+				producer = SOS
+
+			}	
+
+
+
+		}
+
+		SOV = { clr_country_flag = SOV_stockpiles_flag }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.60
+
+	title = NSB_soviet_civil_war_common.127.t
+
+	desc = NSB_soviet_civil_war_common.127.desc
+
+	picture =  GFX_report_event_SOV_purge_navy
+
+
+
+	is_triggered_only = yes
+
+	trigger = {
+
+		NOT = { SOS = { has_capitulated = yes }}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.127.a	
+
+		custom_effect_tooltip = SOS_navy_desertions_tt
+
+		hidden_effect = {
+
+			SOS = {
+
+				transfer_units_fraction= {
+
+					target = SOV
+
+					target_organization = 1
+
+					source_organization = 1
+
+					size = 0
+
+					stockpile_ratio = 0
+
+					army_ratio = 0
+
+					navy_ratio = 0.1
+
+					air_ratio = 0
+
+					keep_unit_leaders_trigger = {
+
+						always = yes 
+
+					}
+
+				}
+
+
+
+			}
+
+			SOV = { clr_country_flag = SOV_defections_navy_flag }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.61
+
+	title = NSB_soviet_civil_war_common.128.t
+
+	desc = NSB_soviet_civil_war_common.128.desc
+
+	picture =  GFX_report_event_generic_riot
+
+
+
+	is_triggered_only = yes
+
+	trigger = {
+
+		NOT = { SOS = { has_capitulated = yes }}
+
+	}
+
+
+
+	option = {
+
+		name = NSB_soviet_civil_war_common.128.a
+
+		custom_effect_tooltip = SOS_civilian_unrest_tt
+
+		hidden_effect = { 	
+
+			SOS = {
+
+				every_owned_state = {
+
+					limit = {
+
+						is_controlled_by = SOS
+
+						arms_factory > 1
+
+					}
+
+					damage_building = {
+
+						type = arms_factory
+
+						damage = 2
+
+					}
+
+				}
+
+				every_owned_state = {
+
+					limit = {
+
+						is_controlled_by = SOS
+
+						industrial_complex > 1
+
+					}
+
+					damage_building = {
+
+						type = industrial_complex 
+
+						damage = 2
+
+					}
+
+				}
+
+				add_to_variable = { SOV_surrender_modifier = -0.05 }
+
+			}
+
+			SOV = { clr_country_flag = SOV_civilian_unrest_flag }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.62 #蒙古索取蒙疆
+
+	title = MON.1.t
+
+	desc = MON.1.d
+
+	picture = GFX_report_event_asian_politicians
+
+
+
+	is_triggered_only = yes
+
+	#Agree
+
+	option = {
+
+		name = MON.1.a
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 2
+
+				MON = { is_in_faction_with = JAP }
+
+			}
+
+			modifier = {
+
+				factor = 2
+
+				MON = { has_government = fascism }
+
+			}
+
+			modifier = {
+
+				factor = 2
+
+				has_country_flag = demchugdongrub_khan
+
+			}
+
+		}
+
+		ECA = {
+
+			every_state = {
+
+				limit = {
+
+					is_core_of = ECA
+
+				}
+
+				add_core_of = MON
+
+			}
+
+		}
+
+		MON = {
+
+			annex_country = { target = ECA transfer_troops = yes }
+
+			add_opinion_modifier = {
+
+					target = JAP
+
+					modifier = transfered
+
+			}
+
+			add_popularity = {
+
+					ideology = fascism
+
+					popularity = 0.3
+
+			}
+
+		}
+
+		set_global_flag = mengkukuo_ceded
+
+	}
+
+	#Refuse
+
+	option = {
+
+		name = MON.1.b
+
+		ai_chance = { factor = 20 }
+
+		MON = {
+
+			country_event = { id = AWR_MON.64 }
+
+			add_opinion_modifier = {
+
+					target = JAP
+
+					modifier = refused_transfer
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.64 #日本拒绝了！
+
+	title = MON.2.t
+
+	desc = MON.2.d
+
+	picture = GFX_report_event_mong_army_01
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.2.a
+
+		add_popularity = {
+
+			ideology = fascism
+
+			popularity = -0.1
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.65 #蒙古提议结盟
+
+	title = MON.3.t
+
+	desc = MON.3.d
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.3.a
+
+		ai_chance = {
+
+			factor = 12
+
+			modifier = {
+
+				factor = 2
+
+				has_country_flag = demchugdongrub_khan
+
+			}
+
+		}
+
+		if = {
+
+			limit = { is_in_faction = no }
+
+			create_faction = "daitoa_kyoeiken"
+
+			add_to_faction = MON
+
+		}
+
+		if = {
+
+			limit = { is_faction_leader = yes }
+
+			add_to_faction = MON
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = MON.3.b
+
+		ai_chance = { factor = 10 }
+
+		MON = {
+
+			country_event = { id = AWR_MON.67 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.67 #日本拒绝了！
+
+	title = MON.4.t
+
+	desc = MON.4.d
+
+	picture = GFX_report_event_mong_army_01
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.4.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.68 #博尔济吉特氏登基？
+
+	title = MON.5.t
+
+	desc = MON.5.d
+
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.5.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 10
+
+				ECA = { is_ai = no }
+
+			}
+
+		}
+
+		ECA = { country_event = { id = AWR_ECA.71 } }
+
+	}
+
+	option = {
+
+		name = MON.5.b
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		create_country_leader = {
+
+			name = Tserendondovyn_Navaanneren
+
+			picture = "gfx/leaders/MON/Portrait_Navaanneren.dds"
+
+			expire = "1965.1.1"
+
+			ideology = fascism_ideology
+
+			traits = {
+
+				spirit_of_genghis
+
+				intellectual
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.69 #新君主？
+
+	title = MON.6.t
+
+	desc = MON.6.d
+
+	picture = GFX_report_event_asian_politicians
+
+	fire_only_once = yes
+
+
+
+	trigger = {
+
+		tag = MON
+
+		has_government = democratic
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 30
+
+	}
+
+	option = {
+
+		name = MON.6.a
+
+		set_cosmetic_tag = MON_const
+
+		add_ideas = MON_bogd_khan
+
+		set_country_flag = bogd_khan
+
+		set_country_flag = constitutinal_monarchy
+
+		add_popularity = {
+
+			ideology = neutrality
+
+			popularity = 0.1
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.6.b
+
+		add_political_power = 100
+
+		add_popularity = {
+
+			ideology = democratic
+
+			popularity = 0.1
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.70 #阿南德·阿玛尔遭清洗！
+
+	title = MON.7.t
+
+	desc = MON.7.d
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_amar
+
+	trigger = {
+
+		tag = MON
+
+		has_government = communism
+
+		has_completed_focus = MON_repressions
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 1000
+
+		modifier = {
+
+			factor = 0.7
+
+			has_idea = MON_choibalsan_political_advisor
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.7.a
+
+		kill_country_leader = yes
+
+		MON_khorloogiin_choibalsan = {
+
+			add_country_leader_role = {
+
+				promote_leader = yes
+
+				country_leader = {
+
+					expire = "1965.1.1"
+
+					ideology = stalinism
+
+					traits = {
+
+					}
+
+				} 
+
+			}
+
+		}
+
+		add_country_leader_trait = dictator
+
+		#create_country_leader = {
+
+		#	name = "Khorloogiin Choibalsan"
+
+		#	desc = "POLITICS_KHORLOOGIIN_CHOIBALSAN_DESC"
+
+		#	picture = "gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+
+		#	expire = "1952.1.1"
+
+		#	ideology = stalinism
+
+		#	traits = {
+
+		#		dictator
+
+		#	}
+
+		#}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.71 #第一届喇嘛会议
+
+	title = MON.8.t
+
+	desc = MON.8.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	option = {
+
+		name = MON.8.a
+
+		create_country_leader = {
+
+			name = Lama_Council
+
+			picture = "gfx/leaders/MON/Portrait_Lama_Council.dds"
+
+			expire = "1952.1.1"
+
+			ideology = oligarchism
+
+			traits = {
+
+				staunch_traditionalist
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.8.b
+
+		remove_country_leader_trait = pillar_of_nation
+
+		add_political_power = 200
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.72 #蒙古索取准噶尔
+
+	title = MON.9.t
+
+	desc = MON.9.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+	#îòäàòü
+
+	option = {
+
+		name = MON.9.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 1.5
+
+				is_in_faction = no
+
+			}
+
+			modifier = {
+
+				factor = 2
+
+				strength_ratio = { tag = MON ratio < 0.8 }
+
+			}
+
+		}
+
+		add_political_power = -100
+
+		MON = {
+
+			transfer_state = 618
+
+			transfer_state = 1054
+
+			country_event = { id = AWR_MON.81 }
+
+		}
+
+	}
+
+	#îòêàçàòü
+
+	option = {
+
+		name = MON.9.b
+
+		ai_chance = {
+
+			factor = 2
+
+			modifier = {
+
+				factor = 2
+
+				strength_ratio = { tag = MON ratio > 1 }
+
+			}
+
+		}
+
+		MON = {
+
+			country_event = { id = AWR_MON.82 }
+
+		}
+
+		set_global_flag = refused_dzungaria
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.82 #要求被拒绝！
+
+	title = MON.10.t
+
+	desc = MON.10.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.10.a
+
+		if = {
+
+			limit = { has_global_flag = refused_dzungaria }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 618 1054 }
+
+			}
+
+			clr_global_flag = refused_dzungaria
+
+		}
+
+		if = {
+
+			limit = { has_global_flag = refused_buryatia }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 563 564 565 }
+
+			}
+
+			clr_global_flag = refused_buryatia
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag  = refused_611 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 611 }
+
+			}
+
+			FROM = { clr_country_flag = refused_611 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_612 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 612 }
+
+			}
+
+			FROM = { clr_country_flag = refused_612 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_616 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 616 }
+
+			}
+
+			FROM = { clr_country_flag = refused_616 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_621 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 621 }
+
+			}
+
+			FROM = { clr_country_flag = refused_621 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_746 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 746 }
+
+			}
+
+			FROM = { clr_country_flag = refused_746 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_1019 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 1019 }
+
+			}
+
+			FROM = { clr_country_flag = refused_1019 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_1020 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 1020 }
+
+			}
+
+			FROM = { clr_country_flag = refused_1020 }
+
+		}
+
+		if = {
+
+			limit = { FROM = { has_country_flag = refused_931 } }
+
+			create_wargoal = {
+
+				type = take_state_focus
+
+				target = FROM
+
+				generator = { 1014 }
+
+			}
+
+			FROM = { clr_country_flag = refused_931 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.81 #领土回归
+
+	title = MON.11.t
+
+	desc = MON.11.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.11.a
+
+		add_political_power = 100
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.77 #蒙古索取布里亚特
+
+	title = MON.12.t
+
+	desc = MON.12.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+	#îòäàòü
+
+	option = {
+
+		name = MON.12.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 75
+
+				219 = { NOT = { is_controlled_by = SOV } }
+
+			}
+
+		}
+
+		add_political_power = -150
+
+		MON = {
+
+			transfer_state = 563
+
+			transfer_state = 564
+
+			transfer_state = 565
+
+			country_event = { id = AWR_MON.81 }
+
+		}
+
+	}
+
+	#îòêàçàòü
+
+	option = {
+
+		name = MON.12.b
+
+		ai_chance = {
+
+			factor = 25
+
+		}
+
+		MON = {
+
+			country_event = { id = AWR_MON.82 }
+
+		}
+
+		set_global_flag = refused_buryatia
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.80 #蒙古索取内蒙古
+
+	title = MON.13.t
+
+	desc = MON.13.d
+
+	picture = GFX_report_event_mong_army_01
+
+	is_triggered_only = yes
+
+	#îòäàòü
+
+	option = {
+
+		name = MON.13.a
+
+		ai_chance = {
+
+			factor = 5
+
+			modifier = {
+
+				factor = 2
+
+				is_in_faction = no
+
+			}
+
+			modifier = {
+
+				factor = 2
+
+				strength_ratio = { tag = MON ratio < 0.8 }
+
+			}
+
+			modifier = {
+
+				factor = 50
+
+				AND = {
+
+					has_war = yes
+
+					any_enemy_country = {
+
+						strength_ratio = {
+
+							tag = ROOT
+
+							ratio < 0.5
+
+						}
+
+					}
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				MON = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+		}
+
+		MON = { country_event = { id = AWR_MON.81 } }
+
+		if = {
+
+			limit = { owns_state = 1012 }
+
+			MON = { transfer_state = 1012 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 612 }
+
+			MON = { transfer_state = 612 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 616 }
+
+			MON = { transfer_state = 616 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 621 }
+
+			MON = { transfer_state = 621 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 746 }
+
+			MON = { transfer_state = 746 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1019 }
+
+			MON = { transfer_state = 1019 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1020 }
+
+			MON = { transfer_state = 1020 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1014 }
+
+			MON = { transfer_state = 1014 }
+
+		}
+
+	}
+
+	#îòêàçàòü
+
+	option = {
+
+		name = MON.13.b
+
+		ai_chance = {
+
+			factor = 25
+
+			modifier = {
+
+				factor = 2
+
+				strength_ratio = { tag = MON ratio > 1 }
+
+			}
+
+			modifier = {
+
+				factor = 100
+
+				MON = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+		}
+
+		MON = {
+
+			country_event = { id = AWR_MON.82 }
+
+		}
+
+		if = {
+
+			limit = { owns_state = 611 }
+
+			set_global_flag = refused_611
+
+		}
+
+		if = {
+
+			limit = { owns_state = 612 }
+
+			set_country_flag = refused_612
+
+		}
+
+		if = {
+
+			limit = { owns_state = 616 }
+
+			set_country_flag = refused_616
+
+		}
+
+		if = {
+
+			limit = { owns_state = 621 }
+
+			set_country_flag = refused_621
+
+		}
+
+		if = {
+
+			limit = { owns_state = 746 }
+
+			set_country_flag = refused_746
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1019 }
+
+			set_country_flag = refused_1019
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1020 }
+
+			set_country_flag = refused_1020
+
+		}
+
+		if = {
+
+			limit = { owns_state = 1014 }
+
+			set_country_flag = refused_931
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.83 #共产主义的垮台
+
+	title = MON.14.t
+
+	desc = MON.14.d
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		tag = MON
+
+		has_government = communism
+
+		soviets_no_more = yes
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	option = {
+
+		name = MON.14.a
+
+		add_popularity = {
+
+			ideology = communism
+
+			popularity = -0.5
+
+		}
+
+		hidden_effect = {
+
+			add_popularity = {
+
+				ideology = fascism
+
+				popularity = 0.01
+
+			}
+
+			add_popularity = {
+
+				ideology = democratic
+
+				popularity = 0.01
+
+			}
+
+			add_popularity = {
+
+				ideology = neutrality
+
+				popularity = 0.01
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.84 #日本的提议
+
+	title = MON.15.t
+
+	desc = MON.15.d
+
+	picture = GFX_report_mongol_gov
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.15.a
+
+		JAP = {
+
+			if = {
+
+				limit = { is_in_faction = no }
+
+				create_faction = "daitoa_kyoeiken"
+
+				add_to_faction = MON
+
+			}
+
+			if = {
+
+				limit = { is_faction_leader = yes }
+
+				add_to_faction = MON
+
+			}
+
+		}
+
+		ECA = {
+
+			every_state = {
+
+				limit = {
+
+					is_core_of = ECA
+
+				}
+
+				add_core_of = MON
+
+			}
+
+		}
+
+		MON = {
+
+			annex_country = { target = ECA transfer_troops = yes }
+
+			add_opinion_modifier = {
+
+					target = JAP
+
+					modifier = transfered
+
+			}
+
+			add_popularity = {
+
+					ideology = fascism
+
+					popularity = 0.3
+
+			}
+
+		}
+
+		set_global_flag = mengkukuo_ceded
+
+	}
+
+	option = {
+
+		name = MON.15.b
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.85 #蒙古提议结盟
+
+	title = MON.16.t
+
+	desc = MON.16.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.16.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		MON = {
+
+			create_faction = "buddhist_faction"
+
+			add_to_faction = TIB
+
+		}
+
+		hidden_effect = {
+
+			MON = { country_event = { id = AWR_MON.88 } }
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.16.a
+
+		hidden_effect = {
+
+			MON = { country_event = { id = AWR_MON.89 } }
+
+		}
+
+		ai_chance = {
+
+			factor = 5
+
+			modifier = {
+
+				factor = 2
+
+				CHI = { has_completed_focus = CHI_Befriend_Tibet }
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.88 #西藏同意了
+
+	title = MON.17.t
+
+	desc = MON.17.d
+
+	picture = GFX_report_event_mong_army_01
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.17.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.89 #西藏拒绝了
+
+	title = MON.18.t
+
+	desc = MON.18.d
+
+	picture = GFX_report_event_mong_army_02
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = MON.18.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.90 #蒙古提议结盟
+
+	title = MON.19.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.19.d
+
+	option = {
+
+		name = MON.19.a
+
+		MON = { country_event = { id = AWR_MON.93 } }
+
+		remove_state_core = 330
+
+		remove_state_core = 817
+
+		remove_state_core = 818
+
+		remove_state_core = 1025
+
+		remove_state_core = 1026
+
+		remove_state_core = 819
+
+		remove_state_core = 820
+
+		remove_state_core = 1024
+
+		remove_state_core = 1018
+
+		MON = {
+
+			create_faction = peoples_front_faction
+
+			add_to_faction = PRC
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.19.b
+
+		MON = { country_event = { id = AWR_MON.94 } }
+
+		add_political_power = 50
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.93 #中共同意了
+
+	title = MON.20.t
+
+	is_triggered_only = yes
+
+	desc = MON.20.d
+
+	picture = GFX_report_event_mong_army_02
+
+	option = {
+
+		name = MON.20.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.94 #中共拒绝了
+
+	title = MON.21.t
+
+	is_triggered_only = yes
+
+	desc = MON.21.d
+
+	picture = GFX_report_event_mong_army_01
+
+	option = {
+
+		name = MON.21.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.95 #蒙古提议瓜分军阀
+
+	title = MON.22.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_02
+
+	desc = MON.22.d
+
+	option = {
+
+		name = MON.22.a
+
+		MON = { country_event = { id = AWR_MON.100 days = 5 } }
+
+		SHX = { country_event = { id = AWR_MON.102 days = 5 } }
+
+		NXM = { country_event = { id = AWR_MON.107 days = 5 } }
+
+		MON = {
+
+			add_state_core = 621
+
+			add_state_core = 746
+
+			add_state_core = 1019
+
+			add_state_core = 1020
+
+			add_state_core = 1014
+
+			add_state_core = 616
+
+		}
+
+		remove_state_core = 621
+
+		remove_state_core = 746
+
+		remove_state_core = 1019
+
+		remove_state_core = 1020
+
+		remove_state_core = 1014
+
+		remove_state_core = 616
+
+	}
+
+	option = {
+
+		name = MON.22.è
+
+		MON = { country_event = { id = AWR_MON.101 days = 5 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.100 #中共同意了
+
+	title = MON.23.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_02
+
+	desc = MON.23.d
+
+	option = {
+
+		name = MON.23.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.101 #中共拒绝了
+
+	title = MON.24.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	desc = MON.24.d
+
+	option = {
+
+		name = MON.24.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.102 #共产党人的要求！
+
+	title = MON.25.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	desc = MON.25.d
+
+	option = {
+
+		name = MON.25.a
+
+		PRC = {
+
+			country_event = { id = AWR_MON.113 }
+
+			transfer_state = 615
+
+			transfer_state = 1017
+
+			transfer_state = 1027
+
+			transfer_state = 1013
+
+		}
+
+		MON = {
+
+			country_event = { id = AWR_MON.113 }
+
+			if = {
+
+				limit = {
+
+					SHX = {
+
+						owns_state = 621
+
+						owns_state = 746
+
+						owns_state = 1019
+
+						owns_state = 1020
+
+						owns_state = 1014
+
+					}
+
+				}
+
+				annex_country = { target = SHX transfer_troops = yes }
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.25.b
+
+		MON = { country_event = { id = AWR_MON.112 } }
+
+		PRC = { country_event = { id = AWR_MON.112 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.107 #共产党人的要求！
+
+	title = MON.26.t
+
+	is_triggered_only = yes
+
+	desc = MON.26.d
+
+	picture = GFX_report_event_mong_army_01
+
+	option = {
+
+		name = MON.26.a
+
+		MON = {
+
+			country_event = { id = AWR_MON.113 }
+
+			transfer_state = 616
+
+		}
+
+		PRC = {
+
+			country_event = { id = AWR_MON.113 }
+
+ 			#transfer_state = 283
+
+			transfer_state = 760
+
+ 			puppet = NXM
+
+ 		}
+
+ 		hidden_effect = {
+
+ 			create_country_leader = {
+
+				name = XSM_ma_hongbin
+
+				desc = "POLITICS_Hongbin_DESC"
+
+				picture = "gfx/leaders/NXM/Portrait_NXM_Ma_Hongbin.dds"
+
+				expire = "1965.1.1"
+
+				ideology = marxism
+
+				traits = {
+
+				}
+
+			}
+
+			create_corps_commander = {
+
+				name = XSM_ma_hongbin
+
+				portrait_path = "gfx/leaders/NXM/Portrait_NXM_Ma_Hongbin.dds"
+
+				traits = {
+
+				}
+
+				skill = 2
+
+			}
+
+			set_cosmetic_tag = XSM_prov
+
+ 		}
+
+ 	}
+
+ 	option = {
+
+		name = MON.26.b
+
+		MON = { country_event = { id = AWR_MON.112 } }
+
+		PRC = { country_event = { id = AWR_MON.112 } }
+
+	}
+
+ }
+
+country_event = {
+
+	id = AWR_MON.112 #军阀顽抗
+
+	title = MON.27.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_02
+
+	desc = MON.27.d
+
+	option = {
+
+		name = MON.27.a
+
+		if = {
+
+			limit = {
+
+				tag = PRC
+
+				FROM = { tag = SHX }
+
+			}
+
+			declare_war_on = {
+
+				target = SHX
+
+				type = take_state_focus
+
+				generator = { 615 1027 1013 }
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = MON
+
+				FROM = { tag = SHX }
+
+			}
+
+			declare_war_on = {
+
+				target = SHX
+
+				type = take_state_focus
+
+				generator = { 621 1014 }
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = PRC
+
+				FROM = { tag = NXM }
+
+			}
+
+			declare_war_on = {
+
+				target = NXM
+
+				type = take_state_focus
+
+				generator = { 616 }
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = MON
+
+				FROM = { tag = NXM }
+
+			}
+
+			declare_war_on = {
+
+				target = NXM
+
+				type = take_state_focus
+
+				generator = { 616 }
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.113 #军阀屈服了
+
+	title = MON.28.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.28.d
+
+	option = {
+
+		name = MON.28.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.114 #定居？
+
+	title = MON.29.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = MON
+
+		NOT = {
+
+			has_government = democratic
+
+			has_completed_focus = MON_compromise_feudals
+
+		}
+
+		has_idea = MON_agriculture_idea
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 210
+
+	}
+
+	desc = MON.29.d
+
+	option = {
+
+		name = MON.29.a
+
+		swap_ideas = {
+
+			remove_idea = MON_agriculture_idea
+
+			add_idea = MON_agriculture_idea_sedentarization
+
+		}
+
+		remove_ideas = MON_nomadic
+
+		add_political_power = -100
+
+	}
+
+	option = {
+
+		name = MON.29.b
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.115 #采矿计划暂缓
+
+	title = MON.30.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = MON
+
+		has_idea = MON_resource_effort
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 100
+
+	}
+
+	desc = MON.30.d
+
+	option = {
+
+		name = MON.30.a
+
+		hidden_effect = {
+
+			country_event = { id = AWR_MON.120 days = 100 }
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.30.b
+
+		trigger = { NOT = { has_government = democratic } }
+
+		add_manpower = -3000
+
+		add_stability = -0.05
+
+		hidden_effect = {
+
+			country_event = { id = AWR_MON.120 days = 65 }
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.30.c
+
+		trigger = { has_idea = MON_chinese_migrants }
+
+		remove_ideas = MON_chinese_migrants
+
+		add_timed_idea = { idea = MON_chinese_migrants_opressed days = 150 }
+
+		hidden_effect = {
+
+			country_event = { id = AWR_MON.120 days = 65 }
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.30.dd
+
+		trigger = { NOT = { has_government = communism } }
+
+		swap_ideas = {
+
+			remove_idea = MON_resource_effort
+
+			add_idea = MON_resource_effort_capitalist
+
+		}
+
+		hidden_effect = {
+
+			country_event = { id = AWR_MON.120 days = 65 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.120 #采矿计划完成
+
+	title = MON.31.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.31.d
+
+	option = {
+
+		name = MON.31.a
+
+		remove_ideas = MON_resource_effort
+
+		remove_ideas = MON_resource_effort_capitalist
+
+		add_resource = {
+
+			type = steel
+
+			amount = 16
+
+			state = 330
+
+		}
+
+		add_resource = {
+
+			type = tungsten
+
+			amount = 16
+
+			state = 819
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.121 #加入俄罗斯法西斯党的战争？
+
+	title = MON.32.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+
+		tag = MON
+
+		has_government = neutrality
+
+		has_completed_focus = MON_russian_mongolia
+
+		is_in_faction = no
+
+		SOV = {
+
+			has_government = fascism
+
+			has_war_with = SOV
+
+			is_in_faction_with = MAN
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	desc = MON.32.d
+
+	option = {
+
+		name = MON.32.a
+
+		random_country = {
+
+			limit = {
+
+				original_tag = SOV
+
+				has_government = fascism
+
+			}
+
+			add_to_faction = MON
+
+			MAN = {
+
+				add_to_war = {
+
+					targeted_alliance = PREV
+
+					enemy = SOV
+
+				}
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.32.b
+
+		add_political_power = -300
+
+		add_stability = -0.15
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.122 #中国移民带来他们的思想
+
+	title = MON.33.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+
+		tag = MON
+
+		OR = {
+
+			has_idea = MON_chinese_migrants
+
+			has_idea = MON_chinese_migrants_opressed
+
+		}
+
+		NOT = {
+
+			has_government = democratic
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 100
+
+	}
+
+	desc = MON.33.d
+
+	option = {
+
+		name = MON.33.a
+
+		add_popularity = {
+
+			ideology = democratic
+
+			popularity = 0.05
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.33.b
+
+		add_manpower = -500
+
+		add_political_power = -40
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.123 #中国移民带来他们的思想
+
+	title = MON.34.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+
+		tag = MON
+
+		OR = {
+
+			has_idea = MON_chinese_migrants
+
+			has_idea = MON_chinese_migrants_opressed
+
+		}
+
+		NOT = {
+
+			has_government = communism
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 100
+
+	}
+
+	desc = MON.34.d
+
+	option = {
+
+		name = MON.34.a
+
+		add_popularity = {
+
+			ideology = communism
+
+			popularity = 0.05
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.34.b
+
+		add_manpower = -500
+
+		add_political_power = -40
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.124 #日本间谍正在渗透
+
+	title = MON.35.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+
+		tag = MON
+
+		OR = {
+
+			has_idea = MON_chinese_migrants
+
+			has_idea = MON_chinese_migrants_opressed
+
+		}
+
+		NOT = {
+
+			has_government = fascism
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 100
+
+	}
+
+	desc = MON.35.d
+
+	option = {
+
+		name = MON.35.a
+
+		add_popularity = {
+
+			ideology = fascism
+
+			popularity = 0.05
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.35.b
+
+		add_manpower = -500
+
+		add_political_power = -40
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.125 #中国企业家
+
+	title = MON.36.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+
+		tag = MON
+
+		OR = {
+
+			has_idea = MON_chinese_migrants
+
+			has_idea = MON_chinese_migrants_opressed
+
+		}
+
+		NOT = {
+
+			has_government = communism
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 150
+
+	}
+
+	desc = MON.36.d
+
+	option = {
+
+		name = MON.36.a
+
+		add_timed_idea = { idea = MON_chinese_buff days = 90 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.126 #临时政府！
+
+	title = MON.40.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.40.d
+
+	option = {
+
+		name = MON.40.a
+
+		add_ideas = MON_provisional_government
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.127 #全民公投！
+
+	title = MON.41.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.41.d
+
+	option = {
+
+		name = MON.41.a
+
+		ai_chance = {
+
+			factor = 9
+
+		}
+
+		MON = {
+
+			annex_country = { target = TAN transfer_troops = yes }
+
+			country_event = { id = AWR_MON.130 }
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.41.b
+
+		MON = { country_event = { id = AWR_MON.131 } }
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.130 #图瓦公投获得成功！
+
+	title = MON.42.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.42.d
+
+	option = {
+
+		name = MON.42.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.131 #图瓦公投失败！
+
+	title = MON.43.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.43.d
+
+	option = {
+
+		name = MON.43.a
+
+	}
+
+	option = {
+
+		name = MON.43.b
+
+		declare_war_on = {
+
+			target = TAN
+
+			type = annex_everything
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.132 #一场政变！
+
+	title = MON.44.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.44.d
+
+	option = {
+
+		name = MON.44.a
+
+		create_country_leader = {
+
+			name = Alexander_Ionov
+
+			desc = "POLITICS_IONOV_DESC"
+
+			picture = "gfx/leaders/MON/Portrait_RUS_Alexander_Ionov.dds"
+
+			expire = "1965.1.1"
+
+			ideology = despotism
+
+			traits = {
+
+			}
+
+		}
+
+		MON = { puppet = SIK }
+
+		set_party_name = {
+
+			ideology = neutrality
+
+			long_name = MON_neutrality_party_russian
+
+			name = MON_neutrality_russian_short
+
+		}
+
+		set_cosmetic_tag = SIK_sem
+
+		hidden_effect = {
+
+			news_event = { days = 5 id = AWR_MON_news.3 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.133 #一场未遂的政变
+
+	title = MON.45.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.45.d
+
+	option = {
+
+		name = MON.45.a
+
+		add_stability = -0.15
+
+		add_manpower = -5000
+
+		hidden_effect = {
+
+			news_event = { days = 5 id = AWR_MON_news.4 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.138 #与蒙古结盟？
+
+	title = MON.46.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.46.d
+
+	option = {
+
+		ai_chance = { factor = 2 }
+
+		name = MON.46.a
+
+		remove_state_core = 330
+
+		remove_state_core = 817
+
+		remove_state_core = 818
+
+		remove_state_core = 1025
+
+		remove_state_core = 1026
+
+		remove_state_core = 819
+
+		remove_state_core = 820
+
+		remove_state_core = 1024
+
+		remove_state_core = 1018
+
+		create_faction = MON_united_front
+
+		add_to_faction = MON
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 1 }
+
+		name = MON.46.b
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.135 #中国接受了我们的建议
+
+	title = MON.47.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.47.d
+
+	option = {
+
+		name = MON.47.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.136 #中国拒绝了
+
+	title = MON.48.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.48.d
+
+	option = {
+
+		name = MON.48.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.137
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	hidden = yes
+
+	trigger = {
+
+		tag = CHI
+
+		OR = {
+
+			has_government = neutrality
+
+			has_government = democratic
+
+		}
+
+		has_global_flag = PRC_restart_CHI_war_pre
+
+		is_in_faction = no
+
+		MON = { has_completed_focus = KMT_ties }
+
+	}
+
+	immediate = {
+
+		country_event = { id = AWR_MON.138 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.139 #合资企业
+
+	title = MON.50.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = MON.50.d
+
+	option = {
+
+		name = MON.50.a
+
+		add_ideas = MON_joint_ventures_military
+
+			random_owned_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = industrial_complex
+
+										size > 0
+
+										include_locked = yes
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 2
+
+				add_building_construction = {
+
+					type = arms_factory
+
+					level = 2
+
+					instant_build = yes
+
+				}
+
+			}
+
+		CHI = {
+
+			add_ideas =	MON_joint_ventures_military
+
+			random_owned_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = arms_factory
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = arms_factory
+
+										size > 0
+
+										include_locked = yes
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 2
+
+				add_building_construction = {
+
+					type = arms_factory
+
+					level = 2
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = MON.50.b
+
+		add_ideas = MON_joint_ventures_civillian
+
+			random_owned_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = industrial_complex
+
+										size > 0
+
+										include_locked = yes
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 2
+
+				add_building_construction = {
+
+					type = industrial_complex
+
+					level = 2
+
+					instant_build = yes
+
+				}
+
+			}
+
+		CHI = {
+
+			add_ideas =	MON_joint_ventures_civillian
+
+			random_owned_state = {
+
+				limit = {
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					OR = {
+
+						is_in_home_area = yes
+
+						NOT = {
+
+							owner = {
+
+								any_owned_state = {
+
+									free_building_slots = {
+
+										building = industrial_complex
+
+										size > 0
+
+										include_locked = yes
+
+									}
+
+									is_in_home_area = yes
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				add_extra_state_shared_building_slots = 2
+
+				add_building_construction = {
+
+					type = industrial_complex
+
+					level = 2
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.140 #内战！
+
+	title = MON.51.t
+
+	is_triggered_only = yes
+
+	desc = MON.51.d
+
+	picture = GFX_report_event_mong_army_01
+
+	option = {
+
+		name = MON.51.a
+
+		start_civil_war = {
+
+			ideology = neutrality
+
+			capital = 566
+
+			states = { 563 564 566 654 588 732 742 }
+
+		}
+
+		hidden_effect = {
+
+			SIK = {
+
+				add_ideas = MON_rovs_support
+
+				if = {
+
+					limit = {
+
+						is_puppet_of = MON
+
+						NOT = { owns_state = 586 }
+
+					}
+
+					transfer_state = 589
+
+					transfer_state = 586
+
+					set_capital = { state = 586 }
+
+				}
+
+			}
+
+			random_country = {
+
+				limit = {
+
+					original_tag = SOV
+
+					has_government = neutrality
+
+				}
+
+				create_faction = MON_white_movement
+
+				add_to_faction = MON
+
+				MON = {
+
+					add_to_war = {
+
+						targeted_alliance = THIS
+
+						enemy = SOV
+
+					}
+
+					add_ideas = MON_rovs_support
+
+				}
+
+				create_country_leader = {
+
+					name = Alexander_Kerensky
+
+					desc = "POLITICS_KERENSKY_DESC"
+
+					picture = "gfx/leaders/MON/Portrait_Soviet_Alexander_Kerensky.tga"
+
+					expire = "1970.1.1"
+
+					ideology = centrism
+
+					traits = {
+
+					}
+
+				}
+
+				add_ideas = {
+
+					service_by_requirement
+
+					war_economy
+
+					closed_economy
+
+					MON_rovs_support
+
+				}
+
+				if = {
+
+					limit = {
+
+						NOT = {
+
+							SIK = { is_puppet_of = MON }
+
+						}
+
+					}
+
+					transfer_state = 589
+
+					transfer_state = 586
+
+				}
+
+				if = {
+
+					limit = {
+
+						MON = {
+
+							owns_state = 564
+
+							owns_state = 563
+
+							owns_state = 565
+
+						}
+
+					}
+
+					transfer_state = 575
+
+					transfer_state = 574
+
+					transfer_state = 561
+
+				}
+
+				if = {
+
+					limit = {
+
+						SIK = { owns_state = 586 }
+
+					}
+
+					transfer_state = 590
+
+					transfer_state = 404
+
+				}
+
+				load_oob = "MON_RUS_civil_war"
+
+				add_equipment_to_stockpile = { type = support_equipment_1 amount = 12000 producer = MON }
+
+				add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 15500 producer = MON }
+
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 9000 producer = MON }
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_MON.141 #[GetYear]年选举
+
+	title = MON.52.t
+
+	desc = MON.52.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		tag = MON
+
+		has_government = communism
+
+		NOT = { has_country_flag = khural_elections_1 }
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			set_politics = {
+
+				ruling_party = democratic
+
+				elections_allowed = yes
+
+			}
+
+			add_popularity = {
+
+				ideology = democratic
+
+				popularity = 0.3
+
+			}
+
+			set_country_flag = khural_elections_1
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = MON.52.a
+
+		create_country_leader = {
+
+			name = MON_Jamsrangiin_Tseveen
+
+			desc = "POLITICS_TSEVEEN_DESC"
+
+			picture = "gfx/leaders/MON/Portrait_Tseveen.dds"
+
+			expire = "1965.1.1"
+
+			ideology = liberalism
+
+			traits = { }
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = MON.52.b
+
+		set_country_flag = MAN_split
+
+		set_party_name = {
+
+			ideology = democratic
+
+			long_name = MON_liberal_MAN
+
+			name = MON_liberal_MAN_short
+
+		}
+
+		create_country_leader = {
+
+			name = MON_Anandyn_Amar
+
+			desc = "POLITICS_ANANDYN_AMAR_DESC"
+
+			picture = "gfx/leaders/MON/Portrait_MON_Anandyn_Amar.dds"
+
+			expire = "1965.1.1"
+
+			ideology = socialism
+
+			traits = { }
+
+		}
+
+		hidden_effect = {
+
+			set_party_name = {
+
+				ideology = communism
+
+				long_name = MON_authoritarian_MAN
+
+				name = MON_authoritarian_MAN_short
+
+			}
+
+			create_country_leader = {
+
+				name = MON_khorloogiin_choibalsan
+
+				desc = "POLITICS_KHORLOOGIIN_CHOIBALSAN_DESC"
+
+				picture = "gfx/leaders/MON/Portrait_MON_Khorloogiin_Choibalsan.dds"
+
+				expire = "1952.1.1"
+
+				ideology = stalinism
+
+				traits = {
+
+					dictator
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_MON_news.3 #新疆政变
+
+	title = MON_news.1.t
+
+	picture = GFX_news_event_sinkiang_white
+
+	major = yes
+
+	is_triggered_only = yes
+
+	desc = MON_news.1.d
+
+	option = {
+
+		name = MON_news.1.a
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_MON_news.4 #新疆政变未遂
+
+	title = MON_news.2.t
+
+	picture = GFX_news_event_033
+
+	major = yes
+
+	is_triggered_only = yes
+
+	desc = MON_news.2.d
+
+	option = {
+
+		name = MON_news.2.a
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_MON_news.5 #绥远战役
+
+	title = MON_news.3.t
+
+	picture = GFX_news_event_Suiyuan_campaign_2 #GFX_news_event_mengjiang_cavalry
+
+	major = yes
+
+	is_triggered_only = yes
+
+	desc = MON_news.3.d
+
+	immediate = {
+
+		set_global_flag = sui_camp_flag
+
+	}
+
+	option = {
+
+		name = MON_news.3.a
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_MON_news.6 #进攻绥远获胜
+
+	title = MON_news.4.t
+
+	picture = GFX_news_event_mengjiang_politicians
+
+	major = yes
+
+	is_triggered_only = yes
+
+	desc = MON_news.4.d
+
+	option = {
+
+		name = MON_news.4.a
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_MON_news.7 #进攻绥远失利
+
+	title = MON_news.5.t
+
+	picture = GFX_news_event_033
+
+	major = yes
+
+	is_triggered_only = yes
+
+	desc = MON_news.5.d
+
+	immediate = {
+
+		set_global_flag = suijun_win_flag
+
+	}	
+
+	option = {
+
+		name = MON_news.5.a
+
+	}
+
+}

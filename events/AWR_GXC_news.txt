@@ -1,0 +1,10947 @@
+# GXC 新闻事件
+
+add_namespace = AWR_GXC_news
+
+country_event = {
+
+	id = AWR_GXC.101 #[From.GetNameDefCap]邀请[Root.GetNameDef]加入[alliance_inviter.GetFactionName]
+
+	title = generic.5.t
+
+	desc = { # FROM and ROOT are Democratic
+
+		text = generic.5.d.a
+
+		trigger = {
+
+			AND = {
+
+				FROM = {
+
+					has_government = democratic
+
+				}
+
+				has_government = democratic
+
+			}
+
+		}
+
+	}
+
+	desc = { # FROM and ROOT are Fascist
+
+		text = generic.5.d.b
+
+		trigger = {
+
+			AND = {
+
+				FROM = {
+
+					has_government = fascism
+
+				}
+
+				has_government = fascism
+
+			}
+
+		}
+
+	}
+
+	desc = { # FROM and ROOT are Communist
+
+		text = generic.5.d.c #MODDED
+
+		trigger = { #MODDED
+
+			OR = { #MODDED
+
+				AND = { #MODDED
+
+					FROM = { #MODDED
+
+						has_government = communism #MODDED
+
+					}
+
+					has_government = communism
+
+				}
+
+				AND = { #MODDED
+
+					FROM = { #MODDED
+
+						has_government = n_socialism #MODDED
+
+					} #MODDED
+
+					has_government = n_socialism #MODDED
+
+				} #MODDED
+
+			} #MODDED
+
+		} #MODDED
+
+	} #MODDED
+
+	desc = { # FROM and ROOT are different ideologies
+
+		text = generic.5.d.e
+
+		trigger = {
+
+			NOT = {
+
+				AND = {
+
+					FROM = {
+
+						has_government = democratic
+
+					}
+
+					has_government = democratic
+
+				}
+
+				AND = {
+
+					FROM = {
+
+						has_government = fascism
+
+					}
+
+					has_government = fascism
+
+				}
+
+				AND = {
+
+					FROM = {
+
+						has_government = communism
+
+					}
+
+					has_government = communism
+
+				}
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_generic_read_write
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			save_event_target_as = alliance_applicant
+
+			FROM = {
+
+				save_event_target_as = alliance_inviter
+
+			}
+
+		}
+
+	}
+
+
+
+	is_triggered_only = yes
+
+	
+
+	option = { #Agree / Both Democratic
+
+		name = generic.5.a
+
+		trigger = {
+
+			is_in_faction = no
+
+			AND = {
+
+				FROM = {
+
+					has_government = democratic
+
+				}
+
+				has_government = democratic
+
+			}
+
+		}
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		FROM = { 
+
+			add_to_faction = ROOT
+
+			country_event = { id = AWR_CHI.1511 hours = 6 } 
+
+		}
+
+		add_ai_strategy = {
+
+			type = alliance
+
+			id = FROM
+
+			value = 200
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = alliance_applicant@ROOT
+
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+
+			news_event = { id = AWR_CHI_news.448 hours = 12 }
+
+			if = {
+
+				limit = {
+
+					FROM = {
+
+						original_tag = GER
+
+						has_government = democratic
+
+						has_completed_focus = GER_pool_technical_know_how
+
+					}
+
+					NOT = { has_idea = GER_pool_technical_know_how }
+
+				}
+
+				add_ideas = GER_pool_technical_know_how
+
+			}
+
+		}
+
+	}
+
+	option = { #Agree / Both Fascist
+
+		name = generic.5.b
+
+		trigger = {
+
+			is_in_faction = no
+
+			AND = {
+
+				FROM = {
+
+					has_government = fascism
+
+				}
+
+				has_government = fascism
+
+			}
+
+		}
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		FROM = { 
+
+			add_to_faction = ROOT
+
+			country_event = { id = AWR_CHI.1511 hours = 6 } 
+
+		}
+
+		add_ai_strategy = {
+
+			type = alliance
+
+			id = FROM
+
+			value = 200
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = alliance_applicant@ROOT
+
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+
+			news_event = { id = AWR_CHI_news.448 hours = 12 }
+
+		}
+
+	}
+
+	option = { #Agree / Both Communist
+
+		name = generic.5.c
+
+		trigger = {
+
+			is_in_faction = no
+
+			OR = { #MODDED
+
+				AND = {
+
+					FROM = {
+
+						has_government = communism
+
+					}
+
+					has_government = communism
+
+				}
+
+				AND = { #MODDED
+
+					FROM = { #MODDED
+
+						has_government = n_socialism #MODDED
+
+					} #MODDED
+
+					has_government = n_socialism #MODDED
+
+				} #MODDED
+
+			} #MODDED
+
+		}
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		FROM = { 
+
+			add_to_faction = ROOT
+
+			country_event = { id = AWR_CHI.1511 hours = 6 }
+
+		}
+
+		add_ai_strategy = {
+
+			type = alliance
+
+			id = FROM
+
+			value = 200
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = alliance_applicant@ROOT
+
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+
+			news_event = { id = AWR_CHI_news.448 hours = 12 }
+
+		}
+
+	}
+
+	#MODDEDv
+
+	option = { #Agree / Both socialist
+
+		name = generic.5.c
+
+		trigger = {
+
+			is_in_faction = no
+
+			AND = {
+
+				FROM = {
+
+					has_government = n_socialism
+
+				}
+
+				has_government = n_socialism
+
+			}
+
+		}
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		FROM = { 
+
+			add_to_faction = ROOT
+
+			country_event = { id = AWR_CHI.1511 hours = 6 }
+
+		}
+
+		add_ai_strategy = {
+
+			type = alliance
+
+			id = FROM
+
+			value = 200
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = alliance_applicant@ROOT
+
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+
+			news_event = { id = AWR_CHI_news.448 hours = 12 }
+
+		}
+
+	}
+
+	#MODDED^
+
+	option = { #Agree / Both different
+
+		name = generic.5.e
+
+		trigger = {
+
+			is_in_faction = no
+
+			NOT = {
+
+				AND = {
+
+					FROM = {
+
+						has_government = democratic
+
+					}
+
+					has_government = democratic
+
+				}
+
+				AND = {
+
+					FROM = {
+
+						has_government = fascism
+
+					}
+
+					has_government = fascism
+
+				}
+
+				AND = {
+
+					FROM = {
+
+						has_government = communism
+
+					}
+
+					has_government = communism
+
+				}
+
+				#MODDEDv
+
+				AND = {
+
+					FROM = {
+
+						has_government = n_socialism
+
+					}
+
+					has_government = n_socialism
+
+				}
+
+				#MODDED^
+
+			}
+
+		}
+
+		ai_chance = {
+
+			base = 100
+
+			
+
+			modifier = {
+
+				factor = 0.5
+
+				has_war = no
+
+				FROM = {
+
+					has_war = yes
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0.5
+
+				NOT = {
+
+					has_government = neutrality
+
+				}
+
+				#MODDEDv
+
+				NOT = {
+
+					FROM = {
+
+						OR = {
+
+							has_government = n_socialism
+
+							has_government = communism
+
+						}
+
+					}
+
+					OR = {
+
+						has_government = n_socialism
+
+						has_government = communism
+
+					}
+
+				}
+
+				NOT = {
+
+					FROM = {
+
+						OR = {
+
+							has_government = n_socialism
+
+							has_government = democratic
+
+						}
+
+					}
+
+					OR = {
+
+						has_government = n_socialism
+
+						has_government = democratic
+
+					}
+
+				}
+
+			}
+
+			#MODDED^
+
+			modifier = {
+
+				factor = 0.75
+
+				FROM = {
+
+					is_major = no
+
+				}
+
+			}
+
+		}
+
+		FROM = { 
+
+			add_to_faction = ROOT
+
+			country_event = { id = AWR_CHI.1511 hours = 6 }
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_literally_china = yes
+
+				has_DLC = "Waking the Tiger"
+
+			}
+
+			CHI_set_ally_strat_on_current_leader = yes #sets ally strategy to current Chinese leader
+
+		}
+
+		add_ai_strategy = {
+
+			type = alliance
+
+			id = FROM
+
+			value = 200
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = alliance_applicant@ROOT
+
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+
+			news_event = { id = AWR_CHI_news.448 hours = 12 }
+
+			if = {
+
+				limit = {
+
+					FROM = {
+
+						original_tag = GER
+
+						has_government = democratic
+
+						has_completed_focus = GER_pool_technical_know_how
+
+					}
+
+					NOT = { has_idea = GER_pool_technical_know_how }
+
+				}
+
+				add_ideas = GER_pool_technical_know_how
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = { #Reject
+
+		name = generic.2.f
+
+		trigger = {
+
+			is_in_faction = no
+
+			NOT = { #forced to accept
+
+				FROM = {
+
+					tag = JAP
+
+					has_completed_focus = siamese_puppet_focus
+
+				}
+
+				tag = SIA
+
+			}
+
+		}
+
+		ai_chance = {
+
+			factor = 50
+
+			
+
+			modifier = {#guo
+
+				factor = 0
+
+				FROM = {
+
+					is_major = yes
+
+					is_subject = no
+
+					is_faction_leader = yes
+
+					is_ai = no
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0
+
+				FROM = {
+
+					original_tag = YUG
+
+					has_government = communism
+
+				}
+
+				has_government = communism
+
+			}
+
+			
+
+			modifier = { #MODDED
+
+				factor = 0
+
+				FROM = {
+
+					OR = {
+
+					    tag = KHR
+
+						tag = TNG
+
+					}
+
+					has_government = neutrality
+
+				}
+
+				has_government = neutrality
+
+			} #MODDED
+
+			
+
+			modifier = {
+
+				factor = 0.5
+
+				has_opinion = {
+
+					target = FROM
+
+					value > 65
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0.5
+
+				has_opinion = {
+
+					target = FROM
+
+					value > 35
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0.5
+
+				has_opinion = {
+
+					target = FROM
+
+					value > 5
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 2.0
+
+				has_opinion = {
+
+					target = FROM
+
+					value < 35
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 2.0
+
+				has_opinion = {
+
+					target = FROM
+
+					value < 65
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0.1
+
+				has_war = yes
+
+				FROM = {
+
+					has_war = no
+
+				}
+
+			}
+
+			
+
+			modifier = {
+
+				factor = 0.1
+
+				FROM = {
+
+					is_major = yes
+
+				}
+
+			}
+
+		}
+
+		FROM = { 
+
+			country_event = { id = AWR_CHI.1512 hours = 6 }
+
+		}
+
+	}
+
+
+
+	option = { #Reject if in faction
+
+		name = generic.2.g
+
+		trigger = {
+
+			is_in_faction = yes
+
+		}
+
+		FROM = { 
+
+			country_event = { id = AWR_CHI.1512 hours = 6 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.35 #[From.GetName]要求控制广东
+
+	title = EFM_New_Guangxi.1.t
+
+	desc = EFM_New_Guangxi.1.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 90 }
+
+		name = EFM_New_Guangxi.1.a
+
+		trigger = {
+
+			GUD = { is_ai = yes }
+
+		}
+
+		if = {
+
+			limit = {
+
+				GUD = {
+
+					is_subject_of = ROOT
+
+				}
+
+			}
+
+			GUD = { country_event = { id = AWR_GXC.40 hours = 12 } }
+
+		}
+
+		FROM = { country_event = { id = AWR_GXC.40 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_New_Guangxi.1.b
+
+		FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.39 #[From.GetName]同意
+
+	title = EFM_New_Guangxi.2.t
+
+	desc = EFM_New_Guangxi.2.d
+
+	picture = GFX_report_event_chinese_officers
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.2.a
+
+		trigger = {
+
+			NOT = { tag = GUD }
+
+		}
+
+		if = {
+
+			limit = {
+
+				GUD = {
+
+					is_subject_of = event_target:WTT_current_china_leader
+
+				}
+
+			}
+
+			annex_country = { target = GUD transfer_troops = yes }
+
+		}
+
+		else_if = {
+
+			FROM = {
+
+				every_owned_state = {
+
+					limit = {
+
+						OR = {
+
+							state = 591
+
+							state = 592
+
+							state = 593
+
+							state = 835
+
+						}
+
+					}
+
+				    ROOT = { transfer_state = PREV }
+
+				}
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = EFM_New_Guangxi.2.b
+
+		trigger = {
+
+			tag = GUD
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.40 #[From.GetName]打算接管我方领导权
+
+	title = EFM_New_Guangxi.3.t
+
+	desc = EFM_New_Guangxi.3.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_New_Guangxi.3.a
+
+		trigger = { tag = event_target:WTT_current_china_leader }
+
+		ai_chance = { 
+
+		    factor = 10 
+
+			modifier = {
+
+				factor = 1000
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio < 1.5
+
+				}
+
+				#is_historical_focus_on = yes
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			#if = {
+
+				#limit = {
+
+					#has_country_leader = {
+
+					#	character = CHI_chiang_kai_shek ruling_only = yes
+
+					#}
+
+					#retire_country_leader = yes
+
+					#if = {
+
+					#	limit = {
+
+					#		has_character = CHI_chen_cheng
+
+					#	}
+
+						#CHI_chen_cheng = {
+
+						#}
+
+					#}
+
+				#}
+
+			#}
+
+			if = {
+
+				limit = {
+
+					tag = CHI
+
+				}
+
+				set_cosmetic_tag = CHI_power_struggle_defeated
+
+			}
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = ROOT
+
+					has_state_flag = majority_political_platform_@FROM
+
+				}
+
+				add_core_of = FROM
+
+				transfer_state_to = FROM
+
+			}
+
+			if = {
+
+				limit = {
+
+					owns_state = 1015
+
+					controls_state = 1015
+
+				}
+
+				1015 = {
+
+					add_core_of = FROM
+
+				    transfer_state_to = FROM
+
+				}
+
+			}
+
+			#if = {
+
+		    #    limit = {
+
+			#       is_ai = yes
+
+			#    }
+
+		    #    change_tag_from = GXC
+
+		    #}
+
+		    #annex_country = {
+
+			#    target = GXC
+
+			#    transfer_troops = yes
+
+		    #}
+
+		    #GXC = {
+
+		    #    every_unit_leader = {
+
+			#        set_nationality = ROOT
+
+		    #    }
+
+		    #}
+
+		    #GXC_li_zongren = {
+
+		        #set_nationality = ROOT
+
+		    #    add_country_leader_role = {
+
+			#        promote_leader = yes
+
+			#	    country_leader = {
+
+			#	        expire = "1965.1.1"
+
+			#	        ideology = despotism
+
+			#	        traits = { }            
+
+			#       } 
+
+			#    }  
+
+		    #}
+
+		    #add_timed_idea = {
+
+			#	idea = GXC_disjointed_command days = 365
+
+			#} 
+
+			every_subject_country = {
+
+				ROOT = {
+
+					set_autonomy = {
+
+						target = PREV
+
+						autonomy_state = autonomy_free
+
+					}
+
+				}
+
+			}
+
+		}
+
+		GXC = { country_event = { id = AWR_GXC.44 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 0 }#guo
+
+		name = EFM_New_Guangxi.3.b
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = hostile_status
+
+		}
+
+		effect_tooltip = {
+
+            add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = hostile_status
+
+			}
+
+			FROM = {
+
+				create_wargoal = {
+
+					type = annex_everything
+
+					target = ROOT
+
+				}
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = hostile_status
+
+				}
+
+			}	
+
+		}	
+
+		if = {
+
+			limit = {
+
+				tag = event_target:WTT_current_china_leader
+
+			}
+
+		    FROM = {
+
+				country_event = { id = AWR_GXC.47 hours = 12 }
+
+			}
+
+		}
+
+	}
+
+    
+
+	option = {
+
+		trigger = { NOT = { tag = event_target:WTT_current_china_leader } }
+
+		ai_chance = { 
+
+		    factor = 70 
+
+		}
+
+		name = EFM_New_Guangxi.3.c
+
+		FROM = {
+
+			annex_country = { target = ROOT transfer_troops = yes }
+
+			country_event = { id = AWR_SHX.75 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.44 #[From.GeLeader]接受
+
+	title = EFM_New_Guangxi.333.t
+
+	desc = EFM_New_Guangxi.333.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.333.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}
+
+		#if = {
+
+		#	limit = {
+
+		#		has_template = "Mint'uan"
+
+		#	}
+
+		#	set_division_template_lock = {
+
+		#		division_template = "Mint'uan"
+
+		#		is_locked = no
+
+		#	}
+
+		#}
+
+		#if = {
+
+		#	limit = {
+
+		#		has_template = "Fei Chêngkuei Chün"
+
+		#	}
+
+		#	delete_unit_template_and_units = {
+
+		#		division_template = "Fei Chêngkuei Chün"
+
+		#		disband = no
+
+		#	}
+
+		#}
+
+		remove_country_leader_trait = GXC_fuzongtong
+
+        add_country_leader_trait = GXC_Acting_President		
+
+        CHI = { remove_country_leader_trait = CHI_zongtong }				
+
+		save_event_target_as = new_leader
+
+	    #if = {
+
+			#	limit = {
+
+			#		NOT = {  #MODDEDv
+
+			#			OR = {
+
+			#				has_government = n_socialism
+
+			#				has_government = communism
+
+			#			} # PRC branch to political struggle
+
+			#		}  #MODDED^
+
+			#	}
+
+			#	#CHI_negative_spirit_transfer = yes
+
+		#}
+
+		FROM = {
+
+			if = {
+
+				limit = {
+
+					tag = CHI
+
+				}
+
+				set_cosmetic_tag = CHI_power_struggle_defeated
+
+			}
+
+			every_subject_country = {
+
+				FROM = {
+
+					set_autonomy = {
+
+						target = PREV
+
+						autonomy_state = autonomy_free
+
+					}
+
+				}
+
+			}
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = FROM
+
+					has_state_flag = majority_political_platform_@ROOT
+
+				}
+
+				add_core_of = ROOT
+
+				transfer_state_to = ROOT
+
+			}
+
+			if = {
+
+				limit = {
+
+					owns_state = 1015
+
+					controls_state = 1015
+
+				}
+
+				1015 = {
+
+					add_core_of = ROOT
+
+				    transfer_state_to = ROOT
+
+				}
+
+			}
+
+		}
+
+		clear_global_event_target = WTT_current_china_leader
+
+		save_global_event_target_as = WTT_current_china_leader
+
+		WTT_political_struggle_recalculate_support = yes
+
+		if = {
+
+			limit = {
+
+				has_cosmetic_tag = CHI_power_struggle_defeated
+
+			}
+
+			drop_cosmetic_tag = yes
+
+		}
+
+		#if = {
+
+			#limit = {
+
+			#	has_country_flag = cooperation_with_nationalist_flag
+
+			#}
+
+			set_cosmetic_tag = CHI_warlord_leader
+
+		#}
+
+		#ROOT = {
+
+		#    every_unit_leader = {
+
+		#	    set_nationality = event_target:WTT_current_china_leader
+
+		#    }
+
+		#}
+
+		#event_target:WTT_current_china_leader = {
+
+		#	change_tag_from = ROOT				
+
+	    #}
+
+		
+
+		#event_target:WTT_current_china_leader = {
+
+		#    annex_country = {
+
+		#	    target = GXC
+
+		#	    transfer_troops = yes
+
+		#    }
+
+		#    hidden_effect = {
+
+		#	    retire_country_leader = yes
+
+		#	}
+
+		#    retire_country_leader = yes
+
+		#	add_timed_idea = {
+
+		#		idea = GXC_disjointed_command days = 365
+
+		#	} 
+
+		#}
+
+		
+
+		#GXC_li_zongren = {
+
+		#    #set_nationality = ROOT
+
+		#    add_country_leader_role = {
+
+		#	    promote_leader = yes
+
+		#		country_leader = {
+
+		#		    expire = "1965.1.1"
+
+		#		    ideology = despotism
+
+		#		    traits = { }            
+
+		#	    } 
+
+		#	}  
+
+		#}
+
+		if = {
+
+			limit = {
+
+			1015 = {
+
+				is_controlled_by = GXC
+
+			}
+
+			}
+
+        set_capital = { state = 1015 }	
+
+		}			
+
+	    set_global_flag = li_is_in_charge_roc_flag
+
+	} 
+
+}
+
+country_event = {
+
+	id = AWR_GXC.45 #[GXC.GetLeader]逃亡
+
+	title = EFM_New_Guangxi.334.t
+
+	desc = EFM_New_Guangxi.334.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes ###
+
+	fire_only_once = no
+
+	#trigger = {
+
+	#    tag = CHI
+
+	#    is_subject = no
+
+	#	has_global_flag = li_is_in_charge_roc_flag
+
+	#	GXC = {
+
+	#		exists = no
+
+	#	}
+
+	#}
+
+	immediate = {
+
+		set_global_flag = EFM_New_Guangxi.334_flag
+
+	}
+
+
+
+	option = {
+
+		name = EFM_New_Guangxi.333.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}
+
+        add_country_leader_trait = CHI_zongtong			
+
+		clear_global_event_target = WTT_current_china_leader
+
+		save_global_event_target_as = WTT_current_china_leader
+
+		WTT_political_struggle_recalculate_support = yes
+
+		if = {
+
+			limit = {
+
+				has_cosmetic_tag = CHI_power_struggle_defeated
+
+			}
+
+			drop_cosmetic_tag = yes
+
+		}
+
+		add_stability = 0.05
+
+		every_owned_state = {
+
+			limit = {
+
+				is_controlled_by = event_target:WTT_communist_china
+
+			}
+
+			transfer_state_to = event_target:WTT_communist_china
+
+		}
+
+		if = {
+
+			limit = {
+
+				GXC = {
+
+					exists = yes
+
+				}
+
+			}
+
+			GXC = {
+
+				country_event = {
+
+					id = AWR_GXC.48 hours = 12
+
+				}
+
+			}
+
+		}
+
+		#GXC_li_zongren = { retire = yes }
+
+		#CHI_chiang_kai_shek = {
+
+		#    add_country_leader_role = {
+
+		#	    promote_leader = yes
+
+		#		country_leader = {
+
+		#		    expire = "1965.1.1"
+
+		#		    ideology = despotism
+
+		#		    traits = { }            
+
+		#	    } 
+
+		#	}  
+
+		#}	
+
+	}
+
+}
+
+country_event = {
+
+					id = AWR_GXC.48 hours = 12
+
+				}
+
+country_event = {
+
+	id = AWR_GXC.47 #[From.GetName]拒绝
+
+	title = EFM_New_Guangxi.335.t
+
+	desc = EFM_New_Guangxi.335.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.335.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = hostile_status
+
+		}
+
+		create_wargoal = {
+
+			type = annex_everything
+
+			target = FROM
+
+		}
+
+	    FROM = {
+
+			add_opinion_modifier = {
+
+				target = ROOT
+
+				modifier = hostile_status
+
+			}
+
+		}	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.48 #[ROOT.GetLeader] Flees
+
+	title = EFM_New_Guangxi.336.t
+
+	desc = EFM_New_Guangxi.336.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes ###
+
+	fire_only_once = no
+
+	#trigger = {
+
+	#    tag = CHI
+
+	#    is_subject = no
+
+	#	has_global_flag = li_is_in_charge_roc_flag
+
+	#	GXC = {
+
+	#		exists = no
+
+	#	}
+
+	#}
+
+
+
+	option = {
+
+		name = EFM_New_Guangxi.336.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}
+
+		drop_cosmetic_tag = yes
+
+		add_war_support = -0.1
+
+		#GXC_li_zongren = { retire = yes }
+
+		#CHI_chiang_kai_shek = {
+
+		#    add_country_leader_role = {
+
+		#	    promote_leader = yes
+
+		#		country_leader = {
+
+		#		    expire = "1965.1.1"
+
+		#		    ideology = despotism
+
+		#		    traits = { }            
+
+		#	    } 
+
+		#	}  
+
+		#}	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.49 #[From.GetName]宣布忠于中央政府
+
+	title = EFM_New_Guangxi.4.t
+
+	desc = EFM_New_Guangxi.4.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.4.a
+
+		add_political_power = 50
+
+		diplomatic_relation = { country = GXC relation = non_aggression_pact } 
+
+	    GXC = { give_military_access = ROOT }
+
+		give_military_access = GXC
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.50 #[From.GetName]加入中央政府
+
+	title = EFM_New_Guangxi.5.t
+
+	desc = EFM_New_Guangxi.5.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.5.a
+
+		add_political_power = 100
+
+		set_autonomy = {
+
+			target = FROM
+
+			autonomy_state = autonomy_rcm_national_revolutionary_army
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.51 #政治斗争
+
+	title = EFM_New_Guangxi.6.t
+
+	desc = EFM_New_Guangxi.6.d
+
+	picture = GFX_report_event_gxc_li_zongren
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.6.a
+
+		add_political_power = 100
+
+		add_war_support = 0.05
+
+		add_stability = 0.05
+
+		if = {
+
+				limit = {
+
+						NOT = {
+
+								has_idea = GXC_New_guangxi_clique
+
+							}
+
+					}
+
+				add_ideas = GXC_New_guangxi_clique
+
+			}
+
+		if = {
+
+				limit = {
+
+						is_subject_of = event_target:WTT_current_china_leader
+
+					}
+
+				add_autonomy_ratio = {
+
+						value = 0.1
+
+						localization = GXC_Political_struggle
+
+					}
+
+			}
+
+		#unlock_decision_category_tooltip = GXC_The_political_struggle_between_new_guangxi_clique_and_chiang_kai_shek
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.52 #[From.GetName]再度开始反对[Root.GetLeader]运动
+
+	title = EFM_New_Guangxi.7.t
+
+	desc = EFM_New_Guangxi.7.d
+
+	picture = GFX_report_event_gxc_li_zongren
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.7.a
+
+		
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.53 #[From.GetName] 有可疑举动
+
+	title = EFM_New_Guangxi.8.t
+
+	desc = EFM_New_Guangxi.8.d
+
+	picture = GFX_report_event_gxc_li_zongren
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.8.a
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_estrangement
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.54 #与民主派合作
+
+	title = EFM_New_Guangxi.9.t
+
+	desc = EFM_New_Guangxi.9.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.9.a
+
+		add_popularity = {
+
+				ideology = democratic
+
+				popularity = 0.05
+
+			}
+
+		swap_ideas = {
+
+				remove_idea = GXC_New_guangxi_clique
+
+				add_idea = GXC_New_guangxi_clique_dem
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.55 #民主派影响
+
+	title = EFM_New_Guangxi.10.t
+
+	desc = EFM_New_Guangxi.10.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.10.a
+
+		add_timed_idea = {
+
+				idea = democratic_influence
+
+				days = 180
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.56 #[From.GetName]发起敌对行动
+
+	title = EFM_New_Guangxi.11.t
+
+	desc = EFM_New_Guangxi.11.d
+
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.11.a
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = {
+
+					type = annex_everything
+
+					target = ROOT
+
+				}			
+
+			}
+
+	    }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.57
+
+	title = EFM_New_Guangxi.12.t
+
+	desc = EFM_New_Guangxi.12.d
+
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.12.a
+
+		
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.58 #[From.GetName]叛乱
+
+	title = EFM_New_Guangxi.13.t
+
+	desc = EFM_New_Guangxi.13.d
+
+	picture = GFX_report_event_generic_battle
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 90
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+				NOT = { is_in_faction_with = FROM }
+
+			}
+
+			modifier = {
+
+				factor = 50
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+				is_in_faction_with = FROM
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.13.a
+
+		if = {
+
+			limit = {
+
+				FROM = {
+
+					is_in_faction_with = ROOT
+
+				}
+
+			}
+
+			FROM = {
+
+				leave_faction = yes
+
+			}
+
+		}
+
+		declare_war_on = { target = FROM type = annex_everything }
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 90
+
+			modifier = {
+
+				factor = 10
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+				NOT = { is_in_faction_with = FROM }
+
+			}
+
+			modifier = {
+
+				factor = 50
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+				is_in_faction_with = FROM
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.13.b
+
+		add_political_power = -50
+
+		add_war_support = -0.05
+
+		add_stability = -0.05
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.59 #[From.GetName] 提议结盟
+
+	title = EFM_New_Guangxi.14.t
+
+	desc = EFM_New_Guangxi.14.d
+
+	picture = GFX_report_event_gxc_li_zongren
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 60 }
+
+		name = EFM_New_Guangxi.14.a
+
+		set_rule = {
+
+				can_create_factions = yes
+
+			}
+
+		create_faction = "Southwest_military_commission"
+
+		add_to_faction = FROM
+
+		every_other_country = {
+
+				limit = {
+
+						OR = {
+
+								tag = YUN
+
+								tag = SIC
+
+								tag = FTC
+
+								tag = PRC
+
+							}
+
+						exists = yes
+
+						is_subject = no
+
+						is_in_faction = no
+
+						NOT = {
+
+								has_war_with = GXC
+
+							}
+
+					}
+
+				country_event = {
+
+						id = AWR_GXC.101
+
+					}
+
+			}
+
+		#declare_war_on = {
+
+		#		target = event_target:WTT_current_china_leader
+
+		#		type = annex_everything
+
+		#	}
+
+		FROM = {
+
+				add_to_war = {
+
+						targeted_alliance = ROOT
+
+						enemy = CHI
+
+					}
+
+			}
+
+		FROM = { country_event = { id = AWR_SHX.75 hours = 12 } }
+
+		event_target:WTT_current_china_leader = {
+
+				country_event = { id = AWR_GXC.68 hours = 12 }
+
+		}
+
+		hidden_effect = {
+
+				if = {
+
+						limit = {
+
+								JAP = {
+
+										has_government = fascism
+
+									}
+
+								NOT = {
+
+										has_war_with = JAP
+
+										has_government = communism
+
+									}
+
+							}
+
+						JAP = {
+
+								country_event = {
+
+										id = AWR_GXC.77
+
+										days = 5
+
+									}
+
+							}
+
+					}
+
+			}
+
+		hidden_effect = {
+
+			#news_event = { id = AWR_GXC_news.2 hours = 6 }
+
+			#may need a news event here
+
+		}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.14.b
+
+		FROM = { country_event = { id = AWR_GXC.66 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_New_Guangxi.14.c
+
+		FROM = { country_event = { id = AWR_GXC.71 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+						id = AWR_GXC.101
+
+					}
+
+country_event = {
+
+										id = AWR_GXC.77
+
+										days = 5
+
+									}
+
+country_event = {
+
+	id = AWR_GXC.66 #[From.GetName] 提议我方成为联盟领导
+
+	title = EFM_New_Guangxi.15.t
+
+	desc = EFM_New_Guangxi.15.d
+
+	picture = GFX_report_event_gud_chen_jitang
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 90 }
+
+		name = EFM_New_Guangxi.15.a
+
+		set_rule = {
+
+				can_create_factions = yes
+
+			}
+
+		create_faction = "Southwest_military_commission"
+
+		add_to_faction = FROM
+
+		every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					tag = YUN
+
+					tag = SIC
+
+					tag = XIK
+
+					tag = PRC
+
+				}
+
+				exists = yes
+
+				is_subject = no
+
+				is_in_faction = no
+
+				NOT = {
+
+					has_war_with = GXC
+
+				}
+
+			}
+
+			country_event = {
+
+				id = AWR_GXC.101
+
+			}
+
+		}
+
+		#declare_war_on = {
+
+		#		target = event_target:WTT_current_china_leader
+
+		#		type = annex_everything
+
+		#	}
+
+		FROM = {
+
+			add_to_war = {
+
+				targeted_alliance = ROOT
+
+				enemy = CHI
+
+			}
+
+		}
+
+		event_target:WTT_current_china_leader = {
+
+			country_event = { id = AWR_GXC.68 hours = 12 }
+
+		}
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					JAP = {
+
+						has_government = fascism
+
+					}
+
+					NOT = {
+
+						has_war_with = JAP
+
+						has_government = communism
+
+					}
+
+				}
+
+				JAP = {
+
+					country_event = {
+
+						id = AWR_GXC.77
+
+						days = 5
+
+					}
+
+				}
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			news_event = { id = AWR_GXC_news.2 hours = 6 }
+
+		}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_New_Guangxi.15.b
+
+		FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_GXC.101
+
+			}
+
+country_event = {
+
+						id = AWR_GXC.77
+
+						days = 5
+
+					}
+
+country_event = {
+
+	id = AWR_GXC.71 #[From.GetName]拒绝
+
+	title = EFM_New_Guangxi.16.t
+
+	desc = EFM_New_Guangxi.16.d
+
+	picture = GFX_report_event_chinese_officers
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				factor = 90
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.16.a
+
+		create_wargoal = {
+
+				type = annex_everything
+
+				target = event_target:WTT_current_china_leader
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 10
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.16.b
+
+		set_rule = {
+
+				can_create_factions = yes
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.72 #[From.GetName]的最后通牒
+
+	title = EFM_New_Guangxi.20.t
+
+	desc = EFM_New_Guangxi.20.d
+
+	picture = GFX_report_event_chinese_officers
+
+
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.20.a
+
+		trigger = {
+
+				NOT = {
+
+						has_war_with = FROM
+
+					}
+
+			}
+
+		FROM = {
+
+				create_wargoal = {
+
+						type = annex_everything
+
+						target = event_target:WTT_current_china_leader
+
+					}
+
+				annex_country = { target = ROOT transfer_troops = yes }
+
+			}
+
+		FROM = { country_event = { id = AWR_SHX.75 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_New_Guangxi.20.b
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_war_with = FROM
+
+				}
+
+			}
+
+			FROM = {
+
+				declare_war_on = {
+
+					target = ROOT
+
+					type = annex_everything
+
+				}
+
+			}
+
+			FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+		}
+
+		FROM = {
+
+			create_wargoal = {
+
+				type = annex_everything
+
+				target = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			event_target:WTT_current_china_leader = {
+
+				country_event = {
+
+					id = AWR_GXC.76
+
+					days = 10
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+					id = AWR_GXC.76
+
+					days = 10
+
+				}
+
+country_event = {
+
+	id = AWR_GXC.76
+
+	title = EFM_New_Guangxi.21.t
+
+	desc = EFM_New_Guangxi.21.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.21.a
+
+		annex_country = { target = FROM transfer_troops = yes }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.77
+
+	title = EFM_New_Guangxi.22.t
+
+	desc = EFM_New_Guangxi.22.d
+
+	picture = GFX_report_event_japanese_officers
+
+
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_New_Guangxi.22.a
+
+		add_ai_strategy = {
+
+			type = send_volunteers_desire
+
+			id = GXC
+
+			value = 200
+
+		}
+
+		if = {
+
+			limit = {
+
+				GUD = { is_in_faction_with = GXC }
+
+			}
+
+			add_ai_strategy = {
+
+				type = send_volunteers_desire
+
+				id = GUD
+
+				value = 200
+
+			}
+
+		}
+
+		FROM = { country_event = { id = AWR_GXC.79 hours = 12 } }
+
+		if = {
+
+			limit = {
+
+				has_equipment = { infantry_equipment > 500 }
+
+			}
+
+			send_equipment = { target = FROM type = infantry_equipment amount = 500 }
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_equipment = { infantry_equipment < 500 }
+
+			}
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -500
+
+				producer = JAP
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.22.b
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.79
+
+	title = EFM_New_Guangxi.23.t
+
+	desc = EFM_New_Guangxi.23.d
+
+	picture = GFX_report_event_chinese_officers
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.23.a
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment
+
+			amount = 500
+
+			producer = JAP
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.80 #李济深归来
+
+	title = EFM_New_Guangxi.24.t
+
+	desc = EFM_New_Guangxi.24.d
+
+	picture = GFX_report_event_gxc_li_jishen
+
+
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.24.a
+
+		#retire_ideology_leader = communism
+
+		#create_country_leader = {
+
+		#		name = "Li Jishen"
+
+		#		desc = ""
+
+		#		picture = "Portrait_Li_Jishen.dds"
+
+		#		expire = "1965.1.1"
+
+		#		ideology = leninism
+
+		#		traits = { celebrity_junta_leader }
+
+		#	}
+
+		#add_ideas = wrl_li_jishen
+
+		swap_ideas = {
+
+			remove_idea = GXC_New_guangxi_clique
+
+			add_idea = GXC_New_guangxi_clique_com
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.81 #中华共和国再建
+
+	title = EFM_New_Guangxi.25.t
+
+	desc = EFM_New_Guangxi.25.d
+
+	picture = GFX_report_event_chinese_republic
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.25.a
+
+		trigger = {
+
+			tag = GXC
+
+		}
+
+		swap_ideas = {
+
+			remove_idea = GXC_New_guangxi_clique_com
+
+			add_idea = GXC_New_guangxi_clique_fpg
+
+		}
+
+		hidden_effect = {
+
+		    #retire_ideology_leader = democratic
+
+		    retire_ideology_leader = neutrality
+
+		    #retire_ideology_leader = fascism
+
+		    retire_ideology_leader = n_socialism
+
+		    #retire_ideology_leader = communism
+
+		}
+
+		add_country_leader_role = {
+
+            character = GXC_li_zongren
+
+            promote_leader = yes
+
+            country_leader = {
+
+                ideology = n_socialism_ideology
+
+                expire = "1965.1.1.1"
+
+                traits = {  }
+
+				#celebrity_junta_leader
+
+            }
+
+        }  
+
+		#create_field_marshal = {
+
+		#		name = "Li Jishen"
+
+		#		portrait_path = "gfx/leaders/GXC/Portrait_Li_Jishen.dds"
+
+		#		traits = { }
+
+		#		skill = 2
+
+		#		attack_skill = 2
+
+		#		defense_skill = 2
+
+		#		planning_skill = 2
+
+		#		logistics_skill = 2
+
+		#}
+
+	}
+
+	option = {  #unused
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_New_Guangxi.25.b
+
+		trigger = {
+
+			tag = GXC
+
+		    always = no ####
+
+		}
+
+		set_party_name = { ideology = neutrality long_name = CHI_communism_party_POW_long name = CHI_communism_party_POW }
+
+		#set_party_name = { ideology = communism long_name = CHI_communism_party_POW_long name = CHI_communism_party_POW }
+
+		swap_ideas = {
+
+			remove_idea = GXC_New_guangxi_clique_com
+
+			add_idea = GXC_New_guangxi_clique_fpg_neu
+
+		}
+
+		hidden_effect = {
+
+		    retire_ideology_leader = democratic
+
+		    #retire_ideology_leader = neutrality
+
+		    retire_ideology_leader = fascism
+
+		    retire_ideology_leader = n_socialism
+
+		    retire_ideology_leader = communism
+
+		}
+
+		create_country_leader = {
+
+				name = "Li Jishen"
+
+				desc = ""
+
+				picture = "Portrait_Li_Jishen.dds"
+
+				expire = "1965.1.1"
+
+				ideology = socialism
+
+				traits = { celebrity_junta_leader }
+
+			}
+
+		create_country_leader = {
+
+				name = "Li Jishen"
+
+				desc = ""
+
+				picture = "Portrait_Li_Jishen.dds"
+
+				expire = "1965.1.1"
+
+				ideology = centrism
+
+				traits = { celebrity_junta_leader }
+
+			}
+
+		create_field_marshal = {
+
+				name = "Li Jishen"
+
+				portrait_path = "gfx/leaders/GXC/Portrait_Li_Jishen.dds"
+
+				traits = { }
+
+				skill = 2
+
+				attack_skill = 2
+
+				defense_skill = 2
+
+				planning_skill = 2
+
+				logistics_skill = 2
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.25.c
+
+		trigger = {
+
+				NOT = {
+
+					tag = GXC
+
+					has_government = communism
+
+				}
+
+			}
+
+		effect_tooltip = {
+
+				FROM = {
+
+						every_army_leader = {
+
+								limit = { has_trait = media_personality }
+
+								set_nationality = ROOT
+
+							}
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_New_Guangxi.25.e
+
+		trigger = {
+
+			NOT = {
+
+				tag = GXC
+
+				has_government = communism
+
+				has_war_with = GXC
+
+			}
+
+		}
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+		FROM = { country_event = { id = AWR_GXC.83 } }
+
+	}
+
+	option = {
+
+		name = EFM_New_Guangxi.25.c
+
+		trigger = {
+
+				NOT = {
+
+					tag = GXC
+
+				}
+
+				has_government = communism
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.83 #[From.GetName]正准备进攻
+
+	title = EFM_New_Guangxi.26.t
+
+	desc = EFM_New_Guangxi.26.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.26.a
+
+		add_war_support = 0.1
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = { type = annex_everything target = ROOT }
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.84 #[From.GetName] 提案合作
+
+	title = EFM_New_Guangxi.27.t
+
+	desc = EFM_New_Guangxi.27.d
+
+	picture = GFX_report_event_generic_rally2
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		#ai_chance = {
+
+		#	factor = 20
+
+		#	modifier = {
+
+		#		factor = 70
+
+		#		strength_ratio = {
+
+		#			tag = FROM
+
+		#			ratio > 0.75
+
+		#		}
+
+		#	}
+
+		#}
+
+		ai_chance = { factor = 90 }
+
+		name = EFM_New_Guangxi.27.a
+
+		#trigger = {
+
+		#	is_in_faction = no
+
+		#}
+
+		#if = {
+
+		#		limit = {
+
+		#				is_in_faction = no
+
+		#			}
+
+		#		create_faction = "SRC_communism"
+
+		#		add_to_faction = FROM
+
+		#	}
+
+		#if = {
+
+		#		limit = {
+
+		#				is_in_faction = yes
+
+		#				is_faction_leader = yes
+
+		#			}
+
+		#		add_to_faction = FROM
+
+		#	}
+
+		#every_other_country = {
+
+		#		limit = {
+
+		#				is_literally_china = yes
+
+		#				exists = yes
+
+		#				is_subject = no
+
+		#				has_government = communism
+
+		#				NOT = {
+
+		#					is_in_faction_with = ROOT
+
+		#					has_war_with = ROOT
+
+		#				}
+
+		#			}
+
+		#		country_event = { id = AWR_GXC.101 hours = 12 }
+
+		#	}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				diplomatic_relation = {
+
+					country = ROOT
+
+					relation = non_aggression_pact
+
+					active = yes
+
+				}
+
+				diplomatic_relation = {
+
+					country = ROOT
+
+					relation = guarantee
+
+					active = yes
+
+				}
+
+			}
+
+			diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+				active = yes
+
+			}
+
+			diplomatic_relation = {
+
+				country = FROM
+
+				relation = guarantee
+
+				active = yes
+
+			}
+
+		}
+
+		FROM = { country_event = { id = AWR_GXC.88 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_New_Guangxi.27.b
+
+		FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.88 #[From.GetName]同意
+
+	title = EFM_New_Guangxi.28.t
+
+	desc = EFM_New_Guangxi.28.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.28.a
+
+		FROM = {
+
+			diplomatic_relation = {
+
+				country = ROOT
+
+				relation = non_aggression_pact
+
+				active = yes
+
+			}
+
+			diplomatic_relation = {
+
+				country = ROOT
+
+				relation = guarantee
+
+				active = yes
+
+			}
+
+		}
+
+		diplomatic_relation = {
+
+			country = FROM
+
+			relation = non_aggression_pact
+
+			active = yes
+
+		}
+
+		diplomatic_relation = {
+
+			country = FROM
+
+			relation = guarantee
+
+			active = yes
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.89 #蔡廷锴归来
+
+	title = EFM_New_Guangxi.29.t
+
+	desc = EFM_New_Guangxi.29.d
+
+	picture = GFX_report_event_gxc_cai_tingkai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.29.a
+
+		set_country_flag = t19r_army_recruited
+
+		add_manpower = 8000
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment_0
+
+			amount = 2000
+
+		}
+
+		effect_tooltip = {
+
+		    create_corps_commander = {
+
+				name = "Cai Tingkai"
+
+				portrait_path = "gfx/leaders/GXC/Portrait_Cai_Tingkai.dds"
+
+				traits = { war_hero }
+
+			    skill = 3
+
+				attack_skill = 3
+
+				defense_skill = 3
+
+				planning_skill = 2
+
+				logistics_skill = 2
+
+			}
+
+		}  
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.90 #整并西南两机关
+
+	title = EFM_New_Guangxi.36.t
+
+	desc = EFM_New_Guangxi.36.d
+
+	picture = GFX_report_event_generic_read_write
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.36.a
+
+		add_political_power = 120
+
+		if = {
+
+			limit = {
+
+				has_idea = EFM_Southwest_two_agencies
+
+			}
+
+			remove_ideas = EFM_Southwest_two_agencies
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.91 #[From.GetName]要求整合
+
+	title = EFM_New_Guangxi.37.t
+
+	desc = EFM_New_Guangxi.37.d
+
+	picture = GFX_report_event_gxc_li_zongren
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 0
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.37.a
+
+		FROM = { country_event = { id = AWR_GXC.95 hours = 12 } }
+
+		effect_tooltip = {
+
+			every_army_leader = {
+
+				set_nationality = FROM
+
+			}
+
+			FROM = {
+
+				annex_country = {
+
+					target = ROOT transfer_troops = yes
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = GAME_OVER_TT
+
+		
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				factor = 0
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 0.75
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.37.b
+
+		FROM = { country_event = { id = AWR_GXC.96 hours = 12 } }
+
+		effect_tooltip = {
+
+			FROM = {
+
+				set_autonomy = {
+
+					target = ROOT
+
+					autonomous_state = autonomy_rcm_national_revolutionary_army
+
+				}
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 60 }
+
+		name = EFM_New_Guangxi.37.c
+
+		FROM = { country_event = { id = AWR_GXC.97 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.95 #[From.GetName]接受改组
+
+	title = EFM_New_Guangxi.38.t
+
+	desc = EFM_New_Guangxi.38.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.38.a
+
+		FROM = {
+
+			if = {
+
+				limit = {
+
+					has_character = GUD_huang_guangrui
+
+				}
+
+			    GUD_huang_guangrui = {
+
+					set_nationality = ROOT
+
+				}
+
+			}	
+
+			every_unit_leader = {
+
+				set_nationality = ROOT
+
+			}	
+
+		}
+
+		annex_country = { target = FROM transfer_troops = yes }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.96 #[From.GetName]接受部分整合
+
+	title = EFM_New_Guangxi.39.t
+
+	desc = EFM_New_Guangxi.39.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.39.a
+
+		set_autonomy = {
+
+			target = FROM
+
+			autonomous_state = autonomy_rcm_national_revolutionary_army
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.97 #[From.GetName]拒绝
+
+	title = EFM_New_Guangxi.40.t
+
+	desc = EFM_New_Guangxi.40.d
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				factor = 0
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio < 0.75
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.40.a
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+		diplomatic_relation = {
+
+			country = FROM
+
+			relation = non_aggression_pact
+
+			active = no
+
+		}
+
+		diplomatic_relation = {
+
+		    country = FROM
+
+			relation = guarantee
+
+			active = no
+
+		}
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 0
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio > 1.0
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.40.b
+
+		add_political_power = -75
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.98 #[From.GetName]建议减少冲突
+
+	title = EFM_New_Guangxi.41.t
+
+	desc = EFM_New_Guangxi.41.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 50 }
+
+		name = EFM_New_Guangxi.41.a
+
+		effect_tooltip = {
+
+				diplomatic_relation = {
+
+						country = FROM
+
+						relation = non_aggression_pact
+
+						active = yes
+
+					}
+
+				diplomatic_relation = {
+
+						country = FROM
+
+						relation = guarantee
+
+						active = yes
+
+					}
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = guarantee
+
+				active = yes
+
+			}
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_friendly
+
+			}
+
+		FROM = {
+
+				country_event = {
+
+						id = AWR_GXC.103
+
+						hours = 12
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.41.b
+
+		trigger = {
+
+				is_in_faction = no
+
+				FROM = {
+
+					is_in_faction = no
+
+				}
+
+			}
+
+		create_faction = "CHI_neutrality"
+
+		effect_tooltip = {
+
+				add_to_faction = FROM
+
+			}
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_friendly
+
+			}
+
+		FROM = {
+
+				country_event = {
+
+						id = AWR_GXC.104
+
+						hours = 12
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.41.b
+
+		trigger = {
+
+				is_faction_leader = yes
+
+				FROM = {
+
+					is_in_faction = no
+
+				}
+
+			}
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_friendly
+
+			}
+
+		FROM = {
+
+				country_event = {
+
+						id = AWR_GXC.101
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 20
+
+			modifier = {
+
+				factor = 0
+
+				strength_ratio = {
+
+					tag = FROM
+
+					ratio < 1.0
+
+				}
+
+			}
+
+		}
+
+		name = EFM_New_Guangxi.41.c
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = hostile_status
+
+			}
+
+		FROM = {
+
+				country_event = {
+
+						id = AWR_GXC.105
+
+						hours = 12
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+						id = AWR_GXC.103
+
+						hours = 12
+
+					}
+
+country_event = {
+
+						id = AWR_GXC.104
+
+						hours = 12
+
+					}
+
+country_event = {
+
+						id = AWR_GXC.101
+
+					}
+
+country_event = {
+
+						id = AWR_GXC.105
+
+						hours = 12
+
+					}
+
+country_event = {
+
+	id = AWR_GXC.103 #[From.GetName]同意
+
+	title = EFM_New_Guangxi.42.t
+
+	desc = EFM_New_Guangxi.42.d
+
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.42.a
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+				active = yes
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = guarantee
+
+				active = yes
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.104 #[From.GetName]同意建立联合政府
+
+	title = EFM_New_Guangxi.43.t
+
+	desc = EFM_New_Guangxi.43.d
+
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.43.a
+
+		FROM = {
+
+				add_to_faction = ROOT
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.105 #[From.GetName]决定进攻我方
+
+	title = EFM_New_Guangxi.44.t
+
+	desc = EFM_New_Guangxi.44.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.44.a
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = { type = annex_everything target = ROOT }
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.106 #[From.GetName] 通电全国
+
+	title = EFM_New_Guangxi.45.t
+
+	desc = EFM_New_Guangxi.45.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.45.a
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = hostile_status
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.107 #[From.GetName]宣布成立新国民政府
+
+	title = EFM_New_Guangxi.46.t
+
+	desc = EFM_New_Guangxi.46.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.46.a
+
+		add_war_support = 0.1
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.108 #[From.GetName]宣布成立新国民政府
+
+	title = EFM_New_Guangxi.47.t
+
+	desc = EFM_New_Guangxi.47.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 60 }
+
+		name = EFM_New_Guangxi.47.a
+
+		add_ai_strategy = {
+
+				type = alliance
+
+				id = GXC
+
+				value = 100
+
+			}
+
+		FROM = {
+
+				add_to_faction = ROOT
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_New_Guangxi.47.b
+
+		trigger = {
+
+				NOT = {
+
+					has_government = communism
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					exists = yes
+
+					is_subject = no
+
+					NOT = {
+
+						has_war_with = ROOT
+
+					}
+
+				}
+
+			}
+
+		effect_tooltip = {
+
+				if = {
+
+						limit = {
+
+								event_target:WTT_current_china_leader = {
+
+										is_faction_leader = yes
+
+									}
+
+							}
+
+						event_target:WTT_current_china_leader = {
+
+								add_to_faction = ROOT
+
+							}
+
+					}
+
+				else = {
+
+						effect_tooltip = {
+
+								give_guarantee = FROM
+
+							}
+
+					}
+
+			}
+
+		event_target:WTT_current_china_leader = {
+
+				country_event = { id = AWR_GXC.113 hours = 12 }
+
+			}
+
+		FROM = { country_event = { id = AWR_GXC.113 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_New_Guangxi.47.c
+
+		FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.113 #[From.GetName]支持[CHI.GetName]
+
+	title = EFM_New_Guangxi.48.t
+
+	desc = EFM_New_Guangxi.48.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.48.a
+
+		trigger = {
+
+				tag = GXC
+
+			}
+
+	}
+
+	option = {
+
+		name = EFM_New_Guangxi.48.b
+
+		trigger = {
+
+				tag = event_target:WTT_current_china_leader
+
+			}
+
+		add_war_support = 0.01
+
+		if = {
+
+				limit = {
+
+						is_faction_leader = yes
+
+					}
+
+				add_to_faction = FROM
+
+			}
+
+		else = {
+
+				FROM = {
+
+						give_guarantee = ROOT
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.114 #[From.GetName]-民主派联盟
+
+	title = EFM_New_Guangxi.56.t
+
+	desc = EFM_New_Guangxi.56.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.56.a
+
+		add_timed_idea = {
+
+				idea = democratic_influence
+
+				days = 180
+
+			}
+
+		#unlock_decision_tooltip = {
+
+		#		decision = GXC_Checks_and_balances_the_actions_of_the_democrats
+
+		#	}
+
+		#unlock_decision_tooltip = {
+
+		#		decision = GXC_Suppressing_democrats
+
+		#	}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.115 #[From.GetName]和民主派发起示威
+
+	title = EFM_New_Guangxi.57.t
+
+	desc = EFM_New_Guangxi.57.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.57.a
+
+		effect_tooltip = {
+
+				add_timed_idea = {
+
+						idea = democratic_influence
+
+						days = 70
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.116
+
+	title = EFM_New_Guangxi.58.t
+
+	desc = EFM_New_Guangxi.58.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.58.a
+
+		effect_tooltip = {
+
+				add_popularity = {
+
+						ideology = democratic
+
+						popularity = 0.05
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.117
+
+	title = EFM_New_Guangxi.59.t
+
+	desc = EFM_New_Guangxi.59.d
+
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.59.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.118
+
+	title = EFM_New_Guangxi.61.t
+
+	desc = EFM_New_Guangxi.61.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+		hidden_effect = {
+
+			set_country_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+			add_to_variable = { gxc_new_guangxi_cliques_influence = 5 }
+
+			add_to_variable = { gxc_chiang_kai_sheks_influence = 95 }
+
+		}
+
+		hidden_effect = {
+
+			random_state = {
+
+				limit = {
+
+					has_state_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+				}
+
+				save_event_target_as = GXC_Start_a_political_struggle_in_a_certain_area
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.61.a
+
+		#unlock_decision_tooltip = {
+
+		#		decision = GXC_Exert_influence_on_the_target_area_CHI
+
+		#	}
+
+		#unlock_decision_tooltip = {
+
+		#		decision = GXC_Reduce_new_guangxi_cliques_influence_in_the_target_area
+
+		#	}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.119
+
+	title = EFM_New_Guangxi.62.t
+
+	desc = EFM_New_Guangxi.62.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_state = {
+
+				limit = {
+
+					has_state_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+				}
+
+				save_event_target_as = GXC_Start_a_political_struggle_in_a_certain_area
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.62.a
+
+		effect_tooltip = {
+
+				FROM = {
+
+						transfer_state = event_target:GXC_Start_a_political_struggle_in_a_certain_area
+
+					}
+
+			}
+
+		clear_variable = gxc_new_guangxi_cliques_influence
+
+		clear_variable = gxc_chiang_kai_sheks_influence
+
+		event_target:WTT_current_china_leader = {
+
+				clear_variable = gxc_new_guangxi_cliques_influence
+
+				clear_variable = gxc_chiang_kai_sheks_influence
+
+			}
+
+		clr_country_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.121
+
+	title = EFM_New_Guangxi.63.t
+
+	desc = EFM_New_Guangxi.63.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_state = {
+
+				limit = {
+
+					has_state_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+				}
+
+				save_event_target_as = GXC_Start_a_political_struggle_in_a_certain_area
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.63.a
+
+		if = {
+
+			limit = {
+
+				tag = event_target:WTT_current_china_leader
+
+			}
+
+			clear_variable = gxc_new_guangxi_cliques_influence
+
+			clear_variable = gxc_chiang_kai_sheks_influence
+
+			event_target:WTT_current_china_leader = {
+
+				clear_variable = gxc_new_guangxi_cliques_influence
+
+				clear_variable = gxc_chiang_kai_sheks_influence
+
+			}
+
+		    clr_country_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+		}
+
+		else = {
+
+			event_target:WTT_current_china_leader = {
+
+				country_event = {
+
+					id = AWR_GXC.121
+
+				}
+
+			}
+
+			random_state = {
+
+				limit = {
+
+					has_state_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+				}
+
+				hidden_effect = {
+
+					clr_state_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+				}
+
+			}
+
+			clear_variable = gxc_new_guangxi_cliques_influence
+
+			clear_variable = gxc_chiang_kai_sheks_influence
+
+			clr_country_flag = GXC_Start_a_political_struggle_in_a_certain_area
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+					id = AWR_GXC.121
+
+				}
+
+country_event = {
+
+	id = AWR_GXC.122 #[From.GetName]与我方交好
+
+	title = EFM_New_Guangxi.71.t
+
+	desc = EFM_New_Guangxi.71.d
+
+	
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_New_Guangxi.71.a
+
+		add_ai_strategy = {
+
+			type = befriend
+
+			id = FROM
+
+			value = 100
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.146 #寻求新桂系军阀支持
+
+	title = gxc.1.t
+
+	desc = gxc.1.d
+
+	picture = GFX_report_event_chen_and_li
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = gxc.1.a
+
+		GXC = {
+
+			country_event = { days = 1 id = AWR_CHI.3816 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.210 #新桂系军阀接受了
+
+	title = gxc.2.t
+
+	desc = gxc.2.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+
+
+	#mean_time_to_happen = {
+
+		#	days = 10
+
+		#}
+
+
+
+	option = {
+
+		name = gxc.2.a
+
+		GUD = { country_event = { days = 2 id = AWR_GXC.139 } }#form anti-jap army
+
+		GXC = { country_event = { days = 2 id = AWR_GXC.139 } }#form anti-jap army
+
+		CHI = { country_event = { days = 2 id = AWR_GXC.139 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.211 #新桂系军阀拒绝了
+
+	title = gxc.3.t
+
+	desc = gxc.3.d
+
+	picture = GFX_report_event_chinese_officers
+
+
+
+	#mean_time_to_happen = {
+
+		#	days = 10
+
+		#}
+
+
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.3.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.131 #[WTT_current_china_leader.GetLeader]提供和平
+
+	title = gxc.4.t
+
+	desc = gxc.4.d
+
+	picture = GFX_report_event_chen_and_li
+
+
+
+	#mean_time_to_happen = {
+
+		#	days = 10
+
+		#}
+
+
+
+	is_triggered_only = yes
+
+	option = { #peace#accept
+
+		name = gxc.4.a
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 0
+
+				has_game_rule = {
+
+					rule = LG_AI_BEHAVIOR
+
+					option = REBELLION
+
+				}
+
+			}
+
+		    modifier = {
+
+				factor = 0
+
+				has_global_flag = buy_gud_army_fail
+
+			}
+
+		}
+
+		CHI = {
+
+			country_event = { days = 5 id = AWR_CHI.3813 }#GXC accept peace
+
+		}
+
+		GUD = { country_event = { id = AWR_GXC.134 } }
+
+		add_political_power = 50
+
+		set_country_flag = gxc_accept_peace
+
+		if = {
+
+			limit = {
+
+				has_idea = EFM_Southwest_two_agencies
+
+			}
+
+			remove_ideas = EFM_Southwest_two_agencies
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_idea = GXC_Japanese_consultant
+
+			}
+
+			remove_ideas = GXC_Japanese_consultant
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_war_with = FROM
+
+			}
+
+			white_peace = FROM
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GXC
+
+				has_war_with = XIA 
+
+			}
+
+			white_peace = XIA
+
+		}
+
+		if = {
+
+		    limit = {
+
+			    is_in_faction = yes 
+
+		    }
+
+			leave_faction = yes
+
+		}
+
+		if = {
+
+		    limit = {
+
+			    is_faction_leader = yes
+
+			    NOT = { is_in_faction_with = GUD }
+
+			}
+
+			dismantle_faction = yes
+
+		}
+
+	    #set_rule = { can_create_factions = no }
+
+	    clr_global_flag = liangguang_on_going
+
+		clr_global_flag = gxc_join_2g
+
+		set_global_flag = gxc_peace_liangguang
+
+	}
+
+	option = { #war
+
+		name = gxc.4.b
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+				NOT = {
+
+					has_game_rule = {
+
+						rule = LG_AI_BEHAVIOR
+
+						option = AHISTORICAL
+
+					}
+
+				}
+
+				NOT = { has_global_flag = buy_gud_army_fail }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_game_rule = {
+
+					rule = LG_AI_BEHAVIOR
+
+					option = HISTORICAL
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_game_rule = {
+
+					rule = LG_AI_BEHAVIOR
+
+					option = PEACE
+
+				}
+
+			}
+
+			modifier = {
+
+				add = 100
+
+				has_game_rule = {
+
+					rule = LG_AI_BEHAVIOR
+
+					option = REBELLION
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 500
+
+				has_global_flag = buy_gud_army_fail
+
+			}
+
+		}
+
+		CHI = {
+
+			country_event = { days = 5 id = AWR_CHI.3814 }
+
+		}
+
+	    clr_global_flag = liangguang_on_going
+
+	    set_global_flag = liangguang_on_gxc_rebel
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.133 #蒋介石指责抗日救国军是“亲共叛军”
+
+	title = gxc.5.t
+
+	desc = gxc.5.d
+
+	picture = GFX_report_event_chiang_speech
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.5.a
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = {
+
+					type = annex_everything
+
+					target = GXC
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = annex_everything
+
+				target = CHI
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					is_ai = yes
+
+				}
+
+				declare_war_on = { target = CHI type = annex_everything }
+
+				else = {
+
+					create_wargoal = {
+
+						type = annex_everything
+
+						target = CHI
+
+					}
+
+				}
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GXC
+
+				GUD = { is_in_faction_with = GXC }
+
+				has_global_flag = gud_ready
+
+			}
+
+			GUD = { add_to_war = { targeted_alliance = GXC enemy = CHI } }
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GUD
+
+				GXC = { is_in_faction_with = GUD }
+
+				has_global_flag = gxc_ready
+
+			}
+
+			GXC = { add_to_war = { targeted_alliance = GXC enemy = CHI } }
+
+		}
+
+	    if = {
+
+			limit = {
+
+				tag = GXC 
+
+			}
+
+            clr_global_flag = liangguang_on_going
+
+		    set_global_flag = liangguang_on_gxc_rebel 
+
+			complete_national_focus = GXC_Challenge_central_government
+
+		} 
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.134 #[GXC.GetNameDef]接受了蒋介石的和平提议
+
+	title = gxc.6.t
+
+	desc = gxc.6.d
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.6.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.135 #中华苏维埃共和国加入了抗日救国军
+
+	title = gxc.7.t
+
+	desc = gxc.7.d
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.7.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.212 #粤系军阀接受蒋介石的和平提议
+
+	title = gxc.8.t
+
+	desc = gxc.8.d
+
+	picture = GFX_report_event_chinese_officers
+
+
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.8.a
+
+		trigger = { has_country_flag = gxc_accept_peace }
+
+	}
+
+	option = {
+
+		name = gxc.8.b
+
+		trigger = { NOT = { has_country_flag = gxc_accept_peace } }
+
+	}
+
+
+
+}
+
+country_event = {
+
+	id = AWR_GXC.137 #[From.GetNameDef]加入抗日救国军
+
+	title = gxc.11.t
+
+	desc = gxc.11.d
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.11.a
+
+		trigger = { 
+
+			OR = {
+
+				original_tag = GXC 
+
+				original_tag = GUD
+
+			}
+
+			#has_war = yes
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GUD
+
+			}
+
+		    GUD = {
+
+				add_to_faction = FROM
+
+				FROM = { add_to_war = { targeted_alliance = GUD enemy = CHI } }
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GXC
+
+			}
+
+		    GUD = {
+
+				add_to_faction = FROM
+
+				FROM = { add_to_war = { targeted_alliance = GXC enemy = CHI } }
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = gxc.11.b
+
+		trigger = { original_tag = CHI }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.138 #[GUD.GetNameDef]加入抗日救国军
+
+	title = gxc.12.t
+
+	desc = gxc.12.d
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	trigger = {
+
+		OR = {
+
+			original_tag = CHI
+
+			original_tag = GXC
+
+		}
+
+		NOT = { has_country_flag = liangguang_faction }
+
+		has_global_flag = gud_ready
+
+		GXC = { has_offensive_war_with = CHI }
+
+		NOT = {
+
+			GUD = {
+
+				is_in_faction_with = GXC
+
+			}
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 2
+
+	}
+
+	option = {
+
+		name = gxc.12.a
+
+		trigger = { original_tag = GXC }
+
+		if = {
+
+			limit = { GXC = { is_faction_leader = no } }
+
+				set_rule = { can_create_factions = yes }
+
+				GXC = { create_faction = "anti_jap_salv_army" }
+
+				add_to_faction = GUD
+
+				GUD = { 
+
+				    add_to_war = { targeted_alliance = GXC enemy = CHI } 
+
+				    #set_faction_leader = yes
+
+				}
+
+		}
+
+		if = {
+
+			limit = { GXC = { is_faction_leader = yes } }
+
+				add_to_faction = GUD
+
+				GUD = { 
+
+				    add_to_war = { targeted_alliance = GXC enemy = CHI }
+
+				    #set_faction_leader = yes
+
+				}
+
+		}
+
+		set_country_flag = liangguang_faction
+
+	}
+
+	option = {
+
+		name = gxc.12.b
+
+		trigger = { TAG = CHI }
+
+		set_country_flag = liangguang_faction
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.139 #抗日救国军成立了
+
+	title = gxc.13.t
+
+	desc = {
+
+		text = gxc.13.d_chi
+
+		trigger = { TAG = CHI }
+
+	}
+
+	desc = {
+
+		text = gxc.13.d_gxc
+
+		trigger = { 
+
+		    OR = { 
+
+		       TAG = GUD 
+
+			   TAG = GXC
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+
+		name = gxc.13.a
+
+		trigger = { TAG = GUD }
+
+		GUD = { 
+
+		    set_rule = { can_create_factions = yes }
+
+		    create_faction = "anti_jap_salv_army"
+
+		    add_to_faction = GXC
+
+		    #GUD = { set_faction_leader = yes }
+
+		}
+
+		effect_tooltip = {
+
+			GXC = {
+
+				set_major = yes
+
+			}
+
+			activate_mission = CHI_contact_he_jian
+
+		}
+
+		CHI = {
+
+			country_event = { days = 10 id = AWR_CHI.3815 }
+
+		}
+
+		hidden_effect = {
+
+			news_event = { hours = 12 id = AWR_CHI_news.658 }
+
+		}
+
+	}
+
+	option = {
+
+		name = gxc.13.b
+
+		trigger = { TAG = CHI }
+
+	}
+
+	option = {
+
+		name = gxc.13.c
+
+		trigger = { TAG = GXC }
+
+		set_major = yes
+
+		effect_tooltip = {
+
+		    GUD = { 
+
+		        set_rule = { can_create_factions = yes }
+
+		        create_faction = "anti_jap_salv_army"
+
+		        add_to_faction = GXC
+
+		    }
+
+			activate_mission = CHI_contact_he_jian
+
+		}   
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.140 #新桂系军官和指挥官倒戈效忠
+
+	title = gxc.14.t
+
+	picture = GFX_report_event_bai_bribed
+
+	desc = {
+
+		text = gxc.14.d_chi
+
+		trigger = { TAG = CHI }
+
+	}
+
+	desc = {
+
+		text = gxc.14.d
+
+		trigger = { NOT = { TAG = CHI } }
+
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		set_global_flag = buy_gxc
+
+	}
+
+	option = {
+
+		name = gxc.14.a
+
+		trigger = { TAG = CHI }
+
+		GXC = {
+
+			if = {
+
+				limit = {
+
+					has_template = "Mint'uan"
+
+				}
+
+				set_division_template_lock = {
+
+					division_template = "Mint'uan"
+
+					is_locked = no
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_template = "Fei Chêngkuei Chün"
+
+				}
+
+				delete_unit_template_and_units = {
+
+					division_template = "Fei Chêngkuei Chün"
+
+					disband = no
+
+				}
+
+			}
+
+			every_unit_leader = {
+
+				limit = {
+
+					NOT = {
+
+						has_id = 2505
+
+					}
+
+				}
+
+				set_nationality = ROOT
+
+			}
+
+		}
+
+		annex_country = { target = GXC transfer_troops = yes }
+
+	    clr_global_flag = gxc_join_2g
+
+	}	
+
+	option = {
+
+		name = gxc.14.b
+
+		trigger = {
+
+			NOT = { TAG = CHI }
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = GXC
+
+			}
+
+		    custom_effect_tooltip = GAME_OVER_TT
+
+			effect_tooltip = {
+
+                if = {
+
+					limit = {
+
+						has_template = "Mint'uan"
+
+					}
+
+					set_division_template_lock = {
+
+						division_template = "Mint'uan"
+
+						is_locked = no
+
+					}
+
+				}
+
+				CHI = {
+
+					annex_country = { target = ROOT transfer_troops = yes }
+
+				}
+
+			}	
+
+		}
+
+
+
+		#dismantle_faction = yes
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					tag = GXC
+
+				}
+
+			}
+
+			effect_tooltip = {
+
+                CHI = {
+
+					annex_country = { target = GXC transfer_troops = yes }
+
+				}
+
+			}	
+
+		    if = {
+
+				limit = {
+
+					has_war_with = XIA 
+
+				}
+
+				every_other_country = {
+
+					limit = {
+
+						is_ally_with = ROOT
+
+					}
+
+					white_peace = XIA
+
+				}
+
+				white_peace = XIA
+
+			}	
+
+			XIA = {
+
+				country_event = AWR_GXC.179 #annex 
+
+			}
+
+		}
+
+	    #set_rule = { can_create_factions = no }
+
+	}
+
+	option = {
+
+		name = gxc.14.c
+
+		trigger = { TAG = CHI }
+
+		add_political_power = 100		
+
+        GXC = {				
+
+			set_party_name = {
+
+					ideology = neutrality
+
+					name = "中国国民党"
+
+					long_name = "中国国民党"
+
+				}			
+
+            create_country_leader = {
+
+                name = "白崇禧"
+
+                desc = "POLITICS_HUZONGNAN_DESC"
+
+                picture = "gfx/leaders/CHI/bai_chongxi_ROCA.dds"
+
+                expire = "1965.1.1"
+
+                ideology = despotism
+
+                traits = { GXC_nra_general baizhanlaobing army_chief_morale_3
+
+                }
+
+            }   
+
+            }
+
+            CHI = {
+
+                puppet = GXC
+
+            }
+
+	    clr_global_flag = gxc_join_2g
+
+	}	
+
+}
+
+country_event = {
+
+	id = AWR_GXC.141 #贿赂尝试失败
+
+	title = gxc.15.t
+
+	picture = GFX_report_event_bai_not_bribed
+
+	desc = {
+
+		text = gxc.15.d_chi
+
+		trigger = { original_tag = CHI }
+
+	}
+
+	desc = {
+
+		text = gxc.15.d
+
+		trigger = { NOT = { original_tag = CHI } }
+
+	}
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.15.a
+
+		trigger = { original_tag = CHI }
+
+	}
+
+	option = {
+
+		name = gxc.15.b
+
+		trigger = {
+
+			NOT = { original_tag = CHI }
+
+		}
+
+		if = {#war!!!
+
+			limit = { original_tag = GXC }
+
+			effect_tooltip = {
+
+				create_wargoal = {
+
+					type = annex_everything
+
+					target = CHI
+
+				}
+
+			}
+
+			complete_national_focus = GXC_Challenge_central_government
+
+			hidden_effect = {
+
+				if = {
+
+					limit = {
+
+						is_ai = yes
+
+					}
+
+					declare_war_on = { target = CHI type = annex_everything }
+
+					else = {
+
+						create_wargoal = {
+
+							type = annex_everything
+
+							target = CHI
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		set_global_flag = gxc_ready
+
+	    clr_global_flag = liangguang_on_going
+
+	    set_global_flag = liangguang_on_gxc_rebel
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.142 #军委会军事会议
+
+	title = gxc.16.t
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	desc = gxc.16.d
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.16.a
+
+		#give anhui to GXC, Fifth Military Region
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		add_command_power = 50
+
+		add_political_power = -25
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 100
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		add_to_variable = {
+
+			var = mr_5_value
+
+			value = 0.15
+
+			tooltip = add_15_to_mr_tt
+
+		}
+
+		if = {
+
+			limit = {
+
+				check_variable = { mr_5_value > 0.25 }
+
+			}
+
+			set_variable = {
+
+				mr_5_value = 0.25
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			give_military_access = GXC #this probably won't work when allying central
+
+			add_ideas = GXC_Military_Region_2
+
+			GXC = { 
+
+				give_military_access = ROOT #this probably won't work when allying central
+
+				add_ideas = GXC_Military_Region_2
+
+				if = {
+
+					limit = {
+
+						606 = { is_owned_by = ROOT }
+
+					}
+
+					#add_state_core = 606
+
+					set_state_owner = 606
+
+					if = {
+
+						limit = {
+
+							606 = {
+
+								is_controlled_by = ROOT
+
+							}
+
+						}
+
+						set_state_controller = 606
+
+					}
+
+					606 = { 
+
+						add_compliance = 25
+
+						force_disable_resistance = GXC
+
+						#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = event_target:WTT_current_china_leader } 
+
+						#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = GXC }
+
+						#add_dynamic_modifier = { modifier = anti_partisan_area }
+
+						#set_state_flag = we_will_help_the_legit_government
+
+						set_state_flag = new_guangxi_clique_flag
+
+					}
+
+				}
+
+				if = {
+
+					limit = {
+
+						749 = { is_owned_by = ROOT }
+
+					}
+
+					#add_state_core = 749
+
+					set_state_owner = 749
+
+					if = {
+
+						limit = {
+
+							749 = {
+
+								is_controlled_by = ROOT
+
+							}
+
+						}
+
+						set_state_controller = 749
+
+					}
+
+					set_state_owner = 749
+
+					749 = { 
+
+						add_compliance = 25
+
+						force_disable_resistance = GXC
+
+						#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = event_target:WTT_current_china_leader } 
+
+						#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = GXC }
+
+						set_state_flag = new_guangxi_clique_flag
+
+					}
+
+				} 
+
+				every_core_state = {
+
+					limit = {
+
+						is_mr5_state = yes
+
+						has_state_flag = im_mr5_state_flag
+
+						controller = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_government = communism
+
+							}
+
+						}
+
+					}
+
+					add_dynamic_modifier = {
+
+						modifier = military_region_5_modifier scope = GXC
+
+					}
+
+					#add_core_of = GXC
+
+				}    
+
+			}
+
+		}
+
+		GXC = { country_event = AWR_GXC.143 }
+
+		hidden_effect = {
+
+        set_global_flag = lipinxian_in_anhui
+
+		}		
+
+	}
+
+	option = {
+
+		name = gxc.16.b
+
+	    #refuse
+
+	    effect_tooltip = {
+
+			give_military_access = GXC
+
+		    add_ideas = GXC_Military_Region
+
+			GXC = {
+
+				give_military_access = ROOT
+
+				add_ideas = GXC_Military_Region
+
+			}
+
+		}
+
+		
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+	    GXC = { country_event = AWR_GXC.144 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.143 #军委会军事会议
+
+	title = gxc.17.t
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	desc = gxc.17.d
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.17.a 
+
+		set_global_flag = GXC_MR5_flag
+
+		FROM = {
+
+			give_military_access = ROOT
+
+		}
+
+		FROM = {
+
+			add_ideas = GXC_Military_Region_2
+
+			effect_tooltip = {
+
+				add_to_variable = {
+
+					var = mr_5_value
+
+					value = 0.15
+
+					tooltip = add_15_to_mr_tt
+
+				}
+
+			}
+
+		}
+
+		give_military_access = FROM
+
+		add_ideas = GXC_Military_Region_2
+
+		if = {
+
+			limit = {
+
+				606 = { is_owned_by = FROM }
+
+			}
+
+			#add_state_core = 606
+
+			set_state_owner = 606
+
+			if = {
+
+				limit = {
+
+					606 = {
+
+						is_controlled_by = FROM
+
+					}
+
+				}
+
+				set_state_controller = 606
+
+			}
+
+			606 = { 
+
+				add_compliance = 25
+
+				force_disable_resistance = GXC
+
+				#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = event_target:WTT_current_china_leader } 
+
+				#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = GXC }
+
+				#add_dynamic_modifier = { modifier = anti_partisan_area }
+
+				#set_state_flag = we_will_help_the_legit_government    
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				749 = { is_owned_by = FROM }
+
+			}
+
+			#add_state_core = 749
+
+			set_state_owner = 749
+
+			if = {
+
+				limit = {
+
+					749 = {
+
+						is_controlled_by = FROM
+
+					}
+
+				}
+
+				set_state_controller = 749
+
+			}
+
+			749 = { 
+
+				add_compliance = 25
+
+				force_disable_resistance = GXC
+
+				#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = event_target:WTT_current_china_leader } 
+
+				#add_dynamic_modifier = { modifier = new_guangxi_clique_modifier scope = GXC }
+
+			}
+
+		} 
+
+		event_target:WTT_current_china_leader = {
+
+			every_core_state = {
+
+				limit = {
+
+					is_mr5_state = yes
+
+					has_state_flag = im_mr5_state_flag
+
+					controller = {
+
+						is_literally_china = yes
+
+						has_war_with = JAP
+
+						NOT = {
+
+							has_government = communism
+
+						}
+
+					}
+
+				}
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_5_modifier scope = ROOT
+
+				}
+
+				#add_core_of = ROOT
+
+			}  
+
+		}   
+
+	}
+
+}
+
+country_event = {	
+
+    id = AWR_GXC.144 #军委会军事会议
+
+	title = gxc.18.t
+
+	desc = gxc.18.d
+
+	picture = GFX_report_event_gxc_li_chiang_and_bai
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.18.a
+
+		FROM = {
+
+			give_military_access = ROOT
+
+			add_ideas = GXC_Military_Region
+
+		}
+
+		give_military_access = FROM
+
+		add_ideas = GXC_Military_Region
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.145 #反对中央政府？
+
+	title = gxc.19.t
+
+	desc = gxc.19.d
+
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	    set_global_flag = choose_our_way_gxc
+
+		#set_global_flag = lg_start_or_not_flag
+
+	}
+
+	option = {
+
+		name = gxc.19.a
+
+		#start liangguang
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		ai_chance = {
+
+			factor = 35
+
+			modifier = {
+
+				factor = 100
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		country_event = { id = AWR_GXC.146 }
+
+	    set_global_flag = liangguang_on_going
+
+		#clr_global_flag = lg_start_or_not_flag
+
+	}
+
+	option = {
+
+		name = gxc.19.b
+
+		#no liangguang
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		add_stability = 0.05
+
+		set_global_flag = no_liangguang
+
+		event_target:WTT_current_china_leader = {
+
+			country_event = AWR_CHI.3848 
+
+		}
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = {
+
+				set_autonomy = { target = ROOT autonomy_state = autonomy_rcm_national_revolutionary_army }
+
+			}
+
+		}
+
+		#clr_global_flag = lg_start_or_not_flag
+
+	}
+
+}
+
+country_event = { #he jian refuses, bring pressure on he jian
+
+	id = AWR_GXC.150 #湖南拒绝
+
+	title = gxc.20.t
+
+	desc = gxc.20.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.20.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		activate_mission = GUD_hunan_mission
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = no
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_in_faction = yes
+
+				is_faction_leader = no
+
+				is_ai = no
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = yes
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			declare_war_on = {
+
+				target = XIA
+
+				type = puppet_wargoal_focus
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #join 2g, to Hunan Clique
+
+	id = AWR_GXC.154 #[From.GetFactionName]需要我们的协助
+
+	title = gxc.21.t
+
+	desc = gxc.21.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		set_global_flag = Hunan_in_2g_flag
+
+	}
+
+	option = {
+
+		name = gxc.21.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		#yes
+
+		every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					is_ally_with = GUD
+
+					is_ally_with = GXC
+
+				}
+
+			}
+
+			country_event = { id = AWR_GXC.155 days = 3 }
+
+		}
+
+		set_country_flag = hunan_didnt_stand_with_central_flag
+
+		custom_effect_tooltip = central_might_force_annex_or_puppet_tt
+
+	}
+
+	option = {
+
+		name = gxc.21.b
+
+		ai_chance = {
+
+			factor = 4
+
+			modifier = {
+
+				factor = 500
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		#no
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		effect_tooltip = {
+
+			every_other_country = {
+
+				limit = {
+
+					OR = {
+
+						is_ally_with = GUD
+
+						is_ally_with = GXC
+
+					}
+
+				}
+
+				activate_mission = GUD_hunan_mission
+
+			}
+
+		}
+
+		every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					is_ally_with = GUD
+
+					is_ally_with = GXC
+
+				}
+
+			}
+
+			country_event = { id = AWR_GXC.150 days = 1 }
+
+		}
+
+	    set_country_flag = hunan_didnt_stand_with_central_flag
+
+		custom_effect_tooltip = central_might_force_annex_or_puppet_tt
+
+	}
+
+	option = {
+
+		name = gxc.21.c #stand with central
+
+		set_global_flag = hunan_stands_with_central_flag
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		#no
+
+		effect_tooltip = {
+
+			every_other_country = {
+
+				limit = {
+
+					OR = {
+
+						is_ally_with = GUD
+
+						is_ally_with = GXC
+
+					}
+
+				}
+
+				activate_mission = GUD_hunan_mission
+
+			}
+
+		}
+
+		every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					is_ally_with = GUD
+
+					is_ally_with = GXC
+
+				}
+
+			}
+
+			country_event = { id = AWR_GXC.177 days = 3 }
+
+		}
+
+	}
+
+}
+
+country_event = { #Contact he jian TO 2G
+
+	id = AWR_GXC.152 #[From.GetName] 联络何键
+
+	title = gxc.22.t
+
+	desc = gxc.22.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes	
+
+	option = {
+
+		name = gxc.22.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = CHI
+
+			}
+
+			#CHI_he_jian = {
+
+			#	set_nationality = XIA 
+
+			#}			
+
+			CHI_liu_jianxu = {
+
+				set_nationality = XIA 
+
+			}
+
+			CHI_li_jue = {
+
+				set_nationality = XIA 
+
+			}
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = ROOT
+
+					is_core_of = XIA 
+
+				}
+
+				transfer_state_to = XIA 
+
+			}
+
+			effect_tooltip = {
+
+				transfer_units_fraction = {
+
+					target = XIA         # the recipient
+
+					size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+					army_ratio = 0       # [0,1] Overrides size modifier for army
+
+					#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+					#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+					#air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+					keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+						always = yes
+
+					}
+
+				}
+
+			}
+
+			hidden_effect = {
+
+				every_state = {
+
+					ROOT = {
+
+						delete_unit = { 
+
+							id = 1 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 2 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 3 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 4 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 5 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 6 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+						delete_unit = { 
+
+							id = 7 # can be filtered to a given id in create unit effect 
+
+							state = PREV
+
+							disband = no # default is no. if set to yes the game will refund equipment/manpower
+
+						}
+
+					}
+
+				}
+
+				#delete_unit_template_and_units = { #remove when war breaks out
+
+				#    division_template = "Hunan Luchün Shih"
+
+				#    disband = no
+
+			    #}
+
+		        #delete_unit_template_and_units = {
+
+				#    division_template = "Hunan T'iaocheng Shih"
+
+				#    disband = no
+
+			    #}
+
+			    #delete_unit_template_and_units = {
+
+				#    division_template = "Hunan Chengli Shih"
+
+				#    disband = no
+
+			    #}
+
+			    #delete_unit_template_and_units = {
+
+				#    division_template = "Hunan Tuli Lü"
+
+				#    disband = no
+
+			    #}
+
+			    #delete_unit_template_and_units = {
+
+			    #   division_template = "Hunan Paoan T'uan"
+
+				#    disband = no
+
+			    #}
+
+				XIA = {
+
+					add_ideas = {
+
+						warlord_economy
+
+						PRC_government_corruption
+
+						CHI_fractured_administration_idea_1
+
+						CHI_incompetent_officers
+
+						incompetent_heavy_industry
+
+						unbalanced_industry
+
+						iliterate_population
+
+						no_proper_equipment_design
+
+						CHI_militia_idea
+
+						GXC_hunan_idea
+
+					}
+
+					inherit_technology = CHI
+
+					load_oob = XIA_1936
+
+					load_focus_tree = { tree = china_warlord_focus keep_completed = yes }
+
+					country_event = { id = AWR_GXC.154 days = 5 }
+
+				} 	
+
+			}
+
+		}
+
+		else = {
+
+			effect_tooltip = {
+
+				CHI = {
+
+					CHI_liu_jianxu = {
+
+						set_nationality = XIA 
+
+					}
+
+					CHI_li_jue = {
+
+						set_nationality = XIA 
+
+					}
+
+					every_owned_state = {
+
+						limit = {
+
+							is_controlled_by = ROOT
+
+							is_core_of = XIA 
+
+						}
+
+						transfer_state_to = XIA 
+
+					}
+
+					transfer_units_fraction = {
+
+						target = XIA         # the recipient
+
+						size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+						army_ratio = 0       # [0,1] Overrides size modifier for army
+
+						#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+						#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+						#air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+						keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+							always = yes
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			XIA = { country_event = { id = AWR_GXC.154 days = 5 } }
+
+		}
+
+	}
+
+}
+
+country_event = { #Hunan Clique joins 2g 
+
+	id = AWR_GXC.155 #湖南同意
+
+	title = gxc.23.t
+
+	desc = gxc.23.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.23.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+			}
+
+		    add_to_faction = FROM
+
+		}
+
+	}
+
+}
+
+country_event = { #central army defects to the strongest warlord, to the warlord
+
+	id = AWR_GXC.156 #[WTT_current_china_leader.GetLeader]的部队投向我方
+
+	title = gxc.24.t
+
+	desc = gxc.24.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.24.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = { 
+
+				transfer_units_fraction = {
+
+					target = ROOT         # the recipient
+
+					size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+					army_ratio = 0.2       # [0,1] Overrides size modifier for army
+
+					#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+					#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+					#air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+					keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+						always = yes
+
+					}
+
+				}
+
+			}
+
+		}
+
+	    event_target:WTT_current_china_leader = { country_event = AWR_GXC.157 }
+
+	}
+
+}
+
+country_event = { #central army defects to the strongest warlord, to chi
+
+	id = AWR_GXC.157 #我方军队投敌！
+
+	title = gxc.25.t
+
+	desc = gxc.25.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.25.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		transfer_units_fraction = {
+
+			target = FROM        # the recipient
+
+			size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+			army_ratio = 0.2       # [0,1] Overrides size modifier for army
+
+			#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+			#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+			#air_ratio = 0.4        # [0,1] Overrides size modifier for air
+
+			keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+				always = yes
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #central army defect mission
+
+	id = AWR_GXC.158 #反战情绪在军队中蔓延
+
+	title = gxc.26.t
+
+	desc = gxc.26.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = no
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = CHI
+
+		any_enemy_country = {
+
+			OR = {
+
+				tag = GXC
+
+				tag = GUD
+
+			}
+
+			is_in_faction = yes
+
+		}
+
+	}
+
+	option = {
+
+		name = gxc.26.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		activate_mission = CHI_liangguang_defect
+
+	}
+
+}
+
+country_event = { #central peaces with 2G, to 2G leader
+
+	id = AWR_GXC.159 #与中央政府议和？
+
+	title = gxc.27.t
+
+	desc = gxc.27.d
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.27.a
+
+		#status quo ante bellum
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 200
+
+				FROM = { surrender_progress < 0.2 }
+
+			}
+
+		}
+
+		FROM = { country_event = AWR_GXC.160 }
+
+		custom_effect_tooltip = if_they_accept_green
+
+		effect_tooltip = {
+
+			white_peace = FROM
+
+			every_other_country = {
+
+				limit = {
+
+					is_in_faction_with = ROOT
+
+				}
+
+				white_peace = FROM
+
+			}
+
+		}
+
+		
+
+	}
+
+
+
+	option = {
+
+		name = gxc.27.b
+
+		#keep all lands we got
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 200
+
+				FROM = { surrender_progress > 0.2 }
+
+			}
+
+		}
+
+		FROM = { country_event = AWR_GXC.161 }
+
+		custom_effect_tooltip = if_they_accept_green
+
+		effect_tooltip = {
+
+			white_peace = FROM
+
+			every_other_country = {
+
+				limit = {
+
+					is_in_faction_with = ROOT
+
+				}
+
+				white_peace = FROM
+
+			}
+
+			every_state = {
+
+				limit = {
+
+					is_owned_by = FROM
+
+					is_controlled_by = ROOT
+
+				}
+
+				ROOT = {
+
+					transfer_state = PREV
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = gxc.27.b
+
+		#no peace!
+
+		FROM = { country_event = AWR_GXC.163 }
+
+		add_war_support = -0.1
+
+	}
+
+}
+
+country_event = { #central peaces with 2G, to CHI - status quo ante bellum
+
+	id = AWR_GXC.160 #[From.GetName] 建议恢复战前状态
+
+	title = gxc.28.t
+
+	desc = gxc.28.d
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.28.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 50
+
+		}
+
+		FROM = { country_event = AWR_GXC.164 }
+
+		every_other_country = {
+
+			limit = {
+
+                is_literally_china = yes
+
+			    is_in_faction_with = FROM
+
+			}
+
+			country_event = AWR_GXC.164
+
+		}
+
+		effect_tooltip = {
+
+			white_peace = FROM 
+
+			every_other_country = {
+
+				limit = {
+
+					is_in_faction_with = FROM
+
+				}
+
+				white_peace = ROOT
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = gxc.28.b
+
+		#no
+
+		add_war_support = -0.05
+
+		FROM = { country_event = AWR_GXC.162 }
+
+	}
+
+}
+
+country_event = { #central peaces with 2G, to CHI - keep all lands
+
+	id = AWR_GXC.161 #[From.GetName] 建议保持占领现况
+
+	title = gxc.29.t
+
+	desc = gxc.29.d
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.29.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 50
+
+		}
+
+		FROM = { country_event = AWR_GXC.165 }
+
+		every_other_country = {
+
+			limit = {
+
+                is_literally_china = yes
+
+			    is_in_faction_with = FROM
+
+			}
+
+			country_event = AWR_GXC.165
+
+		}
+
+		effect_tooltip = {
+
+			white_peace = FROM 
+
+			every_other_country = {
+
+				limit = {
+
+					is_in_faction_with = FROM
+
+				}
+
+				white_peace = ROOT
+
+			}
+
+			every_owned_state = {
+
+				limit = {
+
+					NOT = { is_controlled_by = ROOT }
+
+					OR = {
+
+						is_controlled_by = FROM
+
+						controller = {
+
+							is_in_faction_with = FROM
+
+						}
+
+					}
+
+				}
+
+				FROM = { #maybe use a tt here
+
+					transfer_state = PREV
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = gxc.29.b
+
+		#no
+
+		add_war_support = -0.05
+
+		FROM = { country_event = AWR_GXC.162 }
+
+	}
+
+}
+
+country_event = { #central refuses
+
+	id = AWR_GXC.162 #[From.GetName]拒绝
+
+	title = gxc.30.t
+
+	desc = gxc.30.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.30.a
+
+	}
+
+}
+
+country_event = { #warlord refuses
+
+	id = AWR_GXC.163 #[From.GetName]拒绝
+
+	title = gxc.31.t
+
+	desc = gxc.31.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.31.a		
+
+	}
+
+}
+
+country_event = { #central agrees 1
+
+	id = AWR_GXC.164 #[From.GetName]同意
+
+	title = gxc.32.t
+
+	desc = gxc.32.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.32.a
+
+		white_peace = FROM 
+
+	}
+
+}
+
+country_event = { #central agrees 2
+
+	id = AWR_GXC.165 #[From.GetName]同意
+
+	title = gxc.33.t
+
+	desc = gxc.33.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = gxc.33.a
+
+		every_state = {
+
+			limit = {
+
+				is_controlled_by = ROOT
+
+				is_owned_by = FROM
+
+			}
+
+			ROOT = {
+
+				transfer_state = PREV
+
+			}
+
+		}
+
+		white_peace = FROM 
+
+	}
+
+}
+
+country_event = { #Hunan Clique joins 2g to 2g (after invasion)
+
+	id = AWR_GXC.166 #湖南加入[Root.GetFactionName]
+
+	title = gxc.34.t
+
+	desc = gxc.34.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.34.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		white_peace = FROM 
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+			}
+
+		    add_to_faction = FROM
+
+		}
+
+		add_war_support = 0.1
+
+		add_stability = 0.05
+
+	}
+
+}
+
+country_event = { #Hunan Clique joins 2g to Hunan (after invasion)
+
+	id = AWR_GXC.167 #加入[From.GetFactionName]
+
+	title = gxc.35.t
+
+	desc = gxc.35.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.35.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		effect_tooltip = {
+
+		    diplomatic_relation = {
+
+				country = CHI
+
+				relation = military_access
+
+				active = no
+
+			}
+
+			CHI = {
+
+				diplomatic_relation = {
+
+				    country = ROOT
+
+				    relation = military_access
+
+				    active = no
+
+			    }
+
+			}
+
+			every_enemy_country = {
+
+			    limit = {
+
+				    OR = {
+
+						is_in_faction_with = GUD
+
+						is_in_faction_with = GXC
+
+					}
+
+			    }
+
+			    white_peace = ROOT
+
+		    }
+
+		    random_enemy_country = {
+
+				limit = {
+
+					is_faction_leader = yes
+
+					OR = {
+
+						is_in_faction_with = GUD
+
+						is_in_faction_with = GXC
+
+					}
+
+				}
+
+				add_to_faction = ROOT
+
+			}
+
+		}	
+
+	    every_enemy_country = {
+
+			limit = {
+
+				OR = {
+
+					is_in_faction_with = GUD
+
+					is_in_faction_with = GXC
+
+				}
+
+			}
+
+			country_event = AWR_GXC.166 
+
+		}
+
+	    CHI = { country_event = AWR_GXC.170 }
+
+	}
+
+}
+
+country_event = { #2g peace with Hunan to hunan (invasion failed)
+
+	id = AWR_GXC.168 #与[From.GetFactionName]停火
+
+	title = gxc.36.t
+
+	desc = gxc.36.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.36.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}	
+
+	    every_enemy_country = {
+
+			limit = {
+
+				OR = {
+
+					is_in_faction_with = GUD
+
+					is_in_faction_with = GXC
+
+				}
+
+			}
+
+			country_event = AWR_GXC.169
+
+		}
+
+		effect_tooltip = {
+
+		    every_enemy_country = {
+
+			    limit = {
+
+				    OR = {
+
+						is_in_faction_with = GUD
+
+						is_in_faction_with = GXC
+
+					}
+
+			    }
+
+			    white_peace = ROOT
+
+		    }
+
+		}	
+
+	}
+
+}
+
+country_event = { #2g peace with Hunan to 2g (invasion failed)
+
+	id = AWR_GXC.169 #从湖南撤军
+
+	title = gxc.37.t
+
+	desc = gxc.37.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.37.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		white_peace = FROM
+
+		add_war_support = -0.1
+
+		add_stability = -0.05
+
+	}
+
+}
+
+country_event = { #Hunan Clique joins 2g to CHI (after invasion)
+
+	id = AWR_GXC.170 #湖南加入[FROM.GetFactionName]
+
+	title = gxc.38.t
+
+	desc = gxc.38.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.38.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		diplomatic_relation = {
+
+			country = FROM
+
+			relation = military_access
+
+			active = no
+
+		}
+
+		FROM = {
+
+			diplomatic_relation = {
+
+				country = ROOT
+
+				relation = military_access
+
+				active = no
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+            random_other_country = {
+
+				limit = {
+
+					is_faction_leader = yes
+
+					OR = {
+
+						is_in_faction_with = GUD
+
+						is_in_faction_with = GXC
+
+					}
+
+				}
+
+				add_to_faction = FROM
+
+			}	
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.171 #[FROM.GetNameDef]请求军事援助
+
+	title = gxc.39.t
+
+	desc = gxc.39.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {#Send them some divisions
+
+		name = gxc.39.a
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 100
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			transfer_units_fraction = {
+
+				target = XIA        # the recipient
+
+				size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+				army_ratio = 0.05      # [0,1] Overrides size modifier for army
+
+				#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+				#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+				#air_ratio = 0        # [0,1] Overrides size modifier for air
+
+				keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+					always = yes
+
+				}
+
+			}
+
+		}	
+
+		XIA = {
+
+			country_event = {
+
+				days = 1 id = AWR_GXC.175
+
+			}
+
+		}
+
+		every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					is_ally_with = GUD
+
+					is_ally_with = GXC
+
+				}
+
+			}
+
+			country_event = { id = AWR_GXC.177 days = 3 }
+
+		}
+
+	}
+
+	option = {#guarantee
+
+		name = gxc.39.b
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 0
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			give_guarantee = XIA
+
+		}
+
+	    every_other_country = {
+
+			limit = {
+
+				OR = {
+
+					is_ally_with = GUD
+
+					is_ally_with = GXC
+
+				}
+
+			}
+
+			country_event = { id = AWR_GXC.178 days = 5 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.175 #[FROM.GetName] 发送增援
+
+	title = gxc.40.t
+
+	desc = gxc.40.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.40.a
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 100
+
+			}
+
+		}
+
+		FROM = {
+
+			transfer_units_fraction = {
+
+				target = ROOT        # the recipient
+
+				size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+				army_ratio = 0.05      # [0,1] Overrides size modifier for army
+
+				#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+				#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+				#air_ratio = 0        # [0,1] Overrides size modifier for air
+
+				keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+					always = yes
+
+				}
+
+			}
+
+		}	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_GXC.176 #[FROM.GetName] 保证我方安全
+
+	title = gxc.41.t
+
+	desc = gxc.41.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.41.a
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 100
+
+			}
+
+		}
+
+		FROM = {
+
+			give_guarantee = ROOT
+
+		}
+
+	}
+
+}
+
+country_event = { #centrals sends troops to hunan, to 2g  
+
+	id = AWR_GXC.177 #[FROM.GetName]向湖南增援
+
+	title = gxc.42.t
+
+	desc = gxc.42.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.42.a
+
+		#strike them!
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = {
+
+				transfer_units_fraction = {
+
+					target = XIA        # the recipient
+
+					size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+					army_ratio = 0.05      # [0,1] Overrides size modifier for army
+
+					#stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+
+					#navy_ratio = 0.2       # [0,1] Overrides size modifier for navy
+
+					#air_ratio = 0        # [0,1] Overrides size modifier for air
+
+					keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+						always = yes
+
+					}
+
+				}
+
+			}	
+
+		}
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		activate_mission = GUD_hunan_mission
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = no
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_in_faction = yes
+
+				is_faction_leader = no
+
+				is_ai = no
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = yes
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			declare_war_on = {
+
+				target = XIA
+
+				type = puppet_wargoal_focus
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #centrals guarantees hunan, to 2g  
+
+	id = AWR_GXC.178 #[FROM.GetName]保障湖南安全
+
+	title = gxc.43.t
+
+	desc = gxc.43.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.43.a
+
+		#strike them!
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = {
+
+				give_guarantee = XIA
+
+			}	
+
+		}
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		activate_mission = GUD_hunan_mission
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = no
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_in_faction = yes
+
+				is_faction_leader = no
+
+				is_ai = no
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			create_wargoal = {
+
+				type = puppet_wargoal_focus
+
+				target = XIA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+				is_ai = yes
+
+				all_allied_country = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			declare_war_on = {
+
+				target = XIA
+
+				type = puppet_wargoal_focus
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = gxc.43.b
+
+		#give up
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = {
+
+				give_guarantee = XIA
+
+			}	
+
+		}
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		add_war_support = -0.05
+
+	}
+
+}
+
+country_event = { #Central and Hunan both have war w/2g, 2g hunan mission ends, should we join central? to hunan
+
+	id = AWR_GXC.179 #与[WTT_current_china_leader.GetLeader]合作？
+
+	title = gxc.44.t
+
+	desc = gxc.44.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		every_enemy_country = {
+
+			limit = {
+
+                OR = {
+
+					is_ally_with = GXC
+
+					is_ally_with = GUD
+
+					tag = GXC
+
+					tag = GUD
+
+				}
+
+			}
+
+			white_peace = ROOT 
+
+		}
+
+		hidden_effect = {
+
+            if = {
+
+				limit = {
+
+					has_template = "Hunan Luchün Shih"
+
+				}
+
+				set_division_template_lock = {
+
+					division_template = "Hunan Luchün Shih"
+
+					is_locked = no
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_template = "Hunan Luchün Shih 2"
+
+				}
+
+				set_division_template_lock = {
+
+					division_template = "Hunan Luchün Shih 2"
+
+					is_locked = no
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_template = "Hunan Tuli Lü"
+
+				}
+
+				set_division_template_lock = {
+
+					division_template = "Hunan Tuli Lü"
+
+					is_locked = no
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_template = "Hunan Tuli Lü 2"
+
+				}
+
+				set_division_template_lock = {
+
+					division_template = "Hunan Tuli Lü 2"
+
+					is_locked = no
+
+				}
+
+			}
+
+		}
+
+		set_global_flag = he_jian_joined_central_flag
+
+	}
+
+	option = {
+
+		name = gxc.44.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		#Join central
+
+		CHI = {
+
+			country_event = AWR_GXC.180 
+
+			set_country_flag = im_reading_gxc45_flag
+
+		}
+
+		
+
+		custom_effect_tooltip = GAME_OVER_TT
+
+		effect_tooltip = {
+
+			CHI = {
+
+				annex_country = { target = ROOT transfer_troops = yes }
+
+			}
+
+		}
+
+		ai_chance = { factor = 100 }
+
+		
+
+	}
+
+	option = { #unused
+
+		name = gxc.44.b
+
+		trigger = {
+
+			always = no ###
+
+		}
+
+		ai_chance = { factor = 0 }
+
+		effect_tooltip = {
+
+			CHI = {
+
+                set_autonomy = {
+
+					target = ROOT
+
+					autonomous_state = autonomy_rcm_provincial_government
+
+				}
+
+			}
+
+		}
+
+		CHI = {
+
+			country_event = AWR_GXC.181
+
+		}
+
+		#become a puppet of central
+
+		
+
+	}
+
+
+
+	option = { #unused
+
+		name = gxc.44.c
+
+		trigger = {
+
+			always = no ###
+
+		}
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		#we dont need their support
+
+		add_war_support = 0.05
+
+		add_stability = 0.05
+
+	}
+
+}
+
+country_event = { #Hunan joins central
+
+	id = AWR_GXC.180 #[FROM.GetName]屈服于我们的权威
+
+	title = gxc.45.t
+
+	desc = gxc.45.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	trigger = {
+
+		NOT = {
+
+			has_country_flag = im_reading_gxc45_flag
+
+		}
+
+	}
+
+	option = {
+
+		name = gxc.45.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		every_core_state = {
+
+			limit = {
+
+				is_core_of = FROM
+
+			}
+
+			remove_core_of = FROM
+
+		}
+
+		FROM = {
+
+			CHI_liu_jianxu = {
+
+				set_nationality = ROOT
+
+			}
+
+			CHI_li_jue = {
+
+				set_nationality = ROOT
+
+			}
+
+		}
+
+		annex_country = { target = FROM transfer_troops = yes }
+
+    }
+
+}
+
+country_event = { #Hunan becomes a puppet of central
+
+	id = AWR_GXC.181 #[FROM.GetName]屈服
+
+	title = gxc.46.t
+
+	desc = gxc.46.d
+
+	picture = GFX_report_event_hunan
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.46.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		FROM_become_a_provincial_government_of_THIS = yes
+
+		#add_war_support = 0.05
+
+    }
+
+}
+
+country_event = { #Guangxi Student Army
+
+	id = AWR_GXC.182 #广西学生军
+
+	title = gxc.47.t
+
+	desc = gxc.47.d
+
+	picture = GFX_report_event_guangxi_student_army
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.47.a
+
+		ai_chance = {
+
+			factor = 1
+
+		}
+
+		add_ideas = GXC_student_army
+
+		add_manpower = -4000
+
+    }
+
+}
+
+country_event = { #Central China Bandit Suppression Headquarters, to CHI
+
+	id = AWR_GXC.183 #设立华中剿匪总司令部？
+
+	title = gxc.48.t
+
+	desc = gxc.48.d
+
+	picture = GFX_report_event_wuhan_mb
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.48.a
+
+        ai_chance = {
+
+			factor = 25
+
+			modifier = {
+
+				factor = 10
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		custom_effect_tooltip = if_too_weak_cant_refuse_this_tt
+
+		effect_tooltip = {
+
+			every_owned_state = {
+
+                limit = {
+
+					#is_controlled_by = ROOT
+
+				    region = 246
+
+				    #NOT = { #Hunan
+
+					#	OR = {
+
+					#		state = 602
+
+					#		state = 750
+
+					#		state = 1035
+
+					#	}
+
+					#}
+
+				}
+
+				transfer_state_to = GXC
+
+				add_core_of = GXC
+
+			}
+
+		}
+
+		add_stability = 0.1
+
+				if = {
+
+					limit = {
+
+			        283 = {
+
+				    is_controlled_by_ROOT_or_puppet = yes
+
+			        }
+
+			        1053 = {
+
+				    is_controlled_by_ROOT_or_puppet = yes
+
+			        }
+
+                    country_exists = XSM					
+
+					}
+
+		            XSM = {
+
+			        transfer_state = 283
+
+                    add_state_core = 283
+
+			        transfer_state = 1053
+
+                    add_state_core = 1053
+
+			        transfer_state = 756
+
+                    add_state_core = 756
+
+			        transfer_state = 1044
+
+                    add_state_core = 1044					
+
+		            }
+
+				}		
+
+		FROM = {
+
+			country_event = AWR_GXC.184
+
+		}
+
+    }
+
+	option = {
+
+		name = gxc.48.b
+
+		ai_chance = {
+
+			factor = 5
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		trigger = {
+
+			OR = {
+
+				event_target:WTT_current_china_leader = {
+
+					is_subject = no
+
+					strength_ratio = {
+
+						tag = GXC
+
+						ratio < 1.5
+
+					}
+
+				}
+
+			    event_target:WTT_current_china_leader = {
+
+					has_idea = CHI_civil_war_debuff_4
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					has_idea = CHI_civil_war_debuff_5
+
+				}
+
+			}
+
+		}
+
+				if = {
+
+					limit = {
+
+			        283 = {
+
+				    is_controlled_by_ROOT_or_puppet = yes
+
+			        }
+
+			        1053 = {
+
+				    is_controlled_by_ROOT_or_puppet = yes
+
+			        }					
+
+					}
+
+		            XSM = {
+
+			        transfer_state = 283
+
+                    add_state_core = 283
+
+			        transfer_state = 1053
+
+                    add_state_core = 1053					
+
+		            }
+
+				}		
+
+		if = {
+
+			limit = {
+
+				has_stability > 0.15
+
+			}
+
+		    add_stability = -0.15
+
+		}
+
+		else = {
+
+			add_political_power = -150
+
+		}
+
+		FROM = {
+
+			country_event = AWR_GXC.185
+
+		}
+
+    }
+
+}
+
+country_event = { #Central China Bandit Suppression Headquarters, yes to GXC
+
+	id = AWR_GXC.184 #[FROM.GetLeader] 同意我们的要求
+
+	title = gxc.49.t
+
+	desc = gxc.49.d
+
+	picture = GFX_report_event_wuhan_mb
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.49.a
+
+        ai_chance = {
+
+			factor = 1
+
+		}
+
+		FROM = {
+
+			every_owned_state = {
+
+				limit = {
+
+					#is_controlled_by = CHI
+
+					region = 246
+
+					#NOT = { #Hunan
+
+					#    OR = {
+
+					#	    state = 602
+
+					#	    state = 750
+
+					#	    state = 1035
+
+					#   }
+
+				    #}
+
+				}
+
+				transfer_state_to = ROOT
+
+				add_core_of = ROOT 
+
+			}	
+
+		}     	
+
+		#add_ideas =
+
+    }
+
+}
+
+country_event = { #Central China Bandit Suppression Headquarters, no to GXC
+
+	id = AWR_GXC.185 #[FROM.GetLeader]拒绝了我们的要求
+
+	title = gxc.50.t
+
+	desc = gxc.50.d
+
+	picture = GFX_report_event_wuhan_mb
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.50.a
+
+        effect_tooltip = {
+
+			FROM = {
+
+                if = {
+
+					limit = {
+
+						has_stability > 0.15
+
+					}
+
+					add_stability = -0.15
+
+				}
+
+				else = {
+
+					add_political_power = -150
+
+				}
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC-PRC Alliance? to PRC
+
+	id = AWR_GXC.186 #与[GXC.GetName]结盟？
+
+	title = gxc.51.t
+
+	desc = gxc.51.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.51.a
+
+        #yes
+
+		ai_chance = {
+
+			factor = 5
+
+			modifier = {
+
+				factor = 1
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = AWR_GXC.187 
+
+		}
+
+    }
+
+	option = {
+
+		name = gxc.51.b
+
+        #no   
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 1
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = AWR_GXC.199
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC-PRC Alliance yes to GXC, choose our plan
+
+	id = AWR_GXC.187 #[FROM.GetName]同意
+
+	title = gxc.52.t
+
+	desc = gxc.52.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		set_country_flag = gxc_ally_prc_flag
+
+	}
+
+	option = {
+
+		name = gxc.52.a
+
+        #Divided by Yangtze River
+
+		trigger = {
+
+			always = no
+
+		}
+
+		event_target:WTT_communist_china = {
+
+			country_event = AWR_GXC.199
+
+		}
+
+			hidden_effect = {		
+
+                                      GXC = {
+
+					transfer_navy = {
+
+						target = PRC
+
+					}
+
+                   			every_unit_leader = {
+
+				set_nationality = PRC
+
+			}
+
+               }
+
+					PRC = {
+
+
+
+                   annex_country = { target = GXC transfer_troops = yes  }
+
+					}	
+
+					}					
+
+		if = {
+
+			limit = {
+
+				is_ai = no
+
+			}
+
+		    create_wargoal = { 
+
+				target = event_target:WTT_current_china_leader
+
+				type = annex_everything
+
+			}
+
+			else = {
+
+				declare_war_on = { target = event_target:WTT_current_china_leader }
+
+			}
+
+		}
+
+    }
+
+	option = {
+
+		name = gxc.52.b
+
+        #be communist too
+
+		event_target:WTT_communist_china = {
+
+			country_event = AWR_GXC.188
+
+		}
+
+		effect_tooltip = {
+
+            event_target:WTT_communist_china = {
+
+				annex_country = {
+
+					target = ROOT transfer_troops = yes
+
+				}
+
+			}
+
+		
+
+		}
+
+                                      GXC = {
+
+					transfer_navy = {
+
+						target = PRC
+
+					}
+
+                   			every_unit_leader = {
+
+				set_nationality = PRC
+
+			}
+
+               }
+
+					PRC = {
+
+
+
+                   annex_country = { target = GXC transfer_troops = yes  }
+
+					}		
+
+		if = {
+
+			limit = {
+
+				event_target:WTT_communist_china = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			effect_tooltip = {
+
+                event_target:WTT_communist_china = {
+
+					change_tag_from = ROOT
+
+				}
+
+			}
+
+			else = {
+
+				custom_effect_tooltip = GAME_OVER_TT
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC-PRC Alliance to prc
+
+	id = AWR_GXC.188
+
+	title = gxc.55555.t
+
+	desc = gxc.5555.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.5555.a
+
+        #set_global_flag = prc_allied_gxc_flag
+
+        annex_country = {
+
+			target = FROM transfer_troops = yes
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_ai = yes
+
+				FROM = {
+
+					is_ai = no
+
+				}
+
+			}
+
+			change_tag_from = FROM
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC VICTORY IN FUJIAN 1
+
+	id = AWR_GXC.189 #[GXC.GetName] 在 [595.GetName] 获胜
+
+	title = gxc.53.t
+
+	desc = gxc.53.d
+
+	picture = GFX_report_event_chinese_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+
+		trigger = {
+
+			tag = GXC	
+
+		}
+
+		name = gxc.53.a
+
+        transfer_state = 595
+
+		army_experience = 25
+
+		country_event = {
+
+			id = AWR_GXC.198 days = 7
+
+		}
+
+    }
+
+	option = {
+
+		trigger = {
+
+			NOT = {
+
+				tag = GXC
+
+			}
+
+		}
+
+		name = gxc.53.b
+
+		effect_tooltip = {
+
+			GXC = {
+
+				transfer_state = 595
+
+			}
+
+		}
+
+		add_war_support = -0.05
+
+		army_experience = 10
+
+		country_event = {
+
+			id = AWR_GXC.197 days = 7
+
+		}
+
+    }
+
+}
+
+country_event = {
+
+			id = AWR_GXC.198 days = 7
+
+		}
+
+country_event = {
+
+			id = AWR_GXC.197 days = 7
+
+		}
+
+country_event = { #GXC DEFEAT IN FUJIAN 1
+
+	id = AWR_GXC.192 #[GXC.GetName] 在 [595.GetName] 战败
+
+	title = gxc.54.t
+
+	desc = gxc.54.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		trigger = {
+
+			tag = GXC	
+
+		}
+
+		name = gxc.54.a
+
+        add_war_support = -0.05
+
+		army_experience = 10
+
+    }
+
+	option = {
+
+		trigger = {
+
+			NOT = {
+
+				tag = GXC
+
+			}
+
+		}
+
+		name = gxc.54.b
+
+		add_war_support = 0.05
+
+		army_experience = 25
+
+    }
+
+}
+
+country_event = { #GXC CANCEL IN FUJIAN 
+
+	id = AWR_GXC.193 #[FROM.GetName]拒绝
+
+	title = gxc.55.t
+
+	desc = gxc.55.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.55.a
+
+        army_experience = 10
+
+    }
+
+}
+
+country_event = { #GXC VICTORY IN FUJIAN 2
+
+	id = AWR_GXC.194 #[GXC.GetName] 在 [941.GetName] 获胜
+
+	title = gxc.556.t
+
+	desc = gxc.556.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		trigger = {
+
+			tag = GXC	
+
+		}
+
+		name = gxc.556.a
+
+        transfer_state = 1033
+
+		army_experience = 25
+
+    }
+
+	option = {
+
+		trigger = {
+
+			NOT = {
+
+				tag = GXC
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			GXC = {
+
+				transfer_state = 1033
+
+			}
+
+		}
+
+		add_war_support = -0.05
+
+		army_experience = 10
+
+		name = gxc.556.b
+
+    }
+
+}
+
+country_event = { #GXC DEFEAT IN FUJIAN 2
+
+	id = AWR_GXC.195 #[GXC.GetName] 在 [595.GetName] 战败
+
+	title = gxc.557.t
+
+	desc = gxc.557.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		trigger = {
+
+			tag = GXC	
+
+		}
+
+		name = gxc.556.a
+
+        add_war_support = -0.05
+
+		army_experience = 10
+
+    }
+
+	option = {
+
+		trigger = {
+
+			NOT = {
+
+				tag = GXC
+
+			}
+
+		}
+
+		name = gxc.557.b
+
+		add_war_support = 0.05
+
+		army_experience = 25
+
+    }
+
+}
+
+country_event = { #GXC BORDER WAR IN FUJIAN 595 TO CHI
+
+	id = AWR_GXC.196 #[GXC.GetName] 入侵 [595.GetName]
+
+	title = gxc.558.t
+
+	desc = gxc.558.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.558.a
+
+		effect_tooltip = {
+
+            FROM = {
+
+				start_border_war = {
+
+					change_state_after_war = yes
+
+					attacker = {
+
+						state = 593
+
+						num_provinces = 3
+
+						on_win = AWR_GXC.189
+
+						on_lose = AWR_GXC.192
+
+						on_cancel = AWR_GXC.193
+
+					}
+
+					defender = {
+
+						state = 595
+
+						num_provinces = 4
+
+						on_win = AWR_GXC.192
+
+						on_lose = AWR_GXC.189
+
+						on_cancel = AWR_GXC.193
+
+					}
+
+				}
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC BORDER WAR IN FUJIAN 1033 TO CHI
+
+	id = AWR_GXC.197 #[GXC.GetName] 入侵 [941.GetName]
+
+	title = gxc.559.t
+
+	desc = gxc.559.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.559.a
+
+        effect_tooltip = {
+
+            FROM = {
+
+				start_border_war = {
+
+					change_state_after_war = no
+
+					attacker = {
+
+						state = 595
+
+						num_provinces = 3
+
+						on_win = AWR_GXC.189
+
+						on_lose = AWR_GXC.192
+
+						on_cancel = AWR_GXC.193
+
+					}
+
+					defender = {
+
+						state = 1033
+
+						num_provinces = 4
+
+						on_win = AWR_GXC.192
+
+						on_lose = AWR_GXC.189
+
+						on_cancel = AWR_GXC.193
+
+					}
+
+				}
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC BORDER WAR IN FUJIAN 1033
+
+	id = AWR_GXC.198 #[941.GetName]攻势
+
+	title = gxc.560.t
+
+	desc = gxc.560.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.560.a
+
+        start_border_war = {
+
+			change_state_after_war = no
+
+			attacker = {
+
+				state = 595	
+
+				num_provinces = 5
+
+				on_win = AWR_GXC.194
+
+				on_lose = AWR_GXC.195
+
+				on_cancel = AWR_GXC.193
+
+			}
+
+			defender = {
+
+				state = 1033
+
+				num_provinces = 4
+
+				on_win = AWR_GXC.195
+
+				on_lose = AWR_GXC.194
+
+				on_cancel = AWR_GXC.193
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #GXC-PRC Alliance no to GXC
+
+	id = AWR_GXC.199 #[FROM.GetName]拒绝
+
+	title = gxc.55.t
+
+	desc = gxc.55.d
+
+	picture = GFX_report_event_guangxi_army_fighting
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.55.a
+
+        set_global_flag = prc_refused_gxc_flag
+
+		uncomplete_national_focus = {
+
+			focus = GXC_an_unlikely_alliance
+
+			#uncomplete_children = yes
+
+			#refund_political_power = no
+
+		}
+
+    }
+
+}
+
+country_event = { #26th division joins gxc
+
+	id = AWR_GXC.200 #前十九路军将领加入我军
+
+	title = gxc.65.t
+
+	desc = gxc.65.d
+
+	picture = GFX_report_event_guangxi_army
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = GXC
+
+		OR = {
+
+			is_in_faction_with = GUD
+
+			is_faction_leader = yes
+
+		}
+
+		any_controlled_state = {
+
+			is_owned_by = ROOT
+
+			region = 248
+
+		}
+
+	}
+
+	fire_only_once = yes
+
+	option = {
+
+		name = gxc.65.a
+
+        set_country_flag = t176d_recruited_flag
+
+		effect_tooltip = {
+
+			create_corps_commander = {
+
+				name = "Qu Shounian"
+
+				portrait_path = "gfx/leaders/GXC/Portrait_GXC_Qu Shounian.dds"
+
+				traits = { }
+
+				skill = 2
+
+				attack_skill = 2
+
+				defense_skill = 2
+
+				planning_skill = 1
+
+				logistics_skill = 2
+
+			}
+
+		}
+
+		division_template = {
+
+			name = "Ti 19 Lu Chün Shih"			
+
+			division_names_group = GXC_INF_00
+
+			regiments = {
+
+				infantry = { x = 0 y = 0 }
+
+				infantry = { x = 0 y = 1 }
+
+				infantry = { x = 1 y = 0 }
+
+				infantry = { x = 1 y = 1 }
+
+				infantry = { x = 2 y = 0 }
+
+				infantry = { x = 2 y = 1 }
+
+				infantry = { x = 3 y = 0 }
+
+				infantry = { x = 3 y = 1 }
+
+			}
+
+			support = {
+
+			}
+
+		}
+
+		add_equipment_to_stockpile = {
+
+			type = infantry_equipment_0
+
+			amount = 750
+
+		}
+
+		add_manpower = 7500
+
+		random_owned_controlled_state = {
+
+			limit = {
+
+				region = 248
+
+			}
+
+			create_unit = {
+
+				division = "division_template = \"Ti 19 Lu Chün Shih\" start_experience_factor = 0.75 start_manpower_factor = 0.05 start_equipment_factor = 0.05"
+
+				owner = GXC
+
+			}	
+
+	    }
+
+    }
+
+}
+
+country_event = { #disband irregulars
+
+	id = AWR_GXC.201 #抗日人民自卫军解散
+
+	title = gxc.66.t
+
+	desc = gxc.66.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = GXC
+
+		has_template = "Fei Chêngkuei Chün"
+
+		OR = {
+
+			has_completed_focus = GXC_Establish_the_fourth_theater
+
+			has_global_flag = JAP_defeated
+
+		}
+
+		NOT = {
+
+			has_war_with = JAP
+
+		}
+
+	}
+
+	fire_only_once = yes
+
+	option = {
+
+		name = gxc.66.a
+
+        delete_unit_template_and_units = { #remove when war breaks out
+
+			division_template = "Fei Chêngkuei Chün"
+
+			disband = no
+
+	    }
+
+    }
+
+}
+
+country_event = { #to Japan
+
+	id = AWR_GXC.202 #与 [From.GetName] 协议？
+
+	title = gxc.67.t
+
+	desc = gxc.67.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.67.a
+
+        effect_tooltip = {
+
+			FROM = {
+
+				diplomatic_relation = {
+
+					country = ROOT
+
+					relation = non_aggression_pact
+
+				}
+
+			    unlock_decision_tooltip = GXC_purchase_weapon_from_japan
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				FROM = {
+
+					is_faction_leader = yes
+
+				}
+
+			}
+
+			effect_tooltip = {
+
+                every_other_country = {
+
+					limit = {
+
+						is_ally_with = FROM
+
+					}
+
+					diplomatic_relation = {
+
+						country = ROOT
+
+						relation = non_aggression_pact
+
+					}
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_GXC.205 hours = 12
+
+			} 
+
+		}
+
+    }
+
+	option = {
+
+		name = gxc.67.b
+
+        FROM = {
+
+			country_event = {
+
+				id = AWR_GXC.206 hours = 12
+
+			} 
+
+		}
+
+    }
+
+}
+
+country_event = {
+
+				id = AWR_GXC.205 hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_GXC.206 hours = 12
+
+			}
+
+country_event = { #to gxc
+
+	id = AWR_GXC.205 #[From.GetName]同意
+
+	title = gxc.68.t
+
+	desc = gxc.68.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.68.a
+
+		set_country_flag = gxc_ally_jap_flag
+
+		unlock_decision_tooltip = GXC_purchase_weapon_from_japan
+
+		diplomatic_relation = {
+
+			country = FROM
+
+			relation = non_aggression_pact
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_faction_leader = yes
+
+			}
+
+			every_other_country = {
+
+				limit = {
+
+					is_ally_with = ROOT
+
+				}
+
+				diplomatic_relation = {
+
+					country = ROOT
+
+					relation = non_aggression_pact
+
+				}
+
+			}
+
+		}
+
+    }
+
+}
+
+country_event = { #to gxc
+
+	id = AWR_GXC.206 #[From.GetName]拒绝
+
+	title = gxc.69.t
+
+	desc = gxc.69.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.69.a
+
+		add_stability = -0.05
+
+    }
+
+}
+
+country_event = { #ask to become faction leader, to the original faction leader
+
+	id = AWR_GXC.207 #[From.GetName]要求[ROOT.GetFactionName]领导权
+
+	title = gxc.70.t
+
+	desc = gxc.70.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.70.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		add_political_power = 50
+
+		FROM = {
+
+			country_event = AWR_GXC.208
+
+		}
+
+		effect_tooltip = {
+
+			set_faction_leader = no
+
+		    FROM = {
+
+                set_faction_leader = yes
+
+			}
+
+		}
+
+    }
+
+	option = {
+
+		name = gxc.70.b
+
+		#no
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		add_political_power = -50
+
+		FROM = {
+
+			country_event = AWR_CHI.3923
+
+		}	
+
+    }
+
+}
+
+country_event = { #ask to become faction leader, YES to the new faction leader
+
+	id = AWR_GXC.208 #[From.GetName]同意了
+
+	title = gxc.71.t
+
+	desc = gxc.71.d
+
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = gxc.71.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		#FROM = {
+
+		#	set_faction_leader = no
+
+		#}
+
+		set_faction_leader = yes
+
+    }
+
+}
+
+country_event = { #move provincial capital
+
+	id = AWR_GXC.209 #迁移省会？
+
+	title = gxc.72.t
+
+	desc = gxc.72.d
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = no
+
+	fire_only_once = yes
+
+	trigger = {
+
+		date > 1936.9.30
+
+		tag = GXC 
+
+		NOT = {
+
+			tag = event_target:WTT_current_china_leader
+
+			has_war_with = event_target:WTT_current_china_leader
+
+			is_faction_leader = yes
+
+			#has_global_flag = liangguang_on_gxc_rebel
+
+			has_global_flag = gxc_join_2g
+
+			is_ally_with = JAP	
+
+		}
+
+		any_owned_state = {
+
+			is_capital = yes
+
+			OR = {
+
+				state = 594
+
+				state = 599
+
+				state = 1038
+
+			}
+
+		}
+
+		1039 = {
+
+			is_owned_and_controlled_by = ROOT
+
+		}	
+
+	}
+
+	option = {
+
+		name = gxc.72.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		set_capital = { state = 1039 }
+
+		add_war_support = 0.025
+
+    }
+
+	option = {
+
+		name = gxc.72.b
+
+		#yes
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+    }
+
+}

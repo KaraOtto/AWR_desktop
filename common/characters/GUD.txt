@@ -1,0 +1,193 @@
+characters={
+	GUD_chen_jitang={
+		name=GUD_chen_jitang
+		portraits={
+			civilian={
+				large="gfx/leaders/GUD_army_leader_chen_jitang.dds"
+			}
+			army = {
+				large="gfx/leaders/GUD_army_leader_chen_jitang.dds"
+				small="gfx/interface/idea/GUD/GUD_idea_chen_jitang.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1954.11.3"
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1954.11.3"
+			id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = GUD_chen_jitang
+			allowed = {
+				original_tag = GUD
+			}
+			traits = {
+				generic_army_chief_defensive_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		field_marshal={
+			traits={ generic_logistics_wizard generic_NRA_General_1stRank }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=4
+			legacy_id=2001
+			desc=GUD_chen_jitang_desc
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							original_tag = GUD
+						}
+					}
+					has_global_flag = joined_chi_GUD
+				}
+			}
+		}
+	}
+	GUD_yu_hanmou={
+		name=GUD_yu_hanmou
+		portraits={
+			civilian={
+				large="gfx/leaders/GUD_army_leader_yu_hanmou.dds"
+			}
+			army={
+				large="gfx/leaders/GUD_army_leader_yu_hanmou.dds"
+				small="gfx/interface/idea/GUD/GUD_idea_yu_hanmou.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+            traits={ GUD_suijing_gongshu generic_difangshilipai generic_infantry_officer }
+			id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = GUD_yu_hanmou
+			ledger = army
+			allowed = {
+				original_tag = GUD
+			}
+			traits = {
+				generic_army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	GUD_li_hanhun={
+		name=GUD_li_hanhun
+		portraits={
+			army={
+				large="gfx/leaders/GUD_army_li_hanhun.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_extra_specialized_skill generic_NRA_Major_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	GUD_deng_longguang={
+		name=GUD_deng_longguang
+		portraits={
+			army={
+				large="gfx/leaders/GUD_army_deng_longguang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_extra_specialized_skill generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	GUD_huang_guangrui={
+		name =GUD_huang_guangrui
+		portraits = {
+			army = { small="gfx/interface/idea/GUD/GUD_idea_huang_guangrui.tga" }
+		}
+		advisor={
+			slot = air_chief
+			idea_token = GUD_huang_guangrui
+			allowed = {
+				original_tag = GUD
+			}
+			traits = { generic_air_chief_reform_2 }
+			cost = 100
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_huang_guangrui
+			visible = {
+				has_global_flag = huang_guangrui_defects
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { GUD_air_pilot_training_2 }
+			cost = 100
+		}
+	}
+}

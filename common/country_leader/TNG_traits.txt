@@ -1,0 +1,45 @@
+leader_traits = {
+	# army_regrouping_1，来源：common/country_leader/00_traits.txt
+	TNG_army_regrouping_1 = { 
+			sprite = 5
+			army_morale_factor = 0.04
+		
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# communist_revolutionary，来源：common/country_leader/00_traits.txt
+	TNG_communist_revolutionary = {
+			random = no
+		
+			sprite = 13
+			communism_drift = 0.1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					not = { has_completed_focus = USA_suspend_the_presecution }
+					factor = 0
+				}
+			}
+		}
+	# youngster_commander，来源：common/country_leader/RCM_traits.txt
+	TNG_youngster_commander = {
+			random = no
+			ai_desired_divisions_factor = 0.5
+	        conscription_factor = 0.1
+			army_org_factor = 0.05
+			org_loss_when_moving = -0.2
+			army_morale_Factor = 0.15
+			ai_will_do = {
+				factor = 1
+			}
+		}
+}

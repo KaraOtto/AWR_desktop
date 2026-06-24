@@ -1,0 +1,432 @@
+characters={
+	MON_khorloogiin_choibalsan={
+		name=MON_khorloogiin_choibalsan
+		portraits={
+			civilian={
+				large="gfx/leaders/MON_leader_khorloogiin_choibalsan.dds"
+			}
+			army={
+				large="gfx/leaders/MON_army_khorloogiin_choibalsan.dds"
+				small="gfx/interface/idea/MON/MON_idea_khorloogiin_choibalsan.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MON_choibalsan_army_chief
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = MON_communists_purged }
+			}
+			traits = { generic_army_chief_morale_2 }
+			cost = 150
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MON_choibalsan_political_advisor
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = MON_communists_purged }
+			}
+			traits = { generic_prince_of_terror }
+		    ai_will_do = {
+				factor = 2
+				modifier = {
+				    factor = 1000
+				    is_historical_focus_on = yes
+				}
+			}
+		}
+		field_marshal={
+			traits={ generic_inspirational_leader }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=821895
+		}
+	}
+	RUS_grigory_semyonov = {
+		name = SOV_grigory_semyonov
+		portraits = {
+			civilian={
+				large="gfx/leaders/MON_leader_RUS_grigory_semyonov.dds"
+			}
+			army = {
+				small = "gfx/interface/idea/MON/MON_idea_RUS_grigory_semyonov.dds"
+				large = "gfx/leaders/MON_army_RUS_grigory_semyonov.dds"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = RUS_grigory_semyonov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_approach_semyonov
+			}
+			available = {
+				has_completed_focus = MON_approach_semyonov
+			}
+			traits = { generic_army_chief_old_guard }
+		}
+		field_marshal = {
+			traits = { generic_old_guard generic_cavalry_officer generic_cavalry_leader generic_winter_specialist }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			visible = {
+				if = { has_completed_focus =MON_approach_semyonov }
+			}
+		}
+	}
+	RUS_vladimir_kislitsin={
+		name=RUS_vladimir_kislitsin
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_RUS_vladimir_kislitsin.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_cavalry_officer generic_winter_specialist }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			visible = {
+				if = { has_completed_focus = MON_white_officers }
+			}
+		}
+	}
+	RUS_grigory_verzhbitsky={
+		name=RUS_grigory_verzhbitsky
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_RUS_grigory_verzhbitsky.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_infantry_officer generic_trait_engineer generic_winter_specialist }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			visible = {
+				if = { has_completed_focus = MON_white_officers }
+			}
+		}
+	}
+	RUS_innokenty_smolin={
+		name=RUS_innokenty_smolin
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_RUS_innokenty_smolin.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_infantry_officer generic_winter_specialist }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			visible = {
+				if = { has_completed_focus = MON_white_officers }
+			}
+		}
+	}
+	RUS_ivan_mikhailov={
+		name=ivan_mikhailov
+		portraits={
+			civilian={
+				small="gfx/interface/idea/MON/MON_idea_RUS_ivan_mikhailov.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = RUS_ivan_mikhailov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_white_officers
+			}
+			available = {
+				has_completed_focus = MON_white_officers
+			}
+			traits = { generic_financial_expert }
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	RUS_ivan_serebrennikov={
+		name=RUS_ivan_serebrennikov
+		portraits={
+			civilian={
+				small="gfx/interface/idea/MON/MON_idea_RUS_ivan_serebrennikov.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = RUS_ivan_serebrennikov
+			allowed = {
+			    original_tag = MON
+				has_completed_focus = MON_white_officers
+			}
+			available = {
+				has_completed_focus = MON_white_officers
+			}
+			traits = { generic_economist }
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	MON_Sambadondogiin_Tserendorj={
+		name=MON_Sambadondogiin_Tserendorj
+		portraits={
+			civilian={
+				small="gfx/interface/idea/MON/MON_idea_Sambadondogiin_Tserendorj.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MON_Sambadondogiin_Tserendorj
+			allowed = {
+				original_tag = MON
+			}
+			traits = {
+				generic_staunch_monarchist
+			}
+		    ai_will_do  = {
+			    factor = 1
+			    modifier  = {
+			        is_historical_focus_on  = yes
+			        factor = 0
+		        }
+            }
+		}
+	}
+    MON_gelegdorjiin_demid={
+		name=MON_gelegdorjiin_demid
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_gelegdorjiin_demid.dds"
+				small="gfx/interface/idea/MON/MON_idea_gelegdorjiin_demid.dds"
+			}
+		}
+		field_marshal={
+			traits={ generic_organisational_leader generic_cavalry_leader generic_extra_specialized_skill }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MON_gelegdorjiin_demid
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				NOT = { has_country_flag = gelegdorjiin_demid_dead }
+				NOT = { has_completed_focus = MON_russian_colony }
+			}
+			traits = { generic_army_chief_organizational_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+    MON_yumjaagiin_tsedenbal={
+		name= MON_yumjaagiin_tsedenbal
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_yumjaagiin_tsedenbal.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_politically_connected }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+		}
+	}
+    MON_zhamyangiin_lkhagvasuren={
+		name=MON_zhamyangiin_lkhagvasuren
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_zhamyangiin_lkhagvasuren.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_infantry_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+		}
+	}
+    MON_suuriin_baldan={
+		name=MON_suuriin_baldan
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_suuriin_baldan.dds"
+			}
+		}
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+    MON_donroviin_damdinkhuu={
+		name= MON_donroviin_damdinkhuu
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_donroviin_damdinkhuu.dds"
+				small="gfx/interface/idea/MON/MON_idea_donroviin_damdinkhuu.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MON_donroviin_damdinkhuu
+			ledger = army
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				has_completed_focus = MON_military_academy
+				NOT = { has_completed_focus = MON_russian_colony }
+			}
+			traits = { generic_army_cavalry_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+    MON_sandivyn_ravdan={
+		name=MON_sandivyn_ravdan
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_sandivyn_ravdan.dds"
+			}
+		}
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+	MON_batyn_dorj={
+		name=MON_batyn_dorj
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_batyn_dorj.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+	MON_gendengiin_rendoo={
+		name=MON_gendengiin_rendoo
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_gendengiin_rendoo.dds"
+				small="gfx/interface/idea/MON/MON_idea_gendengiin_rendoo.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MON_gendengiin_rendoo
+			ledger = army
+			allowed = {
+				original_tag = MON
+			}
+			available = {
+				has_completed_focus = MON_military_academy
+				NOT = { has_completed_focus = MON_russian_colony }
+			}
+			traits = { generic_army_artillery_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_artillery_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+	MON_dandar_baatar={
+		name=MON_dandar_baatar
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_dandar_baatar.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+	MON_shaariibuu={
+		name=MON_shaariibuu
+		portraits={
+			army={
+				large="gfx/leaders/MON_army_shaariibuu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer generic_trait_reckless generic_extra_specialized_skill }
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+		}
+	}
+}

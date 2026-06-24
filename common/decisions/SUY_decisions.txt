@@ -1,0 +1,709 @@
+# SUY 决议
+
+SUY_counter_attack_jap = { #收复绥远西部
+
+
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+
+
+		available = {
+
+			746 = {
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+			}
+
+			has_full_control_of_state = 1019
+
+		}
+
+
+
+		activation = {
+
+			always = no
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		is_good = no
+
+
+
+		days_mission_timeout = 120
+
+
+
+        cancel_trigger = {
+
+			NOT = {
+
+				has_war_with = JAP
+
+				has_war_with = ECA
+
+			}
+
+		}
+
+
+
+		timeout_effect = {
+
+			add_political_power = -100
+
+			every_core_state = {
+
+				limit = {
+
+					has_dynamic_modifier = {
+
+						modifier = suiyuan_offensive
+
+						scope = ROOT
+
+					}
+
+				}
+
+				remove_dynamic_modifier = { modifier = suiyuan_offensive scope = ROOT }
+
+			}	
+
+		}
+
+
+
+		complete_effect = {
+
+			add_political_power = 50
+
+			add_stability = 0.05
+
+			add_war_support = 0.1
+
+			every_core_state = {
+
+				limit = {
+
+					has_dynamic_modifier = {
+
+						modifier = suiyuan_offensive
+
+						scope = ROOT
+
+					}
+
+				}
+
+				remove_dynamic_modifier = { modifier = suiyuan_offensive scope = ROOT }
+
+			}	
+
+		}
+
+	}
+
+SUY_ambush_kalgan_mission = { #突袭[611.GetCapitalVictoryPointName]
+
+
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+
+
+		available = {
+
+			controls_state = 611
+
+		}
+
+
+
+		activation = {
+
+			always = no
+
+		}
+
+
+
+		cancel_trigger = {
+
+			OR = {
+
+				NOT = {
+
+					has_war_with = event_target:WTT_communist_china
+
+				}
+
+				NOT = {
+
+					country_exists = event_target:WTT_communist_china
+
+				}
+
+			}
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		is_good = no
+
+
+
+		days_mission_timeout = 35
+
+
+
+		timeout_effect = {
+
+			add_political_power = -100			
+
+		}
+
+
+
+		complete_effect = {
+
+			add_war_support = 0.1
+
+			transfer_state = 611
+
+		}
+
+	}
+
+suiyuan_tunken_decision = { #在[From.GetName]屯垦
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		
+
+		state_target = yes
+
+		
+
+		target_trigger = {
+
+			FROM = {
+
+				is_core_of = ROOT
+
+				is_owned_by = ROOT
+
+			}
+
+		}
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		visible = {
+
+			has_completed_focus = SUY_tunken
+
+		}
+
+		available = {
+
+			FROM = {
+
+				is_fully_controlled_by = ROOT
+
+			}
+
+			army_manpower_in_state = {
+
+				#type = support
+
+				amount > 9999
+
+				state = FROM
+
+			}
+
+			NOT = {
+
+				has_active_mission = tunken_mission
+
+			}
+
+		}
+
+
+
+		cost = 50
+
+
+
+        complete_effect = {
+
+			FROM = {
+
+				set_variable = {
+
+					Root.tunken_state = This.id
+
+				}
+
+			}
+
+			activate_mission = tunken_mission
+
+			custom_effect_tooltip = keep_10k_troops_on_the_state
+
+			custom_effect_tooltip = if_buy_succ
+
+			effect_tooltip = {
+
+				add_to_variable = {
+
+			    	This.supply_condition_base = 20 tooltip = gain_base_supp_cond_p20_tt
+
+			    }
+
+			}
+
+		}
+
+		ai_will_do = {
+
+			base = 0
+
+			modifier = {
+
+				add = 15
+
+				check_variable = {
+
+					ROOT.supply_condition < 80
+
+				}
+
+			}
+
+		}
+
+	}
+
+tunken_mission = { #正在屯垦
+
+
+
+		icon = GFX_decision_eng_blackshirt_march
+
+
+
+		available = {
+
+			OR = {
+
+				var:Root.tunken_state = {
+
+					NOT = {
+
+				        is_fully_controlled_by = ROOT
+
+					}
+
+				}
+
+				army_manpower_in_state = {
+
+					#type = support
+
+					amount < 10000
+
+					state = var:Root.tunken_state
+
+				}
+
+			}	
+
+		}
+
+
+
+		activation = {
+
+			always = no
+
+		}
+
+
+
+		#cancel_trigger = {
+
+		#
+
+		#}
+
+
+
+		is_good = yes
+
+
+
+		days_mission_timeout = 180
+
+
+
+		timeout_effect = {
+
+			add_to_variable = {
+
+				This.supply_condition_base = 20 tooltip = gain_base_supp_cond_p20_tt
+
+			}
+
+			add_stability = 0.02
+
+			clear_variable = var:Root.tunken_state
+
+		}
+
+
+
+		complete_effect = {
+
+			clear_variable = var:Root.tunken_state
+
+		}
+
+	}
+
+suiyuan_weaken_mongol_autonomy_decision = { #削弱[From.GetName]当地的蒙人自治权
+
+		icon = GFX_decision_oppression
+
+		
+
+		state_target = yes
+
+		
+
+		target_trigger = {
+
+			FROM = {
+
+			    has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+				is_owned_and_controlled_by = ROOT
+
+			}
+
+		}
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		visible = {
+
+			hidden_trigger = {
+
+                has_completed_focus = SUY_mongolian_issues
+
+			}
+
+			FROM = {
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+
+
+		cancel_if_not_visible = yes
+
+
+
+		available = {
+
+			FROM = {
+
+				is_owned_and_controlled_by = ROOT
+
+				has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+			}
+
+			has_stability > 0.14
+
+			if = {
+
+				limit = {
+
+					has_war = yes
+
+				}
+
+				has_war_support > 0.14
+
+			}
+
+		}
+
+
+
+		cost = 20
+
+
+
+		days_remove = 180
+
+
+
+        remove_effect = {
+
+            FROM = {
+
+				if = {
+
+					limit = {
+
+						has_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+					}
+
+					remove_dynamic_modifier = { modifier = chi_mon_autonomy scope = ROOT }
+
+					add_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+					set_state_flag = weakened_mon_autonomy_flag
+
+				}
+
+			}
+
+		}
+
+		
+
+		complete_effect = {
+
+			add_stability = -0.15
+
+			if = {
+
+				limit = {
+
+					has_war = yes
+
+				}
+
+				add_war_support = -0.15
+
+			}	
+
+		}
+
+ 
+
+        modifier = {
+
+			consumer_goods_factor = 0.3
+
+		}
+
+
+
+		ai_will_do = {
+
+			base = 0
+
+			modifier = {
+
+				add = 15
+
+				has_stability > 0.84
+
+				has_war = no
+
+			}
+
+		}
+
+	}
+
+suiyuan_weaken_mongol_autonomy_decision_2 = { #取消在[From.GetName]的蒙人行政单位
+
+		icon = GFX_decision_eng_support_imperialist_coup
+
+		
+
+		state_target = yes
+
+		
+
+		target_trigger = {
+
+			FROM = {
+
+				has_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+				is_owned_and_controlled_by = ROOT
+
+			}
+
+		}
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		visible = {
+
+			hidden_trigger = {
+
+                has_completed_focus = SUY_mongolian_issues
+
+			}
+
+			FROM = {
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+
+
+		cancel_if_not_visible = yes
+
+
+
+		available = {
+
+			FROM = {
+
+				is_owned_and_controlled_by = ROOT
+
+				has_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+			}
+
+			has_stability > 0.09
+
+			if = {
+
+				limit = {
+
+					has_war = yes
+
+				}
+
+				has_war_support > 0.09
+
+			}
+
+		}
+
+
+
+		cost = 20
+
+
+
+		days_remove = 180
+
+
+
+        remove_effect = {
+
+            if = {
+
+				limit = {
+
+					FROM = {
+
+						has_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+					}
+
+				}
+
+				FROM = {
+
+				    remove_dynamic_modifier = { modifier = chi_mon_autonomy_weak scope = ROOT }
+
+				    clr_state_flag = weakened_mon_autonomy_flag
+
+				}
+
+			}
+
+		}
+
+		
+
+		complete_effect = {
+
+			add_stability = -0.09
+
+			if = {
+
+				limit = {
+
+					has_war = yes
+
+				}
+
+				add_war_support = -0.09
+
+			}	
+
+		}
+
+
+
+		modifier = {
+
+			consumer_goods_factor = 0.15
+
+		}
+
+		
+
+		ai_will_do = {
+
+			base = 0
+
+			modifier = {
+
+				add = 15
+
+				has_stability > 0.74
+
+				has_war = no
+
+			}
+
+		}
+
+	}

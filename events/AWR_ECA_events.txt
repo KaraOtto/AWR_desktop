@@ -1,0 +1,3935 @@
+# ECA 事件
+
+add_namespace = AWR_ECA
+
+country_event = {
+
+	id = AWR_ECA.29
+
+	title = {
+
+		text = MEN.0.t
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	title = {
+
+		text = MEN.0.t_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SUY
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.0.d
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.0.d_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SUY
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.0.d_JAP
+
+		trigger = {
+
+			OR = {
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_mong_army_01
+
+	is_triggered_only = yes
+
+	#trigger = {
+
+	#	OR = {
+
+	#		tag = ECA
+
+	#		tag = PLM
+
+	#		tag = SHX
+
+	#		tag = JAP
+
+	#	}
+
+	#	PLM = {
+
+	#		owns_state = 1014
+
+	#	}
+
+	#	ECA = {
+
+	#		has_country_flag = suiyuan_campaign
+
+	#		controls_state = 621
+
+	#       controls_state = 746
+
+	#		controls_state = 1014
+
+	#	}
+
+	#	NOT = {
+
+	#		has_country_flag = suiyaun_done
+
+	#	}
+
+#
+
+	#}
+
+	#mean_time_to_happen = {
+
+	#	days = 0
+
+	#}
+
+	immediate = {
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					tag = JAP
+
+				}
+
+				every_country = {
+
+					limit = {
+
+						has_war_together_with = ECA
+
+						is_ally_with = ECA
+
+					}
+
+					peace_with_SHX_overlord = yes
+
+					white_peace = SHX
+
+					white_peace = SUY
+
+				}
+
+				ECA = {
+
+					peace_with_SHX_overlord = yes
+
+					white_peace = SHX
+
+					white_peace = SUY
+
+					annex_country = {
+
+						target = SUY
+
+						transfer_troops = no
+
+					}
+
+					transfer_state = 621
+
+					transfer_state = 746
+
+					transfer_state = 1019
+
+					transfer_state = 1020
+
+				}
+
+			}
+
+		    every_country = {
+
+				limit = {
+
+					has_war_with = ECA
+
+					is_ally_with = SHX 
+
+                    NOT = { 
+
+						OR = {
+
+							tag = SUY
+
+							tag = SHX
+
+						}
+
+					}
+
+				}
+
+				white_peace = ECA
+
+			}
+
+		}
+
+	}
+
+	option = {#ECA
+
+		name = MEN.0.a
+
+		trigger = {
+
+			tag = ECA
+
+		}
+
+		effect_tooltip = {
+
+			transfer_state = 621
+
+			transfer_state = 746
+
+			transfer_state = 1019
+
+			transfer_state = 1020
+
+			transfer_state = 1014
+
+		}
+
+		transfer_state = 621
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+		add_autonomy_ratio = {
+
+			value = 0.1
+
+			localization = MEN_suiyuan_victory
+
+		}
+
+		remove_ideas = MEN_limited_war
+
+		add_political_power = 50
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Puping Lü"
+
+			}
+
+			set_division_template_lock = {
+
+				division_template = "Tahanichün Puping Lü"
+
+				is_locked = no
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Ch'iping Lü"
+
+			}
+
+			set_division_template_lock = {
+
+				division_template = "Tahanichün Ch'iping Lü"
+
+				is_locked = no
+
+			}
+
+		}
+
+	}
+
+	option = {#SHX
+
+		name = MEN.0.b
+
+		trigger = {
+
+			tag = SHX
+
+		}
+
+		effect_tooltip = {
+
+			ECA = {
+
+				transfer_state = 621
+
+				transfer_state = 746
+
+				transfer_state = 1019
+
+				transfer_state = 1020
+
+				transfer_state = 1014
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+		add_political_power = -50
+
+	}
+
+	option = {#SUY
+
+		name = MEN.0.c
+
+		trigger = {
+
+			tag = SUY
+
+		}
+
+		effect_tooltip = {
+
+			ECA = {
+
+				transfer_state = 621
+
+				transfer_state = 746
+
+				transfer_state = 1019
+
+				transfer_state = 1020
+
+				transfer_state = 1014
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+	option = {#JAP
+
+		name = MEN.0.e
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+		effect_tooltip = {
+
+			ECA = {
+
+				transfer_state = 621
+
+				transfer_state = 746
+
+				transfer_state = 1019
+
+				transfer_state = 1020
+
+				transfer_state = 1014
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.31
+
+	title = {
+
+		text = MEN.1.t
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	title = {
+
+		text = MEN.1.t_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SUY
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.1.d
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.1.d_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SUY
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.1.d_JAP
+
+		trigger = {
+
+			OR = {
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_mong_army_01
+
+	#trigger = {
+
+	#	OR = {
+
+	#		tag = ECA
+
+	#		tag = PLM
+
+	#		tag = SHX
+
+	#		tag = JAP
+
+	#	}
+
+	#	PLM = {
+
+	#		owns_state = 1014
+
+	#	}
+
+	#	ECA = {
+
+	#		has_country_flag = suiyuan_campaign
+
+	#		NOT = {
+
+	#			OR = {
+
+	#				controls_state = 621
+
+	#               controls_state = 746
+
+	#				controls_state = 1014
+
+	#			}
+
+	#		}
+
+	#	}
+
+	#	NOT = {
+
+	#		has_country_flag = suiyaun_done
+
+	#	}
+
+	#	OR = {
+
+	#		NOT = {
+
+	#			has_global_flag = suiyuan_time_out
+
+	#		}
+
+	#		ECA = {
+
+	#			NOT = { has_full_control_of_state = 612 }
+
+	#		}
+
+	#	}
+
+	#}
+
+	#mean_time_to_happen = {
+
+	#	days = 0
+
+	#}
+
+	is_triggered_only = yes
+
+	option = {#ECA
+
+		name = MEN.1.a
+
+		trigger = {
+
+			tag = ECA
+
+		}
+
+		hidden_effect = {
+
+			set_global_flag = shx_plm_won_suiyuan
+
+			set_country_flag = suiyaun_done
+
+			every_other_country = {
+
+				limit = {
+
+					OR = {
+
+						tag = ECA
+
+						tag = SHX
+
+						tag = JAP
+
+						tag = SUY
+
+					}
+
+				}
+
+				country_event = {
+
+					id = AWR_ECA.31
+
+				}
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Puping Lü"
+
+			}
+
+			delete_unit_template_and_units = {
+
+				division_template = "Tahanichün Puping Lü"
+
+				disband = no #will refund equipment and manpower
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Ch'iping Lü"
+
+			}
+
+			delete_unit_template_and_units = {
+
+				division_template = "Tahanichün Ch'iping Lü"
+
+				disband = no #will refund equipment and manpower
+
+			}
+
+		}
+
+		remove_ideas = MEN_limited_war
+
+		add_political_power = -50
+
+	}
+
+	option = {#SHX
+
+		name = MEN.1.b
+
+		trigger = {
+
+			tag = SHX
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+		add_political_power = 50
+
+	}
+
+	option = {#SUY
+
+		name = MEN.1.c
+
+		trigger = {
+
+			tag = SUY
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+			set_global_flag = bailingmiao_ying			
+
+		}
+
+		add_political_power = 50
+
+		if = {
+
+			limit = {
+
+				any_core_state = {
+
+					OR = {
+
+				        state = 1014
+
+						state = 746
+
+						state = 621
+
+						state = 1019
+
+						state = 1020
+
+					}
+
+					is_owned_by = ECA
+
+				}
+
+			}
+
+            every_core_state = {
+
+				limit = {
+
+					OR = {
+
+				        state = 1014
+
+						state = 746
+
+						state = 621
+
+						state = 1019
+
+						state = 1020
+
+					}
+
+					is_owned_by = ECA
+
+				}
+
+				ROOT = {
+
+					transfer_state = PREV
+
+				}
+
+		    }
+
+		}
+
+	}
+
+	option = {#JAP
+
+		name = MEN.1.e
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+		hidden_effect = {
+
+			every_country = {
+
+				limit = {
+
+					has_war_together_with = ECA
+
+					is_ally_with = ECA
+
+				}
+
+				peace_with_SHX_overlord = yes
+
+				white_peace = SHX
+
+				white_peace = SUY
+
+			}
+
+			ECA = {
+
+				peace_with_SHX_overlord = yes
+
+				white_peace = SHX
+
+				white_peace = SUY
+
+			}
+
+			every_country = {
+
+				limit = {
+
+					has_war_with = ECA
+
+					OR = {
+
+						is_ally_with = SHX 
+
+						is_ally_with = SUY
+
+					}
+
+                    NOT = { 
+
+						OR = {
+
+							tag = SUY
+
+							tag = SHX
+
+						}
+
+					}
+
+				}
+
+				white_peace = ECA
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+					id = AWR_ECA.31
+
+				}
+
+country_event = {
+
+	id = AWR_ECA.32
+
+	title = {
+
+		text = MEN.2.t
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	title = {
+
+		text = MEN.2.t_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.2.d
+
+		trigger = {
+
+			OR = {
+
+				tag = ECA
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.2.d_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SHX
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.2.d_JAP
+
+		trigger = {
+
+			OR = {
+
+				tag = JAP
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_mong_army_01
+
+	#trigger = {
+
+	#	OR = {
+
+	#		tag = ECA
+
+	#		tag = SHX
+
+	#		tag = JAP
+
+	#	}
+
+	#	NOT = {
+
+	#		country_exists = PLM
+
+	#	}
+
+	#	ECA = {
+
+	#		owns_state = 1014
+
+	#	}
+
+	#	ECA = {
+
+	#		has_country_flag = suiyuan_campaign
+
+	#		controls_state = 621
+
+	#       controls_state = 746
+
+	#		controls_state = 1014
+
+	#	}
+
+	#	NOT = {
+
+	#		has_country_flag = suiyaun_done
+
+	#	}
+
+	#}
+
+	#mean_time_to_happen = {
+
+	#	days = 0
+
+	#}
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					tag = JAP
+
+				}
+
+				every_country = {
+
+					limit = {
+
+						has_war_together_with = ECA
+
+						is_ally_with = ECA
+
+					}
+
+					peace_with_SHX_overlord = yes
+
+					white_peace = SHX
+
+					#white_peace = PLM
+
+				}
+
+
+
+				ECA = {
+
+					peace_with_SHX_overlord = yes
+
+					if = {
+
+						limit = {
+
+							has_war_with = SHX
+
+						}
+
+					    white_peace = SHX
+
+					}
+
+					#white_peace = PLM
+
+					if = {
+
+						limit = {
+
+							controls_state = 621
+
+						}
+
+					    transfer_state = 621
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 746
+
+						}
+
+					    transfer_state = 746
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 1019
+
+						}
+
+					    transfer_state = 1019
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 1020
+
+						}
+
+					    transfer_state = 1020
+
+					}
+
+				}
+
+			}
+
+		    every_country = {
+
+				limit = {
+
+					has_war_with = ECA
+
+					is_ally_with = SHX 
+
+                    NOT = { 
+
+						OR = {
+
+							tag = SUY
+
+							tag = SHX
+
+						}
+
+					}
+
+				}
+
+				white_peace = ECA
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {#ECA
+
+		name = MEN.2.a
+
+		trigger = {
+
+			tag = ECA
+
+		}
+
+		if = {
+
+			limit = {
+
+				controls_state = 621 
+
+			}
+
+			effect_tooltip = {
+
+				transfer_state = 621
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				controls_state = 746
+
+			}
+
+			effect_tooltip = {
+
+				transfer_state = 746
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				controls_state = 1019
+
+			}
+
+			effect_tooltip = {
+
+				transfer_state = 1019
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				controls_state = 1020
+
+			}
+
+			effect_tooltip = {
+
+				transfer_state = 1020
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+		add_autonomy_ratio = {
+
+			value = 0.1
+
+			localization = MEN_suiyuan_victory
+
+		}
+
+		remove_ideas = MEN_limited_war
+
+		add_political_power = 50
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Puping Lü"
+
+			}
+
+			set_division_template_lock = {
+
+				division_template = "Tahanichün Puping Lü"
+
+				is_locked = no
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Ch'iping Lü"
+
+			}
+
+			set_division_template_lock = {
+
+				division_template = "Tahanichün Ch'iping Lü"
+
+				is_locked = no
+
+			}
+
+		}
+
+	}
+
+	option = {#SHX
+
+		name = MEN.2.b
+
+		trigger = {
+
+			tag = SHX
+
+		}
+
+		hidden_effect = {
+
+			set_cosmetic_tag = SHX_CLQ
+
+		}
+
+		effect_tooltip = {
+
+			ECA = {
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 621 
+
+						}
+
+					}
+
+					transfer_state = 621
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 746
+
+						}
+
+					}
+
+					transfer_state = 746
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 1019
+
+						}
+
+					}
+
+					transfer_state = 1019
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 1020
+
+						}
+
+					}
+
+					transfer_state = 1020
+
+				}
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+		add_political_power = -50
+
+	}
+
+	option = {#JAP
+
+		name = MEN.2.c
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+		effect_tooltip = {
+
+			ECA = {
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 621 
+
+						}
+
+					}
+
+					transfer_state = 621
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 746
+
+						}
+
+					}
+
+					transfer_state = 746
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 1019
+
+						}
+
+					}
+
+					transfer_state = 1019
+
+				}
+
+				if = {
+
+					limit = {
+
+						ECA = {
+
+							controls_state = 1020
+
+						}
+
+					}
+
+					transfer_state = 1020
+
+				}
+
+			}
+
+		}
+
+
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.33
+
+	title = {
+
+		text = MEN.3.t
+
+		trigger = {
+
+			NOT = {
+
+				OR = {
+
+					tag = SHX
+
+					is_ally_with = SHX
+
+				}
+
+			}
+
+		}
+
+	}
+
+	title = {
+
+		text = MEN.3.t_SHX
+
+		trigger = {
+
+			NOT = {
+
+				OR = {
+
+					tag = ECA
+
+					is_ally_with = ECA
+
+				}
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_fu_and_zhao
+
+	#trigger = {
+
+	#	OR = {
+
+	#		tag = ECA
+
+	#		tag = SHX
+
+	#		tag = JAP
+
+	#	}
+
+	#	NOT = {
+
+	#		country_exists = PLM
+
+	#	}
+
+	#	ECA = {
+
+	#		owns_state = 1014
+
+	#	}
+
+	#	ECA = {
+
+	#		has_country_flag = suiyuan_campaign
+
+	#		NOT = { controls_state = 621 }
+
+	#	}
+
+	#	NOT = {
+
+	#		has_country_flag = suiyaun_done
+
+	#	}
+
+	#	OR = {
+
+	#		NOT = {
+
+	#			has_global_flag = suiyuan_time_out
+
+	#		}
+
+	#		ECA = {
+
+	#			NOT = { controls_state = 1014 }
+
+	#		}
+
+	#	}
+
+	#}
+
+	#mean_time_to_happen = {
+
+	#	days = 0
+
+	#}
+
+	is_triggered_only = yes
+
+	desc = {
+
+		text = MEN.3.d
+
+		trigger = {
+
+			tag = ECA
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.3.d_JAP
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+	}
+
+	desc = {
+
+		text = MEN.3.d_SHX
+
+		trigger = {
+
+			OR = {
+
+				tag = SHX
+
+				is_ally_with = SHX
+
+			}
+
+		}
+
+	}
+
+	option = {#ECA
+
+		name = MEN.3.a
+
+		trigger = {
+
+			tag = ECA
+
+		}
+
+		effect_tooltip = {
+
+			if = {
+
+				limit = {
+
+					SHX = {
+
+						controls_state = 1014
+
+					}
+
+				}
+
+				SHX = {
+
+					transfer_state = 1014
+
+				}
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Puping Lü"
+
+			}
+
+			delete_unit_template_and_units = {
+
+				division_template = "Tahanichün Puping Lü"
+
+				disband = no #will refund equipment and manpower
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_template = "Tahanichün Ch'iping Lü"
+
+			}
+
+			delete_unit_template_and_units = {
+
+				division_template = "Tahanichün Ch'iping Lü"
+
+				disband = no #will refund equipment and manpower
+
+			}
+
+		}
+
+		remove_ideas = MEN_limited_war
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		    set_global_flag = shx_won_suiyuan
+
+		}
+
+		add_political_power = -50
+
+	}
+
+	option = {#SHX
+
+		name = MEN.3.b
+
+		trigger = {
+
+			tag = SHX
+
+		}
+
+		effect_tooltip = {
+
+			if = {
+
+				limit = {
+
+					SHX = {
+
+						controls_state = 1014
+
+					}
+
+				}
+
+				SHX = {
+
+					transfer_state = 1014
+
+				}
+
+			}
+
+		}
+
+		add_political_power = 50
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+	option = {#JAP
+
+		name = MEN.3.c
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					SHX = {
+
+						controls_state = 1014
+
+					}
+
+				}
+
+				SHX = {
+
+					transfer_state = 1014
+
+				}
+
+			}
+
+			every_country = {
+
+				limit = {
+
+					has_war_together_with = ECA
+
+				}
+
+				peace_with_SHX_overlord = yes
+
+				white_peace = SHX
+
+				#white_peace = PLM
+
+			}
+
+			ECA = {
+
+				peace_with_SHX_overlord = yes
+
+				white_peace = SHX
+
+			}
+
+			#white_peace = PLM			
+
+		}
+
+		effect_tooltip = {
+
+			if = {
+
+				limit = {
+
+					SHX = {
+
+						controls_state = 1014
+
+					}
+
+				}
+
+				SHX = {
+
+					transfer_state = 1014
+
+				}
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			set_country_flag = suiyaun_done
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.34 #在宁夏获胜
+
+	title = MEN.4.t
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		tag = ECA
+
+		has_country_flag = ningxia_campaign
+
+		controls_state = 616
+
+		controls_state = 1067
+
+		controls_state = 1068
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	desc = MEN.4.d
+
+	option = {
+
+		name = MEN.4.a
+
+		transfer_state = 616
+
+		transfer_state = 1067
+
+		transfer_state = 1068
+
+		every_country = {
+
+			limit = {
+
+				has_war_together_with = ECA
+
+			}
+
+			white_peace = NXM
+
+		}
+
+		white_peace = NXM
+
+		clr_country_flag = ningxia_campaign
+
+		remove_ideas = MEN_japanese_aid
+
+		add_autonomy_ratio = {
+
+			value = 0.1
+
+			localization = MEN_ningxia_victory
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.35 #后撤
+
+	title = MEN.5.t
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		tag = ECA
+
+		has_country_flag = ningxia_campaign
+
+		OR = {
+
+			NOT = { controls_state = 616 }
+
+		    NOT = { controls_state = 1067 }
+
+		    NOT = { controls_state = 1068 }
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 160
+
+		modifier = {
+
+			factor = 0.1
+
+			NOT = { has_full_control_of_state = 611 }
+
+		}
+
+		modifier = {
+
+			factor = 100
+
+			any_country = {
+
+				is_legit_china = yes
+
+				has_war_together_with = NXM
+
+			}
+
+		}
+
+	}
+
+	desc = MEN.5.d
+
+	option = {
+
+		name = MEN.5.a
+
+		every_country = {
+
+			limit = {
+
+				has_war_together_with = ECA
+
+			}
+
+			white_peace = NXM
+
+		}
+
+		white_peace = NXM
+
+		clr_country_flag = ningxia_campaign
+
+		remove_ideas = MEN_japanese_aid
+
+		add_political_power = -50
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.36 #内外蒙古统一
+
+	title = MEN.6.t
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		tag = ECA
+
+		owns_state = 330
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	desc = MEN.6.d
+
+	option = {
+
+		name = MEN.6.a
+
+		set_province_name = { id = 4801 name = VICTORY_POINTS_Urga }
+
+		set_capital = { state = 330 }
+
+		#set_cosmetic_tag = MEN_MON
+
+		add_stability = 0.1
+
+		add_political_power = 100
+
+		add_autonomy_ratio = {
+
+			value = 0.5
+
+			localization = MEN_khalkha_victory
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.37 #光荣的联盟
+
+	title = MEN.7.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = ECA
+
+		has_country_flag = MEN_JAP_partnership_flag
+
+		is_subject = no
+
+	}
+
+	desc = MEN.7.d
+
+	option = {
+
+		name = MEN.7.a
+
+		if = {
+
+			limit = {
+
+				JAP = { is_faction_leader = yes }
+
+			}
+
+			JAP = { add_to_faction = ECA }
+
+		}
+
+		if = {
+
+			limit = {
+
+				JAP = { is_in_faction = no }
+
+			}
+
+			JAP = {
+
+				create_faction = "daitoa_kyoeiken"
+
+				add_to_faction = ECA
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				JAP = {
+
+					is_faction_leader = no
+
+					is_in_faction = yes
+
+				}
+
+			}
+
+			random_country = {
+
+				limit = {
+
+					is_faction_leader = yes
+
+					is_in_faction_with = JAP
+
+				}
+
+				add_to_faction = ECA
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.38 #夺取绥远的良机
+
+	title = MEN.8.t
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		has_country_flag = this_event_is_disabled_for_now
+
+		tag = ECA
+
+		SHX = {
+
+			OR = {
+
+				has_war_with = CHI
+
+				has_war_with = PRC
+
+			}
+
+			owns_state = 621
+
+			controls_state = 621
+
+			#no need
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	desc = MEN.8.d
+
+	option = {
+
+		name = MEN.8.a
+
+		transfer_state = 621
+
+		transfer_state = 746
+
+		transfer_state = 1019
+
+		transfer_state = 1020
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.39 #大汉义军
+
+	title = MEN.9.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_wang_ying
+
+	desc = MEN.9.d
+
+
+
+	option = {
+
+		name = MEN.9.a
+
+		#4 brigades - historical
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 100
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				OR = {
+
+					has_idea = disarmed_nation
+
+					has_idea = volunteer_only
+
+				}
+
+			}
+
+			add_ideas = limited_conscription
+
+		}
+
+		set_global_flag = wang_ying_flag
+
+		if = {
+
+			limit = {
+
+				has_character = ECA_wang_ying
+
+			}
+
+			add_corps_commander_role = {
+
+				character = ECA_wang_ying
+
+				traits = { }
+
+				skill=1
+
+				attack_skill=1
+
+				defense_skill=1
+
+				planning_skill=1
+
+				logistics_skill=1
+
+				legacy_id=-1
+
+			}
+
+			else = {
+
+				create_corps_commander = {
+
+					name = ECA_wang_ying
+
+					portrait_path = "gfx/leaders/ECA/Portrait_Wang_Ying.dds"
+
+					traits = { }
+
+					skill = 1
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = Grand_Han_Righteous_Army_tt
+
+		division_template = {
+
+			name = "Tahanichün Puping Lü"
+
+			division_names_group = ECA_INF_04
+
+			force_allow_recruiting = no
+
+			is_locked = yes
+
+	        template_counter = 5
+
+			regiments = {
+
+				infantry = { x = 0 y = 0 }
+
+				infantry = { x = 0 y = 1 }
+
+			}
+
+		}
+
+		division_template = {
+
+			name = "Tahanichün Ch'iping Lü"
+
+			division_names_group = ECA_CAV_01
+
+			force_allow_recruiting = no
+
+			is_locked = yes
+
+	        template_counter = 5
+
+			regiments = {
+
+				cavalry = { x = 0 y = 0 }
+
+		        cavalry = { x = 0 y = 1 }
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Puping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Puping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Ch'iping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Ch'iping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		add_timed_idea = {
+
+			idea = MEN_low_discipline_2
+
+			days = 250
+
+		}
+
+		add_manpower = 6000
+
+	}
+
+	#Everyone!
+
+	option = {
+
+		name = MEN.9.b
+
+		#6 brigades
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				OR = {
+
+					has_idea = disarmed_nation
+
+					has_idea = volunteer_only
+
+					has_idea = limited_conscription
+
+				}
+
+			}
+
+			add_ideas = extensive_conscription
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_character = ECA_wang_ying
+
+			}
+
+			add_corps_commander_role = {
+
+				character = ECA_wang_ying
+
+				traits = { }
+
+				skill=1
+
+				attack_skill=1
+
+				defense_skill=1
+
+				planning_skill=1
+
+				logistics_skill=1
+
+				legacy_id=-1
+
+			}
+
+			else = {
+
+				create_corps_commander = {
+
+					name = ECA_wang_ying
+
+					portrait_path = "gfx/leaders/ECA/Portrait_Wang_Ying.dds"
+
+					traits = { }
+
+					skill = 1
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = Grand_Han_Righteous_Army_all_men_tt
+
+		division_template = {
+
+			name = "Tahanichün Puping Lü"
+
+			division_names_group = ECA_INF_04
+
+			force_allow_recruiting = no
+
+			is_locked = yes
+
+	        template_counter = 5
+
+			regiments = {
+
+				infantry = { x = 0 y = 0 }
+
+				infantry = { x = 0 y = 1 }
+
+			}
+
+		}
+
+		division_template = {
+
+			name = "Tahanichün Ch'iping Lü"
+
+			division_names_group = ECA_CAV_01
+
+			force_allow_recruiting = no
+
+			is_locked = yes
+
+	        template_counter = 5
+
+			regiments = {
+
+				cavalry = { x = 0 y = 0 }
+
+		        cavalry = { x = 0 y = 1 }
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Puping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Puping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Puping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Ch'iping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Ch'iping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		random_owned_controlled_state = {
+
+			create_unit = {
+
+				division = "division_template = \"Tahanichün Ch'iping Lü\" start_experience_factor = 0.4"
+
+				owner = ECA
+
+			}
+
+		}
+
+		add_timed_idea = {
+
+			idea = MEN_low_discipline
+
+			days = 250
+
+		}
+
+		add_manpower = 10000
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.40 #夺取宁夏的良机
+
+	title = MEN.10.t
+
+	fire_only_once = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	trigger = {
+
+		has_country_flag = this_event_is_disabled_for_now
+
+		tag = ECA
+
+		owns_state = 621
+
+		owns_state = 746
+
+		owns_state = 1019
+
+		owns_state = 1020
+
+		owns_state = 1014
+
+		NXM = {
+
+			OR = {
+
+				has_war_with = CHI
+
+				has_war_with = PRC
+
+			}
+
+			owns_state = 616
+
+			controls_state = 616
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 7
+
+	}
+
+	desc = MEN.10.d
+
+	option = {
+
+		name = MEN.10.a
+
+		transfer_state = 616
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.41 #蒙古人要求平等的主权地位
+
+	title = MEN.11.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	desc = MEN.11.d
+
+
+
+	option = {
+
+		name = MEN.11.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 3
+
+				any_war_score < 0.5
+
+			}
+
+			modifier = {
+
+				factor = 3
+
+				ECA = { has_army_manpower = { size > 100000 } }
+
+			}
+
+		}
+
+		end_puppet = ECA
+
+		ECA = { country_event = { id = AWR_ECA.45 } }
+
+	}
+
+	option = {
+
+		name = MEN.11.a
+
+		ECA = { country_event = { id = AWR_ECA.44 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.44 #日本拒绝了
+
+	title = MEN.12.t
+
+	is_triggered_only = yes
+
+	desc = MEN.12.d
+
+	picture = GFX_report_event_mong_army_01
+
+	option = {
+
+		name = MEN.12.a
+
+	}
+
+	option = {
+
+		name = MEN.12.b
+
+		hidden_effect = {
+
+			random_other_country = {
+
+				limit = {
+
+					has_war = no
+
+					is_puppet = no
+
+				}
+
+				puppet = MAN
+
+				end_puppet = MAN
+
+			}
+
+		}
+
+		declare_war_on = {
+
+			target = JAP
+
+			type = puppet_wargoal_focus
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.45 #日本同意了
+
+	title = MEN.13.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	desc = MEN.13.d
+
+
+
+	option = {
+
+		name = MEN.13.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.71 #来自蒙古的邀请
+
+	title = MEN.14.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_mong_army_01
+
+	desc = MEN.14.d
+
+
+
+	option = {
+
+		name = MEN.14.a
+
+		ai_chance = {
+
+			factor = 3
+
+		}
+
+		retire_country_leader = yes
+
+		create_country_leader = {
+
+			name = "Buyandelger"
+
+			desc = "POLITICS_LI_SHOUXIN_DESC"
+
+			picture = "gfx/leaders/MEN/Portrait_MEN_Li_Shouxin.dds"
+
+			expire = "1970.1.1"
+
+			ideology = fascism_ideology
+
+			traits = {
+
+			}
+
+		}
+
+		MON = { country_event = { id = AWR_ECA.50 } }
+
+	}
+
+	option = {
+
+		name = MEN.14.b
+
+		trigger = { is_ai = no  }
+
+		MON = { change_tag_from = ECA }
+
+		retire_country_leader = yes
+
+		create_country_leader = {
+
+			name = "Buyandelger"
+
+			desc = "POLITICS_LI_SHOUXIN_DESC"
+
+			picture = "gfx/leaders/MEN/Portrait_MEN_Li_Shouxin.dds"
+
+			expire = "1970.1.1"
+
+			ideology = fascism_ideology
+
+			traits = {
+
+			}
+
+		}
+
+		MON = { country_event = { id = AWR_ECA.50 } }
+
+	}
+
+	option = {
+
+		name = MEN.14.c
+
+		MON = { country_event = { id = AWR_ECA.51 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.50 #德穆楚克栋鲁普登基
+
+	title = MEN.15.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_prince_de
+
+	desc = MEN.15.d
+
+
+
+	option = {
+
+		name = MEN.15.a
+
+		retire_country_leader = yes
+
+		create_country_leader = {
+
+			name = "Demchugdongrub"
+
+			desc = "POLITICS_DEMCHUGDONGRUB_DESC"
+
+			picture = "gfx/leaders/MEN/Portrait_MEN_Demchugdongrub.dds"
+
+			expire = "1965.1.1"
+
+			ideology = fascism_ideology
+
+			traits = {
+
+				spirit_of_genghis
+
+				cooperative_leader
+
+			}
+
+		}
+
+		set_country_flag = demchugdongrub_khan
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.51 #德穆楚克栋鲁普拒绝了
+
+	title = MEN.16.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_prince_de
+
+	desc = MEN.16.d
+
+
+
+	option = {
+
+		name = MEN.16.a
+
+		retire_country_leader = yes
+
+		create_country_leader = {
+
+			name = "Tserendondovyn Navaanneren"
+
+			picture = "gfx/leaders/MON/Portrait_Navaanneren.dds"
+
+			expire = "1965.1.1"
+
+			ideology = fascism_ideology
+
+			traits = {
+
+				spirit_of_genghis
+
+				intellectual
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.52
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+
+
+	option = {
+
+		name = MEN.16.a
+
+		clr_global_flag = suiyuan_time_out
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.53 #[From.GetName]加入我政府。
+
+	title = MEN.18.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_prince_de
+
+	desc = MEN.18.d
+
+
+
+	option = {
+
+		name = MEN.18.a
+
+		FROM = {
+
+			every_unit_leader = {
+
+				set_nationality = ROOT
+
+			}
+
+		}
+
+		annex_country = {
+
+			target = FROM transfer_troops = yes
+
+		}
+
+        if = {
+
+			limit = {
+
+				is_ai = yes
+
+				FROM = {
+
+					is_ai = no
+
+				}
+
+			}
+
+			change_tag_from = FROM
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.54 #驱逐日本人？
+
+	title = MEN.19.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_japanese_army_parade
+
+	desc = MEN.19.d
+
+
+
+	option = {
+
+		name = MEN.19.a
+
+		ai_chance = {
+
+			factor = 5
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+				tag = ALX
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				tag = EJI
+
+			}
+
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.57 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			if = {
+
+				limit = {
+
+					has_idea = CHI_japanese_spies
+
+				}
+
+				remove_ideas = CHI_japanese_spies
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_dlc = "Together for Victory"
+
+				}
+
+				FROM = {
+
+					set_autonomy = {
+
+						target = ROOT
+
+						autonomous_state = autonomy_dominion
+
+					}
+
+				}
+
+				else = {
+
+					FROM = {
+
+						puppet = ROOT
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = MEN.19.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+				NOT = {
+
+					tag = ALX
+
+				}
+
+			}
+
+		}
+
+        if = {
+
+			limit = {
+
+				tag = ALX
+
+			}
+
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.58 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_ECA.57 hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_ECA.58 hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_ECA.57 #[From.GetName]同意
+
+	title = MEN.20.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_japanese_army_parade
+
+	desc = MEN.20.d
+
+
+
+	option = {
+
+		name = MEN.20.a
+
+		add_stability = -0.05
+
+		FROM = {
+
+			if = {
+
+				limit = {
+
+					has_idea = CHI_japanese_spies
+
+				}
+
+				remove_ideas = CHI_japanese_spies
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_dlc = "Together for Victory"
+
+			}
+
+			set_autonomy = {
+
+				target = FROM
+
+				autonomous_state = autonomy_dominion
+
+			}
+
+			else = {
+
+				puppet = FROM
+
+			}
+
+		}
+
+		FROM = {
+
+			add_to_war = {
+
+				targeted_alliance = FROM
+
+				enemy = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.58 #[From.GetName]拒绝
+
+	title = MEN.21.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_japanese_army_parade
+
+	desc = MEN.21.d
+
+
+
+	option = {
+
+		name = MEN.21.a
+
+		add_war_support = 0.05
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.60 hours = 12
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_ECA.60 hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_ECA.60 #[From.GetName]的威慑
+
+	title = MEN.22.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_japanese_army_parade
+
+	desc = MEN.22.d
+
+
+
+	option = {
+
+		name = MEN.22.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+        if = {
+
+			limit = {
+
+				tag = ALX
+
+			}
+
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.63 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				annex_country = {
+
+					target = ROOT transfer_troops = no
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = GAME_OVER_TT
+
+	}
+
+
+
+	option = {
+
+		name = MEN.22.a
+
+		ai_chance = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 0
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.64 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = {
+
+					target = ROOT
+
+					type = puppet_wargoal_focus
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_ECA.63 hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_ECA.64 hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_ECA.63 #[From.GetName]投降
+
+	title = MEN.23.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	desc = MEN.23.d
+
+
+
+	option = {
+
+		name = MEN.23.a
+
+		add_stability = -0.05
+
+		annex_country = {
+
+			target = FROM transfer_troops = no
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.64 #[From.GetName]并未屈服
+
+	title = MEN.24.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_japanese_army_parade
+
+	desc = MEN.24.d
+
+
+
+	option = {
+
+		name = MEN.24.a
+
+		create_wargoal = {
+
+			target = FROM
+
+			type = puppet_wargoal_focus
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.65 #[From.GetName]索求「法理领土」
+
+	title = MEN.25.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	desc = MEN.25.d
+
+
+
+	option = {
+
+		name = MEN.25.a
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 1
+
+				OR = {
+
+					has_opinion = {
+
+						target = FROM
+
+						value > 79
+
+					}
+
+					strength_ratio = {
+
+						tag = FROM
+
+						ratio < 0.75
+
+					}
+
+				}
+
+			}
+
+		}
+
+		#yes
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.68 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			every_owned_state = {
+
+				limit = {
+
+					is_core_of = FROM
+
+				}
+
+				transfer_state_to = FROM
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = MEN.25.b
+
+		ai_chance = {
+
+			factor = 10
+
+			modifier = {
+
+				factor = 0.1
+
+				OR = {
+
+					has_opinion = {
+
+						target = FROM
+
+						value < 80
+
+					}
+
+					strength_ratio = {
+
+						tag = FROM
+
+						ratio > 0.75
+
+					}
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				OR = {
+
+					is_major = yes
+
+					is_faction_leader = yes
+
+				}
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = {
+
+				id = AWR_ECA.69 hours = 12
+
+			}
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				create_wargoal = {
+
+					target = ROOT
+
+					type = puppet_wargoal_focus
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_ECA.68 hours = 12
+
+			}
+
+country_event = {
+
+				id = AWR_ECA.69 hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_ECA.68 #[From.GetName]归还我方法理领土
+
+	title = MEN.26.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	desc = MEN.26.d
+
+
+
+	option = {
+
+		name = MEN.26.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		#yes
+
+		FROM = {
+
+			every_owned_state = {
+
+				limit = {
+
+					is_core_of = ROOT
+
+				}
+
+				transfer_state_to = ROOT
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.69 #[From.GetName]拒绝要求
+
+	title = MEN.27.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	desc = MEN.27.d
+
+
+
+	option = {
+
+		name = MEN.26.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		#yes
+
+		create_wargoal = {
+
+			target = FROM
+
+			type = puppet_wargoal_focus
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.70 #[PLM.GetName]与[ECA.GetName]合并
+
+	title = MEN.28.t
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	desc = MEN.28.d
+
+
+
+	option = {
+
+		name = MEN.28.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		every_unit_leader = {
+
+			set_nationality = ECA
+
+		}
+
+		ECA = {
+
+			annex_country = {
+
+				target = PREV transfer_troops = yes
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				is_ai = no
+
+				OR = {
+
+					PLM = {
+
+						is_ai = yes
+
+					}
+
+					PLM = {
+
+						exists = no
+
+					}
+
+				}
+
+				ECA = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			ECA = {
+
+				change_tag_from = PLM
+
+			}
+
+			else_if = {
+
+				limit = {
+
+					is_ai = no
+
+				}
+
+				custom_effect_tooltip = GAME_OVER_TT
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = MEN.28.b
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		ECA = {
+
+			declare_war_on = {
+
+				target = ROOT
+
+				type = annex_everything
+
+			}
+
+		}
+
+	}
+
+}

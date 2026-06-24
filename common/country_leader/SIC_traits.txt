@@ -1,0 +1,67 @@
+leader_traits = {
+	# army_concealment_1，来源：common/country_leader/00_traits.txt
+	SIC_army_concealment_1 = { 
+			sprite = 9
+			enemy_army_bonus_air_superiority_factor = -0.05
+		
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# chongqing_daxue，来源：common/country_leader/00_traits.txt
+	SIC_chongqing_daxue = {
+			random = no
+	        research_speed_factor = 0.025
+			custom_modifier_tooltip = chongqing_daxue_desc
+		}
+	# collectivization_specialist，来源：common/country_leader/00_traits.txt
+	SIC_collectivization_specialist = {
+			random = no
+			sprite = 10
+
+			industrial_capacity_factory = 0.05
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# industry_reformer，来源：common/country_leader/00_traits.txt
+	SIC_industry_reformer = {
+			random = no
+			sprite = 10
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.05
+			consumer_goods_factor = -0.10
+		}
+	# SIC_liu_xiang_rivalry，来源：common/country_leader/00_traits.txt
+	SIC_liu_xiang_rivalry= {
+		    random = no
+			targeted_modifier = {
+				tag = XIK
+				attack_bonus_against = 0.10
+				defense_bonus_against = 0.10
+			}
+			custom_modifier_tooltip = SIC_liu_xiang_rivalry_desc
+		}
+	# sichuan_sheng，来源：common/country_leader/00_traits.txt
+	SIC_sichuan_sheng = {
+			random = no
+			political_power_gain = 0.05
+			stability_factor = 0.075
+			custom_modifier_tooltip = sichuan_sheng_desc
+		}
+	# SIC_zongsiling，来源：common/country_leader/00_traits.txt
+	SIC_zongsiling = { 
+			random = no
+			army_morale_factor = 0.10
+	        war_stability_factor = 0.10
+			custom_modifier_tooltip = SIC_zongsiling_desc
+		}
+}

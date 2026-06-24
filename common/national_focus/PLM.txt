@@ -1,0 +1,115 @@
+﻿# PLM 国策整理
+
+# 来源：common/national_focus/RCM_plm.txt
+focus_tree = {
+	id = RCM_plm
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = PLM
+			#has_dlc = "Waking the Tiger"
+		}
+	}
+	
+	default = no
+	
+	continuous_focus_position = { x = 20 y = 500 }
+
+	focus = {
+		id = PLM_maintain_autonomy
+		icon = GFX_goal_PLM_demand_territory
+		x = 0
+		y = 0
+		cost = 7.15
+
+		available_if_capitulated = yes
+		available = {
+			
+		}
+		completion_reward = {
+			add_political_power = 120
+		}
+	}
+	
+	focus = {
+		id = PLM_develop_suiyuan
+		icon = GFX_goal_PLM_land_reclamation
+		x = 0
+		y = 1
+		cost = 7.15
+        prerequisite = {
+			focus = PLM_maintain_autonomy
+		}
+		#available_if_capitulated = yes
+		available = {
+			any_owned_state = {
+				is_core_of = ROOT
+				is_controlled_by = ROOT
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = PLM_infra
+		icon = GFX_goal_PLM_construct_infrastructure
+		cost = 7.15
+		prerequisite = {
+			focus = PLM_develop_suiyuan
+		}
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 2
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					num_of_controlled_states > 1
+				}
+			    random_controlled_state = {
+					limit = {
+						infrastructure < 5
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				is_core_of = ROOT
+				is_controlled_by = ROOT
+				infrastructure < 5
+			}	    
+		}	
+	}
+}

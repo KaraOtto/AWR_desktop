@@ -1,0 +1,3703 @@
+# ECA 新闻事件
+
+add_namespace = AWR_ECA_news
+
+country_event = {
+
+	id = AWR_ECA.1
+
+	title = BBA_italy_research_agreement.1.t
+
+	desc = BBA_italy_research_agreement.1.desc
+
+	picture = GFX_report_event_generic_lend_lease 
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = { #Accept
+
+		name = BBA_italy_research_agreement.1.a
+
+
+
+		ai_chance = {
+
+			base = 10
+
+			modifier = {
+
+				add = 5
+
+				is_historical_focus_on = yes
+
+			}
+
+			modifier = {
+
+				add = 20
+
+				is_in_faction_with = FROM
+
+			}
+
+			modifier = {
+
+				add = 15
+
+				has_government = FROM
+
+			}
+
+			modifier = {
+
+				add = 10
+
+				has_opinion = {
+
+					target = FROM
+
+					value > 24
+
+				}
+
+			}
+
+			modifier = {
+
+				add = 15
+
+				has_opinion = {
+
+					target = FROM
+
+					value > 49
+
+				}
+
+			}
+
+			modifier = {
+
+				add = 15
+
+				has_dino_grandi = yes
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				OR = {
+
+					FROM = { is_justifying_wargoal_against = ROOT }
+
+					ROOT = { is_justifying_wargoal_against = FROM }
+
+					FROM = { has_wargoal_against = ROOT }
+
+					ROOT = { has_wargoal_against = FROM }
+
+				}
+
+			}
+
+		}
+
+		
+
+		if = {
+
+			limit = { #For France
+
+				original_tag = FRA 
+
+			}
+
+			ITA_franco_italian_cooperation_effect = yes
+
+		}
+
+		else = { #For England
+
+			ITA_anglo_italian_cooperation_effect = yes
+
+		}
+
+
+
+		hidden_effect = {
+
+			FROM = { news_event = { id = AWR_CHI_news.41 hours = 8 random_hours = 4 }}
+
+		}
+
+	}
+
+
+
+	option = { #Reject
+
+		name = BBA_italy_research_agreement.1.b
+
+
+
+		ai_chance = {
+
+			base = 1
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				add_opinion_modifier = { 
+
+					target = ROOT
+
+					modifier = ITA_military_cooperation_rejection
+
+				}
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			FROM = { country_event = { id = AWR_ECA.3 hours = 8 random_hours = 4 } } 
+
+		}
+
+	}
+
+}
+
+country_event = { 
+
+	id = AWR_ECA.3
+
+	title = BBA_italy_research_agreement.2.t
+
+	desc = BBA_italy_research_agreement.2.desc
+
+	picture = GFX_report_event_generic_read_write 
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = { #Ouch
+
+		name = BBA_italy_research_agreement.2.a
+
+		add_opinion_modifier = { 
+
+			target = FROM
+
+			modifier = ITA_military_cooperation_rejection
+
+		}
+
+	}
+
+}
+
+country_event = { #just title tip event
+
+	id = AWR_ECA.4
+
+	title = AWR_ECA.4
+
+	
+
+	hidden = yes
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	
+
+	}
+
+	
+
+	option = {
+
+	
+
+	}
+
+}
+
+country_event = { #just title tip event
+
+	id = AWR_ECA.5
+
+	title = AWR_ECA.5
+
+	
+
+	hidden = yes
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	
+
+	}
+
+	
+
+	option = {
+
+	
+
+	}
+
+}
+
+country_event = { #just title tip event
+
+	id = AWR_ECA.6
+
+	title = AWR_ECA.6
+
+	
+
+	hidden = yes
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	
+
+	}
+
+	
+
+	option = {
+
+	
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.7 #日本军队正在向满蒙边境集结
+
+	title = JAP_SOV_border_nuomenhan.1.t
+
+	desc = JAP_SOV_border_nuomenhan.1.desc
+
+	#picture = GFX_report_event_japan_army_mountainside
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.1.a
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		SOV = {
+
+		country_event = AWR_ECA.8
+
+		}
+
+	}
+
+	
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.1.b
+
+		ai_chance = {
+
+			base = 0
+
+		}
+
+		activate_mission = SOV_JAP_is_assembling_in_nuomenhan
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.8 #蒙古人民共和国请求我国介入满蒙边境冲突
+
+	title = JAP_SOV_border_nuomenhan.111.t
+
+	desc = JAP_SOV_border_nuomenhan.111.desc
+
+	#picture = GFX_report_event_japan_army_mountainside
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.111.a
+
+		ai_chance = {
+
+			base = 100
+
+		}
+
+		transfer_state = 819
+
+		activate_mission = SOV_JAP_is_assembling_in_nuomenhan
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_ECA_news.1 #日本军队赢得了诺门罕之战
+
+	title = JAP_SOV_border_nuomenhan.2.t
+
+	desc = JAP_SOV_border_nuomenhan.2.desc
+
+	picture = GFX_event_nuomenhan_jap
+
+
+
+	is_triggered_only = yes
+
+
+
+	major = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.2.a
+
+		trigger = {
+
+			TAG = JAP
+
+		}
+
+		add_doctrine_cost_reduction = {
+
+			
+
+			cost_reduction = 0.5
+
+			uses = 2
+
+			category = land_doctrine
+
+		}
+
+		set_global_flag = JAP_SOV_border_nuomenhan_win
+
+		army_experience = 50
+
+		add_political_power = 75
+
+		add_war_support = 0.1
+
+		effect_tooltip = { unlock_national_focus = northern_expansion_focus }
+
+		if = {
+
+		limit = {
+
+		is_in_faction_with = MAN
+
+		}
+
+		MAN = { transfer_state = 761 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.2.b
+
+		trigger = {
+
+			OR = {
+
+			TAG = SOV
+
+			TAG = MON
+
+			}
+
+		}
+
+		army_experience = 25
+
+		add_political_power = -50
+
+		add_war_support = -0.05
+
+		if = {
+
+		limit = {
+
+		SOV = { owns_state = 819 }
+
+		}
+
+		MON = { transfer_state = 819 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.2.c
+
+		trigger = {
+
+			NOT = {
+
+			TAG = JAP
+
+			is_in_faction_with = SOV
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_ECA_news.2 #苏蒙联军赢得了诺门罕之战
+
+	title = JAP_SOV_border_nuomenhan.3.t
+
+	desc = JAP_SOV_border_nuomenhan.3.desc
+
+	picture = GFX_event_nuomenhan_sov
+
+
+
+	is_triggered_only = yes
+
+
+
+	major = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.3.a
+
+		trigger = {
+
+			TAG = JAP
+
+		}
+
+		army_experience = 25
+
+		add_political_power = -50
+
+		add_war_support = -0.05
+
+		if = {
+
+		limit = {
+
+		is_in_faction_with = MAN
+
+		}
+
+		MAN = { transfer_state = 761 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.3.b
+
+		trigger = {
+
+			OR = {
+
+			TAG = SOV
+
+			TAG = MON
+
+			}
+
+		}
+
+		add_doctrine_cost_reduction = {
+
+			
+
+			cost_reduction = 0.5
+
+			uses = 2
+
+			category = land_doctrine
+
+		}
+
+		army_experience = 50
+
+		add_political_power = 75
+
+		add_war_support = 0.05
+
+		if = {
+
+		limit = {
+
+		SOV = { owns_state = 819 }
+
+		}
+
+		MON = { transfer_state = 819 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.3.c
+
+		trigger = {
+
+			NOT = {
+
+			TAG = JAP
+
+			is_in_faction_with = SOV
+
+			has_war_with = JAP
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.3.d
+
+		trigger = {
+
+			has_war_with = JAP
+
+		}
+
+	}
+
+}
+
+news_event = { 
+
+	id = AWR_ECA_news.3 #诺门罕之战陷入僵局
+
+	title = JAP_SOV_border_nuomenhan.4.t
+
+	desc = JAP_SOV_border_nuomenhan.4.desc
+
+	picture = GFX_event_nuomenhan_none
+
+
+
+	is_triggered_only = yes
+
+
+
+	major = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.4.a
+
+		trigger = {
+
+			TAG = JAP
+
+		}
+
+		army_experience = 50
+
+		if = {
+
+		limit = {
+
+		is_in_faction_with = MAN
+
+		}
+
+		MAN = { transfer_state = 761 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.4.b
+
+		trigger = {
+
+			OR = {
+
+			TAG = SOV
+
+			TAG = MON
+
+			}
+
+		}
+
+		army_experience = 50
+
+		add_political_power = 25
+
+		if = {
+
+		limit = {
+
+		SOV = { owns_state = 819 }
+
+		}
+
+		MON = { transfer_state = 819 }
+
+		}
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.4.c
+
+		trigger = {
+
+			NOT = {
+
+			TAG = JAP
+
+			is_in_faction_with = SOV
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.9
+
+	picture = GFX_1938wuhanhuizhan	
+
+	title = {
+
+		text = jap_unplanned_offensive.1.t_JAP
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+	}
+
+	title = {
+
+		text = jap_unplanned_offensive.1.t_CHI
+
+		trigger = {
+
+			OR = {
+
+            TAG = event_target:WTT_current_china_leader
+
+            TAG = CHI
+
+            }
+
+		}
+
+	}
+
+	desc = {
+
+		text = jap_unplanned_offensive.1.d_JAP
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+	}
+
+	desc = {
+
+		text = jap_unplanned_offensive.1.d_CHI
+
+		trigger = {
+
+			OR = {
+
+            TAG = event_target:WTT_current_china_leader
+
+            TAG = CHI
+
+            }
+
+		}
+
+	}
+
+	
+
+	trigger = {
+
+	not = { has_country_flag = jap_unplanned_offensive_happen }
+
+	OR = {
+
+        TAG = event_target:WTT_current_china_leader
+
+        TAG = CHI
+
+		TAG = JAP
+
+    }
+
+	event_target:WTT_current_china_leader = {
+
+	has_defensive_war_with = JAP
+
+	surrender_progress > 0.3
+
+	OR = {
+
+        surrender_progress > 0.65
+
+        1034 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		744 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		620 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		1035 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		602 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		1039 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		1038 = { is_controlled_by_jap_or_its_puppet = yes }
+
+    }
+
+	}
+
+	}
+
+	
+
+	fire_only_once = no
+
+	
+
+	mean_time_to_happen = { days = 2 }
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			set_global_flag = jap_unplanned_offensive_happen
+
+			set_country_flag = jap_unplanned_offensive_happen
+
+			every_state = {
+
+				limit = {
+
+				    or = {
+
+				    is_core_of = event_target:WTT_current_china_leader
+
+					is_core_of = CHI
+
+					is_core_of = event_target:WTT_communist_china
+
+					}
+
+					controller = {
+
+					is_literally_china = yes
+
+					or = {
+
+					is_in_faction_with = event_target:WTT_current_china_leader
+
+					tag = event_target:WTT_current_china_leader
+
+					tag = CHI
+
+					}
+
+					has_war_with = JAP
+
+					}
+
+					#NOT = { has_dynamic_modifier = { modifier = suiyuan_stronghold_JAP scope = JAP } }
+
+					NOT = { #让给日本
+
+					state = 615
+
+					state = 1014
+
+					
+
+					state = 1043
+
+					state = 1032
+
+					state = 592
+
+					state = 591
+
+					state = 749
+
+					state = 606
+
+					state = 1015
+
+					state = 613
+
+					state = 1078
+
+					state = 598
+
+					state = 1080
+
+					state = 597
+
+					state = 1079
+
+					state = 1077
+
+					state = 614
+
+					state = 1028
+
+					state = 743
+
+					state = 608
+
+					state = 1013
+
+					state = 1014
+
+					state = 611
+
+					state = 596
+
+					state = 1034
+
+					state = 1017
+
+					
+
+					#is_controlled_by = event_target:WTT_communist_china
+
+					}
+
+				}
+
+				set_state_flag = jap_unplanned_offensive_state
+
+				add_dynamic_modifier = { modifier = jap_unplanned_offensive_state }					
+
+			}
+
+		}
+
+	}
+
+	
+
+	option = { #for jap
+
+		name = jap_unplanned_offensive.1.a
+
+		trigger = {
+
+			tag = JAP
+
+		}
+
+		set_country_flag = jap_unplanned_offensive_happen
+
+		effect_tooltip = {
+
+			every_state = {
+
+				limit = {
+
+				    or = {
+
+				    is_core_of = event_target:WTT_current_china_leader
+
+					is_core_of = CHI
+
+					is_core_of = event_target:WTT_communist_china
+
+					}
+
+					controller = {
+
+					is_literally_china = yes
+
+					or = {
+
+					is_in_faction_with = event_target:WTT_current_china_leader
+
+					tag = event_target:WTT_current_china_leader
+
+					tag = CHI
+
+					}
+
+					has_war_with = JAP
+
+					}
+
+					NOT = { #让给日本
+
+					state = 615
+
+					state = 1014
+
+					
+
+					state = 1043
+
+					state = 1032
+
+					state = 592
+
+					state = 591
+
+					state = 749
+
+					state = 606
+
+					state = 1015
+
+					state = 613
+
+					state = 1078
+
+					state = 598
+
+					state = 1080
+
+					state = 597
+
+					state = 1079
+
+					state = 1077
+
+					state = 614
+
+					state = 1028
+
+					state = 743
+
+					state = 608
+
+					state = 1013
+
+					state = 1014
+
+					state = 611
+
+					state = 596
+
+					state = 1034
+
+					state = 1017
+
+					
+
+					#is_controlled_by = event_target:WTT_communist_china
+
+					}
+
+					#NOT = { has_dynamic_modifier = { modifier = suiyuan_stronghold_JAP scope = JAP } }
+
+				}
+
+				set_state_flag = jap_unplanned_offensive_state
+
+				add_dynamic_modifier = { modifier = jap_unplanned_offensive_state }					
+
+			}
+
+		}
+
+		unlock_decision_category_tooltip = jap_unplanned_offensive_prepare_catagory
+
+	}
+
+	
+
+	option = { #for chi
+
+		name = jap_unplanned_offensive.1.b
+
+		trigger = {
+
+			OR = {
+
+            TAG = event_target:WTT_current_china_leader
+
+            TAG = CHI
+
+            }
+
+		}
+
+		set_country_flag = jap_unplanned_offensive_happen
+
+		effect_tooltip = {
+
+			every_state = {
+
+				limit = {
+
+				    or = {
+
+				    is_core_of = event_target:WTT_current_china_leader
+
+					is_core_of = CHI
+
+					is_core_of = event_target:WTT_communist_china
+
+					}
+
+					controller = {
+
+					is_literally_china = yes
+
+					or = {
+
+					is_in_faction_with = event_target:WTT_current_china_leader
+
+					tag = event_target:WTT_current_china_leader
+
+					tag = CHI
+
+					}
+
+					has_war_with = JAP
+
+					}
+
+					NOT = { #让给日本
+
+					state = 615
+
+					state = 1014
+
+					
+
+					state = 1043
+
+					state = 1032
+
+					state = 592
+
+					state = 591
+
+					state = 749
+
+					state = 606
+
+					state = 1015
+
+					state = 613
+
+					state = 1078
+
+					state = 598
+
+					state = 1080
+
+					state = 597
+
+					state = 1079
+
+					state = 1077
+
+					state = 614
+
+					state = 1028
+
+					state = 743
+
+					state = 608
+
+					state = 1013
+
+					state = 1014
+
+					state = 611
+
+					state = 596
+
+					state = 1034
+
+					state = 1017
+
+					
+
+					#is_controlled_by = event_target:WTT_communist_china
+
+					}
+
+					#NOT = { has_dynamic_modifier = { modifier = suiyuan_stronghold_JAP scope = JAP } }
+
+				}
+
+				set_state_flag = jap_unplanned_offensive_state
+
+				add_dynamic_modifier = { modifier = jap_unplanned_offensive_state }
+
+			}
+
+			unlock_decision_category_tooltip = chi_unplanned_offensive_prepare_catagory
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_ECA_news.4 #中国军队赢得了珍宝岛战役
+
+	title = JAP_SOV_border_nuomenhan.222.t
+
+	desc = JAP_SOV_border_nuomenhan.222.desc
+
+	picture = GFX_news_event_zhenbaodaoziweifanjizhan
+
+
+
+	is_triggered_only = yes
+
+
+
+	major = yes
+
+
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.222.a
+
+		trigger = {
+
+			TAG = PRC
+
+		}
+
+		army_experience = 50
+
+		add_political_power = 100
+
+		add_war_support = 0.1
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.222.b
+
+		trigger = {
+
+			TAG = SOV
+
+		}
+
+		add_political_power = -50
+
+		add_war_support = -0.1
+
+	}
+
+	option = {
+
+		name = JAP_SOV_border_nuomenhan.222.c
+
+		trigger = {
+
+			NOT = {
+
+			TAG = PRC
+
+			TAG = SOV			
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.10
+
+	title = monuments_events.EVTNAME1000
+
+	desc = monuments_events.EVTDESC1000
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_state_temp = {
+
+				remove_monument_effects = yes
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events1000.EVTOPT1
+
+
+
+		ai_chance = { factor = 100 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.11
+
+	title = monuments_events.EVTNAME0
+
+	desc = monuments_events.EVTDESC0
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			clr_country_flag = monuments_are_getting_downgraded_after_war
+
+			clr_country_flag = monuments_got_downgraded_after_war
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events0.EVTOPT1
+
+
+
+		ai_chance = { factor = 100 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.12 #世界的命运$MONUMENT_79_NAME$
+
+	title = monuments_events.EVTNAME1
+
+	desc = monuments_events.EVTDESC1
+
+	picture = GFX_report_event_spain_civil_war_volunteers_01
+
+
+
+	fire_only_once = yes
+
+
+
+	trigger = {
+
+		has_dlc = "La Resistance"
+
+		tag = SPC
+
+		has_civil_war = yes
+
+		controls_province = 9764
+
+		OR = {
+
+			owns_state = 165
+
+			165 = {
+
+				OWNER = {
+
+					original_tag = SPR
+
+					has_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		165 = {
+
+			set_temp_variable = { monument_id = 79 }
+
+			has_monument = yes
+
+			set_temp_variable = { level = 1 }
+
+			has_at_least_monument_level = yes
+
+		}
+
+	}
+
+
+
+	mean_time_to_happen = {
+
+		days = 5
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events1.EVTOPT1
+
+
+
+		trigger = {
+
+			165 = {
+
+				set_temp_variable = { monument_id = 79 }
+
+				set_temp_variable = { level = 2 }
+
+				has_at_least_monument_level = yes
+
+			}
+
+		}
+
+
+
+		ai_chance = {
+
+			factor = 0.9
+
+		}
+
+
+
+		add_political_power = 50
+
+		add_war_support = 0.05
+
+		165 = {
+
+			set_temp_variable = { monument_id = 79 }
+
+			set_temp_variable = { level = 0 }
+
+			set_monument_level = yes
+
+		}
+
+		hidden_effect = {
+
+			random_country = {
+
+				limit = {
+
+					OR = {
+
+						AND = {
+
+							NOT = { scope_for_monument_bonus_receiver_is_controller = yes }
+
+							owns_state = 165
+
+						}
+
+						AND = {
+
+							scope_for_monument_bonus_receiver_is_controller = yes
+
+							controls_state = 165
+
+						}
+
+					}
+
+					is_ai = no
+
+					NOT = { is_in_array = { monument_alert_popup_downgrade_array = monument_id } }
+
+				}
+
+				add_to_array = { monument_alert_popup_downgrade_array = monument_id }
+
+				update_monument_alert_popup_window = yes
+
+				scoped_sound_effect = "Resistance_Notifcation_Low_Resource_For_Laws"
+
+			}
+
+			every_other_country = {
+
+				news_event = { id = AWR_ECA_news.7 hours = 3 }
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events1.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.9
+
+			modifier = {
+
+				factor = 0
+
+				165 = {
+
+					set_temp_variable = { monument_id = 79 }
+
+					set_temp_variable = { level = 2 }
+
+					has_at_least_monument_level = yes
+
+				}
+
+			}
+
+		}
+
+
+
+		add_political_power = 25
+
+		add_war_support = 0.025
+
+		165 = {
+
+			set_temp_variable = { monument_id = 79 }
+
+			downgrade_monument = yes
+
+		}
+
+		hidden_effect = {
+
+			every_other_country = {
+
+				news_event = { id = AWR_ECA_news.8 hours = 3 }
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events1.EVTOPT3
+
+
+
+		ai_chance = {
+
+			factor = 0.1
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.13 #更快的施工
+
+	title = monuments_events.EVTNAME2
+
+	desc = monuments_events.EVTDESC2
+
+	picture = GFX_report_event_physics_lab_02
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_used_monument_upgrade_slot = yes
+
+		NOT = { has_variable = random_monument_mission }
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_list = {
+
+				10 = {
+
+					modifier = {
+
+						factor = 0
+
+						NOT = { has_active_mission = monument_construction_mission_1 }
+
+					}
+
+					set_variable = { random_monument_mission = 1 }
+
+					var:monument_construction_state_1 = {
+
+						save_event_target_as = monument_construction_state
+
+					}
+
+				}
+
+				10 = {
+
+					modifier = {
+
+						factor = 0
+
+						NOT = { has_active_mission = monument_construction_mission_2 }
+
+					}
+
+					set_variable = { random_monument_mission = 2 }
+
+					var:monument_construction_state_2 = {
+
+						save_event_target_as = monument_construction_state
+
+					}
+
+				}
+
+				10 = {
+
+					modifier = {
+
+						factor = 0
+
+						NOT = { has_active_mission = monument_construction_mission_3 }
+
+					}
+
+					set_variable = { random_monument_mission = 3 }
+
+					var:monument_construction_state_3 = {
+
+						save_event_target_as = monument_construction_state
+
+					}
+
+				}
+
+				10 = {
+
+					modifier = {
+
+						factor = 0
+
+						NOT = { has_active_mission = monument_construction_mission_4 }
+
+					}
+
+					set_variable = { random_monument_mission = 4 }
+
+					var:monument_construction_state_4 = {
+
+						save_event_target_as = monument_construction_state
+
+					}
+
+				}
+
+				10 = {
+
+					modifier = {
+
+						factor = 0
+
+						NOT = { has_active_mission = monument_construction_mission_5 }
+
+					}
+
+					set_variable = { random_monument_mission = 5 }
+
+					var:monument_construction_state_5 = {
+
+						save_event_target_as = monument_construction_state
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events2.EVTOPT1
+
+
+
+		if = {
+
+			limit = {
+
+				check_variable = { random_monument_mission = 1 }
+
+				has_active_mission = monument_construction_mission_1
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_1
+
+				days = -5
+
+			}
+
+		}
+
+		else_if = {
+
+			limit = {
+
+				check_variable = { random_monument_mission = 2 }
+
+				has_active_mission = monument_construction_mission_2
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_2
+
+				days = -5
+
+			}
+
+		}
+
+		else_if = {
+
+			limit = {
+
+				check_variable = { random_monument_mission = 3 }
+
+				has_active_mission = monument_construction_mission_3
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_3
+
+				days = -5
+
+			}
+
+		}
+
+		else_if = {
+
+			limit = {
+
+				check_variable = { random_monument_mission = 4 }
+
+				has_active_mission = monument_construction_mission_4
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_4
+
+				days = -5
+
+			}
+
+		}
+
+		else_if = {
+
+			limit = {
+
+				check_variable = { random_monument_mission = 5 }
+
+				has_active_mission = monument_construction_mission_5
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_5
+
+				days = -5
+
+			}
+
+		}
+
+		hidden_effect = {
+
+			clear_variable = random_monument_mission
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.14 #国家重点关注名胜？
+
+	title = monuments_events.EVTNAME3
+
+	desc = monuments_events.EVTDESC3
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		NOT = { has_idea = generic_monument_cost_reduction_idea }
+
+		OR = {
+
+			is_ai = no
+
+			NOT = { has_global_flag = monuments_game_rule_no_pp_cost_ai }
+
+		}
+
+		any_controlled_state = {
+
+			OR = {
+
+				is_owned_by = ROOT
+
+				scope_for_monument_bonus_receiver_is_controller = yes
+
+			}
+
+			state_has_any_monument = yes
+
+			has_no_monument_construction = yes
+
+			any_of = {
+
+				array = state_monuments_array
+
+				set_temp_variable = { monument_id = v }
+
+				set_temp_variable = { level = 3 }
+
+				has_less_monument_level = yes
+
+				can_use_monument_bonuses = yes
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events3.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+		}
+
+
+
+		add_political_power = -20
+
+		add_timed_idea = {
+
+			idea = generic_monument_cost_reduction_idea
+
+			days = 100
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events3.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.15 #区域重点关注名胜？
+
+	title = monuments_events.EVTNAME4
+
+	desc = monuments_events.EVTDESC4
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		OR = {
+
+			is_ai = no
+
+			NOT = { has_global_flag = monuments_game_rule_no_pp_cost_ai }
+
+		}
+
+		any_controlled_state = {
+
+			OR = {
+
+				is_owned_by = ROOT
+
+				scope_for_monument_bonus_receiver_is_controller = yes
+
+			}
+
+			state_has_any_monument = yes
+
+			has_no_monument_construction = yes
+
+			NOT = { has_dynamic_modifier = { modifier = generic_monument_cost_reduction_modifier } }
+
+			any_of = {
+
+				array = state_monuments_array
+
+				set_temp_variable = { monument_id = v }
+
+				set_temp_variable = { level = 3 }
+
+				has_less_monument_level = yes
+
+				can_use_monument_bonuses = yes
+
+			}
+
+		}
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			random_controlled_state = {
+
+				limit = {
+
+					OR = {
+
+						is_owned_by = ROOT
+
+						scope_for_monument_bonus_receiver_is_controller = yes
+
+					}
+
+					state_has_any_monument = yes
+
+					has_no_monument_construction = yes
+
+					NOT = { has_dynamic_modifier = { modifier = generic_monument_cost_reduction_modifier } }
+
+					any_of = {
+
+						array = state_monuments_array
+
+						set_temp_variable = { monument_id = v }
+
+						set_temp_variable = { level = 3 }
+
+						has_less_monument_level = yes
+
+						can_use_monument_bonuses = yes
+
+					}
+
+				}
+
+				save_event_target_as = monument_reduction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events3.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+		}
+
+
+
+		add_political_power = -20
+
+		event_target:monument_reduction_state = {
+
+			custom_effect_tooltip = MONUMENTS_REGIONAL_EFFORTS_TT
+
+			hidden_effect = {
+
+				add_dynamic_modifier = {
+
+					modifier = generic_monument_cost_reduction_modifier
+
+					days = 50
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events3.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.16 #工程延期[monument_construction_state.GetName]
+
+	title = monuments_events.EVTNAME5
+
+	desc = monuments_events.EVTDESC5
+
+	picture = GFX_report_event_generic_strike
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_active_mission = monument_construction_mission_1
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_construction_state_1 = {
+
+				save_event_target_as = monument_construction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+
+
+		if = {
+
+			limit = {
+
+				has_active_mission = monument_construction_mission_1
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_1
+
+				days = 10
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_political_power < 50
+
+			}
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.17 #工程延期[monument_construction_state.GetName]
+
+	title = monuments_events.EVTNAME5
+
+	desc = monuments_events.EVTDESC5
+
+	picture = GFX_report_event_generic_strike
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_active_mission = monument_construction_mission_2
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_construction_state_2 = {
+
+				save_event_target_as = monument_construction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+
+
+		if = {
+
+			limit = {
+
+				has_active_mission = monument_construction_mission_2
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_2
+
+				days = 10
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_political_power < 50
+
+			}
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.18 #工程延期[monument_construction_state.GetName]
+
+	title = monuments_events.EVTNAME5
+
+	desc = monuments_events.EVTDESC5
+
+	picture = GFX_report_event_generic_strike
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_active_mission = monument_construction_mission_3
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_construction_state_3 = {
+
+				save_event_target_as = monument_construction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+
+
+		if = {
+
+			limit = {
+
+				has_active_mission = monument_construction_mission_3
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_3
+
+				days = 10
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_political_power < 50
+
+			}
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.19 #工程延期[monument_construction_state.GetName]
+
+	title = monuments_events.EVTNAME5
+
+	desc = monuments_events.EVTDESC5
+
+	picture = GFX_report_event_generic_strike
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_active_mission = monument_construction_mission_4
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_construction_state_4 = {
+
+				save_event_target_as = monument_construction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+
+
+		if = {
+
+			limit = {
+
+				has_active_mission = monument_construction_mission_4
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_4
+
+				days = 10
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_political_power < 50
+
+			}
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.20 #工程延期[monument_construction_state.GetName]
+
+	title = monuments_events.EVTNAME5
+
+	desc = monuments_events.EVTDESC5
+
+	picture = GFX_report_event_generic_strike
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		has_active_mission = monument_construction_mission_5
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			var:monument_construction_state_5 = {
+
+				save_event_target_as = monument_construction_state
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT1
+
+
+
+		ai_chance = {
+
+			factor = 0.25
+
+		}
+
+
+
+		if = {
+
+			limit = {
+
+				has_active_mission = monument_construction_mission_5
+
+			}
+
+			add_days_mission_timeout = {
+
+				mission = monument_construction_mission_5
+
+				days = 10
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events5.EVTOPT2
+
+
+
+		ai_chance = {
+
+			factor = 0.75
+
+			modifier = {
+
+				factor = 0
+
+				NOT = { AI_has_required_amount_of_PP_for_monuments = yes }
+
+			}
+
+			modifier = {
+
+				factor = 0
+
+				has_political_power < 50
+
+			}
+
+		}
+
+
+
+		add_political_power = -10
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_ECA_news.7 #$MONUMENT_79_NAME$摧毁
+
+	title = monuments_events.EVTNAME10
+
+	desc = monuments_events.EVTDESC10
+
+	picture = GFX_news_event_spr_spanish_civil_war3
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = monuments_events10.EVTOPT1
+
+
+
+		trigger = {
+
+			NOT = { monument_ideology_trigger_communism = yes }
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events10.EVTOPT2
+
+
+
+		trigger = {
+
+			monument_ideology_trigger_communism = yes
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_ECA_news.8 #$MONUMENT_79_NAME$损坏
+
+	title = monuments_events.EVTNAME11
+
+	desc = monuments_events.EVTDESC11
+
+	picture = GFX_news_event_spr_spanish_civil_war3
+
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = monuments_events11.EVTOPT1
+
+
+
+		trigger = {
+
+			NOT = { monument_ideology_trigger_communism = yes }
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events11.EVTOPT2
+
+
+
+		trigger = {
+
+			monument_ideology_trigger_communism = yes
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.21 #[This.GetNameDef]繁荣发展
+
+	title = monuments_events.EVTNAME12
+
+	desc = monuments_events.EVTDESC12
+
+	picture = GFX_report_event_gre_athens
+
+
+
+	is_triggered_only = yes
+
+
+
+	trigger = {
+
+		NOT = { has_country_flag = got_free_monument_upgrade_via_event }
+
+		has_war = no
+
+		has_stability > 0.8
+
+		date > 1938.1.1
+
+		any_owned_state = {
+
+			is_fully_controlled_by = ROOT
+
+			state_has_any_monument = yes
+
+			has_no_monument_construction = yes
+
+			any_of = {
+
+				array = state_monuments_array
+
+				set_temp_variable = { monument_id = v }
+
+				set_temp_variable = { level = 1 }
+
+				has_at_least_monument_level = yes
+
+				set_temp_variable = { level = 3 }
+
+				has_less_monument_level = yes
+
+				can_use_monument_bonuses = yes
+
+			}
+
+		}
+
+	}
+
+
+
+	immediate = {
+
+		hidden_effect = {
+
+			set_country_flag = got_free_monument_upgrade_via_event
+
+			random_owned_state = {
+
+				limit = {
+
+					is_fully_controlled_by = ROOT
+
+					state_has_any_monument = yes
+
+					has_no_monument_construction = yes
+
+					any_of = {
+
+						array = state_monuments_array
+
+						set_temp_variable = { monument_id = v }
+
+						set_temp_variable = { level = 1 }
+
+						has_at_least_monument_level = yes
+
+						set_temp_variable = { level = 3 }
+
+						has_less_monument_level = yes
+
+						can_use_monument_bonuses = yes
+
+					}
+
+				}
+
+				save_event_target_as = state_target
+
+				set_temp_variable = { max_random_value = state_monuments_array^num }
+
+				subtract_from_temp_variable = { max_random_value = 1 }
+
+				set_temp_variable_to_random = {
+
+					var = monument_id_temp
+
+					min = 0
+
+					max = max_random_value
+
+					integer = yes
+
+				}
+
+				clamp_temp_variable = {
+
+					var = monument_id_temp
+
+					min = 0
+
+					max = max_random_value
+
+				}
+
+				set_variable = { random_monument_id = state_monuments_array^monument_id_temp }
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = monuments_events12.EVTOPT1
+
+
+
+		event_target:state_target = {
+
+			set_temp_variable = { monument_id = random_monument_id }
+
+			if = {
+
+				limit = {
+
+					check_variable = { monument_id > 0 }
+
+				}
+
+				upgrade_monument = yes
+
+			}
+
+			clear_variable = random_monument_id
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.22 #邀请“七君子”来支持我们的事业！
+
+	title = rcmchina_seven_gentlemen.1.t
+
+	desc = rcmchina_seven_gentlemen.1.d
+
+	picture = GFX_report_event_seven_gentleman
+
+	fire_only_once = yes
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = rcmchina_seven_gentlemen.1.a
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_shen_junru
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_zhang_naiqi
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_zou_taofen
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_shi_liang
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_li_gongpu
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_wang_zaoshi
+
+		custom_effect_tooltip = blank_line
+
+		custom_effect_tooltip = available_political_advisor
+
+		show_ideas_tooltip = CHI_qian_shali
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.23 #将领叛逃到[WTT_current_china_leader.Capital.GetName]
+
+	title = rcmchina_hpc_recall_troops.1.t
+
+	desc = rcmchina_hpc_recall_troops.1.desc
+
+	picture = GFX_report_event_sinkiang_join_PRC
+
+
+
+	immediate = { hidden_effect = { log = "[GetDateText]: [Root.GetName]: event AWR_CHI.2179" } }
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+
+		days = 5
+
+	}
+
+	
+
+	trigger = {
+
+		tag = HPC
+
+		is_subject_of = JAP
+
+		event_target:WTT_current_china_leader = {
+
+			is_subject = no
+
+			NOT = {
+
+				is_in_faction_with = ROOT
+
+			}
+
+		}		
+
+	}
+
+
+
+	option = {
+
+		name = rcmchina_hpc_recall_troops.1.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		event_target:WTT_current_china_leader = {
+
+			country_event = AWR_ECA.24
+
+		}
+
+		effect_tooltip = {
+
+			every_unit_leader = {
+
+				limit = {
+
+					OR = {
+
+						has_id = 2500
+
+						has_id = 2501
+
+					    has_id = 2502
+
+						has_id = 2503
+
+					}
+
+				}
+
+				set_nationality = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.24 #来自[From.GetName]的将领回归！
+
+	title = rcmchina_hpc_recall_troops.2.t
+
+	desc = rcmchina_hpc_recall_troops.2.desc
+
+	picture = GFX_report_event_sinkiang_join_PRC
+
+
+
+	immediate = {log = "[GetDateText]: [Root.GetName]: event AWR_CHI.2627"}
+
+
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = rcmchina_hpc_recall_troops.2.a
+
+		ai_chance = {
+
+			factor = 10
+
+		}
+
+		HPC = {
+
+			every_unit_leader = {
+
+				limit = {
+
+					OR = {
+
+						has_id = 2500					
+
+						has_id = 2501
+
+						has_id = 2502
+
+					    has_id = 2503
+
+					}
+
+				}
+
+				set_nationality = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.25 #[ECA.GetName]索取阿拉善所有权
+
+	title = rcmjapan_men_alxa.1.t
+
+	desc = rcmjapan_men_alxa.1.d
+
+	picture = GFX_report_prince_de
+
+
+
+	#immediate = {log = "[GetDateText]: [Root.GetName]: event AWR_ECA.25"}
+
+
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+
+
+	option = { # yes
+
+		name = rcmjapan_men_alxa.1.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		effect_tooltip = {
+
+			616 = {
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							NOT = {
+
+								tag = JAP
+
+							}
+
+						}
+
+						remove_state_core = PREV
+
+					}
+
+				}
+
+			}
+
+			ECA = {
+
+				add_state_core = 616
+
+				transfer_state = 616
+
+			}
+
+			#1044 = {
+
+			#	owner = {
+
+			#		if = {
+
+			#			limit = {
+
+			#				NOT = {
+
+			#					tag = JAP
+
+			#				}
+
+			#			}
+
+			#			remove_state_core = PREV
+
+			#		}
+
+			#	}
+
+			#}
+
+			#ECA = {
+
+			#	add_state_core = 1044
+
+			#	transfer_state = 1044
+
+			#}
+
+		}
+
+		if = {
+
+			limit = {
+
+				616 = {
+
+					owner = {
+
+						NOT = {
+
+							tag = JAP
+
+						}
+
+					}
+
+				}
+
+			}
+
+			country_event = AWR_ECA.28
+
+			set_country_flag = owner_of_sos
+
+		}
+
+		#if = {
+
+		#	limit = {
+
+		#		1044 = {
+
+		#			owner = {
+
+		#				NOT = {
+
+		#					tag = JAP
+
+		#					has_country_flag = owner_of_sos
+
+		#				}
+
+		#			}
+
+		#		}
+
+		#	}
+
+		#	country_event = AWR_ECA.28
+
+		#}
+
+		ECA = {
+
+			country_event = AWR_ECA.26
+
+		}
+
+		
+
+	}
+
+	option = { #no
+
+		name = rcmjapan_men_alxa.1.b
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		ECA = {
+
+			country_event = AWR_ECA.27
+
+		}
+
+	}
+
+}
+
+country_event = { #JAP say yes
+
+	id = AWR_ECA.26 #[JAP.GetName]接受了我们的要求！
+
+	title = rcmjapan_men_alxa.2.t
+
+	desc = rcmjapan_men_alxa.2.d
+
+	picture = GFX_report_event_japanese_chinese_surrender
+
+
+
+	#immediate = {log = "[GetDateText]: [Root.GetName]: event AWR_ECA.26"}
+
+
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+
+
+	option = { # yes
+
+		name = rcmjapan_men_alxa.2.a
+
+		616 = {
+
+			owner = {
+
+				remove_state_core = PREV
+
+			}
+
+			add_core_of = ECA
+
+		}
+
+		#1044 = {
+
+		#	owner = {
+
+		#		remove_state_core = PREV
+
+		#	}
+
+		#	add_core_of = ECA
+
+		#}
+
+		ECA = {
+
+			transfer_state = 616
+
+		#	transfer_state = 1044
+
+		}
+
+	}
+
+
+
+}
+
+country_event = { #JAP say no
+
+	id = AWR_ECA.27 #[JAP.GetName]拒绝了我们的要求！
+
+	title = rcmjapan_men_alxa.3.t
+
+	desc = rcmjapan_men_alxa.3.d
+
+	picture = GFX_report_prince_de
+
+
+
+	#immediate = {log = "[GetDateText]: [Root.GetName]: event AWR_ECA.27"}
+
+
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+
+
+	option = { # yes
+
+		name = rcmjapan_men_alxa.3.a
+
+	}
+
+}
+
+country_event = { #to the owner
+
+	id = AWR_ECA.28 #[ECA.GetName]的边界被日本重新绘制
+
+	title = rcmjapan_men_alxa.4.t
+
+	desc = rcmjapan_men_alxa.4.d
+
+	picture = GFX_report_prince_de
+
+
+
+	#immediate = {log = "[GetDateText]: [Root.GetName]: event AWR_ECA.26"}
+
+
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+
+
+	option = { # yes
+
+		name = rcmjapan_men_alxa.4.a
+
+		effect_tooltip = {
+
+			616 = {
+
+				owner = {
+
+					remove_state_core = PREV
+
+				}
+
+				add_core_of = ECA
+
+			}
+
+			#1044 = {
+
+			#	owner = {
+
+			#		remove_state_core = PREV
+
+			#	}
+
+			#	add_core_of = ECA
+
+			#}
+
+			ECA = {
+
+				transfer_state = 616
+
+			#	transfer_state = 1044
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.72 
+
+	title = ger_eng_navy_agreement.1.t
+
+	desc = ger_eng_navy_agreement.1.d        
+
+    fire_only_once = yes       
+
+    is_triggered_only = yes
+
+			
+
+	option = {
+
+		ai_chance = { factor = 100 }
+
+		name = ger_eng_navy_agreement.1.1
+
+        add_political_power = -50
+
+	}
+
+	
+
+	option = {
+
+		ai_chance = { factor = 0 }
+
+		name = ger_eng_navy_agreement.1.2
+
+        create_wargoal = { target = GER type = topple_government }
+
+		if = {
+
+		limit = {
+
+		OR = {
+
+		has_completed_focus = ENG_no_further_appeasement
+
+		NOT = { has_government = democratic }
+
+		}
+
+		}
+
+		add_war_support = 0.1
+
+		add_political_power = 100
+
+		}
+
+		else = {
+
+		add_war_support = -0.25
+
+		add_stability = -0.25
+
+		add_political_power = -200
+
+		}
+
+
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_ECA.73 
+
+	title = ger_government_ap_1.1.t
+
+	desc = ger_government_ap_1.1.d        
+
+    fire_only_once = yes     
+
+    is_triggered_only = yes
+
+	
+
+	trigger = {
+
+		tag = GER
+
+		has_government = fascism
+
+		OR = {
+
+		FRA = { has_capitulated = yes }
+
+		FRA = { is_subject_of = ROOT }
+
+		FRA = { is_in_faction_with = ROOT }
+
+		}	
+
+	}
+
+
+
+	option = {
+
+		ai_chance = { factor = 100 }
+
+		name = ger_government_ap_1.1.1
+
+        add_ideas = ger_government_ap_1
+
+	    hidden_effect = {
+
+	    if = {
+
+		limit = { GER = { is_ai = yes } }
+
+        GER = { remove_ideas = martin_bormann }
+
+        GER = { add_ideas = speer }
+
+        GER = { add_political_power = 150 }
+
+        }
+
+		} 
+
+	}     
+
+}

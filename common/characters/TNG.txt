@@ -1,0 +1,218 @@
+characters={
+	TNG_ma_hushan={
+		name=TNG_ma_hushan
+		portraits={
+			civilian={
+				large="gfx/leaders/TNG_army_leader_ma_hushan.dds"
+			}
+			army={
+				small="gfx/interface/idea/TNG/TNG_idea_ma_hushan.dds"
+				large="gfx/leaders/TNG_army_leader_ma_hushan.dds"
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1965.1.1.1"
+			id=-1
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer generic_harsh_leader }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+			desc = TNG_ma_hushan_desc
+		}
+        advisor={
+			slot = army_chief
+			idea_token = TNG_ma_hushan
+			ledger = army
+			traits = { generic_army_chief_organizational_1 }
+			cost = 50
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	TNG_ma_zhongying={
+		name=TNG_ma_zhongying
+		portraits={
+			army={
+				small="gfx/interface/idea/TNG/TNG_idea_ma_zhongying.dds"
+				large="gfx/leaders/TNG_army_ma_zhongying.dds"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = ma_zhongying_return }
+			traits={ generic_cavalry_leader generic_harsh_leader }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+			desc = TNG_ma_zhongying_desc
+		}
+		advisor={
+			visible = { original_tag = TNG }
+			available = { has_country_flag = ma_zhongying_return }
+			idea_token = TNG_ma_zhongying
+			slot = theorist
+			ledger = army
+			traits = { generic_military_theorist }
+			cost = 100
+		}
+		advisor={
+			visible = { original_tag = TNG }
+			available = { has_country_flag = ma_zhongying_return }
+			slot = army_chief
+			idea_token = TNG_ma_zhongying
+			ledger = army
+			traits = { generic_army_chief_organizational_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	TNG_ma_yanliang={
+		name=TNG_ma_yanliang
+		portraits={
+			army={
+				large="gfx/leaders/TNG_army_ma_yanliang.dds"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = ma_yanliang_return }
+			traits={ generic_cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	TNG_ma_shengkui={
+		name=TNG_ma_shengkui
+		portraits={
+			army={
+				small = gfx/interface/idea/TNG/TNG_idea_ma_shengkui.dds
+				large="gfx/leaders/TNG_army_ma_shengkui.dds"
+			}
+		}
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	TNG_ma_rulong={
+		name=TNG_ma_rulong
+		portraits={
+			army={
+				small = gfx/interface/idea/TNG/TNG_idea_ma_rulong.dds
+				large="gfx/leaders/TNG_army_ma_rulong.dds"
+			}
+		}
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = TNG_ma_rulong
+			ledger = army
+			traits = { TNG_army_regrouping_1 }
+            cost = 50
+		}
+	}
+	TNG_bai_zili={
+		name=TNG_bai_zili
+		portraits = {
+			army = {
+				small = gfx/interface/idea/TNG/TNG_idea_bai_zili.dds
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = TNG_bai_zili
+			ledger = army
+			traits = { generic_army_infantry_1 }
+			ai_will_do = {
+				factor = 200
+			}
+			available = {
+				has_completed_focus = TNG_army_staff
+			}
+			cost = 50
+		}
+	}
+	TNG_ma_zhancang={
+		name=TNG_ma_zhancang
+		portraits = {
+			army = {
+				small = gfx/interface/idea/TNG/TNG_idea_ma_zhancang.dds
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = TNG_ma_zhancang
+			ledger = army
+			traits = { generic_army_entrenchment_2 }
+            cost = 100
+		}
+	}
+	TNG_ge_jiyun={
+		name=TNG_ge_jiyun
+		portraits = {
+			army = {
+				small="gfx/interface/idea/TNG/TNG_idea_ge_jiyun.dds"
+			}
+		}
+		advisor={
+			idea_token = TNG_ge_jiyun
+			slot = political_advisor
+			available = {
+				has_completed_focus = TNG_send_ma_hushan_to_ussr
+			}
+			traits = { TNG_communist_revolutionary }
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+	}
+}

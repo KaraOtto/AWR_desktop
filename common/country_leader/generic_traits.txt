@@ -1,0 +1,797 @@
+leader_traits = {
+	# SIK_Duban，来源：common/country_leader/RCM_traits.txt
+	generic_Duban = {
+			random = no
+			political_power_factor = 0.1
+			war_stability_factor = 0.25
+			ammunition_consumption_factor = -0.10
+		
+			ai_focus_aggressive_factor = 0.5 
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# air_chief_reform_2，来源：common/country_leader/00_traits.txt
+	generic_air_chief_reform_2 = {  
+			sprite = 1
+			experience_gain_air = @chief_experience_gain_medium
+			experience_gain_air_factor = 0.10
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# anti_communist，来源：common/country_leader/00_traits.txt
+	generic_anti_communist = {
+			random = no
+			communism_acceptance = -50
+			communism_drift = -0.01
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# anti_communist_crusader，来源：common/country_leader/00_traits.txt
+	generic_anti_communist_crusader = { 
+			sprite = 13
+			stability_factor = 0.05
+			communism_drift = -0.25
+			operative_slot = 1
+			propaganda_mission_factor = 0.15
+			boost_ideology_mission_factor = 0.15
+			operation_collaboration_government_outcome = 0.15
+			operation_coup_government_outcome = 0.15
+			subversive_activites_upkeep = -0.15
+			drift_defence_factor = 0.25
+			party_popularity_stability_factor = 0.05
+		
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# appeaser，来源：common/country_leader/00_traits.txt
+	generic_appeaser = { 
+			random = yes
+			sprite = 13
+			political_power_factor = 0.05
+			stability_factor = 0.05
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# armaments_organizer，来源：common/country_leader/00_traits.txt
+	generic_armaments_organizer = { 
+			sprite = 10
+			random = yes
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+			conversion_cost_civ_to_mil_factor = -0.15
+			production_speed_supply_node_factor = 0.15
+			production_factory_max_efficiency_factor = 0.05
+			industrial_capacity_factory = 0.05
+		
+			ai_will_do = {
+				factor = 6
+			}
+		}
+	# army_artillery_2，来源：common/country_leader/00_traits.txt
+	generic_army_artillery_2 = { 
+			sprite = 16
+			army_artillery_attack_factor = 0.15
+			army_artillery_defence_factor = 0.1
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_cavalry_2，来源：common/country_leader/00_traits.txt
+	generic_army_cavalry_2 = { 
+			sprite = 17
+			cavalry_attack_factor = 0.1
+			cavalry_defence_factor = 0.1
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_chief_defensive_2，来源：common/country_leader/00_traits.txt
+	generic_army_chief_defensive_2 = { 
+			sprite = 9
+			army_defence_factor = 0.1
+			experience_gain_army = @chief_experience_gain_medium
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_chief_defensive_3，来源：common/country_leader/00_traits.txt
+	generic_army_chief_defensive_3 = { 
+			sprite = 9
+			army_defence_factor = 0.15
+			experience_gain_army = @chief_experience_gain_high
+
+			command_cap_increase = @tier3
+
+			ai_will_do = {
+				factor = 3
+				modifier = {
+					factor = 0
+					command_power < @tier3
+				}
+			}
+		}
+	# army_chief_entrenchment_2，来源：common/country_leader/00_traits.txt
+	generic_army_chief_entrenchment_2 = {
+			sprite = 5
+			max_dig_in = 7
+			mobilization_speed = -0.04
+			experience_gain_army = @chief_experience_gain_medium
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_chief_maneuver_2，来源：common/country_leader/00_traits.txt
+	generic_army_chief_maneuver_2 = { 
+			sprite = 5
+			army_speed_factor = 0.1
+			experience_gain_army = @chief_experience_gain_medium
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_chief_morale_2，来源：common/country_leader/00_traits.txt
+	generic_army_chief_morale_2 = { 
+			sprite = 5
+			out_of_supply_factor = -0.09
+			land_reinforce_rate = 0.02
+			army_morale_factor = 0.04
+			experience_gain_army = @chief_experience_gain_medium
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+			
+			}
+		}
+	# army_chief_old_guard，来源：common/country_leader/00_traits.txt
+	generic_army_chief_old_guard = { 
+			sprite = 5 
+			experience_gain_army = @chief_experience_gain_medium
+			max_command_power = 10
+
+			ai_will_do = {
+				factor = 0.5
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# army_chief_organizational_1，来源：common/country_leader/00_traits.txt
+	generic_army_chief_organizational_1 = { 
+			sprite = 5
+			army_org_factor = 0.04
+			experience_gain_army = @chief_experience_gain_low
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# army_chief_organizational_2，来源：common/country_leader/00_traits.txt
+	generic_army_chief_organizational_2 = { 
+			sprite = 5
+			army_org_factor = 0.08
+			experience_gain_army = @chief_experience_gain_medium
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_concealment_2，来源：common/country_leader/00_traits.txt
+	generic_army_concealment_2 = { 
+			sprite = 9
+			enemy_army_bonus_air_superiority_factor = -0.10
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_entrenchment_2，来源：common/country_leader/00_traits.txt
+	generic_army_entrenchment_2 = { 
+			sprite = 9
+			dig_in_speed_factor = 0.16
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_infantry_1，来源：common/country_leader/00_traits.txt
+	generic_army_infantry_1 = { 
+			sprite = 5
+			army_infantry_attack_factor = 0.05
+			army_infantry_defence_factor = 0.1
+		
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# army_infantry_2，来源：common/country_leader/00_traits.txt
+	generic_army_infantry_2 = { 
+			sprite = 5
+			army_infantry_attack_factor = 0.1
+			army_infantry_defence_factor = 0.15
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 3
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_logistics_1，来源：common/country_leader/00_traits.txt
+	generic_army_logistics_1 = {  
+			sprite = 6
+			attrition = -0.04
+		
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# army_logistics_2，来源：common/country_leader/00_traits.txt
+	generic_army_logistics_2 = {  
+			sprite = 6
+			attrition = -0.08
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 4
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# army_regrouping_2，来源：common/country_leader/00_traits.txt
+	generic_army_regrouping_2 = { 
+			sprite = 5
+			army_morale_factor = 0.08
+		
+
+			command_cap_increase = @tier2
+
+			ai_will_do = {
+				factor = 2
+				modifier = {
+					factor = 0
+					command_power < @tier2
+				}
+			}
+		}
+	# backroom_backstabber，来源：common/country_leader/00_traits.txt
+	generic_backroom_backstabber = { 
+			sprite = 13
+			subversive_activites_upkeep = -0.25
+			drift_defence_factor = 0.25
+			operation_coup_government_cost = -0.25
+			operation_collaboration_government_cost = -0.25
+			operation_infiltrate_outcome = 0.1
+			operative_slot = 1 
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# captain_of_industry，来源：common/country_leader/00_traits.txt
+	generic_captain_of_industry = { 
+			sprite = 10
+			random = yes
+			production_speed_industrial_complex_factor = 0.15
+			production_speed_infrastructure_factor = 0.15
+			production_speed_rail_way_factor = 0.15
+			production_speed_synthetic_refinery_factor = 0.15
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 500
+					date < 1939.1.1
+				}
+			}
+		}
+	# compassionate_gentleman，来源：common/country_leader/00_traits.txt
+	generic_compassionate_gentleman = { 
+			random = yes
+			sprite = 13
+			opinion_gain_monthly_factor = 0.25
+			improve_relations_maintain_cost_factor = -0.25 
+			resistance_damage_to_garrison = -0.15
+			required_garrison_factor = -0.05
+		
+			conscription_factor = 0.05
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# democratic_reformer，来源：common/country_leader/00_traits.txt
+	generic_democratic_reformer = {
+			random = no
+		
+			sprite = 13
+			democratic_drift = 0.1
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	# difangshilipai，来源：common/country_leader/zizhi_traits.txt
+	generic_difangshilipai = {
+		    random = no
+			political_power_factor = 0.05
+			stability_factor = 0.05
+		
+			ai_focus_defense_factor = 0.5
+		}
+	# economist，来源：common/country_leader/00_traits.txt
+	generic_economist = { 
+			sprite = 10
+			random = yes
+			production_factory_max_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = 0.05
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	# editor，来源：common/country_leader/00_traits.txt
+	generic_editor = { 
+			sprite = 10
+			random = yes
+			political_power_factor = 0.1
+			stability_factor = 0.05
+			war_support_factor = 0.05
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	# elder_statesman，来源：common/country_leader/RCM_traits.txt
+	generic_elder_statesman = {
+			random = no
+			sprite = 13 
+			neutrality_drift = 0.05 
+			research_speed_factor = 0.05
+			stability_factor = 0.1
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# financial_expert，来源：common/country_leader/00_traits.txt
+	generic_financial_expert = { 
+			sprite = 10
+			random = yes
+			consumer_goods_factor = -0.2
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	# generallissimo，来源：common/country_leader/00_traits.txt
+	generic_generallissimo = {
+			random = no
+			defensive_war_stability_factor = 0.4
+		    weekly_casualties_war_support = 0.003 
+		    ai_desired_divisions_factor = 0.5 
+		
+			surrender_limit = 0.15
+		}
+	# gran_carabinero，来源：common/country_leader/00_traits.txt
+	generic_gran_carabinero = { 
+			random = no
+			sprite = 13
+
+			consumer_goods_factor = -0.10
+			stability_factor = 0.05
+			conscription = 0.01
+			training_time_factor = -0.05
+			experience_gain_army_unit_factor = 0.05
+			enemy_operative_capture_chance_factor = 0.10
+			enemy_operative_detection_chance_factor = 0.10
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+				factor = 9999
+				original_tag = SPR
+				has_completed_focus = SPR_maintain_the_second_republic
+				}
+			}
+		}
+	# grand_battle_plan_expert，来源：common/country_leader/00_traits.txt
+	generic_grand_battle_plan_expert = {
+			sprite = 14
+			cat_grand_battle_plan_cost_factor = -0.15
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# he_ping，来源：common/country_leader/00_traits.txt
+	generic_he_ping = {
+			random = no
+			war_support_factor = -0.05				
+	        stability_factor = 0.10
+	        army_core_defence_factor = 0.15
+			custom_modifier_tooltip = he_ping_desc
+		}
+	# head_of_intelligence，来源：common/country_leader/00_traits.txt
+	generic_head_of_intelligence = {
+			random = no
+			sprite = 15
+			operative_slot = 1
+			agency_upgrade_time = -0.15
+		
+			ai_will_do = { factor = 3 } 
+		}
+	# indomitable_perseverance，来源：common/country_leader/00_traits.txt
+	generic_indomitable_perseverance = { 
+			random = no
+			sprite = 5
+			army_morale_factor = 0.15 
+			land_reinforce_rate = 0.05 
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# infantry_officer，来源：common/country_leader/zzzz_compat_missing_traits_16.txt
+	generic_infantry_officer = {
+	        random = no
+	        ai_will_do = { factor = 1 }
+	    }
+	# mass_assault_expert，来源：common/country_leader/00_traits.txt
+	generic_mass_assault_expert = {
+			sprite = 14
+			cat_mass_assault_cost_factor = -0.15
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# military_theorist，来源：common/country_leader/00_traits.txt
+	generic_military_theorist = {
+			sprite = 14
+			land_doctrine_cost_factor = -0.1
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# navy_chief_commerce_raiding_1，来源：common/country_leader/00_traits.txt
+	generic_navy_chief_commerce_raiding_1 = {
+			sprite = 3
+			convoy_raiding_efficiency_factor = 0.1
+			experience_gain_navy = @chief_experience_gain_low
+
+			command_cap_increase = @tier1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					command_power < @tier1
+				}
+			}
+		}
+	# popular_figurehead，来源：common/country_leader/00_traits.txt
+	generic_popular_figurehead = {
+			sprite = 13
+			stability_factor = 0.05 
+			political_advisor_cost_factor = -0.15 
+			army_chief_cost_factor = -0.15 
+			navy_chief_cost_factor = -0.15 
+			air_chief_cost_factor = -0.15 
+			theorist_cost_factor = -0.15 
+			high_command_cost_factor = -0.15 
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# prince_of_terror，来源：common/country_leader/00_traits.txt
+	generic_prince_of_terror = { 
+			sprite = 13
+			resistance_damage_to_garrison = -0.25
+			foreign_subversive_activites = -0.3
+			non_core_manpower = 0.03
+		
+			operative_slot = 1
+			resistance_growth = -0.15
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# prominent_lawyer，来源：common/country_leader/RCM_traits.txt
+	generic_prominent_lawyer = {
+			ai_will_do = {
+				factor = 1
+			}
+			sprite = 13
+			stability_weekly = 0.002 
+			political_power_factor = 0.05
+		}
+	# propaganda_expert，来源：common/country_leader/00_traits.txt
+	generic_propaganda_expert = { 
+			sprite = 13
+			war_support_factor = 0.10
+			political_power_factor = 0.10
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	# robber_baron，来源：common/country_leader/RCM_traits.txt
+	generic_robber_baron = {
+			sprite = 10
+			random = no
+		
+		
+			industrial_capacity_factory = 0.10
+			production_factory_max_efficiency_factor = 0.05 
+			stability_factor = -0.05
+			war_support_factor = -0.05
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# sharp_tongued_lawyer，来源：common/country_leader/00_traits.txt
+	generic_sharp_tongued_lawyer = {
+			random = no
+			sprite = 13
+
+			improve_relations_maintain_cost_factor = -0.5
+			drift_defence_factor = 0.25
+		}
+	# silent_workhorse，来源：common/country_leader/00_traits.txt
+	generic_silent_workhorse = { 
+			random = yes
+			sprite = 13
+			political_power_factor = 0.2
+
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	# smooth_talking_charmer，来源：common/country_leader/00_traits.txt
+	generic_smooth_talking_charmer = { 
+			random = yes
+			sprite = 13
+			trade_opinion_factor = 0.25 
+			improve_relations_maintain_cost_factor = -0.25 
+	        opinion_gain_monthly_factor = 0.25
+			license_purchase_cost = -0.5
+			license_production_speed = 0.5
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# spirit_of_genghis，来源：common/country_leader/00_traits.txt
+	generic_spirit_of_genghis = {
+			random = no
+			cavalry_attack_factor = 0.1
+		
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# staunch_monarchist，来源：common/country_leader/00_traits.txt
+	generic_staunch_monarchist = {
+			random = no
+		
+			sprite = 13
+			neutrality_drift = 0.1
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					tag = HUN
+					not = { has_completed_focus = HUN_invite_the_habsburg_prince }
+					factor = 0
+				}
+			}
+		}
+	# staunch_traditionalist，来源：common/country_leader/RCM_traits.txt
+	generic_staunch_traditionalist = {
+			random = no
+	        sprite = 13 
+			drift_defence_factor = 0.5
+			operative_slot = 1 
+			neutrality_drift = 0.1
+			foreign_subversive_activites = -0.25
+			stability_weekly = 0.001
+			political_power_factor = 0.05
+			propaganda_mission_factor = 0.25 
+			boost_ideology_mission_factor = 0.25 
+		
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# technocrat，来源：common/country_leader/00_traits.txt
+	generic_technocrat = {
+			sprite = 13
+
+			production_speed_industrial_complex_factor = 0.05
+			research_speed_factor = 0.05
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# CHI_veteran_of_central_plains_war，来源：common/country_leader/zizhi_traits.txt
+	generic_veteran_of_central_plains_war = {
+		    random = no
+			targeted_modifier = {
+				tag = CHI
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}		
+			army_morale_factor = 0.05
+			custom_modifier_tooltip = CHI_veteran_of_central_plains_war_desc
+		}
+	# war_industrialist，来源：common/country_leader/00_traits.txt
+	generic_war_industrialist = { 
+			sprite = 10
+			random = yes
+			production_speed_arms_factory_factor = 0.15
+			production_speed_dockyard_factor = 0.15
+			production_speed_fuel_silo_factor = 0.15
+
+			ai_will_do = {
+				base = 0
+				modifier = {
+				add = 9999
+				NOT = { TAG = USA }
+				NOT = { TAG = SOV }
+				NOT = { TAG = GER }
+				date > 1937.4.1
+				}
+				modifier = {
+				add = 9999
+				TAG = USA	
+				date > 1939.1.1
+				}
+				modifier = {
+				add = 9999
+				TAG = SOV	
+				date > 1938.7.1
+				}
+				modifier = {
+				add = 3
+				TAG = GER	
+				}
+			}
+		}
+	# wrl_education_reformer，来源：common/country_leader/RCM_traits.txt
+	generic_wrl_education_reformer = {
+			sprite = 13
+
+			research_speed_factor = 0.03
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# wrl_technocrat，来源：common/country_leader/RCM_traits.txt
+	generic_wrl_technocrat = {
+			sprite = 13
+
+			production_speed_industrial_complex_factor = 0.05
+			industrial_capacity_factory = 0.02
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	# 兼容占位：源模组引用了该 trait，但 common 中没有定义。
+	generic_ma_lin_doctrine = {
+		random = no
+		ai_will_do = { factor = 1 }
+	}
+	# 兼容占位：源模组引用了该 trait，但 common 中没有定义。
+	generic_ma_bufang_doctrine = {
+		random = no
+		ai_will_do = { factor = 1 }
+	}
+}

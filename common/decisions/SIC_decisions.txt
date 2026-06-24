@@ -1,0 +1,295 @@
+# SIC 决议
+
+SIC_rebellion_mission = { #川军危机
+
+
+
+		icon = GFX_decision_revolt
+
+
+
+		available = {
+
+			SIC = {
+
+				NOT = {
+
+					has_idea = CHI_zhang_qun_in_sic
+
+				}
+
+			}
+
+		}
+
+
+
+		activation = {
+
+			always = no
+
+		}
+
+
+
+		cancel_trigger = {
+
+		    OR = {
+
+				SIC = {
+
+					exists = no
+
+				}
+
+				SIC = {
+
+					has_war_with = ROOT
+
+				}
+
+				has_global_flag = end_of_sic_crisis_flag
+
+			}	
+
+		}
+
+
+
+		is_good = no
+
+
+
+		days_mission_timeout = 180
+
+
+
+		timeout_effect = {
+
+			random_list = {
+
+				var:global.sic_rebellion_chance = {
+
+					SIC = {
+
+						country_event = sic.4
+
+					}
+
+				}
+
+				var:global.sic_peace_chance = {
+
+					if = {
+
+						limit = {
+
+							check_variable = {
+
+								global.sic_rebellion_chance < 100
+
+							}
+
+							check_variable = {
+
+								global.sic_peace_chance > 0
+
+							}
+
+						}
+
+						effect_tooltip = {
+
+							add_to_variable = {
+
+								var = global.sic_rebellion_chance
+
+								value = 15
+
+								tooltip = add_15_to_sic_rebellion_tt
+
+							}
+
+							#add_to_variable = {
+
+							#	var = global.sic_peace_chance
+
+							#	value = -15
+
+							#	tooltip = subtract_15_to_sic_peace_tt
+
+							#}
+
+						}
+
+					}
+
+					
+
+					add_war_support = -0.025
+
+					activate_mission = SIC_rebellion_mission			
+
+				}  
+
+			}
+
+		}
+
+
+
+		complete_effect = {
+
+			
+
+		}
+
+	}
+
+SIC_rebellion_mission_sic = { #川军危机
+
+
+
+		icon = GFX_decision_revolt
+
+
+
+        allowed = {
+
+			tag = SIC
+
+		}
+
+
+
+		available = {
+
+			SIC = {
+
+				NOT = {
+
+					has_idea = CHI_zhang_qun_in_sic
+
+				}
+
+			}
+
+		}
+
+
+
+		activation = {
+
+			always = no
+
+		}
+
+
+
+		cancel_trigger = {
+
+		    OR = {
+
+				event_target:WTT_current_china_leader = {
+
+					exists = no
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					has_war_with = ROOT
+
+				}
+
+				tag = event_target:WTT_current_china_leader
+
+				has_global_flag = end_of_sic_crisis_flag
+
+			}	
+
+		}
+
+
+
+		is_good = no
+
+
+
+		days_mission_timeout = 180
+
+
+
+		timeout_effect = {
+
+			random_list = {
+
+				var:global.sic_rebellion_chance = {
+
+					SIC = {
+
+						country_event = sic.4
+
+					}
+
+				}
+
+				var:global.sic_peace_chance = {
+
+					if = {
+
+						limit = {
+
+							check_variable = {
+
+								global.sic_rebellion_chance < 100
+
+							}
+
+							check_variable = {
+
+								global.sic_peace_chance > 0
+
+							}
+
+						}
+
+						add_to_variable = {
+
+							var = global.sic_rebellion_chance
+
+							value = 15
+
+							tooltip = add_15_to_sic_rebellion_tt
+
+						}
+
+						add_to_variable = {
+
+							var = global.sic_peace_chance
+
+							value = -15
+
+							#tooltip = subtract_15_to_sic_peace_tt
+
+						}
+
+					}
+
+					activate_mission = SIC_rebellion_mission_sic			
+
+				}  
+
+			}
+
+		}
+
+
+
+		complete_effect = {
+
+			
+
+		}
+
+	}

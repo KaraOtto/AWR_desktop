@@ -1,0 +1,5044 @@
+characters={
+	CHI_chiang_kai_shek={
+		name ="蒋中正"
+		portraits={
+			civilian={
+				large="gfx/leaders/CHI_army_leader_chiang_kai_shek.dds"
+			}
+			army = {
+			    large="gfx/leaders/CHI_army_leader_chiang_kai_shek.dds"
+			}
+		}
+		allowed_civil_war = {
+		    NOT = { has_government = communism }
+		}
+		country_leader={
+			ideology = sanmin_political_tutelage
+			desc=POLITICS_CHIANG_KAISHEK_DESC
+			traits={ CHI_stout_defender generic_anti_communist CHI_huangpuxiaozhang CHI_qinliqinwei }
+			expire="1965.1.1.1"
+			id=5001
+		}
+		country_leader={
+			ideology = sanmin_military_rule
+			desc=POLITICS_CHIANG_KAISHEK_DESC
+			traits={ generic_generallissimo CHI_dictator generic_anti_communist CHI_junduiguanlian CHI_qinliqinwei }
+			expire="1965.1.1.1"
+			id=5002
+		}
+		field_marshal={
+			traits={ generic_harsh_leader generic_career_officer generic_artillery_officer generic_old_guard generic_logistics_wizard generic_inspirational_leader CHI_NRA_Generallissimo generic_media_personality }
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=4
+			legacy_id=5010
+            desc=CHI_chiang_kai_shek_desc
+		}
+	}
+	CHI_wangjingwei_zz={
+		name=CHI_wangjingwei_zz
+		portraits={
+			civilian={
+			    small="gfx/interface/idea/CHI/CHI_idea_wangjingwei_zz.png"
+				large="gfx/leaders/CHI_leader_wangjingwei_zz.dds"
+			}
+		}
+		country_leader={
+			ideology = sanmin_political_tutelage
+			traits={ CHI_emergency_powers CHI_quxianjiuguo CHI_wencaiyiyi }
+			expire="1965.1.1.1"
+			id=-1
+            desc=CHI_wangjingwei_zz_desc
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_wangjingwei_zz
+			visible = {
+			}
+			available = {
+				NOT = { has_global_flag = wang_join_japan_faction }
+				NOT = {
+                    has_war_with = WAN
+				}
+			}
+			traits = { CHI_xingzhengyuanzhang }
+			allowed = {
+				always = yes
+			}
+			ai_will_do = {
+				factor = 999
+				modifier = {
+				    factor = 0
+					not = { has_country_leader = { ruling_only = yes name = "汪精卫" } }
+				}
+			}
+		}
+	}
+	CHI_huang_qixiang={
+		name ="黄琪翔"
+		portraits={
+			civilian={
+				large="gfx/leaders/CHI_army_leader_huang_qixiang.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_huang_qixiang.png"
+			}
+		}
+		country_leader={
+			ideology = n_authoritarian_socialism
+			traits={
+				CHI_beifashuangjie
+				CHI_social_reformer
+				CHI_fulizhichizhe
+			}
+			expire="1965.1.1.1"
+			id=-1
+			desc = CHI_huang_qixiang_desc
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_huang_qixiang
+			allowed = {
+				OR = { is_literally_china = yes TAG = SOV }
+			}
+			available = {
+				is_country_leader = no
+				if = {
+				limit = {
+				original_tag = CHI
+				is_fascism_type = yes
+				}
+				has_global_flag = CHI_huang_qixiang_come_back
+				not = { has_war_with = event_target:WTT_communist_china has_global_flag = PRC_civil_war_started }
+				NOT = { has_completed_focus = ack_hiro_sen_focus }
+				NOT = { has_government = fascism }
+					if = {
+					limit = { JAP = { is_fascism_type = yes } }
+					NOT = { is_in_faction_with = JAP }
+					}
+				}
+			}
+			traits = {
+				CHI_beifashuangjie
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 450
+			}
+			desc=CHI_huang_qixiang_desc
+		}
+		corps_commander={
+			traits={ generic_brilliant_strategist generic_media_personality generic_war_hero generic_career_officer generic_artillery_officer generic_NRA_Lieut_General CHI_hidden_sympathies }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+			desc=CHI_huang_qixiang_desc
+			visible = {
+				if = {
+				limit = {
+				original_tag = CHI
+				is_fascism_type = yes
+				}
+				has_global_flag = CHI_huang_qixiang_come_back
+				not = { has_war_with = event_target:WTT_communist_china has_global_flag = PRC_civil_war_started }
+				NOT = { has_completed_focus = ack_hiro_sen_focus }
+				NOT = { has_government = fascism }
+					if = {
+					limit = { JAP = { is_fascism_type = yes } }
+					NOT = { is_in_faction_with = JAP }
+					}
+				}
+			}
+		}
+	}
+	CHI_chen_yi={
+		name="陈仪"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_chen_yi.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Lieut_General generic_old_guard }
+			skill=2
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+            desc=CHI_chen_yi_desc
+		}
+	}
+	CHI_fang_xianjue={
+		name="方先觉"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_fang_xianjue.jpg"
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Major_General generic_trait_cautious generic_infantry_officer generic_career_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=2
+			legacy_id=-1
+            desc=CHI_fang_xianjue_desc
+		}
+	}
+	CHI_sun_yuanliang={
+		name="孙元良"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_sun_yuanliang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_infantry_officer generic_career_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+            desc=CHI_sun_yuanliang_desc
+		}
+	}
+	CHI_ariani_li={
+		name="阿里亚尼·李"
+		gender = female
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_ariani_li.dds"
+			}
+		}
+		corps_commander={
+			traits={ CHI_chi_colonel_rank generic_politically_connected generic_NRA_Major_General }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-2
+			desc=CHI_ariani_li_desc
+		}
+	}
+	CHI_xu_fulin={
+		name ="徐福霖"
+		portraits={
+			civilian={
+				large="gfx/leaders/CHI_leader_xu_fulin.dds"
+			}
+		}
+		country_leader={
+			ideology = socialism
+			traits={ CHI_fulizhichizhe }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	CHI_lin_sen={
+		name =CHI_lin_sen
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_lin_sen.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_lin_sen
+			traits = { generic_popular_figurehead }
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = { has_country_flag = lin_sen_dead }
+			}
+		}
+	}
+	sun_fo={
+		name =sun_fo
+		portraits = {
+			civilian = {
+			    small="gfx/interface/idea/CHI/CHI_idea_sun_fo.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = sun_fo
+			traits = { generic_compassionate_gentleman }
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	ju_zheng={
+		name =ju_zheng
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_ju_zheng.tga" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = ju_zheng
+			traits = { generic_anti_communist_crusader }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	dai_jitao={
+		name =dai_jitao
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_dai_jitao.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = dai_jitao
+			traits = { generic_staunch_traditionalist }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	yu_youren={
+		name =yu_youren
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_yu_youren.tga" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = yu_youren
+			traits = { generic_elder_statesman }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	zhang_qun={
+		name =zhang_qun
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_zhang_qun.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = zhang_qun
+			traits = { generic_silent_workhorse }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = {
+                    has_war_with = XXO
+				}
+			}
+		}
+	}
+	yang_yongtai={
+		name =yang_yongtai
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_yang_yongtai.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = yang_yongtai
+			traits = { CHI_zhi_nang }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+		}
+	}
+	CHI_chenbijun={
+		name =CHI_chenbijun
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_chenbijun.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_chenbijun
+			traits = { CHI_gui_fu }
+			visible = {
+			}
+			allowed = {
+			}
+			available = {
+			OR = {
+		        has_idea = CHI_wangjingwei_zz
+                has_government = fascism
+				}
+			}
+		}
+		}
+	jiang_jingguo={
+		name =jiang_jingguo
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_jiang_jingguo.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = jiang_jingguo
+			traits = { CHI_fan_fu }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+                    has_global_flag = jingguo_huiguo_flag
+				}
+			}
+		}
+	}
+	jiang_weiguo={
+		name =jiang_weiguo
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_jiang_weiguo.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = jiang_weiguo
+			traits = { CHI_zhuang_jia }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+                has_completed_focus = CHI_china_first_tank_focus
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+		}
+	}
+	du_yuesheng={
+		name =du_yuesheng
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_du_yuesheng.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = du_yuesheng
+			traits = { CHI_hei_dao }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			        NOT = { has_completed_focus = CHI_the_fall_of_mainland }
+			}
+		}
+	}
+	hu_shi={
+		name =hu_shi
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_hu_shi.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = hu_shi
+			traits = { CHI_wen_xue }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+		}
+	}
+	lei_zhen={
+		name =lei_zhen
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_lei_zhen.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = lei_zhen
+			traits = { CHI_jian_cha }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+		}
+	}
+	wu_zhihui={
+		name =wu_zhihui
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_wu_zhihui.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = wu_zhihui
+			traits = { CHI_yuan_lao }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+	                date < 1953.10.30
+			}
+		}
+	}
+	chen_bulei={
+		name =chen_bulei
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_chen_bulei.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = chen_bulei
+			traits = { CHI_wen_dan }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+		}
+	}
+	zhang_jingjiang={
+		name =zhang_jingjiang
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_zhang_jingjiang.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = zhang_jingjiang
+			traits = { CHI_dao_shi }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+	                date < 1938.1.1
+				}
+			}
+		}
+	}
+	cai_yuanpei={
+		name =cai_yuanpei
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_cai_yuanpei.png"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = cai_yuanpei
+			traits = { CHI_zhong_keyuan }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+	                date < 1940.3.5
+				}
+			}
+		}
+	}
+	kung_hsiang_hsi={
+		name =kung_hsiang_hsi
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_kung_hsiang_hsi.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = kung_hsiang_hsi
+			traits = { generic_robber_baron }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				AND = {
+					NOT = { has_government = n_socialism }
+					NOT = { has_government = communism }
+				}
+			}
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 1200
+			}
+		}
+	}
+	CHI_t_v_soong={
+		name =CHI_t_v_soong
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_t_v_soong.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_t_v_soong
+			traits = { generic_financial_expert }
+			available = {
+			}
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			ai_will_do = {
+				factor = 800
+				modifier = {
+					factor = 1500
+					has_completed_focus = CHI_government_bailout_focus
+				}
+			}
+		}
+	}
+	CHI_soong_mei_ling={
+		name =CHI_soong_mei_ling
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_soong_mei_ling.dds" }
+		}
+		gender = female
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_soong_mei_ling
+			traits = { CHI_diyifuren }
+			available = {
+				has_country_leader = { ruling_only = yes character = CHI_chiang_kai_shek }
+				has_completed_focus = CHI_reinforce_new_life_movement
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+    CHI_he_yingqin={
+		name="何应钦"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_leader_he_yingqin.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_he_yingqin.tga"
+			}
+			civilian={
+				large="gfx/leaders/CHI_army_leader_he_yingqin.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_he_yingqin.tga"
+			}
+		}
+		country_leader={
+			ideology = sanmin_political_tutelage
+			traits={ CHI_army_chief_organizational_3 generic_anti_communist CHI_junduiguanlian }
+			expire="1965.1.1.1"
+			id=-1
+            desc=CHI_he_yingqin_desc
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_he_yingqin
+			available = {
+				NOT = {
+					has_country_leader = { ruling_only = yes character = CHI_he_yingqin }
+				}
+				hidden_trigger = {
+					NOT = {
+						has_country_flag = he_yingqin_in_charge
+					}
+				}
+			}
+			visible = {
+				NOT = {
+					has_country_flag = he_yingqin_in_charge
+				}
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+            traits = { CHI_army_chief_organizational_3 }
+            cost = 200
+			ai_will_do = {
+				factor = 20
+			}
+			desc=CHI_he_yingqin_desc
+		}
+		field_marshal={
+			traits={  generic_career_officer generic_infantry_officer generic_politically_connected generic_organizer generic_organisational_leader generic_NRA_General_1stRank }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=5011
+            desc=CHI_he_yingqin_desc
+		}
+	}
+	chen_guofu={
+		name =chen_guofu
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_chen_guofu.dds"
+				large="gfx/leaders/CHI_leader_chen_guofu.dds"
+			}
+		}
+		country_leader={
+			ideology = sanmin_political_tutelage
+			traits={ CHI_emergency_powers CHI_party_organizer }
+			expire="1965.1.1.1"
+			id=-1
+            desc=chen_guofu_desc
+		}
+		allowed_civil_war = {
+			has_government = neutrality
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = chen_guofu
+			traits = { CHI_ideological_crusader }
+			available = {
+				if = {
+					limit = {
+						JAP = {
+							is_subject = no
+						}
+					}
+					NOT = { is_in_faction_with = JAP }
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					NOT = {
+						has_completed_focus = CHI_dissolve_cc
+					}
+				}
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+				NOT = {
+                    has_war_with = ZHG
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			ai_will_do = {
+				factor = 30
+				modifier = {
+					factor = 150
+					has_completed_focus = CHI_reinforce_new_life_movement
+				}
+			}
+		}
+	}
+	chen_lifu={
+		name =chen_lifu
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_chen_lifu.dds" }
+		}
+		allowed_civil_war = {
+			has_government = neutrality
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = chen_lifu
+			traits = { generic_backroom_backstabber }
+			available = {
+				if = {
+					limit = {
+						JAP = {
+							is_subject = no
+						}
+					}
+					NOT = { is_in_faction_with = JAP }
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					NOT = {
+						has_completed_focus = CHI_dissolve_cc
+					}
+				}
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+				NOT = {
+                    has_war_with = ZHG
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			ai_will_do = {
+				factor = 30
+				modifier = {
+					factor = 999
+					has_completed_focus = CHI_reinforce_new_life_movement
+				}
+			}
+			modifier = {
+				neutrality_drift = 0.1
+			}
+		}
+	}
+	weng_wenhao={
+		name =weng_wenhao
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_weng_wenhao.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = weng_wenhao
+			traits = { generic_captain_of_industry }
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+							tag = PRC
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_wellington_koo={
+		name =CHI_wellington_koo
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_wellington_koo.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_wellington_koo
+			traits = { generic_smooth_talking_charmer }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = { NOT = { has_government = communism } }
+		}
+	}
+	dai_li={
+		name =dai_li
+		portraits = {
+			civilian = {
+				small="gfx/interface/idea/CHI/CHI_idea_dai_li.dds"
+			}
+		}
+		allowed_civil_war = {
+			has_government = fascism
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = dai_li
+			traits = { generic_head_of_intelligence generic_prince_of_terror }
+			visible = {
+				NOT = { has_country_flag = daili_in_power }
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				if = {
+					limit = {
+						JAP = {
+							is_subject = no
+						}
+					}
+					NOT = { is_in_faction_with = JAP }
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					NOT = {
+						has_completed_focus = CHI_dissolve_bs
+					}
+				}
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+				NOT = {
+                    has_war_with = JNN
+				}
+			}
+			ai_will_do = {
+				factor = 99
+				modifier = {
+					factor = 999
+					has_completed_focus = CHI_reinforce_new_life_movement
+				}
+			}
+		}
+	}
+	he_zhonghan={
+		name =he_zhonghan
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_he_zhonghan.dds" }
+		}
+		allowed_civil_war = {
+			has_government = fascism
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = he_zhonghan
+			traits = { CHI_fascist_demagogue }
+			visible = {
+				OR = {
+					tag = CHI
+					has_country_flag = cooperation_with_nationalist_flag
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				if = {
+					limit = {
+						JAP = {
+							is_subject = no
+						}
+					}
+					NOT = { is_in_faction_with = JAP }
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					NOT = {
+						has_completed_focus = CHI_dissolve_bs
+					}
+				}
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+			}
+			on_add = {
+				owner = {
+				    set_country_flag = CHI_no_fascist
+				}
+			}
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+	}
+	yu_dawei={
+		name =yu_dawei
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_yu_dawei.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = yu_dawei
+			traits = { generic_war_industrialist }
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	chen_yibai={
+		name =chen_yibai
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_chen_yibai.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = chen_yibai
+			traits = { CHI_quartermaster_general }
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+							tag = PRC
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	carsun_chang={
+		name =carsun_chang
+		portraits = {
+			civilian={
+				large="gfx/leaders/CHI_leader_carsun_chang.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_carsun_chang.dds"
+			}
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_carsun_chang.dds" }
+		}
+		country_leader={
+			ideology = socialism
+			traits={ CHI_social_reformer }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = carsun_chang
+			traits = { generic_democratic_reformer }
+			allowed = {
+				original_tag = CHI
+			}
+			on_add = {
+				owner = {
+				    set_country_flag = CHI_no_demo
+				}
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+		}
+	}
+	zhang_bojun={
+		name =zhang_bojun
+		portraits = {
+			civilian={
+				small="gfx/interface/idea/CHI/CHI_idea_zhang_bojun.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = zhang_bojun
+			traits = { CHI_socialist_idealist }
+			allowed = {
+				original_tag = CHI
+			}
+			visible = {
+			    if = {
+				limit = {
+				original_tag = CHI
+				}
+				has_country_flag = zhang_bojun_available
+				}
+			}
+			available = { NOT = { has_country_flag = cdl_outlawed }}
+			on_add = {
+				owner = {
+				    set_country_flag = CHI_no_demo
+				}
+			}
+			do_effect = {
+				NOT = {
+					has_government = n_socialism
+				}
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	zhang_dongsun={
+		name =zhang_dongsun
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_zhang_dongsun.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = zhang_dongsun
+			traits = { CHI_progressive_activist }
+			allowed = {
+				NOT = {
+					has_available_idea_with_traits = { idea = CHI_progressive_activist limit = 1 }
+				}
+			}
+			available = {
+			    if = {
+				limit = {
+				original_tag = CHI
+				}
+				OR = {
+					has_government = n_socialism
+					has_government = democratic
+				}
+				NOT = { has_country_flag = dongsun_to_cdl }
+				}
+			}
+			on_add = {
+			}
+			do_effect = {
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	CHI_shen_junru={
+		name =CHI_shen_junru
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_shen_junru.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_shen_junru
+			traits = { CHI_socialist_novelist_RCM }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				else = {
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_zhang_naiqi={
+		name =CHI_zhang_naiqi
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_zhang_naiqi.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_zhang_naiqi
+			traits = { CHI_resistance_banker }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				if = {
+					limit = {
+						NOT = { tag = CHI tag = PRC }
+					}
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+					tag = PRC
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_zou_taofen={
+		name =CHI_zou_taofen
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_zou_taofen.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_zou_taofen
+			traits = { CHI_liberal_journalist }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				else = {
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_shi_liang={
+		name =CHI_shi_liang
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_shi_liang.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_shi_liang
+			traits = { generic_prominent_lawyer }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				if = {
+					limit = {
+						NOT = { tag = CHI tag = PRC }
+					}
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+					tag = PRC
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_li_gongpu={
+		name =CHI_li_gongpu
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_li_gongpu.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_li_gongpu
+			traits = { generic_editor }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				else = {
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_wang_zaoshi={
+		name =CHI_wang_zaoshi
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_wang_zaoshi.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_wang_zaoshi
+			traits = { CHI_ideological_crusader }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				NOT = {
+					has_government = neutrality
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				if = {
+					limit = {
+						NOT = { tag = CHI tag = PRC }
+					}
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+					tag = PRC
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+	CHI_qian_shali={
+		name =CHI_qian_shali
+		portraits = {
+			civilian = { small="gfx/interface/idea/CHI/CHI_idea_qian_shali.dds" }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = CHI_qian_shali
+			traits = { CHI_economic_organizer }
+			available = {
+				NOT = {
+					has_country_flag = seven_gentlemen_invited_to_other_country
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_invite_the_seven_gentlemen
+				}
+				if = {
+					limit = {
+						NOT = { tag = CHI tag = PRC }
+					}
+					has_completed_focus = PRC_invite_the_seven_gentlemen
+				}
+			}
+			visible = {
+				OR = {
+					tag = CHI
+					AND = {
+						NOT = {
+							tag = PRC
+						}
+						tag = event_target:WTT_communist_china
+					}
+					tag = PRC
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+		}
+	}
+    CHI_feng_yuxiang={
+		name=CHI_feng_yuxiang
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_feng_yuxiang.dds"
+			}
+		}
+		field_marshal={
+			traits={ generic_infantry_officer generic_old_guard generic_media_personality generic_harsh_leader generic_NRA_General_1stRank generic_inspirational_leader }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			desc=CHI_feng_yuxiang_desc
+		}
+	}
+	CHI_zhu_peide={
+		name="朱培德"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_zhu_peide.tga"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_zhu_peide
+			visible = {
+				NOT = {
+					has_country_flag = zhu_peide_dead
+				}
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+				NOT = { has_country_flag = zhu_peide_dead }
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_chief_drill_2 }
+            cost = 100
+            desc=CHI_zhu_peide_desc
+		}
+	}
+	CHI_tang_shengzhi={
+		name="唐生智"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_tang_shengzhi.tga"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_tang_shengzhi
+			visible = {
+				NOT = {
+					has_global_flag = fall_of_nanjing
+				}
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+		    available = {
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_army_chief_entrenchment_2 }
+            cost = 100
+            desc=CHI_tang_shengzhi_desc
+		}
+	}
+	CHI_zhu_shaoliang={
+		name="朱绍良"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zhu_shaoliang.dds"
+			}
+		}
+		field_marshal={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_General_2ndRank }
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+            desc=CHI_zhu_shaoliang_desc
+		}
+	}
+	CHI_liu_zhi={
+		name="刘峙"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liu_zhi.dds"
+			}
+		}
+		field_marshal={
+			traits={ generic_career_officer generic_infantry_officer generic_politically_connected generic_trait_cautious generic_NRA_General_2ndRank }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id = 5015
+            desc=CHI_liu_zhi_desc
+		}
+	}
+	CHI_gu_zhutong={
+		name=CHI_gu_zhutong
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_gu_zhutong.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_gu_zhutong.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_gu_zhutong
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_commando_2 }
+            cost = 100
+			ai_will_do = {
+				factor = 1
+			}
+			desc=CHI_gu_zhutong_desc
+		}
+		field_marshal={
+			traits={ generic_career_officer generic_infantry_officer generic_politically_connected generic_NRA_General_2ndRank }
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=5014
+            desc=CHI_gu_zhutong_desc
+		}
+	}
+	CHI_shang_zhen={
+		name="商震"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_shang_zhen.dds"
+			}
+		}
+		field_marshal={
+			traits={  generic_career_officer generic_infantry_officer generic_organizer CHI_thorough_planner generic_logistics_wizard generic_NRA_General_2ndRank }
+			skill=4
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=-1
+            desc=CHI_shang_zhen_desc
+		}
+	}
+	CHI_xu_yongchang={
+		name="徐永昌"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_xu_yongchang.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_xu_yongchan
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_army_chief_morale_2 }
+            cost = 100
+            desc=CHI_xu_yongchang_desc
+		}
+	}
+	CHI_jiang_dingwen={
+		name=CHI_jiang_dingwen
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_jiang_dingwen.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_jiang_dingwen.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_jiang_dingwen
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = {
+					has_global_flag = purged_by_yang_hucheng
+				}
+			}
+			traits = { generic_army_logistics_2 }
+            cost = 100
+			ai_will_do = {
+				factor = 190
+			}
+			desc=CHI_jiang_dingwen_desc
+		}
+		field_marshal={
+			traits={ generic_career_officer generic_infantry_officer generic_politically_connected generic_NRA_General_2ndRank }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=3010
+            desc=CHI_jiang_dingwen_desc
+		}
+	}
+	CHI_cheng_qian={
+		name="程潜"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_cheng_qian.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_cheng_qian.tga"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_cheng_qian
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			    NOT = {
+				    PRC = { has_completed_focus = PRC_contact_cheng_qian_focus }
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+			}
+			traits = { CHI_army_chief_planning_2 }
+            cost = 100
+			desc=CHI_cheng_qian_desc
+		}
+		field_marshal={
+			traits={ generic_war_hero generic_old_guard generic_career_officer generic_artillery_officer generic_NRA_General_2ndRank CHI_hidden_sympathies }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=3031
+            desc=CHI_cheng_qian_desc
+		}
+	}
+	CHI_chen_cheng={
+		name =CHI_chen_cheng
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_chen_cheng.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_chen_cheng.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_chen_cheng
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+                has_completed_focus = CHI_reform_military_academy
+				NOT = {
+					has_global_flag = purged_by_yang_hucheng
+				}
+				NOT = {
+                    has_war_with = TUU
+				}
+					NOT = { has_country_leader = { ruling_only = yes name = "陈诚" } }
+			}
+			traits = { CHI_army_chief_reform_3 CHI_army_regrouping_3 }
+            cost = 200
+			ai_will_do = {
+				factor = 200
+			}
+		}
+		corps_commander={
+			traits={  generic_organizer generic_politically_connected generic_career_officer generic_infantry_officer generic_artillery_officer generic_NRA_Lieut_General }
+			skill=4
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=2031
+		}
+	}
+	CHI_wei_lihuang={
+		name=CHI_wei_lihuang
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wei_lihuang.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_wei_lihuang.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_wei_lihuang
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = {
+					has_global_flag = purged_by_yang_hucheng
+				}
+			}
+			traits = { CHI_army_entrenchment_3 }
+            cost = 200
+			ai_will_do = {
+				factor = 200
+			}
+		}
+		corps_commander={
+			traits={  generic_career_officer generic_infantry_officer  CHI_inflexible_strategist    generic_war_hero   generic_trait_cautious  generic_organizer   generic_NRA_Lieut_General }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=2030
+		}
+	}
+	CHI_zhang_zhizhong={
+		name="张治中"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_leader_zhang_zhizhong.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+            traits={ generic_he_ping generic_Duban generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+            traits={ generic_he_ping generic_Duban generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+            traits={ generic_he_ping generic_Duban generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1965.1.1.1"
+            traits={ generic_he_ping generic_Duban generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+            traits={ generic_he_ping generic_Duban generic_difangshilipai }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		corps_commander={
+			traits={  generic_career_officer generic_infantry_officer generic_NRA_Lieut_General CHI_hidden_sympathies }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=4
+			legacy_id=-1
+		}
+	}
+	CHI_zhang_fakui={
+		name="张发奎"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zhang_fakui.dds"
+                small="gfx/interface/idea/CHI/CHI_idea_zhang_fakui.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_hsueh_yueh={
+		name="薛岳"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_hsueh_yueh.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_hsueh_yueh.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_hsueh_yueh
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_overround_planning_2 }
+            cost = 100
+			ai_will_do = {
+				factor = 300
+			}
+		}
+		corps_commander={
+			traits={ generic_brilliant_strategist  generic_trait_cautious  CHI_skilled_staffer   generic_career_officer generic_infantry_officer generic_NRA_Lieut_General generic_organizer  generic_adaptable }
+			skill=5
+			attack_skill=4
+			defense_skill=4
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=-1
+		}
+	}
+    CHI_liu_jianxu={
+		name="刘建绪"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liu_jianxu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_artillery_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_sun_lianzhong={
+		name=CHI_sun_lianzhong
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_sun_lianzhong.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_sun_lianzhong.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_sun_lianzhong
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_regrouping_3 }
+            cost = 100
+			ai_will_do = {
+				factor = 300
+			}
+		}
+		corps_commander={
+			traits={  generic_career_officer generic_infantry_officer generic_harsh_leader generic_trait_reckless generic_NRA_Lieut_General CHI_urban_assault_specialist }
+			skill=4
+			attack_skill=3
+			defense_skill=5
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_pang_bingxun={
+		name="庞炳勋"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_pang_bingxun.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=5016
+		}
+	}
+	CHI_luo_zhuoying={
+		name="罗卓英"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_luo_zhuoying.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_artillery_officer generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_shangguan_yunxiang={
+		name="上官云相"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_shangguan_yunxiang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_liu_maoen={
+		name="刘茂恩"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liu_maoen.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer CHI_engineer_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+    NEA_he_zhuguo={
+		name="何柱国"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_NEA_he_zhuguo.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_NEA_he_zhuguo.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_he_zhuguo
+			ledger = army
+			visible = {
+				OR = {
+					tag = NEA
+					tag = PRC
+				    AND = {
+						has_global_flag = nea_surrender
+						tag = event_target:WTT_current_china_leader
+						if = {
+							limit = {
+								NOT = {
+									tag = CHI
+								}
+							}
+							NOT = {
+								any_of_scopes = {
+									array = global.literally_china_including_chinese_puppets
+									tag = event_target:WTT_current_china_leader
+									NOT = {
+										tag = ROOT
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_army_cavalry_2 }
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_cavalry_officer generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_wu_qiwei={
+		name="吴奇伟"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wu_qiwei.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_li_jue={
+		name="李觉"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_jue.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_huang_zhenqiu={
+		name="黄镇球"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_huang_zhenqiu.tga"
+				large="gfx/leaders/CHI_army_huang_zhenqiu.jpg"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_huang_zhenqiu
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = {
+				generic_army_concealment_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_zeng_wanzhong={
+		name="曾万钟"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zeng_wanzhong.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	CHI_tang_enbo={
+		name=CHI_tang_enbo
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_tang_enbo.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_tang_enbo.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_tang_enbo
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_army_infantry_2 }
+            cost = 100
+			ai_will_do = {
+				factor = 400
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General generic_organizer generic_trickster }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=5013
+		}
+	}
+	CHI_hu_zongnan={
+		name="胡宗南"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_hu_zongnan.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_hu_zongnan.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_politically_connected generic_career_officer generic_infantry_officer generic_NRA_Lieut_General generic_organizer }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=5012
+		}
+	}
+	CHI_li_moan={
+		name="李默庵"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_moan.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_li_yannian={
+		name="李延年"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_yannian.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_yu_jishi={
+		name="俞济时"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_yu_jishi.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_li_yutang={
+		name="李玉堂"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_yutang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_guan_linzheng={
+		name="关麟征"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_guan_linzheng.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_trait_reckless generic_NRA_Major_General }
+			skill=3
+			attack_skill=4
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_song_xilian={
+		name="宋希濂"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_song_xilian.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_brilliant_strategist  generic_career_officer generic_infantry_officer generic_trickster CHI_urban_assault_specialist generic_NRA_Major_General }
+			skill=3
+			attack_skill=3
+			defense_skill=4
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_huang_jie={
+		name="黄杰"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_huang_jie.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_trait_cautious generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_wang_jingjiu={
+		name="王敬久"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wang_jingjiu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_liu_kan={
+		name="刘戡"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liu_kan.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_trait_reckless generic_NRA_Major_General }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=480303
+		}
+	}
+	CHI_wu_shi={
+		name="吴石"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wu_shi.jpg"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_trait_cautious generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_huo_kuizhang={
+		name="霍揆彰"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_huo_kuizhang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_huang_wei={
+		name="黄维"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_huang_wei.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General generic_trait_reckless generic_harsh_leader CHI_urban_assault_specialist }
+			skill=3
+			attack_skill=3
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_xia_chuzhong={
+		name="夏楚中"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_xia_chuzhong.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_wang_zhonglian={
+		name="王仲廉"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wang_zhonglian.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_li_xianzhou={
+		name="李仙洲"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_xianzhou.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_du_yuming={
+		name="杜聿明"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_du_yuming.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_du_yuming.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_du_yuming
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+                has_global_flag = recruit_du_yuming
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_armored_3 }
+            cost = 200
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer CHI_armor_officer  generic_brilliant_strategist    generic_career_officer   generic_organizer  generic_adaptable     generic_NRA_Major_General }
+			skill=5
+			attack_skill=4
+			defense_skill=4
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=-1
+			visible = { has_global_flag = recruit_du_yuming }
+		}
+	}
+	CHI_zheng_dongguo={
+		name=CHI_zheng_dongguo
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zheng_dongguo.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_zheng_dongguo.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_zheng_dongguo
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+                has_global_flag = recruit_zheng_dongguo
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_CombinedArms_2 }
+            cost = 100
+			ai_will_do = {
+				factor = 0.5
+			}
+		}
+		corps_commander={
+			traits={   generic_career_officer    CHI_expert_improviser  generic_trait_reckless  generic_trickster    generic_infantry_officer  generic_NRA_Major_General }
+			skill=3
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+			visible = { has_global_flag = recruit_zheng_dongguo }
+		}
+	}
+	CHI_fan_hanjie={
+		name="范汉杰"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_fan_hanjie.dds"
+			}
+		}
+		corps_commander={
+			traits={    generic_career_officer  generic_infantry_officer    generic_trickster     generic_NRA_Major_General }
+			skill=3
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=-1
+			visible = { has_global_flag = recruit_fan_hanjie }
+		}
+	}
+	CHI_wang_yaowu={
+		name=CHI_wang_yaowu
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_wang_yaowu.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_wang_yaowu.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_wang_yaowu
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+                has_global_flag = recruit_wang_yaowu
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_artillery_3 }
+			cost = 200
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_brilliant_strategist  generic_adaptable  generic_career_officer  generic_artillery_officer  CHI_bearer_of_artillery generic_trickster  generic_NRA_Major_General    generic_organizer }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+			visible = { has_global_flag = recruit_wang_yaowu }
+		}
+	}
+    CHI_ma_fawu={
+		name=CHI_ma_fawu
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_ma_fawu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_han_deqin={
+		name=CHI_han_deqin
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_han_deqin.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_dai_anlan={
+		name="戴安澜"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_dai_anlan.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_trait_reckless CHI_armor_officer  generic_career_officer   generic_infantry_officer      CHI_fortress_buster      generic_NRA_Major_General }
+			skill=3
+			attack_skill=5
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=420526
+			visible = { has_global_flag = recruit_dai_anlan }
+		}
+	}
+	CHI_qiu_qingquan={
+		name="邱清泉"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_qiu_qingquan.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_trait_reckless  generic_harsh_leader   generic_career_officer  CHI_engineer_officer   generic_trickster        generic_NRA_Major_General }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=490110
+			visible = { has_global_flag = recruit_qiu_qingquan }
+		}
+	}
+	CHI_liao_yaoxiang={
+		name="廖耀湘"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liao_yaoxiang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer  generic_career_officer  generic_brilliant_strategist    CHI_armor_officer  generic_trait_cautious  generic_organizer    generic_NRA_Major_General }
+			skill=4
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=4
+			legacy_id=-1
+			visible = { has_global_flag = recruit_liao_yaoxiang }
+		}
+	}
+	CHI_zhang_lingfu={
+		name="张灵甫"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zhang_lingfu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_trait_reckless  generic_harsh_leader  generic_politically_connected    generic_infantry_officer  generic_career_officer    generic_NRA_Major_General }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=470516
+			visible = { has_global_flag = recruit_zhang_lingfu }
+		}
+	}
+	CHI_sun_liren={
+		name="孙立人"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_sun_liren.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_sun_liren.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_sun_liren
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+                has_global_flag = recruit_sun_liren
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_army_eastern_rommel }
+			cost = 200
+			ai_will_do = {
+				factor = 5000
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_brilliant_strategist  generic_infantry_officer  CHI_jungle_rat   generic_career_officer    generic_trickster     generic_NRA_Major_General  generic_adaptable }
+			skill=5
+			attack_skill=5
+			defense_skill=4
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=-1
+			visible = { has_global_flag = recruit_sun_liren }
+		}
+	}
+    CHI_tao_Zhiyue={
+		name="陶峙岳"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_tao_Zhiyue.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer CHI_hidden_sympathies }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+    CHI_liu_yuzhang={
+		name="刘玉章"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_liu_yuzhang.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_rising_young_officer generic_trait_reckless generic_career_officer generic_infantry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+			visible = { has_global_flag = recruit_liu_yuzhang }
+		}
+	}
+    CHI_chen_mingren={
+		name=CHI_chen_mingren
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_chen_mingren.dds"
+			}
+		}
+		corps_commander={
+			traits={   CHI_hidden_sympathies generic_career_officer generic_war_hero generic_infantry_officer  generic_trait_reckless  generic_NRA_Lieut_General CHI_fortress_buster }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=-1
+			visible = { has_global_flag = chen_mingern_graduated }
+		}
+	}
+    CHI_li_mi={
+		name=CHI_li_mi
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_li_mi.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Major_General CHI_engineer_officer generic_extra_specialized_skill }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+			visible = { has_global_flag = li_mi_promoted_flag }
+		}
+	}
+	CHI_chen_shaokuan={
+		name =CHI_chen_shaokuan
+		portraits={
+			army={
+				large="gfx/leaders/CHI_navy_chen_shaokuan.dds"
+                small="gfx/interface/idea/CHI/CHI_idea_chen_shaokuan.dds"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = CHI_chen_shaokuan
+			visible = {
+				or = { tag = event_target:WTT_current_china_leader tag = event_target:WTT_communist_china }
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+							tag = PRC
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_navy_chief_decisive_battle_3 }
+			cost = 200
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		navy_leader={
+			traits={ CHI_navy_media_personality CHI_naval_lineage }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			maneuvering_skill=2
+			coordination_skill=3
+			legacy_id=-1
+		}
+	}
+	CHI_gui_yongqing={
+		name =CHI_gui_yongqing
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_gui_yongqing.dds" }
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = CHI_gui_yongqing
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+				has_completed_focus = CHI_navy_reorganization
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_navy_chief_commerce_raiding_1 }
+			cost = 50
+		}
+	}
+	CHI_shen_honglie={
+		name=CHI_shen_honglie
+		portraits={
+			army={
+				large="gfx/leaders/CHI_navy_shen_honglie.dds"
+				small="gfx/interface/idea/CHI/CHI_idea_shen_honglie.dds"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_shen_honglie
+            ledger = navy
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_grand_fleet_proponent }
+			cost = 150
+		}
+		navy_leader={
+			traits={ CHI_bold  }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			maneuvering_skill=2
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_chen_xunyong={
+		name="陈训泳"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_chen_xunyong.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_chen_xunyong
+            ledger = navy
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_naval_theorist }
+			cost = 100
+		}
+	}
+	CHI_chen_jiliang={
+		name="陈季良"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_navy_chen_jiliang.dds"
+                small="gfx/interface/idea/CHI/CHI_idea_chen_jiliang.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_chen_jiliang
+            ledger = navy
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_navy_capital_ship_2 }
+			cost = 100
+		}
+		navy_leader={
+			traits={ CHI_bold CHI_naval_lineage }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			maneuvering_skill=2
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_chan_chak={
+		name="陈策"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_navy_chan_chak.dds"
+                small="gfx/interface/idea/CHI/CHI_idea_chan_chak.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_chan_chak
+            ledger = navy
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_navy_screen_2 }
+			cost = 100
+		}
+		navy_leader={
+			traits={ CHI_bold }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			maneuvering_skill=3
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+	CHI_liang_xuzhao={
+		name=CHI_liang_xuzhao
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_liang_xuzhao.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_liang_xuzhao
+            ledger = navy
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+				has_completed_focus = CHI_chinese_special_force
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_navy_amphibious_assault_2 }
+			cost = 100
+		}
+	}
+	CHI_zhou_zhirou={
+		name =CHI_zhou_zhirou
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_zhou_zhirou.dds" }
+		}
+		advisor={
+			slot = air_chief
+			idea_token = CHI_zhou_zhirou
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_air_chief_reform_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+				modifier = {
+				factor = 0
+				has_completed_focus = CHI_reorganization_of_the_air_force_focus
+				}
+			}
+		}
+	}
+	CHI_wang_shuming={
+		name =CHI_wang_shuming
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_wang_shuming.dds" }
+		}
+		advisor={
+			slot = air_chief
+			idea_token = CHI_wang_shuming
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			available = {
+				has_completed_focus = CHI_reorganization_of_the_air_force_focus
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_air_chief_ground_support_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 500
+			}
+		}
+	}
+	CHI_chen_qingyun={
+		name=CHI_chen_qingyun
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_chen_qingyun.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_chen_qingyun
+            ledger = air
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_close_air_support_proponent }
+			cost = 150
+		}
+	}
+	CHI_huang_bingheng={
+		name="黄秉衡"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_huang_bingheng.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_huang_bingheng
+            ledger = air
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_air_warfare_theorist }
+			cost = 100
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	CHI_mao_bangchu={
+		name=CHI_mao_bangchu
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_mao_bangchu.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_mao_bangchu
+            ledger = air
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_air_close_air_support_2 }
+			cost = 100
+		}
+	}
+	CHI_gao_zihang={
+		name=CHI_gao_zihang
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_gao_zihang.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = CHI_gao_zihang
+            ledger = air
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { CHI_air_air_superiority_3 }
+			cost = 200
+		}
+	}
+	CHI_chiang_paili={
+		name=CHI_chiang_paili
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_chiang_paili.dds"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_chiang_paili
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = { NOT = { has_global_flag = chiang_baili_dead } NOT = { has_government = communism } }
+			traits = { generic_mass_assault_expert }
+            cost = 150
+			ai_will_do = {
+				factor = 300
+			}
+		}
+	}
+	CHI_yang_jie={
+		name="杨杰"
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_yang_jie.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_yang_jie
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			traits = { generic_grand_battle_plan_expert }
+			cost = 150
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	CHI_xiong_shihui={
+		name=CHI_xiong_shihui
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_xiong_shihui.dds"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_xiong_shihui
+            ledger = army
+			visible = {
+				tag = event_target:WTT_current_china_leader
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = {
+                    has_war_with = XXO
+				}
+			}
+			traits = { generic_military_theorist }
+            cost = 100
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	CHI_wu_dayou={
+		name=CHI_wu_dayou
+		portraits={
+			army={
+				small="gfx/interface/idea/CHI/CHI_idea_wu_dayou.dds"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_wu_dayou
+            ledger = army
+			traits = { CHI_nuclear_scientist }
+            cost = 100
+			research_bonus = {
+				nuclear = 0.15
+			}
+			allowed = {
+				OR = {
+					tag = MAN
+					original_tag = CHI
+					is_chinese_warlord = yes
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						OR = {
+							is_chinese_warlord = yes
+							tag = MAN
+						}
+					}
+					has_completed_focus = WRL_academy_rf_focus
+					else = {
+						has_completed_focus = CHI_academy_rf_focus
+					}
+				}
+			}
+		}
+	}
+    CHI_alexander_von_falkenhausen={
+		name =CHI_alexander_von_falkenhausen
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_alexander_von_falkenhausen.dds" }
+		}
+		allowed_civil_war = {
+			NOT = {
+				OR = {
+					has_government = communism
+					has_government = n_socialism
+				}
+			}
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_alexander_von_falkenhausen
+			ledger = army
+			visible = {
+				GER = {
+					NOT = {
+						is_enemy_ideology = yes
+					}
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_war_with = GER
+						has_global_flag = falkenhausen_recalled
+						has_government = communism
+						has_government = n_socialism
+					}
+				}
+			}
+			traits = { CHI_foreign_military_theorist }
+			research_bonus = {
+				infantry_weapons = 0.1
+			}
+			modifier = {
+                experience_gain_factor = 0.1
+				army_org_factor = 0.05
+				planning_speed = 0.1
+                max_planning = 0.05
+				experience_gain_army_unit_factor = 0.1
+                training_time_army_factor = -0.1
+			}
+			ai_will_do = {
+			factor = 9999
+			}
+			cost = 150
+		}
+	}
+	CHI_claire_chennault={
+		name =CHI_claire_chennault
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_claire_chennault.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_claire_chennault
+			ledger = air
+			visible = {
+				USA = {
+					NOT = {
+						is_enemy_ideology = yes
+					}
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				chennalt_check = yes
+			}
+			traits = { CHI_air_tactical_bombing_3 }
+			research_bonus = {
+				air_equipment = 0.1
+			}
+			modifier = {
+			    air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	joseph_stilwell_chi={
+		name ="约瑟夫·沃伦·史迪威"
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_joseph_stilwell_chi.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = joseph_stilwell_chi
+			ledger = army
+			visible = {
+				USA = {
+					NOT = {
+						is_enemy_ideology = yes
+					}
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				stilwell_check = yes
+				has_global_flag = stilwell_to_china_flag
+				if = {
+				limit = { is_historical_focus_on = yes }
+				has_global_flag = chi_canyu
+				}
+			}
+			traits = { CHI_china_zhanqu_canmouzhang }
+			research_bonus = {
+				artillery = 0.1
+			}
+			modifier = {
+			    max_command_power = 50
+		        command_power_gain_mult = 0.15
+				army_org_factor = 0.05
+				planning_speed = 0.1
+				max_planning = 0.05
+				experience_gain_army = 0.1
+				land_reinforce_rate = 0.05
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 999
+			}
+		}
+	}
+    albert_coady_wedemeyer={
+		name =albert_coady_wedemeyer
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_albert_coady_wedemeyer.tga" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = albert_coady_wedemeyer
+			ledger = army
+			visible = {
+				USA = {
+					NOT = {
+						is_enemy_ideology = yes
+					}
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+			    wedemeyer_check = yes
+				if = {
+				limit = { is_historical_focus_on = yes }
+				has_global_flag = chi_canyu
+				}
+			}
+			traits = { CHI_china_zhanqu_canmouzhang_weidemai }
+			research_bonus = {
+				armor = 0.1
+			}
+			modifier = {
+			    max_command_power = 50
+		        command_power_gain_mult = 0.15
+				attrition = -0.1
+				supply_consumption_factor = -0.1
+				no_supply_grace = 48
+				experience_gain_army_unit_factor = 0.1
+				land_reinforce_rate = 0.05
+			}
+			ai_will_do = {
+				factor = 999
+			}
+			cost = 200
+		}
+	}
+	CHI_pavel_zhigarev={
+		name =CHI_pavel_zhigarev
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_pavel_zhigarev.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_pavel_zhigarev
+			ledger = air
+			visible = {
+				if = {
+					limit = {
+						SOV = { has_government = communism }
+					}
+					NOT = {
+						has_government = fascism
+					}
+				}
+				else = {
+					SOV = { NOT = { is_enemy_ideology = yes } }
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				NOT = { has_global_flag = second_term_sov_advisor }
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				has_completed_focus = CHI_the_soviet_volunteer_group
+				NOT = { SOV = { has_country_flag = counter_purge } }
+				NOT = { has_global_flag = SOV_recalled_advisors }
+				NOT = { has_war_with = SOV }
+			}
+			traits = { CHI_air_air_combat_training_2 }
+			research_bonus = {
+				air_equipment = 0.1
+			}
+			modifier = {
+			    air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	CHI_cuikefu={
+		name =CHI_cuikefu
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_cuikefu.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_cuikefu
+			ledger = army
+			visible = {
+				if = {
+					limit = {
+						SOV = { has_government = communism }
+					}
+					NOT = {
+						has_government = fascism
+					}
+				}
+				else = {
+					SOV = { NOT = { is_enemy_ideology = yes } }
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				NOT = { has_global_flag = second_term_sov_advisor }
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				has_completed_focus = CHI_the_soviet_volunteer_group
+				NOT = { SOV = { has_country_flag = counter_purge } }
+				NOT = { has_global_flag = SOV_recalled_advisors }
+				NOT = { has_war_with = SOV }
+			}
+			traits = { CHI_waiguolilunjia_2 }
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	CHI_gregory_thor={
+		name =CHI_gregory_thor
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_gregory_thor.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_gregory_thor
+			ledger = air
+			visible = {
+				if = {
+					limit = {
+						SOV = { has_government = communism }
+					}
+					NOT = {
+						has_government = fascism
+					}
+				}
+				else = {
+					SOV = { NOT = { is_enemy_ideology = yes } }
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				has_global_flag = second_term_sov_advisor
+				NOT = { has_global_flag = third_term_sov_advisor }
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = { has_country_flag = purge_2_group_a }
+				NOT = { has_global_flag = SOV_recalled_advisors }
+				NOT = { has_war_with = SOV }
+			}
+			traits = { CHI_air_chief_safety_2 }
+			research_bonus = {
+				air_equipment = 0.1
+			}
+			modifier = {
+			    air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	CHI_petr_anisimov={
+		name =CHI_petr_anisimov
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_petr_anisimov.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_petr_anisimov
+			ledger = air
+			visible = {
+				if = {
+					limit = {
+						SOV = { has_government = communism }
+					}
+					NOT = {
+						has_government = fascism
+					}
+				}
+				else = {
+					SOV = { NOT = { is_enemy_ideology = yes } }
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				has_global_flag = third_term_sov_advisor
+				NOT = { has_global_flag = fourth_term_sov_advisor }
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				NOT = { has_country_flag = purge_2_group_a }
+				NOT = { has_global_flag = SOV_recalled_advisors }
+				NOT = { has_war_with = SOV }
+			}
+			traits = { generic_air_chief_reform_2 }
+			research_bonus = {
+				air_equipment = 0.1
+			}
+			modifier = {
+			    air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	chi_zhao_hongwenguo={
+		name="赵洪文国"
+		portraits={
+			army={
+				large="gfx/leaders/CHI_army_zhao_hongwenguo.png"
+				small="gfx/interface/idea/CHI/CHI_idea_zhao_hongwenguo.png"
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_trait_reckless CHI_hill_fighter }
+			skill=1
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=3
+			legacy_id=-1
+            visible = { date > 1937.7.1 }
+		}
+	}
+	CHI_chen_jieru={
+		name=CHI_chen_jieru
+		gender = female
+		portraits={
+			civilian={
+				small="gfx/interface/idea/CHI/CHI_idea_chenjieru.dds"
+			}
+		}
+		advisor = {
+            slot = political_advisor
+            idea_token = CHI_chen_jieru
+            ledger = civilian
+            traits = { CHI_chien_jieru_trait }
+			available = {
+				has_country_leader = {
+					character = CHI_chiang_kai_shek
+					ruling_only = yes
+				}
+                has_country_flag = mei_ling_divorced
+				has_country_flag = chen_jieru_reconciled
+            }
+			cost = 75
+			ai_will_do = {
+           	 	base = 750
+        	}
+        }
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			visible = { always = no }
+		}
+	}
+	CHI_pavel_rychagov={
+		name =CHI_pavel_rychagov
+		portraits = {
+			army = { small="gfx/interface/idea/CHI/CHI_idea_pavel_rychagov.dds" }
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_pavel_rychagov
+			ledger = air
+			visible = {
+				if = {
+					limit = {
+						SOV = { has_government = communism }
+					}
+					NOT = {
+						has_government = fascism
+					}
+				}
+				else = {
+					SOV = { NOT = { is_enemy_ideology = yes } }
+				}
+				OR = {
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						NOT = {
+							any_neighbor_country = {
+								tag = var:global.previous_china_leader
+							}
+						}
+					}
+					tag = var:global.previous_china_leader
+				}
+				has_global_flag = fourth_term_sov_advisor
+				if = {
+					limit = {
+						NOT = {
+							tag = CHI
+						}
+					}
+					NOT = {
+						any_of_scopes = {
+							array = global.literally_china_including_chinese_puppets
+							tag = event_target:WTT_current_china_leader
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+				}
+			}
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed = {
+				original_tag = CHI
+			}
+			available = {
+				NOT = { has_country_flag = purge_2_group_a }
+				NOT = { has_global_flag = SOV_recalled_advisors }
+				NOT = { has_war_with = SOV }
+			}
+			traits = { CHI_air_chief_all_weather_2 }
+			research_bonus = {
+				air_equipment = 0.1
+			}
+			modifier = {
+			    air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	german_advisors={
+		name =german_advisors
+		allowed_civil_war = {
+			NOT = {
+				OR = {
+					has_government = communism
+					has_government = n_socialism
+				}
+			}
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = german_advisors
+			ledger = army
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_war_with = GER
+						has_global_flag = falkenhausen_recalled
+						has_government = communism
+						has_government = n_socialism
+					}
+				}
+			}
+			modifier = {
+			    land_doctrine_cost_factor = -0.1
+			}
+		}
+	}
+}

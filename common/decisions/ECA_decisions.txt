@@ -1,0 +1,691 @@
+# ECA 决议
+
+RCM_ECA_suiyuan_campaign_cat = { #绥远战役
+
+	RCM_ECA_suiyuan_campaign_mission = { #绥远攻势
+
+		icon = infiltrate_state
+
+		#fire_only_once = yes
+
+		allowed = {
+
+			tag = ECA
+
+		}
+
+		days_mission_timeout = 85
+
+		#targets = { USA }
+
+		#target_trigger = { #targeted mission doesn't work
+
+		#	FROM = {
+
+		#		tag = USA
+
+		#	}
+
+		#}
+
+		is_good = no
+
+		activation = {
+
+			tag = ECA
+
+			always = no #activate by FOCUS
+
+		}
+
+		available = {
+
+			#if = {
+
+			#	limit = {
+
+			#		SUY = {
+
+			#			owns_state = 1014
+
+			#		}
+
+			#		controls_state = 1014
+
+			#	}
+
+			#}
+
+			controls_state = 1020
+
+			controls_state = 1019
+
+		}
+
+		#cancel_if_not_visible = yes
+
+		complete_effect = { #run effect on selection
+
+			if = {
+
+				limit = {
+
+					country_exists = SUY
+
+				}
+
+				ECA = {
+
+					country_event = MEN.0 #Mengjiang victory at Suiyuan #YES PLM
+
+				}
+
+				hidden_effect = {
+
+					SUY = {
+
+						country_event = MEN.0
+
+					}
+
+					SHX = { #晋系
+
+						country_event = MEN.0
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.0
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					white_peace = SUY
+
+					transfer_state = 1014
+
+					transfer_state = 746
+
+					transfer_state = 621
+
+					transfer_state = 1019
+
+					transfer_state = 1020
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+			else = {
+
+				ECA = {
+
+					country_event = MEN.2 #Mengjiang victory at Suiyuan #NO PLM
+
+				}
+
+				hidden_effect = {
+
+					if = {
+
+						limit = {
+
+							has_war_with = SHX
+
+						}
+
+					    SHX = { #晋系
+
+							country_event = MEN.2
+
+						}
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.2
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					if = {
+
+						limit = {
+
+							has_war_with = SHX
+
+						}
+
+						effect_tooltip = { 
+
+							white_peace = SHX
+
+						}
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 621
+
+						}
+
+					    transfer_state = 621
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 746
+
+						}
+
+					    transfer_state = 746
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 1019
+
+						}
+
+					    transfer_state = 1019
+
+					}
+
+					if = {
+
+						limit = {
+
+							controls_state = 1020
+
+						}
+
+					    transfer_state = 1020
+
+					}
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+		}
+
+
+
+		timeout_effect = { #run effect when removed/finished
+
+			if = {
+
+				limit = {
+
+					country_exists = SUY
+
+				}
+
+				ECA = {
+
+					country_event = MEN.1 #SHX victory at Suiyuan #YES PLM
+
+				}
+
+				hidden_effect = {
+
+					SUY = {
+
+						country_event = MEN.1
+
+					}
+
+					SHX = { #晋系
+
+						country_event = MEN.1
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.1
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					white_peace = SUY
+
+				}
+
+				custom_effect_tooltip = Uti_possidetis_tt
+
+				effect_tooltip = {
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+			else = {
+
+				ECA = {
+
+					country_event = MEN.3 #SHX victory at Suiyuan #NO PLM
+
+				}
+
+				hidden_effect = {
+
+					SHX = { #晋系
+
+						country_event = MEN.3
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.3
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					white_peace = SHX
+
+				}
+
+				custom_effect_tooltip = Uti_possidetis_tt
+
+				effect_tooltip = {
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+			OR = {
+
+				has_global_flag = suiyuan_campaign_failed_flag
+
+				JAP = { #日本
+
+					has_war_with = event_target:WTT_current_china_leader
+
+				}
+
+			}
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+	RCM_ECA_suiyuan_campaign_hold_our_lands = { #守住我们的领土
+
+		icon = infiltrate_state
+
+		#fire_only_once = yes
+
+		allowed = {
+
+			tag = ECA
+
+		}
+
+		days_mission_timeout = 85
+
+		#targets = { USA }
+
+		#target_trigger = { #targeted mission doesn't work
+
+		#	FROM = {
+
+		#		tag = USA
+
+		#	}
+
+		#}
+
+		is_good = yes
+
+		activation = {
+
+			tag = ECA
+
+			always = no #activate by FOCUS
+
+		}
+
+		available = {
+
+			#if = {
+
+				#limit = {
+
+				#	country_exists = PLM
+
+				#	PLM = {
+
+				#		owns_state = 1014
+
+				#	}
+
+				#}
+
+				ECA = {
+
+					#OR = {
+
+                        #AND = {
+
+						#	NOT = { controls_state = 621 }
+
+					    #    NOT = { controls_state = 746 }
+
+						#	NOT = { controls_state = 1019 }
+
+						#	NOT = { controls_state = 1014 }
+
+						#	NOT = { controls_state = 1020 }
+
+						#}
+
+					    OR = {
+
+							NOT = { has_full_control_of_state = 612 }
+
+							NOT = { controls_state = 1014 }
+
+							NOT = { has_full_control_of_state = 1062 }
+
+						}
+
+					#}
+
+				}
+
+			#}
+
+			#else = {
+
+			#	ECA = {
+
+			#		owns_state = 1014
+
+			#		OR = {
+
+            #            AND = {
+
+			#				NOT = { controls_state = 621 }
+
+			#		        NOT = { controls_state = 746 }
+
+			#				NOT = { controls_state = 1019 }
+
+			#				NOT = { controls_state = 1020 }
+
+			#				NOT = { controls_state = 1014 }
+
+			#			}
+
+			##		    NOT = { has_full_control_of_state = 612 }
+
+			#		}
+
+			#	}
+
+			#}
+
+		}
+
+		#cancel_if_not_visible = yes
+
+		complete_effect = { #run effect on selection
+
+			if = {
+
+				limit = {
+
+					country_exists = SUY
+
+				}
+
+				ECA = {
+
+					country_event = MEN.1 #SHX victory at Suiyuan #YES PLM
+
+				}
+
+				hidden_effect = {
+
+					SUY = {
+
+						country_event = MEN.1
+
+					}
+
+					SHX = { #晋系
+
+						country_event = MEN.1
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.1
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					white_peace = SUY
+
+					SUY = {
+
+						transfer_state = 1014
+
+						transfer_state = 746
+
+						transfer_state = 621
+
+						transfer_state = 1019
+
+						transfer_state = 1020
+
+					}
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+			else = {
+
+				hidden_effect = {
+
+					ECA = {
+
+						country_event = MEN.3 #SHX victory at Suiyuan #NO PLM
+
+					}
+
+					SHX = { #晋系
+
+						country_event = MEN.3
+
+					}
+
+					JAP = { #日本
+
+						country_event = MEN.3
+
+					}
+
+				}
+
+				effect_tooltip = {
+
+					white_peace = SHX
+
+					SHX = { #晋系
+
+						transfer_state = 1014
+
+					}
+
+					remove_ideas = MEN_limited_war
+
+				}
+
+			}
+
+			set_global_flag = suiyuan_campaign_failed_flag
+
+		}
+
+		timeout_effect = { #run effect when removed/finished
+
+
+
+		}
+
+		cancel_trigger = { #will abort
+
+			JAP = { #日本
+
+				has_war_with = event_target:WTT_current_china_leader
+
+			}
+
+		}
+
+	}
+
+	RCM_SHX_suiyuan_campaign_mission = { #绥远攻势
+
+		icon = infiltrate_state
+
+		#fire_only_once = yes
+
+		allowed = {
+
+			is_literally_china = yes
+
+		}
+
+		days_mission_timeout = 85
+
+		is_good = no
+
+		activation = {
+
+			always = no #activate by FOCUS
+
+		}
+
+		available = {
+
+			ECA = {
+
+				OR = {
+
+					NOT = {
+
+						controls_state = 1014
+
+					}
+
+					NOT = { has_full_control_of_state = 612 }
+
+					NOT = { has_full_control_of_state = 1062 }
+
+				}
+
+			}
+
+		}
+
+		#cancel_if_not_visible = yes
+
+		complete_effect = { #run effect on selection
+
+			effect_tooltip = {
+
+				ECA = {
+
+                    white_peace = ROOT
+
+					remove_ideas = MEN_limited_war
+
+				}	
+
+				transfer_state = 1014
+
+				transfer_state = 746
+
+				transfer_state = 621
+
+				transfer_state = 1019	
+
+				transfer_state = 1020
+
+			}
+
+		}
+
+		timeout_effect = { #run effect when removed/finished
+
+
+
+		}
+
+		cancel_trigger = { #will abort
+
+			JAP = { #日本
+
+				has_war_with = event_target:WTT_current_china_leader
+
+			} 
+
+		}
+
+	}
+
+}

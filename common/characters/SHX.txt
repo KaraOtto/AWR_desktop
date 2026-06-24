@@ -1,44 +1,38 @@
-#政治顾问
-characters = {	
-	SHX_yan_xishan = {	#阎锡山
-		name=SHX_yan_xishan 
+characters={
+	SHX_yan_xishan={
+		name=SHX_yan_xishan
 		portraits={
 			civilian={
-				large="GFX_Portrait_SHX_Yan_Xishan"
+				large="gfx/leaders/SHX_army_leader_yan_xishan.dds"
 			}
 			army={
-				large="GFX_Portrait_SHX_Yan_Xishan"
-				small="GFX_idea_SHX_yan_xishan"
+				large="gfx/leaders/SHX_army_leader_yan_xishan.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_yan_xishan.dds"
 			}
 		}
 		country_leader={
 			ideology=despotism
 			expire="1960.5.23"
-			#traits={ xishan_doctrine }
 			id=-1
 		}
 		country_leader={
 			ideology=fascism_ideology
 			expire="1960.5.23"
-			#traits={ xishan_doctrine }
 			id=-1
 		}
 		country_leader={
 			ideology=conservatism
 			expire="1960.5.23"
-			#traits={ xishan_doctrine }
 			id=-1
 		}
 		country_leader={
 			ideology=n_socialism_ideology
 			expire="1960.5.23"
-			#traits={ xishan_doctrine }
 			id=-1
 		}
 		country_leader={
 			ideology=marxism
 			expire="1960.5.23"
-			#traits={ xishan_doctrine }
 			id=-1
 		}
 		advisor={
@@ -48,18 +42,14 @@ characters = {
 				original_tag = SHX
 			}
 			traits = {
-				army_chief_old_guard
+				generic_army_chief_old_guard
 			}
 			ai_will_do = {
 				factor = 100
-			}		
+			}
 		}
 		field_marshal={
-			traits={ 
-				old_guard 
-				logistics_wizard 
-				NRA_General_1stRank 
-			}
+			traits={ generic_old_guard generic_logistics_wizard generic_NRA_General_1stRank }
 			skill=3
 			attack_skill=1
 			defense_skill=3
@@ -69,46 +59,408 @@ characters = {
 			desc=SHX_yan_xishan_desc
 		}
 	}
-
-	SHX_bo_yibo={ #guo
-		name= SHX_bo_yibo
+	SHX_fu_zuoyi={
+		name="傅作义"
 		portraits={
 			army={
-				large="GFX_Portrait_SHX_Bo_Yibo"
-				small="GFX_idea_SHX_bo_yibo"
+				large="gfx/leaders/SHX_army_leader_fu_zuoyi.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_fu_zuoyi.tga"
+			}
+		}
+        country_leader={
+			ideology=despotism
+			expire="1960.5.23"
+			traits={ SHX_fu_zuoyi_doctrine generic_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1960.5.23"
+			traits={ SHX_fu_zuoyi_doctrine generic_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1960.5.23"
+			traits={ SHX_fu_zuoyi_doctrine generic_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1960.5.23"
+			traits={ SHX_fu_zuoyi_doctrine generic_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1960.5.23"
+			traits={ SHX_fu_zuoyi_doctrine generic_veteran_of_central_plains_war }
+			id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = SHX_fu_zuoyi
+			allowed = {
+				always = yes
+			}
+			traits = {
+				generic_army_chief_defensive_3
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 200
+                modifier = {
+					factor = 200
+					has_war = yes
+				}
+			}
+		}
+        advisor={
+			slot = theorist
+			idea_token = SHX_fu_zuoyi_theorist
+			ledger = army
+			allowed = {
+				always = yes
+			}
+			traits = {
+				generic_military_theorist
+			}
+			cost = 100
+		}
+		field_marshal={
+			traits={ generic_brilliant_strategist  generic_adaptable  generic_career_officer generic_infantry_officer generic_war_hero generic_NRA_General_2ndRank generic_trickster }
+			skill=5
+			attack_skill=4
+			defense_skill=5
+			planning_skill=4
+			logistics_skill=5
+			legacy_id=4002
+            desc=SHX_fu_zuoyi_desc
+		}
+	}
+	SHX_yang_aiyuan={
+		name=SHX_yang_aiyuan
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_yang_aiyuan.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_yang_aiyuan.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_yang_aiyuan
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_logistics_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		field_marshal={
+			traits={ generic_career_officer generic_extra_specialized_skill generic_NRA_General_2ndRank }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			desc=SHX_yang_aiyuan_desc
+		}
+	}
+	SHX_sun_chu={
+		name=SHX_sun_chu
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_sun_chu.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_sun_chu.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_sun_chu
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_infantry_officer generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SHX_wang_jingguo={
+		name=SHX_wang_jingguo
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_wang_jingguo.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_wang_jingguo.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_wang_jingguo
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Lieut_General }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SHX_li_fuying={
+		name=SHX_li_fuying
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_li_fuying.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_li_fuying.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_li_fuying
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+			    generic_army_entrenchment_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_trait_cautious generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=371002
+		}
+	}
+	SHX_zhao_chengshou={
+		name=SHX_zhao_chengshou
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_zhao_chengshou.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_zhao_chengshou.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_zhao_chengshou
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_cavalry_2
+			}
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer generic_extra_specialized_skill generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	SHX_zhou_dai={
+		name=SHX_zhou_dai
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_zhou_dai.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_zhou_dai
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_artillery_2
+			}
+			cost = 100
+		}
+	}
+	SHX_chen_changjie={
+		name=SHX_chen_changjie
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_chen_changjie.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_chen_changjie.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_chen_changjie
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_army_concealment_2
+			}
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_extra_specialized_skill generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+    SHX_Dong_Qiwu={
+		name=SHX_Dong_Qiwu
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_Dong_Qiwu.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_Dong_Qiwu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+		}
+		advisor={
+			slot = high_command
+			idea_token =  SHX_Dong_Qiwu
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}
+			traits = {
+				generic_army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+    SHX_Sun_Lanfeng={
+		name=SHX_Sun_Lanfeng
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_Sun_Lanfeng.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_Sun_Lanfeng.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+		}
+		advisor={
+			slot = high_command
+			idea_token = SHX_Sun_Lanfeng
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}
+			traits = {
+				generic_army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	SHX_Peng_Yubin={
+		name=SHX_Peng_Yubin
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_Peng_Yubin.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_cavalry_officer generic_NRA_Major_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+		}
+	}
+	SHX_Bo_Yibo={
+		name="薄一波"
+		portraits={
+			army={
+				large="gfx/leaders/SHX_army_Bo_Yibo.dds"
+				small="gfx/interface/idea/SHX/SHX_idea_Bo_Yibo.dds"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = SHX_Bo_Yibo
-			
 			available = {
 				if = {
-					limit = {
-						original_tag = SHX
-						not = { 
-							has_government = communism 
-						}
-					}
-					has_global_flag = has_completed_focus_SHX_United_front
-					not = { 
-						has_war_with = PRC
-					}
+				limit = {
+				original_tag = SHX
+				not = { has_government = communism }
 				}
-				not = { 
-					has_idea = PRC_gaowin 
-				}				
+				has_global_flag = has_completed_focus_SHX_United_front
+				not = { has_war_with = event_target:WTT_communist_china }
+				}
+				not = { has_idea = PRC_gaowin }
 			}
-			traits = { 
-				lieutenant_of_industry 
-			}			
-			
+			traits = { SHX_lieutenant_of_industry }
+			allowed = {
+			}
 			on_add = {
 				owner = {
 					if = {
 						limit = {
 						    has_idea = CHI_communist_in_government
-						}	
+						}
 						PRC_support_up = yes
 					}
 				}
@@ -118,55 +470,243 @@ characters = {
 					if = {
 						limit = {
 						    has_idea = CHI_communist_in_government
-						}	
+						}
 					}
 					PRC_support_down = yes
 				}
 			}
 			ai_will_do = {
 				factor = 1
-				
 			}
 			desc=boyibo_miaoshu
 		}
 		corps_commander={
-			traits={ 
-				rising_young_officer 
-				youji_hero 
-				politically_connected 
-				media_personality 
-			}
+			traits={ generic_rising_young_officer generic_youji_hero generic_politically_connected generic_media_personality }
 			skill=1
 			attack_skill=1
 			defense_skill=1
 			planning_skill=2
 			logistics_skill=2
 			desc=boyibo_miaoshu
-			visible = { 
-				OR = { 
-					has_global_flag = has_completed_focus_SHX_United_front 
-					has_government = communism 
-					has_idea = CHI_communist_in_government 
-					TAG = event_target:WTT_current_china_leader 
-				}
+			visible = { OR = { has_global_flag = has_completed_focus_SHX_United_front has_government = communism has_idea = CHI_communist_in_government TAG = event_target:WTT_current_china_leader }
 				if = {
-					limit = {
-						original_tag = SHX
-						not = { 
-							has_government = communism 
-						}
-					}
-					has_global_flag = has_completed_focus_SHX_United_front
-					not = { 
-						has_war_with = event_target:WTT_communist_china 
-					}
+				limit = {
+				original_tag = SHX
+				not = { has_government = communism }
+				}
+				has_global_flag = has_completed_focus_SHX_United_front
+				not = { has_war_with = event_target:WTT_communist_china }
 				}
 			}
 		}
 	}
-}
-
-#军事顾问
-characters = {
-	#
+	SHX_zhu_shouguang={
+		name=SHX_zhu_shouguang
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_zhu_shouguang.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = SHX_zhu_shouguang
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_grand_battle_plan_expert
+			}
+			cost = 150
+		}
+	}
+	SHX_chu_xichun={
+		name=SHX_chu_xichun
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_chu_xichun.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = SHX_chu_xichun
+			ledger = army
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_military_theorist
+			}
+			cost = 100
+		}
+	}
+	SHX_zhong_jihan={
+		name=SHX_zhong_jihan
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_zhong_jihan.tga"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = SHX_zhong_jihan
+			allowed = {
+				original_tag = SHX
+			}
+			traits = {
+				generic_air_chief_reform_2
+			}
+			cost = 100
+		}
+	}
+	SHX_zhao_daiwen={
+		name=SHX_zhao_daiwen
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_zhao_daiwen.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_zhao_daiwen
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				SHX_old_figurehead
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	SHX_jia_jingde={
+		name=SHX_jia_jingde
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_jia_jingde.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_jia_jingde
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_editor
+			}
+		}
+	}
+	SHX_liang_huazhi={
+		name=SHX_liang_huazhi
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_liang_huazhi.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_liang_huazhi
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_backroom_backstabber
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+	SHX_qiu_yangjun={
+		name=SHX_qiu_yangjun
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_qiu_yangjun.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_qiu_yangjun
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_financial_expert
+			}
+		}
+	}
+	SHX_ji_gongquan={
+		name=SHX_ji_gongquan
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_ji_gongquan.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_ji_gongquan
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_sharp_tongued_lawyer
+			}
+		}
+	}
+	SHX_wang_huaiming={
+		name=SHX_wang_huaiming
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_wang_huaiming.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_wang_huaiming
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_wrl_education_reformer
+			}
+		}
+	}
+	SHX_fan_xiangli={
+		name=SHX_fan_xiangli
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_fan_xiangli.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_fan_xiangli
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_wrl_technocrat
+			}
+		}
+	}
+	SHX_wang_qian={
+		name=SHX_wang_qian
+		portraits={
+			army={
+				small="gfx/interface/idea/SHX/SHX_idea_wang_qian.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SHX_wang_qian
+			allowed  = {
+				original_tag  = SHX
+			}
+			traits  = {
+				generic_economist
+			}
+		}
+	}
 }

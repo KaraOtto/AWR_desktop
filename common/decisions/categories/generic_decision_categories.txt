@@ -1,0 +1,197 @@
+# generic 决议分类
+
+save_Rabe = {
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	visible = {
+
+		has_global_flag = Rabe_in_rags
+
+	}
+
+	priority = 10000
+
+}
+
+X_xchinese_propaganda_campaigns = { #宣传鼓动部
+
+	priority = 100
+
+	icon = SOV_propaganda
+
+	scripted_gui = xchinese_propaganda_campaigns_ui
+
+	allowed = {
+
+		or = { is_literally_china = yes original_tag = SIK }
+
+	}
+
+
+
+	visible = {
+
+		has_civil_war = no
+
+		is_subject = no
+
+		or = { tag = event_target:WTT_communist_china tag = event_target:WTT_current_china_leader }
+
+		if = {
+
+		limit = { original_tag = PRC }
+
+		has_completed_focus = PRC_kuodaxuanchuan
+
+		}
+
+		if = {
+
+		limit = { original_tag = CHI }
+
+		has_completed_focus = CHI_compulsory_education_chi
+
+		}
+
+	}
+
+}
+
+attack_prc_area_plan = { #戡乱动员令
+
+	icon = border_conflicts
+
+	picture = GFX_decision_cat_picture_chi_army_reform
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	visible = {
+
+		is_ai = no
+
+		has_war_with = event_target:WTT_communist_china
+
+		has_global_flag = PRC_civil_war_started
+
+		not = { has_government = communism }
+
+	}
+
+	priority = 9999
+
+}
+
+KMT_second_golden_ten_years_category = { #第二个黄金十年
+
+    priority = 9999
+
+	icon = generic_industry
+
+	picture = GFX_decision_cat_picture_generic_shipbuilding
+
+	
+
+	allowed = {
+
+		OR = {
+
+            TAG = event_target:WTT_current_china_leader
+
+            TAG = CHI
+
+            }
+
+	}
+
+	visible = {
+
+	    NOT = { has_war_with = USA }
+
+		NOT = { has_global_flag = usa_qingdao_angry_flag }
+
+		is_subject = no
+
+		USA = { #美国
+
+		exists = yes
+
+		has_opinion = {
+
+					target = ROOT
+
+					value > -50
+
+		}
+
+		}
+
+		if = {
+
+		limit = {
+
+		USA = { #美国
+
+		OR = { has_government = democratic has_government = n_socialism }
+
+		}
+
+		}
+
+		NOT = { 
+
+		has_government = fascism
+
+		has_government = communism
+
+		}
+
+		}
+
+	    #完成统一   
+
+	    #is_in_faction_with = USA
+
+		#	USA = {
+
+        #       NOT = { has_war_with = ROOT }
+
+		#		exists = yes
+
+		#		OR = { has_government = democratic has_government = n_socialism }
+
+		#		has_opinion = {
+
+		#			target = ROOT
+
+		#			value > 0
+
+		#		}
+
+		#	}
+
+    }         
+
+}
+
+monuments_decisions = { #名胜决策
+
+	icon = generic_industry
+
+	visible = {
+
+		always = yes
+
+	}
+
+	priority = 1000
+
+}

@@ -1,32 +1,575 @@
-#政治顾问
-characters = {
-	#
-}
-
-#军事顾问
-characters = {
-	SIC_guoxunqi={ #郭勋祺
-		name= SIC_guoxunqi
+characters={
+	SIC_Liu_Xiang={
+		name=SIC_Liu_Xiang
+		portraits={
+			civilian={
+				large="gfx/leaders/SIC_army_leader_Liu_Xiang.dds"
+			}
+			army = {
+				large="gfx/leaders/SIC_army_leader_Liu_Xiang.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Liu_Xiang.tga"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+            traits={ SIC_sichuan_sheng  SIC_chongqing_daxue SIC_liu_xiang_rivalry generic_infantry_officer generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+            traits={ SIC_sichuan_sheng  SIC_chongqing_daxue SIC_liu_xiang_rivalry generic_infantry_officer generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+            traits={ SIC_sichuan_sheng  SIC_chongqing_daxue SIC_liu_xiang_rivalry generic_infantry_officer generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1965.1.1.1"
+            traits={ SIC_sichuan_sheng  SIC_chongqing_daxue SIC_liu_xiang_rivalry generic_infantry_officer generic_difangshilipai }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+            traits={ SIC_sichuan_sheng  SIC_chongqing_daxue SIC_liu_xiang_rivalry generic_infantry_officer generic_difangshilipai }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = SIC_liu_xiang
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_chief_morale_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		field_marshal={
+			traits={ generic_organisational_leader generic_infantry_leader generic_NRA_General_2ndRank }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=3050
+			desc=SIC_liu_xiang_desc
+		}
+	}
+	SIC_Deng_Xihou={
+		name=SIC_Deng_Xihou
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_leader_Deng_Xihou.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Deng_Xihou.tga"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+            traits={ SIC_zongsiling generic_difangshilipai generic_infantry_officer }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+            traits={ SIC_zongsiling generic_difangshilipai generic_infantry_officer }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+            traits={ SIC_zongsiling generic_difangshilipai generic_infantry_officer }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1965.1.1.1"
+            traits={ SIC_zongsiling generic_difangshilipai generic_infantry_officer }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+            traits={ SIC_zongsiling generic_difangshilipai generic_infantry_officer }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Deng_Xihou
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_career_officer generic_infantry_officer generic_extra_specialized_skill generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SIC_Yang_Sen={
+		name=SIC_Yang_Sen
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Yang_Sen.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Yang_Sen.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Yang_Sen
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_career_officer generic_infantry_officer generic_extra_specialized_skill generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SIC_wang_mingzhang={
+		name=SIC_wang_mingzhang
 		portraits={
 			army={
-				large = "GFX_Army_SIC_Guo_Xunqi"
-			
+				large="gfx/leaders/SIC_army_wang_mingzhang.jpg"
+				small="gfx/interface/idea/SIC/SIC_idea_wang_mingzhang.jpg"
 			}
-			
-		}		
+		}
 		corps_commander={
-			traits={ 
-				infantry_officer 
-				brilliant_strategist 
-				trait_mountaineer 
-				adaptable 
+			traits={ generic_career_officer generic_infantry_officer generic_trait_mountaineer generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=3
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+            desc=SIC_wang_mingzhang_desc
+		}
+	}
+	SIC_Sun_Zhen={
+		name=SIC_Sun_Zhen
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Sun_Zhen.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Sun_Zhen.tga"
 			}
-			skill=4
-			attack_skill=4
-			defense_skill=5
-			planning_skill=4
-			logistics_skill=3
-			legacy_id=0
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Sun_Zhen
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				SIC_army_concealment_1
+			}
+			cost = 50
+		}
+		corps_commander={
+			traits={ generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	SIC_Tang_Shizun={
+		name=SIC_Tang_Shizun
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Tang_Shizun.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Tang_Shizun.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Tang_Shizun
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_entrenchment_2
+			}
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_trait_reckless generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	SIC_Pan_Wenhua={
+		name=SIC_Pan_Wenhua
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Pan_Wenhua.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Pan_Wenhua.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Pan_Wenhua
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_logistics_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		corps_commander={
+			traits={ generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SIC_Wang_Zuanxu={
+		name=SIC_Wang_Zuanxu
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Wang_Zuanxu.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Wang_Zuanxu.tga"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SIC_Wang_Zuanxu
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_army_artillery_2
+			}
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_artillery_officer generic_extra_specialized_skill generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SIC_Wang_Lingji={
+		name=SIC_Wang_Lingji
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Wang_Lingji.dds"
+				small="gfx/interface/idea/SIC/SIC_idea_Wang_Lingji.tga"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = SIC_Wang_Lingji
+			ledger = army
+			allowed = {
+				original_tag = SIC
+			}
+			traits = {
+				generic_military_theorist
+			}
+			cost = 100
+		}
+		corps_commander={
+			traits={ generic_old_guard generic_extra_specialized_skill generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	SIC_Li_Jiayu={
+		name=SIC_Li_Jiayu
+		portraits={
+			army = {
+				large="gfx/leaders/SIC_army_Li_Jiayu.dds"
+			}
+		}
+		corps_commander={
+			traits={ generic_trait_reckless generic_NRA_Lieut_General }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	SIC_Ji_Zuyou={
+		name=SIC_Ji_Zuyou
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Ji_Zuyou.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Ji_Zuyou
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_gran_carabinero
+			}
+		}
+	}
+	SIC_Hu_Ciwei={
+		name=SIC_Hu_Ciwei
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Hu_Ciwei.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Hu_Ciwei
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_silent_workhorse
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	SIC_Liu_Hangshen={
+		name=SIC_Liu_Hangshen
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Liu_Hangshen.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Liu_Hangshen
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_robber_baron
+			}
+		}
+	}
+	SIC_Gan_Jiyong={
+		name=SIC_Gan_Jiyong
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Gan_Jiyong.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Gan_Jiyong
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_financial_expert
+			}
+		}
+	}
+	SIC_Shi_Tiyuan={
+		name=SIC_Shi_Tiyuan
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Shi_Tiyuan.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Shi_Tiyuan
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_economist
+			}
+		}
+	}
+	SIC_Jiang_Zhicheng={
+		name=SIC_Jiang_Zhicheng
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Jiang_Zhicheng.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Jiang_Zhicheng
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_wrl_education_reformer
+			}
+		}
+	}
+	SIC_Lu_Zuofu={
+		name=SIC_Lu_Zuofu
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Lu_Zuofu.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Lu_Zuofu
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_captain_of_industry
+			}
+		}
+	}
+	SIC_He_Beiheng={
+		name=SIC_He_Beiheng
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_He_Beiheng.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_He_Beiheng
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				SIC_industry_reformer
+			}
+		}
+	}
+	SIC_Hu_Ziang={
+		name=SIC_Hu_Ziang
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Hu_Ziang.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Hu_Ziang
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_wrl_technocrat
+			}
+		}
+	}
+	SIC_Li_Zhaofu={
+		name=SIC_Li_Zhaofu
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Li_Zhaofu.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Li_Zhaofu
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_sharp_tongued_lawyer
+			}
+		}
+	}
+	SIC_Guan_Jiyu={
+		name=SIC_Guan_Jiyu
+		portraits={
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Guan_Jiyu.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Guan_Jiyu
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				SIC_collectivization_specialist
+			}
+		}
+	}
+	SIC_Zhong_Tiqian={
+		name=SIC_Zhong_Tiqian
+		portraits={
+			civilian={
+				small="gfx/interface/idea/SIC/SIC_idea_Zhong_Tiqian.dds"
+			}
+			army={
+				small="gfx/interface/idea/SIC/SIC_idea_Zhong_Tiqian.tga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SIC_Zhong_Tiqian
+			allowed  = {
+				original_tag = SIC
+			}
+			traits  = {
+				generic_armaments_organizer
+			}
 		}
 	}
 }

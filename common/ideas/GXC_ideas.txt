@@ -1,0 +1,574 @@
+ideas = {
+	country = {
+		# EFM_Southwest_two_agencies，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_EFM_Southwest_two_agencies = {
+		
+					picture = liangguang_kmt
+
+					available = {
+						NOT = { is_subject = yes }
+					}
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						production_speed_buildings_factor = 0.05
+						economy_cost_factor = -0.1
+						trade_laws_cost_factor = -0.1
+						political_advisor_cost_factor = -0.1
+					}
+				}
+		# GXC_Guangxi_economy，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Guangxi_economy = {
+		
+					picture = prc_permit_opium_trade
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = -0.25
+						war_support_factor = -0.15
+				
+				
+					}
+				}
+		# GXC_Guangxi_economy_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Guangxi_economy_2 = {
+		
+					picture = generic_agrarian_reform
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = -0.15
+						industrial_capacity_factory = 0.05
+					}
+				}
+		# GXC_Improve_resource_utilization_efficiency，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Improve_resource_utilization_efficiency = {
+		
+					picture = generic_goods_red_bonus
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = -0.15
+					}
+				}
+		# GXC_Integration_of_southwestern_institutions，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Integration_of_southwestern_institutions = {
+		
+					picture = liangguang_kmt_integrated
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						mobilization_laws_cost_factor = -0.1
+						economy_cost_factor = -0.1
+						trade_laws_cost_factor = -0.1
+						political_advisor_cost_factor = -0.1
+						tank_manufacturer_cost_factor = -0.1
+						naval_manufacturer_cost_factor = -0.1
+						aircraft_manufacturer_cost_factor = -0.1
+						materiel_manufacturer_cost_factor = -0.1
+						industrial_concern_cost_factor = -0.1
+					}
+				}
+		# GXC_Iron_will，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Iron_will = {
+		
+					picture = MEX_politicised_army
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						army_infantry_attack_factor = 0.1
+						army_infantry_defence_factor = 0.1			
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+						army_org_factor = 0.05
+					}
+				}
+		# GXC_Iron_will_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Iron_will_2 = {
+		
+					picture = MEX_politicised_army_2
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						army_infantry_attack_factor = 0.2
+						army_infantry_defence_factor = 0.2
+						army_core_attack_factor = 0.2
+						army_core_defence_factor = 0.2
+						army_org_factor = 0.15
+					}
+				}
+		# GXC_Japanese_consultant，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Japanese_consultant = {
+		
+					picture = warrior_traditions_idea
+			
+					available = {
+						NOT = { has_war_with = JAP }
+					}
+
+		            cancel = { 
+					    AND = {
+							is_ally_with = event_target:WTT_current_china_leader 
+						    CHI = { is_ally_with = JAP } 
+						}
+					}
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {				
+					    land_doctrine_cost_factor = -0.05
+					}
+				}
+		# GXC_Japanese_consultant_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Japanese_consultant_2 = {
+					name = GXC_Japanese_consultant
+		
+					picture = jap_militarism_showa
+			
+					available = {
+						NOT = { has_war_with = JAP }
+					}
+		            cancel = { 
+					    AND = {
+							is_ally_with = event_target:WTT_current_china_leader 
+						    CHI = { is_ally_with = JAP } 
+						}
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						army_infantry_attack_factor = 0.05
+						army_infantry_defence_factor = 0.05
+					}
+			
+					modifier = {				
+					    land_doctrine_cost_factor = -0.1
+					}
+				}
+		# GXC_Militia_system，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Militia_system = {
+		
+					picture = citizen_militia_1
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						mobilization_speed = 0.05
+						training_time_factor = -0.05
+					    modifier_army_sub_unit_militia_attack_factor = 0.025
+						modifier_army_sub_unit_militia_defence_factor = 0.025
+					}
+				}
+		# GXC_Militia_system_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Militia_system_2 = {
+					name = GXC_Militia_system
+		
+					picture = citizen_militia_2
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						mobilization_speed = 0.1
+						conscription_factor = 0.05
+						training_time_factor = -0.05
+						modifier_army_sub_unit_militia_attack_factor = 0.05
+						modifier_army_sub_unit_militia_defence_factor = 0.05
+					}
+				}
+		# GXC_New_guangxi_clique，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_New_guangxi_clique = {
+		
+					picture = regional_warlord
+			
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						political_power_gain = 0.15
+						command_power_gain_mult = 0.2
+		                army_core_attack_factor = 0.15
+		                army_core_defence_factor = 0.15
+					}
+				}
+		# GXC_New_guangxi_clique_independence，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_New_guangxi_clique_independence = {
+					name = GXC_New_guangxi_clique
+		
+					picture = regional_warlord
+			
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						political_power_gain = 0.15
+						command_power_gain_mult = 0.15
+				
+					}
+				}
+		# GXC_New_guangxi_clique_right，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_New_guangxi_clique_right = {
+					name = GXC_New_guangxi_clique
+		
+					picture = regional_warlord
+			
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						political_power_gain = 0.2
+						command_power_gain_mult = 0.15
+						army_morale_factor = 0.1
+				
+					}
+				}
+		# GXC_Order_foreign_fighters，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Order_foreign_fighters = {
+			
+					available = {
+						is_subject = no
+						has_war = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					picture = generic_war_preparation
+			
+					modifier = {
+						license_air_purchase_cost = -0.1
+					}
+				}
+		# GXC_Rebuild_fujian_peoples_government，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Rebuild_fujian_peoples_government = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+			
+					removal_cost = -1
+
+					picture = generic_communist_army
+			
+					modifier = {
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+						monthly_population = 0.25
+					}
+				}
+		# GXC_Separate_revolution，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_Separate_revolution = {
+		
+					picture = home_of_revolution
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						training_time_factor = -0.1
+				
+				
+					}
+				}
+		# GXC_defend_anhui_idea，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_defend_anhui_idea = {
+					picture = MEX_revolutionary_army
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					cancel = {
+						NOT = {
+							has_war_with = JAP
+						}
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						conscription_factor = 0.15
+						army_core_defence_factor = 0.1
+						dig_in_speed_factor = 0.2
+						max_dig_in_factor = 0.25
+						terrain_penalty_reduction = 0.1
+						consumer_goods_factor = -0.3
+						custom_modifier_tooltip = goes_away_when_at_peace_with_JAP_tt
+					}
+				}
+		# GXC_land_reform，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_land_reform = {
+					picture = generic_agrarian_society
+					allowed_civil_war = {
+						OR = {
+							has_government = n_socialism
+							has_government = communism
+						}
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = 0.15
+						industrial_capacity_factory = 0.1
+					}
+				}
+		# GXC_old_officals，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_old_officals = {
+					picture = usa_great_depression
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = 0.3
+		                industrial_capacity_factory = -0.1
+						political_power_gain = -0.1
+					}
+				}
+		# GXC_org，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_org = {
+					picture = generic_spy_intel
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+				
+						war_stability_factor = 0.1
+						encryption_factor = 0.05
+						drift_defence_factor = 0.05
+						resistance_activity = -0.1
+					}
+				}
+		# GXC_org_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_org_2 = {
+					picture = generic_spy_coup
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						stability_factor = 0.1
+						war_stability_factor = 0.1
+						encryption_factor = 0.1
+						drift_defence_factor = 0.05
+						resistance_activity = -0.1
+						agency_upgrade_time = -0.1
+					}
+				}
+		# GXC_peoples_government，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_peoples_government = {
+		
+					picture = generic_morale_bonus
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						production_speed_buildings_factor = 0.1
+						economy_cost_factor = -0.15
+						mobilization_laws_cost_factor = -0.1
+						trade_laws_cost_factor = -0.15
+						political_advisor_cost_factor = -0.15
+						monthly_population = 0.1
+						party_popularity_stability_factor = 0.25
+						war_support_weekly_factor = 0.005
+						tank_manufacturer_cost_factor = -0.1
+						naval_manufacturer_cost_factor = -0.1
+						aircraft_manufacturer_cost_factor = -0.1
+						materiel_manufacturer_cost_factor = -0.1
+						industrial_concern_cost_factor = -0.1
+					}
+				}
+		# GXC_peoples_revolutionary_army，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_peoples_revolutionary_army = {
+					picture = MEX_revolutionary_army
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						army_morale_factor = 0.15
+				
+						experience_loss_factor = -0.15
+						land_night_attack = 0.15
+						land_reinforce_rate = 0.05
+						dig_in_speed_factor = 0.05
+						combat_width_factor = -0.1
+					}
+				}
+		# GXC_propaganda，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_propaganda = {
+					picture = FRA_national_mobilization_focus
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						consumer_goods_factor = -0.15
+						war_support_weekly = 0.001
+						stability_weekly = 0.001
+						drift_defence_factor = 0.05
+						war_stability_factor = 0.05
+						surrender_limit = 0.15
+					}
+				}
+		# GXC_propaganda_2，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_propaganda_2 = {
+					picture = FRA_national_mobilization_focus
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						war_support_weekly = 0.00025
+						stability_weekly = 0.001
+					    n_socialism_drift = 0.05
+					}
+				}
+		# GXC_reform_debuff，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_reform_debuff = {
+					picture = generic_flexible_foreign_policy2
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						political_power_gain = -0.2
+						stability_factor = -0.1
+					}
+				}
+		# GXC_save_country_army，来源：common/ideas/guangxi_clique_RCM.txt
+		GXC_save_country_army = {
+					picture = kmt_shield
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+			
+					modifier = {
+						army_strength_factor = 0.1
+						army_org_factor = 0.05
+						army_morale_factor = 0.1
+						org_loss_when_moving = -0.1
+					}
+				}
+	}
+	industrial_concern = {
+		# liuzhou_machine_works，来源：common/ideas/china.txt
+		GXC_liuzhou_machine_works = {
+					cost = 100		
+					allowed = {
+						OR = {
+							original_tag = CHI
+							original_tag = PRC
+							is_originally_warlord = yes
+							original_tag = EHB
+							original_tag = RFM
+							original_tag = CCP
+						}
+					}
+					available = {
+						controls_state = 1038 
+					}			
+					traits = { RCM_light_machinery_manufacturer }
+				}
+	}
+}

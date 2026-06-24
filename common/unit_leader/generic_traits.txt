@@ -1,0 +1,818 @@
+leader_traits = {
+	# NRA_General_1stRank，来源：common/unit_leader/RCM_unit_leader_traits.txt
+	generic_NRA_General_1stRank = {
+			type = field_marshal
+			trait_type = assignable_trait
+			gain_xp = {
+				always = no 
+			}
+		
+			prerequisites = {
+				has_trait = generic_NRA_General_2ndRank
+				NOT = {
+				    has_trait = minimum_time_in_grade
+				}		
+			}
+		
+			custom_effect_tooltip = max_army_group_size_5			
+
+			on_add = {
+				if = {
+					limit = {
+						date > 1936.01.01
+					}
+					remove_unit_leader_trait = generic_NRA_General_2ndRank
+				}
+			}											
+			allowed = {
+				FROM = {
+				    OR = {
+					    tag = CHI
+					    is_warlord = yes
+				    }	
+				    NOT = { has_government = communism }
+				    NOT = { original_tag = KHR }
+					NOT = { original_tag = ATM }
+				}	
+			}		
+			ai_will_do = {
+				factor = 1
+			}
+			gui_row = 10
+			gui_column = 2			
+		}
+	# NRA_General_2ndRank，来源：common/unit_leader/RCM_unit_leader_traits.txt
+	generic_NRA_General_2ndRank = {
+			type = field_marshal
+			trait_type = status_trait
+			gain_xp = {
+				always = no 
+			}
+			prerequisites = {
+				has_trait = recently_promoted
+			}		
+			field_marshal_modifier = {
+				hidden_modifier = {
+					max_army_group_size = -2
+				}
+			}
+			custom_effect_tooltip = max_army_group_size_3		
+			allowed = {
+				FROM = {
+				    OR = {
+					    tag = CHI
+					    is_warlord = yes
+				    }	
+				    NOT = { has_government = communism }
+				    NOT = { original_tag = KHR }
+					NOT = { original_tag = ATM }
+				}	
+			}		
+			ai_will_do = {
+				factor = 1
+			}
+			gui_row = 9
+			gui_column = 2		
+		}
+	# adaptable，来源：common/unit_leader/00_traits.txt
+	generic_adaptable = { 
+			type = corps_commander
+			gain_xp = {
+				always = no 
+			}
+			cost = 1000
+			modifier = {
+				terrain_penalty_reduction = 0.30
+				acclimatization_cold_climate_gain_factor = 0.1
+				acclimatization_hot_climate_gain_factor = 0.1
+			}
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			trait_type = assignable_terrain_trait
+			gui_row = 3
+				
+			parent = {
+				traits = {
+					desert_fox
+					swamp_fox
+					generic_trait_mountaineer
+					CHI_hill_fighter
+					CHI_jungle_rat
+					ranger
+					CHI_urban_assault_specialist
+					generic_winter_specialist
+				}
+				num_parents_needed = 2
+			} 
+		}
+	# artillery_officer，来源：common/unit_leader/RCM_unit_leader_traits.txt
+	generic_artillery_officer = { 
+			type = land
+			trait_type = personality_trait 
+		
+			trait_xp_factor = {
+				artillery_leader = 1     
+			}
+		
+			new_commander_weight = {
+				factor = 1
+			
+				modifier = {
+					FROM = { 
+						has_idea = superior_firepower_academy_spirit
+					}
+					factor = 2
+				}			
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}			
+			}
+			modifier = {
+				army_artillery_attack_factor = 0.05
+			}
+			attack_skill_factor = 2 
+		}
+	# brilliant_strategist，来源：common/unit_leader/00_traits.txt
+	generic_brilliant_strategist = { 
+			type = land
+			trait_type = personality_trait
+		
+			attack_skill = 1
+			planning_skill = 1
+		
+			attack_skill_factor = 1
+			planning_skill_factor = 1
+
+			new_commander_weight = {
+				factor = 1
+
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+		}
+	# career_officer，来源：common/unit_leader/00_traits.txt
+	generic_career_officer = { 
+			type = land
+			trait_type = personality_trait
+		
+			non_shared_modifier = {
+				promote_cost_factor = -0.25
+				experience_gain_factor = 0.1 
+			}
+
+			new_commander_weight = {
+				factor = 1
+
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+			attack_skill_factor = 1 
+			logistics_skill_factor = 1
+		}
+	# cavalry_leader，来源：common/unit_leader/00_traits.txt
+	generic_cavalry_leader = { 
+			type = corps_commander
+			gain_xp = {
+				check_expr = {
+					value = num_cavalry
+					add = num_motorized
+					add = num_mechanized
+					greater_than = { value = num_units  multiply = 0.4 }
+				}
+			}
+			custom_gain_xp_trigger_tooltip = cavalary_ratio_over_40
+		
+			cost = 1000
+			modifier = {
+				cavalry_attack_factor = 0.12
+				motorized_attack_factor = 0.12
+				mechanized_attack_factor = 0.12
+			}
+		
+			slot = high_command
+			specialist_advisor_trait = army_cavalry_1
+			expert_advisor_trait = generic_army_cavalry_2
+			genius_advisor_trait = army_cavalry_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			gui_row = 3
+		}
+	# cavalry_officer，来源：common/unit_leader/00_traits.txt
+	generic_cavalry_officer = { 
+			type = land
+			trait_type = personality_trait
+			unit_type = {
+				type = cavalry
+				type = camelry
+				type = motorized
+				type = mechanized
+			}
+		
+			unit_trigger = {
+				OR = {
+					division_has_majority_template = cavalry
+					division_has_majority_template = camelry
+					division_has_majority_template = motorized
+					division_has_majority_template = mechanized
+				}
+				owner = {
+					NOT = {
+						OR = {
+							has_idea = best_of_the_best_spirit
+							has_idea = academy_scholarships_spirit
+							has_idea = SOV_purged_junior_army_officers_3
+						}
+					}
+				}
+			}
+		
+			trait_xp_factor = {
+				generic_cavalry_leader = 1     
+			}
+
+			new_commander_weight = {
+				factor = 1
+			
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			
+				modifier = {
+					FROM = { 
+						has_dlc = "By Blood Alone"
+					}
+					factor = 0
+				}
+			
+			}
+		
+			attack_skill_factor = 1
+			logistics_skill_factor = 1
+		}
+	# extra_specialized_skill，来源：common/unit_leader/zizhi_unit_trait.txt
+	generic_extra_specialized_skill = {
+			type = land
+			trait_type = personality_trait
+		
+			new_commander_weight = {
+				factor = 0
+			}
+		}
+	# harsh_leader，来源：common/unit_leader/00_traits.txt
+	generic_harsh_leader = { 
+			type = land
+			trait_type = personality_trait
+		
+			attack_skill = 1
+
+			modifier = {
+				army_morale_factor = -0.10
+			}
+
+			new_commander_weight = {
+				factor = 1
+
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+			attack_skill_factor = 1
+			logistics_skill_factor = 1
+		}
+	# infantry_leader，来源：common/unit_leader/00_traits.txt
+	generic_infantry_leader = { 
+			type = corps_commander
+			gain_xp = {
+				check_expr = {
+					value = num_infantry
+					greater_than = { value = num_units  multiply = 0.8 }
+				}
+			}
+			custom_gain_xp_trigger_tooltip = infantry_ratio_over_80
+		
+			cost = 1000
+			modifier = {
+				army_infantry_defence_factor = 0.13
+			}
+		
+			slot = high_command
+			specialist_advisor_trait = generic_army_infantry_1
+			expert_advisor_trait = generic_army_infantry_2
+			genius_advisor_trait = army_infantry_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			gui_row = 6
+		}
+	# inspirational_leader，来源：common/unit_leader/00_traits.txt
+	generic_inspirational_leader = { 
+			type = field_marshal
+			gain_xp = {
+				always = no 
+			}
+			cost = 1000
+			field_marshal_modifier = {
+				army_morale_factor = 0.10
+			}
+		
+			slot = army_chief
+			specialist_advisor_trait = PLM_army_chief_morale_1
+			expert_advisor_trait = generic_army_chief_morale_2
+			genius_advisor_trait = army_chief_morale_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+			trait_type = assignable_trait
+			gui_row = 8
+		}
+	# logistics_wizard，来源：common/unit_leader/00_traits.txt
+	generic_logistics_wizard = { 
+			type = field_marshal
+		
+			gain_xp = {
+				always = no 
+			}
+			cost = 1000
+		
+			field_marshal_modifier = {
+				supply_consumption_factor = -0.15
+			}
+			enable_ability = extra_suplies
+			ai_will_do = {
+				factor = 1
+			}
+			gui_row = 0
+			trait_type = assignable_trait
+			any_parent = {generic_organizer}
+		}
+	# media_personality，来源：common/unit_leader/00_traits.txt
+	generic_media_personality = { 
+			type = land
+			trait_type = personality_trait
+		
+			non_shared_modifier = {
+				reassignment_duration_factor = 1   
+			}
+		
+			attack_skill_factor = 1
+			defense_skill_factor = 1
+
+			new_commander_weight = {
+				factor = 1
+
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		}
+	# old_guard，来源：common/unit_leader/00_traits.txt
+	generic_old_guard = { 
+			type = land
+			trait_type = personality_trait
+		
+			modifier = {
+				max_dig_in = 1
+			}
+		
+			non_shared_modifier = {
+				experience_gain_factor = -0.25
+			}
+
+			new_commander_weight = {
+				factor = 1
+
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+		}
+	# organisational_leader，来源：common/unit_leader/00_traits.txt
+	generic_organisational_leader = { 
+			type = field_marshal
+			gain_xp = {
+				always = no 
+			}
+			cost = 1000
+			field_marshal_modifier = {
+				land_reinforce_rate = 0.03
+				army_org_factor = 0.05
+			}
+		
+			slot = army_chief
+			specialist_advisor_trait = generic_army_chief_organizational_1
+			expert_advisor_trait = generic_army_chief_organizational_2
+			genius_advisor_trait = CHI_army_chief_organizational_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+			trait_type = assignable_trait
+
+			gui_row = 7
+		}
+	# organizer，来源：common/unit_leader/00_traits.txt
+	generic_organizer = { 
+			type = corps_commander
+			gain_xp = {
+				check_variable = { num_battle_plans > 0 }
+			}
+			custom_gain_xp_trigger_tooltip = is_using_battle_plans
+		
+			cost = 1000
+			modifier = {
+				planning_speed = 0.1
+			}
+		
+			slot = high_command
+			specialist_advisor_trait = TNG_army_regrouping_1
+			expert_advisor_trait = generic_army_regrouping_2
+			genius_advisor_trait = CHI_army_regrouping_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			gui_row = 0
+		}
+	# politically_connected，来源：common/unit_leader/00_traits.txt
+	generic_politically_connected = { 
+			type = land
+			trait_type = personality_trait
+		
+			non_shared_modifier = {
+				experience_gain_factor = -0.1
+				promote_cost_factor = -0.5
+			}
+
+			new_commander_weight = {
+				factor = 1  
+			
+				modifier = {
+					is_army_leader = yes
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					is_navy_leader = yes
+					FROM = { has_idea = best_of_the_best_naval_academy_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = naval_academy_scholarships_spirit }
+					factor = 0
+				}
+			}
+		
+			planning_skill_factor = 1
+			logistics_skill_factor = 1
+		}
+	# rising_young_officer，来源：common/unit_leader/zizhi_unit_trait.txt
+	generic_rising_young_officer = {
+			type = land
+			trait_type = personality_trait
+		
+			non_shared_modifier = {
+				experience_gain_factor = 0.25
+			}
+			new_commander_weight = {
+				factor = 0
+			}
+		}
+	# trait_cautious，来源：common/unit_leader/00_traits.txt
+	generic_trait_cautious = { 
+			type = land
+			trait_type = personality_trait
+		
+			modifier = {
+				planning_speed = -0.15
+				max_planning = 0.1
+				wounded_chance_factor = -0.2
+			}
+		
+		
+			new_commander_weight = {
+				factor = 1
+			
+				modifier = {
+					has_trait = generic_trait_reckless
+					factor = 0 
+				}
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+		
+			defense_skill_factor = 1
+			logistics_skill_factor = 1
+		}
+	# trait_engineer，来源：common/unit_leader/00_traits.txt
+	generic_trait_engineer = { 
+			type = corps_commander
+			gain_xp = {
+				OR = {
+					has_combat_modifier = fort_attack
+					has_combat_modifier = river_crossing
+				}
+			}
+			cost = 700
+			modifier = {
+				river = {
+					attack = 0.05
+				}
+				fort = {
+	                attack = 0.1
+	            }
+			}
+		
+			slot = high_command
+			specialist_advisor_trait = SIK_army_entrenchment_1
+			expert_advisor_trait = generic_army_entrenchment_2
+			genius_advisor_trait = CHI_army_entrenchment_3
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			gui_row = 4
+		}
+	# trait_mountaineer，来源：common/unit_leader/00_traits.txt
+	generic_trait_mountaineer = { 
+			type = corps_commander
+			gain_xp = {
+				is_fighting_in_terrain = mountain
+			}
+			cost = 700
+			modifier = {
+				mountain = {
+					movement = 0.05
+					attack = 0.1
+					defence = 0.1
+				}
+			}
+		
+			ai_will_do = {
+				factor = 1
+			}
+			trait_type = basic_terrain_trait
+			gui_row = 3
+		}
+	# trait_reckless，来源：common/unit_leader/00_traits.txt
+	generic_trait_reckless = {  
+			type = land
+			trait_type = personality_trait
+		
+			modifier = {
+				planning_speed = 0.1
+				breakthrough_factor = 0.1
+				wounded_chance_factor = 0.2  
+			}
+		
+			new_commander_weight = {
+				factor = 1
+			
+				modifier = {
+					has_trait = generic_trait_cautious
+					factor = 0 
+				}
+				modifier = {
+					FROM = { has_idea = best_of_the_best_spirit }
+					factor = 0
+				}
+				modifier = {
+					FROM = { has_idea = academy_scholarships_spirit }
+					factor = 0
+				}
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}
+			}
+		
+			attack_skill_factor = 1
+			defense_skill_factor = -1
+			planning_skill_factor = 1
+		}
+	# trickster，来源：common/unit_leader/00_traits.txt
+	generic_trickster = { 
+			type = corps_commander
+			gain_xp = {
+				OR = {
+					has_flanked_opponent = yes
+					opponent = { has_flanked_opponent = yes }
+				}
+			}
+			custom_gain_xp_trigger_tooltip = has_flanked
+		
+			cost = 500
+			modifier = {
+				recon_factor = 0.25
+			}
+
+			ai_will_do = {
+				factor = 1
+			}
+		
+			gui_row = 13
+		}
+	# war_hero，来源：common/unit_leader/00_traits.txt
+	generic_war_hero = { 
+			type = { land navy }
+			trait_type = personality_trait
+		
+			non_shared_modifier = { 
+				promote_cost_factor = -0.5
+				reassignment_duration_factor = 0.5   
+			}
+		
+			new_commander_weight = {
+				factor = 0  
+			}
+			attack_skill_factor = 1
+			planning_skill_factor = 1
+		}
+	# winter_specialist，来源：common/unit_leader/00_traits.txt
+	generic_winter_specialist = { 
+			type = corps_commander
+			gain_xp = {
+				temperature < -10
+			}
+			cost = 500
+			modifier = {
+				winter_attrition_factor = -0.5
+			}
+		
+			enable_ability = requisition_winter_gear
+		
+			ai_will_do = {
+				factor = 1
+			}
+		
+			trait_type = basic_terrain_trait
+			gui_row = 7
+		}
+	# youji_hero，来源：common/unit_leader/zizhi_unit_trait.txt
+	generic_youji_hero = {
+			type = land
+			trait_type = personality_trait
+		
+			allowed = {
+				FROM = {
+				    has_government = communism
+					original_tag = PRC
+				}
+			}
+		
+			modifier = {
+				terrain_penalty_reduction = 0.15
+				org_loss_when_moving = -0.05
+				modifier_army_sub_unit_infantry_speed_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_speed_factor = 0.05
+				modifier_army_sub_unit_cavalry_speed_factor = 0.05
+				equipment_capture = 0.05
+				no_supply_grace = 48
+				out_of_supply_factor = -0.15
+				pocket_penalty = -0.35
+				supply_consumption_factor = -0.10
+				intel_from_combat_factor = 0.15
+				recon_factor = 0.25
+				acclimatization_hot_climate_gain_factor = 0.15 
+				acclimatization_cold_climate_gain_factor = 0.15 
+				land_night_attack = 0.10
+				enemy_army_bonus_air_superiority_factor = -0.10
+				reassignment_duration_factor = -0.80
+				sickness_chance = -0.25
+				command_abilities_cost_factor = -0.15
+			}
+		
+			logistics_skill_factor = 1
+			attack_skill_factor = 1
+		
+			trait_xp_factor = {
+				generic_trickster = 1     
+				generic_winter_specialist = 1     
+				commando = 1     
+				swamp_fox = 1     
+				ranger = 1     
+				CHI_hill_fighter = 1     
+				desert_fox = 1     
+				generic_trait_mountaineer = 1     
+				CHI_jungle_rat = 1     
+			}
+
+			new_commander_weight = {
+				base = 0
+			
+				modifier = {
+					add = 9999
+					FROM = { 
+						OR = {
+							original_tag = PRC
+						}
+						has_government = communism
+					}
+				}
+			}
+		}
+	# 兼容占位：源模组引用了该 trait，但 common 中没有定义。
+	generic_NRA_Lieut_General = {
+		random = no
+		ai_will_do = { factor = 1 }
+	}
+	# 兼容占位：源模组引用了该 trait，但 common 中没有定义。
+	generic_NRA_Major_General = {
+		random = no
+		ai_will_do = { factor = 1 }
+	}
+}

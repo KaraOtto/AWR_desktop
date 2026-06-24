@@ -1,0 +1,48 @@
+leader_traits = {
+	# irregulars_leader，来源：common/unit_leader/zizhi_unit_trait.txt
+	MAN_irregulars_leader = {
+			type = land
+			trait_type = personality_trait
+
+			modifier = {
+				recon_factor = 0.25
+				out_of_supply_factor = -0.10
+				modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.10
+			}
+			new_commander_weight = {
+				base = 0
+			}
+			attack_skill_factor = 1
+			logistics_skill_factor = 1 
+		}
+	# military_political_commissar，来源：common/unit_leader/zizhi_unit_trait.txt
+	MAN_military_political_commissar = {
+			type = land
+			trait_type = personality_trait
+
+			allowed = {
+				FROM = {	
+				    has_government = communism
+				}
+			}
+			modifier = {
+				army_morale_factor = 0.08
+			}
+			non_shared_modifier = {
+				reassignment_duration_factor = -0.25 
+				trait_skilled_staffer_xp_gain_factor = 0.25
+			}
+			new_commander_weight = {
+				factor = 1
+
+				modifier = { 
+					FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+					factor = 0
+				}			
+				modifier = {
+					FROM = { NOT = { has_government = communism } }
+					factor = 0
+				}			
+			}
+		}
+}

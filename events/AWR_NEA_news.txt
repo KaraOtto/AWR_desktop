@@ -1,0 +1,2281 @@
+# NEA 新闻事件
+
+add_namespace = AWR_NEA_news
+
+country_event = {
+
+	id = AWR_NEA.1 #中方开始接管中国东北
+
+	title = northeast_takeover.7.t
+
+	desc = northeast_takeover.7.d
+
+	picture = GFX_report_event_operation_august_storm
+
+	is_triggered_only = yes
+
+	option = { #OH NO!
+
+		name = northeast_takeover.7.a
+
+		custom_effect_tooltip = demand_northeast_china_tt
+
+		custom_effect_tooltip = the_process_takes_250_days_and_effect_takes_place_then
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.2 #中方对东北的接管完成
+
+	title = northeast_takeover.8.t
+
+	desc = northeast_takeover.8.d
+
+	picture = GFX_report_event_operation_august_storm
+
+	is_triggered_only = yes
+
+	option = { #OH NO!
+
+		name = northeast_takeover.8.a
+
+		custom_effect_tooltip = demand_northeast_china_tt
+
+		effect_tooltip = {
+
+			event_target:WTT_current_china_leader = {
+
+				division_template = {
+
+					name = "Northeast Garrison" #names to be determined
+
+					regiments = {
+
+						infantry = { x = 0 y = 0 }
+
+						infantry = { x = 0 y = 1 }
+
+						infantry = { x = 0 y = 2 }
+
+
+
+						infantry = { x = 1 y = 0 }
+
+						infantry = { x = 1 y = 1 }
+
+						infantry = { x = 1 y = 2 }
+
+					}
+
+				}
+
+				every_core_state = {
+
+					limit = {
+
+						is_MAN_state_for_liberation = yes
+
+						is_owned_and_controlled_by = SOV
+
+						NOT = {
+
+							is_core_of = event_target:WTT_communist_china
+
+						}
+
+					}
+
+					create_unit = {
+
+						division = "name = \"Tung-pei Chufang Chün\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+
+						owner = PREV
+
+					}					
+
+					if = {
+
+						limit = {
+
+							has_state_flag = strong_kmt_garrison
+
+						}						
+
+						create_unit = {
+
+							division = "name = \"Tung-pei Chufang Chün\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+
+							owner = PREV
+
+						}
+
+					}
+
+					transfer_state_to = event_target:WTT_current_china_leader
+
+				}
+
+			}
+
+			event_target:WTT_communist_china = {
+
+				division_template = {
+
+					name = "Northeast Garrison" #names to be determined
+
+					regiments = {
+
+						infantry = { x = 0 y = 0 }
+
+						infantry = { x = 0 y = 1 }
+
+						infantry = { x = 0 y = 2 }
+
+
+
+						infantry = { x = 1 y = 0 }
+
+						infantry = { x = 1 y = 1 }
+
+						infantry = { x = 1 y = 2 }
+
+					}
+
+				}
+
+				every_core_state = {
+
+					limit = {
+
+						is_MAN_state_for_liberation = yes
+
+						is_owned_and_controlled_by = SOV
+
+						NOT = {
+
+							state = 745
+
+						}
+
+					}
+
+					create_unit = {
+
+						division = "name = \"Dongbei Jufang Jun\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+
+						owner = PREV
+
+					}					
+
+					if = {
+
+						limit = {
+
+							NOT = { is_core_of = event_target:WTT_current_china_leader }
+
+						}						
+
+						create_unit = {
+
+							division = "name = \"Dongbei Jufang Jun\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+
+							owner = PREV
+
+						}
+
+					}
+
+					transfer_state_to = event_target:WTT_communist_china
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = { #Sino-Soviet Treaty of Friendship and Alliance to SOV?
+
+	id = AWR_NEA.3 #与中国缔约？
+
+	title = northeast_takeover.10.t
+
+	desc = northeast_takeover.10.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = no
+
+	trigger = {
+
+		tag = SOV
+
+		any_controlled_state = {
+
+			NOT = {
+
+				state = 745
+
+			}
+
+			is_MAN_state_for_takeover = yes
+
+		}
+
+		NOT = {
+
+			has_war_with = event_target:WTT_communist_china
+
+			has_war_with = event_target:WTT_current_china_leader
+
+		}
+
+		MAN = {
+
+			OR = {
+
+				has_capitulated = yes
+
+				exists = no
+
+			}
+
+		}
+
+		MON = {
+
+			is_ally_with = ROOT
+
+		}
+
+		event_target:WTT_communist_china = {
+
+			exists = yes
+
+		}
+
+		event_target:WTT_current_china_leader = {
+
+			exists = yes
+
+			NOT = {
+
+				is_ally_with = ROOT
+
+			}
+
+		}
+
+	}
+
+	fire_only_once = yes
+
+	option = { #ask for roc
+
+		name = northeast_takeover.10.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}	
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		event_target:WTT_current_china_leader = {
+
+			country_event = {
+
+                id = AWR_NEA.5 hours = 12
+
+			} 
+
+		}
+
+		custom_effect_tooltip = if_they_accept_green
+
+		effect_tooltip = {
+
+			MON = {
+
+				every_core_state = {
+
+					limit = {
+
+						is_owned_by = MON
+
+						is_claimed_by = event_target:WTT_current_china_leader
+
+					}
+
+					remove_claim_by = event_target:WTT_current_china_leader
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					SIK = {
+
+						has_civil_war = yes
+
+					}
+
+				}
+
+				random_country = {
+
+					limit = {
+
+						original_tag = SIK
+
+						owns_state = 1051
+
+						has_idea = SIK_For_the_TAR_revolution
+
+						any_enemy_country = {
+
+							original_tag = SIK
+
+							owns_state = 617
+
+							NOT = {
+
+								has_war_with = event_target:WTT_current_china_leader
+
+							}
+
+						}
+
+					}
+
+					country_event = {
+
+						id = AWR_SIK.111 days = 60
+
+					}
+
+				}
+
+			}
+
+		}
+
+		custom_effect_tooltip = they_can_takeover_northeast_tt
+
+	}
+
+	option = { #nvm
+
+		name = northeast_takeover.10.b
+
+		add_political_power = -100
+
+	}
+
+}
+
+country_event = {
+
+                id = AWR_NEA.5 hours = 12
+
+			}
+
+country_event = { #Sino-Soviet Treaty of Friendship and Alliance to CHI
+
+	id = AWR_NEA.5 #中-苏友好同盟条约
+
+	title = northeast_takeover.11.t
+
+	desc = northeast_takeover.11.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { 
+
+		name = northeast_takeover.11.a
+
+		ai_chance = { 
+
+		    factor = 100
+
+		}	
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		add_political_power = -50
+
+		add_stability = -0.1
+
+		effect_tooltip = {
+
+			MON = {
+
+				every_core_state = {
+
+					limit = {
+
+						is_owned_by = MON
+
+						is_claimed_by = ROOT
+
+					}
+
+					remove_claim_by = ROOT
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					SIK = {
+
+						has_civil_war = yes
+
+					}
+
+				}
+
+				random_country = {
+
+					limit = {
+
+						original_tag = SIK
+
+						owns_state = 1051
+
+						has_idea = SIK_For_the_TAR_revolution
+
+						any_enemy_country = {
+
+							original_tag = SIK
+
+							owns_state = 617
+
+							NOT = {
+
+								has_war_with = event_target:WTT_current_china_leader
+
+							}
+
+						}
+
+					}
+
+					country_event = {
+
+						id = AWR_SIK.111 days = 60
+
+					}
+
+				}
+
+			}
+
+		}
+
+		SOV = {
+
+			country_event = {
+
+				id = AWR_NEA.6 hours = 12
+
+			}
+
+		}
+
+	}
+
+	option = { 
+
+		name = northeast_takeover.11.b
+
+		add_political_power = -150
+
+		custom_effect_tooltip = will_effect_takeover_of_northeast_tt
+
+		SOV = {
+
+			country_event = {
+
+				id = AWR_CHI.3923 hours = 12
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+				id = AWR_NEA.6 hours = 12
+
+			}
+
+country_event = {
+
+	id = AWR_NEA.8 #西安事变
+
+	title = nea.1.t
+
+	desc = nea.1.d
+
+	picture = GFX_report_event_china_flag
+
+	is_triggered_only = yes
+
+	option = { #join
+
+		name = nea.1.a
+
+		ai_chance = {
+
+			base = 80
+
+			modifier = {
+
+				factor = 200
+
+				is_historical_focus_on = yes
+
+			}
+
+		}
+
+		every_other_country = {
+
+			limit = {
+
+				is_in_faction_with = event_target:scp_war_opposition_leader
+
+			}
+
+			country_event = { days = 3 id = AWR_NEA.10 }
+
+		}
+
+	}
+
+	option = { #not join
+
+		name = nea.1.b
+
+		trigger = {
+
+			NOT = {
+
+				TAG = PRC
+
+			}
+
+		}
+
+		ai_chance = {
+
+			base = 20
+
+			modifier = {
+
+				factor = 0
+
+				OR = {
+
+					AND = {
+
+						has_global_flag = gud_ready
+
+						GXC = { has_offensive_war_with = CHI }
+
+					}
+
+					AND = {
+
+						OR = {
+
+							tag = GUD
+
+							tag = GXC
+
+							tag = SIC
+
+							tag = SHC
+
+							tag = SHD
+
+						}
+
+						is_historical_focus_on = yes
+
+					}
+
+				}
+
+			}
+
+			modifier = {
+
+				factor = 100
+
+				OR = {
+
+					tag = SHX
+
+					tag = SUY
+
+					tag = YUN
+
+					tag = HPC
+
+					tag = XIK
+
+					tag = PLM
+
+					tag = XSM
+
+					tag = NXM
+
+					tag = GSM
+
+					tag = EGM
+
+					tag = TNG
+
+					tag = HMI
+
+				    tag = KHR
+
+					tag = KRS
+
+					tag = ATM
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.10 #[From.GetNameDef]加入反对中央政府的战争
+
+	title = nea.2.t
+
+	desc = nea.2.d
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = nea.2.a
+
+		trigger = {
+
+			tag = PRC
+
+		}
+
+	}
+
+	option = {
+
+		name = nea.2.b
+
+		trigger = { is_faction_leader = yes }
+
+		ROOT = {
+
+			add_to_faction = FROM
+
+		}
+
+		hidden_effect = {
+
+			if = {
+
+				limit = {
+
+					FROM = {
+
+						is_subject_of = event_target:WTT_current_china_leader
+
+					}
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					end_puppet = FROM
+
+				}
+
+			}
+
+		}
+
+		event_target:WTT_current_china_leader = {
+
+			FROM = {
+
+				add_to_war = { targeted_alliance = ROOT enemy = PREV }
+
+			}
+
+		}
+
+			
+
+	}
+
+	option = {
+
+		name = nea.2.c
+
+		trigger = { TAG = event_target:WTT_current_china_leader }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.11 #新的国家领导层
+
+	title = nea.3.t
+
+	desc = nea.3.d
+
+	picture = GFX_report_event_china_flag
+
+	is_triggered_only = yes
+
+	#trigger = {
+
+		 #used to stop multiple warlords from becoming china, in case of multiple warlords have similar war participationa against china
+
+		
+
+	#}
+
+	#trigger = {
+
+	#	#tag = NEA
+
+	#	is_warlord = yes
+
+	#	NOT = {
+
+	#		tag = event_target:WTT_current_china_leader
+
+	#	}
+
+	#	NOT = {
+
+	#		has_war_with = event_target:WTT_current_china_leader
+
+	#		is_subject_of = event_target:WTT_current_china_leader
+
+	#	}
+
+	#	owns_state = 1015
+
+	#	#has_country_flag = yang_hucheng_in_charge
+
+	#}
+
+	option = {
+
+		name = nea.3.a
+
+		hidden_effect = {
+
+			event_target:WTT_current_china_leader = {
+
+				save_event_target_as = old_leader
+
+				clr_country_flag = wtt_political_struggle
+
+				if = {
+
+					limit = {
+
+						OR = {
+
+							has_cosmetic_tag = CHI_warlord_leader # warlord has taken over before this happened
+
+							has_cosmetic_tag = CHI_warlord_PRC
+
+							has_cosmetic_tag = CHI_second_republic_red
+
+							has_cosmetic_tag = CHI_second_republic_blue
+
+							has_cosmetic_tag = CHI_second_republic
+
+						}
+
+					}
+
+					drop_cosmetic_tag = yes
+
+				}
+
+				if = {
+
+					limit = {
+
+						tag = CHI
+
+					}
+
+					set_cosmetic_tag = CHI_power_struggle_defeated
+
+				}
+
+			}
+
+			save_event_target_as = new_leader
+
+			CHI_negative_spirit_transfer = yes
+
+			if = {
+
+				limit = {
+
+					has_global_flag = lushan_declaration_flag
+
+				}
+
+				add_country_leader_trait = generallissimo
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_cosmetic_tag = CHI_power_struggle_defeated
+
+				}
+
+				drop_cosmetic_tag = yes
+
+				else = {
+
+					if = {
+
+						limit = {
+
+							is_puppet = no
+
+							has_country_flag = cooperation_with_communist_flag
+
+						}
+
+						set_cosmetic_tag = CHI_warlord_PRC
+
+					}
+
+					else_if = {
+
+						limit = {
+
+							is_puppet = no
+
+							NOT = {
+
+								has_country_flag = CHI_opposition_flag
+
+							}
+
+						}
+
+						set_cosmetic_tag = CHI_warlord_leader
+
+					}
+
+				}
+
+			}
+
+		}
+
+		for_each_scope_loop = {
+
+			array = global.small_china
+
+			tooltip = small_china_tt
+
+			add_core_of = ROOT
+
+		}
+
+		hidden_effect = {
+
+			country_event = {
+
+				days = 1 id = AWR_NEA.15 #to clear new_china_determined
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				if = {	limit = { NOT = { tag = ROOT } }
+
+					set_variable = { global.previous_china_leader = THIS }
+
+				}
+
+			}
+
+			clear_global_event_target = scp_war_old_leader
+
+			clear_global_event_target = scp_war_opposition_leader
+
+			clear_global_event_target = WTT_current_china_leader
+
+			clr_global_flag = wtt_war_over_national_leadership
+
+			save_global_event_target_as = WTT_current_china_leader
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_government = democratic
+
+				}
+
+			}
+
+			set_party_name = {
+
+				ideology = democratic
+
+				name = CHI_democratic_party
+
+				long_name = CHI_democratic_party_long
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_government = fascism
+
+				}
+
+			}
+
+			set_party_name = {
+
+				ideology = fascism
+
+				name = CHI_fascism_party
+
+				long_name = CHI_fascism_party_long
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				NOT = {
+
+					has_government = n_socialism
+
+				}
+
+			}
+
+			set_party_name = {
+
+				ideology = n_socialism
+
+				name = CHI_n_socialism_party
+
+				long_name = CHI_n_socialism_party_long
+
+			}
+
+		}
+
+		if = {
+
+			limit = {
+
+				has_dlc = "Waking the Tiger"
+
+			}
+
+			add_dynamic_modifier = {
+
+				modifier = china_government_legitimacy
+
+			}
+
+		}
+
+		WTT_restart_political_struggle = yes
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.13
+
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = CHI
+
+		#has_country_flag = im_counter_coup
+
+		is_legit_china = yes
+
+		has_civil_war = no
+
+	}
+
+	immediate = {
+
+		clr_country_flag = im_civ_war_exception
+
+	}
+
+	option = {
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.14
+
+	hidden = yes
+
+	trigger = {
+
+		OR = {
+
+			tag = NEA
+
+			tag = CHI
+
+		}
+
+		NOT = {
+
+			country_exists = PRC
+
+		}
+
+	}
+
+	immediate = {
+
+		#country_event = AWR_CHI.2869
+
+	}
+
+	is_triggered_only = yes
+
+	option = {
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.15
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		clr_global_flag = new_china_determined
+
+	}
+
+
+
+	option = {
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.16 #共产党抵达西安
+
+	title = nea.7.t
+
+	desc = nea.7.d
+
+	picture = GFX_report_event_china_flag
+
+	fire_only_once = yes
+
+	trigger = {
+
+		tag = NEA
+
+		is_puppet_of = CHI
+
+		has_war_with = PRC
+
+		PRC = {
+
+			controls_state = 744
+
+		}
+
+	}
+
+	mean_time_to_happen = {
+
+		days = 2
+
+	}
+
+	option = {
+
+		name = nea.7.a
+
+		event_target:WTT_communist_china = {
+
+			country_event = AWR_NEA.17
+
+		}
+
+	}
+
+	option = {
+
+		name = nea.7.b
+
+		ai_chance = { factor = 0 }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.17 #[From.GetLeader]与我们联系并寻求合作
+
+	title = nea.8.t
+
+	desc = nea.8.d
+
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	}
+
+	option = {
+
+		name = nea.8.a
+
+		set_country_flag = im_warlord_now
+
+		set_cosmetic_tag = NW_United_GOV
+
+		NEA = {
+
+			every_unit_leader = {
+
+				set_nationality = ROOT
+
+			}
+
+		}
+
+		annex_country = {
+
+			target = NEA transfer_troops = yes
+
+		}
+
+		country_event = AWR_CHI.3689
+
+	}
+
+	option = {
+
+		name = nea.8.b
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.18
+
+	title = nea.9.t
+
+	desc = nea.9.d
+
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	}
+
+	option = {
+
+		name = nea.9.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_NEA.19
+
+	title = nea.10.t
+
+	desc = nea.10.d
+
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	}
+
+	option = {
+
+		name = nea.10.a
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.1 #南京光复
+
+	title = nea_chi.141.t
+
+	desc = nea_chi.141.d
+
+	picture = GFX_news_nea_RW_liberation_of_nanjing
+
+	
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_nanjing }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_nanjing
+
+	}
+
+	
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.2 #上海光复
+
+	title = nea_chi.142.t
+
+	desc = nea_chi.142.d
+
+	picture = GFX_news_nea_RW_liberation_of_shanghai
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_shanghai }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_shanghai
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.3 #武汉光复
+
+	title = nea_chi.143.t
+
+	desc = nea_chi.143.d
+
+	picture = GFX_news_nea_RW_liberation_of_wuhan
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_wuhan }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_wuhan
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.4 #重庆光复
+
+	title = nea_chi.144.t
+
+	desc = nea_chi.144.d
+
+	picture = GFX_news_nea_RW_liberation_of_chongqing
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_chongqing }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_chongqing
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.5 #广州光复
+
+	title = nea_chi.145.t
+
+	desc = nea_chi.145.d
+
+	picture = GFX_news_nea_RW_liberation_of_guangzhou
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_guangzhou }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_guangzhou
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.6 #青岛光复
+
+	title = nea_chi.146.t
+
+	desc = nea_chi.146.d
+
+	picture = GFX_news_nea_RW_liberation_of_qingdao
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_qingdao }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_qingdao
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.7 #西安光复
+
+	title = nea_chi.147.t
+
+	desc = nea_chi.147.d
+
+	picture = GFX_news_nea_RW_liberation_of_xian
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_xian }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_xian
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.8 #平津光复
+
+	title = nea_chi.148.t
+
+	desc = nea_chi.148.d
+
+	picture = GFX_news_nea_RW_liberation_of_beiping_and_tianjin
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_beiping_and_tianjin }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_beiping_and_tianjin		
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+        hidden_effect = {		
+
+        country_event = { id = AWR_CHI.4252 }
+
+	    }		
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.9 #沈阳光复
+
+	title = nea_chi.149.t
+
+	desc = nea_chi.149.d
+
+	picture = GFX_news_nea_RW_liberation_of_shenyang
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_shenyang }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_shenyang
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.10 #大连光复
+
+	title = nea_chi.150.t
+
+	desc = nea_chi.150.d
+
+	picture = GFX_news_nea_RW_liberation_of_dalian
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_dalian }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_dalian
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			}
+
+		}
+
+	}
+
+}
+
+news_event = {
+
+	id = AWR_NEA_news.11 #香港光复
+
+	title = nea_chi.151.t
+
+	desc = nea_chi.151.d
+
+	picture = GFX_news_nea_RW_liberation_of_honkong
+
+
+
+	trigger = {
+
+	not = { has_global_flag = GFX_news_nea_RW_liberation_of_honkong }
+
+	}
+
+
+
+	major = yes
+
+
+
+	is_triggered_only = yes
+
+	
+
+	immediate = {
+
+	set_global_flag = GFX_news_nea_RW_liberation_of_honkong
+
+	}
+
+
+
+	option = {
+
+		name = nea_chi.141.a
+
+		trigger = {
+
+			is_literally_china = yes
+
+			has_war_with = JAP
+
+		}
+
+		add_war_support = 0.025
+
+		army_experience = 15
+
+	}
+
+	option = {
+
+		name = nea_chi.141.b
+
+		trigger = {
+
+			is_in_faction_with = JAP
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.141.c
+
+		trigger = {
+
+		  NOT = {
+
+			is_literally_china = yes
+
+			is_in_faction_with = JAP
+
+			tag = ENG
+
+			}
+
+		}
+
+	}
+
+	option = {
+
+		name = nea_chi.151.e
+
+		trigger = {
+
+			tag = ENG
+
+		}
+
+	}
+
+}

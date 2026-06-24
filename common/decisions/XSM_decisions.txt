@@ -1,0 +1,163 @@
+# XSM 决议
+
+XSM_unify_ma_cliques_category = {
+
+    要求二马屈服 = {
+
+		icon = generic_prepare_civil_war 
+
+		available = {	
+
+			}			
+
+        cost = 50
+
+		days_remove = 1
+
+        fire_only_once = yes 
+
+		ai_will_do = { 
+
+		    	factor = 0
+
+		}
+
+		visible = { 
+
+		}
+
+        remove_effect = {
+
+        XSM ={ #青海马家军
+
+            set_autonomy = { target = NXM autonomy_state = autonomy_jiaozong freedom_level = 0.50  }
+
+            set_autonomy = { target = GSM autonomy_state = autonomy_jiaozong freedom_level = 0.50  }			
+
+            }
+
+        }           
+
+    }			
+
+    统一马家军 = {
+
+		icon = generic_prepare_civil_war 
+
+		available = {
+
+			NXM = {
+
+				is_puppet_of = XSM
+
+			}
+
+			GSM = {
+
+				is_puppet_of = XSM
+
+			}			
+
+		}
+
+        cost = 100
+
+		days_remove = 50
+
+            fire_only_once = yes #仅可触发一次 yes/no
+
+		    ai_will_do = { #ai倾向
+
+		    	factor = 0
+
+		}
+
+		visible = { 
+
+		}
+
+        remove_effect = { 
+
+        616 = {
+
+            add_core_of = XSM
+
+        }
+
+        1031 = {
+
+            add_core_of = XSM
+
+        }
+
+        1044 = {
+
+            add_core_of = XSM
+
+        }
+
+        1053 = {
+
+            add_core_of = XSM
+
+        }
+
+        283 = { #士兵在前进
+
+            add_core_of = XSM
+
+        }
+
+        1029 = {
+
+            add_core_of = XSM
+
+        }		
+
+		XSM = { #青海马家军
+
+               annex_country = { target = NXM }		
+
+               annex_country = { target = GSM }
+
+               annex_country = { target = XII }	
+
+			   1031 = {
+
+				transfer_state_to = XSM
+
+			    }
+
+			    1044 = {
+
+				transfer_state_to = XSM
+
+			    }
+
+			    1053 = {
+
+				transfer_state_to = XSM
+
+			    }
+
+   			    283 = { #士兵在前进
+
+				transfer_state_to = XSM
+
+			    }   
+
+	   			1029 = {
+
+				transfer_state_to = XSM
+
+			    }  			
+
+				set_cosmetic_tag = XSM_MA		   
+
+					}					
+
+    }
+
+		}
+
+}

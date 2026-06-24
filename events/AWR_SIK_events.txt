@@ -1,0 +1,663 @@
+# SIK 事件
+
+add_namespace = AWR_SIK
+
+country_event = {
+
+	id = AWR_SIK.239 #[From.GetLeader] 拒绝我们的合作提议
+
+	title = EFM_Comchina_SIK.44.t
+
+	desc = {
+
+		text = EFM_Comchina_SIK.44.d
+
+		trigger = {
+
+			FROM = {
+
+				NOT = {
+
+					tag = NXM
+
+				}
+
+			}
+
+		}
+
+	}
+
+	desc = {
+
+		text = EFM_Comchina_SIK.44.d_2
+
+		trigger = {
+
+			FROM = {
+
+				tag = NXM
+
+			}
+
+		}
+
+	}
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = EFM_Comchina_SIK.44.a
+
+		
+
+	}
+
+}
+
+country_event = { #to SIK
+
+	id = AWR_SIK.7 #和共党合作？
+
+	title = EFM_Comchina_SIK.45.t
+
+	desc = EFM_Comchina_SIK.45.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+
+		FROM = {
+
+			save_global_event_target_as = SIK_defect_PRC
+
+		}
+
+		save_global_event_target_as = SIK_gov_target
+
+		if = {
+
+			limit = {
+
+				SIK = {
+
+					is_subject = yes
+
+				}
+
+			}
+
+			SIK = {
+
+				overlord = {
+
+					save_global_event_target_as = SIK_overlord_central_gov
+
+				}
+
+			}
+
+		}
+
+		else = {
+
+			event_target:WTT_current_china_leader = {
+
+				save_global_event_target_as = SIK_overlord_central_gov
+
+			}
+
+		}
+
+	}
+
+	option = { #accept
+
+		name = EFM_Comchina_SIK.45.a
+
+		ai_chance = {
+
+			factor = 100
+
+		}
+
+		custom_effect_tooltip = GAME_OVER_TT
+
+		effect_tooltip = {
+
+			if = {
+
+				limit = {
+
+					has_character = CHI_tao_Zhiyue
+
+				}
+
+			    CHI_tao_Zhiyue = {
+
+					set_nationality = FROM
+
+				}
+
+			}
+
+			every_unit_leader = {
+
+				limit = {
+
+					NOT = {
+
+						is_character = CHI_tao_Zhiyue
+
+					}
+
+				}
+
+				retire = yes
+
+			}
+
+			FROM = {
+
+				annex_country = {
+
+					target = ROOT transfer_troops = yes
+
+				}
+
+			}
+
+		}
+
+		
+
+		event_target:SIK_overlord_central_gov = {
+
+			country_event = AWR_SIK.8
+
+		}
+
+		event_target:WTT_communist_china = { country_event = AWR_SIK.9 }
+
+	}
+
+	option = {
+
+		name = EFM_Comchina_SIK.45.b
+
+		ai_chance = {
+
+			factor = 0
+
+		}
+
+		FROM = { country_event = AWR_SIK.239 }
+
+	}
+
+}
+
+country_event = { #to CHI
+
+	id = AWR_SIK.8 #新疆和张治中投敌
+
+	title = EFM_Comchina_SIK.46.t
+
+	desc = EFM_Comchina_SIK.46.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = EFM_Comchina_SIK.46.a
+
+		effect_tooltip = {
+
+			SIK = {
+
+				if = {
+
+					limit = {
+
+						has_character = CHI_tao_Zhiyue
+
+					}
+
+					CHI_tao_Zhiyue = {
+
+						set_nationality = event_target:SIK_defect_PRC
+
+					}
+
+				}
+
+				every_unit_leader = {
+
+					limit = {
+
+						NOT = {
+
+							is_character = CHI_tao_Zhiyue
+
+						}
+
+					}
+
+					retire = yes
+
+				}
+
+				event_target:SIK_defect_PRC = {
+
+					annex_country = {
+
+						target = SIK transfer_troops = yes
+
+					}
+
+				}
+
+			}
+
+		}
+
+		
+
+	}
+
+}
+
+country_event = { #to PRC
+
+	id = AWR_SIK.9 #新疆解放
+
+	title = EFM_Comchina_SIK.47.t
+
+	desc = EFM_Comchina_SIK.47.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {#guo
+
+		name = EFM_Comchina_SIK.47.a
+
+		SIK = {
+
+			if = {
+
+				limit = {
+
+					has_character = CHI_tao_Zhiyue
+
+				}
+
+				CHI_tao_Zhiyue = {
+
+					set_portraits = {
+
+						character = CHI_tao_Zhiyue
+
+						army = { large="gfx/leaders/CHI/Portrait_CHI_Tao_Zhiyue_PRC.dds" }
+
+					}
+
+					set_nationality = ROOT
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_character = CHI_zhang_zhizhong
+
+				}
+
+				CHI_zhang_zhizhong = {
+
+					set_nationality = ROOT
+
+				}
+
+			}
+
+			
+
+			every_unit_leader = {
+
+				limit = {
+
+					NOT = {
+
+						is_character = CHI_tao_Zhiyue
+
+						is_character = CHI_zhang_zhizhong
+
+					}
+
+				}
+
+				retire = yes
+
+			}
+
+			
+
+			if = {
+
+				limit = {
+
+					has_civil_war = yes
+
+					any_enemy_country = {
+
+						original_tag = PREV
+
+						has_government = communism
+
+					}
+
+				}
+
+				random_enemy_country = {
+
+					limit = {
+
+						original_tag = PREV
+
+						has_government = communism
+
+					}
+
+					every_unit_leader = {
+
+						set_nationality = ROOT
+
+					}
+
+					ROOT = {
+
+						annex_country = {
+
+							target = PREV transfer_troops = yes
+
+						}
+
+					}
+
+				}				
+
+			}
+
+            if = {
+
+				limit = {
+
+					has_civil_war = no
+
+					any_other_country = {
+
+						original_tag = PREV
+
+						has_government = communism
+
+					}
+
+				}
+
+				random_other_country = {
+
+					limit = {
+
+						original_tag = PREV
+
+						has_government = communism
+
+					}
+
+					every_unit_leader = {
+
+						set_nationality = ROOT
+
+					}
+
+					ROOT = {
+
+						annex_country = {
+
+							target = PREV transfer_troops = yes
+
+						}
+
+					}
+
+				}				
+
+			}			
+
+		}
+
+		annex_country = {
+
+			target = SIK transfer_troops = yes
+
+		}			
+
+		
+
+		event_target:WTT_current_china_leader = { #guo
+
+		every_controlled_state = {
+
+		limit = { is_fully_controlled_by = event_target:WTT_current_china_leader }
+
+			teleport_armies = {
+
+				to_state = 1005
+
+				limit = {
+
+					tag = event_target:WTT_communist_china
+
+					# trigger will be checked for owner of armies and will only teleport if true. scope if the owner of the army and prev is the scope that calls teleport_armies
+
+				}
+
+			}
+
+		}
+
+		}
+
+	}
+
+}
+
+country_event = { #to PRC (central controls sinkiang) #NEEDS LOC #UNUSED 
+
+	id = AWR_SIK.10
+
+	title = EFM_Comchina_SIK.448.t
+
+	desc = EFM_Comchina_SIK.448.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = EFM_Comchina_SIK.448.a
+
+		every_state = {
+
+		    limit = {
+
+			    OR = {
+
+				    region = 252
+
+				    region = 145
+
+			    }
+
+			    is_owned_by = event_target:WTT_current_china_leader
+
+			}
+
+			ROOT = { transfer_state = PREV }
+
+		}
+
+		SIK = {
+
+			every_unit_leader = {
+
+				set_nationality = ROOT
+
+			}
+
+		}
+
+		ROOT = {
+
+            if = {
+
+				limit = {		
+
+					any_other_country = {
+
+						original_tag = SIK
+
+						has_government = communism
+
+					}
+
+				}
+
+				random_other_country = {
+
+					limit = {
+
+						original_tag = SIK
+
+						has_government = communism
+
+					}
+
+					ROOT = {
+
+						annex_country = {
+
+							target = PREV transfer_troops = yes
+
+						}
+
+					}
+
+				}				
+
+			}			
+
+		}
+
+		event_target:WTT_current_china_leader = {
+
+		    transfer_units_fraction = {
+
+			    target = ROOT         # the recipient
+
+			    size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+			    army_ratio = 0.05      # [0,1] Overrides size modifier for army
+
+			    keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+				    always = yes
+
+			    }
+
+			}
+
+		}	
+
+	    event_target:WTT_current_china_leader = {
+
+			country_event = AWR_SIK.11
+
+		}
+
+	}
+
+}
+
+country_event = { #to CHI #NEEDS LOC #UNUSED
+
+	id = AWR_SIK.11
+
+	title = EFM_Comchina_SIK.96.t
+
+	desc = EFM_Comchina_SIK.49.d
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = {
+
+		name = EFM_Comchina_SIK.49.a
+
+		effect_tooltip = {
+
+			every_state = {
+
+		        limit = {
+
+			        OR = {
+
+				        region = 252
+
+				        region = 145
+
+			        }
+
+			        is_owned_by = event_target:WTT_current_china_leader
+
+			    }
+
+			    FROM = { transfer_state = PREV }
+
+		    }
+
+			transfer_units_fraction = {
+
+			    target = FROM         # the recipient
+
+			    size = 0            # [0,1] Default value for the ratio below if they are not specified
+
+			    army_ratio = 0.05      # [0,1] Overrides size modifier for army
+
+			    keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+
+				    always = yes
+
+			    }
+
+			}
+
+		}
+
+	}
+
+}

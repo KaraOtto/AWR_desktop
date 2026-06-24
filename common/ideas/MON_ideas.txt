@@ -1,0 +1,411 @@
+ideas = {
+	country = {
+		# MON_agriculture_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_agriculture_idea = {
+
+					allowed = { always = no }
+
+					picture = generic_agrarian_society
+
+					allowed_civil_war = { always = yes }
+
+					modifier = {
+						MONTHLY_POPULATION = 0.45
+						stability_factor = 0.05
+					}
+				}
+		# MON_cavalry，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_cavalry = {
+					picture = generic_infantry_bonus
+					modifier = {
+						cavalry_attack_factor = 0.05
+						cavalry_defence_factor = 0.05
+					}
+				}
+		# MON_chinese_migrants，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_chinese_migrants = {
+
+					allowed = { always = no }
+					available = {
+						CHI = { has_war_with = JAP }
+						has_war = no
+					}
+					picture = generic_production_bonus
+
+					modifier = {
+						MONTHLY_POPULATION = 0.70
+						conscription_factor = -0.1
+					}
+				}
+		# MON_communism_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_communism_idea = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						has_government = communism
+					}
+
+					removal_cost = -1
+
+					picture = generic_communism_drift_bonus
+
+					modifier = {
+						communism_drift = 0.1 
+					}
+				}
+		# MON_defence，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_defence = {
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_wall_line
+					modifier = {
+						production_speed_bunker_factor = 0.2
+						production_speed_anti_air_building_factor = 0.2
+					}
+				}
+		# MON_democracy_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_democracy_idea = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						has_government = democratic
+					}
+
+					removal_cost = -1
+
+					picture = generic_democratic_drift_bonus
+
+					modifier = {
+						democratic_drift = 0.1 
+					}
+				}
+		# MON_desert_warfare，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_desert_warfare = {
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_infantry_bonus
+					modifier = {
+						attrition = -0.1
+					}
+				}
+		# MON_export_revolution_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_export_revolution_idea = {
+					allowed = { always = no }
+
+					picture = ast_volunteer_defence_corps
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						subversive_activites_upkeep = -0.3
+						send_volunteer_divisions_required = -0.5
+					}
+				}
+		# MON_fascism_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_fascism_idea = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						has_government = fascism
+					}
+
+					removal_cost = -1
+
+					picture = generic_fascism_drift_bonus
+
+					modifier = {
+						fascism_drift = 0.1 
+					}
+				}
+		# MON_harmonic_diplomacy，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_harmonic_diplomacy = {
+					allowed = { always = no }
+
+					picture = generic_neutrality_idea
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						trade_opinion_factor = 0.2
+						opinion_gain_monthly_factor = 0.1
+					}
+				}
+		# japanese_advisors_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_japanese_advisors_idea = {
+
+					picture = warrior_traditions_idea
+
+					allowed_civil_war = {
+						always = no
+					}
+
+					removal_cost = -1
+
+					modifier = {
+					     land_doctrine_cost_factor = -0.1
+					}
+				}
+		# MON_likbez，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_likbez = {
+					removal_cost = -1
+
+					picture = generic_research_bonus
+
+					allowed = {
+						always = no
+					}
+
+					modifier = {
+						political_power_factor = 0.5
+					}
+				}
+		# MON_maoist_war，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_maoist_war = {
+					allowed = { always = no }
+
+					picture = generic_communism_drift_bonus
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						resistance_growth_on_our_occupied_states = 0.2
+						resistance_growth = -0.3
+					}
+				}
+		# MON_mechanization_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_mechanization_idea = {
+
+					picture = generic_industrial_concern_1
+
+					removal_cost = -1
+
+					modifier = {
+						production_speed_buildings_factor = 0.05
+					}
+				}
+		# MON_militant_buddhism_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_militant_buddhism_idea = {
+					allowed = { always = no }
+
+					picture = FRA_scw_intervention_nationalists_focus
+
+					allowed_civil_war = { has_government = fascism }
+
+					modifier = {
+						training_time_army_factor = -0.05
+						conscription = 0.02
+					}
+				}
+		# MON_national_education，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_national_education = {
+					removal_cost = -1
+
+					picture = generic_research_bonus
+
+					allowed = {
+						always = no
+					}
+
+					modifier = {
+						research_speed_factor = 0.04
+					}
+				}
+		# MON_neutrality_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_neutrality_idea = {
+
+					available = {
+						has_government = neutrality
+					}
+
+					allowed_civil_war = {
+						has_government = neutrality
+					}
+
+					removal_cost = -1
+
+					picture = generic_neutrality_idea
+
+					modifier = {
+						neutrality_drift = 0.1 
+					}
+				}
+		# MON_neutrality_idea_religious，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_neutrality_idea_religious = {
+
+					available = {
+						has_government = neutrality
+					}
+
+					allowed_civil_war = {
+						has_government = neutrality
+					}
+
+					removal_cost = -1
+
+					picture = MON_buddhism
+
+					modifier = {
+						neutrality_drift = 0.1 
+					}
+				}
+		# neutrality_influence，来源：common/ideas/ZHzzz_generic.txt
+		MON_neutrality_influence = {
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						has_government = neutrality
+					}
+					removal_cost = -1
+					picture = generic_pp_unity_bonus
+			
+					modifier = {
+						neutrality_drift = 0.1
+						neutrality_acceptance = 85
+					}
+				}
+		# MON_peoples_war，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_peoples_war = {
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_manpower_bonus
+					modifier = {
+						conscription = 0.02
+						army_core_defence_factor = 0.15
+						army_core_attack_factor = 0.15
+						resistance_growth_on_our_occupied_states = 0.15
+					}
+				}
+		# MON_power_struggle，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_power_struggle = {
+					allowed = { always = no }
+
+					picture = generic_disjointed_gov
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						political_power_factor = -0.25
+						research_speed_factor = -0.10
+						industrial_capacity_factory = -0.10
+						stability_factor = -0.1
+					}
+				}
+		# MON_provisional_government，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_provisional_government = {
+					picture = SOV_scientist_defect
+					allowed_civil_war = { always = no }
+					modifier = {
+						political_power_cost = 1
+						army_org_factor = -0.5
+						consumer_goods_factor = 0.15
+					}
+				}
+		# MON_religious_education_idea，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_religious_education_idea = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = { has_government = communism }
+					}
+
+					removal_cost = -1
+
+					picture = MON_buddhism
+
+					modifier = {
+						consumer_goods_factor = -0.2
+						foreign_subversive_activites = -0.5
+					}
+				}
+		# MON_resource_effort，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_resource_effort = {
+					picture = generic_industrial_concern_1
+					allowed_civil_war = { always = no }
+					modifier = {
+						local_resources_factor = 0.1
+						consumer_goods_factor = -0.15
+					}
+				}
+		# MON_resource_nationalism，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_resource_nationalism = {
+					allowed = { always = no }
+
+					picture = isolation
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						local_resources_factor = 0.2
+						min_export = -0.1
+					}
+				}
+		# MON_sovereign_democracy，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_sovereign_democracy = {
+					picture = generic_morale_bonus
+					available = {
+						has_government = democratic
+					}
+					modifier = {
+						drift_defence_factor = 0.3
+						army_core_defence_factor = 0.25
+						political_power_factor = 0.15
+					}
+				}
+		# MON_soviet_aid，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_soviet_aid = {
+					allowed = { always = no }
+
+					picture = generic_production_bonus
+
+					allowed_civil_war = { always = no }
+
+					modifier = {
+						production_speed_buildings_factor = 0.15
+					}
+				}
+		# MON_standing_army，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_standing_army = {
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_infantry_bonus
+					modifier = {
+						conscription = 0.03
+						army_org_factor = 0.05
+					}
+				}
+		# true_to_revolution，来源：common/ideas/RCM_mongolian_ideas.txt
+		MON_true_to_revolution = {
+
+					picture = home_of_the_revolution
+
+					allowed_civil_war = {
+						has_government = communism
+					}
+
+					modifier = {
+						drift_defence_factor = 0.5
+					}
+				}
+	}
+}

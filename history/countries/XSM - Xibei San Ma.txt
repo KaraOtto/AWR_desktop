@@ -1,51 +1,40 @@
-﻿capital = 1045  
-
+capital = 1045
 oob = "XSM_1936"
-
 recruit_character = XSM_ma_lin
 recruit_character = XSM_ma_biao
 recruit_character = XSM_ma_bufang
-#recruit_character = XSM_ma_buqing 
 recruit_character = XSM_ma_bukang
-#recruit_character = XSM_ma_chengxiang
 recruit_character = XSM_ma_jiyuan
 recruit_character = XSM_ma_yuanhai
-
 add_stability = 0.2
 add_war_support = 0.25
 add_manpower = 35000
-
-# Starting tech
 set_technology = {
 	infantry_weapons = 1
 	gw_artillery = 1
 	tech_militias = 1
 }
 give_military_access = GSM
-add_ideas = MON_nomadic  
+add_ideas = generic_nomadic
 1939.1.1 = {
-	
-	create_country_leader = {  
+	create_country_leader = {
 	name = "Ma Bufang"
 		desc = "POLITICS_MA_BUFANG_DESC"
 		picture = "Portrait_XSM_Ma_Bufang.dds"
 		expire = "1970.11.3"
 		ideology = despotism
 	}
-	add_to_war = {  
+	add_to_war = {
 		targeted_alliance = CHI
 		enemy = JAP
 	}
-  
 	add_political_power = 1198
-
-			#generic focuses
 	if = {
 		limit = {
-			NOT = {  
+			NOT = {
 				has_dlc = "Waking the Tiger"
-			}  
-		}  
+			}
+		}
 		complete_national_focus = army_effort
 		complete_national_focus = equipment_effort
 		complete_national_focus = motorization_effort
@@ -57,26 +46,19 @@ add_ideas = MON_nomadic
 		complete_national_focus = construction_effort
 		complete_national_focus = production_effort
 	}
-
 	add_ideas = {
-		#laws
-		tot_economic_mobilisation
-		service_by_requirement
+		generic_tot_economic_mobilisation
+		generic_service_by_requirement
 		closed_economy
 	}
-
 	oob = "XSM_1939"
-
 	set_technology = {
-		#doctrines
 		air_superiority = 1
 		pocket_defence = 1
 		defence_in_depth = 1
 		fleet_in_being = 1
 		battlefleet_concentration = 1
 		convoy_sailing = 1
-
-		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
 		radio_detection = 1
@@ -84,8 +66,6 @@ add_ideas = MON_nomadic
 		computing_machine = 1
 		basic_encryption = 1
 		basic_decryption = 1
-
-		#industry
 		basic_machine_tools = 1
 		improved_machine_tools = 1
 		advanced_machine_tools = 1
@@ -98,13 +78,11 @@ add_ideas = MON_nomadic
 		concentrated_industry3 = 1
 	}
 }
-
-set_popularities = {  
+set_popularities = {
 	democratic = 0
 	fascism = 0
 	communism = 0
 	neutrality = 100
-
 }
 set_politics = {
 	ruling_party = neutrality

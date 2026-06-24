@@ -1,0 +1,10291 @@
+# ENG 决议
+
+RCM_war_of_resistance_decision_cat = { #抗日战争
+
+	CHI_build_burma_road = { #滇缅路计划
+
+		icon = GFX_decision_generic_motorized
+
+		allowed = {
+
+			is_literally_china = yes
+
+		}
+
+		available = {
+
+			325 = { #黄河大合唱第三节- 黄河之水天上来
+
+				OR = {
+
+					is_controlled_by = ROOT
+
+					controller = {
+
+						is_in_faction_with = ROOT
+
+					}
+
+					controller = {
+
+						is_subject_of = ROOT
+
+					}
+
+				}
+
+			}
+
+			747 = {
+
+				OR = {
+
+					is_controlled_by = ROOT
+
+					controller = {
+
+						is_in_faction_with = ROOT
+
+					}
+
+					controller = {
+
+						is_subject_of = ROOT
+
+					}
+
+				}
+
+			}
+
+			992 = {
+
+				controller = {
+
+					NOT = {
+
+						has_war_with = ROOT
+
+					}
+
+					OR = {
+
+						tag = ROOT
+
+						is_in_faction_with = ROOT
+
+						is_subject_of = ROOT
+
+						is_subject_of = ENG
+
+						original_tag = ENG
+
+					}
+
+				}
+
+			}	
+
+		}
+
+		visible = {
+
+			hidden_trigger = {
+
+				NOT = {
+
+					has_global_flag = burma_road_done_flag
+
+				}
+
+				has_country_flag = chi_eng_agreed_burma_road_flag
+
+			}
+
+			RCM_UK_will_support = yes
+
+		}
+
+		
+
+		cost = 50
+
+		
+
+	    cancel_if_not_visible = yes
+
+
+
+		ai_will_do = {
+
+			factor = 1000
+
+		}
+
+		
+
+		fire_only_once = no
+
+		
+
+		days_remove = 365
+
+		
+
+		complete_effect = {
+
+			
+
+		}
+
+
+
+		remove_effect = {
+
+			set_global_flag = burma_road_done_flag
+
+			add_offsite_building = {
+
+				type = arms_factory
+
+				level = 4
+
+			}
+
+			custom_effect_tooltip = they_may_close_the_road_in_future
+
+		}
+
+
+
+		modifier = {
+
+			production_speed_buildings_factor = -0.1
+
+			consumer_goods_factor = 0.35
+
+		}
+
+	} #MODDED
+
+	CHI_seek_help_from_collaborationist = { #向协作者寻求合作
+
+		icon = jap_conquer_china
+
+		fire_only_once = yes
+
+		cost = 50
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			NOT = {
+
+				has_global_flag = seek_help_from_collaborationist
+
+			}
+
+		    has_defensive_war_with = JAP
+
+		    country_exists = EHB 
+
+		    EHB = { is_subject_of = JAP }
+
+			#guo
+
+		}
+
+		available = { 
+
+		    OR = {
+
+				any_enemy_country = { is_rrc = yes }
+
+			    any_enemy_country = {
+
+					NOT = {
+
+						OR = {
+
+							tag = MAN
+
+							tag = ECA
+
+						}
+
+					}
+
+					is_subject_of = JAP
+
+					is_neighbor_of = ROOT
+
+				    OR = {
+
+						controls_state = 608
+
+						controls_state = 1015
+
+					}
+
+				}
+
+			}
+
+			#1015 = { is_controlled_by_jap_or_its_puppet = yes }
+
+			#608 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		    #609 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		    #743 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		    #1010 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		    #716 = { is_controlled_by_jap_or_its_puppet = yes }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    set_global_flag = seek_help_from_collaborationist
+
+		    country_event = ccw.10
+
+		    custom_effect_tooltip = if_they_accept_green
+
+		    custom_effect_tooltip = anti_communist_area_tt
+
+		} 
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 3000
+
+		}
+
+	}
+
+	CHI_space_for_time_decision = { #以空间换取时间
+
+		icon = infiltrate_state
+
+		#fixed_random_seed = no
+
+		#fire_only_once = yes
+
+		days_remove = 70 #MODDED # Stays for 5 days before being removed
+
+		#days_re_enable = 5 # Will show up in the interface and can be selected again after 5 days
+
+		#cost = 20
+
+		custom_cost_trigger = {
+
+			num_of_civilian_factories > 2
+
+		}
+
+		custom_cost_text = 3_civies
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			#NOT = {
+
+			#	has_global_flag = space_for_time_done_flag
+
+			#}
+
+		}
+
+		available = { #can do
+
+			has_completed_focus = CHI_National_Defense_Council_focus
+
+			any_owned_state = {
+
+				is_fully_controlled_by = ROOT
+
+				OR = {
+
+					is_coastal = yes
+
+					state = 1015
+
+				}
+
+				OR = {
+
+					arms_factory > 0
+
+					industrial_complex > 0
+
+				}
+
+			}
+
+			any_owned_state = {
+
+				is_fully_controlled_by = ROOT
+
+				OR = { 
+
+				    custom_trigger_tooltip = {
+
+					    tooltip = is_in_west_china_region_tt
+
+					    region = 165
+
+				    }
+
+				    custom_trigger_tooltip = {
+
+					    tooltip = is_in_southwest_china_region_tt
+
+					    region = 249
+
+				    }
+
+				}
+
+				free_building_slots = {
+
+					building = industrial_complex
+
+					size > 0
+
+					include_locked = yes
+
+				}
+
+				free_building_slots = {
+
+					building = arms_factory
+
+					size > 0
+
+					include_locked = yes
+
+				}
+
+			}
+
+			hidden_trigger = {
+
+				num_of_civilian_factories > 5
+
+			}
+
+			#613 = {
+
+			#	is_owned_and_controlled_by = ROOT
+
+			#	arms_factory > 2
+
+			#	 > 1
+
+			#}
+
+			#1015 = {
+
+			#	is_owned_and_controlled_by = ROOT
+
+			#	arms_factory > 1
+
+			#	industrial_complex > 0
+
+			#}
+
+			#596 = {
+
+			#	is_owned_and_controlled_by = ROOT
+
+			#	industrial_complex > 1
+
+			#}
+
+			#605 = {
+
+			#	controller = {
+
+			#		OR = {
+
+			#			is_subject_of = ROOT
+
+			#			has_country_leader = {
+
+			#				ruling_only = yes
+
+			#				name = "Liu Xiang"
+
+			#			}
+
+			#			tag = ROOT
+
+			#		}
+
+			#	}
+
+			#}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_fully_controlled_by = ROOT
+
+					OR = {
+
+						is_coastal = yes
+
+						state = 1015
+
+					}
+
+					OR = {
+
+						arms_factory > 0
+
+						industrial_complex > 0
+
+					}
+
+				}
+
+				set_variable = {
+
+					ROOT.SFT_industrial_complex_level = This.industrial_complex_level
+
+				}
+
+				set_variable = {
+
+					ROOT.SFT_arms_factory_level = This.arms_factory_level
+
+				}
+
+				if = { # max of 1 at a time
+
+					limit = {
+
+						check_variable = { ROOT.SFT_industrial_complex_level > 1 }
+
+					}
+
+					set_variable = {
+
+						SFT_industrial_complex_level = 1
+
+					}
+
+				}
+
+				if = {
+
+					limit = {
+
+						check_variable = { ROOT.SFT_arms_factory_level > 1 }
+
+					}
+
+					set_variable = {
+
+						SFT_arms_factory_level = 1
+
+					}
+
+				}
+
+				remove_building = {
+
+					type = arms_factory
+
+					level = This.arms_factory_level
+
+				}
+
+				remove_building = {
+
+					type = industrial_complex
+
+					level = This.industrial_complex_level
+
+				}
+
+			}
+
+			#613 = {
+
+			#	remove_building = {
+
+			#		type = arms_factory
+
+			#		level = 3
+
+			#	}
+
+			#	remove_building = {
+
+			#		type = industrial_complex
+
+			#		level = 2
+
+			#	}
+
+			#}
+
+			#1015 = {
+
+			#	remove_building = {
+
+			#		type = arms_factory
+
+			#		level = 2
+
+			#	}
+
+			#	remove_building = {
+
+			#		type = industrial_complex
+
+			#		level = 1
+
+			#	}
+
+			#}
+
+			#596 = {
+
+			#	remove_building = {
+
+			#		type = industrial_complex
+
+			#		level = 2
+
+			#	}
+
+			#}
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			#605 = {
+
+			#	add_extra_state_shared_building_slots = 10
+
+			#	add_building_construction = {
+
+			#		type = arms_factory
+
+			#		level = 5
+
+			#		instant_build = yes
+
+			#	}
+
+			#	add_building_construction = {
+
+			#		type = industrial_complex
+
+			#		level = 5
+
+			#		instant_build = yes
+
+			#	}
+
+			#}
+
+			if = {
+
+				limit = {
+
+                    NOT = {
+
+						has_global_flag = space_for_time_done_flag
+
+					}
+
+				}
+
+				set_global_flag = space_for_time_done_flag
+
+			}
+
+			random_owned_state = {
+
+				limit = {
+
+					OR = {
+
+					   region = 165
+
+					   region = 249
+
+					}
+
+					is_fully_controlled_by = ROOT
+
+					free_building_slots = {
+
+						building = industrial_complex
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+					free_building_slots = {
+
+						building = arms_factory
+
+						size > 0
+
+						include_locked = yes
+
+					}
+
+				}
+
+				prioritize = { 605 }
+
+				custom_effect_tooltip = receive_industries_from_aforementioned_state_tt
+
+				hidden_effect = {
+
+					set_variable = {
+
+						ROOT.SFT_combined_level = ROOT.SFT_industrial_complex_level
+
+					}
+
+					add_to_variable = {
+
+						ROOT.SFT_combined_level = ROOT.SFT_arms_factory_level
+
+					}
+
+					add_extra_state_shared_building_slots = ROOT.SFT_combined_level
+
+					add_building_construction = {
+
+						type = industrial_complex
+
+						level = ROOT.SFT_industrial_complex_level
+
+						instant_build = yes
+
+					}
+
+					add_building_construction = {
+
+						type = arms_factory
+
+						level = ROOT.SFT_arms_factory_level
+
+						instant_build = yes
+
+					}
+
+					move_building_damage = yes
+
+				}
+
+				state_event = PRC_linyuying.8#guo
+
+			}
+
+			#guo clear_variable = ROOT.SFT_combined_level
+
+			#guo clear_variable = ROOT.SFT_industrial_complex_level
+
+			#guo clear_variable = ROOT.SFT_arms_factory_level
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+			civilian_factory_use = 3
+
+			production_speed_buildings_factor = -0.1#guo
+
+		}
+
+		ai_will_do = {
+
+			factor = 8000
+
+		}
+
+	}
+
+	CHI_fortify_coastal_defence_descision = { #强化岸防工事
+
+		icon = generic_nationalism
+
+		fire_only_once = yes
+
+		days_remove = 70
+
+		custom_cost_trigger = {
+
+			num_of_civilian_factories > 4
+
+		}
+
+		custom_cost_text = 5_civies
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+		}
+
+		available = { #can do
+
+			has_completed_focus = CHI_National_Defense_Council_focus
+
+			count_triggers = {
+
+				amount = 3
+
+				608 = { is_controlled_by = ROOT }
+
+				1028 = { is_controlled_by = ROOT }
+
+				613 = { is_controlled_by = ROOT }
+
+				596 = { is_controlled_by = ROOT }
+
+				595 = { is_controlled_by = ROOT }
+
+				1033 = { is_controlled_by = ROOT }
+
+				593 = { is_controlled_by = ROOT }
+
+				592 = { is_controlled_by = ROOT }
+
+				591 = { is_controlled_by = ROOT }
+
+				743 = { is_controlled_by = ROOT }
+
+			}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						count_triggers = {
+
+							amount = 3
+
+							608 = { is_controlled_by = ROOT }
+
+							1028 = { is_controlled_by = ROOT }
+
+							613 = { is_controlled_by = ROOT }
+
+							596 = { is_controlled_by = ROOT }
+
+							595 = { is_controlled_by = ROOT }
+
+							1033 = { is_controlled_by = ROOT }
+
+							593 = { is_controlled_by = ROOT }
+
+							592 = { is_controlled_by = ROOT }
+
+							591 = { is_controlled_by = ROOT }
+
+							743 = { is_controlled_by = ROOT }
+
+						}
+
+					}
+
+				}
+
+				custom_effect_tooltip = build_coastal_forts_in_controlled_states_tt
+
+			}
+
+			if = {
+
+				limit = {
+
+					608 = { is_controlled_by = ROOT }
+
+				}
+
+			608 = {
+
+				add_building_construction = {
+
+					type = coastal_bunker
+
+					level = 1
+
+					province = 10068
+
+					instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					1028 = { is_controlled_by = ROOT }
+
+				}
+
+				1028 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 4205
+
+						instant_build = yes
+
+					}
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 10000
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					613 = { is_controlled_by = ROOT }
+
+				}
+
+				613 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 7014
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					596 = { is_controlled_by = ROOT }
+
+				}
+
+				596 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 7191
+
+						instant_build = yes
+
+					}
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 9974
+
+						instant_build = yes
+
+					}
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 1055
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					595 = { is_controlled_by = ROOT }
+
+				}
+
+				595 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 7071
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					1033 = { is_controlled_by = ROOT }
+
+				}
+
+				1033 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 4196
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					593 = { is_controlled_by = ROOT }
+
+				}
+
+				593 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 9938
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					592 = { is_controlled_by = ROOT }
+
+				}
+
+				592 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 1047
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					591 = { is_controlled_by = ROOT }
+
+				}
+
+				591 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 1070
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					743 = { is_controlled_by = ROOT }
+
+				}
+
+				743 = {
+
+					add_building_construction = {
+
+						type = coastal_bunker
+
+						level = 1
+
+						province = 1070
+
+						instant_build = yes
+
+					}
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+			civilian_factory_use = 5
+
+			production_speed_coastal_bunker_factor = -0.25
+
+		}
+
+		ai_will_do = {
+
+			factor = 800
+
+		}
+
+	}
+
+	lushan_declaration = { #庐山声明
+
+		icon = eng_blackshirt_speech
+
+		fire_only_once = yes
+
+		#cost = 10
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			NOT = {
+
+				has_global_flag = lushan_declaration_flag
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_defensive_war_with = JAP
+
+		}
+
+		complete_effect = { #run effect on selection
+
+			#hidden_effect = {
+
+			#	add_command_power = -25
+
+			#}
+
+			effect_tooltip = {
+
+				remove_ideas = appeasement_policy
+
+			}
+
+			hidden_effect = {
+
+				remove_ideas = appeasement_policy
+
+				remove_ideas = appeasement_policy_0
+
+				remove_ideas = appeasement_policy_2
+
+			}
+
+			add_country_leader_trait = generallissimo
+
+			add_political_power = 150
+
+			add_war_support = 0.05
+
+			if = {
+
+				limit = {
+
+					has_idea = civilian_economy
+
+				}
+
+				add_ideas = low_economic_mobilisation
+
+			}
+
+			hidden_effect = {
+
+				set_global_flag = lushan_declaration_flag
+
+				if = {
+
+					limit = {
+
+						CKS_in_charge = yes
+
+					}
+
+					news_event = {
+
+						id = news.2017
+
+					}
+
+					#scoped_sound_effect = RCM_lushan_declaration
+
+					country_event = age_leader.20#guo
+
+				}
+
+				if = {
+
+					limit = {
+
+						is_ai = yes
+
+					}
+
+					remove_ideas = idea_gongxian_arsenal
+
+				}
+
+			}
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 3200
+
+		}
+
+	}
+
+	CHI_inch_blood_decision = { #一寸山河一寸血
+
+		icon = generic_nationalism
+
+		fire_only_once = no
+
+		days_remove = 40
+
+		cost = 25
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+			NOT = {
+
+				OR = {
+
+					has_idea = CHI_inch_blood_1
+
+					has_idea = CHI_inch_blood_2
+
+					has_idea = CHI_inch_blood_3
+
+					has_idea = CHI_inch_blood_4
+
+					has_idea = CHI_inch_blood_5
+
+					has_idea = CHI_inch_blood_6
+
+					has_idea = CHI_inch_blood_7
+
+					has_idea = CHI_inch_blood_8
+
+					has_idea = CHI_inch_blood_9
+
+					has_idea = CHI_inch_blood_10
+
+				}
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_defensive_war_with = JAP
+
+		}
+
+		complete_effect = { #run effect on selection
+
+
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			custom_effect_tooltip = blank_line
+
+			add_ideas = CHI_inch_blood_1
+
+			every_other_country = {
+
+				limit = {
+
+					has_war_together_with = ROOT
+
+					OR = {
+
+					    is_in_faction_with = ROOT
+
+						tag = PRC
+
+					}
+
+					is_literally_china = yes
+
+					NOT = { has_war_with = ROOT }
+
+				}
+
+				country_event = rcmchina.376
+
+				effect_tooltip = {
+
+					add_ideas = CHI_inch_blood_1
+
+				}
+
+			}
+
+			custom_effect_tooltip = blank_line
+
+			custom_effect_tooltip = CHI_inch_blood_decision_tt
+
+			custom_effect_tooltip = blank_line
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+			political_power_gain = -0.5
+
+			command_power_gain = -0.2
+
+		}
+
+		ai_will_do = {
+
+			factor = 5000
+
+		}
+
+	}
+
+	CHI_concentrated_defence_decision = { #集中防御
+
+		icon = generic_civil_support
+
+		fire_only_once = no
+
+		available = {
+
+			surrender_progress > 0.4
+
+			hidden_trigger = {
+
+				command_power > 14
+
+			}
+
+		}
+
+		custom_cost_trigger = {
+
+			command_power > 14
+
+		}
+
+		custom_cost_text = cp_at_least_15
+
+		visible = { #can see
+
+			#is_ai = yes #AI against player only
+
+			#any_enemy_country = {
+
+			#	is_ai = no #AI against player only
+
+			#}
+
+			#always = no  #disabled for now
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+		}
+
+		days_remove = 4995
+
+
+
+		cancel_trigger = {
+
+			surrender_progress < 0.4
+
+		}
+
+
+
+		ai_will_do = {
+
+			base = 5000
+
+		}
+
+
+
+		complete_effect = {
+
+			hidden_effect = { add_command_power = -15 }
+
+			#set_country_flag = CHI_concentrated_defence_flag
+
+		}
+
+
+
+		modifier = {
+
+			#org_loss_when_moving = 0.2
+
+			#army_attack_factor = -0.15
+
+			#org_loss_when_moving = 0.05
+
+			#army_speed_factor = -0.10
+
+			army_org_factor = 0.25
+
+			dig_in_speed_factor = 0.5
+
+			recon_factor_while_entrenched = 0.25
+
+			army_core_defence_factor = 0.45
+
+		}
+
+		
+
+	}
+
+
+
+	CHI_no_concentrated_defence = { #停止集中防御
+
+		icon = generic_prepare_civil_war
+
+		visible = {
+
+			#has_country_flag = CHI_concentrated_defence_flag
+
+			has_decision = CHI_concentrated_defence_decision
+
+		}
+
+		available = {
+
+			hidden_trigger = {
+
+				command_power > 14
+
+			}
+
+		}
+
+		custom_cost_trigger = {
+
+			command_power > 14
+
+		}
+
+		custom_cost_text = cp_at_least_15
+
+
+
+		ai_will_do = {
+
+			base = 0
+
+		}
+
+		complete_effect = {
+
+			hidden_effect = { add_command_power = -15 }
+
+			remove_decision = CHI_concentrated_defence_decision
+
+			#clr_country_flag = CHI_concentrated_defence_flag
+
+		}
+
+	}
+
+	CHI_weapon_scavenging_decision = { #收缴武器
+
+		icon = generic_prepare_civil_war
+
+		fire_only_once = no
+
+		available = {
+
+			surrender_progress > 0.3
+
+			has_equipment = { infantry_equipment < 1001 }
+
+			hidden_trigger = {
+
+				command_power > 14
+
+			}
+
+		}
+
+		custom_cost_trigger = {
+
+			command_power > 14
+
+		}
+
+		custom_cost_text = cp_at_least_15
+
+		visible = { #can see
+
+			is_ai = yes #AI against player only
+
+			any_enemy_country = {
+
+				is_ai = no #AI against player only
+
+			}
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+		}
+
+		days_remove = 4995
+
+
+
+		cancel_trigger = {
+
+			OR = {
+
+				surrender_progress < 0.3
+
+				has_equipment = { infantry_equipment > 1000 }
+
+			}
+
+		}
+
+
+
+		ai_will_do = {
+
+			base = 5000
+
+		}
+
+
+
+		complete_effect = {
+
+			hidden_effect = { add_command_power = -15 }
+
+			set_country_flag = CHI_weapon_scavenging_flag #1.11 MODDED
+
+		}
+
+
+
+		modifier = {
+
+			#army_speed_factor = -0.02
+
+			equipment_capture = 0.05
+
+			ammunition_consumption_factor = -0.15
+
+			#org_loss_when_moving = 0.05
+
+		}
+
+		
+
+	}
+
+
+
+	CHI_no_weapon_scavenging = { #停止收缴武器
+
+		icon = generic_prepare_civil_war
+
+		visible = {
+
+			has_decision = CHI_weapon_scavenging_decision
+
+		    has_country_flag = CHI_weapon_scavenging_flag
+
+		}
+
+		available = {
+
+			hidden_trigger = {
+
+				command_power > 14
+
+			}
+
+		}
+
+		custom_cost_trigger = {
+
+			command_power > 14
+
+		}
+
+		custom_cost_text = cp_at_least_15
+
+		ai_will_do = {
+
+			base = 0
+
+		}
+
+
+
+		complete_effect = {
+
+			hidden_effect = { add_command_power = -14 }
+
+			remove_decision = CHI_weapon_scavenging_decision
+
+			clr_country_flag = CHI_weapon_scavenging_flag #MODDED
+
+		}
+
+	}
+
+	CHI_scorched_earth_tactics = {
+
+		icon = generic_scorched_earth
+
+		available = {
+
+			has_defensive_war_with = JAP
+
+			any_owned_state = {
+
+				is_controlled_by = ROOT
+
+				infrastructure > 0
+
+				any_neighbor_state = {
+
+					NOT = { is_fully_controlled_by = ROOT }
+
+					controller = { has_war_with = CHI }
+
+				}
+
+			}
+
+		}
+
+		cost = 25
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		visible = {
+
+			always = no #it's not really worth it
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+			has_dlc = "Waking the Tiger"
+
+		}
+
+		days_remove = 30
+
+		modifier = {
+
+			stability_weekly = -0.0025
+
+			war_support_weekly = -0.0025
+
+		}
+
+		complete_effect = {
+
+			every_owned_state = {
+
+				limit = {
+
+					is_controlled_by = ROOT
+
+					infrastructure > 0
+
+					any_neighbor_state = {
+
+						NOT = { is_fully_controlled_by = ROOT }
+
+						controller = { has_war_with = event_target:WTT_current_china_leader }
+
+					}
+
+				}
+
+				damage_building = {
+
+					type = infrastructure
+
+					damage = 3
+
+				}
+
+			}
+
+		}
+
+	}
+
+	CHI_dare_to_die_corps_decision = { #敢死队
+
+		icon = generic_army_support
+
+		available = {
+
+			has_defensive_war_with = JAP
+
+		}
+
+		#fire_only_once = yes
+
+		#cost = 25
+
+		days_remove = 20
+
+		custom_cost_trigger = {
+
+			command_power > 29
+
+			has_army_experience > 29
+
+		}
+
+		custom_cost_text = RCM_army_xp_at_least_30_command_power_at_least_30
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		visible = {
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+			has_dlc = "Waking the Tiger"
+
+			NOT = {
+
+				has_country_flag = CHI_dare_to_die_corps_flag
+
+			}
+
+		}
+
+		modifier = {
+
+			command_power_gain = -0.2
+
+		}
+
+		complete_effect = {
+
+			hidden_effect = {
+
+
+
+			}
+
+		}
+
+		remove_effect = {
+
+			custom_effect_tooltip = CHI_50_cheaper_force_attack
+
+			set_country_flag = CHI_dare_to_die_corps_flag
+
+		}
+
+	}
+
+	CHI_last_ditch_effort_decision = { #最后一搏
+
+		icon = generic_civil_support
+
+		fire_only_once = yes
+
+		days_remove = 40 # Stays for 5 days before being removed
+
+		custom_cost_trigger = {
+
+			num_of_civilian_factories > 4
+
+		}
+
+		custom_cost_text = 5_civies
+
+		#war_with_target_on_remove = no #will give warning (not yet tested)
+
+		highlight_states = { #These states will be highlighted
+
+
+
+		}
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+			has_global_flag = lushan_declaration_flag
+
+			NOT = {
+
+				has_global_flag = last_ditch_effort_done_flag
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_defensive_war_with = JAP
+
+			surrender_progress > 0.5
+
+			hidden_trigger = {
+
+				num_of_civilian_factories > 4
+
+			}
+
+			605 = {
+
+				is_controlled_by = ROOT
+
+				OR = {
+
+					any_neighbor_state = {
+
+						is_controlled_by_jap_or_its_puppet = yes
+
+					}
+
+					ROOT = {
+
+						surrender_progress > 0.5
+
+					}
+
+				}
+
+			}
+
+			753 = {
+
+				is_controlled_by = ROOT
+
+			}
+
+			1041 = {
+
+				is_controlled_by = ROOT
+
+			}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			army_experience = 5
+
+			set_global_flag = last_ditch_effort_done_flag
+
+			605 = {
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 6999
+
+					instant_build = yes
+
+				}
+
+			}
+
+			753 = {
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 8026
+
+					instant_build = yes
+
+				}
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 12767
+
+					instant_build = yes
+
+				}
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 2045
+
+					instant_build = yes
+
+				}
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 5193
+
+					instant_build = yes
+
+				}
+
+			}
+
+			1041 = {
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 7240
+
+					instant_build = yes
+
+				}
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 3
+
+					province = 12705
+
+					instant_build = yes
+
+				}
+
+				add_building_construction = {
+
+					type = bunker
+
+					level = 4
+
+					province = 12819
+
+					instant_build = yes
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+			civilian_factory_use = 5
+
+		}
+
+		ai_will_do = {
+
+			factor = 5000
+
+		}
+
+	}
+
+	
+
+	CHI_relocate_capital_wuhan = { #将政府迁往汉口
+
+		icon = generic_scorched_earth
+
+
+
+		available = {
+
+			has_defensive_war_with = JAP
+
+			custom_trigger_tooltip = {
+
+				tooltip = nanking_or_neighbor_fallen
+
+				1015 = {
+
+					OR = {
+
+						controller = {
+
+							NOT = { tag = ROOT }
+
+						}
+
+						any_neighbor_state = {
+
+							controller = {
+
+								NOT = { tag = ROOT }
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		highlight_states = { state = 1034 }
+
+
+
+		visible = {
+
+			NOT = {
+
+				605 = {
+
+					is_owned_and_controlled_by = ROOT
+
+					is_capital = yes
+
+				}
+
+			}
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+		}
+
+
+
+		cost = 0
+
+
+
+		fire_only_once = yes
+
+
+
+		ai_will_do = {
+
+			factor = 400
+
+		}
+
+
+
+		complete_effect = {
+
+			country_event = { id = rcmchina.369 days = 1 }
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						owns_state = 605
+
+					}
+
+				    any_other_country = {
+
+						is_literally_china = yes
+
+						#original_tag = SIC
+
+						NOT = { has_war_with = ROOT }
+
+						NOT = {
+
+							has_completed_focus = CHI_opposition
+
+						}
+
+						owns_state = 605
+
+						controls_state = 605
+
+				    }
+
+				}
+
+			    random_other_country = {
+
+					limit = {
+
+                        is_literally_china = yes
+
+						#original_tag = SIC
+
+						NOT = { has_war_with = ROOT }
+
+						NOT = {
+
+							has_completed_focus = CHI_opposition
+
+						}
+
+						owns_state = 605
+
+						controls_state = 605
+
+					}
+
+				    country_event = { id = rcmchina.369 days = 1 } 
+
+				}	
+
+			}
+
+		}
+
+	}
+
+	CHI_relocate_chongqing = { #将政府迁往重庆
+
+		icon = generic_scorched_earth
+
+
+
+		available = {
+
+			has_defensive_war_with = JAP
+
+			custom_trigger_tooltip = {
+
+				tooltip = hankow_or_neighbor_fallen
+
+				1034 = {
+
+					OR = {
+
+						controller = {
+
+							NOT = { tag = ROOT }
+
+						}
+
+						any_neighbor_state = {
+
+							controller = {
+
+								NOT = { tag = ROOT }
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			controls_state = 605
+
+			ROOT = {
+
+				surrender_progress > 0.2
+
+			}
+
+		}
+
+		highlight_states = { state = 605 }
+
+
+
+		visible = {
+
+			tag = event_target:WTT_current_china_leader
+
+			#has_defensive_war_with = JAP
+
+			1034 = {
+
+				is_capital = yes
+
+			}
+
+		}
+
+
+
+		cost = 0
+
+
+
+		fire_only_once = yes
+
+
+
+		ai_will_do = {
+
+			factor = 400
+
+		}
+
+
+
+		complete_effect = {
+
+			country_event = { id = rcmchina.370 days = 1 }
+
+		}
+
+	}
+
+	CHI_return_to_nanking = { #还都南京
+
+		icon = generic_form_nation
+
+
+
+		available = {
+
+			NOT = {
+
+				has_defensive_war_with = JAP
+
+			}
+
+			controls_state = 1015
+
+			1015 = {
+
+				is_capital = no
+
+			}
+
+		}
+
+		highlight_states = { state = 1015 }
+
+
+
+		visible = {
+
+			tag = event_target:WTT_current_china_leader
+
+			1015 = {
+
+				is_owned_and_controlled_by = ROOT
+
+				is_capital = no
+
+			}
+
+		}
+
+
+
+		cost = 0
+
+
+
+		fire_only_once = yes
+
+
+
+		ai_will_do = {
+
+			factor = 400
+
+		}
+
+
+
+		complete_effect = {
+
+			country_event = { id = rcmchina.371 days = 1 }
+
+		}
+
+	}
+
+	CHI_sue_for_peace_JAP = { #向日本提议和平
+
+		icon = generic_political_discourse
+
+
+
+		available = {
+
+			has_war_with = JAP
+
+			NOT = {
+
+				OR = {
+
+					has_idea = CHI_sunfall_sea
+
+					has_idea = CHI_arc
+
+				}
+
+			}
+
+			OR = {
+
+				#AND = {
+
+					#check_if_no_sov_occupied_man = yes
+
+					
+
+				#}
+
+				custom_trigger_tooltip = { #Reclaimed whole continent
+
+					tooltip = JAP_sue_for_peace_TT
+
+					JAP = { #日本
+
+						NOT = {
+
+							controls_state = 525
+
+							controls_state = 527
+
+							controls_state = 1009
+
+							controls_state = 1007
+
+							controls_state = 1006
+
+							controls_state = 1010
+
+							controls_state = 714
+
+							controls_state = 717
+
+						}						
+
+					}
+
+					JAP_or_its_puppet_dont_control_any_chinese_cores_exclude_TW = yes
+
+				}
+
+				JAP = { #日本
+
+					any_enemy_country = {
+
+						NOT = {
+
+							tag = ROOT
+
+							is_warlord = yes
+
+							tag = event_target:WTT_communist_china
+
+						}
+
+						ic_ratio = { 
+
+							tag = ROOT 
+
+							ratio > 0.7
+
+						}
+
+						is_major = yes
+
+						owns_state = 408
+
+						controls_state = 408
+
+						controls_state = 328
+
+						controls_state = 716
+
+					}
+
+				}
+
+			}
+
+			
+
+		}
+
+		targets = { JAP }
+
+		target_trigger = {
+
+			#Target is FROM
+
+			FROM = {
+
+				tag = JAP
+
+			}
+
+		}
+
+
+
+		visible = {
+
+			714 = {
+
+				controller = {
+
+					NOT = {
+
+						is_controlled_by_jap_or_its_puppet = yes
+
+					}
+
+					NOT = {
+
+						has_war_together_with = JAP
+
+					}
+
+				}
+
+			}
+
+			tag = event_target:WTT_current_china_leader
+
+		}
+
+
+
+		cost = 0
+
+
+
+		#fire_only_once = yes
+
+
+
+		ai_will_do = {
+
+			factor = 4000
+
+		}
+
+
+
+		complete_effect = {
+
+			country_event = {
+
+				id = rcmchina.282
+
+			}
+
+		}
+
+	}
+
+	CHI_sunfall_air_decision = { #落日行动：空降路线
+
+		icon = generic_air
+
+		fire_only_once = yes
+
+		days_remove = 50
+
+		cost = 25
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_war_with = JAP
+
+			NOT = {
+
+				has_country_flag = CHI_operation_sunset_chosen
+
+			}
+
+		}
+
+		targets = { JAP }
+
+		target_trigger = {
+
+			#Target is FROM
+
+			FROM = {
+
+				tag = JAP
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_completed_focus = CHI_chinese_special_force
+
+			has_defensive_war_with = JAP
+
+			#guo
+
+			1004 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1003 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1002 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1001 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1000 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			999 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			527 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			525 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			524 = {
+
+				or = { is_controlled_by_ROOT_or_ally = yes controller = { has_war_together_with = root } }
+
+			}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+			set_country_flag = CHI_operation_sunset_chosen
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			add_ideas = CHI_arc
+
+			news_event = {
+
+				id = efm_news.1026
+
+			}
+
+			add_state_claim = 994
+
+			add_state_claim = 995
+
+			add_state_claim = 996
+
+			add_state_claim = 536
+
+			add_state_claim = 282
+
+			add_state_claim = 535
+
+			add_state_claim = 528
+
+			add_state_claim = 555
+
+			add_state_claim = 537
+
+			add_state_claim = 533
+
+			add_state_claim = 534
+
+			add_state_claim = 531
+
+			add_state_claim = 529
+
+			add_state_claim = 530
+
+			add_state_claim = 532
+
+		}
+
+		cancel_trigger = { #will abort
+
+			custom_trigger_tooltip = {
+
+				tooltip = requirments_not_met_tt
+
+				NOT = {
+
+					OR = {
+
+						has_defensive_war_with = JAP
+
+						#guo
+
+			1004 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1003 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1002 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1001 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1000 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			999 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			527 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			525 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			524 = {
+
+				or = { is_controlled_by_ROOT_or_ally = yes controller = { has_war_together_with = root } }
+
+			}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+	CHI_sunfall_sea_decision = { #落日行动：海侵路线
+
+		icon = generic_naval
+
+		fire_only_once = no
+
+		days_remove = 50
+
+		cost = 25
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_war_with = JAP
+
+			NOT = {
+
+				has_country_flag = CHI_operation_sunset_chosen
+
+			}
+
+		}
+
+		targets = { JAP }
+
+		target_trigger = {
+
+			#Target is FROM
+
+			FROM = {
+
+				tag = JAP
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_completed_focus = CHI_chinese_special_force
+
+			has_defensive_war_with = JAP
+
+			#guo
+
+			1004 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1003 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1002 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1001 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1000 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			999 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			527 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			525 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			524 = {
+
+				or = { is_controlled_by_ROOT_or_ally = yes controller = { has_war_together_with = root } }
+
+			}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+			add_ideas = CHI_sunfall_sea
+
+			news_event = {
+
+				id = efm_news.1026
+
+			}
+
+			add_state_claim = 536
+
+			add_state_claim = 282
+
+			add_state_claim = 535
+
+			add_state_claim = 528
+
+			add_state_claim = 555
+
+			add_state_claim = 537
+
+			add_state_claim = 533
+
+			add_state_claim = 534
+
+			add_state_claim = 531
+
+			add_state_claim = 529
+
+			add_state_claim = 530
+
+			add_state_claim = 532
+
+		}
+
+		cancel_trigger = { #will abort
+
+			custom_trigger_tooltip = {
+
+				tooltip = requirments_not_met_tt
+
+				NOT = {
+
+					OR = {
+
+						has_defensive_war_with = JAP
+
+						#guo
+
+			1004 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1003 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1002 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1001 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			1000 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			999 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			527 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			525 = {
+
+				is_controlled_by_ROOT_or_ally = yes
+
+			}
+
+			524 = {
+
+				or = { is_controlled_by_ROOT_or_ally = yes controller = { has_war_together_with = root } }
+
+			}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+	CHI_winter_offensive_decision = { #发动[GetYear]攻势
+
+		icon = GFX_decision_SWI_consolidate_council_power
+
+		fire_only_once = yes
+
+		#days_remove = 50
+
+		cost = 25
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_defensive_war_with = JAP
+
+		}
+
+		targets = { JAP }
+
+		target_trigger = {
+
+			#Target is FROM
+
+			FROM = {
+
+				tag = JAP
+
+			}
+
+		}
+
+		available = { #can do
+
+			has_defensive_war_with = JAP
+
+			surrender_progress > 0.3
+
+			OR = {
+
+				621 = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				746 = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				1019 = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				1013 = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				615 = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				any_core_state = {
+
+					custom_trigger_tooltip = {
+
+						tooltip = is_in_strat_246
+
+						region = 246
+
+					}
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				any_core_state = {
+
+					custom_trigger_tooltip = {
+
+						tooltip = is_in_strat_164
+
+						region = 164
+
+					}
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+			}
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    every_core_state = {
+
+				limit = {
+
+					OR = {
+
+						region = 246
+
+						region = 164	
+
+					}
+
+				    is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				set_state_flag = winter_offensive_flag
+
+				add_dynamic_modifier = { modifier = chinese_offensive scope = JAP } 
+
+			}
+
+			every_core_state = {
+
+				limit = {
+
+					OR = {
+
+						state = 621
+
+						state = 746
+
+						state = 1019
+
+						state = 1013
+
+						state = 615
+
+					}
+
+				    is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				set_state_flag = winter_offensive_flag
+
+				add_dynamic_modifier = { modifier = chinese_offensive scope = JAP } 
+
+			}
+
+		    activate_mission = CHI_winter_offensive_mission
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 2000
+
+		}
+
+	}
+
+
+
+	CHI_winter_offensive_mission = { #进行[GetYear]攻势
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		available = { #objective
+
+			all_core_state = {
+
+				OR = {
+
+					state = 621
+
+					state = 746 
+
+					state = 1019
+
+					state = 1013
+
+					state = 615
+
+					custom_trigger_tooltip = {
+
+						tooltip = is_in_strat_246
+
+						region = 246
+
+					}
+
+					custom_trigger_tooltip = {
+
+						tooltip = is_in_strat_164
+
+						region = 164
+
+					}
+
+					#if = {
+
+					#	limit = {
+
+					#		NOT = {
+
+					#			country_exists = event_target:WTT_communist_china
+
+					#		}
+
+					#	}	
+
+					#}
+
+				}
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+			}
+
+		}
+
+		is_good = no
+
+		activation = {	
+
+			always = no 
+
+		}
+
+		cancel_trigger = {	
+
+			NOT = {
+
+				has_defensive_war_with = JAP
+
+			}
+
+			#has_global_flag = gud_keep_army_flag
+
+		}
+
+		days_mission_timeout = 150
+
+		complete_effect = {
+
+			every_core_state = {
+
+				limit = {
+
+					has_state_flag = winter_offensive_flag
+
+				}
+
+				remove_dynamic_modifier = {
+
+					modifier = chinese_offensive scope = JAP
+
+				}
+
+			}
+
+			add_political_power = 100
+
+			add_war_support = 0.15
+
+		}
+
+		timeout_effect = {
+
+		    every_core_state = {
+
+				limit = {
+
+					has_state_flag = winter_offensive_flag
+
+				}
+
+				remove_dynamic_modifier = {
+
+					modifier = chinese_offensive scope = JAP
+
+				}
+
+			}
+
+			add_political_power = -50
+
+			add_war_support = -0.05
+
+		}
+
+	}
+
+
+
+	#皖南事变起点 #guo
+
+	CHI_n4a_issue_decision = { #新四军问题
+
+		icon = GFX_decision_SWI_expand_covert_operations
+
+		fire_only_once = yes
+
+		#days_remove = 50
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			is_in_faction_with = event_target:WTT_communist_china
+
+			#guo
+
+			NOT = { tag = NEA }			
+
+		}
+
+		target_trigger = {
+
+			#Target is FROM
+
+			FROM = {
+
+				tag = event_target:WTT_communist_china
+
+			}
+
+		}
+
+		available = { #can do
+
+        if = {
+
+                limit = {
+
+                    ROOT = {
+
+                        is_ai = no
+
+                    }
+
+                    }
+
+					OR = {
+
+                    749 = {
+
+                    is_owned_and_controlled_by = NFA
+
+                    }
+
+                    any_core_state = { #guo
+
+                        #controller = {
+
+                        #    OR = {
+
+                        #        tag = ROOT
+
+                        #        is_subject_of = ROOT
+
+                        #        is_ally_with = ROOT
+
+                        #    }
+
+                        #    NOT = {
+
+                        #        has_government = communism
+
+                        #    }
+
+                        #}
+
+                        OR = {
+
+                            #state = 598
+
+                            #state = 997
+
+                            state = 606
+
+                            state = 749 state = 1034#guo 
+
+                            #state = 1043
+
+                            #state = 607
+
+                        }
+
+                        controller = {
+
+                    NOT = {
+
+                        has_government = communism
+
+                    }
+
+                    OR = {
+
+                        tag = ROOT
+
+                        is_in_faction_with = ROOT
+
+                        is_subject_of = ROOT
+
+                    }
+
+                }
+
+                        has_state_flag = commie_ridden_states
+
+                    }					
+
+                    }					
+
+		}
+
+        if = {
+
+                limit = {
+
+                    ROOT = {
+
+                        is_ai = yes
+
+                    }
+
+                    }
+
+					OR = {					
+
+                    749 = {
+
+                    is_owned_by = NFA
+
+                    }
+
+                    any_core_state = { #guo
+
+                        #controller = {
+
+                        #    OR = {
+
+                        #        tag = ROOT
+
+                        #        is_subject_of = ROOT
+
+                        #        is_ally_with = ROOT
+
+                        #    }
+
+                        #    NOT = {
+
+                        #        has_government = communism
+
+                        #    }
+
+                        #}
+
+                        OR = {
+
+                            #state = 598
+
+                            #state = 997
+
+                            state = 606
+
+                            state = 749 state = 1034#guo 
+
+                            #state = 1043
+
+                            #state = 607
+
+                        }
+
+                        controller = {
+
+                    NOT = {
+
+                        has_government = communism
+
+                    }
+
+                    OR = {
+
+                        tag = ROOT
+
+                        is_in_faction_with = ROOT
+
+                        is_subject_of = ROOT
+
+                    }
+
+                }
+
+                        has_state_flag = commie_ridden_states
+
+                    }					
+
+		            }					
+
+		}		
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    event_target:WTT_communist_china = {
+
+				country_event = ccw.102
+
+				effect_tooltip = {
+
+					activate_mission = CHI_n4a_retreat_mission
+
+				}
+
+			}
+
+		    
+
+		}
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			base = 0
+
+			modifier = {
+
+				add = 9999
+
+			    date > 1941.1.1
+
+			}
+
+		}		
+
+	}
+
+
+
+	CHI_n4a_retreat_mission = { #自黄河以南撤离
+
+		icon = GFX_decision_eng_blackshirt_march
+
+		available = { #objective
+
+		has_global_flag = N4A_retreat_zz#guo
+
+		}
+
+		is_good = no
+
+		activation = {	
+
+			always = no 
+
+		}
+
+		cancel_trigger = {	
+
+			OR = {
+
+				event_target:WTT_current_china_leader = {
+
+					has_war_with = event_target:WTT_communist_china
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					exists = no
+
+				}
+
+				event_target:WTT_communist_china = {
+
+					exists = no
+
+				}
+
+			}
+
+		}
+
+		days_mission_timeout = 60
+
+		complete_effect = {
+
+			
+
+		}
+
+		timeout_effect = {
+
+		    event_target:WTT_current_china_leader = {
+
+                country_event = {
+
+					id = ccw.104 hours = 12
+
+				}
+
+		    }
+
+			#event_target:WTT_communist_china = {
+
+			#	if = { 
+
+			#		limit = {
+
+			#			has_character = PRC_Ye_Ting
+
+			#		}
+
+			#		retire_character = PRC_Ye_Ting
+
+			#	}
+
+			#	if = { 
+
+			#		limit = {
+
+			#			has_character = PRC_Xiang_Ying
+
+			#		}
+
+			#		retire_character = PRC_Xiang_Ying
+
+			#	}										
+
+            #add_manpower = -4000   
+
+			   
+
+			
+
+			#news_event = chen_news.339	
+
+            #set_global_flag = south_anhui_incident	
+
+			#army_experience = 20 
+
+		    #add_equipment_to_stockpile = {
+
+			#	type = infantry_equipment
+
+			#	amount = 400
+
+			#}
+
+			#}
+
+		}
+
+	}
+
+
+
+    CHI_n4a_incident_decision = { #进攻驻[From.GetName]的新四军
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		
+
+		state_target = yes
+
+		
+
+		target_trigger = {
+
+			FROM = {
+
+				OR = {
+
+					state = 598
+
+					state = 1080
+
+					state = 997
+
+					state = 606
+
+					state = 749 state = 1034#guo 
+
+					state = 1043
+
+					state = 607
+
+				}
+
+				controller = {
+
+					NOT = {
+
+						has_government = communism
+
+					}
+
+					OR = {
+
+						tag = ROOT
+
+						is_in_faction_with = ROOT
+
+						is_subject_of = ROOT
+
+					}
+
+			    }
+
+				has_state_flag = commie_ridden_states
+
+			}
+
+		}
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		visible = {
+
+			has_global_flag = n4a_incident_available
+
+			NOT = {
+
+				has_global_flag = n4a_incident_happened_flag
+
+			}
+
+			
+
+			OR = {#guo
+
+			TAG = event_target:WTT_current_china_leader
+
+			TAG = CHI
+
+			}
+
+		}
+
+		available = {
+
+			FROM = {
+
+				controller = {
+
+					NOT = {
+
+						has_government = communism
+
+					}
+
+					OR = {
+
+						tag = ROOT
+
+						is_in_faction_with = ROOT
+
+						is_subject_of = ROOT
+
+					}
+
+			    }
+
+			}
+
+			
+
+			if = {
+
+			limit = { is_ai = no }
+
+				divisions_in_state = {
+
+					#type = armor
+
+					size > 7
+
+					state = FROM#guo
+
+				}
+
+			}
+
+			
+
+			NOT = {
+
+				has_active_mission = CHI_n4a_incident_mission
+
+			}
+
+		}
+
+
+
+		cost = 0
+
+
+
+        complete_effect = {
+
+			FROM = {
+
+				set_variable = {
+
+					Root.n4a_state = This.id
+
+				}
+
+			}
+
+			activate_mission = CHI_n4a_incident_mission
+
+			custom_effect_tooltip = if_buy_succ
+
+			effect_tooltip = {
+
+				FROM = {
+
+					clr_state_flag = commie_ridden_states
+
+					set_border_war = no
+
+				}
+
+				if = {
+
+					limit = {
+
+						NOT = {
+
+							has_global_flag = n4a_incident_happened_flag
+
+						}
+
+					}
+
+					event_target:WTT_communist_china = {
+
+						country_event = ccw.106
+
+						if = { 
+
+							limit = {
+
+								has_character = PRC_Ye_Ting
+
+							}
+
+							retire_character = PRC_Ye_Ting
+
+						}
+
+						if = { 
+
+							limit = {
+
+								has_character = PRC_Xiang_Ying
+
+							}
+
+							retire_character = PRC_Xiang_Ying
+
+						}										
+
+						add_manpower = -8000  
+
+						add_equipment_to_stockpile = {
+
+							type = infantry_equipment
+
+							amount = -800
+
+						}
+
+					}
+
+					add_equipment_to_stockpile = {
+
+						type = infantry_equipment
+
+						amount = 800
+
+						producer = event_target:WTT_communist_china
+
+					}
+
+				}
+
+			}
+
+		}
+
+		ai_will_do = {
+
+			base = 9999#guo
+
+		}
+
+	}
+
+
+
+	CHI_n4a_incident_mission = { #对新四军发起攻势
+
+		icon = GFX_decision_eng_blackshirt_march
+
+		available = { #objective
+
+			OR = {
+
+				var:Root.n4a_state = {
+
+					is_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				
+
+				and = {#guo
+
+					is_ai = no
+
+					divisions_in_state = {
+
+						#type = armor
+
+						size < 8
+
+						state = var:Root.n4a_state
+
+					}
+
+				}
+
+			}	
+
+		}
+
+		is_good = yes
+
+		activation = {	
+
+			always = no 
+
+		}
+
+		cancel_trigger = {	
+
+			OR = {
+
+				event_target:WTT_current_china_leader = {
+
+					has_war_with = event_target:WTT_communist_china
+
+				}
+
+				event_target:WTT_current_china_leader = {
+
+					exists = no
+
+				}
+
+				event_target:WTT_communist_china = {
+
+					exists = no
+
+				}
+
+				all_of_scopes = {
+
+					array = global.small_china
+
+					tooltip = small_china_tt
+
+					OR = {
+
+						state = 598
+
+						state = 1080
+
+						state = 997
+
+						state = 606
+
+						state = 749 state = 1034#guo 
+
+						state = 1043
+
+						state = 607
+
+					}
+
+					NOT = {
+
+						has_state_flag = commie_ridden_states
+
+					}
+
+				}
+
+			}
+
+		}
+
+		days_mission_timeout = 10
+
+		complete_effect = {
+
+			clear_variable = var:Root.n4a_state
+
+		}
+
+		timeout_effect = {
+
+		    clear_variable = var:Root.n4a_state
+
+			
+
+			every_state = {#guo
+
+				limit = {
+
+					or = { state = 749 state = 606 state = 1034 state = 1043 }
+
+				}
+
+				clr_state_flag = commie_ridden_states
+
+				set_border_war = no
+
+				remove_core_of = event_target:WTT_communist_china
+
+				clr_state_flag = PRC_dihoukangrigenjudi_flag
+
+				if = {
+
+				limit = {
+
+				is_owned_by = event_target:WTT_communist_china
+
+				}
+
+				ROOT = { set_state_owner = PREV }
+
+				}
+
+				set_state_flag = we_will_help_the_legit_government
+
+				add_dynamic_modifier = { modifier = anti_partisan_area }
+
+			}
+
+			
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_global_flag = n4a_incident_happened_flag
+
+					}
+
+				}
+
+				set_global_flag = n4a_incident_happened_flag
+
+			}
+
+			news_event = { days = 1 id = chen_news.339 }#guo
+
+			country_event = {
+
+				id = ccw.105 hours = 12#guo
+
+			}
+
+			event_target:WTT_communist_china = { country_event = { hours = 12 id = kmt_wannanshibian.2 } }#guo
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_1 = { #对第五战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_1_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_1_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14		
+
+
+
+		available = { #can do
+
+			hidden_trigger = {
+
+				command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+			}
+
+		    has_war_with = JAP
+
+			check_variable = { mr_1_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}		
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+                add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+			}
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_1_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_1_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_1_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 75
+
+			}
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_1 = { #减少对第一战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_1_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+		
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_1_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_1_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_1_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_1_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_1_max_flag
+
+			    }
+
+			    clr_global_flag = mr_1_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_2 = { #对第二战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_2_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+		
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_2_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_2_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_2_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_2_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_2_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_2 = { #减少对第二战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_2_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_2_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_2_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_2_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_2_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_2_max_flag
+
+			    }
+
+			    clr_global_flag = mr_2_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_3 = { #对第三战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_3_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+		
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_3_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_3_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_3_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_3_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_3_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 55
+
+			}
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_3 = { #减少对第三战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_3_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_3_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_3_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_3_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_3_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_3_max_flag
+
+			    }
+
+			    clr_global_flag = mr_3_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_4 = { #向第四战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_4_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_4_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_4_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    } 
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_4_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_4_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_4_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_4 = { #减少对第四战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_4_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_4_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_4_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_4_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_4_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					has_global_flag = mr_4_max_flag
+
+				}
+
+				clr_global_flag = mr_4_max_flag
+
+			}
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_5 = { #对第五战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_5_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_5_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_5_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_5_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_5_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_5_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_5 = { #减少对第五战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_5_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_5_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_5_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_5_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_5_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					has_global_flag = mr_5_max_flag
+
+				}
+
+				clr_global_flag = mr_5_max_flag
+
+			}
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	establish_military_region_6 = { #成立第六战区
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		fire_only_once = yes
+
+		cost = @mr_establish_cost
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				is_mr6_state = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+			tag = event_target:WTT_current_china_leader
+
+			has_global_flag = has_military_regions_flag
+
+			any_core_state = { #1940/7 鄂西、鄂中、鄂南、湘北及湘西、川東、黔東
+
+			    is_mr6_state = yes
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+			}
+
+		}
+
+
+
+        days_remove = 30
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    set_global_flag = mr_6_established_flag
+
+		    every_core_state = {
+
+				limit = {
+
+					is_mr6_state = yes
+
+					is_not_controlled_by_jap_or_its_puppet = yes
+
+				}
+
+				set_state_flag = im_mr6_state_flag
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_6_modifier scope = ROOT
+
+				}
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_war_with = ROOT
+
+								has_government = communism
+
+							}
+
+						}
+
+						every_owned_state = {
+
+							limit = {
+
+								is_mr6_state = yes
+
+								is_controlled_by_jap_or_its_puppet = no
+
+							}
+
+							add_dynamic_modifier = {
+
+								modifier = military_region_6_modifier scope = PREV
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 100
+
+			}
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_6 = { #对第六战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_6_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_6_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_6_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_6_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_6_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_6_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_6 = { #减少对第六战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_6_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_6_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_6_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_6_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_6_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_6_max_flag
+
+			    }
+
+			    clr_global_flag = mr_6_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	establish_military_region_7 = { #成立第七战区
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		fire_only_once = yes
+
+		cost = @mr_establish_cost
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				is_mr7_state = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = { #1937/10~1938 原屬第三戰區的蘇南、浙北和皖南東部
+
+			    is_mr7_state = yes
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+			NOT = {
+
+				has_global_flag = mr_7_adjusted_flag
+
+			}
+
+		}
+
+
+
+        days_remove = 30
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            set_global_flag = mr_7_established_flag
+
+		    every_core_state = {
+
+				limit = {
+
+					is_mr7_state = yes
+
+					is_not_controlled_by_jap_or_its_puppet = yes
+
+					controller = {
+
+						is_literally_china = yes
+
+						has_war_with = jAP
+
+						NOT = {
+
+							has_war_with = ROOT
+
+							has_government = communism
+
+						}
+
+					}
+
+				}
+
+				set_state_flag = im_mr7_state_flag
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_7_modifier scope = ROOT
+
+				}
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_war_with = ROOT
+
+								has_government = communism
+
+							}
+
+						}
+
+						every_owned_state = {
+
+							limit = {
+
+								is_mr7_state = yes
+
+								is_controlled_by_jap_or_its_puppet = no
+
+							}
+
+							add_dynamic_modifier = {
+
+								modifier = military_region_7_modifier scope = PREV
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			add_to_variable = {
+
+				var = mr_7_value
+
+				value = 0.05
+
+				tooltip = add_5_to_mr_tt
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 65
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_7 = { #对第七战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_7_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+		
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_7_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_7_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_7_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_7_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_7_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_7 = { #减少对第七战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_7_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_7_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_7_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_7_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_7_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_7_max_flag
+
+			    }
+
+			    clr_global_flag = mr_7_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	establish_military_region_8 = { #成立第八战区
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		fire_only_once = yes
+
+		cost = @mr_establish_cost
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				is_mr8_state = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = { #甘寧青+綏遠
+
+				is_mr8_state = yes
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+			#any_core_state = {
+
+			#	OR = {
+
+			#		state = 1020
+
+			#		state = 1014
+
+			#	}
+
+			#	is_controlled_by_jap_or_its_puppet = yes
+
+			#}
+
+		}
+
+
+
+        days_remove = 30
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    set_global_flag = mr_8_established_flag
+
+		    every_core_state = {
+
+				limit = {
+
+					is_mr8_state = yes
+
+					is_not_controlled_by_jap_or_its_puppet = yes
+
+				    controller = {
+
+						is_literally_china = yes
+
+						has_war_with = jAP
+
+						NOT = {
+
+							has_war_with = ROOT
+
+							has_government = communism
+
+						}
+
+					}
+
+				}
+
+				set_state_flag = im_mr8_state_flag
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_8_modifier scope = ROOT
+
+				}
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_war_with = ROOT
+
+								has_government = communism
+
+							}
+
+						}
+
+						every_owned_state = {
+
+							limit = {
+
+								is_mr8_state = yes
+
+								is_controlled_by_jap_or_its_puppet = no
+
+							}
+
+							add_dynamic_modifier = {
+
+								modifier = military_region_8_modifier scope = PREV
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			add_to_variable = {
+
+			    var = mr_8_value
+
+			    value = 0.15
+
+			    tooltip = add_15_to_mr_tt
+
+		    }
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				date > 1937.10.1
+
+				factor = 100
+
+			}
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_8 = { #对第八战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_8_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_8_modifier scope = ROOT
+
+				}
+
+
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_8_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_8_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_8_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_8_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				factor = 45
+
+			}
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_8 = { #减少对第八战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_8_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_8_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_8_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_8_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_8_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_8_max_flag
+
+			    }
+
+			    clr_global_flag = mr_8_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+    establish_military_region_9 = { #成立第九战区
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		fire_only_once = yes
+
+		cost = @mr_establish_cost
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				is_mr9_state = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+		
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = { 
+
+				is_mr9_state = yes
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 30
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    set_global_flag = mr_9_established_flag
+
+		    every_core_state = {
+
+				limit = {
+
+					is_mr9_state = yes
+
+					is_not_controlled_by_jap_or_its_puppet = yes
+
+					controller = {
+
+						is_literally_china = yes
+
+						has_war_with = jAP
+
+						NOT = {
+
+							has_war_with = ROOT
+
+							has_government = communism
+
+						}
+
+					}
+
+				}
+
+				set_state_flag = im_mr9_state_flag
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_9_modifier scope = ROOT
+
+				}
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_war_with = ROOT
+
+								has_government = communism
+
+							}
+
+						}
+
+						every_owned_state = {
+
+							limit = {
+
+								is_mr9_state = yes
+
+								is_controlled_by_jap_or_its_puppet = no
+
+							}
+
+							add_dynamic_modifier = {
+
+								modifier = military_region_9_modifier scope = PREV
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				date > 1938.1.1
+
+				factor = 100
+
+			}
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_9 = { #对第九战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_9_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_9_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+			    command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+		    }
+
+		    has_war_with = JAP
+
+			check_variable = { mr_9_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_9_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_9_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_9_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				date > 1938.1.1
+
+				factor = 35
+
+			}
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_9 = { #减少对第九战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+		highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_9_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_9_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_9_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_9_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_9_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_9_max_flag
+
+			    }
+
+			    clr_global_flag = mr_9_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+	establish_military_region_10 = { #成立第十战区
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		fire_only_once = yes
+
+		cost = @mr_establish_cost
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				is_mr10_state = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = { #陝西
+
+			    is_mr10_state = yes
+
+				is_not_controlled_by_jap_or_its_puppet = yes
+
+				controller = {
+
+					is_literally_china = yes
+
+					has_war_with = jAP
+
+					NOT = {
+
+						has_war_with = ROOT
+
+						has_government = communism
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 30
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    set_global_flag = mr_10_established_flag
+
+		    every_core_state = {
+
+				limit = {
+
+					is_mr10_state = yes
+
+					is_not_controlled_by_jap_or_its_puppet = yes
+
+					controller = {
+
+						is_literally_china = yes
+
+						has_war_with = jAP
+
+						NOT = {
+
+							has_war_with = ROOT
+
+							has_government = communism
+
+						}
+
+					}
+
+				}
+
+				set_state_flag = im_mr10_state_flag
+
+				add_dynamic_modifier = {
+
+					modifier = military_region_10_modifier scope = ROOT
+
+				}
+
+				owner = {
+
+					if = {
+
+						limit = {
+
+							is_literally_china = yes
+
+							has_war_with = JAP
+
+							NOT = {
+
+								has_war_with = ROOT
+
+								has_government = communism
+
+							}
+
+						}
+
+						every_owned_state = {
+
+							limit = {
+
+								is_mr10_state = yes
+
+								is_controlled_by_jap_or_its_puppet = no
+
+							}
+
+							add_dynamic_modifier = {
+
+								modifier = military_region_10_modifier scope = PREV
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				date > 1938.1.1
+
+				factor = 85
+
+			}
+
+			modifier = {
+
+				factor = 1000
+
+				744 = {
+
+					any_neighbor_state = {
+
+						is_controlled_by_jap_or_its_puppet = yes
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	invest_in_military_region_10 = { #对第十战区投入资源
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		fire_only_once = no
+
+		cost = @mr_cost
+
+		custom_cost_trigger = {
+
+			command_power > @mr_cp_cost_trigger
+
+			has_political_power > @mr_cost_trigger
+
+		}
+
+		custom_cost_text = cp_at_least_25_pp_at_least_25
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_10_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_10_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+		    hidden_trigger = {
+
+				command_power > @mr_cp_cost_trigger
+
+				has_political_power > @mr_cost_trigger
+
+			}
+
+		    has_war_with = JAP
+
+			check_variable = { mr_10_value < 0.26 }
+
+			custom_trigger_tooltip = {
+
+				tooltip = less_than_5_max_lv_mr_tt
+
+				NOT = {
+
+					count_triggers = {
+
+						amount = 5
+
+						has_global_flag = mr_1_max_flag
+
+						has_global_flag = mr_2_max_flag
+
+						has_global_flag = mr_3_max_flag
+
+						has_global_flag = mr_4_max_flag
+
+						has_global_flag = mr_5_max_flag
+
+						has_global_flag = mr_6_max_flag
+
+						has_global_flag = mr_7_max_flag
+
+						has_global_flag = mr_8_max_flag
+
+						has_global_flag = mr_9_max_flag
+
+						has_global_flag = mr_10_max_flag
+
+					}
+
+				}	
+
+			}	
+
+		}
+
+
+
+		complete_effect = { #run effect on selection
+
+		    hidden_effect = {
+
+			    add_command_power = @mr_cp_cost_effect
+
+				add_political_power = @mr_cost_effect
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    } 
+
+
+
+		remove_trigger = { #will run remove effect and abort
+
+
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+            add_to_variable = {
+
+			    var = mr_10_value
+
+			    value = 0.05
+
+			    tooltip = add_5_to_mr_tt
+
+		    }
+
+			if = {
+
+				limit = {
+
+					check_variable = { mr_10_value > 0.24 }
+
+				}
+
+				set_global_flag = mr_10_max_flag
+
+			}
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				#is_historical_focus_on = yes
+
+				factor = 70
+
+			}
+
+		}
+
+	}
+
+
+
+	cut_down_military_region_10 = { #减少对第十战区的投入
+
+		icon = GFX_decision_generic_break_treaty
+
+		fire_only_once = no
+
+		cost = 0
+
+		#available = {
+
+		#	hidden_trigger = {
+
+		#		command_power > 24
+
+		#	}
+
+		#}
+
+		#custom_cost_trigger = {
+
+		#	command_power > 24
+
+		#}
+
+		#custom_cost_text = cp_at_least_25
+
+		on_map_mode = map_and_decisions_view
+
+		
+
+        highlight_states = {
+
+			highlight_states_trigger = { 
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_10_modifier scope = ROOT
+
+				}
+
+			}
+
+ 			highlight_color_before_active = 3
+
+			highlight_color_while_active = 2
+
+		}
+
+
+
+		visible = { #can see
+
+		    has_global_flag = has_military_regions_flag
+
+		    tag = event_target:WTT_current_china_leader
+
+			any_core_state = {
+
+				has_dynamic_modifier = {
+
+					modifier = military_region_10_modifier scope = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+        days_remove = 14
+
+
+
+		available = { #can do
+
+			has_war_with = JAP
+
+			check_variable = { mr_10_value > 0.04 }
+
+		}
+
+		complete_effect = { #run effect on selection
+
+		    if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.05 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv1_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.1 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv2_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.15 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv3_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.2 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv4_tt
+
+		    }
+
+			if = {
+
+			    limit = {
+
+				    check_variable = { mr_10_value = 0.25 }
+
+			    }
+
+			    custom_effect_tooltip = this_mr_is_lv5_tt
+
+		    }
+
+	    }  
+
+		remove_trigger = { #will run remove effect and abort
+
+		    
+
+		}
+
+		remove_effect = { #run effect when removed/finished
+
+		    add_to_variable = {
+
+			    var = mr_10_value
+
+			    value = -0.05
+
+			    tooltip = subtract_5_to_mr_tt
+
+		    }
+
+		    if = {
+
+			    limit = {
+
+				    has_global_flag = mr_10_max_flag
+
+			    }
+
+			    clr_global_flag = mr_10_max_flag
+
+		    }
+
+			add_political_power = @mr_cost
+
+			add_command_power = @mr_cp_cost
+
+		}
+
+		cancel_trigger = { #will abort
+
+
+
+		}
+
+		modifier = { #active during the course of the decision
+
+
+
+		}
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+	}
+
+
+
+}

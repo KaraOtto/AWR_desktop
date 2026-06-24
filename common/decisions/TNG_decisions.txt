@@ -1,0 +1,985 @@
+# TNG 决议
+
+TNG_trading_decision_cat = { #南疆贸易
+
+	TNG_XSM_trade = { #与@XSM[XSM.GetName]贸易
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		is_good = yes
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+		#targets = {
+
+		#	XSM
+
+		#}
+
+		days_mission_timeout = 30
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				#has_war = yes
+
+				XSM = { #青海马家军
+
+					has_war_with = ROOT
+
+				}
+
+				XSM = { #青海马家军
+
+					has_border_war_with = ROOT
+
+				}
+
+				NOT = {
+
+				    XSM = { #青海马家军
+
+                        is_neighbor_of = ROOT 
+
+					}		
+
+				}
+
+				NOT = {
+
+					XSM = { #青海马家军
+
+						has_government = ROOT
+
+					} 
+
+				}
+
+				XSM = { #青海马家军
+
+					has_opinion = {
+
+						target = ROOT
+
+						value < 0
+
+					}
+
+				}
+
+				#hidden_trigger = {
+
+				#	NOT = {
+
+				#		has_completed_focus = TNG_befriend_ma_cliques
+
+				#	}
+
+				#}
+
+			}				    			    				    			    		    
+
+		}
+
+		
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			country_event = tng_trade.1
+
+			#XSM = {
+
+			#	country_event = tng_trade.1
+
+			#}
+
+		}	
+
+	}
+
+	TNG_GSM_trade = { #与@GSM[GSM.GetName]贸易
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		is_good = yes
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+		#targets = {
+
+		#	GSM
+
+		#}
+
+		days_mission_timeout = 30
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				#has_war = yes
+
+				GSM = {
+
+					has_war_with = ROOT
+
+				}
+
+				GSM = {
+
+					has_border_war_with = ROOT
+
+				}
+
+				NOT = {
+
+				    GSM = {
+
+                        is_neighbor_of = ROOT 
+
+					}		
+
+				}
+
+				NOT = {
+
+					GSM = {
+
+						has_government = ROOT
+
+					} 
+
+				}
+
+				GSM = {
+
+					has_opinion = {
+
+						target = ROOT
+
+						value < 0
+
+					}
+
+				}
+
+				hidden_trigger = {
+
+					NOT = {
+
+						has_completed_focus = TNG_befriend_ma_cliques
+
+					}
+
+				}
+
+			}				    			    				    			    		    
+
+		}
+
+		
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			country_event = tng_trade.3
+
+			#activate_mission = TNG_GSM_trade
+
+		}	
+
+	}
+
+	TNG_NXM_trade = { #与@NXM[NXM.GetName]贸易
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		is_good = yes
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+		#targets = {
+
+		#	NXM
+
+		#}
+
+		days_mission_timeout = 30
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				#has_war = yes
+
+				NXM = {
+
+					has_war_with = ROOT
+
+				}
+
+				NXM = {
+
+					has_border_war_with = ROOT
+
+				}
+
+				NOT = {
+
+				    NXM = {
+
+                        is_neighbor_of = ROOT 
+
+					}		
+
+				}
+
+				NOT = {
+
+					NXM = {
+
+						has_government = ROOT
+
+					} 
+
+				}
+
+				NXM = {
+
+					has_opinion = {
+
+						target = ROOT
+
+						value < 0
+
+					}
+
+				}
+
+				hidden_trigger = {
+
+					NOT = {
+
+						has_completed_focus = TNG_befriend_ma_cliques
+
+					}
+
+				}
+
+			}				    			    				    			    		    
+
+		}
+
+		
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			country_event = tng_trade.3
+
+			#NXM = {
+
+			#	country_event = tng_trade.3
+
+			#}
+
+			#activate_mission = TNG_NXM_trade
+
+		}	
+
+	}
+
+	TNG_RAJ_trade = { #与@RAJ[RAJ.GetName]贸易
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		is_good = yes
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+		#targets = {
+
+		#	RAJ
+
+		#}
+
+		days_mission_timeout = 90
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				#has_war = yes
+
+				RAJ = { #印度
+
+					has_war_with = ROOT
+
+				}
+
+				
+
+				#hidden_trigger = {
+
+				#	NOT = {
+
+				#		has_completed_focus = TNG_focus_on_trade
+
+				#	}
+
+				#}
+
+			}				    			    				    			    		    
+
+		}
+
+		visible = {
+
+			has_completed_focus = TNG_camel_trading
+
+		}
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			country_event = tng_trade.5
+
+			#RAJ = {
+
+			#	country_event = tng_trade.5
+
+			#}
+
+			#activate_mission = TNG_RAJ_trade
+
+		}	
+
+	}
+
+
+
+	TNG_SOV_trade = { #与@SOV[SOV.GetName]贸易
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+		#targets = {
+
+		#	SOV
+
+		#}
+
+		days_mission_timeout = 90
+
+		is_good = yes
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				#has_war = yes
+
+				any_enemy_country = {
+
+					OR = {
+
+						tag = SOV
+
+						is_subject_of = SOV
+
+					}
+
+				}
+
+				SOV = { #俄罗斯
+
+					exists = no
+
+				}
+
+				#hidden_trigger = {
+
+				#	NOT = {
+
+				#		has_completed_focus = TNG_focus_on_trade
+
+				#	}
+
+				#}
+
+			}				    			    				    			    		    
+
+		}
+
+		
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			country_event = tng_trade.7
+
+			#SOV = {
+
+			#	country_event = tng_trade.5
+
+			#}
+
+			#activate_mission = TNG_SOV_trade
+
+		}	
+
+	}
+
+	TNG_start_trade_with_xsm = { #重启与@XSM[XSM.GetName]的贸易
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = {
+
+			NOT = {
+
+				has_active_mission = TNG_XSM_trade
+
+			}
+
+			XSM = { #青海马家军
+
+				exists = yes
+
+				has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		cost = 25
+
+		visible = {
+
+			has_completed_focus = TNG_befriend_ma_cliques
+
+			NOT = {
+
+				has_active_mission = TNG_XSM_trade
+
+			}
+
+			XSM = { #青海马家军
+
+				exists = yes
+
+				has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		#days_remove = 7
+
+		#days_re_enable = 7
+
+		#fire_only_once = yes
+
+		complete_effect = {
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_active_mission = TNG_XSM_trade
+
+					}
+
+				}
+
+				activate_mission = TNG_XSM_trade
+
+			}
+
+		}
+
+	}
+
+
+
+	TNG_start_trade_with_gsm = { #重启与@GSM[GSM.GetName]的贸易
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = {
+
+			NOT = {
+
+				has_active_mission = TNG_GSM_trade
+
+			}
+
+			GSM = {
+
+				exists = yes
+
+				has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		cost = 25
+
+		visible = {
+
+			has_completed_focus = TNG_befriend_ma_cliques
+
+			NOT = {
+
+				has_active_mission = TNG_GSM_trade
+
+			}
+
+			GSM = {
+
+				exists = yes
+
+				has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		#days_remove = 7
+
+		#days_re_enable = 7
+
+		#fire_only_once = yes
+
+		complete_effect = {
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_active_mission = TNG_GSM_trade
+
+					}
+
+				}
+
+				activate_mission = TNG_GSM_trade
+
+			}
+
+		}
+
+	}
+
+
+
+	TNG_start_trade_with_raj = { #重启与@RAJ[RAJ.GetName]的贸易
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = {
+
+			NOT = {
+
+				has_active_mission = TNG_RAJ_trade
+
+			}
+
+			RAJ = { #印度
+
+				exists = yes
+
+				#has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		cost = 25
+
+		visible = {
+
+			has_completed_focus = TNG_focus_on_trade
+
+			NOT = {
+
+				has_active_mission = TNG_RAJ_trade
+
+			}
+
+			RAJ = { #印度
+
+				exists = yes
+
+				#has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		#days_remove = 7
+
+		#days_re_enable = 7
+
+		#fire_only_once = yes
+
+		complete_effect = {
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_active_mission = TNG_RAJ_trade
+
+					}
+
+				}
+
+				activate_mission = TNG_RAJ_trade
+
+			}
+
+		}
+
+	}
+
+
+
+	TNG_start_trade_with_sov = { #重启与@SOV[SOV.GetName]的贸易
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = {
+
+			NOT = {
+
+				has_active_mission = TNG_SOV_trade
+
+			}
+
+			SOV = { #俄罗斯
+
+				exists = yes
+
+				#has_government = ROOT
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		cost = 25
+
+		visible = {
+
+			has_completed_focus = TNG_trade_with_ussr
+
+			NOT = {
+
+				has_active_mission = TNG_SOV_trade
+
+			}
+
+			SOV = { #俄罗斯
+
+				exists = yes
+
+				has_opinion = {
+
+					target = ROOT
+
+					value > -1
+
+				}
+
+				NOT = {
+
+					has_war_with = ROOT
+
+					has_border_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+		#days_remove = 7
+
+		#days_re_enable = 7
+
+		#fire_only_once = yes
+
+		complete_effect = {
+
+			if = {
+
+				limit = {
+
+					NOT = {
+
+						has_active_mission = TNG_SOV_trade
+
+					}
+
+				}
+
+				activate_mission = TNG_SOV_trade
+
+			}
+
+		}
+
+	}
+
+}

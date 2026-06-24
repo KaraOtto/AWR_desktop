@@ -1,0 +1,2613 @@
+# SIK 决议
+
+kashgar_rebellion = { #喀什冲突
+
+
+
+	KHR_kashgar_rebellion = { #发动喀什起义
+
+		icon = GFX_decision_category_military_operation
+
+		is_good = yes
+
+		allowed = {
+
+			tag = KHR
+
+		}
+
+		available = { #objective
+
+			always = no
+
+		}
+
+		days_mission_timeout = 457
+
+		is_good = yes
+
+		activation = {
+
+			NOT = { has_government = communism }
+
+			NOT = { has_war_with = SIK }
+
+			SIK = { #新疆
+
+				owns_state = 617
+
+			    #is_subject = no
+
+			    #has_country_leader = { name = "Sheng Shicai" ruling_only = yes } 
+
+				has_government = communism
+
+			}
+
+			NOT = {
+
+				SIK = { #新疆
+
+					OR = {
+
+						has_completed_focus = SIK_Knock_down_the_sheng
+
+						has_completed_focus = SIK_Mediate_internal_conflicts
+
+					}
+
+				}
+
+			}
+
+		    hidden_trigger = { 
+
+			    NOT = {
+
+				    has_global_flag = kashi_rebellion_flag 
+
+				}
+
+			}
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+			    has_war_with = SIK 
+
+			    NOT = {
+
+			        SIK = { #新疆
+
+				        owns_state = 617
+
+					}
+
+				}
+
+				NOT = {
+
+			        SIK = { #新疆
+
+				        has_government = communism
+
+						#has_country_leader = { name = "Sheng Shicai" ruling_only = yes }
+
+					}
+
+				}	    			    
+
+				SIK = { #新疆
+
+				SIK = { #新疆
+
+                has_government = communism
+
+			}					    			    				    			    		    
+
+		}
+
+		visible = {
+
+			#has_completed_focus = CHI_secure_internal_politics
+
+			tag = KHR
+
+		}
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			custom_effect_tooltip = kashi_rebellion_start_tt
+
+			set_cosmetic_tag = KHR_rebel
+
+			#add_manpower = 3000
+
+			hidden_effect = {
+
+			    set_global_flag = kashi_rebellion_flag
+
+			    country_event = Sinkiang_rebel.32
+
+			}
+
+			add_opinion_modifier = {
+
+	            target = SIK
+
+	            modifier = hostile_status
+
+            }
+
+			effect_tooltip = {
+
+			    SIK = { #新疆
+
+				    add_ideas = SIK_kashi_debuff
+
+		            activate_mission = SIK_waiting_for_sov_mission
+
+					add_opinion_modifier = {
+
+						target = ROOT
+
+						modifier = hostile_status
+
+					}
+
+				}
+
+			}
+
+			TNG = {
+
+			    country_event = Sinkiang_rebel.3
+
+			}
+
+			SIK = { #新疆
+
+			    country_event = Sinkiang_rebel.3
+
+			}
+
+		}
+
+	}
+
+    KHR_purge_officers = { #清洗亲苏军官
+
+
+
+		icon = GFX_decision_generic_assassination
+
+
+
+		available = {
+
+			NOT = {
+
+				has_war_with = SIK
+
+				has_government = communism
+
+			}
+
+		}
+
+
+
+		visible = {
+
+			original_tag = KHR
+
+			NOT = {
+
+				has_global_flag = khr_seize_our_army_flag
+
+			}
+
+			has_active_mission = KHR_kashgar_rebellion
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 100
+
+
+
+		complete_effect = {
+
+			hidden_effect = {
+
+				scoped_sound_effect = gun_shot_sound
+
+			}
+
+			set_global_flag = khr_seize_our_army_flag
+
+			add_manpower = -200
+
+			add_war_support = -0.05
+
+			add_stability = -0.1
+
+			custom_effect_tooltip = khr_keep_army_tt
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 100
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 0
+
+			}
+
+		}
+
+	}	
+
+	KHR_invite_hami = { #请求@HMI[HMI.GetName]干预
+
+
+
+		icon = generic_political_discourse
+
+
+
+		available = {
+
+		    has_war_with = SIK
+
+			HMI = { 
+
+				is_in_faction = no 
+
+			    is_subject = no
+
+				NOT = {
+
+					has_government = communism
+
+					has_war_with = ROOT
+
+				}
+
+			}
+
+		}
+
+
+
+		visible = {
+
+			is_faction_leader = yes
+
+			SIK = { #新疆
+
+				owns_state = 617
+
+			    #is_subject = no
+
+			    has_government = communism 
+
+				#has_country_leader = { name = "Sheng Shicai" ruling_only = yes } 
+
+			}
+
+			country_exists = HMI
+
+			HMI = { 
+
+				is_in_faction = no 
+
+			    is_subject = no
+
+				NOT = {
+
+					has_government = communism
+
+				}
+
+			}
+
+		    OR = {
+
+			   tag = TNG
+
+			   tag = KHR
+
+			}
+
+			hidden_trigger = {
+
+			    is_ai = no
+
+			    has_global_flag = kashi_rebellion_flag
+
+			}
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 80
+
+
+
+		complete_effect = {
+
+			HMI = { 
+
+			    country_event = { id = generic.5 }
+
+			}
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 100
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 0
+
+			}
+
+		}
+
+	}
+
+	KHR_ask_help_from_RAJ = { #请求@RAJ[RAJ.GetName]干预
+
+        #this does not work well, so disabled
+
+		icon = generic_political_discourse
+
+
+
+		available = {
+
+			NOT = { has_war_with = RAJ }
+
+		    if = {
+
+			    limit = {
+
+				    RAJ = { #印度
+
+				}
+
+				NOT = { has_war_with = ENG }
+
+			}
+
+		    RAJ = { #印度
+
+			    NOT = { has_government = communism }
+
+				has_opinion = {
+
+                    target = ROOT
+
+                    value > 49
+
+				}
+
+            }
+
+		}
+
+        
+
+		cancel_if_not_visible = yes
+
+		
+
+		visible = {
+
+			country_exists = RAJ
+
+			OR = {
+
+			    RAJ = { #印度
+
+				RAJ = { #印度
+
+			}
+
+		    SIK = { #新疆
+
+				owns_state = 617
+
+			    #is_subject = no
+
+			    has_country_leader = { character = SIK_sheng_shicai ruling_only = yes } 
+
+			}
+
+			OR = {
+
+			   tag = TNG
+
+			   tag = KHR
+
+			}
+
+			hidden_trigger = {
+
+			    is_ai = no
+
+			    has_global_flag = kashi_rebellion_flag
+
+			}
+
+		    always = no ###it doesnt work
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 50
+
+
+
+		complete_effect = {
+
+			RAJ = { #印度
+
+			    country_event = { id = Sinkiang_rebel.402 }
+
+			}
+
+		    custom_effect_tooltip = if_they_accept_green
+
+			effect_tooltip = {  
+
+			    RAJ = { #印度
+
+			        add_ideas = SIK_RAJ_reinforce	
+
+			    }
+
+	        }
+
+			custom_effect_tooltip = RAJ_help_khr_tt
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 30
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				factor = 0
+
+			}
+
+		}
+
+	}
+
+	
+
+	SIK_strike_khr = { #进攻@KHR[KHR.GetName]
+
+
+
+		icon = generic_political_discourse
+
+
+
+		available = {
+
+            #NOT = { has_idea = SIK_kashi_debuff }  
+
+		}
+
+		
+
+		visible = {
+
+			NOT = { has_war_with = KHR }
+
+			country_exists = KHR
+
+			KHR = { #喀什
+
+			hidden_trigger = {
+
+			    has_global_flag = kashi_rebellion_flag
+
+			}
+
+		    tag = SIK
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 25
+
+
+
+		complete_effect = {
+
+			if = { 
+
+		        limit = {
+
+			        is_ai = no
+
+			    }
+
+		        create_wargoal = {
+
+			        target = KHR
+
+			        type = annex_everything
+
+		        }
+
+		        else = {
+
+				    declare_war_on = {
+
+				        target = KHR
+
+				        type = annex_everything
+
+			        }
+
+			    }
+
+	        }
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 2000
+
+			modifier = {
+
+				has_idea = SIK_kashi_debuff
+
+				factor = 0
+
+			}
+
+		    modifier = {
+
+				has_idea = SIK_kashi_debuff_2
+
+				factor = 0
+
+			}
+
+		    modifier = {
+
+				has_idea = SIK_kashi_debuff_3
+
+				factor = 0
+
+			}
+
+		}
+
+	}
+
+
+
+	SIK_buy_tng = { #收买一位新编第三十六师军官
+
+
+
+		icon = generic_political_discourse
+
+
+
+		available = {
+
+            controls_state = 619
+
+			controls_state = 990
+
+		}
+
+        
+
+		cancel_if_not_visible = yes
+
+		
+
+		visible = {
+
+			has_war_with = TNG
+
+			#TNG = { is_subject = no }
+
+			hidden_trigger = {
+
+			    has_global_flag = kashi_rebellion_flag
+
+			    tag = SIK
+
+			}
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 50
+
+
+
+        days_remove = 5
+
+
+
+		remove_effect = {
+
+			TNG = { country_event = tng.6 }
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 2000
+
+			modifier = {
+
+				has_idea = SIK_kashi_debuff
+
+				factor = 0
+
+			}
+
+		    modifier = {
+
+				has_idea = SIK_kashi_debuff_2
+
+				factor = 0
+
+			}
+
+		    modifier = {
+
+				has_idea = SIK_kashi_debuff_3
+
+				factor = 0
+
+			}
+
+		}
+
+	}
+
+	
+
+	KHR_waiting_for_sov_mission = { #盛世才正镇压骚乱
+
+		icon = generic_form_nation
+
+		available = { #objective
+
+			hidden_trigger = { always = no }
+
+		}
+
+		allowed = {
+
+			OR = {
+
+			    tag = KHR
+
+				tag = TNG
+
+			}
+
+		}
+
+		cancel_trigger = {
+
+			NOT = { country_exists = SIK }
+
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+
+			#always = no
+
+			#has_global_flag = kashi_rebellion_flag
+
+			country_exists = KHR
+
+			country_exists = SIK
+
+			SIK = { #新疆
+
+			    OR = {
+
+			        has_idea = SIK_kashi_debuff
+
+				    has_idea = SIK_kashi_debuff_2
+
+				    has_idea = SIK_kashi_debuff_3
+
+				}
+
+			}
+
+		}
+
+		complete_effect = {
+
+			#add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			#SOV WONT SEND HELP BEFORE ALL DEBUFFS ARE REMOVED
+
+		    #if = {
+
+			#    limit = {
+
+			#	    OR = {
+
+			#		    has_idea = SIK_kashi_debuff
+
+			#			has_idea = SIK_kashi_debuff_2
+
+			#			has_idea = SIK_kashi_debuff_3
+
+			#		}
+
+			#	}
+
+			#	activate_mission = SIK_waiting_for_sov_mission
+
+			#	
+
+			#}
+
+		    effect_tooltip = {
+
+			    SIK = { #新疆
+
+			        if = {
+
+			            limit = {
+
+				            has_idea = SIK_kashi_debuff
+
+				        }
+
+				        remove_ideas = SIK_kashi_debuff
+
+			        }
+
+				    add_timed_idea = { idea = SIK_strike_tng days = 365 }
+
+			    }
+
+		    }
+
+		}
+
+	}
+
+	
+
+	SIK_waiting_for_sov_mission = { #镇压骚乱
+
+		icon = generic_form_nation
+
+		available = { #objective
+
+			controls_state = 619
+
+			controls_state = 990
+
+		}
+
+		allowed = {
+
+			tag = SIK
+
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+
+			#always = no
+
+			#has_global_flag = kashi_rebellion_flag
+
+			country_exists = KHR
+
+			country_exists = SIK
+
+			OR = {
+
+			    has_idea = SIK_kashi_debuff
+
+				has_idea = SIK_kashi_debuff_2
+
+				has_idea = SIK_kashi_debuff_3
+
+			}
+
+		}
+
+		complete_effect = {
+
+			if = {
+
+			    limit = {
+
+				    has_idea = SIK_kashi_debuff
+
+				}
+
+				remove_ideas = SIK_kashi_debuff
+
+			}
+
+			if = {
+
+				limit = {
+
+                    OR = {
+
+						has_war_with = TNG
+
+						has_war_with = KHR
+
+					}
+
+				}
+
+			    add_timed_idea = { idea = SIK_strike_tng days = 365 }
+
+			}
+
+		}
+
+		timeout_effect = {
+
+			#SOV WONT SEND HELP BEFORE ALL DEBUFFS ARE REMOVED
+
+		    #if = {
+
+			#    limit = {
+
+			#	    OR = {
+
+			#		    has_idea = SIK_kashi_debuff
+
+			#			has_idea = SIK_kashi_debuff_2
+
+			#			has_idea = SIK_kashi_debuff_3
+
+			#		}
+
+			#	}
+
+			#	activate_mission = SIK_waiting_for_sov_mission
+
+			#	
+
+			#}
+
+		    if = {
+
+			    limit = {
+
+				    has_idea = SIK_kashi_debuff
+
+				}
+
+				remove_ideas = SIK_kashi_debuff
+
+			}
+
+			if = {
+
+				limit = {
+
+                    OR = {
+
+						has_war_with = TNG
+
+						has_war_with = KHR
+
+					}
+
+				}
+
+			    add_timed_idea = { idea = SIK_strike_tng days = 365 }
+
+			}
+
+		}
+
+	}
+
+}
+
+sik_warlord_decisions = { #新疆事务
+
+
+
+	TNG_join_the_war = { #加入抗战
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+
+			OR = {
+
+				tag = TNG
+
+				tag = KHR
+
+				tag = HMI
+
+				tag = KRS
+
+				tag = ATM
+
+			}
+
+		}
+
+		available = {
+
+			is_in_faction = no
+
+			OR = {
+
+				is_subject = no
+
+				OVERLORD = {
+
+					is_in_faction_with = event_target:WTT_current_china_leader
+
+				}
+
+			}
+
+			event_target:WTT_current_china_leader = {
+
+				is_faction_leader = yes 
+
+	            has_war_with = JAP
+
+			}
+
+			NOT = {
+
+				has_war_with = event_target:WTT_current_china_leader
+
+			}
+
+			NOT = {
+
+				has_completed_focus = CHI_opposition
+
+			}
+
+		}
+
+		
+
+		visible = {	
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai
+
+			always = no
+
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 1
+
+			modifier = {
+
+				tag = TNG 
+
+				factor = 500
+
+			}
+
+			modifier = {
+
+				has_war_with = JAP
+
+				factor = 500
+
+			}
+
+		}
+
+		complete_effect = {
+
+			set_country_flag = tng_wants_to_join_the_war
+
+			country_event = rcmchina.101
+
+		}
+
+	}
+
+	
+
+	TNG_invite_ma_zhongying = { #邀请马仲英
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = {
+
+			SOV = { #俄罗斯
+
+				is_neighbor_of = ROOT
+
+				NOT = {
+
+					has_war_with = ROOT
+
+				}
+
+				#has_government = communism
+
+			}
+
+			has_country_leader = { character = TNG_ma_hushan ruling_only = yes } 
+
+			OR = {
+
+				AND = {
+
+					has_completed_focus = CHI_cooperation_with_the_nationalists
+
+					has_government = neutrality
+
+				}
+
+				AND = {
+
+					has_completed_focus = CHI_cooperation_with_the_communists
+
+					has_government = communism
+
+				}
+
+			}
+
+		}
+
+		
+
+		visible = {	
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai
+
+		}
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 2000
+
+		}
+
+		complete_effect = {
+
+			country_event = tng.1
+
+		}
+
+	}
+
+	KHR_invite_mahmut = { #邀请麻木提·穆依提
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+
+			tag = KHR
+
+		}
+
+		available = {
+
+			NOT = { has_war_with = RAJ }
+
+			has_completed_focus = CHI_opposition
+
+		}
+
+		
+
+		visible = {
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai
+
+			NOT = { has_country_leader = { character = KHR_Mahmut_Muhiti ruling_only = yes } } 
+
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 2000
+
+		}
+
+		complete_effect = {		
+
+			#country_event = tng.5
+
+			retire_country_leader = yes
+
+			KHR_Mahmut_Muhiti = { #麻木提·穆依提
+
+				set_nationality = ROOT
+
+				retire = no
+
+				add_country_leader_role = {
+
+					promote_leader = yes
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = despotism
+
+						traits = {
+
+							
+
+						}
+
+					} 
+
+				} 
+
+				add_country_leader_role = {
+
+					promote_leader = yes
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = marxism
+
+						traits = {
+
+							
+
+						}
+
+					} 
+
+				}
+
+				add_country_leader_role = {
+
+					promote_leader = yes
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = n_socialism_ideology
+
+						traits = {
+
+							
+
+						}
+
+					} 
+
+				}
+
+				add_country_leader_role = {
+
+					promote_leader = yes
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = sanmin_military_rule
+
+						traits = {
+
+						   
+
+					   }
+
+					} 
+
+				}	
+
+				add_country_leader_role = {
+
+					promote_leader = yes
+
+					country_leader = {
+
+						expire = "1965.1.1"
+
+						ideology = conservatism
+
+						traits = {
+
+						
+
+						}
+
+					} 
+
+				}	
+
+			}		
+
+			#if = {
+
+			#	limit = {
+
+			#		has_government = neutrality
+
+			#	}
+
+			#    KHR_Mahmut_Muhiti = {
+
+			#		retire = no
+
+			#		set_nationality = ROOT
+
+			#		add_country_leader_role = {
+
+			#			promote_leader = yes
+
+			#			country_leader = {
+
+			#				expire = "1965.1.1"
+
+			#				ideology = despotism
+
+			#				traits = { }            
+
+			#			} 
+
+			#		}  
+
+			#	}
+
+			#}
+
+			#if = {
+
+			#	limit = {
+
+			#		has_government = communism
+
+			#	}
+
+			#    KHR_Mahmut_Muhiti = {
+
+			#		set_nationality = ROOT
+
+			#		add_country_leader_role = {
+
+			#			promote_leader = yes
+
+			#			country_leader = {
+
+			#				expire = "1965.1.1"
+
+			#				ideology = marxism
+
+			#				traits = { }            
+
+			#			} 
+
+			#		}  
+
+			#	}
+
+			#}
+
+			#if = {
+
+			#	limit = {
+
+			#		has_government = fascism
+
+			#	}
+
+			#    KHR_Mahmut_Muhiti = {
+
+			#		set_nationality = ROOT
+
+			#		add_country_leader_role = {
+
+			#			promote_leader = yes
+
+			#			country_leader = {
+
+			#				expire = "1965.1.1"
+
+			#				ideology = sanmin_military_rule
+
+			#				traits = { }            
+
+			#			} 
+
+			#		}  
+
+			#	}
+
+			#}
+
+			#if = {
+
+			#	limit = {
+
+			#		has_government = democratic
+
+			#	}
+
+			#    KHR_Mahmut_Muhiti = {
+
+			#		set_nationality = ROOT
+
+			#		add_country_leader_role = {
+
+			#			promote_leader = yes
+
+			#			country_leader = {
+
+			#				expire = "1965.1.1"
+
+			#				ideology = conservatism
+
+			#				traits = { }            
+
+			#			} 
+
+			#		}  
+
+			#	}
+
+			#}
+
+			#if = {
+
+			#	limit = {
+
+			#		has_government = n_socialism
+
+			#	}
+
+			#    KHR_Mahmut_Muhiti = {
+
+			#		set_nationality = ROOT
+
+			#		add_country_leader_role = {
+
+			#			promote_leader = yes
+
+			#			country_leader = {
+
+			#				expire = "1965.1.1"
+
+			#				ideology = n_socialism_ideology
+
+			#				traits = { }            
+
+			#			} 
+
+			#		}  
+
+			#	}
+
+			#}
+
+		}
+
+	}
+
+	TNG_camelry = { #骆驼骑兵
+
+		icon = GFX_decision_category_military_operation
+
+		allowed = {
+
+			OR = {
+
+			    tag = TNG
+
+				tag = KHR
+
+				tag = HMI
+
+				tag = KRS
+
+				tag = ATM
+
+			}
+
+		}
+
+		available = {
+
+			OR = {
+
+			    controls_state = 759
+
+				controls_state = 1048
+
+			}
+
+			#hidden_trigger = {
+
+				#command_power > 29
+
+				#command_power_daily > 0.2
+
+			#}
+
+		}
+
+		
+
+		custom_cost_trigger = {
+
+			command_power > 29
+
+			has_army_experience > 29
+
+		}
+
+		custom_cost_text = RCM_army_xp_at_least_30_command_power_at_least_30
+
+		
+
+		visible = {
+
+			OR = {
+
+				has_completed_focus = SIK_the_defeat_of_sheng_shicai
+
+				has_completed_focus = TNG_camel_trading
+
+			}
+
+		}
+
+		
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 1
+
+		}
+
+		complete_effect = {
+
+			custom_effect_tooltip = TUR_unlock_camelry_effect_tt
+
+			hidden_effect = { 
+
+				add_command_power = -30
+
+			    army_experience = -30
+
+				set_technology = { camelry = 1 } 
+
+			}
+
+		}
+
+	}
+
+	HMI_invite_kumul_khan = { #哈密尔汗的归来
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+
+			tag = HMI
+
+		}
+
+		available = {
+
+			NOT = { has_government = communism } 
+
+			NOT = { has_government = n_socialism } 
+
+		    
+
+		}
+
+		
+
+		visible = {
+
+			always = no 
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai
+
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 2000
+
+		}
+
+		complete_effect = {		
+
+			#country_event = tng.5
+
+		}
+
+	}
+
+	SIK_invite_migrant = { #鼓励移民新疆
+
+		icon = generic_nationalism
+
+		#allowed = {
+
+		#	
+
+		#}
+
+		available = {
+
+			has_war = no
+
+		    NOT = { has_completed_focus = CHI_opposition }
+
+		}
+
+		
+
+		visible = {
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai    
+
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		
+
+		days_remove = 180
+
+		days_re_enable = 180
+
+		modifier = {
+
+			monthly_population = 0.35
+
+			consumer_goods_factor = 0.15
+
+		}
+
+		ai_will_do = {
+
+			factor = 20
+
+		}
+
+		complete_effect = {
+
+			 
+
+		}
+
+	}
+
+	KHR_invite_ma_shaowu = {
+
+		icon = eng_trade_unions_support
+
+		#allowed = {
+
+		#	
+
+		#}
+
+		available = {
+
+		    has_completed_focus = CHI_cooperation_with_the_nationalists
+
+		}
+
+		
+
+		visible = {
+
+			always = no
+
+			tag = KHR
+
+			has_completed_focus = SIK_the_defeat_of_sheng_shicai   
+
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+
+			factor = 15
+
+		}
+
+		complete_effect = {
+
+			 
+
+		}
+
+	}
+
+
+
+	TNG_fund_mining = { #资助和阗玉采矿
+
+		icon = GFX_decision_chromium
+
+		#allowed = {
+
+		#	
+
+		#}
+
+		available = {
+
+		    OR = {
+
+				1049 = {
+
+					is_owned_and_controlled_by = ROOT
+
+				} 
+
+				1048 = {
+
+					is_owned_and_controlled_by = ROOT
+
+				} 
+
+				759 = {
+
+					is_owned_and_controlled_by = ROOT
+
+				} 
+
+			} 
+
+			num_of_civilian_factories_available_for_projects > 0
+
+		}
+
+
+
+		visible = {
+
+			has_completed_focus = TNG_produce_khotan_nephrite
+
+		}
+
+		cost = 100
+
+
+
+		days_remove = 30
+
+		days_re_enable = 180
+
+
+
+        modifier = {
+
+			civilian_factory_use = 1
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 0
+
+		}
+
+		remove_effect = {
+
+			custom_effect_tooltip = random_stuff_will_be_discovered
+
+			custom_effect_tooltip = 180d_cd_tt
+
+			hidden_effect = {
+
+				random_list = {
+
+					150 = { #国际歌（德语）
+
+						country_event = tng_mining.1
+
+					}
+
+					45 = {
+
+						country_event = tng_mining.2
+
+					}
+
+				    30 = {
+
+						country_event = tng_mining.3
+
+				    }
+
+				    5 = {
+
+					    country_event = tng_mining.4
+
+				    }
+
+					1 = {
+
+					    country_event = tng_mining.5
+
+				    }
+
+					#1 = {
+
+					#    country_event = tng_mining.6
+
+				    #}
+
+					#1 = {
+
+					#    country_event = tng_mining.7
+
+				    #}
+
+					#1 = {
+
+					#    country_event = tng_mining.8
+
+				    #}
+
+				}
+
+		    }
+
+		}
+
+	}
+
+
+
+	TNG_soviet_war_mission = { #入侵[SOV.GetName]
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		is_good = yes
+
+		allowed = {
+
+			tag = TNG
+
+		}
+
+		available = { #objective
+
+	        always = no
+
+	    }
+
+
+
+		days_mission_timeout = 180
+
+		activation = {
+
+			always = no
+
+		}
+
+		cancel_trigger = {
+
+			OR = {
+
+				has_capitulated = yes
+
+                SOV = { #俄罗斯
+
+					exists = no
+
+				}
+
+				NOT = {
+
+					has_war_with = SOV
+
+				}
+
+			}				    			    				    			    		    
+
+		}
+
+		
+
+		complete_effect = {
+
+		    #add_political_power = 50
+
+		}
+
+		timeout_effect = {
+
+			SOV = { #俄罗斯
+
+				country_event = tng.26
+
+			}
+
+			custom_effect_tooltip = if_approved_tt
+
+			SOV = { #俄罗斯
+
+				every_owned_state = {
+
+					limit = {
+
+						OR = {
+
+							is_controlled_by = ROOT
+
+							controller = {
+
+								is_ally_with = ROOT
+
+							}
+
+						}
+
+					}
+
+					transfer_state_to = ROOT
+
+				}
+
+			}
+
+		}	
+
+	}
+
+}
+
+SIK_northern_sik_issue = { #北疆问题
+
+
+
+    SIK_ultimatum_to_KRS = { #逮捕 @KRS[KRS.GetLeader]
+
+
+
+		icon = GFX_decision_oppression
+
+
+
+		available = {
+
+		    KRS = {
+
+				exists = yes
+
+				is_neighbor_of = ROOT
+
+				NOT = {
+
+					has_war_with = ROOT
+
+				}
+
+				OR = {
+
+					is_subject = no
+
+					is_subject_of = ROOT
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_completed_focus = SIK_Keep_the_rule
+
+				}
+
+				has_completed_focus = SIK_Forgery_offense
+
+			}
+
+		}
+
+
+
+		visible = {
+
+			KRS = {
+
+				exists = yes
+
+			}
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 25
+
+
+
+		complete_effect = {
+
+			KRS = {
+
+				country_event = {
+
+					id = Sinkiang.126 hours = 12
+
+				}
+
+			}
+
+			custom_effect_tooltip = if_they_accept_green
+
+			effect_tooltip = {
+
+				annex_country = { target = KRS transfer_troops = no }
+
+			}
+
+			custom_effect_tooltip = if_they_refuse_red
+
+			effect_tooltip = {
+
+                if = {
+
+					limit = {
+
+						KRS = {
+
+							is_subject_of = ROOT
+
+						}
+
+					}
+
+					set_autonomy = {
+
+						target = KRS
+
+						autonomy_state = autonomy_free
+
+					}
+
+				}
+
+				create_wargoal = {
+
+					target = KRS
+
+					type = annex_everything
+
+				}	
+
+			}
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 500
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				date < 1937.10.11
+
+				factor = 0
+
+			}
+
+			modifier = {	
+
+				KRS = {
+
+					is_ally_with = SOV
+
+				}
+
+				factor = 0
+
+			}
+
+			#modifier = {
+
+			#	has_war = yes
+
+			#	factor = 0
+
+			#}
+
+		}
+
+	}
+
+
+
+	SIK_ultimatum_to_ATM = { #向@ATM[ATM.GetName]施压
+
+
+
+		icon = GFX_decision_oppression
+
+
+
+		available = {
+
+		    ATM = {
+
+				exists = yes
+
+				is_neighbor_of = ROOT
+
+				NOT = {
+
+					has_war_with = ROOT
+
+				}
+
+				OR = {
+
+					is_subject = no
+
+					is_subject_of = ROOT
+
+				}
+
+			}
+
+			if = {
+
+				limit = {
+
+					has_completed_focus = SIK_Keep_the_rule
+
+				}
+
+				has_completed_focus = SIK_Forgery_offense
+
+			}
+
+		}
+
+
+
+		visible = {
+
+			ATM = {
+
+				exists = yes
+
+			}
+
+		}
+
+
+
+		fire_only_once = yes
+
+
+
+		cost = 25
+
+
+
+		complete_effect = {
+
+			ATM = {
+
+				country_event = {
+
+					id = Sinkiang.126 hours = 12
+
+				}
+
+			}
+
+			custom_effect_tooltip = if_they_accept_green
+
+			effect_tooltip = {
+
+				annex_country = { target = ATM transfer_troops = no }
+
+			}
+
+			custom_effect_tooltip = if_they_refuse_red
+
+			effect_tooltip = {
+
+                if = {
+
+					limit = {
+
+						ATM = {
+
+							is_subject_of = ROOT
+
+						}
+
+					}
+
+					set_autonomy = {
+
+						target = ATM
+
+						autonomy_state = autonomy_free
+
+					}
+
+				}
+
+				create_wargoal = {
+
+					target = ATM
+
+					type = annex_everything
+
+				}	
+
+			}
+
+		}
+
+
+
+		ai_will_do = {
+
+			factor = 500
+
+			modifier = {
+
+				is_historical_focus_on = yes
+
+				date < 1939.9.1
+
+				factor = 0
+
+			}
+
+			modifier = {	
+
+				ATM = {
+
+					is_ally_with = SOV
+
+				}
+
+				factor = 0
+
+			}
+
+			modifier = {
+
+				has_war = yes
+
+				factor = 0
+
+			}
+
+		}
+
+	}
+
+}
+
+SIK_coring_cat = { #设立新疆行政机构
+
+	SIK_amass_support_mission = { #在[sik_amass_support_flag_temp.GetName]累积支持
+
+		icon = generic_political_discourse
+
+		fire_only_once = no
+
+		days_mission_timeout = 50 # Stays for 5 days before being removed
+
+		#days_re_enable = 25 # Will show up in the interface and can be selected again after 5 days
+
+		is_good = yes
+
+		allowed = {
+
+			is_literally_china = yes
+
+		}
+
+		
+
+		activation = {
+
+			always = no #activate through scripted gui
+
+		}
+
+		timeout_effect = {
+
+			#hidden_effect = {
+
+			#	event_target:WTT_current_china_leader = {
+
+			#		country_event = RCM_popular_uprising.5
+
+			#	}
+
+			#}
+
+			event_target:sik_amass_support_flag_temp = {
+
+				add_core_of = ROOT
+
+			}
+
+			event_target:sik_amass_support_flag_temp = {
+
+				clear_global_event_target = sik_amass_support_flag_temp
+
+			}
+
+		}
+
+		available = { #can doc
+
+			event_target:sik_amass_support_flag_temp = {
+
+				NOT = {
+
+					is_controlled_by = ROOT
+
+				}
+
+			}
+
+		}
+
+		ai_will_do = {
+
+			factor = 50
+
+		}
+
+	}
+
+	SIK_amass_local_popular_support = { #开始累积支持
+
+		icon = eng_propaganda_campaigns
+
+		visible = {
+
+			OR = {
+
+				tag = event_target:WTT_current_china_leader
+
+				tag = event_target:WTT_communist_china
+
+			}
+
+			#has_global_flag = kmt_ruling_in_sik_flag
+
+			any_owned_state = {
+
+				is_fully_controlled_by = ROOT
+
+				OR = {
+
+					region = 145
+
+					region = 252
+
+				}
+
+				NOT = {
+
+					is_core_of = ROOT
+
+				}
+
+			}
+
+			OR = {
+
+				has_completed_focus = CHI_annex_sinkiang
+
+				NOT = {
+
+					any_other_country = {
+
+						exists = yes
+
+						original_tag = SIK
+
+					}
+
+				}
+
+			}
+
+			#any_other_country = {
+
+			#	exists = yes
+
+			#	original_tag = SIK
+
+			#}
+
+		}
+
+		available = {
+
+			OR = {
+
+				AND = {
+
+					any_owned_state = {
+
+						is_fully_controlled_by = ROOT
+
+						OR = {
+
+							region = 145
+
+							region = 252
+
+						}
+
+						NOT = {
+
+							is_core_of = ROOT
+
+						}
+
+						compliance > 50
+
+						resistance < 10
+
+					}
+
+				    any_country_with_original_tag = {
+
+						original_tag_to_check = SIK
+
+						exists = yes
+
+					}
+
+				}
+
+				AND = {
+
+					any_owned_state = {
+
+						is_fully_controlled_by = ROOT
+
+						OR = {
+
+							region = 145
+
+							region = 252
+
+						}
+
+						NOT = {
+
+							is_core_of = ROOT
+
+						}
+
+					}
+
+					all_country_with_original_tag = {
+
+						original_tag_to_check = SIK
+
+						exists = no
+
+					}
+
+				}
+
+			}
+
+			NOT = {
+
+				has_active_mission = SIK_amass_support_mission
+
+			}
+
+		}
+
+		cost = 50
+
+		#days_remove = 7
+
+		#days_re_enable = 7
+
+		#fire_only_once = yes
+
+		modifier = {
+
+
+
+		}
+
+		remove_effect = {
+
+
+
+		}
+
+		complete_effect = {
+
+			random_owned_controlled_state = {
+
+				limit = {
+
+					is_fully_controlled_by = ROOT
+
+					OR = {
+
+					    region = 145
+
+					    region = 252
+
+				    }
+
+					NOT = {
+
+						is_core_of = ROOT
+
+					}
+
+				}
+
+				save_global_event_target_as = sik_amass_support_flag_temp
+
+			}
+
+			activate_mission = SIK_amass_support_mission
+
+		}
+
+	}
+
+}

@@ -1,0 +1,2991 @@
+# SHX 事件
+
+add_namespace = AWR_SHX
+
+country_event = {
+
+	id = AWR_SHX.6 #[From.GetName]要求停战
+
+	title = EFM_Shanxi.1.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.1.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 95 }
+
+		name = EFM_Shanxi.1.a
+
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+
+		
+
+		set_global_flag = PRC_wangruofei_tt
+
+		country_event = AWR_CHI.4128#guo
+
+		
+
+		FROM = {
+
+			country_event = { id = AWR_SHX.127 hours = 12 }
+
+			set_country_flag = SHC_Comchina_agree_the_contact
+
+		}
+
+		effect_tooltip = {
+
+			FROM = {
+
+				add_timed_idea = { idea = SHX_Cooperation_with_the_communist days = 730 }
+
+				remove_ideas = SHX_Anti_communist
+
+			}
+
+			add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = shx_prc_unstable_al
+
+			}
+
+			FROM = {
+
+				add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = shx_prc_unstable_al
+
+				}
+
+			}
+
+			diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+				active = yes
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		ai_chance = { factor = 0 }
+
+		name = EFM_Shanxi.1.b
+
+		retire_character = PRC_wangruofei#guo
+
+		FROM = {
+
+			country_event = { id = AWR_SHX.128 hours = 12 }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.9 #统一战线
+
+	title = EFM_Shanxi.2.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.2.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 90 }
+
+		name = EFM_Shanxi.2.a
+
+		add_ai_strategy = {
+
+				type = support
+
+				id = SHX
+
+				value = 200
+
+			}
+
+		FROM = {
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+				set_country_flag = SHC_Comchina_agree_the_agreement
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_Shanxi.2.b
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.12 #[From.GetName] 建立晋绥边区
+
+	title = EFM_Shanxi.3.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.3.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.3.a
+
+		FROM = {
+
+            every_core_state = {
+
+				add_core_of = ROOT
+
+			}
+
+		}
+
+		annex_country = { target = FROM transfer_troops = yes }
+
+		
+
+		if = {
+
+			limit = {
+
+				FROM = {
+
+					is_ai = no
+
+				}
+
+				ROOT = {
+
+					is_ai = yes
+
+				}
+
+			}
+
+			ROOT = {
+
+				change_tag_from = FROM			
+
+			}
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.13 #[From.GetName]想要加入我们
+
+	title = EFM_Shanxi.4.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.4.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 90 }
+
+		name = EFM_Shanxi.4.a
+
+		FROM = { country_event = { id = AWR_SHX.16 hours = 12 } }
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_friendly
+
+		}
+
+		add_ai_strategy = {
+
+				type = support
+
+				id = SHX
+
+				value = 200
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 10 }
+
+		name = EFM_Shanxi.4.b
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.16 #[From.GetName]同意
+
+	title = EFM_Shanxi.5.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.5.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.5.a
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_friendly
+
+		}
+
+		set_country_flag = SHX_Soviet_agree_join_it
+
+		hidden_effect = {
+
+			PRC = { country_event = { id = AWR_SHX.18 hours = 12 } }
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.18 #[From.GetName]加入共产国际
+
+	title = EFM_Shanxi.6.t
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.6.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.6.a
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_estrangement
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.19 #[From.GetName]寻求承认
+
+	title = EFM_Shanxi.7.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.7.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_Shanxi.7.a
+
+		FROM = { country_event = { id = AWR_SHX.75 hours = 12 } }
+
+		PRC = { country_event = { id = AWR_SHX.23 days = 1 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.7.b
+
+		FROM = { country_event = { id = AWR_SHX.27 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.23 #[From.GetName]承认[SHX.GetName]的中国革命领导权
+
+	title = EFM_Shanxi.8.t
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.8.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.8.a
+
+		SHX = {
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+				puppet = ROOT
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_Shanxi.8.b
+
+		SHX = { country_event = { id = AWR_SHX.26 hours = 12 } }
+
+		add_opinion_modifier = {
+
+				target = SHX
+
+				modifier = Nations_estrangement
+
+			}
+
+		SOV = {
+
+				add_ai_strategy = {
+
+						type = support
+
+						id = PRC
+
+						value = -200
+
+					}
+
+				add_ai_strategy = {
+
+						type = send_volunteers_desire
+
+						id = PRC
+
+						value = 200
+
+					}
+
+				add_ai_strategy = {
+
+						type = alliance
+
+						id = PRC
+
+						value = 200
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.26 #[From.GetName]拒绝接受我方领导权要求
+
+	title = EFM_Shanxi.9.t
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.9.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.9.a
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_Shanxi.9.b
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_estrangement
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.27 #[From.GetName]拒绝我们的要求
+
+	title = EFM_Shanxi.10.t
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.10.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.10.a
+
+		PRC = { country_event = { id = AWR_CHI.3066 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_Shanxi.10.b
+
+		PRC = { country_event = { id = AWR_SHX.30 hours = 12 } }
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_estrangement
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.30 #[From.GetName]拒绝承认我方领导权
+
+	title = EFM_Shanxi.11.t
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.11.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.11.a
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 70 }
+
+		name = EFM_Shanxi.11.b
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_estrangement
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.31 #[From.GetName] 停止与我方合作
+
+	title = EFM_Shanxi.12.t
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.12.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.12.a
+
+		remove_opinion_modifier = {
+
+				target = FROM
+
+				modifier = shx_prc_unstable_al
+
+			}
+
+		add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = hostile_status
+
+			}
+
+		add_ai_strategy = {
+
+				type = support
+
+				id = SHX
+
+				value = -200
+
+			}
+
+		add_ai_strategy = {
+
+				type = invade
+
+				id = SHX
+
+				value = 200
+
+			}
+
+			
+
+			FROM = { #guo
+
+			SHX_Bo_Yibo = { set_nationality = root }
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.32 #[From.GetName]支持我方
+
+	title = EFM_Shanxi.13.t
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.13.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 80 }
+
+		name = EFM_Shanxi.13.a
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+			}
+
+		add_ai_strategy = {
+
+				type = send_volunteers_desire
+
+				id = SHX
+
+				value = 200
+
+			}
+
+		add_ai_strategy = {
+
+				type = alliance
+
+				id = SHX
+
+				value = 200
+
+			}
+
+		if = {
+
+				limit = {
+
+					is_in_faction = yes
+
+					is_faction_leader = yes
+
+				}
+
+				add_to_faction = FROM
+
+			}
+
+		FROM = { country_event = { id = AWR_SHX.75 hours = 12 } }
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 20 }
+
+		name = EFM_Shanxi.13.b
+
+		add_ai_strategy = {
+
+				type = ignore
+
+				id = SHX
+
+				value = 200
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+			}
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.35 #[From.GetName]支持华北分离工作
+
+	title = EFM_Shanxi.14.t
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.14.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.14.a
+
+		#yes
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 1000
+
+				SHX = { is_ai = no }
+
+			}
+
+		}
+
+		FROM = {
+
+			country_event = AWR_SHX.134
+
+		}
+
+		effect_tooltip = {
+
+			give_guarantee = FROM
+
+			add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_friendly
+
+			}
+
+			FROM = {
+
+                add_opinion_modifier = {
+
+					target = ROOT
+
+					modifier = Nations_friendly
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+	option = {
+
+		name = EFM_Shanxi.14.b
+
+		ai_chance = {
+
+			factor = 20
+
+		}
+
+		trigger = {
+
+			NOT = {
+
+				SHX = {
+
+					is_subject_of = ROOT
+
+				}
+
+			}
+
+		}
+
+		#no
+
+		FROM = {
+
+			country_event = AWR_SHX.135
+
+		}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.36 #[From.GetName]转交绥远控制权
+
+	title = EFM_Shanxi.15.t
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.15.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.15.a
+
+		transfer_state = 621
+
+		transfer_state = 746
+
+		transfer_state = 1019
+
+		transfer_state = 1020
+
+		set_autonomy = { target = FROM autonomy_state = autonomy_free }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.37 #关东军阴谋
+
+	title = EFM_Shanxi.16.t
+
+	picture = GFX_report_event_japanese_officers
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.16.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.16.a
+
+		swap_ideas = { remove_idea = SHX_Kwantung_army_special_agent_mechanism add_idea = SHX_Kwantung_army_special_agent_mechanism_non }
+
+		add_stability = 0.1
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.38 #[From.GetName]要求整合内蒙古
+
+	title = EFM_Shanxi.17.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.17.d
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 0
+
+				ECA = { is_ai = no }
+
+			}
+
+		}
+
+		name = EFM_Shanxi.17.a
+
+		if = {
+
+				limit = {
+
+						ECA = {
+
+								is_subject_of = JAP
+
+							}
+
+					}
+
+				FROM = {
+
+					annex_country = { target = ECA }
+
+				}
+
+			}
+
+		FROM = {
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = {
+
+			factor = 30
+
+			modifier = {
+
+				factor = 100
+
+				ECA = { is_ai = no }
+
+			}
+
+		}
+
+		name = EFM_Shanxi.17.b
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.63 #[From.GetName]加入[Root.GetFactionName]
+
+	title = EFM_Shanxi.18.t
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.18.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.17.a
+
+		if = {
+
+			limit = {
+
+				FROM = { is_subject = no }
+
+			}
+
+			puppet = FROM
+
+		}
+
+		event_target:WTT_current_china_leader = { country_event = { id = AWR_SHX.70 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.43 #[From.GetName]希望获得华北控制权
+
+	title = EFM_Shanxi.19.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.19.d
+
+	
+
+	option = {
+
+		ai_chance = {
+
+			factor = 70
+
+			modifier = {
+
+				factor = 0
+
+				OR = {
+
+					HPC = {
+
+						is_ai = yes
+
+					}
+
+				}
+
+			}
+
+		}
+
+		name = EFM_Shanxi.19.a
+
+		FROM = {
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+				#HERE gives North China States to PREV i guess
+
+				every_other_country = {
+
+						limit = {
+
+								OR = {
+
+										tag = HPC
+
+										tag = SHD
+
+									}
+
+								exists = yes
+
+								is_subject_of = JAP
+
+							}
+
+						country_event = {
+
+								days = 1
+
+								id = AWR_SHX.47
+
+							}
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 30 }
+
+		name = EFM_Shanxi.19.b
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+								days = 1
+
+								id = AWR_SHX.47
+
+							}
+
+country_event = {
+
+	id = AWR_SHX.47 #[From.GetName] 要求与我们与 [SHX.GetName] 整合
+
+	title = EFM_Shanxi.20.t
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.20.d
+
+	
+
+	option = {
+
+		ai_chance = { factor = 95 }
+
+		name = EFM_Shanxi.20.a
+
+		FROM = {
+
+				#country_event = { id = AWR_SHX.75 hours = 12 }
+
+				annex_country = { target = ROOT }
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 5 }
+
+		name = EFM_Shanxi.20.b
+
+		#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.50 #关东军政变
+
+	title = EFM_Shanxi.21.t
+
+	picture = GFX_report_event_japanese_officers
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.21.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.21.a
+
+		every_other_country = {
+
+				limit = {
+
+						is_subject_of = ROOT
+
+					}
+
+				JAP = {
+
+						puppet = PREV
+
+					}
+
+			}
+
+		swap_ideas = { remove_idea = SHX_Kwantung_army_special_agent_mechanism add_idea = SHX_Kwantung_army_special_agent_mechanism_jap }
+
+		JAP = { country_event = { id = AWR_SHX.52 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.52 #[From.GetName]内部发生关东军政变
+
+	title = EFM_Shanxi.22.t
+
+	picture = GFX_report_event_japanese_officers
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.22.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.22.a
+
+		set_autonomy = { target = FROM autonomy_state = autonomy_integrated_puppet }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.53 #[From.GetName] 抵抗
+
+	title = EFM_Shanxi.23.t
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+
+	desc = EFM_Shanxi.23.d
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.23.a
+
+		end_puppet = SHX
+
+		create_wargoal = { type = annex_everything target = FROM }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.54 #[From.GetName] 正组建新政府
+
+	title = EFM_Shanxi.24.t
+
+	desc = EFM_Shanxi.24.d
+
+	
+
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		name = EFM_Shanxi.24.a
+
+		trigger = {
+
+				tag = JAP
+
+			}
+
+			diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+			}
+
+	}
+
+	option = {
+
+		name = EFM_Shanxi.24.b
+
+		trigger = {
+
+				NOT = { tag = JAP }
+
+			}
+
+		add_opinion_modifier = {
+
+			target = FROM
+
+			modifier = Nations_estrangement
+
+		}
+
+	}
+
+
+
+}
+
+country_event = {
+
+	id = AWR_SHX.55 #强化安保部队
+
+	title = EFM_Shanxi.25.t
+
+	desc = EFM_Shanxi.25.d
+
+	
+
+	picture = GFX_report_event_chinese_army_training
+
+	
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+
+		ai_chance = { factor = 50 }
+
+		name = EFM_Shanxi.25.a
+
+			swap_ideas = { remove_idea = SHX_Anti_communist add_idea = SHX_Anti_communist_2 }
+
+			add_political_power = -50
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 50 }
+
+		name = EFM_Shanxi.25.b
+
+			swap_ideas = { remove_idea = SHX_Anti_communist add_idea = SHX_Anti_communist_2 }
+
+			add_war_support = 0.05
+
+			add_ideas = fascist_influence
+
+			add_political_power = -100
+
+	}
+
+
+
+}
+
+country_event = {
+
+	id = AWR_SHX.56 #[From.GetName]寻求援助
+
+	title = EFM_Shanxi.26.t
+
+	desc = EFM_Shanxi.26.d
+
+	
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = { factor = 90 }
+
+			name = EFM_Shanxi.26.a
+
+			add_political_power = -100
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = -1000
+
+			}
+
+			FROM = { country_event = { id = AWR_SHX.59 hours = 12 } }
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 10 }
+
+			name = EFM_Shanxi.26.b
+
+			add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_estrangement
+
+			}
+
+			FROM = { country_event = { id = AWR_SHX.60 hours = 12 } }
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.59 #[From.GetName]兑现承诺
+
+	title = EFM_Shanxi.27.t
+
+	desc = EFM_Shanxi.27.d
+
+	
+
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			name = EFM_Shanxi.27.a
+
+			add_ideas = SHX_Kwantung_army_special_agent_mechanism
+
+			add_political_power = 100
+
+			add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = 1000
+
+				producer = JAP
+
+			}
+
+			add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_friendly
+
+			}
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.60 #[From.GetName]拒绝
+
+	title = EFM_Shanxi.28.t
+
+	desc = EFM_Shanxi.28.d
+
+	
+
+	picture = GFX_report_event_chinese_soldiers_02
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			name = EFM_Shanxi.28.a
+
+			add_opinion_modifier = {
+
+				target = FROM
+
+				modifier = Nations_estrangement
+
+			}
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.61 #宣布华北独立
+
+	title = EFM_Shanxi.29.t
+
+	desc = EFM_Shanxi.29.d
+
+	
+
+	picture = GFX_report_event_generic_rally
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = { factor = 90 }
+
+			name = EFM_Shanxi.29.a
+
+			trigger = {
+
+				OR = {
+
+					JAP = {
+
+						OR = {
+
+							has_government = neutrality
+
+							has_government = fascism
+
+						}
+
+					}
+
+					MAN = {
+
+						OR = {
+
+							has_government = neutrality
+
+							has_government = fascism
+
+						}
+
+					}
+
+				}
+
+			}
+
+			add_war_support = -0.2
+
+			add_stability = -0.1
+
+			if = {
+
+				limit = {
+
+					JAP = {
+
+						OR = {
+
+							has_government = neutrality
+
+							has_government = fascism
+
+						}
+
+						#NOT = {
+
+						#	has_completed_focus = JAP_Stable_cabinet_system
+
+						#	has_completed_focus = JAP_Regroup_the_JCP
+
+						#}
+
+					}
+
+				}
+
+				every_other_country = {
+
+					limit = {
+
+							is_subject_of = ROOT
+
+						}
+
+					JAP = {
+
+							puppet = PREV
+
+						}
+
+				}
+
+				effect_tooltip = {
+
+					JAP = {
+
+						puppet = ROOT
+
+					}
+
+				}
+
+				JAP = { country_event = { id = AWR_SHX.63 hours = 12 } }
+
+			}
+
+			else = {
+
+				every_other_country = {
+
+					limit = {
+
+							is_subject_of = ROOT
+
+						}
+
+					MAN = {
+
+							puppet = PREV
+
+						}
+
+				}
+
+				effect_tooltip = {
+
+					MAN = {
+
+						puppet = ROOT
+
+					}
+
+				}
+
+				MAN = { country_event = { id = AWR_SHX.63 hours = 12 } }
+
+			}
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 10 }
+
+			name = EFM_Shanxi.29.b
+
+			trigger = {
+
+				ROOT = { is_subject = no }
+
+			}
+
+			if = {
+
+				limit = {
+
+					JAP = {
+
+						OR = {
+
+							has_government = neutrality
+
+							has_government = fascism
+
+						}
+
+						#NOT = {
+
+						#	has_completed_focus = JAP_Stable_cabinet_system
+
+						#	has_completed_focus = JAP_Regroup_the_JCP
+
+						#}
+
+					}
+
+				}
+
+				every_other_country = {
+
+					limit = {
+
+							is_subject_of = ROOT
+
+						}
+
+					JAP = {
+
+							puppet = PREV
+
+						}
+
+				}
+
+				effect_tooltip = {
+
+					JAP = {
+
+						puppet = ROOT
+
+					}
+
+				}
+
+				JAP = { country_event = { id = AWR_SHX.66 hours = 12 } }
+
+				effect_tooltip = {
+
+					random_list = {
+
+						70 = {
+
+							JAP = { create_wargoal = { type = annex_everything target = ROOT } }
+
+						}
+
+						30 = {
+
+							JAP = { diplomatic_relation = { country = ROOT relation = non_aggression_pact } }
+
+						}
+
+					}
+
+				}
+
+			}
+
+			else = {
+
+				every_other_country = {
+
+					limit = {
+
+							is_subject_of = ROOT
+
+						}
+
+					MAN = {
+
+							puppet = PREV
+
+						}
+
+				}
+
+				effect_tooltip = {
+
+					MAN = {
+
+						puppet = ROOT
+
+					}
+
+				}
+
+				MAN = { country_event = { id = AWR_SHX.66 hours = 12 } }
+
+				effect_tooltip = {
+
+					random_list = {
+
+						70 = {
+
+							MAN = { create_wargoal = { type = annex_everything target = ROOT } }
+
+						}
+
+						30 = {
+
+							MAN = { diplomatic_relation = { country = ROOT relation = non_aggression_pact } }
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.66 #[From.GetName]宣布独立
+
+	title = EFM_Shanxi.30.t
+
+	desc = EFM_Shanxi.30.d
+
+	
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = { factor = 70 }
+
+			name = EFM_Shanxi.30.a
+
+			trigger = {
+
+				ROOT = {
+
+					OR = {
+
+						has_government = neutrality
+
+						has_government = fascism
+
+					}
+
+				}
+
+			}
+
+			create_wargoal = { type = puppet_wargoal_focus target = FROM }
+
+			event_target:WTT_current_china_leader = { country_event = { id = AWR_SHX.70 hours = 12 } }
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 30 }
+
+			name = EFM_Shanxi.30.b
+
+			diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+			}
+
+			event_target:WTT_current_china_leader = { country_event = { id = AWR_SHX.70 hours = 12 } }
+
+			FROM = { country_event = { id = AWR_SHX.72 hours = 12 } }
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.70 #[SHX.GetName]宣布独立
+
+	title = EFM_Shanxi.31.t
+
+	desc = EFM_Shanxi.31.d
+
+	
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = { factor = 70 }
+
+			name = EFM_Shanxi.31.a
+
+			trigger = {
+
+				OR = {
+
+					SHX = { is_subject = no }
+
+					has_war_with = JAP #MODDED
+
+					#has_completed_focus = CHI_Prepare_for_the_war_with_japan
+
+					#has_completed_focus = CHI_Sunset_plan
+
+					AND = {
+
+						is_in_faction = yes
+
+						is_faction_leader = yes
+
+					}
+
+				}
+
+				NOT = { is_in_faction_with = SHX }
+
+			}
+
+			create_wargoal = { type = annex_everything target = SHX }
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 30 }
+
+			name = EFM_Shanxi.31.b
+
+			give_guarantee = SHX
+
+			diplomatic_relation = {
+
+				country = SHX
+
+				relation = non_aggression_pact
+
+			}
+
+			FROM = { country_event = { id = AWR_SHX.72 hours = 12 } }
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.72 #[From.GetName] 恭贺我方
+
+	title = EFM_Shanxi.32.t
+
+	desc = EFM_Shanxi.32.d
+
+	
+
+	picture = GFX_report_event_generic_read_write
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			name = EFM_Shanxi.32.a
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.73 #[From.GetName] 的邀请
+
+	title = EFM_Shanxi.33.t
+
+	desc = EFM_Shanxi.33.d
+
+	
+
+	picture = GFX_report_event_chinese_officers
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = {
+
+				factor = 90
+
+				modifier = {
+
+					factor = 0
+
+					focus_progress = {
+
+						focus = HPC_Reduce_opposition
+
+						progress > 0.0
+
+					}
+
+				}
+
+			}
+
+			name = EFM_Shanxi.33.a
+
+			#FROM = { country_event = { id = AWR_CHI.3923 hours = 12 } }
+
+		}
+
+		option = {
+
+			ai_chance = {
+
+				factor = 10
+
+				modifier = {
+
+					factor = 0
+
+					focus_progress = {
+
+						focus = HPC_Tough_policy
+
+						progress > 0.0
+
+					}
+
+				}
+
+			}
+
+			name = EFM_Shanxi.33.b
+
+			add_ai_strategy = {
+
+				type = alliance
+
+				id = FROM
+
+				value = 200
+
+			}
+
+			FROM = {
+
+				add_to_faction = ROOT
+
+				country_event = { id = AWR_SHX.75 hours = 12 }
+
+			}
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.76 #发现分离主义宣传
+
+	title = EFM_Shanxi.34.t
+
+	desc = EFM_Shanxi.34.d
+
+	
+
+	picture = GFX_report_event_generic_rally2
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			ai_chance = { factor = 70 }
+
+			name = EFM_Shanxi.34.a
+
+			add_stability = 0.05
+
+			add_political_power = -30
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 20 }
+
+			name = EFM_Shanxi.34.b
+
+			add_stability = 0.1
+
+			add_political_power = -75
+
+		}
+
+		option = {
+
+			ai_chance = { factor = 10 }
+
+			name = EFM_Shanxi.34.c
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.77 #[From.GetName]对我方施压
+
+	title = EFM_Shanxi.35.t
+
+	desc = EFM_Shanxi.35.d
+
+	
+
+	picture = GFX_report_event_chinese_soldiers_running
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			name = EFM_Shanxi.35.a
+
+			if = {
+
+				limit = {
+
+					is_subject = yes
+
+					NOT = { is_subject_of = FROM }
+
+				}
+
+				OVERLORD = {
+
+					country_event = { id = AWR_SHX.79 hours = 12 }
+
+					set_autonomy = { target = ROOT autonomy_state = autonomy_free }
+
+				}
+
+			}
+
+			FROM = { set_autonomy = { target = ROOT autonomy_state = autonomy_integrated_puppet } }
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.79 #[From.GetName] 脱离政府
+
+	title = EFM_Shanxi.36.t
+
+	desc = EFM_Shanxi.36.d
+
+	
+
+	picture = GFX_report_event_chinese_officers
+
+	
+
+	is_triggered_only = yes
+
+	
+
+		option = {
+
+			name = EFM_Shanxi.36.a
+
+		}
+
+
+
+	}
+
+country_event = {
+
+	id = AWR_SHX.80
+
+	title = EFM_Shanxi.72.t
+
+	desc = EFM_Shanxi.72.d
+
+	picture = GFX_report_event_shx_fu_zuoyi
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.72.a
+
+		FROM = { country_event = { id = AWR_SHX.82 hours = 12 } }
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.82
+
+	title = EFM_Shanxi.73.t
+
+	desc = EFM_Shanxi.73.d
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.73.a
+
+		add_war_support = 0.05
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.83
+
+	title = EFM_Shanxi.74.t
+
+	desc = EFM_Shanxi.74.d
+
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.74.a
+
+		add_manpower = -100
+
+		hidden_effect = {
+
+				event_target:shanxi_clique = {
+
+						declare_war_on = {
+
+								target = ROOT
+
+								type = puppet_wargoal_focus
+
+							}
+
+						create_country_leader = {
+
+								name = "Yan Xishan"
+
+								desc = "POLITICS_YAN XISHAN_DESC"
+
+								picture = "GFX_portrait_shanxi_portrait_yan_xishan"
+
+								expire = "1965.1.1"
+
+								ideology = despotism
+
+								traits = {
+
+										#shanxi_clique_leader
+
+									}
+
+							}
+
+						create_country_leader = {
+
+								name = "Yan Xishan"
+
+								desc = "POLITICS_YAN XISHAN_DESC"
+
+								picture = "GFX_portrait_shanxi_portrait_yan_xishan"
+
+								expire = "1965.1.1"
+
+								ideology = fascism_ideology
+
+								traits = {
+
+										#shanxi_clique_leader
+
+									}
+
+							}
+
+						create_country_leader = {
+
+								name = "Yan Xishan"
+
+								desc = "POLITICS_YAN XISHAN_DESC"
+
+								picture = "GFX_portrait_shanxi_portrait_yan_xishan"
+
+								expire = "1965.1.1"
+
+								ideology = socialism
+
+								traits = {
+
+										#shanxi_clique_leader
+
+									}
+
+							}
+
+						create_wargoal = { type = puppet_wargoal_focus target = PRC }
+
+					}
+
+				retire_ideology_leader = communism
+
+				create_country_leader = {
+
+						name = "Fu Zuoyi"
+
+						desc = ""
+
+						picture = "gfx/leaders/SHX/Portrait_Fu_Zuoyi.dds"
+
+						expire = "1965.1.1"
+
+						ideology = fascism_ideology
+
+						traits = {}
+
+					}
+
+				create_country_leader = {
+
+						name = "Fu Zuoyi"
+
+						desc = ""
+
+						picture = "gfx/leaders/SHX/Portrait_Fu_Zuoyi.dds"
+
+						expire = "1965.1.1"
+
+						ideology = socialism
+
+						traits = {}
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.84 #山西万岁！
+
+	title = EFM_Shanxi.82.t
+
+	desc = EFM_Shanxi.82.d
+
+	picture = GFX_report_event_shx_yan_xishan
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.82.a
+
+		add_war_support = 0.1
+
+		remove_ideas = SHX_Kwantung_army_special_agent_mechanism
+
+		if = {
+
+				limit = {
+
+						is_in_faction_with = JAP
+
+					}
+
+				leave_faction = yes
+
+			}
+
+		diplomatic_relation = {
+
+				country = JAP
+
+				relation = guarantee
+
+				active = no
+
+			}
+
+		diplomatic_relation = {
+
+				country = JAP
+
+				relation = non_aggression_pact
+
+				active = no
+
+			}
+
+		diplomatic_relation = {
+
+				country = JAP
+
+				relation = military_access
+
+				active = no
+
+			}
+
+		JAP = {
+
+				diplomatic_relation = {
+
+						country = ROOT
+
+						relation = guarantee
+
+						active = no
+
+					}
+
+				diplomatic_relation = {
+
+						country = ROOT
+
+						relation = military_access
+
+						active = no
+
+					}
+
+			}
+
+		every_other_country = {
+
+				limit = {
+
+						OR = {
+
+								is_subject_of = JAP
+
+								is_in_faction_with = JAP
+
+							}
+
+					}
+
+				diplomatic_relation = {
+
+						country = ROOT
+
+						relation = guarantee
+
+						active = no
+
+					}
+
+				diplomatic_relation = {
+
+						country = ROOT
+
+						relation = non_aggression_pact
+
+						active = no
+
+					}
+
+				diplomatic_relation = {
+
+						country = ROOT
+
+						relation = military_access
+
+						active = no
+
+					}
+
+			}
+
+		if = {
+
+				limit = {
+
+						OR = {
+
+								has_government = neutrality
+
+								has_government = fascism
+
+							}
+
+					}
+
+				add_opinion_modifier = {
+
+						target = JAP
+
+						modifier = hostile_status
+
+					}
+
+				JAP = {
+
+						add_opinion_modifier = {
+
+								target = FROM
+
+								modifier = hostile_status
+
+							}
+
+					}
+
+			}
+
+		else = {
+
+				add_opinion_modifier = {
+
+						target = JAP
+
+						modifier = Nations_estrangement
+
+					}
+
+				JAP = {
+
+						add_opinion_modifier = {
+
+								target = FROM
+
+								modifier = Nations_estrangement
+
+							}
+
+					}
+
+			}
+
+		if = {
+
+				limit = {
+
+						JAP = {
+
+								OR = {
+
+										has_government = neutrality
+
+										has_government = fascism
+
+									}
+
+							}
+
+					}
+
+				JAP = {
+
+						country_event = {
+
+								id = AWR_SHX.87
+
+								hours = 12
+
+							}
+
+					}
+
+			}
+
+		event_target:WTT_current_china_leader = {
+
+				country_event = {
+
+						id = AWR_SHX.88
+
+						hours = 12
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+								id = AWR_SHX.87
+
+								hours = 12
+
+							}
+
+country_event = {
+
+						id = AWR_SHX.88
+
+						hours = 12
+
+					}
+
+country_event = {
+
+	id = AWR_SHX.87
+
+	title = EFM_Shanxi.83.t
+
+	desc = EFM_Shanxi.83.d
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.83.a
+
+		if = {
+
+				limit = {
+
+						OR = {
+
+								has_government = neutrality
+
+								has_government = fascism
+
+							}
+
+					}
+
+				add_ai_strategy = {
+
+						type = antagonize
+
+						id = SHX
+
+						value = 5000
+
+				}
+
+				add_opinion_modifier = {
+
+						target = JAP
+
+						modifier = hostile_status
+
+					}
+
+				JAP = {
+
+						add_opinion_modifier = {
+
+								target = FROM
+
+								modifier = hostile_status
+
+							}
+
+					}
+
+			}
+
+		else = {
+
+				effect_tooltip = {
+
+						add_opinion_modifier = {
+
+								target = FROM
+
+								modifier = Nations_estrangement
+
+							}
+
+						FROM = {
+
+								add_opinion_modifier = {
+
+										target = ROOT
+
+										modifier = Nations_estrangement
+
+									}
+
+							}
+
+					}
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = guarantee
+
+				active = no
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = non_aggression_pact
+
+				active = no
+
+			}
+
+		diplomatic_relation = {
+
+				country = FROM
+
+				relation = military_access
+
+				active = no
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.88
+
+	title = EFM_Shanxi.84.t
+
+	desc = EFM_Shanxi.84.d
+
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.84.a
+
+	}
+
+}
+
+country_event = {
+
+	id = AWR_SHX.89
+
+	title = EFM_Shanxi.91.t
+
+	desc = EFM_Shanxi.91.d
+
+	picture = GFX_report_event_generic_read_write
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		ai_chance = { factor = 95 }
+
+		name = EFM_Shanxi.91.a
+
+		hidden_effect = {
+
+				country_event = {
+
+						id = AWR_SHX.91
+
+						hours = 12
+
+					}
+
+			}
+
+	}
+
+	option = {
+
+		ai_chance = { factor = 5 }
+
+		name = EFM_Shanxi.91.b
+
+		add_political_power = -150
+
+	}
+
+}
+
+country_event = {
+
+						id = AWR_SHX.91
+
+						hours = 12
+
+					}
+
+country_event = {
+
+	id = AWR_SHX.91
+
+	title = EFM_Shanxi.92.t
+
+	desc = EFM_Shanxi.92.d
+
+	picture = GFX_report_event_generic_ruins
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.92.a
+
+		remove_unit_leader = 2896
+
+		hidden_effect = {
+
+				country_event = {
+
+						id = AWR_SHX.92
+
+						days = 1
+
+					}
+
+			}
+
+	}
+
+}
+
+country_event = {
+
+						id = AWR_SHX.92
+
+						days = 1
+
+					}
+
+country_event = {
+
+	id = AWR_SHX.93
+
+	title = EFM_Shanxi.100.t
+
+	desc = EFM_Shanxi.100.d
+
+	picture = GFX_report_event_generic_ruins
+
+	
+
+	is_triggered_only = yes
+
+
+
+	option = {
+
+		name = EFM_Shanxi.100.a
+
+		division_template = {
+
+	        name = "Shanxi Xinjun"
+
+	        division_names_group = SHX_INF_03
+
+	        template_counter = 69
+
+	        is_locked = yes
+
+	        force_allow_recruiting = no
+
+			regiments = {
+
+		        infantry = { x = 0 y = 0 }
+
+		        infantry = { x = 0 y = 1 }
+
+		        infantry = { x = 1 y = 0 }
+
+		        infantry = { x = 1 y = 1 }
+
+		        infantry = { x = 2 y = 0 }
+
+		        infantry = { x = 2 y = 1 }
+
+		        infantry = { x = 3 y = 0 }
+
+		        infantry = { x = 3 y = 1 }
+
+	        }
+
+	        #priority = 1
+
+        }
+
+	    
+
+	}
+
+}

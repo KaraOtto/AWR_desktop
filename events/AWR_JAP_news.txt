@@ -1,0 +1,968 @@
+﻿add_namespace = tyt_news 
+
+news_event = {
+	id = news.666 #东京大轰炸
+	title = news.666.tt
+	desc = news.666.dd
+	picture = GFX_dongjingdahongzha
+	
+	major = yes
+	
+	is_triggered_only = yes		
+
+	immediate = {	
+	hidden_effect = {	
+    set_global_flag = JAP_Tokyo_Bomb_flag	
+	}		
+	}
+		
+	option = {
+		name = news.666.aa
+		trigger = {
+        NOT = {		
+				OR = {
+					tag = USA
+					tag = JAP
+				}
+			}
+			}		
+		effect_tooltip = {
+		282 = {
+		add_manpower = -100000
+		damage_building = { type = infrastructure damage = 5 } damage_building = { type = rail_way damage = 5 } damage_building = { type = arms_factory damage = 5 } damage_building = { type = industrial_complex damage = 5 }
+		}
+		JAP = { add_war_support = -0.35 }
+		JAP = { add_timed_idea = { idea = jap_Doolittle_Raid days = 150 } }				
+		}
+	}
+	option = {
+		name = news.666.bb
+		trigger = { 
+		tag = JAP
+		}		
+		effect_tooltip = {
+		282 = {
+		add_manpower = -100000
+		damage_building = { type = infrastructure damage = 5 } damage_building = { type = rail_way damage = 5 } damage_building = { type = arms_factory damage = 5 } damage_building = { type = industrial_complex damage = 5 }
+		}
+        add_war_support = -0.35 
+        add_timed_idea = { idea = jap_Doolittle_Raid days = 150 }	
+		set_global_flag = JAP_Tokyo_Bomb_flag		
+		}		
+		}		
+	option = {
+		name = news.666.cc
+		trigger = { 
+		tag = USA
+		}		
+		effect_tooltip = {
+		282 = {
+		add_manpower = -100000
+		damage_building = { type = infrastructure damage = 5 } damage_building = { type = rail_way damage = 5 } damage_building = { type = arms_factory damage = 5 } damage_building = { type = industrial_complex damage = 5 }
+		}
+		JAP = { add_war_support = -0.35 }
+		JAP = { add_timed_idea = { idea = jap_Doolittle_Raid days = 150 } }		
+		set_global_flag = JAP_Tokyo_Bomb_flag		
+		}
+	}	
+}
+news_event = {
+	id = news.996 #徐州会战
+	title = news.996.tt
+	desc = news.996.dd
+	picture = GFX_taierzhuang
+	
+	major = yes
+	
+	trigger = {
+	    CHI = {
+	    has_war_with = JAP		
+	    }	
+	    OR = {		
+        1080 = { is_controlled_by = JAP }
+        1080 = { is_controlled_by = EHB }
+        1080 = { is_controlled_by = RFM }		
+	    }			
+		NOT = { has_global_flag = fall_of_xuzhou }		
+		}
+    immediate = {
+		set_global_flag = fall_of_xuzhou
+	}
+		
+	option = {
+		name = news.996.a
+		trigger = { 
+        NOT = {		
+				is_literally_china = yes
+                tag = JAP				
+			}
+			}
+		}				
+	option = {
+		name = news.996.b
+		trigger = {		
+				is_literally_china = yes
+			}
+			}	
+	option = {
+		name = news.996.c	
+		trigger = {
+        tag = JAP
+			}			
+		}
+	}
+news_event = {#台湾光复新闻
+	id = news.888 #台湾光复
+	title = news.888.tt
+	desc = news.888.dd
+	picture = GFX_news_event_taiwanguangfu
+	
+	major = yes
+		
+	trigger = {
+        524 = { is_controlled_by = CHI }	
+		NOT = { has_global_flag = fall_of_taiwan }	
+	}
+			
+    immediate = {
+		set_global_flag = fall_of_taiwan
+		set_global_flag = JAP_touxiangle		
+       hidden_effect = {		
+		if = {
+			limit = {	
+		    614 = { is_owned_by = JAP }  		
+                          }			
+            614 = {
+			set_state_owner_to = CHI
+                          }
+            }
+		if = {
+			limit = {	
+		    614 = { is_owned_by = EHB }  		
+                          }			
+            614 = {
+			set_state_owner_to = CHI
+                          }
+            }			
+		if = {
+			limit = {	
+		    614 = { is_owned_by = HUA }  		
+                          }			
+            614 = {
+			set_state_owner_to = CHI
+                          }
+            }
+         }		
+	}
+	
+	option = {
+		name = news.888.a
+		trigger = { 
+				is_literally_china = yes
+			}
+		}				
+	option = {
+		name = news.888.b
+		trigger = { TAG = JAP }		
+	}
+	option = {
+		name = news.888.c	
+		trigger = {
+        NOT = {		
+				OR = {
+				    is_literally_china = yes
+					tag = JAP					
+				}
+			}
+			}			
+		}		
+	}			
+news_event = {
+	id = news.998 #长沙会战
+	title = news.998.tt
+	desc = news.998.dd
+	picture = GFX_news_event_changsha
+	
+	major = yes
+		
+	trigger = {
+	    CHI = {
+	    has_war_with = JAP		
+	    }
+	    OR = {		
+        1035 = { is_controlled_by = JAP }
+        1035 = { is_controlled_by = EHB }
+        1035 = { is_controlled_by = RFM }		
+	    }		
+		NOT = { has_global_flag = fall_of_changsha }	
+	}		
+    immediate = {
+		set_global_flag = fall_of_changsha
+	}
+		
+	option = {
+		name = news.998.a
+		trigger = { 
+        NOT = {		
+				OR = {
+				    is_literally_china = yes
+					tag = JAP
+				}
+			}
+			}
+		}				
+	option = {
+		name = news.998.b
+		trigger = {		
+				is_literally_china = yes
+			}
+			}	
+	option = {
+		name = news.998.c	
+		trigger = {
+        tag = JAP
+			}			
+		}
+	}
+news_event = {
+	id = news.997 #冲绳岛战役
+	title = news.997.tt
+	desc = news.997.dd
+	picture = GFX_chongshen
+	
+	major = yes
+		
+	trigger = {
+	    JAP = {
+	    has_war_with = USA	
+	    }	
+        526 = { is_controlled_by = USA }	
+		NOT = { has_global_flag = fall_of_chongshen }	
+	}
+			
+    immediate = {
+		set_global_flag = fall_of_chongshen
+	}	
+	
+	option = {
+		name = news.997.a
+		trigger = { 
+        NOT = {		
+				OR = {
+				    tag = USA
+					tag = JAP
+				}
+			}
+			}		
+	}
+	option = {
+		name = news.997.b
+		trigger = { 
+            tag = USA
+			}		
+	}
+	option = {
+		name = news.997.c
+		trigger = { 
+            tag = JAP
+			}
+        retire_character = mitsuru_ushijima			
+	}	
+}
+news_event = {
+	id = news.999 #中国原子弹试爆成功
+	title = news.999.tt
+	desc = news.999.dd
+	picture = GFX_news_event_yuanzidan
+	
+	major = yes
+		
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+		
+	option = {
+		name = news.999.a
+		trigger = { 
+			NOT = {
+				OR = {
+					tag = PRC
+					tag = CHI
+				}
+			}
+		}			
+	}
+	option = {
+		name = news.999.b
+		trigger = { TAG = CHI }		
+	}
+	option = {
+		name = news.999.c
+		trigger = { TAG = PRC }			
+		hidden_effect = {		
+	    play_song = "jingtaoluori"
+		}				
+		}
+	}
+news_event = {
+	id = news.942 #河南大饥荒
+	title = news.942.tt
+	desc = news.942.dd
+	picture = GFX_news_event_henan2
+	
+	major = yes
+		
+	is_triggered_only = yes	
+	immediate = {
+	}
+		
+	option = {
+		name = news.942.a
+		effect_tooltip = {
+		607 = {
+		add_manpower = -1500000
+		}
+		1043 = {
+		add_manpower = -1500000
+		}
+	    }		
+		trigger = { 
+			NOT = {
+				OR = {
+					tag = PRC
+					tag = CHI
+				}
+			}
+		}		
+	}
+	option = {
+		name = news.942.b
+		effect_tooltip = {
+		607 = {
+		add_manpower = -1500000
+		}
+		1043 = {
+		add_manpower = -1500000
+		}
+	    }
+		trigger = { 
+					tag = CHI
+			}
+		}		
+	option = {
+		name = news.942.c
+		effect_tooltip = {
+		607 = {
+		add_manpower = -1500000
+		}
+		1043 = {
+		add_manpower = -1500000
+		}
+	    }		
+		trigger = { 
+					tag = PRC
+			}		
+	}	
+	}
+news_event = {
+	id = news.444 #汪精卫之死
+	title = news.444.t
+	desc = news.444.d
+	picture = GFX_wangsi
+	
+	major = yes
+			
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+		
+	option = {
+		name = news.444.a
+		trigger = { 
+			NOT = {
+				OR = {
+					tag = JAP
+					tag = CHI
+				}
+			}
+		}		
+	}
+	option = {
+		name = news.444.b
+		trigger = { 
+					tag = CHI
+		}		
+	}
+	option = {
+		name = news.444.c
+		trigger = { 
+					tag = JAP
+		}		
+	}	
+	}	
+news_event = {
+	id = news.995 #“迪克西使团”访问延安
+	title = news.995.t
+	desc = news.995.d
+	picture = GFX_dixie2
+	
+	major = yes
+		
+	is_triggered_only = yes
+		
+	option = {	
+	name = news.995.a	
+	trigger = {
+	NOT = {
+    tag = USA
+    tag = CHI	
+	}	
+	}		
+	}
+	option = {	
+	name = news.995.b
+	trigger = {
+    tag = CHI
+	}		
+	}
+	option = {	
+	name = news.995.c	
+	trigger = {
+    tag = USA
+	}		
+	}	
+	}		
+news_event = {
+	id = news.777 #旧日历史重现
+	title = news.777.t
+	desc = news.777.d
+	picture = GFX_dixie
+	
+	major = yes
+		
+	is_triggered_only = yes
+		
+	option = {
+		name = news.777.a
+		trigger = { 
+		NOT = { 
+		has_government = democratic
+		has_government = communism		
+		}		
+		}		
+		hidden_effect = {		
+	    play_song = "迪克西(短)"
+		}		
+		}
+	option = {
+		name = news.777.b
+		trigger = { 
+		has_government = democratic
+		}		
+		hidden_effect = {		
+	    play_song = "迪克西(短)"
+		}		
+		}
+	option = {
+		name = news.777.c
+		trigger = { 
+		has_government = communism
+		}
+		hidden_effect = {		
+	    play_song = "迪克西(短)"
+		}		
+		}		
+	}
+news_event = { 
+	id = news.731 #中国揭露日本在伪满洲国的暴行
+	title = news.731.t
+	desc = news.731.desc
+	picture = GFX_news_event_unit_731_warcrime	
+	major = yes
+	is_triggered_only = yes	
+	trigger = {
+	}	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.731.a
+		trigger = {
+		    has_war_with = JAP
+		}
+	}
+	option = {
+		name = news.731.b
+		trigger = {
+		    TAG = JAP
+		}
+	}
+	option = {
+		name = news.731.c
+		trigger = {
+		    NOT = {
+			    TAG = JAP
+				has_war_with = JAP
+			}
+		}
+	}
+}
+news_event = { 
+	id = news.732 #苏联揭露日本在伪满洲国的暴行
+	title = news.732.t
+	desc = news.732.desc
+	picture = GFX_news_event_unit_731_warcrime	
+	major = yes
+	trigger = {	
+        526 = { is_controlled_by = SOV }	
+		NOT = { has_global_flag = 731_beijielu }	
+	}
+			
+    immediate = {
+	    hidden_effect = {	
+		set_global_flag = 731_beijielu		
+		JAP = {
+        remove_ideas = jap_duqizhan	
+        remove_ideas = jap_duqizhan_2			
+ 		}
+		MAN = {
+        remove_ideas = man_unit_731	
+        remove_ideas = man_unit_731_2		
+        remove_ideas = man_unit_731_3			
+ 		}		
+ 		}		
+	}	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.732.a
+		trigger = {
+		    has_war_with = JAP
+		}
+	}
+	option = {
+		name = news.732.b
+		trigger = {
+		    TAG = JAP
+		}
+	}
+	option = {
+		name = news.732.c
+		trigger = {
+		    NOT = {
+			    TAG = JAP
+				has_war_with = JAP
+			}
+		}
+	}
+}	
+news_event = { 
+	id = news.7925 #平型关大捷
+	title = news.7925.t
+	desc = news.7925.d
+	picture = GFX_news_pingxingguan
+	major = yes
+	is_triggered_only = yes	
+	trigger = {
+	}	
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+	hidden_effect = {
+	if = {
+		limit = {
+		    is_literally_china = yes
+			has_war_with = JAP		
+	    }
+	    play_song = "八路军军歌"
+	}		
+		}	
+	}	
+	option = {
+		name = news.7925.a
+		trigger = {
+	    tag = PRC
+		}		
+	    add_political_power = 100
+		army_experience = 15
+		add_war_support = 0.05
+		add_equipment_to_stockpile = {#always biggest gap
+						type = infantry_equipment
+						amount = 1000 #not a typo
+						producer = JAP
+		}		
+		effect_tooltip = {
+		JAP = {
+		add_war_support = -0.05	
+		add_equipment_to_stockpile = {#always biggest gap
+						type = infantry_equipment
+						amount = -1000 #not a typo
+						producer = JAP
+		}		
+		}
+		}		
+	}
+	option = {
+		name = news.7925.b
+		add_war_support = -0.05	
+		add_equipment_to_stockpile = {#always biggest gap
+						type = infantry_equipment
+						amount = -1000 #not a typo
+						producer = JAP
+		}		
+		trigger = {
+		    TAG = JAP
+		}
+	}
+	option = {
+		name = news.7925.c
+		trigger = {
+		    NOT = {
+			    TAG = PRC			
+			    TAG = JAP
+			}
+		}
+	}
+}
+news_event = { 
+	id = news.7926 #火烧罪京
+	title = news.7926.t
+	desc = news.7926.d
+	picture = GFX_news_huoshaozuijing
+	major = yes
+	is_triggered_only = yes	
+	trigger = {
+	}	
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+		hidden_effect = {		
+	    play_song = "青玉案元夕"
+		282 = {
+		add_manpower = -35000000
+		damage_building = { type = infrastructure damage = 10 } damage_building = { type = rail_way damage = 10 } damage_building = { type = arms_factory damage = 10 } damage_building = { type = industrial_complex damage = 10 }
+		}
+		531 = {
+		add_manpower = 50000
+		}		
+		}	
+	}	
+	option = {
+		name = news.7926.a
+		trigger = {
+	    tag = CHI
+		}		
+		effect_tooltip = {
+		282 = {
+		add_manpower = -35000000
+		damage_building = { type = infrastructure damage = 10 } damage_building = { type = rail_way damage = 10 } damage_building = { type = arms_factory damage = 10 } damage_building = { type = industrial_complex damage = 10 }
+		}
+		531 = {
+		add_manpower = 50000
+		}		
+		}		
+	}
+	option = {
+		name = news.7926.b
+		add_war_support = -0.05			
+		trigger = {
+		    TAG = JAP
+		}
+		effect_tooltip = {
+		282 = {
+		add_manpower = -35000000
+		damage_building = { type = infrastructure damage = 10 } damage_building = { type = rail_way damage = 10 } damage_building = { type = arms_factory damage = 10 } damage_building = { type = industrial_complex damage = 10 }
+		}
+		531 = {
+		add_manpower = 50000
+		}		
+		}		
+	}
+	option = {
+		name = news.7926.c
+		trigger = {
+		    NOT = {
+			    TAG = CHI	
+			    TAG = JAP
+			}
+		}
+		effect_tooltip = {
+		282 = {
+		add_manpower = -35000000
+		damage_building = { type = infrastructure damage = 10 } damage_building = { type = rail_way damage = 10 } damage_building = { type = arms_factory damage = 10 } damage_building = { type = industrial_complex damage = 10 }
+		}
+		531 = {
+		add_manpower = 50000
+		}		
+		}		
+	}
+}
+
+news_event = { #Winter Offensive
+	id = news.7927 #中国发起冬季攻势
+	title = news.7927.t
+	desc = news.7927.desc
+	picture = GFX_news_event_chi_winter_offensive
+	major = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			play_song = "赴战-纯音乐"
+		}
+	}
+	
+	major = yes
+	
+	option = {
+		name = news.7927.a
+		trigger = {
+		    TAG = JAP
+		}
+	}
+	option = {
+		name = news.7927.b
+		trigger = {
+		    is_literally_china = yes
+			has_war_with = JAP
+		}
+	}
+	option = {
+		name = news.7927.c
+		trigger = {
+		    NOT = {
+			    TAG = JAP
+				AND = {
+					is_literally_china = yes
+					has_war_with = JAP
+				}
+			}
+		}
+	}
+}
+
+news_event = { 
+	id = news.7928 #涟水战役
+	title = news.7928.t
+	desc = news.7928.d
+	picture = GFX_news_event_lianshuizhanyi
+	major = yes
+	fire_only_once = yes	
+	is_triggered_only = yes		
+	option = {
+		name = news.7928.a
+		trigger = {
+	    tag = PRC
+		}				
+	}	
+}
+
+news_event = { 
+	id = news.7929 #涟水战役
+	title = news.7929.t
+	desc = news.7929.d
+	picture = GFX_news_event_lianshuizhanyi2
+	major = yes
+	fire_only_once = yes	
+	is_triggered_only = yes	
+	mean_time_to_happen = {
+		days = 2
+	}	
+	option = {
+		name = news.7929.a	
+		trigger = {	
+        tag = CHI					
+		}		
+	}	
+}
+
+news_event = { 
+	id = news.7930 #百灵庙大捷
+	title = news.7930.t
+	desc = news.7930.desc
+	picture = GFX_news_event_bailingmiaodajie
+	major = yes
+	trigger = {			
+    has_global_flag = bailingmiao_ying
+	NOT = {			
+    has_global_flag = bailingmiao_win_flag		
+	}		
+	}	
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+        set_global_flag = bailingmiao_win_flag	
+	}	
+	option = {
+		name = news.7930.a	
+		trigger = {	
+        tag = CHI					
+		}		
+        army_experience = 15			
+        add_political_power = 50
+		add_war_support = 0.01		
+	}
+	option = {
+		name = news.7930.b
+		trigger = {
+		OR = {
+	    tag = SUY
+		tag = SHX
+		}		
+		}
+        army_experience = 20			
+		add_war_support = 0.01			
+	}
+	option = {
+		name = news.7930.c
+		trigger = {
+        tag = JAP			
+		}		
+	}
+	option = {
+		name = news.7930.d
+		trigger = {
+		NOT = {
+	    tag = CHI		
+        tag = SUY
+		tag = SHX		
+        tag = JAP		
+		}			
+		}		
+	}	
+}
+
+news_event = { #east henan
+	id = news.7931 #豫东战役
+	title = news.7931.t
+	desc = news.7931.desc
+	picture = GFX_news_event_battle_of_east_henan
+	
+	major = yes
+	
+	trigger = {
+		has_global_flag = PRC_civil_war_started	
+		PRC = {
+			has_war_with = CHI
+			controls_state = 1043
+		}
+		NOT = { 
+			has_global_flag = battle_of_east_henan_happened
+			1043 = { has_dynamic_modifier = { modifier = communist_stronghold scope = PRC } }
+		}
+	}
+	
+	immediate = {
+	    hidden_effect = {
+			set_global_flag = battle_of_east_henan_happened
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.7931.a
+		trigger = {
+		    TAG = PRC
+		}
+	}
+	option = {
+		name = news.7931.b
+		trigger = {
+		    TAG = CHI
+		}
+	}
+	option = {
+		name = news.7931.c
+		trigger = {
+		    NOT = {
+			    TAG = PRC
+				TAG = CHI
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.7932 #重庆大轰炸
+	title = news.7932.t
+	desc = news.7932.d
+	picture = GFX_news_event_rijunhongzhachongqing
+	
+	major = yes
+	
+	is_triggered_only = yes		
+	trigger = {
+		CHI = {
+			has_war_with = JAP
+		}
+		1034 = {
+		is_controlled_by_jap_or_its_puppet = yes
+		}
+		605 = {
+		is_controlled_by = CHI
+		}		
+	    date > 1941.6.4
+		NOT = {
+		has_global_flag = JAP_hongzha_chongqing	
+		}			
+	}
+	immediate = {
+		hidden_effect = {
+		605 = {
+		damage_building = { type = infrastructure damage = 2 } damage_building = { type = rail_way damage = 3 } damage_building = { type = arms_factory damage = 4 } damage_building = { type = industrial_complex damage = 4 }		
+		}
+		set_global_flag = JAP_hongzha_chongqing	
+		}	
+	}
+		
+	option = {
+		name = news.7932.a
+		trigger = {
+        NOT = {		
+				OR = {
+					tag = CHI
+					tag = JAP
+				}
+			}
+			}		
+		effect_tooltip = {
+		605 = {
+		damage_building = { type = infrastructure damage = 2 } damage_building = { type = rail_way damage = 3 } damage_building = { type = arms_factory damage = 4 } damage_building = { type = industrial_complex damage = 4 }	
+		}
+		}
+	}
+	option = {
+		name = news.7932.b
+		trigger = { 
+					tag = JAP
+			}	
+		effect_tooltip = {
+		605 = {
+		damage_building = { type = infrastructure damage = 2 } damage_building = { type = rail_way damage = 3 } damage_building = { type = arms_factory damage = 4 } damage_building = { type = industrial_complex damage = 4 }	
+		}
+		}
+		}			
+	option = {
+		name = news.7932.c
+		trigger = { 
+					tag = CHI
+			}		
+		effect_tooltip = {
+		605 = {
+		damage_building = { type = infrastructure damage = 2 } damage_building = { type = rail_way damage = 3 } damage_building = { type = arms_factory damage = 4 } damage_building = { type = industrial_complex damage = 4 }	
+		}
+		}
+		add_war_support = 0.1		
+	}	
+}

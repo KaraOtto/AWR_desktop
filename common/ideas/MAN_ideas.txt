@@ -1,0 +1,1968 @@
+ideas = {
+	country = {
+		# MAN_Conscription，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Conscription = {
+					picture = generic_manpower_bonus
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.05
+					}
+				}
+		# MAN_Defense_doctrine，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Defense_doctrine = {
+
+					picture = generic_wall_line
+
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						army_defence_factor = 0.05
+						max_dig_in = 1
+						dig_in_speed_factor = 0.15
+						production_speed_bunker_factor = 0.1
+						production_speed_coastal_bunker_factor = 0.1
+						production_speed_anti_air_building_factor = 0.1
+					}
+				}
+		# MAN_Joint_stock_company，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Joint_stock_company = {
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+					picture = jap_zaibatsu
+
+					modifier = {
+						trade_opinion_factor = 0.3
+						consumer_goods_factor = -0.15
+					}
+				}
+		# MAN_Kwantung_Army_Focus，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Kwantung_Army_Focus = {
+					picture = generic_infantry_bonus
+					allowed = {
+						always = no
+
+					}
+					allowed_civil_war = {
+						always = no
+
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						war_support_factor = 0.25
+					}
+				}
+		# MAN_Kwantung_Army_Focus_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Kwantung_Army_Focus_tfv = {
+					name = MAN_Kwantung_Army_Focus
+					picture = generic_infantry_bonus
+					allowed = {
+						always = no
+
+					}
+					allowed_civil_war = {
+						always = no
+
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						war_support_factor = 0.25
+				
+					}
+				}
+		# MAN_Offensive_doctrine，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_Offensive_doctrine = {
+					picture = FRA_scw_intervention_nationalists_focus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						army_attack_factor = 0.1
+						land_night_attack = 0.1
+						planning_speed = 0.15
+						max_planning = 0.2
+						org_loss_when_moving = -0.15
+					}
+				}
+		# PRC_reorganized_departments_CHI_2，来源：common/ideas/prc_zzhh.txt
+		MAN_PRC_reorganized_departments_CHI_2 = {
+					removal_cost = -1
+					name = PRC_reorganized_departments_CHI
+
+					picture = PRC_reorganized_departments_CHI
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						has_government = communism
+					}
+			
+					modifier = {
+						army_org_factor = 0.025
+		                war_support_factor = 0.1
+		                conscription_factor = 0.1				
+						required_garrison_factor = -0.05
+						stability_factor = 0.1				
+					}
+			
+				}
+		# MAN_amended_constitution，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_amended_constitution = {
+					picture = executive_yuan
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+				
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = -0.15
+						democratic_drift = 0.05
+					}
+				}
+		# MAN_backward_support，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_backward_support = {
+					picture = generic_wall_line
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						no_supply_grace = 12
+						out_of_supply_factor = -0.05
+						supply_consumption_factor = -0.05
+						attrition = -0.05
+						resistance_growth = -0.2
+					}
+				}
+		# MAN_banditry，来源：common/ideas/manchukou.txt
+		MAN_banditry = {
+
+					available = {
+						OR = {
+							has_country_flag = MAN_northern_bandits
+							has_country_flag = MAN_eastern_bandits
+							has_country_flag = MAN_western_bandits
+						}
+					}
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = chi_army_corruption2
+
+					modifier = {
+						stability_factor = -0.1
+						war_support_factor = -0.1
+					}
+				}
+		# MAN_bolster_nationalism_idea，来源：common/ideas/manchukou.txt
+		MAN_bolster_nationalism_idea = {	
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					picture = chi_war_of_resistance
+
+					targeted_modifier = {
+						tag = JAP
+						attack_bonus_against = 0.1
+						defense_bonus_against = 0.1
+					}
+
+					targeted_modifier = {
+						tag = MAN
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+					}
+				}
+		# MAN_concordance_of_five_races，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races = {
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						stability_factor = 0.05
+						war_support_factor = 0.05
+					}
+				}
+		# MAN_concordance_of_five_races_2，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races_2 = {
+					name = MAN_concordance_of_five_races
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.1
+						stability_factor = 0.1
+						war_support_factor = 0.1
+					}
+				}
+		# MAN_concordance_of_five_races_2_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races_2_tfv = {
+					name = MAN_concordance_of_five_races
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.1
+						stability_factor = 0.1
+						war_support_factor = 0.1
+					}
+				}
+		# MAN_concordance_of_five_races_3，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races_3 = {
+					name = MAN_concordance_of_five_races
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.02
+						political_power_factor = 0.1
+						stability_factor = 0.1
+						war_support_factor = 0.15
+					}
+				}
+		# MAN_concordance_of_five_races_3_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races_3_tfv = {
+					name = MAN_concordance_of_five_races
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.02
+						political_power_factor = 0.1
+						stability_factor = 0.1
+						war_support_factor = 0.15
+					}
+				}
+		# MAN_concordance_of_five_races_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_concordance_of_five_races_tfv = {
+					name = MAN_concordance_of_five_races
+					picture = five_races
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						stability_factor = 0.05
+						war_support_factor = 0.05
+					}
+				}
+		# MAN_dongbeijuncanyu，来源：common/ideas/manchukou.txt
+		MAN_dongbeijuncanyu = {
+    
+		            name = MAN_dongbeijuncanyu
+    
+		            picture = shaoshuai
+			
+					allowed = {
+					}
+            
+		            available = {	
+		            }
+            
+		            cancel = {
+		            }
+
+		            removal_cost = -1
+            
+					targeted_modifier = {
+						tag = JAP
+						attack_bonus_against = 0.10
+						defense_bonus_against = 0.10
+					    breakthrough_bonus_against = 0.05
+		            }
+            
+		            modifier = {
+						conscription = 0.03
+					
+		            }
+		    }
+		# MAN_encourage_migration_idea，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_encourage_migration_idea = {
+					name = encourage_migration_idea
+					picture = jap_militarism_showa
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+					available = {
+						is_subject_of = JAP
+					}
+					removal_cost = -1
+					picture = state_shintoism
+					modifier = {
+						political_power_gain = -0.25
+						monthly_population = 3
+						stability_weekly = 0.005
+						war_support_weekly = 0.005
+					}
+				}
+		# MAN_expanded_opium_field，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_expanded_opium_field = {
+					picture = prc_permit_opium_trade
+					allowed = {
+						always = no
+					}
+			
+					cancel = { is_subject = no }
+			
+					removal_cost = -1
+	
+					modifier = {
+						consumer_goods_factor = -0.5
+						war_support_factor = -0.1
+						stability_factor = -0.1
+					}
+				}
+		# MAN_expanded_opium_field_overlord，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_expanded_opium_field_overlord = {
+					picture = prc_permit_opium_trade
+					allowed = {
+						always = no
+					}
+					cancel = { is_subject = no }
+			
+					removal_cost = -1
+	
+					modifier = {
+						consumer_goods_factor = -0.25
+						war_support_factor = -0.05
+						stability_factor = -0.05				
+					}
+				}
+		# MAN_exploitation_of_manchuria，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_exploitation_of_manchuria = {
+					picture = MEX_callistas
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+			
+					removal_cost = -1
+	
+					targeted_modifier = {
+						tag = JAP
+						cic_to_target_factor = 0.15
+						mic_to_target_factor = 0.1
+						extra_trade_to_target_factor = 0.2
+						trade_cost_for_target_factor = -0.2
+					}
+
+					modifier = {
+					}
+				}
+		# MAN_exploitation_of_manchuria_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_exploitation_of_manchuria_tfv = {
+					picture = MEX_callistas
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+			
+					removal_cost = -1
+	
+					targeted_modifier = {
+						tag = JAP
+						cic_to_target_factor = 0.15
+						mic_to_target_factor = 0.1
+						extra_trade_to_target_factor = 0.2
+						trade_cost_for_target_factor = -0.2
+					}
+
+					modifier = {
+						autonomy_gain_global_factor = -0.1
+					}
+				}
+		# MAN_five_year_plan_air，来源：common/ideas/manchukou.txt
+		MAN_five_year_plan_air = {
+
+					name = MAN_five_year_plan
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_five_year_plan_air
+
+					research_bonus = { air_equipment = 0.1 }
+
+					modifier = {
+						production_speed_arms_factory_factor = 0.05
+						production_speed_air_base_factor = 0.05
+					}
+				}
+		# MAN_five_year_plan_industry，来源：common/ideas/manchukou.txt
+		MAN_five_year_plan_industry = {
+
+					name = MAN_five_year_plan
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_five_year_plan_industry
+
+					research_bonus = { industry = 0.05 }
+					modifier = {
+						production_speed_industrial_complex_factor = 0.05
+					}
+				}
+		# MAN_five_year_plan_tank，来源：common/ideas/manchukou.txt
+		MAN_five_year_plan_tank = {
+
+					name = MAN_five_year_plan
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_five_year_plan_tank
+
+					research_bonus = { armor = 0.05 }
+
+					modifier = {
+						production_speed_arms_factory_factor = 0.05
+					}
+				}
+		# MAN_government_propaganda，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_government_propaganda = {
+					picture = generic_political_support
+					allowed = {
+						always = no
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.1
+						stability_factor = 0.05
+						war_support_factor = 0.05
+						drift_defence_factor = 0.25
+						foreign_subversive_activites = -0.25
+						resistance_growth = -0.25
+					}
+				}
+		# MAN_government_strengthened，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_government_strengthened = {
+					picture = generic_pp_unity_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.1
+						stability_factor = 0.05
+						war_support_factor = 0.05
+					}
+				}
+		# MAN_government_strengthened_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_government_strengthened_tfv = {
+					picture = generic_pp_unity_bonus
+					name = MAN_government_strengthened
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.1
+						stability_factor = 0.1
+						war_support_factor = 0.05
+						autonomy_gain = 0.1
+						autonomy_gain_global_factor = 0.35
+					}
+				}
+		# MAN_imperial_army_idea，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_imperial_army_idea = {
+
+					picture = generic_infantry_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+					}
+				}
+		# MAN_imperial_army_idea_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_imperial_army_idea_tfv = {
+					name = MAN_imperial_army_idea
+					picture = generic_infantry_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						tag = MAN
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+				
+					}
+				}
+		# MAN_imperial_authority，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_imperial_authority = {
+					picture = stiff_upper_lip
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						OR = {
+							has_government = democratic
+							has_government = communism
+							has_government = n_socialism
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						trade_laws_cost_factor = -0.05
+						mobilization_laws_cost_factor = -0.05
+						economy_cost_factor = -0.05
+						political_advisor_cost_factor = -0.05
+					}
+				}
+		# MAN_imperial_constitution，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_imperial_constitution = {
+					picture = generic_constitutional_guarantees
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						NOT = { has_government = democratic }
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.2
+						trade_laws_cost_factor = -0.2
+						mobilization_laws_cost_factor = -0.2
+						economy_cost_factor = -0.2
+						political_advisor_cost_factor = -0.3
+						neutrality_acceptance = 100
+					}
+				}
+		# MAN_increased_immigration，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_increased_immigration = {
+					picture = hol_shell_shocked_spectator
+					allowed = {
+						always = no
+					}
+			
+					removal_cost = -1
+	
+					modifier = {
+						MONTHLY_POPULATION = 0.8
+					}
+				}
+		# integration_movement，来源：common/ideas/ZHjapan.txt
+		MAN_integration_movement = {
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+					available = {
+						is_subject_of = JAP
+					}
+					removal_cost = -1
+					picture = state_shintoism
+					modifier = {
+						autonomy_gain = -0.4
+					}
+				}
+		# MAN_international_image，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_international_image = {
+					picture = generic_disjointed_gov
+					allowed = {
+						always = no
+					}
+
+					removal_cost = -1
+
+					modifier = {
+				
+						license_purchase_cost = -0.25
+				
+						trade_opinion_factor = 0.35
+						opinion_gain_monthly_factor = 0.5
+						opinion_gain_monthly_same_ideology_factor = 0.5
+					}
+				}
+		# kantogun_administration，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kantogun_administration = {
+					allowed = {
+						always = no
+					}
+					available = {
+						is_subject_of = JAP
+					}
+					cancel_if_invalid = yes
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_cost = 0.15
+						max_planning = 0.10
+					}
+				}
+		# MAN_kwantung_alliance，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance = {
+					picture = warrior_traditions_idea
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						max_planning = 0.1
+					}
+				}
+		# MAN_kwantung_alliance_2，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance_2 = {
+					picture = warrior_traditions_idea
+					name = MAN_kwantung_alliance
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						planning_speed = 0.15
+						max_planning = 0.15
+						experience_gain_army = 0.05
+						experience_gain_army_factor = 0.1
+					}
+				}
+		# MAN_kwantung_alliance_2_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance_2_tfv = {
+					picture = warrior_traditions_idea
+					name = MAN_kwantung_alliance
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						planning_speed = 0.15
+						max_planning = 0.15
+						experience_gain_army = 0.05
+						experience_gain_army_factor = 0.1
+				
+					}
+				}
+		# MAN_kwantung_alliance_3，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance_3 = {
+					picture = warrior_traditions_idea
+					name = MAN_kwantung_alliance
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+			
+			
+			
+			
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						planning_speed = 0.15
+						max_planning = 0.2
+						experience_gain_army = 0.1
+						experience_gain_army_factor = 0.25
+						army_leader_start_planning_level = 1
+						land_doctrine_cost_factor = -0.15
+					}
+				}
+		# MAN_kwantung_alliance_3_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance_3_tfv = {
+					picture = warrior_traditions_idea
+					name = MAN_kwantung_alliance
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+			
+			
+			
+			
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						planning_speed = 0.15
+						max_planning = 0.2
+						experience_gain_army = 0.1
+						experience_gain_army_factor = 0.25
+						army_leader_start_planning_level = 1
+						land_doctrine_cost_factor = -0.15
+				
+					}
+				}
+		# MAN_kwantung_alliance_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_kwantung_alliance_tfv = {
+					picture = warrior_traditions_idea
+					name = MAN_kwantung_alliance
+					allowed = {
+						always = no
+					}
+					cancel = {
+						NOT = { is_subject_of = JAP }
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = democratic
+								has_government = n_socialism
+								has_government = communism
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						conscription = 0.01
+						training_time_factor = -0.1
+						max_planning = 0.1
+				
+					}
+				}
+		# MAN_kwantung_veto，来源：common/ideas/manchukou.txt
+		MAN_kwantung_veto = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = generic_secret_police
+
+					modifier = {
+						political_advisor_cost_factor = 0.15 	
+						trade_laws_cost_factor = 0.15	
+						mobilization_laws_cost_factor = 0.15 	
+						economy_cost_factor = 0.15	
+					}
+				}
+		# MAN_left_wing_student_movement，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_left_wing_student_movement = {
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+
+
+					}
+					traits = {				
+						stikes_will_be_frequent_when_above_40_percent
+						goes_away_below_3_percent
+					}
+					available = {
+						n_socialism > 0.03
+					}
+					removal_cost = -1
+					picture = leftist_students
+
+					modifier = {
+						n_socialism_drift = 0.02
+					}
+				}
+		# MAN_loan_unsan，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_loan_unsan = {
+					picture = idea_chi_emergency_bailout
+					name = MAN_loan_payment_kld
+					allowed = {
+						always = no
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						consumer_goods_factor = 0.15
+					}
+				}
+		# MAN_low_legitimacy_1，来源：common/ideas/manchukou.txt
+		MAN_low_legitimacy_1 = {
+
+					name = MAN_low_legitimacy
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_low_legitimacy5
+
+					modifier = {
+						stability_factor = -0.1
+						war_support_factor = -0.05	
+					}
+				}
+		# MAN_low_legitimacy_2，来源：common/ideas/manchukou.txt
+		MAN_low_legitimacy_2 = {
+
+					name = MAN_low_legitimacy
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_low_legitimacy4
+
+					modifier = {
+						stability_factor = -0.2
+						war_support_factor = -0.1	
+					}
+				}
+		# MAN_low_legitimacy_3，来源：common/ideas/manchukou.txt
+		MAN_low_legitimacy_3 = {
+
+					name = MAN_low_legitimacy
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_low_legitimacy3
+
+					modifier = {
+						stability_factor = -0.3
+						war_support_factor = -0.15	
+					}
+				}
+		# MAN_low_legitimacy_4，来源：common/ideas/manchukou.txt
+		MAN_low_legitimacy_4 = {
+
+					name = MAN_low_legitimacy
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_low_legitimacy2
+
+					modifier = {
+						stability_factor = -0.4
+						war_support_factor = -0.2	
+					}
+				}
+		# MAN_low_legitimacy_5，来源：common/ideas/manchukou.txt
+		MAN_low_legitimacy_5 = {
+
+					name = MAN_low_legitimacy
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = man_low_legitimacy
+
+					modifier = {
+						stability_factor = -0.5
+						war_support_factor = -0.25	
+					}
+				}
+		# man_baqi，来源：common/ideas/chi_newzz.txt
+		MAN_man_baqi = {
+    
+		            name = MAN_man_baqi
+    
+		            picture = marshal_vassal
+            
+		            allowed = {
+		            }
+            
+					allowed_civil_war = {
+					   has_government = neutrality
+		            }
+			
+		            available = {
+						is_ai = no			
+		            }
+            
+		            cancel = {
+		            }
+
+		            removal_cost = -1
+			           
+		            modifier = {
+			            army_fuel_consumption_factor = -0.8
+			            air_fuel_consumption_factor = -0.8
+		 	            navy_fuel_consumption_factor = -0.8
+						army_defence_factor = 0.30
+						army_attack_factor = 0.30
+						experience_gain_army = 0.50
+		                experience_gain_navy = 0.50
+		                experience_gain_air = 0.50
+						high_command_cost_factor = -0.25
+		                experience_gain_factor = 0.25
+		                experience_gain_army_factor = 0.50
+						experience_gain_navy_factor = 0.50
+						experience_gain_air_factor = 0.50
+		                production_factory_max_efficiency_factor = 0.45
+		                production_factory_efficiency_gain_factor = 0.75
+		                line_change_production_efficiency_factor = 0.30
+		                industrial_capacity_factory = 0.50
+						stability_factor = 0.75
+				        war_support_factor = 0.75		 			
+						political_power_factor = 1
+						political_power_gain = 2
+		                max_dig_in_factor = 0.20
+		                dig_in_speed_factor= 0.3
+		                conscription = 0.10
+					    cavalry_attack_factor = 2
+					    cavalry_defence_factor = 2
+					    army_core_attack_factor = 0.50
+						army_core_defence_factor = 0.50
+						army_speed_factor = 0.50
+						terrain_penalty_reduction = 0.35
+						attrition = -0.35
+						army_morale_factor = 0.35
+						no_supply_grace = 88
+		                                supply_node_range = 0.50
+		                supply_consumption_factor = -0.50
+		                out_of_supply_factor = -0.35
+		                surrender_limit = 0.5
+		            }
+		    }
+		# man_ruguan，来源：common/ideas/chi_newzz.txt
+		MAN_man_ruguan = {
+    
+		            name = MAN_man_ruguan
+    
+		            picture = kmt_gun
+            
+		            allowed = {
+		            }
+            
+		            available = {
+						is_ai = no			
+		            }
+            
+		            cancel = {
+		            }
+
+		            removal_cost = -1
+			
+					targeted_modifier = {
+						tag = CHI
+						attack_bonus_against = 1
+						defense_bonus_against = 1
+					    breakthrough_bonus_against = 1
+		            }
+			
+		 			targeted_modifier = {
+						tag = PRC
+						attack_bonus_against = 1
+						defense_bonus_against = 1
+					    breakthrough_bonus_against = 1
+		                               }		
+		            modifier = {
+						planning_speed = 0.10
+						max_planning = 0.45
+						no_supply_grace = 100
+						army_speed_factor = 0.1
+						ammunition_consumption_factor = 0.45
+						equipment_capture = 0.45
+						org_loss_when_moving = -0.45
+						army_org_factor = 0.45
+						army_morale_factor = 0.45
+						out_of_supply_factor = -0.45
+		                supply_consumption_factor = -0.45
+						command_power_gain = 0.45
+			            max_command_power = 1644
+						cas_damage_reduction = 0.45
+						enemy_army_bonus_air_superiority_factor = -0.45
+		            }
+		    }
+		# man_yangzhoushiri，来源：common/ideas/chi_newzz.txt
+		MAN_man_yangzhoushiri = {
+				    picture = jap_hosokuzumetsusakusen_sanguangzhengce
+			
+					allowed = {
+					}
+			
+					allowed_civil_war = {
+					}
+			
+					available = {
+						is_ai = no				
+					}
+			
+					cancel = {
+					}
+
+					removal_cost = -1
+			
+					 targeted_modifier = {
+						tag = MAN
+						attack_bonus_against = -0.50
+						defense_bonus_against = -0.50
+		            }  
+			
+					modifier = {
+						army_speed_factor = -0.5
+						army_defence_factor = -0.5
+						army_attack_factor = -0.5
+						army_org_factor = -0.5
+						army_morale_factor = -0.5
+						org_loss_when_moving = 0.5
+						breakthrough_factor = -0.5
+						max_planning = -0.5
+						planning_speed = -0.5
+						attrition = 0.5
+						intel_from_combat_factor = -0.5
+				stability_factor = -0.5
+				stability_weekly = -0.15
+					}
+			}
+		# MAN_manchu_court，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_manchu_court = {
+					picture = generic_neutrality_drift_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.15
+						neutrality_drift = 0.01
+						trade_laws_cost_factor = -0.15
+						mobilization_laws_cost_factor = -0.15
+						economy_cost_factor = -0.15
+						political_advisor_cost_factor = -0.25
+					}
+				}
+		# MAN_manchu_court_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_manchu_court_tfv = {
+					picture = generic_neutrality_drift_bonus
+					name = MAN_manchu_court
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.2
+						neutrality_drift = 0.01
+						trade_laws_cost_factor = -0.15
+						mobilization_laws_cost_factor = -0.15
+						economy_cost_factor = -0.15
+						political_advisor_cost_factor = -0.25
+					}
+				}
+		# MAN_manei，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_manei = {
+					picture = manei
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					removal_cost = -1
+	
+
+					modifier = {
+						political_power_factor = 0.05
+						drift_defence_factor = 0.15
+						foreign_subversive_activites = -0.1
+					}
+				}
+		# MAN_manei_2，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_manei_2 = {
+					name = MAN_manei
+					picture = state_shintoism
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					removal_cost = -1
+	
+
+					modifier = {
+						stability_factor = 0.05
+						political_power_factor = 0.075
+						drift_defence_factor = 0.2
+						foreign_subversive_activites = -0.15
+					}
+				}
+		# MAN_manei_3，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_manei_3 = {
+					name = MAN_manei
+					picture = state_shintoism
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					removal_cost = -1
+	
+
+					modifier = {
+						stability_factor = 0.05
+						war_support_factor = 0.05
+						political_power_factor = 0.1
+						drift_defence_factor = 0.25
+						foreign_subversive_activites = -0.2
+					}
+				}
+		# MAN_mukden_military_academy，来源：common/ideas/manchukou.txt
+		MAN_mukden_military_academy = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = mukden_military_academy	
+
+					modifier = {
+						max_command_power = 25
+						army_leader_start_level = 1	
+					}
+				}
+		# MAN_national_defense_state，来源：common/ideas/manchukou.txt
+		MAN_national_defense_state = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = ast_naval_auxiliary_patrol
+
+					modifier = {
+						industrial_capacity_factory = 0.1	
+					}
+				}
+		# PLM_northwest_cav_military_academy，来源：common/ideas/china.txt
+		MAN_northwest_cav_military_academy = {
+					picture = ETH_national_studs
+			
+					allowed = {
+						always = no
+					}
+			
+					allowed_civil_war = {
+						always = yes
+					}
+
+					cancel = {
+						always = no
+					}
+			
+					removal_cost = -1
+
+					modifier = {
+						cavalry_attack_factor = 0.1
+						cavalry_defence_factor = 0.1
+						breakthrough_factor = 0.1
+		            }
+				}
+		# MAN_officers_training_programs，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_officers_training_programs = {
+					picture = generic_army_war_college
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						military_leader_cost_factor = -0.25
+					}
+				}
+		# MAN_puyi_no_dlc，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_puyi_no_dlc = {						
+					picture = puyi_old
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = communism
+								has_government = democratic
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						stability_factor = 0.10
+					}
+				}
+		# MAN_puyi_yes_dlc，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_puyi_yes_dlc = {				
+					picture = puyi_new 
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						NOT = {
+							OR = {
+								has_government = communism
+								has_government = democratic
+						
+								is_in_faction_with = JAP 
+								is_subject_of = JAP 
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						stability_factor = 0.35
+						political_power_gain = 0.50
+					}
+				}
+		# MAN_reactionary_influence，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_reactionary_influence = {
+					picture = generic_neutrality_drift_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						neutrality_drift = 0.02
+					}
+				}
+		# MAN_reactionary_influence_tfv，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_reactionary_influence_tfv = {
+					picture = generic_neutrality_drift_bonus
+					name = MAN_reactionary_influence
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						neutrality_drift = 0.02
+					}
+				}
+		# MAN_reformed_civil_service，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_reformed_civil_service = {
+					picture = generic_local_self_management
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						stability_factor = 0.05
+						political_advisor_cost_factor = -0.15
+					}
+				}
+		# MAN_son_of_heaven_idea，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_son_of_heaven_idea = {
+					picture = son_of_heaven
+					allowed = {
+						always = no
+					}
+			
+					cancel = { has_government = communism }
+
+					removal_cost = -1
+
+					modifier = {
+						stability_factor = 0.25
+						war_stability_factor = 0.25
+						war_support_factor = 0.25
+						army_defence_factor = 0.15
+						army_attack_factor = 0.15
+						army_org_factor = 0.20
+						army_speed_factor = 0.10
+						training_time_factor = -0.20
+						conscription = 0.05
+						army_morale_factor = 0.20
+						political_power_factor = 0.15
+						conscription_factor = 0.25
+						experience_loss_factor = -0.25
+						breakthrough_factor = 0.15
+						no_supply_grace = 96
+						command_power_gain = 0.25
+				
+						political_advisor_cost_factor = -0.33
+				trade_laws_cost_factor = -0.33
+				mobilization_laws_cost_factor = -0.33
+				economy_cost_factor = -0.33
+				high_command_cost_factor = -0.33
+				air_chief_cost_factor = -0.33
+				army_chief_cost_factor = -0.33
+				navy_chief_cost_factor = -0.33
+					}
+				}
+		# MAN_special_labour_force，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_special_labour_force = {
+					removal_cost = -1
+					picture = generic_production_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						production_speed_infrastructure_factor = 0.10
+						production_speed_industrial_complex_factor = 0.1
+						production_speed_arms_factory_factor = 0.1
+						production_speed_air_base_factor = 0.10
+						production_speed_bunker_factor = 0.10
+						production_speed_coastal_bunker_factor = 0.10
+					}
+				}
+		# MAN_special_labour_force_2，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_special_labour_force_2 = {
+					name = MAN_special_labour_force
+					removal_cost = -1
+					picture = generic_production_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						production_speed_infrastructure_factor = 0.15
+						production_speed_industrial_complex_factor = 0.1
+						production_speed_arms_factory_factor = 0.1
+						production_speed_air_base_factor = 0.15
+						production_speed_bunker_factor = 0.15
+						production_speed_coastal_bunker_factor = 0.15
+						production_speed_naval_base_factor = 0.15
+					}
+				}
+		# MAN_state_shintoism，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_state_shintoism = {
+					picture = state_shintoism
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					removal_cost = -1
+	
+
+					modifier = {
+						industry_air_damage_factor = -0.1
+						army_morale_factor = 0.05
+						war_support_factor = 0.05
+					}
+				}
+		# MAN_support_of_intellectual_youth，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_support_of_intellectual_youth = {
+					picture = chi_war_of_resistance2
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						political_power_factor = 0.05
+						war_support_factor = 0.05
+						research_speed_factor = 0.02
+						neutrality_drift = 0.01
+						n_socialism_drift = -0.02
+					}
+				}
+		# MAN_tenko_program，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_tenko_program = {
+					picture = anti_soviet_pact
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						NOT = { has_government = fascism }
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						fascism_drift = 0.01
+						n_socialism_drift = -0.01
+						communism_drift = -0.01
+					}
+				}
+		# MAN_tenko_program_2，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_tenko_program_2 = {
+					name = MAN_tenko_program
+					picture = anti_soviet_pact
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						NOT = { has_government = fascism }
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						fascism_drift = 0.02
+						n_socialism_drift = -0.02
+						communism_drift = -0.02
+						drift_defence_factor = 0.1
+					}
+				}
+		# MAN_tongyizhanxian，来源：common/ideas/manchukou.txt
+		MAN_tongyizhanxian = {
+    
+		            name = MAN_tongyizhanxian
+    
+		            picture = jiachouguowen
+			
+					allowed = {
+						always = yes
+					}
+            
+		            available = {
+			
+		            }
+            
+		            cancel = {
+		            }
+
+		            removal_cost = -1
+            
+		            targeted_modifier = {
+		            }
+            
+		            modifier = {
+						political_power_factor = 0.75
+						political_power_gain = 2
+						conscription = 0.15
+						army_core_attack_factor = 0.25
+						army_core_defence_factor = 0.25
+						breakthrough_factor = 0.25
+		                industrial_capacity_factory = 0.15
+		                production_factory_max_efficiency_factor = 0.15
+		                production_factory_efficiency_gain_factor = 0.2
+		                line_change_production_efficiency_factor = 0.25
+						communism_drift = 0.15
+						neutrality_drift = 0.05				
+						democratic_drift = 0.05
+						n_socialism_drift = 0.05			
+		            }
+		    }
+		# MAN_unsan_gold_mine，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_unsan_gold_mine = {
+					picture = unsan_goldmine
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						527 = {
+							CONTROLLER = {
+								has_war_with = ROOT
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						consumer_goods_factor = -0.06
+					}
+				}
+		# MAN_unsan_gold_mine_JAP，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_unsan_gold_mine_JAP = {
+					picture = unsan_goldmine
+					allowed = {
+						always = no
+					}
+			
+					cancel = {
+						527 = {
+							CONTROLLER = {
+								has_war_with = ROOT
+							}
+						}
+					}
+
+					removal_cost = -1
+
+					modifier = {
+						consumer_goods_factor = -0.06
+						trade_opinion_factor = 0.33
+					}
+				}
+		# MAN_white_movement，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_white_movement = {
+					picture = northern_expansion
+					allowed = {
+						always = no
+					}
+			
+					cancel = { has_government = communism }
+
+					removal_cost = -1
+			
+					targeted_modifier = {
+						tag = SOV
+						attack_bonus_against = 0.2
+						defense_bonus_against = 0.2
+					}
+
+					modifier = {
+						army_core_attack_factor = 0.1
+						army_core_defence_factor = 0.1
+						ai_get_ally_desire_factor = -100000
+					}
+				}
+		# MAN_white_russian_advisers，来源：common/ideas/manchukou.txt
+		MAN_white_russian_advisers = {
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						original_tag = MAN
+					}
+
+					removal_cost = -1
+
+					picture = generic_war_preparation
+
+					modifier = {
+						army_morale_factor = 0.05
+						army_core_attack_factor = 0.05
+						army_core_defence_factor = 0.05
+					}
+				}
+		# xingxingzhihuo_keyiliaoyuan，来源：common/ideas/prc_zzhh.txt
+		MAN_xingxingzhihuo_keyiliaoyuan = {
+
+					name = MAN_xingxingzhihuo_keyiliaoyuan
+			
+					picture = MAN_xingxingzhihuo_keyiliaoyuan
+
+					removal_cost = -1
+			
+					traits = {
+						plus_point_1_per_week 
+					}
+			
+					available = {
+						not = { has_idea = xingxingzhihuo_keyiliaoyuan_2 }
+						not = { has_idea = xingxingzhihuo_keyiliaoyuan_3 }
+						not = { has_idea = xingxingzhihuo_keyiliaoyuan_4 }
+						not = { has_idea = xingxingzhihuo_keyiliaoyuan_5 }
+					}
+
+					modifier = {
+						stability_weekly = 0.001
+						war_support_weekly = 0.001
+						communism_drift = 0.02
+				
+						army_org_factor = 0.03 
+						army_morale_factor = 0.03 
+						land_reinforce_rate = 0.03
+				
+						political_power_gain = 0.05
+						weekly_manpower = 300
+					}
+				}
+		# MAN_yakuzas，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_yakuzas = {
+					picture = prc_low_popular_support3
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+			
+					removal_cost = -1
+	
+					modifier = {
+						political_power_factor = 0.05
+						stability_factor = 0.05
+						resistance_growth = -0.15
+					}
+				}
+	}
+	industrial_concern = {
+		# mangyo，来源：common/ideas/zzz_RCM_Manchukuo.txt
+		MAN_mangyo ={
+					picture = generic_electronics_concern_1
+					allowed = {
+						original_tag = MAN
+					}
+					available = {
+						if = {
+							limit = { has_focus_tree = manchukuo }
+							has_completed_focus = MAN_mangyo_focus
+						}
+						else = {
+							hidden_trigger = {
+								has_global_flag = MAN_mangyo_focus_focus_flag
+							}
+						}
+					}
+					research_bonus = {
+						industry = 0.15
+					}
+					cost = 150
+					modifier = {
+						min_export = -0.1
+						industrial_capacity_dockyard = 0.075
+						industrial_capacity_factory = 0.075
+						production_speed_buildings_factor = 0.075
+					}
+					traits = { industrial_concern }
+				}
+	}
+}

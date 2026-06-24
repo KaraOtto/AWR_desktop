@@ -1,0 +1,2043 @@
+﻿# shared_focus_china_ma_cliques 国策整理
+# 来源：common/national_focus/RCM_ma_cliques.txt
+# 修复：源文件的 focus_tree 头被注释，这里按原注释意图恢复为马家军共享国策树。
+focus_tree = {
+	id = RCM_ma_cliques
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = XSM
+			tag = NXM
+			tag = GSM
+			tag = EGM
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 1400 }
+	shared_focus = XSM_expand_the_government
+	shared_focus = XSM_develop_northwest
+	shared_focus = XSM_fund_education
+	shared_focus = XSM_baojia_System
+	shared_focus = XSM_plant_trees
+	shared_focus = XSM_arms_factory
+	shared_focus = XSM_control_industry
+	shared_focus = XSM_build_roads
+	shared_focus = XSM_develop_industry
+	shared_focus = XSM_ma_lin_issue
+	shared_focus = XSM_support_ma_lin
+	shared_focus = XSM_ask_ma_buqing
+	shared_focus = XSM_qinghai_civil_war
+	shared_focus = XSM_ma_lins_qinghai
+	shared_focus = XSM_ask_central
+	shared_focus = XSM_support_ma_bufang
+	shared_focus = XSM_king_of_qinghai
+	shared_focus = XSM_tibet_affairs
+	shared_focus = XSM_contact_xikang
+	shared_focus = XSM_conquer_tibet
+	shared_focus = XSM_control_tibetan_trade
+	shared_focus = XSM_recruit_ma_jiyuan
+	shared_focus = XSM_promote_ma_jiyuan
+	shared_focus = XSM_train_ma_jiyuan
+	shared_focus = XSM_ma_buqing_issue
+	shared_focus = XSM_develop_qaidam
+	shared_focus = XSM_befriend_ma_chenxiang
+	shared_focus = XSM_convince_ma_buqing
+	shared_focus = XSM_dismiss_ma_buqing
+	shared_focus = XSM_annex_gansu
+	shared_focus = XSM_sinkiang_king
+	shared_focus = XSM_forced_conscript
+	shared_focus = generic_kan_ma_ho_hui
+	shared_focus = generic_recruit_talents
+	shared_focus = generic_expand_mintuan
+	shared_focus = XSM_religious_enthusiasm
+	shared_focus = XSM_religious_tolerance
+	shared_focus = generic_officer_training_corp
+	shared_focus = generic_cavalry
+	shared_focus = XSM_flanking_maneuver
+	shared_focus = XSM_support_ma_hushan
+	shared_focus = XSM_puppet_tng
+	shared_focus = XSM_occupy_sinkiang
+}
+
+shared_focus = {
+	allow_branch = {
+		OR = {
+			tag = XSM
+			tag = GSM
+			tag = EGM
+			tag = NXM
+		}
+	}
+	id = XSM_expand_the_government
+	icon = GFX_goal_generic_improve_the_administration
+	x = -4
+	y = 0
+	cost = 10
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+	}
+	completion_reward = {
+		add_political_power = 150
+		
+	}
+}
+
+shared_focus = {
+	id = XSM_develop_northwest
+	icon = GFX_goal_generic_construction2
+	x = -4
+	y = 1
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_expand_the_government
+	}
+	
+	available = {
+
+	}
+	completion_reward = {
+		
+		
+		
+		add_tech_bonus = {
+			name = XSM_develop_northwest
+			bonus = 0.75
+			uses = 2
+			category = industry
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_fund_education
+	icon = GFX_goal_generic_COOP_compulsory_education
+	x = -6
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	cost = 10
+	prerequisite = {
+		focus = XSM_develop_northwest
+	}
+	
+	available = {
+		has_idea = generic_iliterate_population
+	}
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = generic_iliterate_population
+			add_idea = generic_iliterate_population_1
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_baojia_System
+	icon = GFX_goal_generic_ITA_bersaglieri
+	x = -4
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_RESEARCH
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_develop_northwest
+	}
+	
+	available = {
+
+	}
+	completion_reward = {
+		add_ideas = generic_Baojia_system
+		add_stability = 0.05
+	}
+}
+
+shared_focus = {
+	id = XSM_plant_trees
+	icon = GFX_goal_generic_CHL_expand_the_forestry
+	x = -2
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	cost = 10
+	prerequisite = {
+		focus = XSM_develop_northwest
+	}
+	
+	available = {
+		any_owned_state = {
+			is_core_of = ROOT
+			is_controlled_by = ROOT
+		}
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				is_capital = yes
+				is_core_of = ROOT
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_capital = no
+				is_core_of = ROOT
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		add_stability = 0.05
+	}
+}
+
+shared_focus = {
+	id = XSM_arms_factory
+	icon = GFX_goal_generic_reorient_production
+	x = -3
+	y = 5
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_develop_industry
+	}
+	
+	available = {
+
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+				OR = {
+					is_in_home_area = yes
+					NOT = {
+						owner = {
+							any_owned_state = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								is_in_home_area = yes
+							}
+						}
+					}
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = production_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = arms_factory
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_control_industry
+	icon = GFX_goal_generic_DEN_heavy_regulations
+	x = -3
+	y = 6
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_arms_factory
+	}
+	
+	available = {
+		num_of_factories > 9
+	}
+	completion_reward = {
+		add_offsite_building = { type = industrial_complex level = 2 }
+	}
+}
+
+shared_focus = {
+	id = XSM_build_roads
+	icon = GFX_goal_generic_road_investment
+	x = -3
+	y = 3
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_baojia_System
+	}
+	prerequisite = {
+		focus = XSM_plant_trees
+	}
+	
+	available = {
+
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				
+				infrastructure < 5
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = infrastructure_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_develop_industry
+	icon = GFX_goal_generic_modernize_industry
+	x = -3
+	y = 4
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_build_roads
+	}
+	
+	available = {
+
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	bypass = {
+		custom_trigger_tooltip = {
+			tooltip = construction_effort_tt
+			all_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	allow_branch = {
+		OR = {
+			tag = XSM
+			
+			
+			
+		}
+	}
+	id = XSM_ma_lin_issue
+	icon = GFX_goal_generic_SWE_organize_a_putsch
+	x = -17
+	y = 0
+	cost = 1
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+	}
+	completion_reward = {
+		add_stability = -0.05
+		add_political_power = 50
+		
+	}
+	bypass = {
+		NOT = {
+			has_country_leader = {
+				character = XSM_ma_lin ruling_only = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_support_ma_lin
+	icon = GFX_goal_generic_tripartite_pact
+	x = -16
+	y = 1
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_ma_lin_issue
+	}
+	mutually_exclusive = {
+		focus = XSM_support_ma_bufang
+	}
+	cost = 5
+	
+	available = {
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+	}
+	completion_reward = {
+		add_stability = -0.05
+		add_political_power = 100
+	}
+}
+
+shared_focus = {
+	id = XSM_ask_ma_buqing
+	icon = GFX_goal_generic_Ma_Buqing
+	x = -15
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_support_ma_lin
+	}
+	cost = 5
+	
+	available = {
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+		GSM = {
+			OR = {
+				is_subject_of = ROOT
+				is_subject = no
+			}
+			is_neighbor_of = ROOT
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+	}
+	completion_reward = {
+		add_political_power = -90
+		GSM = {
+			country_event = qng.7
+		}
+		custom_effect_tooltip = if_approved_tt
+		custom_effect_tooltip = they_will_join_our_cw_tt
+	}
+	bypass = {
+		OR = {
+			GSM = {
+				exists = no
+			}
+			GSM = {
+				has_war_with = ROOT
+			}
+			GSM = {
+				is_subject = yes
+				NOT = {
+					is_subject_of = ROOT
+				}
+			}
+			GSM = {
+				NOT = {
+					is_neighbor_of = ROOT
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_qinghai_civil_war
+	icon = GFX_goal_generic_major_war
+	x = -16
+	y = 3
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_ask_ma_buqing
+		focus = XSM_ask_central
+	}
+	cost = 2
+	
+	available = {
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+	}
+	completion_reward = {
+		start_civil_war = {
+			ideology = neutrality
+			size = 0.65
+			
+			capital = 754
+			states = {
+				755 754 1047 604
+			}
+			PREV = {
+				XSM_ma_bufang = {
+					set_nationality = PREV.PREV
+				}
+			}
+			PREV.PREV = {
+				set_cosmetic_tag = XSM_N2A
+				hidden_effect = {
+					retire_country_leader = yes
+				}
+				XSM_ma_bufang = {
+					add_country_leader_role = {
+						promote_leader = yes
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = despotism
+							traits = {
+
+							}
+						}
+					}
+				}
+				hidden_effect = {
+					XSM_ma_bufang = {
+						add_country_leader_role = {
+							promote_leader = yes
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = marxism
+								traits = {
+
+								}
+							}
+						}
+						add_country_leader_role = {
+							promote_leader = yes
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = n_socialism_ideology
+								traits = {
+
+								}
+							}
+						}
+						add_country_leader_role = {
+							promote_leader = yes
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = sanmin_military_rule
+								traits = {
+
+								}
+							}
+						}
+						add_country_leader_role = {
+							promote_leader = yes
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = conservatism
+								traits = {
+
+								}
+							}
+						}
+					}
+					create_country_leader = {
+						name = "None"
+						desc = ""
+						picture = "gfx/leaders/leader_unknown.dds"
+						expire = "1965.1.1"
+						ideology = marxism
+						traits = {
+							
+						}
+					}
+					create_country_leader = {
+						name = "None"
+						desc = ""
+						picture = "gfx/leaders/leader_unknown.dds"
+						expire = "1965.1.1"
+						ideology = n_socialism_ideology
+						traits = {
+							
+						}
+					}
+					create_country_leader = {
+						name = "None"
+						desc = ""
+						picture = "gfx/leaders/leader_unknown.dds"
+						expire = "1965.1.1"
+						ideology = conservatism
+						traits = {
+							
+						}
+					}
+					create_country_leader = {
+						name = "None"
+						desc = ""
+						picture = "gfx/leaders/leader_unknown.dds"
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+							
+						}
+					}
+				}
+			}
+			keep_unit_leaders_trigger = { always = yes }
+		}
+		if = {
+			limit = {
+				GSM = {
+					has_country_flag = support_ma_lin_flag
+				}
+			}
+			random_enemy_country = {
+				limit = {
+					original_tag = XSM
+				}
+				GSM = {
+					add_to_war = {
+						targeted_alliance = ROOT enemy = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_ma_lins_qinghai
+	icon = GFX_goal_generic_SWE_refuge_from_war
+	x = -16
+	y = 4
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_qinghai_civil_war
+	}
+	cost = 7.15
+	
+	available = {
+		has_civil_war = no
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+	}
+	completion_reward = {
+		add_corps_commander_role = {
+			character = XSM_ma_lin
+			traits = { generic_old_guard generic_politically_connected generic_extra_specialized_skill }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+		add_country_leader_trait = {
+			trait = generic_ma_lin_doctrine
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_ask_central
+	icon = GFX_goal_generic_chi_cooperation_with_the_nationalists
+	x = -17
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_INDUSTRY
+	}
+	prerequisite = {
+		focus = XSM_support_ma_lin
+	}
+	cost = 5
+	
+	available = {
+		has_country_leader = {
+			character = XSM_ma_lin ruling_only = yes
+		}
+		NOT = {
+			is_legit_china = yes
+		}
+		NOT = {
+			has_war_with = event_target:WTT_current_china_leader
+		}
+	}
+	completion_reward = {
+		add_political_power = -50
+		add_offsite_building = { type = arms_factory level = 1 }
+	}
+	bypass = {
+		has_government = communism
+	}
+}
+
+shared_focus = {
+	id = XSM_support_ma_bufang
+	icon = GFX_goal_generic_tfv_saf_anti_colonialist_crusade
+	x = -18
+	y = 1
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_ma_lin_issue
+	}
+	mutually_exclusive = {
+		focus = XSM_support_ma_lin
+	}
+	cost = 5
+	
+	available = {
+
+	}
+	completion_reward = {
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		add_war_support = 0.03
+		add_stability = 0.03
+		add_command_power = 25
+	}
+	bypass = {
+		NOT = {
+			has_country_leader = {
+				character = XSM_ma_lin ruling_only = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_king_of_qinghai
+	icon = GFX_goal_generic_rom_royal_dictatorship
+	x = -19
+	y = 2
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_support_ma_bufang
+	}
+	cost = 7.15
+	
+	available = {
+		has_country_leader = {
+			character = XSM_ma_bufang ruling_only = yes
+		}
+	}
+	completion_reward = {
+		add_country_leader_trait = generic_ma_bufang_doctrine
+	}
+}
+
+shared_focus = {
+	id = XSM_tibet_affairs
+	icon = GFX_goal_generic_MON_tibet_alliance
+	x = -22
+	y = 3
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_king_of_qinghai
+	}
+	cost = 7.15
+	
+	available = {
+		TIB = {
+			is_neighbor_of = ROOT
+		}
+		
+	}
+	completion_reward = {
+		remove_opinion_modifier = {
+			target = TIB
+			modifier = hostile_status
+		}
+		TIB = {
+			remove_opinion_modifier = {
+				target = ROOT
+				modifier = hostile_status
+			}
+		}
+		
+	}
+}
+
+shared_focus = {
+	id = XSM_contact_xikang
+	icon = GFX_goal_generic_alliance
+	x = -22
+	y = 4
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_tibet_affairs
+	}
+	cost = 7.15
+	
+	available = {
+		XIK = {
+			OR = {
+				is_subject = no
+				is_subject_of = ROOT
+			}
+			is_neighbor_of = TIB
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		TIB = {
+			is_neighbor_of = ROOT
+			NOT = {
+				OR = {
+					is_in_faction_with = ROOT
+					is_subject_of = ROOT
+				}
+			}
+		}
+	}
+	completion_reward = {
+		XIK = {
+			country_event = {
+				id = qng.13 hours = 12
+			}
+		}
+		custom_effect_tooltip = if_approved_tt
+		effect_tooltip = {
+			give_guarantee = XIK
+			add_opinion_modifier = {
+				target = XIK
+				modifier = Nations_friendly
+			}
+			XIK = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = Nations_friendly
+				}
+				give_guarantee = ROOT
+			}
+		}
+	}
+	bypass = {
+		OR = {
+			XIK = {
+				exists = no
+			}
+			XIK = {
+				has_war_with = ROOT
+			}
+			XIK = {
+				is_subject = yes
+				NOT = {
+					is_subject_of = ROOT
+				}
+			}
+			XIK = {
+				NOT = {
+					is_neighbor_of = TIB
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_conquer_tibet
+	icon = GFX_goal_generic_Secure_Tibet
+	x = -23
+	y = 5
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_contact_xikang
+	}
+	mutually_exclusive = {
+		focus = XSM_control_tibetan_trade
+	}
+	will_lead_to_war_with = TIB
+	cost = 7.15
+	
+	available = {
+		TIB = {
+			is_neighbor_of = ROOT
+			NOT = {
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+					has_subject = ROOT
+				}
+			}
+		}
+	}
+	completion_reward = {
+		create_wargoal = {
+			target = TIB
+			type = puppet_wargoal_focus
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_control_tibetan_trade
+	icon = GFX_goal_generic_positive_trade_relations
+	x = -21
+	y = 5
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	prerequisite = {
+		focus = XSM_contact_xikang
+	}
+	mutually_exclusive = {
+		focus = XSM_conquer_tibet
+	}
+	cost = 7.15
+	
+	available = {
+		TIB = {
+			is_neighbor_of = ROOT
+			NOT = {
+				has_war_with = ROOT
+			}
+			NOT = {
+				has_border_war_with = ROOT
+			}
+		}
+		NOT = {
+			is_embargoing = TIB
+		}
+	}
+	completion_reward = {
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		add_ideas = generic_tib_trade
+		
+	}
+}
+
+shared_focus = {
+	id = XSM_recruit_ma_jiyuan
+	icon = GFX_goal_generic_home_defense
+	x = -19
+	y = 3
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_king_of_qinghai
+	}
+	cost = 7.15
+	
+	available = {
+		has_character = XSM_ma_jiyuan
+	}
+	completion_reward = {
+		add_corps_commander_role = {
+			character = XSM_ma_jiyuan
+			traits = { generic_rising_young_officer generic_media_personality generic_NRA_Major_General }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+			desc=XSM_ma_jiyuan_desc
+		}
+	}
+	bypass = {
+		NOT = {
+			has_character = XSM_ma_jiyuan
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_promote_ma_jiyuan
+	icon = GFX_goal_generic_military_mission
+	x = -20
+	y = 4
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_recruit_ma_jiyuan
+	}
+	cost = 7.15
+	
+	available = {
+		has_character = XSM_ma_jiyuan
+	}
+	completion_reward = {
+		XSM_ma_jiyuan = {
+			add_unit_leader_trait = generic_career_officer
+			gain_xp = 200
+		}
+
+	}
+	bypass = {
+		NOT = {
+			has_character = XSM_ma_jiyuan
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_train_ma_jiyuan
+	icon = GFX_goal_generic_SMB_atacama_training
+	x = -18
+	y = 4
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_recruit_ma_jiyuan
+	}
+	cost = 10
+	
+	available = {
+		has_character = XSM_ma_jiyuan
+		if = {
+			limit = {
+				is_ai = no
+			}
+			XSM_ma_jiyuan = {
+			    is_assigned = yes
+		    }
+		}
+	}
+	completion_reward = {
+		XSM_ma_jiyuan = {
+			add_random_trait = { generic_harsh_leader generic_brilliant_strategist CHI_inflexible_strategist }
+			gain_xp = 200
+		}
+	}
+	bypass = {
+		NOT = {
+			has_character = XSM_ma_jiyuan
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_ma_buqing_issue
+	icon = GFX_goal_generic_FIN_parmis_devils
+	x = -19
+	y = 5
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_train_ma_jiyuan
+	}
+	prerequisite = {
+		focus = XSM_promote_ma_jiyuan
+	}
+	cost = 7.15
+	
+	available = {
+		has_idea = generic_divided_command
+	}
+	completion_reward = {
+		add_political_power = 100
+	}
+	bypass = {
+		OR = {
+			AND = {
+				GSM = {
+					exists = no
+				}
+				NOT = {
+					has_character = XSM_ma_buqing
+				}
+			}
+			AND = {
+				has_character = XSM_ma_buqing
+				NOT = {
+					has_idea = generic_divided_command
+				}
+			}
+			has_war_with = GSM
+
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_develop_qaidam
+	icon = GFX_goal_generic_land_reclamation
+	x = -17
+	y = 6
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_ma_buqing_issue
+	}
+	cost = 7.15
+	
+	available = {
+		has_idea = generic_divided_command
+		755 = {
+			is_owned_and_controlled_by = ROOT
+		}
+		divisions_in_state = {
+			size > 0
+			state = 755
+		}
+	}
+	completion_reward = {
+		755 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	bypass = {
+		OR = {
+			AND = {
+				GSM = {
+					exists = no
+				}
+				NOT = {
+					has_character = XSM_ma_buqing
+				}
+			}
+			AND = {
+				has_character = XSM_ma_buqing
+				NOT = {
+					has_idea = generic_divided_command
+				}
+			}
+			has_war_with = GSM
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_befriend_ma_chenxiang
+	icon = GFX_goal_generic_dangerous_deal
+	x = -21
+	y = 6
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_ma_buqing_issue
+	}
+	cost = 7.15
+	
+	available = {
+		has_character = XSM_ma_chengxiang
+		has_idea = generic_divided_command
+	}
+	completion_reward = {
+		add_political_power = -50
+		army_experience = 20
+		if = {
+			limit = {
+                has_character = XSM_ma_chengxiang
+			}
+			XSM_ma_chengxiang = {
+			    gain_xp = 300
+		    }
+		}
+	}
+	bypass = {
+		OR = {
+			AND = {
+				GSM = {
+					exists = no
+				}
+				NOT = {
+					has_character = XSM_ma_buqing
+				}
+			}
+			AND = {
+				has_character = XSM_ma_buqing
+				NOT = {
+					has_idea = generic_divided_command
+				}
+			}
+			has_war_with = GSM
+
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_convince_ma_buqing
+	icon = GFX_goal_generic_eng_concessions_to_the_trade_unions
+	x = -19
+	y = 6
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_ma_buqing_issue
+	}
+	cost = 7.15
+	
+	available = {
+		has_idea = generic_divided_command
+	}
+	completion_reward = {
+		add_political_power = -50
+		add_stability = 0.05
+	}
+	bypass = {
+		OR = {
+			AND = {
+				GSM = {
+					exists = no
+				}
+				NOT = {
+					has_character = XSM_ma_buqing
+				}
+			}
+			AND = {
+				has_character = XSM_ma_buqing
+				NOT = {
+					has_idea = generic_divided_command
+				}
+			}
+			has_war_with = GSM
+
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_dismiss_ma_buqing
+	icon = GFX_goal_generic_spr_crush_the_revolution
+	x = -19
+	y = 7
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	prerequisite = {
+		focus = XSM_convince_ma_buqing
+	}
+	prerequisite = {
+		focus = XSM_befriend_ma_chenxiang
+	}
+	prerequisite = {
+		focus = XSM_develop_qaidam
+	}
+	cost = 7.15
+	
+	available = {
+		has_idea = generic_divided_command
+	}
+	completion_reward = {
+		if = {
+			limit = {
+				has_character = XSM_ma_buqing
+			}
+			retire_character = XSM_ma_buqing
+		}
+		remove_ideas = generic_divided_command
+	}
+	bypass = {
+		OR = {
+			AND = {
+				GSM = {
+					exists = no
+				}
+				NOT = {
+					has_character = XSM_ma_buqing
+				}
+			}
+			AND = {
+				has_character = XSM_ma_buqing
+				NOT = {
+					has_idea = generic_divided_command
+				}
+			}
+			has_war_with = GSM
+
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_annex_gansu
+	icon = GFX_goal_generic_position_armies
+	x = -19
+	y = 8
+	search_filters = {
+		FOCUS_FILTER_ANNEXATION
+	}
+	prerequisite = {
+		focus = XSM_dismiss_ma_buqing
+	}
+	cost = 7.15
+	
+	available = {
+		
+		OR = {
+			NOT = {
+				owns_state = 283
+			}
+			NOT = {
+				owns_state = 1053
+			}
+			NOT = {
+				owns_state = 756
+			}
+			NOT = {
+				owns_state = 1044
+			}
+			NOT = {
+				owns_state = 1029
+			}
+		}
+		event_target:WTT_communist_china = {
+			has_war_with = ROOT
+			has_war_with = event_target:WTT_current_china_leader
+			num_of_controlled_states > 9
+		}
+		OR = {
+			event_target:WTT_current_china_leader = {
+				casualties_k > 1000
+				num_of_controlled_states < 20
+				strength_ratio = {
+					tag = event_target:WTT_communist_china
+					ratio < 1.5
+				}
+			}
+			event_target:WTT_current_china_leader = {
+				has_idea = generic_civil_war_debuff_4
+			}
+			event_target:WTT_current_china_leader = {
+				has_idea = generic_civil_war_debuff_5
+			}
+		}
+	}
+	completion_reward = {
+		if = {
+			limit = {
+				NOT = {
+					283 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			add_state_core = 283
+		}
+		if = {
+			limit = {
+				NOT = {
+					1053 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			add_state_core = 1053
+		}
+		if = {
+			limit = {
+				NOT = {
+					756 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			add_state_core = 756
+		}
+		if = {
+			limit = {
+				NOT = {
+					1044 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			add_state_core = 1044
+		}
+		if = {
+			limit = {
+				NOT = {
+					1029 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			add_state_core = 1029
+		}
+		if = {
+			limit = {
+				event_target:WTT_current_china_leader = {
+					any_owned_state = {
+						OR = {
+							state = 283
+							state = 1053
+							state = 756
+							state = 1044
+							state = 1029
+						}
+					}
+				}
+			}
+			event_target:WTT_current_china_leader = {
+				country_event = {
+					id = qng.15 hours = 12
+				}
+			}
+			custom_effect_tooltip = if_approved_tt
+			effect_tooltip = {
+				event_target:WTT_current_china_leader = {
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 283
+								state = 1053
+								state = 756
+								state = 1044
+								state = 1029
+							}
+						}
+						transfer_state_to = ROOT
+					}
+				}
+			}
+		}
+	}
+	bypass = {
+		OR = {
+			is_legit_china = yes
+			has_war_with = event_target:WTT_current_china_leader
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_sinkiang_king
+	icon = GFX_goal_generic_war_sinkiang
+	x = -19
+	y = 9
+	search_filters = {
+		FOCUS_FILTER_ANNEXATION
+	}
+	prerequisite = {
+		focus = XSM_annex_gansu
+	}
+	cost = 7.15
+	
+	will_lead_to_war_with = SIK
+	available = {
+		is_subject = no
+		SIK = {
+			exists = yes
+			is_subject = no
+			is_neighbor_of = ROOT
+		}
+	}
+	completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SIK
+		}
+	}
+	bypass = {
+		OR = {
+			has_war_with = SIK
+			SIK = {
+				exists = no
+			}
+		}
+	}
+}
+
+shared_focus = {
+	allow_branch = {
+		OR = {
+			tag = XSM
+			tag = GSM
+			tag = EGM
+			tag = NXM
+		}
+	}
+	id = XSM_forced_conscript
+	icon = GFX_goal_generic_ITA_comandante_diavolo
+	x = -10
+	y = 0
+	cost = 10
+	search_filters = {
+		FOCUS_FILTER_MANPOWER
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+		has_completed_focus = XSM_baojia_System
+	}
+	completion_reward = {
+		add_ideas = generic_XSM_militarism_focus
+	}
+}
+
+shared_focus = {
+	allow_branch = {
+		OR = {
+			tag = XSM
+			tag = GSM
+			tag = EGM
+			
+		}
+	}
+	id = generic_kan_ma_ho_hui 
+	icon = GFX_goal_generic_tfv_strengthen_commonwealth_ties
+	x = -8
+	y = 1
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_forced_conscript
+	}
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_ideas = generic_kan_ma_ho_hui
+	}
+}
+
+shared_focus = {
+	allow_branch = {
+		tag = NXM
+	}
+	id = generic_recruit_talents
+	icon = GFX_goal_generic_treaty
+	x = -8
+	y = 1
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_forced_conscript
+	}
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_ideas = generic_recruit_talents
+	}
+}
+
+shared_focus = {
+	id = generic_expand_mintuan
+	icon = GFX_goal_generic_ETH_keep_the_chitet
+	x = -8
+	y = 2
+	cost = 7.15
+	prerequisite = {
+		focus = generic_kan_ma_ho_hui
+		focus = generic_recruit_talents
+	}
+	search_filters = {
+		FOCUS_FILTER_MANPOWER
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_ideas = generic_expand_mintuan
+	}
+}
+
+shared_focus = {
+	id = XSM_religious_enthusiasm
+	icon = GFX_goal_generic_TUR_loosen_the_laws_on_secularism
+	x = -8
+	y = 3
+	cost = 7.15
+	prerequisite = {
+		focus = generic_expand_mintuan
+	}
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_manpower = 50000
+	}
+
+	bypass = {
+		has_government = communism
+	}
+}
+
+shared_focus = {
+	id = XSM_religious_tolerance
+	icon = GFX_goal_generic_strike_at_democracy1
+	x = -8
+	y = 4
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_religious_enthusiasm
+	}
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_war_support = 0.1
+	}
+
+	
+	
+	
+}
+
+shared_focus = {
+	id = generic_officer_training_corp
+	icon = GFX_goal_generic_POL_beck_ribbentrop
+	x = -10
+	y = 1
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_forced_conscript
+	}
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		army_experience = 20
+		add_ideas = generic_officer_training_corp
+	}
+}
+
+shared_focus = {
+	id = generic_cavalry
+	icon = GFX_goal_generic_cavalry
+	x = -10
+	y = 2
+	cost = 7.15
+	prerequisite = {
+		focus = generic_officer_training_corp
+	}
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+		any_country_division = {
+			division_has_majority_template = cavalry
+			
+		}
+	}
+	completion_reward = {
+		add_ideas = generic_cavalry
+	}
+}
+
+shared_focus = {
+	id = XSM_flanking_maneuver
+	icon = GFX_goal_generic_army_doctrines
+	x = -10
+	y = 3
+	cost = 7.15
+	prerequisite = {
+		focus = generic_cavalry
+	}
+	search_filters = {
+		FOCUS_FILTER_WAR_SUPPORT
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+
+	}
+	completion_reward = {
+		add_doctrine_cost_reduction = {
+			name = XSM_flanking_maneuver
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_support_ma_hushan
+	icon = GFX_goal_generic_COOP_northwest_mediation
+	x = -12
+	y = 1
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_forced_conscript
+	}
+	search_filters = {
+		FOCUS_FILTER_POLITICAL
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+		TNG = {
+			is_subject = no
+			OR = {
+				is_neighbor_of = ROOT
+				AND = {
+					759 = {
+						is_owned_and_controlled_by = TNG
+					}
+					1048 = {
+						owner = {
+							NOT = {
+								has_war_with = TNG
+							}
+							NOT = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
+			has_opinion = {
+				target = ROOT
+				value > 0
+			}
+		}
+	}
+	completion_reward = {
+		TNG = {
+			country_event = {
+				id = qng.9 hours = 12
+			}
+		}
+		effect_tooltip = {
+			send_equipment = { target = TNG type = infantry_equipment amount = 20 }
+		}
+		add_war_support = 0.05
+	}
+	bypass = {
+		OR = {
+			has_war_with = TNG
+			TNG = {
+				exists = no
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_puppet_tng
+	icon = GFX_goal_generic_NRA
+	x = -12
+	y = 2
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_support_ma_hushan
+	}
+	search_filters = {
+		FOCUS_FILTER_ANNEXATION
+	}
+	ai_will_do = { factor = 100 }
+	available = {
+		TNG = {
+			is_subject = no
+			OR = {
+				is_neighbor_of = ROOT
+				AND = {
+					759 = {
+						is_owned_and_controlled_by = TNG
+					}
+					1048 = {
+						owner = {
+							NOT = {
+								has_war_with = TNG
+							}
+							NOT = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+			}
+			NOT = {
+				has_war_with = ROOT
+			}
+			NOT = {
+				has_country_leader = {
+					character = TNG_ma_zhongying ruling_only = yes
+				}
+			}
+			has_opinion = {
+				target = ROOT
+				value > 89
+			}
+		}
+	}
+	completion_reward = {
+		TNG = {
+			country_event = {
+				id = qng.10 days = 3
+			}
+		}
+		custom_effect_tooltip = their_willingness_based_on_their_opinion_of_us_2_tt
+		custom_effect_tooltip = if_they_accept_green
+		effect_tooltip = {
+			set_autonomy = { target = TNG autonomy_state = autonomy_rcm_national_revolutionary_army }
+		}
+		custom_effect_tooltip = if_they_refuse_red
+		effect_tooltip = {
+			create_wargoal = {
+				target = TNG
+				type = annex_everything
+			}
+		}
+	}
+	bypass = {
+		OR = {
+			has_war_with = TNG
+			TNG = {
+				exists = no
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = XSM_occupy_sinkiang
+	icon = GFX_goal_generic_war_sinkiang
+	x = -12
+	y = 3
+	cost = 7.15
+	prerequisite = {
+		focus = XSM_puppet_tng
+	}
+	search_filters = {
+		FOCUS_FILTER_ANNEXATION
+	}
+	will_lead_to_war_with = SIK
+	will_lead_to_war_with = KHR
+	will_lead_to_war_with = KRS
+	will_lead_to_war_with = ATM
+	will_lead_to_war_with = HMI
+	ai_will_do = { factor = 100 }
+	available = {
+		OR = {
+			TNG = {
+				is_subject_of = ROOT
+			}
+			OR = {
+				1049 = {
+					is_owned_and_controlled_by = ROOT
+				}
+				1048 = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+		}
+		OR = {
+			SIK = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			KHR = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			KRS = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			ATM = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			HMI = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+		}
+	}
+	completion_reward = {
+		if = {
+			limit = {
+				country_exists = KHR
+				NOT = {
+					KHR = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = KHR
+			}
+		}
+		if = {
+			limit = {
+				country_exists = HMI
+				NOT = {
+					HMI = {
+						has_war_with = ROOT
+					}
+				}
+			}
+
+			create_wargoal = {
+				type = annex_everything
+				target = HMI
+			}
+		}
+		if = {
+			limit = {
+				country_exists = KRS
+				NOT = {
+					KRS = {
+						has_war_with = ROOT
+					}
+				}
+			}
+
+			create_wargoal = {
+				type = annex_everything
+				target = KRS
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ATM
+				NOT = {
+					ATM = {
+						has_war_with = ROOT
+					}
+				}
+			}
+
+			create_wargoal = {
+				type = annex_everything
+				target = ATM
+			}
+		}
+		if = {
+			limit = {
+				country_exists = SIK
+				NOT = {
+					SIK = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = SIK
+			}
+		}
+		if = {
+			limit = {
+				any_neighbor_country = {
+					original_tag = SIK
+					NOT = {
+						tag = SIK
+						has_war_with = ROOT
+					}
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = PREV
+			}
+		}
+	}
+}

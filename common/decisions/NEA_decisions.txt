@@ -1,0 +1,301 @@
+# NEA 决议
+
+operations = { #行动
+
+	
+
+	RCM_south_anhui_incident = { #皖南事变
+
+	
+
+		icon = generic_ignite_civil_war
+
+		allowed = {
+
+			is_literally_china = yes
+
+			#tag = event_target:WTT_current_china_leader
+
+		}
+
+		available = {
+
+			has_war_with = JAP
+
+			event_target:WTT_communist_china = {
+
+  			    has_capitulated = no 
+
+		        exists = yes
+
+		        #has_completed_focus = PRC_Join_the_war
+
+				has_war_together_with = ROOT
+
+			}
+
+			OR = {
+
+				controls_state = 749
+
+				AND = {
+
+                    GXC = { #桂系
+
+						controls_state = 749 
+
+					}
+
+					GXC = { #桂系
+
+						NOT = {
+
+							has_war_with = ROOT
+
+						}
+
+					}
+
+				}
+
+				divisions_in_state = { state = 749 size > 3 }
+
+			}			
+
+		}
+
+		
+
+		visible = {
+
+			always = no #
+
+			tag = event_target:WTT_current_china_leader
+
+			NOT = { tag = NEA }
+
+		    date > 1940.7.1 
+
+		    NOT = {  
+
+			    has_global_flag =  CHI_no_longer_united_flag
+
+            }
+
+		}		
+
+
+
+		fire_only_once = yes
+
+	
+
+		days_remove = 7
+
+	
+
+		cost = 20
+
+		
+
+		ai_will_do = {
+
+			factor = 100
+
+		}		
+
+				
+
+		remove_effect = {
+
+			event_target:WTT_communist_china = {
+
+				if = { 
+
+					limit = {
+
+						has_character = PRC_Ye_Ting
+
+					}
+
+					retire_character = PRC_Ye_Ting
+
+				}
+
+				if = { 
+
+					limit = {
+
+						has_character = PRC_Xiang_Ying
+
+					}
+
+					retire_character = PRC_Xiang_Ying
+
+				}										
+
+                add_manpower = -4000   
+
+			    add_equipment_to_stockpile = {
+
+			  	    type = infantry_equipment
+
+				    amount = -400
+
+			    }
+
+			}
+
+			news_event = chen_news.339	
+
+            set_global_flag = south_anhui_incident	
+
+			army_experience = 20 
+
+		    add_equipment_to_stockpile = {
+
+				type = infantry_equipment
+
+				amount = 400
+
+			}
+
+		}								
+
+	}
+
+	
+
+	RCM_operation_vengeance = { #复仇行动
+
+	
+
+		icon = generic_air
+
+		allowed = {
+
+			tag = USA
+
+		}
+
+		available = {
+
+			has_war_with = JAP
+
+            if = {
+
+	            limit = {
+
+		            has_dlc = "La Resistance"
+
+	            }
+
+	            has_intelligence_agency = yes	
+
+            }	
+
+			629 = { is_controlled_by_ROOT_or_ally = yes } #Hawaii	
+
+			631 = { is_controlled_by_ROOT_or_ally = yes } #Midway Island	
+
+			634 = { is_controlled_by_ROOT_or_ally = yes } #Solomon Islands	
+
+            723 = { is_controlled_by_ROOT_or_ally = yes } #NZL	
+
+			JAP = { #日本
+
+				isoroku_yamamoto = {
+
+					is_navy_leader = yes
+
+				}				
+
+			}	
+
+            JAP = { #日本
+
+            NOT = { has_idea = usa_pearl_harbour_afterwinds }		
+
+		}
+
+		
+
+		visible = {
+
+			has_war_with = JAP
+
+			JAP = { #日本
+
+		}		
+
+
+
+		fire_only_once = yes
+
+	
+
+		days_remove = 7
+
+	
+
+		cost = 50
+
+		
+
+		ai_will_do = {
+
+			factor = 9000
+
+            modifier = {
+
+            factor = 0
+
+            date < 1943.1.1
+
+		    }
+
+		}		
+
+		
+
+		remove_effect = {
+
+			JAP = { #日本
+
+				if = { 
+
+					limit = {
+
+						has_character = isoroku_yamamoto
+
+					}
+
+					retire_character = isoroku_yamamoto
+
+				}									
+
+			}	
+
+            set_global_flag = yamamoto_dead	
+
+			hidden_effect = {
+
+		        JAP = { #日本
+
+			        country_event = { id = rcmflavor.3 }
+
+		        }
+
+			}
+
+            hidden_effect = { #guo
+
+            news_event = { id = news.1021 days = 30 }
+
+            }			
+
+		}							
+
+	}		
+
+}

@@ -1,0 +1,682 @@
+ideas = {
+	country = {
+		# SIK_Against_sheng_shicai，来源：common/ideas/sinkiang.txt
+		SIK_Against_sheng_shicai = {
+					allowed = {
+						always = no
+					}
+					available = {
+						has_civil_war = no
+						NOT = {
+							has_country_flag = mission_failed_against_sheng
+						}
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+					}
+					allowed_civil_war = {
+						always = no
+					}
+					removal_cost = -1
+					picture = FRA_scw_intervention_republicans_focus
+
+					modifier = {
+						communism_drift = -0.05 
+						neutrality_drift = 0.1 
+					}
+				}
+		# SIK_Army_reform，来源：common/ideas/sinkiang.txt
+		SIK_Army_reform = {
+					picture = chi_army_corruption3
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						army_morale_factor = 0.05
+						attrition = -0.05
+					}
+				}
+		# SIK_Autocracy，来源：common/ideas/sinkiang.txt
+		SIK_Autocracy = {
+					allowed = {
+						always = no
+					}
+					available = {
+						NOT = {
+							has_government = democratic
+						}
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					removal_cost = -1
+					picture = generic_oppression
+
+					modifier = {
+						monthly_population = -0.2
+						foreign_subversive_activites = -0.25
+				
+						resistance_growth = -0.25
+					}
+					cancel = { 
+						NOT = {
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+						}			    
+					}			
+				}
+		# SIK_Beat_the_enemy，来源：common/ideas/sinkiang.txt
+		SIK_Beat_the_enemy = {
+					available = {
+						is_subject = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = MEX_politicised_army_2
+
+					modifier = {
+						conscription_factor = 0.1
+						army_attack_factor = 0.05
+						army_defence_factor = 0.05
+					}
+				}
+		# SIK_Conflict_with_the_local_people，来源：common/ideas/sinkiang.txt
+		SIK_Conflict_with_the_local_people = {
+					picture = raj_marginalized_muslim_community
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						stability_factor = -0.1
+						conscription_factor = -0.5
+						industrial_capacity_factory = -0.075
+					}
+				}
+		# SIK_Extensive_turkicism，来源：common/ideas/sinkiang.txt
+		SIK_Extensive_turkicism = {
+					picture = tur_kemalist_army_officers_powerful_loyal
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						puppet_cost_factor = -0.25
+						political_power_gain = 0.25
+					}
+				}
+		# SIK_Improve_production_capacity，来源：common/ideas/sinkiang.txt
+		SIK_Improve_production_capacity = {
+					picture = HUN_secret_rearmament
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					equipment_bonus = {
+						infantry_equipment = {
+							build_cost_ic = -0.1 instant = yes
+						}
+					}
+				}
+		# SIK_Infantry_assault，来源：common/ideas/sinkiang.txt
+		SIK_Infantry_assault = {
+					picture = generic_war_preparation
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						planning_speed = 0.1
+						conscription_factor = 0.05
+					}
+				}
+		# SIK_Kicking_out_different_nation，来源：common/ideas/sinkiang.txt
+		SIK_Kicking_out_different_nation = {
+					picture = saf_history_of_segregation
+					available = {
+						has_government = fascism
+					}
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						has_government = fascism
+					}
+
+					modifier = {
+						monthly_population = -0.5
+				
+					}
+				}
+		# SIK_Malpractice_reform，来源：common/ideas/sinkiang.txt
+		SIK_Malpractice_reform = {
+					picture = air_support_focus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						local_resources_factor = 0.05
+						political_advisor_cost_factor = -0.05
+				
+						production_speed_infrastructure_factor = 0.1
+						economy_cost_factor = -0.05
+						industrial_concern_cost_factor = -0.05
+					}
+				}
+		# SIK_Monetary_unification，来源：common/ideas/sinkiang.txt
+		SIK_Monetary_unification = {
+					picture = gre_schachtplan
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						trade_opinion_factor = 0.2
+						industrial_capacity_factory = 0.05
+						production_factory_efficiency_gain_factor = 0.05
+						trade_laws_cost_factor = -0.1
+					}
+				}
+		# SIK_Neutral，来源：common/ideas/sinkiang.txt
+		SIK_Neutral = {	
+					picture = COOP_opportunistic_marxist	
+					available = {
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+						SOV = {
+							has_government = communism
+						}
+						has_government = communism
+						is_subject = no
+					}
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes	
+					}
+					rule = { can_join_factions = no }
+					modifier = {
+						drift_defence_factor = -0.5
+						communism_acceptance = -100
+					}
+			
+			
+			
+			
+				}
+		# SIK_New_currency，来源：common/ideas/sinkiang.txt
+		SIK_New_currency = {
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					removal_cost = -1
+					picture = generic_economic_increase
+
+					modifier = {
+						trade_opinion_factor = 0.1
+						industrial_capacity_factory = 0.03
+					}
+				}
+		# SIK_Output_Focus，来源：common/ideas/sinkiang.txt
+		SIK_Output_Focus = {
+					picture = man_five_year_plan_industry
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						industrial_capacity_factory = 0.05
+					}
+				}
+		# SIK_Plundered_the_local_economy，来源：common/ideas/sinkiang.txt
+		SIK_Plundered_the_local_economy = {
+					picture = MEX_callistas
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						industrial_capacity_factory = 0.1
+						out_of_supply_factor = -0.1
+						attrition = -0.02
+						local_resources_factor = 0.2
+						production_speed_industrial_complex_factor = -0.1
+						production_speed_arms_factory_factor = -0.1
+						production_speed_infrastructure_factor = -0.1
+					}
+				}
+		# SIK_Prominent_artilleryman，来源：common/ideas/sinkiang.txt
+		SIK_Prominent_artilleryman = {
+					picture = generic_artillery_regiments
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						army_artillery_attack_factor = 0.05
+						army_artillery_defence_factor = 0.05
+					}
+				}
+		# SIK_Promote_Six_major_policies_idea，来源：common/ideas/sinkiang.txt
+		SIK_Promote_Six_major_policies_idea = {
+           
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						has_government = communism
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+					}
+					available = {
+						has_government = communism
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+					}
+					removal_cost = -1
+					picture = hol_expand_the_colonial_army
+
+					on_add = {
+						set_rule = { can_only_justify_war_on_threat_country = yes }
+					}
+
+					on_remove = {
+						set_rule = { can_only_justify_war_on_threat_country = no }
+					}
+			
+					modifier = {	
+						political_advisor_cost_factor = -0.05
+						stability_factor = 0.1
+						production_speed_buildings_factor = 0.01
+						communism_drift = 0.01 
+					}
+				}
+		# SIK_Province_construction_plan，来源：common/ideas/sinkiang.txt
+		SIK_Province_construction_plan = {
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					removal_cost = -1
+					picture = generic_research_bonus
+
+					modifier = {
+						production_speed_industrial_complex_factor = 0.05
+						production_speed_infrastructure_factor = 0.05
+						production_speed_arms_factory_factor = 0.05	
+					}
+				}
+		# SIK_Recruitment_order，来源：common/ideas/sinkiang.txt
+		SIK_Recruitment_order = {
+					available = {
+						is_subject = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_manpower_bonus
+
+					modifier = {
+						conscription_factor = 0.3
+					}
+				}
+		# SIK_Reduced_ethnic_conflicts，来源：common/ideas/sinkiang.txt
+		SIK_Reduced_ethnic_conflicts = {
+					picture = tur_kemalist_army_officers_powerful_effect
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						non_core_manpower = 0.1
+						political_power_cost = -0.05
+						conscription = 0.005
+						monthly_population = 0.1
+					}
+				}
+		# SIK_Repression_guerrillas，来源：common/ideas/sinkiang.txt
+		SIK_Repression_guerrillas = {
+					picture = SPR_political_violence
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+				
+						foreign_subversive_activites = -0.1
+					}
+				}
+		# SIK_Revolutionary_propaganda，来源：common/ideas/sinkiang.txt
+		SIK_Revolutionary_propaganda = {
+					available = {
+						is_subject = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					allowed = {
+						always = no
+					}
+					removal_cost = -1
+					picture = generic_communist_army	
+
+					modifier = {
+						conscription_factor = 0.2
+						monthly_population = 0.4	
+					}
+				}
+		# SIK_Sheng_group，来源：common/ideas/sinkiang.txt
+		SIK_Sheng_group = {
+					picture = generic_spy_intel
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						monthly_population = -0.3
+						drift_defence_factor = 0.3
+						political_advisor_cost_factor = -0.1
+						political_power_gain = 0.1
+					}
+				}
+		# SIK_Sinkiang_King，来源：common/ideas/sinkiang.txt
+		SIK_Sinkiang_King = {
+
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					removal_cost = -1
+					picture = ast_abandon_the_westminster_system
+
+					modifier = {
+						drift_defence_factor = 0.3
+						political_power_cost = -0.25
+					}
+				}
+		# SIK_Sinkiang_coalition_government，来源：common/ideas/sinkiang.txt
+		SIK_Sinkiang_coalition_government = {
+					picture = generic_pp_unity_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						political_power_gain = 0.25
+						army_core_attack_factor = 0.15
+						army_core_defence_factor = 0.15
+					}
+				}
+		# SIK_Six_major_policies_idea，来源：common/ideas/sinkiang.txt
+		SIK_Six_major_policies_idea = {
+
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						has_government = communism
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+					}
+					available = {
+						has_government = communism
+						has_country_leader = {
+							character = SIK_sheng_shicai ruling_only = yes
+						}
+					}
+					removal_cost = -1
+					picture = tur_odpa
+
+					modifier = {
+						political_advisor_cost_factor = -0.05
+						stability_factor = 0.05
+						production_speed_buildings_factor = 0.05
+				
+				
+					}
+				}
+		# SIK_Soviet_authorize_design，来源：common/ideas/sinkiang.txt
+		SIK_Soviet_authorize_design = {
+					picture = generic_license_production
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						NOT = {
+							has_government = fascism
+						}
+					}
+					modifier = {
+						license_air_purchase_cost = -0.05
+						license_infantry_purchase_cost = -0.05
+						license_armor_purchase_cost = -0.05
+					}
+				}
+		# SIK_Soviet_supports_armed_groups，来源：common/ideas/sinkiang.txt
+		SIK_Soviet_supports_armed_groups = {
+					available = {
+						NOT = {
+							is_subject_of = SOV
+						}
+					}
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						OR = {
+							has_government = communism
+							has_government = neutrality
+						}
+					}
+					removal_cost = -1
+					picture = generic_communism_drift_bonus
+
+					modifier = {
+						stability_factor = -0.05
+						war_support_factor = -0.05
+					}
+				}
+		# SIK_Stable_politics，来源：common/ideas/sinkiang.txt
+		SIK_Stable_politics = {
+					picture = generic_pp_unity_bonus
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+
+					modifier = {
+						political_power_cost = -0.1
+						mobilization_laws_cost_factor = -0.1
+						industrial_concern_cost_factor = -0.1
+						neutrality_drift = 0.01 
+						democratic_drift = 0.01 
+					}
+				}
+		# SIK_Support_idea，来源：common/ideas/sinkiang.txt
+		SIK_Support_idea = {
+					picture = hol_haven_of_tolerance
+					allowed = {
+						always = no
+					}
+					available = {
+						NOT = {
+							has_war_with = SOV
+						}
+						SOV = {
+							has_government = communism
+						}
+					}
+					allowed_civil_war = {
+				
+						NOT = {
+							has_government = fascism
+						}
+					}
+					modifier = {
+						communism_drift = 0.05 
+						drift_defence_factor = 0.15
+						research_speed_factor = 0.1
+						SUPPLY_NODE_RANGE = 0.15
+						industrial_capacity_factory = 0.05
+						production_factory_max_efficiency_factor = 0.05
+						consumer_goods_factor = 0.25
+						political_power_cost = 0.25
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+						generate_wargoal_tension = 0.5
+						ai_desired_divisions_factor = -0.85
+					}
+				}
+		# SIK_Trade_in_xinjiang_smuggling，来源：common/ideas/sinkiang.txt
+		SIK_Trade_in_xinjiang_smuggling = {
+					picture = can_wartime_prices_and_trade_board
+					allowed = {
+						always = no
+					}
+					allowed_civil_war = {
+						always = yes
+					}
+					modifier = {
+						production_factory_efficiency_gain_factor = 0.1
+						license_infantry_purchase_cost = -0.1
+					}
+				}
+		# SIK_Weakened_ussr_influence，来源：common/ideas/sinkiang.txt
+		SIK_Weakened_ussr_influence = {
+					picture = hol_haven_of_tolerance
+					allowed = {
+						always = no
+					}
+			
+			
+			
+					allowed_civil_war = {
+				
+					}
+					available = {
+						NOT = {
+							has_war_with = SOV
+						}
+						SOV = {
+							has_government = communism
+						}
+					}
+					modifier = {
+						communism_drift = 0.02 
+						drift_defence_factor = 0.05
+						research_speed_factor = 0.05
+						SUPPLY_NODE_RANGE = 0.25
+						industrial_capacity_factory = 0.025
+						production_factory_max_efficiency_factor = 0.025
+						consumer_goods_factor = 0.15
+						generate_wargoal_tension = 0.3
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+						ai_desired_divisions_factor = -0.8
+					}
+				}
+		# neutrality_influence_weak，来源：common/ideas/ZHzzz_generic.txt
+		SIK_neutrality_influence_weak = {
+					name = MON_neutrality_influence
+
+					allowed = {
+						always = no
+					}
+
+					allowed_civil_war = {
+						has_government = neutrality
+					}
+
+					removal_cost = -1
+
+					picture = generic_pp_unity_bonus
+			
+					modifier = {
+						neutrality_drift = 0.1
+						neutrality_acceptance = 35
+					}
+				}
+	}
+}

@@ -1,0 +1,919 @@
+# CHI 决议分类
+
+CHI_anti_imperialism = {
+
+	icon = generic_independence
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	visible = {
+
+		always = yes
+
+	}
+
+}
+
+CHI_Ceasefire_negotiation = { #停战议和政策
+
+	icon = generic_independence
+
+	desc = china_tingzhanyihe
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	visible = {
+
+		always = yes
+
+	}
+
+	priority = 1
+
+}
+
+CHI_army_reform = {
+
+	icon = army_reform
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	priority = 200 #MODDED
+
+	visible = {
+
+	}
+
+}
+
+CHI_integrate_the_warlords = { #整合军阀
+
+
+
+	allowed = {
+
+		is_literally_china = yes #MODDED
+
+	}
+
+	icon = generic_political_actions
+
+	visible = {
+
+		tag = event_target:WTT_current_china_leader	#MODDED
+
+		OR = {
+
+			#MODDEDv
+
+			any_other_country = {
+
+				is_warlord = yes
+
+				#MODDED^
+
+				is_subject_of = ROOT
+
+			}
+
+		}
+
+	}
+
+}
+
+CHI_xian_incident = { #西安事变
+
+	icon = power_struggle
+
+	allowed = {
+
+		tag = NEA #MODDED
+
+	}
+
+	visible = {	#MODDED
+
+		owns_state = 744	#MODDED
+
+		has_country_flag = I_can_do_xian_incident #MODDED
+
+	}
+
+}
+
+CHI_seek_japanese_support = {
+
+	icon = jap_pacific_guardian
+
+	allowed = {
+
+		is_literally_china = yes #MODDED
+
+	}
+
+}
+
+CHI_border_clashes = { #边境冲突
+
+	picture = generic_border_conflicts
+
+	icon = border_conflicts
+
+	allowed = {
+
+		NOT = {		#MODDED
+
+			tag = MAN
+
+		}
+
+		is_literally_china = yes
+
+		has_dlc = "Waking the Tiger"		#MODDED
+
+	}
+
+	
+
+	visible = { #guo
+
+	if = {
+
+	limit = {
+
+	TAG = PRC
+
+	}
+
+	has_completed_focus = PRC_Red_Army
+
+	}
+
+	}
+
+}
+
+CHI_warlord_in_opposition = { #谋逆军阀
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+}
+
+CHI_political_power_struggle = { #中国的权力斗争
+
+	on_map_area = { 		#MODDED
+
+		state = 620
+
+		name = CHI_power_struggle_on_map
+
+		zoom = 250
+
+	} 		#MODDED
+
+	allowed = {
+
+		NOT = {		#MODDED
+
+			tag = MAN
+
+		}
+
+		is_literally_china = yes #MODDED
+
+		has_dlc = "Waking the Tiger"
+
+	}
+
+
+
+	icon = power_struggle
+
+	picture = chi_national_assembly		#MODDED
+
+	priority = {
+
+		base = 0
+
+		modifier = {
+
+			add = 2000		#MODDED
+
+			tag = event_target:WTT_current_china_leader
+
+			NOT = {
+
+				has_country_flag = Ive_read_it_k_thnx
+
+			}
+
+		}
+
+		modifier = {
+
+			add = 200		#MODDED
+
+			has_country_flag = wtt_political_struggle
+
+			any_other_country = {
+
+				has_country_flag = wtt_political_struggle
+
+			}
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = CHI
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_CHI
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = PRC
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_PRC
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = GXC
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_GXC
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = YUN
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_YUN
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = SHX
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SHX
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = XSM
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_XSM
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = SIK
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SIK
+
+		}
+
+	}
+
+	########MODDEDv
+
+	##NEW##
+
+	custom_icon = {
+
+		tag = SIC
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SIC
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = HPC
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_HPC
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = SHD
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SHD
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = NEA
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_NEA
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = HMI
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_HMI
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = TNG
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_TNG
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = KHR
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_KHR
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = KRS
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_KRS
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = ATM
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_ATM
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = XIA
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_XIA
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = GUD
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_GUD
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = NXM
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_NXM
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = SHC
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SHC
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = GSM
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_GSM
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = EGM
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_EGM
+
+		}
+
+	}
+
+	custom_icon = {
+
+		tag = XIK
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_XIK
+
+		}
+
+	}
+
+	custom_icon = {	#MODDED
+
+		tag = PLM
+
+
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_PLM
+
+			is_warlord = yes
+
+		}
+
+	}
+
+
+
+	custom_icon = {
+
+		tag = SUY
+
+		value = china_struggle_icon_value
+
+		desc = china_struggle_full_support_breakdown
+
+
+
+		visible = {
+
+			has_event_target = scope_SUY
+
+		}
+
+	}
+
+
+
+	visible = {
+
+		event_target:WTT_current_china_leader = { NOT = { has_war_with = ROOT } }
+
+		NOT = { has_completed_focus = CHI_opposition }
+
+	}
+
+}
+
+chi_jiaofei = { #处理东北匪患问题
+
+	icon = GFX_decision_category_spr_the_seeds_of_revolution
+
+	allowed = {
+
+	   tag = CHI
+
+	}	
+
+	visible = {		
+
+        has_global_flag = kaishi_jiaofei			
+
+	}
+
+}
+
+RCM_CHI_WOR = { #国防最高委员会
+
+	icon = eng_organize_the_blackshirts
+
+	allowed = {
+
+		is_literally_china = yes
+
+	}
+
+	visible = {
+
+		
+
+	}
+
+	visible_when_empty = no
+
+	priority = 150
+
+}
+
+chi_rcm_recruit_partisan_units_cat = { #北方游击战
+
+	icon = GFX_decision_category_spr_the_seeds_of_revolution
+
+	allowed = {
+
+	   tag = CHI
+
+	}	
+
+	visible = {		
+
+		   has_government = neutrality
+
+		   OR = {	
+
+           has_war_with = JAP
+
+		   has_global_flag = JAP_defeated
+
+		   HPC = {
+
+			    is_subject_of = ROOT
+
+				has_cosmetic_tag = HPC_zhanqu
+
+			}
+
+		   SHD = {
+
+				is_subject_of = ROOT
+
+				has_cosmetic_tag = SHD_zhanqu
+
+		    }			
+
+		   }	
+
+	}
+
+}
+
+CHI_zongduxiaqu = {
+
+	icon = eng_organize_the_blackshirts
+
+	allowed = {
+
+		tag = CHI
+
+	}
+
+	visible = {
+
+		has_completed_focus = CHI_cult_of_chiang_kai_shek
+
+		
+
+	}
+
+	visible_when_empty = yes
+
+	priority = 150
+
+}
+
+CHINA_recover_motherland = { #中华民族的历史领土
+
+priority = 8000	
+
+	icon = generic_political_actions
+
+	picture = GFX_decision_cat_picture_zhonghualingtu
+
+	
+
+	allowed = {
+
+		OR = {
+
+TAG = CHI
+
+TAG = PRC
+
+TAG = YUN
+
+TAG = XSM
+
+TAG = GXC
+
+TAG = SIK
+
+TAG = MAN
+
+TAG = SHX
+
+is_literally_china = yes	
+
+        }
+
+	}
+
+    visible_when_empty = no
+
+}
+
+NCHI = { #核心圈
+
+	icon = GFX_decision_category_generic_propaganda
+
+	allowed = {
+
+		original_tag = CHI
+
+	}
+
+}
+
+ZongduKMTrework = {
+
+	icon = generic_political_actions
+
+	visible = {
+
+		is_ai = no
+
+		tag = CHI		
+
+		OR = {
+
+            AND = {
+
+				has_completed_focus = CHI_yi_dang_zhi_guo_focus
+
+				has_government = neutrality
+
+                has_global_flag = zongduxiaqu_sulianjunqu				
+
+			}
+
+				has_completed_focus = CHI_axis_help_party_focus
+
+		}
+
+	}
+
+	priority = 1
+
+}

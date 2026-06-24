@@ -1,0 +1,244 @@
+﻿JAP_intervene_in_china = { #对华战争
+	priority = 150
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_southern_expansion = { #南进扩张
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+	}
+}
+
+JAP_pacific_guardian = { #太平洋守护者
+	icon = GFX_decision_category_jap_pacific_guardian 		#MODDED
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		has_completed_focus = JAP_pacific_guardian
+	}
+}
+
+JAP_colonial_independence = { #殖民地独立
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		has_completed_focus = JAP_pacific_guardian
+	}
+}
+JAP_interservice_rivalry = { #军种对立
+	icon = power_struggle 		#MODDED
+	picture = GFX_decision_cat_picture_ger_case_anton
+	priority = {
+		factor = 250
+		modifier = {
+			factor = 0
+			has_country_flag = JAP_war_conferences_cd
+		}
+	} 		#MODDED
+	#MODDED
+	visible = {
+		NOT = {
+			has_government = communism
+		}
+	}
+	#MODDED
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Waking the Tiger"
+	}
+}
+
+JAP_against_Nanjing_safezone = { #针对南京安全区的相关行动
+	icon = power_struggle 
+	visible = {
+		has_global_flag = Nanjing_safezone
+		NOT = {
+				has_global_flag = Nanjing_safezone_closed_by_JAP
+				has_global_flag = Nanjing_safezone_closed_by_CHI
+			}
+	}
+}
+
+"改组“亲善”政权" = {       
+    allowed ={
+        tag = JAP
+    }
+    visible = {
+		always = yes
+	}
+}
+
+
+建立亚洲新秩序 = {       
+    allowed ={
+        tag = JAP
+    }
+    visible = {
+		always = yes
+	}
+}
+
+
+RCM_JAP_Tokyo_big6_Baseball_league = { #东京六大学棒球联盟
+	icon = baseball
+
+	picture = GFX_decision_cat_decision_baseball
+	allowed = {
+		#always = no
+	}
+	visible = {
+		owns_state = 282
+		controls_state = 282
+		has_completed_focus = JAP_promote_student_baseball_focus
+		has_country_leader_with_trait = christian_socialist
+		#NOT = {
+		#	OR = {
+		#		has_completed_focus = JAP_consolidate_yonai_cabinet_focus
+		#		has_completed_focus = JAP_second_konoe_cabinet_focus
+		#	}
+		#}
+		#has_country_leader = { name = "Mitsumasa Yonai" ruling_only = yes }
+	}
+	priority = 400
+}
+
+RCM_JAP_promote_religious_freedom = { #推动宗教自由
+	icon = generic_democracy
+	picture = GFX_decision_cat_decision_church
+	on_map_area = { 		#MODDED
+		state = 282
+		name = JAP_christian_on_map
+		zoom = 250
+	}
+	on_map_area = { 		#MODDED
+		state = 282
+		name = JAP_police_backlash_on_map
+		zoom = 250
+	} 
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		has_completed_focus = JAP_fund_the_unitarian_church_focus
+		has_country_leader_with_trait = christian_socialist
+	}
+	priority = 400
+}
+
+RCM_JAP_boost_socialism = { #影响外国政治
+	icon = eng_organize_the_blackshirts
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		#NOT = {
+		#	OR = {
+		#		has_completed_focus = JAP_consolidate_yonai_cabinet_focus
+		#		has_completed_focus = JAP_second_konoe_cabinet_focus
+		#	}
+		#}
+		#has_country_leader = { name = "Mitsumasa Yonai" ruling_only = yes }
+	}
+	priority = 150
+}
+
+RCM_JAP_boost_democratic = { #影响外国政治
+	icon = eng_organize_the_blackshirts
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		#NOT = {
+		#	OR = {
+		#		has_completed_focus = JAP_consolidate_yonai_cabinet_focus
+		#		has_completed_focus = JAP_second_konoe_cabinet_focus
+		#	}
+		#}
+		#has_country_leader = { name = "Mitsumasa Yonai" ruling_only = yes }
+	}
+	priority = 150
+}
+
+JAP_Sakhalin_issue = { #萨哈林问题
+	icon = generic_political_actions
+	allowed = {
+		original_tag = JAP
+	}
+	visible = {
+		has_completed_focus = JAP_Sakhalin_issue
+	}
+}
+
+RCM_JAP_boost_communism = { #影响外国政治
+	icon = eng_organize_the_blackshirts
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		#NOT = {
+		#	OR = {
+		#		has_completed_focus = JAP_consolidate_yonai_cabinet_focus
+		#		has_completed_focus = JAP_second_konoe_cabinet_focus
+		#	}
+		#}
+		#has_country_leader = { name = "Mitsumasa Yonai" ruling_only = yes }
+	}
+	priority = 150
+}
+
+RCM_JAP_secure_resources_in_south_east_asia = { #获取东南亚资源
+	icon = jap_southern_expansion
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		has_USA_sanction_idea = yes
+	}
+	priority = 150
+}
+
+JAP_revise_hirota_sangesoku_focus_decision_cat = { #修正“广田三原则”
+	icon = generic_political_actions
+	allowed = {
+		original_tag = JAP
+	}
+	visible = {
+		is_subject = no
+		has_completed_focus = JAP_revise_hirota_sangesoku_focus
+		NOT = {
+			has_global_flag = CHI_accept_san_hiro
+		}
+	}
+	priority = 101
+}
+
+JAP_bribe_the_tokko = { #影响特别高等警察
+    icon = generic_propaganda
+    picture = GFX_decision_cat_generic_tokko
+    allowed = {
+        tag = JAP
+    }
+	visible = {
+		NOT = {
+			OR = {
+				has_completed_focus = JAP_Sonno_Tokkan_focus
+				has_completed_focus = JAP_placate_military_focus
+			}
+		}
+	}
+	priority = 101
+    visible = {
+    }
+}
