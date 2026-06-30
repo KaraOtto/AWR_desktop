@@ -2107,3 +2107,145 @@ learn_naval_designs = {		#学习海军设计
 		}
 	}
 }
+
+PRC_SOV_agreement_level_up = {	#加深中苏协定内容
+	hidden_effect = {
+		if = {
+			limit = {
+				PRC = {
+					NOT = {
+						has_idea = PRC_SOV_agreement_PRC_1
+					}
+				}
+				SOV = {
+					NOT = {
+						has_idea = PRC_SOV_agreement_SOV_1
+					}
+				}
+			}
+			PRC = {
+				add_ideas = PRC_SOV_agreement_PRC_1
+			}
+			SOV = {
+				add_ideas = PRC_SOV_agreement_SOV_1
+			}
+		}
+
+		if = {
+			limit = {
+				PRC = {
+					has_idea = PRC_SOV_agreement_PRC_1
+				}
+				SOV = {
+					has_idea = PRC_SOV_agreement_SOV_1
+				}
+			}
+			PRC = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_PRC_1
+					add_idea = PRC_SOV_agreement_PRC_2
+				}
+			}
+			SOV = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_SOV_1
+					add_idea = PRC_SOV_agreement_SOV_2
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				PRC = {
+					has_idea = PRC_SOV_agreement_PRC_2
+				}
+				SOV = {
+					has_idea = PRC_SOV_agreement_SOV_2
+				}
+			}
+			PRC = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_PRC_2
+					add_idea = PRC_SOV_agreement_PRC_3
+				}
+			}
+			SOV = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_SOV_2
+					add_idea = PRC_SOV_agreement_SOV_3
+				}
+			}
+		}
+	}
+}
+
+PRC_SOV_agreement_level_down = {	#中苏协定到期
+	effect = {
+		if = {
+			limit = {
+				PRC = {
+					NOT = {
+						has_idea = PRC_SOV_agreement_PRC_1
+					}
+				}
+				SOV = {
+					NOT = {
+						has_idea = PRC_SOV_agreement_SOV_1
+					}
+				}
+			}
+			PRC = {
+				remove_ideas = PRC_SOV_agreement_PRC_1
+			}
+			SOV = {
+				remove_ideas = PRC_SOV_agreement_SOV_1
+			}
+		}
+
+		if = {
+			limit = {
+				PRC = {
+					has_idea = PRC_SOV_agreement_PRC_2
+				}
+				SOV = {
+					has_idea = PRC_SOV_agreement_SOV_2
+				}
+			}
+			PRC = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_PRC_2
+					add_idea = PRC_SOV_agreement_PRC_1
+				}
+			}
+			SOV = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_SOV_2
+					add_idea = PRC_SOV_agreement_SOV_1
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				PRC = {
+					has_idea = PRC_SOV_agreement_PRC_3
+				}
+				SOV = {
+					has_idea = PRC_SOV_agreement_SOV_3
+				}
+			}
+			PRC = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_PRC_3
+					add_idea = PRC_SOV_agreement_PRC_2
+				}
+			}
+			SOV = {
+				swap_ideas = {
+					remove_idea = PRC_SOV_agreement_SOV_3
+					add_idea = PRC_SOV_agreement_SOV_2
+				}
+			}
+		}
+	}
+}

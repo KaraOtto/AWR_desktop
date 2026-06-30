@@ -1,101 +1,132 @@
 ﻿capital = 615
 
-oob = "SHX_1936"
+set_variable = { CHI_warlord_army_political_power_gain = 0 }
+set_variable = { CHI_warlord_army_army_core_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_core_defence_factor = 0 }
+set_variable = { CHI_warlord_army_production_speed_buildings_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_defence_factor = 0 }
+set_variable = { CHI_warlord_army_special_forces_cap = 0 }
+set_variable = { CHI_warlord_army_special_forces_out_of_supply_factor = 0 }
+set_variable = { warlord_faction_influence_war_score_factor = 0 }
+set_variable = { warlord_faction_influence_contribution_factor = 0 }
 
-recruit_character = SHX_chen_changjie
-recruit_character = SHX_chu_xichun
-recruit_character = SHX_fan_xiangli
-recruit_character = SHX_ji_gongquan
-recruit_character = SHX_jia_jingde
-recruit_character = SHX_li_fuying
-recruit_character = SHX_liang_huazhi
-recruit_character = SHX_qiu_yangjun
-recruit_character = SHX_sun_chu
-recruit_character = SHX_wang_huaiming
-recruit_character = SHX_wang_jingguo
-recruit_character = SHX_wang_qian
-recruit_character = SHX_yan_xishan
-recruit_character = SHX_yang_aiyuan
-recruit_character = SHX_zhao_chengshou
-recruit_character = SHX_zhao_daiwen
-recruit_character = SHX_zhong_jihan
-recruit_character = SHX_zhou_dai
-recruit_character = SHX_zhu_shouguang
-recruit_character = SHX_Peng_Yubin
-recruit_character = SHX_Bo_Yibo
+set_variable = { RNG_state_shintoism_surrender_limit = 0 }
+set_variable = { RNG_state_shintoism_war_support_factor = 0 }
+set_variable = { RNG_state_shintoism_pocket_penalty = 0 }
+set_variable = { RNG_state_shintoism_stability_factor = 0 }
+set_variable = { RNG_state_shintoism_army_core_defence_factor = 0 }
+set_variable = { RNG_state_shintoism_research_speed_factor = 0 }
+set_variable = { RNG_state_shintoism_recruitable_population_factor = 0 }
+set_variable = { RNG_state_shintoism_political_power_gain = 0 }
 
-set_popularities = {
-	democratic = 0
-	fascism = 0
-	communism = 0
-	neutrality = 100
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	set_oob = "SHX_1936_sea"
+	else = {
+		set_oob = "SHX_1936"
+	}
 }
 
-set_politics = {
-	ruling_party = neutrality
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
+set_stability = 0.65
+set_war_support = 0.4
 
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
-	gw_artillery = 1
-	#gwtank = 1
-	basic_train = 1
-}
-set_variable = { var = influence_to_fu_pp_total value = 0 }
-add_ideas = {
-	SHX_Anti_communist
-	SHX_weak_army
-	#SHX_Taiyuan_arsenal
 }
 
-SHX = {
-	1013 = {
-		add_victory_points = { 
-			province = 1027
-			value = -3
-		}
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	recruit_character = CHI_fu_zuoyi
+	set_technology = {
+		gw_artillery = 1
+	}
+	add_ideas = {
+		CHI_warlord_looting_idea
+	}
+}
+recruit_character = SHX_yan_xishan
+recruit_character = SHX_wang_jingguo
+recruit_character = SHX_zhang_shen
+recruit_character = SHX_luo_zhao
+recruit_character = SHX_liao_ting
+recruit_character = SHX_cheng_zhao
+recruit_character = SHX_ma_tian
+recruit_character = SHX_zhu_ting
+recruit_character = SHX_wang_li_sun
+recruit_character = SHX_min_lan_tung_tin
+recruit_character = SHX_tan_fang
+recruit_character = SHX_huang_peng
+recruit_character = SHX_peng_dong
+recruit_character = SHX_kong_fang
+recruit_character = SHX_yang_lu
+recruit_character = SHX_sun_li
+recruit_character = SHX_wang_zuanxu
+recruit_character = SHX_fu_zuoyi
+recruit_character = SHX_qu_yangke
+
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_warlord_state_idea
 	}
 }
 
-SHX = {
-	set_autonomy = {
-		target = SUY
-		autonomy_state = autonomy_rcm_national_revolutionary_army
-	}
-}
-
-add_war_support = 0.15
-add_stability = 0.2
-#set_cosmetic_tag = SHX_CLQ
 1939.1.1 = {
-	drop_cosmetic_tag = yes
-	add_to_war = {
-		targeted_alliance = CHI
-		enemy = JAP
-	}
-	
+
 	add_political_power = 1198
+	add_command_power = 100
 
 	if = {
 		limit = {
-			NOT = {
-				has_dlc = "Waking the Tiger"
-			}
+			has_dlc = "Waking the Tiger"
 		}
-		complete_national_focus = army_effort
-		complete_national_focus = equipment_effort
-		complete_national_focus = motorization_effort
-		complete_national_focus = aviation_effort
-		complete_national_focus = construction_effort_2
-		complete_national_focus = production_effort_2
-		complete_national_focus = infrastructure_effort
-		complete_national_focus = industrial_effort
-		complete_national_focus = construction_effort
-		complete_national_focus = production_effort
+
+		#CHI = { add_to_faction = PREV }
+		#add_to_war = {
+		#	targeted_alliance = CHI
+		#	enemy = JAP
+		#	hostility_reason = asked_to_join
+		#}
+		
+		#complete_national_focus = CHI_secure_internal_politics
+		#complete_national_focus = CHI_cooperation_with_the_communists
+		#complete_national_focus = CHI_land_redistribution
+		#complete_national_focus = CHI_land_value_tax
+		#complete_national_focus = CHI_judiciary_reforms
+		#complete_national_focus = CHI_communist_administrators
+		#complete_national_focus = CHI_industrial_investment
+		#complete_national_focus = CHI_public_education_reform
+		#complete_national_focus = CHI_local_arms_production
+		#complete_national_focus = CHI_long_term_economic_planning
+		#complete_national_focus = CHI_ideological_education
+		#complete_national_focus = CHI_local_arms_development
+		#complete_national_focus = CHI_heavy_weapons_development
+		#complete_national_focus = CHI_public_works
+		#complete_national_focus = CHI_labor_reform
+		#complete_national_focus = CHI_rural_militias
+		else = {			
+			#generic focuses
+			complete_national_focus = army_effort
+			complete_national_focus = equipment_effort
+			complete_national_focus = motorization_effort
+			complete_national_focus = aviation_effort
+			complete_national_focus = naval_effort
+			complete_national_focus = flexible_navy
+			complete_national_focus = industrial_effort
+			complete_national_focus = construction_effort
+			complete_national_focus = production_effort
+		}	
 	}
 
 	add_ideas = {
@@ -104,13 +135,14 @@ add_stability = 0.2
 		service_by_requirement
 		closed_economy
 	}
-
+	
 	set_technology = {
+		#doctrines
+		#air_superiority = 1
 
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
-		radio_detection = 1
 		mechanical_computing = 1
 		computing_machine = 1
 		basic_encryption = 1
@@ -128,30 +160,22 @@ add_stability = 0.2
 		concentrated_industry2 = 1
 		concentrated_industry3 = 1
 	}
-	oob = "SHX_1939"
-	set_popularities = {
-		democratic = 0
-		fascism = 0
-		communism = 0
-		neutrality = 100
-	}
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1936.1.1"
-		election_frequency = 48
-		elections_allowed = no
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 100
+}

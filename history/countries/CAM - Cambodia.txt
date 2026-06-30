@@ -1,6 +1,6 @@
-﻿capital = 981	## MODDED
+﻿capital = 741
 
-#oob = "CAM_1936"
+oob = "CAM_1936"
 
 set_research_slots = 3
 
@@ -12,13 +12,15 @@ set_technology = {
 	tech_support = 1
 	tech_recon = 1
 	tech_mountaineers = 1
-	tech_trucks = 1
 	motorised_infantry = 1
 	gw_artillery = 1
 	interwar_antiair = 1
-	trench_warfare = 1
-	fleet_in_being = 1
+	
 }
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+
 if = {
 	limit = {
 		NOT = { has_dlc = "By Blood Alone" }
@@ -36,7 +38,9 @@ if = {
 
 if = {
 	limit = {
-		NOT = { has_dlc = "No Step Back" }
+		NOT = {
+			has_dlc = "No Step Back"
+		}
 	}
 	set_technology = {
 		gwtank = 1
@@ -46,7 +50,9 @@ if = {
 }
 if = {
 	limit = {
+		
 		has_dlc = "No Step Back"
+		
 	}
 	set_technology = {
 		gwtank_chassis = 1
@@ -91,71 +97,34 @@ if = {
 	}
 }
 
-	## MODDEDvv
+set_politics = {
+	ruling_party = democratic
+	last_election = "1933.2.16"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
 set_popularities = {
 	democratic = 40
 	communism = 25
 	neutrality = 35
 }
-set_politics = {
 
-	ruling_party = neutrality	##< MODDED^^
-	last_election = "1933.2.16"
-	election_frequency = 36
-	elections_allowed = yes
-}
-	## MODDEDvv
-create_country_leader = {
-	name = "Tou Samouth"
-	desc = ""
-	picture = "Portrait_Cambodia_Tou_Samouth.dds"
-	expire = "1953.3.1"
-	ideology = marxism
-	traits = {
 
-	}
-}	## MODDED^^
-
-create_country_leader = {	## MODDED
-	name = "Sisowath Monipong"
-	desc = ""
-	picture = "Portrait_Cambodia_Sisowath_Monipong.dds"	## MODDED
-	expire = "1953.3.1"
-	ideology = fascism_ideology	## MODDED
-	traits = {
-
-	}
-}
 #non standard english alphabet character
-create_country_leader = {
-	name = "Sisowath Youtévong"
-	desc = ""
-	picture = "Portrait_Cambodia_Sisowath_Youtevong.dds"	## MODDED
-	expire = "1953.3.1"
-	ideology = n_socialism_ideology	## MODDED
-	traits = {
+#create_country_leader = {
+#	name = "Sisowath Youtévong"
+#	desc = ""
+#	picture = GFX_portrait_Sisowath_Youtevong
+#	expire = "1953.3.1"
+#	ideology = liberalism
+#	traits = {
+#		
+#	}
+#}
 
-	}
-}
+recruit_character = CAM_norodom_sihanouk
+recruit_character = CAM_son_ngoc_thanh
+recruit_character = CAM_tou_samouth
 
-create_country_leader = {
-	name = "Norodom Norindeth"	## MODDED
-	desc = ""
-	picture = "Portrait_Cambodia_Norodom_Norindeth.dds"	## MODDED
-	expire = "1953.3.1"
-	ideology = liberalism	## MODDED
-	traits = {
 
-	}
-}
-
-create_country_leader = {	## MODDED
-	name = "Norodom Sihanouk"	## MODDED
-	desc = ""
-	picture = "Portrait_Cambodia_Norodom_Sihanouk.dds"	## MODDED
-	expire = "1953.3.1"	## MODDED
-	ideology = despotism	## MODDED
-	traits = {
-
-	}
-}

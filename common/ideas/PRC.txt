@@ -5002,6 +5002,189 @@ ideas = {
 				min_export = -0.15
 			}
 		}
+
+		PRC_TIB_separatist_forces = {	#藏独势力影响
+			removal_cost = -1
+			picture = PRC_TIB_separatist_forces
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = -0.10
+				political_power_factor = -0.10
+			}
+		}
+
+		PRC_Revanchism = {	#百年国耻，今朝应雪
+
+			picture = PRC_Revanchism
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			modifier = {
+				justify_war_goal_time = -0.20 #guo
+				army_attack_against_major_factor = 0.05
+				ARMY_DEFENCE_AGAINST_MAJOR_FACTOR = 0.05
+				ARMY_BREAKTHROUGH_AGAINST_MAJOR_FACTOR = 0.05
+				defensive_war_stability_factor = 0.10
+				offensive_war_stability_factor = 0.10
+			}
+			
+		}
+
+		PRC_national_euthusiasm = {	#国民热忱
+			picture = PRC_national_euthusiasm
+
+			allowed = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.10
+				consumer_goods_factor = -0.10
+				AWR_economy_development_monthly = 0.03
+			}
+		}
+
+		prc_zhonghuarenmingongheguowansui = {	#中华人民共和国万岁
+										
+			removal_cost = -1
+
+			picture = communist_china
+
+			available = {
+				has_government = communism		
+			}
+				
+			modifier = {
+				stability_factor = 0.05
+				communism_drift = 0.05
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.025
+				AWR_economy_development_monthly = 0.01
+				political_advisor_cost_factor = -0.15 #MODDED
+				army_chief_cost_factor = -0.15 #MODDED
+				navy_chief_cost_factor = -0.15 #MODDED
+				air_chief_cost_factor = -0.15 #MODDED
+				theorist_cost_factor = -0.15 #MODDED
+				high_command_cost_factor = -0.15 #MODDED
+			}
+		}
+
+		PRC_united_front_operations = {		#统战运动
+			removal_cost = -1
+			picture = PRC_united_front_operations
+			available = {
+				tag = PRC
+			}
+			cancel = {
+				524 = {
+					is_controlled_by = PRC
+				}
+			}
+			modifier = {
+				boost_ideology_mission_factor = 0.20
+				operation_rescue_operative_cost = -0.10
+				operation_rescue_operative_outcome = 0.10
+			}
+		}
+
+		prc_attack_taiwan = {	#攻台方略
+    
+            name = prc_attack_taiwan
+    
+            picture = prc_attack_taiwan
+            
+            available = {
+				tag = PRC
+            }
+            
+            cancel = {
+				524 = {
+					is_controlled_by = PRC
+				}
+            }
+
+            removal_cost = -1
+			
+ 			targeted_modifier = {
+				tag = CHI
+				attack_bonus_against = 0.10
+				defense_bonus_against = 0.10				
+			    breakthrough_bonus_against = 0.10				
+            }
+			modifier = {
+				invasion_preparation = -0.25
+				naval_invasion_capacity = 25				
+			}  			
+    	}
+
+		PRC_SOV_agreement_PRC_1 = {	#中苏边境与工业合作总协定
+			name = PRC_SOV_agreement_PRC
+            picture = PRC_SOV_agreement_PRC
+            available = {
+				tag = PRC
+            }
+			modifier = {
+				production_speed_buildings_factor = -0.10
+				research_speed_factor = -0.05
+				civilian_factory_use = 10
+				industrial_capacity_factory = -0.05
+			}
+			targeted_modifier = {
+				tag = SOV
+				extra_trade_to_target_factor = 0.10
+			}
+		}
+		PRC_SOV_agreement_PRC_2 = {	#中苏边境与工业合作总协定
+			name = PRC_SOV_agreement_PRC
+            picture = PRC_SOV_agreement_PRC
+            available = {
+				tag = PRC
+            }
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				research_speed_factor = -0.075
+				civilian_factory_use = 15
+				industrial_capacity_factory = -0.075
+			}
+			targeted_modifier = {
+				tag = SOV
+				extra_trade_to_target_factor = 0.25
+			}
+		}
+		PRC_SOV_agreement_PRC_3 = {	#中苏边境与工业合作总协定
+			name = PRC_SOV_agreement_PRC
+            picture = PRC_SOV_agreement_PRC
+            available = {
+				tag = PRC
+            }
+			modifier = {
+				production_speed_buildings_factor = -0.20
+				research_speed_factor = -0.10
+				civilian_factory_use = 20
+				industrial_capacity_factory = -0.10
+			}
+			targeted_modifier = {
+				tag = SOV
+				extra_trade_to_target_factor = 0.50
+			}
+		}
 	}
 
 	

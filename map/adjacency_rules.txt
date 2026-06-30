@@ -1,15 +1,15 @@
-# Adjacency rules determine if an army, navy or trade can pass through the adjacency (e.g. a canal or strait).
+# Adjacency rules determine if an army, navy or trade can pass through the adjacency (e.g. a canal or strait).
 #
-# If two countries at war control provinces in the adjacency it is considered contested.
-# The optional triggers is_enemy, is_friend and is_neutral are evaluated in order and if one evaluates to true the corresponding rule is used.
-# If is_enemy and is_friend evaluates to false the neutral rule is used. In this case the is_neutral trigger will not be evaluated at all.
-# If is_friend and is_neutral evaluates to false the enemy rule is used.
-# If is_enemy and is_neutral evaluates to false the friend rule is used.
-# If any adjacency province controller is at war with the country the enemy rule is used, unless is_enemy evaluates to false, then the neutral rule is used.
-# If any adjacency province controller is an ally of is giving military access to the country the friend rule is used, unless is_friend evaluates to false, then the neutral rule is used.
-# Otherwise the neutral rule is used, unless is_neutral evaluates to false, then the enemy rule is used.
+# If two countries at war control provinces in the adjacency it is considered contested.
+# The optional triggers is_enemy, is_friend and is_neutral are evaluated in order and if one evaluates to true the corresponding rule is used.
+# If is_enemy and is_friend evaluates to false the neutral rule is used. In this case the is_neutral trigger will not be evaluated at all.
+# If is_friend and is_neutral evaluates to false the enemy rule is used.
+# If is_enemy and is_neutral evaluates to false the friend rule is used.
+# If any adjacency province controller is at war with the country the enemy rule is used, unless is_enemy evaluates to false, then the neutral rule is used.
+# If any adjacency province controller is an ally of is giving military access to the country the friend rule is used, unless is_friend evaluates to false, then the neutral rule is used.
+# Otherwise the neutral rule is used, unless is_neutral evaluates to false, then the enemy rule is used.
 #
-# The 'name' property is how you refer to the rule in adjacencies.csv
+# The 'name' property is how you refer to the rule in adjacencies.csv
 
 #Suez Canal
 adjacency_rule =
@@ -51,10 +51,11 @@ adjacency_rule =
 		OR = {
 			has_global_flag = SUEZ_CANAL_BLOCKED
 			has_country_flag = SUEZ_CANAL_BLOCKED_FOR_COUNTRY
+			has_country_flag = SUEZ_SANCTIONS_FLAG
 		}
-		tooltip = disable_canal_tt
+		tooltip = suez_blocked_tt
 	}
-		
+	
 	icon = 12049
 	offset = { 1 0 -6 }
 }
@@ -135,38 +136,33 @@ adjacency_rule =
 	
 	required_provinces = { 6287 3277 3325 3260 394 }
 	
-	icon = 2455
-	offset = { -26 0 -13 }
+	icon = 2431
+	offset = { -2 0 -7 }
 }
 
 #Panama Canal
-adjacency_rule =
-{
+adjacency_rule = {
 	name = "PANAMA_CANAL"
 
-	contested =
-	{
+	contested = {
 		army = no
 		navy = no
 		submarine = no
 		trade = no
 	}
-	enemy =
-	{
+	enemy = {
 		army = no
 		navy = no
 		submarine = no
 		trade = no
 	}
-	friend =
-	{
+	friend = {
 		army = yes
 		navy = yes
 		submarine = yes
 		trade = yes
 	}
-	neutral =
-	{
+	neutral = {
 		army = no
 		navy = no
 		submarine = no
@@ -179,8 +175,15 @@ adjacency_rule =
 		OR = {
 			has_global_flag = PANAMA_CANAL_BLOCKED
 			has_country_flag = PANAMA_CANAL_BLOCKED_FOR_COUNTRY
+			685 = {
+				has_dynamic_modifier = {
+					modifier = panama_canal_damaged_modifier
+					scope = THIS
+				}
+			}
 		}
-		tooltip = disable_canal_tt
+		#tooltip = disable_canal_tt
+		tooltip = kiel_canal_damaged_tt
 	}
 		
 	icon = 7617
@@ -285,8 +288,7 @@ adjacency_rule =
 }
 
 #Kiel Canal
-adjacency_rule =
-{
+adjacency_rule = {
 	name = "KIEL_CANAL"
 
 	contested =
@@ -318,11 +320,22 @@ adjacency_rule =
 		trade = yes
 	}
 	
-	required_provinces = { 11366 317 3231 }
+	required_provinces = { 317 3231 3368 6257 6389 }
+
+	is_disabled = {
+		58 = {
+			has_dynamic_modifier = {
+				modifier = kiel_canal_damaged_modifier
+				scope = THIS
+			}
+		}
+		tooltip = kiel_canal_damaged_tt
+	}	
 		
-	icon = 11366
-	offset = { 5 0 -6 }
+	icon = 6389
+	offset = { -9 0 2 }
 }
+
 #Strait of Hormuz
 adjacency_rule =
 {
@@ -357,8 +370,43 @@ adjacency_rule =
 		trade = yes
 	}
 	
-	required_provinces = { 10904 7982 4959 }
+	required_provinces = { 13369 7982 4959 13312 }
 		
-	icon = 10904
+	icon = 13369
 	offset = { 2 0 12 }
+}
+
+#Strait of Otranto 
+adjacency_rule = {
+	name = "OTRANTO_STRAIT" 
+
+	contested = {
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	enemy = {
+		army = no
+		navy = no
+		submarine = yes
+		trade = no
+	}
+	friend = {
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral = {
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	
+	required_provinces = { 6979 11767 }
+		
+	icon = 6979
+	offset = { 9 0 6 }
 }

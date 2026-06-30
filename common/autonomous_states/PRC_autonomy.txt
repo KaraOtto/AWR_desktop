@@ -1,0 +1,133 @@
+autonomy_state = {	#民族自治区
+	id = autonomy_PRC_national_autonomy_state
+	is_puppet = no
+
+	use_overlord_color = yes
+
+	min_freedom_level = 0.10
+	manpower_influence = 0.8
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		# 不能自行宣战
+        can_not_declare_war = yes
+        # 不能拒绝宗主国的参战召唤
+        can_decline_call_to_war = no
+        # 附庸训练出来的部队交给宗主国
+        units_deployed_to_overlord = yes
+        # 不能成为间谍主管国
+        can_be_spymaster = no
+        # 不为间谍主管国提供额外特工
+        contributes_operatives = no
+        # 不能建立合作政府
+        can_create_collaboration_government = no
+	}
+
+	modifier = {
+		autonomy_manpower_share = 1.00
+		can_master_build_for_us = 1
+		cic_to_overlord_factor = 0.50
+		mic_to_overlord_factor = 0.50
+		autonomy_gain_global_factor = -1.00
+		peace_score_ratio_transferred_to_overlord = 1.00
+	}
+
+	ai_subject_wants_higher = {
+		factor = 0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = yes
+	}
+
+	allowed = {
+       OR = {
+			AND = {
+				num_of_controlled_states > 0
+
+				all_controlled_state = {
+					is_core_of = PRC
+				}
+			}
+			tag = TIB
+	   	}
+    }
+
+	can_take_level = {
+		always = no
+	}
+
+	can_lose_level = {
+		always = yes
+	}
+	
+}
+
+autonomy_state = {	#特别行政区
+	id = autonomy_special_administrative_region
+	is_puppet = no
+
+	use_overlord_color = yes
+
+	min_freedom_level = 0.15
+	manpower_influence = 0.10
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		# 不能自行宣战
+        can_not_declare_war = yes
+        # 不能拒绝宗主国的参战召唤
+        can_decline_call_to_war = no
+        # 附庸训练出来的部队交给宗主国
+        units_deployed_to_overlord = yes
+        # 不能成为间谍主管国
+        can_be_spymaster = no
+        # 不为间谍主管国提供额外特工
+        contributes_operatives = no
+        # 不能建立合作政府
+        can_create_collaboration_government = no
+	}
+
+	modifier = {
+		autonomy_manpower_share = 1.00
+		can_master_build_for_us = 1
+		cic_to_overlord_factor = 0
+		mic_to_overlord_factor = 0
+		autonomy_gain_global_factor = -1.00
+		peace_score_ratio_transferred_to_overlord = 1.00
+	}
+
+	ai_subject_wants_higher = {
+		factor = 0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = yes
+	}
+
+	allowed = {
+       OR = {
+			tag = HOK
+			tag = AOM
+			has_cosmetic_tag = TAW
+	   	}
+    }
+
+	can_take_level = {
+		always = no
+	}
+
+	can_lose_level = {
+		always = no
+	}
+	
+}
+
+
+

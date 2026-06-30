@@ -192,3 +192,32 @@ PRC_resource_effort = {	#国家资源开采项目
 	}
 
 }
+
+TIB_democracy_reform = {	#西藏民主改革
+	priority = 2
+	icon = generic_police_action
+	visible = {
+		has_completed_focus = PRC_force_TIB_reform
+	}
+}
+
+CHINA_recover_motherland = {	#中华民族历史领土
+	priority = 8000	
+	icon = generic_political_actions
+	picture = GFX_Chinese_historical_territory
+	
+	allowed = {
+		OR = {
+			TAG = CHI
+			TAG = PRC
+			TAG = YUN
+			TAG = XSM
+			TAG = GXC
+			TAG = SIK
+			TAG = MAN
+			TAG = SHX
+			is_literally_china = yes	
+        }
+	}
+    visible_when_empty = no
+}

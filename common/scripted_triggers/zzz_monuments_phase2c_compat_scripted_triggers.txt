@@ -1,0 +1,9 @@
+# Phase 2C-B monuments compatibility layer for the 1.19 migration lab.
+# Keeps old COCO monument state-control checks parseable without importing unrelated focus/decision systems.
+
+is_controlled_by_ROOT_or_puppet = {
+	OR = {
+		is_controlled_by = ROOT
+		controller = { is_subject_of = ROOT }
+	}
+}

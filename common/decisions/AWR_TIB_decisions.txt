@@ -1,0 +1,66 @@
+TIB_democracy_reform_pressure = {	##民主改革压力
+	democracy_reform_pressure_from_public = {	#底层百姓要求改革
+		icon = generic_police_action
+	
+		fire_only_once = yes
+		visible = {
+			tag = TIB
+			PRC = {
+				has_completed_focus = PRC_allow_TIB_reform_by_itself
+			}
+		}
+		available = {
+			has_completed_focus = TIB_push_the_democracy_reform
+		}
+		
+		activation = {
+			PRC = {
+				has_completed_focus = PRC_allow_TIB_reform_by_itself
+			}
+			is_subject_of = PRC
+		}
+		
+		days_mission_timeout = 360
+		is_good = no
+		
+		complete_effect = {
+			PRC = {
+				# 先让TIB玩家切换到PRC
+				change_tag_from = TIB
+
+				# 然后由PRC吞并TIB
+				annex_country = {
+					target = TIB
+					transfer_troops = yes
+				}
+			}
+
+			
+		}
+		
+		selectable_mission = yes
+		
+		cancel_trigger = {	
+			OR = {
+				has_war_with = PRC
+				has_completed_focus = TIB_push_the_democracy_reform
+			}
+		}
+		
+		cancel_effect = {
+			#任务终止时触发的效果
+		}
+
+		timeout_effect = {
+			PRC = {
+				annex_country = {
+					target = TIB
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
+}

@@ -118,4 +118,64 @@ on_actions = {
 			}
 		}
 	}
+
+	on_startup = {	#清朝领土
+		effect = {	
+			every_state = { 
+				limit = {
+					OR = {
+						is_core_of = CHI
+						is_core_of = PRC
+						is_core_of = MON
+						is_core_of = SIK
+						is_core_of = TIB
+						is_core_of = TAN
+						#外东北
+						state = 561
+						state = 560
+						state = 657
+						state = 409
+						state = 408
+						#外西北
+						state = 654                                      						
+						state = 588   
+						state = 589   
+						state = 586 
+						state = 732
+						state = 1022
+						#库页岛
+						state = 655
+						state = 537
+						#琉球
+						state = 526
+						#藏南
+						state = 434
+						#克什米尔
+						state = 1068
+						state = 1076
+						#瓦罕走廊
+						state = 1065
+
+					}
+					
+				}
+				set_state_flag = Qing_dynasty_territory
+			}
+		}
+	}
+
+	on_startup = {	#少数民族区域
+		effect = {	
+			every_state = { 
+				limit = {
+					OR = {
+						is_core_of = SIK
+						is_core_of = TIB
+					}
+					
+				}
+				set_state_flag = ethnic_minorities_area
+			}
+		}
+	}
 }

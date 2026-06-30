@@ -1,29 +1,95 @@
-﻿capital = 1055 #Kuala Lumpur
+﻿capital = 336 #Kuala Lumpur
 
 oob = "MAL_1936"
 
 set_research_slots = 3
 
-# Starting tech 
-# clone of RAJ
+recruit_character = MAL_shenton_thomas
+recruit_character = MAL_onn_jaafar
+recruit_character = MAL_lai_teck
+recruit_character = MAL_ibrahim_hj_yaacob
+recruit_character = MAL_winston_tyron
+
+
+# Starting tech
+# clone of UK
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	tech_support = 1		
 	tech_engineers = 1
 	tech_recon = 1
-	trench_warfare = 1
-	fleet_in_being = 1
-	fuel_silos = 1
-	fuel_refining = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	electronic_mechanical_engineering = 1
+	radio = 1
+}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+
+complete_special_project = {
+	project = sp:sp_air_radar
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		cv_early_fighter = 1
+		cv_naval_bomber1 = 1
+		naval_bomber1 = 1
+		early_bomber = 1
+		CAS1 = 1	
+		early_transport_plane = 1
+	}
+	else = {
+		set_technology = {
+			bba_early_transport_plane = 1
+		}
+	}
 }
 
 if = {
 	limit = {
-		not = { has_dlc =  "Man the Guns" }
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
 	}
 	set_technology = {
 		transport = 1
+		early_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
 	}
 }
 
@@ -33,25 +99,16 @@ if = {
 	}
 	set_technology = {
 		mtg_transport = 1
+		early_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_battery = 1
 	}
 }
-
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-}
+set_convoys = 25
 
 if = {
 	limit = { has_dlc = "Together for Victory" }
@@ -60,68 +117,22 @@ if = {
 }
 
 set_popularities = {
-	democratic = 20
-	n_socialism = 17
-	fascism = 0
-	communism = 13
-	neutrality = 50
-}
-	
-set_politics = {
-	ruling_party = neutrality
-	last_election = "1935.11.14"
-	election_frequency = 48
-	elections_allowed = no
-}
-
-create_country_leader = {
-	name = MAL_Onn_Jaafar 
-	desc = ""
-	picture = "gfx/leaders/MAL/Portrait_Malaysia_Onn_Jaafar.dds"
-	expire = "1953.3.1"
-	ideology = conservatism
-	traits = {
-
-	}
-}
-
-create_country_leader = {
-	name = MAL_Lai_Teck 
-	desc = ""
-	picture = "gfx/leaders/MAL/Portrait_Malaysia_Lai_Teck.dds"
-	expire = "1953.3.1"
-	ideology = marxism
-	traits = {
-
-	}
-}
-create_country_leader = {
-	name = MAL_Conference_of_Rulers 
-	desc = ""
-	picture = "gfx/leaders/MAL/Portrait_conference_of_rulers.dds"
-	expire = "1953.3.1"
-	ideology = despotism
-	traits = {
-
-	}
-}
-
-create_country_leader = {
-	name = MAL_Ibrahim_Hj_Yaacob #this guy supported Japanese during the war, and was imprisoned for it, could be made fascist?
-	desc = ""
-	picture = "gfx/leaders/MAL/Portrait_Malaysia_Ibrahim_Hj_Yaacob.dds"
-	expire = "1953.3.1"
-	ideology = n_socialism_ideology
-	traits = {
-
-	}
+	democratic = 33
+	communism = 33
+	neutrality = 34
 }
 
 set_cosmetic_tag = MAL_UK # British Malaya
 
+add_ideas = {
+	MAL_ketuanan_melayu
+	MAL_colonial_administration_idea
+}
+
 1939.1.1 = {
 	add_political_power = 1198
-
+	add_command_power = 100
+	
 	#generic focuses
 	complete_national_focus = army_effort
 	complete_national_focus = equipment_effort
@@ -132,21 +143,21 @@ set_cosmetic_tag = MAL_UK # British Malaya
 	complete_national_focus = industrial_effort
 	complete_national_focus = construction_effort
 	complete_national_focus = production_effort
-
+	
 	set_technology = {
-		gwtank = 1
-		basic_light_tank = 1
+	
 		interwar_artillery = 1
 		interwar_antiair = 1
 		tech_recon = 1
 		infantry_weapons2 = 1
 		support_weapons = 1
 
+		#doctrines
+		#air_superiority = 1
 
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
-		radio_detection = 1
 		mechanical_computing = 1
 
 		#industry
@@ -159,18 +170,9 @@ set_cosmetic_tag = MAL_UK # British Malaya
 		dispersed_industry = 1
 		dispersed_industry2 = 1
 	}
-	set_popularities = {
-		democratic = 20
-		n_socialism = 17
-		fascism = 0
-		communism = 13
-		neutrality = 50
-	}
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1935.11.14"
-		election_frequency = 48
-		elections_allowed = no
-	}
 }
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
 

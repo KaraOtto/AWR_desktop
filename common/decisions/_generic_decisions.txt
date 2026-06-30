@@ -949,7 +949,7 @@ special_projects = {
 		available = {
 			has_full_control_of_state = 446
 			#has_full_control_of_state = 453 #MODDED
-			num_of_civilian_factories > 15
+			industrial_complex > 15
 		}
 	
 		visible = {
@@ -1026,7 +1026,7 @@ special_projects = {
 					controls_state = 304
 				}
 			}
-			num_of_civilian_factories > 25
+			industrial_complex > 25
 		}
 	
 		visible = {
@@ -1091,7 +1091,7 @@ war_measures = {
 		icon = generic_industry
 
 		available = {
-			num_of_civilian_factories > 5 #Change this if amount of factories change
+			industrial_complex > 5 #Change this if amount of factories change
 		}
 
 		visible = {
@@ -1120,7 +1120,7 @@ war_measures = {
 		icon = generic_industry
 
 		available = {
-			num_of_civilian_factories > 5 #Change this if amount of factories change
+			industrial_complex > 5 #Change this if amount of factories change
 		}
 
 		visible = {
@@ -3932,6 +3932,35 @@ remove_incompetent_heavy_industry = {	#国家重工业发展计划
 
 		remove_effect = {
 			remove_ideas = incompetent_heavy_industry_3			
+		}
+	}
+}
+
+superpower_decision_categoriy = {	#成为超级大国
+	declare_being_a_superpower = {	#宣布成为超级大国
+		icon = generic_industry
+		visible = {
+			is_major = yes
+			num_of_controlled_states > 30
+			arms_factory > 149
+			industrial_complex > 149
+			OR = {
+				tag = USA
+				tag = SOV
+				tag = PRC
+			}
+			NOT = {
+				has_country_flag = superpower
+			}
+			PRC = {
+				OR = {
+					has_completed_focus = PRC_guide_third-world_countries
+					has_completed_focus = PRC_partnerships_without_alliance
+				}
+			}
+		}
+		available = {
+			is_special_project_completed = sp:sp_nuclear_bomb
 		}
 	}
 }
