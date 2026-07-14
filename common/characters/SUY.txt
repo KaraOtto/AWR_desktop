@@ -1,0 +1,424 @@
+character = {
+	SUY_fu_zuoyi={
+		name=SUY_fu_zuoyi #傅作义，1895年6月27日生於山西省榮河縣，保定5期步科，1935年4月2日二級上將，1974年4月19日於北京病逝
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_fu_zuoyi"
+				small="GFX_idea_SUY_fu_zuoyi"
+			}
+		}
+        country_leader={
+			ideology=despotism
+			expire="1960.5.23"
+			traits={ fu_zuoyi_doctrine CHI_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1960.5.23"
+			traits={ fu_zuoyi_doctrine CHI_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1960.5.23"
+			traits={ fu_zuoyi_doctrine CHI_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=n_socialism_ideology
+			expire="1960.5.23"
+			traits={ fu_zuoyi_doctrine CHI_veteran_of_central_plains_war }
+			id=-1
+		}
+		country_leader={
+			ideology=marxism
+			expire="1960.5.23"
+			traits={ fu_zuoyi_doctrine CHI_veteran_of_central_plains_war }
+			id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = SUY_fu_zuoyi
+			allowed = {
+				always = yes#guo
+			}
+			traits = {
+				army_chief_defensive_3
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 200
+                modifier = {
+					factor = 200
+					has_war = yes
+				}
+			}
+		}
+        advisor={
+			slot = theorist
+			idea_token = SUY_fu_zuoyi_theorist
+			ledger = army
+			allowed = {
+				always = yes#guo
+			}			
+			traits = {
+				military_theorist 
+			}
+			cost = 100
+		}
+		field_marshal={ #guo
+			traits={ brilliant_strategist  adaptable  career_officer infantry_officer war_hero NRA_General_2ndRank trickster }
+			skill=5
+			attack_skill=4
+			defense_skill=5
+			planning_skill=4
+			logistics_skill=5
+			legacy_id=4002
+            desc=SUY_fu_zuoyi_desc
+		}
+	}
+
+	SUY_Dong_Qiwu={
+		name=SUY_Dong_Qiwu #董其武（1899年11月27日—1989年3月3日）山西省河津縣人
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_Dong_Qiwu"
+				small="GFX_idea_SUY_Dong_Qiwu"
+			}
+		}
+		corps_commander={
+			traits={ } #1936.5 Major-General (Post rank),1937-11-30 Lieutenant-General (Post rank)
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+		}
+		advisor={
+			slot = high_command
+			idea_token =  SUY_Dong_Qiwu
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}
+			traits = {
+				army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_Sun_Lanfeng={
+		name=SUY_Sun_Lanfeng #孙兰峰（1896年11月17日—1987年2月27日）山東省滕縣人，
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_Sun_Lanfeng"
+				small="GFX_idea_SUY_Sun_Lanfeng"
+			}
+		}
+		corps_commander={
+			traits={ } # #1936.5 Major-General (Post rank)
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+		}
+		advisor={
+			slot = high_command
+			idea_token = SUY_Sun_Lanfeng
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}
+			traits = {
+				army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_an_chunshan={
+		name=SUY_an_chunshan #安春山
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_An_Chunshan"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = SUY_generals_1940_flag } 
+			traits={ }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	SUY_guo_jingyun={
+		name=SUY_guo_jingyun #郭景云
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_Guo_Jingyun"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = SUY_generals_1940_flag } 
+			traits={  }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	SUY_ma_zhanshan={
+		name=SUY_ma_zhanshan #马占山
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_Ma_Zhanshan"
+				small="GFX_idea_SUY_Ma_Zhanshan"
+			}
+		}
+		corps_commander={
+			visible = { always = yes } 
+			traits={ }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+
+	SUY_yuan_qingrong={
+		name=SUY_yuan_qingrong #袁庆荣
+		portraits={
+			army={
+				large="GFX_Portrait_SUY_Yuan_Qingrong"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = SUY_generals_1940_flag } 
+			traits={ }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}	
+	}
+
+	SUY_yuan_qingzeng={
+		name=SUY_yuan_qingzeng #袁庆曾1895~1977 袁慶榮的兄長(袁氏三雄)
+		portraits={
+			army={
+				small="GFX_idea_SUY_Yuan_Qingzeng"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_yuan_qingzeng
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				captain_of_industry #民政廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_feng_xi={
+		name=SUY_feng_xi #冯曦1880~1960
+		portraits={
+			army={
+				small="GFX_idea_SUY_Feng_Xi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_feng_xi
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				wrl_technocrat #建設廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_zeng_houzai={
+		name=SUY_zeng_houzai #曾厚载
+		portraits={
+			army={
+				small="GFX_idea_SUY_Zeng_Houzai"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_zeng_houzai
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				editor #秘書長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_shakeduerzhabu={
+		name=SUY_shakeduerzhabu #沙克都尔扎布(沙王)1873~1945
+		portraits={
+			army={
+				small="GFX_idea_SUY_Shakeduerzhabu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_shakeduerzhabu
+			allowed  = {
+				original_tag = SUY
+			}
+			available = {
+				NOT = {
+					has_completed_focus = SUY_ikechao_incident
+				}
+			}
+			traits  = {
+				propaganda_expert
+			}
+			ai_will_do = {
+				factor = 80
+			}
+		}
+	}
+
+	SUY_li_juyi={
+		name=SUY_li_juyi #李居义1885~1972
+		portraits={
+			army={
+				small="GFX_idea_SUY_Li_Juyi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_li_juyi
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				economist #財政廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_yan_wei={
+		name=SUY_yan_wei #阎伟1895~1985
+		portraits={
+			army={
+				small="GFX_idea_SUY_Yan_Wei"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SUY_yan_wei
+			allowed  = {
+				original_tag = SUY
+			}
+			traits  = {
+				wrl_education_reformer #教育廳長
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SUY_e_yousan={
+		name=SUY_e_yousan #鄂友三
+		portraits={
+			army={
+				small="GFX_idea_SUY_E_Yousan"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = SUY_e_yousan
+			ledger = army
+			allowed = {
+				original_tag = SUY
+			}			
+			traits = {
+				mass_assault_expert
+			}
+			cost = 100
+		}
+	}
+
+	SUY_chi_shentian={
+		name=SUY_chi_shentian #郗莘田
+		portraits={
+			army={
+				small="GFX_idea_SUY_Chi_Shentian"
+			}
+		}
+		advisor={
+			allowed = {
+				original_tag = SUY
+			}	
+			slot = high_command
+			ledger = army
+			idea_token = SUY_chi_shentian
+			traits = {
+				army_entrenchment_2
+			}
+			cost = 100	
+		}
+	}
+
+	SUY_xu_zizhen={
+		name=SUY_xu_zizhen #徐子珍
+		portraits={
+			army={
+				small="GFX_idea_SUY_Xu_Zizhen"
+			}
+		}
+		advisor={
+			allowed = {
+				original_tag = SUY
+			}	
+			slot = high_command
+			ledger = army
+			idea_token = SUY_xu_zizhen
+			traits = {
+				army_logistics_2
+			}	
+			cost = 100
+		}
+	}
+}
