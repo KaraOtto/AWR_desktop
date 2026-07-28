@@ -1,24 +1,28 @@
 ideologies = {
 	
-	democratic = {
+	democratic = {	#民主主义
 
 		types = {
 
-			conservatism = {
+			conservatism = {	#保守主义
+				color = { 1 7 132 }
 			}
 
-			liberalism = {
+			liberalism = {	#自由主义
+				color = { 0 170 255 }
 			}
 
-		    socialism = {
+		    social_democratic = {	#社会民主主义
+				color = { 255 0 144 }
 			}
 
-            populism = {
+            populism = {	#民粹主义
+				color = { 157 0 255 }
 			}
 
-			sanmin_constitutional_government = {  # MODDED
-				can_be_randomly_selected = no   # MODDED
-			}  # MODDED
+			sanmin_constitutional_government = {  #三民主义——宪政
+				can_be_randomly_selected = no   
+			} 
 		}
 
 		dynamic_faction_names = {
@@ -30,18 +34,19 @@ ideologies = {
 			"FACTION_NAME_DEMOCRATIC_6"
 		}
 
+		
 		color = { 0 0 255 }
 
 		rules = {
-			can_create_collaboration_government = yes #guo
-			can_declare_war_on_same_ideology = no
-			can_force_government = yes
-			can_send_volunteers = no
-			can_puppet = no
-			can_lower_tension = yes
-			can_only_justify_war_on_threat_country = yes
-			can_guarantee_other_ideologies = yes
-		}
+            can_create_collaboration_government = no
+            can_declare_war_on_same_ideology = no
+            can_force_government = yes
+            can_send_volunteers = no
+            can_puppet = no
+            can_lower_tension = yes
+            can_only_justify_war_on_threat_country = yes
+            can_guarantee_other_ideologies = yes
+        }
 		
 		can_host_government_in_exile = yes
 		
@@ -49,42 +54,55 @@ ideologies = {
 		faction_impact_on_world_tension = -0.1  # MODDED
 
 		modifiers = {
-			consumer_goods_factor = 0.1 #guo
-			research_speed_factor = 0.15 #guo
-			weekly_manpower = 850 #guo
-			global_building_slots_factor = 0.15 #guo
-			trade_opinion_factor = 0.2 #guo
-			opinion_gain_monthly_factor = 0.2 #guo
-			improve_relations_maintain_cost_factor = -0.2 #guo  
-  			guarantee_cost = -0.25
-			generate_wargoal_tension = 1.00
-			join_faction_tension = 0.80
-			lend_lease_tension = 0.50
-			send_volunteers_tension = 0.50
-			guarantee_tension = 0.25
-			civilian_intel_to_others = 20.0
-			army_intel_to_others = 5.0
-			navy_intel_to_others = 20.0
-			airforce_intel_to_others = 5
-			embargo_cost_factor = -0.5
-			embargo_threshold_factor = -0.5
-		}
+            generate_wargoal_tension = 1.00
+            join_faction_tension = 0.80
+            lend_lease_tension = 0.40
+            send_volunteers_tension = 0.50
+            guarantee_tension = 0.25
+            annex_cost_factor = 0.50
+            take_states_cost_factor = 0.25
+			political_power_gain = -0.05
+			stability_factor = 0.05
+			research_speed_factor = 0.05
+			resistance_target = -0.05
+			compliance_growth_speed = 0.05
+			AWR_economy_development_monthly = 0.02
+			consumer_goods_factor = 0.10
+			production_speed_infrastructure_factor = 0.10
+			production_speed_industrial_complex_factor = 0.10
+			production_speed_arms_factory_factor = -0.05
+			production_speed_dockyard_factor = -0.05
+        }
 
-		faction_modifiers = {
-			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
-		}
-		ai_democratic = yes # uses the democratic AI behaviour
-		ai_ideology_wanted_units_factor = 1.10 # multiplies threat impact on number of desired units by this value, defaults to 1.0. If at war, the larger of this value and NDefines::NAI::WANTED_UNITS_WAR_THREAT_FACTOR will be used instead
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.30
+            research_sharing_per_country_bonus_factor = 0.10
+        }
+		ai_democratic = yes 
+		ai_ideology_wanted_units_factor = 1.10 
+		can_be_boosted = yes
 	}
 	
-	n_socialism = {   vvvvv
+	socialism = {   #社会主义
 		
 		types = {
-			n_socialism_ideology = {
+			democratic_socialism = {	#民主社会主义
+				color = { 255 153 1 }
 			}
-			n_democratic_socialism = {
+			ethical_socialism = {	#伦理社会主义
+				color = { 219 69 0 }
 			}
-			n_authoritarian_socialism = {
+			cooperative_socialism = {	#合作社社会主义
+				color = { 255 55 0 }
+			}
+			market_socialism = {	#市场社会主义
+				color = { 255 111 44 }
+			}
+			authoritarian_socialism = {	#专制社会主义
+				color = { 160 51 0 }
+			}
+			religious_socialism = {	#宗教社会主义
+				color = { 161 85 49 }
 			}
 		}
 		
@@ -97,89 +115,104 @@ ideologies = {
 			"FACTION_NAME_N_SOCIALIST_6"
 		}
 		
-		color = { 243 68 68 }
+		color = { 254 80 0 }
 		
-		war_impact_on_world_tension = 0.35		#Commie less threatening
+		
+		war_impact_on_world_tension = 0.35		
 		faction_impact_on_world_tension = 0.3
 		
 		rules = {
-			can_declare_war_on_same_ideology = no
-			can_force_government = yes
-			can_send_volunteers = yes
-			can_puppet = no
-			can_lower_tension = yes
-			can_only_justify_war_on_threat_country = yes #guo
-			can_guarantee_other_ideologies = yes #guo
-			can_create_collaboration_government = yes #guo
-		}
-		modifiers = {
-			generate_wargoal_tension = 0.5
-			#join_faction_tension = 0.40
-			lend_lease_tension = 0.50
-			send_volunteers_tension = 0.50
-			guarantee_tension = 0.25
-			#take_states_cost_factor = 0.25
-			annex_cost_factor = 0.5
-			civilian_intel_to_others = 10.0
-			army_intel_to_others = 7.5
-			navy_intel_to_others = 12.5
-			airforce_intel_to_others = 7.5
-			hidden_modifier = { join_faction_tension = -0.1 }
-			political_power_gain = 0.15  
+            can_create_collaboration_government = no
+            can_declare_war_on_same_ideology = no
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = no
+            can_lower_tension = yes
+            can_only_justify_war_on_threat_country = yes
+            can_guarantee_other_ideologies = yes
+        }
 
-			consumer_goods_factor = 0.15 #guo
-			research_speed_factor = 0.2 #guo
-			global_building_slots_factor = 0.2 #guo
-			stability_weekly = 0.001 #guo
-			stability_factor = 0.1 #guo
-			weekly_manpower = 1350 #guo
-			trade_opinion_factor = 0.3 #guo
-			opinion_gain_monthly_factor = 0.3 #guo
-			improve_relations_maintain_cost_factor = -0.3 #guo   
-		}
+		modifiers = {
+            generate_wargoal_tension = 0.60
+            join_faction_tension = 0.40
+            lend_lease_tension = 0.20
+            send_volunteers_tension = 0.10
+            guarantee_tension = 0.20
+            annex_cost_factor = 0.35
+            take_states_cost_factor = 0.20
+			stability_factor = 0.10
+			research_speed_factor = 0.025
+			global_building_slots_factor = 0.05
+			production_speed_buildings_factor = 0.05
+			resistance_target = -0.05
+			compliance_growth_speed = 0.05
+			AWR_economy_development_monthly = 0.03
+			industrial_capacity_factory = 0.025
+			consumer_goods_factor = 0.15
+        }
 
 		faction_modifiers = {
-			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
-		}
-		ai_democratic = yes # uses the democratic AI behaviour
-		ai_ideology_wanted_units_factor = 1.10 # multiplies threat impact on number of desired units by this value, defaults to 1.0. If at war, the larger of this value and NDefines::NAI::WANTED_UNITS_WAR_THREAT_FACTOR will be used instead
-		
-	}
-  # MODDED^^^^^^
+            faction_trade_opinion_factor = 0.20
+            research_sharing_per_country_bonus_factor = 0.12
+        }
 
-	communism = {
+        can_be_boosted = yes
+	}
+
+	communism = {	#共产主义
 
 		types = {
 
 			marxism = {#马克思主义
+				color = { 255 0 0 }
 			}
 
 			leninism = {#列宁主义
+				color = { 237 0 0 }
+			}
+
+			marxism_leninism = {	#马克思列宁主义
+				color = { 255 0 0 }
 			}
 
 			stalinism = {#斯大林主义
+				color = { 220 0 0 }
+			}
+
+			khrushchevism = {	#赫鲁晓夫主义
+				can_be_randomly_selected = no
+				color = { 182 38 38 }
 			}
 
 			anti_revisionism = {#反修正主义
-				can_be_randomly_selected = no   # MODDED #guo
+				can_be_randomly_selected = no   
+				color = { 219 21 21 }
 			}
 
-			anarchist_communism = {#无政府主义
-				can_be_randomly_selected = no   # MODDED #guo
+			trotskyism = {  #托洛茨基主义
+				can_be_randomly_selected = no   
+				color = { 255 55 55 }
 			}
-			
-			democratic_centralism = {  # 民主集中制
-				can_be_randomly_selected = no   # MODDED #guo
-			}			
-			trotskyism = {  # 托派
-				can_be_randomly_selected = no   # MODDED #guo
+
+			mao_zedong_thought = {	#毛泽东思想
+				can_be_randomly_selected = no
+				color = { 228 16 16 }
 			}
-			maoism = {  # 毛派
-				can_be_randomly_selected = no   # MODDED #guo
+
+			maoism = {  #毛主义
+				can_be_randomly_selected = no  
+				color = { 200 0 0 } 
 			}
-			PRC_maoism_2 = {  # 毛派2
-				can_be_randomly_selected = no   # MODDED #guo
-			}			
+
+			deng_xiaoping_theory = {	#邓小平理论
+				can_be_randomly_selected = no   
+				color = { 219 84 43 }
+			}		
+
+			national_bolshevitism = {	#民族布尔什维克主义
+				can_be_randomly_selected = no
+				color = { 107 0 0 }
+			}
 		}
 
 		dynamic_faction_names = {
@@ -199,64 +232,94 @@ ideologies = {
         ai_ideology_wanted_units_factor = 1.85 #guo
 
 		rules = {
-			can_force_government = yes
-			can_send_volunteers = yes
-			can_only_justify_war_on_threat_country = no
-			can_puppet = yes
-		}
+            can_create_collaboration_government = yes
+            can_declare_war_on_same_ideology = yes
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_lower_tension = no
+            can_only_justify_war_on_threat_country = no
+            can_guarantee_other_ideologies = no
+        }
 
 		can_collaborate = yes
 		
-		modifiers = {
-			# puppet_cost_factor = -0.3 # Deprecated, use common\peace_conference\00_generic_peace.txt instead
-			civilian_intel_to_others = 10.0
-			army_intel_to_others = 7.5
-			navy_intel_to_others = 12.5
-			airforce_intel_to_others = 7.5
-			hidden_modifier = { join_faction_tension = -0.1 }
-            embargo_threshold_factor = 0.5
-			political_power_gain = 0.25  
-			consumer_goods_factor = -0.15    #guo
-			mobilization_speed = 0.25 #guo
-			conscription = 0.02 #guo
-			trade_opinion_factor = -0.2 #guo
-			opinion_gain_monthly_factor = -0.2 #guo
-			improve_relations_maintain_cost_factor = 0.2 #guo   
-			justify_war_goal_time = -0.25 #guo
-		}
+		can_host_government_in_exile = no
+
+        war_impact_on_world_tension = 0.75
+        faction_impact_on_world_tension = 0.50
+
+        modifiers = {
+            generate_wargoal_tension = 0.20
+            join_faction_tension = 0.10
+            lend_lease_tension = 0.00
+            send_volunteers_tension = 0.00
+            guarantee_tension = 0.10
+            annex_cost_factor = 0.15
+            take_states_cost_factor = 0.10
+            puppet_cost_factor = -0.20
+			political_power_gain = 0.10
+			stability_factor = 0.05
+			global_building_slots_factor = 0.05
+			production_speed_infrastructure_factor = -0.05
+			production_speed_industrial_complex_factor = -0.05
+			production_speed_arms_factory_factor = 0.10
+			production_speed_dockyard_factor = 0.10
+			resistance_target = 0.05
+			compliance_growth_speed = -0.05
+			AWR_economy_development_monthly = -0.015
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			research_speed_factor = -0.025
+			special_project_speed_factor = 0.05
+			consumer_goods_factor = -0.10
+        }
 
 		faction_modifiers = {
+            faction_trade_opinion_factor = 0.10
+            research_sharing_per_country_bonus_factor = 0.08
+        }
 
-		}
+        can_be_boosted = yes
+        ai_communist = yes
 
 	}
 
-	fascism = {
+	fascism = {		#法西斯主义
 
 		types = {
 
-			nazism = {
+			nazism = {	#纳粹主义
+				color = { 0 0 0 }
 			}
 
-			gen_nazism = {
+			gen_nazism = {	#纳粹主义
+				color = { 0 0 0 }
 			}
 			
-			fascism_ideology = {
+			fascism_ideology = {	#法西斯主义
+				#
 			}
 
-			falangism = {
+			falangism = {	#长枪党
+				#
 			}
 
-			rexism = {
+			rexism = {	#雷克斯主义
+				#
+			}
+
+			militarism = {	#军国主义
+				#
 			}
 			
-			collaborationism = {  # MODDED
-				can_be_randomly_selected = no   # MODDED
-			} # MODDED
+			collaborationism = {  #合作主义
+				can_be_randomly_selected = no   
+			} 
 
-			sanmin_military_rule = {  # MODDED
-				can_be_randomly_selected = no  # MODDED
-			}  # MODDED
+			sanmin_military_rule = {  #三民主义——军政
+				can_be_randomly_selected = no  
+			}  
 		}
 
 		dynamic_faction_names = {
@@ -268,6 +331,7 @@ ideologies = {
 		}
 
 		color = { 150 75 0 }
+		color = { 0 0 0 }
 
 		war_impact_on_world_tension = 1.0			#evil!
 		faction_impact_on_world_tension = 1.0
@@ -278,52 +342,66 @@ ideologies = {
 			can_puppet = yes
 		}
 
-		can_collaborate = yes
-		
-		modifiers = {
-			justify_war_goal_time = -0.5 #guo
-            justify_war_goal_when_in_major_war_time = -0.80
-			civilian_intel_to_others = 15.0
-			army_intel_to_others = 10.0
-			navy_intel_to_others = 10.0
-			airforce_intel_to_others = 10.0
-			hidden_modifier = { join_faction_tension = -0.1 }
-            embargo_cost_factor = 1
-			consumer_goods_factor = -0.075    #guo
-			mobilization_speed = 0.1 #guo
-			conscription = 0.01 #guo
-			trade_opinion_factor = -0.1 #guo
-			opinion_gain_monthly_factor = -0.1 #guo
-			improve_relations_maintain_cost_factor = 0.1 #guo
-			political_power_gain = 0.15 #guo  
-		}
+		can_host_government_in_exile = no
 
-		ai_fascist = yes # uses the fascist AI behaviour
+        war_impact_on_world_tension = 1.00
+        faction_impact_on_world_tension = 1.00
+
+        modifiers = {
+            generate_wargoal_tension = 0.00
+            join_faction_tension = 0.00
+            lend_lease_tension = 0.00
+            send_volunteers_tension = 0.00
+            guarantee_tension = 0.00
+            justify_war_goal_when_in_major_war_time = -0.80
+			political_power_gain = 0.15
+			stability_factor = 0.05
+			research_speed_factor = -0.025
+			production_speed_buildings_factor = 0.10
+			resistance_target = 0.15
+			compliance_growth_speed = -0.10
+			AWR_economy_development_monthly = -0.03
+			industrial_capacity_factory = 0.075
+			industrial_capacity_dockyard = 0.075
+			consumer_goods_factor = -0.15
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.10
+            research_sharing_per_country_bonus_factor = 0.05
+        }
+
+        can_be_boosted = yes
+        ai_fascist = yes
 		ai_ideology_wanted_units_factor = 1.65
 	}
 
-	neutrality = {
+	neutrality = {	#威权主义
 
 		types = {
 		
-		    despotism  = {
+		    despotism  = {	#专制主义
+				#
 			}
 
-			oligarchism  = {
+			oligarchism  = {	#寡头政治
+				#
 			}
             
-			anarchism = {
-				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
+			anarchism = {	#温和主义
+				can_be_randomly_selected = no 
 			}
 
-			moderatism = {
+			centrism = {	#中间主义
+				#
+			}	
+			
+			feudal_monarchy = {		#封建君主制
+				can_be_randomly_selected = no
 			}
 
-			centrism = {
-			}		
-
-            sanmin_political_tutelage = {   # MODDED
-				can_be_randomly_selected = no   # MODDED
+            sanmin_training_governance = {   #三民主义——训政
+				can_be_randomly_selected = no  
 			} 
 		}
 
@@ -335,40 +413,130 @@ ideologies = {
 			"FACTION_NAME_NONALIGNED_5"
 		}
 
-		color = { 193 188 188 }
+		color = { 255 242 0 }
 
 
 		war_impact_on_world_tension = 0.25		#no major danger
 		faction_impact_on_world_tension = 0.1
 
 		rules = {
-			can_force_government = yes
-			can_puppet = yes
-			can_send_volunteers = yes  
-		}
+            can_create_collaboration_government = yes
+            can_declare_war_on_same_ideology = yes
+            can_force_government = no
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_lower_tension = no
+            can_only_justify_war_on_threat_country = no
+            can_guarantee_other_ideologies = yes
+        }
 
-		modifiers = {
-			#increased_influence_factor = 0.3 #30% easier to influence
-			generate_wargoal_tension = 0.2  # MODDED
-			join_faction_tension = 0.3  # MODDED
-			lend_lease_tension = 0.3  # MODDED
-			send_volunteers_tension = 0.4
-			guarantee_tension = 0.4
-			drift_defence_factor = 0.05  # MODDED
-			civilian_intel_to_others = 20.0
-			army_intel_to_others = 10.0
-			navy_intel_to_others = 20.0
-			airforce_intel_to_others = 10.0
-			stability_factor = 0.05 #guo
-			political_power_factor = 0.05 #guo
-		}
+		can_host_government_in_exile = no
+        war_impact_on_world_tension = 0.50
+        faction_impact_on_world_tension = 0.30
 
-		faction_modifiers = {
-		}
+        modifiers = {
+            generate_wargoal_tension = 0.50
+            join_faction_tension = 0.40
+            lend_lease_tension = 0.30
+            send_volunteers_tension = 0.25
+            guarantee_tension = 0.30
+            puppet_cost_factor = -0.10
+			political_power_gain = 0.10
+			research_speed_factor = -0.025
+			production_speed_buildings_factor = 0.05
+			industrial_capacity_factory = 0.025
+			industrial_capacity_dockyard = 0.025
+        }
 
-        ai_neutral = yes #
-		#can_be_boosted = no   # MODDED
-		can_collaborate = yes	 
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.05
+            research_sharing_per_country_bonus_factor = 0.02
+        }
+
+        can_be_boosted = yes
+        ai_neutral = yes
         ai_ideology_wanted_units_factor = 1.25
+	}
+
+	anarchism = {	#无政府主义
+		types = {
+
+			anarchist_communism = {		#无政府共产主义
+				can_be_randomly_selected = no   
+				color = { 255 172 172 }
+			}
+
+			collectivist_anarchism = {	#集体无政府主义
+				color = { 252 219 176 }
+			}
+
+			anarcho_syndicalism = {	#无政府工团主义
+				color = { 198 156 110 }
+			}
+
+			mutualism = {	#互助主义
+				color = { 255 253 155 }
+			}
+
+			individualist_anarchism = {	#个人无政府主义
+				color = { 155 177 255 }
+			}
+
+			anarchism_without_adjectives = {	#无定语无政府主义
+				color = { 255 255 255 }
+			}
+
+			
+		}
+
+		color = { 255 255 255 }
+		rules = {
+            can_create_collaboration_government = no
+            can_declare_war_on_same_ideology = no
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = no
+            can_lower_tension = no
+            can_only_justify_war_on_threat_country = no
+            can_guarantee_other_ideologies = no
+        }
+
+        can_host_government_in_exile = no
+
+        war_impact_on_world_tension = 0.50
+        faction_impact_on_world_tension = 0.35
+
+        modifiers = {
+            generate_wargoal_tension = 0.20
+            join_faction_tension = 0.20
+            lend_lease_tension = 0.00
+            send_volunteers_tension = 0.00
+            guarantee_tension = 0.50
+            annex_cost_factor = -0.50
+            take_states_cost_factor = 0.50
+			political_power_gain = -0.20
+			stability_factor = -0.05
+			research_speed_factor = 0.05
+			special_project_speed_factor = -0.10
+			global_building_slots_factor = -0.03
+			production_speed_infrastructure_factor = 0.15
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = -0.05
+			production_speed_dockyard_factor = -0.05
+			resistance_target = -0.05
+			compliance_growth_speed = 0.10
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			consumer_goods_factor = 0.05
+			AWR_economy_development_monthly = 0.05
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.15
+            research_sharing_per_country_bonus_factor = 0.15
+        }
+
+        can_be_boosted = yes
+
 	}
 }

@@ -51,7 +51,7 @@ news_event = {	#《红星照耀中国》今日出版
 	
 }
 
-news_event = {
+news_event = {	#百团大战
 	id = AWR_PRC_news.2
 	title = AWR_PRC_news.2.t
 	desc = AWR_PRC_news.2.desc
@@ -99,3 +99,106 @@ news_event = {
 	}
 }
 
+news_event = {	#台湾爆发无产阶级革命
+	id = AWR_PRC_news.1000
+	title = AWR_PRC_news.1000.t
+	desc = AWR_PRC_news.1000.desc
+		
+	
+	picture = GFX_event_Taiwan_comes_back
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		CHI = {
+			set_politics = {
+				ruling_party = communism
+			}
+		}
+	}
+	
+	option = {			
+		name = AWR_PRC_news.1000.a
+		trigger = {
+			OR = {
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1000.b
+		trigger = {
+			OR = {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1000.c
+		trigger = {
+			NOT = {
+				tag = CHI
+				is_in_faction_with = CHI
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+}
+
+news_event = {	#台湾宣布回归大陆
+	id = AWR_PRC_news.1001
+	title = AWR_PRC_news.1001.t
+	desc = AWR_PRC_news.1001.desc
+		
+	
+	picture = GFX_event_Taiwan_comes_back
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		PRC = {
+			transfer_state = 524
+		}
+	}
+	
+	option = {			
+		name = AWR_PRC_news.1001.a
+		trigger = {
+			OR = {
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1001.b
+		trigger = {
+			OR = {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1001.c
+		trigger = {
+			NOT = {
+				tag = CHI
+				is_in_faction_with = CHI
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+}

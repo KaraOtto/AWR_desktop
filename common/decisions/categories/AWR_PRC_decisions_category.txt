@@ -202,7 +202,7 @@ TIB_democracy_reform = {	#西藏民主改革
 }
 
 CHINA_recover_motherland = {	#中华民族历史领土
-	priority = 8000	
+	priority = 1004	
 	icon = generic_political_actions
 	picture = GFX_Chinese_historical_territory
 	
@@ -220,4 +220,31 @@ CHINA_recover_motherland = {	#中华民族历史领土
         }
 	}
     visible_when_empty = no
+}
+
+PRC_156_project_category = {	#156工程
+    priority = 1003
+	icon = generic_industry
+	picture = GFX_decision_cat_picture_generic_shipbuilding
+	
+	allowed = {
+		OR = {
+            TAG = event_target:WTT_communist_china
+            TAG = PRC
+        }
+	}
+	visible = {
+	    NOT = { 
+			has_war_with = SOV 
+		}
+		is_subject = no
+		has_government = SOV
+		SOV = {
+			has_opinion = {
+				target = ROOT
+				value > 4
+			}
+		}
+        
+    }         
 }

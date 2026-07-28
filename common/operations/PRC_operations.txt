@@ -1,0 +1,353 @@
+operation_PRC_spread_communist_ideology = {	#传播共产主义思想
+	icon = GFX_operation_PRC_spread_communist_ideology
+	map_icon = GFX_map_operation_PRC_spread_communist_ideology
+	name = operation_PRC_spread_communist_ideology
+	desc = operation_PRC_spread_communist_ideology_desc
+
+	priority = 98
+	days = 30
+	operatives = 1
+	network_strength = 35
+	outcome_extra_chance = 0.35
+	allowed = {
+		tag = PRC
+	}
+    visible = {
+		FROM = {
+			tag = CHI
+		}
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+		}
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+    available = {
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+
+		}
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+	equipment = {
+		infantry_equipment = 1500
+		support_equipment = 100
+	}
+	risk_chance = 0.20
+	experience = 1.5
+	outcome_potential = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+	
+	outcome_execute = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	outcome_extra_execute = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+		}
+	}
+
+	# 第一阶段：准备
+	phases = {
+        infiltration_border = { 
+			base = 25 
+		}
+        infiltration_diplomatic = { 
+			base = 25 
+		}
+        infiltration_paradrop = {
+            base = 25
+            modifier = {
+                factor = 0.1
+                ROOT = {
+                    has_equipment = {
+                        transport_plane_equipment < 1
+                    }
+                }
+            }
+        }
+    }
+
+    # 第二阶段：执行
+    phases = {
+        infiltrate_military_bribe = { 
+			base = 50 
+		}
+        infiltrate_military_seduction = { 
+			base = 50 
+		}
+    }
+
+    # 第三阶段：撤离
+    phases = {
+        exfiltration_border = { 
+			base = 30 
+		}
+        exfiltration_go_to_ground = { 
+			base = 30 
+		}
+    }
+}
+
+operation_PRC_hold_workers_strike_parade = {	#举行工人罢工
+	icon = GFX_operation_PRC_hold_workers_strike_parade
+	map_icon = GFX_map_operation_PRC_hold_workers_strike_parade
+	name = operation_PRC_hold_workers_strike_parade
+	desc = operation_PRC_hold_workers_strike_parade_desc
+
+	priority = 99
+	days = 60
+	operatives = 2
+	network_strength = 50
+	outcome_extra_chance = 0.35
+	allowed = {
+		tag = PRC
+	}
+    visible = {
+		FROM = {
+			tag = CHI
+		}
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+		}
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+    available = {
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+
+		}
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+	equipment = {
+		infantry_equipment = 3000
+		support_equipment = 200
+	}
+	risk_chance = 0.35
+	experience = 1.5
+	outcome_potential = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+			add_stability = -0.05
+		}
+	}
+	
+	outcome_execute = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+			add_stability = -0.05
+		}
+	}
+
+	outcome_extra_execute = {
+		CHI = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.20
+			}
+			add_stability = -0.10
+		}
+	}
+
+	# 第一阶段：准备
+	phases = {
+        infiltration_border = { 
+			base = 25 
+		}
+        infiltration_diplomatic = { 
+			base = 25 
+		}
+        infiltration_paradrop = {
+            base = 25
+            modifier = {
+                factor = 0.1
+                ROOT = {
+                    has_equipment = {
+                        transport_plane_equipment < 1
+                    }
+                }
+            }
+        }
+    }
+
+    # 第二阶段：执行
+    phases = {
+        infiltrate_military_bribe = { 
+			base = 50 
+		}
+        infiltrate_military_seduction = { 
+			base = 50 
+		}
+    }
+
+    # 第三阶段：撤离
+    phases = {
+        exfiltration_border = { 
+			base = 30 
+		}
+        exfiltration_go_to_ground = { 
+			base = 30 
+		}
+    }
+}
+
+operation_PRC_launch_Taiwan_armed_uprising = {	#发动武装起义
+	icon = GFX_operation_PRC_launch_Taiwan_armed_uprising
+	map_icon = GFX_map_operation_PRC_launch_Taiwan_armed_uprising
+	name = operation_PRC_launch_Taiwan_armed_uprising
+	desc = operation_PRC_launch_Taiwan_armed_uprising_desc
+
+	priority = 100
+	days = 7
+	operatives = 3
+	network_strength = 50
+	outcome_extra_chance = 0.35
+	
+	allowed = {
+		tag = PRC
+	}
+    visible = {
+		FROM = {
+			tag = CHI
+		}
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+		}
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+    available = {
+		524 = {
+			is_controlled_by = CHI
+		}
+		CHI = {
+			exists = yes
+			NOT = {
+				has_government = communism
+				has_government = socialism
+			}
+			communism > 0.59
+		}
+		
+		has_completed_focus = PRC_TaiWan_annex_by_peace
+	}
+	equipment = {
+		infantry_equipment = 5000
+		support_equipment = 200
+	}
+	risk_chance = 0.50
+	experience = 1.5
+	outcome_potential = {
+		CHI = {
+			custom_effect_tooltip = operation_PRC_launch_Taiwan_armed_uprising_effect_tt
+		}
+	}
+	
+	outcome_execute = {
+		
+		news_event = {
+			id = AWR_PRC_news.1000
+		}
+	}
+
+	outcome_extra_execute = {
+		news_event = {
+			id = AWR_PRC_news.1001
+		}
+	}
+
+	# 第一阶段：准备
+	phases = {
+        infiltration_border = { 
+			base = 25 
+		}
+        infiltration_diplomatic = { 
+			base = 25 
+		}
+        infiltration_paradrop = {
+            base = 25
+            modifier = {
+                factor = 0.1
+                ROOT = {
+                    has_equipment = {
+                        transport_plane_equipment < 1
+                    }
+                }
+            }
+        }
+    }
+
+    # 第二阶段：执行
+    phases = {
+        infiltrate_military_bribe = { 
+			base = 50 
+		}
+        infiltrate_military_seduction = { 
+			base = 50 
+		}
+    }
+
+    # 第三阶段：撤离
+    phases = {
+        exfiltration_border = { 
+			base = 30 
+		}
+        exfiltration_go_to_ground = { 
+			base = 30 
+		}
+    }
+}

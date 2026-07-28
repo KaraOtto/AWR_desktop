@@ -1372,7 +1372,7 @@ focus_tree = {
 					leader_is_maoist = yes
 				}
 				custom_effect_tooltip = maoism_be_established
-				set_country_leader_ideology = maoism
+				set_country_leader_ideology = mao_zedong_thought
 			
 				remove_trait = {
 					character = PRC_zhang_wentian
@@ -3572,7 +3572,7 @@ focus_tree = {
 					desc = "POLITICS_Zhang_Guotao_DESC"
 					picture = "Portrait_China_Zhang_Guotao.dds"
 					expire = "1965.1.1"
-					ideology = marxism
+					ideology = national_bolshevitism
 					traits = { 
 						AWR_propaganda_expert 
 						comintern_celebrity dangdeyuanlao 
@@ -4064,16 +4064,10 @@ focus_tree = {
 	        hidden_effect = {
 		    	PRC_mao_zedong = {
             		add_country_leader_trait = { 
-            			ideology = marxism
+            			ideology = mao_zedong_thought
             			trait = tiancaidesixiangjia		
 	        		}		
 	        	}
-		   		PRC_mao_zedong = {
-            		add_country_leader_trait = { 
-            			ideology = maoism
-            			trait = tiancaidesixiangjia		
-	        		}		
-	        	}		
 	        }		
 		}
 		available = {
@@ -4773,11 +4767,11 @@ focus_tree = {
 				add_political_power = 100
 
 				create_country_leader = {
-					name = "博古"
+					name = PRC_bo_gu
 					desc = "POLITICS_WANG_MING_DESC"
-					picture = "gfx/leaders/PRC/Portrait_China_Bo_Gu.dds"
+					picture = "GFX_Portrait_China_Bo_Gu"
 					expire = "1965.1.1"
-					ideology = marxism
+					ideology = marxism_leninism
 					traits = { #guo
 						comintern_celebrity
 						propaganda_expert
@@ -4892,11 +4886,11 @@ focus_tree = {
 				add_political_power = 100
 
 				create_country_leader = {
-					name = "王明"
+					name = PRC_wang_ming
 					desc = "POLITICS_WANG_MING_DESC"
-					picture = "gfx/leaders/PRC/Portrait_China_Wang_Ming.dds"
+					picture = "GFX_Portrait_China_Wang_Ming"
 					expire = "1965.1.1"
-					ideology = stalinism
+					ideology = marxism_leninism
 					traits = { #guo
 						stalins_puppet
 						comintern_celebrity
@@ -6725,10 +6719,10 @@ focus_tree = {
 					}
 					
 					create_country_leader = {
-						name="王震"
-						desc=PRC_wang_zhen_desc
-						picture = "gfx/leaders/PRC/wangzhen_pla.png"
-						ideology = marxism
+						name= PRC_wang_zhen
+						desc= PRC_wang_zhen_desc
+						picture = "GFX_Army_PRC_Wang_Zhen_pla"
+						ideology = marxism_leninism
 						traits = { 
 							xinjiangjunqusiling 
 						}
@@ -6860,7 +6854,7 @@ focus_tree = {
 							name="包尔汗·沙希迪"
 							desc=PRC_baoerhan_desc
 							picture = "gfx/leaders/SIK/baoerhan_sik.png"
-							ideology = marxism
+							ideology = marxism_leninism
 							traits = { 
 								popular_figurehead national_integralist 
 							}
@@ -7246,8 +7240,8 @@ focus_tree = {
 		        		add_country_leader_role = {
 			    	    	country_leader = {
 				 		   	    expire = "1965.1.1"
-					    	    ideology = PRC_maoism_2
-								desc=POLITICS_MAO_ZEDONG_DESCzz
+					    	    ideology = mao_zedong_thought
+								desc = POLITICS_MAO_ZEDONG_DESCzz
 					    	    traits = { 
 									tiancaidesixiangjia 
 									tiancaidezhanluejia 
@@ -8164,7 +8158,7 @@ focus_tree = {
 	
 	focus = {#仿制火炮
 		id = PRC_Homemade_artillery
-		icon = GFX_goal_generic_army_artillery2
+		icon = GFX_focus_PRC_Homemade_artillery
 		cost = 5
 		prerequisite = {
 			focus = PRC_Huangyadong_Arsenal
@@ -9112,7 +9106,7 @@ focus_tree = {
 				}
 				event_target:WTT_current_china_leader = {
 					OR = {
-						has_government = n_socialism
+						has_government = socialism
 						has_government = communism
 					}
 				}
@@ -16307,9 +16301,6 @@ focus_tree = {
 
 	}
 
-	#做到这里
-	
-
 	#外交线
 	focus = {#注重外交
 		id = PRC_focus_on_diplomacy
@@ -16412,7 +16403,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_state_claim = 434
-			add_state_claim = 1021
+			add_state_claim = 1130
 			custom_effect_tooltip  = prc_xinan_dec_tt
 			unlock_decision_tooltip = CHINA_recover_southern_TIB
 		}
@@ -16421,7 +16412,7 @@ focus_tree = {
 			OR = {
 			    and = {
 					owns_state = 434
-					owns_state = 1021
+					owns_state = 1130
 				}
 				RAJ = {
 					has_war_with = root
@@ -16601,7 +16592,7 @@ focus_tree = {
 
 		bypass = {
 			controls_state = 329
-			controls_state = 1024
+			controls_state = 1122
 		}
 
 	}
@@ -16641,7 +16632,7 @@ focus_tree = {
 			add_state_claim = 589
 			add_state_claim = 654
 			add_state_claim = 732
-			add_state_claim = 1022
+			add_state_claim = 1125
 		}
 		available = {
 			NOT = {
@@ -16652,7 +16643,7 @@ focus_tree = {
 				controls_state = 330	
 
 				controls_state = 329
-				controls_state = 1024
+				controls_state = 1122
 			}
 		}
 
@@ -16671,7 +16662,7 @@ focus_tree = {
 			owns_state = 589
 			owns_state = 654
 			owns_state = 732
-			owns_state = 1022
+			owns_state = 1125
 		}
 	}
 
@@ -16698,16 +16689,16 @@ focus_tree = {
 	            329 = {
               		add_core_of = PRC
                 }
-   	    		1024 = {
+   	    		1122 = {
                   add_core_of = PRC
                 }
-            	1026 = {
+            	1124 = {
                   	add_core_of = PRC
                 }
 	         	818 = {
                 	add_core_of = PRC
                 }
-	         	1025 = {
+	         	1123 = {
                     add_core_of = PRC
                 }
 	            820 = {
@@ -16722,10 +16713,10 @@ focus_tree = {
 	            819 = {
                 	add_core_of = PRC
                 }
-	            1018 = {
+	            1121 = {
                 	add_core_of = PRC
                 }
-	            1021 = {
+	            1130 = {
                 	add_core_of = PRC
                 }
 	            434 = {
@@ -16740,10 +16731,10 @@ focus_tree = {
 	            326 = {
                     add_core_of = PRC
                 }
-			    1068 = {
+			    1127 = {
 					add_claim_by = PRC 
 				}							
-			    1076 = { 
+			    1128 = { 
 					add_claim_by = PRC
 				}														
             }
@@ -16771,7 +16762,7 @@ focus_tree = {
 					}
 				}
 				country_event = {
-					id = EFM_independent.10
+					id = AWR_general_China.1
 				}
 			}
 			custom_effect_tooltip = if_china_is_largest_ic_no_one_refuse_tt
@@ -16826,6 +16817,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+    		custom_effect_tooltip = PRC_unlocked_Taiwan_operation_tt
 			add_timed_idea = {
 				idea = PRC_united_front_operations
 				days = 360
@@ -16912,7 +16904,10 @@ focus_tree = {
 			add_political_power = 50
 		}
 		available = {
-			has_completed_focus = PRC_A_New_Country
+			OR = {
+				has_completed_focus = PRC_A_New_Country
+				has_completed_focus = PRC_Federal_Republic
+			}
 		}
 	}
 
@@ -16936,7 +16931,20 @@ focus_tree = {
 						is_faction_leader = yes
 					}
 				}
-				
+				every_country = {
+					limit = {
+						is_in_faction_with = SOV
+					}
+					add_opinion_modifier = {
+						target = PRC
+						modifier = contact_with_comintern
+					}
+				}
+
+				add_opinion_modifier = {
+					target = SOV
+					modifier = contact_with_comintern
+				}
 			}
 		}
 
@@ -17267,7 +17275,7 @@ focus_tree = {
 		}
 		relative_position_id = PRC_Combat_laboratory
 		mutually_exclusive = {
-			focus = PRC_the_16th_aligned_republic
+			focus = PRC_the_sixteenth_aligned_republic
 		}
 		x = -1
 		y = 1
@@ -17288,7 +17296,7 @@ focus_tree = {
 	}
 
 	focus = {#第十六个加盟共和国
-		id = PRC_the_16th_aligned_republic
+		id = PRC_the_sixteenth_aligned_republic
 		icon = GFX_focus_PRC_the_16th_aligned_republic
 		cost = 1
 		prerequisite = {
@@ -17426,7 +17434,7 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = PRC_dominate_Comintern
-			focus = PRC_the_16th_aligned_republic
+			focus = PRC_the_sixteenth_aligned_republic
 		}
 		x = 1
 		y = 1
@@ -18256,7 +18264,7 @@ focus_tree = {
                 		desc = heluxiaofu_desc
                 		picture = "gfx/leaders/SOV/heluxiaofu.jpg"
                 		expire = "1965.1.1"
-                		ideology = marxism
+                		ideology = khrushchevism
                 		traits = { 
 							yumi popular_figurehead jianzhu
                 		}

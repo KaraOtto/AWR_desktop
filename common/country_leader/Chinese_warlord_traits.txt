@@ -1,13 +1,13 @@
 leader_traits = {
 	#东北军 NEA
-	shaoshuai = { #张学良
+	shaoshuai = { #少帅1
 		random = no
 		political_power_factor = 0.05
 		army_org_factor = 0.05
 		custom_modifier_tooltip = NEA_young_marshal_desc
 	}
 
-	shaoshuai_more = { #张学良
+	shaoshuai_more = { #少帅2
 		random = no
 		political_power_factor = 0.15
 		land_reinforce_rate = 0.05
@@ -17,7 +17,7 @@ leader_traits = {
 		war_stability_factor = 0.1
 	}
 	
-	budikang = { #张学良
+	budikang = { #不抵抗将军
 		random = no
 		war_support_factor = -0.15
 		conscription_factor = -0.5
@@ -40,7 +40,6 @@ leader_traits = {
 
 	NEA_son_of_zhang_zuolin = {#张作霖之子
 	    random = no
-		#political_power_factor = 0.15
 		defensive_war_stability_factor = 0.15
 		drift_defence_factor = 0.05
 		fascism_acceptance = -50
@@ -50,7 +49,7 @@ leader_traits = {
 	}
 
 	#滇系 YUN
-	YUN_king_of_yunnan = { 
+	YUN_king_of_yunnan = { #云南王
 		random = no
 		political_power_factor = 0.1
 		stability_factor = 0.075
@@ -59,8 +58,18 @@ leader_traits = {
 		high_command_cost_factor = -0.15
 		custom_modifier_tooltip = YUN_king_of_yunnan_desc
 	}
+	
+	YUN_king_of_yunnan2 = { #云南省主席
+		random = no
+		political_power_factor = 0.075
+		stability_factor = 0.05
+		army_org_factor = 0.05
+		political_advisor_cost_factor = -0.1
+		high_command_cost_factor = -0.1
+		custom_modifier_tooltip = YUN_king_of_yunnan2_desc
+	}
 
-	YUN_great_reformer = {
+	YUN_great_reformer = {	#伟大的改革家
 	    random = no
 		industrial_capacity_factory = 0.075
 		consumer_goods_factor = -0.10
@@ -70,7 +79,7 @@ leader_traits = {
 		custom_modifier_tooltip = YUN_great_reformer_desc
 	}
 
-	YUN_excavation_priorities = {
+	YUN_excavation_priorities = {	#开采矿业
 	    random = no
 		local_resources_factor = 0.15
 		trade_opinion_factor = 0.25
@@ -78,14 +87,14 @@ leader_traits = {
 		custom_modifier_tooltip = YUN_excavation_priorities_desc
 	}
 
-	YUN_infrastructure_builder = {
+	YUN_infrastructure_builder = {	#建造公路
 	    random = no
 		production_speed_infrastructure_factor = 0.15
 		supply_node_range = 0.1
 		custom_modifier_tooltip = YUN_infrastructure_builder_desc
 	}
 
-	YUN_cares_for_agriculture = {
+	YUN_cares_for_agriculture = {	#关爱农业
 	    random = no
 		global_building_slots = 2
 		monthly_population = 0.15
@@ -94,21 +103,21 @@ leader_traits = {
 	}
 
 	#新桂系 GXC
-	GXC_Acting_President = {
+	GXC_Acting_President = {	#代总统
 	    random = no
 		stability_factor = 0.20
 		political_power_factor = 0.20
 		custom_modifier_tooltip = GXC_Acting_President_desc
 	}
 
-	GXC_fuzongtong = {
+	GXC_fuzongtong = {	#副总统
 	    random = no
 		stability_factor = 0.15
 		political_power_factor = 0.15
 		custom_modifier_tooltip = GXC_fuzongtong_desc
 	}	
 
-	GXC_new_guangxi_clique = {
+	GXC_new_guangxi_clique = {	#钢铁军阀
 	    random = no
 		political_power_gain = -0.05
 		high_command_cost_factor = -0.15
@@ -116,7 +125,7 @@ leader_traits = {
 		custom_modifier_tooltip = GXC_new_guangxi_clique_desc
 	}
 
-	GXC_guangxi_administrator = {
+	GXC_guangxi_administrator = {	#高效管理者
 	    random = no
 		industrial_capacity_factory = 0.075
 		production_factory_efficiency_gain_factor = 0.05
@@ -124,7 +133,7 @@ leader_traits = {
 		custom_modifier_tooltip = GXC_guangxi_administrator_desc
 	}
 
-	GXC_nra_general = {
+	GXC_nra_general = {		#才华横溢的将军
 	    random = no
 		army_attack_factor = 0.1
 		army_defence_factor = 0.1
@@ -134,7 +143,7 @@ leader_traits = {
 		custom_modifier_tooltip = GXC_nra_general_desc
 	}
 
-	junzhengzhuanjia = { #李宗仁
+	junzhengzhuanjia = { #军政奇才
 		random = no
 		political_power_gain = -0.05
 		army_attack_factor = 0.1
@@ -147,7 +156,43 @@ leader_traits = {
 		war_stability_factor = 0.25
 	}
 
+	social_philosopher = {	#社会哲学家
+		sprite = 12
+		socialism_drift = 0.05
+		political_power_factor = 0.1
+		research_speed_factor = 0.05
+	}
+
 	#川系 SIC
+	sichuan_sheng = {	#四川省主席
+		random = no
+		political_power_gain = 0.05
+		stability_factor = 0.075
+		custom_modifier_tooltip = sichuan_sheng_desc
+	}
+
+	chongqing_daxue = {	#重庆大学首任校长
+		random = no
+        research_speed_factor = 0.025
+		custom_modifier_tooltip = chongqing_daxue_desc
+	}
+
+	SIC_liu_xiang_rivalry = {	#刘湘——刘文辉之争
+	    random = no
+		targeted_modifier = {
+			tag = XIK
+			attack_bonus_against = 0.10
+			defense_bonus_against = 0.10
+		}
+		custom_modifier_tooltip = SIC_liu_xiang_rivalry_desc
+	}
+
+	SIC_zongsiling = { #第二十二集团军总司令
+		random = no
+		army_morale_factor = 0.10
+        war_stability_factor = 0.10
+		custom_modifier_tooltip = SIC_zongsiling_desc
+	}
 
 	#山东 SHD
 	SHD_questionable_allegiances = {#可疑的效忠
@@ -239,7 +284,28 @@ leader_traits = {
 		custom_modifier_tooltip = XSM_bufang_lin_conflict_desc
 	}
 	
+	##甘肃马
+	qi_bing = {
+		random = no
+        cavalry_defence_factor = 0.05
+		custom_modifier_tooltip = qi_bing_desc
+	}
 		
+	##陇东马
+	shi_zhang = {
+		random = no
+        army_core_attack_factor = 0.05		
+        army_core_defence_factor = 0.05
+		custom_modifier_tooltip = shi_zhang_desc
+	}
+
+	EGM_renzheng = {
+		random = no	
+		stability_factor = 0.1
+		monthly_population = 0.1
+		consumer_goods_factor = 0.1
+	}
+
 	## 粤系 GUD
 	GUD_heavenly_king_of_the_south = {
 	    random = no
@@ -298,6 +364,15 @@ leader_traits = {
         breakthrough_factor = 0.15		
 		custom_modifier_tooltip = GUD_shangshanhu_desc
 	}
+
+	suijing_gongshu = {
+		random = no
+        political_power_factor = 0.05	
+		stability_factor = 0.075
+        consumer_goods_factor = -0.05
+        army_core_defence_factor = 0.05	
+		custom_modifier_tooltip = suijing_gongshu_desc
+	}
 	
 	##西康 XIK
 	XIK_xikang_proponent= {
@@ -325,27 +400,47 @@ leader_traits = {
 		custom_modifier_tooltip = XIK_liu_xiang_rivalry_desc
 	}
 
-	## Tito
-	YUG_predsednik_jugoslavije = {
-	    random = no
-		political_power_gain = 0.25
-		stability_factor = 0.15
-		defensive_war_stability_factor = 0.4
-		war_support_factor = 0.15
+	##河北
+	hebei_sheng = {
+		random = no
+		political_power_gain = 0.05
+        stability_factor = 0.05
+		custom_modifier_tooltip = hebei_sheng_desc
 	}
-	YUG_architect_of_titoism = {
-	    random = no
-		communism_drift = 0.2
-		master_build_autonomy_factor = 0.05
-		puppet_cost_factor = -0.35
-		drift_defence_factor = 0.5
+
+	weiyuan_zhang = {	#委员长
+		random = no
+        army_core_defence_factor = 0.10
+		custom_modifier_tooltip = weiyuan_zhang_desc
 	}
-	YUG_marsal_jugoslavijie = {
-	    random = no
-		ammunition_capacity_factor = 0.25
-		ammunition_consumption_factor = -0.35
-		army_core_defence_factor = 0.1
-		army_core_attack_factor = 0.1
+
+	huo_guangong = {	#活关公
+		random = no
+		stability_factor = 0.05		
+        consumer_goods_factor = -0.15			
+        army_core_attack_factor = 0.30	
+        army_core_defence_factor = 0.30
+        army_attack_factor = 0.15		
+        army_defence_factor = 0.15
+        supply_consumption_factor = -0.10
+        dig_in_speed_factor = 0.10
+        combat_width_factor = -0.10
+        production_speed_bunker_factor = 0.45
+        max_dig_in = 10	
+        army_org_factor = 0.30
+		surrender_limit = 0.95
+		ammunition_consumption_factor = -0.20		
+		custom_modifier_tooltip = huo_guangong_desc
+	}
+
+	chou_ri = {	#仇日
+		random = no
+ 		targeted_modifier = {
+			tag = JAP
+			attack_bonus_against = 0.05
+			defense_bonus_against = 0.05
+        }		
+		custom_modifier_tooltip = chou_ri_desc
 	}
 
 	ACG_ike = {

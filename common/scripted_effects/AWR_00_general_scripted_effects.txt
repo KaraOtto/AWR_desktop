@@ -1,0 +1,232 @@
+reduce_current_party_support_ratio = {
+	if = {
+		limit = { 
+			has_government = democratic 
+		}
+		add_popularity = { 
+			ideology = democratic 
+			popularity = -0.05 
+		}
+	}
+	if = {
+		limit = { 
+			has_government = socialism 
+		}
+		add_popularity = { 
+			ideology = socialism 
+			popularity = -0.05 
+		}
+	}
+	if = {
+		limit = { 
+			has_government = fascism 
+		}
+		add_popularity = { 
+			ideology = fascism 
+			popularity = -0.05 
+		}
+	}
+	if = {
+		limit = { 
+			has_government = communism 
+		}
+		add_popularity = { 
+			ideology = communism 
+			popularity = -0.05 
+		}
+	}
+	if = {
+		limit = { 
+			has_government = neutrality 
+		}
+		add_popularity = { 
+			ideology = neutrality 
+			popularity = -0.05 
+		}
+	}
+	if = {
+		limit = { 
+			has_government = anarchism 
+		}
+		add_popularity = { 
+			ideology = anarchism 
+			popularity = -0.05 
+		}
+	}
+}
+
+get_current_government_type = {
+	clr_country_flag = was_neutral
+	clr_country_flag = was_communist
+	clr_country_flag = was_democratic
+	clr_country_flag = was_fascist
+	clr_country_flag = was_socialist
+	clr_country_flag = was_anarchist
+	set_variable = { 
+		var = last_neutrality_pop 
+		value = party_popularity@neutrality 
+	}
+	set_variable = { 
+		var = last_communism_pop 
+		value = party_popularity@communism 
+	}
+	set_variable = { 
+		var = last_democratic_pop 
+		value = party_popularity@democratic 
+	}
+	set_variable = { 
+		var = last_fascism_pop 
+		value = party_popularity@fascism 
+	}
+	set_variable = { 
+		var = last_socialist_pop 
+		value = party_popularity@socialism 
+	}
+	set_variable = { 
+		var = last_anarchist_pop 
+		value = party_popularity@anarchism
+	}
+	if = {
+		limit = { 
+			has_government = neutrality 
+		}
+		set_country_flag = was_neutral
+	}
+	else_if = {
+		limit = { 
+			has_government = communism 
+		}
+		set_country_flag = was_communist
+	}
+	else_if = {
+		limit = { 
+			has_government = democratic 
+		}
+		set_country_flag = was_democratic
+	}
+	else_if = {
+		limit = { 
+			has_government = fascism 
+		}
+		set_country_flag = was_fascist
+	}
+	else_if = {
+		limit = { 
+			has_government = socialism 
+		}
+		set_country_flag = was_socialist
+	}
+	else_if = {
+		limit = { 
+			has_government = anarchism 
+		}
+		set_country_flag = was_anarchist
+	}
+}
+
+restore_previous_government_type = {
+	hidden_effect = {
+		subtract_from_variable = {
+			var = last_neutrality_pop
+			value = party_popularity@neutrality
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = last_neutrality_pop
+		}
+		clear_variable = last_neutrality_pop
+		subtract_from_variable = {
+			var = last_communism_pop
+			value = party_popularity@communism
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = last_communism_pop
+		}
+		clear_variable = last_communism_pop
+		subtract_from_variable = {
+			var = last_democratic_pop
+			value = party_popularity@democratic
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = last_democratic_pop
+		}
+		clear_variable = last_democratic_pop
+		subtract_from_variable = {
+			var = last_fascism_pop
+			value = party_popularity@fascism
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = last_fascism_pop
+		}
+		clear_variable = last_fascism_pop
+		subtract_from_variable = {
+			var = last_socialist_pop
+			value = party_popularity@socialism
+		}
+		add_popularity = {
+			ideology = socialism
+			popularity = last_socialist_pop
+		}
+		clear_variable = last_socialist_pop
+		subtract_from_variable = {
+			var = last_anarchist_pop
+			value = party_popularity@anarchism
+		}
+		add_popularity = {
+			ideology = anarchism
+			popularity = last_anarchist_pop
+		}
+		clear_variable = last_anarchist_pop
+		if = {
+			limit = { 
+				has_country_flag = was_neutral 
+			}
+			set_politics = { 
+				ruling_party = neutrality 
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_flag = was_communist 
+			}
+			set_politics = { 
+				ruling_party = communism 
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_flag = was_democratic 
+			}
+			set_politics = { 
+				ruling_party = democratic 
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_flag = was_fascist 
+			}
+			set_politics = { 
+				ruling_party = fascism 
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_flag = was_socialist 
+			}
+			set_politics = { 
+				ruling_party = socialism 
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_flag = was_anarchist
+			}
+			set_politics = { 
+				ruling_party = anarchism 
+			}
+		}
+	}
+}

@@ -1424,7 +1424,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}		
 	}
 
-	RCM_wang_shiwei_protest_mission = {		#王实味抗议
+	AWR_wang_shiwei_protest_mission = {		#王实味抗议
 		icon = generic_political_rally
 		fire_only_once = no
 		days_mission_timeout = 180 
@@ -1458,7 +1458,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 						}
 					}
 					add_days_mission_timeout  = {
-						mission = RCM_wang_shiwei_protest_mission
+						mission = AWR_wang_shiwei_protest_mission
 						days = -15
 					}
 				}
@@ -14842,6 +14842,656 @@ CHINA_recover_motherland = {	#中华民族领土问题
 					modifier = CHINA_peaceful_territorial_settlement
 				}
 			}
+		}
+	}
+}
+
+PRC_156_project_category = { #156工程
+
+	PRC_156_project = { #开启156工程
+	
+	    priority = 9999
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+		    has_completed_focus = PRC_Join_USSR
+			has_completed_focus = PRC_Five_year_plans_of_China
+			has_completed_focus = PRC_50s_soviet_industrial_aid			
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 70
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+			
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			set_country_flag = PRC_156_project_start
+			SOV = {
+				add_timed_idea = {
+					idea = PRC_156_project_sov_debuff
+					days = 240
+				}
+			}
+			add_timed_idea = {
+                idea = PRC_sov_156_project
+                days = 1825
+            }
+			random_owned_controlled_state = {
+				prioritize = { 
+					1097 
+				}
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { #吉林
+					328 
+				}
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+			prioritize = { 716 }
+				limit = {
+                    #state = 870
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+			prioritize = { 744 }
+				limit = {
+                    #state = 744
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+			prioritize = { 1014 }
+				limit = {
+                    #state = 744
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+			
+            every_owned_state = { #guo
+	            add_extra_state_shared_building_slots = 3
+	        }
+		}
+	}
+	
+	PRC_import_sov_machinery = { #引进机械		 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			add_ideas = PRC_sov_machinery
+			
+			add_tech_bonus = {
+				name = industry #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = industry #研究类型
+		    }
+			add_tech_bonus = {
+				name = concentrated #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = concentrated_industry_category #研究类型
+		    }
+			add_tech_bonus = {
+				name = dispersed #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = dispersed_industry_category #研究类型
+		    }
+			add_tech_bonus = {
+				name = construction #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = construction_tech #研究类型
+		    }
+			add_tech_bonus = {
+				name = excavation #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = excavation_tech #研究类型
+		    }
+			add_tech_bonus = {
+				name = synth #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = synth_resources #研究类型
+		    }
+		}
+	}
+	
+	PRC_hire_sov_experts = { #引进专家	 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			add_ideas = PRC_sov_experts
+			
+			add_tech_bonus = {
+				name = electronics #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = electronics #研究类型
+		    }
+			add_tech_bonus = {
+				name = computing #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = computing_tech #研究类型
+		    }
+			add_tech_bonus = {
+				name = radar #(取研究类型名开头即可)
+				bonus = 1 #研究加成(1 = +100%)
+				uses = 3 #次数(正整数)
+				category = radar_tech #研究类型
+		    }
+			add_tech_bonus = {
+				name = nuclear #(取研究类型名开头即可)
+				bonus = 0.5 #研究加成(1 = +100%)
+				uses = 1 #次数(正整数)
+				category = nuclear #研究类型
+		    }
+			add_tech_bonus = {
+				name = rocketry #(取研究类型名开头即可)
+				bonus = 0.5 #研究加成(1 = +100%)
+				uses = 1 #次数(正整数)
+				category = rocketry #研究类型
+		    }
+		}
+	}
+	
+	PRC_invest_in_new_companies = { #引进制造商	 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+		    set_country_flag = PRC_invest_in_new_companies
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_okmo_organization
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_mytishchy_machine_building_plant_organization
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_kirov_organization
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_sevastopol_marine_plant_organization
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_mig_design_bureau_organization
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = SOV_gaz_organization
+				
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_gosproyektstroy_1
+			}
+			else = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_mytishchy_machine_building_plant #坦克
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_kirov #坦克
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_sevastopol_marine_plant #舰艇
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_mig_design_bureau #飞行器
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_gaz #军需品
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = SOV_gosproyektstroy_1 #工业企业
+			}
+		}
+	}
+	
+	PRC_adopt_soviet_education_system = { #引进教育体系	 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+			
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					original_research_slots < 6
+				}
+				add_research_slot = 1
+			}
+			if = {
+				limit = {
+					original_research_slots > 5
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_air
+					value = 1
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+				add_tech_bonus = {
+					name = electronics_bonus
+					bonus = 1.0
+					uses = 1
+					category = electronics
+				}
+				add_tech_bonus = {
+					name = industrial_bonus
+					bonus = 1.0
+					uses = 1
+					category = industry
+				}	
+				add_tech_bonus = {
+					name = infantry_artillery_bonus 
+					bonus = 1.0
+					uses = 1
+					category = infantry_weapons
+					category = artillery
+				}				
+			}
+			add_ideas = PRC_soviet_style_education
+		}
+	}
+	
+	PRC_adopt_soviet_Military_instructors = { #引进军事教官	 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			add_ideas = PRC_soviet_Military_instructors
+			army_experience = 100
+			air_experience = 100
+			navy_experience = 100
+			
+			
+			add_mastery = {
+				amount = 100
+				folder = land
+				track = infantry
+			}
+			add_mastery = {
+				amount = 100
+				folder = land
+				track = combat_support
+			}
+			add_mastery = {
+				amount = 100
+				folder = land
+				track = armor
+			}
+			add_mastery = {
+				amount = 100
+				folder = land
+				track = operations
+			}
+		}
+	}
+	
+	PRC_adopt_soviet_Military_equipment = { #引进苏联装备	 
+
+		icon = generic_factory
+
+		allowed = { 
+			OR = {
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
+            }
+		}
+
+		available = {
+			has_completed_focus = PRC_Join_USSR
+			has_idea = prc_sov_youhaohuzhu 
+			is_in_faction_with = SOV
+			has_country_flag = PRC_156_project_start
+		}
+		
+		cancel_trigger = {
+			NOT = { 
+				is_in_faction_with = SOV 
+			}
+		}
+
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			add_ideas = PRC_soviet_Military_equipment
+			
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 10000
+					equipment_type = infantry_equipment
+					seller_tags = { 
+						SOV 
+					}
+				}
+				add_equipment_subsidy = {
+					cic = 10000
+					equipment_type = support_equipment
+					seller_tags = { 
+						SOV 
+					}
+				}
+				add_equipment_subsidy = {
+					cic = 10000
+					equipment_type = artillery_equipment
+					seller_tags = { 
+						SOV 
+					}
+				}
+				add_equipment_subsidy = {
+					cic = 10000
+					equipment_type = medium_tank_chassis
+					seller_tags = { 
+						SOV 
+					}
+				}
+				add_equipment_subsidy = {
+					cic = 10000
+					equipment_type = small_plane_airframe
+					seller_tags = { 
+						SOV 
+					}
+				}
+			}
+			
 		}
 	}
 }

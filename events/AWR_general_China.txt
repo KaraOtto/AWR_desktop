@@ -1,0 +1,141 @@
+add_namespace = AWR_general_China
+country_event = {	#中国要求归还领土
+	id = AWR_general_China.1
+	title = AWR_general_China.1.t
+	desc = AWR_general_China.1.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 45
+			modifier = {
+				factor = 1.8
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.25
+				}
+			}
+			modifier = {
+				factor = 1.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 1.2
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.75
+				}
+			}
+			modifier = {
+				factor = 0
+				ic_ratio = {
+					tag = FROM
+					ratio < 1
+				}
+			}
+			#factor = 90
+			
+		}
+		name = AWR_general_China.1.a
+		add_political_power = 50
+		FROM = { 
+			country_event = {
+				id = AWR_general_China.2
+			} 
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 55
+			modifier = {
+				factor = 100
+				ic_ratio = {
+					tag = FROM
+					ratio < 1
+				}
+			}
+			modifier = {
+				factor = 0.2
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.25
+				}
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.75
+				}
+			}
+		}
+		name = AWR_general_China.1.b
+		add_political_power = -100
+		FROM = { 
+			country_event = {
+				id = AWR_general_China.3
+			}
+		}
+		every_owned_state = {
+			limit = {
+				OR = {
+					is_core_of = FROM
+					is_claimed_by = FROM
+				}
+			}
+			FROM = {
+				transfer_state = PREV
+			}
+		}
+	}
+}
+
+country_event = {	#拒绝
+	id = AWR_general_China.2
+	title = AWR_general_China.2.t
+	desc = AWR_general_China.2.d
+	picture = report_event_ANZAC_day
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = { 
+			factor = 70 
+		}
+		name = AWR_general_China.2.a
+		declare_war_on = { 
+			type = annex_everything 
+			target = FROM 
+		}
+	}
+	option = {
+		ai_chance = { 
+			factor = 30 
+		}
+		name = AWR_general_China.2.b
+		add_political_power = -50
+	}
+}
+
+country_event = {	#同意
+	id = AWR_general_China.3
+	title = AWR_general_China.3.t
+	desc = AWR_general_China.3.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_general_China.3.a
+		add_political_power = 50
+	}
+}
