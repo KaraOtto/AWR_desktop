@@ -4882,25 +4882,25 @@ focus_tree = {
 						is_subject = yes
 					}
 				} #GUO
-				RAJ = { release = BUR }
+				RAJ = { release = BRM }
 				if = {
 					limit = {
 						has_dlc = "Together for Victory"
 					}
-					set_autonomy = { target = BUR autonomy_state = autonomy_dominion }
+					set_autonomy = { target = BRM autonomy_state = autonomy_dominion }
 				}
 				if = {
 					limit = {
 						NOT = { has_dlc = "Together for Victory" }
 					}
-					puppet = BUR
+					puppet = BRM
 				}
 				hidden_effect = {
 					every_other_country = {
 						limit = {
 							has_war_with = ENG
 						}
-						BUR = { #GUO
+						BRM = { #GUO
 							add_to_war = { targeted_alliance = ENG enemy = PREV hostility_reason = asked_to_join }
 						}
 					}
@@ -4951,12 +4951,12 @@ focus_tree = {
 			if = { #GUO
 				limit = {
 					has_dlc = "Together for Victory"
-					BUR = {
+					BRM = {
 						is_subject_of = ENG
 						NOT = { has_autonomy_state = autonomy_dominion }
 					}
 				}
-				set_autonomy = { target = BUR autonomy_state = autonomy_dominion }
+				set_autonomy = { target = BRM autonomy_state = autonomy_dominion }
 			}
 			
 			SST = {
@@ -4972,7 +4972,7 @@ focus_tree = {
 				retire_country_leader = yes
 			}
 			
-			BUR = { #GUO
+			BRM = { #GUO
 				drop_cosmetic_tag = yes
 				retire_country_leader = yes
 			}

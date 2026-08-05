@@ -1,3 +1,72 @@
+PRC_contact_wrl_cat = {
+	priority = 1200
+	icon = GFX_decision_category_generic_crisis
+	
+	visible = { 
+		not = { 
+			has_global_flag = roc_in_taiwan_flag 
+		} 
+	}
+}
+
+CHINA_recover_motherland = {	#中华民族历史领土
+	priority = 1004	
+	icon = generic_political_actions
+	picture = GFX_Chinese_historical_territory
+	
+	allowed = {
+		OR = {
+			TAG = CHI
+			TAG = PRC
+			TAG = YUN
+			TAG = XSM
+			TAG = GXC
+			TAG = SIK
+			TAG = MAN
+			TAG = SHX
+			is_literally_china = yes	
+        }
+	}
+    visible_when_empty = no
+}
+
+PRC_156_project_category = {	#156工程
+    priority = 1003
+	icon = generic_industry
+	picture = GFX_decision_cat_picture_generic_shipbuilding
+	
+	allowed = {
+		OR = {
+            TAG = event_target:WTT_communist_china
+            TAG = PRC
+        }
+	}
+	visible = {
+	    NOT = { 
+			has_war_with = SOV 
+		}
+		is_subject = no
+		has_government = SOV
+		SOV = {
+			has_opinion = {
+				target = ROOT
+				value > 4
+			}
+		}
+        
+    }         
+}
+
+PRC_civil_war_offensives = {	#内战攻势
+	icon = GFX_decision_category_border_conflicts
+	allowed = {
+		is_literally_china = yes
+	}
+
+	scripted_gui = CHI_civil_war_map
+	priority = 1001
+}
+
 parliament_gui_decision_category = {	#全国人大
 	icon = generic_communism
 
@@ -91,7 +160,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 
 }
 
-RCM_communist_infiltration = {	#游击队攻势
+AWR_communist_infiltration = {	#游击队攻势
 	allowed = {
 		is_literally_china = yes
 	}
@@ -148,26 +217,7 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 	}
 }
 
-PRC_civil_war_offensives = {	#内战攻势
-	icon = GFX_decision_category_border_conflicts
-	allowed = {
-		is_literally_china = yes
-	}
 
-	scripted_gui = CHI_civil_war_map
-	priority = 1001
-}
-
-PRC_contact_wrl_cat = {
-	priority = 1200
-	icon = GFX_decision_category_generic_crisis
-	
-	visible = { 
-		not = { 
-			has_global_flag = roc_in_taiwan_flag 
-		} 
-	}#guo
-}
 
 PRC_Army_Reform_category = {	#军事改革
 	priority = 994
@@ -183,15 +233,11 @@ PRC_Army_Reform_category = {	#军事改革
 	visible_when_empty = yes
 }
 
-PRC_resource_effort = {	#国家资源开采项目
-	priority = 1
-	icon = generic_prospect_for_resources
 
-	visible = {
-		has_completed_focus = PRC_national_resource_exploration
-	}
 
-}
+
+
+
 
 TIB_democracy_reform = {	#西藏民主改革
 	priority = 2
@@ -201,50 +247,12 @@ TIB_democracy_reform = {	#西藏民主改革
 	}
 }
 
-CHINA_recover_motherland = {	#中华民族历史领土
-	priority = 1004	
-	icon = generic_political_actions
-	picture = GFX_Chinese_historical_territory
-	
-	allowed = {
-		OR = {
-			TAG = CHI
-			TAG = PRC
-			TAG = YUN
-			TAG = XSM
-			TAG = GXC
-			TAG = SIK
-			TAG = MAN
-			TAG = SHX
-			is_literally_china = yes	
-        }
-	}
-    visible_when_empty = no
-}
+PRC_resource_effort = {	#国家资源开采项目
+	priority = 1
+	icon = generic_prospect_for_resources
 
-PRC_156_project_category = {	#156工程
-    priority = 1003
-	icon = generic_industry
-	picture = GFX_decision_cat_picture_generic_shipbuilding
-	
-	allowed = {
-		OR = {
-            TAG = event_target:WTT_communist_china
-            TAG = PRC
-        }
-	}
 	visible = {
-	    NOT = { 
-			has_war_with = SOV 
-		}
-		is_subject = no
-		has_government = SOV
-		SOV = {
-			has_opinion = {
-				target = ROOT
-				value > 4
-			}
-		}
-        
-    }         
+		has_completed_focus = PRC_national_resource_exploration
+	}
+
 }

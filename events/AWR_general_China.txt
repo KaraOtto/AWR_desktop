@@ -2,7 +2,7 @@ add_namespace = AWR_general_China
 country_event = {	#中国要求归还领土
 	id = AWR_general_China.1
 	title = AWR_general_China.1.t
-	desc = AWR_general_China.1.d
+	desc = AWR_general_China.1.desc
 	picture = GFX_report_event_chinese_soldiers_fighting
 
 	is_triggered_only = yes
@@ -104,7 +104,7 @@ country_event = {	#中国要求归还领土
 country_event = {	#拒绝
 	id = AWR_general_China.2
 	title = AWR_general_China.2.t
-	desc = AWR_general_China.2.d
+	desc = AWR_general_China.2.desc
 	picture = report_event_ANZAC_day
 
 	is_triggered_only = yes
@@ -130,12 +130,314 @@ country_event = {	#拒绝
 country_event = {	#同意
 	id = AWR_general_China.3
 	title = AWR_general_China.3.t
-	desc = AWR_general_China.3.d
+	desc = AWR_general_China.3.desc
 	picture = GFX_report_event_chinese_soldiers_fighting
 
 	is_triggered_only = yes
 	option = {
 		name = AWR_general_China.3.a
 		add_political_power = 50
+	}
+}
+
+country_event = { #中国政府否认麦克马洪线
+	id = AWR_general_China.4
+	title = AWR_general_China.4.t
+	desc = AWR_general_China.4.desc
+	
+	trigger = {
+		#
+	}
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { #yes
+		name = AWR_general_China.4.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				factor = 999
+				FROM = { 
+					is_ai = no 
+				}
+			}
+		}
+		FROM = {
+			effect_tooltip = { 
+				transfer_state = 434 
+				transfer_state = 1130
+			}
+			country_event = {
+				id = AWR_general_China.6
+			}
+			add_ai_strategy = {
+				type = befriend
+				id = ROOT
+				value = 200
+			}
+		}
+	}
+	
+	option = { #no
+		name = AWR_general_China.4.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_in_faction_with = FROM
+			}
+		}
+		FROM = {
+			country_event = {
+				id = AWR_general_China.7
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = ROOT
+				value = 200
+			}
+		}
+	}
+}
+
+country_event = { #中国政府否认麦克马洪线
+	id = AWR_general_China.5
+	title = AWR_general_China.5.t
+	desc = AWR_general_China.5.desc
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_general_China.5.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_capitulated = no
+				any_other_country = {
+					is_major = yes
+					is_in_faction_with = ROOT
+					NOT = { 
+						is_in_faction_with = FROM 
+					}
+				}
+			}
+			modifier = {
+				factor = 999
+				has_capitulated = yes
+			}
+		}
+		FROM = {
+			effect_tooltip = { 
+				transfer_state = 434 
+				transfer_state = 1130 
+			}
+			country_event = {
+				id = AWR_general_China.6
+			}
+			add_ai_strategy = {
+				type = befriend
+				id = ROOT
+				value = 200
+			}
+		}
+	}
+	
+	option = {
+		name = AWR_general_China.5.b
+		ai_chance = {
+			base = 50
+			modifier = {
+			factor = 0
+			is_in_faction_with = FROM
+			}
+		}
+		FROM = {
+			country_event = {
+				id = AWR_general_China.7
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = ROOT
+				value = 200
+			}
+		}
+	}
+}
+
+country_event = {	#同意归还藏南地区
+	id = AWR_general_China.6
+	title = AWR_general_China.6.t
+	desc = AWR_general_China.6.desc
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_general_China.6.a
+		ai_chance = {
+			base = 100
+		}
+		transfer_state = 434
+		transfer_state = 1130
+		add_state_core = 434
+		add_state_core = 1130
+		add_political_power = 100
+	}
+}
+
+country_event = {	#拒绝归还藏南地区
+	id = AWR_general_China.7
+	title = AWR_general_China.7.t
+	desc = AWR_general_China.7.desc
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_general_China.7.a
+		ai_chance = {
+			base = 100
+		}
+		remove_state_claim = 434
+		remove_state_claim = 1130
+		add_political_power = -50
+		add_war_support = -0.025
+	}
+	
+	option = {
+		name = AWR_general_China.7.b
+		ai_chance = {
+			base = 0
+		}
+		create_wargoal = {
+			target = FROM
+			type = take_core_state
+			generator = { 
+				434 
+				1130 
+			}
+		}
+		add_war_support = 0.05
+	}
+}
+
+country_event = {	#中国索要蒙古
+	id = AWR_general_China.8
+	title = AWR_general_China.8.t
+	desc = AWR_general_China.8.desc
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 60
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+		}
+		name = AWR_general_China.8.a
+		add_political_power = 50
+		FROM = { 
+			country_event = { 
+				id = AWR_general_China.9 
+			} 
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 40
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+		}
+		name = AWR_general_China.8.b
+		add_political_power = -100
+		FROM = { 
+			country_event = { 
+				id = AWR_general_China.10 
+			} 
+		}
+		if = {
+			limit = {
+				MON = { 
+					exists = yes 
+				}
+			}
+			FROM = {
+				annex_country = { 
+					target = MON 
+					transfer_troops = yes 
+				}
+			}
+		}
+		if = {
+			limit = {
+				MON = { 
+					exists = no 
+				}
+			}
+			FROM = {
+				transfer_state = 330
+				transfer_state = 817
+				transfer_state = 818
+				transfer_state = 819
+				transfer_state = 820
+
+				transfer_state = 1121
+				transfer_state = 1122	
+				transfer_state = 1123
+				transfer_state = 1124
+			}
+		}
+	}
+}
+
+country_event = {	#拒绝
+	id = AWR_general_China.9
+	title = AWR_general_China.9.t
+	desc = AWR_general_China.9.desc
+	picture = report_event_ANZAC_day
+
+	is_triggered_only = yes
+	option = {
+		ai_chance = { 
+			factor = 70 
+		}
+		name = AWR_general_China.9.a
+		create_wargoal = { 
+			type = annex_everything 
+			target = FROM 
+		}
+	}
+	option = {
+		name = AWR_general_China.9.b
+		add_political_power = -100
+		ai_chance = { 
+			factor = 30 
+		}
+	}
+}
+
+country_event = {	#接受了
+	id = AWR_general_China.10
+	title = AWR_general_China.10.t
+	desc = AWR_general_China.10.desc
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	option = {
+		name = AWR_general_China.10.a
+		add_political_power = 100
 	}
 }

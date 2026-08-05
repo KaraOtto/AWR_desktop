@@ -1539,7 +1539,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			unlock_decision_tooltip = RCM_PRC_push_against_empiricism
 			unlock_decision_tooltip = RCM_PRC_push_against_sectarianism
 			unlock_decision_tooltip = RCM_PRC_push_against_liberalism
-			unlock_decision_tooltip = RCM_PRC_perform_speech_on_yanan_forum
+			unlock_decision_tooltip = AWR_PRC_perform_speech_on_yanan_forum
 			unlock_decision_tooltip = RCM_PRC_Conclude_Studies_in_each_departments
 		}
 		complete_effect = {
@@ -1718,7 +1718,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_perform_speech_on_yanan_forum = {	#在延安文艺座谈会上的演说
+	AWR_PRC_perform_speech_on_yanan_forum = {	#在延安文艺座谈会上的演说
 		icon = hol_radio_oranje
 		visible = {
 			has_global_flag = study_committee
@@ -2150,7 +2150,7 @@ PRC_western_campaigns_cat = {	#西征
 }
 
 X_xchinese_propaganda_campaigns = {	#宣传鼓动部
-	X_xchinese_propaganda_3 = { # ID = 3
+	X_xchinese_propaganda_3 = { 
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -4910,7 +4910,164 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 	}
 }
 
-RCM_communist_infiltration = {    #游击队攻势
+AWR_communist_infiltration = {    #游击队攻势
+	send_in_the_partisans = {	#派遣游击队
+		icon = infiltrate_state
+		fire_only_once = no
+		days_remove = 90 
+		allowed = {
+			is_literally_china = yes
+		}
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		visible = { 
+			tag = event_target:WTT_communist_china
+			has_country_flag = communist_infiltration
+			any_of_scopes = {
+				array = global.big_china
+				THIS = {
+					NOT = {
+						OR = {
+							AND = { 
+								controller = {
+									OR = {
+										tag = ROOT
+										has_government = communism
+									}
+								}
+								owner = {
+									NOT = {
+										OR = {
+											tag = event_target:WTT_current_china_leader
+											is_warlord = yes
+										}
+									}
+								}
+							}
+							owner = { 
+								OR = {
+									tag = ROOT
+									has_government = communism
+								}
+							}
+						}
+					}
+					or = { 
+						is_north_china_state_for_liberation = yes
+						state = 749
+						state = 1034
+					}
+					any_neighbor_state = {
+						OR = {
+							has_state_flag = commie_ridden_states
+							owner = {
+								tag = ROOT
+							}
+						}
+					}
+					NOT = {
+						has_state_flag = commie_ridden_states
+					}
+				}
+			}
+		}
+		available = { 
+			hidden_trigger = {
+				command_power > 29
+				command_power_daily > 0.2
+			}
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			has_manpower > 2000
+		}
+		complete_effect = { 
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		
+		remove_effect = { 
+			
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -200
+				}
+				add_manpower = -2000
+			}
+			every_state = {
+				limit = {
+					NOT = {
+						OR = {
+							AND = { 
+								controller = {
+									OR = {
+										tag = ROOT
+										has_government = communism
+									}
+								}
+								owner = {
+									NOT = {
+										OR = {
+											tag = event_target:WTT_current_china_leader
+											is_warlord = yes
+										}
+									}
+								}
+							}
+							owner = { 
+								OR = {
+									tag = ROOT
+									has_government = communism
+								}
+							}
+						}
+					}
+					or = { 
+						is_north_china_state_for_liberation = yes
+						state = 749
+						state = 1034
+					}
+					any_neighbor_state = {
+						OR = {
+							has_state_flag = commie_ridden_states
+							owner = {
+								tag = ROOT
+							}
+						}
+					}
+					NOT = {
+						has_state_flag = commie_ridden_states
+					}
+				}
+				custom_effect_tooltip = commie_ridden_states_start_tt
+				hidden_effect = {
+					if = {
+						limit = {
+							has_global_flag = enable_commie_ridden_states_line
+						}
+						set_border_war = yes
+					}
+					set_state_flag = commie_ridden_states
+				}
+				if = {
+					limit = { 
+						has_resistance = yes 
+					}
+					add_compliance = -50 #guo
+				}
+				set_state_flag = PRC_dihoukangrigenjudi_flag
+
+			}
+			custom_effect_tooltip = communist_partisan_effect_tt
+
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
 
 	PRC_dihoukangzhan_recruit_army = {	#开展征兵宣传
 	
@@ -4951,7 +5108,7 @@ RCM_communist_infiltration = {    #游击队攻势
 			has_idea = propaganda_recruits
 		}
 
-		cost = 50
+		cost = 25
 
 		fire_only_once = no
 
@@ -5000,13 +5157,327 @@ RCM_communist_infiltration = {    #游击队攻势
 			}
 		}
 	}
+
+	expand_shanxi_partisans = { #在山西发展游击队
+
+		icon = infiltrate_state
+
+		available = {
+			num_of_military_factories > 0
+			any_of_scopes = {
+				array = global.small_china
+				tooltip = small_china_tt
+				has_state_flag = commie_ridden_states
+                OR = {
+				    custom_trigger_tooltip = {
+					    tooltip = is_in_strat_245
+					    region = 245
+				    }
+				}
+			}
+			NOT = {
+				has_country_flag = PRC_expanding_partisans_flag
+			}
+		}
+
+
+		fire_only_once = no
+
+		days_remove = 15
+
+		days_re_enable = 30
+
+        modifier = {
+            industrial_capacity_factory = -0.1
+		}
+
+		visible = {
+			hidden_trigger = {
+                has_completed_focus = PRC_partisan_offensive
+			}
+			has_war_with = JAP
+			NOT = {
+                OR = {
+					has_completed_focus = PRC_A_New_Country
+					has_completed_focus = PRC_For_the_Soviets
+					has_completed_focus = PRC_Federal_Republic
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			set_country_flag = PRC_expanding_partisans_flag
+		}
+
+		remove_effect = {
+			random_list = {
+                40 = {
+					custom_effect_tooltip = we_get_1_division_tt
+					add_to_variable = { 
+						var = PRC_shanxi_partisans 
+						value = 1 
+					}
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_rifle 
+						value = 750 
+					} 
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_artillery 
+						value = 9 
+					} 
+				}
+				30 = {
+					custom_effect_tooltip = we_get_2_division_tt
+					add_to_variable = { 
+						var = PRC_shanxi_partisans 
+						value = 2 
+					}
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_rifle 
+						value = 1800 
+					}
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_artillery 
+						value = 18 
+					} 
+				}
+				20 = {
+					custom_effect_tooltip = we_get_3_division_tt
+					add_to_variable = { 
+						var = PRC_shanxi_partisans 
+						value = 3 
+					}
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_rifle 
+						value = 2250 
+					} 
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_artillery 
+						value = 27 
+					} 
+				}
+				10 = {
+					custom_effect_tooltip = we_get_4_division_tt
+					add_to_variable = { 
+						var = PRC_shanxi_partisans 
+						value = 4 
+					}
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_rifle 
+						value = 3000 
+					} 
+					add_to_variable = { 
+						var = PRC_shanxi_partisans_artillery 
+						value = 36 
+					} 
+				}
+			}
+			clr_country_flag = PRC_expanding_partisans_flag
+		}
+
+		ai_will_do = {
+			base = 5000
+		}
+	}
+
+	reorganize_shanxi_partisans = {	#整编山西游击队
+		icon = infiltrate_state
+		visible = {
+			has_completed_focus = PRC_partisan_offensive  
+		}
+		available = {
+		    check_variable = {
+				ROOT.PRC_shanxi_partisans > 0
+			}
+			any_owned_state = {
+			    is_fully_controlled_by = ROOT
+				OR = {
+				    custom_trigger_tooltip = {
+					    tooltip = is_in_strat_245
+					    region = 245
+				    }
+				}
+			} 
+			NOT = {
+				has_war_with = JAP
+			}	    
+		} 
+		cost = 0
+		days_remove = 20
+		fire_only_once = no
+		remove_effect = {
+		    country_event = ccw.46
+		}
+		ai_will_do = {
+			factor = 3000
+		}
+	}
+
+	expand_the_northern_China_partisans = { #在华北发展游击队
+
+		icon = infiltrate_state
+
+		available = {
+			num_of_military_factories > 0
+			any_of_scopes = {
+				array = global.small_china
+				tooltip = small_china_tt
+				has_state_flag = commie_ridden_states
+                OR = {
+				    custom_trigger_tooltip = {
+					    tooltip = is_in_strat_143
+					    region = 143
+				    }
+				}
+			}
+			NOT = {
+				has_country_flag = PRC_expanding_partisans_flag
+			}
+		}
+
+
+		fire_only_once = no
+
+		days_remove = 15
+
+		days_re_enable = 30
+
+        modifier = {
+            industrial_capacity_factory = -0.1
+		}
+
+		visible = {
+			hidden_trigger = {
+                has_completed_focus = PRC_partisan_offensive
+			}
+			has_war_with = JAP
+			NOT = {
+                OR = {
+					has_completed_focus = PRC_A_New_Country
+					has_completed_focus = PRC_For_the_Soviets
+					has_completed_focus = PRC_Federal_Republic
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			set_country_flag = PRC_expanding_partisans_flag
+		}
+
+		remove_effect = {
+			random_list = {
+                40 = {
+					custom_effect_tooltip = we_get_1_division_tt
+					add_to_variable = { 
+						var = PRC_northern_partisans 
+						value = 1 
+					}
+					add_to_variable = { 
+						var = PRC_northern_partisans_rifle 
+						value = 750 
+					} 
+					add_to_variable = { 
+						var = PRC_northern_partisans_artillery 
+						value = 9 
+					} 
+				}
+				30 = {
+					custom_effect_tooltip = we_get_2_division_tt
+					add_to_variable = { 
+						var = PRC_northern_partisans 
+						value = 2 
+					}
+					add_to_variable = { 
+						var = PRC_northern_partisans_rifle 
+						value = 1800 
+					}
+					add_to_variable = { 
+						var = PRC_northern_partisans_artillery 
+						value = 18 
+					} 
+				}
+				20 = {
+					custom_effect_tooltip = we_get_3_division_tt
+					add_to_variable = { 
+						var = PRC_northern_partisans 
+						value = 3 
+					}
+					add_to_variable = { 
+						var = PRC_northern_partisans_rifle 
+						value = 2250 
+					} 
+					add_to_variable = { 
+						var = PRC_northern_partisans_artillery 
+						value = 27 
+					} 
+				}
+				10 = {
+					custom_effect_tooltip = we_get_4_division_tt
+					add_to_variable = { 
+						var = PRC_northern_partisans 
+						value = 4 
+					}
+					add_to_variable = { 
+						var = PRC_northern_partisans_rifle 
+						value = 3000 
+					} 
+					add_to_variable = { 
+						var = PRC_northern_partisans_artillery 
+						value = 36 
+					} 
+				}
+			}
+			clr_country_flag = PRC_expanding_partisans_flag
+		}
+
+		ai_will_do = {
+			base = 5000
+		}
+	}
+
+	reorganize_the_northern_partisans = {	#整编华北游击队
+		icon = infiltrate_state
+		visible = {
+			has_completed_focus = PRC_partisan_offensive  
+		}
+		available = {
+		    check_variable = {
+				ROOT.PRC_northern_partisans > 0
+			}
+			any_owned_state = {
+			    is_fully_controlled_by = ROOT
+				OR = {
+				    custom_trigger_tooltip = {
+					    tooltip = is_in_strat_143
+					    region = 143
+				    }
+				}
+			} 
+			NOT = {
+				has_war_with = JAP
+			}	    
+		} 
+		cost = 0
+		days_remove = 20
+		fire_only_once = no
+		remove_effect = {
+		    country_event = ccw.46
+		}
+		ai_will_do = {
+			factor = 3000
+		}
+	}
 	
 	expand_the_huadong_partisans = { #在华东发展游击队
 
 		icon = infiltrate_state
 
 		available = {
-			arms_factory> 0
+			arms_factory > 0
 			any_of_scopes = {
 				array = global.small_china
 				tooltip = small_china_tt
@@ -5029,15 +5500,11 @@ RCM_communist_infiltration = {    #游击队攻势
 
 		days_re_enable = 30
 
-		modifier = {
-            industrial_capacity_factory = -0.1
-		}
-
 		visible = {
 			hidden_trigger = {
                 has_completed_focus = PRC_partisan_offensive
 			}
-			#has_war_with = JAP
+
 			NOT = {
                 OR = {
 					has_completed_focus = PRC_A_New_Country
@@ -5127,7 +5594,7 @@ RCM_communist_infiltration = {    #游击队攻势
 				    }
 				}
 			} 
-			has_global_flag = CHI_no_longer_united_flag #guo   
+			has_global_flag = CHI_no_longer_united_flag   
 		} 
 		cost = 0
 		days_remove = 10
@@ -5351,8 +5818,8 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 
 		allowed = {
 			OR = {
-			TAG = event_target:WTT_communist_china
-			TAG = PRC
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
 			}
 		}
 
@@ -5398,7 +5865,7 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 			}
 			set_cosmetic_tag = xibeiguofangzhengfu
 			create_country_leader = { 
-				name="张学良"
+				name= "张学良"
 				picture = "gfx/leaders/NEA/Portrait_NEA_Zhang_Xueliang.dds"
 				ideology = despotism
 				
@@ -5861,7 +6328,7 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
         }
     }
 
-    RCM_PRC_perform_speech_on_yanan_forum = {	#在延安文艺座谈会上的演说
+    AWR_PRC_perform_speech_on_yanan_forum = {	#在延安文艺座谈会上的演说
         icon = hol_radio_oranje
         visible = {
             has_global_flag = zheng_dun_xue_feng_begin
@@ -5891,7 +6358,7 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
 
     }
 
-    pipan_jiaotiao ={	#批判教条主义
+    pipan_jiaotiao = {	#批判教条主义
         icon = generic_break_treaty
         allowed = {
             always = yes
@@ -6490,7 +6957,7 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 
 		remove_effect = {
 			set_capital = { 
-				state = FROM 
+				state = 1090
 			}
 		}
 		complete_effect = {
@@ -6511,25 +6978,6 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 						region = 242
 					}
 				}
-				OR = {
-					NOT = {
-						controls_state = 1175
-					}
-					NOT = {
-						has_full_control_of_state = 1176
-					}
-					AND = {
-						NOT = {
-							controls_state = 608
-						}
-						NOT = {
-							has_full_control_of_state = 1166
-						}
-						NOT = {
-							has_full_control_of_state = 611
-						}
-					}
-				}
 				any_owned_state = {
 					is_controlled_by = ROOT
 					is_capital = no
@@ -6546,42 +6994,6 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 					is_capital = yes
 					is_in_home_area = yes
 					region = 245
-				}
-				count_triggers = {
-					amount > 4
-					controls_state = 715
-		            controls_state = 716
-		            controls_state = 1153
-		            controls_state = 328
-		            controls_state = 1152
-		            controls_state = 1156
-		            controls_state = 714
-		            controls_state = 717
-		            controls_state = 1150
-					controls_state = 610
-					controls_state = 745
-					controls_state = 761
-					controls_state = 608
-					controls_state = 609
-					controls_state = 611
-					controls_state = 614
-					controls_state = 1070
-					controls_state = 621
-					controls_state = 746
-					controls_state = 1159
-					controls_state = 615
-					controls_state = 1163
-					controls_state = 1173
-					controls_state = 1158
-					controls_state = 616
-					controls_state = 612
-					controls_state = 1157
-					controls_state = 1161
-					controls_state = 1190
-					controls_state = 1136
-					controls_state = 1165
-					controls_state = 1166
-					controls_state = 1143
 				}
 			}
 		}
@@ -7782,20 +8194,7 @@ PRC_civil_war_offensives = {	#内战攻势
 					}
 				}  
 			}
-			#modifier = {
-			#	factor = 0
-			#	tag = event_target:WTT_communist_china
-			#}
-			#modifier = {
-			#	factor = 10
-			#	divisions_in_state = {
-			#		state = 171
-			#		size > 0
-			#	}
-			#	NOT = {
-			#		has_full_control_of_state = 171
-			#	}
-			#}
+			
 		}
 	}
 
@@ -14121,6 +14520,9 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 			NOT = {
 				has_global_flag = CHINA_stop_ask_for_territorial
+				has_idea = PRC_SOV_agreement_PRC_1
+				has_idea = PRC_SOV_agreement_PRC_2
+				has_idea = PRC_SOV_agreement_PRC_3
 			}
 		}
 		available = {
@@ -14146,6 +14548,9 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 			NOT = {
 				has_global_flag = CHINA_stop_ask_for_territorial
+				has_idea = PRC_SOV_agreement_PRC_1
+				has_idea = PRC_SOV_agreement_PRC_2
+				has_idea = PRC_SOV_agreement_PRC_3
 			}
 		}
 		available = {
@@ -14171,6 +14576,9 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 			NOT = {
 				has_global_flag = CHINA_stop_ask_for_territorial
+				has_idea = PRC_SOV_agreement_PRC_1
+				has_idea = PRC_SOV_agreement_PRC_2
+				has_idea = PRC_SOV_agreement_PRC_3
 			}
 		}
 		available = {

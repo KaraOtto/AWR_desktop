@@ -2109,7 +2109,7 @@ ideas = {
 			}
 
 			modifier = {
-				planning_speed = 0.5
+				planning_speed = 0.50
 				max_planning = 0.15
 				no_supply_grace = 84
 				army_speed_factor = 0.1
@@ -2179,13 +2179,13 @@ ideas = {
 			}
 			
 			on_remove = {
-			news_event = { 
-				id = AWR_PRC_news.2 
-				days = 1 
-			}
-			set_global_flag = baituandazhan_OVERZZ
-	        set_global_flag = baituandazhan
-	        set_global_flag = GFX_event_kangri_hundred_regiments_campaign
+				news_event = { 
+					id = AWR_PRC_news.2 
+					days = 1 
+				}
+				set_global_flag = baituandazhan_OVERZZ
+				set_global_flag = baituandazhan
+				set_global_flag = GFX_event_kangri_hundred_regiments_campaign
 			}
 
 			modifier = {
@@ -2213,39 +2213,39 @@ ideas = {
 			}
 			targeted_modifier = {
 				tag = MAN
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 			targeted_modifier = {
 				tag = ECA
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 			targeted_modifier = {
 				tag = EHB
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 			targeted_modifier = {
 				tag = RRC
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 			targeted_modifier = {
 				tag = RFM
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 			targeted_modifier = {
 				tag = JNC
-				attack_bonus_against = 0.15
-				breakthrough_bonus_against = 0.15
-				defense_bonus_against = 0.15
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
 			}
 		}
 
@@ -5134,55 +5134,143 @@ ideas = {
 			}  			
     	}
 
-		PRC_SOV_agreement_PRC_1 = {	#中苏边境与工业合作总协定
-			name = PRC_SOV_agreement_PRC
-            picture = PRC_SOV_agreement_PRC
-            available = {
-				tag = PRC
-            }
-			modifier = {
-				production_speed_buildings_factor = -0.10
-				research_speed_factor = -0.05
-				civilian_factory_use = 10
-				industrial_capacity_factory = -0.05
-			}
-			targeted_modifier = {
-				tag = SOV
-				extra_trade_to_target_factor = 0.10
-			}
-		}
-		PRC_SOV_agreement_PRC_2 = {	#中苏边境与工业合作总协定
-			name = PRC_SOV_agreement_PRC
+		PRC_SOV_agreement_PRC_1 = {	#中苏远东边境与工业合作总协定
             picture = PRC_SOV_agreement_PRC
             available = {
 				tag = PRC
             }
 			modifier = {
 				production_speed_buildings_factor = -0.15
-				research_speed_factor = -0.075
-				civilian_factory_use = 15
-				industrial_capacity_factory = -0.075
+				research_speed_factor = -0.10
+				civilian_factory_use = 10
+				industrial_capacity_factory = -0.05
 			}
 			targeted_modifier = {
 				tag = SOV
-				extra_trade_to_target_factor = 0.25
+				extra_trade_to_target_factor = 0.20
+			}
+			on_add = {
+				408 = {
+					set_demilitarized_zone = yes
+				}
+				409 = {
+					set_demilitarized_zone = yes
+				}
+				560 = {
+					set_demilitarized_zone = yes
+				}
+				561 = {
+					set_demilitarized_zone = yes
+				}
+				657 = {
+					set_demilitarized_zone = yes
+				}
+			}
+
+			on_remove = {
+				408 = {
+					set_demilitarized_zone = no
+				}
+				409 = {
+					set_demilitarized_zone = no
+				}
+				560 = {
+					set_demilitarized_zone = no
+				}
+				561 = {
+					set_demilitarized_zone = no
+				}
+				657 = {
+					set_demilitarized_zone = no
+				}
 			}
 		}
-		PRC_SOV_agreement_PRC_3 = {	#中苏边境与工业合作总协定
-			name = PRC_SOV_agreement_PRC
+		PRC_SOV_agreement_PRC_2 = {	#中苏萨哈林与工业合作总协定
             picture = PRC_SOV_agreement_PRC
             available = {
 				tag = PRC
             }
 			modifier = {
-				production_speed_buildings_factor = -0.20
-				research_speed_factor = -0.10
-				civilian_factory_use = 20
-				industrial_capacity_factory = -0.10
+				production_speed_buildings_factor = -0.05
+				research_speed_factor = -0.05
+				civilian_factory_use = 5
+				industrial_capacity_factory = -0.025
 			}
 			targeted_modifier = {
 				tag = SOV
-				extra_trade_to_target_factor = 0.50
+				extra_trade_to_target_factor = 0.10
+			}
+			on_add = {
+				655 = {
+					set_demilitarized_zone = yes
+				}
+				537 = {
+					set_demilitarized_zone = yes
+				}
+			}
+			on_remove = {
+				655 = {
+					set_demilitarized_zone = no
+				}
+				537 = {
+					set_demilitarized_zone = no
+				}
+			}
+		}
+		PRC_SOV_agreement_PRC_3 = {	#中苏中亚边境与工业合作总协定
+            picture = PRC_SOV_agreement_PRC
+            available = {
+				tag = PRC
+            }
+			modifier = {
+				production_speed_buildings_factor = -0.10
+				research_speed_factor = -0.10
+				civilian_factory_use = 10
+				industrial_capacity_factory = -0.05
+			}
+			targeted_modifier = {
+				tag = SOV
+				extra_trade_to_target_factor = 0.20
+			}
+			on_add = {
+				586 = {
+					set_demilitarized_zone = yes
+				}
+				588 = {
+					set_demilitarized_zone = yes
+				}
+				589 = {
+					set_demilitarized_zone = yes
+				}
+				654 = {
+					set_demilitarized_zone = yes
+				}
+				732 = {
+					set_demilitarized_zone = yes
+				}
+				1125 = {
+					set_demilitarized_zone = yes
+				}
+			}
+			on_remove = {
+				586 = {
+					set_demilitarized_zone = no
+				}
+				588 = {
+					set_demilitarized_zone = no
+				}
+				589 = {
+					set_demilitarized_zone = no
+				}
+				654 = {
+					set_demilitarized_zone = no
+				}
+				732 = {
+					set_demilitarized_zone = no
+				}
+				1125 = {
+					set_demilitarized_zone = no
+				}
 			}
 		}
 
@@ -5377,8 +5465,6 @@ ideas = {
 		}
 	}
 
-	
-
 	hidden_ideas = {
 		communist_influence_aazz = {	#共产主义影响
 			
@@ -5404,8 +5490,6 @@ ideas = {
 		}
 
 		PRC_War_of_Liberation = {
-
-			picture = FRA_scw_intervention_republicans_focus
 
 			allowed = {
 			    always = no			
