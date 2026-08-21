@@ -5127,6 +5127,256 @@
 		}
 	}
 
+	CHI_yasuji_okamura={
+		name=CHI_yasuji_okamura
+		portraits={
+			civilian={
+				small="GFX_idea_yasuji_okamura"
+			}
+		}
+		advisor={
+			slot = foreign_advisor
+			idea_token = CHI_yasuji_okamura
+			allowed = {
+			}
+			visible = {
+				has_country_flag = CHI_yasuji_okamura_zz
+				event_target:WTT_communist_china = {
+					exists = yes
+					is_subject = no
+				}
+			}
+			available = {
+				has_war_with = event_target:WTT_communist_china
+			}
+			traits = { anti_communist_foreign_advisor_zz }
+			modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				breakthrough_factor = 0.05
+				planning_speed = 0.1
+				max_planning = 0.05
+			}
+			cost = 0
+			ai_will_do = {
+				factor = 9999
+			}
+		}
+	}
+
+	CHI_lizongren={
+		name=GXC_li_zongren
+		portraits={
+			civilian={
+				large="GFX_Portrait_GXC_Li_Zongren"
+			}
+			army={
+				large="GFX_Portrait_GXC_Li_Zongren"
+				small="GFX_idea_GXC_Li_Zongren"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_lizongren
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				or = {
+					custom_trigger_tooltip = {
+           				tooltip = CHI_lizongren_no_general_can_use
+						any_unit_leader = { has_id = 2505 }
+					}
+					is_in_faction_with = GXC
+					has_war_together_with = GXC
+					GXC = { is_subject_of = root }
+				}
+			}
+			visible = {
+				if = {
+					limit = { country_exists = GXC }
+					not = { has_war_with = GXC }
+				}
+			}
+			traits = {
+				army_chief_defensive_3
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 9999
+					has_war_with = JAP
+				}
+			}
+			desc=GXC_li_zongren_desc
+		}
+	}
+	
+	CHI_baichongxi={
+		name=GXC_bai_chongxi
+		portraits={
+			army={
+				large="GFX_Portrait_GXC_Bai_Chongxi"
+				small="GFX_idea_GXC_Bai_Chongxi"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = CHI_baichongxi
+			allowed = {
+				is_literally_china = yes
+			}
+			available = {
+				or = {
+					custom_trigger_tooltip = {
+            			tooltip = CHI_baichongxi_no_general_can_use
+						any_unit_leader = { has_id = 9500 }
+					}
+					is_in_faction_with = GXC
+					has_war_together_with = GXC
+					GXC = { is_subject_of = root }
+				}
+			}
+			visible = {
+				if = {
+					limit = { country_exists = GXC }
+					not = { has_war_with = GXC }
+				}
+			}
+			traits = {
+				army_chief_offensive_3
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 500
+				modifier = {
+					factor = 9999
+					has_war_with = event_target:WTT_communist_china
+					date > 1938.1.1
+				}
+			}
+			desc=GXC_bai_chongxi_desc
+		}
+	}
+
+	CHI_lisiguang={
+		name=CHI_lisiguang
+		portraits={
+			army={			
+				small="gfx/interface/ideas/lisiguang.png"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = CHI_lisiguang
+			ledger = army
+			visible = {
+				if = {
+					limit = {
+						NOT = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					OR = {
+						OR = { 
+							has_idea = CHI_communist_in_government 
+							TAG = event_target:WTT_current_china_leader 
+							TAG = SOV 
+						}
+						tag = event_target:WTT_communist_china
+					}
+				}
+			}
+            available = {
+                if = { limit = { original_tag = PRC } has_completed_focus = PRC_national_resource_exploration }
+				if = { limit = { original_tag = CHI } has_completed_focus = CHI_national_resource_exploration }
+            }   
+			allowed = {
+			}
+			research_bonus = {
+				synth_resources = 0.15
+				excavation_tech = 0.15
+			}
+			modifier = {
+				local_resources_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				production_speed_synthetic_refinery_factor = 0.15
+				production_speed_fuel_silo_factor = 0.15
+				max_fuel_factor = 0.25 #燃料容量
+		        fuel_gain_factor = 0.25 #石油转换燃料效率
+		        army_fuel_consumption_factor = -0.15
+		        air_fuel_consumption_factor = -0.15
+				navy_fuel_consumption_factor = -0.15
+		        army_fuel_capacity_factor = 0.15
+			}
+			traits = {
+				dizhixuejia
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	CHI_huang_baitao={#
+		name=CHI_huang_baitao
+		portraits={
+			army={
+				large="GFX_Portrait_CHI_Huang_Baitao"
+			}
+		}
+		corps_commander={
+			traits={  trait_reckless harsh_leader career_officer trickster  infantry_officer   NRA_Major_General }
+			skill=3
+			attack_skill=3
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=481122
+			visible = {   }
+		}
+	}
+
+	CHI_hu_lian={#1941年3月预备第九师师长
+		name=CHI_hu_lian
+		portraits={
+			army={
+				large="GFX_Portrait_CHI_Hu_Lian"
+			}
+		}
+		corps_commander={
+			traits={ rising_young_officer  brilliant_strategist   career_officer infantry_officer  NRA_Major_General }
+			skill=1
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+			visible = { has_global_flag = recruit_hulian }
+		}
+	}
+
+	CHI_guorugui={#1941年10月暂5师师长
+		name=CHI_guorugui
+		portraits={
+			army={
+				large="GFX_Portrait_CHI_guorugui"
+			}
+		}
+		corps_commander={
+			traits={ rising_young_officer  hidden_sympathies brilliant_strategist   career_officer  infantry_officer  NRA_Major_General }
+			skill=1
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+			visible = { or = { has_global_flag = recruit_guorugui tag = event_target:WTT_communist_china } }
+		}
+	}
+
 	german_advisors={
 		name =german_advisors
 		allowed_civil_war = {
