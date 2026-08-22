@@ -193,3 +193,142 @@ is_MAN_state_for_takeover = {	#接管苏占区
 	}
 }
 
+state_should_be_transferred_to_china = {
+	custom_trigger_tooltip = {
+		tooltip = NOT_is_japan_territories_tt
+		NOT = { 
+			has_state_flag = jap_starting_land 
+		}
+	}
+	NOT = {
+		state = 329 #tannu tuva
+	}
+	NOT = {
+		state = 745 #dalian
+	}
+	NOT = {
+		is_core_of = JAP
+	}
+	is_not_a_core_of_japanese_subject = yes
+	JAP_or_its_puppet_has_full_control_over_prev_states = yes
+	is_owned_by_jap_or_its_puppet = yes
+}
+
+CHI_power_blocs_leader_shift_available = {
+	check_variable = { 
+		CHI_power_bloc_army_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_capital_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > 0.0167 
+	}
+}
+
+CHI_power_blocs_army_shift_available = {
+	check_variable = { 
+		CHI_power_bloc_leader_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_capital_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > 0.0167 
+	}
+}
+
+CHI_power_blocs_capital_shift_available = {
+	check_variable = { 
+		CHI_power_bloc_leader_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_army_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > 0.0167 
+	}
+}
+
+CHI_power_blocs_technocrat_shift_available = {
+	check_variable = { 
+		CHI_power_bloc_leader_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_army_influence > 0.0167 
+	}
+	check_variable = { 
+		CHI_power_bloc_capital_influence > 0.0167 
+	}
+}
+
+CHI_power_blocs_democratic_balance = {	#民主化要求
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > CHI_power_bloc_leader_influence 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > CHI_power_bloc_army_influence 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > CHI_power_bloc_capital_influence 
+	}
+	check_variable = { 
+		CHI_power_bloc_technocrat_influence > CHI_power_bloc_leader_army_sum 
+	}
+}
+
+CHI_power_blocs_authoritarian_balance = {
+	check_variable = { 
+		CHI_power_bloc_leader_influence > CHI_power_bloc_army_influence 
+	}
+	check_variable = { 
+		CHI_power_bloc_leader_influence > CHI_power_bloc_technocrat_influence 
+	}
+}
+
+CHI_power_blocs_militarist_balance = {	#军国线要求
+	check_variable = { 
+		CHI_power_bloc_army_influence > 0.5 
+	}
+}
+
+CHI_power_blocs_ultranationalist_balance = {	#民族线要求
+	check_variable = { 
+		CHI_power_bloc_leader_influence > 0.5 
+	}
+}
+
+CHI_power_blocs_civil_war_won = {	#赢得内战
+	NOT = { 
+		country_exists = PRC 
+	}
+}
+
+CHI_power_blocs_democratic_route_available = {
+	OR = {
+		CHI_power_blocs_civil_war_won = yes
+		AND = {
+			has_completed_focus = CHI_rebuild_civil_service
+			communism < 0.25
+			socialism < 0.25
+		}
+	}
+	CHI_power_blocs_democratic_balance = yes
+}
+
+CHI_power_blocs_authoritarian_route_available = {
+	CHI_power_blocs_civil_war_won = yes
+	CHI_power_blocs_authoritarian_balance = yes
+}
+
+CHI_power_blocs_militarist_route_available = {
+	CHI_power_blocs_civil_war_won = yes
+	fascism > 0.6
+	CHI_power_blocs_militarist_balance = yes
+}
+
+CHI_power_blocs_ultranationalist_route_available = {
+	CHI_power_blocs_civil_war_won = yes
+	fascism > 0.6
+	CHI_power_blocs_ultranationalist_balance = yes
+}

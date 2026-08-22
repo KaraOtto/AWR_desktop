@@ -1,1 +1,88 @@
 add_namespace = AWR_SOV
+country_event = {	#中方对东北的接管完成
+	id = AWR_SOV.1
+	title = AWR_SOV.1.t
+	desc = AWR_SOV.1.desc
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_SOV.1.a
+		custom_effect_tooltip = demand_northeast_china_tt
+		effect_tooltip = {
+			event_target:WTT_current_china_leader = {
+				division_template = {
+					name = "Northeast Garrison" #names to be determined
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+				}
+				every_core_state = {
+					limit = {
+						is_MAN_state_for_liberation = yes
+						is_owned_and_controlled_by = SOV
+						NOT = {
+							is_core_of = event_target:WTT_communist_china
+						}
+					}
+					create_unit = {
+						division = "name = \"Tung-pei Chufang Chün\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+						owner = PREV
+					}					
+					if = {
+						limit = {
+							has_state_flag = strong_kmt_garrison
+						}						
+						create_unit = {
+							division = "name = \"Tung-pei Chufang Chün\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+							owner = PREV
+						}
+					}
+					transfer_state_to = event_target:WTT_current_china_leader
+				}
+			}
+			event_target:WTT_communist_china = {
+				division_template = {
+					name = "Northeast Garrison" #names to be determined
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+				}
+				every_core_state = {
+					limit = {
+						is_MAN_state_for_liberation = yes
+						is_owned_and_controlled_by = SOV
+						NOT = {
+							state = 745
+						}
+					}
+					create_unit = {
+						division = "name = \"Dongbei Jufang Jun\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+						owner = PREV
+					}					
+					if = {
+						limit = {
+							NOT = { is_core_of = event_target:WTT_current_china_leader }
+						}						
+						create_unit = {
+							division = "name = \"Dongbei Jufang Jun\" division_template = \"Northeast Garrison\" start_experience_factor = 0.4"
+							owner = PREV
+						}
+					}
+					transfer_state_to = event_target:WTT_communist_china
+				}
+			}
+		}
+	}
+}

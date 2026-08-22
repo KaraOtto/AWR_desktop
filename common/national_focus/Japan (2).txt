@@ -1,0 +1,2176 @@
+focus_tree = {
+	id = japan_wtt_focus #heavily modded, no label
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 10 #MODDED
+			tag = JAP
+		}
+	}
+	
+
+	default = no
+	continuous_focus_position = { 
+		x = 50 
+		y = 1350 
+	}  #MODDED
+
+
+
+	focus = {#清洗皇道派
+		id =  qxhdp
+		x = 28
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_purge_the_kodoha_faction
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	
+	focus = {#内阁调查局
+		id =  ngdcj
+		x = 2
+		y = 1
+		relative_position_id = jwzg
+		cost = 5
+		icon = GFX_focus_generic_secret_service_agency
+		prerequisite = { 
+			focus = jwzg
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#强化枢密院
+		id =  qhsmy
+		x = 2
+		y = 1
+		relative_position_id = ngdcj
+		cost = 5
+		icon = GFX_focus_generic_fascist_propaganda
+		prerequisite = { focus = ngdcj }
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {#强化陆军省
+		id =  qhljs
+		x = -2
+		y = 2
+		relative_position_id = jwzg
+		cost = 5
+		icon = GFX_focus_JAP_national_spiritual_mobilization_movement
+		prerequisite = { 
+			focus = jwzg 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#举国一致
+		id =  jgyz
+		x = -3
+		y = 1
+		relative_position_id = qhljs
+		cost = 5
+		icon = GFX_focus_SOV_mobilization_plan
+		prerequisite = { 
+			focus = qhljs 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {#强化思想统治
+		id =  qhsitz
+		x = 6
+		y = 1
+		relative_position_id = jwzg
+		cost = 5
+		icon = GFX_focus_SOV_military_purge
+		prerequisite = { 
+			focus = jwzg 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#治安维持体制
+		id = zawc
+		x = 0
+		y = 1
+		relative_position_id = qhsitz
+		cost = 5
+		icon = GFX_focus_generic_secret_service_agency
+		prerequisite = { 
+			focus = qhsitz 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#特别高等警察
+		id =  tgk
+		x = -1
+		y = 1
+		relative_position_id = zawc
+		cost = 5
+		icon = GFX_focus_generic_national_security
+		prerequisite = { 
+			focus = zawc 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	
+
+	focus = {#军政协调
+		id =  jzxt
+		x = 2
+		y = 1
+		relative_position_id = qhljs
+		cost = 5
+		icon = GFX_focus_generic_advanced_military_studies
+		prerequisite = { 
+			focus = qhljs
+		}
+		prerequisite = { 
+			focus = qhtz
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+    focus = {#维持政局稳定
+		id =  wcwd
+		x = 1
+		y = 1
+		relative_position_id = jzxt
+		cost = 5
+		icon =  GFX_goal_generic_defence
+		prerequisite = { 
+			focus = jzxt 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#战时行政体制
+		id =  zswd
+		x = -1
+		y = 1
+		relative_position_id = wcwd
+		cost = 5
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { 
+			focus = wcwd
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#维持国家稳定
+		id =  wcgjwd
+		x = 1
+		y = 1
+		relative_position_id = wcwd
+		cost = 5
+		icon = GFX_focus_JAP_foreign_exchange_allocation_policy
+		prerequisite = { 
+			focus = wcwd
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+	focus = {#第二次近卫文麿内阁
+		id =  decjw
+		x = 2
+		y = 3
+		relative_position_id = qhsmy
+		cost = 5
+		icon = GFX_focus_JAP_konoes_first_cabinet
+		prerequisite = { 
+			focus = gjzyyyh
+		}
+		prerequisite = { 
+			focus = dgyhfctz
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#基本国策纲要
+		id =  jbgcgy
+		x = -2
+		y = 1
+		relative_position_id = decjw
+		cost = 5
+		icon = GFX_focus_generic_printing_press
+		prerequisite = { 
+			focus = decjw
+		}
+
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+focus = {#大政翼赞会
+		id =  dzyzh
+		x = -2
+		y = 0
+		relative_position_id = jbgcgy
+		cost = 5
+		icon = GFX_focus_JAP_imperial_rule_assistance_association
+		prerequisite = { 
+			focus = jbgcgy
+		}
+		prerequisite = { 
+			focus = wcgjwd
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+focus = {#内阁情报局
+		id =  ngqbj
+		x = 2
+		y = 1
+		relative_position_id = dzyzh
+		cost = 5
+		icon = GFX_focus_generic_secret_service_agency
+		prerequisite = { 
+			focus = dzyzh 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	
+
+
+	focus = {#东条英机内阁
+		id =  dtng
+		x = 0
+		y = 1
+		relative_position_id = dzyzh
+		cost = 5
+		icon = GFX_focus_JAP_tojos_premiership
+		prerequisite = { 
+			focus = dzyzh
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#金属征集令
+		id =  zjjs
+		relative_position_id = dtng
+		x = 2
+		y = 1
+		cost = 5
+		icon = GFX_focus_CONGO_copper_cartridges
+		prerequisite = { 
+			focus = dtng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#成立大日本妇女会
+		id = clfnh
+		relative_position_id = dtng
+		x = 3
+		y = 2
+		cost = 5
+		icon = GFX_focus_JAP_form_the_dai_nippon_fujinkai
+		prerequisite = { 
+			focus = dtng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#成立防空监视团
+		id = clfkjs
+		relative_position_id = dtng
+		x = -3
+		y = 2
+		cost = 5
+		icon = GFX_focus_SWE_lottakoren
+		prerequisite = { 
+			focus = dtng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#内阁集权
+		id =  ngjq
+		relative_position_id = dtng
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { 
+			focus = dtng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {#发布臣民之道宣言
+		id =  fbcm
+		relative_position_id = ngjq
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_focus_hol_the_foundations_of_defense
+		prerequisite = { 
+			focus = ngjq 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	focus = {#首相权力强化
+		id =  sxqlqh
+		relative_position_id = dtng
+		x = -2
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_supreme_council_for_direction_of_war
+		prerequisite = { 
+			focus = dtng
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#大本营政府联络会议
+		id =  sdbyll
+		relative_position_id = jgyz
+		x = 0
+		y = 2
+		cost = 5
+		icon = GFX_goal_tripartite_pact
+		prerequisite = { 
+			focus = qhy
+		}
+		prerequisite = { 
+			focus = gmjszdy
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#战时行政特例
+		id =  zstl
+		x = -2
+		y = 1
+		relative_position_id = sdbyll
+		cost = 5
+		icon =  GFX_focus_generic_conspiracy
+		prerequisite = { 
+			focus = sdbyll
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#强化警察体制
+		id =  qhjc
+		x = 1
+		y = 1
+		relative_position_id = zawc
+		cost = 5
+		icon =  GFX_focus_JAP_fund_propaganda_films
+		prerequisite = { 
+			focus = zawc
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#帝国议会非常体制
+		id =  dgyhfctz
+		x = 0
+		y = 1
+		relative_position_id = qhjc
+		cost = 5
+		icon =  GFX_focus_CHI_tongzi_jun
+		prerequisite = { 
+			focus = qhjc
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#最高战争指导会议
+		id =  zgzzzd
+		x = 0
+		y = 1
+		relative_position_id = sdbyll
+		cost = 5
+		icon =  GFX_focus_JAP_the_jeweled_spear_has_struck
+		prerequisite = { 
+			focus = sdbyll
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#军需省
+		id =  jss
+		x = 0
+		y = 1
+		relative_position_id = zgzzzd
+		cost = 5
+		icon =  GFX_goal_generic_construct_civilian
+		prerequisite = { focus = zgzzzd}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#战时行政改革
+		id =  zsxzgg
+		x = 2
+		y = 1
+		relative_position_id = sdbyll
+		cost = 5
+		icon =  GFX_focus_hol_the_foundations_of_defense
+		prerequisite = { 
+			focus =sdbyll
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#小矶国昭内阁
+		id =  xjng
+		x = 8
+		y = 0
+		cost = 5
+		icon = GFX_goal_generic_forceful_treaty
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#战时紧急体制
+		id =  zsjjtz
+		relative_position_id = xjng
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_focus_generic_whispers
+		prerequisite = { 
+			focus = xjng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#最高战争指导会议改组
+		id =  zgzzzdhy
+		relative_position_id = zsjjtz
+		x = 0
+		y = 2
+		cost = 5
+		icon = GFX_focus_SOV_mobilization_plan
+		prerequisite = { focus = zsjjtz }
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#本土决战体制
+		id =  btjz
+		relative_position_id = zsjjtz
+		x = -2
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_advance_one_hundred_million_fireballs
+		prerequisite = { 
+			focus = zsjjtz 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#国民义勇体制
+		id =  gmyy
+		relative_position_id = zsjjtz
+		x = 2
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_joshi_teishin_tai
+		prerequisite = { 
+			focus = zsjjtz
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#国家总动员法
+		id =  gjzyy
+		x = 3
+		y = 1
+		relative_position_id = qhtz
+		cost = 5
+		icon = GFX_focus_ITA_generic_fascist_workers
+		prerequisite = { 
+			focus = qhtz
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#国家总动员审议会
+		id =  gjzyyyh
+		x = 0
+		y = 1
+		relative_position_id = gjzyy
+		cost = 5
+		icon = GFX_focus_generic_subjugation
+		prerequisite = { 
+			focus = gjzyy 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#企划院
+		id =  qhy
+		x = 2
+		y = 1
+		relative_position_id = jgyz
+		cost = 5
+		icon = GFX_focus_generic_conference
+		prerequisite = { 
+			focus = jgyz 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#国家精神总动员
+		id =  gmjszdy
+		x = -2
+		y = 1
+		relative_position_id = jgyz
+		cost = 5
+		icon = GFX_focus_jap_spiritual_mobilization
+		prerequisite = { 
+			focus = jgyz
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#恢复军部大臣现役武官制
+		id =  hfjb
+		x = 0
+		y = 1
+		relative_position_id = qxhdp
+		cost = 5
+		icon = GFX_focus_AUS_lawmaking_leniency
+		prerequisite = { 
+			focus = qxhdp 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#切腹辩论
+		id =  qfbl
+		x = 2
+		y = 1
+		relative_position_id = hfjb
+		cost = 5
+		icon = GFX_focus_JAP_the_harakiri_debate
+		mutually_exclusive = {
+			focus = scbt
+		}
+		prerequisite = { 
+			focus = hfjb
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#申斥滨田国松
+		id =  scbt
+		x = -2
+		y = 1
+		relative_position_id = hfjb
+		cost = 5
+		icon = GFX_focus_JAP_reprimand_hamada_kunimatsu
+		mutually_exclusive = {
+			focus = qgbl
+		}
+		prerequisite = { 
+			focus = hfjb
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#重申广田三原则
+		id =  cssyz
+		x = 0
+		y = 1
+		relative_position_id = scbt
+		cost = 5
+		icon = GFX_goal_generic_forceful_treaty
+		mutually_exclusive = {
+			focus = qgbl
+		}
+		prerequisite = { 
+			focus = scbt
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	focus = {#近卫第一次组阁
+		id =  jwzg
+		x = -1
+		y = 1
+		relative_position_id = qfbl
+		cost = 5
+		icon = GFX_focus_JAP_konoes_first_cabinet
+		prerequisite = { 
+			focus = qfbl
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {#帝国大本营会议
+		id =  dgdby
+		x = -6
+		y = 1
+		relative_position_id = qxhdp
+		cost = 5
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { 
+			focus = qxhdp 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#帝国国防方针
+		id =  dggf
+		x = 7
+		y = 1
+		relative_position_id = qxhdp
+		cost = 5
+		icon =  GFX_focus_JAP_the_imperial_defense_plan
+		prerequisite = { 
+			focus = qxhdp 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#国策基准
+		id =  gcjz
+		x = 0
+		y = 1
+		relative_position_id = dggf
+		cost = 5
+		icon =  GFX_focus_AUS_lawmaking_leniency
+		prerequisite = { 
+			focus = dggf 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	focus = {#强化国家统制
+		id =  qhtz
+		x = 0
+		y = 2
+		relative_position_id = jwzg
+		cost = 5
+		icon =  GFX_goal_generic_demand_territory
+		prerequisite = { 
+			focus = jwzg
+		}
+		prerequisite = { 
+			focus = ngdcj
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#最后阶段
+		id = zhjd
+		x = 0
+		y = 1
+		cost = 5
+		icon = focus_zhjd
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		relative_position_id = zgzzzdhy
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#铃木贯太郎内阁
+		id =  lmng
+		x = 5
+		y = 1
+		cost = 5
+		relative_position_id = zhjd
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { 
+			focus = zhjd 
+		}
+		mutually_exclusive = {
+			focus = zcqyp
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#终战问题
+		id =  zzll
+		relative_position_id = lmng
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_focus_AUS_womens_education_initiative
+		prerequisite = { 
+			focus = lmng 
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#御前会议
+		id =  yqhy
+		relative_position_id = zzll
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_the_crysanthemum_throne
+		prerequisite = { 
+			focus =  zzll
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#国体护持
+		id =  gthc
+		relative_position_id = yqhy
+		x = -2
+		y = 1
+		cost = 5
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { 
+			focus =  yqhy
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#接受波茨坦公告
+		id =  jsbctgg
+		relative_position_id = yqhy
+		x = 2
+		y = 1
+		cost = 5
+		icon = GFX_focus_JAP_draft_the_showa_constitution
+		prerequisite = { 
+			focus =  yqhy
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#终战诏书
+		id =  zzzs
+		relative_position_id = jsbctgg
+		x = -2
+		y = 1
+		cost = 5
+		icon = GFX_focus_generic_industrial_experts
+		prerequisite = { 
+			focus =  jsbctgg
+		}
+		prerequisite = { 
+			focus =  gthc
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#玉音放送
+		id =  yyfs
+		relative_position_id = zzzs
+		x = 0
+		y = 1
+		cost = 5
+		icon = GFX_focus_jap_showa_restoration
+		prerequisite = { 
+			focus =  zzzs
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {	#阿南惟几内阁
+		id = zcqyp
+		icon = focus_zcqyp
+		x = -5
+		y = 1
+		relative_position_id = zhjd
+		prerequisite = {
+			focus = zhjd
+		}
+		mutually_exclusive = {
+			focus = lmng
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {	#建立东亚新秩序
+		id = jldyxzx
+		icon = GFX_focus_jldyxzx
+		cost = 5
+		x = 45
+		y = 1
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#广田三原则
+		id =  gtsyz
+		x = 0
+		y = 1
+		relative_position_id = jldyxzx
+		cost = 5
+		icon = GFX_focus_generic_treaty
+		prerequisite = { 
+			focus = jldyxzx
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#试探中国（触发77）
+		id = stzg
+		icon = GFX_stzg
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = gtsyz
+		prerequisite = {
+			focus = gtsyz
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#华北特殊化
+		id = hbtsh
+		icon = GFX_focus_hbtsh
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = stzg
+		prerequisite = {
+			focus = stzg
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#全面侵华
+		id = qmqh
+		icon = GFX_focus_qmqh
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = stzg
+		prerequisite = {
+			focus = stzg
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {#兴亚院
+		id =  xyy
+		x = 0
+		y = 1
+		relative_position_id = qmqh
+		cost = 5
+		icon =GFX_focus_JAP_new_order_in_east_asia
+		prerequisite = { 
+			focus = qmqh
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+	
+	focus = {#大东亚省
+		id =  ddys
+		x = 0
+		y = 1
+		relative_position_id = xyy
+		cost = 5
+		icon =  GFX_focus_JAP_greater_east_asian_co_properity_sphere
+		prerequisite = { 
+			focus =xyy
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#北进论
+		id = bjl
+		icon = GFX_Focus_bjl
+		cost = 5
+		x = -4
+		y = 1
+		relative_position_id = jldyxzx
+		prerequisite = {
+			focus = jldyxzx
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#试探苏联（诺门罕）
+		id = stsl
+		icon = GFX_focus_stsl
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = bjl
+		prerequisite = {
+			focus = bjl
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#调整国家政策
+		id =  tzgjzc
+		x = -1
+		y = 1
+		relative_position_id = stsl
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { 
+			focus = stsl
+		}
+		continue_if_invalid = no
+		cancel_if_invalid = yes
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#苏日互不侵犯条约
+		id = srhbqfty
+		icon = GFX_focus_srhbqfty
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = tzgjzc
+		prerequisite = {
+			focus = tzgjzc
+		}
+		completion_reward = { }
+	}
+
+	focus = {	#对苏宣战
+		id = JAP_declare_war_on_SOV
+		icon = GFX_focus_JAP_declare_war_on_SOV
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = stsl
+		prerequisite = {
+			focus = stsl
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#南进论
+		id = njl
+		icon = GFX_Focus_bjl
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = jldyxzx
+		prerequisite = {
+			focus = jldyxzx
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+	focus = {	#昭和工业基础
+		id = zhgy
+		icon = GFX_focus_JAP_ministry_of_commerce_and_industry
+		cost = 5
+		x = 65
+		y = 1
+		
+		
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#满洲工业开发
+		id = mzgy
+		icon = GFX_focus_JAP_ministry_of_colonial_affairs
+		cost = 5
+		x = -7
+		y = 1
+		relative_position_id = zhgy
+		prerequisite = {
+			focus = zhgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#南满洲铁道
+		id = nmtd
+		icon = GFX_focus_JAP_danganressha
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = mzgy
+		prerequisite = {
+			focus = mzgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+		focus = {	#满洲飞机
+		id = mzfj
+		icon = GFX_focus_JAP_manchuria_airplane_manufacturing_company
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = nmtd
+		prerequisite = {
+			focus = nmtd
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#抚顺煤矿
+		id = fsmk
+		icon = GFX_focus_generic_mining_industry
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = mzgy
+		prerequisite = {
+			focus = mzgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#鞍山制铁所
+		id = aszt
+		icon = GFX_focus_generic_road_investment
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = mzgy
+		prerequisite = {
+			focus = mzgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#水丰大坝
+		id = sfdb
+		icon = GFX_focus_IRQ_construct_the_kut_barrage
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = aszt
+		prerequisite = {
+			focus = aszt
+		}
+		completion_reward = {
+			#
+		}
+	}
+    focus = {	#满洲电力开发
+		id = mzdl
+		icon = GFX_focus_generic_electrification
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = mzgy
+		prerequisite = {
+			focus = mzgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+    focus = {	#满洲机械工业
+		id = mzjz
+		icon = GFX_focus_generic_modernize_industry
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = mzdl
+		relative_position_id = aszt
+		relative_position_id = fsmk
+		prerequisite = {
+			focus = mzdl
+		}
+		prerequisite = {
+			focus = aszt
+		}
+		prerequisite = {
+			focus = fsmk
+		}
+		completion_reward = {
+			#
+		}
+	}
+    focus = {	#满洲重工业
+		id = mzzgy
+		icon = GFX_focus_generic_military_industry
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = mzdl
+		relative_position_id = aszt
+		relative_position_id = fsmk
+		prerequisite = {
+			focus = mzdl
+		}
+		prerequisite = {
+			focus = aszt
+		}
+		prerequisite = {
+			focus = fsmk
+		}
+		completion_reward = {
+			#
+		}
+	}
+    focus = {	#日满产业协同
+		id = rmcyxt
+		icon = GFX_focus_JAP_upgrade_the_oriental_development_company
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = mzzgy
+		relative_position_id = mzjz
+		relative_position_id = mzfj
+		prerequisite = {
+			focus = mzzgy
+		}
+		prerequisite = {
+			focus = mzjz
+		}
+		prerequisite = {
+			focus = mzfj
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+    focus = {	#满洲化学工业
+		id = mzhx
+		icon = GFX_focus_SIA_chemical_imports
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = mzzgy
+		relative_position_id = mzjz
+		relative_position_id = mzfj
+		prerequisite = {
+			focus = mzzgy
+		}
+		prerequisite = {
+			focus = mzjz
+		}
+		prerequisite = {
+			focus = mzfj
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	focus = {	#扩建朝鲜工业
+		id = cxgy
+		icon = GFX_focus_JAP_build_up_korean_industries
+		cost = 5
+		x = 5
+		y = 1
+		relative_position_id = mzgy
+		prerequisite = {
+			focus = mzgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#朝鲜矿业
+		id = cxky
+		icon = GFX_goal_generic_construct_civilian
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = cxgy
+		prerequisite = {
+			focus = cxgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#朝鲜农业
+		id = cxny
+		icon = GFX_focus_generic_farmland
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = cxgy
+		prerequisite = {
+			focus = cxgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#江原大坝
+		id = jydb
+		icon = GFX_focus_focus_generic_build_dam
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = cxgy
+		prerequisite = {
+			focus = cxgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#整顿国内工业
+		id = zggn
+		icon = GFX_focus_generic_low_cost_housing
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = zhgy
+		prerequisite = {
+			focus = zhgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#扩充工业基础
+		id = kcgy
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = zggn
+		prerequisite = {
+			focus = zggn
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#电力工业扩张
+		id = dlgy
+		icon = GFX_focus_generic_electrification
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = zggn
+		prerequisite = {
+			focus = zggn
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#精密机械生产
+		id = jmjx
+		icon = GFX_focus_generic_modernizing_agriculture
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = zggn
+		prerequisite = {
+			focus = zggn
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#化学工业基础
+		id = hxgy
+		icon = GFX_focus_JAP_central_agricultural_association
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = zggn
+		prerequisite = {
+			focus = zggn
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#战时统制
+		id = zst
+		icon = GFX_goal_generic_political_pressure
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = hxgy
+		relative_position_id = jmjx
+		relative_position_id = dlgy
+		relative_position_id = kcgy
+		prerequisite = {
+			focus = hxgy focus = jmjx focus = dlgy focus = kcgy
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#国家总动员法
+		id = zdy
+		icon = GFX_focus_ITA_generic_fascist_workers
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = hxgy
+		relative_position_id = jmjx
+		relative_position_id = dlgy
+		relative_position_id = kcgy
+		prerequisite = {
+			focus = hxgy focus = jmjx focus = dlgy focus = kcgy
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#军需生产体制
+		id = jxsc
+		icon = GFX_focus_SIA_the_hammers_that_strike
+		cost = 5
+		x = 6
+		y = 1
+		relative_position_id = hxgy
+		relative_position_id = jmjx
+		relative_position_id = dlgy
+		relative_position_id = kcgy
+		prerequisite = {
+			focus = hxgy focus = jmjx 
+			focus = dlgy focus = kcgy
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#陆军优先
+		id = ljyx
+		icon = GFX_focus_JAP_rely_on_infantry_charges
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = jxsc
+		mutually_exclusive = {
+			focus = hjyx
+		}
+		prerequisite = {
+			focus = jxsc
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#海军优先
+		id = hjyx
+		icon = GFX_focus_ETH_an_ethiopian_navy_in_exile
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = jxsc
+		mutually_exclusive = {
+			focus = ljyx
+		}
+		prerequisite = {
+			focus = jxsc
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#全面战争经济
+		id = qmzz
+		icon = GFX_focus_ITA_generic_fascist_workers
+		cost = 5
+		x = 1
+		y = 1
+		
+		relative_position_id = zdy
+		relative_position_id = zst
+		prerequisite = {
+			focus = zst 
+		}
+	    prerequisite = {
+			 focus = zdy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#合成橡胶工业
+		id = hcxj
+		icon = GFX_focus_generic_mining_industry
+		cost = 5
+		x = -3
+		y = 1
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#合成燃料工业
+		id = hcyl
+		icon = GFX_goal_generic_oil_refinery
+		cost = 5
+		x = 3
+		y = 1
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#战略资源储备
+		id = zycb
+		icon = GFX_focus_GER_factories_for_resources
+		cost = 5
+		x = -1
+		y = 1
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#扩大煤炭开采
+		id = kdmt
+		icon = GFX_focus_generic_resource_extraction
+		cost = 5
+		x = 1
+		y = 1
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#资源自给自足
+		id = zjzz
+		icon = GFX_focus_JAP_resource_security
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = kdmt
+		relative_position_id = zycb
+		relative_position_id = hcyl
+		relative_position_id = hcxj
+	    prerequisite = {
+			 focus = kdmt
+		}
+		prerequisite = {
+			 focus = zycb
+		}
+		prerequisite = {
+			 focus = hcyl
+		}
+		prerequisite = {
+			 focus = hcxj
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#战时工业体制
+		id = zsgy
+		icon = GFX_focus_SOV_mobilization_plan
+		cost = 5
+		x = 2
+		y = 2
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#国民生产动员
+		id = gmdy
+		icon = GFX_focus_ICE_state_corporatism
+		cost = 5
+		x = 4
+		y = 2
+		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#集中生产
+		id = jzsc
+		icon = GFX_focus_JAP_the_five_great_cities
+		cost = 5
+		x = -2
+		y = 2
+		mutually_exclusive = {
+			 focus = fssc
+		}		
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#分散生产
+		id = fssc
+		icon = GFX_focus_JAP_the_five_great_cities
+		cost = 5
+		x = -4
+		y = 2
+		mutually_exclusive = {
+			 focus = jzsc
+		}
+		relative_position_id = qmzz
+	    prerequisite = {
+			 focus = qmzz
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+
+	focus = {	#迈向东亚共荣
+		id = mxdygr
+		icon = GFX_focus_JAP_greater_east_asian_co_properity_sphere
+		cost = 5
+		x = -5
+		y = 1
+		mutually_exclusive = {
+			 focus = btjz
+		}
+		relative_position_id = zjzz
+		relative_position_id = zsgy
+		relative_position_id = jzsc
+		relative_position_id = fssc
+		relative_position_id = gmdy
+	    prerequisite = {
+			 focus = zjzz
+		}
+		prerequisite = {
+			 focus = zsgy
+		}
+		prerequisite = {
+			 focus = jzsc focus = fssc
+		}
+		prerequisite = {
+			 focus = gmdy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#本土决战准备
+		id = btjz
+		icon = GFX_goal_generic_military_sphere
+		cost = 5
+		x = -1
+		y = 1
+		mutually_exclusive = {
+			 focus = mxdygr
+		}
+		relative_position_id = zjzz
+		relative_position_id = zsgy
+		relative_position_id = jzsc
+		relative_position_id = fssc
+		relative_position_id = gmdy
+	    prerequisite = {
+			 focus = zjzz
+		}
+		prerequisite = {
+			 focus = zsgy
+		}
+		prerequisite = {
+			 focus = jzsc focus = fssc
+		}
+		prerequisite = {
+			 focus = gmdy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#本土防空
+		id = btfk
+		icon = GFX_focus_ICE_state_corporatism
+		cost = 5
+		x = -2
+		y = 1
+		
+		relative_position_id = btjz
+	    prerequisite = {
+			 focus = btjz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#地下工厂
+		id = dxgc
+		icon = GFX_focus_ICE_state_corporatism
+		cost = 5
+		x = 0
+		y = 1
+		
+		relative_position_id = btjz
+	    prerequisite = {
+			 focus = btjz
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#本土决战工业
+		id = jzgy
+		icon = GFX_focus_ICE_state_corporatism
+		cost = 5
+		x = 2
+		y = 1
+		
+		relative_position_id = btjz
+	    prerequisite = {
+			 focus = btjz
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#中央经济委员会
+		id = zywy
+		icon = GFX_focus_generic_economic_recovery
+		cost = 5
+		x = 12
+		y = 1
+		relative_position_id = zhgy
+		prerequisite = {
+			focus = zhgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#中央经济委员会
+		id = zywy
+		icon = GFX_focus_generic_economic_recovery
+		cost = 5
+		x = 12
+		y = 1
+		relative_position_id = zhgy
+		prerequisite = {
+			focus = zhgy
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {	#扩大昭和研究会
+		id = kdyj
+		icon = GFX_focus_JAP_expand_the_showa_research_association
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = zywy
+		prerequisite = {
+			focus = zywy
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#财阀督导
+		id = cfdd
+		icon = GFX_focus_jap_zaibatsu
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = zywy
+		prerequisite = {
+			focus = zywy
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#拉拢三井财阀
+		id = llsj
+		icon = GFX_focus_JAP_approach_mitsui
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = cfdd
+		prerequisite = {
+			focus = cfdd
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#拉拢三菱财阀
+		id = llsl
+		icon = GFX_focus_JAP_approach_mitsubishi
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = cfdd
+		prerequisite = {
+			focus = cfdd
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#拉拢住友财阀
+		id = llzy
+		icon = GFX_focus_JAP_approach_sumitomo
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = cfdd
+		prerequisite = {
+			focus = cfdd
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#拉拢安田财阀
+		id = llat
+		icon = GFX_focus_JAP_approach_yasuda
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = cfdd
+		prerequisite = {
+			focus = cfdd
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+
+	focus = {	#资助理研
+		id = zzly
+		icon = GFX_focus_research
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = llsj
+		relative_position_id = llsl
+		relative_position_id = llzy
+		relative_position_id = llat
+	    prerequisite = {
+			 focus = llsj focus = llsl focus = llzy focus = llat
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+	focus = {	#控制财阀
+		id = kzcf
+		icon = GFX_focus_generic_subjugation
+		cost = 5
+		x = -1
+		y = 1
+		mutually_exclusive = {
+			focus = cfkz
+		}
+		relative_position_id = zzly
+	    prerequisite = {
+			 focus = zzly
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#财阀控制经济
+		id = cfkz
+		icon = GFX_goal_generic_improve_relations
+		cost = 5
+		x = 1
+		y = 1
+		mutually_exclusive = {
+			focus = kzcf
+		}
+		relative_position_id = zzly
+	    prerequisite = {
+			 focus = zzly
+		}
+	
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

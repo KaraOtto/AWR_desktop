@@ -1,0 +1,44 @@
+on_actions = {  #民国权力集团
+	on_startup = {
+		effect = {
+			CHI = {
+				if = {
+					limit = { 
+                        NOT = { 
+                            has_country_flag = CHI_power_blocs_initialized 
+                        } 
+                    }
+					CHI_power_blocs_initialize = yes
+				}
+				else = {
+					CHI_power_blocs_normalize_and_refresh = yes
+				}
+			}
+		}
+	}
+
+	on_monthly_CHI = {
+		effect = {
+			if = {
+				limit = { 
+                    has_country_flag = CHI_power_blocs_initialized 
+                }
+				CHI_power_blocs_normalize_and_refresh = yes
+			}
+		}
+	}
+
+	# 兼容已开始的旧存档：在下一个游戏日补齐开局状态。
+	on_daily_CHI = {
+		effect = {
+			if = {
+				limit = { 
+                    NOT = { 
+                        has_country_flag = CHI_power_blocs_initialized 
+                    } 
+                }
+				CHI_power_blocs_initialize = yes
+			}
+		}
+	}
+}

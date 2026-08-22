@@ -5308,7 +5308,7 @@ AWR_communist_infiltration = {    #游击队攻势
 		days_remove = 20
 		fire_only_once = no
 		remove_effect = {
-		    country_event = ccw.46
+		    country_event = AWR_PRC.180
 		}
 		ai_will_do = {
 			factor = 3000
@@ -5465,13 +5465,13 @@ AWR_communist_infiltration = {    #游击队攻势
 		days_remove = 20
 		fire_only_once = no
 		remove_effect = {
-		    country_event = ccw.46
+		    country_event = AWR_PRC.181
 		}
 		ai_will_do = {
 			factor = 3000
 		}
 	}
-	
+
 	expand_the_huadong_partisans = { #在华东发展游击队
 
 		icon = infiltrate_state
@@ -5602,7 +5602,7 @@ AWR_communist_infiltration = {    #游击队攻势
 		
 		remove_effect = {
 		    country_event = {
-				id = PRC_luobinghui.7
+				id = AWR_PRC.182
 			}
 		}
 		complete_effect = {
@@ -5865,8 +5865,8 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 			}
 			set_cosmetic_tag = xibeiguofangzhengfu
 			create_country_leader = { 
-				name= "张学良"
-				picture = "gfx/leaders/NEA/Portrait_NEA_Zhang_Xueliang.dds"
+				name= NEA_zhang_xueliang
+				picture = "GFX_Portrait_NEA_Zhang_Xueliang_2"
 				ideology = despotism
 				
 				traits={ 
@@ -5876,13 +5876,13 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 			
 			set_party_name = {
 				ideology = communism
-				name = "西北国防政府委员会"
-				long_name = "西北国防政府委员会"
+				name = NDGC_PRC
+				long_name = Northwest_Defence_Government_Committee_PRC
 			}
 			set_party_name = {
 				ideology = neutrality
-				name = "西北国防政府委员会"
-				long_name = "西北国防政府委员会"
+				name = NDGC_NEA
+				long_name = Northwest_Defence_Government_Committee_NEA
 			}
 			add_popularity = { 
 				ideology = neutrality 
@@ -5919,7 +5919,7 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 
 			else_if = {
 				limit = { 
-					1030 = { 
+					1090 = { 
 						or = { 
 							is_owned_and_controlled_by = root 
 							is_owned_and_controlled_by = NEA 
@@ -5927,7 +5927,7 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 					} 
 				}
 				set_capital = { 
-					state = 1030 
+					state = 1090
 				}
 			}
 			country_lock_all_division_template = no
@@ -5976,8 +5976,374 @@ PRC_Northwest_Alliance_decisions = {	#大西北联盟
 	}
 }
 
+PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
+	PRC_occupy_northeast_timer = {	#东北地区移交工作正进行中
+		icon = revolt
+		is_good = yes
+		available = { #objective
+			always = no
+		}
+		days_mission_timeout = 200
+		fire_only_once = yes
+		is_good = no
+		activation = {
+			always = no
+		}
+		complete_effect = {
+			#
+		}
+		timeout_effect = {
+			SOV = { 
+				country_event = {
+					id = AWR_SOV.1
+				} 
+			} 
+			custom_effect_tooltip = demand_northeast_tt
+			custom_effect_tooltip = ne_tut_tt
+			custom_effect_tooltip = current_effect_tt
+			event_target:WTT_current_china_leader = {
+				division_template = { #guo
+					name = "东北驻防军" #names to be determined
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+				}
+				every_core_state = {
+					limit = {
+						is_MAN_state_for_takeover = yes
+						is_owned_and_controlled_by = SOV
+						NOT = {
+							is_core_of = event_target:WTT_communist_china
+							state = 745
+						}
+					}
+					create_unit = { #guo
+						division = "name = \"东北驻防军\" division_template = \"东北驻防军\" start_experience_factor = 0.4"
+						owner = PREV
+					}					
+					if = {
+						limit = {
+							has_state_flag = strong_kmt_garrison
+						}						
+						create_unit = {
+							division = "name = \"东北驻防军\" division_template = \"东北驻防军\" start_experience_factor = 0.4"
+							owner = PREV
+						}
+					}
+					transfer_state_to = event_target:WTT_current_china_leader
+				}
+			}
+			event_target:WTT_communist_china = {
+				division_template = { #guo
+					name = "东北人民自治军" #names to be determined
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+				}
+				every_core_state = {
+					limit = {
+						is_MAN_state_for_takeover = yes
+						is_owned_and_controlled_by = SOV
+						NOT = {
+							state = 745
+						}
+					}
+					create_unit = { #guo
+						division = "name = \"东北人民自治军\" division_template = \"东北人民自治军\" start_experience_factor = 0.4"
+						owner = PREV
+					}					
+					if = {
+						limit = {
+							NOT = { 
+								is_core_of = event_target:WTT_current_china_leader 
+							}
+						}						
+						create_unit = {
+							division = "name = \"东北人民自治军\" division_template = \"东北人民自治军\" start_experience_factor = 0.4"
+							owner = PREV
+						}
+					}
+					transfer_state_to = event_target:WTT_communist_china
+				}
+			}
+		}
+	}
+
+	PRC_occupy_northeast = {	#苏联自东北撤军
+		icon = {
+			key = GFX_decision_ccp_extra
+			trigger = {
+				FROM = {
+					is_core_of = event_target:WTT_communist_china
+					NOT = {
+						is_core_of = event_target:WTT_current_china_leader
+					}
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ccp
+			trigger = {
+				FROM = {
+					is_core_of = event_target:WTT_communist_china
+					is_core_of = event_target:WTT_current_china_leader
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_kmt
+			trigger = {
+				FROM = {
+					NOT = {
+						is_core_of = event_target:WTT_communist_china
+					}
+					is_core_of = event_target:WTT_current_china_leader
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_kmt_extra
+			trigger = {
+				FROM = {
+					NOT = {
+						is_core_of = event_target:WTT_communist_china
+					}
+					is_core_of = event_target:WTT_current_china_leader
+					has_state_flag = strong_kmt_garrison
+				}
+			}
+		}
+		allowed = {
+			is_literally_china = yes
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				is_owned_and_controlled_by = SOV
+				is_MAN_state_for_takeover = yes
+				NOT = {
+					state = 745
+				}
+				
+				NOT = { #guo
+					has_dynamic_modifier = { 
+						modifier = anti_partisan_area 
+					}
+				}
+			}
+		}
+		visible = {
+			has_active_mission = PRC_occupy_northeast_timer
+		}
+		on_map_mode = map_only
+		days_remove = 30 #guo
+		available = {
+			FROM = { 
+				NOT = { 
+					has_state_flag = strong_kmt_garrison 
+				} 
+			}
+			hidden_trigger = {
+				command_power > 19
+				political_power_growth > 0.75
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 19
+			political_power_growth > 0.75
+		}
+		custom_cost_text = cp_at_least_20_pol_neg_075
+		is_good = no
+		available = {
+			FROM = {
+				is_core_of = event_target:WTT_current_china_leader
+			}
+			NOT = { #guo
+				has_dynamic_modifier = { 
+					modifier = anti_partisan_area 
+				}
+			}
+		}
+		modifier = {
+			political_power_gain = -0.75
+		}
+		complete_effect = {
+			hidden_effect = {
+				FROM = {
+					event_target:WTT_current_china_leader = {					
+						PREV = { 
+							state_event = { 
+								days = 10 
+								random_days = 4 
+								id = AWR_CHI_state.1 
+								trigger_for = PREV 
+							} 
+						}
+					}
+				}
+				add_command_power = -20
+			}
+		}
+		ai_will_do = {
+			factor = 1000 #guo
+			modifier = {
+				factor = 0
+				FROM = {
+					is_core_of = event_target:WTT_communist_china
+					
+					not = { 
+						state = 328 
+					}
+				    not = { 
+						state = 1097
+					}
+				    not = { 
+						state = 1100
+					}
+				}
+			}
+			modifier = {
+				add = 20000 #guo
+				FROM = { 
+					any_neighbor_state = { 
+						is_controlled_by = event_target:WTT_communist_china 
+					} 
+				}
+			}
+			modifier = {
+				add = 12000 #guo
+				FROM = { 
+					any_neighbor_state = { 
+						has_state_flag = commie_ridden_states 
+					} 
+				}
+			}
+			modifier = {
+				add = 12000 #guo
+				FROM = { 
+					any_neighbor_state = { 
+						is_core_of = event_target:WTT_communist_china 
+						not = { 
+							has_state_flag = we_will_help_the_legit_government 
+						} 
+					} 
+				}
+			}
+			modifier = {
+				add = 9999 #guo
+				FROM = {
+					OR = {
+						state = 328
+						state = 1097
+						state = 1100
+					}
+				}
+			}
+			modifier = {
+				add = 9999 #guo
+				FROM = {
+					OR = {
+						state = 328
+						state = 1097
+						state = 1100
+						
+						state = 716
+						state = 1012
+					}
+					NOT = {
+						is_core_of = event_target:WTT_communist_china
+					}
+				}
+			}
+			modifier = {
+				add = 8888 #guo
+				FROM = {					
+					NOT = {
+						is_core_of = event_target:WTT_communist_china
+					}
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							is_core_of = event_target:WTT_communist_china
+						}
+						is_core_of = event_target:WTT_current_china_leader
+					}
+				}
+				event_target:WTT_current_china_leader = {
+					FROM = {
+						state_event = { 
+							id = AWR_CHI_state.2 
+							trigger_for = PREV 
+						}
+					}
+				}
+				event_target:WTT_communist_china = {
+					FROM = {
+						state_event = { 
+							id = AWR_CHI_state.3 
+							trigger_for = PREV 
+						}
+					}
+				}
+				FROM = {				
+					add_core_of = event_target:WTT_communist_china
+				}
+				custom_effect_tooltip = increase_garrison_tt
+				custom_effect_tooltip = decrease_garrison_nat_good
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						is_core_of = event_target:WTT_communist_china
+						is_core_of = event_target:WTT_current_china_leader
+					}
+				}
+				event_target:WTT_current_china_leader = {
+					FROM = {
+						state_event = { 
+							id = AWR_CHI_state.4 
+							trigger_for = PREV 
+						}
+					}
+				}
+				event_target:WTT_communist_china = {
+					FROM = {
+						state_event = { 
+							id = AWR_CHI_state.5 
+							trigger_for = PREV 
+						}
+					}
+				}
+				FROM = {					
+					remove_core_of = event_target:WTT_current_china_leader
+				}
+				custom_effect_tooltip = increase_garrison_tt
+				custom_effect_tooltip = nat_can_no_longer_influence
+			}
+			custom_effect_tooltip = troops_spawn_ccw_tt
+		}
+	}
+}
+
 PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
-	RCM_demand_north_east_china = {		#索取中国东北
+	AWR_demand_north_east_china = {		#索取中国东北
 		priority = 40
 		icon = eng_trade_unions_support
 		allowed = {
@@ -6046,89 +6412,13 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 			}
 		}
 	}
-	#end_of_second_sino_japanese_war, truce?
-	RCM_JAP_truce_with_majors = {
-		icon = eng_trade_unions_support
-		allowed = {
-			tag = JAP
-		}
-		target_trigger = {
-			FROM = {
-				is_major = yes
-				has_defensive_war_with = ROOT
-			}
-		}
-		visible = {
-			always = no #disable for now?
-			has_offensive_war_with = FROM
-			has_global_flag = end_of_second_sino_japanese_war
-			num_occupied_states < 5
-			
-		}
-		available = {
-			num_occupied_states < 5
-			has_offensive_war_with = FROM
-		}
-		ai_will_do = {
-			factor = 1000
-		}
-		cost = 50
-		#days_remove = 0
-		#days_re_enable = 0
-		fire_only_once = no
 
-		modifier = {
-
-		}
-
-		remove_effect = {
-
-		}
-		complete_effect = {
-			
-			FROM = {
-				country_event = rcmgeneric.1		
-				set_temp_variable = { global.seek_japan_peace_from = this }  		
-			}
-			
-			#save_event_target_as = from_scope_temp
-			effect_tooltip = {
-				white_peace = FROM
-				for_each_scope_loop = {
-					array = global.big_china
-					tooltip = big_china_tt
-					if = {
-						limit = {							
-							state_should_be_transferred_to_china = yes
-						}
-						var:global.seek_japan_peace_from = {
-							transfer_state = PREV
-						}
-					}
-				}
-			}
-		}
-	}
-	RCM_demand_lands = {
+	RCM_demand_lands = {	#登上大陆
 		icon = infiltrate_state
 		allowed = {
 			is_literally_china = yes
 		}
 		visible = {
-			OR = {
-				AND = {
-					JAP = {
-						has_completed_focus = JAP_expand_the_revolutions_focus
-					}
-					tag = event_target:WTT_communist_china
-				}
-				AND = {
-					JAP = {
-						NOT = { has_completed_focus = JAP_expand_the_revolutions_focus }
-					}
-					tag = event_target:WTT_current_china_leader
-				}
-			}
 			is_in_faction_with = JAP
 			has_global_flag = unite_china_jap_flag
 			JAP = {
@@ -6152,18 +6442,13 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 		days_re_enable = 0
 		fire_only_once = no
 
-		modifier = {
-
-		}
 		ai_will_do = {
 			factor = 1000
 		}
-		remove_effect = {
 
-		}
 		complete_effect = {
 			JAP = {
-				country_event = rcmjapan.67
+				country_event = AWR_JAP.1
 			}
 			effect_tooltip = {
 				for_each_scope_loop = {
@@ -6174,12 +6459,26 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 							state_should_be_transferred_to_china = yes
 						}
 						if = {
-							limit = { JAP = { has_completed_focus = JAP_expand_the_revolutions_focus } }
-							event_target:WTT_communist_china = { transfer_state = PREV }
+							limit = { 
+								JAP = { 
+									has_completed_focus = JAP_expand_the_revolutions_focus 
+								} 
+							}
+							event_target:WTT_communist_china = { 
+								transfer_state = PREV 
+							}
 						}
 						if = {
-							limit = { JAP = { NOT = {  has_completed_focus = JAP_expand_the_revolutions_focus } } }
-							event_target:WTT_current_china_leader = { transfer_state = PREV }
+							limit = { 
+								JAP = { 
+									NOT = {  
+										has_completed_focus = JAP_expand_the_revolutions_focus 
+									} 
+								} 
+							}
+							event_target:WTT_current_china_leader = { 
+								transfer_state = PREV 
+							}
 						}
 					}
 				}
@@ -6976,6 +7275,7 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 						region = 155
 						region = 243
 						region = 242
+						region = 305
 					}
 				}
 				any_owned_state = {
@@ -6987,6 +7287,7 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 						region = 155
 						region = 243
 						region = 242
+						region = 305
 					}
 				}
 				any_owned_state = {
@@ -7148,8 +7449,8 @@ war_measures = {	#通用决议——战时措施
 	}
 }
 
-PRC_contest_in_northeast_cat = {
-	PRC_occupy_northeast_timer = {
+PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
+	PRC_occupy_northeast_timer = {	#东北地区移交工作正进行中
 		icon = revolt
 		is_good = yes
 		available = { #objective
@@ -7165,7 +7466,7 @@ PRC_contest_in_northeast_cat = {
 		timeout_effect = {
 			SOV = { 
 				country_event = {
-					id = northeast_takeover.8
+					id = AWR_SOV.1
 				} 
 			} 
 			custom_effect_tooltip = demand_northeast_tt
@@ -7251,7 +7552,7 @@ PRC_contest_in_northeast_cat = {
 		}
 	}
 
-	PRC_occupy_northeast = {
+	PRC_occupy_northeast = {	#东北地区移交工作正进行中
 		icon = {
 			key = GFX_decision_ccp_extra
 			trigger = {
@@ -7357,7 +7658,7 @@ PRC_contest_in_northeast_cat = {
 							state_event = { 
 								days = 10 
 								random_days = 4 
-								id = northeast_takeover.1 
+								id = AWR_CHI_state.1 
 								trigger_for = PREV 
 							} 
 						}
@@ -7377,10 +7678,10 @@ PRC_contest_in_northeast_cat = {
 						state = 328 
 					}
 				    not = { 
-						state = 1005 
+						state = 1097
 					}
 				    not = { 
-						state = 1008 
+						state = 1100
 					}
 				}
 			}
@@ -7416,8 +7717,8 @@ PRC_contest_in_northeast_cat = {
 				FROM = {
 					OR = {
 						state = 328
-						state = 1005
-						state = 1008
+						state = 1097
+						state = 1100
 					}
 				}
 			}
@@ -7426,11 +7727,11 @@ PRC_contest_in_northeast_cat = {
 				FROM = {
 					OR = {
 						state = 328
-						state = 1005
-						state = 1008
+						state = 1097
+						state = 1100
 						
 						state = 716
-						state = 1010
+						state = 1102
 					}
 					NOT = {
 						is_core_of = event_target:WTT_communist_china
@@ -7459,7 +7760,7 @@ PRC_contest_in_northeast_cat = {
 				event_target:WTT_current_china_leader = {
 					FROM = {
 						state_event = { 
-							id = northeast_takeover.3 
+							id = AWR_CHI_state.2 
 							trigger_for = PREV 
 						}
 					}
@@ -7467,7 +7768,7 @@ PRC_contest_in_northeast_cat = {
 				event_target:WTT_communist_china = {
 					FROM = {
 						state_event = { 
-							id = northeast_takeover.34 
+							id = AWR_CHI_state.3 
 							trigger_for = PREV 
 						}
 					}
@@ -7488,7 +7789,7 @@ PRC_contest_in_northeast_cat = {
 				event_target:WTT_current_china_leader = {
 					FROM = {
 						state_event = { 
-							id = northeast_takeover.5 
+							id = AWR_CHI_state.4 
 							trigger_for = PREV 
 						}
 					}
@@ -7496,7 +7797,7 @@ PRC_contest_in_northeast_cat = {
 				event_target:WTT_communist_china = {
 					FROM = {
 						state_event = { 
-							id = northeast_takeover.56 
+							id = AWR_CHI_state.5 
 							trigger_for = PREV 
 						}
 					}
@@ -7775,16 +8076,6 @@ PRC_civil_war_offensives = {	#内战攻势
 				factor = 200
 				tag = event_target:WTT_communist_china
 			}
-			#modifier = {
-			#	factor = 10
-			#	divisions_in_state = {
-			#		state = 171
-			#		size > 0
-			#	}
-			#	NOT = {
-			#		has_full_control_of_state = 171
-			#	}
-			#}
 		}
 	}
 
@@ -11924,7 +12215,8 @@ PRC_contact_wrl_cat = {		#联络地方官员
 					tag = SUY
 					has_capitulated = no
 					has_country_leader = {
-						character = SHX_Dong_Qiwu ruling_only = yes
+						character = SHX_Dong_Qiwu 
+						ruling_only = yes
 					}
 				}
 			}
@@ -12009,7 +12301,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			NOT = {
 				AND = {
 					controls_state = 750
-					controls_state = 1181
+					controls_state = 1035
 					controls_state = 602
 				}
 			}
@@ -12027,12 +12319,12 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				#owns_state = 1160
 				OR = {
 					controls_state = 750
-					controls_state = 1181
+					controls_state = 1035
 					controls_state = 602
 					GXC = {	
 						OR = {
 							controls_state = 750
-							controls_state = 1181
+							controls_state = 1035
 							controls_state = 602
 						}
 					}
@@ -12045,7 +12337,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						is_controlled_by = ROOT 
 					}
 				}
-				1181 = {
+				1035 = {
 					any_neighbor_state = { 
 						is_controlled_by = ROOT 
 					}
@@ -12112,7 +12404,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		}
 	}
 
-	PRC_contact_kweichow_decision = {	
+	PRC_contact_guizhow_decision = {	#联络贵州军官
 		icon = GFX_decision_generic_political_discourse
 		allowed = {
 			is_literally_china = yes
@@ -12130,19 +12422,21 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
 				is_neighbor_of = ROOT
-				#owns_state = 1160
 				OR = {
 					controls_state = 748
 					controls_state = 603
 				}
-				#surrender_progress > 0.5
 			}
 			OR = {
 				748 = {
-					any_neighbor_state = { is_controlled_by = ROOT }
+					any_neighbor_state = { 
+						is_controlled_by = ROOT 
+					}
 				}
 				603 = {
-					any_neighbor_state = { is_controlled_by = ROOT }
+					any_neighbor_state = { 
+						is_controlled_by = ROOT 
+					}
 				}
 			}
 		}
@@ -12152,20 +12446,16 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		days_re_enable = 0
 		fire_only_once = yes
 
-		modifier = {
-
-		}
-
 		remove_effect = {
 			custom_effect_tooltip = PRC_contact_kweichow_tt
 			event_target:WTT_current_china_leader = {
 				country_event = {
-					id = EFM_Comchina.48
+					id = AWR_CHI.1005
 				}
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
 			factor = 1000
@@ -12208,53 +12498,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				}
 				is_neighbor_of = ROOT
 			}
-			#OR = {
-			#	any_other_country = {
-			#		original_tag = SIK
-			#		exists = yes
-			#		NOT = {
-            #            OR = {
-			#				has_country_flag = I_am_turkestan
-			#				has_idea = SIK_For_the_TAR_revolution
-			#			}
-			#		}
-			#	    is_subject_of = event_target:WTT_current_china_leader
-			#		is_neighbor_of = ROOT
-			#	}
-			#    AND = {
-			#		controls_state = 756
-			#		controls_state = 608
-			#		controls_state = 1160
-			#		NOT = {
-			#			any_other_country = {
-			#				original_tag = SIK
-			#				exists = yes
-			#				NOT = {
-			#					OR = {
-			#						has_country_flag = I_am_turkestan
-			#						has_idea = SIK_For_the_TAR_revolution
-			#					}
-			#				}
-			#				is_subject_of = event_target:WTT_current_china_leader
-			#			}
-			#		}
-			#		event_target:WTT_current_china_leader = {
-			#		    any_owned_state = {
-			#				is_controlled_by = event_target:WTT_current_china_leader
-			#				OR = {
-			#					custom_trigger_tooltip = {
-			#						tooltip = is_in_strat_252
-			#						region = 252
-			#					}
-			#				    custom_trigger_tooltip = {
-			#						tooltip = is_in_strat_145
-			#						region = 145
-			#					}
-			#				}
-			#			}
-			#		}
-			#	}
-			#}
+			
 		}
 
 		cost = 25
@@ -12263,23 +12507,25 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		fire_only_once = yes
 
 		modifier = {
+			#
 		}
 
 		remove_effect = {
-			#custom_effect_tooltip = PRC_contact_zhang_zhizong_focus_tt
-			#MODDED
 			SIK = {
 			    country_event = {
-					id = EFM_Comchina_SIK.45
+					id = AWR_SIK.5
 			    }
 		    }
 			custom_effect_tooltip = if_they_accept_green
 			effect_tooltip = {
-				annex_country = { target = SIK transfer_troops = yes }
+				annex_country = { 
+					target = SIK 
+					transfer_troops = yes 
+				}
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
 			factor = 1000

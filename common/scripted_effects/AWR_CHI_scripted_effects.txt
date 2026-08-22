@@ -1,0 +1,364 @@
+CHI_power_blocs_initialize = {	#初始化民国影响力
+	set_country_flag = CHI_power_blocs_initialized
+	set_variable = { 
+		CHI_power_bloc_leader_influence = 0.35 
+	}
+	set_variable = { 
+		CHI_power_bloc_army_influence = 0.30 
+	}
+	set_variable = { 
+		CHI_power_bloc_capital_influence = 0.20 
+	}
+	set_variable = { 
+		CHI_power_bloc_technocrat_influence = 0.15 
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_power_blocs_normalize = {
+	clamp_variable = { 
+		var = CHI_power_bloc_leader_influence 
+		min = 0 
+		max = 1 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_army_influence 
+		min = 0 
+		max = 1 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_capital_influence 
+		min = 0 
+		max = 1 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_technocrat_influence 
+		min = 0 
+		max = 1 
+	}
+
+	set_temp_variable = { 
+		CHI_power_bloc_total = CHI_power_bloc_leader_influence 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_total = CHI_power_bloc_army_influence 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_total = CHI_power_bloc_capital_influence 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_total = CHI_power_bloc_technocrat_influence 
+	}
+
+	if = {
+		limit = { 
+			check_variable = { 
+				CHI_power_bloc_total < 0.001 
+			} 
+		}
+		set_variable = { 
+			CHI_power_bloc_leader_influence = 0.35 
+		}
+		set_variable = { 
+			CHI_power_bloc_army_influence = 0.30 
+		}
+		set_variable = { 
+			CHI_power_bloc_capital_influence = 0.20 
+		}
+		set_variable = { 
+			CHI_power_bloc_technocrat_influence = 0.15 
+		}
+	}
+	else = {
+		divide_variable = { 
+			var = CHI_power_bloc_leader_influence 
+			value = CHI_power_bloc_total 
+		}
+		divide_variable = { 
+			var = CHI_power_bloc_army_influence 
+			value = CHI_power_bloc_total 
+		}
+		divide_variable = { 
+			var = CHI_power_bloc_capital_influence 
+			value = CHI_power_bloc_total 
+		}
+		divide_variable = { 
+			var = CHI_power_bloc_technocrat_influence 
+			value = CHI_power_bloc_total 
+		}
+	}
+}
+
+CHI_power_blocs_calculate_effects = {
+	# Each effective influence is capped at 50%; the 25% baseline is then removed.
+	set_temp_variable = { 
+		CHI_power_bloc_leader_delta = CHI_power_bloc_leader_influence 
+	}
+	set_temp_variable = { 
+		CHI_power_bloc_army_delta = CHI_power_bloc_army_influence 
+	}
+	set_temp_variable = { 
+		CHI_power_bloc_capital_delta = CHI_power_bloc_capital_influence 
+	}
+	set_temp_variable = { 
+		CHI_power_bloc_technocrat_delta = CHI_power_bloc_technocrat_influence 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_leader_delta 
+		min = 0 
+		max = 0.75 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_army_delta 
+		min = 0 
+		max = 0.75 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_capital_delta 
+		min = 0 
+		max = 0.75 
+	}
+	clamp_variable = { 
+		var = CHI_power_bloc_technocrat_delta 
+		min = 0 
+		max = 0.75 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_leader_delta = -0.25 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_army_delta = -0.25 
+	}
+	add_to_temp_variable = { 
+		CHI_power_bloc_capital_delta = -0.25 
+	}
+	add_to_temp_variable = {
+		CHI_power_bloc_technocrat_delta = -0.25 
+	}
+
+	set_variable = { 
+		CHI_power_bloc_leader_effect = CHI_power_bloc_leader_delta 
+	}
+
+	set_variable = { 
+		CHI_power_bloc_army_combat_effect = CHI_power_bloc_army_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_army_combat_effect 
+		value = 0.2 
+	}
+	set_variable = { 
+		CHI_power_bloc_army_supply_effect = CHI_power_bloc_army_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_army_supply_effect 
+		value = -0.4 
+	}
+	set_variable = { 
+		CHI_power_bloc_army_service_effect = CHI_power_bloc_army_delta 
+	}
+
+	set_variable = { 
+		CHI_power_bloc_capital_build_effect = CHI_power_bloc_capital_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_capital_build_effect 
+		value = 0.5 
+	}
+	set_variable = { 
+		CHI_power_bloc_capital_output_effect = CHI_power_bloc_capital_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_capital_output_effect 
+		value = 0.4 
+	}
+	set_variable = { 
+		CHI_power_bloc_capital_economy_effect = CHI_power_bloc_capital_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_capital_economy_effect value = 0.1 
+	}
+	set_variable = { 
+		CHI_power_bloc_bourgeois_build_effect = CHI_power_bloc_capital_delta 
+	}
+	set_variable = { 
+		CHI_power_bloc_bourgeois_efficiency_effect = CHI_power_bloc_capital_delta 
+	}
+
+	set_variable = { 
+		CHI_power_bloc_technocrat_policy_effect = CHI_power_bloc_technocrat_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_technocrat_policy_effect 
+		value = 0.4 
+	}
+	set_variable = { 
+		CHI_power_bloc_technocrat_goods_effect = CHI_power_bloc_technocrat_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_technocrat_goods_effect 
+		value = -0.40 
+	}
+	set_variable = { 
+		CHI_power_bloc_technocrat_cost_effect = CHI_power_bloc_technocrat_delta 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_technocrat_cost_effect 
+		value = -1 
+	}
+
+	# The GUI uses 21 frames: 0%, 5%, ..., 100%.
+	set_variable = { 
+		CHI_power_bloc_leader_frame = CHI_power_bloc_leader_influence 
+	}
+	set_variable = { 
+		CHI_power_bloc_army_frame = CHI_power_bloc_army_influence 
+	}
+	set_variable = { 
+		CHI_power_bloc_capital_frame = CHI_power_bloc_capital_influence 
+	}
+	set_variable = { 
+		CHI_power_bloc_technocrat_frame = CHI_power_bloc_technocrat_influence 
+	}
+	set_variable = { 
+		CHI_power_bloc_leader_army_sum = CHI_power_bloc_leader_influence 
+	}
+	add_to_variable = { 
+		CHI_power_bloc_leader_army_sum = CHI_power_bloc_army_influence 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_leader_frame 
+		value = 20 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_army_frame 
+		value = 20 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_capital_frame 
+		value = 20 
+	}
+	multiply_variable = { 
+		var = CHI_power_bloc_technocrat_frame 
+		value = 20 
+	}
+	round_variable = CHI_power_bloc_leader_frame
+	round_variable = CHI_power_bloc_army_frame
+	round_variable = CHI_power_bloc_capital_frame
+	round_variable = CHI_power_bloc_technocrat_frame
+	add_to_variable = { 
+		CHI_power_bloc_gui_dirty = 1 
+	}
+}
+
+CHI_power_blocs_refresh_modifier = {
+	if = {
+		limit = { 
+			has_dynamic_modifier = { 
+				modifier = CHI_power_blocs_national_government 
+			} 
+		}
+		remove_dynamic_modifier = { 
+			modifier = CHI_power_blocs_national_government 
+		}
+	}
+	if = {
+		limit = { 
+			has_dynamic_modifier = { 
+				modifier = CHI_power_blocs_reformed_government 
+			} 
+		}
+		remove_dynamic_modifier = { 
+			modifier = CHI_power_blocs_reformed_government 
+		}
+	}
+	if = {
+		limit = { 
+			has_country_flag = CHI_power_bloc_national_bourgeoisie 
+		}
+		add_dynamic_modifier = { 
+			modifier = CHI_power_blocs_reformed_government 
+		}
+	}
+	else = {
+		add_dynamic_modifier = { 
+			modifier = CHI_power_blocs_national_government 
+		}
+	}
+	force_update_dynamic_modifier = yes
+}
+
+CHI_power_blocs_normalize_and_refresh = {	#更新
+	CHI_power_blocs_normalize = yes
+	CHI_power_blocs_calculate_effects = yes
+	CHI_power_blocs_refresh_modifier = yes
+}
+
+CHI_power_blocs_replace_bureaucratic_capital = {	#移除官僚资本
+	set_country_flag = CHI_power_bloc_national_bourgeoisie
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_power_blocs_raise_leader = {	#元首影响力
+	add_to_variable = { 
+		CHI_power_bloc_leader_influence = 0.03 
+	}
+	add_to_variable = { 
+		CHI_power_bloc_army_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_capital_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_technocrat_influence = -0.01
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_power_blocs_raise_army = {	#军队影响力
+	add_to_variable = { 
+		CHI_power_bloc_army_influence = 0.03 
+	}
+	add_to_variable = { 
+		CHI_power_bloc_leader_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_capital_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_technocrat_influence = -0.01
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_power_blocs_raise_capital = {	#官僚资本影响力
+	add_to_variable = { 
+		CHI_power_bloc_capital_influence = 0.03
+	}
+	add_to_variable = { 
+		CHI_power_bloc_leader_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_army_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_technocrat_influence = -0.01
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_power_blocs_raise_technocrat = {	#技术官僚影响力
+	add_to_variable = { 
+		CHI_power_bloc_technocrat_influence = 0.03
+	}
+	add_to_variable = { 
+		CHI_power_bloc_leader_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_army_influence = -0.01
+	}
+	add_to_variable = { 
+		CHI_power_bloc_capital_influence = -0.01
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}

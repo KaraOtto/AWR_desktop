@@ -1,0 +1,1447 @@
+﻿ideas = {
+	country = {	#MODDED		
+	    SIK_tng_truce_agreement = { 
+		
+            picture = generic_constitutional_guarantees
+		
+		    allowed_civil_war = {
+			    OR = {
+					has_idea = SIK_Support_idea
+					has_idea = SIK_Weakened_ussr_influence
+				}
+		    }
+		    cancel = {
+			    OR = {
+				    NOT = { country_exists = TNG }
+				    has_war_with = TNG
+			    }
+		    }
+		    removal_cost = -1
+
+            on_add = {
+			    set_truce = {
+				    target = TNG
+				    days = 1095
+			    }
+		    }
+		    on_remove = {
+			    set_truce = {
+				    target = TNG
+				    days = 0
+			    }
+		    }
+	    }
+
+		SIK_tng_truce_agreement_tng = { 
+		
+            picture = generic_constitutional_guarantees
+		
+		    allowed_civil_war = {
+			    always = yes
+		    }
+		    cancel = {
+			    OR = {
+				    NOT = { country_exists = SIK }
+				    has_war_with = SIK
+			    }
+		    }
+		    removal_cost = -1
+
+            on_add = {
+			    set_truce = {
+				    target = SIK
+				    days = 1095
+			    }
+		    }
+		    on_remove = {
+			    set_truce = {
+				    target = SIK
+				    days = 0
+			    }
+		    }
+	    }
+	
+	    SIK_strike_tng = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {
+	            NOT = { country_exists = TNG }
+				NOT = { country_exists = KHR }
+				NOT = { country_exists = HMI }
+			}
+			removal_cost = -1
+
+			picture = FRA_scw_intervention_nationalists_focus
+
+		    targeted_modifier = {
+				tag = TNG
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+            }
+
+			targeted_modifier = {
+				tag = KHR
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+			    #breakthrough_bonus_against = 0.25
+            }
+
+			targeted_modifier = {
+				tag = HMI
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+			    #breakthrough_bonus_against = 0.25
+            }
+	        
+			modifier = {
+                #attrition = -0.75
+                #out_of_supply_consumption_factor = -0.75
+                #supply_consumption_factor = -0.75
+				war_stability_factor = 0.5
+			}
+		}
+		
+		SIK_strike_sheng = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {
+	            NOT = { country_exists = SIK }
+			}
+			removal_cost = -1
+
+			picture = chi_war_of_resistance3
+
+		    targeted_modifier = {
+				tag = SIK
+				attack_bonus_against = 0.10
+				defense_bonus_against = 0.10
+			    breakthrough_bonus_against = 0.10
+            }
+	        
+			modifier = {
+                AWR_economy_development_monthly = 0.015
+                offensive_war_stability_factor = 0.25
+				ai_focus_aggressive_factor = 0.8
+				war_support_factor = 0.15
+			}
+		}
+		
+		SIK_liu_bin_force = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 always = yes
+			}
+
+			cancel = { 
+			    NOT = { 
+					country_exists = SIK 
+				}
+			}
+			
+			removal_cost = -1
+
+			picture = cave_to_sinkiang
+
+			targeted_modifier = {
+				tag = SIK
+				generate_wargoal_tension_against = 0.5
+			}
+
+			modifier = {
+				political_power_factor = -0.1
+				war_support_factor = -0.1
+				conscription_factor = -0.2
+				training_time_factor = 0.2
+			}
+		}
+		
+		SIK_liu_bin_force_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+            cancel = { 
+			    NOT = { country_exists = SIK }
+			}
+
+			removal_cost = -1
+
+			picture = ast_volunteer_defence_corps
+
+			modifier = {
+				army_defence_factor = -0.075
+				army_attack_factor = -0.075
+				army_org_factor = -0.025
+			} 
+		}
+		
+		SIK_rebuild_the_province = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_exploit_mines
+
+			modifier = {
+				industry_free_repair_factor = 0.15
+				industry_repair_factor = 0.15
+				consumer_goods_factor = -0.5
+			    production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+		
+		SIK_railway_idea = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_build_infrastructure
+
+			modifier = {
+				production_speed_rail_way_factor = 0.15
+		        production_speed_supply_node_factor = 0.1
+			}
+		}
+		
+		SIK_RAJ_reinforce = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {
+	            #NOT = { country_exists = TNG }
+			    OR = {
+				    NOT = { country_exists = TNG }
+				    NOT = { country_exists = SIK }
+				}
+			}
+			removal_cost = -1
+
+			picture = raj_marginalized_muslim_community_happy
+			
+			on_add = {
+			    set_rule = {
+                    can_send_volunteers = yes
+                }
+			}
+			
+			on_remove = {
+			    set_rule = {
+                    can_send_volunteers = no
+                }
+			}
+	        
+		    modifier = {
+			    send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+			    send_volunteer_size = 2
+			}
+		}
+		
+		SIK_kashi_debuff = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {
+			    NOT = { 
+					country_exists = KHR 
+				}
+			}
+			removal_cost = -1
+
+			picture = muslim_revolution
+
+		    modifier = {
+			    stability_factor = -0.15
+				army_defence_factor = -0.5
+				army_attack_factor = -0.5
+				army_org_factor = -0.2
+				army_speed_factor = -0.05
+				surrender_limit = -0.25
+				ai_focus_defense_factor = 0.5
+			}
+		}
+		
+		SIK_kashi_debuff_2 = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {
+			    NOT = { 
+					country_exists = KHR 
+				}
+			}
+			removal_cost = -1
+
+			picture = muslim_revolution
+
+		    modifier = {
+			    army_defence_factor = -0.10
+				army_attack_factor = -0.10
+				army_org_factor = -0.05
+				ai_focus_defense_factor = 0.5
+			}
+		}
+		
+		SIK_kashi_debuff_3 = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+            cancel = {	           
+			    NOT = { 
+					country_exists = KHR 
+				}
+			}
+			removal_cost = -1
+
+			picture = muslim_revolution
+	        
+		    modifier = {
+			    army_defence_factor = -0.1
+				army_attack_factor = -0.1
+				army_org_factor = -0.03
+				ai_focus_defense_factor = 0.3
+			}
+		}
+		
+		SIK_Neutral = {	#MODDED
+			picture = COOP_opportunistic_marxist	#MODDED
+			available = {
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+				SOV = {
+					has_government = communism
+				}
+				has_government = communism
+				is_subject = no
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes	#MODDED
+			}
+			rule = { 
+				can_join_factions = no 
+			}
+			modifier = {
+				drift_defence_factor = -0.5
+				communism_acceptance = -100
+			}
+		}
+
+		SIK_Support_idea = {
+			picture = hol_haven_of_tolerance
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_war_with = SOV
+				}
+				SOV = {
+					has_government = communism
+				}
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			modifier = {
+				communism_drift = 0.05 #0.03
+				drift_defence_factor = 0.15
+				research_speed_factor = 0.05
+				SUPPLY_NODE_RANGE = 0.15
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				consumer_goods_factor = 0.25
+				political_power_cost = 0.25
+				generate_wargoal_tension = 0.5
+				ai_desired_divisions_factor = -0.85
+			}
+		}
+
+		SIK_Weakened_ussr_influence = {
+			picture = hol_haven_of_tolerance
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_war_with = SOV
+				}
+				SOV = {
+					has_government = communism
+				}
+			}
+			modifier = {
+				communism_drift = 0.02 #0.02
+				drift_defence_factor = 0.05
+				research_speed_factor = 0.05
+				SUPPLY_NODE_RANGE = 0.25
+				industrial_capacity_factory = 0.025
+				production_factory_max_efficiency_factor = 0.025
+				consumer_goods_factor = 0.15
+				generate_wargoal_tension = 0.3
+				ai_desired_divisions_factor = -0.8
+			}
+		}
+
+		SIK_Conflict_with_the_local_people = {
+			picture = raj_marginalized_muslim_community
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = -0.1
+				conscription_factor = -0.5
+				industrial_capacity_factory = -0.075
+			}
+		}
+
+		SIK_New_currency = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = generic_economic_increase
+
+			modifier = {
+				trade_opinion_factor = 0.1
+				industrial_capacity_factory = 0.03
+			}
+		}
+
+		SIK_Autocracy = {
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_oppression
+
+			modifier = {
+				monthly_population = -0.2
+				foreign_subversive_activites = -0.25
+				resistance_growth = -0.25
+			}
+			cancel = { 
+				NOT = {
+					has_country_leader = {
+						character = SIK_sheng_shicai 
+						ruling_only = yes
+					}
+				}			    
+			}			
+		}
+
+		SIK_Six_major_policies_idea = {
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+			}
+			available = {
+				has_government = communism
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+			}
+			removal_cost = -1
+			picture = tur_odpa
+
+			modifier = {
+				political_advisor_cost_factor = -0.05
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		SIK_Promote_Six_major_policies_idea = {
+           
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+			}
+			available = {
+				has_government = communism
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+			}
+			removal_cost = -1
+			picture = hol_expand_the_colonial_army
+
+			on_add = {
+				set_rule = { 
+					can_only_justify_war_on_threat_country = yes 
+				}
+			}
+
+			on_remove = {
+				set_rule = { 
+					can_only_justify_war_on_threat_country = no 
+				}
+			}
+			
+			modifier = {	
+				political_advisor_cost_factor = -0.05
+				stability_factor = 0.1
+				production_speed_buildings_factor = 0.01
+				communism_drift = 0.01 
+			}
+		}
+
+		SIK_Sinkiang_King = {
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = ast_abandon_the_westminster_system
+
+			modifier = {
+				drift_defence_factor = 0.3
+				political_power_cost = -0.25
+			}
+		}
+
+		SIK_Against_sheng_shicai = {
+			allowed = {
+				always = no
+			}
+			available = {
+				has_civil_war = no
+				NOT = {
+					has_country_flag = mission_failed_against_sheng
+				}
+				has_country_leader = {
+					character = SIK_sheng_shicai ruling_only = yes
+				}
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				communism_drift = -0.05 #MODDED
+				neutrality_drift = 0.1 #MODDED
+			}
+		}
+
+		SIK_Sheng_Shicai_Reform = {
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				#
+			}
+		}
+		
+		SIK_Province_construction_plan = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_research_bonus
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+				production_speed_arms_factory_factor = 0.05	#MODDED
+			}
+		}
+
+		SIK_Plundered_the_local_economy = {
+			picture = MEX_callistas
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory = 0.1
+				out_of_supply_factor = -0.1
+				attrition = -0.02
+				local_resources_factor = 0.2
+				production_speed_industrial_complex_factor = -0.1
+				production_speed_arms_factory_factor = -0.1
+				production_speed_infrastructure_factor = -0.1
+			}
+		}
+		SIK_Trade_in_xinjiang_smuggling = {
+			picture = can_wartime_prices_and_trade_board
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.1
+				license_infantry_purchase_cost = -0.1
+			}
+		}
+		SIK_Sheng_group = {
+			picture = generic_spy_intel
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				monthly_population = -0.3
+				drift_defence_factor = 0.3
+				political_advisor_cost_factor = -0.1
+				political_power_gain = 0.1
+			}
+		}
+		SIK_Monetary_unification = {
+			picture = gre_schachtplan
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				trade_opinion_factor = 0.2
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				trade_laws_cost_factor = -0.1
+			}
+		}
+		SIK_Stable_politics = {
+			picture = generic_pp_unity_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_cost = -0.1
+				mobilization_laws_cost_factor = -0.1
+				industrial_concern_cost_factor = -0.1
+				neutrality_drift = 0.01 #0.01
+				democratic_drift = 0.01 #0.01
+			}
+		}
+		SIK_Repression_guerrillas = {
+			picture = SPR_political_violence
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				#resistance_tick = -0.1
+				foreign_subversive_activites = -0.1
+			}
+		}
+		SIK_Reduced_ethnic_conflicts = {
+			picture = tur_kemalist_army_officers_powerful_effect
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				non_core_manpower = 0.1
+				political_power_cost = -0.05
+				conscription = 0.005
+				monthly_population = 0.1
+			}
+		}
+		SIK_Malpractice_reform = {
+			picture = air_support_focus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = 0.05
+				political_advisor_cost_factor = -0.05
+				#communism_drift = 0.01 #0.01
+				production_speed_infrastructure_factor = 0.1
+				economy_cost_factor = -0.05
+				industrial_concern_cost_factor = -0.05
+			}
+		}
+		SIK_Sinkiang_coalition_government = {
+			picture = generic_pp_unity_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_gain = 0.25
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+			}
+		}
+		SIK_Turkic_land = {
+			picture = tur_kemalist_army_officers_powerful_disloyal
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				drift_defence_factor = 0.4
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+		SIK_Kicking_out_different_nation = {
+			picture = saf_history_of_segregation
+			available = {
+				has_government = fascism
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			modifier = {
+				monthly_population = -0.5
+				#resistance_tick = 0.1
+			}
+		}
+		SIK_Extensive_turkicism = {
+			picture = tur_kemalist_army_officers_powerful_loyal
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				puppet_cost_factor = -0.25
+				political_power_gain = 0.25
+			}
+		}
+		SIK_Turkic_compatriots = {
+			picture = tur_kemalist_army_officers_powerful_neutral
+			available = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			modifier = {
+				justify_war_goal_time = -0.4
+				generate_wargoal_tension = -0.5
+				army_morale_factor = 0.1
+			}
+		}
+
+		SIK_Soviet_supports_armed_groups = {
+			available = {
+				NOT = {
+					is_subject_of = SOV
+				}
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = communism
+					has_government = neutrality
+				}
+			}
+			removal_cost = -1
+			picture = generic_communism_drift_bonus
+
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+			}
+		}
+		SIK_Focus_on_sinkiang = {
+			allowed = {
+				always = no
+			}
+			available = {
+				is_subject = no
+				is_in_faction = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = communism
+					has_government = neutrality
+				}
+			}
+			removal_cost = -1
+			picture = tur_kemalist_neutrality
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.2
+				production_speed_arms_factory_factor = 0.2
+				industrial_capacity_factory = 0.1	#MODDED
+				generate_wargoal_tension = 1.00
+				join_faction_tension = 1.00
+				lend_lease_tension = 0.50
+				send_volunteers_tension = 0.20
+				guarantee_tension = 1.0
+				ai_badass_factor = 0.01
+				ai_get_ally_desire_factor = -100
+			}
+		}
+		SIK_Improve_production_capacity = {
+			picture = HUN_secret_rearmament
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		SIK_Soviet_authorize_design = {
+			picture = generic_license_production
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			modifier = {
+				license_air_purchase_cost = -0.05
+				license_infantry_purchase_cost = -0.05
+				license_armor_purchase_cost = -0.05
+			}
+		}
+
+		SIK_Prominent_artilleryman = {
+			picture = generic_artillery_regiments
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				army_artillery_attack_factor = 0.05
+				army_artillery_defence_factor = 0.05
+			}
+		}
+		SIK_Infantry_assault = {
+			picture = generic_war_preparation
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				planning_speed = 0.1
+				conscription_factor = 0.05
+			}
+		}
+
+		SIK_Army_reform = {
+			picture = chi_army_corruption3
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				army_morale_factor = 0.05
+				attrition = -0.05
+			}
+		}
+		SIK_Recruitment_order = {
+			available = {
+				is_subject = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription_factor = 0.3
+			}
+		}
+		SIK_Revolutionary_propaganda = {
+			available = {
+				is_subject = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_communist_army	#MODDED
+
+			modifier = {
+				conscription_factor = 0.2
+				monthly_population = 0.4	#MODDED
+			}
+		}
+		SIK_Beat_the_enemy = {
+			available = {
+				is_subject = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = MEX_politicised_army_2
+
+			modifier = {
+				conscription_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+		SIK_Output_Focus = {
+			picture = man_five_year_plan_industry
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}
+		SIK_For_the_TAR_revolution = {
+			picture = MEX_revolutionary_army	#MODDED
+			available = {
+				has_civil_war = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			modifier = {
+				max_dig_in_factor = 0.7 #MODDED
+				dig_in_speed_factor = 1
+				army_core_attack_factor = 0.1	#MODDED
+				army_core_defence_factor = 0.35	#MODDED
+				army_morale_factor = 0.15 #MODDED
+				army_org_factor = 0.12
+				army_speed_factor = 0.2
+				pocket_penalty = -0.15
+				attrition = -0.3 #MODDED
+			    land_reinforce_rate = 0.05
+				supply_consumption_factor = -0.3
+				out_of_supply_factor = -0.3
+				no_supply_grace = 72
+			    ai_focus_defense_factor = 0.5
+			}
+			rule = {
+				can_join_factions = no
+			}
+			on_add = {
+				set_country_flag = I_am_turkestan
+				SOV = {
+                    give_military_access = THIS
+                }
+				set_truce = {
+					target = event_target:WTT_communist_china
+					days = 2984
+				}
+			}
+			on_remove = {
+				set_truce = {
+					target = event_target:WTT_communist_china
+					days = 0
+				}
+			}
+		}
+		SIK_Confusion_status = {
+			picture = chi_war_of_resistance3
+			available = {
+				has_civil_war = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_morale_factor = -0.1
+				army_org = -5
+			}
+		}		
+		SIK_Reorganization = {
+			picture = generic_flexible_foreign_policy
+			available = {
+				has_civil_war = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			allowed = {
+				always = no
+			}
+			modifier = {
+				dig_in_speed_factor = 0.15
+				army_core_defence_factor = 0.05	#MODDED	#MODDED	#MODDED	#MODDED
+			}
+		}
+
+
+		SIK_soviet_military_cooperation = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = saf_soviet_advisers
+
+			removal_cost = -1
+
+			cancel = {
+				has_war_with = SOV
+			}
+
+			modifier = {
+				experience_gain_army = 0.05
+				army_org_factor = 0.05
+				supply_consumption_factor = -0.02
+				custom_modifier_tooltip = SIK_if_war_with_sov_this_disappears_tt
+			}
+
+			targeted_modifier = {
+				tag = KHM
+				attack_bonus_against = 0.1
+			}
+
+		}
+
+		SIK_soviet_pilot_schools = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = SOV_scientist_defect
+
+			removal_cost = -1
+
+			cancel = {
+				has_war_with = SOV
+			}
+
+			modifier = {
+				experience_gain_air = 0.05
+				air_advisor_cost_factor = -0.25
+				air_range_factor = 0.1
+				custom_modifier_tooltip = SIK_if_war_with_sov_this_disappears_tt
+			}
+		}
+
+		SIK_influx_of_soviet_supplies = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = generic_supply_depot
+
+			removal_cost = -1
+
+			cancel = {
+				has_war_with = SOV
+			}
+
+			modifier = {
+				supply_consumption_factor = -0.1
+				out_of_supply_factor = -0.05
+				attrition = -0.1 
+				custom_modifier_tooltip = SIK_if_war_with_sov_this_disappears_tt
+			}
+		}
+
+		SIK_three_year_plan = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = man_five_year_plan_industry
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
+				political_power_factor = -0.05
+			}
+		}
+
+		SIK_a_modern_province = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = ARG_public_works_investment
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				research_speed_factor = 0.05
+				stability_factor = 0.1
+			}
+		}
+
+		SIK_the_six_policies = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = AFG_communist_graduates
+
+			removal_cost = -1
+
+			modifier = {
+				political_advisor_cost_factor = -0.1
+				stability_factor = 0.1
+			}
+		} 
+
+		SIC_the_new_guominjun_idea = {
+			
+			allowed = { always = no }
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = CHI_the_republic_restored
+
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.1
+				conscription = 0.015
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_org_factor = 0.05
+			}
+
+			targeted_modifier = {
+				tag = CHI
+				attack_bonus_against = 0.1
+			}
+		}
+
+		SIK_transformation_of_nature_idea = { 
+			removal_cost = -1
+
+			allowed = {
+				always = no 
+			}
+
+			picture = SOV_transformation_of_nature
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				global_building_slots = 1
+				local_resources_factor = 0.1
+			}
+		}
+
+		SIK_state_atheism_freedom_of_religion = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = raj_marginalized_muslim_community_happy
+
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_factor = 0.05
+				stability_factor = 0.05
+				political_advisor_cost_factor = -0.25
+			}
+		}
+
+		KHM_influx_of_funds_idea = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = ARG_political_corruption_modifier
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		KHM_promoting_jadidist_movements_idea = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = PER_islamic_traditions_ns
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.05
+				drift_defence_factor = 0.5
+				political_power_factor = 0.05
+			}
+		}
+
+		KHM_unrest_2 = {
+
+			name = KHM_unrest
+
+			allowed = {
+				always = no
+			}
+
+			picture = raj_marginalized_muslim_community
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.1
+				conscription_factor = -0.05
+				war_support_factor = -0.05
+				army_morale_factor = -0.01
+			}
+		}
+
+		KHM_pushing_them_back_idea = {
+
+			allowed = {
+				original_tag = KHM
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+
+			modifier = {
+				mobilization_speed = 0.15
+			}
+
+			targeted_modifier = {
+				tag = SIK
+				attack_bonus_against = 0.1
+				breakthrough_bonus_against = 0.05
+			}
+
+		}
+
+		KHM_confiscated_gold = {
+
+			allowed = {
+				original_tag = RAJ
+			}
+
+			picture = SPR_seize_the_gold_reserves
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.075
+			}
+
+		}
+
+		SIK_the_nkvd_no_lar = {
+
+			picture = generic_secret_police
+
+			removal_cost = -1
+
+			allowed = {
+				original_tag = SIK
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			cancel = {
+				has_war_with = SOV
+			}
+			
+			modifier = {
+				foreign_subversive_activites = -0.15
+				encryption_factor = 0.15
+				drift_defence_factor = 0.3
+				resistance_target = -0.03
+				custom_modifier_tooltip = SIK_if_war_with_sov_this_disappears_tt
+			}
+
+		}
+
+		SIK_the_nkvd_lar = {
+			name = SIK_the_nkvd_no_lar
+
+			picture = generic_secret_police
+
+			removal_cost = -1
+
+			allowed = {
+				original_tag = SIK
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			cancel = {
+				has_war_with = SOV
+			}
+			
+			modifier = {
+				operative_slot = 1
+				enemy_operative_detection_chance_factor = 0.15
+				enemy_operative_intel_extraction_rate = 0.15
+				enemy_operative_capture_chance_factor = 0.15
+				custom_modifier_tooltip = SIK_if_war_with_sov_this_disappears_tt
+			}
+
+		}
+	}
+}

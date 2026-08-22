@@ -1,0 +1,45 @@
+add_namespace = AWR_JAP
+
+country_event = { #中国重新统一
+	id = AWR_JAP.1
+	title = AWR_JAP.1.t
+	desc = AWR_JAP.1.desc
+	picture = GFX_report_event_japanese_chinese_surrender
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_JAP.1.a
+
+		for_each_scope_loop = {
+			array = global.big_china
+			tooltip = big_china_tt
+			if = {
+				limit = {							
+					state_should_be_transferred_to_china = yes
+				}
+				if = {
+					limit = { 
+						JAP = { 
+							has_completed_focus = JAP_expand_the_revolutions_focus 
+						} 
+					}
+					event_target:WTT_communist_china = { 
+						transfer_state = PREV 
+					}
+				}
+				if = {
+					limit = { 
+						JAP = { 
+							NOT = {  
+								has_completed_focus = JAP_expand_the_revolutions_focus 
+							} 
+						} 
+					}
+					event_target:WTT_current_china_leader = { 
+						transfer_state = PREV 
+					}
+				}
+			}
+		}
+	}
+}

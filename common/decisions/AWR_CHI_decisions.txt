@@ -1,0 +1,217 @@
+China_government_reform_decisions = {
+	China_government_reform_decisions_2g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land
+				add_idea = China_weak_control_of_the_land_2
+			}
+		}
+	}
+
+	China_government_reform_decisions_3g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_2
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_2
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_2
+				add_idea = China_weak_control_of_the_land_3
+			}
+		}
+	}
+	China_government_reform_decisions_4g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_3
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_3
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_3
+				add_idea = China_weak_control_of_the_land_4
+			}
+		}
+	}
+	China_government_reform_decisions_5g = {
+		icon = generic_wall_line
+		cost = 150
+		allowed = {
+			has_political_power > 150 
+		}
+		available = {
+			has_idea = China_weak_control_of_the_land_4
+		}
+		visible = {
+			has_idea = China_weak_control_of_the_land_4
+		}
+		days_remove = 120
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = China_weak_control_of_the_land_4
+				add_idea = China_weak_control_of_the_land_5
+			}
+		}
+	}
+}
+
+CHI_spy_family_NBIS_recharge_cat = {
+	CHI_spy_family_NBIS_recharge = {
+		icon = generic_nationalism
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = yes
+		available = {
+			agency_upgrade_number > 6
+		}
+		visible = {
+			tag = CHI
+			
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = NBIS_spy_family
+				add_idea = NBIS_spy_family_guy
+			}
+		}
+	}
+	CHI_restore_power_to_clean_up_G4_robber = {
+		icon = generic_wall_line
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = yes
+		available = {
+			has_political_power  > 1000
+			surrender_progress > 0.6
+		}
+		visible = {
+			
+			tag = CHI
+			
+			
+		}
+		complete_effect = {
+			add_political_power = -1000
+			custom_effect_tooltip = this_is_a_hard_road_to_victory
+			country_event = CHI_right_line.31 
+		}
+	}
+}
+
+CHI_power_blocs_category = {
+	CHI_power_blocs_test_raise_leader = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 0
+		days_re_enable = 1
+		fire_only_once = no
+		visible = { has_country_flag = CHI_power_blocs_initialized }
+		complete_effect = {
+			CHI = {
+				log = "CHI_POWER_BLOCS_TEST leader: before [?CHI_power_bloc_leader_influence]"
+				add_to_variable = { CHI_power_bloc_leader_influence = 0.10 }
+				CHI_power_blocs_normalize_and_refresh = yes
+				log = "CHI_POWER_BLOCS_TEST leader: after [?CHI_power_bloc_leader_influence]"
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	CHI_power_blocs_test_raise_army = {
+		icon = GFX_decision_generic_army_support
+		cost = 0
+		days_re_enable = 1
+		fire_only_once = no
+		visible = { has_country_flag = CHI_power_blocs_initialized }
+		complete_effect = {
+			CHI = {
+				log = "CHI_POWER_BLOCS_TEST army: before [?CHI_power_bloc_army_influence]"
+				add_to_variable = { CHI_power_bloc_army_influence = 0.10 }
+				CHI_power_blocs_normalize_and_refresh = yes
+				log = "CHI_POWER_BLOCS_TEST army: after [?CHI_power_bloc_army_influence]"
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	CHI_power_blocs_test_raise_capital = {
+		icon = GFX_decision_generic_industry
+		cost = 0
+		days_re_enable = 1
+		fire_only_once = no
+		visible = { has_country_flag = CHI_power_blocs_initialized }
+		complete_effect = {
+			CHI = {
+				log = "CHI_POWER_BLOCS_TEST capital: before [?CHI_power_bloc_capital_influence]"
+				add_to_variable = { CHI_power_bloc_capital_influence = 0.10 }
+				CHI_power_blocs_normalize_and_refresh = yes
+				log = "CHI_POWER_BLOCS_TEST capital: after [?CHI_power_bloc_capital_influence]"
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	CHI_power_blocs_test_raise_technocrat = {
+		icon = GFX_decision_generic_research
+		cost = 0
+		days_re_enable = 1
+		fire_only_once = no
+		visible = { has_country_flag = CHI_power_blocs_initialized }
+		complete_effect = {
+			CHI = {
+				log = "CHI_POWER_BLOCS_TEST technocrat: before [?CHI_power_bloc_technocrat_influence]"
+				add_to_variable = { CHI_power_bloc_technocrat_influence = 0.10 }
+				CHI_power_blocs_normalize_and_refresh = yes
+				log = "CHI_POWER_BLOCS_TEST technocrat: after [?CHI_power_bloc_technocrat_influence]"
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	CHI_power_blocs_test_reset = {
+		icon = GFX_decision_generic_decision
+		cost = 0
+		days_re_enable = 1
+		fire_only_once = no
+		visible = { has_country_flag = CHI_power_blocs_initialized }
+		complete_effect = {
+			CHI = {
+				log = "CHI_POWER_BLOCS_TEST reset"
+				set_variable = { CHI_power_bloc_leader_influence = 0.35 }
+				set_variable = { CHI_power_bloc_army_influence = 0.30 }
+				set_variable = { CHI_power_bloc_capital_influence = 0.20 }
+				set_variable = { CHI_power_bloc_technocrat_influence = 0.15 }
+				CHI_power_blocs_normalize_and_refresh = yes
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+}

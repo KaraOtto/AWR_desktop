@@ -1,4 +1,5 @@
 add_namespace = AWR_CHI
+add_namespace = AWR_CHI_state
 country_event = { #张国焘前来投奔
 	id = AWR_CHI.1000
 	title = AWR_CHI.1000.t
@@ -87,7 +88,7 @@ country_event = {	#据称张学良与共产党停战
 country_event = {	#共产党加入统一战线
 	id = AWR_CHI.1002
 	title = AWR_CHI.1002.t
-	desc = AWR_CHI.1002.d
+	desc = AWR_CHI.1002.desc
 	picture = GFX_report_event_chinese_army_training
 	is_triggered_only = yes
 	immediate = {
@@ -119,7 +120,7 @@ country_event = {	#共产党加入统一战线
 country_event = { #击退共产党民兵
 	id = AWR_CHI.1003
 	title = AWR_CHI.1003.t
-	desc = AWR_CHI.1003.d
+	desc = AWR_CHI.1003.desc
 	picture = GFX_report_event_west_route_army_failed
 
 	fire_only_once = yes
@@ -134,7 +135,7 @@ country_event = { #击退共产党民兵
 country_event = {  #共产党民兵撤退了
 	id = AWR_CHI.1004
 	title = AWR_CHI.1004.t
-	desc = AWR_CHI.1004.d
+	desc = AWR_CHI.1004.desc
 	picture = GFX_report_event_west_route_army_failed
 
 	fire_only_once = yes
@@ -143,5 +144,209 @@ country_event = {  #共产党民兵撤退了
 		name = AWR_CHI.1004.a
 		add_stability = 0.05
 		add_political_power = 100
+	}
+}
+
+country_event = {	#贵州投敌
+	id = AWR_CHI.1005
+	title = AWR_CHI.1005.t
+	desc = AWR_CHI.1005.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+	is_triggered_only = yes
+	option = {
+		name = AWR_CHI.1005.a
+		if = {
+			limit = {
+				748 = {
+					is_owned_by = ROOT
+				}
+			}	
+			FROM = { 
+				transfer_state = 748
+			}
+		}
+		if = {
+			limit = {
+				603 = {
+					is_owned_by = ROOT
+				}
+			}	
+			FROM = { 
+				transfer_state = 603
+			}
+		}
+		transfer_units_fraction = {
+			target = event_target:WTT_communist_china          
+			size = 0       
+			army_ratio = 0.05       
+			stockpile_ratio = 0.05  
+			keep_unit_leaders_trigger = { 
+				always = yes
+			}
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+		event_target:WTT_communist_china = { 
+			country_event = { 
+				id = AWR_PRC.183 
+			} 
+		}
+		
+		event_target:WTT_current_china_leader = { #guo
+		every_controlled_state = {
+			teleport_armies = {
+				to_state = 1005
+				limit = {
+					tag = FROM
+				}
+			}
+		}
+		}
+	}
+}
+
+
+
+
+
+
+
+state_event = {	#报告显示共产党与苏联占领当局正在 [From.From.GetName] 进行活动
+	id = AWR_CHI_state.1
+	title = AWR_CHI_state.1.t
+	desc = AWR_CHI_state.1.desc
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_CHI_state.1.a
+		custom_effect_tooltip = communist_in_X_can_grow		
+	}
+}
+
+state_event = {	#共产党势力在 [From.From.GetName] 发展茁壮
+	id = AWR_CHI_state.2
+	title = AWR_CHI_state.2.t
+	desc = AWR_CHI_state.2.desc
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_CHI_state.2.a
+		effect_tooltip = {
+			FROM = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			custom_effect_tooltip = increase_garrison_tt
+			custom_effect_tooltip = decrease_garrison_nat_good
+		}
+	}
+}
+
+state_event = {	#我们的势力于 [From.From.GetName]发展茁壮
+	id = AWR_CHI_state.3
+	title = AWR_CHI_state.3.t
+	desc = AWR_CHI_state.3.desc
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_CHI_state.3.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					ROOT = { 
+						tag = event_target:WTT_communist_china 
+					}
+				}
+				FROM = {
+					add_core_of = event_target:WTT_communist_china
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { 
+						tag = event_target:WTT_current_china_leader 
+					}
+				}
+				FROM = {
+					remove_core_of = event_target:WTT_communist_china
+				}
+			}
+		}
+		custom_effect_tooltip = increase_garrison_tt
+		if = {
+			limit = {
+				ROOT = { 
+					tag = event_target:WTT_communist_china 
+				}
+			}
+			custom_effect_tooltip = decrease_garrison_nat_good
+		}
+		if = {
+			limit = {
+				ROOT = { 
+					tag = event_target:WTT_current_china_leader 
+				}
+			}
+			custom_effect_tooltip = decrease_garrison_com_good
+		}
+	}
+}
+
+state_event = {	#共产党完全接管 [From.From.GetName]
+	id = AWR_CHI_state.4
+	title = AWR_CHI_state.4.t
+	desc = AWR_CHI_state.4.desc
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_CHI_state.4.a
+		effect_tooltip = {
+			FROM = {
+				remove_core_of = event_target:WTT_current_china_leader
+			}
+		}
+		custom_effect_tooltip = increase_garrison_tt
+		custom_effect_tooltip = nat_can_no_longer_influence
+	}
+}
+
+state_event = {	#完全接管[From.From.GetName]
+	id = AWR_CHI_state.5
+	title = AWR_CHI_state.5.t
+	desc = AWR_CHI_state.5.d
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_CHI_state.5.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					ROOT = { 
+						tag = event_target:WTT_communist_china 
+					}
+				}
+				FROM = {
+					remove_core_of = event_target:WTT_current_china_leader
+				}
+			}
+		}
+		custom_effect_tooltip = increase_garrison_tt
+		if = {
+			limit = {
+				ROOT = { 
+					tag = event_target:WTT_communist_china 
+				}
+			}
+			custom_effect_tooltip = nat_can_no_longer_influence
+		}
+		if = {
+			limit = {
+				ROOT = { 
+					tag = event_target:WTT_current_china_leader 
+				}
+			}
+			custom_effect_tooltip = com_can_no_longer_influence	
+		}
 	}
 }

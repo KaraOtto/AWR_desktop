@@ -8472,7 +8472,7 @@ focus_tree = {
 			effect_tooltip = {
 			    SOV = { 
 					country_event = {
-						id = northeast_takeover.8
+						id = AWR_SOV.1
 					} 
 				}
 				event_target:WTT_current_china_leader = {
@@ -8925,7 +8925,7 @@ focus_tree = {
 							is_ai = no 
 						}
 					}
-					add_ideas = balance_idea_prc_civil_war
+					add_ideas = PRC_stabilize_production
 				}
 						
 			}
@@ -9006,8 +9006,7 @@ focus_tree = {
 			custom_effect_tooltip = civil_war_tips_tt
 			effect_tooltip = {
 				event_target:WTT_current_china_leader = {
-					RCM_increase_inflation_2_levels = yes
-					add_ideas = RCM_civil_war_economy_idea
+					add_ideas = China_civil_war_economy_idea_1
 				}
 			}
 			if = {
@@ -9029,14 +9028,6 @@ focus_tree = {
 		}
 		available = {
 			event_target:WTT_current_china_leader = {
-			    if = { #guo
-				limit = { 
-					#has_idea = lianheguojiaxuanyan 
-				}
-				not = { 
-					#has_idea = lianheguojiaxuanyan 
-				}
-				}
 				NOT = {
 					OR = {
 						has_war_with = JAP
@@ -9154,6 +9145,24 @@ focus_tree = {
 		}
 	}
 
+	focus = {	#稳定后方生产
+		id = PRC_stabilize_rear_production
+		icon = GFX_focus_PRC_stabilize_rear_production
+		cost = 5
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_strategic_defense
+		}
+		relative_position_id = PRC_strategic_defense
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_stabilize_production
+				days = 720
+			}
+		}
+	}
+
 	focus = {	#粉碎全面进攻
 		id = PRC_crush_the_all-out_attack
 		icon = GFX_focus_PRC_crush_the_all-out_attack
@@ -9169,6 +9178,15 @@ focus_tree = {
 			add_timed_idea = {
 				idea = crush_the_all_out_attack
 				days = 180
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_crush_the_point_attack
+				}
+				swap_ideas = {
+					remove_idea = China_civil_war_economy_idea_1
+					add_idea = China_civil_war_economy_idea_2
+				}
 			}
 		}
 
@@ -9192,10 +9210,19 @@ focus_tree = {
 		x = 2
 		y = 1
 		completion_reward = {
-			1030 = {
+			1090 = {
 				add_dynamic_modifier = {
 					modifier = PRC_regional_offensive
 					scope = PRC
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_crush_the_all-out_attack
+				}
+				swap_ideas = {
+					remove_idea = China_civil_war_economy_idea_1
+					add_idea = China_civil_war_economy_idea_2
 				}
 			}
 		}
@@ -9224,6 +9251,17 @@ focus_tree = {
 		x = 2
 		y = 1
 		completion_reward = {
+
+			swap_ideas = {
+				remove_idea = China_civil_war_economy_idea_2
+				add_idea = China_civil_war_economy_idea_3
+			}
+
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunlujun_tooltip_original
+				add_idea = PRC_jiefangjunlujun_tooltip_original_1
+			}
+
 			add_to_variable = {
 				scope.PRC_jiefangjunlujun_army_defence_factor = 0.05
 			}
@@ -9347,7 +9385,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {#抢占主动权
+	focus = {	#抢占主动权
 		id = PRC_seize_the_initiative
 		icon = GFX_focus_PRC_seize_the_initiative
 		cost = 5
@@ -9371,10 +9409,10 @@ focus_tree = {
 		}
 	}
 
-	focus = {	#突破包围
-		id = breakthrough_the_encirclement
-		icon = GFX_focus_breakthrough_the_encirclement
-		cost = 5
+	focus = {	#战时生产政策
+		id = PRC_wartime_production_policy
+		icon = GFX_focus_PRC_wartime_production_policy
+		cost = 1
 		prerequisite = {
 			focus = PRC_seize_the_initiative
 		}
@@ -9382,9 +9420,35 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
+			add_stability = -0.05
+			add_war_support = -0.05
+			add_ideas = tot_economic_mobilisation
+			add_timed_idea = {
+				idea = PRC_wartime_production
+				days = 365
+			}
+		}
+	}
+
+	focus = {	#突破包围
+		id = breakthrough_the_encirclement
+		icon = GFX_focus_breakthrough_the_encirclement
+		cost = 5
+		prerequisite = {
+			focus = PRC_wartime_production_policy
+		}
+		relative_position_id = PRC_wartime_production_policy
+		x = 0
+		y = 1
+		completion_reward = {
 			add_to_variable = {
 				scope.PRC_jiefangjunlujun_army_attack_factor = 0.05
 				scope.PRC_jiefangjunlujun_breakthrough_factor = 0.05
+			}
+
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunlujun_tooltip_original
+				add_idea = PRC_jiefangjunlujun_tooltip_original_1
 			}
 		}
 		available = {
@@ -9673,6 +9737,11 @@ focus_tree = {
 		x = 4
 		y = 1
 		completion_reward = {
+			
+			swap_ideas = {
+				remove_idea = PRC_jiefangjunlujun_tooltip_original
+				add_idea = PRC_jiefangjunlujun_tooltip_original_1
+			}
 			add_to_variable = {
 				scope.PRC_jiefangjunlujun_army_attack_factor = 0.05
 			}
@@ -9846,7 +9915,10 @@ focus_tree = {
 		available = {
         	has_government = communism		
 			has_completed_focus = PRC_War_of_Liberation
-			leader_is_maoist = yes
+			OR = {
+				leader_is_maoist = yes
+				leader_is_zhang_guotao = yes
+			}
 		}
 	}
 	
@@ -13103,9 +13175,12 @@ focus_tree = {
 			army_experience = 200
 		}
 		available = {
-            has_government = communism		
-		    leader_is_maoist = no	
+            has_government = communism			
 			has_completed_focus = PRC_War_of_Liberation	
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
 		}
 
 	}
@@ -16948,19 +17023,19 @@ focus_tree = {
 		available_if_capitulated = no
         select_effect = {
         	country_event = { 
-				id = prc_fangwensulian.1 
+				id = AWR_PRC.170 
 				hours = 0 
 			}  
 			SOV = { 
 				country_event = { 
-					id = prc_fangwensulian.2 
+					id = AWR_PRC.171 
 					hours = 0 
 				} 
 			}   
         	hidden_effect = {
         		ROOT = { 
 					country_event = { 
-						id = prc_fangwensulian.100 
+						id = AWR_PRC.175 
 						days = 15 
 					} 
 				}     
@@ -17011,12 +17086,12 @@ focus_tree = {
 				}
         		SOV = { 
 					country_event = { 
-						id = prc_fangwensulian.11  
+						id = AWR_PRC.1701  
 						hours = 0 
 					} 
 				}
         		country_event = { 
-					id = prc_fangwensulian.12  hours = 0 
+					id = AWR_PRC.1702  hours = 0 
 				}				
         		news_event = { 
 					id = news.1013 
@@ -17036,8 +17111,8 @@ focus_tree = {
 
        		if = {#no
         		limit = { has_global_flag = zhongsujuelie }
-        		SOV = { country_event = { id = prc_fangwensulian.15  hours = 0 } }
-        		country_event = { id = prc_fangwensulian.16  hours = 0 }				
+        		SOV = { country_event = { id = AWR_PRC.1705  hours = 0 } }
+        		country_event = { id = AWR_PRC.1706  hours = 0 }				
        			add_opinion_modifier = {
 					target = SOV
 					modifier = SOV_CHI_join_comintern_reject
@@ -17056,12 +17131,12 @@ focus_tree = {
 				}
         		SOV = { 
 					country_event = { 
-						id = prc_fangwensulian.13  
+						id = AWR_PRC.178  
 						hours = 0 
 					} 
 				}
         		country_event = { 
-					id = prc_fangwensulian.14  
+					id = AWR_PRC.179  
 					hours = 0 
 				}
         		news_event = { 

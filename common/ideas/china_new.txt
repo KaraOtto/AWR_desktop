@@ -648,7 +648,13 @@ ideas = {
 				research_speed_factor = 0.15
 			}
 		}
-		#-------------------------以下是处于内战或抗战期间的buff-----------------
+		
+		
+	}
+}
+#-------------------------以下是处于内战或抗战期间的buff-----------------
+ideas = {
+	country = {
 		CHI_inner_affair_no_fiction = { #中国事务
 			picture = chi_chinese_unity
 			modifier = {
@@ -664,6 +670,114 @@ ideas = {
 				can_be_spymaster = no
 				can_create_factions = no
 				
+			}
+		}
+
+		China_civil_war_economy_idea_1 = { #中国内战
+
+			picture = chi_war_of_resistance3
+
+			allowed = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_civil_war = yes
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_global_flag = CCW_restarts
+						any_enemy_country = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_war_with = NEA
+						NEA = {
+							is_faction_leader = yes
+						}
+					}
+					has_idea = CHI_illegal_regime
+				}
+			}
+			removal_cost = -1
+			cost = -1
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				AWR_economy_development_monthly = -0.015
+			}
+		}
+
+		China_civil_war_economy_idea_2 = { #中国内战
+
+			picture = chi_war_of_resistance3
+
+			allowed = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_civil_war = yes
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_global_flag = CCW_restarts
+						any_enemy_country = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_war_with = NEA
+						NEA = {
+							is_faction_leader = yes
+						}
+					}
+					has_idea = CHI_illegal_regime
+				}
+			}
+			removal_cost = -1
+			cost = -1
+			modifier = {
+				stability_factor = -0.30
+				war_support_factor = -0.30
+				AWR_economy_development_monthly = -0.010
+			}
+		}
+
+		China_civil_war_economy_idea_3 = { #中国内战
+
+			picture = chi_war_of_resistance3
+
+			allowed = {
+				always = yes
+			}
+			available = {
+				OR = {
+					has_civil_war = yes
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_global_flag = CCW_restarts
+						any_enemy_country = {
+							tag = event_target:WTT_communist_china
+						}
+					}
+					AND = {
+						tag = event_target:WTT_current_china_leader
+						has_war_with = NEA
+						NEA = {
+							is_faction_leader = yes
+						}
+					}
+					has_idea = CHI_illegal_regime
+				}
+			}
+			removal_cost = -1
+			cost = -1
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.10
+				AWR_economy_development_monthly = -0.005
 			}
 		}
 	}

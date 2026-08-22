@@ -1,4 +1,4 @@
-﻿capital = 1015 # Nanjing	## NO LABEL, HEAVILY MODDED 
+﻿capital = 1084 # Nanjing	## NO LABEL, HEAVILY MODDED 
 
 if = {
 	limit = {
@@ -13,6 +13,80 @@ if = {
 }
 #load_oob = "XIA_1936"
 save_global_event_target_as = WTT_current_china_leader 
+# 权力集团：直接写入国家历史，确保1936开局即拥有动态修正。
+set_country_flag = CHI_power_blocs_initialized
+set_variable = { 
+	CHI_power_bloc_leader_influence = 0.35 
+}
+set_variable = { 
+	CHI_power_bloc_army_influence = 0.30 
+}
+set_variable = { 
+	CHI_power_bloc_capital_influence = 0.20 
+}
+set_variable = { 
+	CHI_power_bloc_technocrat_influence = 0.15 
+}
+
+set_variable = { 
+	CHI_power_bloc_leader_effect = 0.10 
+}
+set_variable = { 
+	CHI_power_bloc_army_combat_effect = 0.01 
+}
+set_variable = { 
+	CHI_power_bloc_army_supply_effect = -0.02 
+}
+set_variable = { 
+	CHI_power_bloc_army_service_effect = 0.05 
+}
+set_variable = { 
+	CHI_power_bloc_capital_build_effect = -0.025 
+}
+set_variable = { 
+	CHI_power_bloc_capital_output_effect = -0.02 
+}
+set_variable = { 
+	CHI_power_bloc_capital_economy_effect = -0.005
+}
+set_variable = { 
+	CHI_power_bloc_bourgeois_build_effect = -0.05 
+}
+set_variable = { 
+	CHI_power_bloc_bourgeois_efficiency_effect = -0.05 
+}
+set_variable = { 
+	CHI_power_bloc_technocrat_policy_effect = -0.08 
+}
+set_variable = { 
+	CHI_power_bloc_technocrat_goods_effect = 0.08 
+}
+set_variable = { 
+	CHI_power_bloc_technocrat_cost_effect = 0.10 
+}
+
+set_variable = { 
+	CHI_power_bloc_leader_frame = 7 
+}
+set_variable = { 
+	CHI_power_bloc_army_frame = 6 
+}
+set_variable = { 
+	CHI_power_bloc_capital_frame = 4 
+}
+set_variable = { 
+	CHI_power_bloc_technocrat_frame = 3 
+}
+set_variable = { 
+	CHI_power_bloc_leader_army_sum = 0.65 
+}
+set_variable = { 
+	CHI_power_bloc_gui_dirty = 1 
+}
+add_dynamic_modifier = { 
+	modifier = CHI_power_blocs_national_government 
+}
+force_update_dynamic_modifier = yes
 
 recruit_character = CHI_chiang_kai_shek
 recruit_character = CHI_huang_qixiang
@@ -153,7 +227,7 @@ recruit_character = CHI_sun_yuanliang
 recruit_character = CHI_fang_xianjue
 recruit_character = CHI_chen_yi
 recruit_character = CHI_lisiguang
-recruit_character = CHI_guorugui
+recruit_character = CHI_guo_rugui
 
 if = {
 	limit = { has_dlc = "Man the Guns" }
