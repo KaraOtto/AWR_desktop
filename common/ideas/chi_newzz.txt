@@ -435,38 +435,6 @@ ideas = {
             }
     }
 
-	    chi_nanfang = { #南方八省游击队
-    
-            name = chi_nanfang
-    
-            picture = chinese_burning_red_army_flag
-            
-            allowed = {
-            }
-            
-            available = {
- 			has_government = neutrality 
-            }
-            
-            cancel = {
-			OR = {
-            NOT = { country_exists = PRC }
-            has_war_with = JAP			
-               }			
-            }
-
-            removal_cost = -1
-            
-            targeted_modifier = {
-            }
-            
-            modifier = {
-                stability_factor = -0.05			
-                army_morale_factor = -0.05
-                army_org_factor = -0.05
-            }
-    }
-
 		chi_baifeidaixing = { #百废待兴
 			picture = kmt_minxinjianshi
 			name = chi_baifeidaixing
@@ -3420,53 +3388,6 @@ production_speed_infrastructure_factor = 0.10
 				war_stability_factor = 0.25
 			}
 	}
-	
-	nea_idea_CHI_he_umezu_agreement = {
-			picture = generic_constitutional_guarantees
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes			
-			}
-			removal_cost = -1
-			cancel = {
-				or = {
-				has_war_with = JAP
-				is_in_faction_with = HPC
-				HPC = { is_subject_of = root }
-				JAP = { has_civil_war = yes }
-				}
-			}
-			modifier = {
-                
-			}
-	}
-		
-	nea_idea_CHI_shanghai_ceasefire_agreement = {
-			picture = generic_constitutional_guarantees
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			cancel = {
-			    or = {
-				has_global_flag = no_shanghai_DMZ
-				613 = { is_controlled_by_jap_or_its_puppet = yes }
-				1078 = { is_controlled_by_jap_or_its_puppet = yes }
-				JAP = { has_civil_war = yes }
-				}
-			}
-			modifier = {
-                
-			}
-			on_remove = {
-			    set_global_flag = no_shanghai_DMZ
-			}
-	}
 		
 	KMT_Strategic_initiative = {
 			removal_cost = -1
@@ -3953,35 +3874,6 @@ production_speed_infrastructure_factor = 0.3
 			        }
 			    }
 	    }
-		
-
-        german_advisorszz = {
-		
-		    picture = german_advisors
-		
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-                                              
-                                                available = {
-			              has_idea = CHI_alexander_von_falkenhausen
-			}
-
-
-                                                targeted_modifier = {
-					tag = GER
-				                
-				                
-				                trade_cost_for_target_factor = -0.5	
-			}
-
-		}
 
         chi_xinanlianda_idea = {
 		                
