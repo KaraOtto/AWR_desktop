@@ -10200,7 +10200,15 @@ focus_tree = {
 
 		}
 		available = {
-			#
+			has_completed_focus = PRC_Five_year_plans_of_China
+			has_global_flag = establish_PRC_shenyang_tank_manufacturer
+			has_global_flag = establish_PRC_harbin_tank_manufacturer
+			has_global_flag = establish_PRC_xian_tank_manufacturer
+			has_global_flag = establish_CHI_South_Industry
+			has_global_flag = establish_CHI_North_Heavy_Industry
+			has_global_flag = establish_CHI_First_Motor
+			has_global_flag = establish_CHI_North_Industry
+			has_global_flag = establish_CHI_Six_two_six
 		}
 
 	}
@@ -10336,6 +10344,7 @@ focus_tree = {
 				bonus = 1.0
 				category = cat_mechanized_equipment
 			}
+			add_ideas = homemade_mechanized
 		}
 		available = {
 			#
@@ -11111,7 +11120,7 @@ focus_tree = {
 	focus = {#扩建航校
 		id = PRC_expand_the_flight_school
 		icon = GFX_focus_PRC_expand_the_flight_school
-		cost = 2.19
+		cost = 2.15
 		prerequisite = {
 			focus = PRC_Air_base
 		}
@@ -11246,18 +11255,6 @@ focus_tree = {
 				modifier = PRC_jiefangjunkongjun_dynamic_modifier
 			}
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_training_xp_gain_factor = 0.10
-			}
-			add_to_variable = {
-				PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor = -0.10
-			}
-			add_to_variable = {
-				PRC_jiefangjunkongjun_air_ace_generation_chance_factor = 0.05
-			}
-			add_to_variable = {
-				PRC_jiefangjunkongjun_air_mission_xp_gain_factor = 0.05
-			}
-			add_to_variable = {
 				PRC_jiefangjunkongjun_new_battlefield_support_mastery_gain_factor = 0.10
 			}
 			add_to_variable = {
@@ -11266,6 +11263,21 @@ focus_tree = {
 			add_to_variable = {
 				PRC_jiefangjunkongjun_new_strategic_destruction_mastery_gain_factor = 0.10
 			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_experience_gain_air_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_training_xp_gain_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_mission_xp_gain_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_untrained_pilots_penalty_factor = -0.10
+			}
 		 
 		
 		    air_experience = 100
@@ -11273,6 +11285,7 @@ focus_tree = {
 		}
 		available = {
 			num_of_factories > 100
+			has_completed_focus = PRC_Five_year_plans_of_China
 		}
 
 	}
@@ -11306,10 +11319,10 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor = -0.05
+				PRC_jiefangjunkongjun_air_manpower_requirement_factor = -0.30
 			}
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_ace_generation_chance_factor = 0.05
+				PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor = -0.30
 			}
 		}
 		available = {
@@ -11453,16 +11466,19 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_accidents_factor = -0.10
+				PRC_jiefangjunkongjun_air_attack_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_night_penalty = -0.10
+				PRC_jiefangjunkongjun_air_defence_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_weather_penalty = -0.10
+				PRC_jiefangjunkongjun_air_agility_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunkongjun_experience_gain_air_factor = 0.10
+				PRC_jiefangjunkongjun_air_maximum_speed_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_range_factor = 0.10
 			}
 			add_tech_bonus = {
 				name = air_equipment
@@ -11547,7 +11563,13 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunkongjun_new_operational_integrity_mastery_gain_factor = 0.15
+				PRC_jiefangjunkongjun_air_superiority_efficiency = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_intercept_efficiency = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_army_bonus_air_superiority_factor = 0.10
 			}
 		}
 		available = {
@@ -11666,7 +11688,16 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunkongjun_new_battlefield_support_mastery_gain_factor = 0.15
+				PRC_jiefangjunkongjun_ground_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_efficiency = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_present_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_close_air_support_org_damage_factor = 0.10
 			}
 		}
 		available = {
@@ -11790,7 +11821,15 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunkongjun_new_strategic_destruction_mastery_gain_factor = 0.15
+				PRC_jiefangjunkongjun_air_strategic_bomber_bombing_factor = 0.15
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_strategic_bomber_night_penalty = 0.15
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_strategic_bomb_visibility = -0.15
 			}
 		}
 		available = {
@@ -11877,20 +11916,73 @@ focus_tree = {
 			}
 			 
 			#真正的动态修正 {  }#
+
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_superiority_efficiency = 0.10
+				PRC_jiefangjunkongjun_air_range_factor = 0.15
 			}
 
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_accidents = -0.10
+				PRC_jiefangjunkongjun_air_agility_factor = 0.15
 			}
 
-			add_to_variable = {
-				PRC_jiefangjunkongjun_air_bombing_targetting = 0.10
+			if = {
+				limit = {
+					has_completed_focus = PRC_J_fighter_jet
+				}
+				#假意置换民族精神
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_jiefangjunkongjun_tooltip_original
+						add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+					}
+
+					add_to_variable = {
+						PRC_jiefangjunkongjun_air_attack_factor = 0.15
+					}
+					add_to_variable = {
+						PRC_jiefangjunkongjun_air_agility_factor = 0.15
+					}
+				}
 			}
 
-			add_to_variable = {
-				PRC_jiefangjunkongjun_naval_strike_targetting_factor = 0.10
+			if = {
+				limit = {
+					has_completed_focus = PRC_H_fighter_jet
+				}
+				#假意置换民族精神
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_jiefangjunkongjun_tooltip_original
+						add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+					}
+
+					add_to_variable = {
+						PRC_jiefangjunkongjun_ground_attack_factor = 0.15
+					}
+					add_to_variable = {
+						PRC_jiefangjunkongjun_air_bombing_targetting = 0.15
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = PRC_Bomber
+				}
+				#假意置换民族精神
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = PRC_jiefangjunkongjun_tooltip_original
+						add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+					}
+
+					add_to_variable = {
+						PRC_jiefangjunkongjun_air_strategic_bomber_bombing_factor = 0.15
+					}
+					add_to_variable = {
+						PRC_jiefangjunkongjun_air_range_factor = 0.15
+					}
+				}
 			}
 
 			add_breakthrough_points = {
@@ -12253,13 +12345,24 @@ focus_tree = {
 				PRC_jiefangjunhaijun_experience_gain_navy_unit_factor = 0.1
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_has_potf_in_combat_defense = 0.1
+				PRC_jiefangjunhaijun_naval_supply_consumption_factor = 0.05
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_has_potf_in_combat_attack = 0.1
+				PRC_jiefangjunhaijun_naval_accidents_chance = 0.05
 			}
-			 
-		
+			add_to_variable = {
+				PRC_jiefangjunhaijun_naval_detection = 0.05
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_positioning = 0.05
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_screening_efficiency = 0.05
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_PRC_jiefangjunhaijun_naval_supply_consumption_factor = 0.05
+			}
+			
 			navy_experience = 100
 			add_tech_bonus = {
 				name = naval_equipment 
@@ -12276,6 +12379,7 @@ focus_tree = {
 		}
 		available = {
 			num_of_factories > 100
+			has_completed_focus = PRC_Five_year_plans_of_China
 		}
 
 	}
@@ -12453,6 +12557,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_ideas = homemade_submarine
+			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
@@ -12463,16 +12568,13 @@ focus_tree = {
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
-				PRC_jiefangjunhaijun_amphibious_invasion_defence = 0.05
+				PRC_jiefangjunhaijun_navy_submarine_attack_factor = 0.15
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_detection = 0.05
+				PRC_jiefangjunhaijun_sub_retreat_speed = 0.15
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_navy_submarine_attack_factor = 0.05
-			}
-			add_to_variable = {
-				PRC_jiefangjunhaijun_sub_retreat_speed = 0.05
+				PRC_jiefangjunhaijun_naval_torpedo_cooldown_factor = 0.15
 			}
 			add_to_variable = {
 				PRC_jiefangjunhaijun_new_convoy_raiding_mastery_gain_factor = 0.10
@@ -12509,7 +12611,7 @@ focus_tree = {
 				technology = marines3
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_invasion_preparation = -0.1
+				PRC_jiefangjunhaijun_invasion_preparation = -0.20
 			}
 			add_to_variable = {
 				PRC_jiefangjunhaijun_naval_invasion_capacity = 10
@@ -12543,6 +12645,9 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = {
 				PRC_jiefangjunhaijun_navy_screen_attack_factor = 0.1
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_screen_defence_factor = 0.1
 			}
 			add_to_variable = {
 				PRC_jiefangjunhaijun_positioning = 0.10
@@ -12774,6 +12879,43 @@ focus_tree = {
 		}
 	}
 
+	focus = {	###"飞鲨"出海
+		id = PRC_carrier_based_aircraft
+		icon = GFX_focus_PRC_carrier_based_aircraft
+		cost = 3.6
+		prerequisite = {
+			focus = PRC_Carriers_made_by_ourselves
+		}
+		relative_position_id = PRC_Carriers_made_by_ourselves
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunhaijun_tooltip_original
+					add_idea = PRC_jiefangjunhaijun_tooltip_original_1
+				}
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_agility_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_targetting_factor = 0.10
+			}
+		}
+		available = {
+			has_completed_focus = PRC_PLAAF
+		}
+	}
+
 	focus = {#以航母为核心
 		id = PRC_carriers_center
 		icon = GFX_focus_PRC_carriers_center
@@ -12800,7 +12942,7 @@ focus_tree = {
 				specialization = specialization_naval
 			    value = 1
 			}
-
+			
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
@@ -12810,6 +12952,25 @@ focus_tree = {
 			}
 			add_to_variable = {
 				PRC_jiefangjunhaijun_new_base_strike_mastery_gain_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_carrier_capacity_penalty_reduction = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_carrier_traffic = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_carrier_night_traffic = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_agility_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_carrier_air_targetting_factor = 0.10
 			}
 		}
 	}
@@ -12932,6 +13093,7 @@ focus_tree = {
 			}
 
 			add_ideas = PRC_battleship
+
 			#假意置换民族精神
 			effect_tooltip = {
 				swap_ideas = {
@@ -12941,6 +13103,18 @@ focus_tree = {
 			}
 			add_to_variable = {
 				PRC_jiefangjunhaijun_new_fleet_in_being_mastery_gain_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_screen_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_screen_defence_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_capital_ship_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_navy_capital_ship_defence_factor = 0.10
 			}
 		}
 	}
@@ -12970,21 +13144,57 @@ focus_tree = {
 				}
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_damage_factor = 0.1
+				PRC_jiefangjunhaijun_naval_damage_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_defense_factor = 0.1
+				PRC_jiefangjunhaijun_naval_defense_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_morale_factor = 0.1
+				PRC_jiefangjunhaijun_naval_morale_factor = 0.10
 			}
 			add_to_variable = {
-				PRC_jiefangjunhaijun_naval_speed_factor = 0.1
+				PRC_jiefangjunhaijun_naval_speed_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_naval_hit_chance = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_naval_critical_score_chance_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_jiefangjunhaijun_PRC_jiefangjunhaijun_naval_supply_consumption_factor = 0.10
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = PRC_carriers_center
+				}
+				sp:sp_naval_escort_carrier = {
+					add_project_progress_ratio = 1
+				}
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = PRC_battleships_center
+				}
+				sp:sp_naval_torpedo_cruiser = {
+					add_project_progress_ratio = 1
+				}
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = PRC_submarine_center
+				}
+				sp:sp_naval_anechoic_tiles = {
+					add_project_progress_ratio = 1
+				}
 			}
 			
 		}
 		available = {
-			num_of_factories > 300
+			num_of_naval_factories > 75
 		}
 
 	}
@@ -13119,14 +13329,14 @@ focus_tree = {
 
 	#新红军三军线
 	#陆军
-	focus = {#新中国工农红军
+	focus = {	#新中国工农红军
 		id = PRC_New_Red_Army
-		icon = GFX_Goal_Red_Army
+		icon = GFX_focus_New_Red_Army
 		cost = 5.00
 		mutually_exclusive = {
 			focus = PRC_PLA
 		}
-		x = 22
+		x = 37
 		y = 0
 		relative_position_id = PRC_PLA
 		ai_will_do = {
@@ -13139,9 +13349,22 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 		    custom_effect_tooltip = PRC_jiesuo_kuaisuqianhao
+
+			add_dynamic_modifier = {
+				modifier = PRC_New_Red_Army_land_dynamic_modifier
+			}
 			
 			add_dynamic_modifier = {
-				modifier = PRC_hongjunlujun_dynamic_modifier
+				modifier = PRC_New_Red_Army_land_dynamic_modifier
+			}
+			set_variable = { 
+				PRC_New_Red_Army_land_army_attack_factor = 0.05
+			}
+			set_variable = { 
+				PRC_New_Red_Army_land_army_defence_factor = 0.05
+			}
+			set_variable = { 
+				PRC_New_Red_Army_land_breakthrough_factor = 0.05
 			}
 			#陆军
 		    hidden_effect = {
@@ -13160,19 +13383,6 @@ focus_tree = {
 			    }
 			}
 			custom_effect_tooltip = switch_to_PRC_red_army_flag_TT
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 1
-				uses = 1
-				category = artillery
-			}
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 1
-				uses = 1
-				category = infantry_weapons
-			}
-			army_experience = 200
 		}
 		available = {
             has_government = communism			
@@ -13185,14 +13395,14 @@ focus_tree = {
 
 	}
 
-	focus = {#中苏合作
-		id = PRC_Soviet_cooperation_plan
-		icon = GFX_focus_generic_license_production
+	focus = {	#引入苏式军事体系
+		id = PRC_introduce_SOV_military_system
+		icon = GFX_focus_PRC_introduce_SOV_military_system
 		cost = 5
 		prerequisite = {
 			focus = PRC_New_Red_Army
 		}
-		x = -4
+		x = -18
 		y = 1
 		relative_position_id = PRC_New_Red_Army
 		ai_will_do = {
@@ -13200,46 +13410,867 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			learn_tank_designs = yes
-			add_tech_bonus = {
-				name = armor
-				bonus = 1
-				uses = 3
-				category = armor
-			}
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 1
-				uses = 2
-				category = infantry_weapons
-			}
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 1
-				uses = 2
-				category = artillery
-			}
-			add_offsite_building = {
-				type = industrial_complex
-				level = 10
-			}
-			add_offsite_building = {
-				type = arms_factory
-				level = 10
-			}
+			add_ideas = SOV_navy_military_education
+		}
+		available = {
+			has_government = communism
+		}
+	}
 
+	focus = {	#引入苏式陆军科技
+		id = PRC_introduce_SOV_military_weapon
+		icon = GFX_focus_PRC_introduce_SOV_military_weapon
+		cost = 5
+		prerequisite = {
+			focus = PRC_introduce_SOV_military_system
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_introduce_SOV_military_system
+		ai_will_do = {
+			factor = 999
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			learn_tank_designs = yes
+			custom_effect_tooltip = PRC_Soviet_cooperation_plan_tooltip
+			SOV = {
+				country_event = {
+					id = AWR_PRC.184
+				}
+			}
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#机动作战
+		id = PRC_mobile_combat
+		icon = GFX_focus_PRC_mobile_combat
+		cost = 5
+		relative_position_id = PRC_introduce_SOV_military_weapon
+		x = -5
+		y = 1
+		mutually_exclusive = {
+			focus = PRC_artillery_fire
+		}
+		mutually_exclusive = {
+			focus = PRC_anti_armor
+		}
+		prerequisite = {
+			focus = PRC_introduce_SOV_military_weapon
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_speed_factor = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_org_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_org_loss_when_moving = 0.20
+			}
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#轻步兵
+		id = PRC_light_infantry
+		icon = GFX_focus_PRC_light_infantry
+		cost = 3.57
+		relative_position_id = PRC_mobile_combat
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = PRC_mobile_combat
+		}
+		mutually_exclusive = {
+			#
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_infantry_attack_factor = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_infantry_defence_factor = 0.10
+			}
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#全军摩托化
+		id = PRC_all_motorized
+		icon = GFX_focus_PRC_all_motorized
+		cost = 3.57
+		relative_position_id = PRC_light_infantry
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = PRC_light_infantry
+		}
+		mutually_exclusive = {
+			focus = PRC_armored_car
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_motorized_attack_factor = 0.15
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_motorized_defence_factor = 0.15
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_supply_consumption_factor = 0.10
+			}
 			
 		}
 		available = {
-			has_government = SOV
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#轻型机械化
+		id = PRC_armored_car
+		icon = GFX_focus_PRC_armored_car
+		cost = 3.57
+		relative_position_id = PRC_light_infantry
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = PRC_light_infantry
+		}
+		mutually_exclusive = {
+			focus = PRC_all_motorized
+		}
+		completion_reward = {
 			if = {
-				limit = { 
-					is_subject = no 
+				limit = {
+					has_idea = PRC_new_red_army_light_armor_2
 				}
-				has_idea = prc_sov_youhaohuzhu 
-				SOV = { 
-					owns_state = 745 
+				swap_ideas = {
+					remove_idea = PRC_new_red_army_light_armor_2
+					add_idea = PRC_new_red_army_light_armor_3
 				}
+				else = {
+					add_ideas = PRC_new_red_army_light_armor_1
+				}
+			}
+			add_tech_bonus = {
+				name = cat_armored_cars
+				bonus = 1
+				uses = 2
+				category = cat_armored_cars
+			}
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#支援装甲
+		id = PRC_support_armor
+		icon = GFX_focus_PRC_support_armor
+		cost = 3.57
+		relative_position_id = PRC_mobile_combat
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = PRC_mobile_combat
+		}
+
+		completion_reward = {
+			complete_special_project = sp:sp_land_flamethrower_tank
+			if = {
+				limit = {
+					is_special_project_completed = sp:sp_land_flamethrower_tank
+				}
+				complete_special_project = sp:sp_land_military_engineering_vehicles
+			}
+		}
+		
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#轻坦部队
+		id = PRC_light_tank
+		icon = GFX_focus_PRC_light_tank
+		cost = 5
+		relative_position_id = PRC_support_armor
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = PRC_support_armor
+		}
+
+		completion_reward = { 
+			if = {
+				limit = {
+					has_idea = PRC_new_red_army_light_armor_1
+				}
+				swap_ideas = {
+					remove_idea = PRC_new_red_army_light_armor_1
+					add_idea = PRC_new_red_army_light_armor_3
+				}
+				else = {
+					add_ideas = PRC_new_red_army_light_armor_2
+				}
+			}
+			add_tech_bonus = {
+				name = cat_light_armor
+				bonus = 1
+				uses = 2
+				category = cat_light_armor
+			}
+		}
+	}
+
+	focus = {	#全地型轻装甲部队
+		id = PRC_all_terrain_type_armor
+		icon = GFX_focus_PRC_all_terrain_type_armor
+		cost = 10
+		relative_position_id = PRC_armored_car
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_armored_car
+			focus = PRC_all_motorized
+		}
+		prerequisite = {
+			focus = PRC_light_tank
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_terrain_penalty_reduction = -0.50
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_supply_consumption_factor = -0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_armor_attack_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_armor_defence_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_armor_speed_factor = 0.10
+			}
+		}
+	}
+
+	focus = {	#炮火决胜
+		id = PRC_artillery_fire
+		icon = GFX_focus_PRC_artillery_fire
+		cost = 3.57
+		relative_position_id = PRC_introduce_SOV_military_weapon
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_introduce_SOV_military_weapon
+		}
+		mutually_exclusive = {
+			focus = PRC_mobile_combat
+		}
+		mutually_exclusive = {
+			focus = PRC_anti_armor
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = artillery
+				bonus = 3
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = artillery
+				bonus = 3
+				uses = 1
+				category = cat_anti_tank
+			}
+			add_tech_bonus = {
+				name = artillery
+				bonus = 3
+				uses = 1
+				category = cat_anti_air
+			}
+			swap_ideas = {
+				remove_idea = homemade_artillery
+				add_idea = PRC_new_red_army_artillery
+			}
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#精锐之师
+		id = PRC_elite_red_army
+		icon = GFX_focus_PRC_elite_red_army
+		cost = 5
+		relative_position_id = PRC_artillery_fire
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = PRC_artillery_fire
+		}
+		mutually_exclusive = {
+			focus = PRC_flood_of_iron
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_armor_attack_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_armor_defence_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_mechanized_attack_factor = 0.05
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_mechanized_defence_factor = 0.05
+			}
+			add_ideas = PRC_new_red_army_medium_armor_1
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#钢铁洪流
+		id = PRC_flood_of_iron
+		icon = GFX_focus_PRC_flood_of_iron
+		cost = 5
+		relative_position_id = PRC_artillery_fire
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = PRC_artillery_fire
+		}
+		mutually_exclusive = {
+			focus = PRC_elite_red_army
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_combat_width_factor = -0.15
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_supply_consumption_factor = -0.10
+			}
+			add_ideas = PRC_new_red_army_medium_armor_2
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#研究新型装甲
+		id = PRC_research_on_new_armor
+		icon = GFX_focus_PRC_research_on_new_armor
+		cost = 2.15
+		relative_position_id = PRC_artillery_fire
+		x = 0 
+		y = 2
+		prerequisite = {
+			focus = PRC_elite_red_army
+			focus = PRC_flood_of_iron
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = cat_medium_armor
+				bonus = 1
+				uses = 1
+				category = cat_medium_armor
+			}
+			add_tech_bonus = {
+				name = cat_mechanized_equipment
+				bonus = 1
+				uses = 1
+				category = cat_mechanized_equipment
+			}
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#投资军工国企
+		id = PRC_invest_in_millitary_industrial_enterprises
+		icon = GFX_focus_PRC_invest_in_millitary_industrial_enterprises
+		cost = 5
+		relative_position_id = PRC_research_on_new_armor
+		x = -2 
+		y = 1
+		prerequisite = {
+			focus = PRC_research_on_new_armor
+		}
+		completion_reward = {
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				
+				mio:PRC_shenyang_tank_manufacturer = {
+					add_mio_funds = 1000
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				mio:PRC_harbin_tank_manufacturer = {
+					add_mio_funds = 1000
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				mio:PRC_xian_tank_manufacturer = {
+					add_mio_funds = 1000					
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				mio:CHI_South_Industry = {
+					add_mio_funds = 1000					
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				mio:CHI_North_Heavy_Industry = {
+					add_mio_funds = 1000					
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				
+				show_mio_tooltip = CHI_First_Motor
+				mio:CHI_First_Motor = {
+					add_mio_funds = 1000					
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				show_mio_tooltip = CHI_North_Industry
+				mio:CHI_North_Industry = {
+					add_mio_funds = 1000
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+				
+				show_mio_tooltip = CHI_Six_two_six
+				mio:CHI_Six_two_six = {
+					add_mio_funds = 1000					
+					add_mio_research_bonus = 0.15
+					add_mio_design_team_assign_cost = -0.15
+					add_mio_funds_gain_factor = 0.15
+				}
+			}
+		}
+		available = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+			has_global_flag = establish_PRC_shenyang_tank_manufacturer
+			has_global_flag = establish_PRC_harbin_tank_manufacturer
+			has_global_flag = establish_PRC_xian_tank_manufacturer
+			has_global_flag = establish_CHI_South_Industry
+			has_global_flag = establish_CHI_North_Heavy_Industry
+			has_global_flag = establish_CHI_First_Motor
+			has_global_flag = establish_CHI_North_Industry
+			has_global_flag = establish_CHI_Six_two_six
+		}
+	}
+
+	focus = {	#优化供应链
+		id = PRC_optimize_the_supply_chain
+		icon = GFX_focus_PRC_optimize_the_supply_chain
+		cost = 5
+		relative_position_id = PRC_research_on_new_armor
+		x = 2 
+		y = 1
+		prerequisite = {
+			focus = PRC_research_on_new_armor
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_no_supply_grace = 72
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_out_of_supply_factor = -0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_supply_node_range = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_coordination_bonus = 0.10
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#装甲决战
+		id = PRC_armor_decisive_battle
+		icon = GFX_focus_PRC_armor_decisive_battle
+		cost = 5
+		relative_position_id = PRC_research_on_new_armor
+		x = 0 
+		y = 1
+		prerequisite = {
+			focus = PRC_research_on_new_armor
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_max_planning = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_planning_speed = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_experience_gain_army = 0.10
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_training_time_factor = -0.10
+			}
+		}
+		available = {
+			has_government = communism
+			OR = {
+				leader_is_28b = yes
+				leader_is_trotskyist = yes
+			}
+		}
+	}
+
+	focus = {	#反装甲
+		id = PRC_anti_armor
+		icon = GFX_focus_PRC_anti_armor
+		cost = 3.57
+		relative_position_id = PRC_introduce_SOV_military_weapon
+		x = 5
+		y = 1
+		mutually_exclusive = {
+			focus = PRC_artillery_fire
+		}
+		mutually_exclusive = {
+			focus = PRC_mobile_combat
+		}
+		prerequisite = {
+			focus = PRC_introduce_SOV_military_weapon
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = homemade_artillery
+				add_idea = PRC_new_red_army_anti_tank_artillery
+			}
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#武装后勤
+		id = PRC_armed_logistics
+		icon = GFX_focus_PRC_armed_logistics
+		cost = 5
+		relative_position_id = PRC_anti_armor
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = PRC_anti_armor
+		}
+		completion_reward = {
+			add_breakthrough_points = {
+				specialization = specialization_land
+				value = 1
+			}
+			set_technology = {
+				armored_train = 1
+			}
+			add_tech_bonus = {
+				name = railway_gun
+				bonus = 1
+				uses = 2
+				category = train_tech
+			}
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#铁道长龙
+		id = PRC_railway_loong
+		icon = GFX_focus_PRC_railway_loong
+		cost = 5
+		relative_position_id = PRC_armed_logistics
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_armed_logistics
+		}
+		completion_reward = {
+			add_ideas = PRC_super_heavy_railway_gun
+		}
+		available = {
+			has_government = communism
+			has_tech = railway_gun
+		}
+	}
+
+	focus = {	#重火力
+		id = PRC_heavy_fire
+		icon = GFX_focus_PRC_heavy_fire
+		cost = 3.57
+		relative_position_id = PRC_anti_armor
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = PRC_anti_armor
+		}
+		completion_reward = {
+			add_breakthrough_points = {
+				specialization = specialization_land
+				value = 2
+			}
+			add_ideas = PRC_heavy_fire_idea
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#国产自行超重炮
+		id = PRC_self_propelled_heavy_fire
+		icon = GFX_focus_PRC_self_propelled_heavy_fire
+		cost = 5
+		relative_position_id = PRC_heavy_fire
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_heavy_fire
+		}
+		completion_reward = {
+			add_breakthrough_points = {
+				specialization = specialization_land
+				value = 2
+			}
+			swap_ideas = {
+				remove_idea = PRC_heavy_fire_idea
+				add_idea = PRC_heavy_fire_idea_2
+			}
+		}
+		available = {
+			has_government = communism
+			is_special_project_completed = sp:sp_land_super_heavy_howitzer
+		}
+	}
+
+	focus = {	#中式重型坦克
+		id = PRC_heavy_tank
+		icon = GFX_focus_PRC_heavy_tank
+		cost = 5
+		relative_position_id = PRC_anti_armor
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_anti_armor
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = cat_heavy_armor
+				bonus = 3
+				uses = 3
+				category = cat_heavy_armor
+			}
+		}
+		available = {
+			has_government = communism
+		}
+	}
+
+	focus = {	#组建钢铁巨兽
+		id = PRC_super_heavy_tank
+		icon = GFX_focus_PRC_heavy_tank
+		cost = 5
+		relative_position_id = PRC_heavy_tank
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_heavy_tank
+		}
+		completion_reward = {
+			add_ideas = PRC_new_red_army_heavy_armor
+		}
+		available = {
+			has_government = communism
+			has_tech = advanced_heavy_tank_chassis
+		}
+
+	}
+
+	focus = {	#“长城”坦克
+		id = PRC_sp_land_land_cruiser
+		icon = GFX_focus_PRC_sp_land_land_cruiser
+		cost = 10
+		relative_position_id = PRC_super_heavy_tank
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_super_heavy_tank
+		}
+		completion_reward = {
+			add_ideas = PRC_new_red_army_heavy_armor
+		}
+		available = {
+			has_government = communism
+			has_tech = advanced_heavy_tank_chassis
+		}
+
+	}
+
+	focus = {	#大规模坦克生产
+		id = PRC_mass_production_tank
+		icon = GFX_focus_PRC_mass_production_tank
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_armor_decisive_battle
+		prerequisite = {
+			focus = PRC_all_terrain_type_armor
+			focus = PRC_armor_decisive_battle
+			focus = PRC_sp_land_land_cruiser
+		}
+		completion_reward = { 
+			if = {
+				limit = {
+					has_completed_focus = PRC_all_terrain_type_armor
+				}
+				add_timed_idea = {
+					idea = PRC_mass_production_tank_idea_1
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_armor_decisive_battle
+				}
+				add_timed_idea = {
+					idea = PRC_mass_production_tank_idea_2
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_sp_land_land_cruiser
+				}
+				add_timed_idea = {
+					idea = PRC_mass_production_tank_idea_3
+				}
+			}
+		}
+	}
+
+	focus = {	#红军现代化
+		id = PRC_modern_new_red_army
+		icon = GFX_focus_PRC_modern_new_red_army
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_mass_production_tank
+		prerequisite = {
+			focus = PRC_mass_production_tank
+		}
+		completion_reward = {
+			add_ideas = PRC_modern_tank
+			swap_ideas = {
+				remove_idea = PRC_New_Red_Army_land_tooltip_original
+				add_idea = PRC_New_Red_Army_land_tooltip_original_1
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_attack_factor = 0.075
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_defence_factor = 0.075
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_breakthrough_factor = 0.075
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_supply_consumption_factor = -0.10 
+			}
+			add_to_variable = { 
+				PRC_New_Red_Army_land_army_org_factor = 0.05
 			}
 		}
 	}
@@ -13247,8 +14278,8 @@ focus_tree = {
 	#海军
 	focus = {#新红军海军
 		id = PRC_Red_Army_Naval
-		icon = GFX_goal_generic_build_navy
-		cost = 7.19
+		icon = GFX_focus_PRC_Red_Army_Naval
+		cost = 5
 		prerequisite = {
 			focus = PRC_New_Red_Army
 		}
@@ -13260,55 +14291,51 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			navy_experience = 300
+			navy_experience = 100
 			remove_ideas = PRC_Poor_navy
 			learn_naval_designs = yes
-			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.8
-				uses = 3
-				category = naval_doctrine
+			add_dynamic_modifier = {
+				modifier = PRC_New_Red_Army_navy_dynamic_modifier
 			}
-			add_tech_bonus = {
-				name = bc_tech
-				bonus = 1
-				uses = 2
-				category = bc_tech
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
 			}
-			add_tech_bonus = {
-				name = bb_tech
-				bonus = 1
-				uses = 2
-				category = bb_tech
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_experience_gain_navy_factor = 0.1
 			}
-			add_tech_bonus = {
-				name = ss_tech
-				bonus = 1
-				uses = 2
-				category = ss_tech
+			add_to_variable = {
+				PRC_New_Red_Army_navy_screening_efficiency = 0.1
 			}
-			add_tech_bonus = {
-				name = bc_tech
-				bonus = 1
-				uses = 2
-				category = bc_tech
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_damage_factor = 0.05
 			}
-			add_tech_bonus = {
-				name = cv_tech
-				bonus = 1
-				uses = 2
-				category = cv_tech
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_defense_factor = 0.05
 			}
-			add_ideas = PRC_Brown_water_navy_idea
-			add_ideas = CHI_carrier_construction_idea
-			add_ideas = SOV_mine_warfare_ns
-			add_ideas = USA_unrestricted_submarine_warfare
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_morale_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_speed_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_hit_chance = 0.05
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_supply_consumption_factor = 0.05
+			}
+			
 		}
 		available = {
-			has_government = SOV
-			has_idea = prc_sov_youhaohuzhu 
-			SOV = { 
-				owns_state = 745 
+			has_completed_focus = PRC_Five_year_plans_of_China
+			any_controlled_state = {
+				is_coastal = yes
 			}
 		}
 
@@ -13316,8 +14343,8 @@ focus_tree = {
 
 	focus = {#邀请苏联海军军官
 		id = PRC_Invited_soviet_general
-		icon = GFX_goal_generic_navy_doctrines_tactics
-		cost = 7.19
+		icon = GFX_focus_PRC_Invited_soviet_general
+		cost = 5
 		prerequisite = {
 			focus = PRC_Red_Army_Naval
 		}
@@ -13329,64 +14356,1016 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.8
-				uses = 5
-				category = naval_doctrine
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
 			}
-		}
-		available = {
-			has_government = SOV
-			has_idea = prc_sov_youhaohuzhu SOV = { 
-				owns_state = 745 
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_experience_gain_navy_factor = 0.1
 			}
-		}
-	}
-
-	
-
-	focus = {#苏式海军陆战队
-		id = PRC_Soviet_marine
-		icon = GFX_goal_generic_amphibious_assault
-		cost = 7.19
-		prerequisite = {
-			focus = PRC_Invited_soviet_general
-		}
-		x = 0
-		y = 1
-		relative_position_id = PRC_Invited_soviet_general
-		ai_will_do = {
-			factor = 1
-		}
-		available_if_capitulated = yes
-		completion_reward = {
-			add_tech_bonus = {
-				name = special_forces_bonus
-				bonus = 3
-				uses = 2
-				technology = marines
-				technology = marines2
+			add_to_variable = {
+				PRC_New_Red_Army_navy_new_base_strike_mastery_gain_factor = 0.1
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_new_convoy_raiding_mastery_gain_factor = 0.01
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_new_fleet_in_being_mastery_gain_factor = 0.01
 			}
 		}
 		available = {
 			has_government = SOV
 			has_idea = prc_sov_youhaohuzhu 
-			SOV = { 
-				owns_state = 745 
+		}
+	}
+
+	focus = {	#第一个海军建设计划
+		id = PRC_national_construction_plan_one
+		icon = GFX_focus_PRC_national_construction_plan_one
+		cost = 5
+		x = -7
+		y = 1
+		relative_position_id = PRC_Invited_soviet_general
+		prerequisite = {
+			focus = PRC_Invited_soviet_general
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_national_construction_plan_1
+				days = 180
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#第二个海军建设计划
+		id = PRC_national_construction_plan_two
+		icon = GFX_focus_PRC_national_construction_plan_two
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_national_construction_plan_one
+		prerequisite = {
+			focus = PRC_national_construction_plan_one
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_national_construction_plan_2
+				days = 180
+			}
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_national_construction_plan_1
+			}
+		}
+	}
+
+	focus = {	#第三个海军建设计划
+		id = PRC_national_construction_plan_three
+		icon = GFX_focus_PRC_national_construction_plan_three
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_national_construction_plan_two
+		prerequisite = {
+			focus = PRC_national_construction_plan_two
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_national_construction_plan_3
+				days = 180
+			}
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_national_construction_plan_2
+			}
+		}
+	}
+
+	focus = {	#第四个海军建设计划
+		id = PRC_national_construction_plan_four
+		icon = GFX_focus_PRC_national_construction_plan_four
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_national_construction_plan_three
+		prerequisite = {
+			focus = PRC_national_construction_plan_three
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_national_construction_plan_4
+				days = 180
+			}
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_national_construction_plan_3
+			}
+		}
+	}
+
+	focus = {	#学习红海军技术
+		id = PRC_learn_from_the_red_navy
+		icon = GFX_focus_PRC_learn_from_the_red_navy
+		cost = 5
+		prerequisite = {
+			focus = PRC_Invited_soviet_general
+		}
+		mutually_exclusive = {
+			focus = PRC_make_up_the_red_navy_shortcomings
+		}
+		x = 3
+		y = 1
+		relative_position_id = PRC_Invited_soviet_general
+		completion_reward = {
+			SOV = {
+				country_event = {
+					id = AWR_PRC.187
+				}
+			}
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#弥补红海军短板
+		id = PRC_make_up_the_red_navy_shortcomings
+		icon = GFX_focus_PRC_make_up_the_red_navy_shortcomings
+		cost = 5
+		prerequisite = {
+			focus = PRC_Invited_soviet_general
+		}
+		mutually_exclusive = {
+			focus = PRC_learn_from_the_red_navy
+		}
+		x = -3
+		y = 1
+		relative_position_id = PRC_Invited_soviet_general
+		completion_reward = {
+			add_ideas = PRC_surface_navy_research
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#新红海军工程项目一
+		id = PRC_special_project_one
+		icon = GFX_focus_PRC_special_project_one
+		cost = 2.15
+		x = 7
+		y = 1
+		relative_position_id = PRC_Invited_soviet_general
+		prerequisite = {
+			focus = PRC_Invited_soviet_general
+		}
+		completion_reward = { 
+			unlock_decision_category_tooltip = PRC_naval_engineering_category
+			if = {
+				limit = {
+					has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+				}
+				
+				unlock_decision_tooltip = PRC_support_ships
+				unlock_decision_tooltip = PRC_underway_replenishment
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_learn_from_the_red_navy
+				}
+				unlock_decision_tooltip = PRC_anechoic_tiles
+				unlock_decision_tooltip = PRC_midget_submarine
+				unlock_decision_tooltip = PRC_cruiser_submarine
+			}
+			set_country_flag = PRC_special_project_one_complete
+		}
+
+		available = {
+			OR = {
+				has_tech = advanced_ship_hull_heavy
+				has_tech = advanced_ship_hull_carrier
+				has_tech = advanced_ship_hull_submarine
+			}
+		}
+	}
+
+	focus = {	#新红海军工程项目二
+		id = PRC_special_project_two
+		icon = GFX_focus_PRC_special_project_two
+		cost = 4.29
+		x = 0
+		y = 1
+		relative_position_id = PRC_special_project_one
+		prerequisite = {
+			focus = PRC_special_project_one
+		}
+		completion_reward = { 
+			unlock_decision_category_tooltip = PRC_naval_engineering_category
+			if = {
+				limit = {
+					has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+				}
+				
+				unlock_decision_tooltip = PRC_torpedo_cruiser
+				unlock_decision_tooltip = PRC_super_heavy_battleship
+				unlock_decision_tooltip = PRC_proximity_fuze
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_learn_from_the_red_navy
+				}
+				
+				unlock_decision_tooltip = PRC_fleet_submarine
+				unlock_decision_tooltip = PRC_aip_engine
+			}
+			set_country_flag = PRC_special_project_two_complete
+
+		}
+		available = {
+
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = PRC_special_project_wait_tt
+					DAYS = [?PRC_special_project_two_complete:days]
+				}
+
+				has_country_flag = {
+					flag = PRC_special_project_two_complete
+					days > 179
+				}
+			}
+		}
+	}
+
+	focus = {	#新红海军工程项目三
+		id = PRC_special_project_three
+		icon = GFX_focus_PRC_special_project_three
+		cost = 7.14
+		x = 0
+		y = 1
+		relative_position_id = PRC_special_project_two
+		prerequisite = {
+			focus = PRC_special_project_two
+		}
+		completion_reward = { 
+			unlock_decision_category_tooltip = PRC_naval_engineering_category
+			if = {
+				limit = {
+					has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+				}
+				
+				unlock_decision_tooltip = PRC_ice_carrier
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_learn_from_the_red_navy
+				}
+				unlock_decision_tooltip = PRC_nuclear_submarine
+			}
+		}
+		available = {
+
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = PRC_special_project_wait_tt
+					DAYS = [?PRC_special_project_two_complete:days]
+				}
+
+				has_country_flag = {
+					flag = PRC_special_project_two_complete
+					days > 179
+				}
+			}
+		}
+	}
+	#无图
+	focus = {	#培养海军指挥官
+		id = PRC_train_naval_commanders
+		icon = GFX_focus_PRC_train_naval_commanders
+		cost = 3.57
+		x = 0
+		y = 2
+		relative_position_id = PRC_Invited_soviet_general
+		prerequisite = {
+			focus = PRC_learn_from_the_red_navy
+			focus = PRC_make_up_the_red_navy_shortcomings
+		}
+		completion_reward = { 
+			every_navy_leader = {
+				add_attack = 1
+				add_defense = 1
+				add_maneuver = 1
+				add_coordination = 1
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = PRC_learn_from_the_red_navy
+				}
+				every_army_leader = {
+					add_trait = {
+						trait = seawolf
+						trait = lancer
+						trait = torpedo_expert
+						trait = loading_drill_master
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+				}
+				every_army_leader = {
+					add_trait = {
+						trait = superior_tactician
+						trait = fleet_protector
+						trait = big_guns_expert
+						trait = torpedo_bomber
+					}
+				}
+			}
+		}
+	}
+
+	focus = {	#组建新红军海军陆战队
+		id = PRC_new_red_army_marine_corps
+		icon = GFX_focus_PRC_new_red_army_marine_corps
+		cost = 5
+		x = 0
+		y = 1 
+		relative_position_id = PRC_train_naval_commanders
+		prerequisite = {
+			focus = PRC_train_naval_commanders
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = special_forces_marines
+					}
+					set_technology = {
+						special_forces_marines = 1 
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_tech = amphibious_mechanized_infantry
+					has_tech = amphibious_drive
+				}
+				create_equipment_variant = {
+					name = "63式水陆坦克" 
+					type = medium_tank_chassis_2
+					parent_version = 0
+        			allow_without_tech = yes
+					modules = {
+
+						# 改进型中型加农炮
+						main_armament_slot = tank_medium_cannon_2
+
+						# 三成员中型坦克炮塔
+						turret_type_slot = tank_medium_three_man_tank_turret
+
+						# 扭力杆悬挂
+						suspension_type_slot = tank_torsion_bar_suspension
+
+						# 铆接装甲
+						armor_type_slot = tank_riveted_armor
+
+						# 汽油引擎
+						engine_type_slot = tank_gasoline_engine
+
+						# 改进型无线电
+						special_type_slot_1 = tank_radio_2
+
+						# 湿式弹药架
+						special_type_slot_2 = wet_ammo_storage
+
+						# 易维护改装
+						special_type_slot_3 = easy_maintenance
+
+						# 两栖化改装
+						special_type_slot_4 = amphibious_drive
+					}
+
+					upgrades = {
+						tank_nsb_engine_upgrade = 2
+						tank_nsb_armor_upgrade = 4
+					}
+					obsolete = yes #used for oob
+				}
+				division_template = {
+					name = "新红军机械化装甲海军陆战队" 
+					is_locked = yes 
+					regiments = { 
+						amphibious_mechanized = { x = 0 y = 0 } 
+						amphibious_mechanized = { x = 0 y = 1 }
+						amphibious_mechanized = { x = 0 y = 2 }
+						amphibious_mechanized = { x = 0 y = 3 }
+						amphibious_mechanized = { x = 0 y = 4 }
+
+						amphibious_mechanized = { x = 1 y = 0 }
+						amphibious_mechanized = { x = 1 y = 1 }
+						amphibious_mechanized = { x = 1 y = 2 }
+						amphibious_mechanized = { x = 1 y = 3 }
+
+						medium_tank_amphibious_chassis = { x = 2 y = 0 }
+						medium_tank_amphibious_chassis = { x = 2 y = 1 }
+						medium_tank_amphibious_chassis = { x = 2 y = 2 }
+						medium_tank_amphibious_chassis = { x = 2 y = 3 }
+						medium_tank_amphibious_chassis = { x = 2 y = 4 }
+
+						medium_tank_amphibious_chassis = { x = 3 y = 0 }
+						medium_tank_amphibious_chassis = { x = 3 y = 1 }
+						medium_tank_amphibious_chassis = { x = 3 y = 2 }
+						medium_tank_amphibious_chassis = { x = 3 y = 3 }
+					}
+					support = { 
+						light_tank_recon = { x = 0 y = 0 } 
+						field_hospital = { x = 0 y = 1 }
+						logistics_company = { x = 0 y = 2 }
+						engineer = { x = 0 y = 3 }
+						signal_company = { x = 0 y = 4 }
+					} 
+				}
+				613 = {
+					create_unit = {
+						division = "name = \"新红军机械化装甲海军陆战队\" division_template = \"新红军机械化装甲海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = ROOT
+						count = 6 
+					}	
+				}
+				743 = {
+					create_unit = {
+						division = "name = \"新红军机械化装甲海军陆战队\" division_template = \"新红军机械化装甲海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = ROOT
+						count = 6 
+					}	
+				}
+				728 = {
+					create_unit = {
+						division = "name = \"新红军机械化装甲海军陆战队\" division_template = \"新红军机械化装甲海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = ROOT
+						count = 6 
+					}	
+				}
+				591 = {
+					create_unit = {
+						division = "name = \"新红军机械化装甲海军陆战队\" division_template = \"新红军机械化装甲海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+						owner = ROOT
+						count = 6 
+					}	
+				}
+
+				else_if = {
+					limit = {
+						has_tech = amphibious_mechanized_infantry
+						NOT = {
+							has_tech = amphibious_drive
+						}
+					}
+					division_template = {
+						name = "新红军机械化海军陆战队" 
+						is_locked = no 
+						regiments = { 
+							amphibious_mechanized = { x = 0 y = 0 } 
+							amphibious_mechanized = { x = 0 y = 1 }
+							amphibious_mechanized = { x = 0 y = 2 }
+							amphibious_mechanized = { x = 0 y = 3 }
+							amphibious_mechanized = { x = 0 y = 4 }
+
+							amphibious_mechanized = { x = 1 y = 0 }
+							amphibious_mechanized = { x = 1 y = 1 }
+							amphibious_mechanized = { x = 1 y = 2 }
+							amphibious_mechanized = { x = 1 y = 3 }
+						}
+						support = { 
+							light_tank_recon = { x = 0 y = 0 } 
+							field_hospital = { x = 0 y = 1 }
+							logistics_company = { x = 0 y = 2 }
+							engineer = { x = 0 y = 3 }
+							signal_company = { x = 0 y = 4 }
+						} 
+					}
+					613 = {
+						create_unit = {
+							division = "name = \"新红军机械化海军陆战队\" division_template = \"新红军机械化海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					743 = {
+						create_unit = {
+							division = "name = \"新红军机械化海军陆战队\" division_template = \"新红军机械化海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					728 = {
+						create_unit = {
+							division = "name = \"新红军机械化海军陆战队\" division_template = \"新红军机械化海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					591 = {
+						create_unit = {
+							division = "name = \"新红军机械化海军陆战队\" division_template = \"新红军机械化海军陆战队\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+				}
+
+				else_if = {
+					limit = {
+						NOT = {
+							has_tech = amphibious_drive
+							has_tech = amphibious_mechanized_infantry
+						}
+					}
+					division_template = {
+						name = "新红军海军陆战队" 
+						is_locked = no
+						regiments = { 
+							marine = { x = 0 y = 0 } 
+							marine = { x = 0 y = 1 }
+							marine = { x = 0 y = 2 }
+							marine = { x = 0 y = 3 }
+							marine = { x = 0 y = 4 }
+
+							marine = { x = 1 y = 0 }
+							marine = { x = 1 y = 1 }
+							marine = { x = 1 y = 2 }
+							marine = { x = 1 y = 3 }
+						}
+						support = { 
+							light_tank_recon = { x = 0 y = 0 } 
+							field_hospital = { x = 0 y = 1 }
+							logistics_company = { x = 0 y = 2 }
+							engineer = { x = 0 y = 3 }
+							signal_company = { x = 0 y = 4 }
+						} 
+					}
+					613 = {
+						create_unit = {
+							division = "name = \"新红军海军陆战队\" division_template = \"新红军海军陆战队\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					743 = {
+						create_unit = {
+							division = "name = \"新红军海军陆战队\" division_template = \"新红军海军陆战队\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					728 = {
+						create_unit = {
+							division = "name = \"新红军海军陆战队\" division_template = \"新红军海军陆战队\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+					591 = {
+						create_unit = {
+							division = "name = \"新红军海军陆战队\" division_template = \"新红军海军陆战队\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 6 
+						}	
+					}
+				}
+			}
+		}
+	}
+
+	focus = {	#新型运输船
+		id = PRC_new_transport_ship
+		icon = GFX_focus_PRC_new_transport_ship
+		cost = 3.57
+		x = 0
+		y = 1 
+		relative_position_id = PRC_new_red_army_marine_corps
+		prerequisite = {
+			focus = PRC_new_red_army_marine_corps
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = tp_tech
+				bonus = 3
+				uses = 3
+				category = tp_tech
+			}
+			
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 500
+				producer = ROOT
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#强化协同性
+		id = PRC_strengthen_synergy
+		icon = GFX_focus_PRC_strengthen_synergy
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_make_up_the_red_navy_shortcomings
+		prerequisite = {
+			focus = PRC_make_up_the_red_navy_shortcomings
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_positioning = 0.1
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_new_base_strike_mastery_gain_factor = 0.1
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_coordination = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_screening_efficiency = 0.10
+			}
+		}
+	}
+
+	focus = {	#海上火力网
+		id = PRC_fire_power_network_on_ocean
+		icon = GFX_focus_PRC_fire_power_network_on_ocean
+		cost = 2.86
+		x = -1
+		y = 1
+		relative_position_id = PRC_strengthen_synergy
+		prerequisite = {
+			focus = PRC_strengthen_synergy
+		}
+		mutually_exclusive = {
+			focus = PRC_divine_archer_on_ocean
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_screen_attack_factor	 = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_capital_ship_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_carrier_air_attack_factor = 0.10
+			}
+		}
+	}
+
+	focus = {	#海上神射手
+		id = PRC_divine_archer_on_ocean
+		icon = GFX_focus_PRC_divine_archer_on_ocean
+		cost = 2.86
+		x = 1
+		y = 1
+		relative_position_id = PRC_strengthen_synergy
+		prerequisite = {
+			focus = PRC_strengthen_synergy
+		}
+		mutually_exclusive = {
+			focus = PRC_fire_power_network_on_ocean
+		}
+		completion_reward = { 
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_hit_chance = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_critical_score_chance_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_critical_score_chance_factor = 0.10
+			}
+		}
+	}
+
+	focus = {	#红海军的荣耀
+		id = PRC_glory_of_new_red_navy
+		icon = GFX_focus_PRC_glory_of_new_red_navy
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = PRC_strengthen_synergy
+		prerequisite = {
+			focus = PRC_fire_power_network_on_ocean
+			focus = PRC_divine_archer_on_ocean
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_has_potf_in_combat_attack = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_has_potf_in_combat_defense = 0.15
+			}
+		}
+	}
+
+	focus = {	#解决潜艇近视问题
+		id = PRC_submarine_detection
+		icon = GFX_focus_PRC_submarine_detection
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_learn_from_the_red_navy
+		prerequisite = {
+			focus = PRC_learn_from_the_red_navy
+		}
+		completion_reward = {
+			add_ideas = New_Red_Army_navy_submarine_1
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#水下游击战
+		id = PRC_sub_guerrilla_warfare
+		icon = GFX_focus_PRC_sub_guerrilla_warfare
+		cost = 2.86
+		x = -1
+		y = 1
+		relative_position_id = PRC_submarine_detection
+		prerequisite = {
+			focus = PRC_submarine_detection
+		}
+		mutually_exclusive = {
+			focus = PRC_sub_sniper
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_submarine_attack_factor	= 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_sub_retreat_speed = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_torpedo_cooldown_factor = -0.10
+			}
+		}
+	}
+
+	focus = {	#水下狙击手
+		id = PRC_sub_sniper
+		icon = GFX_focus_PRC_sub_sniper
+		cost = 2.86
+		x = 1
+		y = 1
+		relative_position_id = PRC_submarine_detection
+		prerequisite = {
+			focus = PRC_submarine_detection
+		}
+		mutually_exclusive = {
+			focus = PRC_sub_guerrilla_warfare
+		}
+		completion_reward = { 
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_submarine_attack_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_hit_chance = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_critical_score_chance_factor = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_torpedo_cooldown_factor = 0.10
+			}
+
+			swap_ideas = {
+				remove_idea = New_Red_Army_navy_submarine_1
+				add_idea = New_Red_Army_navy_submarine_2
+			}
+		}
+	}
+
+	focus = {	#制造全能型潜艇
+		id = PRC_all_purpose_submarine
+		icon = GFX_focus_PRC_all_purpose_submarine
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = PRC_submarine_detection
+		prerequisite = {
+			focus = PRC_sub_guerrilla_warfare
+			focus = PRC_sub_sniper
+		}
+		completion_reward = { 
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_navy_submarine_defence_factor = 0.10
+			}
+
+			swap_ideas = {
+				remove_idea = New_Red_Army_navy_submarine_2
+				add_idea = New_Red_Army_navy_submarine_3
+			}
+		}
+	}
+
+	focus = {	#优化海军后勤
+		id = PRC_optimize_naval_logistics
+		icon = GFX_focus_PRC_optimize_naval_logistics
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_new_transport_ship
+		prerequisite = {
+			focus = PRC_all_purpose_submarine
+			focus = PRC_glory_of_new_red_navy
+		}
+		prerequisite = {
+			focus = PRC_new_transport_ship
+		}
+
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_accidents_chance = -0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_repair_speed_factor = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_supply_consumption_factor = -0.10
+			}
+		}
+		
+	}
+
+	focus = {	#苏维埃东太平洋舰队
+		id = PRC_eastern_Pacific_fleet
+		icon = GFX_focus_PRC_eastern_Pacific_fleet
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_optimize_naval_logistics
+		prerequisite = {
+			focus = PRC_optimize_naval_logistics
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_navy_tooltip_original
+					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_damage_factor = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_defense_factor = 0.15
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_navy_naval_speed_factor = 0.15
+			}
+		}
+		available = {
+			if = {
+				limit = {
+					has_completed_focus = PRC_learn_from_the_red_navy
+				}
+				has_navy_size = {
+					type = submarine
+					size > 89
+				}
+
+				# 其中至少10艘核潜艇
+				has_navy_size = {
+					archetype = ship_hull_nuclear_submarine
+					size > 9
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+				}
+				has_navy_size = {
+					type = carrier
+					size > 3
+				}
+
+				has_navy_size = {
+					type = capital_ship
+					size > 7
+				}
+
+				has_navy_size = {
+					unit = light_cruiser
+					size > 19
+				}
+
+				has_navy_size = {
+					unit = destroyer
+					size > 59
+				}
 			}
 		}
 	}
 
 	#新红军空军
 	focus = {#新红军空军
-		id = PRC_Red_Army_Air_Force
+		id = PRC_Red_Army_Air
 		icon = GFX_goal_generic_build_airforce
 		cost = 7.19
 		prerequisite = {
 			focus = PRC_New_Red_Army
 		}
-		x = 4
+		x = 18
 		y = 1
 		relative_position_id = PRC_New_Red_Army
 		ai_will_do = {
@@ -13441,11 +15420,7 @@ focus_tree = {
 			add_ideas = PRC_land_focus_idea_ZZ
 		}
 		available = {
-			has_government = SOV
-			has_idea = prc_sov_youhaohuzhu 
-			SOV = { 
-				owns_state = 745 
-			}
+			has_completed_focus = PRC_Five_year_plans_of_China
 		}
 
 	}
@@ -13455,11 +15430,11 @@ focus_tree = {
 		icon = GFX_goal_generic_air_doctrine
 		cost = 7.19
 		prerequisite = {
-			focus = PRC_Red_Army_Air_Force
+			focus = PRC_Red_Army_Air
 		}
 		x = 0
 		y = 1
-		relative_position_id = PRC_Red_Army_Air_Force
+		relative_position_id = PRC_Red_Army_Air
 		ai_will_do = {
 			factor = 1
 		}
@@ -16363,7 +18338,7 @@ focus_tree = {
 		id = PRC_focus_on_diplomacy
 		icon = GFX_focus_PRC_focus_on_diplomacy
 		cost = 2.14
-		x = 130
+		x = 158
 		y = 0
 		ai_will_do = {
 			factor = 0
@@ -16394,7 +18369,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_focus_on_diplomacy
 		}
-		x = -10
+		x = -8
 		y = 1
 		relative_position_id = PRC_focus_on_diplomacy
 		ai_will_do = {
@@ -16445,7 +18420,7 @@ focus_tree = {
 			focus = PRC_lingtu_from_the_west
 		}
 		relative_position_id = PRC_lingtu_from_the_west
-		x = -1.5
+		x = -1
 		y = 1
 		ai_will_do = {
 			factor = 0
@@ -16489,7 +18464,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_lingtu_from_the_west
 		}
-		x = 1.5
+		x = 1
 		y = 1
 		relative_position_id = PRC_lingtu_from_the_west
 
@@ -16520,7 +18495,7 @@ focus_tree = {
 			focus = PRC_focus_on_inner_problem
 		}
 		relative_position_id = PRC_focus_on_inner_problem
-		x = 6
+		x = 5
 		y = 1
 		ai_will_do = {
 			factor = 0
@@ -16838,7 +18813,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_focus_on_inner_problem
 		}
-		x = -6
+		x = -5
 		y = 1
 		relative_position_id = PRC_focus_on_inner_problem
 		ai_will_do = {
@@ -16863,7 +18838,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_TaiWan_problem
 		}
-		x = -1.5
+		x = -1
 		y = 1
 		relative_position_id = PRC_TaiWan_problem
 		mutually_exclusive = {
@@ -16903,7 +18878,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_TaiWan_problem
 		}
-		x = 1.5
+		x = 1
 		y = 1
 		relative_position_id = PRC_TaiWan_problem
 		mutually_exclusive = {

@@ -15,7 +15,7 @@ focus_tree = {
 	country = {
 		factor = 0
 		modifier = {
-			add = 10000
+			add = 10
 			tag = CHI
 			
 		}
@@ -310,14 +310,14 @@ focus_tree = {
 			#custom_effect_tooltip = decrease_penalty_appeasement
 			#hidden_effect = {
 				swap_ideas = {
-					remove_idea = CHI_appeasement_policy
-					add_idea = CHI_appeasement_policy_0
+					remove_idea = appeasement_policy
+					add_idea = appeasement_policy_0
 				}
 				#}
 		}
 		bypass = {
 			NOT = {
-				has_idea = CHI_appeasement_policy
+				has_idea = appeasement_policy
 			}
 		}
 	}
@@ -1400,9 +1400,9 @@ focus_tree = {
 		}
 		
 		completion_reward = {			
-			remove_ideas = { CHI_central_club  CHI_the_blueshirts CHI_chiang }
+			remove_ideas = { central_club  the_blueshirts chiang }
 			hidden_effect = {
-				remove_ideas { CHI_chiang1 CHI_chiang2 CHI_chiang3 }
+				remove_ideas { chiang1 chiang2 chiang3 }
 			}
 			set_country_flag = RCM_admin_reforms_decision_flag
 			#unlock_decision_tooltip = chi_influnce_prc_zz#guo
@@ -1445,10 +1445,10 @@ focus_tree = {
 			AND = {
 				not_has_fractured_administration = yes
 				NOT = {
-					has_idea = CHI_central_club
+					has_idea = central_club
 				}
 				NOT = {
-					has_idea = CHI_the_blueshirts
+					has_idea = the_blueshirts
 				}
 			}
 		}
@@ -1474,7 +1474,7 @@ focus_tree = {
 		completion_reward = {
 			country_event = { id = rcmchina.374 }
 			effect_tooltip = {
-				remove_ideas = CHI_chiang3
+				remove_ideas = chiang3
 				add_stability = 0.05
 				custom_effect_tooltip = cdl_tt
 			}
@@ -1525,7 +1525,7 @@ focus_tree = {
 		completion_reward = {
 			country_event = { id = rcmchina.373 }
 			effect_tooltip = {
-				remove_ideas = CHI_chiang3
+				remove_ideas = chiang3
 				swap_ideas = {
 					remove_idea = CHI_collectivism
 					add_idea = CHI_collectivism_good
@@ -1962,7 +1962,7 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_idea = chen_lifu
+						has_idea = CHI_chen_lifu
 					}
 					amount_taken_ideas = {
 					    amount < 4
@@ -1971,20 +1971,20 @@ focus_tree = {
 					    }
 					}
 				}
-				add_ideas = chen_lifu
+				add_ideas = CHI_chen_lifu
 			}
 			unlock_decision_tooltip = CHI_garner_support_for_CC_clique
 			swap_ideas = {
-				add_idea = CHI_central_club_stronger
-				remove_idea = CHI_central_club
+				add_idea = central_club_stronger
+				remove_idea = central_club
 			}
 		}
 		available = {
 			#NOT = {
 			#	is_in_faction_with = JAP
 			#}
-			#has_idea = chen_lifu
-			has_idea = CHI_central_club
+			#has_idea = CHI_chen_lifu
+			has_idea = central_club
 		}
 	}
 	focus = {#国策0010侧重蓝衣社
@@ -2022,8 +2022,8 @@ focus_tree = {
 			}
 			unlock_decision_tooltip = CHI_garner_support_for_blue_shirts_society
 			swap_ideas = {
-				add_idea = CHI_the_blueshirts_stronger
-				remove_idea = CHI_the_blueshirts
+				add_idea = the_blueshirts_stronger
+				remove_idea = the_blueshirts
 			}
 		}
 		available = {			
@@ -2031,7 +2031,7 @@ focus_tree = {
 			#	is_in_faction_with = JAP
 			#}
 			#has_idea = dai_li
-			has_idea = CHI_the_blueshirts
+			has_idea = the_blueshirts
 		}
 	}
 	focus = {#国策0010临时全国代表大会（需调整兼容两条线）
@@ -2425,38 +2425,38 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					has_idea = CHI_chiang
+					has_idea = chiang
 				}
 				swap_ideas = {
-					remove_idea = CHI_chiang
-					add_idea = CHI_chiang_better
+					remove_idea = chiang
+					add_idea = chiang_better
 				}
 			}
 			else_if = {
 				limit = {
-					has_idea = CHI_chiang1
+					has_idea = chiang1
 				}
 				swap_ideas = {
-					remove_idea = CHI_chiang1
-					add_idea = CHI_chiang_better
+					remove_idea = chiang1
+					add_idea = chiang_better
 				}
 			}
 			else_if = {
 				limit = {
-					has_idea = CHI_chiang2
+					has_idea = chiang2
 				}
 				swap_ideas = {
-					remove_idea = CHI_chiang2
-					add_idea = CHI_chiang_better
+					remove_idea = chiang2
+					add_idea = chiang_better
 				}
 			}
 			else_if = {
 				limit = {
-					has_idea = CHI_chiang3
+					has_idea = chiang3
 				}
 				swap_ideas = {
-					remove_idea = CHI_chiang3
-					add_idea = CHI_chiang_better
+					remove_idea = chiang3
+					add_idea = chiang_better
 				}
 			}
 			custom_effect_tooltip = no_longer_affected_by_pressure_tt
@@ -4115,8 +4115,8 @@ focus_tree = {
 			add_ideas = CHI_may_fifth_DC	
 			add_political_power = 50
 			swap_ideas = {
-				add_idea = CHI_chiang1
-				remove_idea = CHI_chiang
+				add_idea = chiang1
+				remove_idea = chiang
 			}
 			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
 			set_variable = {
@@ -4176,8 +4176,8 @@ focus_tree = {
 			unlock_decision_tooltip = CHI_reassure_commitment_to_constitutionalization
 			add_political_power = 50
 			swap_ideas = {
-				add_idea = CHI_chiang2
-				remove_idea = CHI_chiang1
+				add_idea = chiang2
+				remove_idea = chiang1
 			}
 			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
 			set_variable = {
@@ -4265,8 +4265,8 @@ focus_tree = {
 				}
 			add_political_power = 50
 			swap_ideas = {
-				add_idea = CHI_chiang3
-				remove_idea = CHI_chiang2
+				add_idea = chiang3
+				remove_idea = chiang2
 			}
 			set_party_name = {
 					ideology = democratic
@@ -4350,7 +4350,7 @@ focus_tree = {
 			remove_country_leader_trait = huangpuxiaozhang
 		    }			
             GXC = { add_country_leader_trait = GXC_fuzongtong }		
-			remove_ideas = CHI_chiang3
+			remove_ideas = chiang3
 			set_variable = { var = DAYS_OF_PROMISED_ELECTION value = 550 }
 			activate_mission_tooltip = RCM_promise_of_election_mission
 			add_political_power = 150
@@ -4454,8 +4454,8 @@ focus_tree = {
 			#	ruling_party = democratic
 			#	elections_allowed = yes
 			#}
-			#remove_ideas = CHI_the_blueshirts #todo: institutionalize BS decisions
-			#remove_ideas = CHI_central_club #todo: institutionalize CC decisions
+			#remove_ideas = the_blueshirts #todo: institutionalize BS decisions
+			#remove_ideas = central_club #todo: institutionalize CC decisions
 			unlock_decision_category_tooltip = RCM_remove_CC_and_BS
 			set_rule = {
 				can_send_volunteers = yes
@@ -7340,7 +7340,7 @@ focus_tree = {
 			}
 			if = { #guo
 			limit = { is_ai = no }
-			has_idea = chen_lifu
+			has_idea = CHI_chen_lifu
 			}
 		}
 	}

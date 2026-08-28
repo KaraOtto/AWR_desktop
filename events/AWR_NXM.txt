@@ -48,3 +48,110 @@ country_event = {  #共产党民兵撤退了
 	}
 }
 
+country_event = {	#马鸿宾的抉择
+	id = AWR_NXM.4
+	title = AWR_NXM.4.t
+	desc = AWR_NXM.4.d
+	picture = GFX_report_event_ningsia_campaign
+	is_triggered_only = yes
+	option = {
+		name = AWR_NXM.4.a
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		ai_chance = { 
+			factor = 70 
+		}
+		event_target:WTT_communist_china = { 
+			country_event = { 
+				id = AWR_NXM.5 
+				days = 0 
+			} 
+			}
+		event_target:WTT_current_china_leader = {
+			country_event = {
+				id = rcmchina.217
+			}
+		}
+		effect_tooltip = {
+            every_unit_leader = {
+				retire = yes
+			}
+			FROM = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes 
+				}	
+			}		
+		}
+
+	}
+	option = {
+		name = AWR_NXM.4.b
+		event_target:WTT_communist_china = { 
+			country_event = { 
+				id = AWR_NXM.6 
+				days = 0 } 
+			}
+		add_war_support = 0.05
+	}
+}
+
+country_event = {	#马鸿宾投敌
+	id = AWR_NXM.5
+	title = AWR_NXM.5.t
+	desc = AWR_NXM.5.d
+	picture = GFX_report_event_ningsia_campaign
+	is_triggered_only = yes
+	option = {
+		name = AWR_NXM.5.a
+		FROM = {#guo
+			NXM_ma_hongbin = { 
+				set_nationality = root 
+			}
+			NXM_lu_zhongliang = { 
+				set_nationality = root 
+			}
+			NXM_ma_guangzong = { 
+				set_nationality = root 
+			}
+		    every_unit_leader = {
+				limit = {
+					NOT = {
+						is_character = NXM_ma_hongbin
+						is_character = NXM_lu_zhongliang
+						is_character = NXM_ma_guangzong
+					}   
+				}
+				retire = yes
+			}
+		}
+	    annex_country = { 
+			target = NXM 
+			transfer_troops = yes 
+		}
+
+		event_target:WTT_current_china_leader = { #guo
+		every_controlled_state = {
+			limit = { 
+				is_fully_controlled_by = event_target:WTT_current_china_leader 
+			}
+			teleport_armies = {
+				to_state = 1097
+				limit = {
+					tag = event_target:WTT_communist_china
+				}
+			}
+		}
+		}
+	}
+}
+
+country_event = {	#马鸿宾拒绝我们的合作提议
+	id = AWR_NXM.6
+	title = AWR_NXM.6.t
+	desc = AWR_NXM.6.d
+	picture = GFX_report_event_chinese_japanese_handshake
+	is_triggered_only = yes
+	option = {
+		name = AWR_NXM.6.a
+		
+	}
+}

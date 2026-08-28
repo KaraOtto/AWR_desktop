@@ -72,6 +72,7 @@ snl_PRC_dyn_land_reform_2 = {	#土地改革
 
 PRC_jiefangjunlujun_dynamic_modifier = {	#解放军陆军
 	icon = "GFX_idea_PRC_PLA_idea"
+
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -79,169 +80,178 @@ PRC_jiefangjunlujun_dynamic_modifier = {	#解放军陆军
 		}
 	}
 
-	conscription = PRC_jiefangjunlujun_conscription #适役人口
-	conscription_factor = PRC_jiefangjunlujun_conscription_factor #适役人口
-	experience_gain_army_factor = PRC_jiefangjunlujun_experience_gain_army_factor #陆军经验百分比
-	land_doctrine_cost_factor = PRC_jiefangjunlujun_land_doctrine_cost_factor #陆军学说花费
-	training_time_factor = PRC_jiefangjunlujun_training_time_factor #训练时间
-	attrition = PRC_jiefangjunlujun_attrition #陆军损耗
-	experience_gain_army_unit_factor = PRC_jiefangjunlujun_experience_gain_army_unit_factor #陆军单位经验百分比
-	army_org_factor =  PRC_jiefangjunlujun_army_org_factor
-	army_morale_factor =  PRC_jiefangjunlujun_army_morale_factor
-	land_reinforce_rate = PRC_jiefangjunlujun_land_reinforce_rate #增援率
-	land_night_attack = PRC_jiefangjunlujun_land_night_attack #夜战攻击
-	army_attack_factor = PRC_jiefangjunlujun_army_attack_factor #陆军攻击
-	army_defence_factor = PRC_jiefangjunlujun_army_defence_factor #陆军防御
-	breakthrough_factor = PRC_jiefangjunlujun_breakthrough_factor #陆军突破
-	army_speed_factor = PRC_jiefangjunlujun_army_speed_factor #陆军速度
-	org_loss_at_low_org_factor = PRC_jiefangjunlujun_org_loss_at_low_org_factor
-	army_org = PRC_jiefangjunlujun_army_org #组织度
-	army_org_factor = PRC_jiefangjunlujun_army_org_factor #组织度
-	org_loss_when_moving = PRC_jiefangjunlujun_org_loss_when_moving #移动组织度损失
-	army_morale_factor = PRC_jiefangjunlujun_army_morale_factor	#组织度恢复
-	no_supply_grace = PRC_jiefangjunlujun_no_supply_grace	#携行补给
-	terrain_penalty_reduction = PRC_jiefangjunlujun_terrain_penalty_reduction	#地形惩罚
-	INITIATIVE_FACTOR = PRC_jiefangjunlujun_INITIATIVE_FACTOR
-	coordination_bonus = PRC_jiefangjunlujun_coordination_bonus
-	army_fuel_consumption_factor = PRC_jiefangjunlujun_army_fuel_consumption_factor	#燃油消耗
+	# 人力与动员
+	conscription = PRC_jiefangjunlujun_conscription						#适役人口
+	conscription_factor = PRC_jiefangjunlujun_conscription_factor				#适役人口系数
+	mobilization_speed = PRC_jiefangjunlujun_mobilization_speed				#动员速度
 
-	#堑壕值
-	dig_in_speed_factor =  PRC_jiefangjunlujun_dig_in_speed_factor
-	max_dig_in_factor =  PRC_jiefangjunlujun_max_dig_in_factor
-	max_dig_in = PRC_jiefangjunlujun_max_dig_in #最大堑壕
+	# 陆军经验
+	experience_gain_army = PRC_jiefangjunlujun_experience_gain_army				#陆军经验获取
+	experience_gain_army_factor = PRC_jiefangjunlujun_experience_gain_army_factor			#陆军经验获取系数
+	experience_gain_army_unit_factor = PRC_jiefangjunlujun_experience_gain_army_unit_factor		#陆军单位经验获取
+	experience_loss_factor = PRC_jiefangjunlujun_experience_loss_factor				#陆军单位经验损失
+	experience_gain_factor = PRC_jiefangjunlujun_experience_gain_factor				#将领经验获取
+	experience_gain_infantry_combat_factor = PRC_jiefangjunlujun_experience_gain_infantry_combat_factor	#步兵战斗经验获取
 
-	out_of_supply_factor = PRC_jiefangjunlujun_out_of_supply_factor #补给耗尽惩罚
-	terrain_penalty_reduction = PRC_jiefangjunlujun_terrain_penalty_reduction #地形惩罚
-	combat_width_factor = PRC_jiefangjunlujun_combat_width_factor #军队宽度
-	cas_damage_reduction = PRC_jiefangjunlujun_cas_damage_reduction #近空支援造成伤害降低
-	experience_loss_factor = PRC_jiefangjunlujun_experience_loss_factor #有经验的士兵的损失
-	supply_consumption_factor = PRC_jiefangjunlujun_supply_consumption_factor #补给消耗
-	mobilization_speed = PRC_jiefangjunlujun_mobilization_speed		#动员速度
-	
-	equipment_capture_factor = PRC_jiefangjunlujun_equipment_capture_factor	#缴获
-	
-	coordination_bonus = PRC_jiefangjunlujun_coordination_bonus	#协同性
-	
-	#计划
-	max_planning =  PRC_jiefangjunlujun_max_planning
-	planning_speed =  PRC_jiefangjunlujun_planning_speed
-	
-	#经验乘数
-	experience_gain_army =  PRC_jiefangjunlujun_experience_gain_army
-	
-	#学说精通度
-	grand_battleplan_mastery_gain_factor = PRC_jiefangjunlujun_grand_battleplan_mastery_gain_factor	#决战
-	mass_assault_mastery_gain_factor = PRC_jiefangjunlujun_mass_assault_mastery_gain_factor	#人海
-	superior_firepower_mastery_gain_factor = PRC_jiefangjunlujun_superior_firepower_mastery_gain_factor	#优火
-	new_mobile_warfare_mastery_gain_factor = PRC_jiefangjunlujun_new_mobile_warfare_mastery_gain_factor	#机动
+	# 陆军学说
+	land_doctrine_cost_factor = PRC_jiefangjunlujun_land_doctrine_cost_factor			#陆军学说花费
+
+	# 陆军学说精通度
+	grand_battleplan_mastery_gain_factor = PRC_jiefangjunlujun_grand_battleplan_mastery_gain_factor		#决战计划精通度获取
+	mass_assault_mastery_gain_factor = PRC_jiefangjunlujun_mass_assault_mastery_gain_factor			#人海突击精通度获取
+	superior_firepower_mastery_gain_factor = PRC_jiefangjunlujun_superior_firepower_mastery_gain_factor		#优势火力精通度获取
+	new_mobile_warfare_mastery_gain_factor = PRC_jiefangjunlujun_new_mobile_warfare_mastery_gain_factor		#机动作战精通度获取
+
+	# 训练
+	training_time_factor = PRC_jiefangjunlujun_training_time_factor				#部队训练时间
+	MINIMUM_TRAINING_LEVEL = PRC_jiefangjunlujun_MINIMUM_TRAINING_LEVEL			#最低训练水平
 
 
-	#将领经验获取
-	experience_gain_factor =  PRC_jiefangjunlujun_experience_gain_factor
-	#战斗中获取的步兵经验
-	experience_gain_infantry_combat_factor =  PRC_jiefangjunlujun_experience_gain_infantry_combat_factor
+	# 指挥点数
+	command_power_gain = PRC_jiefangjunlujun_command_power_gain				#每日指挥点数获取
+	command_power_gain_mult = PRC_jiefangjunlujun_command_power_gain_mult			#指挥点数获取系数
+	max_command_power = PRC_jiefangjunlujun_max_command_power				#最大指挥点数
 
-	#步兵修正
-	army_infantry_attack_factor =  PRC_jiefangjunlujun_army_infantry_attack_factor
-	army_infantry_defence_factor =  PRC_jiefangjunlujun_army_infantry_defence_factor
-	
-	#骑兵
-	cavalry_attack_factor =  PRC_jiefangjunlujun_cavalry_attack_factor
-	cavalry_defence_factor =  PRC_jiefangjunlujun_cavalry_defence_factor
-	
-	#装甲
-	army_armor_attack_factor = PRC_jiefangjunlujun_army_armor_attack_factor #装甲攻击
-	ARMY_ARMOR_DEFENCE_FACTOR = PRC_jiefangjunlujun_ARMY_ARMOR_DEFENCE_FACTOR #装甲防御
-	ARMY_ARMOR_SPEED_FACTOR = PRC_jiefangjunlujun_ARMY_ARMOR_SPEED_FACTOR #装甲速度
+	# 陆军通用作战加成
+	army_attack_factor = PRC_jiefangjunlujun_army_attack_factor				#陆军攻击
+	army_defence_factor = PRC_jiefangjunlujun_army_defence_factor				#陆军防御
+	breakthrough_factor = PRC_jiefangjunlujun_breakthrough_factor				#陆军突破
+	army_speed_factor = PRC_jiefangjunlujun_army_speed_factor				#陆军速度
+	land_night_attack = PRC_jiefangjunlujun_land_night_attack				#陆军夜间攻击
+	land_reinforce_rate = PRC_jiefangjunlujun_land_reinforce_rate				#增援率
+	combat_width_factor = PRC_jiefangjunlujun_combat_width_factor				#陆军战斗宽度
 
-	unit_medium_armor_design_cost_factor =  PRC_jiefangjunlujun_unit_medium_armor_design_cost_factor	#中坦设计花费
-	unit_modern_armor_design_cost_factor =  PRC_jiefangjunlujun_unit_modern_armor_design_cost_factor	#现代坦克设计花费
-	
-	#摩托化
-	motorized_attack_factor =  PRC_jiefangjunlujun_motorized_attack_factor
-	motorized_defence_factor =  PRC_jiefangjunlujun_motorized_defence_factor
-	SUPPLY_FACTOR =  PRC_jiefangjunlujun_SUPPLY_FACTOR
-	SUPPLY_NODE_RANGE =  PRC_jiefangjunlujun_SUPPLY_NODE_RANGE
-	TRUCK_ATTRITION_FACTOR =  PRC_jiefangjunlujun_TRUCK_ATTRITION_FACTOR
-	#机械化
-	mechanized_attack_factor =  PRC_jiefangjunlujun_mechanized_attack_factor
-	mechanized_defence_factor =  PRC_jiefangjunlujun_mechanized_defence_factor
-	#炮兵
-	army_artillery_attack_factor = PRC_jiefangjunlujun_army_artillery_attack_factor #炮兵攻击
-	army_artillery_defence_factor =  PRC_jiefangjunlujun_army_artillery_defence_factor	#炮兵防御
-	modifier_army_sub_unit_category_rocket_artillery_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_category_rocket_artillery_attack_factor	#火箭炮
-	
-	#指挥点数
-	command_power_gain =  PRC_jiefangjunlujun_command_power_gain
-	command_power_gain_mult =  PRC_jiefangjunlujun_command_power_gain_mult
-	max_command_power =  PRC_jiefangjunlujun_max_command_power
-	#特种部队
-	special_forces_cap =  PRC_jiefangjunlujun_special_forces_cap
-	modifier_army_sub_unit_category_special_forces_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_category_special_forces_max_org_factor	#组织度
-	SPECIAL_FORCES_TRAINING_TIME_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_TRAINING_TIME_FACTOR
-	SPECIAL_FORCES_ATTACK_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_ATTACK_FACTOR
-	SPECIAL_FORCES_DEFENCE_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_DEFENCE_FACTOR
-	SPECIAL_FORCES_NO_SUPPLY_GRACE = PRC_jiefangjunlujun_SPECIAL_FORCES_NO_SUPPLY_GRACE
-	SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR
-	#宪兵队
-	modifier_army_sub_unit_military_police_attack_factor  =  PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_attack_factor
-	modifier_army_sub_unit_military_police_defence_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_defence_factor
-	modifier_army_sub_unit_military_police_speed_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_speed_factor
-	modifier_army_sub_unit_military_police_max_org_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_max_org_factor
-	
-	#海军陆战队加成
-	modifier_army_sub_unit_marine_attack_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_marine_attack_factor
-	modifier_army_sub_unit_marine_defence_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_marine_defence_factor
-	modifier_army_sub_unit_marine_speed_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_marine_speed_factor
-	modifier_army_sub_unit_marine_max_org_factor =  PRC_jiefangjunlujun_modifier_army_sub_unit_marine_max_org_factor
-	
-	#山地兵加成
-	modifier_army_sub_unit_mountaineers_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_attack_factor
-	modifier_army_sub_unit_mountaineers_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_defence_factor
-	modifier_army_sub_unit_mountaineers_speed_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_speed_factor
-	modifier_army_sub_unit_mountaineers_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_max_org_factor
-	
+	# 组织度与战斗持续能力
+	army_org = PRC_jiefangjunlujun_army_org							#陆军组织度
+	army_org_factor = PRC_jiefangjunlujun_army_org_factor					#陆军组织度系数
+	army_morale_factor = PRC_jiefangjunlujun_army_morale_factor				#陆军组织度恢复
+	org_loss_at_low_org_factor = PRC_jiefangjunlujun_org_loss_at_low_org_factor			#低组织度时组织度损失
+	org_loss_when_moving = PRC_jiefangjunlujun_org_loss_when_moving				#移动组织度损失
 
-	#非正规兵
-	modifier_army_sub_unit_irregular_infantry_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_attack_factor
-	modifier_army_sub_unit_irregular_infantry_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_defence_factor
-	modifier_army_sub_unit_irregular_infantry_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_max_org_factor
-	modifier_army_sub_unit_militia_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_attack_factor
-	modifier_army_sub_unit_militia_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_defence_factor
-	modifier_army_sub_unit_militia_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_max_org_factor
+	# 作战计划、主动性与协同
+	max_planning = PRC_jiefangjunlujun_max_planning						#最大计划加成
+	planning_speed = PRC_jiefangjunlujun_planning_speed					#计划速度
+	INITIATIVE_FACTOR = PRC_jiefangjunlujun_INITIATIVE_FACTOR				#主动性
+	coordination_bonus = PRC_jiefangjunlujun_coordination_bonus				#协同性
 
-	#训练时间
-	MINIMUM_TRAINING_LEVEL = PRC_jiefangjunlujun_MINIMUM_TRAINING_LEVEL
-	training_time_factor = PRC_jiefangjunlujun_training_time_factor
-	
-	#侦察
-	recon_factor = PRC_jiefangjunlujun_recon_factor
-	recon_factor_while_entrenched = PRC_jiefangjunlujun_recon_factor_while_entrenched
+	# 堑壕与防御准备
+	dig_in_speed_factor = PRC_jiefangjunlujun_dig_in_speed_factor				#堑壕构筑速度
+	max_dig_in = PRC_jiefangjunlujun_max_dig_in						#最大堑壕值
+	max_dig_in_factor = PRC_jiefangjunlujun_max_dig_in_factor				#最大堑壕值系数
 
-	#步兵编制花费
-	unit_infantry_design_cost_factor =  PRC_jiefangjunlujun_unit_infantry_design_cost_factor
-	#炮兵编制花费
-	unit_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_artillery_brigade_design_cost_factor
-	unit_mot_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_mot_artillery_brigade_design_cost_factor
-	unit_rocket_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_rocket_artillery_brigade_design_cost_factor
-	#非正规军编制花费
-	unit_irregular_infantry_design_cost_factor = PRC_jiefangjunlujun_unit_irregular_infantry_design_cost_factor
-	#民兵编制花费
-	unit_militia_design_cost_factor = PRC_jiefangjunlujun_unit_militia_design_cost_factor
+	# 侦察
+	recon_factor = PRC_jiefangjunlujun_recon_factor						#侦察
+	recon_factor_while_entrenched = PRC_jiefangjunlujun_recon_factor_while_entrenched		#堑壕状态下侦察
 
-	#摩托化编制花费
-	unit_motorized_design_cost_factor = PRC_jiefangjunlujun_unit_motorized_design_cost_factor
+	# 地形与环境适应
+	terrain_penalty_reduction = PRC_jiefangjunlujun_terrain_penalty_reduction			#地形惩罚降低
+	attrition = PRC_jiefangjunlujun_attrition							#陆军损耗
 
-	#机械化编制花费
-	unit_mechanized_design_cost_factor = PRC_jiefangjunlujun_unit_mechanized_design_cost_factor
-	
-	#空袭减免
-	enemy_army_bonus_air_superiority_factor = PRC_jiefangjunlujun_enemy_army_bonus_air_superiority_factor
-	
+	# 补给与后勤
+	supply_consumption_factor = PRC_jiefangjunlujun_supply_consumption_factor			#陆军补给消耗
+	no_supply_grace = PRC_jiefangjunlujun_no_supply_grace					#无补给宽限时间
+	out_of_supply_factor = PRC_jiefangjunlujun_out_of_supply_factor				#缺乏补给惩罚
+	supply_node_range = PRC_jiefangjunlujun_supply_node_range					#补给节点范围
+	army_fuel_consumption_factor = PRC_jiefangjunlujun_army_fuel_consumption_factor			#陆军燃油消耗
+
+	SUPPLY_FACTOR = PRC_jiefangjunlujun_SUPPLY_FACTOR						#补给效率
+	SUPPLY_NODE_RANGE = PRC_jiefangjunlujun_SUPPLY_NODE_RANGE					#补给节点范围
+	TRUCK_ATTRITION_FACTOR = PRC_jiefangjunlujun_TRUCK_ATTRITION_FACTOR				#补给卡车损耗
+
+	# 空中力量对陆军影响
+	cas_damage_reduction = PRC_jiefangjunlujun_cas_damage_reduction				#近距空中支援伤害减免
+	enemy_army_bonus_air_superiority_factor = PRC_jiefangjunlujun_enemy_army_bonus_air_superiority_factor	#敌方制空权对陆军影响
+
+	# 装备缴获
+	equipment_capture_factor = PRC_jiefangjunlujun_equipment_capture_factor			#装备缴获率
+
+	# 步兵
+	army_infantry_attack_factor = PRC_jiefangjunlujun_army_infantry_attack_factor			#步兵攻击
+	army_infantry_defence_factor = PRC_jiefangjunlujun_army_infantry_defence_factor			#步兵防御
+
+	# 骑兵
+	cavalry_attack_factor = PRC_jiefangjunlujun_cavalry_attack_factor				#骑兵攻击
+	cavalry_defence_factor = PRC_jiefangjunlujun_cavalry_defence_factor				#骑兵防御
+
+	# 装甲部队
+	army_armor_attack_factor = PRC_jiefangjunlujun_army_armor_attack_factor			#装甲部队攻击
+	ARMY_ARMOR_DEFENCE_FACTOR = PRC_jiefangjunlujun_ARMY_ARMOR_DEFENCE_FACTOR			#装甲部队防御
+	ARMY_ARMOR_SPEED_FACTOR = PRC_jiefangjunlujun_ARMY_ARMOR_SPEED_FACTOR				#装甲部队速度
+
+	# 摩托化部队
+	motorized_attack_factor = PRC_jiefangjunlujun_motorized_attack_factor				#摩托化部队攻击
+	motorized_defence_factor = PRC_jiefangjunlujun_motorized_defence_factor				#摩托化部队防御
+
+	# 机械化部队
+	mechanized_attack_factor = PRC_jiefangjunlujun_mechanized_attack_factor				#机械化部队攻击
+	mechanized_defence_factor = PRC_jiefangjunlujun_mechanized_defence_factor				#机械化部队防御
+
+	# 炮兵
+	army_artillery_attack_factor = PRC_jiefangjunlujun_army_artillery_attack_factor			#炮兵攻击
+	army_artillery_defence_factor = PRC_jiefangjunlujun_army_artillery_defence_factor			#炮兵防御
+	modifier_army_sub_unit_category_rocket_artillery_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_category_rocket_artillery_attack_factor	#火箭炮攻击
+
+	# 特种部队
+	special_forces_cap = PRC_jiefangjunlujun_special_forces_cap					#特种部队容量上限
+	modifier_army_sub_unit_category_special_forces_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_category_special_forces_max_org_factor	#特种部队组织度
+	SPECIAL_FORCES_TRAINING_TIME_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_TRAINING_TIME_FACTOR	#特种部队训练时间
+	SPECIAL_FORCES_ATTACK_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_ATTACK_FACTOR			#特种部队攻击
+	SPECIAL_FORCES_DEFENCE_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_DEFENCE_FACTOR			#特种部队防御
+	SPECIAL_FORCES_NO_SUPPLY_GRACE = PRC_jiefangjunlujun_SPECIAL_FORCES_NO_SUPPLY_GRACE			#特种部队无补给宽限时间
+	SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = PRC_jiefangjunlujun_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR		#特种部队缺乏补给惩罚
+
+	# 海军陆战队
+	modifier_army_sub_unit_marine_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_marine_attack_factor		#海军陆战队攻击
+	modifier_army_sub_unit_marine_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_marine_defence_factor		#海军陆战队防御
+	modifier_army_sub_unit_marine_speed_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_marine_speed_factor		#海军陆战队速度
+	modifier_army_sub_unit_marine_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_marine_max_org_factor		#海军陆战队组织度
+
+	# 山地步兵
+	modifier_army_sub_unit_mountaineers_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_attack_factor	#山地步兵攻击
+	modifier_army_sub_unit_mountaineers_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_defence_factor	#山地步兵防御
+	modifier_army_sub_unit_mountaineers_speed_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_speed_factor		#山地步兵速度
+	modifier_army_sub_unit_mountaineers_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_mountaineers_max_org_factor	#山地步兵组织度
+
+	# 宪兵
+	modifier_army_sub_unit_military_police_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_attack_factor	#宪兵攻击
+	modifier_army_sub_unit_military_police_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_defence_factor	#宪兵防御
+	modifier_army_sub_unit_military_police_speed_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_speed_factor	#宪兵速度
+	modifier_army_sub_unit_military_police_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_military_police_max_org_factor	#宪兵组织度
+
+	# 非正规军
+	modifier_army_sub_unit_irregular_infantry_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_attack_factor	#非正规步兵攻击
+	modifier_army_sub_unit_irregular_infantry_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_defence_factor	#非正规步兵防御
+	modifier_army_sub_unit_irregular_infantry_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_irregular_infantry_max_org_factor	#非正规步兵组织度
+
+	# 民兵
+	modifier_army_sub_unit_militia_attack_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_attack_factor		#民兵攻击
+	modifier_army_sub_unit_militia_defence_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_defence_factor		#民兵防御
+	modifier_army_sub_unit_militia_max_org_factor = PRC_jiefangjunlujun_modifier_army_sub_unit_militia_max_org_factor		#民兵组织度
+
+	# 步兵编制花费
+	unit_infantry_design_cost_factor = PRC_jiefangjunlujun_unit_infantry_design_cost_factor			#步兵编制设计花费
+
+	# 炮兵编制花费
+	unit_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_artillery_brigade_design_cost_factor		#炮兵编制设计花费
+	unit_mot_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_mot_artillery_brigade_design_cost_factor		#摩托化炮兵编制设计花费
+	unit_rocket_artillery_brigade_design_cost_factor = PRC_jiefangjunlujun_unit_rocket_artillery_brigade_design_cost_factor	#火箭炮编制设计花费
+
+	# 装甲编制花费
+	unit_medium_armor_design_cost_factor = PRC_jiefangjunlujun_unit_medium_armor_design_cost_factor		#中型坦克编制设计花费
+	unit_modern_armor_design_cost_factor = PRC_jiefangjunlujun_unit_modern_armor_design_cost_factor		#现代坦克编制设计花费
+
+	# 摩托化与机械化编制花费
+	unit_motorized_design_cost_factor = PRC_jiefangjunlujun_unit_motorized_design_cost_factor		#摩托化编制设计花费
+	unit_mechanized_design_cost_factor = PRC_jiefangjunlujun_unit_mechanized_design_cost_factor		#机械化编制设计花费
+
+	# 非正规军与民兵编制花费
+	unit_irregular_infantry_design_cost_factor = PRC_jiefangjunlujun_unit_irregular_infantry_design_cost_factor	#非正规步兵编制设计花费
+	unit_militia_design_cost_factor = PRC_jiefangjunlujun_unit_militia_design_cost_factor				#民兵编制设计花费
 }
 
-PRC_jiefangjunhaijun_dynamic_modifier = {	#解放军海军
+PRC_jiefangjunhaijun_dynamic_modifier = {	# 解放军海军
 	icon = "GFX_idea_PRC_PLAN_idea"
+
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -249,47 +259,81 @@ PRC_jiefangjunhaijun_dynamic_modifier = {	#解放军海军
 		}
 	}
 
-	experience_gain_navy_factor = PRC_jiefangjunhaijun_experience_gain_navy_factor
-	experience_gain_navy_unit_factor = PRC_jiefangjunhaijun_experience_gain_navy_unit_factor
-	repair_speed_factor = PRC_jiefangjunhaijun_repair_speed_factor
-	naval_accidents_chance = PRC_jiefangjunhaijun_naval_accidents_chance
-	strike_force_movement_org_loss = PRC_jiefangjunhaijun_strike_force_movement_org_loss
-	naval_has_potf_in_combat_attack = PRC_jiefangjunhaijun_naval_has_potf_in_combat_attack
-	naval_has_potf_in_combat_defense = PRC_jiefangjunhaijun_naval_has_potf_in_combat_defense
-	naval_coordination = PRC_jiefangjunhaijun_naval_coordination
-	naval_critical_score_chance_factor = PRC_jiefangjunhaijun_naval_critical_score_chance_factor
-	invasion_preparation = PRC_jiefangjunhaijun_invasion_preparation	#登陆准备时间
-	naval_invasion_capacity = PRC_jiefangjunhaijun_naval_invasion_capacity	#登陆作战上限
-	naval_invasion_penalty = PRC_jiefangjunhaijun_naval_invasion_penalty	#登陆惩罚
-	amphibious_invasion = PRC_jiefangjunhaijun_amphibious_invasion	#登陆速度
-	amphibious_invasion_defence = PRC_jiefangjunhaijun_amphibious_invasion_defence
-	naval_detection = PRC_jiefangjunhaijun_naval_detection
-	navy_capital_ship_attack_factor = PRC_jiefangjunhaijun_navy_capital_ship_attack_factor
-	naval_hit_chance = PRC_jiefangjunhaijun_naval_hit_chance
-	ships_at_battle_start = PRC_jiefangjunhaijun_ships_at_battle_start
-	navy_submarine_attack_factor = PRC_jiefangjunhaijun_navy_submarine_attack_factor
-	sub_retreat_speed = PRC_jiefangjunhaijun_sub_retreat_speed
-	naval_mine_hit_chance = PRC_jiefangjunhaijun_naval_mine_hit_chance
-	naval_mines_damage_factor = PRC_jiefangjunhaijun_naval_mines_damage_factor
-	navy_screen_attack_factor = PRC_jiefangjunhaijun_navy_screen_attack_factor
-	naval_torpedo_cooldown_factor = PRC_jiefangjunhaijun_naval_torpedo_cooldown_factor
-	positioning = PRC_jiefangjunhaijun_positioning
-	screening_efficiency = PRC_jiefangjunhaijun_screening_efficiency
-	naval_damage_factor = PRC_jiefangjunhaijun_naval_damage_factor
-	naval_defense_factor = PRC_jiefangjunhaijun_naval_defense_factor
-	naval_morale_factor = PRC_jiefangjunhaijun_naval_morale_factor
-	naval_speed_factor = PRC_jiefangjunhaijun_naval_speed_factor
-	sortie_efficiency = PRC_jiefangjunhaijun_sortie_efficiency
+	# 海军经验
+	experience_gain_navy_factor = PRC_jiefangjunhaijun_experience_gain_navy_factor					# 海军经验获取
+	experience_gain_navy_unit_factor = PRC_jiefangjunhaijun_experience_gain_navy_unit_factor			# 舰艇经验获取
+	# 海军学说精通度
+	new_base_strike_mastery_gain_factor = PRC_jiefangjunhaijun_new_base_strike_mastery_gain_factor		# 基地打击精通度获取
+	new_convoy_raiding_mastery_gain_factor = PRC_jiefangjunhaijun_new_convoy_raiding_mastery_gain_factor	# 贸易阻断精通度获取
+	new_fleet_in_being_mastery_gain_factor = PRC_jiefangjunhaijun_new_fleet_in_being_mastery_gain_factor	# 存在舰队精通度获取
+
+	# 海军维护与后勤
+	repair_speed_factor = PRC_jiefangjunhaijun_repair_speed_factor					# 舰艇维修速度
+	naval_accidents_chance = PRC_jiefangjunhaijun_naval_accidents_chance				# 海军事故概率
+	naval_supply_consumption_factor = PRC_jiefangjunhaijun_naval_supply_consumption_factor		# 海军补给消耗
+	naval_morale_factor = PRC_jiefangjunhaijun_naval_morale_factor					# 海军组织度恢复
+	naval_speed_factor = PRC_jiefangjunhaijun_naval_speed_factor					# 舰艇航行速度
+	sortie_efficiency = PRC_jiefangjunhaijun_sortie_efficiency					# 出击效率
+
+	# 两栖登陆作战
+	invasion_preparation = PRC_jiefangjunhaijun_invasion_preparation				# 海军入侵准备时间
+	naval_invasion_capacity = PRC_jiefangjunhaijun_naval_invasion_capacity			# 海军入侵容量
+	naval_invasion_penalty = PRC_jiefangjunhaijun_naval_invasion_penalty				# 海军入侵惩罚
+	amphibious_invasion = PRC_jiefangjunhaijun_amphibious_invasion					# 两栖登陆速度
+	amphibious_invasion_defence = PRC_jiefangjunhaijun_amphibious_invasion_defence			# 两栖登陆防御
+
+	# 舰队侦察、部署与交战
+	naval_detection = PRC_jiefangjunhaijun_naval_detection						# 海军侦察
+	ships_at_battle_start = PRC_jiefangjunhaijun_ships_at_battle_start				# 战斗开始时参战舰艇比例
+	positioning = PRC_jiefangjunhaijun_positioning							# 舰队阵位
+	screening_efficiency = PRC_jiefangjunhaijun_screening_efficiency					# 屏卫效率
+	strike_force_movement_org_loss = PRC_jiefangjunhaijun_strike_force_movement_org_loss			# 打击舰队移动组织度损失
+	naval_coordination = PRC_jiefangjunhaijun_naval_coordination					# 海军协同
+
+	# 通用海军作战加成
+	naval_damage_factor = PRC_jiefangjunhaijun_naval_damage_factor					# 海军伤害
+	naval_defense_factor = PRC_jiefangjunhaijun_naval_defense_factor				# 海军防御
+	naval_hit_chance = PRC_jiefangjunhaijun_naval_hit_chance					# 海军命中率
+	naval_critical_score_chance_factor = PRC_jiefangjunhaijun_naval_critical_score_chance_factor		# 海军暴击概率
+
+
+	# 与舰队荣耀作战加成
+	naval_has_potf_in_combat_attack = PRC_jiefangjunhaijun_naval_has_potf_in_combat_attack			# 舰队荣耀参战时海军攻击
+	naval_has_potf_in_combat_defense = PRC_jiefangjunhaijun_naval_has_potf_in_combat_defense			# 舰队荣耀参战时海军防御
+
+	# 屏卫舰艇加成
+	navy_screen_attack_factor = PRC_jiefangjunhaijun_navy_screen_attack_factor				# 屏卫舰攻击
+	navy_screen_defence_factor = PRC_jiefangjunhaijun_navy_screen_defence_factor				# 屏卫舰防御
+
+	# 主力舰加成
+	navy_capital_ship_attack_factor = PRC_jiefangjunhaijun_navy_capital_ship_attack_factor			# 主力舰攻击
+	navy_capital_ship_defence_factor = PRC_jiefangjunhaijun_navy_capital_ship_defence_factor		# 主力舰防御
+
+	# 潜艇作战
+	navy_submarine_attack_factor = PRC_jiefangjunhaijun_navy_submarine_attack_factor				# 潜艇攻击
+	sub_retreat_speed = PRC_jiefangjunhaijun_sub_retreat_speed						# 潜艇撤退速度
+	naval_torpedo_cooldown_factor = PRC_jiefangjunhaijun_naval_torpedo_cooldown_factor			# 鱼雷冷却时间
+
+	# 水雷作战
+	naval_mine_hit_chance = PRC_jiefangjunhaijun_naval_mine_hit_chance					# 水雷命中概率
+	naval_mines_damage_factor = PRC_jiefangjunhaijun_naval_mines_damage_factor				# 水雷伤害
+
+	# 航母舰载机
+	navy_carrier_air_agility_factor = PRC_jiefangjunhaijun_navy_carrier_air_agility_factor			# 航母舰载机机动
+	navy_carrier_air_attack_factor = PRC_jiefangjunhaijun_navy_carrier_air_attack_factor			# 航母舰载机攻击
+	navy_carrier_air_targetting_factor = PRC_jiefangjunhaijun_navy_carrier_air_targetting_factor		# 航母舰载机瞄准
 	navy_carrier_air_agility_factor = PRC_jiefangjunhaijun_navy_carrier_air_agility_factor
-	navy_carrier_air_attack_factor = PRC_jiefangjunhaijun_navy_carrier_air_attack_factor
-	navy_carrier_air_targetting_factor = PRC_jiefangjunhaijun_navy_carrier_air_targetting_factor
-	new_base_strike_mastery_gain_factor = PRC_jiefangjunhaijun_new_base_strike_mastery_gain_factor	#基地打击
-	new_convoy_raiding_mastery_gain_factor = PRC_jiefangjunhaijun_new_convoy_raiding_mastery_gain_factor	#贸易阻断
-	new_fleet_in_being_mastery_gain_factor = PRC_jiefangjunhaijun_new_fleet_in_being_mastery_gain_factor	#存在舰队
+
+	#航母
+	carrier_capacity_penalty_reduction = PRC_jiefangjunhaijun_carrier_capacity_penalty_reduction	#航母超载
+	carrier_traffic = PRC_jiefangjunhaijun_carrier_traffic	#航母起降能力
+	carrier_night_traffic = PRC_jiefangjunhaijun_carrier_night_traffic	#航母夜间起降能力
+
 }
 
 PRC_jiefangjunkongjun_dynamic_modifier = {	#解放军空军
 	icon = "GFX_idea_PRC_PLAF_idea"
+
 	enable = { 
 		tag = PRC
 		PRC = {
@@ -297,173 +341,625 @@ PRC_jiefangjunkongjun_dynamic_modifier = {	#解放军空军
 		}
 	}
 
-	air_attack_factor = PRC_jiefangjunkongjun_air_attack_factor #对空攻击
+	# 空军经验
+	experience_gain_air = PRC_jiefangjunkongjun_experience_gain_air					#每日空军经验获取
+	experience_gain_air_factor = PRC_jiefangjunkongjun_experience_gain_air_factor			#空军经验获取系数
+	air_training_xp_gain_factor = PRC_jiefangjunkongjun_air_training_xp_gain_factor			#空军训练经验获取
+	air_mission_xp_gain_factor = PRC_jiefangjunkongjun_air_mission_xp_gain_factor			#空军任务经验获取
+	air_wing_xp_loss_when_killed_factor = PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor	#飞机损失造成的联队经验损失
+	air_untrained_pilots_penalty_factor = PRC_jiefangjunkongjun_air_untrained_pilots_penalty_factor	#未训练飞行员惩罚
 
-	air_maximum_speed_factor = PRC_jiefangjunkongjun_air_maximum_speed_factor #空军最大速度
+	# 空军学说
+	air_doctrine_cost_factor = PRC_jiefangjunkongjun_air_doctrine_cost_factor				#空军学说花费
 
-	air_range_factor = PRC_jiefangjunkongjun_air_range_factor #空军航程
+	# 空军学说精通度
+	new_battlefield_support_mastery_gain_factor = PRC_jiefangjunkongjun_new_battlefield_support_mastery_gain_factor		#战场支援精通度获取
+	new_operational_integrity_mastery_gain_factor = PRC_jiefangjunkongjun_new_operational_integrity_mastery_gain_factor		#连续作战精通度获取
+	new_strategic_destruction_mastery_gain_factor = PRC_jiefangjunkongjun_new_strategic_destruction_mastery_gain_factor		#战略破坏精通度获取
 
-	air_agility_factor = PRC_jiefangjunkongjun_air_agility_factor #机动
+	# 飞机设计与人力
+	air_equipment_upgrade_xp_cost = PRC_jiefangjunkongjun_air_equipment_upgrade_xp_cost		#飞机设计经验花费
+	air_manpower_requirement_factor = PRC_jiefangjunkongjun_air_manpower_requirement_factor		#空军人力需求
 
-	air_detection = PRC_jiefangjunkongjun_air_detection #对空探测
+	# 飞机通用作战性能
+	air_attack_factor = PRC_jiefangjunkongjun_air_attack_factor					#空中攻击
+	air_defence_factor = PRC_jiefangjunkongjun_air_defence_factor				#空中防御
+	air_agility_factor = PRC_jiefangjunkongjun_air_agility_factor				#空中机动
+	air_maximum_speed_factor = PRC_jiefangjunkongjun_air_maximum_speed_factor			#飞机最大速度
+	air_range_factor = PRC_jiefangjunkongjun_air_range_factor					#飞机航程
 
-	air_accidents_factor = PRC_jiefangjunkongjun_air_accidents_factor #空军事故概率
+	# 空军侦测
+	air_detection = PRC_jiefangjunkongjun_air_detection						#空军侦测
+	air_superiority_detect_factor = PRC_jiefangjunkongjun_air_superiority_detect_factor		#制空任务侦测
+	air_interception_detect_factor = PRC_jiefangjunkongjun_air_interception_detect_factor		#截击任务侦测
 
-	air_mission_efficiency = PRC_jiefangjunkongjun_air_mission_efficiency #空军任务效率
+	# 空军任务效率
+	air_mission_efficiency = PRC_jiefangjunkongjun_air_mission_efficiency				#空军任务效率
+	air_superiority_efficiency = PRC_jiefangjunkongjun_air_superiority_efficiency			#制空任务效率
+	air_intercept_efficiency = PRC_jiefangjunkongjun_air_intercept_efficiency				#截击任务效率
+	air_escort_efficiency = PRC_jiefangjunkongjun_air_escort_efficiency				#空中护航效率
+	air_home_defence_factor = PRC_jiefangjunkongjun_air_home_defence_factor				#本土空中防御
+	air_power_projection_factor = PRC_jiefangjunkongjun_air_power_projection_factor			#空中力量投射
 
-	air_bombing_targetting = PRC_jiefangjunkongjun_air_bombing_targetting #对地攻击瞄准
+	# 制空权
+	army_bonus_air_superiority_factor = PRC_jiefangjunkongjun_army_bonus_air_superiority_factor	#制空权对陆军作战加成
 
-	naval_strike_targetting_factor = PRC_jiefangjunkongjun_naval_strike_targetting_factor #对海攻击瞄准
+	# 近距空中支援
+	ground_attack_factor = PRC_jiefangjunkongjun_ground_attack_factor				#对地攻击
+	air_bombing_targetting = PRC_jiefangjunkongjun_air_bombing_targetting				#对地轰炸瞄准
+	air_cas_efficiency = PRC_jiefangjunkongjun_air_cas_efficiency					#近距空中支援任务效率
+	air_cas_present_factor = PRC_jiefangjunkongjun_air_cas_present_factor				#近距空中支援对陆军作战效果
+	air_close_air_support_org_damage_factor = PRC_jiefangjunkongjun_air_close_air_support_org_damage_factor	#近距空中支援组织度伤害
 
-	air_superiority_detect_factor = PRC_jiefangjunkongjun_air_superiority_detect_factor #战机侦测能力
+	# 战略轰炸
+	air_strategic_bomber_bombing_factor = PRC_jiefangjunkongjun_air_strategic_bomber_bombing_factor	#战略轰炸效率
+	air_strategic_bomber_night_penalty = PRC_jiefangjunkongjun_air_strategic_bomber_night_penalty	#战略轰炸夜间惩罚
+	strategic_bomb_visibility = PRC_jiefangjunkongjun_strategic_bomb_visibility			#战略轰炸机可见度
 
-	air_superiority_efficiency = PRC_jiefangjunkongjun_air_superiority_efficiency #夺取制空权任务效率
+	# 对海攻击
+	naval_strike_attack_factor = PRC_jiefangjunkongjun_naval_strike_attack_factor			#海军打击攻击
+	naval_strike_targetting_factor = PRC_jiefangjunkongjun_naval_strike_targetting_factor		#海军打击瞄准
+	air_nav_efficiency = PRC_jiefangjunkongjun_air_nav_efficiency					#海军打击任务效率
+	port_strike = PRC_jiefangjunkongjun_port_strike						#港口袭击伤害
 
-	army_bonus_air_superiority_factor = PRC_jiefangjunkongjun_army_bonus_air_superiority_factor #空优
+	# 空军王牌
+	air_ace_generation_chance_factor = PRC_jiefangjunkongjun_air_ace_generation_chance_factor	#空军王牌产生概率
+	air_ace_bonuses_factor = PRC_jiefangjunkongjun_air_ace_bonuses_factor				#王牌飞行员加成
+	ace_effectiveness_factor = PRC_jiefangjunkongjun_ace_effectiveness_factor				#王牌飞行员效果
 
-	strategic_bomb_visibility = PRC_jiefangjunkongjun_strategic_bomb_visibility #战略轰炸可见度
+	# 夜间与天气作战
+	air_night_penalty = PRC_jiefangjunkongjun_air_night_penalty					#夜间空战惩罚
+	air_weather_penalty = PRC_jiefangjunkongjun_air_weather_penalty				#恶劣天气空战惩罚
 
-	air_night_penalty = PRC_jiefangjunkongjun_air_night_penalty #夜间行动惩罚
+	# 空军事故
+	air_accidents_factor = PRC_jiefangjunkongjun_air_accidents_factor				#空军事故概率
 
-	air_weather_penalty = PRC_jiefangjunkongjun_air_weather_penalty #恶劣天气惩罚
+	# 空军后勤
+	air_fuel_consumption_factor = PRC_jiefangjunkongjun_air_fuel_consumption_factor			#空军燃油消耗
 
-	mines_planting_by_air_factor = PRC_jiefangjunkongjun_mines_planting_by_air_factor #空中布雷效率
+	# 空中水雷作战
+	mines_planting_by_air_factor = PRC_jiefangjunkongjun_mines_planting_by_air_factor			#空中布雷效率
+	mines_sweeping_by_air_factor = PRC_jiefangjunkongjun_mines_sweeping_by_air_factor			#空中扫雷效率
+}
 
-	mines_sweeping_by_air_factor = PRC_jiefangjunkongjun_mines_sweeping_by_air_factor #空中扫雷效率
+PRC_New_Red_Army_land_dynamic_modifier = {	#新红军陆军
+	icon = "GFX_idea_PRC_New_Red_Army_land"
 
-	air_training_xp_gain_factor = PRC_jiefangjunkongjun_air_training_xp_gain_factor
+	enable = { 
+		tag = PRC
+		PRC = {
+			has_completed_focus = PRC_New_Red_Army
+		}
+	}
 
-	air_wing_xp_loss_when_killed_factor = PRC_jiefangjunkongjun_air_wing_xp_loss_when_killed_factor
+	# 人力与动员
+	conscription = PRC_New_Red_Army_land_conscription						#适役人口
+	conscription_factor = PRC_New_Red_Army_land_conscription_factor				#适役人口系数
+	mobilization_speed = PRC_New_Red_Army_land_mobilization_speed				#动员速度
 
-	air_ace_generation_chance_factor = PRC_jiefangjunkongjun_air_ace_generation_chance_factor
+	# 陆军经验
+	experience_gain_army = PRC_New_Red_Army_land_experience_gain_army				#陆军经验获取
+	experience_gain_army_factor = PRC_New_Red_Army_land_experience_gain_army_factor			#陆军经验获取系数
+	experience_gain_army_unit_factor = PRC_New_Red_Army_land_experience_gain_army_unit_factor		#陆军单位经验获取
+	experience_loss_factor = PRC_New_Red_Army_land_experience_loss_factor				#陆军单位经验损失
+	experience_gain_factor = PRC_New_Red_Army_land_experience_gain_factor				#将领经验获取
+	experience_gain_infantry_combat_factor = PRC_New_Red_Army_land_experience_gain_infantry_combat_factor	#步兵战斗经验获取
 
-	air_mission_xp_gain_factor = PRC_jiefangjunkongjun_air_mission_xp_gain_factor
+	# 陆军学说
+	land_doctrine_cost_factor = PRC_New_Red_Army_land_land_doctrine_cost_factor			#陆军学说花费
 
-	new_battlefield_support_mastery_gain_factor = PRC_jiefangjunkongjun_new_battlefield_support_mastery_gain_factor	#战场支援
-	new_operational_integrity_mastery_gain_factor = PRC_jiefangjunkongjun_new_operational_integrity_mastery_gain_factor	#连续作战
-	new_strategic_destruction_mastery_gain_factor = PRC_jiefangjunkongjun_new_strategic_destruction_mastery_gain_factor	#持续轰炸
-	
-	
+	# 陆军学说精通度
+	grand_battleplan_mastery_gain_factor = PRC_New_Red_Army_land_grand_battleplan_mastery_gain_factor		#决战计划精通度获取
+	mass_assault_mastery_gain_factor = PRC_New_Red_Army_land_mass_assault_mastery_gain_factor			#人海突击精通度获取
+	superior_firepower_mastery_gain_factor = PRC_New_Red_Army_land_superior_firepower_mastery_gain_factor		#优势火力精通度获取
+	new_mobile_warfare_mastery_gain_factor = PRC_New_Red_Army_land_new_mobile_warfare_mastery_gain_factor		#机动作战精通度获取
+
+	# 训练
+	training_time_factor = PRC_New_Red_Army_land_training_time_factor				#部队训练时间
+	MINIMUM_TRAINING_LEVEL = PRC_New_Red_Army_land_MINIMUM_TRAINING_LEVEL			#最低训练水平
+
+
+	# 指挥点数
+	command_power_gain = PRC_New_Red_Army_land_command_power_gain				#每日指挥点数获取
+	command_power_gain_mult = PRC_New_Red_Army_land_command_power_gain_mult			#指挥点数获取系数
+	max_command_power = PRC_New_Red_Army_land_max_command_power				#最大指挥点数
+
+	# 陆军通用作战加成
+	army_attack_factor = PRC_New_Red_Army_land_army_attack_factor				#陆军攻击
+	army_defence_factor = PRC_New_Red_Army_land_army_defence_factor				#陆军防御
+	breakthrough_factor = PRC_New_Red_Army_land_breakthrough_factor				#陆军突破
+	army_speed_factor = PRC_New_Red_Army_land_army_speed_factor				#陆军速度
+	land_night_attack = PRC_New_Red_Army_land_land_night_attack				#陆军夜间攻击
+	land_reinforce_rate = PRC_New_Red_Army_land_land_reinforce_rate				#增援率
+	combat_width_factor = PRC_New_Red_Army_land_combat_width_factor				#陆军战斗宽度
+
+	# 组织度与战斗持续能力
+	army_org = PRC_New_Red_Army_land_army_org							#陆军组织度
+	army_org_factor = PRC_New_Red_Army_land_army_org_factor					#陆军组织度系数
+	army_morale_factor = PRC_New_Red_Army_land_army_morale_factor				#陆军组织度恢复
+	org_loss_at_low_org_factor = PRC_New_Red_Army_land_org_loss_at_low_org_factor			#低组织度时组织度损失
+	org_loss_when_moving = PRC_New_Red_Army_land_org_loss_when_moving				#移动组织度损失
+
+	# 作战计划、主动性与协同
+	max_planning = PRC_New_Red_Army_land_max_planning						#最大计划加成
+	planning_speed = PRC_New_Red_Army_land_planning_speed					#计划速度
+	INITIATIVE_FACTOR = PRC_New_Red_Army_land_INITIATIVE_FACTOR				#主动性
+	coordination_bonus = PRC_New_Red_Army_land_coordination_bonus				#协同性
+
+	# 堑壕与防御准备
+	dig_in_speed_factor = PRC_New_Red_Army_land_dig_in_speed_factor				#堑壕构筑速度
+	max_dig_in = PRC_New_Red_Army_land_max_dig_in						#最大堑壕值
+	max_dig_in_factor = PRC_New_Red_Army_land_max_dig_in_factor				#最大堑壕值系数
+
+	# 侦察
+	recon_factor = PRC_New_Red_Army_land_recon_factor						#侦察
+	recon_factor_while_entrenched = PRC_New_Red_Army_land_recon_factor_while_entrenched		#堑壕状态下侦察
+
+	# 地形与环境适应
+	terrain_penalty_reduction = PRC_New_Red_Army_land_terrain_penalty_reduction			#地形惩罚降低
+	attrition = PRC_New_Red_Army_land_attrition							#陆军损耗
+
+	# 补给与后勤
+	supply_consumption_factor = PRC_New_Red_Army_land_supply_consumption_factor			#陆军补给消耗
+	no_supply_grace = PRC_New_Red_Army_land_no_supply_grace					#无补给宽限时间
+	out_of_supply_factor = PRC_New_Red_Army_land_out_of_supply_factor				#缺乏补给惩罚
+	supply_node_range = PRC_New_Red_Army_land_supply_node_range					#补给节点范围
+	army_fuel_consumption_factor = PRC_New_Red_Army_land_army_fuel_consumption_factor			#陆军燃油消耗
+
+	SUPPLY_FACTOR = PRC_New_Red_Army_land_SUPPLY_FACTOR						#补给效率
+	SUPPLY_NODE_RANGE = PRC_New_Red_Army_land_SUPPLY_NODE_RANGE					#补给节点范围
+	TRUCK_ATTRITION_FACTOR = PRC_New_Red_Army_land_TRUCK_ATTRITION_FACTOR				#补给卡车损耗
+
+	# 空中力量对陆军影响
+	cas_damage_reduction = PRC_New_Red_Army_land_cas_damage_reduction				#近距空中支援伤害减免
+	enemy_army_bonus_air_superiority_factor = PRC_New_Red_Army_land_enemy_army_bonus_air_superiority_factor	#敌方制空权对陆军影响
+
+	# 装备缴获
+	equipment_capture_factor = PRC_New_Red_Army_land_equipment_capture_factor			#装备缴获率
+
+	# 步兵
+	army_infantry_attack_factor = PRC_New_Red_Army_land_army_infantry_attack_factor			#步兵攻击
+	army_infantry_defence_factor = PRC_New_Red_Army_land_army_infantry_defence_factor			#步兵防御
+
+	# 骑兵
+	cavalry_attack_factor = PRC_New_Red_Army_land_cavalry_attack_factor				#骑兵攻击
+	cavalry_defence_factor = PRC_New_Red_Army_land_cavalry_defence_factor				#骑兵防御
+
+	# 装甲部队
+	army_armor_attack_factor = PRC_New_Red_Army_land_army_armor_attack_factor			#装甲部队攻击
+	ARMY_ARMOR_DEFENCE_FACTOR = PRC_New_Red_Army_land_ARMY_ARMOR_DEFENCE_FACTOR			#装甲部队防御
+	ARMY_ARMOR_SPEED_FACTOR = PRC_New_Red_Army_land_ARMY_ARMOR_SPEED_FACTOR				#装甲部队速度
+
+	# 摩托化部队
+	motorized_attack_factor = PRC_New_Red_Army_land_motorized_attack_factor				#摩托化部队攻击
+	motorized_defence_factor = PRC_New_Red_Army_land_motorized_defence_factor				#摩托化部队防御
+
+	# 机械化部队
+	mechanized_attack_factor = PRC_New_Red_Army_land_mechanized_attack_factor				#机械化部队攻击
+	mechanized_defence_factor = PRC_New_Red_Army_land_mechanized_defence_factor				#机械化部队防御
+
+	# 炮兵
+	army_artillery_attack_factor = PRC_New_Red_Army_land_army_artillery_attack_factor			#炮兵攻击
+	army_artillery_defence_factor = PRC_New_Red_Army_land_army_artillery_defence_factor			#炮兵防御
+	modifier_army_sub_unit_category_rocket_artillery_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_category_rocket_artillery_attack_factor	#火箭炮攻击
+
+	# 特种部队
+	special_forces_cap = PRC_New_Red_Army_land_special_forces_cap					#特种部队容量上限
+	modifier_army_sub_unit_category_special_forces_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_category_special_forces_max_org_factor	#特种部队组织度
+	SPECIAL_FORCES_TRAINING_TIME_FACTOR = PRC_New_Red_Army_land_SPECIAL_FORCES_TRAINING_TIME_FACTOR	#特种部队训练时间
+	SPECIAL_FORCES_ATTACK_FACTOR = PRC_New_Red_Army_land_SPECIAL_FORCES_ATTACK_FACTOR			#特种部队攻击
+	SPECIAL_FORCES_DEFENCE_FACTOR = PRC_New_Red_Army_land_SPECIAL_FORCES_DEFENCE_FACTOR			#特种部队防御
+	SPECIAL_FORCES_NO_SUPPLY_GRACE = PRC_New_Red_Army_land_SPECIAL_FORCES_NO_SUPPLY_GRACE			#特种部队无补给宽限时间
+	SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = PRC_New_Red_Army_land_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR		#特种部队缺乏补给惩罚
+
+	# 海军陆战队
+	modifier_army_sub_unit_marine_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_marine_attack_factor		#海军陆战队攻击
+	modifier_army_sub_unit_marine_defence_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_marine_defence_factor		#海军陆战队防御
+	modifier_army_sub_unit_marine_speed_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_marine_speed_factor		#海军陆战队速度
+	modifier_army_sub_unit_marine_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_marine_max_org_factor		#海军陆战队组织度
+
+	# 山地步兵
+	modifier_army_sub_unit_mountaineers_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_mountaineers_attack_factor	#山地步兵攻击
+	modifier_army_sub_unit_mountaineers_defence_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_mountaineers_defence_factor	#山地步兵防御
+	modifier_army_sub_unit_mountaineers_speed_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_mountaineers_speed_factor		#山地步兵速度
+	modifier_army_sub_unit_mountaineers_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_mountaineers_max_org_factor	#山地步兵组织度
+
+	# 宪兵
+	modifier_army_sub_unit_military_police_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_military_police_attack_factor	#宪兵攻击
+	modifier_army_sub_unit_military_police_defence_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_military_police_defence_factor	#宪兵防御
+	modifier_army_sub_unit_military_police_speed_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_military_police_speed_factor	#宪兵速度
+	modifier_army_sub_unit_military_police_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_military_police_max_org_factor	#宪兵组织度
+
+	# 非正规军
+	modifier_army_sub_unit_irregular_infantry_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_irregular_infantry_attack_factor	#非正规步兵攻击
+	modifier_army_sub_unit_irregular_infantry_defence_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_irregular_infantry_defence_factor	#非正规步兵防御
+	modifier_army_sub_unit_irregular_infantry_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_irregular_infantry_max_org_factor	#非正规步兵组织度
+
+	# 民兵
+	modifier_army_sub_unit_militia_attack_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_militia_attack_factor		#民兵攻击
+	modifier_army_sub_unit_militia_defence_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_militia_defence_factor		#民兵防御
+	modifier_army_sub_unit_militia_max_org_factor = PRC_New_Red_Army_land_modifier_army_sub_unit_militia_max_org_factor		#民兵组织度
+
+	# 步兵编制花费
+	unit_infantry_design_cost_factor = PRC_New_Red_Army_land_unit_infantry_design_cost_factor			#步兵编制设计花费
+
+	# 炮兵编制花费
+	unit_artillery_brigade_design_cost_factor = PRC_New_Red_Army_land_unit_artillery_brigade_design_cost_factor		#炮兵编制设计花费
+	unit_mot_artillery_brigade_design_cost_factor = PRC_New_Red_Army_land_unit_mot_artillery_brigade_design_cost_factor		#摩托化炮兵编制设计花费
+	unit_rocket_artillery_brigade_design_cost_factor = PRC_New_Red_Army_land_unit_rocket_artillery_brigade_design_cost_factor	#火箭炮编制设计花费
+
+	# 装甲编制花费
+	unit_medium_armor_design_cost_factor = PRC_New_Red_Army_land_unit_medium_armor_design_cost_factor		#中型坦克编制设计花费
+	unit_modern_armor_design_cost_factor = PRC_New_Red_Army_land_unit_modern_armor_design_cost_factor		#现代坦克编制设计花费
+
+	# 摩托化与机械化编制花费
+	unit_motorized_design_cost_factor = PRC_New_Red_Army_land_unit_motorized_design_cost_factor		#摩托化编制设计花费
+	unit_mechanized_design_cost_factor = PRC_New_Red_Army_land_unit_mechanized_design_cost_factor		#机械化编制设计花费
+
+	# 非正规军与民兵编制花费
+	unit_irregular_infantry_design_cost_factor = PRC_New_Red_Army_land_unit_irregular_infantry_design_cost_factor	#非正规步兵编制设计花费
+	unit_militia_design_cost_factor = PRC_New_Red_Army_land_unit_militia_design_cost_factor				#民兵编制设计花费
+}
+
+PRC_New_Red_Army_navy_dynamic_modifier = {	# 新红军海军
+	icon = "GFX_idea_PRC_New_Red_Army_navy"
+
+	enable = { 
+		tag = PRC
+		PRC = {
+			has_completed_focus = PRC_Red_Army_Naval
+		}
+	}
+
+	# 海军经验
+	experience_gain_navy_factor = PRC_New_Red_Army_navy_experience_gain_navy_factor					# 海军经验获取
+	experience_gain_navy_unit_factor = PRC_New_Red_Army_navy_experience_gain_navy_unit_factor			# 舰艇经验获取
+	# 海军学说精通度
+	new_base_strike_mastery_gain_factor = PRC_New_Red_Army_navy_new_base_strike_mastery_gain_factor		# 基地打击精通度获取
+	new_convoy_raiding_mastery_gain_factor = PRC_New_Red_Army_navy_new_convoy_raiding_mastery_gain_factor	# 贸易阻断精通度获取
+	new_fleet_in_being_mastery_gain_factor = PRC_New_Red_Army_navy_new_fleet_in_being_mastery_gain_factor	# 存在舰队精通度获取
+
+	# 海军维护与后勤
+	repair_speed_factor = PRC_New_Red_Army_navy_repair_speed_factor					# 舰艇维修速度
+	naval_accidents_chance = PRC_New_Red_Army_navy_naval_accidents_chance				# 海军事故概率
+	naval_supply_consumption_factor = PRC_New_Red_Army_navy_naval_supply_consumption_factor		# 海军补给消耗
+	naval_morale_factor = PRC_New_Red_Army_navy_naval_morale_factor					# 海军组织度恢复
+	naval_speed_factor = PRC_New_Red_Army_navy_naval_speed_factor					# 舰艇航行速度
+	sortie_efficiency = PRC_New_Red_Army_navy_sortie_efficiency					# 出击效率
+
+	# 两栖登陆作战
+	invasion_preparation = PRC_New_Red_Army_navy_invasion_preparation				# 海军入侵准备时间
+	naval_invasion_capacity = PRC_New_Red_Army_navy_naval_invasion_capacity			# 海军入侵容量
+	naval_invasion_penalty = PRC_New_Red_Army_navy_naval_invasion_penalty				# 海军入侵惩罚
+	amphibious_invasion = PRC_New_Red_Army_navy_amphibious_invasion					# 两栖登陆速度
+	amphibious_invasion_defence = PRC_New_Red_Army_navy_amphibious_invasion_defence			# 两栖登陆防御
+
+	# 舰队侦察、部署与交战
+	naval_detection = PRC_New_Red_Army_navy_naval_detection						# 海军侦察
+	ships_at_battle_start = PRC_New_Red_Army_navy_ships_at_battle_start				# 战斗开始时参战舰艇比例
+	positioning = PRC_New_Red_Army_navy_positioning							# 舰队阵位
+	screening_efficiency = PRC_New_Red_Army_navy_screening_efficiency					# 屏卫效率
+	strike_force_movement_org_loss = PRC_New_Red_Army_navy_strike_force_movement_org_loss			# 打击舰队移动组织度损失
+	naval_coordination = PRC_New_Red_Army_navy_naval_coordination					# 海军协同
+
+	# 通用海军作战加成
+	naval_damage_factor = PRC_New_Red_Army_navy_naval_damage_factor					# 海军伤害
+	naval_defense_factor = PRC_New_Red_Army_navy_naval_defense_factor				# 海军防御
+	naval_hit_chance = PRC_New_Red_Army_navy_naval_hit_chance					# 海军命中率
+	naval_critical_score_chance_factor = PRC_New_Red_Army_navy_naval_critical_score_chance_factor		# 海军暴击概率
+
+
+	# 与舰队荣耀作战加成
+	naval_has_potf_in_combat_attack = PRC_New_Red_Army_navy_naval_has_potf_in_combat_attack			# 舰队荣耀参战时海军攻击
+	naval_has_potf_in_combat_defense = PRC_New_Red_Army_navy_naval_has_potf_in_combat_defense			# 舰队荣耀参战时海军防御
+
+	# 屏卫舰艇加成
+	navy_screen_attack_factor = PRC_New_Red_Army_navy_navy_screen_attack_factor				# 屏卫舰攻击
+	navy_screen_defence_factor = PRC_New_Red_Army_navy_navy_screen_defence_factor				# 屏卫舰防御
+
+	# 主力舰加成
+	navy_capital_ship_attack_factor = PRC_New_Red_Army_navy_navy_capital_ship_attack_factor			# 主力舰攻击
+	navy_capital_ship_defence_factor = PRC_New_Red_Army_navy_navy_capital_ship_defence_factor		# 主力舰防御
+
+	# 潜艇作战
+	navy_submarine_attack_factor = PRC_New_Red_Army_navy_navy_submarine_attack_factor				# 潜艇攻击
+	sub_retreat_speed = PRC_New_Red_Army_navy_sub_retreat_speed						# 潜艇撤退速度
+	naval_torpedo_cooldown_factor = PRC_New_Red_Army_navy_naval_torpedo_cooldown_factor			# 鱼雷冷却时间
+
+	# 水雷作战
+	naval_mine_hit_chance = PRC_New_Red_Army_navy_naval_mine_hit_chance					# 水雷命中概率
+	naval_mines_damage_factor = PRC_New_Red_Army_navy_naval_mines_damage_factor				# 水雷伤害
+
+	# 航母舰载机
+	navy_carrier_air_agility_factor = PRC_New_Red_Army_navy_navy_carrier_air_agility_factor			# 航母舰载机机动
+	navy_carrier_air_attack_factor = PRC_New_Red_Army_navy_navy_carrier_air_attack_factor			# 航母舰载机攻击
+	navy_carrier_air_targetting_factor = PRC_New_Red_Army_navy_navy_carrier_air_targetting_factor		# 航母舰载机瞄准
+	navy_carrier_air_agility_factor = PRC_New_Red_Army_navy_navy_carrier_air_agility_factor
+
+	#航母
+	carrier_capacity_penalty_reduction = PRC_New_Red_Army_navy_carrier_capacity_penalty_reduction	#航母超载
+	carrier_traffic = PRC_New_Red_Army_navy_carrier_traffic	#航母起降能力
+	carrier_night_traffic = PRC_New_Red_Army_navy_carrier_night_traffic	#航母夜间起降能力
+
+}
+
+PRC_New_Red_Army_air_dynamic_modifier = {	#新红军空军
+	icon = "GFX_idea_PRC_New_Red_Army_air"
+
+	enable = { 
+		tag = PRC
+		PRC = {
+			has_completed_focus = PRC_Red_Army_Air
+		}
+	}
+
+	# 空军经验
+	experience_gain_air = PRC_New_Red_Army_air_experience_gain_air					#每日空军经验获取
+	experience_gain_air_factor = PRC_New_Red_Army_air_experience_gain_air_factor			#空军经验获取系数
+	air_training_xp_gain_factor = PRC_New_Red_Army_air_air_training_xp_gain_factor			#空军训练经验获取
+	air_mission_xp_gain_factor = PRC_New_Red_Army_air_air_mission_xp_gain_factor			#空军任务经验获取
+	air_wing_xp_loss_when_killed_factor = PRC_New_Red_Army_air_air_wing_xp_loss_when_killed_factor	#飞机损失造成的联队经验损失
+	air_untrained_pilots_penalty_factor = PRC_New_Red_Army_air_air_untrained_pilots_penalty_factor	#未训练飞行员惩罚
+
+	# 空军学说
+	air_doctrine_cost_factor = PRC_New_Red_Army_air_air_doctrine_cost_factor				#空军学说花费
+
+	# 空军学说精通度
+	new_battlefield_support_mastery_gain_factor = PRC_New_Red_Army_air_new_battlefield_support_mastery_gain_factor		#战场支援精通度获取
+	new_operational_integrity_mastery_gain_factor = PRC_New_Red_Army_air_new_operational_integrity_mastery_gain_factor		#连续作战精通度获取
+	new_strategic_destruction_mastery_gain_factor = PRC_New_Red_Army_air_new_strategic_destruction_mastery_gain_factor		#战略破坏精通度获取
+
+	# 飞机设计与人力
+	air_equipment_upgrade_xp_cost = PRC_New_Red_Army_air_air_equipment_upgrade_xp_cost		#飞机设计经验花费
+	air_manpower_requirement_factor = PRC_New_Red_Army_air_air_manpower_requirement_factor		#空军人力需求
+
+	# 飞机通用作战性能
+	air_attack_factor = PRC_New_Red_Army_air_air_attack_factor					#空中攻击
+	air_defence_factor = PRC_New_Red_Army_air_air_defence_factor				#空中防御
+	air_agility_factor = PRC_New_Red_Army_air_air_agility_factor				#空中机动
+	air_maximum_speed_factor = PRC_New_Red_Army_air_air_maximum_speed_factor			#飞机最大速度
+	air_range_factor = PRC_New_Red_Army_air_air_range_factor					#飞机航程
+
+	# 空军侦测
+	air_detection = PRC_New_Red_Army_air_air_detection						#空军侦测
+	air_superiority_detect_factor = PRC_New_Red_Army_air_air_superiority_detect_factor		#制空任务侦测
+	air_interception_detect_factor = PRC_New_Red_Army_air_air_interception_detect_factor		#截击任务侦测
+
+	# 空军任务效率
+	air_mission_efficiency = PRC_New_Red_Army_air_air_mission_efficiency				#空军任务效率
+	air_superiority_efficiency = PRC_New_Red_Army_air_air_superiority_efficiency			#制空任务效率
+	air_intercept_efficiency = PRC_New_Red_Army_air_air_intercept_efficiency				#截击任务效率
+	air_escort_efficiency = PRC_New_Red_Army_air_air_escort_efficiency				#空中护航效率
+	air_home_defence_factor = PRC_New_Red_Army_air_air_home_defence_factor				#本土空中防御
+	air_power_projection_factor = PRC_New_Red_Army_air_air_power_projection_factor			#空中力量投射
+
+	# 制空权
+	army_bonus_air_superiority_factor = PRC_New_Red_Army_air_army_bonus_air_superiority_factor	#制空权对陆军作战加成
+
+	# 近距空中支援
+	ground_attack_factor = PRC_New_Red_Army_air_ground_attack_factor				#对地攻击
+	air_bombing_targetting = PRC_New_Red_Army_air_air_bombing_targetting				#对地轰炸瞄准
+	air_cas_efficiency = PRC_New_Red_Army_air_air_cas_efficiency					#近距空中支援任务效率
+	air_cas_present_factor = PRC_New_Red_Army_air_air_cas_present_factor				#近距空中支援对陆军作战效果
+	air_close_air_support_org_damage_factor = PRC_New_Red_Army_air_air_close_air_support_org_damage_factor	#近距空中支援组织度伤害
+
+	# 战略轰炸
+	air_strategic_bomber_bombing_factor = PRC_New_Red_Army_air_air_strategic_bomber_bombing_factor	#战略轰炸效率
+	air_strategic_bomber_night_penalty = PRC_New_Red_Army_air_air_strategic_bomber_night_penalty	#战略轰炸夜间惩罚
+	strategic_bomb_visibility = PRC_New_Red_Army_air_strategic_bomb_visibility			#战略轰炸机可见度
+
+	# 对海攻击
+	naval_strike_attack_factor = PRC_New_Red_Army_air_naval_strike_attack_factor			#海军打击攻击
+	naval_strike_targetting_factor = PRC_New_Red_Army_air_naval_strike_targetting_factor		#海军打击瞄准
+	air_nav_efficiency = PRC_New_Red_Army_air_air_nav_efficiency					#海军打击任务效率
+	port_strike = PRC_New_Red_Army_air_port_strike						#港口袭击伤害
+
+	# 空军王牌
+	air_ace_generation_chance_factor = PRC_New_Red_Army_air_air_ace_generation_chance_factor	#空军王牌产生概率
+	air_ace_bonuses_factor = PRC_New_Red_Army_air_air_ace_bonuses_factor				#王牌飞行员加成
+	ace_effectiveness_factor = PRC_New_Red_Army_air_ace_effectiveness_factor				#王牌飞行员效果
+
+	# 夜间与天气作战
+	air_night_penalty = PRC_New_Red_Army_air_air_night_penalty					#夜间空战惩罚
+	air_weather_penalty = PRC_New_Red_Army_air_air_weather_penalty				#恶劣天气空战惩罚
+
+	# 空军事故
+	air_accidents_factor = PRC_New_Red_Army_air_air_accidents_factor				#空军事故概率
+
+	# 空军后勤
+	air_fuel_consumption_factor = PRC_New_Red_Army_air_air_fuel_consumption_factor			#空军燃油消耗
+
+	# 空中水雷作战
+	mines_planting_by_air_factor = PRC_New_Red_Army_air_mines_planting_by_air_factor			#空中布雷效率
+	mines_sweeping_by_air_factor = PRC_New_Red_Army_air_mines_sweeping_by_air_factor			#空中扫雷效率
 }
 
 PRC_sandagaizao_dynamic_modifier = {	#三大改造
 	icon = "GFX_idea_PRC_sandagaizao_dynamic_modifier"
+
 	enable = { 
 		always = yes 
 	}
-	
-	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor	#生产效率增长
-	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor		#生产效率上限
-	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor	#基础生产效率
-	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor		#生产效率保持
 
-	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor	#建设速度
-	production_speed_industrial_complex_factor  = PRC_sandagaizao_production_speed_industrial_complex_factor	#民用工厂建设速度
-	production_speed_arms_factory_factor  = PRC_sandagaizao_production_speed_arms_factory_factor	#军用工厂建设速度
-	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor	#船坞建设速度
-	production_speed_infrastructure_factor  = PRC_sandagaizao_production_speed_infrastructure_factor	#基础设施建设速度
-	conversion_cost_civ_to_mil_factor  = PRC_sandagaizao_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
-	conversion_cost_mil_to_civ_factor  = PRC_sandagaizao_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
+	# 生产效率
+	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor			#生产效率增长
+	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor			#生产效率上限
+	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor			#基础生产效率
+	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor			#生产效率保持
 
-	industrial_capacity_factory  = PRC_sandagaizao_industrial_capacity_factory	#工厂产出
-	industrial_capacity_dockyard  = PRC_sandagaizao_industrial_capacity_dockyard	#海军船坞产出
-	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed #改装速度加成
+	# 工业产出
+	industrial_capacity_factory = PRC_sandagaizao_industrial_capacity_factory					#工厂产出
+	industrial_capacity_dockyard = PRC_sandagaizao_industrial_capacity_dockyard					#海军船坞产出
 
-	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor		#地区最大工厂数
-	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor	#生活消费品工厂系数
-	
-	local_resources_factor = PRC_sandagaizao_local_resources_factor	#战略资源获取效率
-	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
-	
-	political_power_gain = PRC_sandagaizao_political_power_gain		#每日政治点数获取
-	political_power_cost  = PRC_sandagaizao_political_power_cost	#每日消耗的政治点数
-	stability_factor = PRC_sandagaizao_stability_factor		#稳定度
-	AWR_economy_development_monthly =  PRC_sandagaizao_AWR_economy_development_monthly #月度经济变化
+	# 通用建设
+	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor				#建设速度
+
+	# 工业设施建设
+	production_speed_industrial_complex_factor = PRC_sandagaizao_production_speed_industrial_complex_factor			#民用工厂建设速度
+	production_speed_arms_factory_factor = PRC_sandagaizao_production_speed_arms_factory_factor				#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor					#海军船坞建设速度
+
+	# 基础设施建设
+	production_speed_infrastructure_factor = PRC_sandagaizao_production_speed_infrastructure_factor				#基础设施建设速度
+
+	# 工厂转换
+	conversion_cost_civ_to_mil_factor = PRC_sandagaizao_conversion_cost_civ_to_mil_factor					#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor = PRC_sandagaizao_conversion_cost_mil_to_civ_factor					#军用工厂转民用工厂花费
+
+	# 装备改装
+	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed						#装备改装速度
+
+	# 工业容量
+	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor						#地区最大建筑位
+
+	# 消费品
+	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor							#生活消费品工厂系数
+
+	# 战略资源
+	local_resources_factor = PRC_sandagaizao_local_resources_factor							#当地战略资源获取
+	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor			#缺乏战略资源生产惩罚
+
+	# 政治点数
+	political_power_gain = PRC_sandagaizao_political_power_gain							#每日政治点数获取
+	political_power_cost = PRC_sandagaizao_political_power_cost							#政治点数花费
+
+	# 稳定度
+	stability_factor = PRC_sandagaizao_stability_factor								#稳定度
+
+	# 经济发展
+	AWR_economy_development_monthly = PRC_sandagaizao_AWR_economy_development_monthly					#月度经济发展变化
 }
 
 PRC_shehuizhuyi_dynamic_modifier = {	#中国式社会主义
 	icon = "GFX_idea_PRC_sandagaizao_dynamic_modifier"
+
 	enable = { 
 		always = yes 
 	}
-	
-	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor	#生产效率增长
-	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor		#生产效率上限
-	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor	#基础生产效率
-	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor		#生产效率保持
 
-	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor	#建设速度
-	production_speed_industrial_complex_factor  = PRC_sandagaizao_production_speed_industrial_complex_factor	#民用工厂建设速度
-	production_speed_arms_factory_factor  = PRC_sandagaizao_production_speed_arms_factory_factor	#军用工厂建设速度
-	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor	#船坞建设速度
-	production_speed_infrastructure_factor  = PRC_sandagaizao_production_speed_infrastructure_factor	#基础设施建设速度
-	conversion_cost_civ_to_mil_factor  = PRC_sandagaizao_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
-	conversion_cost_mil_to_civ_factor  = PRC_sandagaizao_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
+	# 生产效率
+	production_factory_efficiency_gain_factor = PRC_sandagaizao_production_factory_efficiency_gain_factor			#生产效率增长
+	production_factory_max_efficiency_factor = PRC_sandagaizao_production_factory_max_efficiency_factor			#生产效率上限
+	production_factory_start_efficiency_factor = PRC_sandagaizao_production_factory_start_efficiency_factor			#基础生产效率
+	line_change_production_efficiency_factor = PRC_sandagaizao_line_change_production_efficiency_factor			#生产效率保持
 
-	industrial_capacity_factory  = PRC_sandagaizao_industrial_capacity_factory	#工厂产出
-	industrial_capacity_dockyard  = PRC_sandagaizao_industrial_capacity_dockyard	#海军船坞产出
-	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed #改装速度加成
+	# 工业产出
+	industrial_capacity_factory = PRC_sandagaizao_industrial_capacity_factory					#工厂产出
+	industrial_capacity_dockyard = PRC_sandagaizao_industrial_capacity_dockyard					#海军船坞产出
 
-	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor		#地区最大工厂数
-	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor	#生活消费品工厂系数
-	
-	local_resources_factor = PRC_sandagaizao_local_resources_factor	#战略资源获取效率
-	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
-	
-	political_power_gain = PRC_sandagaizao_political_power_gain		#每日政治点数获取
-	political_power_cost  = PRC_sandagaizao_political_power_cost	#每日消耗的政治点数
-	stability_factor = PRC_sandagaizao_stability_factor		#稳定度
-	AWR_economy_development_monthly =  PRC_sandagaizao_AWR_economy_development_monthly #月度经济变化
+	# 通用建设
+	production_speed_buildings_factor = PRC_sandagaizao_production_speed_buildings_factor				#建设速度
+
+	# 工业设施建设
+	production_speed_industrial_complex_factor = PRC_sandagaizao_production_speed_industrial_complex_factor			#民用工厂建设速度
+	production_speed_arms_factory_factor = PRC_sandagaizao_production_speed_arms_factory_factor				#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_sandagaizao_production_speed_dockyard_factor					#海军船坞建设速度
+
+	# 基础设施建设
+	production_speed_infrastructure_factor = PRC_sandagaizao_production_speed_infrastructure_factor				#基础设施建设速度
+
+	# 工厂转换
+	conversion_cost_civ_to_mil_factor = PRC_sandagaizao_conversion_cost_civ_to_mil_factor					#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor = PRC_sandagaizao_conversion_cost_mil_to_civ_factor					#军用工厂转民用工厂花费
+
+	# 装备改装
+	equipment_conversion_speed = PRC_sandagaizao_equipment_conversion_speed						#装备改装速度
+
+	# 工业容量
+	global_building_slots_factor = PRC_sandagaizao_global_building_slots_factor						#地区最大建筑位
+
+	# 消费品
+	consumer_goods_factor = PRC_sandagaizao_consumer_goods_factor							#生活消费品工厂系数
+
+	# 战略资源
+	local_resources_factor = PRC_sandagaizao_local_resources_factor							#当地战略资源获取
+	production_lack_of_resource_penalty_factor = PRC_sandagaizao_production_lack_of_resource_penalty_factor			#缺乏战略资源生产惩罚
+
+	# 政治点数
+	political_power_gain = PRC_sandagaizao_political_power_gain							#每日政治点数获取
+	political_power_cost = PRC_sandagaizao_political_power_cost							#政治点数花费
+
+	# 稳定度
+	stability_factor = PRC_sandagaizao_stability_factor								#稳定度
+
+	# 经济发展
+	AWR_economy_development_monthly = PRC_sandagaizao_AWR_economy_development_monthly					#月度经济发展变化
 }
 
 PRC_gongyehua_dynamic_modifier = {	#社会主义工业化
 	icon = "GFX_idea_PRC_gongyehua_dynamic_modifier"
-	enable = { always = yes }
+
+	enable = { 
+		always = yes 
+	}
+
+	# 生产效率
+	production_factory_efficiency_gain_factor = PRC_gongyehua_production_factory_efficiency_gain_factor			#生产效率增长
+	production_factory_max_efficiency_factor = PRC_gongyehua_production_factory_max_efficiency_factor			#生产效率上限
+	production_factory_start_efficiency_factor = PRC_gongyehua_production_factory_start_efficiency_factor			#基础生产效率
+	line_change_production_efficiency_factor = PRC_gongyehua_line_change_production_efficiency_factor			#生产效率保持
+
+	# 工业产出
+	industrial_capacity_factory = PRC_gongyehua_industrial_capacity_factory					#工厂产出
+	industrial_capacity_dockyard = PRC_gongyehua_industrial_capacity_dockyard					#海军船坞产出
+
+	# 通用建设
+	production_speed_buildings_factor = PRC_gongyehua_production_speed_buildings_factor				#建设速度
+
+	# 工业设施建设
+	production_speed_industrial_complex_factor = PRC_gongyehua_production_speed_industrial_complex_factor			#民用工厂建设速度
+	production_speed_arms_factory_factor = PRC_gongyehua_production_speed_arms_factory_factor				#军用工厂建设速度
+	production_speed_dockyard_factor = PRC_gongyehua_production_speed_dockyard_factor					#海军船坞建设速度
+
+	# 交通与基础设施建设
+	production_speed_infrastructure_factor = PRC_gongyehua_production_speed_infrastructure_factor				#基础设施建设速度
+	production_speed_rail_way_factor = PRC_gongyehua_production_speed_rail_way_factor					#铁路建设速度
+	production_speed_naval_base_factor = PRC_gongyehua_production_speed_naval_base_factor				#海军基地建设速度
+
+	# 能源与特殊工业建设
+	production_speed_synthetic_refinery_factor = PRC_gongyehua_production_speed_synthetic_refinery_factor			#合成炼油厂建设速度
+	production_speed_nuclear_reactor_factor = PRC_gongyehua_production_speed_nuclear_reactor_factor				#核反应堆建设速度
+
+	# 工厂转换
+	conversion_cost_civ_to_mil_factor = PRC_gongyehua_conversion_cost_civ_to_mil_factor					#民用工厂转军用工厂花费
+	conversion_cost_mil_to_civ_factor = PRC_gongyehua_conversion_cost_mil_to_civ_factor					#军用工厂转民用工厂花费
+
+	# 装备改装与维修
+	equipment_conversion_speed = PRC_gongyehua_equipment_conversion_speed						#装备改装速度
+	repair_speed_factor = PRC_gongyehua_repair_speed_factor								#修理速度
+
+	# 工业容量
+	global_building_slots_factor = PRC_gongyehua_global_building_slots_factor						#地区最大建筑位
+
+	# 消费品
+	consumer_goods_factor = PRC_gongyehua_consumer_goods_factor							#生活消费品工厂系数
+
+	# 战略资源
+	local_resources_factor = PRC_gongyehua_local_resources_factor							#当地战略资源获取
+	production_lack_of_resource_penalty_factor = PRC_gongyehua_production_lack_of_resource_penalty_factor			#缺乏战略资源生产惩罚
+
+	# 科研
+	research_speed_factor = PRC_gongyehua_research_speed_factor							#研究速度
+
+	# 特殊设施建设
+	production_speed_facility_factor = PRC_gongyehua_production_speed_facility_factor					#设施建设速度
+	production_speed_land_facility_factor = PRC_gongyehua_production_speed_land_facility_factor				#陆军设施建设速度
+	production_speed_air_facility_factor = PRC_gongyehua_production_speed_air_facility_factor				#空军设施建设速度
+	production_speed_naval_facility_factor = PRC_gongyehua_production_speed_naval_facility_factor				#海军设施建设速度
+	production_speed_nuclear_facility_factor = PRC_gongyehua_production_speed_nuclear_facility_factor				#核设施建设速度
+
+	# 政治点数
+	political_power_gain = PRC_gongyehua_political_power_gain							#每日政治点数获取
+	political_power_cost = PRC_gongyehua_political_power_cost							#政治点数花费
+
+	# 稳定度
+	stability_weekly = PRC_gongyehua_stability_weekly								#每周稳定度
+	stability_factor = PRC_gongyehua_stability_factor								#稳定度
+
+	# 经济发展
+	AWR_economy_development_monthly = PRC_gongyehua_AWR_economy_development_monthly					#月度经济发展变化
+}
 	
-	production_factory_efficiency_gain_factor = PRC_gongyehua_production_factory_efficiency_gain_factor	#生产效率增长
-	production_factory_max_efficiency_factor = PRC_gongyehua_production_factory_max_efficiency_factor		#生产效率上限
-	production_factory_start_efficiency_factor = PRC_gongyehua_production_factory_start_efficiency_factor	#基础生产效率
-	line_change_production_efficiency_factor = PRC_gongyehua_line_change_production_efficiency_factor		#生产效率保持
-
-	production_speed_buildings_factor = PRC_gongyehua_production_speed_buildings_factor	#建设速度
-	production_speed_industrial_complex_factor  = PRC_gongyehua_production_speed_industrial_complex_factor	#民用工厂建设速度
-	production_speed_arms_factory_factor  = PRC_gongyehua_production_speed_arms_factory_factor	#军用工厂建设速度
-	production_speed_dockyard_factor = PRC_gongyehua_production_speed_dockyard_factor	#船坞建设速度
-	production_speed_infrastructure_factor  = PRC_gongyehua_production_speed_infrastructure_factor	#基础设施建设速度
-	conversion_cost_civ_to_mil_factor  = PRC_gongyehua_conversion_cost_civ_to_mil_factor	#民用工厂转军用工厂花费
-	conversion_cost_mil_to_civ_factor  = PRC_gongyehua_conversion_cost_mil_to_civ_factor	#军用工厂转民用工厂花费
-	production_speed_rail_way_factor = PRC_gongyehua_production_speed_rail_way_factor	#铁路建设速度
-	production_speed_naval_base_factor = PRC_gongyehua_production_speed_naval_base_factor	#海军基地建设速度
-	production_speed_synthetic_refinery_factor = PRC_gongyehua_production_speed_synthetic_refinery_factor	#合成炼油厂建设速度
-	production_speed_nuclear_reactor_factor = PRC_gongyehua_production_speed_nuclear_reactor_factor	#核反应堆建设速度
-
-
-	industrial_capacity_factory  = PRC_gongyehua_industrial_capacity_factory	#工厂产出
-	industrial_capacity_dockyard  = PRC_gongyehua_industrial_capacity_dockyard	#海军船坞产出
-	repair_speed_factor = PRC_gongyehua_repair_speed_factor	#船坞修理速度
-	equipment_conversion_speed = PRC_gongyehua_equipment_conversion_speed #改装速度加成
-
-	global_building_slots_factor = PRC_gongyehua_global_building_slots_factor		#地区最大工厂数
-
-	consumer_goods_factor = PRC_gongyehua_consumer_goods_factor	#生活消费品工厂系数
-	
-	local_resources_factor = PRC_gongyehua_local_resources_factor	#战略资源获取效率
-	production_lack_of_resource_penalty_factor = PRC_gongyehua_production_lack_of_resource_penalty_factor	#缺乏战略资源惩罚
-	
-	political_power_gain = PRC_gongyehua_political_power_gain		#每日政治点数获取
-	political_power_cost  = PRC_gongyehua_political_power_cost	#每日消耗的政治点数
-	stability_weekly = PRC_gongyehua_stability_weekly		#每周稳定度
-	stability_factor = PRC_gongyehua_stability_factor		#稳定度
-
-	research_speed_factor = PRC_gongyehua_research_speed_factor	#研究速度
-	production_speed_facility_factor = PRC_gongyehua_production_speed_facility_factor	#设施建设速度
-	production_speed_naval_facility_factor = PRC_gongyehua_production_speed_naval_facility_factor	#海军设施建设速度
-	production_speed_nuclear_facility_factor = PRC_gongyehua_production_speed_nuclear_facility_factor	#核设施建设速度
-	production_speed_air_facility_factor = PRC_gongyehua_production_speed_air_facility_factor	#空军设施建设速度
-	production_speed_land_facility_factor = PRC_gongyehua_production_speed_land_facility_factor	#陆军设施建设速度
-
-	AWR_economy_development_monthly =  PRC_gongyehua_AWR_economy_development_monthly #月度经济变化
-}	
 
 communist_stronghold = {	#军爱民，民拥军
 	enable = { 

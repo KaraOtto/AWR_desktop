@@ -204,3 +204,79 @@ is_north_china_state_for_liberation = {
 		state = 749
     }
 }
+
+# ============================================================
+# 海军工程决议 - 项目前置条件
+# ============================================================
+
+# 支援舰
+# 当前海军科技树中对应登陆运输/指定登陆驳船系列
+PRC_req_support_ships = {
+	has_tech = mtg_transport
+}
+
+# 鱼雷巡洋舰
+PRC_req_torpedo_cruiser = {
+	has_tech = basic_ship_hull_cruiser
+}
+
+# 超重型战列舰
+PRC_req_super_heavy_battleship = {
+	has_tech = basic_ship_hull_heavy
+}
+
+# 冰航母
+PRC_req_ice_carrier = {
+	has_tech = improved_ship_hull_carrier
+}
+
+# 海上补给
+# 注意：新版海军学说已经改为这两个 grand doctrine ID
+PRC_req_underway_replenishment = {
+	OR = {
+		has_doctrine = new_base_strike
+		has_doctrine = new_fleet_in_being
+	}
+}
+
+# 近炸引信
+# Specialised Radio Bands 系列对应的无线电前置
+PRC_req_proximity_fuze = {
+	has_tech = improved_radio
+}
+
+# 消声瓦
+PRC_req_anechoic_tiles = {
+	has_tech = basic_ship_hull_submarine
+}
+
+# 无氧推进器 / AIP
+PRC_req_aip_engine = {
+	has_tech = improved_ship_hull_submarine
+}
+
+# 袖珍潜艇
+PRC_req_midget_submarine = {
+	has_tech = basic_ship_hull_submarine
+}
+
+# 巡洋潜艇
+PRC_req_cruiser_submarine = {
+	has_tech = early_ship_hull_submarine
+}
+
+# 舰队潜艇
+# 1.15.4之后舰队潜艇要求1940潜艇，而不是1936潜艇
+PRC_req_fleet_submarine = {
+	has_tech = improved_ship_hull_submarine
+	is_special_project_completed = sp:sp_naval_cruiser_submarine
+}
+
+# 核潜艇
+PRC_req_nuclear_submarine = {
+	is_special_project_completed = sp:sp_naval_fleet_submarine
+
+	# 核动力发动机项目的内部ID在不同大版本/大型MOD中容易被改。
+	# 如果你当前 naval_projects.txt 中核潜艇还有额外的 Nuclear Engines 条件，
+	# 请把原版那一行 is_special_project_completed 直接复制到这里。
+}

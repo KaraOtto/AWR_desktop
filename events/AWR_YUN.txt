@@ -1,0 +1,195 @@
+add_namespace = AWR_YUN
+
+country_event = {	#云南起义
+	id =  AWR_YUN.1
+	title = AWR_YUN.1.t
+	desc =  AWR_YUN.1.d
+	picture = GFX_report_event_yunnan_uprising
+
+	is_triggered_only = yes
+	
+	option = {
+		name =  AWR_YUN.1.a
+		ai_chance = {
+			factor = 100
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+		if = {
+			limit = {
+				is_subject = yes
+			}
+			set_autonomy = {
+				target = ROOT
+				autonomy_state = autonomy_free
+			}
+		}
+		event_target:WTT_communist_china = { 
+			country_event = { 
+				id = AWR_YUN.2 
+			} 
+		}
+		event_target:WTT_current_china_leader = { 
+			country_event = { 
+				id = AWR_YUN.2 
+			} 
+		}
+		effect_tooltip = {
+			event_target:WTT_communist_china = { 
+				annex_country = { 
+					target = ROOT 
+					transfer_troops = yes 
+				} 
+			}
+		}
+		hidden_effect = {		
+			every_unit_leader = {
+				retire = yes
+			}
+		}
+	}
+	option = {
+		name =  AWR_YUN.1.b
+		add_war_support = 0.05
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {	#云南加入解放军
+	id = AWR_YUN.2
+	title = AWR_YUN.2.t
+	desc = {
+		text = AWR_YUN.2.d
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_YUN.2.d_chi
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+	}
+	picture = GFX_report_event_chinese_civil_war
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		name = AWR_YUN.2.a
+		if = {
+			limit = {
+				FROM = {
+					tag = XIK
+				}
+			}
+			custom_effect_tooltip = all_of_their_units_join_us_tt
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						tag = SIC
+						tag = YUN
+					}	
+					
+				}
+			}
+			annex_country = { 
+				target = FROM 
+				transfer_troops = yes 
+			}
+		}
+	}
+	option = {
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = XIK
+				}
+			}
+			custom_effect_tooltip = all_of_their_units_join_prc_tt
+			annex_country = { 
+				target = XIK transfer_troops = no 
+			}
+			if = {
+				limit = {
+					NOT = {
+						country_exists = SIC
+					}
+				}
+				transfer_units_fraction = {
+					target = event_target:WTT_communist_china         
+					size = 0      
+					army_ratio = 0.25       
+					stockpile_ratio = 0.15  
+					keep_unit_leaders_trigger = { 
+						always = yes
+					}
+				}
+			}	
+			if = {
+				limit = {
+					has_character = SIC_Pan_Wenhua
+				}
+				retire_character = SIC_Pan_Wenhua 
+			}
+			if = {
+				limit = {
+					has_character = SIC_Deng_Xihou
+				}
+				retire_character = SIC_Deng_Xihou
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = YUN
+				}
+			}
+			effect_tooltip = {
+				event_target:WTT_communist_china = { 
+					annex_country = { 
+						target = YUN 
+						transfer_troops = yes 
+					} 
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = NXM
+				}
+			}
+			effect_tooltip = {
+				event_target:WTT_communist_china = { 
+					annex_country = { 
+						target = NXM 
+						transfer_troops = yes 
+					} 
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = SUY
+				}
+			}
+			effect_tooltip = {
+				event_target:WTT_communist_china = { 
+					annex_country = { 
+						target = SUY 
+						transfer_troops = yes 
+					} 
+				}
+			}
+		}
+		name = AWR_YUN.2.b
+	}
+}

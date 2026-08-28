@@ -12547,7 +12547,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			}
 		}
 		available = {
-			#always = no ###this needs some work
+
 			any_enemy_country = {
 				OR = {
 					tag = XIK
@@ -12555,21 +12555,18 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				}
 				has_capitulated = no
 			}
-			#NOT = {
-			#	country_exists = SIC
-			#}
+
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
-				#is_neighbor_of = ROOT
 				NOT = {
-					controls_state = 1160
-					controls_state = 613
+					controls_state = 1042
+					controls_state = 752
 				}
 				OR = {
 					controls_state = 605
 					controls_state = 751
 					controls_state = 753
-					controls_state = 1187
+					controls_state = 1086
 					has_subject = SIC
 				}
 			}
@@ -12582,11 +12579,10 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		fire_only_once = yes
 
 		modifier = {
-
+			#
 		}
 
 		remove_effect = {
-			#custom_effect_tooltip = PRC_contact_cheng_qian_focus_tt
 			if = {
 				limit = {
 					any_enemy_country = {
@@ -12595,20 +12591,20 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				}
 				every_enemy_country = {
 					limit = {
-						OR = {
-							tag = XIK
-							#tag = SIC
-						}
+						tag = XIK
 					}
 					country_event = {
-						id = rcmchina.214
+						id = AWR_XIK.1
 					}
 				}
 				custom_effect_tooltip = if_they_accept_green 
 			    custom_effect_tooltip = all_of_their_units_join_us_tt
 			    effect_tooltip = {
 				    event_target:WTT_current_china_leader = { 
-						annex_country = { target = XIK transfer_troops = no }	
+						annex_country = { 
+							target = XIK 
+							transfer_troops = no 
+						}	
 					}
 			    }
 			}
@@ -12620,22 +12616,23 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				}
 				every_enemy_country = {
 					limit = {
-						OR = {
-							tag = SIC
-						}
+						tag = SIC
 					}
 					country_event = {
-						id = rcmchina.214
+						id = AWR_XIK.1
 					}
 				}
 				custom_effect_tooltip = if_they_accept_green 
 			    effect_tooltip = {
-				   annex_country = { target = SIC transfer_troops = no }
+				   	annex_country = { 
+						target = SIC 
+						transfer_troops = no 
+					}
 			    }
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
 			factor = 1000
@@ -12654,17 +12651,22 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			}
 		}
 		available = {
+			controls_state = 1084
+			controls_state = 1034
+			controls_state = 744
 			any_enemy_country = {
 				tag = YUN
 				has_capitulated = no
-				#is_neighbor_of = ROOT
+				
 			}
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
-				#is_neighbor_of = ROOT
+				
 				NOT = {
-					controls_state = 1160
+					controls_state = 608
+					controls_state = 1084
 					controls_state = 613
+					controls_state = 1094
 				}
 			}
 			controls_state = 608
@@ -12676,61 +12678,48 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		fire_only_once = yes
 
 		modifier = {
-
+			#
 		}
 
 		remove_effect = {
 			YUN = {
-				country_event = rcmchina.213
+				country_event = AWR_YUN.1
 			}
 			custom_effect_tooltip = if_they_accept_green 
 			effect_tooltip = {
-				annex_country = { target = YUN transfer_troops = yes }	
+				annex_country = { 
+					target = YUN 
+					transfer_troops = yes 
+				}	
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
 			factor = 1000
 		}
 	}
 
-	PRC_contact_egm_decision = {	#
+	PRC_contact_nxm_decision = {	#宁夏
 		icon = GFX_decision_generic_political_discourse
 		allowed = {
 			is_literally_china = yes
 		}
 		visible = {
 			has_completed_focus = PRC_contact_cheng_qian_focus
-			any_enemy_country = {
-				tag = EGM
-			}
 		}
 		available = {
 			any_enemy_country = {
-				tag = EGM
+				tag = NXM
 				is_neighbor_of = ROOT
 				has_capitulated = no
 			}
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
-				#is_neighbor_of = ROOT
-				#NOT = {
-					#controls_state = 613
-				#}
-			}
-			controls_state = 608
-			controls_state = 1160
-			OR = {
-				NXM = {
-					exists = no
-				}
-				NXM = {
-					has_war_with = EGM
-				}
-				NXM = {
-				    surrender_progress > 0
+				NOT = {
+					controls_state = 608
+					controls_state = 1084
 				}
 			}
 		}
@@ -12741,29 +12730,32 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		fire_only_once = yes
 
 		modifier = {
-
+			#
 		}
 
 		remove_effect = {
-			EGM = {
+			NXM = {
 				country_event = {
-					id = EFM_Comchina.50
+					id = AWR_NXM.4
 				}
 			}
 			custom_effect_tooltip = if_they_accept_green 
 			effect_tooltip = {
-				annex_country = { target = EGM transfer_troops = yes }	
+				annex_country = { 
+					target = NXM 
+					transfer_troops = yes 
+				}	
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
-			factor = 1000
+			factor = 9999 
 		}
 	}
 
-	PRC_contact_shc_decision = {	
+	PRC_contact_shc_decision = {	#联络[SHC.GetLeader]
 		icon = GFX_decision_generic_political_discourse
 		allowed = {
 			is_literally_china = yes
@@ -12780,7 +12772,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				has_capitulated = no
 				is_neighbor_of = ROOT
 			    surrender_progress > 0.01
-				#has_war_support < 0.8
+
 			}
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
@@ -12788,10 +12780,11 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			}
 			controls_state = 608
 			controls_state = 614
-			controls_state = 1070
 			controls_state = 597
-			controls_state = 1161
-			controls_state = 1175
+			controls_state = 1095
+			controls_state = 1038
+			controls_state = 1085
+			controls_state = 1089
 		}
 
 		cost = 25
@@ -12800,12 +12793,12 @@ PRC_contact_wrl_cat = {		#联络地方官员
 		fire_only_once = yes
 
 		modifier = {
-
+			#
 		}
 
 		remove_effect = {
 			SHC = {
-				country_event = rcmchina.213
+				country_event = AWR_YUN.1
 			}
 			custom_effect_tooltip = if_they_accept_green 
 			effect_tooltip = {
@@ -12815,7 +12808,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			}
 		}
 		complete_effect = {
-			
+			#
 		}
 		ai_will_do = {
 			factor = 1000
@@ -13377,12 +13370,864 @@ PRC_Army_Reform_category = {	#陆军改革
 			add_to_variable = { 
 				PRC_jiefangjunlujun_army_org_factor = 0.10 
 			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_out_of_supply_factor = -0.10
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_supply_node_range = 0.10
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_coordination_bonus = 0.10
+			}
 
 			set_country_flag = PRC_Army_Reform_OVER
 		}
 	}
 }
 
+PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
+	# 支援舰
+	PRC_support_ships = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = {
+				is_special_project_completed = sp:sp_naval_support_ships
+			}
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+			has_completed_focus = PRC_special_project_one
+		}
+
+		available = {
+			PRC_req_support_ships = yes
+
+			NOT = {
+				is_special_project_being_researched = sp:sp_naval_support_ships
+			}
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+			num_of_civilian_factories_available_for_projects > 19
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+
+		ai_hint_pp_cost = 25
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_support_ships
+					country_event = { 
+						id = AWR_PRC.190 
+					}
+				}
+				25 = {
+					sp:sp_naval_support_ships = {
+						add_project_progress_ratio = 0.50
+					}
+					country_event = { 
+						id = AWR_PRC.191 
+					}
+				}
+				25 = {
+					sp:sp_naval_support_ships = {
+						add_project_progress_ratio = 0.25
+					}
+					country_event = { 
+						id = AWR_PRC.192 
+					}
+				}
+				25 = {
+					country_event = { 
+						id = AWR_PRC.193 
+					}
+				}
+			}
+		}
+
+		ai_will_do = { 
+			base = 0 
+		}
+	}
+	# 海上补给
+	PRC_underway_replenishment = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_underway_replenishment }
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+			has_completed_focus = PRC_special_project_one
+		}
+
+		available = {
+			PRC_req_underway_replenishment = yes
+			NOT = { is_special_project_being_researched = sp:sp_naval_underway_replenishment }
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { civilian_factory_use = 20 }
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_underway_replenishment
+					country_event = { id = AWR_PRC.208 }
+				}
+				25 = {
+					sp:sp_naval_underway_replenishment = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.209 }
+				}
+				25 = {
+					sp:sp_naval_underway_replenishment = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.210 }
+				}
+				25 = { country_event = { id = AWR_PRC.211 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 消声瓦
+	PRC_anechoic_tiles = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_anechoic_tiles }
+			has_completed_focus = PRC_learn_from_the_red_navy
+			has_completed_focus = PRC_special_project_one
+		}
+
+		available = {
+			PRC_req_anechoic_tiles = yes
+			NOT = { is_special_project_being_researched = sp:sp_naval_anechoic_tiles }
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { civilian_factory_use = 20 }
+
+		complete_effect = {
+			set_country_flag = PRC_naval_special_project_in_progress
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_anechoic_tiles
+					country_event = { id = AWR_PRC.216 }
+				}
+				25 = {
+					sp:sp_naval_anechoic_tiles = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.217 }
+				}
+				25 = {
+					sp:sp_naval_anechoic_tiles = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.218 }
+				}
+				25 = { country_event = { id = AWR_PRC.219 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 袖珍潜艇
+	PRC_midget_submarine = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_midget_submarine }
+			has_completed_focus = PRC_learn_from_the_red_navy
+			has_completed_focus = PRC_special_project_one
+		}
+
+		available = {
+			PRC_req_midget_submarine = yes
+			NOT = { is_special_project_being_researched = sp:sp_naval_midget_submarine }
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { civilian_factory_use = 20 }
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_midget_submarine
+					country_event = { id = AWR_PRC.224 }
+				}
+				25 = {
+					sp:sp_naval_midget_submarine = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.225 }
+				}
+				25 = {
+					sp:sp_naval_midget_submarine = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.226 }
+				}
+				25 = { country_event = { id = AWR_PRC.227 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 巡洋潜艇
+	PRC_cruiser_submarine = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { 
+				is_special_project_completed = sp:sp_naval_cruiser_submarine 
+			}
+			has_completed_focus = PRC_learn_from_the_red_navy
+			has_completed_focus = PRC_special_project_one
+		}
+
+		available = {
+			PRC_req_cruiser_submarine = yes
+			NOT = { 
+				is_special_project_being_researched = sp:sp_naval_cruiser_submarine 
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { 
+			civilian_factory_use = 20 
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_cruiser_submarine
+					country_event = { 
+						id = AWR_PRC.228 
+					}
+				}
+				25 = {
+					sp:sp_naval_cruiser_submarine = { 
+						add_project_progress_ratio = 0.50 
+					}
+					country_event = { 
+						id = AWR_PRC.229 
+					}
+				}
+				25 = {
+					sp:sp_naval_cruiser_submarine = { 
+						add_project_progress_ratio = 0.25 
+					}
+					country_event = { 
+						id = AWR_PRC.230 
+					}
+				}
+				25 = { 
+					country_event = { 
+						id = AWR_PRC.231 
+					} 
+				}
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# 鱼雷巡洋舰
+	PRC_torpedo_cruiser = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = {
+				is_special_project_completed = sp:sp_naval_torpedo_cruiser
+			}
+			has_completed_focus = PRC_special_project_two
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+		}
+
+		available = {
+			PRC_req_torpedo_cruiser = yes
+			NOT = {
+				is_special_project_being_researched = sp:sp_naval_torpedo_cruiser
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_torpedo_cruiser
+					country_event = { 
+						id = AWR_PRC.194 
+					}
+				}
+				25 = {
+					sp:sp_naval_torpedo_cruiser = { 
+						add_project_progress_ratio = 0.50 
+					}
+					country_event = { 
+						id = AWR_PRC.195 
+					}
+				}
+				25 = {
+					sp:sp_naval_torpedo_cruiser = { 
+						add_project_progress_ratio = 0.25 
+					}
+					country_event = { 
+						id = AWR_PRC.196 
+					}
+				}
+				25 = {
+					country_event = { 
+						id = AWR_PRC.197 
+					}
+				}
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 超重型战列舰
+	PRC_super_heavy_battleship = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = {
+				is_special_project_completed = sp:sp_naval_super_heavy_battleship
+			}
+			has_completed_focus = PRC_special_project_two
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+		}
+
+		available = {
+			PRC_req_super_heavy_battleship = yes
+			NOT = {
+				is_special_project_being_researched = sp:sp_naval_super_heavy_battleship
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { 
+			civilian_factory_use = 20 
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_super_heavy_battleship
+					country_event = { 
+						id = AWR_PRC.198 
+					}
+				}
+				25 = {
+					sp:sp_naval_super_heavy_battleship = { 
+						add_project_progress_ratio = 0.50 
+					}
+					country_event = { 
+						id = AWR_PRC.199 
+					}
+				}
+				25 = {
+					sp:sp_naval_super_heavy_battleship = { 
+						add_project_progress_ratio = 0.25 
+					}
+					country_event = { 
+						id = AWR_PRC.200 
+					}
+				}
+				25 = {
+					country_event = { 
+						id = AWR_PRC.201 
+					}
+				}
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 近炸引信
+	PRC_proximity_fuze = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_proximity_fuze }
+			has_completed_focus = PRC_special_project_two
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+		}
+
+		available = {
+			PRC_req_proximity_fuze = yes
+			NOT = { is_special_project_being_researched = sp:sp_naval_proximity_fuze }
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { civilian_factory_use = 20 }
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_proximity_fuze
+					country_event = { id = AWR_PRC.212 }
+				}
+				25 = {
+					sp:sp_naval_proximity_fuze = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.213 }
+				}
+				25 = {
+					sp:sp_naval_proximity_fuze = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.214 }
+				}
+				25 = { country_event = { id = AWR_PRC.215 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 舰队潜艇
+	PRC_fleet_submarine = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { 
+				is_special_project_completed = sp:sp_naval_fleet_submarine 
+			}
+			has_completed_focus = PRC_special_project_two
+			has_completed_focus = PRC_learn_from_the_red_navy
+		}
+
+		available = {
+			PRC_req_fleet_submarine = yes
+			NOT = { 
+				is_special_project_being_researched = sp:sp_naval_fleet_submarine 
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { 
+			civilian_factory_use = 20 
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_fleet_submarine
+					country_event = { 
+						id = AWR_PRC.232 
+					}
+				}
+				25 = {
+					sp:sp_naval_fleet_submarine = { 
+						add_project_progress_ratio = 0.50 
+					}
+					country_event = { 
+						id = AWR_PRC.233 
+					}
+				}
+				25 = {
+					sp:sp_naval_fleet_submarine = { 
+						add_project_progress_ratio = 0.25 
+					}
+					country_event = { 
+						id = AWR_PRC.234 
+					}
+				}
+				25 = { 
+					country_event = { 
+						id = AWR_PRC.235 
+					} 
+				}
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 无氧推进器
+	PRC_aip_engine = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_aip_engine }
+			has_completed_focus = PRC_special_project_two
+			has_completed_focus = PRC_learn_from_the_red_navy
+		}
+
+		available = {
+			PRC_req_aip_engine = yes
+			NOT = { is_special_project_being_researched = sp:sp_naval_aip_engine }
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { civilian_factory_use = 20 }
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_aip_engine
+					country_event = { id = AWR_PRC.220 }
+				}
+				25 = {
+					sp:sp_naval_aip_engine = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.221 }
+				}
+				25 = {
+					sp:sp_naval_aip_engine = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.222 }
+				}
+				25 = { country_event = { id = AWR_PRC.223 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# 冰航母
+	PRC_ice_carrier = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { is_special_project_completed = sp:sp_naval_ice_carrier }
+			has_completed_focus = PRC_special_project_three
+			has_completed_focus = PRC_make_up_the_red_navy_shortcomings
+		}
+
+		available = {
+			PRC_req_ice_carrier = yes
+			NOT = { 
+				is_special_project_being_researched = sp:sp_naval_ice_carrier 
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { 
+			civilian_factory_use = 20 
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_ice_carrier
+					country_event = { id = AWR_PRC.202 }
+				}
+				25 = {
+					sp:sp_naval_ice_carrier = { add_project_progress_ratio = 0.50 }
+					country_event = { id = AWR_PRC.203 }
+				}
+				25 = {
+					sp:sp_naval_ice_carrier = { add_project_progress_ratio = 0.25 }
+					country_event = { id = AWR_PRC.204 }
+				}
+				25 = { country_event = { id = AWR_PRC.205 } }
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+	# 核潜艇
+	PRC_nuclear_submarine = {
+		icon = generic_naval
+		fire_only_once = yes
+		days_remove = 180
+
+		visible = {
+			NOT = { 
+				is_special_project_completed = sp:sp_naval_nuclear_submarine 
+			}
+			has_completed_focus = PRC_special_project_three
+			has_completed_focus = PRC_learn_from_the_red_navy
+		}
+
+		available = {
+			PRC_req_nuclear_submarine = yes
+			NOT = { 
+				is_special_project_being_researched = sp:sp_naval_nuclear_submarine 
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			NOT = {
+				has_country_flag = PRC_naval_special_project_in_progress
+			}
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_navy_experience > 24
+		}
+		custom_cost_text = PRC_NAVAL_PROJECT_COST
+		ai_hint_pp_cost = 25
+
+		modifier = { 
+			civilian_factory_use = 20 
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				navy_experience = -25
+			}
+			set_country_flag = PRC_naval_special_project_in_progress
+		}
+
+		remove_effect = {
+			clr_country_flag = PRC_naval_special_project_in_progress
+			random_list = {
+				25 = {
+					complete_special_project = sp:sp_naval_nuclear_submarine
+					country_event = { 
+						id = AWR_PRC.236 
+					}
+				}
+				25 = {
+					sp:sp_naval_nuclear_submarine = { 
+						add_project_progress_ratio = 0.50 
+					}
+					country_event = { 
+						id = AWR_PRC.237 
+					}
+				}
+				25 = {
+					sp:sp_naval_nuclear_submarine = { 
+						add_project_progress_ratio = 0.25 
+					}
+					country_event = { 
+						id = AWR_PRC.238 
+					}
+				}
+				25 = { 
+					country_event = { 
+						id = AWR_PRC.239 
+					} 
+				}
+			}
+		}
+
+		ai_will_do = { base = 0 }
+	}
+}
+
+
+###做到这里
 PRC_resource_effort = {	#国家资源开采项目
 	#铝
 	PRC_aluminium_effort_1 = {	#开采全国铝矿

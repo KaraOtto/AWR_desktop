@@ -1,4 +1,5 @@
 add_namespace = AWR_PRC
+add_namespace = AWR_PRC_hidden
 add_namespace = PRC_liu_zhidan
 add_namespace = PRC_dong_zhentang
 add_namespace = PRC_lu_dongsheng
@@ -9588,6 +9589,985 @@ country_event = {	#贵州解放
 	}
 }
 
+country_event = {	#中共请求陆军科研合作
+	id = AWR_PRC.184
+	title = AWR_PRC.184.t
+	desc = AWR_PRC.184.desc
+	picture = GFX_prcsuliantanpan
+	immediate = {
+		add_political_power = -100
+	}
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.184.a
+		PRC = {
+			country_event = {
+				id = AWR_PRC.185
+			}
+		}
+		add_political_power = 100
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+					
+				OR = {
+					SOV = {
+						has_opinion = {
+							target = ROOT
+							value > 90
+						}
+					}
+					PRC = {
+						has_idea = prc_sov_youhaohuzhu
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = AWR_PRC.184.b
+		PRC = {
+			country_event = {
+				id = AWR_PRC.186
+			}
+		}
+	}
+}
+
+country_event = {	#苏联同意了
+	id = AWR_PRC.185
+	title = AWR_PRC.185.t
+	desc = AWR_PRC.185.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.185.a
+		#43年坦克
+		if = {
+			limit = {
+				SOV = {
+					has_tech = main_battle_tank_chassis
+				}
+			}
+			set_technology = {
+				advanced_light_tank_chassis = 1
+				advanced_medium_tank_chassis = 1
+				advanced_heavy_tank_chassis = 1
+			}
+		}
+		#40年坦克
+		if = {
+			limit = {
+				SOV = {
+					has_tech = advanced_light_tank_chassis
+				}
+			}
+			set_technology = {
+				improved_light_tank_chassis = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = advanced_medium_tank_chassis
+				}
+			}
+			set_technology = {
+				improved_medium_tank_chassis = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = advanced_heavy_tank_chassis
+				}
+			}
+			set_technology = {
+				improved_heavy_tank_chassis = 1 
+			}
+		}
+		#38年坦克
+		if = {
+			limit = {
+				SOV = {
+					has_tech = improved_light_tank_chassis
+				}
+			}
+			set_technology = {
+				basic_light_tank_chassis = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = improved_medium_tank_chassis
+				}
+			}
+			set_technology = {
+				basic_medium_tank_chassis = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = improved_heavy_tank_chassis
+				}
+			}
+			set_technology = {
+				basic_heavy_tank_chassis = 1 
+			}
+		}
+		#36年坦克
+		if = {
+			limit = {
+				SOV = {
+					OR = {
+						has_tech = basic_light_tank_chassis
+						has_tech = basic_medium_tank_chassis
+						has_tech = basic_heavy_tank_chassis
+					}
+				}
+			}
+			set_technology = {
+				gwtank_chassis = 1
+			}
+		}
+
+		#火炮
+		if = {
+			limit = {
+				SOV = {
+					has_tech = artillery5
+				}
+			}
+			set_technology = {
+				artillery4 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = artillery4
+				}
+			}
+			set_technology = {
+				artillery3 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = artillery3
+				}
+			}
+			set_technology = {
+				artillery2 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					OR = {
+						has_tech = artillery1
+						has_tech = antiair1
+						has_tech = antitank1
+					}
+				}
+			}
+			set_technology = {
+				gw_artillery = 1 
+			}
+		}
+		#AT炮
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antitank5
+				}
+			}
+			set_technology = {
+				antitank4 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antitank4
+				}
+			}
+			set_technology = {
+				antitank3 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antitank3
+				}
+			}
+			set_technology = {
+				antitank2 = 1 
+			}
+		}
+		#防空炮
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antiair5
+				}
+			}
+			set_technology = {
+				antiair4 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antiair4
+				}
+			}
+			set_technology = {
+				antiair3 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = antiair3
+				}
+			}
+			set_technology = {
+				antiair2 = 1 
+			}
+		}
+		#火箭炮
+		if = {
+			limit = {
+				SOV = {
+					has_tech = rocket_artillery4
+				}
+			}
+			set_technology = {
+				rocket_artillery3 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = rocket_artillery3
+				}
+			}
+			set_technology = {
+				rocket_artillery2 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = rocket_artillery2
+				}
+			}
+			set_technology = {
+				rocket_artillery = 1 
+			}
+		}
+		
+		#机械化
+		if = {
+			limit = {
+				SOV = {
+					has_tech = mechanised_infantry3
+				}
+			}
+			set_technology = {
+				mechanised_infantry2 = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = amphibious_mechanized_infantry_2
+				}
+			}
+			set_technology = {
+				amphibious_mechanized_infantry = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					OR = {
+						has_tech = mechanised_infantry2
+						has_tech = amphibious_mechanized_infantry
+					}
+				}
+			}
+			set_technology = {
+				mechanised_infantry = 1 
+			}
+		}
+	}
+}
+
+country_event = {	#苏联拒绝
+	id = AWR_PRC.186
+	title = AWR_PRC.186.t
+	desc = AWR_PRC.186.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.186.a
+		add_tech_bonus = {
+			name = armor
+			bonus = 1
+			uses = 1
+			category = armor
+		}
+		add_tech_bonus = {
+			name = mechanized
+			bonus = 1
+			uses = 1
+			category = cat_mechanized_equipment
+		}
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 1
+			uses = 2
+			category = infantry_weapons
+		}
+		add_tech_bonus = {
+			name = infantry_weapons_bonus
+			bonus = 1
+			uses = 2
+			category = artillery
+		}
+	}
+
+}
+
+country_event = {	#中共请求海军科研合作
+	id = AWR_PRC.187
+	title = AWR_PRC.187.t
+	desc = AWR_PRC.187.desc
+	picture = GFX_prcsuliantanpan
+	immediate = {
+		add_political_power = -100
+	}
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.184.a
+		PRC = {
+			country_event = {
+				id = AWR_PRC.188
+			}
+		}
+		add_political_power = 100
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+					
+				OR = {
+					SOV = {
+						has_opinion = {
+							target = ROOT
+							value > 90
+						}
+					}
+					PRC = {
+						has_idea = prc_sov_youhaohuzhu
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = AWR_PRC.184.b
+		PRC = {
+			country_event = {
+				id = AWR_PRC.186
+			}
+		}
+	}
+}
+
+country_event = {	#苏联同意了
+	id = AWR_PRC.188
+	title = AWR_PRC.188.t
+	desc = AWR_PRC.188.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.188.a
+		#40年潜艇
+		if = {
+			limit = {
+				SOV = {
+					has_tech = advanced_ship_hull_submarine
+				}
+			}
+			set_technology = {
+				improved_ship_hull_submarine = 1
+			}
+		}
+		#36年潜艇
+		if = {
+			limit = {
+				SOV = {
+					has_tech = improved_ship_hull_submarine
+				}
+			}
+			set_technology = {
+				basic_ship_hull_submarine = 1 
+			}
+		}
+		#早期潜艇
+		if = {
+			limit = {
+				SOV = {
+					has_tech = basic_ship_hull_submarine
+				}
+			}
+			set_technology = {
+				early_ship_hull_submarine = 1 
+			}
+		}
+
+		#鱼雷
+		if = {
+			limit = {
+				SOV = {
+					has_tech = modern_ship_torpedo_launcher
+				}
+			}
+			set_technology = {
+				advanced_ship_torpedo_launcher = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = advanced_ship_torpedo_launcher
+				}
+			}
+			set_technology = {
+				improved_ship_torpedo_launcher = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = improved_ship_torpedo_launcher
+				}
+			}
+			set_technology = {
+				homing_torpedo = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = homing_torpedo
+				}
+			}
+			set_technology = {
+				magnetic_detonator = 1 
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_tech = magnetic_detonator
+				}
+			}
+			set_technology = {
+				basic_torpedo = 1 
+			}
+		}
+	}
+}
+
+country_event = {	#苏联拒绝
+	id = AWR_PRC.189
+	title = AWR_PRC.189.t
+	desc = AWR_PRC.189.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.189.a
+		add_ideas = PRC_submarine_navy_research
+	}
+
+}
+
+# ============================================================
+# 支援舰 1-4
+# ============================================================
+
+country_event = {
+	id = AWR_PRC.190
+	title = AWR_PRC.190.t
+	desc = AWR_PRC.190.success.desc
+	is_triggered_only = yes
+	option = { 
+		name = AWR_PRC.190.ok 
+	}
+}
+
+country_event = {
+	id = AWR_PRC.191
+	title = AWR_PRC.191.t
+	desc = AWR_PRC.190.mostly_success.desc
+	is_triggered_only = yes
+	option = { 
+		name = AWR_PRC.190.ok 
+	}
+}
+
+country_event = {
+	id = AWR_PRC.192
+	title = AWR_PRC.192.t
+	desc = AWR_PRC.190.partial_success.desc
+	is_triggered_only = yes
+	option = { 
+		name = AWR_PRC.190.ok 
+	}
+}
+
+country_event = {
+	id = AWR_PRC.193
+	title = AWR_PRC.193.t
+	desc = AWR_PRC.190.failure.desc
+	is_triggered_only = yes
+	option = { 
+		name = AWR_PRC.190.ok 
+	}
+}
+
+
+# 鱼雷巡洋舰 5-8
+country_event = { 
+	id = AWR_PRC.194 
+	title = AWR_PRC.194.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.195 
+	title = AWR_PRC.195.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.196 
+	title = AWR_PRC.196.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.197 
+	title = AWR_PRC.197.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 超重型战列舰 9-12
+country_event = { 
+	id = AWR_PRC.198 
+	title = AWR_PRC.198.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.199 
+	title = AWR_PRC.199.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.200 
+	title = AWR_PRC.200.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.201 
+	title = AWR_PRC.201.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 冰航母 13-16
+country_event = { 
+	id = AWR_PRC.202 
+	title = AWR_PRC.202.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.203 
+	title = AWR_PRC.203.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.204 
+	title = AWR_PRC.204.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.205 
+	title = AWR_PRC.205.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 海上补给 17-20
+country_event = { 
+	id = AWR_PRC.208 
+	title = AWR_PRC.208.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.209 
+	title = AWR_PRC.209.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.210 
+	title = AWR_PRC.210.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.211 
+	title = AWR_PRC.211.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 近炸引信 21-24
+country_event = { 
+	id = AWR_PRC.212 
+	title = AWR_PRC.212.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.213 
+	title = AWR_PRC.213.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.214 
+	title = AWR_PRC.214.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.215 title = AWR_PRC.215.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 消声瓦 25-28
+country_event = { 
+	id = AWR_PRC.216 
+	title = AWR_PRC.216.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.217 
+	title = AWR_PRC.217.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.218 
+	title = AWR_PRC.218.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.219 
+	title = AWR_PRC.219.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 无氧推进器 29-32
+country_event = { 
+	id = AWR_PRC.220 
+	title = AWR_PRC.220.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.221 
+	title = AWR_PRC.221.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.222 
+	title = AWR_PRC.222.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.223 
+	title = AWR_PRC.223.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 袖珍潜艇 33-36
+country_event = { 
+	id = AWR_PRC.224 
+	title = AWR_PRC.224.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.225 
+	title = AWR_PRC.225.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.226 
+	title = AWR_PRC.226.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.227 
+	title = AWR_PRC.227.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 巡洋潜艇 37-40
+country_event = { 
+	id = AWR_PRC.228 
+	title = AWR_PRC.228.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.229 
+	title = AWR_PRC.229.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.230 
+	title = AWR_PRC.230.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.231 
+	title = AWR_PRC.231.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 舰队潜艇 41-44
+country_event = { 
+	id = AWR_PRC.232 
+	title = AWR_PRC.232.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.233 
+	title = AWR_PRC.233.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.234 
+	title = AWR_PRC.234.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.235 
+	title = AWR_PRC.235.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+# 核潜艇 45-48
+country_event = { 
+	id = AWR_PRC.236 
+	title = AWR_PRC.236.t 
+	desc = AWR_PRC.190.success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.237 
+	title = AWR_PRC.237.t 
+	desc = AWR_PRC.190.mostly_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.238 
+	title = AWR_PRC.238.t 
+	desc = AWR_PRC.190.partial_success.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+country_event = { 
+	id = AWR_PRC.239 
+	title = AWR_PRC.239.t 
+	desc = AWR_PRC.190.failure.desc 
+	is_triggered_only = yes 
+	option = { 
+		name = AWR_PRC.190.ok 
+	} 
+}
+
+
 #人物事件
 unit_leader_event = {#刘志丹同志壮烈牺牲
 	id = PRC_liu_zhidan.1
@@ -9803,3 +10783,18 @@ unit_leader_event = {	#解放军机械化路线
 	}
 }
 
+
+country_event = {
+	id = AWR_PRC_hidden.1
+	title = AWR_PRC_hidden.1.t
+	desc = AWR_PRC_hidden.1.d
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		finalize_border_war = {
+			defender_win = yes
+			attacker = 622		
+			defender = 998
+		}
+	}
+}
