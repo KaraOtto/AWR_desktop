@@ -3973,6 +3973,9 @@ focus_tree = {
 		x = -3
 		y = 0
 		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		prerequisite = {
+			focus = PRC_End_of_Long_March
+		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
@@ -4098,9 +4101,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
 		}
-		prerequisite = {
-			focus = PRC_End_of_Long_March
-		}
+
 		x = -1
 		y = 2
 		relative_position_id = PRC_found_the_military_commission_general_political_department_focus
@@ -4158,9 +4159,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
 		}
-		prerequisite = {
-			focus = PRC_End_of_Long_March
-		}
+
 		x = 1
 		y = 2
 		relative_position_id = PRC_found_the_military_commission_general_political_department_focus
@@ -7785,9 +7784,6 @@ focus_tree = {
 		cancel_if_invalid = no
 		
 		completion_reward = {
-			add_dynamic_modifier = {
-				modifier = PRC_renminzhanzheng
-			}
 			
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
@@ -8465,7 +8461,7 @@ focus_tree = {
 					country_event = {
 						id = AWR_PRC.97
 					}
-					activate_mission = CHI_occupy_northeast_timer
+					activate_mission = PRC_occupy_northeast_timer
 				}    
 			}
 			custom_effect_tooltip = separate_line_tt
@@ -9774,7 +9770,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_New_Red_Army
 		}
-		x = 83
+		x = 85
 		y = 0
 
 		ai_will_do = {
@@ -9929,7 +9925,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_PLA
 		}
-		x = -8
+		x = -9
 		y = 1
 		relative_position_id = PRC_PLA
 		ai_will_do = {
@@ -10879,7 +10875,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_PLA
 		}
-		x = 8
+		x = 9
 		y = 1
 		relative_position_id = PRC_PLA
 		ai_will_do = {
@@ -10926,7 +10922,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Establish_the_air_force
 		}
-		x = 0
+		x = -2
 		y = 1
 		relative_position_id = PRC_Establish_the_air_force
 		ai_will_do = {
@@ -11122,11 +11118,11 @@ focus_tree = {
 		icon = GFX_focus_PRC_expand_the_flight_school
 		cost = 2.15
 		prerequisite = {
-			focus = PRC_Air_base
+			focus = PRC_Establish_the_air_force
 		}
 		x = 0
 		y = 1
-		relative_position_id = PRC_Air_base
+		relative_position_id = PRC_Establish_the_air_force
 		ai_will_do = {
 			factor = 1
 		}
@@ -11295,11 +11291,11 @@ focus_tree = {
 		icon = GFX_focus_PRC_women_in_PLAF
 		cost = 3.6
 		prerequisite = {
-			focus = PRC_expand_the_flight_school
+			focus = PRC_PLAAF
 		}
 		x = -2
 		y = 1
-		relative_position_id = PRC_expand_the_flight_school
+		relative_position_id = PRC_PLAAF
 		ai_will_do = {
 			factor = 1
 		}
@@ -11336,11 +11332,11 @@ focus_tree = {
 		icon = GFX_focus_PRC_Improved_aircraft_production
 		cost = 5
 		prerequisite = {
-			focus = PRC_expand_the_flight_school
+			focus = PRC_PLAAF
 		}
 		x = 2
 		y = 1
-		relative_position_id = PRC_expand_the_flight_school
+		relative_position_id = PRC_PLAAF
 		ai_will_do = {
 			factor = 1
 		}
@@ -11407,11 +11403,11 @@ focus_tree = {
 		icon = GFX_focus_PRC_Radar
 		cost = 5.00
 		prerequisite = {
-			focus = PRC_Improved_aircraft_production
+			focus = PRC_Establish_the_air_force
 		}
-		x = 0
+		x = 2
 		y = 1
-		relative_position_id = PRC_Improved_aircraft_production
+		relative_position_id = PRC_Establish_the_air_force
 		ai_will_do = {
 			factor = 1
 		}
@@ -11480,23 +11476,10 @@ focus_tree = {
 			add_to_variable = {
 				PRC_jiefangjunkongjun_air_range_factor = 0.10
 			}
-			add_tech_bonus = {
-				name = air_equipment
-				ahead_reduction = 1
-				bonus = 1
-				uses = 2
-				category = air_equipment
-			}
-			add_tech_bonus = {
-				name = cas_bomber
-				bonus = 1
-				uses = 2
-				category = cas_bomber
-			}
 
 			add_breakthrough_points = {
 				specialization = specialization_air
-			    value = 3
+			    value = 1
 			}
 
 			add_timed_idea = {
@@ -11535,7 +11518,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = light_air
 				bonus = 1
-				uses = 2
+				uses = 1
 				category = light_air
 			}
 
@@ -11594,22 +11577,22 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = light_air
-				ahead_reduction = 3
+				ahead_reduction = 1
 				uses = 1
 				category = light_air
 			}
 
 			add_tech_bonus = {
 				name = cat_air_engine
-				uses = 2
-				ahead_reduction = 3
+				uses = 1
+				ahead_reduction = 1
 				category = cat_air_engine
 			}
 
 			add_tech_bonus = {
 				name = cat_air_guns
-				uses = 2
-				ahead_reduction = 3
+				uses = 1
+				ahead_reduction = 1
 				category = cat_air_guns
 			}
 
@@ -11623,7 +11606,7 @@ focus_tree = {
 		}
 
 	}
-	
+
 	focus = {#“轰”系列
 		id = PRC_H_fighter_jet
 		icon = GFX_focus_PRC_H_fighter_jet
@@ -11722,21 +11705,21 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = light_air
-				ahead_reduction = 3
+				ahead_reduction = 1
 				uses = 1
 				category = light_air
 			}
 
 			add_tech_bonus = {
 				name = medium_air
-				ahead_reduction = 3
+				ahead_reduction = 1
 				uses = 1
 				category = medium_air
 			}
 
 			add_tech_bonus = {
 				name = mio_cat_all_cas_and_modules
-				ahead_reduction = 3
+				ahead_reduction = 1
 				uses = 2
 				category = mio_cat_all_cas_and_modules
 			}
@@ -11889,18 +11872,280 @@ focus_tree = {
 
 	}
 
+	focus = {	#设计新型战斗机
+		id = PRC_design_modern_plane
+		icon = GFX_focus_PRC_design_modern_plane
+		prerequisite = {
+			focus = PRC_domestic_fighter_jet
+		}
+		x = -1
+		y = 1
+		relative_position_id = PRC_domestic_fighter_jet
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = light_air
+				ahead_reduction = 2
+				uses = 1
+				category = light_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 2
+				ahead_reduction = 2
+				category = cat_air_guns
+			}
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunkongjun_tooltip_original
+					add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_attack_factor = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_superiority_efficiency = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_intercept_efficiency = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_agility_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_maximum_speed_factor = 0.05
+			}
+		}
+		available = {
+			has_tech = improved_small_airframe
+		}
+		bypass = {
+			#
+		}
+	}
+
+	focus = {	#现代多功能战机
+		id = PRC_modern_muti_fuctional_plane
+		icon = GFX_focus_PRC_modern_muti_fuctional_plane
+		prerequisite = {
+			focus = PRC_domestic_fighter_jet
+			focus = PRC_domestic_support_jet
+		}
+		x = -1
+		y = 1
+		relative_position_id = PRC_domestic_support_jet
+		mutually_exclusive = {
+			focus = PRC_design_modern_plane
+		}
+		mutually_exclusive = {
+			focus =PRC_modern_support_plane
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = light_air
+				ahead_reduction = 2
+				uses = 1
+				category = light_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 1
+				ahead_reduction = 2
+				category = cat_air_guns
+			}
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunkongjun_tooltip_original
+					add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_attack_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_superiority_efficiency = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_intercept_efficiency = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_ground_attack_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_efficiency = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_present_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_agility_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_maximum_speed_factor = 0.05
+			}
+		}
+	}
+
+	focus = {	#设计新型近地支援机
+		id = PRC_modern_support_plane
+		icon = GFX_focus_PRC_modern_support_plane
+		prerequisite = {
+			focus = PRC_domestic_support_jet
+		}
+		x = 1
+		y = 1
+		relative_position_id = PRC_domestic_support_jet
+		mutually_exclusive = {
+			focus = PRC_modern_muti_fuctional_plane
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = light_air
+				ahead_reduction = 2
+				uses = 1
+				category = light_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunkongjun_tooltip_original
+					add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_ground_attack_factor = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_efficiency = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_cas_present_factor = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_agility_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_maximum_speed_factor = 0.05
+			}
+		}
+	}
+
+	focus = {	#国产洲际轰炸机
+		id = PRC_intercontinetal_bomber
+		icon = GFX_focus_PRC_intercontinetal_bomber
+		prerequisite = {
+			focus = PRC_large_Bomber
+		}
+		x = 1
+		y = 1
+		relative_position_id = PRC_large_Bomber
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			sp:sp_air_intercontinental_bomber = { 
+				add_project_progress_ratio = 0.50 
+			}
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunkongjun_tooltip_original
+					add_idea = PRC_jiefangjunkongjun_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_strategic_bomber_bombing_factor = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_air_strategic_bomber_night_penalty = 0.10
+			}
+
+			add_to_variable = {
+				PRC_jiefangjunkongjun_strategic_bomb_visibility = -0.10
+			}
+		}
+	}
+
 	focus = {#鹰击长空
 		id = PRC_yingjichangkong
 		icon = GFX_focus_PRC_yingjichangkong
 		cost = 5
 		prerequisite = {
-			focus = PRC_domestic_fighter_jet
-			focus = PRC_large_Bomber
-			focus = PRC_domestic_support_jet
+			focus = PRC_design_modern_plane
+			focus = PRC_modern_muti_fuctional_plane
+			focus = PRC_modern_support_plane
+			focus = PRC_intercontinetal_bomber
 		}
 
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = PRC_domestic_support_jet
 		ai_will_do = {
 			factor = 1
@@ -11918,11 +12163,11 @@ focus_tree = {
 			#真正的动态修正 {  }#
 
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_range_factor = 0.15
+				PRC_jiefangjunkongjun_air_range_factor = 0.10
 			}
 
 			add_to_variable = {
-				PRC_jiefangjunkongjun_air_agility_factor = 0.15
+				PRC_jiefangjunkongjun_air_agility_factor = 0.10
 			}
 
 			if = {
@@ -13402,7 +13647,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_New_Red_Army
 		}
-		x = -18
+		x = -16
 		y = 1
 		relative_position_id = PRC_New_Red_Army
 		ai_will_do = {
@@ -14297,13 +14542,6 @@ focus_tree = {
 			add_dynamic_modifier = {
 				modifier = PRC_New_Red_Army_navy_dynamic_modifier
 			}
-			#假意置换民族精神
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = PRC_New_Red_Army_navy_tooltip_original
-					add_idea = PRC_New_Red_Army_navy_tooltip_original_1
-				}
-			}
 			 
 			#真正的动态修正 {  }#
 			add_to_variable = {
@@ -14651,7 +14889,7 @@ focus_tree = {
 			}
 		}
 	}
-	#无图
+
 	focus = {	#培养海军指挥官
 		id = PRC_train_naval_commanders
 		icon = GFX_focus_PRC_train_naval_commanders
@@ -14716,9 +14954,11 @@ focus_tree = {
 					NOT = {
 						has_tech = special_forces_marines
 					}
-					set_technology = {
-						special_forces_marines = 1 
-					}
+				
+				}
+				set_technology = {
+					special_forces_marines = 1 
+					popup = yes
 				}
 			}
 
@@ -15360,12 +15600,12 @@ focus_tree = {
 	#新红军空军
 	focus = {#新红军空军
 		id = PRC_Red_Army_Air
-		icon = GFX_goal_generic_build_airforce
-		cost = 7.19
+		icon = GFX_focus_PRC_Red_Army_Air
+		cost = 5
 		prerequisite = {
 			focus = PRC_New_Red_Army
 		}
-		x = 18
+		x = 16
 		y = 1
 		relative_position_id = PRC_New_Red_Army
 		ai_will_do = {
@@ -15373,52 +15613,45 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			air_experience = 300
+			air_experience = 100
+
 			if = {
-				limit = { 
-					has_idea = PRC_Poor_Air 
+				limit = {
+					has_idea = PRC_Poor_Air
 				}
 				remove_ideas = PRC_Poor_Air
 			}
+
 			if = {
-			limit = { 
-				has_idea = PRC_Poor_Air_2 
+				limit = {
+					has_idea = PRC_Poor_Air_2
+				}
+				remove_ideas = PRC_Poor_Air_2
 			}
-			remove_ideas = PRC_Poor_Air_2
-			}
+
 			learn_air_designs = yes
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.8
-				uses = 3
-				category = air_doctrine
+
+			add_dynamic_modifier = {
+				modifier = PRC_New_Red_Army_air_dynamic_modifier
 			}
-			add_tech_bonus = {
-				name = light_fighter
-				bonus = 1
-				uses = 3
-				category = light_fighter
+
+			set_variable = {
+				PRC_New_Red_Army_air_experience_gain_air_factor = 0.10
 			}
-			add_tech_bonus = {
-				name = cat_heavy_fighter
-				bonus = 1
-				uses = 3
-				category = cat_heavy_fighter
+
+			set_variable = {
+				PRC_New_Red_Army_air_air_training_xp_gain_factor = 0.10
 			}
-			add_tech_bonus = {
-				name = cas_bomber
-				bonus = 1
-				uses = 3
-				category = cas_bomber
+
+			set_variable = {
+				PRC_New_Red_Army_air_air_accidents_factor = -0.05
 			}
-			add_tech_bonus = {
-				name = jet_technology
-				bonus = 1
-				uses = 3
-				category = jet_technology
+
+			set_variable = {
+				PRC_New_Red_Army_air_air_mission_efficiency = 0.05
 			}
-			add_ideas = PRC_land_focus_idea_ZZ
 		}
+
 		available = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 		}
@@ -15427,8 +15660,8 @@ focus_tree = {
 
 	focus = {#邀请苏联航空教官
 		id = PRC_Invited_soviet_Instructor
-		icon = GFX_goal_generic_air_doctrine
-		cost = 7.19
+		icon = GFX_focus_PRC_Invited_soviet_Instructor
+		cost = 5
 		prerequisite = {
 			focus = PRC_Red_Army_Air
 		}
@@ -15440,21 +15673,624 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.8
-				uses = 5
-				category =  air_doctrine
+
+			air_experience = 50
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_air_tooltip_original
+					add_idea = PRC_New_Red_Army_air_tooltip_original_1
+				}
 			}
-		}
-		available = {
-			has_government = SOV
-			has_idea = prc_sov_youhaohuzhu 
-			SOV = { 
-				owns_state = 745 
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_experience_gain_air_factor = 0.05
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_training_xp_gain_factor = 0.10
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_untrained_pilots_penalty_factor = -0.10
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_accidents_factor = -0.05
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_doctrine_cost_factor = -0.05
 			}
 		}
 
+		
+		available = {
+			has_completed_focus = PRC_Five_year_plans_of_China
+		}
+
+	}
+
+	focus = {	#轻型机优先
+		id = PRC_light_plane
+		icon = GFX_focus_PRC_light_plane
+		cost = 5
+		prerequisite = {
+			focus = PRC_Invited_soviet_Instructor
+		}
+		x = -4
+		y = 1
+		relative_position_id = PRC_Invited_soviet_Instructor
+		mutually_exclusive = {
+			focus = PRC_medium_plane
+		}
+		mutually_exclusive = {
+			focus = PRC_large_plane
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = PRC_focus_on_light_plane
+		}
+	}
+
+	focus = {	#蜂群战术
+		id = PRC_swarm_tatics
+		icon = GFX_focus_PRC_swarm_tatics
+		cost = 3
+		prerequisite = {
+			focus = PRC_light_plane
+		}
+		x = -1
+		y = 1
+		relative_position_id = PRC_light_plane
+		mutually_exclusive = {
+			focus = PRC_high_quality_plane
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_focus_on_light_plane_1
+				add_idea = PRC_focus_on_light_plane_2
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#追求高质量
+		id = PRC_high_quality_plane
+		icon = GFX_focus_PRC_high_quality_plane
+		cost = 3
+		prerequisite = {
+			focus = PRC_light_plane
+		}
+		x = 1
+		y = 1
+		relative_position_id = PRC_light_plane
+		mutually_exclusive = {
+			focus = PRC_swarm_tatics
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_focus_on_light_plane_1
+				add_idea = PRC_focus_on_light_plane_3
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#设计全能型战机
+		id = PRC_all_round_fighter_aircraft
+		icon = GFX_focus_PRC_all_round_fighter_aircraft
+		cost = 3
+		prerequisite = {
+			focus = PRC_swarm_tatics
+			focus = PRC_high_quality_plane
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_swarm_tatics
+		mutually_exclusive = {
+			focus = PRC_specialization_aircraft
+		}
+		completion_reward = { 
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_air_tooltip_original
+					add_idea = PRC_New_Red_Army_air_tooltip_original_1
+				}
+			}
+			 
+			#真正的动态修正 {  }#
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_mission_efficiency = 0.10
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_attack_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_air_naval_strike_attack_factor = 0.05
+			}
+			add_to_variable = {
+				PRC_New_Red_Army_air_ground_attack_factor = 0.05
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#战机专业化
+		id = PRC_specialization_aircraft
+		icon = GFX_focus_PRC_specialization_aircraft
+		cost = 3
+		prerequisite = {
+			focus = PRC_swarm_tatics
+			focus = PRC_high_quality_plane
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_high_quality_plane
+		mutually_exclusive = {
+			focus = PRC_all_round_fighter_aircraft
+		}
+		completion_reward = { 
+			add_ideas = PRC_special_design_aircraft
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#学习米格先进经验
+		id = PRC_learn_from_MIG
+		icon = GFX_focus_PRC_learn_from_MIG
+		cost = 5
+		prerequisite = {
+			focus = PRC_all_round_fighter_aircraft
+			focus = PRC_specialization_aircraft
+		}
+		x = 0
+		y = 3
+		relative_position_id = PRC_light_plane
+		completion_reward = { 
+			add_breakthrough_points = {
+				specialization = specialization_air
+			    value = 2
+			}
+			add_tech_bonus = {
+				name = light_air
+				ahead_reduction = 2
+				uses = 1
+				category = light_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 1
+				ahead_reduction = 2
+				category = cat_air_guns
+			}
+
+			sp:sp_air_jet_engine = { 
+				add_project_progress_ratio = 0.50 
+			}
+		}
+		available = { 
+			FROM = {
+				if = {
+					limit = { has_dlc = "By Blood Alone" }
+					has_tech = engines_2
+					OR = {
+						has_tech = improved_small_airframe
+						has_tech = improved_medium_airframe
+					}
+				}
+				else = {
+					OR = {
+						has_tech = fighter2
+						has_tech = tactical_bomber2
+					}
+				}	
+			}
+		}
+	}
+
+	focus = {	#选择中型机
+		id = PRC_medium_plane
+		icon = GFX_focus_PRC_medium_plane
+		cost = 5
+		prerequisite = {
+			focus = PRC_Invited_soviet_Instructor
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_Invited_soviet_Instructor
+		mutually_exclusive = {
+			focus = PRC_light_plane
+		}
+		mutually_exclusive = {
+			focus = PRC_large_plane
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#弥补中型机短板
+		id = PRC_makeup_medium_plane_shortcoming
+		icon = GFX_focus_PRC_makeup_medium_plane_shortcoming
+		cost = 5
+		prerequisite = {
+			focus = PRC_medium_plane
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_medium_plane
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_focus_on_medium_plane_1
+				add_idea = PRC_focus_on_medium_plane_2
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#研究新型机身
+		id = PRC_research_on_new_medium_aircraft
+		icon = GFX_focus_PRC_research_on_new_medium_aircraft
+		cost = 5
+		prerequisite = {
+			focus = PRC_makeup_medium_plane_shortcoming
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_makeup_medium_plane_shortcoming
+		completion_reward = {
+			add_breakthrough_points = {
+				specialization = specialization_air
+			    value = 2
+			}
+			add_tech_bonus = {
+				name = medium_air
+				ahead_reduction = 2
+				uses = 1
+				category = medium_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 1
+				ahead_reduction = 2
+				category = cat_air_guns
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 1
+				ahead_reduction = 2
+				category = cat_air_bombs
+			}
+		}
+	}
+
+	focus = {	#空战再定义
+		id = PRC_redefining_air_combat
+		icon = GFX_focus_PRC_redefining_air_combat
+		cost = 5
+		prerequisite = {
+			focus = PRC_research_on_new_medium_aircraft
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_research_on_new_medium_aircraft
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_focus_on_medium_plane_2
+				add_idea = PRC_focus_on_medium_plane_3
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#重型机为主
+		id = PRC_large_plane
+		icon = GFX_focus_PRC_large_plane
+		cost = 5
+		prerequisite = {
+			focus = PRC_Invited_soviet_Instructor
+		}
+		x = 4
+		y = 1
+		relative_position_id = PRC_Invited_soviet_Instructor
+		mutually_exclusive = {
+			focus = PRC_light_plane
+		}
+		mutually_exclusive = {
+			focus = PRC_medium_plane
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#科研优先
+		id = PRC_technology_first
+		icon = GFX_focus_PRC_technology_first
+		cost = 5
+		prerequisite = {
+			focus = PRC_large_plane
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_large_plane
+		completion_reward = { 
+			add_breakthrough_points = {
+				specialization = specialization_air
+			    value = 2
+			}
+			add_tech_bonus = {
+				name = heavy_air
+				ahead_reduction = 2
+				uses = 1
+				category = heavy_air
+			}
+
+			add_tech_bonus = {
+				name = cat_air_engine
+				uses = 2
+				ahead_reduction = 1
+				category = cat_air_engine
+			}
+
+			add_tech_bonus = {
+				name = cat_air_guns
+				uses = 1
+				ahead_reduction = 2
+				category = cat_air_bombs
+			}
+		}
+	}
+
+	focus = {	#研究新型炸弹
+		id = PRC_mew_bomb
+		icon = GFX_focus_PRC_mew_bomb
+		cost = 10
+		prerequisite = {
+			focus = PRC_technology_first
+		}
+		x = -2
+		y = 1
+		relative_position_id = PRC_technology_first
+		completion_reward = {
+			sp:sp_air_earthshaker_bomb = {
+				add_project_progress_ratio = 1
+			}
+		}
+		available = {
+			if = {
+				limit = { 
+					has_dlc = "By Blood Alone" 
+				}
+				FROM = {
+					has_tech = heavy_bombs
+				}
+			}
+			else = {
+				FROM = {
+					has_tech = strategic_bomber2
+				}
+			}
+		}
+	}
+
+	focus = {	#精简化设计
+		id = PRC_simplified_design
+		icon = GFX_focus_PRC_simplified_design
+		cost = 5
+		prerequisite = {
+			focus = PRC_technology_first
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_technology_first
+		completion_reward = { 
+			swap_ideas = {
+				remove_idea = PRC_focus_on_large_plane_1
+				add_idea = PRC_focus_on_large_plane_2
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#解决制空问题
+		id = PRC_mothership_equipment
+		icon = GFX_focus_PRC_mothership_equipment
+		cost = 10
+		prerequisite = {
+			focus = PRC_technology_first
+		}
+		x = 2
+		y = 1
+		relative_position_id = PRC_technology_first
+		completion_reward = {
+			add_ideas = PRC_mothership_idea
+			add_breakthrough_points = {
+				specialization = specialization_air
+			    value = 2
+			}
+		}
+		available = {
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				FROM = {
+					has_tech = improved_large_airframe
+				}
+			}
+			else = {
+				FROM = { 
+					has_tech = strategic_bomber2
+				}
+			}
+		}
+	}
+
+	focus = {	#空中堡垒
+		id = PRC_aerial_fortress
+		icon = GFX_focus_PRC_aerial_fortress
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_simplified_design
+		prerequisite = {
+			focus = PRC_simplified_design
+		}
+		completion_reward = { 
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_air_tooltip_original
+					add_idea = PRC_New_Red_Army_air_tooltip_original_1
+				}
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_strategic_bomber_bombing_factor = 0.20
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_strategic_bomb_visibility = -0.15
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_mission_efficiency = 0.15
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_naval_strike_attack_factor = 0.15
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_port_strike = 0.15
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#升级航空工业
+		id = PRC_air_industry_level_up
+		icon = GFX_focus_PRC_air_industry_level_up
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_redefining_air_combat
+		prerequisite = {
+			focus = PRC_redefining_air_combat
+			focus = PRC_learn_from_MIG
+			focus = PRC_aerial_fortress
+		}
+		completion_reward = { 
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				
+				mio:CHI_Shenyang_Aircraft = {
+					add_mio_size = 5
+				}
+				
+				mio:CHI_Chengdu_Aircraft = {
+					add_mio_size = 5
+				}
+				
+				mio:PRC_xian_air = {
+					add_mio_size = 5
+				}
+				
+				mio:CHI_Shanghai_Aircraft = {
+					add_mio_size = 5
+				}
+			}
+		}
+	}
+
+	focus = {	#赤翼掠千里
+		id = PRC_red_supersonic_fighter
+		icon = GFX_focus_PRC_red_supersonic_fighter
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = PRC_air_industry_level_up
+		prerequisite = {
+			focus = PRC_air_industry_level_up
+		}
+		completion_reward = {
+			#假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_air_tooltip_original
+					add_idea = PRC_New_Red_Army_air_tooltip_original_1
+				}
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_ace_generation_chance_factor = 0.25
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_air_ace_bonuses_factor = 0.25
+			}
+
+			add_to_variable = {
+				PRC_New_Red_Army_air_ace_effectiveness_factor = 0.25
+			}
+
+			add_timed_idea = {
+				idea = PRC_jet_engine_technology
+				days = 730
+			}
+		}
+		available = {
+			OR = {
+				has_tech = advanced_small_airframe
+				has_tech = advanced_medium_airframe
+			}
+		}
 	}
 
 	####科研线
@@ -17113,11 +17949,11 @@ focus_tree = {
 			focus = PRC_revive_hanyang_steelwork_focus
 		}
 		prerequisite = {
-			focus = PRC_infrastructure_effort_iii
+			focus = PRC_state_grid_construction
 		}
-		x = -1
-		y = 2
-		relative_position_id = PRC_infrastructure_effort_iii
+		x = -2
+		y = 1
+		relative_position_id = PRC_state_grid_construction
 		select_effect = {
 			add_ideas = steelmaking
 			add_ideas = under_construction
@@ -17127,7 +17963,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-		add_cic = 1000
+			add_cic = 1000
 			custom_effect_tooltip = debuff_tt
 			show_ideas_tooltip = steelmaking
 			show_ideas_tooltip = under_construction
@@ -17225,7 +18061,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Five_year_plans_of_China
 		}
-		x = 3
+		x = 4
 		y = 1
 		relative_position_id = PRC_Five_year_plans_of_China
 		ai_will_do = {
@@ -17417,6 +18253,35 @@ focus_tree = {
 			}
 		}
 
+	}
+
+	focus = {	#国家电网建设
+		id = PRC_state_grid_construction
+		icon = GFX_focus_PRC_state_grid_construction
+		cost = 3.6
+		prerequisite = {
+			focus = PRC_infrastructure_effort_iii
+		}
+		x = 0
+		y = 1
+		relative_position_id = PRC_infrastructure_effort_iii
+		
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = PRC_state_grid_construction
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = industry_balanced_enough
+				OR = {
+					has_completed_focus = PRC_tuijingongsiheying
+					has_completed_focus = PRC_jieguanqiye
+				}
+			}
+		}
 	}
 
 	focus = {#东方强国
@@ -17636,7 +18501,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Five_year_plans_of_China
 		}
-		x = 10
+		x = 11
 		y = 1
 		relative_position_id = PRC_Five_year_plans_of_China
 		available_if_capitulated = yes
@@ -18338,7 +19203,7 @@ focus_tree = {
 		id = PRC_focus_on_diplomacy
 		icon = GFX_focus_PRC_focus_on_diplomacy
 		cost = 2.14
-		x = 158
+		x = 160
 		y = 0
 		ai_will_do = {
 			factor = 0
@@ -19066,7 +19931,8 @@ focus_tree = {
 					} 
 				}
         		country_event = { 
-					id = AWR_PRC.1702  hours = 0 
+					id = AWR_PRC.1702  
+					hours = 0 
 				}				
         		news_event = { 
 					id = news.1013 
