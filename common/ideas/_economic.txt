@@ -100,7 +100,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 
-		unstable_economy = {
+		unstable_economy = {	#银本位经济
 			allowed = {
 				always = no
 			}
@@ -108,7 +108,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				AWR_economy_development_monthly = 0.1
+				AWR_economy_development_monthly = 0.03
 				consumer_goods_expected_value = 0.4
 				war_stability_factor = -0.1
 				production_speed_infrastructure_factor = 0.1
@@ -1016,68 +1016,6 @@ ideas = {
    			}
 		}
 
-		evacuated_assets_law = { #撤离资产
-
-			picture = evacuated_assets
-
-			available = {
-				has_war = yes
-				has_capitulated = yes
-			}
-			
-			ai_will_do = {
-			factor = 0
-			}
-
-			cost = 0
-			level = 8 
-			removal_cost = -1
-
-			on_add = {
-				add_offsite_building = { 
-					type = industrial_complex level = 3 
-				}
-				add_offsite_building = { 
-					type = arms_factory level = 3 
-				}
-				add_offsite_building = { 
-					type = dockyard level = 1 
-				}
-			}
-
-			on_remove = {
-				add_offsite_building = { 
-					type = industrial_complex level = -3 
-				}
-				add_offsite_building = { 
-					type = arms_factory level = -3 
-				}
-				add_offsite_building = { 
-					type = dockyard level = -1 
-				}
-			}
-		
-			modifier = {
-				AWR_economy_development_monthly = 0.03
-				consumer_goods_expected_value = 0.05
-				production_speed_industrial_complex_factor = -0.15
-				production_speed_arms_factory_factor = 0.15
-				conversion_cost_civ_to_mil_factor = 0.25
-				conversion_cost_mil_to_civ_factor = 0.25
-				war_stability_factor = 0.25
-				military_leader_cost_factor = -0.25
-				 
-				weekly_manpower = 500
-				non_core_manpower = 0.05
-				min_export = -0.25
-				political_advisor_cost_factor = -0.5
-			}
-			
-			allowed_to_remove = {
-				has_capitulated = no
-			}
-		}
-
 		PRC_guerilla_warfare_economy = { #游击战经济体制
 			removal_cost = -1
             cost = 0
@@ -1922,6 +1860,10 @@ ideas = {
 				research_speed_factor = -0.30
 				special_project_speed_factor = -0.30
 			}
+
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
 		}
 
 		poverty = { #贫困
@@ -1946,7 +1888,9 @@ ideas = {
 				special_project_speed_factor = -0.20
 				AWR_economy_development_monthly = -0.01
 			}			
-
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
 		}
 
 		little_poverty = {	#拮据
@@ -1972,6 +1916,9 @@ ideas = {
 				special_project_speed_factor = -0.10
 				AWR_economy_development_monthly = -0.02
 			}
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
 
 		}
 
@@ -1991,6 +1938,10 @@ ideas = {
 			
 			modifier = {
 				AWR_economy_development_monthly = -0.03
+			}
+
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
 			}
 
 		}
@@ -2022,6 +1973,10 @@ ideas = {
 				AWR_economy_development_monthly = -0.05
 			}
 
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
+
 		}
 
 		rich_society = {	#富裕
@@ -2048,7 +2003,9 @@ ideas = {
 				special_project_speed_factor = 0.25
 				AWR_economy_development_monthly = -0.07
 			}
-
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
 		}
 
 		prosperous_society = {	#丰裕
@@ -2076,7 +2033,9 @@ ideas = {
 				special_project_speed_factor = 0.50
 				AWR_economy_development_monthly = -0.10
 			}
-
+			on_add = {
+				custom_effect_tooltip = economy_development_and_economy_development_monthly
+			}
 		}
 	}
 
@@ -2108,18 +2067,9 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = -0.03
 				consumer_goods_expected_value = -0.15
-				special_forces_attack_factor = -0.6
-				special_forces_defence_factor = -0.6
-				intelligence_agency_defense = -6
-				root_out_resistance_effectiveness_factor = -0.6
-				intel_network_gain_factor = -0.6
-				intel_from_operatives_factor = -0.6
-				target_sabotage_factor = -0.6
-				boost_resistance_factor = -0.6
-				operative_slot = -3
-				intel_network_gain = -0.6
-				decryption_power_factor = -0.6
-				supply_node_range = -0.30
+				stability_factor = -0.15
+				political_power_factor = 0.30
+				production_speed_buildings_factor = 0.15
 			}
 
 			cancel_if_invalid = no
@@ -2150,19 +2100,10 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.02
-				consumer_goods_expected_value = -0.1
-				special_forces_attack_factor = -0.4
-				special_forces_defence_factor = -0.4
-				intelligence_agency_defense = -4
-				root_out_resistance_effectiveness_factor = -0.4
-				intel_network_gain_factor = -0.4
-				intel_from_operatives_factor = -0.4
-				target_sabotage_factor = -0.4
-				boost_resistance_factor = -0.4
-				operative_slot = -2
-				intel_network_gain = -0.4
-				decryption_power_factor = -0.4
-				supply_node_range = -0.2
+				consumer_goods_expected_value = -0.10
+				stability_factor = -0.10
+				political_power_factor = 0.20
+				production_speed_buildings_factor = 0.10
 			}
 			
 			cancel_if_invalid = no
@@ -2194,18 +2135,9 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = -0.01
 				consumer_goods_expected_value = -0.05
-				special_forces_attack_factor = -0.2
-				special_forces_defence_factor = -0.2
-				intelligence_agency_defense = -2
-				root_out_resistance_effectiveness_factor = -0.2
-				intel_network_gain_factor = -0.2
-				intel_from_operatives_factor = -0.2
-				target_sabotage_factor = -0.2
-				boost_resistance_factor = -0.2
-				operative_slot = -1
-				intel_network_gain = -0.2
-				decryption_power_factor = -0.2
-				supply_node_range = -0.10
+				stability_factor = -0.05
+				political_power_factor = 0.10
+				production_speed_buildings_factor = 0.05
 			}
 			
 			traits = {
@@ -2270,19 +2202,10 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = 0.01
-				consumer_goods_expected_value = 0.15
-				special_forces_attack_factor = 0.2
-				special_forces_defence_factor = 0.2
-				intelligence_agency_defense = 2
-				root_out_resistance_effectiveness_factor = 0.2
-				intel_network_gain_factor = 0.2
-				intel_from_operatives_factor = 0.2
-				target_sabotage_factor = 0.2
-				boost_resistance_factor = 0.2
-				operative_slot = 1
-				intel_network_gain = 0.2
-				decryption_power_factor = 0.2
-				supply_node_range = 0.10
+				consumer_goods_expected_value = 0.05
+				stability_factor = 0.05
+				political_power_factor = -0.10
+				production_speed_buildings_factor = -0.05
 			}
 			
 			traits = {
@@ -2316,20 +2239,11 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = 0.03
-				consumer_goods_expected_value = 0.20
-				special_forces_attack_factor = 0.4
- 				special_forces_defence_factor = 0.4
- 				intelligence_agency_defense = 4
-				root_out_resistance_effectiveness_factor = 0.4
-				intel_network_gain_factor = 0.4
-				intel_from_operatives_factor = 0.4
-				target_sabotage_factor = 0.4
-				boost_resistance_factor = 0.4
-				operative_slot = 2
-				intel_network_gain = 0.4
-				decryption_power_factor = 0.4
-				supply_node_range = 0.2
+				AWR_economy_development_monthly = 0.02
+				consumer_goods_expected_value = 0.10
+				stability_factor = 0.10
+				political_power_factor = -0.20
+				production_speed_buildings_factor = -0.10
 			}
 			
 			traits = {
@@ -2363,21 +2277,11 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = 0.02
 				AWR_economy_development_monthly = 0.03
-				consumer_goods_expected_value = 0.25
-				special_forces_attack_factor = 0.6
-				special_forces_defence_factor = 0.6
-				intelligence_agency_defense = 6
-				root_out_resistance_effectiveness_factor = 0.6
-				intel_network_gain_factor = 0.6
-				intel_from_operatives_factor = 0.6
-				target_sabotage_factor = 0.6
-				boost_resistance_factor = 0.6
-				 
-				intel_network_gain = 0.6
-				decryption_power_factor = 0.6
-				supply_node_range = 0.30
+				consumer_goods_expected_value = 0.15
+				stability_factor = 0.15
+				political_power_factor = -0.30
+				production_speed_buildings_factor = -0.15
 			}
 			
 			traits = {
@@ -2416,18 +2320,15 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.03
-				consumer_goods_expected_value = 0.25
-				production_speed_arms_factory_factor = 0.2
+				consumer_goods_expected_value = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
 				army_morale_factor = 0.15
 				supply_consumption_factor = -0.15
 				attrition = -0.15
 				army_org_factor = 0.15
 				navy_org_factor = 0.15
 				air_mission_efficiency = 0.15
-				terrain_penalty_reduction = 0.15
-				experience_gain_army_factor = 0.15
-				experience_gain_navy_factor = 0.15
-				experience_gain_air_factor = 0.15
 			}
 			
 			cancel_if_invalid = no
@@ -2458,20 +2359,15 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.02
-				consumer_goods_expected_value = 0.20
-				production_speed_arms_factory_factor = 0.15
-				army_morale_factor = 0.1
-				supply_consumption_factor = -0.1
-				attrition = -0.1
-				army_org_factor = 0.1
-				navy_org_factor = 0.1
-				terrain_penalty_reduction = 0.1
-				air_mission_efficiency = 0.1
-				#industrial_capacity_factory = 0.1
-				#industrial_capacity_factory = 0.1
-				experience_gain_army_factor = 0.1
-				experience_gain_navy_factor = 0.1
-				experience_gain_air_factor = 0.1
+				consumer_goods_expected_value = 0.10
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
+				army_morale_factor = 0.10
+				supply_consumption_factor = -0.10
+				attrition = -0.10
+				army_org_factor = 0.10
+				navy_org_factor = 0.10
+				air_mission_efficiency = 0.10
 			}
 			
 			cancel_if_invalid = no
@@ -2502,18 +2398,15 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.01
-				consumer_goods_expected_value = 0.15
-				production_speed_arms_factory_factor = 0.1
+				consumer_goods_expected_value = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
 				army_morale_factor = 0.05
 				supply_consumption_factor = -0.05
 				attrition = -0.05
 				army_org_factor = 0.05
 				navy_org_factor = 0.05
 				air_mission_efficiency = 0.05
-				terrain_penalty_reduction = 0.05
-				experience_gain_army_factor = 0.05
-				experience_gain_navy_factor = 0.05
-				experience_gain_air_factor = 0.05
 			}
 			
 			cancel_if_invalid = no
@@ -2574,17 +2467,14 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = 0.01
 				consumer_goods_expected_value = -0.05
-				production_speed_arms_factory_factor = -0.1
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
 				army_morale_factor = -0.05
 				supply_consumption_factor = 0.05
 				attrition = 0.05
 				army_org_factor = -0.05
 				navy_org_factor = -0.05
 				air_mission_efficiency = -0.05
-				terrain_penalty_reduction = -0.05
-				experience_gain_army_factor = -0.05
-				experience_gain_navy_factor = -0.05
-				experience_gain_air_factor = -0.05
 			}
 			
 			cancel_if_invalid = no
@@ -2613,20 +2503,15 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = 0.02
-				consumer_goods_expected_value = -0.1
-				production_speed_arms_factory_factor = -0.15
-				army_morale_factor = -0.1
-				supply_consumption_factor = 0.1
-				attrition = 0.1
-				army_org_factor = -0.1
-				navy_org_factor = -0.1
-				air_mission_efficiency = -0.1
-				terrain_penalty_reduction = -0.1
-				#industrial_capacity_factory = -0.1
-				#industrial_capacity_factory = -0.1
-				experience_gain_army_factor = -0.1
-				experience_gain_navy_factor = -0.1
-				experience_gain_air_factor = -0.1
+				consumer_goods_expected_value = -0.10
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
+				army_morale_factor = -0.10
+				supply_consumption_factor = 0.10
+				attrition = 0.10
+				army_org_factor = -0.10
+				navy_org_factor = -0.10
+				air_mission_efficiency = -0.10
 			}
 			
 			traits = {
@@ -2662,28 +2547,17 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = 0.03
 				consumer_goods_expected_value = -0.15
-				production_speed_arms_factory_factor = -0.2
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
 				army_morale_factor = -0.15
 				supply_consumption_factor = 0.15
 				attrition = 0.15
 				army_org_factor = -0.15
 				navy_org_factor = -0.15
 				air_mission_efficiency = -0.15
-				terrain_penalty_reduction = -0.15
-				#industrial_capacity_factory = -0.15
-				#industrial_capacity_factory = -0.15
-				experience_gain_army_factor = -0.15
-				experience_gain_navy_factor = -0.15
-				experience_gain_air_factor = -0.15
-			}
-			
-			traits = {
-				#plus_point_3_per_week  
 			}
 			
 			cancel_if_invalid = no
-			
-			
 		}
 	}
 
@@ -2713,28 +2587,14 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.03
-				consumer_goods_expected_value = 0.25
-				decryption_power = 30
+				consumer_goods_expected_value = 0.15
+				decryption_power = 15
 				encryption = 3
-				research_speed_factor = 0.2
-				local_resources_factor = 0.15
-				production_speed_synthetic_refinery_factor = 0.15
-				production_speed_rocket_site_factor = 0.15
-				production_speed_radar_station_factor = 0.15
-				production_speed_nuclear_reactor_factor = 0.15
-				fuel_gain_factor = 0.3
-				license_production_speed = 0.3
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.75
-				PRODUCTION_SPEED_FACILITY_FACTOR = 0.3
-			}
-			
-			traits = {
-				#minus_point_3_per_week  
+				research_speed_factor = 0.15
+				special_project_speed_factor = 0.15
 			}
 			
 			cancel_if_invalid = no
-			
-			
 		}
 		
 		research_expenditure_2 = {
@@ -2760,24 +2620,14 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.02
-				consumer_goods_expected_value = 0.20
-				decryption_power = 20
+				consumer_goods_expected_value = 0.10
+				decryption_power = 10
 				encryption = 2
-				research_speed_factor = 0.15
-				local_resources_factor = 0.1
-				production_speed_synthetic_refinery_factor = 0.1
-				production_speed_rocket_site_factor = 0.1
-				production_speed_radar_station_factor = 0.1
-				production_speed_nuclear_reactor_factor = 0.1
-				fuel_gain_factor = 0.2
-				license_production_speed = 0.2
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.50
-				PRODUCTION_SPEED_FACILITY_FACTOR = 0.2
+				research_speed_factor = 0.10
+				special_project_speed_factor = 0.10
 			}
 			
 			cancel_if_invalid = no
-			
-			
 		}
 		
 		research_expenditure_1 = {
@@ -2791,7 +2641,6 @@ ideas = {
 			}
 			cost = 50
 			removal_cost = -1
-			#level = 5
 			
 			available = {
 				#
@@ -2803,24 +2652,14 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = -0.01
-				consumer_goods_expected_value = 0.15
-				decryption_power = 10
+				consumer_goods_expected_value = 0.05
+				decryption_power = 5
 				encryption = 1
-				research_speed_factor = 0.1
-				local_resources_factor = 0.05
-				production_speed_synthetic_refinery_factor = 0.05
-				production_speed_rocket_site_factor = 0.05
-				production_speed_radar_station_factor = 0.05
-				production_speed_nuclear_reactor_factor = 0.05
-				fuel_gain_factor = 0.1
-				license_production_speed = 0.1
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.25
-				PRODUCTION_SPEED_FACILITY_FACTOR = 0.1
+				research_speed_factor = 0.05
+				special_project_speed_factor = 0.05
 			}
 			
 			cancel_if_invalid = no
-			
-			
 		}
 		
 		research_expenditure_0 = {
@@ -2875,18 +2714,10 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = 0.01
 				consumer_goods_expected_value = -0.05
-				decryption_power = -10
+				decryption_power = -5
 				encryption = -1
-				research_speed_factor = -0.1
-				local_resources_factor = -0.05
-				production_speed_synthetic_refinery_factor = -0.05
-				production_speed_rocket_site_factor = -0.05
-				production_speed_radar_station_factor = -0.05
-				production_speed_nuclear_reactor_factor = -0.05
-				fuel_gain_factor = -0.1
-				license_production_speed = -0.1
-				SPECIAL_PROJECT_SPEED_FACTOR = -0.1
-				PRODUCTION_SPEED_FACILITY_FACTOR = -0.1
+				research_speed_factor = -0.05
+				special_project_speed_factor = -0.05
 			}
 			
 			cancel_if_invalid = no
@@ -2916,19 +2747,11 @@ ideas = {
 
 			modifier = {
 				AWR_economy_development_monthly = 0.02
-				consumer_goods_expected_value = -0.1
-				decryption_power = -20
+				consumer_goods_expected_value = -0.10
+				decryption_power = -10
 				encryption = -2
-				research_speed_factor = -0.15
-				local_resources_factor = -0.1
-				production_speed_synthetic_refinery_factor = -0.1
-				production_speed_rocket_site_factor = -0.1
-				production_speed_radar_station_factor = -0.1
-				production_speed_nuclear_reactor_factor = -0.1
-				fuel_gain_factor = -0.2
-				license_production_speed = -0.2
-				SPECIAL_PROJECT_SPEED_FACTOR = -0.2
-				PRODUCTION_SPEED_FACILITY_FACTOR = -0.2
+				research_speed_factor = -0.10
+				special_project_speed_factor = -0.10
 			}
 			
 			cancel_if_invalid = no
@@ -2959,18 +2782,10 @@ ideas = {
 			modifier = {
 				AWR_economy_development_monthly = 0.03
 				consumer_goods_expected_value = -0.15
-				decryption_power = -30
+				decryption_power = -15
 				encryption = -3
-				research_speed_factor = -0.2
-				local_resources_factor = -0.15
-				production_speed_synthetic_refinery_factor = -0.15
-				production_speed_rocket_site_factor = -0.15
-				production_speed_radar_station_factor = -0.15
-				production_speed_nuclear_reactor_factor = -0.15
-				fuel_gain_factor = -0.3
-				license_production_speed = -0.3
-				SPECIAL_PROJECT_SPEED_FACTOR = -0.3
-				PRODUCTION_SPEED_FACILITY_FACTOR = -0.3
+				research_speed_factor = -0.15
+				special_project_speed_factor = -0.15
 			}
 			
 			cancel_if_invalid = no
@@ -3005,21 +2820,13 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = -0.03
-				consumer_goods_expected_value = 0.25
-				production_speed_infrastructure_factor = 0.2
-				stability_factor = 0.3
-				global_building_slots_factor = 0.15
-				political_power_factor = 0.3
-				resistance_damage_to_garrison = -0.3
-				compliance_gain = 0.03
-				conscription_factor = 0.3
-				non_core_manpower = 0.06
-				weekly_manpower = 1500
-				enemy_operative_detection_chance_factor = 0.15
-				enemy_operative_capture_chance_factor = 0.15
-				stability_weekly = 0.002
-				war_support_weekly = 0.002
+				AWR_economy_development_monthly = 0.06
+				consumer_goods_expected_value = 0.30
+				stability_factor = 0.30
+				production_speed_facility_factor = 0.15
+				weekly_manpower = 15000
+				compliance_growth = 0.30
+				resistance_growth = -0.30
 			}
 			
 			cancel_if_invalid = no
@@ -3048,34 +2855,16 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = -0.02
+				AWR_economy_development_monthly = 0.04
 				consumer_goods_expected_value = 0.20
-				production_speed_infrastructure_factor = 0.15
-				stability_factor = 0.2
-				global_building_slots_factor = 0.1
-				#war_support_factor = 0.2
-				political_power_factor = 0.2
-				resistance_damage_to_garrison = -0.2
-				compliance_gain = 0.02
-				conscription_factor = 0.2
-				non_core_manpower = 0.04
-				weekly_manpower = 1000
-				#drift_defence_factor = 0.2
-				#foreign_subversive_activites = -0.2
-				#intelligence_agency_defense = 2
-				enemy_operative_detection_chance_factor = 0.1
-				enemy_operative_capture_chance_factor = 0.1
-				stability_weekly = 0.001
-				war_support_weekly = 0.001
-			}
-			
-			traits = {
-				#minus_point_2_per_week  
+				stability_factor = 0.20
+				production_speed_facility_factor = 0.10
+				weekly_manpower = 10000
+				compliance_growth = 0.20
+				resistance_growth = -0.20
 			}
 			
 			cancel_if_invalid = no
-			
-			
 		}
 		
 		social_management_and_welfare_expenditure_1 = {
@@ -3100,19 +2889,13 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = -0.01
-				consumer_goods_expected_value = 0.15
-				production_speed_infrastructure_factor = 0.1
-				stability_factor = 0.1
-				global_building_slots_factor = 0.05
-				political_power_factor = 0.1
-				resistance_damage_to_garrison = -0.1
-				compliance_gain = 0.01
-				conscription_factor = 0.1
-				non_core_manpower = 0.02
-				weekly_manpower = 500
-				enemy_operative_detection_chance_factor = 0.05
-				enemy_operative_capture_chance_factor = 0.05
+				AWR_economy_development_monthly = 0.02
+				consumer_goods_expected_value = 0.10
+				stability_factor = 0.10
+				production_speed_facility_factor = 0.05
+				weekly_manpower = 5000
+				compliance_growth = 0.10
+				resistance_growth = -0.10
 			}
 			
 			cancel_if_invalid = no
@@ -3171,18 +2954,13 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = 0.01
-				consumer_goods_expected_value = -0.05
-				production_speed_infrastructure_factor = -0.1
-				stability_factor = -0.1
-				global_building_slots_factor = -0.05
-				political_power_factor = -0.1
-				resistance_damage_to_garrison = 0.1
-				compliance_gain = -0.01
-				conscription_factor = -0.1
-				non_core_manpower = -0.02
-				enemy_operative_detection_chance_factor = -0.05
-				enemy_operative_capture_chance_factor = -0.05
+				AWR_economy_development_monthly = -0.02
+				consumer_goods_expected_value = -0.10
+				stability_factor = -0.10
+				production_speed_facility_factor = -0.05
+				weekly_manpower = -5000
+				compliance_growth = -0.10
+				resistance_growth = 0.10
 			}
 			
 			traits = {
@@ -3216,29 +2994,13 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = 0.02
-				consumer_goods_expected_value = -0.1
-				production_speed_infrastructure_factor = -0.15
-				stability_factor = -0.2
-				global_building_slots_factor = -0.1
-				#war_support_factor = -0.2
-				political_power_factor = -0.2
-				resistance_damage_to_garrison = 0.2
-				compliance_gain = -0.02
-				conscription_factor = -0.2
-				non_core_manpower = -0.04
-				#weekly_manpower = -500
-				#drift_defence_factor = -0.2
-				#foreign_subversive_activites = 0.2
-				#intelligence_agency_defense = -2
-				enemy_operative_detection_chance_factor = -0.1
-				enemy_operative_capture_chance_factor = -0.1
-				stability_weekly = -0.001
-				war_support_weekly = -0.001
-			}
-			
-			traits = {
-				#plus_point_2_per_week  
+				AWR_economy_development_monthly = -0.04
+				consumer_goods_expected_value = -0.20
+				stability_factor = -0.20
+				production_speed_facility_factor = -0.10
+				weekly_manpower = -10000
+				compliance_growth = -0.20
+				resistance_growth = 0.20
 			}
 			
 			cancel_if_invalid = no
@@ -3268,20 +3030,13 @@ ideas = {
 			}
 
 			modifier = {
-				AWR_economy_development_monthly = 0.03
-				consumer_goods_expected_value = -0.15
-				production_speed_infrastructure_factor = -0.2
-				stability_factor = -0.3
-				global_building_slots_factor = -0.15
-				political_power_factor = -0.3
-				resistance_damage_to_garrison = 0.3
-				compliance_gain = -0.03
-				conscription_factor = -0.3
-				non_core_manpower = -0.06
-				enemy_operative_detection_chance_factor = -0.15
-				enemy_operative_capture_chance_factor = -0.15
-				stability_weekly = -0.002
-				war_support_weekly = -0.002
+				AWR_economy_development_monthly = -0.06
+				consumer_goods_expected_value = -0.30
+				stability_factor = -0.30
+				production_speed_facility_factor = -0.15
+				weekly_manpower = -15000
+				compliance_growth = -0.30
+				resistance_growth = 0.30
 			}
 			
 			cancel_if_invalid = no

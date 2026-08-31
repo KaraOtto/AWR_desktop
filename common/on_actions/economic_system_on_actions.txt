@@ -175,6 +175,17 @@ on_actions = {
 			}
 		}
 	}
+
+	on_startup = {
+		effect = {
+			every_country = {
+				set_variable = {	#月度变化
+					var = economy_development_monthly
+					value = modifier@AWR_economy_development_monthly
+				}
+			}
+		}
+	}
 }
 
 on_actions = {
@@ -182,13 +193,18 @@ on_actions = {
 		effect = {
 			every_country = {
 				set_temp_variable = {	#临时变量
+					var = temp_economy_development_monthly
+					value = modifier@AWR_economy_development_monthly
+				}
+
+				set_variable = {	#月度变化
 					var = economy_development_monthly
 					value = modifier@AWR_economy_development_monthly
 				}
 
 				add_to_variable = {
 					var = economy_development_index
-					value = economy_development_monthly
+					value = temp_economy_development_monthly
 				}				
 			}
 		}
