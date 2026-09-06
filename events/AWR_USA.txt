@@ -1,0 +1,40 @@
+add_namespace = AWR_USA
+country_event = {	#中国请求加入我们
+	id = AWR_USA.1
+	title = AWR_USA.1.t	
+	desc = AWR_USA.1.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+	option = {
+		name = AWR_USA.1.a
+		news_event = {
+			id = AWR_PRC_news.6
+			days = 3
+		}
+
+		PRC = {
+			add_to_faction = USA
+		}
+	}
+
+	option = {
+		name = AWR_USA.1.b
+		PRC = {
+			country_event = {
+				id = AWR_USA.2
+			}
+		}
+		
+	}
+}
+
+country_event = {	#美国拒绝我们加入
+	id = AWR_USA.2
+	title = AWR_USA.2.t	
+	desc = AWR_USA.2.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+	option = {
+		name = AWR_USA.2.a
+	}
+}

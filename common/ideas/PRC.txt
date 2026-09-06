@@ -6581,7 +6581,380 @@ ideas = {
 				production_speed_industrial_infrastructure_factor = 0.30
 			}
 		}
+
+		PRC_northeast_trade = { #东北贸易总公司
+			picture = PRC_northeast_trade
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			cancel = {
+				OR = {
+					NOT = {
+						is_neighbor_of = SOV
+					}
+					has_war_with = SOV
+				}
+			}
+
+		    modifier = {
+				consumer_goods_factor = 0.15
+            }
+
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.10
+				extra_trade_to_target_factor = 0.25
+				trade_cost_for_target_factor = -0.25
+			}
+        }
 		
+		PRC_economy_cooperate_with_ENG = {	#中英经济合作
+			picture = PRC_economy_cooperate_with_ENG
+			allowed = {
+				PRC = {
+					NOT = {
+						is_in_faction_with = SOV
+						has_war_with = ENG
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = ENG
+					}
+				}
+			}
+
+			modifier = {
+				AWR_economy_development_monthly = 0.015
+			}
+		}
+
+		PRC_economy_cooperate_with_FRA = {	#中法经济合作
+			picture = PRC_economy_cooperate_with_FRA
+			allowed = {
+				PRC = {
+					NOT = {
+						OR = {
+							is_in_faction_with = SOV
+							has_war_with = FRA
+						}
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = FRA
+					}
+				}
+			}
+
+			modifier = {
+				AWR_economy_development_monthly = 0.015
+			}
+		}
+
+		PRC_economy_cooperate_with_USA = {	#中美经济合作
+			picture = PRC_economy_cooperate_with_USA
+			allowed = {
+				PRC = {
+					NOT = {
+						OR = {
+							is_in_faction_with = SOV
+							has_war_with = USA
+						}
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = USA
+					}
+				}
+			}
+
+			modifier = {
+				AWR_economy_development_monthly = 0.03
+			}
+		}
+
+		PRC_technology_cooperate_with_ENG = {	#中英科研合作
+			picture = PRC_technology_cooperate_with_ENG
+			allowed = {
+				PRC = {
+					NOT = {
+						is_in_faction_with = SOV
+						has_war_with = ENG
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = ENG
+					}
+				}
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+				special_project_speed_factor = 0.05
+			}
+		}
+
+		PRC_technology_cooperate_with_FRA = {	#中法科研合作
+			picture = PRC_technology_cooperate_with_FRA
+			allowed = {
+				PRC = {
+					NOT = {
+						OR = {
+							is_in_faction_with = SOV
+							has_war_with = FRA
+						}
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = FRA
+					}
+				}
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+				special_project_speed_factor = 0.05
+			}
+		}
+
+		PRC_technology_cooperate_with_USA = {	#中美科研合作
+			picture = PRC_technology_cooperate_with_USA
+			allowed = {
+				PRC = {
+					NOT = {
+						OR = {
+							is_in_faction_with = SOV
+							has_war_with = USA
+						}
+					}
+				}
+			}
+			cancel = {
+				OR = {
+					PRC = {
+						is_in_faction_with = SOV
+					}
+					PRC = {
+						has_war_with = USA
+					}
+				}
+			}
+
+			modifier = {
+				research_speed_factor = 0.10
+				special_project_speed_factor = 0.10
+			}
+		}
+
+		PRC_eastern_iron_curtain_idea = {	#东方铁幕
+			picture = PRC_eastern_iron_curtain_idea
+			cancel = {
+				is_in_faction_with = SOV
+			}
+
+			targeted_modifier = {
+				tag = SOV
+				army_attack_factor = 0.15			
+				army_defence_factor = 0.15
+			}
+		}
+
+		PRC_partnerships_without_alliance_idea = {	#结伴不结盟
+			picture = PRC_partnerships_without_alliance_idea
+
+			modifier = {
+				join_faction_tension = 0.75
+				enemy_justify_war_goal_time = 1.0
+				AWR_economy_development_monthly = 0.01
+			}
+
+			rule = {
+				can_create_factions = no
+			}
+		}
+
+		PRC_Liberation_Siberia_idea = {	#反修正主义
+			picture = PRC_Liberation_Siberia_idea
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.15 #MODDED
+				defense_bonus_against = 0.15 #MODDED
+			    breakthrough_bonus_against = 0.15 #MODDED
+            }
+			modifier = {
+				army_morale_Factor = 0.15
+				war_stability_factor = 0.25
+			}
+		}
+
+		PRC_diguozhuyixuanzhan_idea = {	#反帝国主义
+			picture = PRC_diguozhuyixuanzhan_idea
+			allowed = { 
+				original_tag = PRC 
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_against_major_factor = 0.15
+				ARMY_DEFENCE_AGAINST_MAJOR_FACTOR = 0.15
+				ARMY_BREAKTHROUGH_AGAINST_MAJOR_FACTOR = 0.15
+				army_morale_Factor = 0.15
+				war_stability_factor = 0.25
+			}
+		}
+
+		PRC_Output_revolution = {	#输出革命
+
+			picture = PRC_Output_revolution
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			
+
+			modifier = { #guo
+				subversive_activites_upkeep = -0.25
+				foreign_subversive_activites = -0.5
+				propaganda_mission_factor = 0.25 
+				boost_ideology_mission_factor = 0.25 
+				operation_collaboration_government_outcome = 0.25 
+				operation_collaboration_government_cost = -0.25 
+				operation_coup_government_outcome = 0.25 
+				operation_coup_government_cost = -0.25 
+			}
+		}
+
+		prc_shijierenmindatuanjiewansui = {	#世界人民大团结
+										
+			removal_cost = -1
+
+			picture = PRC_shijierenmin
+
+			available = {
+				has_government = communism			
+			}
+				
+			modifier = {
+				drift_defence_factor = 0.25
+				communism_drift = 0.50
+				offensive_war_stability_factor = 0.15
+				send_volunteer_size = 36
+				send_volunteer_divisions_required = -1
+				join_faction_tension = -1
+				send_volunteers_tension = -1
+				guarantee_tension = -1
+				justify_war_goal_time = -0.25
+				generate_wargoal_tension = -0.25
+				compliance_gain = 0.25
+				resistance_target = -0.25
+				resistance_growth = -0.25
+				resistance_damage_to_garrison = -0.25
+				required_garrison_factor = -0.25
+				non_core_manpower = 0.25		
+				communism_acceptance = 1000
+				ai_focus_aggressive_factor = 0.5
+				ai_get_ally_desire_factor = 1000
+			}
+		}
+
+		PRC_comecon_puppet_default = {	#召唤世界人民
+			name = PRC_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no 
+			}
+			
+			targeted_modifier = {
+				tag = PRC
+				cic_to_target_factor = 0.25
+				mic_to_target_factor = 0.25
+				extra_trade_to_target_factor = 0.25
+				trade_cost_for_target_factor = -0.50
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.15
+				cic_to_overlord_factor = 0.25
+				mic_to_overlord_factor = 0.25
+				extra_trade_to_overlord_factor = 0.25
+				communism_drift = 0.05
+				autonomy_gain_trade_factor = -0.75
+				autonomy_manpower_share = -0.5
+			}
+		}
+
+		PRC_comecon_sov_default = {	#世界人民大团结万岁
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = 0.15
+			}
+		}
+
+		PRC_rent_reduction_and_interest_reduction = {	#减租减息
+			picture = PRC_rent_reduction_and_interest_reduction
+			modifier = {
+				consumer_goods_factor  = -0.15
+				stability_factor = 0.05
+			}
+		}
 	}
 
 	hidden_ideas = {

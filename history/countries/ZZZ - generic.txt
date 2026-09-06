@@ -832,100 +832,107 @@ value = -4
 }
 
 SIK = {
-add_country_leader_trait = {
-	ideology = despotism
-	trait = prince_of_terror
-}
-add_country_leader_trait = {
-	ideology = n_socialism_ideology
-	trait = prince_of_terror
-}
-add_country_leader_trait = {
-	ideology = conservatism
-	trait = prince_of_terror
-}
-add_country_leader_trait = {
-	ideology = fascism_ideology
-	trait = prince_of_terror
-}
-add_country_leader_trait = {
-	ideology = marxism
-	trait = prince_of_terror
-}
-add_country_leader_trait = prince_of_terror
-set_truce = { target = TNG days = 365 }
-add_opinion_modifier = { target = TNG modifier = hostile_status }	## MODDED
+	add_country_leader_trait = {
+		ideology = despotism
+		trait = prince_of_terror
+	}
+	add_country_leader_trait = {
+		ideology = n_socialism_ideology
+		trait = prince_of_terror
+	}
+	add_country_leader_trait = {
+		ideology = conservatism
+		trait = prince_of_terror
+	}
+	add_country_leader_trait = {
+		ideology = fascism_ideology
+		trait = prince_of_terror
+	}
+	add_country_leader_trait = {
+		ideology = marxism
+		trait = prince_of_terror
+	}
+	add_country_leader_trait = prince_of_terror
+	set_truce = { 
+		target = TNG days = 365 
+	}
+	add_opinion_modifier = { 
+		target = TNG modifier = hostile_status 
+	}	## MODDED
 }
 
 JAP = {
-add_country_leader_trait = moderate_reformist
+	add_country_leader_trait = moderate_reformist
 }
 
 FIC = {
-add_country_leader_trait = ethnarch
+	add_country_leader_trait = ethnarch
 }
 
 USA = {
-set_stability = 0.6
-add_ideas = usa_FBI
+	set_stability = 0.6
+	add_ideas = usa_FBI
 
-create_intelligence_agency = yes
-upgrade_intelligence_agency = upgrade_form_department
-upgrade_intelligence_agency = upgrade_passive_defense
-#upgrade_intelligence_agency = upgrade_training_centers
-upgrade_intelligence_agency = upgrade_psycho_warfare
-		
-recruit_character = USA_James_Alward_Van_Fleet
-recruit_character = USA_Joseph_Taggett_McNani
-recruit_character = USA_Adna_Chaffee
-recruit_character = USA_malin_craig
-recruit_character = USA_John_Edgar_Hoovercivilianpng
-recruit_character = USA_jacob_devers
-recruit_character = USA_holland_smith
-recruit_character = USA_Benjamin_O_Davis
-recruit_character = USA_james_gavin
-recruit_character = USA_john_pershing
-recruit_character = USA_Maxwell_Taylor
-recruit_character = USA_Matthew_Bunker_Ridgway
-recruit_character = USA_george_s_patton111
-recruit_character = USA_omar_bradley111
-recruit_character = USA_aike111
-recruit_character = USA_panxin111
-recruit_character = USA_nimizi111
-recruit_character = USA_chennade111
-recruit_character = USA_albert_coady_wedemeyer
-recruit_character = USA_charles_lindbergh
+	create_intelligence_agency = yes
+	upgrade_intelligence_agency = upgrade_form_department
+	upgrade_intelligence_agency = upgrade_passive_defense
+	#upgrade_intelligence_agency = upgrade_training_centers
+	upgrade_intelligence_agency = upgrade_psycho_warfare
+			
+	recruit_character = USA_James_Alward_Van_Fleet
+	recruit_character = USA_Joseph_Taggett_McNani
+	recruit_character = USA_Adna_Chaffee
+	recruit_character = USA_malin_craig
+	recruit_character = USA_John_Edgar_Hoovercivilianpng
+	recruit_character = USA_jacob_devers
+	recruit_character = USA_holland_smith
+	recruit_character = USA_Benjamin_O_Davis
+	recruit_character = USA_james_gavin
+	recruit_character = USA_john_pershing
+	recruit_character = USA_Maxwell_Taylor
+	recruit_character = USA_Matthew_Bunker_Ridgway
+	recruit_character = USA_george_s_patton111
+	recruit_character = USA_omar_bradley111
+	recruit_character = USA_aike111
+	recruit_character = USA_panxin111
+	recruit_character = USA_nimizi111
+	recruit_character = USA_chennade111
+	recruit_character = USA_albert_coady_wedemeyer
+	recruit_character = USA_charles_lindbergh
 }
 
 FIN = {
-add_country_leader_trait = prominent_lawyer
-add_country_leader_trait = anti_communist
+	add_country_leader_trait = prominent_lawyer
+	add_country_leader_trait = anti_communist
 }
 
 AST = {
-set_cosmetic_tag = AST_federal
+	set_cosmetic_tag = AST_federal
 }
 
 NZL = {
-set_cosmetic_tag = NZL_zizhiling
+	set_cosmetic_tag = NZL_zizhiling
 }
 
 every_state = {
-		limit = {
+	limit = {
 		OR = {
-		    state = 1008
-		    state = 714
-		    state = 1005
-		    state = 717
-		    state = 328
-		    state = 1007
-		    state = 1006
-		    state = 716	 
+			state = 1008
+			state = 714
+			state = 1005
+			state = 717
+			state = 328
+			state = 1007
+			state = 1006
+			state = 716	 
 		}
-		}
-		set_state_flag = PRC_dongbeikanglian_genjudi
-		#add_dynamic_modifier = { modifier = PRC_dongbeikanglian_genjudi scope = MAN }
-		add_dynamic_modifier = { modifier = PRC_dongbeikanglian_genjudi scope = JAP }
+	}
+	set_state_flag = PRC_dongbeikanglian_genjudi
+
+	add_dynamic_modifier = { 
+		modifier = PRC_dongbeikanglian_genjudi 
+		scope = JAP 
+	}
 }
 
 every_country = {
@@ -959,98 +966,93 @@ every_country = {
 
 
 every_country = {
-                                                          limit = {
-OR = {
-tag = JAP
-tag = MAN
-tag = MEN
-tag = RRC
-tag = RFM
-tag = JNC
-tag = MEJ
-tag = MAF
-tag = ECA
+	limit = {
+		OR = {
+			tag = JAP
+			tag = MAN
+			tag = MEN
+			tag = RRC
+			tag = RFM
+			tag = JNC
+			tag = MEJ
+			tag = MAF
+			tag = ECA
+		}
+	}
+	set_country_flag = riben
 }
-}
-set_country_flag = riben
-                                                }
 
 WGR = {
-set_war_support = 0
-set_capital = { state = 42 }
-set_popularities = {
-	democratic = 80
-	n_socialism = 20
-	fascism = 0
-	communism = 0
-	neutrality = 0
+	set_war_support = 0
+	set_capital = { 
+		state = 42 
+	}
+	set_popularities = {
+		democratic = 80
+		socialism = 20
+		fascism = 0
+		communism = 0
+		neutrality = 0
+	}
 }
-
-}
-
-
-
-#GER = {
-#add_country_leader_trait = rearmer
-#}
 
 FRA = {
-add_country_leader_trait = stout_defender
-add_country_leader_trait = reluctant_interventionist
-give_guarantee = SWI
-give_guarantee = LUX
-give_guarantee = HOL
-give_guarantee = BEL
-create_country_leader = {
-name ="皮埃尔·赖伐尔"
-desc=Pierre_laval_desc
-picture = "Portrait_Pierre_Laval.dds"
-expire = "1965.1.1"
-ideology = liberalism		
-traits = {
-stout_defender
-reluctant_interventionist
-}
-}
+	add_country_leader_trait = stout_defender
+	add_country_leader_trait = reluctant_interventionist
+	give_guarantee = SWI
+	give_guarantee = LUX
+	give_guarantee = HOL
+	give_guarantee = BEL
+	create_country_leader = {
+		name ="皮埃尔·赖伐尔"
+		desc=Pierre_laval_desc
+		picture = "Portrait_Pierre_Laval.dds"
+		expire = "1965.1.1"
+		ideology = liberalism		
+		traits = {
+			stout_defender
+			reluctant_interventionist
+		}
+	}
 }
 
 YUN = {
-454 = {
-set_victory_points = {
-province = 1086
-value = 5
-}
-}
-add_ideas = yun_jiangwutang
-add_ideas = yun_democratic_fortress
-add_country_leader_trait = yunnanwang
+	454 = {
+		set_victory_points = {
+			province = 1086
+			value = 5
+		}
+	}
+	add_ideas = yun_jiangwutang
+	add_ideas = yun_democratic_fortress
+	add_country_leader_trait = yunnanwang
 
-add_country_leader_trait = {
-	ideology = despotism
-	trait = yunnanwang
-}
-add_country_leader_trait = {
-	ideology = n_socialism_ideology
-	trait = yunnanwang
-}
-add_country_leader_trait = {
-	ideology = conservatism
-	trait = yunnanwang
-}
-add_country_leader_trait = {
-	ideology = fascism_ideology
-	trait = yunnanwang
-}
-add_country_leader_trait = {
-	ideology = marxism
-	trait = yunnanwang
-}
+	add_country_leader_trait = {
+		ideology = despotism
+		trait = yunnanwang
+	}
+	add_country_leader_trait = {
+		ideology = n_socialism_ideology
+		trait = yunnanwang
+	}
+	add_country_leader_trait = {
+		ideology = conservatism
+		trait = yunnanwang
+	}
+	add_country_leader_trait = {
+		ideology = fascism_ideology
+		trait = yunnanwang
+	}
+	add_country_leader_trait = {
+		ideology = marxism
+		trait = yunnanwang
+	}
 }
 
 NEA = {
-add_country_leader_trait = NEA_son_of_zhang_zuolin
-add_ideas = NEA_918_918
-recruit_character = NEA_lvzhengcao
+	add_country_leader_trait = NEA_son_of_zhang_zuolin
+	add_ideas = NEA_918_918
+	recruit_character = NEA_lvzhengcao
 }
 
 TIB = {
@@ -1058,7 +1060,7 @@ add_country_leader_trait = rezhenhuofo
 }
 
 GXC = {
-add_ai_strategy = {
+	add_ai_strategy = {
 		type = befriend
 		id = GUD
 		value = 100
@@ -1066,8 +1068,8 @@ add_ai_strategy = {
 }
 
 GUD = {
-add_ideas = CHI_whampoa_military_academy
-add_ai_strategy = {
+	add_ideas = CHI_whampoa_military_academy
+	add_ai_strategy = {
 		type = befriend
 		id = GXC
 		value = 100
@@ -1077,7 +1079,7 @@ add_ai_strategy = {
 VEN = {
 	set_popularities = {
 		democratic = 0
-		n_socialism = 5
+		socialism = 5
 		fascism = 10
 		communism = 5
 		neutrality = 80
@@ -1117,64 +1119,25 @@ VEN = {
 }
 
 JAP = {
-recruit_character = JAP_Abe_Jixiu
-recruit_character = JAP_Masao_Nakamura
+	recruit_character = JAP_Abe_Jixiu
+	recruit_character = JAP_Masao_Nakamura
 }
 
 SOV = {
-			recruit_character = SOV_georgy_safarov
-			recruit_character = SOV_oscar_tarkhanov
-			recruit_character = SOV_nikolai_krestinsky
-			recruit_character = SOV_khristian_rakovsky
-			recruit_character = SOV_grigory_yevdokimov
-			recruit_character = SOV_lazar_shatskin
-			
-
-			recruit_character = SOV_timofey_sapronov
-			recruit_character = SOV_nikolay_osinsky
-			recruit_character = SOV_andrei_bubnov
-			recruit_character = SOV_vladimir_smirnov
-
-
-			recruit_character = SOV_vladimir_nevsky
-			recruit_character = SOV_sergei_medvedev
-
-
-
-
-			recruit_character = SOV_vasily_mikhailov
-			recruit_character = SOV_vasily_mikhailov_after
-}
-
-every_country = {
-limit = { or = { is_literally_china = yes original_tag = SIK } }
-set_variable = { X_xchinese_propaganda_3_cost = 15 }
-set_variable = { X_xchinese_propaganda_4_cost = 15 }
-set_variable = { X_xchinese_propaganda_5_cost = 15 }
-set_variable = { X_xchinese_propaganda_6_cost = 15 }
-set_variable = { X_xchinese_propaganda_7_cost = 15 }
-set_variable = { X_xchinese_propaganda_8_cost = 15 }
-set_variable = { X_xchinese_propaganda_9_cost = 15 }
-set_variable = { X_xchinese_propaganda_10_cost = 15 }
-set_variable = { X_xchinese_propaganda_11_cost = 15 }
-set_variable = { X_xchinese_propaganda_12_cost = 15 }
-set_variable = { X_xchinese_propaganda_13_cost = 15 }
-set_variable = { X_xchinese_propaganda_14_cost = 15 }
-set_variable = { X_xchinese_propaganda_15_cost = 15 }
-set_variable = { X_xchinese_propaganda_16_cost = 15 }
-set_variable = { X_xchinese_propaganda_17_cost = 15 }
-set_variable = { X_xchinese_propaganda_18_cost = 15 }
-set_variable = { X_xchinese_propaganda_19_cost = 15 }
-set_variable = { X_xchinese_propaganda_20_cost = 15 }
-set_variable = { X_xchinese_propaganda_21_cost = 15 }
-set_variable = { X_xchinese_propaganda_22_cost = 15 }
-set_variable = { X_xchinese_propaganda_23_cost = 15 }
-set_variable = { X_xchinese_propaganda_24_cost = 15 }
-set_variable = { X_xchinese_propaganda_25_cost = 15 }
-set_variable = { X_xchinese_propaganda_26_cost = 15 }
-
-set_variable = { RCM_communist_amass_support_mission_time_zz = 50 }
-set_variable = { RCM_communist_amass_support_mission_cost_zz = 50 }
+	recruit_character = SOV_georgy_safarov
+	recruit_character = SOV_oscar_tarkhanov
+	recruit_character = SOV_nikolai_krestinsky
+	recruit_character = SOV_khristian_rakovsky
+	recruit_character = SOV_grigory_yevdokimov
+	recruit_character = SOV_lazar_shatskin
+	recruit_character = SOV_timofey_sapronov
+	recruit_character = SOV_nikolay_osinsky
+	recruit_character = SOV_andrei_bubnov
+	recruit_character = SOV_vladimir_smirnov
+	recruit_character = SOV_vladimir_nevsky
+	recruit_character = SOV_sergei_medvedev
+	recruit_character = SOV_vasily_mikhailov
+	recruit_character = SOV_vasily_mikhailov_after
 }
 
 

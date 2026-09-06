@@ -5,6 +5,7 @@ add_namespace = PRC_dong_zhentang
 add_namespace = PRC_lu_dongsheng
 add_namespace = PRC_zhang_guotao
 add_namespace = PRC_xu_guangda
+add_namespace = AWR_PRC_state
 country_event = { #漫漫黄沙中的无线电波
 	id = AWR_PRC.1
 	title = AWR_PRC.1.t
@@ -2287,87 +2288,40 @@ country_event = {	#《抗日救国十大纲领》
 		ai_chance = {
 			base = 0
 		}
-		
+		country_event = {
+			id = AWR_PRC.41
+		}
 	}
 }
 
-country_event = {	#土改
+country_event = {	#停止土改
 	id = AWR_PRC.41
 	title = AWR_PRC.41.t
-	desc = {
-		text = AWR_PRC.41.d_PRC
-		trigger = {
-			OR = {
-				tag = event_target:WTT_communist_china
-				tag = PRC
-			}
-		}
-	}
-	desc = {
-		text = AWR_PRC.41.d_CHI
-		trigger = {
-			NOT = {
-				tag = event_target:WTT_communist_china
-				tag = PRC
-			}
-		}
-	}
+	desc = AWR_PRC.41.desc
 	is_triggered_only = yes
 	
 	picture = GFX_report_event_chinese_soldiers_city_ruin
 	
 	option = { 
 		name = AWR_PRC.41.a
-		trigger = {
-			OR = {
-				tag = event_target:WTT_current_china_leader
-				is_warlord = yes
-				tag = JAP
-				is_subject_of = JAP
+		set_global_flag = PRC_stop_land_reform
+		every_state = {
+			limit = {
+				is_fully_controlled_by = PRC
 			}
-			NOT = {
-				tag = event_target:WTT_communist_china
-			}
+			add_core_of = PRC
 		}
-		effect_tooltip = {
-			event_target:amass_support_flag_temp = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_fully_controlled_by = event_target:WTT_communist_china
+				}
 				add_core_of = event_target:WTT_communist_china
 			}
-			if = {
-				limit = {
-					event_target:amass_support_flag_temp = {
-						is_owned_by_jap_or_its_puppet = yes
-					}
-				}
-				custom_effect_tooltip = gain_public_support_nationalist_owned_by_jap_tt
-				else = {
-					custom_effect_tooltip = gain_public_support_nationalist_owned_by_us_tt
-				}
-			}
 		}
+		add_ideas = PRC_rent_reduction_and_interest_reduction
 	}
-	option = { 
-		name = AWR_PRC.41.b
-		trigger = {
-			tag = event_target:WTT_communist_china
-		}
-		effect_tooltip = {
-			event_target:amass_support_flag_temp = {
-				add_core_of = event_target:WTT_communist_china
-			}
-			if = {
-				limit = {
-					event_target:amass_support_flag_temp = {
-						is_owned_by_jap_or_its_puppet = yes
-					}
-				}
-				custom_effect_tooltip = gain_public_support_communist_owned_by_jap_tt
-				else = {
-					custom_effect_tooltip = gain_public_support_communist_owned_by_nat_tt
-				}
-			}
-		}
-	}
+
 }
 
 country_event = { #进驻延安
@@ -2478,7 +2432,7 @@ country_event = { #大西北联盟
 	}
 	option = {
 		name = AWR_PRC.43.b
-		add_ideas = prc_zhangxueliang
+		add_ideas = prc_zhang_xueliang
 		add_ideas = NEA_918_918		
 		set_politics = {   #设置意识形态
 			ruling_party = neutrality
@@ -4810,7 +4764,7 @@ country_event = { 	#东北之争
 		custom_effect_tooltip = ne_tut_tt
 		effect_tooltip = {
 			SOV = { 
-				country_event = northeast_takeover.7 
+				country_event = AWR_SOV.5 
 			}
 			if = {
 				limit = {
@@ -9219,372 +9173,155 @@ country_event = {#《中苏友好同盟互助条约》的签订
 	}   
 }
 
-country_event = { #当地游击队加入第一野战军
+country_event = {#《中苏友好同盟互助条约》的签订
 	id = AWR_PRC.180
 	title = AWR_PRC.180.t
 	desc = AWR_PRC.180.desc
+	picture = GFX_prcsuliantanpan		              
 	is_triggered_only = yes
-	picture = GFX_report_event_eight_route_army
-	
+    fire_only_once = yes
+                
 	option = {
-		name = AWR_PRC.180.a    
-		if = {
-			limit = {
-				NOT = { 
-					has_template = "第一野战军"
-				}
-			}
-			division_template = {
-				name = "第一野战军"	
-				division_names_group = PRC_PLA_02
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-					infantry = { x = 3 y = 0 }
-				}    
-				support = {
-					artillery = { x = 0 y = 0 }
-				}
-			}
-		}			
-		if = {
-			limit = {
-			always = no 
-				any_owned_state = {
-					is_in_home_area = yes
-					is_controlled_by = ROOT
-					OR = {
-						region = 245
-					}
-				}
-			}
-            random_owned_controlled_state = {
-				limit = {
-                    is_in_home_area = yes
-					OR = {
-						region = 245
-					}
-				}
-			    create_unit = { 
-					division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-					count = var:Root.PRC_shanxi_partisans 
-					owner = ROOT 
-				}
-		    }
+		ai_chance = { 
+			factor = 100 
 		}
-		
-		else = {
-			random_owned_controlled_state = {
-				limit = {
-					OR = {
-						region = 245
-					}
-				}
-				prioritize = { 
-					597 
-				} 
-				if = {
-					limit = { 
-						root = { 
-							is_ai = no 
-						} 
-					}
-					create_unit = { 
-						division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-						count = var:Root.PRC_shanxi_partisans 
-						owner = ROOT 
-					}
-				}
-				else = {
-					create_unit = { 
-						division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1" 
-						count = var:Root.PRC_shanxi_partisans 
-						owner = ROOT 
-					}
-				}
-		    }   
-		} 
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = var:Root.PRC_shanxi_partisans_rifle
+		name = AWR_PRC.180.a
+		give_guarantee = PRC
+		add_ideas = prc_sov_youhaohuzhu 
+		event_target:WTT_communist_china = { 
+			unlock_decision_category_tooltip = PRC_156_project_category 
+			unlock_decision_tooltip = PRC_suoqudalian 
 		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = var:Root.PRC_shanxi_partisans_artillery
-			producer = JAP
-		}
-		set_variable = {
-			var = PRC_shanxi_partisans_rifle
-			value = 0
-		}
-		set_variable = {
-			var = PRC_shanxi_partisans_artillery
-			value = 0
-		}
-		set_variable = {
-			var = PRC_shanxi_partisans
-			value = 0
-		}
-	} 
+	}	      
 }
 
-country_event = { #当地游击队加入华北野战军
+country_event = {#《中苏友好同盟互助条约》的签订
 	id = AWR_PRC.181
 	title = AWR_PRC.181.t
 	desc = AWR_PRC.181.desc
+	picture = GFX_prcsuliantanpan		              
 	is_triggered_only = yes
-	picture = GFX_report_event_eight_route_army
-	
+    fire_only_once = yes
+                
 	option = {
-		name = AWR_PRC.181.a    	
-		if = {
-			limit = {
-				NOT = { 
-					has_template = "华北野战军"
-				}
+		ai_chance = { 
+			factor = 100 
+		}
+		name = AWR_PRC.181.a
+	    add_ideas = prc_sov_youhaohuzhu 
+		effect_tooltip = {
+			SOV = { 
+				add_to_faction = ROOT 
 			}
-			division_template = {
-				name = "华北野战军"	
-				division_names_group = PRC_PLA_02
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-					infantry = { x = 3 y = 0 }
-				}    
-				support = {
-					artillery = { x = 0 y = 0 }
-				}
-			}
-		}			
-		if = {
-			limit = {
-			always = no 
-				any_owned_state = {
-					is_in_home_area = yes
-					is_controlled_by = ROOT
-					OR = {
-						region = 143
-					}
-				}
-			}
-            random_owned_controlled_state = {
-				limit = {
-                    is_in_home_area = yes
-					OR = {
-						region = 143
-					}
-				}
-			    create_unit = { 
-					division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-					count = var:Root.PRC_northern_partisans 
-					owner = ROOT 
-				}
-		    }
 		}
-		
-		else = {
-			random_owned_controlled_state = {
-				limit = {
-					OR = {
-						region = 143
-					}
-				}
-				prioritize = { 
-					597 
-				} 
-				if = {
-					limit = { 
-						root = { 
-							is_ai = no 
-						} 
-					}
-					create_unit = { 
-						division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-						count = var:Root.PRC_northern_partisans 
-						owner = ROOT 
-					}
-				}
-				else = {
-					create_unit = { 
-						division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1" 
-						count = var:Root.PRC_northern_partisans 
-						owner = ROOT 
-					}
-				}
-		    }   
-		} 
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = var:Root.PRC_northern_partisans_rifle
-		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = var:Root.PRC_northern_partisans_artillery
-			producer = JAP
-		}
-		set_variable = {
-			var = PRC_northern_partisans_rifle
-			value = 0
-		}
-		set_variable = {
-			var = PRC_northern_partisans_artillery
-			value = 0
-		}
-		set_variable = {
-			var = PRC_northern_partisans
-			value = 0
-		}
-	} 
+		unlock_decision_category_tooltip = PRC_156_project_category
+		unlock_decision_tooltip = PRC_suoqudalian
+        add_political_power = 150
+	}     
 }
 
-country_event = { #新四军与华东地方游击队整编为野战军
+country_event = {#中苏谈判破裂
 	id = AWR_PRC.182
 	title = AWR_PRC.182.t
 	desc = AWR_PRC.182.desc
-	picture = GFX_report_event_reorganize_the_huadong_partisans
-
+	picture = GFX_prcsovtanpanpolie		              
 	is_triggered_only = yes
-	
+    fire_only_once = yes
+
 	option = {
+		ai_chance = { 
+			factor = 100 
+		}
 		name = AWR_PRC.182.a
-		if = {
-			limit = {
-				NOT = {
-					has_template = "华东野战军"
-				}
-			}
-			division_template = {
-				name = "华东野战军"
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-					infantry = { x = 3 y = 0 }
-				}    
-				support = {
-					artillery = { x = 0 y = 0 }
-				}
-			}
-		}			
-		if = {
-			limit = {
-				any_owned_state = {
-					is_in_home_area = yes
-					is_controlled_by = ROOT
-					OR = {
-						region = 247
-					}
-				}
-			}
-            random_owned_controlled_state = {
-				limit = {
-                    is_in_home_area = yes
-					OR = {
-						region = 247
-					}
-				}
-			    create_unit = { 
-					division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-					count = var:Root.PRC_huadong_partisans 
-					owner = ROOT 
-				}
-		    }
+		add_political_power = -50
+		add_ai_strategy = {
+			type = antagonize
+			id = "PRC"
+			value = 500
 		}
-		
-		else = {
-			random_owned_controlled_state = {
-				limit = {
-					OR = {
-						region = 247
-					}
-				}
-				create_unit = { 
-					division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
-					count = var:Root.PRC_huadong_partisans 
-					owner = ROOT 
-				}
-		    }   
-		} 
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = var:Root.PRC_huadong_partisans_rifle
+		add_ai_strategy = {
+			type = prepare_for_war
+			id = "PRC"
+			value = 250
 		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = var:Root.PRC_huadong_partisans_artillery
-			producer = JAP
+		add_ai_strategy = {
+			type = conquer
+			id = "PRC"
+			value = 250
 		}
-		set_variable = {
-			var = PRC_huadong_partisans_rifle
-			value = 0
-		}
-		set_variable = {
-			var = PRC_huadong_partisans_artillery
-			value = 0
-		}
-		set_variable = {
-			var = PRC_huadong_partisans
-			value = 0
-		}
-	}
+
+	}   
 }
 
-country_event = {	#贵州解放
+country_event = {#中苏谈判破裂
 	id = AWR_PRC.183
-	title = AWR_PRC.183.t
-	desc = AWR_PRC.183.desc
-	picture = GFX_report_event_chinese_japanese_handshake
+	title = AWR_PRC.183
+	desc = AWR_PRC.183d
+	picture = GFX_prcsovtanpanpolie		              
 	is_triggered_only = yes
+    fire_only_once = yes
+
 	option = {
-		name = AWR_PRC.183.a
-		effect_tooltip = {
-			if = {
-				limit = {
-					748 = {
-						is_owned_by = FROM
-					}
-				}	
-				transfer_state = 748
-			}
-			if = {
-				limit = {
-					603 = {
-						is_owned_by = FROM
-					}
-				}	
-				transfer_state = 603
-			}
-			FROM = {
-				transfer_units_fraction = {
-					target = ROOT          
-					size = 0       
-					army_ratio = 0.05       
-					stockpile_ratio = 0.05  
-					keep_unit_leaders_trigger = {
-						always = yes
-					}
-				}
-			}
+		ai_chance = { factor = 100 }
+		name = AWR_PRC.183.1
+		hidden_effect = {
+			news_event = { 
+				id = AWR_PRC_news.4 
+				days = 1 
+			} 
+		}
+		add_war_support = 0.35
+		add_political_power = -150
+		create_wargoal = {
+			type = annex_everything
+			target = SOV
+			expire = 0
+		}
+		add_ai_strategy = {
+			type = antagonize
+			id = "SOV"
+			value = 999
+		}
+		add_ai_strategy = {
+			type = prepare_for_war
+			id = "SOV"
+			value = 999
+		}
+		add_ai_strategy = {
+			type = conquer
+			id = "SOV"
+			value = 999
+		}
+		add_ai_strategy = {
+			type = declare_war
+			id = "SOV"
+			value = 999
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "SOV"
+			value = -800
+		}
+	}
+ 
+	option = {
+		ai_chance = { 
+			factor = 0 
+		}
+		name = AWR_PRC.183.2
+		add_war_support = -0.15
+		add_stability = -0.15
+		add_political_power = -150
+
+		add_ai_strategy = {
+			type = antagonize
+			id = "SOV"
+			value = 800
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "SOV"
+			value = -800
 		}
 	}
 }
@@ -10567,6 +10304,988 @@ country_event = {
 	} 
 }
 
+country_event = { #当地游击队加入第一野战军
+	id = AWR_PRC.240
+	title = AWR_PRC.240.t
+	desc = AWR_PRC.240.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_eight_route_army
+	
+	option = {
+		name = AWR_PRC.240.a    
+		if = {
+			limit = {
+				NOT = { 
+					has_template = "第一野战军"
+				}
+			}
+			division_template = {
+				name = "第一野战军"	
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}    
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}			
+		if = {
+			limit = {
+			always = no 
+				any_owned_state = {
+					is_in_home_area = yes
+					is_controlled_by = ROOT
+					OR = {
+						region = 245
+					}
+				}
+			}
+            random_owned_controlled_state = {
+				limit = {
+                    is_in_home_area = yes
+					OR = {
+						region = 245
+					}
+				}
+			    create_unit = { 
+					division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+					count = var:Root.PRC_shanxi_partisans 
+					owner = ROOT 
+				}
+		    }
+		}
+		
+		else = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						region = 245
+					}
+				}
+				prioritize = { 
+					597 
+				} 
+				if = {
+					limit = { 
+						root = { 
+							is_ai = no 
+						} 
+					}
+					create_unit = { 
+						division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+						count = var:Root.PRC_shanxi_partisans 
+						owner = ROOT 
+					}
+				}
+				else = {
+					create_unit = { 
+						division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1" 
+						count = var:Root.PRC_shanxi_partisans 
+						owner = ROOT 
+					}
+				}
+		    }   
+		} 
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = var:Root.PRC_shanxi_partisans_rifle
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = var:Root.PRC_shanxi_partisans_artillery
+			producer = JAP
+		}
+		set_variable = {
+			var = PRC_shanxi_partisans_rifle
+			value = 0
+		}
+		set_variable = {
+			var = PRC_shanxi_partisans_artillery
+			value = 0
+		}
+		set_variable = {
+			var = PRC_shanxi_partisans
+			value = 0
+		}
+	} 
+}
+
+country_event = { #当地游击队加入华北野战军
+	id = AWR_PRC.241
+	title = AWR_PRC.241.t
+	desc = AWR_PRC.241.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_eight_route_army
+	
+	option = {
+		name = AWR_PRC.241.a    	
+		if = {
+			limit = {
+				NOT = { 
+					has_template = "华北野战军"
+				}
+			}
+			division_template = {
+				name = "华北野战军"	
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}    
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}			
+		if = {
+			limit = {
+			always = no 
+				any_owned_state = {
+					is_in_home_area = yes
+					is_controlled_by = ROOT
+					OR = {
+						region = 143
+					}
+				}
+			}
+            random_owned_controlled_state = {
+				limit = {
+                    is_in_home_area = yes
+					OR = {
+						region = 143
+					}
+				}
+			    create_unit = { 
+					division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+					count = var:Root.PRC_northern_partisans 
+					owner = ROOT 
+				}
+		    }
+		}
+		
+		else = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						region = 143
+					}
+				}
+				prioritize = { 
+					597 
+				} 
+				if = {
+					limit = { 
+						root = { 
+							is_ai = no 
+						} 
+					}
+					create_unit = { 
+						division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+						count = var:Root.PRC_northern_partisans 
+						owner = ROOT 
+					}
+				}
+				else = {
+					create_unit = { 
+						division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1" 
+						count = var:Root.PRC_northern_partisans 
+						owner = ROOT 
+					}
+				}
+		    }   
+		} 
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = var:Root.PRC_northern_partisans_rifle
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = var:Root.PRC_northern_partisans_artillery
+			producer = JAP
+		}
+		set_variable = {
+			var = PRC_northern_partisans_rifle
+			value = 0
+		}
+		set_variable = {
+			var = PRC_northern_partisans_artillery
+			value = 0
+		}
+		set_variable = {
+			var = PRC_northern_partisans
+			value = 0
+		}
+	} 
+}
+
+country_event = { #新四军与华东地方游击队整编为野战军
+	id = AWR_PRC.242
+	title = AWR_PRC.242.t
+	desc = AWR_PRC.242.desc
+	picture = GFX_report_event_reorganize_the_huadong_partisans
+
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.242.a
+		if = {
+			limit = {
+				NOT = {
+					has_template = "华东野战军"
+				}
+			}
+			division_template = {
+				name = "华东野战军"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}    
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}			
+		if = {
+			limit = {
+				any_owned_state = {
+					is_in_home_area = yes
+					is_controlled_by = ROOT
+					OR = {
+						region = 247
+					}
+				}
+			}
+            random_owned_controlled_state = {
+				limit = {
+                    is_in_home_area = yes
+					OR = {
+						region = 247
+					}
+				}
+			    create_unit = { 
+					division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+					count = var:Root.PRC_huadong_partisans 
+					owner = ROOT 
+				}
+		    }
+		}
+		
+		else = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						region = 247
+					}
+				}
+				create_unit = { 
+					division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05" 
+					count = var:Root.PRC_huadong_partisans 
+					owner = ROOT 
+				}
+		    }   
+		} 
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = var:Root.PRC_huadong_partisans_rifle
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = var:Root.PRC_huadong_partisans_artillery
+			producer = JAP
+		}
+		set_variable = {
+			var = PRC_huadong_partisans_rifle
+			value = 0
+		}
+		set_variable = {
+			var = PRC_huadong_partisans_artillery
+			value = 0
+		}
+		set_variable = {
+			var = PRC_huadong_partisans
+			value = 0
+		}
+	}
+}
+
+country_event = {	#贵州解放
+	id = AWR_PRC.243
+	title = AWR_PRC.243.t
+	desc = AWR_PRC.243.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.243.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					748 = {
+						is_owned_by = FROM
+					}
+				}	
+				transfer_state = 748
+			}
+			if = {
+				limit = {
+					603 = {
+						is_owned_by = FROM
+					}
+				}	
+				transfer_state = 603
+			}
+			FROM = {
+				transfer_units_fraction = {
+					target = ROOT          
+					size = 0       
+					army_ratio = 0.05       
+					stockpile_ratio = 0.05  
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {	#中国寻求经济合作
+	id = AWR_PRC.244
+	title = AWR_PRC.244.t
+	desc = AWR_PRC.244.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.244.a
+		add_ideas = PRC_economy_cooperate_with_ENG
+		PRC = {
+			add_ideas = PRC_economy_cooperate_with_ENG
+		}
+	}
+
+	option = {
+		name = AWR_PRC.244.b
+	}
+}
+
+country_event = {	#中国寻求经济合作
+	id = AWR_PRC.245
+	title = AWR_PRC.245.t
+	desc = AWR_PRC.245.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.245.a
+		add_ideas = PRC_economy_cooperate_with_FRA
+		PRC = {
+			add_ideas = PRC_economy_cooperate_with_FRA
+		}
+	}
+
+	option = {
+		name = AWR_PRC.245.b
+	}
+}
+
+country_event = {	#中国寻求经济合作
+	id = AWR_PRC.246
+	title = AWR_PRC.246.t
+	desc = AWR_PRC.246.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.246.a
+		add_ideas = PRC_economy_cooperate_with_USA
+		PRC = {
+			add_ideas = PRC_economy_cooperate_with_USA
+		}
+	}
+
+	option = {
+		name = AWR_PRC.246.b
+	}
+}
+
+country_event = {	#中国寻求科研合作
+	id = AWR_PRC.247
+	title = AWR_PRC.247.t
+	desc = AWR_PRC.247.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.247.a
+		add_ideas = PRC_technology_cooperate_with_ENG
+		PRC = {
+			add_ideas = PRC_technology_cooperate_with_ENG
+		}
+	}
+
+	option = {
+		name = AWR_PRC.247.b
+	}
+}
+
+country_event = {	#中国寻求科研合作
+	id = AWR_PRC.248
+	title = AWR_PRC.248.t
+	desc = AWR_PRC.248.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.248.a
+		add_ideas = PRC_technology_cooperate_with_FRA
+		PRC = {
+			add_ideas = PRC_technology_cooperate_with_FRA
+		}
+	}
+
+	option = {
+		name = AWR_PRC.248.b
+	}
+}
+
+country_event = {	#中国寻求科研合作
+	id = AWR_PRC.249
+	title = AWR_PRC.249.t
+	desc = AWR_PRC.249.desc
+	picture = GFX_event_cooperate_with_western_countries
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.249.a
+		add_ideas = PRC_technology_cooperate_with_USA
+		PRC = {
+			add_ideas = PRC_technology_cooperate_with_USA
+		}
+	}
+
+	option = {
+		name = AWR_PRC.249.b
+	}
+}
+
+country_event = {	#中国组建新联盟
+	id = AWR_PRC.250
+	title = AWR_PRC.250.t
+	desc = AWR_PRC.250.d
+	picture = GFX_report_event_chinese_army_training
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 70
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 10
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 90
+				has_government = communism
+			}
+		}
+		name = EFM_Comchina.36.a
+		FROM = { 
+			country_event = { 
+				id = AWR_PRC.251 
+				days = 1 
+			} 
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = Nations_friendly
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = "PRC"
+			value = 200
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "PRC"
+			value = 200
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 30
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 90
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+				NOT = { 
+					has_government = communism 
+				}
+			}
+			modifier = {
+				factor = 10
+				has_government = communism
+			}
+		}
+		name = EFM_Comchina.36.b
+	}
+}
+
+country_event = {	#XX同意加入我们
+	id = AWR_PRC.251
+	title = AWR_PRC.251.t
+	desc = AWR_PRC.251.d
+	picture = GFX_report_event_chinese_japanese_handshake
+	is_triggered_only = yes
+	option = {
+		name = AWR_PRC.251.a
+		ROOT = { 
+			add_to_faction = FROM 
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = Nations_friendly
+		}
+	}
+}
+
+country_event = {	#共产党行动
+	id = AWR_PRC.252
+	title = AWR_PRC.252.t
+	desc = AWR_PRC_state.1.d_CHI
+	picture = GFX_report_event_chinese_soldiers_01
+	hidden = no
+	trigger = {
+		NOT = {
+			tag = event_target:WTT_communist_china
+		}
+		is_in_faction_with = event_target:WTT_current_china_leader
+	}
+
+	is_triggered_only = yes
+	fire_only_once = no
+	immediate = {
+		#
+		set_country_flag = i_have_been_notified
+	}
+
+	option = {
+		name = AWR_PRC_state.1.a
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	option = {
+		name = AWR_PRC_state.1.b
+		trigger = {
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+
+}
+
+#crack down
+country_event = {	#游击队遭到镇压
+	id = AWR_PRC.253
+	title = AWR_PRC.253.t
+	desc = {
+		text = AWR_PRC.253.d
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_PRC.253.d_CHI
+		trigger = {
+			NOT = {
+				TAG = event_target:WTT_communist_china
+			}
+		}
+	}
+
+	is_triggered_only = yes
+	picture = GFX_report_event_china_flag
+
+	option = { #OH NO!
+		name = AWR_PRC.253.a
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	option = { #OH YEA!
+		name = AWR_PRC.253.b
+		trigger = {
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+}
+
+country_event = {	#当地共产党支持度上升了
+	id = AWR_PRC.254
+	title = AWR_PRC.254.t
+	desc = {
+		text = AWR_PRC.254.d
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_PRC.254.d_CHI
+		trigger = {
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+	is_triggered_only = yes
+	
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	
+	option = { 
+		name = AWR_PRC.254.a
+		trigger = {
+			OR = {
+				tag = event_target:WTT_current_china_leader
+				is_warlord = yes
+				tag = JAP
+				is_subject_of = JAP
+			}
+			NOT = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_nationalist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_nationalist_owned_by_us_tt
+				}
+			}
+		}
+	}
+	option = { #OH YEA!(to PRC)
+		name = AWR_PRC.254.b
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_communist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_communist_owned_by_nat_tt
+				}
+			}
+		}
+	}
+}
+
+country_event = {	#当地的破坏活动
+	id = AWR_PRC.255
+	title = AWR_PRC.255.t
+	desc = {
+		text = AWR_PRC.255.d
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_PRC.255.d_CHI
+		trigger = {
+			NOT = {
+				TAG = event_target:WTT_communist_china
+			}
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = event_target:WTT_communist_china
+				}
+				set_country_flag = sabotaging_in_progress_flag #prevent multiple clicking when the event pops up
+			}
+		}
+	}
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	#fire_only_once = yes
+	option = { #OH NO!(to JAP and pups)
+		name = RCM_communist_uprising_country.4.a
+		trigger = {
+			OR = {
+				is_subject_of = JAP
+				tag = JAP
+			}
+		}
+		effect_tooltip = {
+			From.From = {
+				vandalize_this_state = yes
+			}
+		}
+	}
+	option = { #OH YEA!(to PRC)
+		name = RCM_communist_uprising_country.4.b
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		clr_country_flag = sabotaging_in_progress_flag
+		From.From = {
+			vandalize_this_state = yes
+		}
+	}
+}
+
+country_event = {	#当地的的共党攻击
+	id = AWR_PRC.256
+	title = AWR_PRC.256.t
+	desc = {
+		text = AWR_PRC.256.d
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+	}
+	desc = {
+		text = AWR_PRC.256.d_CHI
+		trigger = {
+			NOT = {
+				TAG = event_target:WTT_communist_china
+			}
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = event_target:WTT_communist_china
+				}
+				set_country_flag = attacking_in_progress_flag 
+			}
+		}
+	}
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	
+	option = { 
+		name = AWR_PRC.256.a
+		trigger = {
+			OR = {
+				is_subject_of = JAP
+				tag = JAP
+			}
+		}
+				#none
+		if = {
+			limit = {
+				not = { 
+					has_global_flag = PRC_Breaking_operations_flag 
+					has_global_flag = PRC_Block_enemy_flag 
+				}
+			}
+			custom_effect_tooltip = damage_units_jap_tt
+		}
+		
+		#PRC_Breaking_operations_flag
+		if = {
+			limit = {
+				has_global_flag = PRC_Breaking_operations_flag 
+				not = { 
+					has_global_flag = PRC_Block_enemy_flag 
+				}
+			}
+			custom_effect_tooltip = damage_units_jap_tt_2
+		}
+		
+		#PRC_Block_enemy_flag
+		if = {
+			limit = {
+				has_global_flag = PRC_Block_enemy_flag
+			}
+			custom_effect_tooltip = damage_units_jap_tt_3
+		}
+	}
+	option = { #OH YEA!(to PRC)
+		name = AWR_PRC.256.b
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		clr_country_flag = attacking_in_progress_flag
+		
+			#none
+			if = {
+				limit = {
+					not = { 
+						has_global_flag = PRC_Breaking_operations_flag 
+						has_global_flag = PRC_Block_enemy_flag 
+					}
+				}
+				custom_effect_tooltip = damage_units_prc_tt
+			}
+			
+			#PRC_Breaking_operations_flag
+			if = {
+				limit = {
+					has_global_flag = PRC_Breaking_operations_flag 
+					not = { 
+						has_global_flag = PRC_Block_enemy_flag 
+					}
+				}
+				custom_effect_tooltip = damage_units_prc_tt_2
+			}
+			
+			#PRC_Block_enemy_flag
+			if = {
+				limit = {
+					has_global_flag = PRC_Block_enemy_flag
+				}
+				custom_effect_tooltip = damage_units_prc_tt_3
+			}
+		
+		hidden_effect = {
+			every_state ={
+				clr_state_flag = attack_this_state_flag
+			}
+		}
+		
+	}
+}
+
+country_event = {	#当地共产党支持度上升了
+	id = AWR_PRC.257
+	title = AWR_PRC.257.t
+	desc =  AWR_PRC.257.desc
+
+	is_triggered_only = yes
+	
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	
+	option = { 
+		name = AWR_PRC.257.a
+		
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_nationalist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_nationalist_owned_by_us_tt
+				}
+			}
+		}
+	}
+	option = { #OH YEA!(to PRC)
+		name = AWR_PRC.254.b
+		trigger = {
+			tag = event_target:WTT_communist_china
+		}
+		effect_tooltip = {
+			event_target:amass_support_flag_temp = {
+				add_core_of = event_target:WTT_communist_china
+			}
+			if = {
+				limit = {
+					event_target:amass_support_flag_temp = {
+						is_owned_by_jap_or_its_puppet = yes
+					}
+				}
+				custom_effect_tooltip = gain_public_support_communist_owned_by_jap_tt
+				else = {
+					custom_effect_tooltip = gain_public_support_communist_owned_by_nat_tt
+				}
+			}
+		}
+	}
+}
+
+country_event = {	#我们已不再有共同的敌人
+	id = AWR_PRC.258
+	title = AWR_PRC.258.t
+	desc = AWR_PRC.258.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_generic_sign_treaty1
+
+	option = {
+		name = AWR_PRC.258.a
+		clr_global_flag = PRC_stop_land_reform
+		remove_ideas = PRC_rent_reduction_and_interest_reduction
+	}
+}
 
 #人物事件
 unit_leader_event = {#刘志丹同志壮烈牺牲
@@ -10795,6 +11514,76 @@ country_event = {
 			defender_win = yes
 			attacker = 622		
 			defender = 998
+		}
+	}
+}
+
+state_event = {	#共产党起义
+	id = AWR_PRC_state.1
+	title = AWR_PRC_state.1.t
+	desc = AWR_PRC_state.1.d
+	picture = GFX_report_event_chinese_soldiers_01
+	hidden = no
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = AWR_PRC_state.1.a
+		trigger = {
+			owner = {
+				tag = event_target:WTT_communist_china
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_state.1.b
+		trigger = {
+			owner = {
+				NOT = {
+					tag = event_target:WTT_communist_china
+				}
+			}
+		}
+	}
+}
+
+state_event = {	#当地土改完成
+	id = AWR_PRC_state.2
+	title = AWR_PRC_state.2.t
+	desc = AWR_PRC_state.2.desc
+	picture = GFX_report_event_chinese_soldiers_01
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_state.2.a
+		trigger = {
+			owner = {
+				OR = {
+					tag = event_target:WTT_communist_china
+					tag = PRC
+				}
+			}
+		}
+		effect_tooltip = {
+			ROOT = {
+				add_core_of = event_target:WTT_communist_china
+				add_core_of = PRC
+				if = {
+					limit = {
+						PRC = {
+							has_completed_focus = PRC_Land_reform
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = snl_PRC_dyn_land_reform_2
+					}
+					else = {
+						add_dynamic_modifier = {
+							modifier = snl_PRC_dyn_land_reform_1
+						}
+					}
+				}
+			}
 		}
 	}
 }

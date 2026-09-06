@@ -10078,5 +10078,41 @@ ideas = {
 				}
 			}
 		}
+
+		SOV_northeast_trade = { #东北贸易总公司
+			picture = generic_goods_red_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+            cancel = {
+				OR = {
+					NOT = {
+						is_neighbor_of = PRC
+					}
+					PRC = {
+						has_war_with = SOV
+					}	
+				}
+			}
+
+		    modifier = {
+				consumer_goods_factor = -0.15
+            }
+
+			targeted_modifier = {
+				tag = PRC
+				mic_to_target_factor = 0.05
+				extra_trade_to_target_factor = 0.25
+				trade_cost_for_target_factor = -0.25
+			}
+        }
 	}
 }

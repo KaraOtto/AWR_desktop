@@ -230,3 +230,39 @@ restore_previous_government_type = {
 		}
 	}
 }
+
+unbalanced_industry_level_down = {
+	if = {
+		limit = {
+			has_idea = unbalanced_industry
+		}
+		swap_ideas = {
+			remove_idea = unbalanced_industry
+			add_idea = unbalanced_industry_1
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = unbalanced_industry_1
+		}
+		swap_ideas = {
+			remove_idea = unbalanced_industry_1
+			add_idea = unbalanced_industry_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = unbalanced_industry_2
+		}
+		swap_ideas = {
+			remove_idea = unbalanced_industry_2
+			add_idea = unbalanced_industry_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = unbalanced_industry_3
+		}
+		remove_ideas = unbalanced_industry_3
+	}
+}

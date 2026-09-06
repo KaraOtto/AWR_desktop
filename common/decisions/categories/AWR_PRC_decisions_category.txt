@@ -57,6 +57,13 @@ PRC_156_project_category = {	#156工程
     }         
 }
 
+PRC_cooperate_with_western_countries = {	#与西方国家合作
+	priority = 1002
+	visible = {
+		has_completed_focus = PRC_contact_with_some_of_western_countries
+	}
+}
+
 PRC_civil_war_offensives = {	#内战攻势
 	icon = GFX_decision_category_border_conflicts
 	allowed = {
@@ -173,6 +180,11 @@ AWR_PRC_land_reform = {	#土地改革
 	allowed = {
 		original_tag = PRC
 	}
+	visible = {
+		NOT = {
+			has_global_flag = PRC_stop_land_reform
+		}
+	}
 	icon = infiltration
 	priority = 998
 	picture = GFX_decision_cat_picture_chi_infiltration
@@ -256,7 +268,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 }
 
 TIB_democracy_reform = {	#西藏民主改革
-	priority = 2
+	priority = 3
 	icon = generic_police_action
 	visible = {
 		has_completed_focus = PRC_force_TIB_reform
@@ -264,7 +276,7 @@ TIB_democracy_reform = {	#西藏民主改革
 }
 
 PRC_resource_effort = {	#国家资源开采项目
-	priority = 1
+	priority = 2
 	icon = generic_prospect_for_resources
 
 	visible = {
@@ -272,3 +284,41 @@ PRC_resource_effort = {	#国家资源开采项目
 	}
 
 }
+
+PRC_SOV_diplomacy_category = {	#中苏外交
+	priority = 1
+	visible = {
+		always = yes
+	}
+}
+
+PRC_shijierenmin = {	#两个拳头同时出击
+	icon = spr_the_inevitable_civil_war
+	allowed = {
+    	TAG = PRC
+	}
+	visible = {
+		#
+	}
+	visible_when_empty = no
+	priority = 150
+}
+
+PRC_comecon_dec_cat = {	#世界人民大团结
+	priority = 7500
+
+	icon = SOV_civil_puppet_interaction
+	picture = GFX_decision_cat_picture_soviet_comecon
+
+	allowed = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+	}
+
+	visible = {
+		has_completed_focus = PRC_internationalist_clique_focus
+	}
+}
+

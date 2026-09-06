@@ -99,6 +99,270 @@ news_event = {	#百团大战
 	}
 }
 
+news_event = {#中苏签订同盟条约
+	id = AWR_PRC_news.3
+	title = AWR_PRC_news.3.t
+	desc = AWR_PRC_news.3.desc
+	picture = GFX_event_nea_prc_treaty_with_soviet
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.3.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china
+		}
+	}
+	
+	option = {
+		name = AWR_PRC_news.3.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.3.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.3.d
+		trigger = { 
+			OR = {	
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+			NOT = {
+				original_tag = PRC                                                              
+			}
+		}
+	}
+    option = {
+		name = AWR_PRC_news.3.e
+		trigger = { 
+			OR = {
+			tag = event_target:WTT_current_china_leader
+			is_in_faction_with = event_target:WTT_current_china_leader
+			}
+		}
+	}
+}
+
+news_event = {#中苏谈判破裂
+	id = AWR_PRC_news.4
+	title = AWR_PRC_news.4.t
+	desc = AWR_PRC_news.4.desc
+	picture = GFX_news_event_generic_communist_congress
+
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {	
+		every_other_country = {
+			limit = { 
+				has_government = democratic 
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = "PRC"
+				value = 8000
+			}
+			add_ai_strategy = {
+				type = befriend
+				id = "PRC"
+				value = 8000
+			}
+		}
+
+		event_target:WTT_communist_china = {
+			if = {
+				limit = { 
+					USA = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "USA"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "USA"
+					value = 8000
+				}
+			}
+			if = {
+				limit = { 
+					ENG = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "ENG"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "ENG"
+					value = 8000
+				}
+			}
+			if = {
+				limit = { 
+					FRA = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "FRA"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "FRA"
+					value = 8000
+				}
+			}
+		}              
+	}
+
+	option = {
+		name = AWR_PRC_news.4.a
+		trigger = { 	
+            TAG = event_target:WTT_communist_china                               
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.d
+		trigger = { 
+			OR = {
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+news_event = {#中苏签订同盟条约
+	id = AWR_PRC_news.5
+	title = AWR_PRC_news.5.t
+	desc = AWR_PRC_news.5.desc
+	picture = GFX_event_prc_puppet
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.5.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china                                
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.d
+		trigger = { 
+			OR = {			
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}             
+}
+
+news_event = {#中国加入北约
+	id = AWR_PRC_news.6
+	title = AWR_PRC_news.6.t
+	desc = AWR_PRC_news.6.desc
+	picture = GFX_event_PRC_in_faction_with_USA
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.6.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china                                
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.d
+		trigger = { 
+			OR = {			
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}             
+}
+
 news_event = {	#台湾爆发无产阶级革命
 	id = AWR_PRC_news.1000
 	title = AWR_PRC_news.1000.t

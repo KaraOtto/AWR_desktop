@@ -86,3 +86,281 @@ country_event = {	#中方对东北的接管完成
 		}
 	}
 }
+
+country_event = { #请求东北贸易
+	id = AWR_SOV.2
+	title = AWR_SOV.2.t
+	desc = AWR_SOV.2.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes	
+
+	option = { #yes
+		name = AWR_SOV.2.a    
+		ai_chance = { 
+		    factor = 100
+		}	
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		FROM = {
+			country_event = {
+				id = AWR_SOV.3 
+				hours = 12
+			}
+		}
+		effect_tooltip = {
+			add_ideas = SOV_northeast_trade
+			PRC = {
+				add_ideas = PRC_northeast_trade
+				every_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						OR = {
+							custom_trigger_tooltip = {
+								tooltip = is_in_strat_242
+								region = 242
+							}
+							custom_trigger_tooltip = {
+								tooltip = is_in_strat_243
+								region = 243
+							}
+							custom_trigger_tooltip = {
+								tooltip = is_in_strat_155
+								region = 155
+							}
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}	
+		}
+	}
+
+	option = { #no
+		name = AWR_SOV.2.b    
+		ai_chance = { 
+		    factor = 0
+		}	
+	    add_war_support = -0.05
+		FROM = {
+			country_event = {
+				id = AWR_SOV.4 
+				hours = 12
+			}
+		}
+	}
+}
+
+country_event = { #同意东北贸易
+	id = AWR_SOV.3
+	title = AWR_SOV.3.t
+	desc = AWR_SOV.3.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes
+
+	option = { #yes
+		name = AWR_SOV.3.a    
+		ai_chance = { 
+		    factor = 100
+		}	
+		FROM = {
+			add_ideas = SOV_northeast_trade
+		}
+		add_ideas = PRC_northeast_trade
+		
+		if = {#guo
+				limit = {
+					has_idea = incompetent_heavy_industry
+				}
+				swap_ideas = {
+					remove_idea = incompetent_heavy_industry
+					add_idea = incompetent_heavy_industry_2
+				}
+		}
+		
+		every_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = infrastructure
+					size > 0
+				}
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_242
+						region = 242
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_243
+						region = 243
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_155
+						region = 155
+					}
+				}
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = {	#拒绝
+	id = AWR_SOV.4
+	title = AWR_SOV.4.t
+	desc = AWR_SOV.4.d
+	picture = GFX_report_event_chinese_soldiers_02
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_SOV.4.a
+            add_timed_idea = { 
+				idea = chi_huanxiangtuan 
+				days = 1095 
+			}
+            add_ideas = chi_zhongmeitiaoyue			
+		    diplomatic_relation = {
+	        country = event_target:WTT_communist_china
+	        relation = non_aggression_pact
+	        active = no
+            }
+		    declare_war_on = {
+			target = event_target:WTT_communist_china
+			type = civil_war
+		    }
+			unlock_decision_category_tooltip = attack_prc_area_plan
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = civil_war_tips_chi_tt
+			if = {
+			limit = {
+			    SOV = {
+					NOT = {
+						has_war_with = ROOT
+					}
+					any_controlled_state = {
+						has_state_flag = manzhou
+						not = { state = 745 }
+					}
+				}
+			}
+			SOV = {
+			add_to_faction = event_target:WTT_communist_china
+			add_to_war = {
+					targeted_alliance = event_target:WTT_communist_china
+					enemy = event_target:WTT_current_china_leader
+					hostility_reason = asked_to_join
+				}
+			}
+			}
+			
+			second_china_civil_war_start_rcm = yes		
+	}
+}
+
+country_event = {	#中方开始接管中国东北
+	id = AWR_SOV.5
+	title = AWR_SOV.5.t
+	desc = AWR_SOV.5.d
+	picture = GFX_report_event_operation_august_storm
+	is_triggered_only = yes
+	option = { #OH NO!
+		name = AWR_SOV.5.a
+		custom_effect_tooltip = demand_northeast_china_tt
+		custom_effect_tooltip = the_process_takes_250_days_and_effect_takes_place_then
+	}
+}
+
+country_event = {	#中共请求加入华约
+	id = AWR_SOV.6
+	title = AWR_SOV.6.t
+	desc = AWR_SOV.6.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+	option = {	#欢迎他们！
+		name = AWR_SOV.6.a
+		PRC = {
+			add_to_faction = SOV
+		}
+		if = {
+			limit = { 
+				has_global_flag = zhongsuhezuo 
+				has_global_flag = prc_puppet 
+			}
+			
+			news_event = {
+				id = AWR_PRC_news.5
+				days = 3
+			}
+			else_if = {
+				limit = {
+					has_global_flag = zhongsuhezuo
+				}
+				news_event = {
+					id = AWR_PRC_news.3
+					days = 3
+				}
+			}
+		}
+	}
+
+	option = {	#我们最好不要和他们走得太近
+		name = AWR_SOV.6.b
+		PRC = {
+			country_event = {
+				id = AWR_SOV.7
+			}
+		}
+	}
+}
+
+country_event = {	#苏联拒绝
+	id = AWR_SOV.7
+	title = AWR_SOV.7.t
+	desc = AWR_SOV.7.desc
+	picture = GFX_prcsuliantanpan
+	is_triggered_only = yes
+	option = {	#令人遗憾的结果
+		name = AWR_SOV.6.a
+	}
+}
+
+country_event = { #中国要求归还大连
+	id = AWR_SOV.7
+	title = AWR_SOV.7.t
+	desc = AWR_SOV.7.d
+	picture = GFX_report_event_dalian		
+	trigger = {
+		#
+	}
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_SOV.7.a
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			transfer_state = 745 
+		}
+	}
+	option = {
+		name = AWR_SOV.7.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -300
+		add_stability = -0.05
+		add_war_support = -0.05
+		remove_from_faction = FROM
+	}
+}

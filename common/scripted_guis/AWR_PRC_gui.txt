@@ -385,4 +385,412 @@ scripted_gui = {
 			#
 		}
     }
+
+	PRC_communist_uprising = {	#游击队
+
+		context_type = selected_state_context
+
+		window_name = "PRC_communist_uprising_container"
+
+		visible = {
+			ROOT = {
+               	tag = event_target:WTT_communist_china
+			}
+			owner = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			has_state_flag = commie_ridden_states
+		}
+
+		effects = {
+
+			communists_amass_support_click = {	#获取民众支持
+				save_global_event_target_as = amass_support_flag_temp
+
+				event_target:WTT_communist_china = {
+					activate_mission = PRC_communist_amass_support_mission
+					add_political_power = -25
+				}				
+				every_country = {
+					limit = {
+						OR = {
+							tag = event_target:WTT_current_china_leader
+							is_warlord = yes
+						}
+					}
+					country_event = {
+						id = AWR_PRC.254
+					}
+				}
+				if = {
+					limit = {
+						any_country = {
+							OR = {
+								tag = event_target:WTT_current_china_leader
+								tag = event_target:WTT_communist_china
+								is_warlord = yes
+							}
+							is_ai = no
+						}
+					}
+					sound_effect = justify_wargoals
+				}
+			}
+
+			communists_rise_up_in_state_click = {	#起义
+				if = {
+					limit = {
+						OR = {
+							owner = {
+								is_ai = no
+							}
+							event_target:WTT_communist_china = {
+								is_ai = no
+							}
+						}
+					}
+					sound_effect = enemy_declare_war
+				}
+				owner = {
+					set_country_flag = temp_country_flag_uprised
+				}
+				owner = {
+     				country_event = {
+						id = AWR_PRC.252
+					}
+     			}
+				event_target:WTT_communist_china = {
+					set_state_owner = PREV
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_controlled_by_jap_or_its_puppet = yes
+						}
+					}
+					event_target:WTT_communist_china = {
+						transfer_state = PREV
+					}
+				}
+				if = {
+					limit = {
+						event_target:WTT_communist_china = {
+							NOT = {
+								has_template = "地方游击武装"
+							}
+						}
+					}
+
+					event_target:WTT_communist_china = {
+						division_template = {
+							name = "地方游击武装"
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+							}
+						}
+						set_country_flag = has_partisan_template
+					}
+				}
+				create_unit = {
+					division = "name = \"地方游击武装\" division_template = \"地方游击武装\" start_experience_factor = 0.5"
+					owner = event_target:WTT_communist_china
+				}
+
+				state_event = {
+					id = AWR_PRC_state.1
+					trigger_for = event_target:WTT_communist_china
+				}
+
+				clr_state_flag = commie_ridden_states
+				event_target:WTT_communist_china = {
+					remove_ideas = prepared_for_operation
+				}
+			}
+
+			communists_vandalism_click = {	#破坏工业
+				
+				if = {
+					limit = {
+						OR = {
+							event_target:WTT_communist_china = {
+								is_ai = no
+							}
+							controller = {
+								is_ai = no
+							}
+							JAP = {
+								is_ai = no
+							}
+						}
+					}
+					sound_effect = alert_naval_combat_sound
+				}
+
+				event_target:WTT_communist_china = {
+					add_command_power = -30
+					country_event = {
+						id = AWR_PRC.255
+					}
+				}
+				controller = {
+					country_event = {
+						id = AWR_PRC.255
+					}
+				}
+				JAP = {
+					country_event = {
+						id = AWR_PRC.255
+					}
+				}
+			}
+		    
+			communists_attack_click = {	#攻击军队
+				if = {
+					limit = {
+						OR = {
+							event_target:WTT_communist_china = {
+								is_ai = no
+							}
+							controller = {
+								is_ai = no
+							}
+							JAP = {
+								is_ai = no
+							}
+						}
+					}
+					sound_effect = alert_naval_combat_sound
+				}
+
+				event_target:WTT_communist_china = {
+					add_command_power = -30
+					country_event = {
+						id = AWR_PRC.256
+					}
+				}
+				set_state_flag = attack_this_state_flag
+				every_state ={
+					limit = {
+					    has_state_flag = attack_this_state_flag
+					}
+					save_event_target_as = state_got_attacked
+				}
+				
+				if = {
+				limit = {
+					not = { 
+						has_global_flag = PRC_Breaking_operations_flag 
+						has_global_flag = PRC_Block_enemy_flag 
+					}
+				}
+					damage_units = {
+						state = PREV
+						limit = { 
+							has_war_with = event_target:WTT_communist_china 
+						}
+						damage = 0.10 #guo
+						org_damage = 0.10
+						str_damage = 0.10
+						ratio = yes
+						army = yes
+						navy = no
+					}
+				}
+
+				if = {
+					limit = {
+						has_global_flag = PRC_Breaking_operations_flag not = { 
+							has_global_flag = PRC_Block_enemy_flag 
+						}
+					}
+					damage_units = {
+						state = PREV
+						limit = { 
+							has_war_with = event_target:WTT_communist_china 
+						}
+						damage = 0.15 #guo
+						org_damage = 0.15
+						str_damage = 0.15
+						ratio = yes
+						army = yes
+						navy = no
+					}
+				}
+				
+				if = {
+					limit = {
+						has_global_flag = PRC_Block_enemy_flag
+					}
+					damage_units = {
+						state = PREV
+						limit = { 
+							has_war_with = event_target:WTT_communist_china 
+						}
+						damage = 0.20 #guo
+						org_damage = 0.20
+						str_damage = 0.20
+						ratio = yes
+						army = yes
+						navy = no
+					}
+				}
+				
+				controller = {
+					country_event = {
+						id = AWR_PRC.256
+					}
+				}
+				JAP = {
+					country_event = {
+						id = AWR_PRC.256
+					}
+				}
+
+				event_target:WTT_communist_china = {
+					remove_ideas = prepared_for_operation
+				}
+			
+			}	
+		}
+
+		triggers = {
+			communists_amass_support_click_enabled = {	#积累民众支持
+				event_target:WTT_communist_china = {
+					NOT = {
+						has_active_mission = PRC_communist_amass_support_mission
+					}
+					has_political_power > 29
+				}
+				NOT = {
+					is_core_of = event_target:WTT_communist_china
+				}
+			}
+
+			communists_rise_up_in_state_click_enabled = {	#起义
+				event_target:WTT_communist_china = {
+					has_idea = prepared_for_operation
+				}
+				NOT = {
+					OR = {
+						is_capital = yes
+						has_state_flag = we_will_help_the_legit_government
+					}
+				}
+				owner = {
+					
+					OR = {
+						tag = CHI
+						is_warlord = yes
+					}
+				}
+				any_neighbor_state = {
+					owner = {
+						tag = event_target:WTT_communist_china
+					}
+					controller = {
+						tag = event_target:WTT_communist_china
+					}
+				}
+				is_core_of = event_target:WTT_communist_china
+			}
+			
+
+			communists_vandalism_click_enabled = {	#破坏工业
+				event_target:WTT_communist_china = {
+					command_power > 29
+					NOT = {
+						has_country_flag = sabotaging_in_progress_flag 
+					}
+				}
+				controller = {
+					OR = {
+						tag = JAP
+						is_subject_of = JAP
+					    has_war_with = event_target:WTT_communist_china
+					}
+				}
+				is_core_of = event_target:WTT_communist_china
+			}
+			
+		    communists_attack_click_enabled = {	#攻击敌人
+				event_target:WTT_communist_china = {
+					command_power > 29
+					NOT = {
+						has_country_flag = attacking_in_progress_flag 
+					}
+				}
+				controller = {
+					has_war_with = event_target:WTT_communist_china
+				}
+				is_core_of = event_target:WTT_communist_china
+			}
+		}
+
+		ai_test_scopes = test_neighbouring_states
+		ai_test_scopes = test_enemy_controlled_states
+		ai_test_scopes = test_ally_controlled_states
+
+		ai_test_interval = 25
+		ai_test_variance = 0.1
+
+		ai_enabled = {
+			tag = event_target:WTT_communist_china
+		}
+
+		ai_weights = {#guo
+			communists_rise_up_in_state_click = {
+				ai_will_do = {
+					factor = 200
+					modifier = {
+						add = 1000
+						FROM = {
+							OR = {
+								state = 1133 
+								state = 1105 
+								state = 615 
+								state = 614 
+								state = 597 
+								state = 1038
+								state = 1095
+							}
+						}
+					}
+				}
+			}
+			communists_amass_support_click = {
+				ai_will_do = {
+					factor = 200
+					modifier = {
+						add = 500
+						FROM = {
+							OR = {
+								state = 1133 
+								state = 1105 
+								state = 615 
+								state = 614 
+								state = 597 
+								state = 1038
+								state = 1095
+							}
+						}
+					}
+				}
+			}
+			communists_vandalism_click = {
+				ai_will_do = {
+					factor = 50
+				}
+			}
+		    communists_attack_click = {
+				ai_will_do = {
+					factor = 100
+				}
+			}
+		}
+	}
 }

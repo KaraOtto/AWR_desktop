@@ -2330,9 +2330,18 @@ focus_tree = {
 			add_ideas = prc_jianzujianxi
 			show_ideas_tooltip = prc_wang_guanlan
 			set_global_flag = PRC_Land_reform_done
+			custom_effect_tooltip = PRC_amass_local_communist_support_tishi
 			add_to_variable = {
 				var = economy_development_index
 				value = 0.20
+			}
+			add_to_variable = {
+				var = PRC_communist_amass_support_mission_time_zz
+				value = -25
+			}
+			add_to_variable = {
+				var = PRC_communist_amass_support_mission_cost_zz
+				value = -25
 			}
 			if = {
 				limit = {
@@ -6811,11 +6820,10 @@ focus_tree = {
 						remove_ideas = SIK_Repression_guerrillas
 						remove_ideas = SIK_Stable_politics
 						remove_ideas = SIK_Sinkiang_King
-						remove_ideas = MAN_unbalanced_industry
-						remove_ideas = MAN_unbalanced_industry_1
-						remove_ideas = MAN_unbalanced_industry_2
-						remove_ideas = MAN_unbalanced_industry_3
-						remove_ideas = SIK_Army_refom
+						remove_ideas = unbalanced_industry
+						remove_ideas = unbalanced_industry_1
+						remove_ideas = unbalanced_industry_2
+						remove_ideas = unbalanced_industry_3
 						remove_ideas = SOV_expanded_exploitation_of_gold_mines
 						remove_ideas = SIK_New_currency
 						remove_ideas = SIK_Weakened_ussr_influence			
@@ -6850,7 +6858,7 @@ focus_tree = {
 							long_name = "新疆维吾尔自治区人民委员会"
 						}
 						create_country_leader = {
-							name="包尔汗·沙希迪"
+							name = "包尔汗·沙希迪"
 							desc=PRC_baoerhan_desc
 							picture = "gfx/leaders/SIK/baoerhan_sik.png"
 							ideology = marxism_leninism
@@ -6968,9 +6976,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			TIB = { 
-				add_ideas = { 
-					idea = tib_banchan 
-				} 
+				add_ideas = tib_banchan
 			}
 			if = {
 				limit = {
@@ -8417,7 +8423,7 @@ focus_tree = {
 		select_effect = {
 			SOV = { 
 				country_event = {
-					id = northeast_takeover.7
+					id = AWR_SOV.5
 				} 
 			}
 			country_event = AWR_PRC.97
@@ -8717,7 +8723,7 @@ focus_tree = {
 			set_global_flag = PRC_northeast_trade_hq_focus_flag
 			SOV = {
 				country_event = {
-					id = ccw.107 
+					id = AWR_SOV.2 
 					hours = 12
 				}
 			}
@@ -15731,7 +15737,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_ideas = PRC_focus_on_light_plane
+			add_ideas = PRC_focus_on_light_plane_1
 		}
 	}
 
@@ -16813,9 +16819,7 @@ focus_tree = {
 			
 		}
 		available = {
-			not = { 
-				has_idea = prc_kmt_lianhezhengfu 
-			}
+			#
 		}
 
 	}
@@ -17098,9 +17102,7 @@ focus_tree = {
 			
 		}
 		available = {
-			not = { 
-				has_idea = prc_kmt_lianhezhengfu 
-			}
+			#
 		}
 
 	}
@@ -19843,6 +19845,7 @@ focus_tree = {
 					modifier = contact_with_comintern
 				}
 			}
+			add_political_power = 50
 		}
 
 	}
@@ -19926,18 +19929,14 @@ focus_tree = {
 				}
         		SOV = { 
 					country_event = { 
-						id = AWR_PRC.1701  
+						id = AWR_PRC.180 
 						hours = 0 
 					} 
 				}
         		country_event = { 
-					id = AWR_PRC.1702  
+					id = AWR_PRC.181  
 					hours = 0 
 				}				
-        		news_event = { 
-					id = news.1013 
-					days = 1 
-				}
 				add_opinion_modifier = {
 					modifier = sino_sov_cooperation
 					target = SOV
@@ -19951,9 +19950,19 @@ focus_tree = {
         	}
 
        		if = {#no
-        		limit = { has_global_flag = zhongsujuelie }
-        		SOV = { country_event = { id = AWR_PRC.1705  hours = 0 } }
-        		country_event = { id = AWR_PRC.1706  hours = 0 }				
+        		limit = { 
+					has_global_flag = zhongsujuelie 
+				}
+        		SOV = { 
+					country_event = { 
+						id = AWR_PRC.182  
+						hours = 0 
+					} 
+				}
+        		country_event = { 
+					id = AWR_PRC.183  
+					hours = 0 
+				}				
        			add_opinion_modifier = {
 					target = SOV
 					modifier = SOV_CHI_join_comintern_reject
@@ -19968,7 +19977,8 @@ focus_tree = {
 
         	if = {#yes but puppet
         		limit = { 
-					has_global_flag = zhongsuhezuo has_global_flag = prc_puppet 
+					has_global_flag = zhongsuhezuo 
+					has_global_flag = prc_puppet 
 				}
         		SOV = { 
 					country_event = { 
@@ -19980,10 +19990,6 @@ focus_tree = {
 					id = AWR_PRC.179  
 					hours = 0 
 				}
-        		news_event = { 
-					id = news.1015 
-					days = 1 
-				} 
         		add_opinion_modifier = {
 					modifier = sino_sov_cooperation
 					target = SOV
@@ -20093,7 +20099,17 @@ focus_tree = {
 			focus = PRC_cooperate_with_USA
 		}
 		completion_reward = {
-			#
+			SOV = {
+				country_event = {
+					id = AWR_SOV.6
+				}
+			}
+		}
+		available = {
+			has_global_flag = zhongsuhezuo 
+		}
+		bypass = {
+			is_in_faction_with = SOV
 		}
 	}
 
@@ -20146,7 +20162,7 @@ focus_tree = {
 					category = industry
 				}	
 				add_tech_bonus = {
-					name = infantry_artillery_bonus #@#
+					name = infantry_artillery_bonus 
 					bonus = 1.0
 					uses = 1
 					category = infantry_weapons
@@ -20379,6 +20395,13 @@ focus_tree = {
 			#
 		}
 
+		bypass = {
+			OR = {
+				has_war_with = USA
+				has_war_with = ENG
+				has_war_with = FRA
+			}
+		}
 	}
 
 	focus = {#与西方国家破冰
@@ -20401,7 +20424,22 @@ focus_tree = {
 						is_faction_leader = yes
 					}
 				}
-				
+				every_country = {
+					limit = {
+						is_in_faction_with = USA
+					}
+					add_opinion_modifier = {
+						target = PRC
+						modifier = contact_with_western_countries
+					}
+				}
+
+				add_opinion_modifier = {
+					target = USA
+					modifier = contact_with_western_countries
+				}
+
+				add_political_power = 50
 			}
 		}
 	}
@@ -20417,7 +20455,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			#
+			unlock_decision_category_tooltip = PRC_cooperate_with_western_countries
 		}
 		available = {
 			NOT = {
@@ -20442,12 +20480,34 @@ focus_tree = {
 			focus = PRC_deepen_cooperation_with_SOV
 		}
 		completion_reward = {
-			#
+			unlock_decision_tooltip = PRC_cooperate_with_USA_on_economy
+			unlock_decision_tooltip = PRC_cooperate_with_USA_on_technology
+			clr_global_flag = zhongsuhezuo
+			remove_ideas = prc_sov_youhaohuzhu
+			add_opinion_modifier = {
+				target = SOV
+				modifier = SOV_CHI_join_comintern_reject
+			}	
+			SOV = {
+				add_opinion_modifier = {
+					modifier = SOV_CHI_join_comintern_reject
+					target = ROOT
+				}
+			}
+			add_opinion_modifier = {
+				modifier = SOV_CHI_join_comintern_reject
+				target = SOV
+			} 
+			remove_opinion_modifier = {
+				modifier = sino_sov_cooperation
+				target = SOV
+			}
 		}
 
 		available = {
 			NOT = {
 				is_in_faction_with = SOV
+				has_completed_focus = PRC_new_red_Army
 			}
 		}
 	}
@@ -20521,14 +20581,17 @@ focus_tree = {
 		x = 0 
 		y = 1
 		completion_reward = {
-			#
+			add_ideas = PRC_eastern_iron_curtain_idea
 		}
 		available = {
-			#
+			NOT = {
+				leader_is_maoist = yes
+				has_completed_focus = PRC_new_red_Army
+			}
 		}
 	}
 
-	focus = {	#签定共同防御条约
+	focus = {	#签订共同防御条约
 		id = PRC_sign_a_mutual_defence_treaty
 		icon = GFX_focus_PRC_sign_a_mutual_defence_treaty
 		cost = 5
@@ -20539,10 +20602,16 @@ focus_tree = {
 		x = 0 
 		y = 1
 		completion_reward = {
-			#
+			USA = {
+				country_event = {
+					id = AWR_USA.1
+				}
+			}
 		}
 		available = {
-			#
+			NOT = {
+				has_war = yes
+			}
 		}
 	}
 
@@ -20578,9 +20647,12 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
 		completion_reward = {
-			#
+			add_political_power = 25
+			add_stability = 0.05
 		}
 	}
 
@@ -20597,18 +20669,19 @@ focus_tree = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-			add = 1000
-			has_country_leader = { 
-				ruling_only = yes character = PRC_mao_zedong 
-			}
-			SOV = { 
-				NOT = { 
-					has_country_leader = { 
-						ruling_only = yes character = SOV_iosif_stalin 
+				add = 1000
+				has_country_leader = { 
+					ruling_only = yes character = PRC_mao_zedong 
+				}
+				SOV = { 
+					NOT = { 
+						has_country_leader = { 
+							ruling_only = yes 
+							character = SOV_iosif_stalin 
+						} 
 					} 
-				} 
-			}
-			date > 1950.1.1
+				}
+				date > 1950.1.1
 			}
 			modifier = {
 				add = 1000
@@ -20629,15 +20702,7 @@ focus_tree = {
 			}
 		}
 		available_if_capitulated = no
-		completion_reward = {			
-			if = {
-				limit = {
-        			has_completed_focus = PRC_route_struggle_focus
-				}
-				hidden_effect = {#删
-	    			play_song = "1953年毛主席抗美援朝讲话"
-				}		
-			}		
+		completion_reward = {					
 			if = {
 				limit = {
 					OR = {
@@ -20750,8 +20815,10 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			join_faction_tension = 0.75
-			enemy_justify_war_goal_time = 1.0
+			add_stability = 0.05
+			add_war_support = -0.20
+			add_ideas = PRC_partnerships_without_alliance_idea
+			
 		}
 	}
 
@@ -20811,13 +20878,7 @@ focus_tree = {
 					category = artillery
 				}				
 			}
-			every_other_country = {
-				limit = {
-					is_in_faction_with = PRC
-				}
-				add_to_tech_sharing_group = PRC_Joint_command_tech_group
-			}
-			add_to_tech_sharing_group = PRC_Joint_command_tech_group
+
 		}
 		available = {
 			is_in_faction = yes
@@ -20919,7 +20980,7 @@ focus_tree = {
 				can_create_factions = yes
 			}		
 
-			create_faction="第三世界"
+			create_faction = "第三世界"
 
 			every_other_country = {
 				limit = {
@@ -20979,7 +21040,7 @@ focus_tree = {
 					}
 				}
 				country_event = {
-					id = EFM_Comchina.42
+					id = AWR_PRC.250
 					days = 1
 				}
 			}
@@ -20989,16 +21050,6 @@ focus_tree = {
 			num_of_factories > 800
 			original_research_slots > 5
 			is_special_project_completed = sp:sp_nuclear_bomb
-			count_in_collection = {
-				collection = {
-			    	input = game:scope
-			    	operators = ROOT
-			    	name = num_of_armor
-				}
-				unit = armor
-				equipment_ratio = 1.0
-				size > 400
-			}
 		}
 	}
 
@@ -21071,10 +21122,6 @@ focus_tree = {
 						has_government = communism 
 					} 
 				}
-				add_timed_idea = { 
-					idea = communist_influence_PRC_internationalist_clique_focus 
-					days = 1095 
-				}
 			}
 			
 			add_country_leader_trait = prc_internationalist_clique
@@ -21083,7 +21130,6 @@ focus_tree = {
 				limit = {
 					num_subjects > 0
 				}
-				add_ideas = PRC_comecon_sov_default
 				custom_effect_tooltip = PRC_found_the_comecon_subjects_tt
 				every_other_country = {
 					limit = {
@@ -21093,15 +21139,6 @@ focus_tree = {
 				}
 
 				custom_effect_tooltip = PRC_found_the_comecon_program_tt
-				hidden_effect = {
-					add_to_tech_sharing_group = PRC_international_research_team
-					every_country = {
-						limit = {
-							is_in_faction_with = ROOT
-						}
-						add_to_tech_sharing_group = PRC_international_research_team
-					}
-				}
 			}
 			else = { 
 				effect_tooltip = {
@@ -21151,7 +21188,8 @@ focus_tree = {
 				target = SOV
 			}
 			add_timed_idea = { 
-				idea = PRC_Liberation_Siberia_idea days = 365 
+				idea = PRC_Liberation_Siberia_idea 
+				days = 365 
 			}
 			add_war_support = 0.10
 			hidden_effect = {
@@ -21164,7 +21202,9 @@ focus_tree = {
                 		expire = "1965.1.1"
                 		ideology = khrushchevism
                 		traits = { 
-							yumi popular_figurehead jianzhu
+							yumi 
+							popular_figurehead 
+							jianzhu
                 		}
             		}				
             	}			

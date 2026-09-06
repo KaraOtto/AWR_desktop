@@ -5308,7 +5308,7 @@ AWR_communist_infiltration = {    #游击队攻势
 		days_remove = 20
 		fire_only_once = no
 		remove_effect = {
-		    country_event = AWR_PRC.180
+		    country_event = AWR_PRC.240
 		}
 		ai_will_do = {
 			factor = 3000
@@ -5465,7 +5465,7 @@ AWR_communist_infiltration = {    #游击队攻势
 		days_remove = 20
 		fire_only_once = no
 		remove_effect = {
-		    country_event = AWR_PRC.181
+		    country_event = AWR_PRC.241
 		}
 		ai_will_do = {
 			factor = 3000
@@ -5602,7 +5602,7 @@ AWR_communist_infiltration = {    #游击队攻势
 		
 		remove_effect = {
 		    country_event = {
-				id = AWR_PRC.182
+				id = AWR_PRC.242
 			}
 		}
 		complete_effect = {
@@ -5610,6 +5610,158 @@ AWR_communist_infiltration = {    #游击队攻势
 		}
 		ai_will_do = {
 			factor = 3000
+		}
+	}
+
+	PRC_communist_amass_support_mission = {	# 获取民众支持
+		icon = generic_political_discourse
+		fire_only_once = no
+		days_mission_timeout = PRC_communist_amass_support_mission_time_zz
+		is_good = yes
+
+		allowed = {
+			is_literally_china = yes
+		}
+
+		available = {
+			has_event_target = amass_support_flag_temp
+
+			event_target:amass_support_flag_temp = {
+				NOT = {
+					has_state_flag = commie_ridden_states
+				}
+				NOT = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = PRC_land_reform_in_the_whole_country
+			}
+		}
+
+		activation = {
+			always = no
+		}
+
+		timeout_effect = {
+
+			# 通知相关国家
+			hidden_effect = {
+
+				event_target:WTT_current_china_leader = {
+					country_event = {
+						id = AWR_PRC.254
+					}
+				}
+
+				JAP = {
+					country_event = {
+						id = AWR_PRC.254
+					}
+				}
+
+				event_target:WTT_communist_china = {
+					country_event = {
+						id = AWR_PRC.254
+					}
+				}
+			}
+
+
+			# 对目标州执行土地改革效果
+			if = {
+				limit = {
+					has_event_target = amass_support_flag_temp
+				}
+
+				event_target:amass_support_flag_temp = {
+
+					# 通知目标州拥有国
+					owner = {
+						if = {
+							limit = {
+								NOT = {
+									OR = {
+										tag = JAP
+										tag = event_target:WTT_current_china_leader
+										tag = event_target:WTT_communist_china
+									}
+								}
+							}
+
+							country_event = {
+								id = AWR_PRC.254
+							}
+						}
+					}
+
+
+					# ROOT 获得目标州核心
+					add_core_of = ROOT
+
+
+					# 土地改革动态修正
+					if = {
+						limit = {
+							has_state_flag = snl_PRC_dyn_land_reform_state_flag
+						}
+
+						add_dynamic_modifier = {
+							modifier = snl_PRC_dyn_land_reform_1
+							scope = event_target:WTT_communist_china
+						}
+					}
+
+
+					# 更新州标记
+					clr_state_flag = amass_support_flag_temp
+					set_state_flag = commie_amassed_support
+				}
+			}
+
+			# 如果正在进行政治斗争，则增加 ROOT 在目标州的政治支持
+			if = {
+				limit = {
+
+					has_event_target = amass_support_flag_temp
+
+					event_target:amass_support_flag_temp = {
+						WTT_is_potential_political_struggle_state = yes
+					}
+
+					has_country_flag = wtt_political_struggle
+				}
+
+				event_target:amass_support_flag_temp = {
+
+					# 增加 ROOT 在该州的政治支持
+					WTT_random_support_chance_increase_for_ROOT_in_state = yes
+
+					hidden_effect = {
+
+						# 重新计算该州政治支持
+						WTT_recalculate_state_support_for_ROOT = yes
+
+						# 重新计算整个政治斗争的总支持
+						WTT_political_struggle_recalculate_support = yes
+					}
+				}
+			}
+
+
+			# 清除临时全局 Event Target
+			if = {
+				limit = {
+					has_event_target = amass_support_flag_temp
+				}
+
+				event_target:amass_support_flag_temp = {
+					clear_global_event_target = amass_support_flag_temp
+				}
+			}
 		}
 	}
 }
@@ -5620,8 +5772,8 @@ AWR_PRC_land_reform = {		#土地改革
 		icon = generic_political_discourse
 		priority = 1
 		fire_only_once = no
-		days_remove = 30
-		cost = 50
+		days_remove = PRC_communist_amass_support_mission_time_zz
+		cost = PRC_communist_amass_support_mission_cost_zz
 		allowed = {
 			tag = PRC
 		}
@@ -5675,9 +5827,10 @@ AWR_PRC_land_reform = {		#土地改革
 
 		remove_effect = {
 			clr_country_flag = land_reform_in_progress
+
 			FROM = {
 				set_state_flag = complete_land_reform
-
+				add_core_of = ROOT
 				add_dynamic_modifier = { 
 					modifier = snl_PRC_dyn_land_reform_1
 					scope = event_target:WTT_communist_china 
@@ -5691,8 +5844,8 @@ AWR_PRC_land_reform = {		#土地改革
 	PRC_land_reform_2 = {	#进行土地改革
 		icon = generic_political_discourse
 		fire_only_once = no
-		days_remove = 30
-		cost = 25
+		days_remove = PRC_communist_amass_support_mission_time_zz
+		cost = PRC_communist_amass_support_mission_cost_zz
 		allowed = {
 			tag = PRC
 		}
@@ -5747,7 +5900,8 @@ AWR_PRC_land_reform = {		#土地改革
 			clr_country_flag = land_reform_in_progress
 			FROM = {
 				set_state_flag = complete_land_reform
-
+				set_state_flag = Just_complete_land_reform
+				add_core_of = ROOT
 				add_dynamic_modifier = { 
 					modifier = snl_PRC_dyn_land_reform_1
 					scope = PRC 
@@ -5758,7 +5912,7 @@ AWR_PRC_land_reform = {		#土地改革
 
 	}
 
-	PRC_land_reform_in_the_whole_country = {#在全国进行土地改革
+	PRC_land_reform_in_the_whole_country = {	#在全国进行土地改革
 		icon = generic_political_discourse
 		fire_only_once = no
 		days_re_enable = 360
@@ -5809,6 +5963,49 @@ AWR_PRC_land_reform = {		#土地改革
 			clr_country_flag = PRC_land_reform_in_the_whole_country
 		}
 	}
+
+	PRC_land_reform_mission = {	#土地改革进行中……
+		icon = generic_political_discourse
+		fire_only_once = no
+		days_mission_timeout = PRC_communist_amass_support_mission_time_zz
+		is_good = yes
+
+		allowed = {
+			OR = {
+				tag = event_target:WTT_communist_china
+				tag = PRC
+			}
+		}
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = PRC_land_reform_in_the_whole_country
+			}
+			has_country_flag = land_reform_in_progress
+		}
+
+		activation = {
+			always = no
+		}
+
+		timeout_effect = {
+			every_state = {
+				limit = {
+					has_state_flag = Just_complete_land_reform
+				}
+				state_event = {
+					id = AWR_PRC_state.2
+					trigger_for = event_target:WTT_communist_china
+				}
+				clr_state_flag = Just_complete_land_reform
+			}	
+		}
+	}
+
 }
 
 PRC_Northwest_Alliance_decisions = {	#大西北联盟
@@ -14236,7 +14433,7 @@ PRC_resource_effort = {	#国家资源开采项目
  			highlight_state_targets = {
 				state = 607
 				state = 615
-				state = 1017
+				state = 1105
 				state = 603
 				state = 748
 			} 
@@ -14280,7 +14477,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 20
-				state = 1017
+				state = 1105
 			}
 			add_resource = {
 				type = aluminium
@@ -14300,7 +14497,7 @@ PRC_resource_effort = {	#国家资源开采项目
  			highlight_state_targets = {
 				state = 607
 				state = 615
-				state = 1017
+				state = 1105
 				state = 603
 				state = 748
 			} 
@@ -14344,7 +14541,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 30
-				state = 1017
+				state = 1105
 			}
 			add_resource = {
 				type = aluminium
@@ -14364,7 +14561,7 @@ PRC_resource_effort = {	#国家资源开采项目
  			highlight_state_targets = {
 				state = 607
 				state = 615
-				state = 1017
+				state = 1105
 				state = 603
 				state = 748
 			} 
@@ -14408,7 +14605,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 75
-				state = 1017
+				state = 1105
 			}
 			add_resource = {
 				type = aluminium
@@ -14428,8 +14625,8 @@ PRC_resource_effort = {	#国家资源开采项目
 		highlight_states = {
  			highlight_state_targets = {
 				state = 600
+				state = 1134
 				state = 593
-				state = 1036
 				state = 602
 				state = 750
 			} 
@@ -14468,12 +14665,12 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 15
-				state = 593
+				state = 1134
 			}
 			add_resource = {
 				type = tungsten
 				amount = 20
-				state = 1036
+				state = 593
 			}
 			add_resource = {
 				type = tungsten
@@ -14492,8 +14689,8 @@ PRC_resource_effort = {	#国家资源开采项目
 		highlight_states = {
  			highlight_state_targets = {
 				state = 600
+				state = 1134
 				state = 593
-				state = 1036
 				state = 602
 				state = 750
 			} 
@@ -14532,12 +14729,12 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 25
-				state = 593
+				state = 1134
 			}
 			add_resource = {
 				type = tungsten
 				amount = 55
-				state = 1036
+				state = 593
 			}
 			add_resource = {
 				type = tungsten
@@ -14556,8 +14753,8 @@ PRC_resource_effort = {	#国家资源开采项目
 		highlight_states = {
  			highlight_state_targets = {
 				state = 600
+				state = 1134
 				state = 593
-				state = 1036
 				state = 602
 				state = 750
 			} 
@@ -14596,12 +14793,12 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 45
-				state = 593
+				state = 1134
 			}
 			add_resource = {
 				type = tungsten
 				amount = 35
-				state = 1036
+				state = 593
 			}
 			add_resource = {
 				type = tungsten
@@ -14656,7 +14853,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = oil
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1005
+				state = 1097
 			} 
 		}
 		fire_only_once = yes
@@ -14684,7 +14881,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = oil
 				amount = 150
-				state = 1005
+				state = 1097
 			}
 		}
 	}
@@ -14809,8 +15006,9 @@ PRC_resource_effort = {	#国家资源开采项目
  			highlight_state_targets = {
 				state = 716
 				state = 328
-				state = 1005
-				state = 1011
+				state = 1097
+				state = 714
+				state = 1103
 				state = 715
 			} 
 		}
@@ -14854,7 +15052,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 72
-				state = 1005
+				state = 1097
 			}
 			add_resource = {
 				type = coal
@@ -14864,7 +15062,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 41
-				state = 1011
+				state = 1103
 			}
 			add_resource = {
 				type = coal
@@ -14877,7 +15075,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1043
+				state = 1036
 			} 
 		}
 		fire_only_once = yes
@@ -14905,7 +15103,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 118
-				state = 1043
+				state = 1036
 			}
 		}
 	}
@@ -14950,7 +15148,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = rubber
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1037
+				state = 1091
 			} 
 		}
 		fire_only_once = yes
@@ -14978,7 +15176,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = rubber
 				amount = 50
-				state = 1037
+				state = 1091
 			}
 		}
 	}
@@ -15059,7 +15257,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = chromium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1062
+				state = 611
 			} 
 		}
 		fire_only_once = yes
@@ -15087,7 +15285,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = chromium
 				amount = 50
-				state = 1062
+				state = 611
 			}
 		}
 	}
@@ -15095,7 +15293,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = chromium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1054
+				state = 1118
 			} 
 		}
 		fire_only_once = yes
@@ -15123,7 +15321,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = chromium
 				amount = 100
-				state = 1054
+				state = 1118
 			}
 		}
 	}
@@ -15425,7 +15623,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			NOT = {
 				has_decision = prc_zangnan
 			}
-			1021 = {
+			1130 = {
 				NOT = {
 					is_owned_by = ROOT
 				}
@@ -15435,7 +15633,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 		}
 		available = {
-			1021 = {
+			1130 = {
 				NOT = {
 					is_owned_by = ROOT
 				}
@@ -15559,7 +15757,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 				}
 				PRC = {
 					transfer_state = 329
-					transfer_state = 1024					
+					transfer_state = 1122					
 				}
 			}
 
@@ -15589,7 +15787,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 						}
 						OR = {
 							controls_state = 329
-							controls_state = 1024
+							controls_state = 1122
 						}
 					}
 					country_event = {
@@ -15599,7 +15797,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 		}
 	}
-
+	#做到这里
 	PRC_outer_Northeast = {		#外东北问题
 		priority = 15
 		icon = generic_prepare_civil_war 
@@ -16552,37 +16750,37 @@ PRC_156_project_category = { #156工程
 			add_tech_bonus = {
 				name = industry #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = industry #研究类型
 		    }
 			add_tech_bonus = {
 				name = concentrated #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = concentrated_industry_category #研究类型
 		    }
 			add_tech_bonus = {
 				name = dispersed #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = dispersed_industry_category #研究类型
 		    }
 			add_tech_bonus = {
 				name = construction #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = construction_tech #研究类型
 		    }
 			add_tech_bonus = {
 				name = excavation #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = excavation_tech #研究类型
 		    }
 			add_tech_bonus = {
 				name = synth #(取研究类型名开头即可)
 				bonus = 1 #研究加成(1 = +100%)
-				uses = 3 #次数(正整数)
+				uses = 1 #次数(正整数)
 				category = synth_resources #研究类型
 		    }
 		}
@@ -16995,3 +17193,1658 @@ PRC_156_project_category = { #156工程
 	}
 }
 
+PRC_SOV_diplomacy_category = {	#中苏外交
+	PRC_suoqudalian = {	#要求归还大连
+
+		icon = infiltrate_state
+
+		allowed = {
+			OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+			}
+		}
+
+		available = {
+			has_idea = prc_sov_youhaohuzhu
+		}
+		
+		cost = 300
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 9000
+			modifier = {
+			factor = 0
+			date < 1949.1.1
+			}
+		}
+
+		visible = {
+			has_idea = prc_sov_youhaohuzhu
+			is_in_faction_with = SOV
+			SOV = { 
+				owns_state = 745 
+				controls_state = 745 
+			}
+			has_country_leader = { 
+				ruling_only = yes 
+				character = prc_mao_zedong 
+			}
+		}
+
+		complete_effect = {
+			SOV = {
+				country_event = { 
+					id = AWR_SOV.7 
+					days = 1 
+				}
+			}
+		}
+	}
+}
+
+PRC_cooperate_with_western_countries = {	#与西方国家合作
+	PRC_cooperate_with_ENG_on_economy = {	#与英国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+		}
+		available = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+			ROOT = {
+				NOT = {
+					has_war_with = ENG
+				}
+			}
+
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			ENG = {
+				country_event = {
+					id = AWR_PRC.244
+				}
+			}
+		}
+	}
+
+	PRC_cooperate_with_FRA_on_economy = {	#与法国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+		}
+		available = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+			ROOT = {
+				NOT = {
+					has_war_with = FRA
+				}
+			}
+
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			FRA = {
+				country_event = {
+					id = AWR_PRC.245
+				}
+			}
+		}
+	}
+
+	PRC_cooperate_with_USA_on_economy = {	#与美国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_cooperate_with_USA
+		}
+		available = {
+			has_completed_focus = PRC_cooperate_with_USA
+			ROOT = {
+				NOT = {
+					has_war_with = USA
+				}
+			}
+
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			ENG = {
+				country_event = {
+					id = AWR_PRC.246
+				}
+			}
+		}
+	}
+
+	PRC_cooperate_with_ENG_on_technology = {	#与英国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+		}
+		available = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+			ROOT = {
+				NOT = {
+					has_war_with = ENG
+				}
+			}
+
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			ENG = {
+				country_event = {
+					id = AWR_PRC.244
+				}
+			}
+		}
+	}
+
+	PRC_cooperate_with_FRA_on_technology = {	#与法国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+		}
+		available = {
+			has_completed_focus = PRC_contact_with_some_of_western_countries
+			ROOT = {
+				NOT = {
+					has_war_with = FRA
+				}
+			}
+
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			FRA = {
+				country_event = {
+					id = AWR_PRC.245
+				}
+			}
+		}
+	}
+
+	PRC_cooperate_with_USA_on_technology = {	#与美国经济合作
+		icon = generic_factory
+		allowed = {
+			#
+		}
+		visible = {
+			has_completed_focus = PRC_cooperate_with_USA
+		}
+		available = {
+			has_completed_focus = PRC_cooperate_with_USA
+			ROOT = {
+				NOT = {
+					has_war_with = USA
+				}
+			}
+
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		days_remove = 50
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			#
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			ENG = {
+				country_event = {
+					id = AWR_PRC.246
+				}
+			}
+		}
+	}
+}
+
+PRC_shijierenmin = {	#两个拳头同时出击
+	PRC_integrate_commune = {	#解放工人，进行土地改革
+
+		name = PRC_integrate_commune
+
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			FROM = {
+				compliance > 50
+				OR = {
+					is_island_state = yes
+					any_neighbor_state = {
+						is_core_of = ROOT
+					}
+				}
+			}
+		}
+
+		state_target = yes
+
+		on_map_mode = map_only
+
+		target_array = controlled_states
+
+		target_trigger = {
+			has_completed_focus = PRC_Output_revolution
+			FROM = {
+				NOT = {
+					is_core_of = ROOT
+				}
+				OR = {
+					is_island_state = yes
+					any_neighbor_state = {
+						is_core_of = ROOT
+					}
+				}
+				is_owned_by = ROOT
+				compliance > 35
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 60
+
+		modifier = {
+			political_power_gain = -0.5
+		}
+
+		visible = {
+			tag = PRC
+			has_completed_focus = PRC_Output_revolution
+			always = yes
+		}
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			FROM = {
+				add_core_of = ROOT
+			}
+			transfer_state = FROM
+		}
+	}
+
+	PRC_ignite_uprising = {	#支持当地无产阶级革命同志发动起义
+
+		icon = generic_ignite_civil_war
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			FROM = {
+				has_civil_war = no
+				any_controlled_state = {
+					is_in_home_area = yes
+					is_capital = no
+				}
+			}
+			has_equipment = {
+			    infantry_equipment > 19999
+			}
+			any_controlled_state = {
+				NOT = { 
+					has_state_flag = PRC_uprising 
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_war_with = ROOT
+				any_controlled_state = {
+					is_in_home_area = yes
+					any_neighbor_state = {
+						is_controlled_by = ROOT
+					}
+				}
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		modifier = {
+			#
+		}
+
+		visible = {
+			tag = PRC
+			has_completed_focus = PRC_Output_revolution
+			FROM = {
+				exists = yes
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = -20000
+			}
+			hidden_effect = {
+				FROM = {
+					set_country_flag = PRC_ignite_uprising_timer_flag
+					activate_mission = PRC_ignite_uprising_timer_mission
+				}
+			}
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						any_controlled_state = {
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						is_controlled_by = FROM
+						is_in_home_area = yes
+						is_capital = no
+						NOT = { has_state_flag = PRC_uprising }
+						any_state = {
+							is_controlled_by = ROOT
+							NOT = { has_state_flag = PRC_uprising }
+							distance_to = {
+								target = PREV
+								value < 750
+							}
+						}
+					}
+					set_state_flag = PRC_uprising
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						any_controlled_state = {
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						is_controlled_by = FROM
+						is_in_home_area = yes
+						is_capital = no
+						NOT = { has_state_flag = PRC_uprising }
+						any_state = {
+							is_controlled_by = ROOT
+							NOT = { has_state_flag = PRC_uprising }
+							distance_to = {
+								target = PREV
+								value < 1500
+							}
+						}
+					}
+					set_state_flag = PRC_uprising
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+			else = {
+				random_state = {
+					limit = {
+						is_controlled_by = FROM
+						is_in_home_area = yes
+						is_capital = no
+						NOT = { has_state_flag = PRC_uprising }
+						any_state = {
+							is_controlled_by = ROOT
+							NOT = { has_state_flag = PRC_uprising }
+						}
+					}
+					set_state_flag = PRC_uprising
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					FROM = { num_of_controlled_states > 4 }
+				}
+				if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { has_state_flag = PRC_uprising }
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { has_state_flag = PRC_uprising }
+									distance_to = {
+										target = PREV
+										value < 750
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { has_state_flag = PRC_uprising }
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { has_state_flag = PRC_uprising }
+									distance_to = {
+										target = PREV
+										value < 1500
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else = {
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { num_of_controlled_states > 7 }
+				}
+				if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { has_state_flag = PRC_uprising }
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { has_state_flag = PRC_uprising }
+									distance_to = {
+										target = PREV
+										value < 750
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { has_state_flag = PRC_uprising }
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { has_state_flag = PRC_uprising }
+									distance_to = {
+										target = PREV
+										value < 1500
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else = {
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { num_of_controlled_states > 11 }
+				}
+				if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { has_state_flag = PRC_uprising }
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { has_state_flag = PRC_uprising }
+									distance_to = {
+										target = PREV
+										value < 750
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { 
+										has_state_flag = PRC_uprising 
+									}
+									distance_to = {
+										target = PREV
+										value < 1500
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else = {
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { num_of_controlled_states > 19 }
+				}
+				if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { 
+										has_state_flag = PRC_uprising 
+									}
+									distance_to = {
+										target = PREV
+										value < 750
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								distance_to = {
+									target = PREV
+									value < 750
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = {
+							any_controlled_state = {
+								is_in_home_area = yes
+								is_capital = no
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								any_state = {
+									is_controlled_by = ROOT
+									NOT = { 
+										has_state_flag = PRC_uprising 
+									}
+									distance_to = {
+										target = PREV
+										value < 1500
+									}
+								}
+							}
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+								distance_to = {
+									target = PREV
+									value < 1500
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				else = {
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { has_state_flag = PRC_uprising }
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { has_state_flag = PRC_uprising }
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_state = {
+						limit = {
+							is_controlled_by = FROM
+							is_in_home_area = yes
+							is_capital = no
+							NOT = { 
+								has_state_flag = PRC_uprising 
+							}
+							any_state = {
+								is_controlled_by = ROOT
+								NOT = { 
+									has_state_flag = PRC_uprising 
+								}
+							}
+						}
+						set_state_flag = PRC_uprising
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+						create_unit = {
+							division = "division_template = \"PRC Militia\" start_experience_factor = 0.1" 
+							owner = ROOT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	PRC_ignite_uprising_timer_mission = {	#当地无产阶级革命同志准备发动起义
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { 
+				always = no 
+			}
+		}
+
+		days_mission_timeout = 90
+
+		fire_only_once = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_country_flag = PRC_ignite_uprising_timer_flag
+		}
+
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		timeout_effect = {
+			clr_country_flag = PRC_ignite_uprising_timer_flag
+			custom_effect_tooltip = PRC_ignite_uprising_timer_mission_tt
+		}
+	}
+}
+
+PRC_comecon_dec_cat = {
+	PRC_comecon_industrialization_program = {
+		priority = 2
+
+		icon = GFX_decision_generic_construction
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 4
+				has_war = no
+			}
+		}
+
+		#target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				is_in_faction_with = ROOT
+			}
+		}
+
+		allowed = {
+			OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+			}
+		}
+
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+			FROM = { communism > 0.5 }
+			NOT = { has_country_flag = PRC_comecon_joint_military_program_ongoing_flag }
+			NOT = { has_country_flag = PRC_comecon_industrialization_program_ongoing_flag }
+		}
+
+		visible = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			FROM = { is_in_faction_with = ROOT }
+		}
+
+		cost = 100
+
+		days_remove = 180
+
+		cancel_trigger = {
+			NOT = { FROM = { is_in_faction_with = ROOT } }
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = PRC_comecon_industrialization_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_industrialization
+					add_idea = PRC_comecon_sov_default
+				}
+
+				FROM = {
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_industrialization
+						add_idea = PRC_comecon_puppet_default
+					}
+				}
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 1
+			custom_modifier_tooltip = PRC_comecon_industrialization_program_modifier_tt
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = PRC_comecon_industrialization_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_default
+					add_idea = PRC_comecon_sov_industrialization
+				}
+
+				FROM = {
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_default
+						add_idea = PRC_comecon_puppet_industrialization
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = PRC_comecon_industrialization_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_industrialization
+					add_idea = PRC_comecon_sov_default
+				}
+
+				FROM = {
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_industrialization
+						add_idea = PRC_comecon_puppet_default
+					}
+				}
+			}
+		}
+	}
+
+	PRC_comecon_joint_military_program = {
+		priority = 1
+
+		icon = GFX_decision_generic_construction
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 4
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+
+		allowed = {
+			OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+			}
+		}
+
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+			NOT = { has_country_flag = PRC_comecon_industrialization_program_ongoing_flag }
+		}
+
+		visible = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			num_subjects > 0
+		}
+
+		cost = 100
+
+		days_remove = 180
+
+		modifier = {
+			custom_modifier_tooltip = PRC_comecon_joint_military_program_modifier_tt
+		}
+
+		cancel_trigger = {
+			num_subjects < 1
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = PRC_comecon_joint_military_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_military
+					add_idea = PRC_comecon_sov_default
+				}
+
+				custom_effect_tooltip = PRC_found_the_comecon_subjects_tt
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_military
+						add_idea = PRC_comecon_puppet_default
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = PRC_comecon_joint_military_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_default
+					add_idea = PRC_comecon_sov_military
+				}
+
+				custom_effect_tooltip = PRC_found_the_comecon_subjects_tt
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_default
+						add_idea = PRC_comecon_puppet_military
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = PRC_comecon_joint_military_program_ongoing_flag
+				swap_ideas = {
+					remove_idea = PRC_comecon_sov_military
+					add_idea = PRC_comecon_sov_default
+				}
+
+				custom_effect_tooltip = PRC_found_the_comecon_subjects_tt
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					swap_ideas = {
+						remove_idea = PRC_comecon_puppet_military
+						add_idea = PRC_comecon_puppet_default
+					}
+				}
+			}
+		}
+	}	
+}
