@@ -267,6 +267,153 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 	}
 }
 
+PRC_shanghai_economy_war_category = {	#上海经济战
+	priority = 993
+	scripted_gui = PRC_shanghai_economy_war_gui
+	visible = {
+		613 = { 
+				is_controlled_by = PRC 
+			}	
+		1094 = { 
+			is_controlled_by = PRC 
+		}	
+	}
+}
+
+PRC_economy_cooperation_decision_category  = {	#经济合作
+	priority = 10
+	icon = generic_factory
+	visible = {
+		tag = PRC
+		has_completed_focus = PRC_embrace_multipolarization
+	}
+}
+
+# 亚洲民族解放运动
+PRC_asian_liberation_category = {
+
+	icon = GFX_decision_category_propaganda
+
+	priority = 9
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			has_completed_focus = PRC_support_the_national_independence_movement
+		}
+	}
+}
+
+# 中东民族解放运动
+PRC_middle_east_liberation_category = {
+
+	icon = GFX_decision_category_propaganda
+
+	priority = 8
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			has_completed_focus = PRC_support_the_national_independence_movement
+		}
+	}
+}
+
+# 非洲民族解放运动
+PRC_african_liberation_category = {
+
+	icon = GFX_decision_category_propaganda
+
+	priority = 7
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			has_completed_focus = PRC_support_the_national_independence_movement
+		}
+	}
+}
+
+# 拉丁美洲及加勒比民族解放运动
+PRC_latin_american_liberation_category = {
+
+	icon = GFX_decision_category_propaganda
+
+	priority = 6
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			has_completed_focus = PRC_support_the_national_independence_movement
+		}
+	}
+}
+
+# 大洋洲民族解放运动
+PRC_oceanian_liberation_category = {
+
+	icon = GFX_decision_category_propaganda
+
+	priority = 5
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = PRC_internationalist_clique_focus
+			has_completed_focus = PRC_support_the_national_independence_movement
+		}
+	}
+}
+
+PRC_comecon_dec_cat = {	#世界人民大团结
+	priority = 5
+
+	icon = SOV_civil_puppet_interaction
+	picture = GFX_decision_cat_picture_soviet_comecon
+
+	allowed = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+	}
+
+	visible = {
+		has_completed_focus = PRC_internationalist_clique_focus
+	}
+}
+
+PRC_shijierenmin = {	#两个拳头同时出击
+	icon = spr_the_inevitable_civil_war
+	allowed = {
+    	TAG = PRC
+	}
+	visible = {
+		#
+	}
+	visible_when_empty = no
+	priority = 4
+}
+
 TIB_democracy_reform = {	#西藏民主改革
 	priority = 3
 	icon = generic_police_action
@@ -292,33 +439,6 @@ PRC_SOV_diplomacy_category = {	#中苏外交
 	}
 }
 
-PRC_shijierenmin = {	#两个拳头同时出击
-	icon = spr_the_inevitable_civil_war
-	allowed = {
-    	TAG = PRC
-	}
-	visible = {
-		#
-	}
-	visible_when_empty = no
-	priority = 150
-}
 
-PRC_comecon_dec_cat = {	#世界人民大团结
-	priority = 7500
 
-	icon = SOV_civil_puppet_interaction
-	picture = GFX_decision_cat_picture_soviet_comecon
-
-	allowed = {
-		OR = {
-			TAG = event_target:WTT_communist_china
-			TAG = PRC
-		}
-	}
-
-	visible = {
-		has_completed_focus = PRC_internationalist_clique_focus
-	}
-}
 

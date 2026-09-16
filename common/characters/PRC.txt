@@ -2083,6 +2083,9 @@ characters = {
 			civilian={
 				small="GFX_idea_PRC_lin_yuying"
 			}
+			army = {
+				large = "GFX_Army_PRC_Lin_Yuying"
+			}
 		}	
 		advisor={
 			slot = political_advisor
@@ -2106,6 +2109,17 @@ characters = {
 			ai_will_do = {
 				factor = 1
 				
+			}
+		}
+		corps_commander = {	#假身份，触发将领事件用的
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+
+			visible = {
+				always = no
 			}
 		}
 	}
@@ -2841,7 +2855,22 @@ characters = {
 			ai_will_do = {
 				factor = 150
 			}
-		}		
+		
+		}	
+		corps_commander={
+			visible = {
+				always = no
+			}
+			traits={ 
+				#
+			}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1 
+		}
+			
 	}
 
 	PRC_yang_shangkun = {	#杨尚昆
@@ -7156,8 +7185,8 @@ characters = {
 		}
 	}
 
-	PRC_huzhiming={ #胡志明
-		name=PRC_huzhiming
+	PRC_hu_zhiming={ #胡志明
+		name=PRC_hu_zhiming
 		portraits={
 			civilian={
 				large="GFX_Portrait_Vietnam_Ho_Chi_Minh"
@@ -7166,7 +7195,7 @@ characters = {
 		}
 		advisor={
 			slot = foreign_advisor
-			idea_token = PRC_huzhiming
+			idea_token = PRC_hu_zhiming
 			allowed = {
 				OR = {
 					TAG = event_target:WTT_communist_china
@@ -7200,7 +7229,7 @@ characters = {
 				}
 			}
 			available = {
-				has_global_flag = PRC_huzhiming_come_to_yanan
+				has_global_flag = PRC_hu_zhiming_come_to_yanan
 				VIN = {
 					OR = { 
 						exists = no 

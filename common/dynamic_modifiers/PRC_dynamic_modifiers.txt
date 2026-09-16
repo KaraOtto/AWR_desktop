@@ -960,7 +960,6 @@ PRC_gongyehua_dynamic_modifier = {	#社会主义工业化
 	AWR_economy_development_monthly = PRC_gongyehua_AWR_economy_development_monthly					#月度经济发展变化
 }
 	
-
 communist_stronghold = {	#军爱民，民拥军
 	enable = { 
 		always = yes 
@@ -984,6 +983,7 @@ communist_stronghold = {	#军爱民，民拥军
 }
 
 PRC_regional_offensive = {	#地区攻势
+	
 	enable = { 
 		tag = PRC
 	}
@@ -1007,4 +1007,39 @@ prc_unplanned_offensive = {		#未经计划的攻势
 	army_attack_factor = -0.9
 	ground_attack_factor = -0.75
 	breakthrough_factor = 0.50
+}
+
+PRC_strategic_cooperation = {	#战略合作
+	icon = GFX_idea_PRC_strategic_cooperation
+	enable = {
+		always = yes
+	}
+
+	custom_modifier_tooltip = PRC_faction_member_count_tt
+
+	research_speed_factor = PRC_strategic_cooperation_research_speed_factor	#科研
+	special_project_speed_factor = PRC_strategic_cooperation_research_speed_factor	#特殊工程
+	industrial_capacity_factory = PRC_strategic_cooperation_industrial_capacity_factory	#工厂产出
+	industrial_capacity_dockyard = PRC_strategic_cooperation_industrial_capacity_dockyard #船坞产出
+	production_speed_arms_factory_factor = PRC_strategic_cooperation_production_speed_arms_factory_factor #军工建设速度
+	production_speed_dockyard_factor = PRC_strategic_cooperation_production_speed_dockyard_factor #船坞建设速度
+}
+
+PRC_economy_cooperation = {	#经济合作
+	icon = GFX_idea_PRC_economy_cooperation
+
+	consumer_goods_factor = PRC_economy_cooperation_consumer_goods_factor	#生活消费品
+	production_speed_infrastructure_factor = PRC_economy_cooperation_production_speed_infrastructure_factor	#基础设施建设速度
+	production_speed_industrial_complex_factor = PRC_economy_cooperation_production_speed_industrial_complex_factor	#民工建设速度
+	production_speed_energy_infrastructure_factor = PRC_economy_cooperation_production_speed_energy_infrastructure_factor	#快速电网
+	production_speed_industrial_infrastructure_factor = PRC_economy_cooperation_production_speed_industrial_infrastructure_factor	#大功率电网
+	AWR_economy_development_monthly = PRC_economy_cooperation_AWR_economy_development_monthly	#月度经济变化
+	
+}
+
+PRC_coal_poverty = {	#缺煤
+	icon = GFX_idea_PRC_coal_poverty
+
+	industrial_capacity_factory = -0.50
+	production_speed_buildings_factor = -0.50
 }

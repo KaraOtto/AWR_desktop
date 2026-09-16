@@ -1,21 +1,26 @@
-
-
-########    ###    ##    ## ##    ##  ######  
-   ##      ## ##   ###   ## ##   ##  ##    ## 
-   ##     ##   ##  ####  ## ##  ##   ##       
-   ##    ##     ## ## ## ## #####     ######  
-   ##    ######### ##  #### ##  ##         ## 
-   ##    ##     ## ##   ### ##   ##  ##    ## 
-   ##    ##     ## ##    ## ##    ##  ######  
-
-
-
-# GENERIC TANK MANUFACTURER - Based on Daimler Benz
+#####坦克
 generic_tank_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_1
 
 	allowed = {
-		NOT = { OR = { original_tag = GER original_tag = ENG original_tag = SOV original_tag = FRA original_tag = ITA original_tag = JAP original_tag = USA original_tag = BEL original_tag = CZE original_tag = ROM  original_tag = HUN } }
+		NOT = {
+			OR = {
+				original_tag = GER
+				original_tag = ENG
+				original_tag = SOV
+				original_tag = FRA
+				original_tag = ITA
+				original_tag = JAP
+				original_tag = USA
+				original_tag = BEL
+				original_tag = CZE
+				original_tag = ROM
+				original_tag = HUN
+				original_tag = SLO
+				original_tag = RKH
+			}
+		}
+
 		NOT = {
 			AND = {
 				tag = POL
@@ -25,64 +30,90 @@ generic_tank_organization = {
 				}
 			}
 		}
-		NOT = {
-			AND = {
-				OR = { tag = AST tag = SAF tag = NZL tag = CAN }
-				has_dlc = "Together for Victory"
-			}
-		}
-		NOT = {
-			AND = {
-				is_literally_china_including_chinese_puppets = yes
-				has_dlc = "Waking the Tiger"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = MEX }
-				has_dlc = "Man the Guns"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = BUL tag = GRE tag = TUR }
-				has_dlc = "Battle for the Bosporus"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = ETH tag = SWI }
-				has_dlc = "By Blood Alone"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = FIN tag = NOR tag = SWE }
-				has_dlc = "Arms Against Tyranny"
-			}
-		}
+
 		NOT = {
 			AND = {
 				OR = {
-					original_tag = BRA 
+					tag = AST
+					tag = SAF
+					tag = NZL
+					tag = CAN
+				}
+				has_dlc = "Together for Victory"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					is_literally_china = yes
+					tag = MAN
+				}
+				has_dlc = "Waking the Tiger"
+			}
+		}
+
+		NOT = {
+			AND = {
+				tag = MEX
+				has_dlc = "Man the Guns"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					tag = BUL
+					tag = GRE
+					tag = TUR
+				}
+				has_dlc = "Battle for the Bosporus"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					tag = ETH
+					tag = SWI
+				}
+				has_dlc = "By Blood Alone"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = FIN
+					tag = NOR
+					tag = SWE
+				}
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA
 					original_tag = CHL
 					original_tag = ARG
 				}
 				has_dlc = "Trial of Allegiance"
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = {
-					original_tag = AUS
-				}
+				original_tag = AUS
 				has_dlc = "Gotterdammerung"
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = { 
-					original_tag = AFG 
+				OR = {
+					original_tag = AFG
 					original_tag = PER
 					original_tag = IRQ
 					original_tag = RAJ
@@ -90,16 +121,29 @@ generic_tank_organization = {
 				has_dlc = "Graveyard of Empires"
 			}
 		}
+
 		NOT = {
 			AND = {
 				original_tag = PHI
 				has_dlc = "No Compromise, No Surrender"
 			}
-		}		
+		}
+
+		NOT = {
+			AND = {
+				original_tag = SIA
+				has_dlc = "Thunder at Our Gates"
+			}
+		}
 	}
 
-	equipment_type = { mio_cat_eq_all_light_tank mio_cat_eq_all_medium_tank }
-	research_categories = { mio_cat_tech_light_armor_and_modules mio_cat_tech_medium_armor_and_modules }
+	equipment_type = { 
+		mio_cat_eq_all_light_tank mio_cat_eq_all_medium_tank 
+	}
+	research_categories = { 
+		mio_cat_tech_light_armor_and_modules 
+		mio_cat_tech_medium_armor_and_modules 
+	}
 
 	tree_header_text = {
 		text = mio_header_tank_construction
@@ -1913,24 +1957,12 @@ generic_tank_refurbishment_plant_organization = {
 	}
 }
 
-
- ######  ##     ## #### ########   ######  
-##    ## ##     ##  ##  ##     ## ##    ## 
-##       ##     ##  ##  ##     ## ##       
- ######  #########  ##  ########   ######  
- 	  ## ##     ##  ##  ##              ## 
-##    ## ##     ##  ##  ##        ##    ## 
- ######  ##     ## #### ##         ######  
-
-
-# GENERIC TANK MANUFACTURERS
-
-#TASK FORCE MANUFACTURER - Based on Harland & Wolff (ENG)
+#####船
 generic_task_force_ship_organization = {
 	icon = GFX_idea_generic_naval_manufacturer_1
 
 	allowed = {
-		always = no # Archetype only - countries using it have their own verisons
+		always = no 
 	}
 
 	equipment_type = {
@@ -2435,9 +2467,14 @@ generic_battle_line_ship_organization = {
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_super_heavy_shells
 
-		any_parent = { generic_mio_trait_primary_battery_layout }
+		any_parent = { 
+			generic_mio_trait_primary_battery_layout 
+		}
 
-		mutually_exclusive = { generic_mio_trait_super_heavy_shells generic_mio_trait_semi_armor_piercing_shells }
+		mutually_exclusive = { 
+			generic_mio_trait_super_heavy_shells 
+			generic_mio_trait_semi_armor_piercing_shells 
+		}
 
 		equipment_bonus = {
 			lg_armor_piercing = 0.1
@@ -2447,14 +2484,46 @@ generic_battle_line_ship_organization = {
 	}
 }
 
-
-#ESCORT FLEET MANUFACTURER - Based on Yarrow Shipbuilders (ENG)
 generic_escort_ship_organization = {
+
 	icon = GFX_idea_generic_naval_manufacturer_1
 
 	allowed = {
-		NOT = { OR = { original_tag = GER original_tag = ENG original_tag = SOV original_tag = FRA original_tag = ITA original_tag = JAP original_tag = USA original_tag = BEL original_tag = CAN original_tag = SWE original_tag = HUN original_tag = CZE original_tag = ROM original_tag = YUG original_tag = POR original_tag = GRE original_tag = TUR original_tag = LAT original_tag = EST } }
-		NOT = { OR = { original_tag = SPR original_tag = SPA original_tag = SPB original_tag = SPC original_tag = SPD } }
+		NOT = {
+			OR = {
+				original_tag = GER
+				original_tag = ENG
+				original_tag = SOV
+				original_tag = FRA
+				original_tag = ITA
+				original_tag = JAP
+				original_tag = USA
+				original_tag = BEL
+				original_tag = CAN
+				original_tag = SWE
+				original_tag = HUN
+				original_tag = CZE
+				original_tag = ROM
+				original_tag = YUG
+				original_tag = POR
+				original_tag = GRE
+				original_tag = TUR
+				original_tag = LAT
+				original_tag = EST
+				original_tag = RKH
+			}
+		}
+
+		NOT = {
+			OR = {
+				original_tag = SPR
+				original_tag = SPA
+				original_tag = SPB
+				original_tag = SPC
+				original_tag = SPD
+			}
+		}
+
 		NOT = {
 			AND = {
 				original_tag = POL
@@ -2464,58 +2533,96 @@ generic_escort_ship_organization = {
 				}
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = { original_tag = AST original_tag = NZL original_tag = RAJ }
+				OR = {
+					original_tag = AST
+					original_tag = NZL
+					original_tag = RAJ
+				}
 				has_dlc = "Together for Victory"
 			}
 		}
+
 		NOT = {
 			AND = {
-				is_literally_china_including_chinese_puppets = yes
+				OR = {
+					original_tag = CHI
+					original_tag = PRC
+					original_tag = MAN
+					original_tag = SHX
+					original_tag = XSM
+					original_tag = GXC
+					original_tag = YUN
+					original_tag = SIK
+					original_tag = MEN
+				}
 				has_dlc = "Waking the Tiger"
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = { original_tag = MEX original_tag = HOL }
+				OR = {
+					original_tag = MEX
+					original_tag = HOL
+				}
 				has_dlc = "Man the Guns"
 			}
 		}
+
 		NOT = {
 			AND = {
 				original_tag = BUL
 				has_dlc = "Battle for the Bosporus"
 			}
 		}
-		NOT = {
-			AND = {
-				OR = { original_tag = EST  original_tag = LAT }
-				has_dlc = "No Step Back"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = ETH original_tag = SWI }
-				has_dlc = "By Blood Alone"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = FIN original_tag = NOR original_tag = DEN original_tag = SWE original_tag = ICE }
-				has_dlc = "Arms Against Tyranny"
-			}
-		}
+
 		NOT = {
 			AND = {
 				OR = {
-					original_tag = BRA 
+					original_tag = EST
+					original_tag = LAT
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = ETH
+					original_tag = SWI
+				}
+				has_dlc = "By Blood Alone"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = FIN
+					original_tag = NOR
+					original_tag = DEN
+					original_tag = SWE
+					original_tag = ICE
+				}
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA
 					original_tag = CHL
 					original_tag = ARG
 				}
 				has_dlc = "Trial of Allegiance"
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
@@ -2523,14 +2630,14 @@ generic_escort_ship_organization = {
 					original_tag = COG
 				}
 				has_dlc = "Gotterdammerung"
-				
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = { 
+				OR = {
 					original_tag = AFG
-					original_tag = PER 
+					original_tag = PER
 					original_tag = IRQ
 				}
 				has_dlc = "Graveyard of Empires"
@@ -2542,7 +2649,7 @@ generic_escort_ship_organization = {
 				OR = {
 					original_tag = PHI
 					original_tag = SHD
-					original_tag = SCG
+					original_tag = PLM
 					original_tag = NEA
 					original_tag = GUD
 					original_tag = SIC
@@ -2551,6 +2658,16 @@ generic_escort_ship_organization = {
 					original_tag = TNG
 				}
 				has_dlc = "No Compromise, No Surrender"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = INS
+					original_tag = SIA
+				}
+				has_dlc = "Thunder at Our Gates"
 			}
 		}
 	}
@@ -3961,11 +4078,192 @@ generic_refurbishment_repair_organization = {
 	}
 }
 
+#航母
 generic_aircraft_carrier_organization = {
 	icon = GFX_idea_generic_naval_manufacturer_2
 
 	allowed = {
-		always = no # Archetype only - countries using it have their own verisons
+		NOT = {
+			OR = {
+				original_tag = GER
+				original_tag = ENG
+				original_tag = SOV
+				original_tag = FRA
+				original_tag = ITA
+				original_tag = JAP
+				original_tag = USA
+				original_tag = BEL
+				original_tag = CAN
+				original_tag = SWE
+				original_tag = HUN
+				original_tag = CZE
+				original_tag = ROM
+				original_tag = YUG
+				original_tag = POR
+				original_tag = GRE
+				original_tag = TUR
+				original_tag = LAT
+				original_tag = EST
+				original_tag = RKH
+			}
+		}
+
+		NOT = {
+			OR = {
+				original_tag = SPR
+				original_tag = SPA
+				original_tag = SPB
+				original_tag = SPC
+				original_tag = SPD
+			}
+		}
+
+		NOT = {
+			AND = {
+				original_tag = POL
+				OR = {
+					has_dlc = "Poland: United and Ready"
+					has_dlc = "No Step Back"
+				}
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AST
+					original_tag = NZL
+					original_tag = RAJ
+				}
+				has_dlc = "Together for Victory"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = CHI
+					original_tag = PRC
+					original_tag = MAN
+					original_tag = SHX
+					original_tag = XSM
+					original_tag = GXC
+					original_tag = YUN
+					original_tag = SIK
+					original_tag = MEN
+				}
+				has_dlc = "Waking the Tiger"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = MEX
+					original_tag = HOL
+				}
+				has_dlc = "Man the Guns"
+			}
+		}
+
+		NOT = {
+			AND = {
+				original_tag = BUL
+				has_dlc = "Battle for the Bosporus"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = EST
+					original_tag = LAT
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = ETH
+					original_tag = SWI
+				}
+				has_dlc = "By Blood Alone"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = FIN
+					original_tag = NOR
+					original_tag = DEN
+					original_tag = SWE
+					original_tag = ICE
+				}
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA
+					original_tag = CHL
+					original_tag = ARG
+				}
+				has_dlc = "Trial of Allegiance"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AUS
+					original_tag = COG
+				}
+				has_dlc = "Gotterdammerung"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AFG
+					original_tag = PER
+					original_tag = IRQ
+				}
+				has_dlc = "Graveyard of Empires"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = PHI
+					original_tag = SHD
+					original_tag = PLM
+					original_tag = NEA
+					original_tag = GUD
+					original_tag = SIC
+					original_tag = NXM
+					original_tag = GSM
+					original_tag = TNG
+				}
+				has_dlc = "No Compromise, No Surrender"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = INS
+					original_tag = SIA
+				}
+				has_dlc = "Thunder at Our Gates"
+			}
+		}
 	}
 
 	equipment_type = {
@@ -4363,21 +4661,7 @@ generic_aircraft_carrier_organization = {
 
 }
 
-
-
-
-
-
-########  ##          ###    ##    ## ########  ######  
-##     ## ##         ## ##   ###   ## ##       ##    ## 
-##     ## ##        ##   ##  ####  ## ##       ##       
-########  ##       ##     ## ## ## ## ######    ######  
-##        ##       ######### ##  #### ##             ## 
-##        ##       ##     ## ##   ### ##       ##    ## 
-##        ######## ##     ## ##    ## ########  ######  
-
-
-
+######飞机
 #通用机 - Based on Focker (HOL)
 generic_general_aircraft_organization = {
 	icon = GFX_idea_generic_air_manufacturer_1
@@ -7211,27 +7495,30 @@ generic_range_focused_aircraft_organization = {
 }
 
 
-
-
-
-##     ##    ###    ######## ######## ########  #### ######## ##       
-###   ###   ## ##      ##    ##       ##     ##  ##  ##       ##       
-#### ####  ##   ##     ##    ##       ##     ##  ##  ##       ##       
-## ### ## ##     ##    ##    ######   ########   ##  ######   ##       
-##     ## #########    ##    ##       ##   ##    ##  ##       ##       
-##     ## ##     ##    ##    ##       ##    ##   ##  ##       ##       
-##     ## ##     ##    ##    ######## ##     ## #### ######## ######## 
-
-
-###########################
-######## Artillery ########
-###########################
-
+#####步兵装备
+###火炮
 generic_artillery_organization = {
 	icon = GFX_idea_generic_artillery_manufacturer_2
 
 	allowed = {
-		NOT = { OR = { original_tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = USA tag = JAP tag = CZE tag = ROM tag = MEX } }
+		NOT = {
+			OR = {
+				original_tag = GER
+				tag = ENG
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = USA
+				tag = JAP
+				tag = CZE
+				tag = ROM
+				tag = MEX
+				tag = SLO
+				tag = RKH
+				tag = INS
+			}
+		}
+
 		NOT = {
 			AND = {
 				tag = POL
@@ -7241,64 +7528,96 @@ generic_artillery_organization = {
 				}
 			}
 		}
+
 		NOT = {
 			AND = {
 				tag = RAJ
 				has_dlc = "Together for Victory"
 			}
 		}
+
 		NOT = {
 			AND = {
-				is_literally_china_including_chinese_puppets = yes
+				OR = {
+					is_literally_china = yes
+					tag = MAN
+				}
 				has_dlc = "Waking the Tiger"
 			}
 		}
+
 		NOT = {
 			AND = {
 				tag = HOL
 				has_dlc = "Man the Guns"
 			}
 		}
-		NOT = {
-			AND = {
-				OR = { tag = SPR tag = POR}
-				has_dlc = "La Resistance"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = BUL tag = GRE tag = TUR }
-				has_dlc = "Battle for the Bosporus"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = EST tag = LAT tag = LIT }
-				has_dlc = "No Step Back"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { tag = ETH tag = SWI }
-				has_dlc = "By Blood Alone"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = FIN tag = NOR tag = DEN tag = SWE }
-				has_dlc = "Arms Against Tyranny"
-			}
-		}
+
 		NOT = {
 			AND = {
 				OR = {
-					original_tag = BRA 
+					tag = SPR
+					tag = POR
+				}
+				has_dlc = "La Resistance"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					tag = BUL
+					tag = GRE
+					tag = TUR
+				}
+				has_dlc = "Battle for the Bosporus"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					tag = EST
+					tag = LAT
+					tag = LIT
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					tag = ETH
+					tag = SWI
+				}
+				has_dlc = "By Blood Alone"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = FIN
+					tag = NOR
+					tag = DEN
+					tag = SWE
+				}
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA
 					original_tag = CHL
 					original_tag = ARG
 				}
 				has_dlc = "Trial of Allegiance"
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
@@ -7308,27 +7627,34 @@ generic_artillery_organization = {
 					original_tag = COG
 				}
 				has_dlc = "Gotterdammerung"
-				
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
 					original_tag = AFG
 					original_tag = PER
-					original_tag = IRQ					
+					original_tag = IRQ
 				}
 				has_dlc = "Graveyard of Empires"
-				
 			}
 		}
+
 		NOT = {
 			AND = {
-#				OR = {
-					original_tag = PHI
-#				}
+				original_tag = PHI
 				has_dlc = "No Compromise, No Surrender"
-				
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AST
+					original_tag = SIA
+				}
+				has_dlc = "Thunder at Our Gates"
 			}
 		}
 	}
@@ -7633,10 +7959,7 @@ generic_artillery_organization = {
 }
 
 	
-############################
-###### Infantry Weapons ####
-############################
-
+###枪
 generic_infantry_equipment_organization = {
 	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
 
@@ -7735,9 +8058,9 @@ generic_infantry_equipment_organization = {
 		}
 		NOT = {
 			AND = {
-#				OR = {
+				#OR = {
 					original_tag = PHI
-#				}
+				#}
 				has_dlc = "No Compromise, No Surrender"
 				
 			}
@@ -8018,11 +8341,393 @@ generic_infantry_equipment_organization = {
 	}
 }
 
+generic_infantry_equipment_refurbishment_plant_organization = {
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
 
-###################################
-######## Support Equipment ########
-###################################
+	allowed = {
+		NOT = { 
+			OR = { 
+				original_tag = GER 
+				tag = ENG 
+				tag = SOV 
+				tag = FRA 
+				tag = ITA 
+				tag = JAP 
+				tag = USA 
+				tag = BEL 
+				tag = CZE 
+				tag = HUN 
+				tag = YUG 
+				tag = ROM 
+				tag = MEX 
+				tag = TUR 
+				tag = EST 
+			} 
+		}
+		NOT = {
+			AND = {
+				tag = POL
+				OR = {
+					has_dlc = "Poland: United and Ready"
+					has_dlc = "No Step Back"
+				}
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { tag = AST tag = CAN tag = RAJ }
+				has_dlc = "Together for Victory"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = {
+					is_literally_china_including_chinese_puppets = yes
+				}
+				has_dlc = "Waking the Tiger"
+			}
+		}
+		NOT = {
+			AND = {
+				tag = HOL
+				has_dlc = "Man the Guns"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { tag = SPR tag = POR }
+				has_dlc = "La Resistance"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { tag = BUL tag = GRE }
+				has_dlc = "Battle for the Bosporus"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { tag = EST tag = LAT tag = LIT }
+				has_dlc = "No Step Back"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { tag = ETH tag = SWI }
+				has_dlc = "By Blood Alone"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = { original_tag = FIN tag = NOR tag = DEN tag = SWE }
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA 
+					original_tag = CHL
+					original_tag = ARG
+				}
+				has_dlc = "Trial of Allegiance"
+			}
+		}
 
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AUS
+					original_tag = COG
+				}
+				has_dlc = "Gotterdammerung"
+				
+			}
+		}
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = AFG
+					original_tag = PER	
+					original_tag = IRQ				
+				}
+				has_dlc = "Graveyard of Empires"
+				
+			}
+		}
+		NOT = {
+			AND = {
+				#OR = {
+					original_tag = PHI
+				#}
+				has_dlc = "No Compromise, No Surrender"
+				
+			}
+		}
+	}
+
+	equipment_type = {
+		infantry_equipment
+	}
+	research_categories = { 
+		infantry_weapons 
+	}
+
+	initial_trait = {
+		name = generic_infantry_equipment_refurbishment_plant_organization
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+			production_cost_factor = -0.05
+		}
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_1
+		x = 1
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_2
+		x = 4
+	}
+
+	tree_header_text = {
+		text = CHI_mio_header_3
+		x = 7
+	}
+
+	trait = {
+		token = CHI_mio_trait_26
+		name = CHI_mio_trait_26
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=4 y=0 }
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_27
+		name = CHI_mio_trait_27
+		icon = GFX_generic_mio_trait_icon_defense
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=-3 y=1 }
+
+		all_parents = { 
+			CHI_mio_trait_26 
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			defense = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_28
+		name = CHI_mio_trait_28
+		icon = GFX_generic_mio_trait_icon_ap_attack
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=3 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_29
+		name = CHI_mio_trait_29
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		relative_position_id = CHI_mio_trait_26
+		position = { x=0 y=1 }
+
+		all_parents = { CHI_mio_trait_26 }
+
+		equipment_bonus = {
+			reliability = 0.2
+			maximum_speed = 0.2
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_30
+		name = CHI_mio_trait_30
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=-1 y=1 }
+
+		all_parents = { CHI_mio_trait_27 }
+		mutually_exclusive = { CHI_mio_trait_31 }
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_31
+		name = CHI_mio_trait_31
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=1 y=1 }
+
+		any_parent = { 
+			CHI_mio_trait_27 
+			CHI_mio_trait_29 
+		}
+		mutually_exclusive = { 
+			CHI_mio_trait_30 
+		}
+
+		equipment_bonus = {
+			soft_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_32
+		name = CHI_mio_trait_32
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		relative_position_id = CHI_mio_trait_27
+		position = { x=0 y=2 }
+
+		any_parent = { 
+			CHI_mio_trait_30
+			CHI_mio_trait_31 
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_33
+		name = CHI_mio_trait_33
+		icon = GFX_generic_mio_trait_icon_conversion_speed
+
+		relative_position_id = CHI_mio_trait_29
+		position = { x=0 y=1 }
+
+		all_parents = { 
+			CHI_mio_trait_29 
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_conversion_speed_factor = 0.15
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_34
+		name = CHI_mio_trait_34
+		icon = GFX_generic_mio_department_icon_facilities
+
+		relative_position_id = CHI_mio_trait_33
+		position = { x=0 y=2 }
+
+		all_parents = { 
+			CHI_mio_trait_33 
+		}
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+			production_efficiency_cap_factor = 0.1
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.15
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_35
+		name = CHI_mio_trait_35
+		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=-1 y=1 }
+
+		any_parent = { 
+			CHI_mio_trait_28 
+			CHI_mio_trait_29 
+		}
+		mutually_exclusive = { 
+			CHI_mio_trait_36 
+		}
+
+		equipment_bonus = {
+			hard_attack = -0.05
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_36
+		name = CHI_mio_trait_36
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=1 y=1 }
+
+		all_parents = { CHI_mio_trait_28 }
+		mutually_exclusive = { CHI_mio_trait_35 }
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			ap_attack = 0.25
+			reliability = -0.1
+		}
+	}
+
+	trait = {
+		token = CHI_mio_trait_37
+		name = CHI_mio_trait_37
+		icon = GFX_generic_mio_trait_icon_hardness
+
+		relative_position_id = CHI_mio_trait_28
+		position = { x=0 y=2 }
+
+		any_parent = { 
+			CHI_mio_trait_35 
+			CHI_mio_trait_36 
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.15
+			breakthrough = 0.1
+		}
+	}
+}
+
+###支援装备
 generic_support_equipment_organization = {
 	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
 
@@ -8030,8 +8735,14 @@ generic_support_equipment_organization = {
 		always = no # Archetype only - countries using it have their own verisons
 	}
 
-	equipment_type = { infantry_equipment support_equipment }
-	research_categories = { infantry_weapons support_tech }
+	equipment_type = { 
+		infantry_equipment 
+		support_equipment 
+	}
+	research_categories = { 
+		infantry_weapons 
+		support_tech 
+	}
 
 	
 
@@ -8061,7 +8772,9 @@ generic_support_equipment_organization = {
 		
 		position = { x=1 y=0 }
 		
-		limit_to_equipment_type = { support_equipment }
+		limit_to_equipment_type = { 
+			support_equipment 
+		}
 		
 		production_bonus = {
 			production_resource_need_factor = -0.15
@@ -8286,16 +8999,28 @@ generic_support_equipment_organization = {
 	}
 }
 
-
-###########################
-######## Motorized ########
-###########################
-
+###摩托化
 generic_motorized_mechanized_organization = {
 	icon = GFX_idea_generic_motorized_equipment_manufacturer_3
 
 	allowed = {
-		NOT = { OR = { original_tag = GER original_tag = ENG original_tag = SOV original_tag = FRA original_tag = ITA original_tag = JAP original_tag = USA original_tag = CZE original_tag = ROM original_tag = MEX } }
+		NOT = {
+			OR = {
+				original_tag = GER
+				original_tag = ENG
+				original_tag = SOV
+				original_tag = FRA
+				original_tag = ITA
+				original_tag = JAP
+				original_tag = USA
+				original_tag = CZE
+				original_tag = ROM
+				original_tag = MEX
+				original_tag = SLO
+				original_tag = RKH
+			}
+		}
+
 		NOT = {
 			AND = {
 				original_tag = POL
@@ -8305,102 +9030,157 @@ generic_motorized_mechanized_organization = {
 				}
 			}
 		}
+
 		NOT = {
 			AND = {
 				original_tag = NZL
 				has_dlc = "Together for Victory"
 			}
 		}
+
 		NOT = {
 			AND = {
-				OR = { original_tag = CHI original_tag = PRC original_tag = MAN original_tag = SHX original_tag = XSM original_tag = GXC original_tag = YUN original_tag = SIK original_tag = MEN }
+				OR = {
+					original_tag = CHI
+					original_tag = PRC
+					original_tag = MAN
+					original_tag = SHX
+					original_tag = XSM
+					original_tag = GXC
+					original_tag = YUN
+					original_tag = SIK
+					original_tag = MEN
+				}
 				has_dlc = "Waking the Tiger"
 			}
 		}
+
 		NOT = {
 			AND = {
 				original_tag = HOL
 				has_dlc = "Man the Guns"
 			}
 		}
-		NOT = {
-			AND = {
-				OR = { original_tag = SPR original_tag = SPA original_tag = SPB original_tag = SPC original_tag = SPD original_tag = POR }
-				has_dlc = "La Resistance"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = BUL original_tag = GRE original_tag = TUR }
-				has_dlc = "Battle for the Bosporus"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = EST original_tag = LAT original_tag = LIT }
-				has_dlc = "No Step Back"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = ETH original_tag = SWI }
-				has_dlc = "By Blood Alone"
-			}
-		}
-		NOT = {
-			AND = {
-				OR = { original_tag = FIN original_tag = NOR original_tag = DEN original_tag = SWE }
-				has_dlc = "Arms Against Tyranny"
-			}
-		}
+
 		NOT = {
 			AND = {
 				OR = {
-					original_tag = BRA 
+					original_tag = SPR
+					original_tag = SPA
+					original_tag = SPB
+					original_tag = SPC
+					original_tag = SPD
+					original_tag = POR
+				}
+				has_dlc = "La Resistance"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BUL
+					original_tag = GRE
+					original_tag = TUR
+				}
+				has_dlc = "Battle for the Bosporus"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = EST
+					original_tag = LAT
+					original_tag = LIT
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = ETH
+					original_tag = SWI
+				}
+				has_dlc = "By Blood Alone"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = FIN
+					original_tag = NOR
+					original_tag = DEN
+					original_tag = SWE
+				}
+				has_dlc = "Arms Against Tyranny"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = BRA
 					original_tag = CHL
 					original_tag = ARG
 				}
 				has_dlc = "Trial of Allegiance"
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
 					original_tag = AUS
 					original_tag = HUN
-					original_tag = BEL					
-					original_tag = COG					
+					original_tag = BEL
+					original_tag = COG
 				}
 				has_dlc = "Gotterdammerung"
-				
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
 					original_tag = AFG
 					original_tag = PER
-					original_tag = RAJ			
-					original_tag = IRQ		
+					original_tag = RAJ
+					original_tag = IRQ
 				}
 				has_dlc = "Graveyard of Empires"
-				
 			}
 		}
+
 		NOT = {
 			AND = {
 				OR = {
 					original_tag = PHI
 					original_tag = SHD
-					original_tag = SCG
+					original_tag = PLM
 					original_tag = NEA
 					original_tag = GUD
 					original_tag = SIC
 					original_tag = NXM
 					original_tag = GSM
 					original_tag = TNG
+					original_tag = KUM
 				}
 				has_dlc = "No Compromise, No Surrender"
+			}
+		}
+
+		NOT = {
+			AND = {
+				OR = {
+					original_tag = INS
+					original_tag = AST
+					original_tag = SIA
+				}
+				has_dlc = "Thunder at Our Gates"
 			}
 		}
 	}
@@ -8564,11 +9344,20 @@ generic_motorized_mechanized_organization = {
 		position = { x=-1 y=2 }
 		relative_position_id = generic_mio_trait_armored_pulpit_mount
 		
-		all_parents = { generic_mio_trait_armored_pulpit_mount }
+		all_parents = { 
+			generic_mio_trait_armored_pulpit_mount 
+		}
 		
-		mutually_exclusive = { generic_mio_trait_heavy_machinegun_mount generic_mio_trait_mounted_light_anti_tank_gun }
+		mutually_exclusive = { 
+			generic_mio_trait_heavy_machinegun_mount 
+			generic_mio_trait_mounted_light_anti_tank_gun 
+		}
 		
-		limit_to_equipment_type = { motorized_rocket_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+			motorized_equipment
+		}
 
 		equipment_bonus = {
 			soft_attack = 0.035
@@ -8584,11 +9373,20 @@ generic_motorized_mechanized_organization = {
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_advanced_artillery_racks
 		
-		all_parents = { generic_mio_trait_armored_pulpit_mount }
+		all_parents = { 
+			generic_mio_trait_armored_pulpit_mount 
+		}
 		
-		mutually_exclusive = { generic_mio_trait_advanced_artillery_racks generic_mio_trait_mounted_light_anti_tank_gun }
+		mutually_exclusive = { 
+			generic_mio_trait_advanced_artillery_racks
+			generic_mio_trait_mounted_light_anti_tank_gun 
+		}
 		
-		limit_to_equipment_type = { mechanized_equipment motorized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+			motorized_equipment
+		}
 		
 		equipment_bonus = {
 			breakthrough = 0.04
@@ -8604,11 +9402,19 @@ generic_motorized_mechanized_organization = {
 		position = { x=1 y=0 }
 		relative_position_id = generic_mio_trait_heavy_machinegun_mount
 		
-		mutually_exclusive = { generic_mio_trait_advanced_artillery_racks generic_mio_trait_heavy_machinegun_mount }
+		mutually_exclusive = { 
+			generic_mio_trait_advanced_artillery_racks 
+			generic_mio_trait_heavy_machinegun_mount 
+		}
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		all_parents = { 
+			generic_mio_trait_bulletproof_panels 
+		}
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 
 		equipment_bonus = {
 			ap_attack = 0.1
@@ -8624,9 +9430,14 @@ generic_motorized_mechanized_organization = {
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_medium_machinegun_mounts
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 		
-		mutually_exclusive = { generic_mio_trait_closed_chassi }
+		mutually_exclusive = { 
+			generic_mio_trait_closed_chassi 
+		}
 
 		equipment_bonus = {
 			defense = -0.02
@@ -8642,9 +9453,14 @@ generic_motorized_mechanized_organization = {
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_open_chassi
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 		
-		mutually_exclusive = { generic_mio_trait_open_chassi }
+		mutually_exclusive = { 
+			generic_mio_trait_open_chassi 
+		}
 
 		equipment_bonus = {
 			armor_value = 0.05
@@ -8660,7 +9476,10 @@ generic_motorized_mechanized_organization = {
 		position = { x=-1 y=2 }
 		relative_position_id = generic_mio_trait_closed_chassi
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 		
 		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
 
@@ -8677,9 +9496,14 @@ generic_motorized_mechanized_organization = {
 		position = { x=0 y=2 }
 		relative_position_id = generic_mio_trait_bulletproof_panels
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		all_parents = { 
+			generic_mio_trait_bulletproof_panels 
+		}
 
 		equipment_bonus = {
 			breakthrough = 0.035
@@ -8694,9 +9518,14 @@ generic_motorized_mechanized_organization = {
 		position = { x=1 y=0 }
 		relative_position_id = generic_mio_trait_light_flame_projectors
 		
-		limit_to_equipment_type = { mechanized_equipment }
+		limit_to_equipment_type = {
+			mechanized_equipment
+			amphibious_mechanized_equipment
+		}
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		all_parents = { 
+			generic_mio_trait_bulletproof_panels 
+		}
 
 		equipment_bonus = {
 			defense = 0.06
@@ -8705,13 +9534,7 @@ generic_motorized_mechanized_organization = {
 	}
 }
 
-
-
-######################
-#### Armored Car  ####
-######################
-
-
+###装甲车
 generic_armored_car_organization = {
 	icon = GFX_idea_generic_tank_manufacturer_1
 
@@ -8921,11 +9744,7 @@ generic_armored_car_organization = {
 	}
 }
 
-#####################
-#### Helicopter  ####
-#####################
-
-
+###直升机
 generic_helicopter_organization = {
 	icon = GFX_idea_generic_helicopter_1
 
@@ -9060,302 +9879,3 @@ generic_helicopter_organization = {
 		}
 	}
 }
-
-
-
-
-
-
-##       ####  ######  ########     #######  ########     ######  ########    ###    ########  ######
-##        ##  ##    ##    ##       ##     ## ##          ##    ##    ##      ## ##      ##    ##    ##
-##        ##  ##          ##       ##     ## ##          ##          ##     ##   ##     ##    ##
-##        ##   ######     ##       ##     ## ######       ######     ##    ##     ##    ##     ######
-##        ##        ##    ##       ##     ## ##                ##    ##    #########    ##          ##
-##        ##  ##    ##    ##       ##     ## ##          ##    ##    ##    ##     ##    ##    ##    ##
-######## ####  ######     ##        #######  ##           ######     ##    ##     ##    ##     ######
-
-
-### EQUIPMENT STATS ###
-
-
-###  ##  #  # # #  ## 
- #  #  # ## # # # #   
- #  #### # ## ##   #  
- #  #  # #  # # #   # 
- #  #  # #  # # # ##  
-
-#maximum_speed
-#reliability
-#defense
-#breakthrough
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-#fuel_consumption
-#hardness
-#armor_value
-#build_cost_ic
-#entrenchment - only if you have DLC NSB  and module dozer_blade
-#fuel_capacity - only if you have DLC NSB  and module expanded_fuel_tank
-
-
-
- ## #  # ### ###   ## 
-#   #  #  #  #  # #   
- #  ####  #  ###   #  
-  # #  #  #  #      # 
-##  #  # ### #    ##  
-
-#lg_armor_piercing (requires modules)
-#lg_attack (requires modules)
-#hg_armor_piercing (requires modules)
-#hg_attack (requires modules)
-#torpedo_attack (requires modules)
-#sub_attack (requires modules)
-#anti_air_attack (requires modules)
-#armor_value (requires modules)
-#surface_detection 
-#sub_detection (requires modules)
-#sub_visibility (sub only)
-#surface_visibility (surface only)
-#naval_speed 
-#reliability
-#naval_range
-#max_strength
-#fuel_consumption
-#build_cost_ic
-#manpower
-#naval_dominance_factor
-#naval_torpedo_enemy_critical_chance_factor (if you have modules adding it)
-#naval_torpedo_damage_reduction_factor (if you have modules adding it)
-#carrier_size (this will get very bad for you I promise, equipment modifiers are a mistake)
-#mines_sweeping (only MTG and with modules)
-#mines_planting (only with MTG and modules)
-#naval_torpedo_hit_chance_factor (requires modules)
-#naval_light_gun_hit_chance_factor (requires modules)
-#naval_heavy_gun_hit_chance_factor (requires modules)
-
-
-
-###  #    ##  #  # ###  ## 
-#  # #   #  # ## # #   #   
-###  #   #### # ## ##   #  
-#    #   #  # #  # #     # 
-#    ### #  # #  # ### ##  
-
-#air_superiority
-#reliability
-#naval_strike_attack
-#naval_strike_targetting
-#manpower
-#fuel_consumption
-#build_cost_ic
-#resources
-#thrust - only if you have BBA DLC
-#weight - only if you have BBA DLC
-#maximum_speed
-#air_range
-#air_agility
-#air_attack
-#air_defence
-#surface_detection
-#sub_detection
-#air_ground_attack
-#air_bombing
-#mines_planting - if you have MtG and BBA
-#mines_sweeping - if you have MtG and BBA
-#night_penalty - only if you have BBA DLC (you need to have module because base value is 0 - radio navigatio
-
-
-
-#   #  ##  ### ### ###  ### ### #   
-## ## #  #  #  #   #  #  #  #   #   
-# # # ####  #  ##  ###   #  ##  #   
-#   # #  #  #  #   #  #  #  #   #   
-#   # #  #  #  ### #  # ### ### ### 
-
-##############################
-##### INFANTRY EQUIPMENT #####
-##############################
-#reliability
-#maximum_speed
-#defense
-#breakthrough
-#hardness - it is in the script, but the value is set to 0 (in the game, the UI doesn't show this value)
-#armor_value - it is in the script, but the value is set to 0 (in the game, the UI doesn't show this value)
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack - it is in the script but the value is set to 0 (in the game, the UI doesn't show this value)
-#build_cost_ic
-
-##############################
-##### SUPPORT EQUIPMENT ######
-##############################
-#reliability
-#build_cost_ic
-
-
-#############################
-#### ARTILLERY EQUIPMENT ####
-#############################
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-
-############################
-#### ANTI-AIR EQUIPMENT ####
-############################
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-
-#############################
-#### ANTI-TANK EQUIPMENT ####
-#############################
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-
-####################################
-#### ROCKET ARTILLERY EQUIPMENT ####
-####################################
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-
-
-##############################
-#### MOTORIZED EQUIPMENT #####
-##############################
-#maximum_speed
-#reliability
-#hardness
-#breakthrough
-#build_cost_ic
-#fuel_consumption
-
-####################################
-#### MOTORIZED ROCKET EQUIPMENT ####
-####################################
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic (edited)
-
-###############################
-#### MECHANIZED EQUIPMENT #####
-###############################
-#maximum_speed
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#ap_attack
-#air_attack
-#build_cost_ic
-#fuel_consumption
-
-#########################################
-#### AMPHIBIOUS MECHANIZED EQUIPMENT ####
-#########################################
-#maximum_speed
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#ap_attack
-#air_attack
-#build_cost_ic
-#fuel_consumption
-
-
-################################
-#### ARMORED CAR EQUIPMENT #####
-################################
-#maximum_speed
-#reliability
-#defense
-#breakthrough
-#hardness
-#armor_value
-#soft_attack
-#hard_attack
-#ap_attack
-#air_attack
-#build_cost_ic
-#fuel_consumption
-
-
-##########################
-#### TRAIN EQUIPMENT #####
-##########################
-#armor_value
-#build_cost_ic
-#air_attack
-
-################################
-#### RAILWAY GUN EQUIPMENT #####
-################################
-#reliability
-#maximum_speed
-#railway_gun_attack
-#build_cost_ic
-
-
-### PRODUCTION MODIFIERS ###
-#production_cost_factor
-#production_capacity_factor
-#production_efficiency_cap_factor
-#production_efficiency_gain_factor
-#production_resource_need_factor
-#production_resource_penalty_factor
-#production_conversion_speed_factor
-
-### ORGANIZATION MODIFIERS ###
-#military_industrial_organization_research_bonus
-#military_industrial_organization_design_team_assign_cost
-#military_industrial_organization_design_team_change_cost
-#military_industrial_organization_industrial_manufacturer_assign_cost
-#military_industrial_organization_task_capacity
-#military_industrial_organization_size_up_requirement
-#military_industrial_organization_funds_gain

@@ -5,7 +5,13 @@ add_namespace = PRC_dong_zhentang
 add_namespace = PRC_lu_dongsheng
 add_namespace = PRC_zhang_guotao
 add_namespace = PRC_xu_guangda
+add_namespace = PRC_lin_yuying
+add_namespace = PRC_lin_biao
+add_namespace = PRC_li_kenong
 add_namespace = AWR_PRC_state
+add_namespace = AWR_PRC_news
+
+#国家事件
 country_event = { #漫漫黄沙中的无线电波
 	id = AWR_PRC.1
 	title = AWR_PRC.1.t
@@ -2432,7 +2438,7 @@ country_event = { #大西北联盟
 	}
 	option = {
 		name = AWR_PRC.43.b
-		add_ideas = prc_zhang_xueliang
+		add_ideas = NEA_zhang_xueliang
 		add_ideas = NEA_918_918		
 		set_politics = {   #设置意识形态
 			ruling_party = neutrality
@@ -4744,7 +4750,7 @@ country_event = { 	#东北之争
 				limit = {
 					tag = event_target:WTT_current_china_leader
 				}
-				activate_mission = CHI_occupy_northeast_timer
+				activate_mission = PRC_occupy_northeast_timer
 			}
 			if = {
 				limit = {
@@ -4815,24 +4821,10 @@ country_event = { #强制总结大集合
 		}
 		set_global_flag = PRC_War_of_Liberation_has_been_selected
 		hidden_effect = {
-			PRC_lin_biao = {
-				set_portraits = {
-					army={
-						large= "GFX_PRC_linbiao_jiefang"
-					}
-				}
-			}
-			PRC_zhou_enlai = {
-				set_portraits = {
-					army={
-						large= "GFX_Portrait_China_zongli"
-					}
-				}
-			}
 			PRC_zhu_de = {
 				set_portraits = {
 					army={
-					large= "GFX_Portrait_PRC_Zhu_De"
+						large= "GFX_Portrait_PRC_Zhu_De"
 					}
 				}
 			}		
@@ -7719,46 +7711,19 @@ country_event = {	#中国要求归还萨哈林岛
 		}
 		if = {
 			limit = {
-				controls_state = 408
+				controls_state = 655
 			}
 			PRC = {
-				transfer_state = 408
+				transfer_state = 655
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 409
+				controls_state = 537
 			}
 			PRC = {
-				transfer_state = 409
-			}
-		}
-
-		if = {
-			limit = {
-				controls_state = 560
-			}
-			PRC = {
-				transfer_state = 560
-			}
-		}
-
-		if = {
-			limit = {
-				controls_state = 561
-			}
-			PRC = {
-				transfer_state = 561
-			}
-		}
-
-		if = {
-			limit = {
-				controls_state = 657
-			}
-			PRC = {
-				transfer_state = 657
+				transfer_state = 537
 			}
 		}
 	}
@@ -8145,48 +8110,58 @@ country_event = {	#中国要求归还外西北
 				id = AWR_PRC.164
 			} 
 		}
+		
 		if = {
 			limit = {
-				controls_state = 408
+				controls_state = 586
 			}
 			PRC = {
-				transfer_state = 408
+				transfer_state = 586
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 409
+				controls_state = 588
 			}
 			PRC = {
-				transfer_state = 409
+				transfer_state = 588
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 560
+				controls_state = 589
 			}
 			PRC = {
-				transfer_state = 560
+				transfer_state = 589
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 561
+				controls_state = 654
 			}
 			PRC = {
-				transfer_state = 561
+				transfer_state = 654
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 657
+				controls_state = 732
 			}
 			PRC = {
-				transfer_state = 657
+				transfer_state = 732
+			}
+		}
+
+		if = {
+			limit = {
+				controls_state = 1125
+			}
+			PRC = {
+				transfer_state = 1125
 			}
 		}
 	}
@@ -11287,6 +11262,1066 @@ country_event = {	#我们已不再有共同的敌人
 	}
 }
 
+country_event = {	#走向新的国际关系
+
+	id = AWR_PRC.259
+
+	title = AWR_PRC.259.t
+
+	desc = AWR_PRC.259.d
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.259.a
+		ai_chance = {
+
+			base = 100
+		}
+
+		PRC = {
+			country_event = {
+				id = AWR_PRC.260
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {	#申请加入我们的阵营
+
+	id = AWR_PRC.260
+
+	title = AWR_PRC.260.t
+
+	desc = AWR_PRC.260.d
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = PRC
+		is_faction_leader = yes
+
+		FROM = {
+			exists = yes
+			is_subject = no
+			is_in_faction = no
+			has_war = no
+
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+	}
+
+	option = {	# 接受申请
+		name = AWR_PRC.260.a
+		ai_chance = {
+
+			base = 95
+		}
+		################################
+		# ROOT = PRC
+		# FROM = 申请国
+		# 将FROM加入ROOT领导的阵营
+		################################
+		add_to_faction = FROM
+		FROM = {
+			################################
+			# 留下最终记录
+			################################
+			set_country_flag = PRC_joined_faction_after_liberation
+			################################
+			# 清理其领土上的旧革命标记
+			################################
+			every_owned_state = {
+				limit = {
+					has_state_flag = PRC_supported_revolution_state
+				}
+				clr_state_flag = PRC_supported_revolution_state
+			}
+			################################
+			# 清理殖民附属国时期的支援flag
+			################################
+			if = {
+
+				limit = {
+					has_country_flag = PRC_supported_independence_movement
+				}
+
+				clr_country_flag = PRC_supported_independence_movement
+			}
+		}
+
+		hidden_effect = {
+			PRC_update_faction_member_count = yes
+		}
+	}
+
+	option = {	# 拒绝申请
+
+		name = AWR_PRC.260.b
+
+
+		ai_chance = {
+
+			base = 5
+		}
+	}
+}
+
+country_event = {	#中国想与我们开展经济合作
+	id = AWR_PRC.261
+	title = AWR_PRC.261.t
+
+	desc = AWR_PRC.261.desc
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {	#我们需要科研
+		name = AWR_PRC.261.a
+		add_ideas = PRC_aid_research
+		PRC = {
+			PRC_economy_cooperation_partner_number_up = yes
+
+			country_event = {
+				id = AWR_PRC.262
+			}
+		}
+	}
+
+	option = {	#我们需要建设
+		name = AWR_PRC.261.b
+		add_ideas = PRC_aid_production
+		PRC = {
+			PRC_economy_cooperation_partner_number_up = yes
+			country_event = {
+				id = AWR_PRC.262
+			}
+		}
+	}
+
+	option = {	#我们需要经济支持
+		name = AWR_PRC.261.c
+		add_ideas = PRC_aid_economy
+		PRC = {
+			PRC_economy_cooperation_partner_number_up = yes
+			country_event = {
+				id = AWR_PRC.262
+			}
+		}
+	}
+	option = {	#我们什么都不需要
+		name = AWR_PRC.261.d
+		set_country_flag = refuse_cooperation
+		PRC = {
+			country_event = {
+				id = AWR_PRC.263
+			}
+		}
+	}
+}
+
+country_event = {	#同意
+	id = AWR_PRC.262
+	title = AWR_PRC.262.t
+
+	desc = AWR_PRC.262.desc
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.262.a
+	}
+}
+
+country_event = {	#拒绝
+	id = AWR_PRC.263
+	title = AWR_PRC.263.t
+
+	desc = AWR_PRC.263.desc
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC.263.a
+	}
+}
+
+country_event = { #王实味的命运
+	id = AWR_PRC.264
+	title = AWR_PRC.264.t
+	desc = AWR_PRC.264.d
+	picture = GFX_report_event_wang_shiwei_arrested
+	is_triggered_only = no
+	trigger = {
+		has_global_flag = wang_shiwei_jailed
+		OR = {
+            TAG = event_target:WTT_communist_china
+            TAG = PRC
+        }
+		has_global_flag = PRC_civil_war_started
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { 
+		days = 90 
+	}
+	immediate = {	
+		#
+	}
+	option = {
+		name = AWR_PRC.264.a
+		ai_chance = {
+			factor = 1
+		}
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		set_global_flag = wang_shiwei_executed
+        retire_character = prc_wang_shiwei
+		add_political_power = -25
+		set_temp_variable = { 
+			temp_member = 4 
+		}
+		set_temp_variable = { 
+			temp_seats = -0.025 
+			tooltip = TROT_faction_support_tt 
+		}
+		#percentage
+		modify_parliament_seat = yes
+     	hidden_effect = {		
+			country_event = { 
+				id = ccw.5779 
+				days = 15 
+			}
+        }		
+	}
+	option = {
+		name = AWR_PRC.264.b
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -20
+	}
+	option = {
+		name = AWR_PRC.264.c
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -15
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = prc_wang_shiwei
+	}
+}
+
+country_event = { #白求恩同志抵达延安
+	id = AWR_PRC.265
+	title = AWR_PRC.265.t
+	desc = AWR_PRC.265.desc
+	picture = GFX_event_baiqiuen
+	
+	trigger = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+		date > 1938.3.29
+		has_government = communism
+		has_war_with = JAP
+		NOT = { 
+			has_war_with = CAN 
+			has_war_with = event_target:WTT_current_china_leader
+		}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.265.a
+		ai_chance = {
+			base = 100
+		}
+		set_global_flag = PRC_Bethune_come
+		custom_effect_tooltip = available_foreign_advisor
+		show_ideas_tooltip = PRC_Bethune
+		if = {
+			limit = { 
+				NOT = { 
+					has_tech = motorised_infantry 
+				} 
+			}
+			set_technology = { 
+				motorised_infantry = 1 
+				popup = no 
+			}
+		}
+		if = {
+			limit = { 
+				NOT = { 
+					has_tech = tech_support 
+				} 
+			}
+			set_technology = { 
+				tech_support = 1 
+				popup = no 
+			}
+			}
+			if = {
+				limit = { 
+					NOT = { 
+						has_tech = tech_field_hospital 
+					} 
+				}
+				set_technology = { 
+					tech_field_hospital = 1 
+					popup = yes 
+				}
+			}
+			add_equipment_to_stockpile = {#always biggest gap
+				type = support_equipment
+				amount = 500 #not a typo
+				producer = CAN
+			}
+			add_political_power = 50
+			
+			if = {
+			limit = { 
+				is_ai = yes 
+			}
+			add_ideas = PRC_Bethune
+		}
+	}
+	
+}
+
+country_event = { #白求恩同志因病逝世
+	id = AWR_PRC.266
+	title = AWR_PRC.266.t
+	desc = AWR_PRC.266.desc
+	picture = GFX_event_baiqiuen_2
+	
+	trigger = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+		date > 1939.11.11
+		date < 1941.12.1
+		has_war_with = JAP
+		614 = { 
+			is_controlled_by_jap_or_its_puppet = yes 
+		}
+		has_global_flag = PRC_Bethune_come
+		has_idea = PRC_Bethune
+		NOT = {
+			has_tech = tech_field_hospital2
+		}
+		NOT = {
+			has_country_flag = PRC_Bethune_get_well
+		}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.266.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = PRC_Bethune
+		add_political_power = -15
+		
+	}
+}
+
+country_event = {	#白求恩同志转危为安
+	id = AWR_PRC.267
+	title = AWR_PRC.267.t
+	desc = AWR_PRC.267.desc
+	picture = GFX_event_baiqiuen_2
+	trigger = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+		date > 1939.11.11
+		date < 1941.12.1
+		has_war_with = JAP
+		614 = { 
+			is_controlled_by_jap_or_its_puppet = yes 
+		}
+		has_global_flag = PRC_Bethune_come
+		has_idea = PRC_Bethune
+		has_tech = tech_field_hospital2
+	}
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = PRC_Bethune_get_well
+	}
+	
+	option = {
+		name = AWR_PRC.267.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 15
+		
+	}
+}
+
+country_event = {	#白求恩同志回国
+	id = AWR_PRC.268
+	title = AWR_PRC.268.t
+	desc = AWR_PRC.268.desc
+	picture = GFX_event_baiqiuen_1
+
+	trigger = {
+		has_idea = PRC_Bethune
+		date > 1938.8.30
+		PRC = {
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+	}
+
+	option = {
+		name = AWR_PRC.268.a
+		retire_character = PRC_Bethune
+	}
+}
+
+country_event = {	#华北派遣军遭到共产党军队突袭
+	id = AWR_PRC.269
+	title = AWR_PRC.269
+	desc = AWR_PRC.269.d
+		              
+	is_triggered_only = yes
+    fire_only_once = yes
+                
+	option = {
+		ai_chance = { 
+			factor = 100 
+		}
+		name = AWR_PRC.269.1.a
+		add_political_power = -100
+		army_experience = 25
+		set_global_flag = baituandazhan_over
+	}
+}
+
+country_event = {	#八路军在华北取得重大胜利
+	id = AWR_PRC.270
+	title = AWR_PRC.270
+	desc = AWR_PRC.270.d
+		              
+	is_triggered_only = yes
+    fire_only_once = yes            
+
+	option = {
+		ai_chance = { 
+			factor = 100 
+		}
+		name = AWR_PRC.270.a
+	                 
+		add_political_power = 50
+		add_war_support = 0.025
+	}   
+}
+
+country_event = {	#百团大战胜利结束
+	id = AWR_PRC.271
+	title = AWR_PRC.271
+	desc = AWR_PRC.271.d
+		              
+	is_triggered_only = yes
+    fire_only_once = yes
+                
+	option = {
+		ai_chance = { 
+			factor = 100 
+		}
+		name = AWR_PRC.271.a
+
+		add_political_power = 100
+		add_war_support = 0.05
+		army_experience = 50
+		add_doctrine_cost_reduction = {
+			name = PRC_baituandazhan
+			category = land_doctrine
+			cost_reduction = 1
+		}
+	}     
+}
+
+country_event = {	#《中央人民政府和西藏地方政府关于和平解放西藏办法的协议》
+	id = AWR_PRC.272
+	title = AWR_PRC.272.t
+	desc = AWR_PRC.272.desc
+	picture = GFX_xizangxieyi
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_PRC.272.a
+		ai_chance = {
+			base = 1
+		}
+		add_political_power = 50
+		set_global_flag = shiqi_tiaoxieyi
+		white_peace = TIB
+	}
+}
+
+country_event = { #迪克西使团派赴延安
+	id = AWR_PRC.273
+	title = AWR_PRC.273.t
+	desc = AWR_PRC.273.d
+	picture = GFX_report_event_china_infiltration1
+	trigger = {
+		AND = {
+			tag = PRC
+			PRC = {
+				has_war_with = JAP
+			}
+			OR = {
+				date > 1944.7.1
+				JAP = {
+					has_completed_focus = JAP_secure_china
+				}						
+			}						
+			NOT = {
+				OR = {
+					has_war_with = USA
+					has_war_with = CHI
+				}
+			}
+			USA = {
+				has_war_with = JAP
+			}
+			CHI = {
+				has_war_with = JAP
+			}
+		}
+	}					   
+	fire_only_once = yes				   
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	option = {
+		name = AWR_PRC.273.a
+        add_timed_idea = {
+			idea = prc_dixie
+			days = 640
+		}
+		hidden_effect = {
+			news_event = {
+				id = AWR_PRC_news.7
+			}
+		}
+	}
+}
+
+country_event = { #银元之战
+	id = AWR_PRC.274
+	title = AWR_PRC.274.t
+	desc = AWR_PRC.274.desc
+	picture = GFX_yinyuanzhizhan
+	trigger = {
+		AND = {
+			tag = PRC
+			has_war_with = CHI
+			613 = { 
+				is_controlled_by = PRC 
+			}	
+			1094 = { 
+				is_controlled_by = PRC 
+			}	
+		}		
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = AWR_PRC.274.a
+        add_timed_idea = { 
+			idea = prc_jinrong 
+			days = 50 
+		}			
+        hidden_effect = {	
+			set_variable = {	#人民币信任度
+				var = RMB_belief
+				value = 0.20
+			}
+			set_variable = {	#银币存量（千枚）
+				var = silver_dollar_reserves
+				value = 150
+			}
+			set_variable = {	#人民币与银币汇率
+				var = RMB_silver_dollar
+				value = 100
+			}
+			set_variable = {	#资本信任度
+				var = capitalist_belief
+				value = 0.35
+			}
+
+			set_variable = {	#投机资本资产
+				var = capitalist_assets
+				value = 500
+			}
+			set_variable = { # 投机资本负债，百万人民币
+				var = capitalist_debt
+				value = 0
+			}
+			set_variable = { # 投机资本信心，0~100，隐藏
+				var = speculator_confidence
+				value = 78
+			}
+			set_variable = { # 囤积米，千吨
+				var = capitalist_rice_hoard
+				value = 0
+			}
+			set_variable = { # 囤积棉，千吨
+				var = capitalist_cotton_hoard
+				value = 0
+			}
+			set_variable = { # 囤积煤，千吨
+				var = capitalist_coal_hoard
+				value = 0
+			}
+			set_variable = { # 囤积银元，千枚
+				var = capitalist_silver_hoard
+				value = 60
+			}
+			set_variable = {
+				var = capitalist_bankruptcy_days
+				value = 0
+			}
+        }	
+		set_country_flag = silver_dollar_war_start	
+	}	
+}
+
+country_event = { #银元之战的胜利
+	id = AWR_PRC.275
+	title = AWR_PRC.275.t
+	desc = AWR_PRC.275.desc
+	picture = GFX_yinyuanzhizhanshengli
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes	
+	immediate = {
+		clear_variable = RMB_belief
+		clear_variable = silver_dollar_reserves
+		clear_variable = RMB_silver_dollar
+	}
+	option = {
+		name = AWR_PRC.275.a
+		add_political_power = 150
+		add_stability = 0.10		
+        remove_ideas = prc_jinrong
+		hidden_effect = {
+			country_event = { 
+				id = AWR_PRC.276 
+				days = 1 
+			}
+			
+			country_event = { 
+				id = AWR_PRC.277 
+				days = 7 
+			}
+        }		
+	}	
+}
+
+country_event = { #黄金荣
+	id = AWR_PRC.276
+	title = AWR_PRC.276.t
+	desc = AWR_PRC.276.desc
+	picture = GFX_huangjinrong
+	trigger = {
+		AND = {
+			tag = PRC
+			has_war_with = CHI
+			613 = { 
+				is_controlled_by = PRC 
+			}	
+		}		
+	}
+	
+	fire_only_once = yes
+	is_triggered_only = yes	
+	option = {
+		name = AWR_PRC.276.a
+		add_political_power = 5
+		add_stability = 0.05		
+	}	
+}
+
+country_event = { #米棉之战
+	id = AWR_PRC.277
+	title = AWR_PRC.277.t
+	desc = AWR_PRC.277.desc
+	picture = GFX_yinyuanzhizhanshengli
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes	
+	immediate = {
+		
+		set_variable = {	#上海米储备（千吨）
+			var = PRC_rice_reserves_in_shanghai
+			value = 20
+		}
+		set_variable = {	#上海市面米储备（千吨）
+			var = PRC_rice_reserves_in_shanghai_market
+			value = 50
+		}
+		set_variable = {	#上海米价 (千元/吨，百万元/千吨）
+			var = PRC_rice_price_in_shanghai
+			value = 160
+		}
+		set_variable = {	#上海基础米价
+            var = PRC_rice_base_price_in_shanghai
+            value = 160
+        }
+
+		set_variable = {	#上海棉储备（千吨）
+			var = PRC_cotton_reserves_in_shanghai
+			value = 2
+		}
+		set_variable = {	#上海市面棉储备（千吨）
+			var = PRC_cotton_reserves_in_shanghai_market
+			value = 1.5
+		}
+		set_variable = {	#上海棉价(千元/吨，百万元/千吨）
+			var = PRC_cotton_price_in_shanghai
+			value = 320
+		}
+		set_variable = {	#上海基础棉价
+            var = PRC_cotton_base_price_in_shanghai
+            value = 160
+        }
+
+		set_variable = {	#上海煤储备（千吨）
+			var = PRC_coal_reserves_in_shanghai
+			value = 15
+		}
+		set_variable = {	#上海市面煤储备（千吨）
+			var = PRC_coal_reserves_in_shanghai_market
+			value = 25
+		}
+		set_variable = {	#上海煤价(千元/吨，百万元/千吨）
+			var = PRC_coal_price_in_shanghai
+			value = 40
+		}
+		set_variable = {	##上海基础煤价
+            var = PRC_coal_base_price_in_shanghai
+            value = 40
+        }
+
+        # 投机资本
+        set_variable = {	#负债
+            var = capitalist_debt
+            value = 0
+        }
+
+        set_variable = {	#囤米
+            var = capitalist_rice_hoard
+            value = 0
+        }
+
+        set_variable = {	#囤棉
+            var = capitalist_cotton_hoard
+            value = 0
+        }
+
+        set_variable = {	#囤煤
+            var = capitalist_coal_hoard
+            value = 0
+        }
+
+        set_variable = {	#投机资本信心
+            var = speculator_confidence
+            value = 78
+        }
+
+        set_variable = {	#投机负债
+            var = capitalist_bankruptcy_days
+            value = 0
+        }
+
+        set_variable = {	
+            var = PRC_shanghai_price_index
+            value = 100
+        }
+
+        set_variable = {	#米棉之战天数
+            var = PRC_rice_cotton_war_days
+            value = 0
+        }
+	}
+	option = {
+		name = AWR_PRC.277.a
+		hidden_effect = {
+			set_country_flag = rice_cotton_coal_war_start
+        }		
+	}	
+}
+
+country_event = { # 米棉之战胜利
+
+    id = AWR_PRC.278
+    title = AWR_PRC.278.t
+    desc = AWR_PRC.278.desc
+    picture = GFX_report_event_generic_factory
+
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    immediate = {
+
+        clr_country_flag = rice_cotton_coal_war_start
+
+        set_country_flag = PRC_shanghai_economic_war_victory
+    }
+
+    option = {
+
+        name = AWR_PRC.278.a
+
+        if = {
+
+            limit = {
+                has_country_flag = PRC_speculators_bankrupt
+            }
+
+            # 经济手段获胜
+            add_political_power = 150
+            add_stability = 0.10
+
+            add_to_variable = {
+                capitalist_belief = 0.08
+            }
+        }
+
+        else = {
+
+            # 强制手段获胜
+            add_political_power = 75
+            add_stability = 0.05
+        }
+
+        clamp_variable = {
+            var = capitalist_belief
+            min = 0
+            max = 1
+        }
+    }
+}
+
+country_event = {	#投机者恶意炒作
+	id = AWR_PRC.279
+	title = AWR_PRC.279.t
+	desc = AWR_PRC.279.desc
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+
+	immediate = {
+		add_to_variable = {
+			var = RMB_silver_dollar
+			value = 500
+		}
+	}
+
+	option = {
+		name = AWR_PRC.279.a
+		add_stability = -0.03
+	}
+}
+
+country_event = {	#资本外逃
+
+    id = AWR_PRC.280
+    title = AWR_PRC.280.t
+    desc = AWR_PRC.280.desc
+    picture = GFX_report_event_generic_factory
+
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { # 不进一步扩大行政干预
+
+        name = AWR_PRC.280.a
+
+        add_timed_idea = {
+            idea = prc_capital_flight
+            days = 365
+        }
+    }
+
+    option = { # 冻结大额资本转移
+
+        name = AWR_PRC.280.b
+
+        trigger = {
+            has_political_power = 75
+        }
+
+        add_political_power = -75
+        add_stability = -0.05
+
+        add_to_variable = {
+            capitalist_belief = -0.05
+        }
+
+        clamp_variable = {
+            var = capitalist_belief
+            min = 0
+            max = 1
+        }
+
+        add_timed_idea = {
+            idea = prc_capital_controls
+            days = 365
+        }
+    }
+}
+
+country_event = {	#上海出现饥荒
+	id = AWR_PRC.281
+	title = AWR_PRC.281.t
+	desc = AWR_PRC.281.desc
+
+	is_triggered_only = yes
+
+	trigger = {
+		check_variable = {
+			var = PRC_rice_reserves_in_shanghai_market
+			value = 4
+			compare = less_than
+		}
+	}
+
+	option = {
+		name = AWR_PRC.281.a
+		add_timed_idea = {
+			idea = PRC_rice_poverty_in_shanghai
+			days = 30
+		} 
+	}
+}
+
+country_event = {	#上海缺棉
+	id = AWR_PRC.282
+	title = AWR_PRC.282.t
+	desc = AWR_PRC.282.desc
+
+	is_triggered_only = yes
+	trigger = {
+		check_variable = {
+			var = PRC_cotton_reserves_in_shanghai_market
+			value = 0.3
+			compare = less_than
+		}
+	}
+
+	option = {
+		name = AWR_PRC.282.a
+		add_timed_idea = {
+			idea = PRC_cotton_poverty_in_shanghai
+			days = 30
+		}
+	}
+}
+
+country_event = {	#上海缺煤
+	id = AWR_PRC.283
+	title = AWR_PRC.283.t
+	desc = AWR_PRC.283.desc
+
+	is_triggered_only = yes
+	trigger = {
+		check_variable = {
+			var = PRC_coal_reserves_in_shanghai_market
+			value = 5
+			compare = less_than
+		}
+	}
+
+	option = {
+		name = AWR_PRC.283.a
+		add_timed_idea = {
+			idea = PRC_coal_poverty_in_shanghai
+			days = 30
+		}
+		613 = {
+			add_dynamic_modifier = {
+				modifier = PRC_coal_poverty
+				days = 30
+			}
+		}
+		1094 = {
+			add_dynamic_modifier = {
+				modifier = PRC_coal_poverty
+				days = 30
+			}
+		}
+	}
+}
+
+country_event = {	#银币被投资商吸纳
+	id = AWR_PRC.284
+	title = AWR_PRC.284.t
+	desc = AWR_PRC.284.desc
+
+	immediate = {
+		add_to_variable = {
+			var = capitalist_assets
+			value = -100
+		}
+
+		divide_variable = {
+			var = RMB_silver_dollar
+			value = 60
+		}
+
+		add_to_variable = {
+			var = RMB_belief
+			value = -0.15
+		}
+
+		add_to_variable = {	#投机资本信心
+            var = speculator_confidence
+            value = 10
+        }
+
+		add_to_variable = {	#资本信任度
+			var = capitalist_belief
+			value = 0.05
+		}
+	}
+
+	option = {
+		name = AWR_PRC.284.a
+	}
+}
+
+
+
+
 #人物事件
 unit_leader_event = {#刘志丹同志壮烈牺牲
 	id = PRC_liu_zhidan.1
@@ -11381,7 +12416,7 @@ unit_leader_event = { #董振堂同志壮烈牺牲
 	}
 }
 
-unit_leader_event = { #NXM
+unit_leader_event = { #董振堂同志壮烈牺牲
 	id = PRC_dong_zhentang.2
 	title = PRC_dong_zhentang.2.t
 	desc = PRC_dong_zhentang.2.desc
@@ -11497,8 +12532,233 @@ unit_leader_event = {	#解放军机械化路线
 	}
 
 	option = {
-		name = PRC_xu_guangda.2.a
+		name = PRC_xu_guangda.1.b
 		set_country_flag = go_ahead_with_stability
+	}
+}
+
+unit_leader_event = {	#林育英同志因病逝世
+	id = PRC_lin_yuying.1
+	title = PRC_lin_yuying.1.t
+	desc = {
+		text = PRC_lin_yuying.1.desc_mao
+		trigger = {
+			leader_is_maoist = yes
+		}
+	}
+	desc = {
+		text = PRC_lin_yuying.1.desc_other
+		trigger = {
+			leader_is_maoist = no
+		}
+	}
+	
+	trigger = {
+	    OR = {
+            TAG = event_target:WTT_communist_china
+            TAG = PRC
+        }
+		has_character = PRC_lin_yuying
+		date > 1942.3.5
+		date < 1943.1.1
+	}
+	
+	fire_only_once = yes
+	
+	immediate = {
+	    hidden_effect = {
+			PRC_lin_biao = { 
+				unit_leader_event = { 
+					id = PRC_lin_biao.2
+				} 
+			}
+        }
+	}
+
+	option = {
+		name = PRC_lin_yuying.1.a
+	}
+}
+
+unit_leader_event = {	#林彪负伤
+	id = PRC_lin_biao.1
+	title = PRC_lin_biao.1
+	desc = PRC_lin_biao.1.desc
+		              
+	fire_only_once = yes
+	is_triggered_only = yes
+           
+	option = {
+		name = PRC_lin_biao.1.a
+		ai_chance = { 
+			factor = 100 
+		}
+		trigger = {
+		    has_government = SOV
+			SOV = {
+				has_civil_war = no
+				NOT = { 
+					has_war_with = ROOT 
+				}
+				is_major = yes
+			}   
+        }	
+		set_country_flag = linbiaofushang
+		custom_effect_tooltip = remove_military_high_command
+		show_ideas_tooltip = PRC_lin_biao
+		effect_tooltip = { 
+			remove_unit_leader = 9000 
+		}
+		hidden_effect = {
+			PRC_lin_biao = { 
+				unit_leader_event = { 
+					id = PRC_lin_biao.2 
+					days = 1460 
+				} 
+			}	          
+		}
+	}
+	
+	option = {
+		name = PRC_lin_biao.1.b
+		PRC_lin_biao = {
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 365
+			}
+			add_skill_level = -1
+			add_attack = -1
+			add_defense = -1
+			add_planning = -1	
+			add_logistics = -1
+		}
+		ai_chance = {
+			factor = 0
+		}		
+	}	
+}
+
+unit_leader_event = {	#林彪回国
+	id = PRC_lin_biao.2
+	title = PRC_lin_biao.2.t
+	desc = PRC_lin_biao.2.desc
+	is_triggered_only = yes
+
+    trigger = {
+		event_target:WTT_communist_china = {
+			has_country_flag = linbiaofushang
+			is_subject = no
+		}	
+    }
+    
+	option = {
+		name = PRC_lin_biao.2.a
+		ai_chance = { 
+			factor = 100 
+		}
+		
+		clr_country_flag = linbiaofushang 
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = PRC_lin_biao
+		show_unit_leaders_tooltip = PRC_lin_biao
+		
+		add_political_power = 25
+		army_experience = 15
+				
+		PRC_lin_biao = {
+			add_attack = 1
+			add_planning = 1
+			add_unit_leader_trait = PRC_lin_biao_sequela
+		}
+	}  
+}
+
+unit_leader_event = {	#特工调查：只能周期性看到估算值
+	id = PRC_li_kenong.1
+    title = PRC_li_kenong.1.t
+    desc = PRC_li_kenong.1.desc
+
+    is_triggered_only = yes
+
+	immediate = {
+
+        set_temp_variable_to_random = {
+            var = PRC_intel_noise
+            min = 85
+            max = 116
+            integer = yes
+        }
+
+        set_variable = {
+            var = PRC_intel_cash_estimate
+            value = capitalist_assets
+        }
+
+        multiply_variable = {
+            PRC_intel_cash_estimate = PRC_intel_noise
+        }
+
+        divide_variable = {
+            PRC_intel_cash_estimate = 100
+        }
+
+
+        set_variable = {
+            var = PRC_intel_debt_estimate
+            value = capitalist_debt
+        }
+
+        multiply_variable = {
+            PRC_intel_debt_estimate = PRC_intel_noise
+        }
+
+        divide_variable = {
+            PRC_intel_debt_estimate = 100
+        }
+
+
+        set_variable = {
+            var = PRC_intel_rice_estimate
+            value = capitalist_rice_hoard
+        }
+
+        multiply_variable = {
+            PRC_intel_rice_estimate = PRC_intel_noise
+        }
+
+        divide_variable = {
+            PRC_intel_rice_estimate = 100
+        }
+
+		set_variable = {
+            var = PRC_intel_cotton_estimate
+            value = capitalist_cotton_hoard
+        }
+
+        multiply_variable = {
+            PRC_intel_cotton_estimate = PRC_intel_noise
+        }
+
+        divide_variable = {
+            PRC_intel_cotton_estimate = 100
+        }
+
+		set_variable = {
+            var = PRC_intel_coal_estimate
+            value = capitalist_coal_hoard
+        }
+
+        multiply_variable = {
+            PRC_intel_coal_estimate = PRC_intel_noise
+        }
+
+        divide_variable = {
+            PRC_intel_coal_estimate = 100
+        }
+    }
+
+	option = {
+		name = PRC_li_kenong.1.a
 	}
 }
 
@@ -11518,6 +12778,7 @@ country_event = {
 	}
 }
 
+#地区事件
 state_event = {	#共产党起义
 	id = AWR_PRC_state.1
 	title = AWR_PRC_state.1.t
@@ -11585,5 +12846,510 @@ state_event = {	#当地土改完成
 				}
 			}
 		}
+	}
+}
+
+
+
+
+#新闻事件
+news_event = {	#《红星照耀中国》今日出版
+	id = AWR_PRC_news.1
+	title = AWR_PRC_news.1.t
+	desc = AWR_PRC_news.1.desc
+		
+	
+	picture = GFX_event_red_star_shining_china
+	major = yes
+	is_triggered_only = yes
+	
+	option = {			
+		name = AWR_PRC_news.1.a
+		trigger = {
+			TAG = event_target:WTT_communist_china
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.b
+		trigger = {
+			TAG = event_target:WTT_current_china_leader
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.c
+		trigger = {
+			NOT = {
+				TAG = event_target:WTT_communist_china
+				TAG = event_target:WTT_current_china_leader
+				has_War_with = event_target:WTT_communist_china
+				has_government = fascism
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.1.d
+		trigger = {
+		    or = {
+				has_War_with = event_target:WTT_communist_china
+				has_government = fascism
+			}
+		}
+		
+	}
+	
+}
+
+news_event = {	#百团大战
+	id = AWR_PRC_news.2
+	title = AWR_PRC_news.2.t
+	desc = AWR_PRC_news.2.desc
+	picture = GFX_event_kangri_hundred_regiments_campaign
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	immediate = {
+	set_global_flag = baituandazhan_OVERZZ
+	set_global_flag = baituandazhan
+	set_global_flag = GFX_event_kangri_hundred_regiments_campaign
+	}
+
+	option = {
+		name = AWR_PRC_news.2.a
+		trigger = { 
+			OR = {
+				TAG = PRC
+				is_in_faction_with = event_target:WTT_current_china_leader
+			}
+		}
+		
+	}
+    option = {
+		name = AWR_PRC_news.2.b
+		trigger = { 
+			has_war = yes
+			OR = {                                               
+				original_tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.2.c
+		trigger = { 
+			NOT = {
+				is_in_faction_with = event_target:WTT_current_china_leader
+				is_in_faction_with = JAP
+				TAG = event_target:WTT_communist_china
+            }
+		}
+	}
+}
+
+news_event = {#中苏签订同盟条约
+	id = AWR_PRC_news.3
+	title = AWR_PRC_news.3.t
+	desc = AWR_PRC_news.3.desc
+	picture = GFX_event_nea_prc_treaty_with_soviet
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.3.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china
+		}
+	}
+	
+	option = {
+		name = AWR_PRC_news.3.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.3.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.3.d
+		trigger = { 
+			OR = {	
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+			NOT = {
+				original_tag = PRC                                                              
+			}
+		}
+	}
+    option = {
+		name = AWR_PRC_news.3.e
+		trigger = { 
+			OR = {
+			tag = event_target:WTT_current_china_leader
+			is_in_faction_with = event_target:WTT_current_china_leader
+			}
+		}
+	}
+}
+
+news_event = {#中苏谈判破裂
+	id = AWR_PRC_news.4
+	title = AWR_PRC_news.4.t
+	desc = AWR_PRC_news.4.desc
+	picture = GFX_news_event_generic_communist_congress
+
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {	
+		every_other_country = {
+			limit = { 
+				has_government = democratic 
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = "PRC"
+				value = 8000
+			}
+			add_ai_strategy = {
+				type = befriend
+				id = "PRC"
+				value = 8000
+			}
+		}
+
+		event_target:WTT_communist_china = {
+			if = {
+				limit = { 
+					USA = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "USA"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "USA"
+					value = 8000
+				}
+			}
+			if = {
+				limit = { 
+					ENG = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "ENG"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "ENG"
+					value = 8000
+				}
+			}
+			if = {
+				limit = { 
+					FRA = { 
+						has_government = democratic 
+					} 
+				}     
+				add_ai_strategy = {
+					type = alliance
+					id = "FRA"
+					value = 8000
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = "FRA"
+					value = 8000
+				}
+			}
+		}              
+	}
+
+	option = {
+		name = AWR_PRC_news.4.a
+		trigger = { 	
+            TAG = event_target:WTT_communist_china                               
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.4.d
+		trigger = { 
+			OR = {
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+news_event = {#中苏签订同盟条约
+	id = AWR_PRC_news.5
+	title = AWR_PRC_news.5.t
+	desc = AWR_PRC_news.5.desc
+	picture = GFX_event_prc_puppet
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.5.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china                                
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.5.d
+		trigger = { 
+			OR = {			
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}             
+}
+
+news_event = {#中国加入北约
+	id = AWR_PRC_news.6
+	title = AWR_PRC_news.6.t
+	desc = AWR_PRC_news.6.desc
+	picture = GFX_event_PRC_in_faction_with_USA
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_PRC_news.6.a
+		trigger = { 
+			TAG = event_target:WTT_communist_china                                
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.b
+		trigger = { 
+			OR = {
+				NOT = {
+					has_government = democratic  
+					has_government = communism 
+				}
+				tag = YUG
+			}
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.c
+		trigger = { 
+			has_government = democratic  
+		}
+	}
+	option = {
+		name = AWR_PRC_news.6.d
+		trigger = { 
+			OR = {			
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}             
+}
+
+news_event = {	#迪克西使团”访问延安
+	id = AWR_PRC_news.7
+	title = AWR_PRC_news.7.t
+	desc = AWR_PRC_news.7.d
+	picture = GFX_dixie2
+	
+	major = yes
+		
+	is_triggered_only = yes
+		
+	option = {	
+		name = AWR_PRC_news.7.a	
+		trigger = {
+			NOT = {
+				tag = USA
+				tag = CHI	
+			}	
+		}		
+	}
+	option = {	
+		name = AWR_PRC_news.7.b
+		trigger = {
+			tag = CHI
+		}		
+	}
+	option = {	
+		name = AWR_PRC_news.7.c	
+		trigger = {
+			tag = USA
+		}		
+	}	
+}
+
+news_event = {	#台湾爆发无产阶级革命
+	id = AWR_PRC_news.8
+	title = AWR_PRC_news.8.t
+	desc = AWR_PRC_news.8.desc
+		
+	
+	picture = GFX_event_Taiwan_comes_back
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		CHI = {
+			set_politics = {
+				ruling_party = communism
+			}
+		}
+	}
+	
+	option = {			
+		name = AWR_PRC_news.8.a
+		trigger = {
+			OR = {
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.8.b
+		trigger = {
+			OR = {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.8.c
+		trigger = {
+			NOT = {
+				tag = CHI
+				is_in_faction_with = CHI
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+}
+
+news_event = {	#台湾宣布回归大陆
+	id = AWR_PRC_news.9
+	title = AWR_PRC_news.9.t
+	desc = AWR_PRC_news.9.desc
+		
+	
+	picture = GFX_event_Taiwan_comes_back
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		PRC = {
+			transfer_state = 524
+		}
+	}
+	
+	option = {			
+		name = AWR_PRC_news.9.a
+		trigger = {
+			OR = {
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.9.b
+		trigger = {
+			OR = {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+		
+	}
+	
+	option = {
+		name = AWR_PRC_news.9.c
+		trigger = {
+			NOT = {
+				tag = CHI
+				is_in_faction_with = CHI
+				tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
 	}
 }

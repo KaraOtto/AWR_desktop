@@ -1018,7 +1018,433 @@ on_actions = {  #解放战争
 	}
 }
 
-			
-				
-				
-				
+on_actions = {
+	# PRC每月自动重新扫描世界殖民地
+	# 避免：
+	# 战争、和平会议、殖民地变化之后
+	# 数组中的目标已经过期
+	on_monthly_PRC = {
+
+		effect = {
+
+			if = {
+
+				limit = {
+
+					has_country_flag = PRC_third_world_support_unlocked
+				}
+
+				PRC_setup_third_world_independence_targets = yes
+			}
+		}
+	}
+
+	# 每月检查所有国家
+	# on_monthly本身会针对每个国家执行
+	# ROOT = 当前被检查国家
+	on_monthly = {
+
+		effect = {
+
+			if = {
+
+				limit = {
+					# 排除PRC自己
+					NOT = {
+						original_tag = PRC
+					}
+					# 国家必须已经真正独立
+					is_subject = no
+					# 独立战争必须已经结束
+					has_war = no
+					# 当前不能已经加入其他阵营
+					is_in_faction = no
+					# 防止每个月重复申请
+					NOT = {
+						has_country_flag = PRC_third_world_join_request_sent
+					}
+					# 必须有证据证明PRC曾经支持过
+					# 该民族解放运动
+					OR = {
+						# 原来就是一个殖民附属国
+						has_country_flag = PRC_supported_independence_movement
+						# 原来不存在
+						# 是通过殖民地革命重新出现
+						any_owned_state = {
+							has_state_flag = PRC_supported_revolution_state
+							is_core_of = ROOT
+						}
+					}
+					# PRC自身必须存在
+					# 并且是阵营领袖
+					PRC = {
+
+						exists = yes
+
+						has_country_flag = PRC_third_world_support_unlocked
+
+						
+                        OR = {
+                            AND = {
+                                has_completed_focus = PRC_internationalist_clique_focus
+                                is_faction_leader = yes
+                            }
+                            AND = {
+                                has_completed_focus = PRC_support_the_national_independence_movement
+                            }
+                        }
+
+						# PRC不能正在与申请国交战
+						NOT = {
+							has_war_with = ROOT
+						}
+					}
+				}
+
+				# 标记：
+				# 已经申请过一次
+				set_country_flag = PRC_third_world_join_request_sent
+
+				# 新独立国家收到事件
+                    
+                if = {
+                    limit = {
+                        PRC = {
+                            has_completed_focus = PRC_internationalist_clique_focus
+                        }
+                    }
+                    country_event = {
+                        id = AWR_PRC.259
+                        days = 1
+                    }
+                }
+			}
+		}
+	}
+}
+####PRC事件
+on_actions = {
+    on_declare_war = {
+        effect = {
+            if = {  #王实味
+				limit = {			
+					ROOT = {  
+						OR = {
+							TAG = event_target:WTT_communist_china
+							TAG = PRC
+						}
+					
+					}
+					FROM = { 
+						OR = {
+							TAG = event_target:WTT_current_china_leader
+							TAG = CHI
+						}
+					
+					}
+					date > 1938.1.1
+					has_global_flag = CHI_no_longer_united_flag
+					NOT = { 
+                        has_war_with = JAP 
+                    }
+					NOT = { 
+                        has_global_flag = KMT_Strategic_initiative 
+                    }
+					NOT = { 
+                        has_global_flag = roc_in_taiwan_flag 
+                    }
+				}
+				set_global_flag = PRC_civil_war_started
+				set_global_flag = KMT_Strategic_initiative
+				if = {
+					limit = {
+						event_target:WTT_communist_china = { 
+                            is_ai = yes 
+                        }
+						event_target:WTT_current_china_leader = { 
+                            is_ai = yes 
+                        }
+					}
+					event_target:WTT_communist_china = { 
+                        add_ideas = balance_idea_prc_kmt_ai 
+                    }
+				}
+				    
+				event_target:WTT_communist_china = {
+					country_event = { 
+                        id = AWR_PRC.264 
+                        days = 180 
+                    }
+				}
+				if = {
+					limit = {
+						event_target:WTT_current_china_leader = { 
+                            is_ai = yes 
+                        }
+						event_target:WTT_communist_china = { 
+                            is_ai = no 
+                        }
+					}
+					event_target:WTT_current_china_leader = { 
+                        add_ideas = balance_idea_kmt_be_strong 
+                    }
+				}
+			}
+        }
+    }
+}
+
+####上海经济战
+on_actions = {
+    on_daily_PRC = {
+
+        effect = {
+
+            if = {
+                limit = {
+                    has_country_flag = silver_dollar_war_start
+                }
+
+                PRC_silver_dollar_war_daily_tick = yes
+            }
+
+            if = {
+                limit = {
+                    has_country_flag = rice_cotton_coal_war_start
+                }
+                #投机者囤货
+                PRC_speculator_buy_rice = yes
+                PRC_speculator_buy_cotton = yes
+                PRC_speculator_buy_rice = yes
+                #物价改变
+                PRC_update_shanghai_rice_price = yes
+                PRC_update_shanghai_rice_price = yes
+                PRC_update_shanghai_rice_price = yes
+                #投机者卖货
+                PRC_speculator_sell_rice = yes
+                PRC_speculator_sell_cotton = yes
+                PRC_speculator_sell_coal = yes
+                #投机者借债
+                PRC_speculator_lending = yes
+                #投机者还贷
+                PRC_speculator_repay_the_loan = yes
+
+                #投机者倾销货物
+                PRC_speculator_dumping_rice = yes
+                PRC_speculator_dumping_cotton = yes
+                PRC_speculator_dumping_coal = yes
+
+                #投机者总资产计算
+                PRC_calculate_speculator_net_worth = yes
+            }
+
+            # 资产阶级信任崩溃
+            if = {
+                limit = {
+                    check_variable = {
+                        var = capitalist_belief
+                        value = 0.10
+                        compare = less_than
+                    }
+
+                    NOT = {
+                        has_country_flag = PRC_capital_flight_triggered
+                    }
+                }
+
+                set_country_flag = PRC_capital_flight_triggered
+
+                country_event = {
+                    id = AWR_PRC.280
+                    days = 1
+                }
+            }
+
+            #投机者破产
+            if = {
+
+                limit = {
+
+                    check_variable = {
+                        var = capitalist_net_assets
+                        value = 0
+                        compare = less_than
+                    }
+                }
+
+                set_country_flag = PRC_speculators_bankrupt
+
+                country_event = {
+                    id = AWR_PRC.278
+                    hours = 6
+                }
+            }
+            else_if = {
+
+                limit = {
+
+                    check_variable = {
+                        var = capitalist_net_assets
+                        value = 10
+                        compare = less_than
+                    }
+                }
+
+                add_to_variable = {
+                    capitalist_bankruptcy_days = 1
+                }
+
+                if = {
+
+                    limit = {
+
+                        check_variable = {
+                            var = capitalist_bankruptcy_days
+                            value = 7
+                            compare = greater_than_or_equals
+                        }
+                    }
+
+                    set_country_flag = PRC_speculators_bankrupt
+
+                    country_event = {
+                        id = AWR_PRC.278
+                        hours = 6
+                    }
+                }
+            }
+            else = {
+                set_variable = {
+                    var = capitalist_bankruptcy_days
+                    value = 0
+                }
+            }
+        }
+    }
+}
+
+on_actions = {  #利息
+    on_daily_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    PRC = {
+                        has_country_flag = rice_cotton_coal_war_start
+                        NOT = {
+                            has_idea = prc_shanghai_credit_squeeze
+                        }
+                    }
+                }
+                set_temp_variable = {
+                    var = PRC_temp_interest
+                    value = capitalist_debt
+                }
+
+                multiply_temp_variable = {
+                    PRC_temp_interest = 0.004
+                }
+
+                subtract_from_variable = {
+                    capitalist_assets = PRC_temp_interest
+                }
+            }
+
+            else_if = {
+                limit = {
+                    PRC = {
+                        has_country_flag = rice_cotton_coal_war_start
+                        has_idea = prc_shanghai_credit_squeeze
+                    }
+                }
+                set_temp_variable = {
+                    var = PRC_temp_interest
+                    value = capitalist_debt
+                }
+
+                multiply_temp_variable = {
+                    PRC_temp_interest = 0.018
+                }
+
+                subtract_from_variable = {
+                    capitalist_assets = PRC_temp_interest
+                }
+
+                # 工资、税负、经营费用等现金压力
+                subtract_from_variable = {
+                    capitalist_assets = 8
+                }
+
+                add_to_variable = {
+                    speculator_confidence = -10
+                }
+            }
+        }
+    }
+}
+
+on_actions = {  #人民币信任增长
+    on_daily_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    has_country_flag = PRC_force_merchant_accept_RMB
+                    has_country_flag = PRC_silver_war_forced
+                }
+
+                add_to_variable = {
+                    var = RMB_belief
+                    value = 0.05
+                }
+            }
+        }
+    }
+}
+
+on_actions = {  #银元之战的胜利
+    on_daily_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    check_variable = {
+                        var = RMB_belief
+                        value = 0.75
+                        compare = greater_than_or_equals
+                    }
+                }
+                country_event = {
+                    id = AWR_PRC.275
+                }
+            }
+        }
+    }
+}
+
+on_actions = {  #AI自动触发
+    on_daily_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    is_ai = yes
+                    has_country_flag = silver_dollar_war_start
+                }
+
+                country_event = {
+                    id = AWR_PRC.275
+                    days = 14
+                }
+            }
+
+            if = {
+                limit = {
+                    is_ai = yes
+                    has_country_flag = rice_cotton_coal_war_start
+                }
+
+                country_event = {
+                    id = AWR_PRC.278
+                    days = 30
+                }
+            }
+        }
+    }
+}

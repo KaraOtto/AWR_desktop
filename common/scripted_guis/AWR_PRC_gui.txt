@@ -69,7 +69,7 @@ scripted_gui = {
 		}
 	}
 
-	CHI_civil_war_map= {	#内战gui
+	CHI_civil_war_map = {	#内战gui
 		context_type = decision_category
 		window_name = "CHI_civil_war_map_container"
 
@@ -792,5 +792,20 @@ scripted_gui = {
 				}
 			}
 		}
+	}
+
+	PRC_shanghai_economy_war_gui = {	#上海经济战
+		context_type = decision_category
+		window_name = "PRC_silver_dollar_war_gui"
+		triggers = {
+			PRC_silver_dollar_war_gui_visible = {
+				has_country_flag = silver_dollar_war_start
+			}
+
+			PRC_rice_cotton_war_gui_visible = {
+				has_country_flag = rice_cotton_coal_war_start
+			}
+		}
+		
 	}
 }

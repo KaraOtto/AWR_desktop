@@ -2298,8 +2298,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_5 }  
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -4100,7 +4101,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		}
 	}
 
-	establish_CHI_State_Shipbuilding = {	#成立中国船舶重工集团
+	establish_PRC_State_Shipbuilding = {	#成立中国船舶重工集团
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4109,7 +4110,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_State_Shipbuilding
+				has_global_flag = establish_PRC_State_Shipbuilding
 				has_idea = PRC_Poor_navy
 			}
 		}
@@ -4120,16 +4121,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_State_Shipbuilding
+			set_global_flag = establish_PRC_State_Shipbuilding
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_State_Shipbuilding
+			show_mio_tooltip = PRC_State_Shipbuilding
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_State_Shipbuilding = {	#投资中国船舶重工集团
+	invest_in_PRC_State_Shipbuilding = {	#投资中国船舶重工集团
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4139,7 +4140,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_State_Shipbuilding
+				has_global_flag = establish_PRC_State_Shipbuilding
 				has_global_flag = be_high
 			}
 		}
@@ -4148,13 +4149,13 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_State_Shipbuilding = {
+			mio:PRC_State_Shipbuilding = {
 				add_mio_funds = 1000
 			}
 		}
 	}
 
-	establish_CHI_LiaoNan_Shipbuilding = {	#成立中国人民解放军第4810厂
+	establish_PRC_LiaoNan_Shipbuilding = {	#成立中国人民解放军第4810厂
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4163,7 +4164,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_LiaoNan_Shipbuilding
+				has_global_flag = establish_PRC_LiaoNan_Shipbuilding
 				has_idea = PRC_Poor_navy
 			}
 		}
@@ -4174,16 +4175,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_LiaoNan_Shipbuilding
+			set_global_flag = establish_PRC_LiaoNan_Shipbuilding
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_LiaoNan_Shipbuilding
+			show_mio_tooltip = PRC_LiaoNan_Shipbuilding
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_LiaoNan_Shipbuilding = {	#投资中国人民解放军第4810厂
+	invest_in_PRC_LiaoNan_Shipbuilding = {	#投资中国人民解放军第4810厂
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4193,7 +4194,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_LiaoNan_Shipbuilding
+				has_global_flag = establish_PRC_LiaoNan_Shipbuilding
 				has_global_flag = be_high
 			}
 		}
@@ -4202,7 +4203,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_LiaoNan_Shipbuilding = {
+			mio:PRC_LiaoNan_Shipbuilding = {
 				add_mio_funds = 1000
 			}
 		}
@@ -4263,7 +4264,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		}
 	}
 
-	establish_CHI_Shenyang_Aircraft  = {	#成立国营112厂(沈飞）
+	establish_PRC_Shenyang_Aircraft  = {	#成立国营112厂(沈飞）
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4272,7 +4273,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_Shenyang_Aircraft 
+				has_global_flag = establish_PRC_Shenyang_Aircraft 
 				has_idea = PRC_Poor_Air
 				has_idea = PRC_Poor_Air_2
 			}
@@ -4284,16 +4285,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_Shenyang_Aircraft 
+			set_global_flag = establish_PRC_Shenyang_Aircraft 
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_Shenyang_Aircraft 
+			show_mio_tooltip = PRC_Shenyang_Aircraft 
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_Shenyang_Aircraft  = {	#投资国营112厂(沈飞）
+	invest_in_PRC_Shenyang_Aircraft  = {	#投资国营112厂(沈飞）
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4303,7 +4304,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_Shenyang_Aircraft 
+				has_global_flag = establish_PRC_Shenyang_Aircraft 
 				has_global_flag = be_high
 			}
 		}
@@ -4312,13 +4313,13 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_Shenyang_Aircraft  = {
+			mio:PRC_Shenyang_Aircraft  = {
 				add_mio_funds = 1000
 			}
 		}
 	}
 
-	establish_CHI_Chengdu_Aircraft = {	#成立国营132厂
+	establish_PRC_Chengdu_Aircraft = {	#成立国营132厂
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4327,7 +4328,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_Chengdu_Aircraft
+				has_global_flag = establish_PRC_Chengdu_Aircraft
 				has_idea = PRC_Poor_Air
 				has_idea = PRC_Poor_Air_2
 			}
@@ -4339,16 +4340,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_Chengdu_Aircraft
+			set_global_flag = establish_PRC_Chengdu_Aircraft
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_Chengdu_Aircraft
+			show_mio_tooltip = PRC_Chengdu_Aircraft
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_Chengdu_Aircraft = {	#投资国营132厂
+	invest_in_PRC_Chengdu_Aircraft = {	#投资国营132厂
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4358,7 +4359,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_Chengdu_Aircraft
+				has_global_flag = establish_PRC_Chengdu_Aircraft
 				has_global_flag = be_high
 			}
 		}
@@ -4367,13 +4368,13 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_Chengdu_Aircraft = {
+			mio:PRC_Chengdu_Aircraft = {
 				add_mio_funds = 1000
 			}
 		}
 	}
 
-	establish_CHI_Shanghai_Aircraft = {	#成立上海飞机制造厂
+	establish_PRC_Shanghai_Aircraft = {	#成立上海飞机制造厂
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4382,7 +4383,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_Shanghai_Aircraft
+				has_global_flag = establish_PRC_Shanghai_Aircraft
 				has_idea = PRC_Poor_Air
 				has_idea = PRC_Poor_Air_2
 			}
@@ -4394,16 +4395,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_Shanghai_Aircraft
+			set_global_flag = establish_PRC_Shanghai_Aircraft
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_Shanghai_Aircraft
+			show_mio_tooltip = PRC_Shanghai_Aircraft
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_Shanghai_Aircraft = {	#投资上海飞机制造厂
+	invest_in_PRC_Shanghai_Aircraft = {	#投资上海飞机制造厂
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4413,7 +4414,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_Shanghai_Aircraft
+				has_global_flag = establish_PRC_Shanghai_Aircraft
 				has_global_flag = be_high
 			}
 		}
@@ -4422,7 +4423,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_Shanghai_Aircraft = {
+			mio:PRC_Shanghai_Aircraft = {
 				add_mio_funds = 1000
 			}
 		}
@@ -4587,7 +4588,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		}
 	}
 
-	establish_CHI_South_Industry = {	#成立中国兵器装备集团
+	establish_PRC_South_Industry = {	#成立中国兵器装备集团
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4596,7 +4597,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_South_Industry
+				has_global_flag = establish_PRC_South_Industry
 			}
 		}
 		available = {
@@ -4606,16 +4607,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_South_Industry
+			set_global_flag = establish_PRC_South_Industry
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_South_Industry
+			show_mio_tooltip = PRC_South_Industry
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_South_Industry = {	#投资中国兵器装备集团
+	invest_in_PRC_South_Industry = {	#投资中国兵器装备集团
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4625,7 +4626,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_South_Industry
+				has_global_flag = establish_PRC_South_Industry
 				has_global_flag = be_high
 			}
 		}
@@ -4634,7 +4635,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_South_Industry = {
+			mio:PRC_South_Industry = {
 				add_mio_funds = 1000
 			}
 		}
@@ -4642,7 +4643,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 
 	#汽车厂
 
-	establish_CHI_North_Heavy_Industry = {	#成立北方重工业集团
+	establish_PRC_North_Heavy_Industry = {	#成立北方重工业集团
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4651,7 +4652,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_North_Heavy_Industry
+				has_global_flag = establish_PRC_North_Heavy_Industry
 			}
 		}
 		available = {
@@ -4661,16 +4662,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_North_Heavy_Industry
+			set_global_flag = establish_PRC_North_Heavy_Industry
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_North_Heavy_Industry
+			show_mio_tooltip = PRC_North_Heavy_Industry
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_North_Heavy_Industry = {	#投资北方重工业集团
+	invest_in_PRC_North_Heavy_Industry = {	#投资北方重工业集团
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4680,7 +4681,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_North_Heavy_Industry
+				has_global_flag = establish_PRC_North_Heavy_Industry
 				has_global_flag = be_high
 			}
 		}
@@ -4689,13 +4690,13 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_North_Heavy_Industry = {
+			mio:PRC_North_Heavy_Industry = {
 				add_mio_funds = 1000
 			}
 		}
 	}
 
-	establish_CHI_First_Motor = {	#成立第一汽车制造厂
+	establish_PRC_First_Motor = {	#成立第一汽车制造厂
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4704,7 +4705,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_First_Motor
+				has_global_flag = establish_PRC_First_Motor
 			}
 		}
 		available = {
@@ -4714,16 +4715,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_First_Motor
+			set_global_flag = establish_PRC_First_Motor
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_First_Motor
+			show_mio_tooltip = PRC_First_Motor
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_First_Motor = {	#投资第一汽车制造厂
+	invest_in_PRC_First_Motor = {	#投资第一汽车制造厂
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4733,7 +4734,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_First_Motor
+				has_global_flag = establish_PRC_First_Motor
 				has_global_flag = be_high
 			}
 		}
@@ -4742,14 +4743,14 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_First_Motor = {
+			mio:PRC_First_Motor = {
 				add_mio_funds = 1000
 			}
 		}
 	}
 
 	#枪厂
-	establish_CHI_Six_two_six = {	#成立国营626厂
+	establish_PRC_Six_two_six = {	#成立国营626厂
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4758,7 +4759,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_Six_two_six
+				has_global_flag = establish_PRC_Six_two_six
 			}
 		}
 		available = {
@@ -4768,16 +4769,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_Six_two_six
+			set_global_flag = establish_PRC_Six_two_six
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_Six_two_six
+			show_mio_tooltip = PRC_Six_two_six
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_Six_two_six = {	#投资国营626厂
+	invest_in_PRC_Six_two_six = {	#投资国营626厂
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4787,7 +4788,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_Six_two_six
+				has_global_flag = establish_PRC_Six_two_six
 				has_global_flag = be_high
 			}
 		}
@@ -4796,7 +4797,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_Six_two_six = {
+			mio:PRC_Six_two_six = {
 				add_mio_funds = 1000
 			}
 		}
@@ -4856,7 +4857,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 	}
 
 	#炮厂
-	establish_CHI_North_Industry = {	#成立中国兵器工业集团
+	establish_PRC_North_Industry = {	#成立中国兵器工业集团
 		icon = generic_factory
 		fire_only_once = yes
 		days_remove = 90 
@@ -4865,7 +4866,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			has_completed_focus = PRC_Five_year_plans_of_China
 			tag = PRC
 			NOT = {
-				has_global_flag = establish_CHI_North_Industry
+				has_global_flag = establish_PRC_North_Industry
 			}
 		}
 		available = {
@@ -4875,16 +4876,16 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			set_global_flag = establish_CHI_North_Industry
+			set_global_flag = establish_PRC_North_Industry
 			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = CHI_North_Industry
+			show_mio_tooltip = PRC_North_Industry
 		}
 		modifier = {
 			civilian_factory_use = 10
 		}
 	}
 
-	invest_in_CHI_North_Industry = {	#投资中国兵器工业集团
+	invest_in_PRC_North_Industry = {	#投资中国兵器工业集团
 		icon = generic_factory
 		fire_only_once = yes
 		cost = 100
@@ -4894,7 +4895,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 		visible = {
 			has_completed_focus = PRC_Five_year_plans_of_China
 			OR = {
-				has_global_flag = establish_CHI_North_Industry
+				has_global_flag = establish_PRC_North_Industry
 				has_global_flag = be_high
 			}
 		}
@@ -4903,7 +4904,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			#
 		}
 		remove_effect = {
-			mio:CHI_North_Industry = {
+			mio:PRC_North_Industry = {
 				add_mio_funds = 1000
 			}
 		}
@@ -5772,8 +5773,8 @@ AWR_PRC_land_reform = {		#土地改革
 		icon = generic_political_discourse
 		priority = 1
 		fire_only_once = no
-		days_remove = PRC_communist_amass_support_mission_time_zz
-		cost = PRC_communist_amass_support_mission_cost_zz
+		days_remove = ROOT.PRC_communist_amass_support_mission_time_zz
+		cost = ROOT.PRC_communist_amass_support_mission_cost_zz
 		allowed = {
 			tag = PRC
 		}
@@ -14424,7 +14425,6 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 }
 
 
-###做到这里
 PRC_resource_effort = {	#国家资源开采项目
 	#铝
 	PRC_aluminium_effort_1 = {	#开采全国铝矿
@@ -15394,7 +15394,7 @@ TIB_democracy_reform = {	#西藏民主改革
 		visible = {
 			has_completed_focus = PRC_force_TIB_reform
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15797,7 +15797,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			}
 		}
 	}
-	#做到这里
+
 	PRC_outer_Northeast = {		#外东北问题
 		priority = 15
 		icon = generic_prepare_civil_war 
@@ -15822,7 +15822,20 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		cost = 25
 		days_remove = 10
 		remove_effect = {
-			#
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 408
+						controls_state = 409
+						controls_state = 560
+						controls_state = 561
+						controls_state = 657
+					}
+				}
+				country_event = {
+					id = AWR_PRC.148
+				}
+			}
 		}
 	}
 
@@ -15850,7 +15863,21 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		cost = 25
 		days_remove = 10
 		remove_effect = {
-			country_event = AWR_PRC.143
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 586
+						controls_state = 588
+						controls_state = 589
+						controls_state = 654
+						controls_state = 732
+						controls_state = 1125
+					}
+				}
+				country_event = {
+					id = AWR_PRC.162
+				}
+			}
 		}
 	}
 
@@ -15879,6 +15906,17 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		days_remove = 10
 		remove_effect = {
 			country_event = AWR_PRC.143
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 655
+						controls_state = 537
+					}
+				}
+				country_event = {
+					id = AWR_PRC.155
+				}
+			}
 		}
 	}
 
@@ -16046,7 +16084,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			has_full_control_of_state = 589   
 			has_full_control_of_state = 586 
 			has_full_control_of_state = 732
-			has_full_control_of_state = 1022
+			has_full_control_of_state = 1125
 		}
 		cost = 100
 		days_remove = 70
@@ -16065,7 +16103,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		}	
 										
 		remove_effect = {	
-			1022 = { 
+			1025 = { 
 				set_state_name = congling 
 			}
 			586 = { 
@@ -16090,7 +16128,7 @@ CHINA_recover_motherland = {	#中华民族领土问题
 						state = 589   
 						state = 586 
 						state = 732
-						state = 1022
+						state = 1025
 					}
 				}
 				add_core_of = ROOT
@@ -18634,8 +18672,8 @@ PRC_shijierenmin = {	#两个拳头同时出击
 	}
 }
 
-PRC_comecon_dec_cat = {
-	PRC_comecon_industrialization_program = {
+PRC_comecon_dec_cat = {	#世界人民大团结
+	PRC_comecon_industrialization_program = {	#在当地的工业发展计划
 		priority = 2
 
 		icon = GFX_decision_generic_construction
@@ -18647,8 +18685,6 @@ PRC_comecon_dec_cat = {
 				has_war = no
 			}
 		}
-
-		#target_array = subjects
 
 		target_trigger = {
 			FROM = {
@@ -18665,14 +18701,22 @@ PRC_comecon_dec_cat = {
 
 		available = {
 			num_of_civilian_factories_available_for_projects > 0
-			FROM = { communism > 0.5 }
-			NOT = { has_country_flag = PRC_comecon_joint_military_program_ongoing_flag }
-			NOT = { has_country_flag = PRC_comecon_industrialization_program_ongoing_flag }
+			FROM = { 
+				communism > 0.5 
+			}
+			NOT = { 
+				has_country_flag = PRC_comecon_joint_military_program_ongoing_flag 
+			}
+			NOT = { 
+				has_country_flag = PRC_comecon_industrialization_program_ongoing_flag 
+			}
 		}
 
 		visible = {
 			has_completed_focus = PRC_internationalist_clique_focus
-			FROM = { is_in_faction_with = ROOT }
+			FROM = { 
+				is_in_faction_with = ROOT 
+			}
 		}
 
 		cost = 100
@@ -18680,7 +18724,11 @@ PRC_comecon_dec_cat = {
 		days_remove = 180
 
 		cancel_trigger = {
-			NOT = { FROM = { is_in_faction_with = ROOT } }
+			NOT = { 
+				FROM = { 
+					is_in_faction_with = ROOT 
+				} 
+			}
 		}
 
 		cancel_effect = {
@@ -18740,7 +18788,7 @@ PRC_comecon_dec_cat = {
 		}
 	}
 
-	PRC_comecon_joint_military_program = {
+	PRC_comecon_joint_military_program = {	#联合军事项目
 		priority = 1
 
 		icon = GFX_decision_generic_construction
@@ -18757,14 +18805,16 @@ PRC_comecon_dec_cat = {
 
 		allowed = {
 			OR = {
-			TAG = event_target:WTT_communist_china
-			TAG = PRC
+				TAG = event_target:WTT_communist_china
+				TAG = PRC
 			}
 		}
 
 		available = {
 			num_of_civilian_factories_available_for_projects > 0
-			NOT = { has_country_flag = PRC_comecon_industrialization_program_ongoing_flag }
+			NOT = { 
+				has_country_flag = PRC_comecon_industrialization_program_ongoing_flag 
+			}
 		}
 
 		visible = {
@@ -18847,4 +18897,874 @@ PRC_comecon_dec_cat = {
 			}
 		}
 	}	
+}
+
+# 亚洲民族解放运动
+PRC_asian_liberation_category = {
+
+	PRC_support_asian_liberation = {
+
+		icon = generic_prepare_civil_war
+
+		# 从PRC建立好的世界目标池选目标
+		target_array = PRC_third_world_independence_targets
+
+		# 允许尚未存在的国家
+		target_non_existing = yes
+		# ROOT = PRC
+		target_root_trigger = {
+
+			original_tag = PRC
+
+			has_country_flag = PRC_third_world_support_unlocked
+		}
+
+		# FROM = 目标民族国家
+		target_trigger = {
+			FROM = {
+				PRC_revolution_target_in_asia = yes
+				PRC_is_valid_liberation_target = yes
+			}
+		}
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+
+		complete_effect = {
+
+			FROM = {
+				PRC_support_national_liberation_effect = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+# 中东民族解放运动
+PRC_middle_east_liberation_category = {
+
+	PRC_support_middle_east_liberation = {
+
+		icon = generic_prepare_civil_war
+
+		target_array = PRC_third_world_independence_targets
+
+		target_non_existing = yes
+
+		target_root_trigger = {
+
+			original_tag = PRC
+
+			has_country_flag = PRC_third_world_support_unlocked
+		}
+
+
+		target_trigger = {
+
+			FROM = {
+
+				PRC_revolution_target_in_middle_east = yes
+
+				PRC_is_valid_liberation_target = yes
+			}
+		}
+
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+
+		complete_effect = {
+
+			FROM = {
+
+				PRC_support_national_liberation_effect = yes
+			}
+		}
+
+
+		ai_will_do = {
+
+			factor = 1
+		}
+	}
+}
+
+# 非洲民族解放运动
+PRC_african_liberation_category = {
+
+	PRC_support_african_liberation = {
+
+		icon = generic_prepare_civil_war
+
+		target_array = PRC_third_world_independence_targets
+
+		target_non_existing = yes
+
+
+		target_root_trigger = {
+
+			original_tag = PRC
+
+			has_country_flag = PRC_third_world_support_unlocked
+		}
+
+
+		target_trigger = {
+
+			FROM = {
+
+				PRC_revolution_target_in_africa = yes
+
+				PRC_is_valid_liberation_target = yes
+			}
+		}
+
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+
+		complete_effect = {
+
+			FROM = {
+
+				PRC_support_national_liberation_effect = yes
+			}
+		}
+
+
+		ai_will_do = {
+
+			factor = 1
+		}
+	}
+}
+
+# 拉丁美洲及加勒比民族解放运动
+PRC_latin_american_liberation_category = {
+
+	PRC_support_latin_american_liberation = {
+
+		icon = generic_prepare_civil_war
+
+		target_array = PRC_third_world_independence_targets
+
+		target_non_existing = yes
+
+
+		target_root_trigger = {
+
+			original_tag = PRC
+
+			has_country_flag = PRC_third_world_support_unlocked
+		}
+
+
+		target_trigger = {
+
+			FROM = {
+
+				PRC_revolution_target_in_latin_america = yes
+
+				PRC_is_valid_liberation_target = yes
+			}
+		}
+
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+
+		complete_effect = {
+
+			FROM = {
+
+				PRC_support_national_liberation_effect = yes
+			}
+		}
+
+
+		ai_will_do = {
+
+			factor = 1
+		}
+	}
+}
+
+# 大洋洲民族解放运动
+PRC_oceanian_liberation_category = {
+
+	PRC_support_oceanian_liberation = {
+
+		icon = generic_prepare_civil_war
+
+		target_array = PRC_third_world_independence_targets
+
+		target_non_existing = yes
+
+
+		target_root_trigger = {
+
+			original_tag = PRC
+
+			has_country_flag = PRC_third_world_support_unlocked
+		}
+
+
+		target_trigger = {
+
+			FROM = {
+
+				PRC_revolution_target_in_oceania = yes
+
+				PRC_is_valid_liberation_target = yes
+			}
+		}
+
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+		days_remove = 90
+
+
+		remove_effect = {
+
+			FROM = {
+				PRC_support_national_liberation_effect = yes
+			}
+		}
+
+
+		ai_will_do = {
+
+			factor = 1
+		}
+	}
+}
+
+PRC_economy_cooperation_decision_category = {	#经济合作
+	PRC_economy_cooperation_decision = {
+
+		icon = generic_factory
+
+		target_array = PRC_third_world_independence_targets
+
+		target_non_existing = no
+
+		target_root_trigger = {
+			original_tag = PRC
+			has_completed_focus = PRC_embrace_multipolarization
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = {
+					is_in_faction_with = USA
+				}
+				NOT = {
+					is_in_faction_with = SOV
+				}
+				has_war = no
+				NOT = {
+					has_country_flag = refuse_cooperation
+				}
+			}
+		}
+
+		cost = 35
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		remove_effect = {
+			FROM = {
+				country_event = {
+					id = AWR_PRC.261
+				}
+			}
+
+			multiply_variable = {
+				PRC_third_world_independence_targets = 2
+			}
+
+			clamp_variable = {
+				var = PRC.PRC_third_world_independence_targets
+				min = 0
+				max = 300
+			}
+		}
+	}
+}
+
+PRC_shanghai_economy_war_category = {	#上海经济战
+
+	PRC_sell_silver_dollars = {	#抛售银元
+		visible = {
+			has_country_flag = silver_dollar_war_start
+		}
+		available = {
+			check_variable = {
+				var = silver_dollar_reserves
+				value = 100
+				compare = greater_than_or_equals
+			}
+		}
+		cost = 30
+		days_re_enable = 30
+		days_remove = 7
+		complete_effect = {
+			add_to_variable = {
+				silver_dollar_reserves = -100
+			}
+		}
+		remove_effect = {
+			multiply_variable = {
+				var = RMB_silver_dollar
+				value = 0.60
+			}
+
+			add_to_variable = {
+				var = RMB_belief
+				value = 0.15
+			}
+
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = {
+							var = capitalist_assets
+							value = 100
+							compare = greater_than_or_equals
+						}
+					}
+
+					country_event = {
+						id = AWR_PRC.284
+						days = 3
+					}
+				}
+			}
+		}
+	}
+
+	PRC_invocate_silver_dollar_from_center = {	#申请调运银币
+		visible = {
+			has_country_flag = silver_dollar_war_start
+		}
+		available = {
+			check_variable = {
+				var = modifier@consumer_goods_expected_value
+				value = 0.80
+				compare = less_than
+			}
+			NOT = {
+				has_idea = PRC_invocate_silver_dollar_5
+			}
+		}
+		cost = 25
+		days_remove = 15
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = PRC_invocate_silver_dollar_4
+				}
+				remove_ideas = PRC_invocate_silver_dollar_4
+				add_timed_idea = {
+					idea = PRC_invocate_silver_dollar_5
+					days = 180
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = PRC_invocate_silver_dollar_3
+				}
+				remove_ideas = PRC_invocate_silver_dollar_3
+				add_timed_idea = {
+					idea = PRC_invocate_silver_dollar_4
+					days = 180
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = PRC_invocate_silver_dollar_2
+				}
+				remove_ideas = PRC_invocate_silver_dollar_2
+				add_timed_idea = {
+					idea = PRC_invocate_silver_dollar_3
+					days = 180
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = PRC_invocate_silver_dollar_1
+				}
+				remove_ideas = PRC_invocate_silver_dollar_1
+				add_timed_idea = {
+					idea = PRC_invocate_silver_dollar_2
+					days = 180
+				}
+			}
+			else = {
+				add_timed_idea = {
+					idea = PRC_invocate_silver_dollar_1
+				}
+			}
+		}
+
+		remove_effect = {
+			add_to_variable = {
+				silver_dollar_reserves = 100
+			}
+		}
+	}
+
+	PRC_force_end_silver_dollar_speculation = {	#查封证券大楼
+
+		visible = {
+			has_country_flag = silver_dollar_war_start
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		complete_effect = {
+
+			add_to_variable = {
+				capitalist_belief = -0.15
+			}
+
+			set_variable = {
+				var = RMB_belief
+				value = 0.65
+			}
+
+			set_variable = {
+				var = RMB_silver_dollar
+				value = 650
+			}
+
+			multiply_variable = {
+				capitalist_assets = 0.90
+			}
+
+			multiply_variable = {
+				capitalist_silver_hoard = 0.30
+			}
+
+			add_to_variable = {
+				silver_dollar_reserves = 40
+			}
+
+			clamp_variable = {
+				var = capitalist_belief
+				min = 0
+				max = 1
+			}
+
+			set_country_flag = PRC_silver_war_forced
+
+		}
+	}
+
+	PRC_force_merchant_accept_RMB = {	#禁止商户拒收人民币
+		visible = {
+			has_country_flag = silver_dollar_war_start
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_to_variable = {
+				capitalist_belief = -0.05
+			}
+
+			add_to_variable = {
+				var = RMB_belief
+				value = 0.15
+			}
+
+			add_stability = -0.05
+
+			set_country_flag = PRC_force_merchant_accept_RMB
+		}
+	}
+
+	PRC_tighten_shanghai_credit = {	#收紧银根
+
+		icon = generic_prepare_civil_war
+
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+
+		cost = 30
+
+		days_re_enable = 28
+
+		complete_effect = {
+
+			add_timed_idea = {
+				idea = prc_shanghai_credit_squeeze
+				days = 21
+			}
+
+			add_to_variable = {
+				capitalist_belief = -0.02
+			}
+
+			add_to_variable = {
+				speculator_confidence = -5
+			}
+
+			
+		}
+
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_temp_interest
+				value = capitalist_debt
+			}
+
+			multiply_temp_variable = {
+				PRC_temp_interest = 0.004
+			}
+
+			subtract_from_variable = {
+				capitalist_assets = PRC_temp_interest
+			}
+		}
+	}
+
+	PRC_invocate_rice_to_shanghai = {	#调运大米至上海
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		cost = 30
+		days_remove = 3
+		remove_effect = {
+			add_to_variable = {
+				var = PRC_rice_reserves_in_shanghai
+				value = 10
+			}
+		}
+	}
+
+	PRC_invocate_cotton_to_shanghai = {	#调运棉布至上海
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		cost = 30
+		days_remove = 3
+		remove_effect = {
+			add_to_variable = {
+				var = PRC_rice_reserves_in_shanghai
+				value = 1
+			}
+		}
+	}
+
+	PRC_invocate_coal_to_shanghai = {	#调运煤至上海
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		cost = 30
+		days_remove = 3
+		remove_effect = {
+			add_to_variable = {
+				var = PRC_rice_reserves_in_shanghai
+				value = 12
+			}
+		}
+	}
+
+	PRC_dump_rice_to_shanghai = {	#抛售大米
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		days_remove = 3
+		complete_effect = {
+			add_to_variable = {
+				var = PRC_rice_reserves_in_shanghai
+				value = -10
+			}
+			add_to_variable = {
+				var = PRC_rice_reserves_in_shanghai_market
+				value = 10
+			}
+		}
+	}
+
+	PRC_dump_cotton_to_shanghai = {	#抛售棉布
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		days_remove = 3
+		complete_effect = {
+			add_to_variable = {
+				var = PRC_cotton_reserves_in_shanghai
+				value = -1
+			}
+			add_to_variable = {
+				var = PRC_cotton_reserves_in_shanghai_market
+				value = 1
+			}
+		}
+	}
+
+	PRC_dump_coal_to_shanghai = {	#抛售煤
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+		days_remove = 3
+		complete_effect = {
+			add_to_variable = {
+				var = PRC_coal_reserves_in_shanghai
+				value = -12
+			}
+			add_to_variable = {
+				var = PRC_coal_reserves_in_shanghai_market
+				value = 12
+			}
+		}
+	}
+
+	PRC_dump_state_goods_on_shanghai_market = {	#抛售两白一黑
+
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+
+		available = {
+
+			check_variable = {
+				var = PRC_rice_reserves_in_shanghai
+				value = 10
+				compare = greater_than_or_equals
+			}
+
+			check_variable = {
+				var = PRC_cotton_reserves_in_shanghai
+				value = 1
+				compare = greater_than_or_equals
+			}
+
+			check_variable = {
+				var = PRC_coal_reserves_in_shanghai
+				value = 12
+				compare = greater_than_or_equals
+			}
+		}
+
+		cost = 35
+		days_re_enable = 21
+
+		complete_effect = {
+
+			# 大米
+			subtract_from_variable = {
+				PRC_rice_reserves_in_shanghai = 10
+			}
+
+			add_to_variable = {
+				PRC_rice_reserves_in_shanghai_market = 10
+			}
+
+			multiply_variable = {
+				PRC_rice_price_in_shanghai = 0.70
+			}
+
+
+			# 棉
+			subtract_from_variable = {
+				PRC_cotton_reserves_in_shanghai = 1
+			}
+
+			add_to_variable = {
+				PRC_cotton_reserves_in_shanghai_market = 1
+			}
+
+			multiply_variable = {
+				PRC_cotton_price_in_shanghai = 0.55
+			}
+
+
+			# 煤
+			subtract_from_variable = {
+				PRC_coal_reserves_in_shanghai = 12
+			}
+
+			add_to_variable = {
+				PRC_coal_reserves_in_shanghai_market = 12
+			}
+
+			multiply_variable = {
+				PRC_coal_price_in_shanghai = 0.70
+			}
+
+			add_to_variable = {
+				speculator_confidence = -25
+			}
+		}
+	}
+
+	PRC_shanghai_industrial_commercial_forum = {	#工商界座谈会
+
+		visible = {
+			OR = {
+				has_country_flag = silver_dollar_war_start
+				has_country_flag = rice_cotton_coal_war_start
+			}
+		}
+
+		cost = 35
+		days_re_enable = 21
+
+		complete_effect = {
+
+			add_to_variable = {
+				capitalist_belief = 0.04
+			}
+
+			# 主流工商界与投机者拉开距离
+			add_to_variable = {
+				speculator_confidence = -5
+			}
+
+			clamp_variable = {
+				var = capitalist_belief
+				min = 0
+				max = 0.75
+			}
+		}
+	}
+
+	PRC_support_productive_private_industry = {	#发放生产性工商贷款
+
+		cost = 50
+		days_re_enable = 30
+
+		complete_effect = {
+
+			add_to_variable = {
+				capitalist_belief = 0.06
+			}
+
+			add_timed_idea = {
+				idea = prc_private_industry_support
+				days = 45
+			}
+
+			# 一部分资金不可避免地流入投机市场
+			hidden_effect = {
+
+				add_to_variable = {
+					capitalist_assets = 50
+				}
+			}
+
+			clamp_variable = {
+				var = capitalist_belief
+				min = 0
+				max = 0.75
+			}
+		}
+	}
+
+	PRC_investigate_shanghai_speculators = {	#特工调查
+
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+
+		cost = 20
+
+		days_re_enable = 14
+
+		complete_effect = {
+
+			PRC_li_kenong = {
+				unit_leader_event = {
+					id = PRC_li_kenong.1
+				}
+			}
+		}
+	}
+
+	PRC_force_end_rice_cotton_war = {	#军管重点仓库与交易所
+
+		visible = {
+			has_country_flag = rice_cotton_coal_war_start
+		}
+
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+
+			add_to_variable = {
+				capitalist_belief = -0.18
+			}
+
+			add_stability = -0.03
+
+			add_to_variable = {
+				PRC_rice_reserves_in_shanghai_market = capitalist_rice_hoard
+			}
+
+			add_to_variable = {
+				PRC_cotton_reserves_in_shanghai_market = capitalist_cotton_hoard
+			}
+
+			add_to_variable = {
+				PRC_coal_reserves_in_shanghai_market = capitalist_coal_hoard
+			}
+
+			clear_variable = capitalist_rice_hoard
+			clear_variable = capitalist_cotton_hoard
+			clear_variable = capitalist_coal_hoard
+
+			set_variable = {
+				var = capitalist_assets
+				value = 0
+			}
+
+			add_timed_idea = {
+				idea = prc_shanghai_commercial_chill
+				days = 90
+			}
+
+			set_country_flag = PRC_rice_cotton_war_forced
+
+			country_event = {
+				id = AWR_PRC.278
+				hours = 6
+			}
+		}
+	}
+
 }

@@ -2108,7 +2108,1484 @@ learn_naval_designs = {		#学习海军设计
 	}
 }
 
+#############################################
+# PRC 世界民族解放运动
+# Scripted Effects
+#############################################
 
 
 
+#############################################
+# 建立第三世界民族解放目标列表
+#
+# 调用方法：
+#
+# PRC_setup_third_world_independence_targets = yes
+#
+# 调用时当前 Scope 应为 PRC
+#############################################
 
+PRC_setup_third_world_independence_targets = {
+
+
+	#########################################
+	# 首先清空上一次扫描得到的名单
+	#########################################
+
+	clear_array = PRC_third_world_independence_targets
+
+
+
+	#########################################
+	# 第一部分：
+	#
+	# 搜索已经存在的殖民附属国
+	#
+	# 例如：
+	# RAJ
+	# INS
+	# MAL
+	# 等
+	#########################################
+
+	every_country = {
+
+		limit = {
+
+			exists = yes
+
+			is_subject = yes
+
+
+			# 排除中华人民共和国自己
+			NOT = {
+				original_tag = PRC
+			}
+
+
+			# 排除中华人民共和国自己的附属国
+			NOT = {
+				is_subject_of = PRC
+			}
+
+
+			################################
+			# 首都必须处于我们的
+			# 世界民族解放活动范围
+			################################
+
+			capital_scope = {
+
+				OR = {
+
+					is_on_continent = asia
+
+					is_on_continent = middle_east
+
+					is_on_continent = africa
+
+					is_on_continent = south_america
+
+					is_on_continent = australia
+				}
+			}
+		}
+
+
+		################################
+		# 防止重复加入数组
+		################################
+
+		if = {
+
+			limit = {
+
+				PRC = {
+
+					NOT = {
+
+						is_in_array = {
+
+							array = PRC_third_world_independence_targets
+
+							value = PREV
+						}
+					}
+				}
+			}
+
+
+			################################
+			# 加入PRC目标数组
+			################################
+
+			PRC = {
+
+				add_to_array = {
+
+					array = PRC_third_world_independence_targets
+
+					value = PREV
+				}
+			}
+		}
+	}
+
+
+
+	#########################################
+	# 第二部分：
+	#
+	# 搜索尚未存在、
+	# 但核心领土处于殖民统治下的民族
+	#
+	# 例如：
+	# KEN
+	# NGA
+	# 等
+	#########################################
+
+	every_state = {
+
+		limit = {
+
+
+			################################
+			# 只检查我们的目标地区
+			################################
+
+			OR = {
+
+				is_on_continent = asia
+
+				is_on_continent = middle_east
+
+				is_on_continent = africa
+
+				is_on_continent = south_america
+
+				is_on_continent = australia
+			}
+
+
+			################################
+			# 这个州必须不是拥有者自己的核心
+			#
+			# 这是判断殖民统治的重要条件
+			################################
+
+			NOT = {
+				is_core_of = owner
+			}
+
+
+			################################
+			# 排除PRC自己的领土
+			################################
+
+			owner = {
+
+				NOT = {
+					original_tag = PRC
+				}
+			}
+
+
+			################################
+			# 必须存在至少一个核心国家
+			################################
+
+			check_variable = {
+				core_countries^num > 0
+			}
+		}
+
+
+
+		################################
+		# 遍历这个州所有拥有核心的国家
+		################################
+
+		for_each_scope_loop = {
+
+			array = core_countries
+
+
+			################################
+			# 此时：
+			#
+			# THIS = 拥有该州核心的国家
+			################################
+
+			if = {
+
+				limit = {
+
+
+					################################
+					# 专门寻找尚未存在的国家
+					################################
+
+					exists = no
+
+
+					################################
+					# 排除PRC
+					################################
+
+					NOT = {
+						original_tag = PRC
+					}
+
+
+					################################
+					# 防止重复添加
+					################################
+
+					PRC = {
+
+						NOT = {
+
+							is_in_array = {
+
+								array = PRC_third_world_independence_targets
+
+								value = PREV
+							}
+						}
+					}
+				}
+
+
+				################################
+				# 加入世界民族解放目标池
+				################################
+
+				PRC = {
+
+					add_to_array = {
+
+						array = PRC_third_world_independence_targets
+
+						value = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+#############################################
+# 实际支持民族解放运动的统一效果
+#
+# 当前 Scope = 被支援国家
+#
+# 使用方式：
+#
+# FROM = {
+#     PRC_support_national_liberation_effect = yes
+# }
+#############################################
+
+PRC_support_national_liberation_effect = {
+	#########################################
+	# 第一种：
+	#
+	# 这个国家已经存在
+	#
+	# 给它留下：
+	# “曾受PRC支持”的国家flag
+	#########################################
+
+	if = {
+
+		limit = {
+			exists = yes
+		}
+
+		set_country_flag = PRC_supported_independence_movement
+	}
+	#########################################
+	# 第二种：
+	#
+	# 已经存在，而且是殖民附属国
+	#
+	# 主要通过自治度推动独立
+	#########################################
+	if = {
+
+		limit = {
+
+			exists = yes
+
+			is_subject = yes
+
+			NOT = {
+				is_subject_of = PRC
+			}
+		}
+		################################
+		# 增加5%的自治进度
+		################################
+		add_autonomy_ratio = {
+
+			value = 0.10
+
+			localization = PRC_supported_national_liberation_autonomy
+		}
+	}
+	#########################################
+	# 第三种：
+	# 遍历该民族所有核心州
+	#
+	# 对仍处于外国非核心统治下的地区
+	# 支持地下民族运动
+	#########################################
+	every_core_state = {
+
+		limit = {
+			# 必须是殖民统治 / 非核心统治
+			NOT = {
+				is_core_of = owner
+			}
+
+			# PRC自己控制的地方不搞革命
+			owner = {
+
+				NOT = {
+					original_tag = PRC
+				}
+			}
+		}
+		# 在州上留下永久记录
+		# 即使以后这个国家通过起义出现，
+		# state flag依然可以用来判断
+		# PRC曾经支持过这里
+		set_state_flag = PRC_supported_revolution_state
+
+		# 一年内增加抵抗目标
+		add_resistance_target = {
+
+			amount = 8
+
+			days = 365
+
+			tooltip = PRC_third_world_resistance_target_tt
+		}
+		# 如果这个州已经启用了Resistance
+		# 再立即提高5点
+		if = {
+
+			limit = {
+				has_resistance = yes
+			}
+
+			add_resistance = 5
+		}
+	}
+}
+
+PRC_update_faction_member_count = {	#检测阵营成员数
+
+	if = {
+		limit = {
+			is_in_faction = yes
+		}
+
+		set_variable = {
+			PRC_faction_member_count = faction_members^num
+		}
+	}
+
+	else = {
+		set_variable = {
+			PRC_faction_member_count = 0
+		}
+	}
+
+	set_variable = {	#科研
+		var = PRC_strategic_cooperation_research_speed_factor
+		value = faction_members^num
+	}
+
+	multiply_variable = { 
+		PRC_strategic_cooperation_research_speed_factor = 0.01
+	}
+
+	set_variable = {	#工厂产出
+		var = PRC_strategic_cooperation_industrial_capacity_factory
+		value = faction_members^num
+	}
+
+	multiply_variable = { 
+		PRC_strategic_cooperation_industrial_capacity_factory = 0.01
+	}
+	
+	set_variable = {	#船坞产出
+		var = PRC_strategic_cooperation_industrial_capacity_dockyard
+		value = faction_members^num
+	}
+
+	multiply_variable = { 	
+		PRC_strategic_cooperation_industrial_capacity_dockyard = 0.01
+	}
+
+	set_variable = {	#军工建设速度
+		var = PRC_strategic_cooperation_production_speed_arms_factory_factor
+		value = faction_members^num
+	}
+
+	multiply_variable = { 
+		PRC_strategic_cooperation_production_speed_arms_factory_factor = 0.01
+	}
+
+	set_variable = {	#船坞建设速度
+		var = PRC_strategic_cooperation_production_speed_dockyard_factor
+		value = faction_members^num
+	}
+
+	multiply_variable = { 
+		PRC_strategic_cooperation_production_speed_dockyard_factor = 0.01
+	}
+}
+
+PRC_economy_cooperation_partner_number_up = {	#经济合作人数上升
+
+	add_to_variable = {
+		var = PRC_num_of_economy_cooperation_partner
+		value = 1
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_consumer_goods_factor
+		value = -0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_infrastructure_factor
+		value = 0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_industrial_complex_factor
+		value = 0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_energy_infrastructure_factor
+		value = 0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_industrial_infrastructure_factor
+		value = 0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_AWR_economy_development_monthly
+		value = 0.0025
+	}
+}
+
+PRC_economy_cooperation_partner_number_down = {	#经济合作人数下降
+
+	add_to_variable = {
+		var = PRC_num_of_economy_cooperation_partner
+		value = -1
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_consumer_goods_factor
+		value = 0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_infrastructure_factor
+		value = -0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_industrial_complex_factor
+		value = -0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_energy_infrastructure_factor
+		value = -0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_production_speed_industrial_infrastructure_factor
+		value = -0.01
+	}
+	add_to_variable = {
+		var = PRC_economy_cooperation_AWR_economy_development_monthly
+		value = -0.0025
+	}
+}
+
+PRC_silver_dollar_war_daily_tick = {	#银元之战
+
+    # 银元之战持续天数
+    add_to_variable = {
+        PRC_silver_dollar_war_days = 1
+    }
+
+    # ==========================================
+    # 1. 投机活动自然推动银元上涨
+    # ==========================================
+
+    if = {
+        limit = {
+            check_variable = {
+                var = RMB_belief
+                value = 0.30
+                compare = less_than
+            }
+        }
+
+        # 人民币信用很低时，银元需求增加
+        multiply_variable = {
+            RMB_silver_dollar = 1.04
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = RMB_belief
+                value = 0.50
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            RMB_silver_dollar = 1.02
+        }
+    }
+
+    # ==========================================
+    # 2. 银元上涨反过来打击人民币信用
+    # ==========================================
+
+    if = {
+        limit = {
+            check_variable = {
+                var = RMB_silver_dollar
+                value = 1000
+                compare = greater_than
+            }
+        }
+
+        add_to_variable = {
+            RMB_belief = -0.01
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = {
+                var = RMB_silver_dollar
+                value = 1500
+                compare = greater_than
+            }
+        }
+
+        add_to_variable = {
+            RMB_belief = -0.015
+        }
+    }
+
+    # ==========================================
+    # 3. 防止变量越界
+    # ==========================================
+
+    clamp_variable = {
+        var = RMB_belief
+        min = 0
+        max = 1
+    }
+
+    clamp_variable = {
+        var = RMB_silver_dollar
+        min = 300
+        max = 4000
+    }
+
+    # ==========================================
+    # 4. 判断经济手段是否获胜
+    # 人民币信用 >= 0.55
+    # 银元汇率 <= 800
+    # ==========================================
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = RMB_belief
+                value = 0.55
+                compare = greater_than_or_equals
+            }
+
+            check_variable = {
+                var = RMB_silver_dollar
+                value = 800
+                compare = less_than_or_equals
+            }
+        }
+
+        add_to_variable = {
+            PRC_silver_dollar_stable_days = 1
+        }
+    }
+
+    else = {
+        set_variable = {
+            var = PRC_silver_dollar_stable_days
+            value = 0
+        }
+    }
+
+    # 连续稳定3天 → 银元之战胜利
+    if = {
+        limit = {
+            check_variable = {
+                var = PRC_silver_dollar_stable_days
+                value = 3
+                compare = greater_than_or_equals
+            }
+        }
+
+        clr_country_flag = silver_dollar_war_start
+        set_country_flag = silver_dollar_war_economic_victory
+
+        country_event = {
+            id = AWR_PRC.275
+            hours = 6
+        }
+    }
+}
+
+PRC_update_shanghai_rice_price = {	#上海米价
+
+    if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 21
+                compare = greater_than_or_equals
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 0.94
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 17
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 21
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 0.97
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 11
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 17
+                compare = less_than
+            }
+        }
+
+        # 正常，不变
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 8
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 11
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.03
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 5
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 8
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.07
+        }
+    }
+
+    else = {
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.12
+        }
+    }
+
+    clamp_variable = {
+        var = PRC_rice_price_in_shanghai
+        min = 60
+        max = 1200
+    }
+}
+
+PRC_update_shanghai_rice_price = {	#上海棉价
+
+    if = {
+        limit = {
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 2.25
+                compare = greater_than_or_equals
+            }
+        }
+
+        multiply_variable = {
+            PRC_cotton_price_in_shanghai = 0.94
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 1.80
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 2.25
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_cotton_price_in_shanghai = 0.97
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 1.20
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 1.80
+                compare = less_than
+            }
+        }
+
+        # 正常，不变
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 0.90
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 1.20
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_cotton_price_in_shanghai = 1.03
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 0.60
+                compare = greater_than_or_equals
+            }
+
+			check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 0.90
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_cotton_price_in_shanghai = 1.07
+        }
+    }
+
+    else = {
+
+        multiply_variable = {
+            PRC_cotton_price_in_shanghai = 1.12
+        }
+    }
+
+    clamp_variable = {
+        var = PRC_cotton_price_in_shanghai
+        min = 60
+        max = 1200
+    }
+}
+
+PRC_update_shanghai_rice_price = {	#上海煤价
+
+    if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 36
+                compare = greater_than_or_equals
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 0.94
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 30
+                compare = greater_than_or_equals
+            }
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 36
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 0.97
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 24
+                compare = greater_than_or_equals
+            }
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 30
+                compare = less_than
+            }
+        }
+
+        # 正常，不变
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 18
+                compare = greater_than_or_equals
+            }
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 24
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.03
+        }
+    }
+
+    else_if = {
+        limit = {
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 12
+                compare = greater_than_or_equals
+            }
+			check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 18
+                compare = less_than
+            }
+        }
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.07
+        }
+    }
+
+    else = {
+
+        multiply_variable = {
+            PRC_rice_price_in_shanghai = 1.12
+        }
+    }
+
+    clamp_variable = {
+        var = PRC_rice_price_in_shanghai
+        min = 60
+        max = 1200
+    }
+}
+
+PRC_speculator_buy_rice = {	#投机者买米
+
+    set_temp_variable = {
+        var = PRC_temp_rice_cost
+        value = PRC_rice_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_rice_cost = 0.60
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 0.60
+                compare = greater_than_or_equals
+            }
+
+            check_variable = {
+                var = capitalist_assets
+                value = PRC_temp_rice_cost
+                compare = greater_than_or_equals
+            }
+        }
+
+        subtract_from_variable = {
+            capitalist_assets = PRC_temp_rice_cost
+        }
+
+        subtract_from_variable = {
+            PRC_rice_reserves_in_shanghai_market = 0.60
+        }
+
+        add_to_variable = {
+            capitalist_rice_hoard = 0.60
+        }
+    }
+}
+
+PRC_speculator_buy_cotton = {	#投机者买棉
+
+    set_temp_variable = {
+        var = PRC_temp_cotton_cost
+        value = PRC_cotton_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_cotton_cost = 0.10
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_cotton_reserves_in_shanghai_market
+                value = 0.10
+                compare = greater_than_or_equals
+            }
+
+            check_variable = {
+                var = capitalist_assets
+                value = PRC_temp_cotton_cost
+                compare = greater_than_or_equals
+            }
+        }
+
+        subtract_from_variable = {
+            capitalist_assets = PRC_temp_cotton_cost
+        }
+
+        subtract_from_variable = {
+            PRC_cotton_reserves_in_shanghai_market = 0.10
+        }
+
+        add_to_variable = {
+            capitalist_cotton_hoard = 0.10
+        }
+    }
+}
+
+PRC_speculator_buy_rice = {	#投机者买煤
+
+    set_temp_variable = {
+        var = PRC_temp_rice_cost
+        value = PRC_rice_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_rice_cost = 0.90
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_rice_reserves_in_shanghai_market
+                value = 0.90
+                compare = greater_than_or_equals
+            }
+
+            check_variable = {
+                var = capitalist_assets
+                value = PRC_temp_rice_cost
+                compare = greater_than_or_equals
+            }
+        }
+
+        subtract_from_variable = {
+            capitalist_assets = PRC_temp_rice_cost
+        }
+
+        subtract_from_variable = {
+            PRC_rice_reserves_in_shanghai_market = 0.90
+        }
+
+        add_to_variable = {
+            capitalist_rice_hoard = 0.90
+        }
+    }
+}
+
+PRC_speculator_sell_rice = {	#投机者卖米
+
+    set_temp_variable = {
+        var = PRC_temp_rice_cost
+        value = PRC_rice_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_rice_cost = 0.60
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_rice_price_in_shanghai
+                value = 800
+                compare = greater_than_or_equals
+            }
+        }
+
+        add_to_variable = {
+            capitalist_assets = PRC_temp_rice_cost
+        }
+
+        add_to_variable = {
+            PRC_rice_reserves_in_shanghai_market = 0.60
+        }
+
+        subtract_from_variable = {
+            capitalist_rice_hoard = 0.60
+        }
+    }
+}
+
+PRC_speculator_sell_cotton = {	#投机者卖棉
+
+    set_temp_variable = {
+        var = PRC_temp_cotton_cost
+        value = PRC_cotton_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_cotton_cost = 0.10
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_cotton_price_in_shanghai
+                value = 1600
+                compare = greater_than_or_equals
+            }
+        }
+
+        add_to_variable = {
+            capitalist_assets = PRC_temp_cotton_cost
+        }
+
+        add_to_variable = {
+            PRC_cotton_reserves_in_shanghai_market = 0.10
+        }
+
+        subtract_from_variable = {
+            capitalist_cotton_hoard = 0.10
+        }
+    }
+}
+
+PRC_speculator_sell_coal = {	#投机者卖煤
+
+    set_temp_variable = {
+        var = PRC_temp_coal_cost
+        value = PRC_coal_price_in_shanghai
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_coal_cost = 0.90
+    }
+
+    if = {
+        limit = {
+
+            check_variable = {
+                var = PRC_coal_price_in_shanghai
+                value = 1800
+                compare = greater_than_or_equals
+            }
+        }
+
+        add_to_variable = {
+            capitalist_assets = PRC_temp_coal_cost
+        }
+
+        add_to_variable = {
+            PRC_coal_reserves_in_shanghai_market = 0.90
+        }
+
+        subtract_from_variable = {
+            capitalist_coal_hoard = 0.90
+        }
+    }
+}
+
+PRC_speculator_lending = {	#投机者借贷
+
+	if = {
+
+		limit = {
+
+			check_variable = {
+				var = speculator_confidence
+				value = 55
+				compare = greater_than_or_equals
+			}
+
+			check_variable = {
+				var = capitalist_assets
+				value = 180
+				compare = less_than
+			}
+
+			check_variable = {
+				var = capitalist_debt
+				value = 1601
+				compare = less_than
+			}
+
+			NOT = {
+				has_idea = prc_shanghai_credit_squeeze
+			}
+		}
+
+		add_to_variable = {
+			capitalist_assets = 200
+		}
+
+		add_to_variable = {
+			capitalist_debt = 200
+		}
+	}
+
+}
+
+PRC_speculator_repay_the_loan = {	#投机者还贷
+
+	if = {
+
+		limit = {
+
+			check_variable = {
+				var = capitalist_assets
+				value = 500
+				compare = greater_than
+			}
+
+			check_variable = {
+				var = capitalist_debt
+				value = 100
+				compare = greater_than_or_equals
+			}
+
+			NOT = {
+				has_idea = prc_shanghai_credit_squeeze
+			}
+		}
+
+		subtract_from_variable = {
+			capitalist_assets = 100
+		}
+
+		subtract_from_variable = {
+			capitalist_debt = 100
+		}
+	}
+
+}
+
+PRC_speculator_dumping_rice = {	#投机者倾销大米
+	if = {
+
+		limit = {
+
+			OR = {
+
+				check_variable = {
+					var = speculator_confidence
+					value = 35
+					compare = less_than_or_equals
+				}
+
+				check_variable = {
+					var = capitalist_assets
+					value = 0
+					compare = less_than
+				}
+			}
+
+			check_variable = {
+				var = capitalist_rice_hoard
+				value = 0.9
+				compare = greater_than_or_equals
+			}
+		}
+
+		subtract_from_variable = {
+			capitalist_rice_hoard = 0.9
+		}
+
+		add_to_variable = {
+			PRC_rice_reserves_in_shanghai_market = 0.9
+		}
+
+		set_temp_variable = {
+			var = PRC_temp_sale_income
+			value = PRC_rice_price_in_shanghai
+		}
+
+		multiply_temp_variable = {
+			PRC_temp_sale_income = 0.9
+		}
+
+		add_to_variable = {
+			capitalist_assets = PRC_temp_sale_income
+		}
+	}
+
+}
+
+PRC_speculator_dumping_cotton = {	#投机者倾销棉
+	if = {
+
+		limit = {
+
+			OR = {
+
+				check_variable = {
+					var = speculator_confidence
+					value = 35
+					compare = less_than_or_equals
+				}
+
+				check_variable = {
+					var = capitalist_assets
+					value = 0
+					compare = less_than
+				}
+			}
+
+			check_variable = {
+				var = capitalist_cotton_hoard
+				value = 0.15
+				compare = greater_than_or_equals
+			}
+		}
+
+		subtract_from_variable = {
+			capitalist_cotton_hoard = 0.15
+		}
+
+		add_to_variable = {
+			PRC_cotton_reserves_in_shanghai_market = 0.15
+		}
+
+		set_temp_variable = {
+			var = PRC_temp_sale_income
+			value = PRC_cotton_price_in_shanghai
+		}
+
+		multiply_temp_variable = {
+			PRC_temp_sale_income = 0.15
+		}
+
+		add_to_variable = {
+			capitalist_assets = PRC_temp_sale_income
+		}
+	}
+
+}
+
+PRC_speculator_dumping_coal = {	#投机者倾销煤
+	if = {
+
+		limit = {
+
+			OR = {
+
+				check_variable = {
+					var = speculator_confidence
+					value = 35
+					compare = less_than_or_equals
+				}
+
+				check_variable = {
+					var = capitalist_assets
+					value = 0
+					compare = less_than
+				}
+			}
+
+			check_variable = {
+				var = capitalist_coal_hoard
+				value = 1.2
+				compare = greater_than_or_equals
+			}
+		}
+
+		subtract_from_variable = {
+			capitalist_coal_hoard = 1.2
+		}
+
+		add_to_variable = {
+			PRC_coal_reserves_in_shanghai_market = 1.2
+		}
+
+		set_temp_variable = {
+			var = PRC_temp_sale_income
+			value = PRC_coal_price_in_shanghai
+		}
+
+		multiply_temp_variable = {
+			PRC_temp_sale_income = 1.2
+		}
+
+		add_to_variable = {
+			capitalist_assets = PRC_temp_sale_income
+		}
+	}
+
+}
+
+PRC_calculate_speculator_net_worth = {	#投机者资产计算
+
+    set_variable = {
+        var = capitalist_net_assets
+        value = capitalist_assets
+    }
+
+
+    # 米
+    set_temp_variable = {
+        var = PRC_temp_asset_value
+        value = capitalist_rice_hoard
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_asset_value = PRC_rice_price_in_shanghai
+    }
+
+    add_to_variable = {
+        capitalist_net_assets = PRC_temp_asset_value
+    }
+
+
+    # 棉
+    set_temp_variable = {
+        var = PRC_temp_asset_value
+        value = capitalist_cotton_hoard
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_asset_value = PRC_cotton_price_in_shanghai
+    }
+
+    add_to_variable = {
+        capitalist_net_assets = PRC_temp_asset_value
+    }
+
+
+    # 煤
+    set_temp_variable = {
+        var = PRC_temp_asset_value
+        value = capitalist_coal_hoard
+    }
+
+    multiply_temp_variable = {
+        PRC_temp_asset_value = PRC_coal_price_in_shanghai
+    }
+
+    add_to_variable = {
+        capitalist_net_assets = PRC_temp_asset_value
+    }
+
+
+    subtract_from_variable = {
+        capitalist_net_assets = capitalist_debt
+    }
+}

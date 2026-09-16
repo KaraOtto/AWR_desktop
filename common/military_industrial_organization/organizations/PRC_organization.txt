@@ -1,7 +1,7 @@
 #船
 PRC_jiangnan_shipyard_group = {	#江南造船厂
 	include = generic_escort_ship_organization
-	icon = GFX_idea_prc_chuan_icon
+	icon = GFX_MIO_PRC_jiangnan_shipyard_group
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -32,12 +32,13 @@ PRC_jiangnan_shipyard_group = {	#江南造船厂
 		position = { x=9 y=2 }
 		
 		available = {
-			has_completed_focus = PRC_guochanquzhujian
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_jiang_nan
 				}
+				has_completed_focus = PRC_guochanquzhujian
 			}
 		}
 		
@@ -65,12 +66,13 @@ PRC_jiangnan_shipyard_group = {	#江南造船厂
 		icon = GFX_generic_mio_department_icon_ship_screen_ship_offense
 
 		available = {
-			has_completed_focus = PRC_guochanquzhujian
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_jiang_nan
 				}
+				has_completed_focus = PRC_guochanquzhujian
 			}
 		}
 
@@ -100,12 +102,12 @@ PRC_jiangnan_shipyard_group = {	#江南造船厂
 		name = mio_trait_production_speed
 		icon = GFX_generic_mio_department_icon_ship_screen_ship_production
 		available = {
-			has_completed_focus = PRC_guochanquzhujian
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_jiang_nan
 				}
+				has_completed_focus = PRC_guochanquzhujian
 			}
 		}
 
@@ -130,7 +132,7 @@ PRC_jiangnan_shipyard_group = {	#江南造船厂
 
 PRC_bohai_shipyard_group = {	#渤海造船厂
 	include = generic_submarine_organization
-	icon = GFX_idea_prc_chuan_icon
+	icon = GFX_MIO_PRC_bohai_shipyard_group
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -159,12 +161,13 @@ PRC_bohai_shipyard_group = {	#渤海造船厂
 		position = { x=9 y=2 }
 		
 		available = {
-			has_completed_focus = PRC_submarine_center
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_bo_hai
 				}
+				has_completed_focus = PRC_submarine_center
 			}
 		}
 		
@@ -191,12 +194,13 @@ PRC_bohai_shipyard_group = {	#渤海造船厂
 		icon = GFX_generic_mio_trait_icon_reliability
 
 		available = {
-			has_completed_focus = PRC_carriers_center
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_bo_hai
 				}
+				has_completed_focus = PRC_carriers_center
 			}
 		}
 
@@ -225,12 +229,13 @@ PRC_bohai_shipyard_group = {	#渤海造船厂
 		name = generic_mio_trait_radar_warning_receiver_2
 		icon = GFX_generic_mio_trait_icon_sub_visibility
 		available = {
-			has_completed_focus = PRC_submarine_center
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_bo_hai
 				}
+				has_completed_focus = PRC_submarine_center
 			}
 		}
 
@@ -254,7 +259,7 @@ PRC_bohai_shipyard_group = {	#渤海造船厂
 
 PRC_dalian_shipyard_group = {	#大连造船厂
 	include = generic_aircraft_carrier_organization
-	icon = GFX_idea_prc_chuan_icon
+	icon = GFX_MIO_PRC_dalian_shipyard_group
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -279,7 +284,9 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 		position = { x=9 y=2 }
 		
 		available = {
-			has_completed_focus = PRC_carriers_center
+			ROOT = {
+				has_completed_focus = PRC_carriers_center
+			}
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
@@ -310,12 +317,13 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 		icon = GFX_generic_mio_trait_icon_build_cost_ic
 
 		available = {
-			has_completed_focus = PRC_carriers_center
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_da_lian
 				}
+				has_completed_focus = PRC_carriers_center
 			}
 		}
 
@@ -345,12 +353,13 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 		name = generic_mio_add_carrier_based_aircraft
 		icon = GFX_generic_mio_add_carrier_based_aircraft
 		available = {
-			has_completed_focus = PRC_carriers_center
+			
 			has_mio_size > 10
 			PRC = {
 				NOT = { 
 					has_country_flag = complete_choice_of_special_flag_da_lian
 				}
+				has_completed_focus = PRC_carriers_center
 			}
 		}
 
@@ -371,8 +380,8 @@ PRC_dalian_shipyard_group = {	#大连造船厂
 	}
 }
 
-CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
-	icon = GFX_idea_NORDIC_navy_communist
+PRC_State_Shipbuilding = { #中国船舶重工集团#主力舰
+	icon = GFX_MIO_PRC_State_Shipbuilding
 	
 	allowed = {
 	    OR = {
@@ -387,7 +396,7 @@ CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_State_Shipbuilding
+			has_global_flag = establish_PRC_State_Shipbuilding
 		}
 	}
 
@@ -417,7 +426,7 @@ CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
 	}
 
 	initial_trait = {
-		name = CHI_State_Shipbuilding_name
+		name = PRC_State_Shipbuilding_name
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.15
@@ -722,8 +731,8 @@ CHI_State_Shipbuilding = {#中国船舶重工集团#主力舰
 	}
 }
 
-CHI_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专精
-	icon = GFX_idea_generic_coastal_defense_ships2
+PRC_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专精
+	icon = GFX_MIO_PRC_LiaoNan_Shipbuilding
 	
 	allowed = {
 	    OR = {
@@ -738,7 +747,7 @@ CHI_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_LiaoNan_Shipbuilding
+			has_global_flag = establish_PRC_LiaoNan_Shipbuilding
 		}
 	}
 
@@ -769,7 +778,7 @@ CHI_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专
 	}
 
 	initial_trait = {
-		name = CHI_LiaoNan_Shipbuilding_name
+		name = PRC_LiaoNan_Shipbuilding_name
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1
@@ -1157,7 +1166,7 @@ CHI_LiaoNan_Shipbuilding = {#中国人民解放军第4810厂#巡洋舰#航程专
 #飞机
 PRC_xian_air = { #国营172厂 西安飞机工业集团
 	include = generic_heavy_aircraft_organization
-	icon = GFX_idea_generic_aircraft_support
+	icon = GFX_MIO_PRC_xian_air
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -1175,8 +1184,8 @@ PRC_xian_air = { #国营172厂 西安飞机工业集团
 	}
 }
 
-CHI_Shenyang_Aircraft = {#国营112厂#战斗机#对空专精
-	icon = GFX_idea_prc_feiji_icon
+PRC_Shenyang_Aircraft = {#国营112厂#战斗机#对空专精
+	icon = GFX_MIO_PRC_Shenyang_Aircraft
 	include = generic_medium_aircraft_organization
 	allowed = {
 	    OR = {
@@ -1191,15 +1200,15 @@ CHI_Shenyang_Aircraft = {#国营112厂#战斗机#对空专精
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_Shenyang_Aircraft
+			has_global_flag = establish_PRC_Shenyang_Aircraft
 		}
 	}
 
 	
 }
 
-CHI_Chengdu_Aircraft = {#国营132厂#战斗机 #高机动
-	icon = GFX_idea_generic_air_research
+PRC_Chengdu_Aircraft = {#国营132厂#战斗机 #高机动
+	icon = GFX_MIO_PRC_Chengdu_Aircraft
 	include = generic_high_agility_fighter_aircraft_organization
 	allowed = {
 	    OR = {
@@ -1214,15 +1223,15 @@ CHI_Chengdu_Aircraft = {#国营132厂#战斗机 #高机动
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Chengdu_Aircraft
+			has_country_flag = establish_PRC_Chengdu_Aircraft
 		}
 	}
 
 	
 }
 
-CHI_Shanghai_Aircraft = { #上海飞机制造厂#海军飞机
-	icon = GFX_idea_generic_air_manufacturer_3
+PRC_Shanghai_Aircraft = { #上海飞机制造厂#海军飞机
+	icon = GFX_MIO_PRC_Shanghai_Aircraft
 	include = generic_naval_aircraft_organization
 	
 	allowed = {
@@ -1238,35 +1247,16 @@ CHI_Shanghai_Aircraft = { #上海飞机制造厂#海军飞机
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_Shanghai_Aircraft
+			has_global_flag = establish_PRC_Shanghai_Aircraft
 		}
 	}
 }
 
 #坦克
-PRC_shenyang_tank_manufacturer = { #国营618厂
-	include = generic_infantry_tank_organization
-	icon = GFX_idea_prc_junxie_icon
-	allowed = {
-	    OR = {
-		    tag = PRC
-		    tag = event_target:WTT_communist_china
-		}
-	}
-	available = {
-		owner = { 
-			has_completed_focus = PRC_Five_year_plans_of_China 
-		}
-		OR = {
-			has_global_flag = be_high
-			has_global_flag = establish_PRC_shenyang_tank_manufacturer
-		}
-	}
-}
 
 PRC_harbin_tank_manufacturer = { #国营674厂
 	include = generic_tank_refurbishment_plant_organization
-	icon = GFX_idea_prc_junxie_icon
+	icon = GFX_MIO_PRC_harbin_tank_manufacturer
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -1282,11 +1272,93 @@ PRC_harbin_tank_manufacturer = { #国营674厂
 			has_global_flag = establish_PRC_harbin_tank_manufacturer
 		}
 	}
+
+	add_trait = {	#精简化设计
+
+		token = generic_mio_trait_simplified_design
+		name = generic_mio_trait_simplified_design  #特质name（一般和token相同）
+		icon = GFX_generic_mio_trait_icon_build_cost_ic #特质图标
+		
+		position = { 
+			x = 9
+			y = 2 
+		}
+
+		available = { 
+            has_mio_size > 5 
+        }
+
+		special_trait_background = yes
+
+		equipment_bonus = {#对装备的加成
+			build_cost_ic = -0.05
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+		
+	}
+
+	add_trait = {	#优化燃油消耗
+
+		token = generic_mio_trait_optimize_fuel_consumption
+		name = generic_mio_trait_optimize_fuel_consumption
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
+		
+		position = { 
+			x = 9
+			y = 3 
+		}
+
+		available = { 
+            has_mio_size > 5 
+			ROOT = {
+				has_country_flag = go_ahead_with_stability
+			}
+        }
+
+		special_trait_background = yes
+
+		equipment_bonus = {#对装备的加成
+			fuel_consumption = -0.15
+		}
+
+	}
+
+	add_trait = {	#新型高爆弹药
+
+		token = generic_mio_trait_new_ammunition
+		name = generic_mio_trait_new_ammunition  
+		icon = GFX_generic_mio_trait_icon_ap_attack #特质图标
+		
+		position = { 
+			x = 9
+			y = 4 
+		}
+
+		available = { 
+            has_mio_size > 5 
+			ROOT = {
+				has_country_flag = full_speed_ahead
+			}
+        }
+
+		special_trait_background = yes
+
+		equipment_bonus = {#对装备的加成
+			breakthrough = 0.05
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
+		
+	}
 }
 
 PRC_xian_tank_manufacturer = { #国营617厂
 	include = generic_medium_tank_organization
-	icon = GFX_idea_prc_junxie_icon
+	icon = GFX_MIO_PRC_xian_tank_manufacturer
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -1304,8 +1376,8 @@ PRC_xian_tank_manufacturer = { #国营617厂
 	}
 }
 
-CHI_South_Industry = {#中国兵器装备集团
-	icon = GFX_idea_generic_acquire_tanks
+PRC_South_Industry = {#中国兵器装备集团
+	icon = GFX_MIO_PRC_South_Industry
 	
 	allowed = {
 	    OR = {
@@ -1320,7 +1392,7 @@ CHI_South_Industry = {#中国兵器装备集团
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_South_Industry
+			has_global_flag = establish_PRC_South_Industry
 		}
 	}
 
@@ -1353,7 +1425,7 @@ CHI_South_Industry = {#中国兵器装备集团
 	}
 
 	initial_trait = {
-		name = CHI_South_Industry_name
+		name = PRC_South_Industry_name
 		
 		production_bonus = {
 			production_cost_factor = -0.1
@@ -1579,9 +1651,8 @@ CHI_South_Industry = {#中国兵器装备集团
 }
 
 #汽车厂
-CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
-	icon = GFX_idea_prc_junxie_icon
-	#include = generic_medium_tank_organization
+PRC_North_Heavy_Industry = {#北方重工业集团（国营618厂）#装甲生产商
+	icon = GFX_MIO_PRC_North_Heavy_Industry
 	
 	allowed = {
 	    OR = {
@@ -1596,7 +1667,7 @@ CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
 		}
 		OR = {
 			has_global_flag = be_high
-			has_global_flag = establish_CHI_North_Heavy_Industry
+			has_global_flag = establish_PRC_North_Heavy_Industry
 		}
 	}
 
@@ -1626,7 +1697,7 @@ CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
 	}
 
 	initial_trait = {
-		name = CHI_North_Heavy_Industry_name
+		name = PRC_North_Heavy_Industry_name
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.15
@@ -1906,8 +1977,8 @@ CHI_North_Heavy_Industry = {#北方重工业集团#装甲生产商
 
 }
 
-CHI_First_Motor = {#一汽
-	icon = GFX_idea_prc_yiqi
+PRC_First_Motor = {#一汽
+	icon = GFX_MIO_PRC_First_Motor
 	
 	allowed = {
 	    OR = {
@@ -1922,7 +1993,7 @@ CHI_First_Motor = {#一汽
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_First_Motor
+			has_country_flag = establish_PRC_First_Motor
 		}
 	}
 
@@ -1953,7 +2024,7 @@ CHI_First_Motor = {#一汽
 	}
 
 	initial_trait = {
-		name = CHI_First_Motor_name
+		name = PRC_First_Motor_name
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1
@@ -2351,9 +2422,9 @@ CHI_First_Motor = {#一汽
 }
 
 #枪厂
-CHI_Six_two_six = {#国营626厂 庆华
-	icon = GFX_idea_prc_junxie_icon
-	
+PRC_Six_two_six = {#国营626厂 庆华
+	icon = GFX_MIO_PRC_Six_two_six
+	include = generic_infantry_equipment_organization
 	allowed = {
 	    OR = {
 		    tag = PRC
@@ -2364,10 +2435,11 @@ CHI_Six_two_six = {#国营626厂 庆华
 	available = {
 		owner = { 
 			has_completed_focus = PRC_Five_year_plans_of_China 
+			
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_Six_two_six
+			has_global_flag = establish_PRC_Six_two_six
 		}
 	}
 
@@ -2377,246 +2449,13 @@ CHI_Six_two_six = {#国营626厂 庆华
 	research_categories = { 
 		infantry_weapons 
 	}
-
-	tree_header_text = {
-		text = CHI_mio_header_1
-		x = 1
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_2
-		x = 4
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_3
-		x = 7
-	}
-
-	initial_trait = {
-		name = CHI_Six_two_six_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
-		}
-
-		production_bonus = {
-			production_cost_factor = -0.05
-		}
-
-	}
-
-	trait = {
-		token = CHI_mio_trait_26
-		name = CHI_mio_trait_26
-		icon = GFX_generic_mio_trait_icon_production_capacity
-
-		position = { x=4 y=0 }
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_27
-		name = CHI_mio_trait_27
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=-3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			soft_attack = 0.1
-			defense = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_28
-		name = CHI_mio_trait_28
-		icon = GFX_generic_mio_trait_icon_ap_attack
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			hard_attack = 0.1
-			ap_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_29
-		name = CHI_mio_trait_29
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			reliability = 0.2
-			maximum_speed = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_30
-		name = CHI_mio_trait_30
-		icon = GFX_generic_mio_trait_icon_soft_attack
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_27 }
-		mutually_exclusive = { CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_31
-		name = CHI_mio_trait_31
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=1 y=1 }
-
-		any_parent = { CHI_mio_trait_27 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_30 }
-
-		equipment_bonus = {
-			soft_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_32
-		name = CHI_mio_trait_32
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_30 CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_33
-		name = CHI_mio_trait_33
-		icon = GFX_generic_mio_trait_icon_conversion_speed
-
-		relative_position_id = CHI_mio_trait_29
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_29 }
-
-		production_bonus = {
-			production_capacity_factor = 0.05
-			production_conversion_speed_factor = 0.15
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_34
-		name = CHI_mio_trait_34
-		icon = GFX_generic_mio_department_icon_facilities
-
-		relative_position_id = CHI_mio_trait_33
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_33 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_35
-		name = CHI_mio_trait_35
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=-1 y=1 }
-
-		any_parent = { CHI_mio_trait_28 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_36
-		name = CHI_mio_trait_36
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_28 }
-		mutually_exclusive = { CHI_mio_trait_35 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			ap_attack = 0.25
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_37
-		name = CHI_mio_trait_37
-		icon = GFX_generic_mio_trait_icon_hardness
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_35 CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
+	research_bonus = 0.15
 }
 
 huangyadong_arsenal_mio = {#黄崖洞兵工厂
 	name = huangyadong_arsenal
-	icon = GFX_idea_huangyadong_arsenal
+	icon = GFX_MIO_huangyadong_arsenal_mio
+	include = generic_infantry_equipment_refurbishment_plant_organization
 	available = {
 		owner = {
 			has_government = communism
@@ -2641,253 +2480,11 @@ huangyadong_arsenal_mio = {#黄崖洞兵工厂
 		    tag = event_target:WTT_communist_china
 		}
 	}
-	
-	equipment_type = {
-		infantry_equipment
-	}
-	research_categories = { 
-		infantry_weapons 
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_1
-		x = 1
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_2
-		x = 4
-	}
-
-	tree_header_text = {
-		text = CHI_mio_header_3
-		x = 7
-	}
-
-	initial_trait = {
-		name = CHI_Six_two_six_name
-
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
-		}
-
-		production_bonus = {
-			production_cost_factor = -0.05
-		}
-
-	}
-
-	trait = {
-		token = CHI_mio_trait_26
-		name = CHI_mio_trait_26
-		icon = GFX_generic_mio_trait_icon_production_capacity
-
-		position = { x=4 y=0 }
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_27
-		name = CHI_mio_trait_27
-		icon = GFX_generic_mio_trait_icon_defense
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=-3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			soft_attack = 0.1
-			defense = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_28
-		name = CHI_mio_trait_28
-		icon = GFX_generic_mio_trait_icon_ap_attack
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=3 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			hard_attack = 0.1
-			ap_attack = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_29
-		name = CHI_mio_trait_29
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		relative_position_id = CHI_mio_trait_26
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_26 }
-
-		equipment_bonus = {
-			reliability = 0.2
-			maximum_speed = 0.2
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_30
-		name = CHI_mio_trait_30
-		icon = GFX_generic_mio_trait_icon_soft_attack
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=-1 y=1 }
-
-		all_parents = { CHI_mio_trait_27 }
-		mutually_exclusive = { CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_31
-		name = CHI_mio_trait_31
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=1 y=1 }
-
-		any_parent = { CHI_mio_trait_27 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_30 }
-
-		equipment_bonus = {
-			soft_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_32
-		name = CHI_mio_trait_32
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		relative_position_id = CHI_mio_trait_27
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_30 CHI_mio_trait_31 }
-
-		equipment_bonus = {
-			soft_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_33
-		name = CHI_mio_trait_33
-		icon = GFX_generic_mio_trait_icon_conversion_speed
-
-		relative_position_id = CHI_mio_trait_29
-		position = { x=0 y=1 }
-
-		all_parents = { CHI_mio_trait_29 }
-
-		production_bonus = {
-			production_capacity_factor = 0.05
-			production_conversion_speed_factor = 0.15
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_34
-		name = CHI_mio_trait_34
-		icon = GFX_generic_mio_department_icon_facilities
-
-		relative_position_id = CHI_mio_trait_33
-		position = { x=0 y=2 }
-
-		all_parents = { CHI_mio_trait_33 }
-
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-		}
-
-		equipment_bonus = {
-			maximum_speed = 0.15
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_35
-		name = CHI_mio_trait_35
-		icon = GFX_generic_mio_department_icon_infantry_line_efficiency
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=-1 y=1 }
-
-		any_parent = { CHI_mio_trait_28 CHI_mio_trait_29 }
-		mutually_exclusive = { CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = -0.05
-		}
-
-		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_36
-		name = CHI_mio_trait_36
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=1 y=1 }
-
-		all_parents = { CHI_mio_trait_28 }
-		mutually_exclusive = { CHI_mio_trait_35 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			ap_attack = 0.25
-			reliability = -0.1
-		}
-	}
-
-	trait = {
-		token = CHI_mio_trait_37
-		name = CHI_mio_trait_37
-		icon = GFX_generic_mio_trait_icon_hardness
-
-		relative_position_id = CHI_mio_trait_28
-		position = { x=0 y=2 }
-
-		any_parent = { CHI_mio_trait_35 CHI_mio_trait_36 }
-
-		equipment_bonus = {
-			hard_attack = 0.15
-			breakthrough = 0.1
-		}
-	}
 }
 
 #炮厂
-CHI_North_Industry = {#中国兵器工业集团
-	icon = GFX_idea_prc_junxie_icon
+PRC_North_Industry = {#中国兵器工业集团
+	icon = GFX_MIO_PRC_North_Industry
 	
 	allowed = {
 	    OR = {
@@ -2902,7 +2499,7 @@ CHI_North_Industry = {#中国兵器工业集团
 		}
 		OR = {
 			has_global_flag = be_high
-			has_country_flag = establish_CHI_North_Industry
+			has_country_flag = establish_PRC_North_Industry
 		}
 	}
 
@@ -2928,7 +2525,7 @@ CHI_North_Industry = {#中国兵器工业集团
 	}
 
 	initial_trait = {
-		name = CHI_North_Industry_name
+		name = PRC_North_Industry_name
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1

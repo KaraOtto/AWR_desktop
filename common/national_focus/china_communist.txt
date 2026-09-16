@@ -41,7 +41,7 @@ focus_tree = {
 	
 	focus = {#东征
 		id = PRC_East_conquest
-		icon = GFX_PRC_East_conquest
+		icon = GFX_focus_PRC_East_conquest
 		cost = 4.29
 		prerequisite = {
 			focus = PRC_wayaobaohuiyi_end
@@ -636,48 +636,6 @@ focus_tree = {
 
 	}
 	
-	focus = {#中国人民抗日军事政治大学
-		id = PRC_kangda_focus
-		icon = GFX_focus_PRC_kangda
-		cost = 5
-		x = -5
-		y = 1
-		relative_position_id = PRC_Red_Army
-		prerequisite = {
-			focus = PRC_Red_Army
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < 1937.1.1
-			}
-		}
-		available_if_capitulated = yes
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		completion_reward = {
-			add_research_slot = 1
-			create_field_marshal = {
-				unlock_commander_ability = qianghuaxietong
-			}
-		    custom_effect_tooltip = PRC_jiesuo_qianghuaxietong
-			set_global_flag = PRC_kangda_focus_focus_flag
-			unlock_decision_tooltip = PRC_specialized_training_decision
-			army_experience = 15
-			every_army_leader = {
-				add_attack = 1
-				add_defense = 1
-				add_max_trait = 1
-			}
-		}
-		available = {
-			controls_state = 1090
-			has_completed_focus = PRC_makeshift_research_facility
-		}
-	}
-	
 	focus = {#恢复国民经济
 		id = PRC_huifuguominjingji
 		icon = GFX_focus_PRC_huifuguominjingji
@@ -878,46 +836,46 @@ focus_tree = {
 					add_mio_funds = 2000
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_South_Industry
-				mio:CHI_South_Industry = {
+				show_mio_tooltip = PRC_South_Industry
+				mio:PRC_South_Industry = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_North_Heavy_Industry
-				mio:CHI_North_Heavy_Industry = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_First_Motor
-				mio:CHI_First_Motor = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_North_Industry
-				mio:CHI_North_Industry = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_Six_two_six
-				mio:CHI_Six_two_six = {
+				show_mio_tooltip = PRC_North_Heavy_Industry
+				mio:PRC_North_Heavy_Industry = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
 				
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_Shenyang_Aircraft
-				mio:CHI_Shenyang_Aircraft = {
+				show_mio_tooltip = PRC_First_Motor
+				mio:PRC_First_Motor = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_Chengdu_Aircraft
-				mio:CHI_Chengdu_Aircraft = {
+				show_mio_tooltip = PRC_North_Industry
+				mio:PRC_North_Industry = {
+					add_mio_size = 5
+					add_mio_funds = 2000
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = PRC_Six_two_six
+				mio:PRC_Six_two_six = {
+					add_mio_size = 5
+					add_mio_funds = 2000
+				}
+				
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = PRC_Shenyang_Aircraft
+				mio:PRC_Shenyang_Aircraft = {
+					add_mio_size = 5
+					add_mio_funds = 2000
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = PRC_Chengdu_Aircraft
+				mio:PRC_Chengdu_Aircraft = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
@@ -928,8 +886,8 @@ focus_tree = {
 					add_mio_funds = 2000
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_Shanghai_Aircraft
-				mio:CHI_Shanghai_Aircraft = {
+				show_mio_tooltip = PRC_Shanghai_Aircraft
+				mio:PRC_Shanghai_Aircraft = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
@@ -954,14 +912,14 @@ focus_tree = {
 				}
 				custom_effect_tooltip = available_mio_tt
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_State_Shipbuilding
-				mio:CHI_State_Shipbuilding = {
+				show_mio_tooltip = PRC_State_Shipbuilding
+				mio:PRC_State_Shipbuilding = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
 				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CHI_LiaoNan_Shipbuilding
-				mio:CHI_LiaoNan_Shipbuilding = {
+				show_mio_tooltip = PRC_LiaoNan_Shipbuilding
+				mio:PRC_LiaoNan_Shipbuilding = {
 					add_mio_size = 5
 					add_mio_funds = 2000
 				}
@@ -1963,7 +1921,7 @@ focus_tree = {
 				}
 
 				add_timed_idea = {
-					idea = PRC_hundred_regiment_offensive 
+					idea = PRC_hundred_regiment_offensive_high
 					days = 108
 				}		
 				else = {
@@ -2106,6 +2064,48 @@ focus_tree = {
 		}
 
 	}
+
+	focus = {#中国人民抗日军事政治大学
+		id = PRC_kangda_focus
+		icon = GFX_focus_PRC_kangda
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = PRC_jinzhuyanan
+		prerequisite = {
+			focus = PRC_jinzhuyanan
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}
+		}
+		available_if_capitulated = yes
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		completion_reward = {
+			add_research_slot = 1
+			create_field_marshal = {
+				unlock_commander_ability = qianghuaxietong
+			}
+		    custom_effect_tooltip = PRC_jiesuo_qianghuaxietong
+			set_global_flag = PRC_kangda_focus_focus_flag
+			unlock_decision_tooltip = PRC_specialized_training_decision
+			army_experience = 15
+			every_army_leader = {
+				add_attack = 1
+				add_defense = 1
+				add_max_trait = 1
+			}
+		}
+		available = {
+			controls_state = 1090
+			has_completed_focus = PRC_makeshift_research_facility
+		}
+	}
 	
 	focus = {#大西北联盟
 		id = PRC_daxibeilianmeng
@@ -2124,7 +2124,7 @@ focus_tree = {
 			}     
 		}		
 		relative_position_id = PRC_jinzhuyanan
-		x = -2
+		x = 3
 		y = 1
 
 		cost = 5
@@ -2211,7 +2211,7 @@ focus_tree = {
 			focus = PRC_jinzhuyanan 
 		}
 		relative_position_id = PRC_jinzhuyanan
-		x = 0
+		x = 1
 		y = 1
 
 		cost = 4
@@ -2244,7 +2244,7 @@ focus_tree = {
 			focus = PRC_jinzhuyanan 
 		}
 		relative_position_id = PRC_jinzhuyanan
-		x = 2
+		x = -3
 		y = 1
 
 		cost = 1
@@ -3256,7 +3256,7 @@ focus_tree = {
 
 	focus = {#三位一体计划
 		id = PRC_grand_northwest_alliance_focus
-		icon = GFX_focus_PRC_the_zhang_ally
+		icon = GFX_focus_PRC_grand_northwest_alliance_focus
 		cost = 5.00
 		prerequisite = {
 			focus = PRC_contact_Zhang_Xueliang_focus
@@ -6974,6 +6974,28 @@ focus_tree = {
 		
 		relative_position_id = PRC_reunification_of_china
 		available_if_capitulated = yes
+		select_effect = {
+			if = {
+				limit = {
+					TIB = {
+						exists = yes
+						NOT = {
+							is_subject_of = ROOT
+						}
+					}
+				}
+				TIB = {
+					declare_war_on = {
+						target = ROOT
+						type = independence_wargoal
+					}
+				}
+				country_event = {
+					id = AWR_PRC.272
+					days = 7
+				}
+			}
+		}
 		completion_reward = {
 			TIB = { 
 				add_ideas = tib_banchan
@@ -7005,7 +7027,7 @@ focus_tree = {
 			}		
 		}
 		available = {
-            1015 = { 
+            1084 = { 
 				is_controlled_by = PRC 
 			}		
 			is_subject = no
@@ -7162,7 +7184,8 @@ focus_tree = {
 		}
 		available = {			
 			TIB = {
-				is_subject_of = root
+				is_subject_of = ROOT
+				exists = yes
 			}
 		}
 		bypass = {
@@ -8408,7 +8431,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Red_Army
 		}
-		x = 9
+		x = 10
 		y = 1
 		relative_position_id = PRC_Red_Army
 		ai_will_do = {
@@ -8641,7 +8664,7 @@ focus_tree = {
 			focus = PRC_request_northeast_china
 		}
 		relative_position_id = PRC_request_northeast_china
-		x = 0
+		x = -1
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -8713,7 +8736,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_request_northeast_china
 		}
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PRC_request_northeast_china
 		ai_will_do = {
@@ -9745,19 +9768,19 @@ focus_tree = {
 				add_idea = PRC_jiefangjunlujun_tooltip_original_1
 			}
 			add_to_variable = {
-				scope.PRC_jiefangjunlujun_army_attack_factor = 0.05
+				PRC_jiefangjunlujun_army_attack_factor = 0.05
 			}
 
 			add_to_variable = {
-				scope.PRC_jiefangjunlujun_army_defence_factor = 0.05
+				PRC_jiefangjunlujun_army_defence_factor = 0.05
 			}
 
 			add_to_variable = {
-				scope.PRC_jiefangjunlujun_army_org = 0.05
+				PRC_jiefangjunlujun_army_org = 0.05
 			}
 
 			add_to_variable = {
-				scope.PRC_jiefangjunlujun_breakthrough_factor = 0.05
+				PRC_jiefangjunlujun_breakthrough_factor = 0.05
 			}
 		}
 
@@ -9771,7 +9794,7 @@ focus_tree = {
 	#中国人民解放军   三军线
 	focus = {#中国人民解放军
 		id = PRC_PLA
-		icon = GFX_focus_PRC_PLAC
+		icon = GFX_focus_PRC_PLA
 		cost = 5.00
 		mutually_exclusive = {
 			focus = PRC_New_Red_Army
@@ -10160,14 +10183,14 @@ focus_tree = {
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				mio:CHI_South_Industry = {
+				mio:PRC_South_Industry = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				mio:CHI_North_Heavy_Industry = {
+				mio:PRC_North_Heavy_Industry = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
@@ -10175,24 +10198,24 @@ focus_tree = {
 				}
 				
 				
-				show_mio_tooltip = CHI_First_Motor
-				mio:CHI_First_Motor = {
+				show_mio_tooltip = PRC_First_Motor
+				mio:PRC_First_Motor = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				show_mio_tooltip = CHI_North_Industry
-				mio:CHI_North_Industry = {
+				show_mio_tooltip = PRC_North_Industry
+				mio:PRC_North_Industry = {
 					add_mio_funds = 1000
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				show_mio_tooltip = CHI_Six_two_six
-				mio:CHI_Six_two_six = {
+				show_mio_tooltip = PRC_Six_two_six
+				mio:PRC_Six_two_six = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
@@ -10206,11 +10229,11 @@ focus_tree = {
 			has_global_flag = establish_PRC_shenyang_tank_manufacturer
 			has_global_flag = establish_PRC_harbin_tank_manufacturer
 			has_global_flag = establish_PRC_xian_tank_manufacturer
-			has_global_flag = establish_CHI_South_Industry
-			has_global_flag = establish_CHI_North_Heavy_Industry
-			has_global_flag = establish_CHI_First_Motor
-			has_global_flag = establish_CHI_North_Industry
-			has_global_flag = establish_CHI_Six_two_six
+			has_global_flag = establish_PRC_South_Industry
+			has_global_flag = establish_PRC_North_Heavy_Industry
+			has_global_flag = establish_PRC_First_Motor
+			has_global_flag = establish_PRC_North_Industry
+			has_global_flag = establish_PRC_Six_two_six
 		}
 
 	}
@@ -11165,7 +11188,7 @@ focus_tree = {
 
 	focus = {#南苑飞行中队
 		id = PRC_The_first_squadron
-		icon = GFX_goal_generic_air_fighter 
+		icon = GFX_focus_PRC_The_first_squadron
 		cost = 2.15
 		prerequisite = {
 			focus = PRC_expand_the_flight_school
@@ -11373,13 +11396,13 @@ focus_tree = {
 					has_dlc = "Arms Against Tyranny"
 				}
 				
-				mio:CHI_Shenyang_Aircraft = {
+				mio:PRC_Shenyang_Aircraft = {
 					add_mio_size = 2
 					add_mio_funds = 1500
 					add_mio_funds_gain_factor = 0.25
 				}
 				
-				mio:CHI_Chengdu_Aircraft = {
+				mio:PRC_Chengdu_Aircraft = {
 					add_mio_size = 2
 					add_mio_funds = 1500
 					add_mio_funds_gain_factor = 0.25
@@ -11391,7 +11414,7 @@ focus_tree = {
 					add_mio_funds_gain_factor = 0.25
 				}
 				
-				mio:CHI_Shanghai_Aircraft = {
+				mio:PRC_Shanghai_Aircraft = {
 					add_mio_size = 2
 					add_mio_funds = 1500
 					add_mio_funds_gain_factor = 0.25
@@ -14142,14 +14165,14 @@ focus_tree = {
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				mio:CHI_South_Industry = {
+				mio:PRC_South_Industry = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				mio:CHI_North_Heavy_Industry = {
+				mio:PRC_North_Heavy_Industry = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
@@ -14157,24 +14180,24 @@ focus_tree = {
 				}
 				
 				
-				show_mio_tooltip = CHI_First_Motor
-				mio:CHI_First_Motor = {
+				show_mio_tooltip = PRC_First_Motor
+				mio:PRC_First_Motor = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				show_mio_tooltip = CHI_North_Industry
-				mio:CHI_North_Industry = {
+				show_mio_tooltip = PRC_North_Industry
+				mio:PRC_North_Industry = {
 					add_mio_funds = 1000
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
 					add_mio_funds_gain_factor = 0.15
 				}
 				
-				show_mio_tooltip = CHI_Six_two_six
-				mio:CHI_Six_two_six = {
+				show_mio_tooltip = PRC_Six_two_six
+				mio:PRC_Six_two_six = {
 					add_mio_funds = 1000					
 					add_mio_research_bonus = 0.15
 					add_mio_design_team_assign_cost = -0.15
@@ -14187,11 +14210,11 @@ focus_tree = {
 			has_global_flag = establish_PRC_shenyang_tank_manufacturer
 			has_global_flag = establish_PRC_harbin_tank_manufacturer
 			has_global_flag = establish_PRC_xian_tank_manufacturer
-			has_global_flag = establish_CHI_South_Industry
-			has_global_flag = establish_CHI_North_Heavy_Industry
-			has_global_flag = establish_CHI_First_Motor
-			has_global_flag = establish_CHI_North_Industry
-			has_global_flag = establish_CHI_Six_two_six
+			has_global_flag = establish_PRC_South_Industry
+			has_global_flag = establish_PRC_North_Heavy_Industry
+			has_global_flag = establish_PRC_First_Motor
+			has_global_flag = establish_PRC_North_Industry
+			has_global_flag = establish_PRC_Six_two_six
 		}
 	}
 
@@ -16236,11 +16259,11 @@ focus_tree = {
 					has_dlc = "Arms Against Tyranny"
 				}
 				
-				mio:CHI_Shenyang_Aircraft = {
+				mio:PRC_Shenyang_Aircraft = {
 					add_mio_size = 5
 				}
 				
-				mio:CHI_Chengdu_Aircraft = {
+				mio:PRC_Chengdu_Aircraft = {
 					add_mio_size = 5
 				}
 				
@@ -16248,7 +16271,7 @@ focus_tree = {
 					add_mio_size = 5
 				}
 				
-				mio:CHI_Shanghai_Aircraft = {
+				mio:PRC_Shanghai_Aircraft = {
 					add_mio_size = 5
 				}
 			}
@@ -20818,7 +20841,6 @@ focus_tree = {
 			add_stability = 0.05
 			add_war_support = -0.20
 			add_ideas = PRC_partnerships_without_alliance_idea
-			
 		}
 	}
 
@@ -20897,7 +20919,18 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_Joint_command
 		completion_reward = {
-			#
+			# 开启整个世界民族解放系统
+			set_country_flag = PRC_third_world_support_unlocked
+			# 国策完成时立即扫描一次世界
+			PRC_setup_third_world_independence_targets = yes
+			# 玩家提示
+			custom_effect_tooltip = PRC_third_world_support_unlock_tt
+
+			unlock_decision_category_tooltip = PRC_asian_liberation_category
+			unlock_decision_category_tooltip = PRC_middle_east_liberation_category
+			unlock_decision_category_tooltip = PRC_african_liberation_category
+			unlock_decision_category_tooltip = PRC_latin_american_liberation_category
+			unlock_decision_category_tooltip = PRC_oceanian_liberation_category
 		}
 
 		available = {
@@ -20917,7 +20950,47 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_support_the_national_independence_movement
 		completion_reward = {
-			#
+			###经济合作变量
+
+			set_variable = {
+				var = PRC_num_of_economy_cooperation_partner
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_consumer_goods_factor
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_production_speed_infrastructure_factor
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_production_speed_industrial_complex_factor
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_production_speed_energy_infrastructure_factor
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_production_speed_industrial_infrastructure_factor
+				value = 0
+			}
+			set_variable = {
+				var = PRC_economy_cooperation_AWR_economy_development_monthly
+				value = 0
+			}
+
+			add_dynamic_modifier = {
+				modifier = PRC_economy_cooperation
+			}
+
+			set_variable = {
+				var = PRC_third_world_independence_targets
+				value = 5
+			}
+
+			unlock_decision_category_tooltip = PRC_economy_cooperation_decision_category
 		}
 
 		available = {
@@ -21043,6 +21116,18 @@ focus_tree = {
 					id = AWR_PRC.250
 					days = 1
 				}
+				PRC_update_faction_member_count = yes
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = ROOT
+							tag = ROOT
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PRC_strategic_cooperation
+					}
+				}
 			}
 		}
 
@@ -21115,6 +21200,13 @@ focus_tree = {
             has_completed_focus = PRC_cult_of_personality_focus						
 		}				
 		completion_reward = {
+			# 开启整个世界民族解放系统
+			set_country_flag = PRC_third_world_support_unlocked
+			# 国策完成时立即扫描一次世界
+			PRC_setup_third_world_independence_targets = yes
+			# 玩家提示
+			custom_effect_tooltip = PRC_third_world_support_unlock_tt
+
 		    add_ideas = prc_shijierenmindatuanjiewansui			
 			every_other_country = {
 				limit = { 
@@ -21150,8 +21242,10 @@ focus_tree = {
 				}
 				custom_effect_tooltip = PRC_found_the_comecon_program_tt
 			}
-
+			PRC_setup_third_world_independence_targets = yes
+			custom_effect_tooltip = PRC_third_world_support_unlock_tt
 			unlock_decision_category_tooltip = PRC_comecon_dec_cat
+			
 		}
 		available = {
 			is_subject = no

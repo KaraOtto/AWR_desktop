@@ -1,14 +1,5 @@
-#####################
-
-###  ##  #  # # #  ## 
- #  #  # ## # # # #   
- #  #### # ## ##   #  
- #  #  # #  # # #   # 
- #  #  # #  # # # ## 
-
- #################### 
-
-CHI_sino_german_technical_mission_organization = {
+#####坦克
+CHI_sino_german_technical_mission_organization = {	#中德技术顾问团
 	include = generic_heavy_tank_organization
 	icon = GFX_idea_porsche
 	allowed = {	
@@ -40,17 +31,67 @@ CHI_sino_german_technical_mission_organization = {
 	}
 }
 
-#####################
+qishuyan_machinery_mio = {	#戚墅堰机厂
+	name = qishuyan_machinery
+	include = generic_tank_organization
+	icon = GFX_idea_qishuyan_machinery
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			controls_state = 1015 # Shanghai
+		}
+	}
+}
 
- ## #  # ### ###   ## 
-#   #  #  #  #  # #   
- #  ####  #  ###   #  
-  # #  #  #  #      # 
-##  #  # ### #    ##  
- 
-#####################
+roc_avdc_mio = {	#战甲车发展中心
+	name = roc_avdc
+	include = generic_medium_tank_organization
+	icon = GFX_idea_naval_aircraft
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+		not = {#guo
+		    OR = {
+            TAG = event_target:WTT_communist_china
+            TAG = PRC
+            }
+		}
+	}
+	available = {
+		owner = { 
+			has_completed_focus = CHI_learn_foreign_tank_design_focus
+		}
+	}
+}
 
-CHI_jiangnan_shipyard_group_organization = {
+krupp_mio = {	#克虏伯公司
+	name = CHI_krupp
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_krupp
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			has_idea = Carlowitz_Co_idea
+			NOT = {
+				has_war_with = GER
+			}
+			if = {
+				limit = {
+					tag = CHI
+				}
+				NOT = {
+					has_global_flag = falkenhausen_recalled
+				}
+			}
+		}
+	}
+}
+
+#####船
+CHI_jiangnan_shipyard_group_organization = {	#江南造船所
 	include = generic_task_force_ship_organization
 	icon = GFX_idea_generic_naval_manufacturer_3
 	allowed = {	
@@ -73,24 +114,16 @@ CHI_dagu_shipyard_organization = { #大沽船塢(大沽造船所)
 	}
 }
 
-###########################
-
-###  #    ##  #  # ###  ## 
-#  # #   #  # ## # #   #   
-###  #   #### # ## ##   #  
-#    #   #  # #  # #     # 
-#    ### #  # #  # ### ##  
-
-###########################
-
-CHI_camco_organization = {
+#####飞机
+CHI_camco_organization = {	#中央杭州飞机制造厂
 	include = generic_medium_aircraft_organization
 	icon = GFX_idea_CHI_camco
 	allowed = {	
 		always = no #MODDED
 	}
 }
-CHI_camco_medium_organization = {
+
+CHI_camco_medium_organization = {	#中央杭州飞机制造厂（中型机）
 	include = generic_medium_aircraft_organization
 	icon = GFX_idea_CHI_camco
 	allowed = {	
@@ -106,7 +139,8 @@ CHI_camco_medium_organization = {
 		} #MODDED
 	}
 }
-CHI_camco_fighter_organization = {
+
+CHI_camco_fighter_organization = {	#中央杭州飞机制造厂（战斗机）
 	include = generic_light_aircraft_organization
 	icon = GFX_idea_CHI_camco
 	allowed = {	
@@ -119,7 +153,8 @@ CHI_camco_fighter_organization = {
 	    }
 	}
 }
-CHI_camco_bomber_organization = {
+
+CHI_camco_bomber_organization = {	#中央杭州飞机制造厂（轰炸机）
 	include = generic_cas_aircraft_organization
 	icon = GFX_idea_CHI_camco
 	allowed = {	
@@ -133,18 +168,8 @@ CHI_camco_bomber_organization = {
 	}
 }
 
-################################### 
-
-#   #  ##  ### ### ###  ### ### #   
-## ## #  #  #  #   #  #  #  #   #   
-# # # ####  #  ##  ###   #  ##  #   
-#   # #  #  #  #   #  #  #  #   #   
-#   # #  #  #  ### #  # ### ### ### 
-
-
-###################################
-
-CHI_taiyuan_arsenal_organization = {
+#####枪厂
+CHI_taiyuan_arsenal_organization = {	#西北制造厂
 	include = generic_artillery_organization
 	icon = GFX_idea_generic_artillery_manufacturer_1
 	allowed = {	
@@ -154,7 +179,8 @@ CHI_taiyuan_arsenal_organization = {
 		owner = { controls_state = 615 }
 	}
 }
-CHI_liaoning_arsenal_organization = {
+
+CHI_liaoning_arsenal_organization = {	#辽宁兵工厂
 	include = generic_motorized_mechanized_organization
 	icon = GFX_idea_generic_motorized_equipment_manufacturer_1
 	allowed = {	
@@ -164,7 +190,8 @@ CHI_liaoning_arsenal_organization = {
 		owner = { controls_state = 715 }
 	}
 }
-CHI_hanyan_arsenal_organization = {
+
+CHI_hanyang_arsenal_organization = {	#汉阳兵工厂
 	include = generic_infantry_equipment_organization
 	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
 	allowed = {	
@@ -174,7 +201,8 @@ CHI_hanyan_arsenal_organization = {
 		owner = { controls_state = 1034 } #MODDED
 	}
 }
-CHI_mukden_arsenal_organization = {
+
+CHI_mukden_arsenal_organization = {	#奉天兵工厂
 	include = generic_infantry_equipment_organization
 	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
 	allowed = {	
@@ -184,3 +212,492 @@ CHI_mukden_arsenal_organization = {
 		owner = { controls_state = 716 }
 	}
 }
+
+#ARMY(materiel)
+hanyang_arsenal_mio = {	#汉阳兵工厂
+	include = generic_infantry_equipment_organization
+	name = idea_hanyang_arsenal
+	icon = GFX_idea_hanyang_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			OR = {				    
+				AND = {
+					is_legit_china = yes
+					controls_state = 1034 # Eastern Hubei-Hanyang
+					NOT = { has_global_flag = space_for_time_done_flag }
+				}				
+				AND = {
+					is_legit_china = yes
+					has_global_flag = space_for_time_done_flag
+					OR = {
+						controls_state = 605 # Eastern Szechwan-Chungking		
+						any_allied_country = {
+							controls_state = 605 # Eastern Szechwan-Chungking	
+						}
+						any_subject_country = {
+							controls_state = 605 # Eastern Szechwan-Chungking	
+						}								
+					}					
+				}		
+			}			
+		}
+	}
+}
+
+gongxian_arsenal_mio = {	#巩县兵工厂
+	include = generic_infantry_equipment_organization
+	name = idea_gongxian_arsenal
+	icon = GFX_idea_gongxian_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			#OR = {
+				controls_state = 750 # Western Hunan-Yuanling
+				#any_allied_country = {
+				#	has_government = ROOT
+				#	controls_state = 750 # Western Hunan-Yuanling	
+				#}							
+			#}	
+		}
+	}
+}
+
+hengyang_arsenal_mio = {	#衡阳兵工厂
+	include = generic_support_equipment_organization #抗戰期間，四四廠除了修護部隊軍械，廠內主要量產品為柄式手榴彈、信號槍，在民國二十九、三十、三十四年曾生產總量不到3,500把的三十二號左輪手槍。
+	name = hengyang_arsenal
+	icon = GFX_idea_hengyang_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			OR = {
+				AND = {
+                    NOT = { has_global_flag = space_for_time_done_flag }
+				    controls_state = 602 # Southern Hunan-Hengyang
+					#any_allied_country = {
+					#	has_government = ROOT
+					#	controls_state = 602 # Chekiang
+					#}	
+				}
+				AND = {
+					has_global_flag = space_for_time_done_flag
+					controls_state = 603 # Southern Kweichow-Kweiyang		
+					#any_allied_country = {
+					#	has_government = ROOT
+					#	controls_state = 603 # Chekiang
+					#}					
+				}		
+			}	
+		}
+	}
+}
+
+zhejiang_steelwork_mio = {	#浙江钢铁厂
+	include = generic_infantry_equipment_organization
+	name = idea_zhejiang_steelwork
+	icon = GFX_idea_zhejiang_steelwork
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 596 
+		}
+	}
+}
+
+jinan_arsenal_mio = {	#济南兵工厂
+	include = generic_infantry_equipment_organization
+	name = jinan_arsenal
+	icon = GFX_idea_jinan_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			OR = {				    
+				AND = {
+					controls_state = 597 # Western Shantung-Jinan
+					NOT = { has_global_flag = space_for_time_done_flag }
+				}				
+				AND = {
+					has_global_flag = space_for_time_done_flag
+					controls_state = 605 # Eastern Szechwan-Chungking										
+				}		
+			}
+		}
+	}
+}
+
+sichuan_arsenal_mio = {	#四川兵工厂
+	include = generic_infantry_equipment_organization
+	name = sichuan_arsenal
+	icon = GFX_idea_sichuan_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 605
+		}
+	}
+}
+
+shenyang_arsenal_mio = {	#奉天兵工厂
+	include = generic_infantry_equipment_organization
+	name = idea_shenyang_arsenal
+	icon = GFX_idea_shenyang_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 716
+		}
+	}
+}
+
+guangxi_arsenal_mio = {	#广西兵工厂
+	include = generic_infantry_equipment_organization
+	name = guangxi_arsenal
+	icon = GFX_idea_guangxi_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 1112
+		}
+	}
+}
+
+guangdong_arsenal_mio = {	#广东兵工厂
+	include = generic_infantry_equipment_organization
+	name = idea_guangdong_arsenal
+	icon = GFX_idea_guangdong_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 592
+		}
+	}
+}
+
+pajiang_arsenal_mio = {	#潖江兵工厂
+	include = generic_infantry_equipment_organization
+	name = pajiang_arsenal
+	icon = GFX_idea_pajiang_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 593
+		}
+	}
+}
+
+zhuzhou_arsenal_mio = {	#炮兵技术处
+	include = generic_artillery_organization 
+	name = zhuzhou_arsenal
+	icon = GFX_idea_zhuzhou_arsenal
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 593
+		}
+	}
+}
+
+yue_loong_mio = {	#裕隆机器制造股份有限公司
+	include = generic_motorized_mechanized_organization
+	name = yue_loong
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_3
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+		not = {#guo
+			OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+			}
+		}
+	}
+	available = {
+		owner = {
+			has_completed_focus = CHI_logistical_reform_focus
+		}
+	}
+}
+
+goodyear_tires_mio = {	#固特异轮胎橡胶公司
+	include = generic_motorized_mechanized_organization
+	name = goodyear_tires_idea
+	icon = GFX_idea_goodyear_tires
+	allowed = { #guo
+			    or = {
+				original_tag = USA
+				TAG = event_target:WTT_current_china_leader
+                TAG = CHI
+				}
+			}
+			available = {
+			    if = {
+				limit = { FROM = { original_tag = USA } }
+				always = yes
+				}
+				else = {
+				FROM = {
+				or = {
+					and = {
+					has_country_flag = KMT_invest_in_new_companies
+					is_in_faction_with = USA
+					}
+					owns_state = 361
+					USA = { is_subject_of = event_target:WTT_current_china_leader }
+					}
+				}
+				}
+			}
+}
+
+northwest_industrial_company_mio = {	#西北制造厂（轻兵器）
+	include = generic_infantry_equipment_organization
+	name = northwest_industrial_company_infantry
+	icon = GFX_idea_northwest_industrial
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 615			
+		}
+	}
+}
+
+northwest_industrial_company_artillery_mio = {	#西北制造厂（火炮）
+	include = generic_artillery_organization
+	name = northwest_industrial_company_artillery
+	icon = GFX_idea_northwest_industrial
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 615			
+		}
+	}
+}
+
+northwest_industrial_company_support_mio = {	#西北制造厂（军用器材）
+	include = generic_support_equipment_organization
+	name = northwest_industrial_company_support
+	icon = GFX_idea_northwest_industrial
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = {
+			controls_state = 615			
+		}
+	}
+}
+
+#Navy
+minsheng_mio = {	#民生实业股份有限公司
+	include = generic_escort_ship_organization
+	name = CHI_minsheng
+	icon = GFX_idea_minsheng
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			is_legit_china = yes
+			any_owned_state = { 
+				is_controlled_by = owner
+			    is_coastal = yes
+			}
+		}
+	}
+}
+
+whampoa_dock_company_mio = {	#黄埔船坞
+	include = generic_refurbishment_repair_organization
+	name = whampoa_dock_company
+	icon = GFX_idea_whampoa_dock_company
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			controls_state = 592
+		}
+	}
+}
+
+kiangnan_shipyard_group_organization = {	#江南造船所
+	name = kiangnan_shipyard_group
+	include = generic_battle_line_ship_organization
+	icon = GFX_idea_kiangnan_shipyeard
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes #MODDED
+	}
+	available = {
+		owner = { controls_state = 613 }
+	}
+}
+
+hamburg_america_line_mio = {	#汉堡-美洲航运公司
+	name = hamburg_america_line_idea
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_hamburg_america_line
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			has_idea = Carlowitz_Co_idea
+			NOT = {
+				has_war_with = GER
+			}
+			if = {
+				limit = {
+					tag = CHI
+				}
+				NOT = {
+					has_global_flag = falkenhausen_recalled
+				}
+			}
+		}
+	}
+}
+
+GER_hamburg_america_line_mio = {	#汉堡-美洲航运公司
+	name = hamburg_america_line_idea
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_hamburg_america_line
+	allowed = {	
+		original_tag = GER
+	}
+	available = {
+	}
+}
+
+#Air
+central_aircraft_mio = {	#中央杭州飞机制造厂
+	name = central_aircraft 
+	include = generic_light_aircraft_organization #generic_general_aircraft_organization
+	icon = GFX_idea_central_aircraft
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			OR = {				    
+				AND = {
+					is_legit_china = yes
+					controls_state = 596 # Chekiang-Hangchow
+					NOT = { has_global_flag = space_for_time_done_flag }
+				}				
+				AND = {
+					is_legit_china = yes
+					has_global_flag = space_for_time_done_flag
+					OR = {
+						controls_state = 747 # Western Yunnan-Loiwing		
+						any_allied_country = {
+							controls_state = 747 # Western Yunan-Loiwing
+						}								
+					}					
+				}		
+			}	
+		}
+	}
+}
+
+nanchang_aircraft_mio = {	#中央南昌飞机制造厂
+	name = nanchang_aircraft
+	include = generic_medium_aircraft_organization 
+	icon = GFX_idea_nanchang_aircraft
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			OR = {				    
+				AND = {
+					is_legit_china = yes
+					controls_state = 1032 # Northern Kiangsi-Nanchang
+					NOT = { has_global_flag = space_for_time_done_flag }
+				}				
+				AND = {
+					is_legit_china = yes
+					has_global_flag = space_for_time_done_flag
+					OR = {
+						controls_state = 605 # Eastern Szechwan-Nanchwan		
+						any_allied_country = {
+							controls_state = 605 # Eastern Szechwan-Nanchwan
+						}							
+					}					
+				}		
+			}	
+		}
+	}
+}
+
+shiukwan_aircraft_mio = {	#韶关飞机制造厂
+	name = shiukwan_aircraft
+	include = generic_general_aircraft_organization
+	icon = GFX_idea_shiukwan_aircraft
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			OR = {				    
+				AND = {
+					is_legit_china = yes
+					controls_state = 592 # Canton-Shiukwan
+					NOT = { has_global_flag = space_for_time_done_flag }
+				}				
+				AND = {
+					is_legit_china = yes
+					has_global_flag = space_for_time_done_flag
+					OR = {
+						controls_state = 325 # Northern Yunnan-Kunming			
+						any_allied_country = {
+							controls_state = 325 # 325 # Northern Yunnan-Kunming	
+						}
+						any_subject_country = {
+							controls_state = 325 # 325 # Northern Yunnan-Kunming
+						}								
+					}					
+				}		
+			}
+		}
+	}
+}
+
+naval_aircraft_mio = {	#海军部上海高昌庙飞机制造厂
+	name = naval_aircraft 
+	include = generic_naval_aircraft_organization
+	icon = GFX_idea_naval_aircraft
+	allowed = {	
+		is_literally_china_including_chinese_puppets = yes
+	}
+	available = {
+		owner = { 
+			controls_state = 613 # Shanghai
+		}
+	}
+}
+

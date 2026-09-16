@@ -275,8 +275,203 @@ PRC_req_fleet_submarine = {
 # 核潜艇
 PRC_req_nuclear_submarine = {
 	is_special_project_completed = sp:sp_naval_fleet_submarine
-
-	# 核动力发动机项目的内部ID在不同大版本/大型MOD中容易被改。
-	# 如果你当前 naval_projects.txt 中核潜艇还有额外的 Nuclear Engines 条件，
-	# 请把原版那一行 is_special_project_completed 直接复制到这里。
 }
+
+#######世界革命
+#############################################
+# PRC 世界民族解放运动
+# Scripted Triggers
+#############################################
+
+
+#############################################
+# 一个国家是否仍然属于可支持的
+# 民族解放目标
+#
+# 当前 Scope = 目标国家
+#############################################
+
+PRC_is_valid_liberation_target = {
+
+	# 中国自己永远不能成为目标
+	NOT = {
+		original_tag = PRC
+	}
+
+	OR = {
+		################################
+		# A. 已经存在的殖民附属国
+		################################
+		AND = {
+
+			exists = yes
+
+			is_subject = yes
+
+			# 中国自己的附属国不需要“解放”
+			NOT = {
+				is_subject_of = PRC
+			}
+		}
+		################################
+		# B. 尚未存在的殖民地民族国家
+		################################
+		AND = {
+
+			exists = no
+
+			# 至少还有一个核心州
+			# 正处于外国的非核心统治下
+			any_core_state = {
+
+				NOT = {
+					is_core_of = owner
+				}
+
+				owner = {
+					NOT = {
+						original_tag = PRC
+					}
+				}
+			}
+		}
+	}
+}
+
+# 亚洲
+PRC_revolution_target_in_asia = {
+
+	OR = {
+		################################
+		# 已存在国家：
+		# 看首都
+		################################
+
+		AND = {
+
+			exists = yes
+
+			capital_scope = {
+				is_on_continent = asia
+			}
+		}
+
+
+		################################
+		# 尚不存在国家：
+		# 看核心州
+		################################
+
+		AND = {
+
+			exists = no
+
+			any_core_state = {
+				is_on_continent = asia
+			}
+		}
+	}
+}
+
+# 中东
+PRC_revolution_target_in_middle_east = {
+
+	OR = {
+
+		AND = {
+
+			exists = yes
+
+			capital_scope = {
+				is_on_continent = middle_east
+			}
+		}
+
+
+		AND = {
+
+			exists = no
+
+			any_core_state = {
+				is_on_continent = middle_east
+			}
+		}
+	}
+}
+
+# 非洲
+PRC_revolution_target_in_africa = {
+
+	OR = {
+
+		AND = {
+
+			exists = yes
+
+			capital_scope = {
+				is_on_continent = africa
+			}
+		}
+
+		AND = {
+
+			exists = no
+
+			any_core_state = {
+				is_on_continent = africa
+			}
+		}
+	}
+}
+
+# 拉丁美洲及加勒比
+PRC_revolution_target_in_latin_america = {
+
+	OR = {
+
+		AND = {
+
+			exists = yes
+
+			capital_scope = {
+				is_on_continent = south_america
+			}
+		}
+
+		AND = {
+
+			exists = no
+
+			any_core_state = {
+				is_on_continent = south_america
+			}
+		}
+	}
+}
+
+# 大洋洲
+PRC_revolution_target_in_oceania = {
+
+	OR = {
+
+		AND = {
+
+			exists = yes
+
+			capital_scope = {
+				is_on_continent = australia
+			}
+		}
+
+		AND = {
+
+			exists = no
+
+			any_core_state = {
+				is_on_continent = australia
+			}
+		}
+	}
+}
+
+
