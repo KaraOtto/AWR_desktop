@@ -686,7 +686,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_wang_ming_demand_meeting_mission = {	#王明要求召开政治会议
+	AWR_wang_ming_demand_meeting_mission = {	#王明要求召开政治会议
 		icon = generic_nationalism
 		fire_only_once = no
 		days_mission_timeout = 120 
@@ -709,7 +709,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		fixed_random_seed = no
 		timeout_effect = {
 			country_event = {
-				id = RCM_comchina_decisions.7
+				id = AWR_PRC.285
 			}
 			add_to_variable = {
 				count_wang_ming = 1
@@ -717,10 +717,12 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			
 			if = {
 				limit = {
-					check_variable = { count_wang_ming < 4 }
+					check_variable = { 
+						count_wang_ming < 4 
+					}
 				}
 				add_days_mission_timeout  = {
-					mission = RCM_wang_ming_demand_meeting_mission
+					mission = AWR_wang_ming_demand_meeting_mission
 					days = -30
 				}
 			}
@@ -755,7 +757,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_minority_rule_mission = {	#少数派统治
+	AWR_minority_rule_mission = {	#少数派统治
 		icon = generic_nationalism
 		fire_only_once = no
 		days_mission_timeout = 140 
@@ -868,7 +870,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		fixed_random_seed = no
 		timeout_effect = { 
 			country_event = {
-				id = RCM_comchina_decisions.2
+				id = AWR_PRC.286
 			}
 			effect_tooltip = {		
 				if = {
@@ -895,7 +897,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 							}
 						}
 						country_event = {
-							id = RCM_comchina_decisions.3
+							id = AWR_PRC.287
 						}
 					}
 					else_if = {
@@ -929,7 +931,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 							}
 						}
 						country_event = {
-							id = RCM_comchina_decisions.4
+							id = AWR_PRC.288
 						}
 					}
 					else_if = {
@@ -959,7 +961,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 							}    
 						}
 						country_event = {
-							id = RCM_comchina_decisions.5
+							id = AWR_PRC.289
 						}
 					}
 					else_if = {
@@ -987,7 +989,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 							}
 						}
 						country_event = {
-							id = RCM_comchina_decisions.6
+							id = AWR_PRC.290
 						}
 					}
 				}		
@@ -1469,7 +1471,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_core_member_protest_mission = {		#核心党员抗议
+	AWR_core_member_protest_mission = {		#核心党员抗议
 		icon = generic_political_rally
 		fire_only_once = no
 		days_mission_timeout = 180 
@@ -1500,7 +1502,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 						}
 					}
 					add_days_mission_timeout  = {
-						mission = RCM_core_member_protest_mission
+						mission = AWR_core_member_protest_mission
 						days = -15
 					}
 				}
@@ -1511,7 +1513,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_set_up_general_study_committee = {	#成立综合研究委员会
+	AWR_PRC_set_up_general_study_committee = {	#成立综合研究委员会
 		icon = eng_trade_unions_support
 		visible = {
 			has_completed_focus = PRC_route_struggle_focus
@@ -1523,7 +1525,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		cost = 0
 		days_remove = 15
 		days_re_enable = 7
-		fire_only_once = yes
 		ai_will_do = {
 			factor = 500
 		}
@@ -1535,25 +1536,25 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			country_event = {
 				id = AWR_PRC.70
 			}			
-			unlock_decision_tooltip = RCM_PRC_pushes_against_dogmatism
-			unlock_decision_tooltip = RCM_PRC_push_against_empiricism
-			unlock_decision_tooltip = RCM_PRC_push_against_sectarianism
-			unlock_decision_tooltip = RCM_PRC_push_against_liberalism
+			unlock_decision_tooltip = AWR_PRC_pushes_against_dogmatism
+			unlock_decision_tooltip = AWR_PRC_push_against_empiricism
+			unlock_decision_tooltip = AWR_PRC_push_against_sectarianism
+			unlock_decision_tooltip = AWR_PRC_push_against_liberalism
 			unlock_decision_tooltip = AWR_PRC_perform_speech_on_yanan_forum
-			unlock_decision_tooltip = RCM_PRC_Conclude_Studies_in_each_departments
+			unlock_decision_tooltip = AWR_PRC_Conclude_Studies_in_each_departments
 		}
 		complete_effect = {
 			custom_effect_tooltip = protests_will_arise_tt
 			hidden_effect = {
 				country_event = { 
 					id = AWR_PRC.71 
-					days = 15 random_days = 5 
+					days = 15 
 				}
 			}
 		}
 	}
 
-	RCM_PRC_pushes_against_dogmatism = {	#反对教条主义
+	AWR_PRC_pushes_against_dogmatism = {	#反对教条主义
 		icon = generic_break_treaty
 		visible = {
 			has_global_flag = study_committee
@@ -1565,7 +1566,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		cost = 0
 		days_remove = 15
 		days_re_enable = 7
-		fire_only_once = yes
 	
 		modifier = {
 			#
@@ -1597,7 +1597,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_push_against_empiricism = {	#反对经验主义
+	AWR_PRC_push_against_empiricism = {	#反对经验主义
 		icon = generic_break_treaty
 		visible = {
 			has_global_flag = study_committee
@@ -1606,7 +1606,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			has_global_flag = pushed_dogma_flag
 
 		}
-		fire_only_once = yes
 		cost = 0
 		days_remove = 15
 		days_re_enable = 7
@@ -1634,7 +1633,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_push_against_sectarianism = {	#反对宗派主义
+	AWR_PRC_push_against_sectarianism = {	#反对宗派主义
 		icon = generic_break_treaty
 		visible = {
 			has_global_flag = study_committee
@@ -1650,7 +1649,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		cost = 0
 		days_remove = 15
 		days_re_enable = 7
-		fire_only_once = yes
 	
 		modifier = {
 			#
@@ -1672,7 +1670,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_push_against_liberalism = {	#反对自由主义
+	AWR_PRC_push_against_liberalism = {	#反对自由主义
 		icon = generic_break_treaty
 		visible = {
 			has_global_flag = study_committee
@@ -1684,7 +1682,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		ai_will_do = {
 			factor = 500
 		}
-		fire_only_once = yes
 		cost = 0
 		days_remove = 15
 		days_re_enable = 7
@@ -1734,7 +1731,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		cost = 0
 		days_remove = 7
 		days_re_enable = 7
-		fire_only_once = yes
 	
 		modifier = {
 			#
@@ -1751,7 +1747,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 	
-	RCM_PRC_Conclude_Studies_in_each_departments = {	#结束各学科之研究
+	AWR_PRC_Conclude_Studies_in_each_departments = {	#结束各学科之研究
 		icon = eng_trade_unions_demand
 		visible = {
 			has_global_flag = study_committee
@@ -1762,7 +1758,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		ai_will_do = {
 			factor = 500
 		}
-		fire_only_once = yes
 		cost = 0
 		days_remove = 7
 		days_re_enable = 7
@@ -1774,15 +1769,15 @@ parliament_gui_decision_category = {	#全国人民代表大会
 	
 		remove_effect = {
 			set_global_flag = first_phase_concluded
-			unlock_decision_tooltip = RCM_PRC_mao_takeover_leadership
-			unlock_decision_tooltip = RCM_PRC_initiate_the_rescue_campaign
+			unlock_decision_tooltip = AWR_PRC_mao_takeover_leadership
+			unlock_decision_tooltip = AWR_PRC_initiate_the_rescue_campaign
 		}
 		complete_effect = {
 			#
 		}
 	}
 
-	RCM_PRC_mao_takeover_leadership = {	#成立新一届中央政治局
+	AWR_PRC_mao_takeover_leadership = {	#成立新一届中央政治局
 		icon = generic_military
 		visible = {
 			has_global_flag = first_phase_concluded
@@ -1810,7 +1805,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		}
 	}
 
-	RCM_PRC_initiate_the_rescue_campaign = {	#发起抢救运动
+	AWR_PRC_initiate_the_rescue_campaign = {	#发起抢救运动
 		icon = generic_speech
 		visible = {
 			has_global_flag = first_phase_concluded
@@ -1834,12 +1829,12 @@ parliament_gui_decision_category = {	#全国人民代表大会
 	
 		remove_effect = {
 			set_global_flag = rescue_campaign_initiated
-			unlock_decision_tooltip = RCM_PRC_coersion_decsion
-			unlock_decision_tooltip = RCM_PRC_purge_new_comers_decision
-			unlock_decision_tooltip = RCM_PRC_trial_of_wang_shiwei
-			unlock_decision_tooltip = RCM_PRC_force_wang_ming_admit_errors
-			unlock_decision_tooltip = RCM_PRC_force_zhou_enlai_admit_errors
-			unlock_decision_tooltip = RCM_PRC_force_bo_gu_admit_errors
+			unlock_decision_tooltip = AWR_PRC_coersion_decsion
+			unlock_decision_tooltip = AWR_PRC_purge_new_comers_decision
+			unlock_decision_tooltip = AWR_PRC_trial_of_wang_shiwei
+			unlock_decision_tooltip = AWR_PRC_force_wang_ming_admit_errors
+			unlock_decision_tooltip = AWR_PRC_force_zhou_enlai_admit_errors
+			unlock_decision_tooltip = AWR_PRC_force_bo_gu_admit_errors
 		}
 		complete_effect = {
 			swap_ideas = {
@@ -1851,13 +1846,12 @@ parliament_gui_decision_category = {	#全国人民代表大会
 				country_event = { 
 					id = AWR_PRC.79 
 					days = 10 
-					random_days = 3 
 				}
 			}
 		}
 	}
 
-	RCM_PRC_coersion_decsion = {	#惩前毖后，治病救人
+	AWR_PRC_coersion_decsion = {	#惩前毖后，治病救人
 		icon = generic_police_action
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -1878,13 +1872,13 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		remove_effect = {
 			set_global_flag = confessions_coerced
 			country_event = {
-				id = RCM_comchina_mao.14
+				id = AWR_PRC.291
 			}
 		}
 		
 	}
 
-	RCM_PRC_purge_new_comers_decision = {	#新成员的问题
+	AWR_PRC_purge_new_comers_decision = {	#新成员的问题
 		icon = generic_assassination
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -1902,11 +1896,13 @@ parliament_gui_decision_category = {	#全国人民代表大会
 	
 		remove_effect = {
 			set_global_flag = newcomers_purged
-			country_event = RCM_comchina_mao.15
+			country_event = {
+				id = AWR_PRC.292
+			}
 		}
 	}
 
-	RCM_PRC_trial_of_wang_shiwei = {	#审判王实味
+	AWR_PRC_trial_of_wang_shiwei = {	#审判王实味
 		icon = generic_arrest
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -1924,13 +1920,13 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		remove_effect = {
 			set_global_flag = wang_shiwei_is_put_on_trial
 			country_event = {
-				id = RCM_comchina_mao.16
+				id = AWR_PRC.293
 			}
 		}
 		
 	}
 
-	RCM_PRC_force_wang_ming_admit_errors = {	#要求王明做自我检讨
+	AWR_PRC_force_wang_ming_admit_errors = {	#要求王明做自我检讨
 		icon = generic_political_discourse
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -1953,12 +1949,12 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		remove_effect = {
 			set_global_flag = wang_ming_self_criticized
 			country_event = {
-				id = RCM_comchina_mao.18
+				id = AWR_PRC.294
 			}
 		}
 	}
 
-	RCM_PRC_force_zhou_enlai_admit_errors = {	#要求周恩来做自我检讨
+	AWR_PRC_force_zhou_enlai_admit_errors = {	#要求周恩来做自我检讨
 		icon = generic_political_discourse
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -1981,13 +1977,13 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		remove_effect = {
 			set_global_flag = zhou_enlai_self_criticized
 			country_event = {
-				id = RCM_comchina_mao.19
+				id = AWR_PRC.295
 			}
 		}
 		
 	}
 
-	RCM_PRC_force_bo_gu_admit_errors = {	#要求博古做自我检讨
+	AWR_PRC_force_bo_gu_admit_errors = {	#要求博古做自我检讨
 		icon = generic_political_discourse
 		visible = {
 			has_global_flag = rescue_campaign_initiated
@@ -2009,7 +2005,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 		remove_effect = {
 			set_global_flag = bo_gu_self_criticized
 			country_event = {
-				id = RCM_comchina_mao.21
+				id = AWR_PRC.297
 			}
 		}
 		complete_effect = {
@@ -2225,14 +2221,15 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		allowed = { 
 			is_literally_china = yes 
 		}
-		available = { X_xchinese_propaganda_poster_slot_available = yes 
-		CKS_in_charge = yes
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			CKS_in_charge = yes
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_4 }  
-			#CKS_in_charge = yes
 			is_literally_china = yes
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2247,8 +2244,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			master_ideology_drift = 0.25
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_4_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 3 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 3 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2266,17 +2264,29 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_4
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 3 }
+			
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 3 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_4_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_4_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_5 = { # ID = 5
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
 		available = {
 			X_xchinese_propaganda_poster_slot_available = yes
 			IF = {
@@ -2289,7 +2299,10 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				GER = {
 					exists = yes
 					is_subject = no
-					NOT = { has_government = communism has_war_with = root }
+					NOT = { 
+						has_government = communism 
+						has_war_with = root 
+					}
 					has_opinion = {
 						target = ROOT
 						value > 49
@@ -2321,8 +2334,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			trade_opinion_factor = 0.25
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_5_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 5 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 5 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2340,17 +2354,28 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_5
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 5 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 5 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_5_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_5_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_6 = { # ID = 6
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
 		available = {
 			X_xchinese_propaganda_poster_slot_available = yes
 			has_war_with = JAP
@@ -2358,7 +2383,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		}
 		visible = {
 			has_civil_war = no
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 		}
 		days_remove = 180        
 		days_re_enable = 90
@@ -2371,8 +2398,10 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			land_reinforce_rate = 0.10
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_6_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 6 }
+           
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 6 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2390,25 +2419,38 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_6
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 6 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 6 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_6_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_6_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_7 = { # ID = 7
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
 		available = {
 			X_xchinese_propaganda_poster_slot_available = yes
 			has_war_with = JAP
 			surrender_progress > 0.3
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_7 }  
 			has_civil_war = no
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 		}
 		days_remove = 180        
 		days_re_enable = 90
@@ -2422,8 +2464,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			minimum_training_level = -0.15
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_7_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 7 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 7 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2441,22 +2484,37 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_7
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 7 }
+			
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 7 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_7_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_7_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_8 = { # ID = 8
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_8 }  
 			is_literally_china = yes
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2470,8 +2528,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			cic_construction_boost_factor = 0.05
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_8_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 8 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 8 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2489,21 +2548,35 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_8
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 8 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 8 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_8_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_8_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_9 = { # ID = 9
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
-		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_9 }  
-			not = { has_government = communism }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
+		visible = { 
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2515,17 +2588,18 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			enemy_operative_capture_chance_factor = 0.25
 			intelligence_agency_defense = 2
 			encryption = 1
-			civilian_intel_to_others  = -25#泄露给他国的民政情报
-			army_intel_to_others  = -25#泄露给他国的陆军情报
-			navy_intel_to_others  = -25#泄露给他国的海军情报
-			airforce_intel_to_others  = -25#泄露给他国的空军情报
+			civilian_intel_to_others  = -25 #泄露给他国的民政情报
+			army_intel_to_others  = -25 #泄露给他国的陆军情报
+			navy_intel_to_others  = -25 #泄露给他国的海军情报
+			airforce_intel_to_others  = -25 #泄露给他国的空军情报
 			drift_defence_factor = 0.25 #意识形态变化抵制力度
 			foreign_subversive_activites = -0.25 #外国颠覆活动效率
 			party_popularity_stability_factor = 0.10
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_9_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 9 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 9 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2543,21 +2617,35 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_9
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 9 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 9 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_9_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_9_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_10 = { # ID = 10
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_3 }  
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2571,8 +2659,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			army_defence_factor = 0.05
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_10_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 10 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 10 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2590,30 +2679,49 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_3
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 10 }
+			
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 10 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_10_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_10_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_11 = { # ID = 11
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
 		available = {
 			X_xchinese_propaganda_poster_slot_available = yes
-			524 = { is_fully_controlled_by = root }
-			if = {
-			limit = { original_tag = CHI }
-			has_completed_focus = CHI_the_fall_of_mainland
+			524 = { 
+				is_fully_controlled_by = root 
 			}
-			else = { num_of_controlled_states < 5 }
+			if = {
+				limit = { 
+					original_tag = CHI 
+				}
+				has_completed_focus = CHI_the_fall_of_mainland
+			}
+			else = { 
+				num_of_controlled_states < 5 
+			}
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_11 }  
 			is_literally_china = yes
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2634,8 +2742,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			consumer_goods_factor = -0.20
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_11_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 11 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 11 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2653,24 +2762,38 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_11
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 11 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 11 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_11_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_11_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_12 = { # ID = 12
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes has_war = yes 
-		surrender_progress > 0
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			has_war = yes 
+			surrender_progress > 0
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_12 }  
 			is_literally_china = yes
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2687,8 +2810,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			production_factory_efficiency_gain_factor = 0.05 #生产效率增长
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_12_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 12 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 12 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2706,20 +2830,34 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_12
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 12 }
+			
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 12 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_12_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_12_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_13 = { # ID = 13
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes has_war_with = JAP }
+		ai_will_do = { 
+			base = 100 
+			modifier = {
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			has_war_with = JAP 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_13 }  
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2737,8 +2875,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			weekly_casualties_war_support = 0.002 #MODDED
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_13_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 13 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 13 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2756,21 +2895,35 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_13
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 13 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 13 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_13_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_13_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_14 = { # ID = 14
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_14 }  
-			not = { has_government = communism }
+			not = { 
+				has_government = communism 
+			}
 			has_civil_war = no
 		}
 		days_remove = 180        
@@ -2791,9 +2944,13 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			operation_coup_government_cost = -0.25 #进行颠覆花费
 		}
 		complete_effect = {
-			add_popularity = { ideology = communism popularity = -0.05 }
-            #set_variable = { X_xchinese_propaganda_14_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 14 }
+			add_popularity = { 
+				ideology = communism 
+				popularity = -0.05 
+			}
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 14 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2811,25 +2968,35 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_14
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 14 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 14 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_14_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_14_cost = 2 
+			}
 		}
 	}
-	
-	###########
+
 	#communism#
 	X_xchinese_propaganda_15 = { # ID = 15
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes
-		has_idea = PRC_maoism
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes
+			has_idea = PRC_maoism
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_15 }  
 			has_government = communism
 			has_civil_war = no
 		}
@@ -2876,9 +3043,20 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 	X_xchinese_propaganda_16 = { # ID = 16
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes has_war = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			has_war = yes 
+		}
 		visible = {
 			#NOT = { has_country_flag = Second_X_xchinese_propaganda_16 }  
 			has_government = communism
@@ -2900,7 +3078,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		}
 		complete_effect = {
             #set_variable = { X_xchinese_propaganda_16_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 16 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 16 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -2919,15 +3099,25 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				set_country_flag = First_X_xchinese_propaganda_16
 			}
 			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 16 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 16 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_16_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_16_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_17 = { # ID = 17
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
 		allowed = { is_literally_china = yes }
 		available = { X_xchinese_propaganda_poster_slot_available = yes
 		has_war = yes
@@ -2983,9 +3173,19 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 	X_xchinese_propaganda_18 = { # ID = 18
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = {
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
 			has_government = communism
 			has_civil_war = no
@@ -3000,17 +3200,19 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			enemy_operative_capture_chance_factor = 0.75
 			intelligence_agency_defense = 5
 			encryption = 1
-			civilian_intel_to_others  = -50#泄露给他国的民政情报
-			army_intel_to_others  = -50#泄露给他国的陆军情报
-			navy_intel_to_others  = -50#泄露给他国的海军情报
-			airforce_intel_to_others  = -50#泄露给他国的空军情报
+			civilian_intel_to_others  = -50 #泄露给他国的民政情报
+			army_intel_to_others  = -50 #泄露给他国的陆军情报
+			navy_intel_to_others  = -50 #泄露给他国的海军情报
+			airforce_intel_to_others  = -50 #泄露给他国的空军情报
 			drift_defence_factor = 0.50 #意识形态变化抵制力度
 			foreign_subversive_activites = -0.50 #外国颠覆活动效率
 			party_popularity_stability_factor = 0.15
 		}
 		complete_effect = {
             #set_variable = { X_xchinese_propaganda_18_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 18 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 18 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3028,21 +3230,42 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_18
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 18 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 18 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_18_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_18_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_19 = { # ID = 19
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes 
-		if = {
-		limit = { original_tag = PRC }
-		or = { has_idea = PRC_songqingling has_idea = PRC_hexiangning has_idea = PRC_jiangqing has_idea = PRC_dengyingchao has_idea = prc_meng_qingshu }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
 		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			if = {
+				limit = { 
+					original_tag = PRC 
+				}
+				or = { 
+					has_idea = PRC_song_qingling 
+					has_idea = PRC_he_xiangning 
+					has_idea = PRC_jiang_qing 
+					has_idea = PRC_deng_yingchao 
+					has_idea = prc_meng_qingshu 
+				}
+			}
 		}
 		visible = {
 			has_government = communism
@@ -3064,7 +3287,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		}
 		complete_effect = {
             #set_variable = { X_xchinese_propaganda_19_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 19 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 19 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3082,17 +3307,31 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_19
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 19 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 19 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_19_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_19_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_20 = { # ID = 20
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
 			has_government = communism
 			has_civil_war = no
@@ -3110,7 +3349,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		}
 		complete_effect = {
             #set_variable = { X_xchinese_propaganda_20_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 20 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 20 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3128,19 +3369,32 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_20
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 20 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 20 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_20_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_20_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_21 = { # ID = 21
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_21 }  
 			has_government = communism
 			has_civil_war = no
 		}
@@ -3154,8 +3408,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			cic_construction_boost_factor = 0.15
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_21_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 21 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 21 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3173,18 +3428,31 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_21
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 21 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 21 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_21_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_21_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_22 = { # ID = 22
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
 			has_government = communism
 			has_civil_war = no
@@ -3198,8 +3466,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			production_lack_of_resource_penalty_factor = -0.15
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_22_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 22 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 22 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3217,18 +3486,31 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_22
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 22 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 22 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_22_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_22_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_23 = { # ID = 23
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes 
-		is_in_faction_with = SOV
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			is_in_faction_with = SOV
 		}
 		visible = {
 			has_government = communism
@@ -3254,8 +3536,10 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			operation_coup_government_cost = -0.25 #进行颠覆花费
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_23_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 23 }
+           
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 23 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3273,22 +3557,37 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_23
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 23 }
+			
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 23 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_23_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_23_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_24 = { # ID = 24
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes 
-		has_country_leader = { ruling_only = yes character = prc_mao_zedong }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+			has_country_leader = { 
+				ruling_only = yes 
+				character = prc_mao_zedong 
+			}
 		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_24 }  
 			has_government = communism
 			has_civil_war = no
 		}
@@ -3304,8 +3603,10 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			communism_drift = 0.25
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_24_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 24 }
+            
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 24 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3324,20 +3625,32 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_24
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 24 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 24 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_24_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_24_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_25 = { # ID = 25
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
-			#NOT = { has_country_flag = Second_X_xchinese_propaganda_25 }  
 			has_government = communism
 			has_civil_war = no
 		}
@@ -3353,8 +3666,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			required_garrison_factor = -0.25
 		}
 		complete_effect = {
-            #set_variable = { X_xchinese_propaganda_25_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 25 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 25 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3373,18 +3687,31 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_25
 			}
-			#custom_effect_tooltip = CHI_propaganda_campaign_cooldown_tt
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 25 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 25 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_25_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_25_cost = 2 
+			}
 		}
 	}
 	X_xchinese_propaganda_26 = { # ID = 26
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 100 modifier = { factor = 0 has_political_power < 500 } }
-		allowed = { is_literally_china = yes }
-		available = { X_xchinese_propaganda_poster_slot_available = yes }
+		ai_will_do = { 
+			base = 100 
+			modifier = { 
+				factor = 0 
+				has_political_power < 500 
+			} 
+		}
+		allowed = { 
+			is_literally_china = yes 
+		}
+		available = { 
+			X_xchinese_propaganda_poster_slot_available = yes 
+		}
 		visible = {
 			has_government = communism
 			has_civil_war = no
@@ -3408,8 +3735,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			line_change_production_efficiency_factor = 0.05 #生产效率保持
 		}
 		complete_effect = {
-			#set_variable = { X_xchinese_propaganda_26_cost = 50 }
-			set_variable = { X_xchinese_new_propaganda_campaign = 26 }
+			set_variable = { 
+				X_xchinese_new_propaganda_campaign = 26 
+			}
 			X_xchinese_pick_propaganda_campaign_slot_effect = yes
 			IF = {
 				limit = {
@@ -3417,7 +3745,9 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				clr_country_flag = First_X_xchinese_propaganda_26
 				set_country_flag = Second_X_xchinese_propaganda_26
-				multiply_variable = { X_xchinese_propaganda_26_cost = 2 }
+				multiply_variable = { 
+					X_xchinese_propaganda_26_cost = 2 
+				}
 			}
 		}
 		remove_effect = {
@@ -3429,12 +3759,15 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 				}
 				set_country_flag = First_X_xchinese_propaganda_25
 			}
-			set_variable = { X_xchinese_propaganda_campaign_to_remove = 26 }
+			set_variable = { 
+				X_xchinese_propaganda_campaign_to_remove = 26 
+			}
 			X_xchinese_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_xchinese_propaganda_26_cost = 2 }
+			multiply_variable = { 
+				X_xchinese_propaganda_26_cost = 2 
+			}
 		}
 	}
-
 }
 
 political_actions = {	#政治宣传
@@ -4428,60 +4761,8 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			}
 		}
 	}
+
 	#坦克
-	establish_PRC_shenyang_tank_manufacturer = {	#成立国营618厂
-		icon = generic_factory
-		fire_only_once = yes
-		days_remove = 90 
-
-		visible = {
-			has_completed_focus = PRC_Five_year_plans_of_China
-			tag = PRC
-			NOT = {
-				has_global_flag = establish_PRC_shenyang_tank_manufacturer
-			}
-		}
-		available = {
-			industrial_complex > 10
-		}
-		complete_effect = {
-			#
-		}
-		remove_effect = {
-			set_global_flag = establish_PRC_shenyang_tank_manufacturer
-			custom_effect_tooltip = available_mio_tt
-			show_mio_tooltip = PRC_shenyang_tank_manufacturer
-		}
-		modifier = {
-			civilian_factory_use = 10
-		}
-	}
-
-	invest_in_PRC_shenyang_tank_manufacturer = {	#投资国营618厂
-		icon = generic_factory
-		fire_only_once = yes
-		cost = 100
-		days_remove = 30 
-		days_re_enable = 90
-
-		visible = {
-			has_completed_focus = PRC_Five_year_plans_of_China
-			OR = {
-				has_global_flag = establish_PRC_shenyang_tank_manufacturer
-				has_global_flag = be_high
-			}
-		}
-		
-		complete_effect = {
-			#
-		}
-		remove_effect = {
-			mio:PRC_shenyang_tank_manufacturer = {
-				add_mio_funds = 1000
-			}
-		}
-	}
-
 	establish_PRC_harbin_tank_manufacturer = {	#成立国营674厂
 		icon = generic_factory
 		fire_only_once = yes
@@ -6357,14 +6638,6 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				command_power > 19
 				political_power_growth > 0.75
 			}
-		}
-		custom_cost_trigger = {
-			command_power > 19
-			political_power_growth > 0.75
-		}
-		custom_cost_text = cp_at_least_20_pol_neg_075
-		is_good = no
-		available = {
 			FROM = {
 				is_core_of = event_target:WTT_current_china_leader
 			}
@@ -6374,6 +6647,12 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				}
 			}
 		}
+		custom_cost_trigger = {
+			command_power > 19
+			political_power_growth > 0.75
+		}
+		custom_cost_text = cp_at_least_20_pol_neg_075
+
 		modifier = {
 			political_power_gain = -0.75
 		}
@@ -6605,85 +6884,11 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 			set_global_flag = PRC_requested_manchuria
 			FROM = {
 				country_event = {
-					id = prc.9
+					id = AWR_PRC.298
 				}
 			}
 		}
 	}
-
-	RCM_demand_lands = {	#登上大陆
-		icon = infiltrate_state
-		allowed = {
-			is_literally_china = yes
-		}
-		visible = {
-			is_in_faction_with = JAP
-			has_global_flag = unite_china_jap_flag
-			JAP = {
-				NOT = {
-					any_enemy_country = {
-						is_literally_china = yes
-					}
-				}
-			}
-		}
-		available = {
-			any_of_scopes = {
-				array = global.big_china
-				tooltip = big_china_tt
-				state_should_be_transferred_to_china = yes
-			}
-		}
-
-		cost = 50
-		days_remove = 0
-		days_re_enable = 0
-		fire_only_once = no
-
-		ai_will_do = {
-			factor = 1000
-		}
-
-		complete_effect = {
-			JAP = {
-				country_event = AWR_JAP.1
-			}
-			effect_tooltip = {
-				for_each_scope_loop = {
-					array = global.big_china
-					tooltip = big_china_tt
-					if = {
-						limit = {							
-							state_should_be_transferred_to_china = yes
-						}
-						if = {
-							limit = { 
-								JAP = { 
-									has_completed_focus = JAP_expand_the_revolutions_focus 
-								} 
-							}
-							event_target:WTT_communist_china = { 
-								transfer_state = PREV 
-							}
-						}
-						if = {
-							limit = { 
-								JAP = { 
-									NOT = {  
-										has_completed_focus = JAP_expand_the_revolutions_focus 
-									} 
-								} 
-							}
-							event_target:WTT_current_china_leader = { 
-								transfer_state = PREV 
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 }
 
 PRC_yan_an_zheng_feng_zz = {	#延安整风
@@ -6724,7 +6929,7 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
         }
     }
 
-    RCM_PRC_set_up_general_study_committee = {	#成立综合研究委员会
+    AWR_PRC_set_up_general_study_committee = {	#成立综合研究委员会
 		icon = eng_trade_unions_support
 		visible = {
 			has_completed_focus = PRC_route_struggle_focus
@@ -7270,12 +7475,12 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
                     } 
                 }
             }
-            unlock_decision_tooltip = RCM_PRC_coersion_decsion
-            unlock_decision_tooltip = RCM_PRC_purge_new_comers_decision
-            unlock_decision_tooltip = RCM_PRC_trial_of_wang_shiwei
-            unlock_decision_tooltip = RCM_PRC_force_wang_ming_admit_errors
-            unlock_decision_tooltip = RCM_PRC_force_zhou_enlai_admit_errors
-            unlock_decision_tooltip = RCM_PRC_force_bo_gu_admit_errors
+            unlock_decision_tooltip = AWR_PRC_coersion_decsion
+            unlock_decision_tooltip = AWR_PRC_purge_new_comers_decision
+            unlock_decision_tooltip = AWR_PRC_trial_of_wang_shiwei
+            unlock_decision_tooltip = AWR_PRC_force_wang_ming_admit_errors
+            unlock_decision_tooltip = AWR_PRC_force_zhou_enlai_admit_errors
+            unlock_decision_tooltip = AWR_PRC_force_bo_gu_admit_errors
         }
         complete_effect = {
             custom_effect_tooltip = protests_will_arise_tt
@@ -7828,14 +8033,6 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				command_power > 19
 				political_power_growth > 0.75
 			}
-		}
-		custom_cost_trigger = {
-			command_power > 19
-			political_power_growth > 0.75
-		}
-		custom_cost_text = cp_at_least_20_pol_neg_075
-		is_good = no
-		available = {
 			FROM = {
 				is_core_of = event_target:WTT_current_china_leader
 			}
@@ -7845,6 +8042,12 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				}
 			}
 		}
+		custom_cost_trigger = {
+			command_power > 19
+			political_power_growth > 0.75
+		}
+		custom_cost_text = cp_at_least_20_pol_neg_075
+		is_good = no
 		modifier = {
 			political_power_gain = -0.75
 		}
@@ -12382,8 +12585,8 @@ PRC_contact_wrl_cat = {		#联络地方官员
 							NOT = { #suiyuan
 								state = 621
 								state = 746
-								state = 1165
-								state = 1159
+								state = 1106
+								state = 1043
 							}
 						}
 						ROOT = {
@@ -12391,94 +12594,6 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						}
 					} 
 				} 
-			}
-		}
-		complete_effect = {
-			#
-		}
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-	
-	PRC_contact_suy_decision = { #四川
-		icon = GFX_decision_generic_political_discourse
-		allowed = {
-			is_literally_china = yes
-		}
-		visible = {
-			has_completed_focus = PRC_contact_cheng_qian_focus
-			hidden_trigger = {
-                any_neighbor_country = {
-					tag = SUY
-					has_capitulated = no
-					has_country_leader = {
-						character = SHX_Dong_Qiwu 
-						ruling_only = yes
-					}
-				}
-			}
-		}
-		available = {
-			controls_state = 608
-			controls_state = 609
-			any_neighbor_country = {
-				tag = SUY
-				has_capitulated = no
-			    has_country_leader = {
-					character = SHX_Dong_Qiwu ruling_only = yes
-				}
-			}
-			event_target:WTT_current_china_leader = {
-				has_war_with = ROOT
-				#is_neighbor_of = ROOT
-				NOT = {
-					controls_state = 1160
-					controls_state = 613
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = 90
-		days_re_enable = 0
-		fire_only_once = yes
-
-        cancel_trigger = { #will abort
-		    NOT = {
-			   country_exists = SUY
-		    }
-	    }
-
-		modifier = {
-			#
-		}
-
-		remove_effect = {
-			SUY = {
-				country_event = {
-					id = nhq.3
-				}
-			}
-			custom_effect_tooltip = if_they_accept_green 
-			effect_tooltip = {
-				annex_country = { 
-					target = SUY transfer_troops = yes 
-				}	
-			}
-			if = {
-				limit = {
-					NOT = {
-						has_war_with = SUY
-					}
-				}
-				custom_effect_tooltip = if_they_refuse_red
-			    effect_tooltip = {
-				    create_wargoal = {
-						type = annex_everything
-						target = SUY
-					}
-			    }
 			}
 		}
 		complete_effect = {
@@ -12572,7 +12687,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						}
 						OR = {
 							controls_state = 750
-							controls_state = 1181
+							controls_state = 1035
 							controls_state = 602
 						}
 					}
@@ -12584,7 +12699,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						}
 						OR = {
 							controls_state = 750
-							controls_state = 1181
+							controls_state = 1035
 							controls_state = 602
 						}
 					}
@@ -12594,9 +12709,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				}
 			}
 		}
-		complete_effect = {
-			
-		}
+
 		ai_will_do = {
 			factor = 1000
 		}
@@ -15369,7 +15482,7 @@ TIB_democracy_reform = {	#西藏民主改革
 		visible = {
 			has_completed_focus = PRC_force_TIB_reform
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15424,9 +15537,9 @@ TIB_democracy_reform = {	#西藏民主改革
 	TIB_three_reversals_and_two_profit = {	#于牧区开展三反两利
 		icon = generic_political_discourse
 		visible = {
-			has_completed_focus = TIB_land_reform
+			has_country_flag = TIB_land_reform
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15454,9 +15567,9 @@ TIB_democracy_reform = {	#西藏民主改革
 	four_reversals_and_double_reduction = {	#于城镇开展四反双减
 		icon = generic_political_discourse
 		visible = {
-			has_completed_focus = TIB_three_reversals_and_two_profit
+			has_country_flag = TIB_three_reversals_and_two_profit
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15487,9 +15600,9 @@ TIB_democracy_reform = {	#西藏民主改革
 	separate_church_and_state = {	#政教分离
 		icon = generic_political_discourse
 		visible = {
-			has_completed_focus = TIB_three_reversals_and_two_profit
+			has_country_flag = TIB_three_reversals_and_two_profit
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15517,9 +15630,9 @@ TIB_democracy_reform = {	#西藏民主改革
 	abolish_the_old_judicial_and_hierarchical_systems = {	#废除旧司法和等级制度
 		icon = generic_political_discourse
 		visible = {
-			has_completed_focus = TIB_three_reversals_and_two_profit
+			has_country_flag = TIB_three_reversals_and_two_profit
 			TIB = {
-				every_core_state = {
+				any_core_state = {
 					is_controlled_by = PRC
 				}
 			}
@@ -15547,12 +15660,7 @@ TIB_democracy_reform = {	#西藏民主改革
 	establish_grassroots_political_power_and_regional_ethnic_autonomy = {	#建立基层政权和民族区域自治
 		icon = generic_political_discourse
 		visible = {
-			has_completed_focus = TIB_three_reversals_and_two_profit
-			TIB = {
-				every_core_state = {
-					is_controlled_by = PRC
-				}
-			}
+			has_country_flag = TIB_three_reversals_and_two_profit
 			has_country_flag = abolish_the_old_judicial_and_hierarchical_systems
 			has_country_flag = separate_church_and_state
 		}
@@ -15620,9 +15728,6 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_xinanlingtu
-			NOT = {
-				has_decision = prc_zangnan
-			}
 			1130 = {
 				NOT = {
 					is_owned_by = ROOT
@@ -15655,11 +15760,11 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		visible = {
 			has_completed_focus = PRC_Demand_mongolia
 			NOT = {
-				every_state = {
-					limit = {
-						is_core_of = MON
+				
+				MON = {
+					any_core_state = {
+						is_controlled_by_ROOT_or_ally = yes
 					}
-					is_controlled_by = ROOT
 				}
 			}
 			NOT = {
@@ -15672,9 +15777,10 @@ CHINA_recover_motherland = {	#中华民族领土问题
 			
 			if = {
 				limit = {
-					every_state = {
-						is_core_of = MON
-						is_controlled_by_ROOT_or_ally = yes
+					MON = {
+						any_core_state = {
+							is_controlled_by_ROOT_or_ally = yes
+						}
 					}
 				}
 				PRC = {
@@ -15688,11 +15794,14 @@ CHINA_recover_motherland = {	#中华民族领土问题
 
 			if = {
 				limit = {
-					every_state = {
-						is_core_of = MON
-						is_controlled_by = {
-							tag = SOV
-							is_subject_of = SOV
+					MON = {
+						any_core_state = {
+							OR = {
+								is_controlled_by = SOV
+								owner = {
+									is_subject_of = SOV
+								}
+							}
 						}
 					}
 				}
@@ -16598,8 +16707,7 @@ PRC_156_project_category = { #156工程
 
 		available = {
 		    has_completed_focus = PRC_Join_USSR
-			has_completed_focus = PRC_Five_year_plans_of_China
-			has_completed_focus = PRC_50s_soviet_industrial_aid			
+			has_completed_focus = PRC_Five_year_plans_of_China		
 			has_idea = prc_sov_youhaohuzhu 
 			is_in_faction_with = SOV
 		}

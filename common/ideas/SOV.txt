@@ -10114,5 +10114,38 @@ ideas = {
 				trade_cost_for_target_factor = -0.25
 			}
         }
+
+		PRC_156_project_sov_debuff = {	#156debuff
+			removal_cost = -1
+
+			picture = incompetent_heavy_industry
+
+			allowed = {
+				always = no
+			}
+			
+			cancel = {
+				if = {
+					limit = { 
+						tag = SOV 
+					}
+					NOT = { 
+						is_in_faction_with = event_target:WTT_communist_china 
+					}
+				}
+				if = {
+					limit = { 
+						tag = USA 
+					}
+					NOT = { 
+						is_in_faction_with = event_target:WTT_current_china_leader 
+					}
+				}
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.30
+			}
+		}
 	}
 }
