@@ -22,13 +22,13 @@ leader_traits = {#政治
 		
 		custom_modifier_tooltip = beifashuangjie_desc
 		
-		command_cap = @tier3
+		command_cap = 10
 
 		ai_will_do = {
 			factor = 3
 			modifier = {
 				factor = 0
-				command_power < @tier3
+				command_power < 10
 			}
 		}
 	}
@@ -247,13 +247,20 @@ leader_traits = {#军事
 	    sprite = 5
 		random = no
 		
-		command_cap_increase = @tier3
+		command_cap_increase = 10
+		max_command_power = 50
+		command_power_gain_mult = 0.225
+		attrition = -0.1
+		supply_consumption_factor = -0.1
+		no_supply_grace = 48
+		experience_gain_army_unit_factor = 0.1
+		land_reinforce_rate = 0.05
 		
 		ai_will_do = {
 			factor = 3
 			modifier = {
 				factor = 0
-				command_power < @tier3
+				command_power < 10
 			}
 		}
 	}
@@ -262,13 +269,20 @@ leader_traits = {#军事
 	    sprite = 5
 		random = no
 		
-		command_cap_increase = @tier3
+		command_cap_increase = 10
+		max_command_power = 50
+		command_power_gain_mult = 0.225
+		army_org_factor = 0.05
+		planning_speed = 0.1
+		max_planning = 0.05
+		experience_gain_army = 0.1
+		land_reinforce_rate = 0.05
 		
 		ai_will_do = {
 			factor = 3
 			modifier = {
 				factor = 0
-				command_power < @tier3
+				command_power < 10
 			}
 		}
 	}
@@ -283,13 +297,13 @@ leader_traits = {#军事
 		army_armor_defence_factor = 0.05
 		coordination_bonus = 0.05
 
-		command_cap_increase = @tier3
+		command_cap_increase = 10
 
 		ai_will_do = {
 			factor = 3
 			modifier = {
 				factor = 0
-				command_power < @tier3
+				command_power < 10
 			}
 		}
 	}
@@ -600,5 +614,23 @@ leader_traits = {#军事
         global_building_slots_factor = 0.05 
 		consumer_goods_factor = -0.05
 		political_power_factor = -0.05		
+	}
+
+	CHI_shiyebubuzhang = { #实业部部长
+		random = no
+		sprite = 12
+
+		production_speed_industrial_complex_factor = 0.1
+		production_speed_infrastructure_factor = 0.1
+		local_resources_factor = 0.1
+	}
+
+	CHI_jiaoyububuzhang = { #教育部部长
+		random = no
+		sprite = 12
+
+		political_power_factor = 0.05
+		research_speed_factor = 0.05
+		stability_factor = 0.05
 	}
 }

@@ -215,3 +215,73 @@ CHI_power_blocs_category = {
 		ai_will_do = { factor = 0 }
 	}
 }
+
+economy_decisions = {
+	monetary_reform_decision = {
+		icon = generic_economy
+		fire_only_once = no
+		days_remove = 120
+		days_re_enable = 0
+		cost = 25
+		highlight_states = {
+		}
+		visible = {
+			OR = {
+				has_idea = unstable_economy
+				has_idea = warlord_economy
+			}
+			OR = {
+				has_completed_focus = CHI_monetary_reform
+				has_completed_focus = WRL_monetary_reform
+			}
+		}
+		available = {
+			if = {
+				limit = {
+					has_idea = unstable_economy
+				}
+				has_idea = unstable_economy
+			}
+			if = {
+				limit = {
+					has_idea = warlord_economy
+				}
+				has_idea = warlord_economy
+			}
+		}
+		complete_effect = {
+		}
+		remove_trigger = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = unstable_economy
+				}
+				swap_ideas = {
+					remove_idea = unstable_economy
+					add_idea = civilian_economy
+				}
+			}
+			if = {
+				limit = {
+					has_idea = warlord_economy
+				}
+				swap_ideas = {
+					remove_idea = warlord_economy
+					add_idea = civilian_economy
+				}
+			}
+			set_country_flag = has_taken_monetary_reform_decision
+		}
+		cancel_trigger = {
+		}
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.1
+		}
+		ai_will_do = {
+			factor = 2000
+		}
+	}
+}

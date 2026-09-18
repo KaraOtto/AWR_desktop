@@ -1,0 +1,10 @@
+version="0.1"
+tags={
+	"Historical"
+}
+name="全面抗战"
+replace_path="map"
+replace_path="history/states"
+replace_path="map/strategicregions"
+replace_path="gfx/loadingscreens"
+supported_version="1.19.2.0"

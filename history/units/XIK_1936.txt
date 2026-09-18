@@ -1,0 +1,201 @@
+﻿division_template = {
+	name = "Luchün Shih"			
+	division_names_group = XIK_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 0 y = 3 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 1 y = 3 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+		#infantry = { x = 3 y = 2 }
+	}
+	support = {
+	}
+}
+
+division_template = {
+	name = "T'iaocheng Shih" #11026 men in total(甲種1937)			
+	division_names_group = XIK_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		infantry = { x = 3 y = 0 }
+		artillery_brigade = { x = 4 y = 0 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Chengli Shih" #8652 men in total(乙種1937)		
+	division_names_group = XIK_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 3 y = 0 }
+		infantry = { x = 3 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 } 
+		artillery = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Tuli Lü"	
+	division_names_group = XIK_INF_03
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+	}
+}
+
+division_template = {
+	name = "Paoan T'uan"	
+	division_names_group = WRL_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		#militia = { x = 1 y = 0 }
+		#militia = { x = 1 y = 1 }
+	}
+}
+
+### OOB ###
+units = {
+	#第二十四軍, around 35000 men
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 136
+		}
+		location = 4999
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 137
+		}
+		location = 4999
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 138
+		}
+		location = 4999
+		division_template = "Luchün Shih"		
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.2
+	}
+
+	division = { #軍直屬旅
+	    name = "Luchün Ti 24 Chün Chihshu Lü"
+		location = 7294
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.2
+	}
+	#川康邊防軍
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 7294
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.2
+	}
+
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 7294
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.2
+	}
+
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 7294
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.2
+	}
+
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 2067
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.2
+	}
+
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 7294
+		division_template = "Tuli Lü"		
+		start_equipment_factor = 0.45
+		start_experience_factor = 0.2
+	}
+}
+
+### STARTING PRODUCTION ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "XIK"
+		}
+		requested_factories = 1
+		progress = 0.55
+		efficiency = 100
+	}	
+}

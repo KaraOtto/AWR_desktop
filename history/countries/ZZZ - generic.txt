@@ -72,13 +72,6 @@ DEN = {
 SIA = {
 	add_country_leader_trait = popular_figurehead
 }
-
-HPC = {
-	608 = { set_state_name = STATE_PINGJIN }
-	add_ideas = chi_former_guominjun_remnants
-	add_country_leader_trait = difangshilipai
-
-}	
 ATM = {
 	add_country_leader_trait = difangshilipai
 
@@ -89,29 +82,6 @@ KRS = {
 }	
 
 PLM = {
-	add_country_leader_trait = difangshilipai
-
-}
-SHC = {
-	add_country_leader_trait = difangshilipai
-
-}
-XIA = {
-	add_ideas = incompetent_heavy_industry
-}
-SIC = {
-	753 = {
-		set_victory_points = {
-			province = 4403
-			value = 1
-		}
-	}
-	add_timed_idea = {
-		idea = sic_zhangguotao
-		days = 151
-	}
-	add_ideas = sic_yapianshui		
-	recruit_character = SIC_guoxunqi
 	add_country_leader_trait = difangshilipai
 
 }
@@ -146,12 +116,6 @@ every_country = { #no MAN, PRC, CHI
 	add_ideas = CHI_warlord_state_idea
 }
 
-XIK = {
-	add_timed_idea = {
-		idea = xik_zhangguotao
-		days = 183
-	}
-}
 MAN = {
 	1005 = {
 		set_victory_points = {
@@ -194,20 +158,7 @@ GSM = {
 
 
 }
-NXM = {
-add_country_leader_trait = NXM_brutal_general
-add_country_leader_trait = anti_communist
-add_equipment_to_stockpile = {
-		type = infantry_equipment
-		amount = 3500
-		producer = NXM
-	}
-add_equipment_to_stockpile = {
-		type = support_equipment
-		amount = 500
-		producer = NXM
-	}
-}
+
 HMI = {
 add_country_leader_trait = difangshilipai
 
@@ -504,170 +455,8 @@ add_building_construction = {
 }
 ###初始工业重置^^^
 
-XSM = {
-	add_ai_strategy = {
-			type = befriend
-			id = GSM
-			value = 100
-		}
-	add_ai_strategy = {
-			type = befriend
-			id = NXM
-			value = 100
-		}
-		add_ai_strategy = {
-			type = befriend
-			id = EGM
-			value = 100
-		}
-	add_ideas = xsm_majiajun
-	give_military_access = GSM
-	give_military_access = EGM
-	diplomatic_relation = {
-		country = GSM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = EGM
-		relation = non_aggression_pact
-		active = yes
-	}
-}
-
-NXM = {
-	add_ai_strategy = {
-			type = befriend
-			id = GSM
-			value = 100
-		}
-	add_ai_strategy = {
-			type = befriend
-			id = XSM
-			value = 100
-		}
-		add_ai_strategy = {
-			type = befriend
-			id = EGM
-			value = 100
-		}
-	add_ideas = xsm_majiajun
-	give_military_access = GSM
-	give_military_access = EGM
-	diplomatic_relation = {
-		country = GSM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = EGM
-		relation = non_aggression_pact
-		active = yes
-	}
-}
-
-GSM = {
-	add_ai_strategy = {
-			type = befriend
-			id = XSM
-			value = 100
-		}
-	add_ai_strategy = {
-			type = befriend
-			id = NXM
-			value = 100
-		}
-		add_ai_strategy = {
-			type = befriend
-			id = EGM
-			value = 100
-		}
-	add_ideas = xsm_majiajun
-	give_military_access = XSM
-	give_military_access = NXM
-	give_military_access = EGM
-	diplomatic_relation = {
-		country = XSM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = NXM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = EGM
-		relation = non_aggression_pact
-		active = yes
-	}
-	NXM = {
-		give_military_access = GSM
-	}
-	XSM = {
-		give_military_access = GSM
-	}
-	EGM = {
-		give_military_access = GSM
-	}
-}
 PAL = {		
 	set_capital = { state = 454 }
-}
-EGM = {
-	add_ideas = xsm_majiajun
-	1029 = {
-		set_victory_points = {
-			province = 12356
-			value = 1
-		}
-	}
-	set_province_name = {
-		id = 12356
-		name = "定边"
-	}
-	add_ai_strategy = {
-		type = befriend
-		id = XSM
-		value = 100
-	}
-	add_ai_strategy = {
-		type = befriend
-		id = NXM
-		value = 100
-	}
-	add_ai_strategy = {
-		type = befriend
-		id = GSM
-		value = 100
-	}
-	give_military_access = XSM
-	give_military_access = NXM
-	give_military_access = GSM
-	diplomatic_relation = {
-		country = XSM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = NXM
-		relation = non_aggression_pact
-		active = yes
-	}
-	diplomatic_relation = {
-		country = GSM
-		relation = non_aggression_pact
-		active = yes
-	}
-	NXM = {
-		give_military_access = EGM
-	}
-	XSM = {
-		give_military_access = EGM
-	}
-	GSM = {
-		give_military_access = EGM
-	}
 }
 
 every_country = {
@@ -1016,64 +805,8 @@ FRA = {
 	}
 }
 
-YUN = {
-	454 = {
-		set_victory_points = {
-			province = 1086
-			value = 5
-		}
-	}
-	add_ideas = yun_jiangwutang
-	add_ideas = yun_democratic_fortress
-	add_country_leader_trait = yunnanwang
-
-	add_country_leader_trait = {
-		ideology = despotism
-		trait = yunnanwang
-	}
-	add_country_leader_trait = {
-		ideology = n_socialism_ideology
-		trait = yunnanwang
-	}
-	add_country_leader_trait = {
-		ideology = conservatism
-		trait = yunnanwang
-	}
-	add_country_leader_trait = {
-		ideology = fascism_ideology
-		trait = yunnanwang
-	}
-	add_country_leader_trait = {
-		ideology = marxism
-		trait = yunnanwang
-	}
-}
-
-NEA = {
-	add_country_leader_trait = NEA_son_of_zhang_zuolin
-	add_ideas = NEA_918_918
-	recruit_character = NEA_lvzhengcao
-}
-
 TIB = {
 add_country_leader_trait = rezhenhuofo
-}
-
-GXC = {
-	add_ai_strategy = {
-		type = befriend
-		id = GUD
-		value = 100
-	}
-}
-
-GUD = {
-	add_ideas = CHI_whampoa_military_academy
-	add_ai_strategy = {
-		type = befriend
-		id = GXC
-		value = 100
-	}
 }
 
 VEN = {
@@ -1180,151 +913,6 @@ USA = {
 }
 SOV = {
 	set_variable = { SOV_the_red_army_mobilization_speed = 0.2 } #soviet be faster
-}
-1939.1.1 = {
-	every_country = {
-		limit = {
-			OR = {
-				capital_scope = {
-					OR = {
-						is_on_continent = europe
-						is_on_continent = north_america
-						is_on_continent = oceania
-					}
-				}
-				is_subject_of = ENG
-				is_subject_of = HOL
-				is_subject_of = FRA
-				tag = FIC
-			}
-		}
-
-		add_ideas = {
-			generic_wartime_propagantist_europe
-			generic_staunch_patriot_europe
-			generic_progressive_activist_europe
-			generic_revolutionary_syndicalist_europe
-			generic_robber_baron_europe
-		}
-		set_country_flag = european_country_flag
-		remove_ideas = {
-			generic_wartime_propagantist_europe
-			generic_staunch_patriot_europe
-			generic_progressive_activist_europe
-			generic_revolutionary_syndicalist_europe
-			generic_robber_baron_europe
-		}
-
-	}
-	every_country = {
-		limit = {
-			OR = {
-				AND = {
-					capital_scope = { is_on_continent = asia }
-					is_puppet = no
-				}
-				is_subject_of = JAP
-				is_warlord = yes
-				tag = HPC
-				tag = GUD
-				tag = XIK
-				tag = SIC
-				tag = EHB
-				tag = ECA
-				tag = RFM
-				tag = PLM
-				tag = NEA
-				tag = SCG
-				tag = NSG
-			}
-		}
-		add_ideas = {
-			generic_wartime_propagantist_asia
-			generic_staunch_patriot_asia
-			generic_progressive_activist_asia
-			generic_revolutionary_syndicalist_asia
-			generic_robber_baron_asia
-		}
-		set_country_flag = asian_country_flag
-		remove_ideas = {
-			generic_wartime_propagantist_asia
-			generic_staunch_patriot_asia
-			generic_progressive_activist_asia
-			generic_revolutionary_syndicalist_asia
-			generic_robber_baron_asia
-		}
-
-	}
-	every_country = {
-		limit = {
-			capital_scope = { is_on_continent = middle_east }
-			is_puppet = no
-		}
-		add_ideas = {
-			generic_wartime_propagantist_arab
-			generic_staunch_patriot_arab
-			generic_progressive_activist_arab
-			generic_revolutionary_syndicalist_arab
-			generic_robber_baron_arab
-		}
-		set_country_flag = arab_country_flag
-		remove_ideas = {
-			generic_wartime_propagantist_arab
-			generic_staunch_patriot_arab
-			generic_progressive_activist_arab
-			generic_revolutionary_syndicalist_arab
-			generic_robber_baron_arab
-		}
-	}
-	every_country = {
-		limit = {
-			AND = {
-				capital_scope = { is_on_continent = africa }
-				is_puppet = no
-			}
-		}
-		add_ideas = {
-			generic_wartime_propagantist_africa
-			generic_staunch_patriot_africa
-			generic_progressive_activist_africa
-			generic_revolutionary_syndicalist_africa
-			generic_robber_baron_africa
-		}
-		set_country_flag = africa_country_flag
-		remove_ideas = {
-			generic_wartime_propagantist_africa
-			generic_staunch_patriot_africa
-			generic_progressive_activist_africa
-			generic_revolutionary_syndicalist_africa
-			generic_robber_baron_africa
-		}
-	}
-	every_country = {
-		limit = {
-			OR = {
-				AND = {
-					capital_scope = { is_on_continent = south_america }
-					is_puppet = no
-				}
-				tag = PHI
-			}
-		}
-		add_ideas = {
-			generic_wartime_propagantist_south_america
-			generic_staunch_patriot_south_america
-			generic_progressive_activist_south_america
-			generic_revolutionary_syndicalist_south_america
-			generic_robber_baron_south_america
-		}
-		set_country_flag = south_america_country_flag
-		remove_ideas = {
-			generic_wartime_propagantist_south_america
-			generic_staunch_patriot_south_america
-			generic_progressive_activist_south_america
-			generic_revolutionary_syndicalist_south_america
-			generic_robber_baron_south_america
-		}
-	}
 }
 
 ########THIS SECTION IS FOR NON ASIAN COUNTRIE'S HISTORY

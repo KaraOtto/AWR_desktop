@@ -1,93 +1,47 @@
 ﻿capital = 1084 # Nanjing	## NO LABEL, HEAVILY MODDED 
 
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "No Step Back"
-		}
-	}
-	set_oob = "CHI_1936"
-	else = {
-		set_oob = "CHI_1936_nsb"
-	}
-}
+set_oob = "CHI_1936_nsb"
+set_naval_oob = "CHI_1936_naval_mtg"
+set_air_oob = "CHI_1936_air_bba"
 
 save_global_event_target_as = WTT_current_china_leader 
 
 # 权力集团：直接写入国家历史，确保1936开局即拥有动态修正。
 set_country_flag = CHI_power_blocs_initialized
-set_variable = { 
-	CHI_power_bloc_leader_influence = 0.35 
-}
-set_variable = { 
-	CHI_power_bloc_army_influence = 0.30 
-}
-set_variable = { 
-	CHI_power_bloc_capital_influence = 0.20 
-}
-set_variable = { 
-	CHI_power_bloc_technocrat_influence = 0.15 
-}
-
-set_variable = { 
-	CHI_power_bloc_leader_effect = 0.10 
-}
-set_variable = { 
-	CHI_power_bloc_army_combat_effect = 0.01 
-}
-set_variable = { 
-	CHI_power_bloc_army_supply_effect = -0.02 
-}
-set_variable = { 
-	CHI_power_bloc_army_service_effect = 0.05 
-}
-set_variable = { 
-	CHI_power_bloc_capital_build_effect = -0.025 
-}
-set_variable = { 
-	CHI_power_bloc_capital_output_effect = -0.02 
-}
-set_variable = { 
-	CHI_power_bloc_capital_economy_effect = -0.005
-}
-set_variable = { 
-	CHI_power_bloc_bourgeois_build_effect = -0.05 
-}
-set_variable = { 
-	CHI_power_bloc_bourgeois_efficiency_effect = -0.05 
-}
-set_variable = { 
-	CHI_power_bloc_technocrat_policy_effect = -0.08 
-}
-set_variable = { 
-	CHI_power_bloc_technocrat_goods_effect = 0.08 
-}
-set_variable = { 
-	CHI_power_bloc_technocrat_cost_effect = 0.10 
-}
-
-set_variable = { 
-	CHI_power_bloc_leader_frame = 7 
-}
-set_variable = { 
-	CHI_power_bloc_army_frame = 6 
-}
-set_variable = { 
-	CHI_power_bloc_capital_frame = 4 
-}
-set_variable = { 
-	CHI_power_bloc_technocrat_frame = 3 
-}
-set_variable = { 
-	CHI_power_bloc_leader_army_sum = 0.65 
-}
-set_variable = { 
-	CHI_power_bloc_gui_dirty = 1 
-}
 add_dynamic_modifier = { 
 	modifier = CHI_power_blocs_national_government 
 }
+set_variable = { CHI_power_bloc_leader_influence = 0.35 }
+set_variable = { CHI_power_bloc_army_influence = 0.30 }
+set_variable = { CHI_power_bloc_capital_influence = 0.20 }
+set_variable = { CHI_power_bloc_technocrat_influence = 0.15 }
+
+set_variable = { CHI_power_bloc_leader_effect = 0.10 }
+set_variable = { CHI_power_bloc_army_combat_effect = 0.01 }
+set_variable = { CHI_power_bloc_army_supply_effect = -0.02 }
+set_variable = { CHI_power_bloc_army_service_effect = 0.05 }
+set_variable = { CHI_power_bloc_capital_build_effect = -0.025 }
+set_variable = { CHI_power_bloc_capital_output_effect = -0.02 }
+set_variable = { CHI_power_bloc_capital_economy_effect = -0.005}
+set_variable = { CHI_power_bloc_bourgeois_build_effect = -0.05 }
+set_variable = { CHI_power_bloc_bourgeois_efficiency_effect = -0.05 }
+set_variable = { CHI_power_bloc_technocrat_policy_effect = -0.08 }
+set_variable = { CHI_power_bloc_technocrat_goods_effect = 0.08 }
+set_variable = { CHI_power_bloc_technocrat_cost_effect = 0.10 }
+
+set_variable = { CHI_power_bloc_leader_frame = 7 }
+set_variable = { CHI_power_bloc_army_frame = 6 }
+set_variable = { CHI_power_bloc_capital_frame = 4 }
+set_variable = { CHI_power_bloc_technocrat_frame = 3 }
+set_variable = { CHI_power_bloc_leader_army_sum = 0.65 }
+set_variable = { CHI_power_bloc_gui_dirty = 1 }
+
 force_update_dynamic_modifier = yes
+
+set_variable = { CHI_industry_dynamic_modifier_consumer_goods_factor = 0.05 }
+set_variable = { CHI_industry_dynamic_modifier_production_speed_industrial_complex_factor = 0.05 }
+
+set_variable = { CHI_research_dynamic_modifier_research_speed_factor = 0.03 }
 
 recruit_character = CHI_chiang_kai_shek
 recruit_character = CHI_huang_qixiang
@@ -229,41 +183,11 @@ recruit_character = CHI_fang_xianjue
 recruit_character = CHI_chen_yi
 recruit_character = CHI_lisiguang
 recruit_character = CHI_guo_rugui
+recruit_character = CHI_wu_dingchang
+recruit_character = CHI_wang_shijie
+recruit_character = CHI_zhu_jiahua
+recruit_character = CHI_hang_liwu
 
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "CHI_1936_naval_mtg"
-	else = {
-		set_naval_oob = "CHI_1936_naval_legacy"
-	}
-}
-# Starting tech
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_destroyer = 1
-		early_light_cruiser = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		early_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		coastal_defense_ships = 1
-	}
-}
-if = {
-    limit = {
-        has_dlc = "La Resistance"
-    }
-    set_technology = {
-        armored_car1 = 1
-    }
-}
 set_technology = {
 	infantry_weapons = 1
 	tech_trucks = 1
@@ -274,20 +198,15 @@ set_technology = {
 	gw_artillery = 1
 	basic_train = 1
 	militia_tech = 1
-}
+	armored_car1 = 1
+	gwtank_chassis = 1
 
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-	else = {
-		set_technology = {
-			gwtank = 1
-		}
-	}
+	basic_naval_mines = 1
+	early_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_battery = 1
+	basic_torpedo = 1
+	coastal_defense_ships = 1
 }
  
 set_grand_doctrine = mass_assault
@@ -296,8 +215,6 @@ set_variable = { var = duration_of_infra value = 120 } #teir 1
 set_variable = { var = duration_of_infra_reenable value = 70 }
 set_variable = { var = cost_of_infra_cf_minus_1 value = 11 } #teir 1
 set_variable = { var = cost_of_infra_cf value = 12 }
-
-
 
 set_variable = { CHI_ascended_advisor_1 = 0 } #Ascended Advisor Portrait
 set_variable = { CHI_ascended_advisor_2 = 0 } #Ascended Advisor Portrait
@@ -340,6 +257,7 @@ add_ideas = {
 	iliterate_population_1
 	no_proper_equipment_design_armor_naval_air
 	CHI_shadow_of_tanggu
+	CHI_nine_power_treaty
 
 	free_trade
 	unstable_economy
@@ -354,27 +272,6 @@ add_to_variable = {
 add_timed_idea = { 
 	idea = CHI_nanfang 
 	days = 553 
-}
-
-if = {
-	limit = {
-		has_dlc = "Waking the Tiger"
-	}
-	add_ideas = {
-		CHI_nine_power_treaty
-	}
-}
-
-if = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "CHI_1936_air_bba"
-	else = {
-		set_air_oob = "CHI_1936_air_legacy"
-	    set_technology = {
-			early_fighter = 1
-			early_bomber = 1
-		}
-	}
 }
 
 set_convoys = 40
@@ -549,9 +446,6 @@ if = {
 
 ### VARIANTS ###
 # 1936 Start #
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	# Destroyers #
