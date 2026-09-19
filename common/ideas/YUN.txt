@@ -1,0 +1,50 @@
+ideas = {
+	country = {
+		yun_jiangwutang = { #云南讲武堂
+		
+		    name = yun_jiangwutang
+
+			picture = YUN_jiangwutang
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_leader_cost_factor = -0.5
+				army_leader_start_planning_level = 1
+				army_morale_factor = 0.05
+				army_org_factor = 0.05				
+			}
+		}
+
+		yun_democratic_fortress = {
+		    picture = yun_democratic_fortress
+			
+			allowed = {
+			}
+			
+			cancel = {
+				NOT = {
+					has_country_leader = {
+						character = YUN_long_yun
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				party_popularity_stability_factor = 0.05
+				army_core_defence_factor = 0.05
+				drift_defence_factor = 0.05
+			}
+		}
+	}
+}

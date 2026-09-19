@@ -1,0 +1,56 @@
+ideas = {
+	country = {
+		sic_yapianshui = { #鸦片税
+    
+            name = sic_yapianshui
+    
+            picture = prc_permit_opium_trade
+            
+            
+            
+            available = {
+ 				has_government = neutrality           
+            }
+            
+            cancel = {
+				OR = {
+					has_idea = CHI_embrace_the_opium_trade
+					has_completed_focus = CHI_root_out_corruption		
+				}			
+            }
+
+            removal_cost = -1
+            
+            modifier = {
+                consumer_goods_factor = -0.25
+                stability_factor = -0.10
+            }
+    	}
+
+        xik_zhangguotao = { 
+    
+            name = xik_zhangguotao
+    
+            picture = chinese_burning_red_army_flag
+            
+            allowed = {
+				#
+            }
+            
+            available = {
+				has_government = neutrality			
+            }
+            
+            cancel = {
+            	has_completed_focus = CHI_cooperation_with_the_communists			
+            }
+
+            removal_cost = -1
+            
+            modifier = {
+                stability_factor = -0.10
+                communism_drift = 0.05
+            }
+    	}
+	}
+}

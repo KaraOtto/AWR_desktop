@@ -1,0 +1,116 @@
+ideas = {
+	country = {
+		MON_nomadic = {
+			picture = nomadic
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+
+			available = {
+			}
+
+			cancel = {
+			}
+
+			modifier = {
+				conscription = 0.03
+				production_factory_efficiency_gain_factor = -0.15
+				cavalry_attack_factor = 0.15 #MODDED
+				cavalry_defence_factor = 0.15 #MODDED
+			}
+
+			removal_cost = -1
+		}
+
+		xsm_majiajun = {			
+            picture = xsm_majiajun
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+            available = {                                                   
+				surrender_progress < 0.8
+            }
+			
+			cancel = {
+				or = {
+					tag = event_target:WTT_current_china_leader
+					and = { tag = TNG is_ai = yes }
+				}
+			}
+                                                     
+			modifier = {
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+				army_speed_factor = 0.10
+				terrain_penalty_reduction = 0.15
+				attrition = -0.25
+				army_morale_factor = 0.15
+				no_supply_grace = 48
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+				surrender_limit = 0.5
+			}
+
+			removal_cost = -1
+		
+			do_effect = {
+				or = {
+					and = { original_tag = TNG is_ai = no }
+					original_tag = XSM
+					original_tag = GSM
+					original_tag = NXM
+				}
+			}
+	    }
+
+		NXM_sending_reinforcement = {	#宁夏援军
+			picture = generic_volunteer_expedition_bonus
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+
+			 available = { 
+				EGM = { 
+					has_war_with = PRC 
+				}
+			 }
+
+            cancel = {
+				has_war = yes
+			}
+
+			on_add = {
+			    set_rule = {
+                    can_send_volunteers = yes
+                }
+			}
+			
+			on_remove = {
+			    set_rule = {
+                    can_send_volunteers = no
+                }
+			}
+
+			removal_cost = -1
+
+			modifier = {
+			    send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+			    send_volunteer_size = 4
+			}
+		}
+	}
+}

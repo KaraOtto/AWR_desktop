@@ -566,32 +566,6 @@ ideas = {
             }
     	}
 
-	    xik_zhangguotao = { 
-    
-            name = xik_zhangguotao
-    
-            picture = chinese_burning_red_army_flag
-            
-            allowed = {
-				#
-            }
-            
-            available = {
-				has_government = neutrality			
-            }
-            
-            cancel = {
-            	has_completed_focus = CHI_cooperation_with_the_communists			
-            }
-
-            removal_cost = -1
-            
-            modifier = {
-                stability_factor = -0.10
-                communism_drift = 0.05
-            }
-    	}
-
 	    chi_buzuowei = { #不作为
     
             name = chi_buzuowei
@@ -929,33 +903,6 @@ ideas = {
             }
     	}
 
-	    sic_yapianshui = { #鸦片税
-    
-            name = sic_yapianshui
-    
-            picture = prc_permit_opium_trade
-            
-            
-            
-            available = {
- 				has_government = neutrality           
-            }
-            
-            cancel = {
-				OR = {
-					has_idea = CHI_embrace_the_opium_trade
-					has_completed_focus = CHI_root_out_corruption		
-				}			
-            }
-
-            removal_cost = -1
-            
-            modifier = {
-                consumer_goods_factor = -0.25
-                stability_factor = -0.10
-            }
-    	}
-
 	    JAP_jie = {
     
             name = JAP_jie
@@ -979,71 +926,6 @@ ideas = {
 				fascism_acceptance = -100
             }
     	}
-
-		chi_former_guominjun_remnants = {
-		    picture = chi_former_guominjun_remnants
-			
-			allowed = {
-			    always = no
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				war_support_factor = 0.05
-				army_morale_factor = 0.025
-				land_reinforce_rate = 0.02
-				army_core_defence_factor = 0.05
-				army_core_attack_factor = 0.05
-			}
-		}
-
-		yun_democratic_fortress_2 = {
-		    picture = yun_democratic_fortress
-			
-			allowed = {
-			    always = no
-			}
-			
-			cancel = {
-				NOT = {
-					has_country_leader = {
-						character = YUN_long_yun
-					}
-				}
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				party_popularity_stability_factor = 0.1
-                research_speed_factor = 0.075
-				army_core_attack_factor = 0.1
-				army_core_defence_factor = 0.1
-				drift_defence_factor = 0.1
-			}
-		}
-
-		SHD_zongchangs_legacy_idea = {
-		    picture = shd_zongchangs_legacy
-			
-			allowed = {
-			    always = no
-			}
-
-			removal_cost = -1
-
-			modifier = {
-				stability_factor = -0.035
-				political_power_gain = -0.05
-				consumer_goods_factor = -0.05
-                research_speed_factor = 0.025				
-				industrial_capacity_factory = 0.05
-				neutrality_drift = 0.01
-				communism_drift = -0.01
-				democratic_drift = -0.01
-			}
-		}
 
 	    chi_jinyuanquan = { #金圆券
     
@@ -1409,31 +1291,6 @@ ideas = {
 				consumer_goods_factor = 0.05#生活消费品
             }
     	}
-
-		yun_jiangwutang = { #云南讲武堂
-		
-		    name = yun_jiangwutang
-
-			picture = YUN_jiangwutang
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-
-			modifier = {
-				army_leader_cost_factor = -0.5
-				army_leader_start_planning_level = 1
-				army_morale_factor = 0.05
-				army_org_factor = 0.05
-				
-			}
-		}
 
 		chi_guojun = { #中华民国国军
 		
@@ -2567,56 +2424,6 @@ ideas = {
 				war_support_factor = -0.1
 			}
 		}
-	
-		NEA_918_918 = {
-			removal_cost = -1
-
-			picture = jiachouguowen
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			
-			available = {
-				NOT = { 
-					is_in_faction_with = JAP 
-				}
-			}
-
-			cancel = {
-				716 = {
-					owner = {
-						OR = {
-							TAG = ROOT
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-			}
-			
-			targeted_modifier = {
-				tag = JAP			                			                
-				breakthrough_bonus_against = 0.2
-				attack_bonus_against = 0.2
-				defense_bonus_against = 0.2
-			}
-			targeted_modifier = {
-				tag = MAN			                			                
-				breakthrough_bonus_against = 0.2
-				attack_bonus_against = 0.2
-				defense_bonus_against = 0.2
-			}
-
-			modifier = {
-				war_support_weekly = 0.001
-				weekly_casualties_war_support = 0.001
-				war_stability_factor = 0.5
-			}
-		}
 		
 		###黄金十年计划精神
 
@@ -2896,54 +2703,6 @@ ideas = {
 			
 			}
 		}
-	
-	    xsm_majiajun = {
-			
-            picture = xsm_majiajun
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-
-            available = {                                                   
-				surrender_progress < 0.8
-            }
-			
-			cancel = {
-				or = {
-					tag = event_target:WTT_current_china_leader
-					and = { tag = TNG is_ai = yes }
-				}
-			}
-
-            
-                                                     
-			modifier = {
-				army_core_attack_factor = 0.15
-				army_core_defence_factor = 0.15
-				army_speed_factor = 0.10
-				terrain_penalty_reduction = 0.15
-				attrition = -0.25
-				army_morale_factor = 0.15
-				no_supply_grace = 48
-				supply_consumption_factor = -0.15
-				out_of_supply_factor = -0.15
-				surrender_limit = 0.5
-			}
-		
-			do_effect = {
-				or = {
-					and = { original_tag = TNG is_ai = no }
-					original_tag = XSM
-					original_tag = GSM
-					original_tag = NXM
-				}
-			}
-	    }
 
         chi_xinanlianda_idea = {
 		                
@@ -3699,29 +3458,6 @@ ideas = {
 			    can_puppet = yes
 			    can_only_justify_war_on_threat_country = no
 			}
-		}
-
-		HPC_banditry = {
-			picture = tfv_can_conscription_crisis
-			
-			allowed = {
-				always = no
-			}
-			
-			allowed_civil_war = {
-				always = yes
-			}
-
-			cancel = {
-				always = no
-			}
-			
-			removal_cost = -1
-
-			modifier = {
-				monthly_population = -0.2
-			    stability_weekly = -0.002
-            }
 		}
 
 		chi_shijiehuimie = {

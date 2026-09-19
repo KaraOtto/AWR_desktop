@@ -28,6 +28,7 @@ characters = {
 			planning_skill=2
 			logistics_skill=1
 			legacy_id=-1
+			desc = SHX_chen_changjie_desc
 		}
 	}
 
@@ -140,6 +141,7 @@ characters = {
 			planning_skill=2
 			logistics_skill=1
 			legacy_id=371002
+			desc = SHX_li_fuying_desc
 		}
 	}
 
@@ -215,6 +217,7 @@ characters = {
 			planning_skill=3
 			logistics_skill=2
 			legacy_id=-1
+			desc = SHX_sun_chu_desc
 		}
 	}
 
@@ -268,6 +271,7 @@ characters = {
 			planning_skill=3
 			logistics_skill=2
 			legacy_id=-1
+			desc = SHX_wang_jingguo_desc
 		}
 	}
 
@@ -306,30 +310,7 @@ characters = {
 			expire="1960.5.23"
 			traits={ cunzaizhuyi CHI_veteran_of_central_plains_war }
 			id=-1
-		}
-		country_leader={
-			ideology=fascism_ideology
-			expire="1960.5.23"
-			traits={ cunzaizhuyi CHI_veteran_of_central_plains_war }
-			id=-1
-		}
-		country_leader={
-			ideology=conservatism
-			expire="1960.5.23"
-			traits={ cunzaizhuyi CHI_veteran_of_central_plains_war }
-			id=-1
-		}
-		country_leader={
-			ideology=n_socialism_ideology
-			expire="1960.5.23"
-			traits={ cunzaizhuyi CHI_veteran_of_central_plains_war }
-			id=-1
-		}
-		country_leader={
-			ideology=marxism
-			expire="1960.5.23"
-			traits={ cunzaizhuyi CHI_veteran_of_central_plains_war }
-			id=-1
+			desc = SHX_yan_xishan_desc
 		}
 		advisor={
 			slot = army_chief
@@ -422,6 +403,7 @@ characters = {
 			planning_skill=2
 			logistics_skill=1
 			legacy_id=-1
+			desc = SHX_zhao_chengshou_desc
 		}
 	}
 
@@ -523,6 +505,7 @@ characters = {
 			defense_skill=2
 			planning_skill=2
 			logistics_skill=1
+			desc = SHX_Peng_Yubin_desc
 		}
 	}
 
@@ -540,6 +523,7 @@ characters = {
 			defense_skill=2
 			planning_skill=3
 			logistics_skill=1
+			desc = SHX_Lu_Yinglin_desc
 		}
 	}
 
@@ -550,6 +534,13 @@ characters = {
 				large="GFX_Portrait_SHX_Bo_Yibo"
 				small="GFX_idea_SHX_Bo_Yibo"
 			}
+		}
+		country_leader = {
+			ideology = marxism
+			expire="1965.1.1"
+			traits={ }
+			id=-1
+			desc = SHX_bo_yibo_desc
 		}
 		advisor={
 			slot = political_advisor
@@ -597,10 +588,8 @@ characters = {
 				}
 			}
 			ai_will_do = {
-				factor = 1
-				
+				factor = 1			
 			}
-			desc=boyibo_miaoshu
 		}
 		corps_commander={
 			traits={ 
@@ -614,7 +603,7 @@ characters = {
 			defense_skill=1
 			planning_skill=2
 			logistics_skill=2
-			desc=boyibo_miaoshu
+			desc=SHX_bo_yibo_desc
 			visible = { 
 				OR = { 
 					has_global_flag = has_completed_focus_SHX_United_front 
@@ -631,7 +620,7 @@ characters = {
 					}
 					has_global_flag = has_completed_focus_SHX_United_front
 					not = { 
-						has_war_with = event_target:WTT_communist_china 
+						has_war_with = PRC
 					}
 				}
 			}
