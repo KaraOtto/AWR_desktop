@@ -285,3 +285,157 @@ economy_decisions = {
 		}
 	}
 }
+
+CHI_corruption_category = {
+	CHI_corruption_investigate_army = {
+		icon = generic_army_support
+		cost = 50
+		days_remove = 45
+		available = { 
+			check_variable = { 
+				CHI_army_corruption > 0.10 
+			} 
+		}
+		complete_effect = { 
+			add_to_variable = { 
+				CHI_army_corruption = -0.10 
+			} 
+			CHI_corruption_clamp = yes 
+			add_stability = -0.01 
+		}
+		ai_will_do = { 
+			base = 10 
+			modifier = { 
+				add = 30 
+				check_variable = { 
+					CHI_army_corruption > 0.60 
+				} 
+			} 
+		}
+	}
+	CHI_corruption_audit_capital = {
+		icon = generic_political_discourse
+		cost = 50
+		days_remove = 45
+		available = { 
+			check_variable = { 
+				CHI_capital_corruption > 0.10 
+			} 
+		}
+		complete_effect = { 
+			add_to_variable = { 
+				CHI_capital_corruption = -0.10 
+			} 
+			CHI_corruption_clamp = yes 
+			add_stability = -0.01 
+		}
+		ai_will_do = { 
+			base = 10 
+			modifier = { 
+				add = 30 
+				check_variable = { 
+					CHI_capital_corruption > 0.60 
+				} 
+			} 
+		}
+	}
+	CHI_corruption_reorganize_bureaucracy = {
+		icon = generic_political_discourse
+		cost = 50
+		days_remove = 45
+		available = { 
+			check_variable = { 
+				CHI_technocrat_corruption > 0.10 
+			} 
+		}
+		complete_effect = { 
+			add_to_variable = { 
+				CHI_technocrat_corruption = -0.10 
+			} 
+			CHI_corruption_clamp = yes
+			add_stability = -0.01 
+		}
+		ai_will_do = { 
+			base = 10 
+			modifier = { 
+				add = 30 
+				check_variable = { 
+					CHI_technocrat_corruption > 0.60 
+				} 
+			} 
+		}
+	}
+	CHI_corruption_finish_campaign = {
+		icon = generic_political_discourse
+		cost = 100
+		days_remove = 70
+		fire_only_once = yes
+		available = { 
+			check_variable = { 
+				CHI_army_corruption < 0.11 
+			} 
+			check_variable = { 
+				CHI_capital_corruption < 0.11 
+			} 
+			check_variable = { 
+				CHI_technocrat_corruption < 0.11 
+			} 
+		}
+		complete_effect = { 
+			CHI_end_corruption_system = yes 
+		}
+		ai_will_do = { 
+			base = 100 
+		}
+	}
+
+	CHI_corruption_set_army_background = { 
+		icon = generic_army_support 
+		cost = 0 
+		fire_only_once = no 
+		visible = { 
+			has_country_flag = CHI_corruption_debug 
+		} 
+		complete_effect = { 
+			clr_country_flag = CHI_corruption_leader_background_capital 
+			clr_country_flag = CHI_corruption_leader_background_technocrat 
+			set_country_flag = CHI_corruption_leader_background_army 
+		} 
+	}
+	CHI_corruption_set_capital_background = { 
+		icon = generic_political_discourse 
+		cost = 0 
+		fire_only_once = no 
+		visible = { 
+			has_country_flag = CHI_corruption_debug 
+		} 
+		complete_effect = { 
+			clr_country_flag = CHI_corruption_leader_background_army 
+			clr_country_flag = CHI_corruption_leader_background_technocrat 
+			set_country_flag = CHI_corruption_leader_background_capital 
+		} 
+	}
+	CHI_corruption_set_technocrat_background = { 
+		icon = generic_political_discourse cost = 0 
+		fire_only_once = no 
+		visible = { 
+			has_country_flag = CHI_corruption_debug 
+		} 
+		complete_effect = { 
+			clr_country_flag = CHI_corruption_leader_background_army 
+			clr_country_flag = CHI_corruption_leader_background_capital 
+			set_country_flag = CHI_corruption_leader_background_technocrat 
+		} 
+	}
+	CHI_corruption_test_minor = { 
+		icon = generic_political_discourse 
+		cost = 0 
+		fire_only_once = no 
+		visible = { 
+			has_country_flag = CHI_corruption_debug 
+		} 
+		complete_effect = { 
+			CHI_corruption_dispatch_army = yes 
+		} 
+	}
+}

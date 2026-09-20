@@ -362,3 +362,1362 @@ CHI_power_blocs_raise_technocrat = {	#技术官僚影响力
 	}
 	CHI_power_blocs_normalize_and_refresh = yes
 }
+
+#腐败机制
+CHI_corruption_initialize = {
+	set_country_flag = CHI_corruption_initialized
+	set_country_flag = CHI_corruption_leader_background_army
+	set_variable = { 
+		CHI_army_corruption = 0.25 
+	}
+	set_variable = { 
+		CHI_capital_corruption = 0.20 
+	}
+	set_variable = { 
+		CHI_technocrat_corruption = 0.15 
+	}
+	set_variable = { 
+		CHI_army_corruption_coefficient = 0.07 
+	}
+	set_variable = { 
+		CHI_capital_corruption_coefficient = 0.06 
+	}
+	set_variable = { 
+		CHI_technocrat_corruption_coefficient = 0.05 
+	}
+	set_variable = { 
+		CHI_corruption_monthly_priority = 0 
+	}
+}
+
+CHI_corruption_clamp = {
+	clamp_variable = { 
+		var = CHI_army_corruption 
+		min = 0 
+		max = 1 
+	}
+	clamp_variable = { 
+		var = CHI_capital_corruption 
+		min = 0 
+		max = 1 
+	}
+	clamp_variable = { 
+		var = CHI_technocrat_corruption 
+		min = 0 
+		max = 1 
+	}
+}
+
+CHI_corruption_clear_incident_flags = {
+	clear_global_event_target = CHI_corruption_target
+	clr_country_flag = CHI_corruption_group_army
+	clr_country_flag = CHI_corruption_group_capital
+	clr_country_flag = CHI_corruption_group_technocrat
+	clr_country_flag = CHI_corruption_incident_land_arms
+	clr_country_flag = CHI_corruption_incident_land_ghost
+	clr_country_flag = CHI_corruption_incident_land_graft
+	clr_country_flag = CHI_corruption_incident_navy_graft
+	clr_country_flag = CHI_corruption_incident_navy_kickback
+	clr_country_flag = CHI_corruption_incident_air_graft
+	clr_country_flag = CHI_corruption_incident_air_kickback
+}
+
+CHI_corruption_monthly_tick = {
+	add_to_variable = { 
+		CHI_army_corruption = CHI_army_corruption_coefficient 
+	}
+	add_to_variable = { 
+		CHI_capital_corruption = CHI_capital_corruption_coefficient 
+	}
+	add_to_variable = { 
+		CHI_technocrat_corruption = CHI_technocrat_corruption_coefficient 
+	}
+	CHI_corruption_clamp = yes
+
+	if = {
+		limit = { 
+			check_variable = { 
+				CHI_corruption_monthly_priority < 0.5 
+			} 
+		}
+		CHI_corruption_try_army = yes
+		CHI_corruption_try_capital = yes
+		CHI_corruption_try_technocrat = yes
+		set_variable = { 
+			CHI_corruption_monthly_priority = 1 
+		}
+	}
+	else_if = {
+		limit = { 
+			check_variable = { 
+				CHI_corruption_monthly_priority < 1.5 
+			} 
+		}
+		CHI_corruption_try_capital = yes
+		CHI_corruption_try_technocrat = yes
+		CHI_corruption_try_army = yes
+		set_variable = { 
+			CHI_corruption_monthly_priority = 2 
+		}
+	}
+	else = {
+		CHI_corruption_try_technocrat = yes
+		CHI_corruption_try_army = yes
+		CHI_corruption_try_capital = yes
+		set_variable = { 
+			CHI_corruption_monthly_priority = 0 
+		}
+	}
+}
+
+CHI_corruption_try_army = {
+	if = {
+		limit = { 
+			NOT = { 
+				has_country_flag = CHI_corruption_event_pending 
+			} 
+		}
+		randomize_temp_variable = { 
+			var = CHI_corruption_army_roll 
+			min = 0 
+			max = 1 
+		}
+		if = { 
+			limit = { 
+				check_variable = { 
+					CHI_corruption_army_roll < CHI_army_corruption 
+				} 
+			} 
+			CHI_corruption_dispatch_army = yes 
+		}
+	}
+}
+CHI_corruption_try_capital = {
+	if = {
+		limit = { 
+			NOT = { 
+				has_country_flag = CHI_corruption_event_pending 
+			} 
+		}
+		randomize_temp_variable = { 
+			var = CHI_corruption_capital_roll 
+			min = 0 
+			max = 1 
+		}
+		if = { 
+			limit = { 
+				check_variable = { 
+					CHI_corruption_capital_roll < CHI_capital_corruption 
+				} 
+			} 
+			CHI_corruption_dispatch_capital = yes 
+		}
+	}
+}
+CHI_corruption_try_technocrat = {
+	if = {
+		limit = { 
+			NOT = { 
+				has_country_flag = CHI_corruption_event_pending 
+			} 
+		}
+		randomize_temp_variable = { 
+			var = CHI_corruption_technocrat_roll 
+			min = 0 
+			max = 1 
+		}
+		if = { 
+			limit = { 
+				check_variable = { 
+					CHI_corruption_technocrat_roll < CHI_technocrat_corruption 
+				} 
+			} 
+			CHI_corruption_dispatch_technocrat = yes 
+		}
+	}
+}
+
+CHI_corruption_dispatch_army = {
+	CHI_corruption_clear_incident_flags = yes
+	set_country_flag = CHI_corruption_event_pending
+	set_country_flag = CHI_corruption_group_army
+	random_list = {
+		30 = { 
+			set_country_flag = CHI_corruption_incident_land_arms 
+		}
+		20 = { 
+			set_country_flag = CHI_corruption_incident_land_ghost 
+		}
+		20 = { 
+			set_country_flag = CHI_corruption_incident_land_graft 
+		}
+		10 = { 
+			set_country_flag = CHI_corruption_incident_navy_graft 
+		}
+		8 = { 
+			set_country_flag = CHI_corruption_incident_navy_kickback 
+		}
+		7 = { 
+			set_country_flag = CHI_corruption_incident_air_graft 
+		}
+		5 = { 
+			set_country_flag = CHI_corruption_incident_air_kickback 
+		}
+	}
+	CHI_corruption_select_severity = yes
+}
+
+CHI_corruption_dispatch_capital = {
+	CHI_corruption_clear_incident_flags = yes
+	set_country_flag = CHI_corruption_event_pending
+	set_country_flag = CHI_corruption_group_capital
+	CHI_corruption_select_severity = yes
+}
+
+CHI_corruption_dispatch_technocrat = {
+	CHI_corruption_clear_incident_flags = yes
+	set_country_flag = CHI_corruption_event_pending
+	set_country_flag = CHI_corruption_group_technocrat
+	CHI_corruption_select_severity = yes
+}
+
+CHI_corruption_select_severity = {
+	if = {
+		limit = {
+			OR = {
+				AND = { 
+					has_country_flag = CHI_corruption_group_army 
+					check_variable = { 
+						CHI_army_corruption < 0.41 
+					} 
+				}
+				AND = { 
+					has_country_flag = CHI_corruption_group_capital 
+					check_variable = { 
+						CHI_capital_corruption < 0.41 
+					} 
+				}
+				AND = { 
+					has_country_flag = CHI_corruption_group_technocrat 
+					check_variable = { 
+						CHI_technocrat_corruption < 0.41 
+					} 
+				}
+			}
+		}
+		random_list = {
+			60 = { 
+				country_event = { 
+					id = CHI_corruption.10 
+				} 
+			}
+			30 = { 
+				country_event = { 
+					id = CHI_corruption.20 
+				} 
+			}
+			10 = { 
+				country_event = { 
+					id = CHI_corruption.30 
+				} 
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = { 
+					has_country_flag = CHI_corruption_group_army 
+					check_variable = { 
+						CHI_army_corruption < 0.71 
+					} 
+				}
+				AND = { 
+					has_country_flag = CHI_corruption_group_capital 
+					check_variable = { 
+						CHI_capital_corruption < 0.71 
+					} 
+				}
+				AND = { 
+					has_country_flag = CHI_corruption_group_technocrat 
+					check_variable = { 
+						CHI_technocrat_corruption < 0.71 
+					} 
+				}
+			}
+		}
+		random_list = {
+			35 = { 
+				country_event = { 
+					id = CHI_corruption.10 
+				} 
+			}
+			45 = { 
+				country_event = { 
+					id = CHI_corruption.20 
+				} 
+			}
+			25 = { 
+				country_event = { 
+					id = CHI_corruption.30 
+				} 
+			}
+		}
+	}
+	else = {
+		random_list = {
+			10 = { 
+				country_event = { 
+					id = CHI_corruption.10 
+				} 
+			}
+			40 = { 
+				country_event = { 
+					id = CHI_corruption.20 
+				} 
+			}
+			50 = { 
+				country_event = { 
+					id = CHI_corruption.30 
+				} 
+			}
+		}
+	}
+}
+
+CHI_corruption_apply_minor_incident = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = {
+				has_country_flag = CHI_corruption_incident_land_arms 
+			} 
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = -1000 
+			} 
+			CHI_corruption_mark_army_leader_arms = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_ghost 
+			} 
+			CHI_corruption_mark_army_leader_ghost = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_graft 
+			} 
+			CHI_corruption_mark_army_leader_graft = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_1 
+				days = 180 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_1 
+				days = 180 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_1 
+				days = 180 
+			} 
+		}
+		else = { 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_1 
+				days = 180 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_1 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_1 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+}
+
+CHI_corruption_apply_medium_incident = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_arms 
+			} 
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = -3000 
+			} 
+			add_equipment_to_stockpile = { 
+				type = artillery_equipment_1 
+				amount = -100 
+			} 
+			CHI_corruption_mark_army_leader_arms = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_ghost 
+			} 
+			CHI_corruption_mark_army_leader_ghost = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_graft 
+			} 
+			CHI_corruption_mark_army_leader_graft = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_2 
+				days = 180 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_2 
+				days = 180 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_2 
+				days = 180 
+			} 
+		}
+		else = { 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_2 
+				days = 180 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_2 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_2 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+}
+
+CHI_corruption_apply_severe_incident = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_arms 
+			} 
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 amount = -5000 
+			} 
+			add_equipment_to_stockpile = { 
+				type = artillery_equipment_1 amount = -500 
+			} 
+			CHI_corruption_mark_army_leader_arms = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_ghost 
+			} 
+			CHI_corruption_mark_army_leader_ghost_severe = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_land_graft 
+			} 
+			CHI_corruption_mark_army_leader_graft_severe = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_3 
+				days = 180 
+			} 
+			CHI_corruption_select_navy_target = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_3 
+				days = 180 
+			} 
+			CHI_corruption_select_navy_target = yes 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_3 
+				days = 180 
+			} 
+		}
+		else = { 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_3 
+				days = 180 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_3 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_3 
+			days = 180 
+		} 
+		CHI_corruption_select_advisor_target = yes 
+	}
+}
+
+CHI_corruption_select_advisor_target = {
+	random_character = {
+		limit = { 
+			has_advisor_role = political_advisor 
+			NOT = { 
+				has_character_flag = CHI_corruption_whitelist 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+	}
+}
+
+CHI_corruption_select_navy_target = {
+	random_navy_leader = {
+		limit = { 
+			NOT = { 
+				has_trait = CHI_corruption_whitelist 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+	}
+}
+
+CHI_corruption_mark_army_leader_arms = {
+	if = {
+		limit = { 
+			any_army_leader = { 
+				has_trait = CHI_arms_smuggling 
+				NOT = { 
+					has_trait = CHI_corruption_whitelist 
+				} 
+			} 
+		}
+		random_list = {
+			15 = { 
+				random_army_leader = { 
+					limit = { 
+						has_trait = CHI_arms_smuggling 
+						NOT = { 
+							has_trait = CHI_corruption_whitelist 
+						} 
+					} 
+					save_global_event_target_as = CHI_corruption_target 
+				} 
+			}
+			85 = { 
+				random_army_leader = { 
+					limit = { 
+						NOT = { 
+							has_trait = CHI_corruption_whitelist 
+						} 
+					} 
+					save_global_event_target_as = CHI_corruption_target 
+					add_unit_leader_trait = CHI_arms_smuggling 
+				} 
+			}
+		}
+	}
+	else = { 
+		random_army_leader = { 
+			limit = {
+				NOT = { 
+					has_trait = CHI_corruption_whitelist 
+				} 
+			} 
+			save_global_event_target_as = CHI_corruption_target 
+			add_unit_leader_trait = CHI_arms_smuggling 
+		} 
+	}
+}
+
+CHI_corruption_mark_army_leader_ghost = {
+	random_army_leader = {
+		limit = { 
+			NOT = { 
+				has_trait = CHI_corruption_whitelist 
+			} 
+			NOT = { 
+				has_trait = CHI_ghost_payroll_3 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+		if = { 
+			limit = { 
+				has_trait = CHI_ghost_payroll_2 
+			} 
+			remove_unit_leader_trait = CHI_ghost_payroll_2 
+			add_unit_leader_trait = CHI_ghost_payroll_3 
+		}
+		else_if = { 
+			limit = { 
+				has_trait = CHI_ghost_payroll_1 
+			} 
+			remove_unit_leader_trait = CHI_ghost_payroll_1 
+			add_unit_leader_trait = CHI_ghost_payroll_2 
+		}
+		else = { 
+			add_unit_leader_trait = CHI_ghost_payroll_1 
+		}
+	}
+}
+CHI_corruption_mark_army_leader_ghost_severe = {
+	random_army_leader = {
+		limit = { 
+			NOT = { 
+				has_trait = CHI_corruption_whitelist 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+		remove_unit_leader_trait = CHI_ghost_payroll_1
+		remove_unit_leader_trait = CHI_ghost_payroll_2
+		add_unit_leader_trait = CHI_ghost_payroll_3
+	}
+}
+CHI_corruption_mark_army_leader_graft = {
+	random_army_leader = {
+		limit = { 
+			NOT = { 
+				has_trait = CHI_corruption_whitelist 
+			} 
+			NOT = { 
+				has_trait = CHI_army_graft_3 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+		if = { 
+			limit = { 
+				has_trait = CHI_army_graft_2 
+			} 
+			remove_unit_leader_trait = CHI_army_graft_2 
+			add_unit_leader_trait = CHI_army_graft_3 
+		}
+		else_if = { 
+			limit = { 
+				has_trait = CHI_army_graft_1 
+			} 
+			remove_unit_leader_trait = CHI_army_graft_1 
+			add_unit_leader_trait = CHI_army_graft_2 
+		}
+		else = { 
+			add_unit_leader_trait = CHI_army_graft_1 
+		}
+	}
+}
+CHI_corruption_mark_army_leader_graft_severe = {
+	random_army_leader = {
+		limit = { 
+			NOT = { 
+				has_trait = CHI_corruption_whitelist 
+			} 
+		}
+		save_global_event_target_as = CHI_corruption_target
+		remove_unit_leader_trait = CHI_army_graft_1
+		remove_unit_leader_trait = CHI_army_graft_2
+		add_unit_leader_trait = CHI_army_graft_3
+	}
+}
+
+CHI_corruption_reduce_minor = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = -0.15 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = -0.15 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = -0.15 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_reduce_medium = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = -0.30 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = -0.30 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = -0.30 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_reduce_severe = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = -0.50 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = -0.50 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = -0.50 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_increase_minor = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = 0.10 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = 0.10 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = 0.10 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_increase_medium = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = 0.20 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = 0.20 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = 0.20 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_increase_severe = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_to_variable = { 
+			CHI_army_corruption = 0.30 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_to_variable = { 
+			CHI_capital_corruption = 0.30 
+		} 
+	}
+	else = { 
+		add_to_variable = { 
+			CHI_technocrat_corruption = 0.30 
+		} 
+	}
+	CHI_corruption_clamp = yes
+}
+
+CHI_corruption_shift_influence_medium = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_army 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = -0.03 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = 0.01 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_capital 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = -0.03 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = 0.01 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_technocrat 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_technocrat 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = -0.03 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = 0.01 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = 0.01 
+		} 
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+CHI_corruption_shift_influence_severe = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_army 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = -0.06 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = 0.02 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_capital 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = -0.06 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = 0.02 
+		} 
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_technocrat 
+			NOT = { 
+				has_country_flag = CHI_corruption_leader_background_technocrat 
+			} 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_technocrat_influence = -0.06 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_leader_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_army_influence = 0.02 
+		} 
+		add_to_variable = { 
+			CHI_power_bloc_capital_influence = 0.02 
+		} 
+	}
+	CHI_power_blocs_normalize_and_refresh = yes
+}
+
+CHI_corruption_remove_active_ideas = {
+	remove_ideas = CHI_navy_corruption_graft_1
+	remove_ideas = CHI_navy_corruption_graft_2
+	remove_ideas = CHI_navy_corruption_graft_3
+	remove_ideas = CHI_navy_corruption_kickback_1
+	remove_ideas = CHI_navy_corruption_kickback_2
+	remove_ideas = CHI_navy_corruption_kickback_3
+	remove_ideas = CHI_air_corruption_graft_1
+	remove_ideas = CHI_air_corruption_graft_2
+	remove_ideas = CHI_air_corruption_graft_3
+	remove_ideas = CHI_air_corruption_kickback_1
+	remove_ideas = CHI_air_corruption_kickback_2
+	remove_ideas = CHI_air_corruption_kickback_3
+	remove_ideas = CHI_capital_corruption_1
+	remove_ideas = CHI_capital_corruption_2
+	remove_ideas = CHI_capital_corruption_3
+	remove_ideas = CHI_technocrat_corruption_1
+	remove_ideas = CHI_technocrat_corruption_2
+	remove_ideas = CHI_technocrat_corruption_3
+}
+
+CHI_corruption_reapply_minor_90 = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_1 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_1 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_1 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_1 
+				days = 90 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_1 
+			days = 90 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_1 
+			days = 90 
+		} 
+	}
+}
+
+CHI_corruption_reapply_medium_90 = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_2 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_2 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_2 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_2 
+				days = 90 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_2 
+			days = 90 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_2 
+			days = 90 
+		} 
+	}
+}
+
+CHI_corruption_reapply_medium_30 = {
+	CHI_corruption_reapply_medium_90 = yes
+	
+	CHI_corruption_remove_active_ideas = yes
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_2 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_2 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_2 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_2 
+				days = 30 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_2 
+			days = 30 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_2 
+			days = 30 
+		} 
+	}
+}
+
+CHI_corruption_reapply_severe_90 = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_3 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_3 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_3 
+				days = 90 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_3 
+				days = 90 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_3 
+			days = 90 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_3 
+			days = 90 
+		} 
+	}
+}
+
+CHI_corruption_reapply_severe_30 = {
+	if = {
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		}
+		if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_graft_3 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_navy_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_navy_corruption_kickback_3 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_graft 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_graft_3 
+				days = 30 
+			} 
+		}
+		else_if = { 
+			limit = { 
+				has_country_flag = CHI_corruption_incident_air_kickback 
+			} 
+			add_timed_idea = { 
+				idea = CHI_air_corruption_kickback_3 
+				days = 30 
+			} 
+		}
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_capital 
+		} 
+		add_timed_idea = { 
+			idea = CHI_capital_corruption_3 
+			days = 30 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_technocrat_corruption_3 
+			days = 30 
+		} 
+	}
+}
+
+CHI_corruption_add_purge_backlash = {
+	if = { 
+		limit = { 
+			has_country_flag = CHI_corruption_group_army 
+		} 
+		add_timed_idea = { 
+			idea = CHI_military_corruption_purge days = 90 
+		} 
+	}
+	else = { 
+		add_timed_idea = { 
+			idea = CHI_administrative_corruption_purge 
+			days = 90 
+		} 
+	}
+}
+
+CHI_end_corruption_system = {
+	set_country_flag = CHI_corruption_abolished
+	set_variable = { 
+		CHI_army_corruption = 0 
+	}
+	set_variable = { 
+		CHI_capital_corruption = 0 
+	}
+	set_variable = { 
+		CHI_technocrat_corruption = 0 
+	}
+	set_variable = { 
+		CHI_army_corruption_coefficient = 0 
+	}
+	set_variable = { 
+		CHI_capital_corruption_coefficient = 0 
+	}
+	set_variable = { 
+		CHI_technocrat_corruption_coefficient = 0 
+	}
+	CHI_corruption_remove_active_ideas = yes
+}

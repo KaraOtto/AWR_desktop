@@ -1,4 +1,5 @@
 add_namespace = AWR_CHI
+add_namespace = CHI_corruption
 add_namespace = AWR_CHI_state
 country_event = { #张国焘前来投奔
 	id = AWR_CHI.1000
@@ -207,9 +208,274 @@ country_event = {	#贵州投敌
 	}
 }
 
+country_event = {	#轻度腐败案件
+	id = CHI_corruption.10
+	title = CHI_corruption.10.t
+	desc = CHI_corruption.10.desc
+	picture = GFX_report_event_soviet_purge_politicians
+	is_triggered_only = yes
+	immediate = { 
+		CHI_corruption_apply_minor_incident = yes 
+	}
+	option = {
+		name = CHI_corruption.10.a
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 70 
+		}
+		add_political_power = -50
+		CHI_corruption_reduce_minor = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_reapply_minor_90 = yes
+		CHI_corruption_add_purge_backlash = yes
+		if = {
+			limit = { 
+				exists = event_target:CHI_corruption_target 
+			}
+			event_target:CHI_corruption_target = {
+				remove_unit_leader_trait = CHI_ghost_payroll_1
+				remove_unit_leader_trait = CHI_ghost_payroll_2
+				remove_unit_leader_trait = CHI_ghost_payroll_3
+				remove_unit_leader_trait = CHI_army_graft_1
+				remove_unit_leader_trait = CHI_army_graft_2
+				remove_unit_leader_trait = CHI_army_graft_3
+				remove_unit_leader_trait = CHI_navy_graft
+				remove_unit_leader_trait = CHI_navy_kickback
+				remove_unit_leader_trait = CHI_arms_smuggling
+			}
+		}
+	}
+	option = {
+		name = CHI_corruption.10.b
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 30 
+		}
+		CHI_corruption_increase_minor = yes
+	}
+}
 
+country_event = {	#中度腐败案件
+	id = CHI_corruption.20
+	title = CHI_corruption.20.t
+	desc = CHI_corruption.20.desc
+	picture = GFX_report_event_soviet_purge_politicians
+	is_triggered_only = yes
+	immediate = { 
+		CHI_corruption_apply_medium_incident = yes 
+	}
+	option = {
+		name = CHI_corruption.20.a
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { factor = 40 }
+		add_stability = -0.05
+		CHI_corruption_reduce_medium = yes
+		CHI_corruption_shift_influence_medium = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_reapply_medium_30 = yes
+		CHI_corruption_add_purge_backlash = yes
+		if = {
+			limit = { 
+				exists = event_target:CHI_corruption_target 
+			}
+			if = {
+				limit = { 
+					has_country_flag = CHI_corruption_group_army 
+				}
+				event_target:CHI_corruption_target = { 
+					remove_unit_leader_role = yes 
+				}
+			}
+			else = { 
+				event_target:CHI_corruption_target = { 
+					remove_advisor_role = { 
+						slot = political_advisor 
+					} 
+				} 
+			}
+		}
+	}
+	option = {
+		name = CHI_corruption.20.b
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 45 
+		}
+		add_political_power = -50
+		CHI_corruption_reduce_minor = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_reapply_medium_90 = yes
+		CHI_corruption_add_purge_backlash = yes
+		if = {
+			limit = { 
+				exists = event_target:CHI_corruption_target 
+			}
+			event_target:CHI_corruption_target = {
+				remove_unit_leader_trait = CHI_ghost_payroll_1
+				remove_unit_leader_trait = CHI_ghost_payroll_2
+				remove_unit_leader_trait = CHI_ghost_payroll_3
+				remove_unit_leader_trait = CHI_army_graft_1
+				remove_unit_leader_trait = CHI_army_graft_2
+				remove_unit_leader_trait = CHI_army_graft_3
+				remove_unit_leader_trait = CHI_navy_graft
+				remove_unit_leader_trait = CHI_navy_kickback
+				remove_unit_leader_trait = CHI_arms_smuggling
+			}
+		}
+	}
+	option = {
+		name = CHI_corruption.20.c
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 15 
+		}
+		CHI_corruption_increase_medium = yes
+	}
+}
 
-
+country_event = {	#重度腐败案件
+	id = CHI_corruption.30
+	title = CHI_corruption.30.t
+	desc = CHI_corruption.30.desc
+	picture = GFX_report_event_soviet_purge_politicians
+	is_triggered_only = yes
+	immediate = { 
+		CHI_corruption_apply_severe_incident = yes 
+	}
+	option = {
+		name = CHI_corruption.30.a
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 25 
+		}
+		if = {
+			limit = { 
+				OR = { 
+					has_country_flag = CHI_corruption_group_capital 
+					has_country_flag = CHI_corruption_group_technocrat 
+				} 
+			}
+			add_stability = -0.10
+		}
+		else = { 
+			add_stability = -0.05 
+		}
+		add_war_support = -0.05
+		CHI_corruption_reduce_severe = yes
+		CHI_corruption_shift_influence_severe = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_add_purge_backlash = yes
+		if = {
+			limit = { 
+				exists = event_target:CHI_corruption_target 
+			}
+			if = { 
+				limit = { 
+					has_country_flag = CHI_corruption_group_army 
+				} 
+				event_target:CHI_corruption_target = { 
+					remove_unit_leader_role = yes 
+				} 
+			}
+			else = { 
+				event_target:CHI_corruption_target = { 
+					remove_advisor_role = { 
+						slot = political_advisor 
+					} 
+				} 
+			}
+		}
+		if = {
+			limit = { 
+				has_country_flag = CHI_corruption_group_army 
+			}
+			if = {
+				limit = { 
+					OR = { 
+						has_country_flag = CHI_corruption_incident_navy_graft 
+						has_country_flag = CHI_corruption_incident_navy_kickback 
+					} 
+				}
+				random_navy_leader = { 
+					limit = { 
+						NOT = { 
+							has_trait = CHI_corruption_whitelist 
+						} 
+					} 
+					add_unit_leader_trait = CHI_fears_the_leader_navy 
+				}
+			}
+			else = { 
+				random_army_leader = { 
+					limit = { 
+						NOT = { 
+							has_trait = CHI_corruption_whitelist 
+						} 
+					} 
+					add_unit_leader_trait = CHI_fears_the_leader_army 
+				} 
+			}
+		}
+		else = { 
+			add_timed_idea = { 
+				idea = CHI_corruption_fear_in_office days = 365 
+			} 
+		}
+	}
+	option = {
+		name = CHI_corruption.30.b
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 35 
+		}
+		add_stability = -0.05
+		CHI_corruption_reduce_medium = yes
+		CHI_corruption_shift_influence_medium = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_reapply_severe_30 = yes
+		CHI_corruption_add_purge_backlash = yes
+		if = {
+			limit = { 
+				exists = event_target:CHI_corruption_target 
+			}
+			if = { 
+				limit = { 
+					has_country_flag = CHI_corruption_group_army 
+				} 
+				event_target:CHI_corruption_target = { 
+					remove_unit_leader_role = yes 
+				} 
+			}
+			else = { 
+				event_target:CHI_corruption_target = { 
+					remove_advisor_role = { 
+						slot = political_advisor 
+					} 
+				} 
+			}
+		}
+	}
+	option = {
+		name = CHI_corruption.30.c
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 30 
+		}
+		add_political_power = -50
+		CHI_corruption_reduce_minor = yes
+		CHI_corruption_remove_active_ideas = yes
+		CHI_corruption_reapply_severe_90 = yes
+		CHI_corruption_add_purge_backlash = yes
+	}
+	option = {
+		name = CHI_corruption.30.d
+		clr_country_flag = CHI_corruption_event_pending
+		ai_chance = { 
+			factor = 10 
+		}
+		CHI_corruption_increase_severe = yes
+	}
+}
 
 
 

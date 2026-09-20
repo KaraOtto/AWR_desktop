@@ -1,0 +1,44 @@
+﻿ideas = {
+	country = {
+		NXM_sending_reinforcement = {	#宁夏援军
+			picture = generic_volunteer_expedition_bonus
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+
+			 available = { 
+				EGM = { 
+					has_war_with = PRC 
+				}
+			 }
+
+            cancel = {
+				has_war = yes
+			}
+
+			on_add = {
+			    set_rule = {
+                    can_send_volunteers = yes
+                }
+			}
+			
+			on_remove = {
+			    set_rule = {
+                    can_send_volunteers = no
+                }
+			}
+
+			removal_cost = -1
+
+			modifier = {
+			    send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+			    send_volunteer_size = 4
+			}
+		}
+	}
+}
