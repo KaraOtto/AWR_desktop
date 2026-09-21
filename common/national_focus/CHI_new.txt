@@ -1,0 +1,674 @@
+focus_tree = {
+	id = China
+	country = {
+		factor = 0
+		modifier = {
+			add = 1
+			tag = CHI
+		}
+	}
+	default = no	
+	continuous_focus_position = { x = 50 y = 2000 }
+
+	focus = {	#安内
+		id = CHI_pacify_the_interior
+		icon = GFX_focus_CHI_pacify_the_interior
+		cost = 5
+		x = 8
+		y = 0
+
+		mutually_exclusive = {
+			focus = CHI_repel_foreign_agression
+		}
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#继续剿共
+		id = CHI_attack_PRC
+		icon = GFX_focus_CHI_attack_PRC
+		cost = 5
+		relative_position_id = CHI_pacify_the_interior
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = CHI_pacify_the_interior
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#巧取军阀
+		id = CHI_try_to_annex_warlords
+		icon = GFX_focus_CHI_try_to_annex_warlords
+		cost = 5
+		relative_position_id = CHI_pacify_the_interior
+		x = -3
+		y = 1
+		prerequisite = {
+			focus = CHI_pacify_the_interior
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#强调中央权威
+		id = CHI_warlord_issues
+		icon = GFX_goal_generic_demand_territory
+		cost = 2.15
+		prerequisite = {
+			focus = CHI_try_to_annex_warlords
+		}
+		relative_position_id = CHI_try_to_annex_warlords
+		x = 0
+		y = 1
+		#relative_position_id = CHI_split_plm_focus
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+            add_political_power = 100
+			add_command_power = 50			
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		available = {
+			is_subject = no
+			is_legit_china = yes
+		}
+		bypass = {
+			NOT = {
+				is_legit_china = yes
+			}
+		}
+	}
+
+	focus = {	#平定川军
+		id = CHI_deal_with_sichuan
+		icon = GFX_focus_CHI_deal_with_sichuan
+		cost = 3
+		prerequisite = {
+			focus = CHI_warlord_issues
+		}
+		relative_position_id = CHI_warlord_issues
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_ANNEXATION 
+		}
+		completion_reward = {
+			unlock_decision_tooltip = CHI_recruit_sic_generals
+		}
+		available = {
+			is_subject = no
+			is_legit_china = yes
+		    any_neighbor_country = {
+				original_tag = SIC
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				NOT = {
+					is_legit_china = yes
+				}
+				NOT = {
+					SIC = {
+						exists = yes
+					}
+				}
+				SIC = {
+					has_war_with = ROOT
+				}
+			}
+		}
+	}
+	
+	focus = {	#建立西康省
+		id = CHI_Establish_Hsikang_province
+		icon = GFX_focus_CHI_Establish_Hsikang_province
+		cost = 3
+		prerequisite = {
+			focus = CHI_deal_with_sichuan
+		}
+		relative_position_id = CHI_deal_with_sichuan
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
+		completion_reward = {
+			XIK = { 
+				country_event = { 
+					id = xik.1 
+					days = 1 
+				} 
+			}
+			XIK = {
+				effect_tooltip = {
+					transfer_state = 751
+					add_state_core = 751
+				}
+			}
+		    add_political_power = 150 
+		}
+		available = {
+			is_subject = no
+			is_legit_china = yes
+			
+		    751 = {
+				owner = {
+					NOT = { 
+						has_war_with = ROOT 
+					}
+                    NOT = { 
+						has_war_with = XIK 
+					}									
+				}
+			}
+			XIK = {
+				OR = {
+					is_in_faction = no
+					is_in_faction_with = ROOT
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				NOT = {
+					is_legit_china = yes
+				}
+				
+				NOT = {
+					country_exists = XIK
+				}
+				has_war_with = XIK
+			}
+		}
+	}
+
+	focus = {	#控制青海
+		id = CHI_annex_XSM
+		icon = GFX_focus_CHI_annex_XSM
+		cost = 3
+		prerequisite = {
+			focus = CHI_Establish_Hsikang_province
+		}
+		relative_position_id = CHI_Establish_Hsikang_province
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#分化粤系
+		id = CHI_sow_discord_GUD
+		icon = GFX_focus_CHI_sow_discord_GUD
+		relative_position_id = CHI_warlord_issues
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = CHI_warlord_issues
+		}
+
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#"邀请"桂系军阀进入中央
+		id = CHI_annex_GXC
+		icon = GFX_focus_CHI_annex_GXC
+		cost = 3
+		relative_position_id = CHI_sow_discord_GUD
+		prerequisite = {
+			focus = CHI_sow_discord_GUD
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#进军云南
+		id = CHI_pacify_yunnan
+		icon = GFX_focus_CHI_pacify_yunnan
+		cost = 3
+		prerequisite = {
+			focus = CHI_annex_GXC
+		}
+		x = 0
+		y = 1
+		relative_position_id = CHI_annex_GXC
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Wuhua_Mountain_Incident
+		}
+		available = {
+			is_subject = no
+			is_legit_china = yes
+			#has_defensive_war_with = JAP
+		    any_neighbor_country = {
+				original_tag = YUN
+				NOT = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+	}
+
+	focus = {	#整合东北军
+		id = CHI_annex_NEA
+		icon = GFX_focus_CHI_annex_NEA
+		cost = 3
+		relative_position_id = CHI_warlord_issues
+		prerequisite = {
+			focus = CHI_warlord_issues
+		}
+		x = -1
+		y = 1
+		completion_reward = { 
+			#
+		}
+
+		available = {
+			PRC = {
+				exists = no
+			}
+		}
+
+		bypass = {
+			NEA = {
+				exists = no
+			}
+		}
+	}
+
+	focus = {	#收复河西走廊
+		id = CHI_annex_GSM_and_NXM
+		icon = GFX_focus_CHI_annex_GSM_and_NXM
+		cost = 3
+		relative_position_id = CHI_annex_NEA
+		prerequisite = {
+			focus = CHI_annex_NEA
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#将傅作义调回中央
+		id = CHI_annex_SUY
+		icon = GFX_focus_CHI_annex_SUY
+		cost = 3
+		relative_position_id = CHI_annex_GSM_and_NXM
+		prerequisite = {
+			focus = CHI_annex_GSM_and_NXM
+		}
+		x = 0
+		y = 1
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#撤换韩复榘
+		id = CHI_annex_SHD
+		icon = GFX_focus_CHI_annex_SHD
+		cost = 3
+		x = -3
+		y = 1
+		relative_position_id = CHI_warlord_issues
+		prerequisite = {
+			focus = CHI_warlord_issues
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#向阎锡山施压
+		id = CHI_annex_SHX
+		icon = GFX_focus_CHI_annex_SHX
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_annex_SHD
+		prerequisite = {
+			focus = CHI_annex_SHD
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#突袭宋哲元
+		id = CHI_annex_HEB
+		icon = GFX_focus_CHI_annex_HEB
+		cost = 3
+		relative_position_id = CHI_annex_SHX
+		prerequisite = {
+			focus = CHI_annex_SHX
+		}
+		x = 0
+		y = 1
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {	#团结一致并做好准备
+		id = united_and_ready
+		icon = GFX_focus_generic_china1
+		cost = 5.00
+		prerequisite = {
+			focus = CHI_annex_HEB
+		}
+		prerequisite = {
+			focus = CHI_annex_SUY
+		}
+		prerequisite = {
+			focus = CHI_pacify_yunnan
+		}
+		prerequisite = {
+			focus = CHI_annex_XSM
+		}
+
+		relative_position_id = CHI_warlord_issues
+		x = 0
+		y = 4
+		bypass = {
+			has_war_with = JAP
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 150
+			if = {
+				limit = {
+					any_of_scopes = {
+						array = global.small_china
+						tooltip = small_china_tt
+						OR = {
+							owner = {
+								original_tag = JAP
+							}
+							owner = {
+								is_subject_of = JAP
+							}
+							owner = {
+								is_in_faction_with = JAP
+							}
+						}	
+					}
+				}
+				unlock_decision_category_tooltip = rcm_northern_expedition_cat
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = independent_warlords_and_PRC_no_longer_exists_3
+				NOT = {
+					any_other_country = {
+						is_not_ally_with_JAP = yes
+						is_subject = no
+						OR = {
+							is_non_sik_warlord = yes
+							tag = event_target:WTT_communist_china
+						}
+						exists = yes
+					}
+				}
+			}
+			
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+	}
+
+	focus = {	#拆分百灵庙蒙政会
+		id = CHI_split_plm_focus
+		icon = GFX_split_plm_focus
+		cost = 2
+		relative_position_id = CHI_pacify_the_interior
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 200
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		prerequisite = {
+			focus = CHI_pacify_the_interior
+			focus = CHI_repel_foreign_agression
+		}
+		completion_reward = {
+			custom_effect_tooltip = failed_to_do_this_focus_in_time_can_lead_to_a_complete_defection_of_inner_mongolia_tt
+			PLM = {
+				country_event = {
+					id = rcmchina.294
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_war_with = PLM
+				is_in_faction_with = JAP
+			}
+		}
+		bypass = {
+			OR = {
+				NOT = {
+					country_exists = PLM
+				}
+				has_country_flag = yang_hucheng_in_charge
+			}
+		}
+	}
+
+	focus = {	#蒙藏委员会
+		id = CHI_mongolian_and_tibetan_affairs_commission
+		icon = GFX_focus_CHI_mongolian_and_tibetan_affairs_commission
+		cost = 2.15
+		prerequisite = {
+			focus = CHI_split_plm_focus
+		}
+		relative_position_id = CHI_split_plm_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			unlock_decision_category_tooltip = rcm_tibet_and_mon_affairs_cat
+			add_political_power = 50
+		}
+		available = {
+			is_subject = no
+			is_legit_china = yes
+		}
+	}
+
+	focus = {	#攘外
+		id = CHI_repel_foreign_agression
+		icon = GFX_focus_CHI_repel_foreign_agression
+		cost = 5
+		relative_position_id = CHI_pacify_the_interior
+		x = 6
+		y = 0
+		mutually_exclusive = {
+			focus = CHI_pacify_the_interior
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#叫停国共内战
+		id = CHI_stop_civil_war_with_PRC
+		icon = GFX_focus_CHI_stop_civil_war_with_PRC
+		cost = 5
+		relative_position_id = CHI_repel_foreign_agression
+		prerequisite = {
+			focus = CHI_repel_foreign_agression
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#中国国民党第五届三中全会
+		id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		icon = GFX_focus_CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		cost = 1
+		prerequisite = {
+			focus = CHI_stop_civil_war_with_PRC
+		}
+		relative_position_id = CHI_stop_civil_war_with_PRC
+		x = 0
+		y = 1
+		completion_reward = { 
+			add_political_power = 25
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#重建国防委员会
+		id = CHI_National_Defense_Council_focus
+		icon = GFX_focus_CHI_National_Defense_Council_focus
+		cost = 5
+		prerequisite = {
+			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		}
+		relative_position_id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
+		completion_reward = {
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+			add_political_power = 120
+			unlock_decision_tooltip = CHI_fortify_coastal_defence_descision
+			unlock_decision_tooltip = CHI_space_for_time_decision
+		
+			swap_ideas = {
+				remove_idea = appeasement_policy
+				add_idea = appeasement_policy_0
+			}
+		}
+		bypass = {
+			NOT = {
+				has_idea = appeasement_policy
+			}
+		}
+	}
+
+	focus = {	#与共产党谈判
+		id = CHI_negotiation_with_PRC
+		icon = GFX_focus_CHI_negotiation_with_PRC
+		cost = 5
+		x = -3
+		y = 1
+		prerequisite = {
+			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		}
+		relative_position_id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#第二次统一战线
+		id = CHI_Second_United_Front_focus
+		icon = GFX_focus_CHI_Second_United_Front_focus
+		cost = 5
+		prerequisite = {
+			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		}
+		relative_position_id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 150
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			PRC = {
+				country_event = {
+					id = rcmchina.352
+				}
+			}
+			custom_effect_tooltip = if_they_accept
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = PRC
+					modifier = CHI_prc_pact
+				}
+				reverse_add_opinion_modifier = {
+					target = PRC
+					modifier = CHI_prc_pact
+				}
+				diplomatic_relation = {
+					country = PRC
+					relation = non_aggression_pact
+				}
+				add_stability = 0.05
+				add_political_power = -30
+			}
+			unlock_decision_tooltip = CHI_reorgaize_the_blue_shirts_society
+			#set_global_flag = CHI_unite_PRC
+		}
+		bypass = {
+			OR = {
+				has_global_flag = second_unite_bypass
+				has_war_with = PRC
+				NOT = {
+					country_exists = PRC
+				}			
+			}			
+		}
+	}
+}
