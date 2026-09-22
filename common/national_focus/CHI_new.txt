@@ -405,11 +405,15 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
+		search_filters = { 
+			FOCUS_FILTER_STABILITY 
+		}
 		completion_reward = {
-			add_stability = 0.1
-			add_war_support = 0.1
+			add_stability = 0.10
+			add_war_support = 0.10
 			add_political_power = 150
 			if = {
 				limit = {
@@ -431,22 +435,10 @@ focus_tree = {
 				}
 				unlock_decision_category_tooltip = rcm_northern_expedition_cat
 			}
+
+			complete_national_focus = CHI_repel_foreign_agression
 		}
 		available = {
-			custom_trigger_tooltip = {
-				tooltip = independent_warlords_and_PRC_no_longer_exists_3
-				NOT = {
-					any_other_country = {
-						is_not_ally_with_JAP = yes
-						is_subject = no
-						OR = {
-							is_non_sik_warlord = yes
-							tag = event_target:WTT_communist_china
-						}
-						exists = yes
-					}
-				}
-			}
 			
 			NOT = {
 				has_war_with = JAP
@@ -540,8 +532,34 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_repel_foreign_agression
 		}
+		x = 3
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+		bypass = {
+			PRC = {
+				exists = no
+			}
+		}
+	}
+
+	focus = {	#与共产党谈判
+		id = CHI_negotiation_with_PRC
+		icon = GFX_focus_CHI_negotiation_with_PRC
+		cost = 5
 		x = 0
 		y = 1
+		prerequisite = {
+			focus = CHI_stop_civil_war_with_PRC
+		}
+		prerequisite = {
+			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		}
+		relative_position_id = CHI_stop_civil_war_with_PRC
 		completion_reward = { 
 			#
 		}
@@ -552,15 +570,85 @@ focus_tree = {
 		icon = GFX_focus_CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
 		cost = 1
 		prerequisite = {
-			focus = CHI_stop_civil_war_with_PRC
+			focus = CHI_repel_foreign_agression
 		}
-		relative_position_id = CHI_stop_civil_war_with_PRC
+		relative_position_id = CHI_repel_foreign_agression
 		x = 0
 		y = 1
 		completion_reward = { 
 			add_political_power = 25
 			add_stability = 0.05
 			add_war_support = 0.05
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#第二次统一战线
+		id = CHI_Second_United_Front_focus
+		icon = GFX_focus_CHI_Second_United_Front_focus
+		cost = 2
+		prerequisite = {
+			focus = CHI_negotiation_with_PRC
+		}
+		relative_position_id = CHI_negotiation_with_PRC
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 150
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			PRC = {
+				country_event = {
+					id = rcmchina.352
+				}
+			}
+			custom_effect_tooltip = if_they_accept
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = PRC
+					modifier = CHI_prc_pact
+				}
+				reverse_add_opinion_modifier = {
+					target = PRC
+					modifier = CHI_prc_pact
+				}
+				diplomatic_relation = {
+					country = PRC
+					relation = non_aggression_pact
+				}
+				add_stability = 0.05
+				add_political_power = -30
+			}
+			unlock_decision_tooltip = CHI_reorgaize_the_blue_shirts_society
+			#set_global_flag = CHI_unite_PRC
+		}
+		bypass = {
+			OR = {
+				has_global_flag = second_unite_bypass
+				has_war_with = PRC
+				NOT = {
+					country_exists = PRC
+				}			
+			}			
+		}
+	}
+
+	focus = {	#邀请军阀加入统一战线
+		id = CHI_ask_warlord_into_united_front
+		icon = GFX_focus_CHI_ask_warlord_into_united_front
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_Second_United_Front_focus
+		prerequisite = {
+			focus = CHI_Second_United_Front_focus
+		}
+		completion_reward = { 
+			#
 		}
 		available = {
 			#
@@ -605,70 +693,202 @@ focus_tree = {
 		}
 	}
 
-	focus = {	#与共产党谈判
-		id = CHI_negotiation_with_PRC
-		icon = GFX_focus_CHI_negotiation_with_PRC
-		cost = 5
-		x = -3
-		y = 1
+	focus = {	#建立军官培养体系
+		id = CHI_establish_officer_training_system
+		icon = GFX_focus_CHI_establish_officer_training_system
+		cost = 3
+		relative_position_id = CHI_National_Defense_Council_focus
 		prerequisite = {
-			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+			focus = CHI_National_Defense_Council_focus
 		}
-		relative_position_id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
+		x = -2
+		y = 1
 		completion_reward = { 
 			#
 		}
 	}
 
-	focus = {	#第二次统一战线
-		id = CHI_Second_United_Front_focus
-		icon = GFX_focus_CHI_Second_United_Front_focus
-		cost = 5
-		prerequisite = {
-			focus = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
-		}
-		relative_position_id = CHI_the_Third_Plenary_Session_of_the_fifth_Central_Committee_of_KMT
-		x = 3
+	focus = {	#装备现代化
+		id = CHI_modern_infanity_equipment
+		icon = GFX_focus_CHI_modern_infanity_equipment
+		cost = 3
+		relative_position_id = CHI_establish_officer_training_system
+		x = 0
 		y = 1
-		ai_will_do = {
-			factor = 150
+		prerequisite = {
+			focus = CHI_establish_officer_training_system
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			PRC = {
-				country_event = {
-					id = rcmchina.352
-				}
+			add_tech_bonus = {
+				name = CHI_modern_infanity_equipment
+				bonus = 1
+				category = infantry_tech
+				uses = 1
 			}
-			custom_effect_tooltip = if_they_accept
-			effect_tooltip = {
-				add_opinion_modifier = {
-					target = PRC
-					modifier = CHI_prc_pact
-				}
-				reverse_add_opinion_modifier = {
-					target = PRC
-					modifier = CHI_prc_pact
-				}
-				diplomatic_relation = {
-					country = PRC
-					relation = non_aggression_pact
-				}
-				add_stability = 0.05
-				add_political_power = -30
+			add_tech_bonus = {
+				name = CHI_modern_infanity_equipment
+				bonus = 1
+				category = support_tech
+				uses = 1
 			}
-			unlock_decision_tooltip = CHI_reorgaize_the_blue_shirts_society
-			#set_global_flag = CHI_unite_PRC
 		}
+	}
+
+	focus = {	#建立60个现代化陆军师
+		id = CHI_set_up_sixty_army
+		icon = GFX_CHI_set_up_sixty_army
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_modern_infanity_equipment
+		prerequisite = {
+			focus = CHI_modern_infanity_equipment
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国防工业
+		id = CHI_war_industry
+		icon = GFX_focus_CHI_war_industry
+		relative_position_id = CHI_National_Defense_Council_focus
+		prerequisite = {
+			focus = CHI_National_Defense_Council_focus
+		}
+		cost = 3
+		x = 0
+		y = 1
+		completion_reward = { 
+			add_tech_bonus = {
+				name = CHI_war_industry
+				bonus = 1
+				category = industry
+				use = 1
+			}
+		}
+	}
+
+	focus = {	#转移沿海工业
+		id = CHI_transport_industry
+		icon = GFX_focus_CHI_transport_industry
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_war_industry
+		prerequisite = {
+			focus = CHI_war_industry
+		}
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#转为战时经济
+		id = CHI_war_economy
+		icon = GFX_focus_CHI_war_economy
+		prerequisite = {
+			focus = CHI_transport_industry
+		}
+		relative_position_id = CHI_transport_industry
+		cost = 3
+		x = 0
+		y = 1
+		completion_reward = { 
+			add_ideas  = war_economy
+		}
+
 		bypass = {
 			OR = {
-				has_global_flag = second_unite_bypass
-				has_war_with = PRC
-				NOT = {
-					country_exists = PRC
-				}			
-			}			
+				has_idea = war_economy
+				has_idea = tot_economic_mobilisation
+			}
+		}
+	}
+
+	focus = {	#优化补给系统
+		id = CHI_optimize_the_supply_system
+		icon = GFX_focus_CHI_optimize_the_supply_system
+		cost = 3
+		relative_position_id = CHI_National_Defense_Council_focus
+		prerequisite = {
+			focus = CHI_National_Defense_Council_focus
+		}
+		x = 2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#修建防御工事
+		id = CHI_constructe_fortress
+		icon = GFX_focus_CHI_constructe_fortress
+		relative_position_id = CHI_optimize_the_supply_system
+		prerequisite = {
+			focus = CHI_optimize_the_supply_system
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#提前内迁首都
+		id = CHI_change_capital
+		icon = GFX_focus_CHI_change_capital
+		relative_position_id = CHI_constructe_fortress
+		prerequisite = {
+			focus = CHI_constructe_fortress
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			NOT = {
+				has_war_with = JAP
+				
+			}
+			date < 1938.1.1
+		}
+	}
+
+	focus = {	#做好对日战争准备
+		id = CHI_prepare_ready_to_against_JAP
+		icon = GFX_focus_CHI_prepare_ready_to_against_JAP
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_war_economy
+		prerequisite = {
+			focus = CHI_set_up_sixty_army
+		}
+		prerequisite = {
+			focus = CHI_war_economy
+		}
+		prerequisite = {
+			focus = CHI_change_capital
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			NOT = {
+				has_war_with = JAP
+			}
+			date < 1939.1.1
 		}
 	}
 }
