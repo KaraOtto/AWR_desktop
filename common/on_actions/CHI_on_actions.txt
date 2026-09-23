@@ -14,7 +14,11 @@ on_actions = {  #民国权力集团
 					CHI_power_blocs_normalize_and_refresh = yes
 				}
 				if = {
-					limit = { NOT = { has_country_flag = CHI_corruption_initialized } }
+					limit = { 
+						NOT = { 
+							has_country_flag = CHI_corruption_initialized 
+						} 
+					}
 					CHI_corruption_initialize = yes
 				}
 			}
@@ -29,16 +33,9 @@ on_actions = {  #民国权力集团
                 }
 				CHI_power_blocs_normalize_and_refresh = yes
 			}
-			if = {
-				limit = {
-					has_country_flag = CHI_corruption_initialized
-					NOT = { has_country_flag = CHI_corruption_abolished }
-				}
-				CHI_corruption_monthly_tick = yes
-			}
+			
 		}
 	}
-
 	# 兼容已开始的旧存档：在下一个游戏日补齐开局状态。
 	on_daily_CHI = {
 		effect = {
@@ -50,9 +47,36 @@ on_actions = {  #民国权力集团
 				}
 				CHI_power_blocs_initialize = yes
 			}
+			
+		}
+	}
+	
+}
+
+on_actions = {	#腐败
+	on_daily_CHI = {
+		effect = {
 			if = {
-				limit = { NOT = { has_country_flag = CHI_corruption_initialized } }
+				limit = { 
+					NOT = { 
+						has_country_flag = CHI_corruption_initialized 
+					} 
+				}
 				CHI_corruption_initialize = yes
+			}
+		}
+	}
+
+	on_monthly_CHI = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = CHI_corruption_initialized
+					NOT = { 
+						has_country_flag = CHI_corruption_abolished 
+					}
+				}
+				CHI_corruption_monthly_tick = yes
 			}
 		}
 	}
