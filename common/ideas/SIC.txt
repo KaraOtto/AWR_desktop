@@ -1,0 +1,61 @@
+﻿ideas = {
+    country = {	
+		CHI_wang_zuanxu_in_sic = {	#省主席：王缵绪
+			picture = SIC_Wang_Zuanxu
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				is_subject_of = event_target:WTT_current_china_leader
+			}
+
+			cancel = {
+				NOT = {
+					is_ally_with = event_target:WTT_current_china_leader
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = -0.15
+				autonomy_gain_warscore_factor = -0.25
+				master_ideology_drift = 0.025
+				autonomy_manpower_share = 0.25
+			}
+		}
+
+		CHI_chiang_in_sic = {	#新主席
+			picture = chiang
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				is_subject_of = event_target:WTT_current_china_leader
+			}
+
+			cancel = {
+				NOT = {
+					is_ally_with = event_target:WTT_current_china_leader
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				war_stability_factor = 0.15
+				political_power_factor = -0.15
+				stability_factor = 0.1
+				master_ideology_drift = 0.025
+				autonomy_gain_warscore_factor = -0.5
+				autonomy_manpower_share = 0.3
+			}
+		}
+
+		
+	}
+}

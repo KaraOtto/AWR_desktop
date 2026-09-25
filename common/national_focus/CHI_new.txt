@@ -8,7 +8,10 @@ focus_tree = {
 		}
 	}
 	default = no	
-	continuous_focus_position = { x = 50 y = 2000 }
+	continuous_focus_position = { 
+		x = 50 
+		y = 2000 
+	}
 
 	focus = {	#安内
 		id = CHI_pacify_the_interior
@@ -16,12 +19,20 @@ focus_tree = {
 		cost = 5
 		x = 8
 		y = 0
-
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_WAR_SUPPORT 
+		}
 		mutually_exclusive = {
 			focus = CHI_repel_foreign_agression
 		}
 		completion_reward = {
-			#
+			add_political_power = 100
+			add_stability = 0.10
+			add_war_support = 0.05
+			add_ideas = CHI_pacify_the_interior_idea_1
+			
 		}
 	}
 
@@ -35,7 +46,34 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_pacify_the_interior
 		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
 		completion_reward = { 
+			declare_war_on = { 
+				target = PRC
+				type = annex_everything
+			}
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#要求收编榆林
+		id = CHI_annex_SHC
+		icon = GFX_focus_CHI_annex_SHC
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_attack_PRC
+		prerequisite = {
+			focus = CHI_attack_PRC
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
 			#
 		}
 	}
@@ -51,6 +89,13 @@ focus_tree = {
 			focus = CHI_pacify_the_interior
 		}
 		completion_reward = { 
+			swap_ideas = {
+				remove_idea = CHI_pacify_the_interior_idea_1
+				add_idea = CHI_pacify_the_interior_idea_2
+			}
+			unlock_decision_category_tooltip = CHI_against_warlord_category
+		}
+		available = {
 			#
 		}
 	}
@@ -65,11 +110,12 @@ focus_tree = {
 		relative_position_id = CHI_try_to_annex_warlords
 		x = 0
 		y = 1
-		#relative_position_id = CHI_split_plm_focus
 		ai_will_do = {
 			factor = 10
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL 
+		}
 		completion_reward = {
             add_political_power = 100
 			add_command_power = 50			
@@ -106,6 +152,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			unlock_decision_tooltip = CHI_recruit_sic_generals
+			SIC = {
+				country_event = {
+					id = AWR_SIC.14
+				}
+			}
 		}
 		available = {
 			is_subject = no
@@ -520,6 +571,18 @@ focus_tree = {
 			focus = CHI_pacify_the_interior
 		}
 		completion_reward = { 
+			
+			if = {
+				limit = {
+					has_completed_focus = CHI_pacify_the_interior
+				}
+				else = {
+					add_stability = 0.15
+					add_war_support = 0.15
+				}
+			}
+		}
+		available = {
 			#
 		}
 	}
@@ -889,6 +952,759 @@ focus_tree = {
 				has_war_with = JAP
 			}
 			date < 1939.1.1
+		}
+	}
+
+	focus = {	#解决我们的内部问题
+		id = CHI_solve_our_internal_problem
+		icon = GFX_focus_CHI_solve_our_internal_problem
+		cost = 5
+		x = 30
+		y = 0
+		completion_reward = { 
+			add_political_power = 150
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国家公务员法
+		id = CHI_law_of_the_state_civil_servants
+		icon = GFX_focus_CHI_law_of_the_state_civil_servants
+		cost = 5
+		x = -8
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+		completion_reward = { 
+			set_country_flag = CHI_law_of_the_state_civil_servants
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#设立独立监察机关
+		id = CHI_establish_an_independent_supervisory_organ
+		icon = GFX_focus_CHI_establish_an_independent_supervisory_organ
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_law_of_the_state_civil_servants
+		prerequisite = {
+			focus = CHI_law_of_the_state_civil_servants
+		}
+		completion_reward = { 
+			set_country_flag = CHI_establish_an_independent_supervisory_organ
+			clr_country_flag = CHI_law_of_the_state_civil_servants
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_law_of_the_state_civil_servants
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#官员财产与利益申报法
+		id = CHI_officials_property_and_interests_declaration
+		icon = GFX_focus_CHI_officials_property_and_interests_declaration
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_establish_an_independent_supervisory_organ
+		prerequisite = {
+			focus = CHI_establish_an_independent_supervisory_organ
+		}
+		completion_reward = { 
+			set_country_flag = CHI_officials_property_and_interests_declaration
+			clr_country_flag = CHI_establish_an_independent_supervisory_organ
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_establish_an_independent_supervisory_organ
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#保护举报人与新闻调查
+		id = CHI_the_fourth_right
+		icon = GFX_focus_CHI_the_fourth_right
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_officials_property_and_interests_declaration
+		prerequisite = {
+			focus = CHI_officials_property_and_interests_declaration
+		}
+		completion_reward = { 
+			set_country_flag = CHI_the_fourth_right
+			clr_country_flag = CHI_officials_property_and_interests_declaration
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_officials_property_and_interests_declaration
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#阳光下的共和国
+		id = CHI_the_republic_under_the_sun
+		icon = GFX_focus_CHI_the_republic_under_the_sun
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_fourth_right
+		prerequisite = {
+			focus = CHI_the_fourth_right
+		}
+		completion_reward = { 
+			set_country_flag = CHI_the_republic_under_the_sun
+			clr_country_flag = CHI_the_fourth_right
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_the_fourth_right
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#党政财产分离
+		id = CHI_separate_from_party_government_and_property
+		icon = GFX_focus_CHI_separate_from_party_government_and_property
+		cost = 5
+		x = -5
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+		completion_reward = { 
+			set_country_flag = CHI_separate_from_party_government_and_property
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#公共采购透明法
+		id = CHI_public_procurement_transparency_act
+		icon = GFX_focus_CHI_public_procurement_transparency_act
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_separate_from_party_government_and_property
+		prerequisite = {
+			focus = CHI_separate_from_party_government_and_property
+		}
+		completion_reward = { 
+			set_country_flag = CHI_public_procurement_transparency_act
+			clr_country_flag = CHI_separate_from_party_government_and_property
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_separate_from_party_government_and_property
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#国营事业独立审计
+		id = CHI_independent_auditing_of_state_owned_enterprises
+		icon = GFX_focus_CHI_independent_auditing_of_state_owned_enterprises
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_public_procurement_transparency_act
+		prerequisite = {
+			focus = CHI_public_procurement_transparency_act
+		}
+		completion_reward = { 
+			set_country_flag = CHI_independent_auditing_of_state_owned_enterprises
+			clr_country_flag = CHI_public_procurement_transparency_act
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_public_procurement_transparency_act
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#反垄断法
+		id = CHI_anti_monopoly_law
+		icon = GFX_focus_CHI_anti_monopoly_law
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_independent_auditing_of_state_owned_enterprises
+		prerequisite = {
+			focus = CHI_independent_auditing_of_state_owned_enterprises
+		}
+		completion_reward = { 
+			set_country_flag = CHI_anti_monopoly_law
+			clr_country_flag = CHI_independent_auditing_of_state_owned_enterprises
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_independent_auditing_of_state_owned_enterprises
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#利益集团公开登计
+		id = CHI_interest_groups_are_publicly_registered
+		icon = GFX_focus_CHI_interest_groups_are_publicly_registered
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_anti_monopoly_law
+		prerequisite = {
+			focus = CHI_anti_monopoly_law
+		}
+		completion_reward = { 
+			set_country_flag = CHI_interest_groups_are_publicly_registered
+			clr_country_flag = CHI_anti_monopoly_law
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_anti_monopoly_law
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#廉洁社会
+		id = CHI_clean_society
+		icon = GFX_focus_CHI_clean_society
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_interest_groups_are_publicly_registered
+		prerequisite = {
+			focus = CHI_interest_groups_are_publicly_registered
+		}
+		completion_reward = { 
+			set_country_flag = CHI_clean_society
+			clr_country_flag = CHI_interest_groups_are_publicly_registered
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_interest_groups_are_publicly_registered
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#重拳惩治腐败
+		id = CHI_crack_down_hard_on_corruption
+		icon = GFX_focus_CHI_crack_down_hard_on_corruption
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+		completion_reward = { 
+			set_country_flag = CHI_crack_down_hard_on_corruption
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#监察全面覆盖
+		id = CHI_comprehensive_coverage_of_supervision
+		icon = GFX_focus_CHI_comprehensive_coverage_of_supervision
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_crack_down_hard_on_corruption
+		prerequisite = {
+			focus = CHI_crack_down_hard_on_corruption
+		}
+		completion_reward = { 
+			set_country_flag = CHI_comprehensive_coverage_of_supervision
+			clr_country_flag = CHI_crack_down_hard_on_corruption
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_crack_down_hard_on_corruption
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#以案促改
+		id = CHI_promote_rectification_through_cases
+		icon = GFX_focus_CHI_promote_rectification_through_cases
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_comprehensive_coverage_of_supervision
+		prerequisite = {
+			focus = CHI_comprehensive_coverage_of_supervision
+		}
+		completion_reward = { 
+			set_country_flag = CHI_promote_rectification_through_cases
+			clr_country_flag = CHI_comprehensive_coverage_of_supervision
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_comprehensive_coverage_of_supervision
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#廉政教育
+		id = CHI_integrity_education
+		icon = GFX_focus_CHI_integrity_education
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_promote_rectification_through_cases
+		prerequisite = {
+			focus = CHI_promote_rectification_through_cases
+		}
+		completion_reward = { 
+			set_country_flag = CHI_integrity_education
+			clr_country_flag = CHI_promote_rectification_through_cases
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_promote_rectification_through_cases
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#干部清正，政治清明
+		id = CHI_clear_officials_and_polotics
+		icon = GFX_focus_CHI_clear_officials_and_polotics
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_integrity_education
+		prerequisite = {
+			focus = CHI_integrity_education
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_integrity_education
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#成立中央廉政调查局
+		id = CHI_establish_central_onvestigation
+		icon = GFX_focus_CHI_establish_central_onvestigation
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_establish_central_onvestigation
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#官员财产全面清查
+		id = CHI_comprehensive_inventory_of_official_assets
+		icon = GFX_focus_CHI_comprehensive_inventory_of_official_assets
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_central_onvestigation
+		prerequisite = {
+			focus = CHI_establish_central_onvestigation
+		}
+		mutually_exclusive = {
+			focus = CHI_selective_anti_corruption
+		}
+		completion_reward = { 
+			set_country_flag = CHI_comprehensive_inventory_of_official_assets
+			clr_country_flag = CHI_establish_central_onvestigation
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_establish_central_onvestigation
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#选择性反腐
+		id = CHI_selective_anti_corruption
+		icon = GFX_focus_CHI_selective_anti_corruption
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_central_onvestigation
+		prerequisite = {
+			focus = CHI_establish_central_onvestigation
+		}
+		mutually_exclusive = {
+			focus = CHI_comprehensive_inventory_of_official_assets
+		}
+		completion_reward = { 
+			set_country_flag = CHI_selective_anti_corruption
+			clr_country_flag = CHI_establish_central_onvestigation
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_establish_central_onvestigation
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#整顿政府采购
+		id = CHI_rectify_government_procurement
+		icon = GFX_focus_CHI_rectify_government_procurement
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = CHI_establish_central_onvestigation
+		prerequisite = {
+			focus = CHI_comprehensive_inventory_of_official_assets
+			focus = CHI_selective_anti_corruption
+		}
+		completion_reward = { 
+			set_country_flag = CHI_rectify_government_procurement
+			clr_country_flag = CHI_comprehensive_inventory_of_official_assets
+			clr_country_flag = CHI_selective_anti_corruption
+		}
+		available = {
+			OR = {
+				has_country_flag = {
+					flag = CHI_comprehensive_inventory_of_official_assets
+					days > 139
+				}
+				has_country_flag = {
+					flag = CHI_selective_anti_corruption
+					days > 139
+				}
+			}
+		}
+	}
+
+	focus = {	#制度高于派系
+		id = CHI_the_system_is_above_the_faction
+		icon = GFX_focus_CHI_the_system_is_above_the_faction
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_rectify_government_procurement
+		prerequisite = {
+			focus = CHI_rectify_government_procurement
+		}
+		mutually_exclusive = {
+			focus = CHI_the_faction_is_above_the_system
+		}
+		completion_reward = { 
+			clr_country_flag = CHI_rectify_government_procurement
+		}
+		available = {
+			has_completed_focus = CHI_comprehensive_inventory_of_official_assets
+			has_country_flag = {
+				flag = CHI_rectify_government_procurement
+				days > 139
+			}
+		}
+
+	}
+
+	focus = {	#派系高于制度
+		id = CHI_the_faction_is_above_the_system
+		icon = GFX_focus_CHI_the_faction_is_above_the_system
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_rectify_government_procurement
+		prerequisite = {
+			focus = CHI_rectify_government_procurement
+		}
+		mutually_exclusive = {
+			focus = CHI_the_system_is_above_the_faction
+		}
+		completion_reward = { 
+			clr_country_flag = CHI_selective_anti_corruption
+		}
+		available = {
+			has_completed_focus = CHI_selective_anti_corruption
+			has_country_flag = {
+				flag = CHI_rectify_government_procurement
+				days > 139
+			}
+		}
+	}
+
+	focus = {	#整肃军队
+		id = CHI_rectify_the_army
+		icon = GFX_focus_CHI_rectify_the_army
+		x = 5
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_rectify_the_army
+		}
+
+		available = {
+			#
+		}
+
+	}
+
+	focus = {	#接管监察院
+		id = CHI_take_over_the_control_institution
+		icon = GFX_focus_CHI_take_over_the_control_institution
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_rectify_the_army
+		prerequisite = {
+			focus = CHI_rectify_the_army
+		}
+		completion_reward = { 
+			set_country_flag = CHI_take_over_the_control_institution
+			clr_country_flag = CHI_rectify_the_army
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_rectify_the_army
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#秘密调查
+		id = CHI_secret_investigation
+		icon = GFX_focus_CHI_secret_investigation
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_take_over_the_control_institution
+		prerequisite = {
+			focus = CHI_take_over_the_control_institution
+		}
+		completion_reward = { 
+			set_country_flag = CHI_secret_investigation
+			clr_country_flag = CHI_take_over_the_control_institution
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_take_over_the_control_institution
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#第二次清党运动
+		id = CHI_second_four_one_two
+		icon = GFX_focus_CHI_second_four_one_two
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_secret_investigation
+		prerequisite = {
+			focus = CHI_secret_investigation
+		}
+		completion_reward = { 
+			set_country_flag = CHI_second_four_one_two
+			clr_country_flag = CHI_secret_investigation
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_secret_investigation
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#恢复政府秩序
+		id = CHI_restore_government_order
+		icon = GFX_focus_CHI_restore_government_order
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_second_four_one_two
+		prerequisite = {
+			focus = CHI_second_four_one_two
+		}
+		completion_reward = { 
+			set_country_flag = CHI_restore_government_order
+			clr_country_flag = CHI_second_four_one_two
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_second_four_one_two
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#军队补贴制度化
+		id = CHI_institutionalization_of_military_subsidies
+		icon = GFX_focus_CHI_institutionalization_of_military_subsidies
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_restore_government_order
+		prerequisite = {
+			focus = CHI_restore_government_order
+		}
+		completion_reward = { 
+			set_country_flag = CHI_institutionalization_of_military_subsidies
+			clr_country_flag = CHI_restore_government_order
+		}
+		available = {
+			has_country_flag = {
+				flag = CHI_restore_government_order
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#领袖廉政令
+		id = CHI_leadership_integrity_order
+		icon = GFX_focus_CHI_leadership_integrity_order
+		x = 8
+		y = 1
+		relative_position_id = CHI_solve_our_internal_problem
+		prerequisite = {
+			focus = CHI_solve_our_internal_problem
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_leadership_integrity_order
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#特别监察总署
+		id = CHI_special_inspection_department
+		icon = GFX_focus_CHI_special_inspection_department
+		x = 0
+		y = 1
+		relative_position_id = CHI_leadership_integrity_order
+		prerequisite = {
+			focus = CHI_leadership_integrity_order
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_special_inspection_department
+			clr_country_flag = CHI_leadership_integrity_order
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_leadership_integrity_order
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#没收贪官财产
+		id = CHI_confiscate_the_assets_of_corrupt_officials
+		icon = GFX_focus_CHI_confiscate_the_assets_of_corrupt_officials
+		x = 0
+		y = 1
+		relative_position_id = CHI_special_inspection_department
+		prerequisite = {
+			focus = CHI_special_inspection_department
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_confiscate_the_assets_of_corrupt_officials
+			clr_country_flag = CHI_special_inspection_department
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_special_inspection_department
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#忠诚即廉洁
+		id = CHI_loyalty_means_intergrity
+		icon = GFX_focus_CHI_loyalty_means_intergrity
+		x = 0
+		y = 1
+		relative_position_id = CHI_confiscate_the_assets_of_corrupt_officials
+		prerequisite = {
+			focus = CHI_confiscate_the_assets_of_corrupt_officials
+		}
+
+		completion_reward = {
+			set_country_flag = CHI_loyalty_means_intergrity
+			clr_country_flag = CHI_confiscate_the_assets_of_corrupt_officials
+		}
+
+		available = {
+			has_country_flag = {
+				flag = CHI_confiscate_the_assets_of_corrupt_officials
+				days > 104
+			}
+		}
+	}
+
+	focus = {	#国家至上
+		id = CHI_nation_above_all
+		icon = GFX_focus_CHI_nation_above_all
+		x = 0
+		y = 1
+		relative_position_id = CHI_loyalty_means_intergrity
+		prerequisite = {
+			focus = CHI_loyalty_means_intergrity
+		}
+
+		completion_reward = {
+			clr_country_flag = CHI_loyalty_means_intergrity
+		}
+
+		available = {
+			#
 		}
 	}
 }

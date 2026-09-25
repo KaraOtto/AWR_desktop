@@ -1,0 +1,1284 @@
+add_namespace = AWR_SIC
+
+country_event = {	#邓锡侯掌权
+	id = AWR_SIC.1
+	title = AWR_SIC.1.t
+	desc = AWR_SIC.1.d
+	picture = GFX_report_event_generic_sign_treaty1
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		has_global_flag = CHI_no_longer_united_flag
+		tag = SIC
+	    has_country_leader = {
+			character = SIC_Deng_Xihou ruling_only = yes
+		}
+		is_subject_of = event_target:WTT_current_china_leader
+		has_autonomy_state = autonomy_rcm_national_revolutionary_army	
+	}
+	option = {
+		name = AWR_SIC.1.a
+		if = {
+			limit = {
+				tag = SIC
+			}
+			overlord = {
+				country_event = {
+					id = AWR_SIC.1 
+					hours = 12
+				}
+				set_autonomy = {
+					target = ROOT
+					autonomy_state = autonomy_rcm_provincial_government
+				}		
+			}
+			add_political_power = 100
+			add_stability = 0.05
+			else = {
+				effect_tooltip = {
+					SIC = {
+						overlord = {
+							set_autonomy = {
+								target = ROOT
+								autonomy_state = autonomy_rcm_provincial_government
+							}
+						}
+						add_political_power = 100
+						add_stability = 0.05
+					}
+				}
+				add_stability = 0.03
+			}
+		}	
+	}
+}
+
+country_event = { #[From.GetName]反对张群
+	id = AWR_SIC.2
+	title = AWR_SIC.2.t
+	desc = AWR_SIC.2.d
+	picture = GFX_report_zhang_qun
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.2.a
+		effect_tooltip = {
+			FROM = {
+				activate_mission = SIC_rebellion_mission_sic
+			}
+			activate_mission = SIC_rebellion_mission	
+			unlock_decision_tooltip = CHI_discuss_with_sic_generals
+		}
+	}
+}
+
+country_event = { #王缵绪被任命为四川省主席
+	id = AWR_SIC.3
+	title = AWR_SIC.3.t
+	desc = AWR_SIC.3.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.3.a
+		if = {
+			limit = {
+				has_idea = CHI_zhang_qun_in_sic
+			}
+			remove_ideas = CHI_zhang_qun_in_sic
+		}
+		add_ideas = CHI_wang_zuanxu_in_sic
+		create_country_leader = {
+			name = "邓锡侯"
+			desc = "POLITICS_ZHANG_ZHIZHONG_DESC"
+			picture = "gfx/leaders/SIC/Portrait_SIC_Deng_Xihou.dds"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { 
+				SIC_zongsiling 
+				difangshilipai 
+				infantry_officer
+			}
+		}		
+		SIC_Deng_Xihou = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						#
+					}
+				} 
+			} 
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = marxism
+					traits = {		
+						#				
+					}
+				} 
+			}
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = authoritarian_socialism
+					traits = {		
+						#					
+					}
+				} 
+			}
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = sanmin_military_rule
+					traits = {		
+						#			   
+					}
+				} 
+			}	
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {	
+						#
+					}
+				} 
+			}				
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+						#
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = communism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+					 }
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+					 }
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = socialism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+					 }
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = { #川军起事
+	id = AWR_SIC.4
+	title = AWR_SIC.4.t
+	desc = AWR_SIC.4.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.4.a
+		if = {
+			limit = {
+				has_idea = CHI_zhang_qun_in_sic
+			}
+			remove_ideas = CHI_zhang_qun_in_sic
+		}
+		effect_tooltip = {
+			random_other_country = {
+				limit = {
+					has_character = CHI_zhang_qun
+				}
+				retire_character = CHI_zhang_qun
+			}
+			event_target:WTT_current_china_leader = {
+				country_event = {
+					id = AWR_SIC.6 
+					days = 1
+				}
+			}
+		}	
+		retire_country_leader = yes
+
+		SIC_Deng_Xihou = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						#
+					}
+				} 
+			} 
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = marxism
+					traits = {		
+						#				
+					}
+				} 
+			}
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = authoritarian_socialism
+					traits = {	
+						#						
+					}
+				} 
+			}
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = sanmin_military_rule
+					traits = {		
+						#			   
+					}
+				} 
+			}	
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {	
+						#
+					}
+				} 
+			}				
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+						#
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+						#
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = communism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+						#
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = authoritarian_socialism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+						#
+					}
+				}
+			}
+	
+			if = {
+				limit = {
+					has_government = socialism
+				}
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = marxism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = despotism
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+	  
+				create_country_leader = {
+					name = "None"
+					desc = "POLITICS_JING_YUEXIU_DESC"
+					picture = "gfx/leaders/leader_unknown.dds"
+					expire = "1970.11.3"
+					ideology = conservatism
+					traits = {
+						#
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_subject = yes
+			}
+			overlord = {
+                set_autonomy = {
+					target = ROOT
+					autonomy_state = autonomy_free
+				}
+			}	
+		}
+		if = {
+			limit = {
+				is_in_faction_with = event_target:WTT_current_china_leader
+			}
+			leave_faction = yes
+		}
+		every_enemy_country = {
+			limit = {
+				OR = {
+					tag = JAP
+					is_ally_with = JAP
+				}
+			}
+			white_peace = ROOT
+		}
+		create_faction = "southwest_rebel_faction"
+		every_other_country = {
+            limit = {
+				OR = {
+					tag = YUN
+					tag = XIK
+				}
+				is_subject = no
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			country_event = {
+                id = AWR_SIC.5 
+				hours = 12
+			}	
+		}
+	}
+}
+
+country_event = { #[From.GetName]邀请我们反对 [WTT_current_china_leader.GetLeader]
+	id = AWR_SIC.5
+	title = AWR_SIC.5.t
+	desc = AWR_SIC.5.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.5.a
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = {
+				is_in_faction_with = event_target:WTT_current_china_leader
+			}
+			leave_faction = yes
+		}
+		every_enemy_country = {
+			limit = {
+				OR = {
+					tag = JAP
+					is_ally_with = JAP
+				}
+			}
+			white_peace = ROOT
+		}
+		FROM = {
+			add_to_faction = ROOT
+			country_event = {
+				id = AWR_SIC.9 
+				hours = 24
+			} 
+		}
+	}
+
+	option = {
+		name = AWR_SIC.5.b
+
+		ai_chance = {
+			factor = 0
+		}
+		FROM = {
+			country_event = {
+				id = AWR_SIC.13 
+				hours = 12
+			}
+		}
+	}
+}
+
+country_event = { #[From.GetName]叛乱
+	id = AWR_SIC.6
+	title = AWR_SIC.6.t
+	desc = AWR_SIC.6.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.6.a
+		effect_tooltip = {
+			FROM = {
+                remove_ideas = CHI_zhang_qun_in_sic
+			}
+		}
+		if = {
+			limit = {
+				has_character = CHI_zhang_qun
+			}
+			retire_character = CHI_zhang_qun
+		}
+		effect_tooltip = {
+			FROM = {
+				set_autonomy = {
+					target = ROOT
+					autonomy_state = autonomy_free
+				}
+				leave_faction = yes
+				white_peace = JAP
+				create_faction = "southwest_rebel_faction"
+			}
+		}
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+
+	option = {
+		name = AWR_SIC.6.b
+		effect_tooltip = {
+			FROM = {
+                remove_ideas = CHI_zhang_qun_in_sic
+			}
+		}
+		if = {
+			limit = {
+				has_character = CHI_zhang_qun
+			}
+			retire_character = CHI_zhang_qun
+		}
+		effect_tooltip = {
+			FROM = {
+				set_autonomy = {
+					target = ROOT
+					autonomy_state = autonomy_free
+				}
+				leave_faction = yes
+				white_peace = JAP
+				create_faction = "southwest_rebel_faction"
+			}
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SIC
+		}
+	}
+}
+
+country_event = { #多名川系将军投向[WTT_current_china_leader.GetLeader]
+	id = AWR_SIC.7
+	title = AWR_SIC.7.t
+	desc = AWR_SIC.7.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.7.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = SIC_liu_xiang ruling_only = yes
+						}
+					}
+					owns_state = 1041
+					NOT = {
+						controls_state = 1041
+					}
+				}
+			    1041 = {
+					set_state_owner_to = FROM
+				}
+			}
+			if = {
+				limit = {
+					owns_state = 751
+					NOT = {
+						controls_state = 751
+					}
+				}
+			    751 = {
+					set_state_owner_to = FROM
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = SIC_liu_xiang ruling_only = yes
+						}
+					}
+					1041 = {
+						is_owned_and_controlled_by = ROOT
+					}
+				}
+				1041 = {
+					transfer_state_to = FROM
+				}
+			}
+			if = {
+				limit = {
+					751 = {
+						is_owned_and_controlled_by = ROOT
+					}
+				}
+				751 = {
+					transfer_state_to = FROM
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = SIC_liu_xiang ruling_only = yes
+						}
+					}
+				}
+				every_unit_leader = {
+					limit = {
+						OR = {
+							is_character = SIC_Wang_Lingji
+							#is_character = SIC_Wang_Zuanxu
+							is_character = SIC_Yang_Sen
+							is_character = SIC_Tang_Shizun
+							is_character = SIC_Sun_Zhen
+							is_character = SIC_Li_Jiayu
+						}
+					}
+					set_nationality = FROM
+				}
+				else = {
+					every_unit_leader = {
+						limit = {
+							OR = {
+								#is_character = SIC_Wang_Lingji
+								#is_character = SIC_Wang_Zuanxu
+								is_character = SIC_Yang_Sen
+								#is_character = SIC_Tang_Shizun
+								is_character = SIC_Sun_Zhen
+								is_character = SIC_Li_Jiayu
+							}
+						}
+						set_nationality = FROM
+					}
+				}
+			}
+			transfer_units_fraction = {
+			    target = FROM   # the recipient			                      
+			    size = 0 
+				army_ratio = 0.5      # Overrides size modifier for army
+			    stockpile_ratio = 0  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+			    navy_ratio = 0       # [0,1] Overrides size modifier for navy
+			    air_ratio = 0        # [0,1] Overrides size modifier for air
+				keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+				    always = yes
+			    }
+		    }
+		}
+		FROM = {
+			country_event = {
+				id = AWR_SIC.8 hours = 12
+			}
+		}
+	}
+}
+
+country_event = { #多名川系将军投向我方
+	id = AWR_SIC.8
+	title = AWR_SIC.8.t
+	desc = AWR_SIC.8.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes 
+	
+	option = {
+		name = AWR_SIC.8.a
+		FROM = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = SIC_liu_xiang ruling_only = yes
+						}
+					}
+				}
+				every_unit_leader = {
+					limit = {
+						OR = {
+							is_character = SIC_Wang_Lingji
+							#is_character = SIC_Wang_Zuanxu
+							is_character = SIC_Yang_Sen
+							is_character = SIC_Tang_Shizun
+							is_character = SIC_Sun_Zhen
+							is_character = SIC_Li_Jiayu
+						}
+					}
+					set_nationality = ROOT
+				}
+				else = {
+					every_unit_leader = {
+						limit = {
+							OR = {
+								#is_character = SIC_Wang_Lingji
+								#is_character = SIC_Wang_Zuanxu
+								is_character = SIC_Yang_Sen
+								#is_character = SIC_Tang_Shizun
+								is_character = SIC_Sun_Zhen
+								is_character = SIC_Li_Jiayu
+							}
+						}
+						set_nationality = ROOT
+					}
+				}
+			}
+			transfer_units_fraction = {
+			    target = ROOT       # the recipient			                      
+			    size = 0 
+				army_ratio = 0.5      # Overrides size modifier for army
+			    stockpile_ratio = 0  # [0,1] Overrides size modifier for the stockpiled equipment and fuel
+			    navy_ratio = 0       # [0,1] Overrides size modifier for navy
+			    air_ratio = 0        # [0,1] Overrides size modifier for air
+				keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country
+				    always = yes
+			    }
+		    }
+		}
+		SIC = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = SIC_liu_xiang ruling_only = yes
+						}
+					}
+				}
+			    every_owned_state = {
+					limit = {
+						OR = {
+							state = 1041
+							#state = 1023
+							state = 605
+							state = 751
+						}
+					}
+					transfer_state_to = ROOT
+				}
+			}
+		}
+	}
+}
+
+country_event = { #[From.GetName]加入我方阵营
+	id = AWR_SIC.9
+	title = AWR_SIC.9.t
+	desc = AWR_SIC.9.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes 
+	trigger = {
+		is_faction_leader = yes
+	}
+
+	option = {
+		name = AWR_SIC.9.a
+		ai_chance = {
+			factor = 100
+		}
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+	}
+}
+
+country_event = { #川系将领反对王缵绪
+	id = AWR_SIC.10
+	title = AWR_SIC.10.t
+	desc = AWR_SIC.10.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		has_idea = CHI_wang_zuanxu_in_sic
+	}
+	mean_time_to_happen = {
+		days = 395
+	}
+	
+	option = {
+		name = AWR_SIC.10.a
+		add_stability = -0.05
+        event_target:WTT_current_china_leader = {
+			country_event = {
+				id = AWR_SIC.11 
+				hours = 12
+			}
+		}
+	}
+}
+
+country_event = { #川系将领反对王缵绪
+	id = AWR_SIC.11
+	title = AWR_SIC.11.t
+	desc = AWR_SIC.11.d
+	picture = GFX_report_event_chinese_soldiers
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_SIC.11.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -100
+		SIC = {
+			country_event = {
+				id = AWR_SIC.12 
+				hours = 12
+			}
+		}
+		effect_tooltip = {
+			SIC = {
+				remove_ideas = CHI_wang_zuanxu_in_sic
+				SIC_Wang_Zuanxu = {
+					set_nationality = ROOT
+				}
+				add_timed_idea = {
+					idea =  CHI_chiang_in_sic 
+					days = 425
+				}
+			}
+		}
+	}
+}
+
+country_event = { #[From.GetLeader]就任四川省主席
+	id = AWR_SIC.12
+	title = AWR_SIC.12.t
+	desc = AWR_SIC.12.d
+	picture = GFX_report_event_china_chiang_kai_shek
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_SIC.12.a
+		#chiang will be the chairman
+		ai_chance = {
+			factor = 100
+		}
+		remove_ideas = CHI_wang_zuanxu_in_sic
+		SIC_Wang_Zuanxu = {
+			set_nationality = FROM
+		}
+		add_timed_idea = {
+			idea =  CHI_chiang_in_sic 
+			days = 425
+		}
+	}
+}
+
+country_event = {	#[From.GetName]拒绝
+	id = AWR_SIC.13
+	title = AWR_SIC.13.t
+	desc = AWR_SIC.13.d
+	picture = GFX_report_event_chinese_soldiers_02
+	is_triggered_only = yes
+	
+	option = {
+		name = AWR_SIC.13.a
+            add_timed_idea = { 
+				idea = chi_huanxiangtuan 
+				days = 1095 
+			}
+            add_ideas = chi_zhongmeitiaoyue			
+		    diplomatic_relation = {
+				country = event_target:WTT_communist_china
+				relation = non_aggression_pact
+				active = no
+            }
+		    declare_war_on = {
+				target = event_target:WTT_communist_china
+				type = civil_war
+		    }
+			unlock_decision_category_tooltip = attack_prc_area_plan
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = civil_war_tips_chi_tt
+			if = {
+				limit = {
+					SOV = {
+						NOT = {
+							has_war_with = ROOT
+						}
+						any_controlled_state = {
+							has_state_flag = manzhou
+							not = { 
+								state = 745 
+							}
+						}
+					}
+				}
+				SOV = {
+					add_to_faction = event_target:WTT_communist_china
+					add_to_war = {
+						targeted_alliance = event_target:WTT_communist_china
+						enemy = event_target:WTT_current_china_leader
+						hostility_reason = asked_to_join
+					}
+				}
+			}
+			
+			second_china_civil_war_start_rcm = yes		
+	}
+}
+
+country_event = {	#中央要求我们臣服
+	id = AWR_SIC.14
+	title = AWR_SIC.14.t
+	desc = AWR_SIC.14.desc
+
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_SIC.14.a
+		FRA = {
+			set_autonomy = {
+				target = CHI
+				autonomy_state = autonomy_CHI_zongduxiaqu
+			}
+		}
+	}
+
+	option = {
+		name = AWR_SIC.14.b
+		CHI = {
+			create_wargoal = { 
+				target = SIC
+				type = annex_everything 
+			}
+			country_event = {
+				id = AWR_SIC.15
+			}
+		}
+	}
+}
+
+country_event = {	#四川拒绝
+	id = AWR_SIC.15
+	title = AWR_SIC.15.t
+	desc = AWR_SIC.15.d
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_SIC.15.a
+	}
+}

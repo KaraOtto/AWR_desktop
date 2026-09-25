@@ -139,7 +139,9 @@ ideas = {
 		}
 		China_weak_control_of_the_land = { #孱弱的行政机构
 			picture = chi_warlord_integration
-			allowed_civil_war = { always = yes }
+			allowed_civil_war = { 
+				always = yes 
+			}
 			modifier = {
 				political_power_factor = -0.3
 				stability_factor = -0.3
@@ -147,6 +149,133 @@ ideas = {
 				conscription_factor = -0.75
 				production_speed_infrastructure_factor = -0.2
 				research_speed_factor = -0.25
+			}
+		}
+
+		CHI_pacify_the_interior_idea_1 = {	#安内
+			name = CHI_pacify_the_interior_idea
+			picture = CHI_pacify_the_interior_idea
+			allowed_civil_war = { 
+				always = no
+			}
+			modifier = {
+				offensive_war_stability_factor = 0.50
+			}
+		}
+
+		CHI_pacify_the_interior_idea_2 = {	#安内
+			name = CHI_pacify_the_interior_idea
+			picture = CHI_pacify_the_interior_idea
+			allowed_civil_war = { 
+				always = no
+			}
+			modifier = {
+				offensive_war_stability_factor = 0.50
+			}
+			targeted_modifier = {
+				tag = GDC
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = GXC
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = SHX
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = SND
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = HBC
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = XIK
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = GSM
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = NXM
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = XSM
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = EGM
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+				breakthrough_factor = 0.10
+			}
+		}
+
+		CHI_against_SIC = {	#对抗川系军阀
+			picture = CHI_against_SIC
+			allowed_civil_war = { 
+				always = no
+			}
+			targeted_modifier = {
+				tag = SIC
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
+			}
+		}
+		CHI_against_XIK = {	#对抗康系军阀
+			picture = CHI_against_XIK
+			allowed_civil_war = { 
+				always = no
+			}
+			targeted_modifier = {
+				tag = XIK
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
+			}
+		}
+		CHI_against_GDC = {	#对抗粤系军阀
+			picture = CHI_against_GDC
+			allowed_civil_war = { 
+				always = no
+			}
+			targeted_modifier = {
+				tag = GDC
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
+			}
+		}
+		CHI_against_GXC = {	#对抗桂系军阀
+			picture = CHI_against_GXC
+			allowed_civil_war = { 
+				always = no
+			}
+			targeted_modifier = {
+				tag = GXC
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
 			}
 		}
 		#-------------------------以下是点国策给的buff------------------------------

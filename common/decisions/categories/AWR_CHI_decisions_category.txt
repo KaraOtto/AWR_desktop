@@ -55,3 +55,33 @@ CHI_corruption_category = {	#国民政府反腐行动
 		} 
 	}
 }
+
+CHI_against_warlord_category = {	#对抗军阀
+	icon = generic_army_support
+	allowed = {
+		tag = CHI
+	}
+	visible = {
+		ROOT = {
+			has_completed_focus = CHI_pacify_the_interior
+		}
+	}
+	priority = 1000
+}
+
+attack_prc_area_plan = {	#戡乱动员令
+	icon = border_conflicts
+	picture = GFX_decision_cat_picture_chi_army_reform
+	allowed = {
+		is_literally_china = yes
+	}
+	visible = {
+		is_ai = no
+		has_war_with = event_target:WTT_communist_china
+		has_global_flag = PRC_civil_war_started
+		not = { 
+			has_government = communism 
+		}
+	}
+	priority = 999
+}
