@@ -279,3 +279,54 @@ country_event = {	#西康拒绝我们的合作提议
 		name = AWR_XIK.3.a
 	}
 }	
+
+country_event = {	#西康省政府成立
+	id = AWR_XIK.4
+	title = AWR_XIK.4.t
+	desc = AWR_XIK.4.d
+	picture = GFX_report_event_great_way
+	fire_only_once = yes
+	is_triggered_only = yes
+    immediate = {
+		if = {
+			limit = {
+				1042 = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+			hidden_effect = {
+				set_capital = { 
+					state = 751 
+				}
+			}
+		}
+	}
+
+	option = {
+		name = AWR_XIK.4.a
+		add_political_power = 100
+		drop_cosmetic_tag = yes
+		transfer_state = 751
+		add_state_core = 751
+		if = {
+			limit = {
+				1042 = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+			set_victory_points = {
+				province = 2067
+				value = 1
+			}
+			set_victory_points = {
+				province = 4999
+				value = 5
+			}
+			hidden_effect = {
+				set_capital = { 
+					state = 1042 
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,487 @@
+# 中国事变公共效果：供决议、事件和后续国策共同调用。
+# 国策可调整成本、工期或效果变量，而无需重写系统主体。
+
+JAP_cis_initialize_system = {
+	if = {
+		limit = { NOT = { has_country_flag = JAP_cis_system_initialized } }
+		set_variable = { JAP_cis_china_war_months = 0 }
+		set_variable = { JAP_cis_occupation_policy_level = 0 }
+		set_country_flag = JAP_cis_system_initialized
+	}
+}
+
+JAP_cis_deactivate_wartime_system = {
+	remove_ideas = JAP_cis_china_expeditionary_army
+	remove_ideas = JAP_cis_local_transport_requisition
+	remove_ideas = JAP_cis_military_administration
+	remove_ideas = JAP_cis_occupation_extraction
+	remove_ideas = JAP_cis_collaboration_administration
+	remove_ideas = JAP_cis_security_war_1
+	remove_ideas = JAP_cis_security_war_2
+	remove_ideas = JAP_cis_security_war_3
+	remove_ideas = JAP_cis_forced_labor_program
+	clear_global_event_target = JAP_cis_chinese_side
+	clr_global_flag = JAP_cis_chinese_side_identified
+}
+
+# 在选中的中国交战国作用域内调用，并保存其本人或阵营领袖。
+JAP_cis_save_chinese_side = {
+	if = {
+		limit = { is_in_faction = yes }
+		faction_leader = { save_global_event_target_as = JAP_cis_chinese_side }
+	}
+	else = { save_global_event_target_as = JAP_cis_chinese_side }
+	set_global_flag = JAP_cis_chinese_side_identified
+}
+
+JAP_cis_refresh_chinese_side = {
+	clear_global_event_target = JAP_cis_chinese_side
+	clr_global_flag = JAP_cis_chinese_side_identified
+
+	# 依次检查重庆、武汉、南京等战略中枢，作为主要中国交战方的低开销近似。
+	# 固定标签回退可处理首都被包围或迁移后的情况。
+	1037 = { controller = { if = { limit = { JAP_cis_is_valid_chinese_opponent = yes } JAP_cis_save_chinese_side = yes } } }
+	if = {
+		limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } }
+		1036 = { controller = { if = { limit = { JAP_cis_is_valid_chinese_opponent = yes } JAP_cis_save_chinese_side = yes } } }
+	}
+	if = {
+		limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } }
+		1035 = { controller = { if = { limit = { JAP_cis_is_valid_chinese_opponent = yes } JAP_cis_save_chinese_side = yes } } }
+	}
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } CHI = { JAP_cis_is_valid_chinese_opponent = yes } } CHI = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } PRC = { JAP_cis_is_valid_chinese_opponent = yes } } PRC = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } GDC = { JAP_cis_is_valid_chinese_opponent = yes } } GDC = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } GXC = { JAP_cis_is_valid_chinese_opponent = yes } } GXC = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } YUN = { JAP_cis_is_valid_chinese_opponent = yes } } YUN = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } SHX = { JAP_cis_is_valid_chinese_opponent = yes } } SHX = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } XSM = { JAP_cis_is_valid_chinese_opponent = yes } } XSM = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } SIK = { JAP_cis_is_valid_chinese_opponent = yes } } SIK = { JAP_cis_save_chinese_side = yes } }
+	if = { limit = { NOT = { has_global_flag = JAP_cis_chinese_side_identified } TIB = { JAP_cis_is_valid_chinese_opponent = yes } } TIB = { JAP_cis_save_chinese_side = yes } }
+}
+
+JAP_cis_apply_mild_occupation_cost = {
+	every_controlled_state = {
+		limit = { OR = { is_core_of = CHI is_core_of = PRC } NOT = { is_core_of = JAP } }
+		add_resistance = 2
+		add_compliance = -1
+	}
+}
+
+JAP_cis_apply_harsh_occupation_cost = {
+	every_controlled_state = {
+		limit = { OR = { is_core_of = CHI is_core_of = PRC } NOT = { is_core_of = JAP } }
+		add_resistance = 5
+		add_compliance = -3
+	}
+}
+
+JAP_cis_apply_extreme_occupation_cost = {
+	every_controlled_state = {
+		limit = { OR = { is_core_of = CHI is_core_of = PRC } NOT = { is_core_of = JAP } }
+		add_resistance = 8
+		add_compliance = -5
+		add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 720 }
+	}
+}
+
+JAP_cis_set_security_policy_1 = {
+	remove_ideas = JAP_cis_security_war_2
+	remove_ideas = JAP_cis_security_war_3
+	add_ideas = JAP_cis_security_war_1
+	set_variable = { JAP_cis_occupation_policy_level = 1 }
+	JAP_cis_apply_mild_occupation_cost = yes
+}
+
+JAP_cis_set_security_policy_2 = {
+	remove_ideas = JAP_cis_security_war_1
+	remove_ideas = JAP_cis_security_war_3
+	add_ideas = JAP_cis_security_war_2
+	set_variable = { JAP_cis_occupation_policy_level = 2 }
+	JAP_cis_apply_harsh_occupation_cost = yes
+}
+
+JAP_cis_set_security_policy_3 = {
+	remove_ideas = JAP_cis_security_war_1
+	remove_ideas = JAP_cis_security_war_2
+	add_ideas = JAP_cis_security_war_3
+	set_variable = { JAP_cis_occupation_policy_level = 3 }
+	JAP_cis_apply_extreme_occupation_cost = yes
+}
+
+JAP_cis_begin_development_project = {
+	set_country_flag = JAP_cis_resource_project_in_progress
+	add_ideas = JAP_cis_resource_project_investment
+}
+
+JAP_cis_end_development_project = {
+	clr_country_flag = JAP_cis_resource_project_in_progress
+	remove_ideas = JAP_cis_resource_project_investment
+}
+
+JAP_cis_complete_north_development = {
+	JAP_cis_end_development_project = yes
+	597 = { add_resource = { type = steel amount = 4 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	614 = { add_resource = { type = coal amount = 6 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	1038 = { add_resource = { type = steel amount = 3 } }
+}
+
+JAP_cis_complete_central_development = {
+	JAP_cis_end_development_project = yes
+	598 = { add_resource = { type = steel amount = 3 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	600 = { add_resource = { type = tungsten amount = 2 } }
+	1036 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+}
+
+JAP_cis_complete_south_development = {
+	JAP_cis_end_development_project = yes
+	592 = { add_resource = { type = tungsten amount = 4 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	593 = { add_resource = { type = rubber amount = 3 } }
+	591 = { add_resource = { type = oil amount = 2 } }
+}
+
+JAP_cis_apply_nanjing_massacre_consequences = {
+	set_country_flag = JAP_cis_nanjing_massacre_happened
+	1035 = { add_resistance = 20 add_compliance = -15 add_dynamic_modifier = { modifier = JAP_cis_nanjing_devastation } }
+	598 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+	1034 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+	add_war_support = -0.03
+	add_stability = -0.02
+	add_named_threat = { threat = 8 name = JAP_cis_nanjing_massacre_threat }
+	every_country = {
+		limit = { is_major = yes NOT = { tag = JAP } }
+		add_opinion_modifier = { target = JAP modifier = JAP_cis_nanjing_massacre_opinion }
+	}
+}
+
+# Initialise variables once.  The system is focus-independent.
+JAP_pacific_initialize_system = {
+	if = {
+		limit = { NOT = { has_country_flag = JAP_pacific_initialized } }
+		set_variable = { JAP_pacific_occupation_level = 0 }
+		set_variable = { JAP_pacific_situation_level = 1 }
+		set_country_flag = JAP_pacific_initialized
+	}
+}
+
+# Set the five real invasion-related modifier values from one level.
+JAP_pacific_set_situation_values = {
+	if = {
+		limit = { check_variable = { JAP_pacific_situation_level = 1 } }
+		set_variable = { JAP_pacific_situation_invasion_preparation = -1.00 }
+		set_variable = { JAP_pacific_situation_invasion_capacity = 4 }
+		set_variable = { JAP_pacific_situation_amphibious_invasion = 0.04 }
+		set_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.06 }
+		set_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.04 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_situation_level = 2 } }
+		set_variable = { JAP_pacific_situation_invasion_preparation = -1.08 }
+		set_variable = { JAP_pacific_situation_invasion_capacity = 8 }
+		set_variable = { JAP_pacific_situation_amphibious_invasion = 0.10 }
+		set_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.12 }
+		set_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.08 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_situation_level = 3 } }
+		set_variable = { JAP_pacific_situation_invasion_preparation = -1.16 }
+		set_variable = { JAP_pacific_situation_invasion_capacity = 12 }
+		set_variable = { JAP_pacific_situation_amphibious_invasion = 0.16 }
+		set_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.18 }
+		set_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.12 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_situation_level = 4 } }
+		set_variable = { JAP_pacific_situation_invasion_preparation = -1.26 }
+		set_variable = { JAP_pacific_situation_invasion_capacity = 16 }
+		set_variable = { JAP_pacific_situation_amphibious_invasion = 0.22 }
+		set_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.24 }
+		set_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.16 }
+	}
+	else = {
+		set_variable = { JAP_pacific_situation_invasion_preparation = -1.36 }
+		set_variable = { JAP_pacific_situation_invasion_capacity = 20 }
+		set_variable = { JAP_pacific_situation_amphibious_invasion = 0.30 }
+		set_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.30 }
+		set_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.20 }
+	}
+	if = { limit = { NOT = { has_dynamic_modifier = JAP_pacific_war_situation } } add_dynamic_modifier = { modifier = JAP_pacific_war_situation } }
+}
+
+# Weighted control score.  Losses and reconquests therefore lower and restore
+# the same national spirit without any player-visible progress bar.
+JAP_pacific_update_war_situation = {
+	set_temp_variable = { JAP_pacific_control_score = 0 }
+	if = { limit = { JAP_pacific_controls_japan_home = yes } add_to_temp_variable = { JAP_pacific_control_score = 10 } }
+	if = { limit = { JAP_pacific_controls_taiwan = yes } add_to_temp_variable = { JAP_pacific_control_score = 5 } }
+	if = { limit = { JAP_pacific_controls_okinawa = yes } add_to_temp_variable = { JAP_pacific_control_score = 4 } }
+	if = { limit = { JAP_pacific_controls_iwo_jima = yes } add_to_temp_variable = { JAP_pacific_control_score = 4 } }
+	if = { limit = { JAP_pacific_controls_philippines = yes } add_to_temp_variable = { JAP_pacific_control_score = 18 } }
+	if = { limit = { JAP_pacific_controls_singapore = yes } add_to_temp_variable = { JAP_pacific_control_score = 14 } }
+	if = { limit = { JAP_pacific_controls_dei = yes } add_to_temp_variable = { JAP_pacific_control_score = 16 } }
+	if = { limit = { JAP_pacific_controls_marianas = yes } add_to_temp_variable = { JAP_pacific_control_score = 8 } }
+	if = { limit = { JAP_pacific_controls_new_guinea = yes } add_to_temp_variable = { JAP_pacific_control_score = 8 } }
+	if = { limit = { JAP_pacific_controls_wake = yes } add_to_temp_variable = { JAP_pacific_control_score = 4 } }
+	if = { limit = { JAP_pacific_controls_midway = yes } add_to_temp_variable = { JAP_pacific_control_score = 12 } }
+	if = { limit = { JAP_pacific_controls_hawaii = yes } add_to_temp_variable = { JAP_pacific_control_score = 20 } }
+
+	set_variable = { JAP_pacific_situation_level = 1 }
+	if = { limit = { check_variable = { JAP_pacific_control_score > 24 } } set_variable = { JAP_pacific_situation_level = 2 } }
+	if = { limit = { check_variable = { JAP_pacific_control_score > 49 } } set_variable = { JAP_pacific_situation_level = 3 } }
+	if = { limit = { check_variable = { JAP_pacific_control_score > 74 } } set_variable = { JAP_pacific_situation_level = 4 } }
+	if = { limit = { check_variable = { JAP_pacific_control_score > 99 } } set_variable = { JAP_pacific_situation_level = 5 } }
+	clr_country_flag = JAP_pacific_situation_level_1
+	clr_country_flag = JAP_pacific_situation_level_2
+	clr_country_flag = JAP_pacific_situation_level_3
+	clr_country_flag = JAP_pacific_situation_level_4
+	clr_country_flag = JAP_pacific_situation_level_5
+	if = { limit = { check_variable = { JAP_pacific_situation_level = 1 } } set_country_flag = JAP_pacific_situation_level_1 }
+	else_if = { limit = { check_variable = { JAP_pacific_situation_level = 2 } } set_country_flag = JAP_pacific_situation_level_2 }
+	else_if = { limit = { check_variable = { JAP_pacific_situation_level = 3 } } set_country_flag = JAP_pacific_situation_level_3 }
+	else_if = { limit = { check_variable = { JAP_pacific_situation_level = 4 } } set_country_flag = JAP_pacific_situation_level_4 }
+	else = { set_country_flag = JAP_pacific_situation_level_5 }
+	JAP_pacific_set_situation_values = yes
+}
+
+# Rebuild the one visible military spirit from permanent project flags and
+# temporary operation flags.  Values are additive, so concurrent decisions
+# still combine exactly as before without creating extra idea icons.
+JAP_pacific_refresh_military_measures = {
+	# Reset the strategic-level component first, then layer every active
+	# decision onto the same visible Pacific War Situation spirit.
+	JAP_pacific_set_situation_values = yes
+	set_variable = { JAP_pacific_military_navy_org = 0 }
+	set_variable = { JAP_pacific_military_positioning = 0 }
+	set_variable = { JAP_pacific_military_naval_speed = 0 }
+	set_variable = { JAP_pacific_military_army_org_regain = 0 }
+	set_variable = { JAP_pacific_military_supply_consumption = 0 }
+	set_variable = { JAP_pacific_military_convoy_escort = 0 }
+	set_variable = { JAP_pacific_military_naval_detection = 0 }
+	set_variable = { JAP_pacific_military_spotting_chance = 0 }
+	set_variable = { JAP_pacific_military_air_mission_efficiency = 0 }
+	set_variable = { JAP_pacific_military_air_accidents = 0 }
+	set_variable = { JAP_pacific_military_naval_targeting = 0 }
+	set_variable = { JAP_pacific_military_air_xp_loss = 0 }
+	set_variable = { JAP_pacific_military_navy_fuel = 0 }
+	set_variable = { JAP_pacific_military_repair_speed = 0 }
+	set_variable = { JAP_pacific_military_invasion_prep_speed = 0 }
+	set_variable = { JAP_pacific_military_navy_range = 0 }
+	set_variable = { JAP_pacific_military_fuel_gain = 0 }
+	set_variable = { JAP_pacific_military_local_resources = 0 }
+	set_variable = { JAP_pacific_military_retreat_speed = 0 }
+	set_variable = { JAP_pacific_military_retreat_chance = 0 }
+
+	if = { limit = { has_country_flag = JAP_pacific_mil_combined_fleet_active } add_to_variable = { JAP_pacific_military_navy_org = 0.10 } add_to_variable = { JAP_pacific_military_positioning = 0.10 } add_to_variable = { JAP_pacific_military_naval_speed = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_shore_preparation_active } add_to_variable = { JAP_pacific_situation_shore_bombardment_bonus = 0.50 } add_to_variable = { JAP_pacific_situation_invasion_preparation = -0.30 } add_to_variable = { JAP_pacific_situation_amphibious_invasion = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_shore_preparation_superior_active } add_to_variable = { JAP_pacific_situation_shore_bombardment_bonus = 1.00 } add_to_variable = { JAP_pacific_situation_invasion_preparation = -0.40 } add_to_variable = { JAP_pacific_situation_amphibious_invasion = 0.16 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_naval_air_recon_active } add_to_variable = { JAP_pacific_military_naval_detection = 0.20 } add_to_variable = { JAP_pacific_military_spotting_chance = 0.16 } add_to_variable = { JAP_pacific_military_air_mission_efficiency = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_carrier_training_active } add_to_variable = { JAP_pacific_military_air_accidents = -0.16 } add_to_variable = { JAP_pacific_military_naval_targeting = 0.12 } add_to_variable = { JAP_pacific_military_air_xp_loss = -0.16 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_emergency_supply_active } add_to_variable = { JAP_pacific_military_navy_fuel = -0.30 } add_to_variable = { JAP_pacific_military_repair_speed = 0.30 } add_to_variable = { JAP_pacific_military_naval_speed = 0.06 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_forced_landing_active } add_to_variable = { JAP_pacific_situation_invasion_preparation = -0.50 } add_to_variable = { JAP_pacific_situation_amphibious_invasion = 0.30 } add_to_variable = { JAP_pacific_situation_naval_invasion_penalty = -0.20 } add_to_variable = { JAP_pacific_military_army_org_regain = -0.20 } add_to_variable = { JAP_pacific_military_supply_consumption = 0.30 } add_to_variable = { JAP_pacific_military_convoy_escort = -0.20 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_landing_flotilla } add_to_variable = { JAP_pacific_situation_invasion_capacity = 12 } add_to_variable = { JAP_pacific_military_invasion_prep_speed = 0.20 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_forward_anchorage } add_to_variable = { JAP_pacific_military_navy_range = 0.10 } add_to_variable = { JAP_pacific_military_repair_speed = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_convoy_transport } add_to_variable = { JAP_pacific_military_supply_consumption = -0.08 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_southern_escort_active } add_to_variable = { JAP_pacific_military_convoy_escort = 0.24 } add_to_variable = { JAP_pacific_military_naval_detection = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_asw_active } add_to_variable = { JAP_pacific_military_naval_detection = 0.16 } add_to_variable = { JAP_pacific_military_convoy_escort = 0.12 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_dispersed_convoys_active } add_to_variable = { JAP_pacific_military_convoy_escort = 0.16 } add_to_variable = { JAP_pacific_military_naval_speed = -0.04 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_oil_tankers } add_to_variable = { JAP_pacific_military_fuel_gain = 0.12 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_southern_oil_transport } add_to_variable = { JAP_pacific_military_fuel_gain = 0.20 } add_to_variable = { JAP_pacific_military_local_resources = 0.10 } add_to_variable = { JAP_pacific_military_convoy_escort = 0.10 } }
+	if = { limit = { has_country_flag = JAP_pacific_mil_fleet_withdrawal_active } add_to_variable = { JAP_pacific_military_retreat_speed = 0.40 } add_to_variable = { JAP_pacific_military_retreat_chance = 0.30 } add_to_variable = { JAP_pacific_military_naval_speed = 0.10 } add_to_variable = { JAP_pacific_military_positioning = -0.16 } }
+}
+
+# Occupation policy values: negative levels favour collaboration, positive
+# levels favour direct extraction.  Both sides keep a useful trade-off.
+JAP_pacific_refresh_occupation_policy = {
+	if = {
+		limit = { check_variable = { JAP_pacific_occupation_level < -1 } }
+		set_variable = { JAP_pacific_occupation_local_resources = -0.10 }
+		set_variable = { JAP_pacific_occupation_local_factories = -0.05 }
+		set_variable = { JAP_pacific_occupation_resistance_target = -0.12 }
+		set_variable = { JAP_pacific_occupation_compliance_growth = 0.10 }
+		set_variable = { JAP_pacific_occupation_garrison = -0.22 }
+		set_variable = { JAP_pacific_occupation_construction = 0.04 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_occupation_level = -1 } }
+		set_variable = { JAP_pacific_occupation_local_resources = -0.05 }
+		set_variable = { JAP_pacific_occupation_local_factories = -0.03 }
+		set_variable = { JAP_pacific_occupation_resistance_target = -0.06 }
+		set_variable = { JAP_pacific_occupation_compliance_growth = 0.05 }
+		set_variable = { JAP_pacific_occupation_garrison = -0.12 }
+		set_variable = { JAP_pacific_occupation_construction = 0.02 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_occupation_level = 0 } }
+		set_variable = { JAP_pacific_occupation_local_resources = 0 }
+		set_variable = { JAP_pacific_occupation_local_factories = 0 }
+		set_variable = { JAP_pacific_occupation_resistance_target = 0 }
+		set_variable = { JAP_pacific_occupation_compliance_growth = 0 }
+		set_variable = { JAP_pacific_occupation_garrison = 0 }
+		set_variable = { JAP_pacific_occupation_construction = 0 }
+	}
+	else_if = {
+		limit = { check_variable = { JAP_pacific_occupation_level = 1 } }
+		set_variable = { JAP_pacific_occupation_local_resources = 0.10 }
+		set_variable = { JAP_pacific_occupation_local_factories = 0.05 }
+		set_variable = { JAP_pacific_occupation_resistance_target = 0.08 }
+		set_variable = { JAP_pacific_occupation_compliance_growth = -0.05 }
+		set_variable = { JAP_pacific_occupation_garrison = 0.08 }
+		set_variable = { JAP_pacific_occupation_construction = 0.05 }
+	}
+	else = {
+		set_variable = { JAP_pacific_occupation_local_resources = 0.20 }
+		set_variable = { JAP_pacific_occupation_local_factories = 0.10 }
+		set_variable = { JAP_pacific_occupation_resistance_target = 0.16 }
+		set_variable = { JAP_pacific_occupation_compliance_growth = -0.12 }
+		set_variable = { JAP_pacific_occupation_garrison = 0.16 }
+		set_variable = { JAP_pacific_occupation_construction = 0.08 }
+	}
+	if = {
+		limit = { has_country_flag = JAP_pacific_southern_administration NOT = { has_dynamic_modifier = JAP_pacific_occupation_policy } }
+		add_dynamic_modifier = { modifier = JAP_pacific_occupation_policy }
+	}
+	else_if = {
+		limit = { NOT = { has_country_flag = JAP_pacific_southern_administration } has_dynamic_modifier = JAP_pacific_occupation_policy }
+		remove_dynamic_modifier = { modifier = JAP_pacific_occupation_policy }
+	}
+}
+JAP_pacific_shift_occupation_direct = {
+	add_to_variable = { JAP_pacific_occupation_level = 1 }
+	clamp_variable = { var = JAP_pacific_occupation_level min = -2 max = 2 }
+	JAP_pacific_refresh_occupation_policy = yes
+}
+JAP_pacific_shift_occupation_cooperative = {
+	subtract_from_variable = { JAP_pacific_occupation_level = 1 }
+	clamp_variable = { var = JAP_pacific_occupation_level min = -2 max = 2 }
+	JAP_pacific_refresh_occupation_policy = yes
+}
+
+# One weekly counter equals seven days.  Two bad checks create isolation;
+# six bad checks create a blockade.  Two good checks provide recovery grace.
+JAP_pacific_update_philippines_isolation = {
+	if = { limit = { JAP_pacific_controls_any_philippines = yes NOT = { JAP_pacific_philippines_route_secure = yes } } set_variable = { JAP_pacific_philippines_recovery = 0 } add_to_variable = { JAP_pacific_philippines_risk = 1 } }
+	else = { set_variable = { JAP_pacific_philippines_risk = 0 } add_to_variable = { JAP_pacific_philippines_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_philippines_risk > 1 } NOT = { has_country_flag = JAP_pacific_philippines_blockaded } } set_country_flag = JAP_pacific_philippines_isolated }
+	if = { limit = { check_variable = { JAP_pacific_philippines_risk > 5 } } clr_country_flag = JAP_pacific_philippines_isolated set_country_flag = JAP_pacific_philippines_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_philippines_recovery > 1 } } clr_country_flag = JAP_pacific_philippines_isolated clr_country_flag = JAP_pacific_philippines_blockaded }
+}
+JAP_pacific_update_marianas_isolation = {
+	if = { limit = { JAP_pacific_controls_any_marianas = yes NOT = { JAP_pacific_marianas_route_secure = yes } } set_variable = { JAP_pacific_marianas_recovery = 0 } add_to_variable = { JAP_pacific_marianas_risk = 1 } }
+	else = { set_variable = { JAP_pacific_marianas_risk = 0 } add_to_variable = { JAP_pacific_marianas_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_marianas_risk > 1 } NOT = { has_country_flag = JAP_pacific_marianas_blockaded } } set_country_flag = JAP_pacific_marianas_isolated }
+	if = { limit = { check_variable = { JAP_pacific_marianas_risk > 5 } } clr_country_flag = JAP_pacific_marianas_isolated set_country_flag = JAP_pacific_marianas_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_marianas_recovery > 1 } } clr_country_flag = JAP_pacific_marianas_isolated clr_country_flag = JAP_pacific_marianas_blockaded }
+}
+JAP_pacific_update_new_guinea_isolation = {
+	if = { limit = { JAP_pacific_controls_any_new_guinea = yes NOT = { JAP_pacific_new_guinea_route_secure = yes } } set_variable = { JAP_pacific_new_guinea_recovery = 0 } add_to_variable = { JAP_pacific_new_guinea_risk = 1 } }
+	else = { set_variable = { JAP_pacific_new_guinea_risk = 0 } add_to_variable = { JAP_pacific_new_guinea_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_new_guinea_risk > 1 } NOT = { has_country_flag = JAP_pacific_new_guinea_blockaded } } set_country_flag = JAP_pacific_new_guinea_isolated }
+	if = { limit = { check_variable = { JAP_pacific_new_guinea_risk > 5 } } clr_country_flag = JAP_pacific_new_guinea_isolated set_country_flag = JAP_pacific_new_guinea_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_new_guinea_recovery > 1 } } clr_country_flag = JAP_pacific_new_guinea_isolated clr_country_flag = JAP_pacific_new_guinea_blockaded }
+}
+JAP_pacific_update_wake_isolation = {
+	if = { limit = { controls_state = 632 NOT = { JAP_pacific_wake_route_secure = yes } } set_variable = { JAP_pacific_wake_recovery = 0 } add_to_variable = { JAP_pacific_wake_risk = 1 } }
+	else = { set_variable = { JAP_pacific_wake_risk = 0 } add_to_variable = { JAP_pacific_wake_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_wake_risk > 1 } NOT = { has_country_flag = JAP_pacific_wake_blockaded } } set_country_flag = JAP_pacific_wake_isolated }
+	if = { limit = { check_variable = { JAP_pacific_wake_risk > 5 } } clr_country_flag = JAP_pacific_wake_isolated set_country_flag = JAP_pacific_wake_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_wake_recovery > 1 } } clr_country_flag = JAP_pacific_wake_isolated clr_country_flag = JAP_pacific_wake_blockaded }
+}
+JAP_pacific_update_midway_isolation = {
+	if = { limit = { controls_state = 631 NOT = { JAP_pacific_midway_route_secure = yes } } set_variable = { JAP_pacific_midway_recovery = 0 } add_to_variable = { JAP_pacific_midway_risk = 1 } }
+	else = { set_variable = { JAP_pacific_midway_risk = 0 } add_to_variable = { JAP_pacific_midway_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_midway_risk > 1 } NOT = { has_country_flag = JAP_pacific_midway_blockaded } } set_country_flag = JAP_pacific_midway_isolated }
+	if = { limit = { check_variable = { JAP_pacific_midway_risk > 5 } } clr_country_flag = JAP_pacific_midway_isolated set_country_flag = JAP_pacific_midway_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_midway_recovery > 1 } } clr_country_flag = JAP_pacific_midway_isolated clr_country_flag = JAP_pacific_midway_blockaded }
+}
+JAP_pacific_update_hawaii_isolation = {
+	if = { limit = { controls_state = 629 NOT = { JAP_pacific_hawaii_route_secure = yes } } set_variable = { JAP_pacific_hawaii_recovery = 0 } add_to_variable = { JAP_pacific_hawaii_risk = 1 } }
+	else = { set_variable = { JAP_pacific_hawaii_risk = 0 } add_to_variable = { JAP_pacific_hawaii_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_hawaii_risk > 1 } NOT = { has_country_flag = JAP_pacific_hawaii_blockaded } } set_country_flag = JAP_pacific_hawaii_isolated }
+	if = { limit = { check_variable = { JAP_pacific_hawaii_risk > 5 } } clr_country_flag = JAP_pacific_hawaii_isolated set_country_flag = JAP_pacific_hawaii_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_hawaii_recovery > 1 } } clr_country_flag = JAP_pacific_hawaii_isolated clr_country_flag = JAP_pacific_hawaii_blockaded }
+}
+JAP_pacific_update_iwo_jima_isolation = {
+	if = { limit = { controls_state = 645 NOT = { JAP_pacific_iwo_jima_route_secure = yes } } set_variable = { JAP_pacific_iwo_jima_recovery = 0 } add_to_variable = { JAP_pacific_iwo_jima_risk = 1 } }
+	else = { set_variable = { JAP_pacific_iwo_jima_risk = 0 } add_to_variable = { JAP_pacific_iwo_jima_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_iwo_jima_risk > 1 } NOT = { has_country_flag = JAP_pacific_iwo_jima_blockaded } } set_country_flag = JAP_pacific_iwo_jima_isolated }
+	if = { limit = { check_variable = { JAP_pacific_iwo_jima_risk > 5 } } clr_country_flag = JAP_pacific_iwo_jima_isolated set_country_flag = JAP_pacific_iwo_jima_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_iwo_jima_recovery > 1 } } clr_country_flag = JAP_pacific_iwo_jima_isolated clr_country_flag = JAP_pacific_iwo_jima_blockaded }
+}
+JAP_pacific_update_okinawa_isolation = {
+	if = { limit = { controls_state = 526 NOT = { JAP_pacific_okinawa_route_secure = yes } } set_variable = { JAP_pacific_okinawa_recovery = 0 } add_to_variable = { JAP_pacific_okinawa_risk = 1 } }
+	else = { set_variable = { JAP_pacific_okinawa_risk = 0 } add_to_variable = { JAP_pacific_okinawa_recovery = 1 } }
+	if = { limit = { check_variable = { JAP_pacific_okinawa_risk > 1 } NOT = { has_country_flag = JAP_pacific_okinawa_blockaded } } set_country_flag = JAP_pacific_okinawa_isolated }
+	if = { limit = { check_variable = { JAP_pacific_okinawa_risk > 5 } } clr_country_flag = JAP_pacific_okinawa_isolated set_country_flag = JAP_pacific_okinawa_blockaded }
+	if = { limit = { check_variable = { JAP_pacific_okinawa_recovery > 1 } } clr_country_flag = JAP_pacific_okinawa_isolated clr_country_flag = JAP_pacific_okinawa_blockaded }
+}
+
+JAP_pacific_refresh_island_state_modifiers = {
+	every_controlled_state = {
+		limit = { OR = { state = 327 state = 623 state = 624 state = 625 state = 626 state = 627 state = 628 state = 1025 state = 1026 state = 1027 } }
+		remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated }
+		remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded }
+		if = { limit = { JAP = { has_country_flag = JAP_pacific_philippines_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } }
+		else_if = { limit = { JAP = { has_country_flag = JAP_pacific_philippines_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } }
+	}
+	every_controlled_state = {
+		limit = { OR = { state = 638 state = 639 state = 646 } }
+		remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded }
+		if = { limit = { JAP = { has_country_flag = JAP_pacific_marianas_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } }
+		else_if = { limit = { JAP = { has_country_flag = JAP_pacific_marianas_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } }
+	}
+	every_controlled_state = {
+		limit = { OR = { state = 523 state = 634 state = 669 state = 979 state = 1057 state = 1070 state = 1073 } }
+		remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded }
+		if = { limit = { JAP = { has_country_flag = JAP_pacific_new_guinea_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } }
+		else_if = { limit = { JAP = { has_country_flag = JAP_pacific_new_guinea_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } }
+	}
+	632 = { remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded } if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_wake_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } } else_if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_wake_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } } }
+	631 = { remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded } if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_midway_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } } else_if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_midway_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } } }
+	629 = { remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded } if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_hawaii_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } } else_if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_hawaii_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } } }
+	645 = { remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded } if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_iwo_jima_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } } else_if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_iwo_jima_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } } }
+	526 = { remove_dynamic_modifier = { modifier = JAP_pacific_island_isolated } remove_dynamic_modifier = { modifier = JAP_pacific_island_blockaded } if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_okinawa_blockaded } } add_dynamic_modifier = { modifier = JAP_pacific_island_blockaded days = 10 } } else_if = { limit = { is_controlled_by = ROOT JAP = { has_country_flag = JAP_pacific_okinawa_isolated } } add_dynamic_modifier = { modifier = JAP_pacific_island_isolated days = 10 } } }
+}
+
+JAP_pacific_update_island_isolation = {
+	JAP_pacific_update_philippines_isolation = yes
+	JAP_pacific_update_marianas_isolation = yes
+	JAP_pacific_update_new_guinea_isolation = yes
+	JAP_pacific_update_wake_isolation = yes
+	JAP_pacific_update_midway_isolation = yes
+	JAP_pacific_update_hawaii_isolation = yes
+	JAP_pacific_update_iwo_jima_isolation = yes
+	JAP_pacific_update_okinawa_isolation = yes
+	JAP_pacific_refresh_island_state_modifiers = yes
+}
+
+# Apply or lift route penalties only in the actual southern resource states.
+JAP_pacific_update_southern_resource_route = {
+	every_controlled_state = {
+		limit = { OR = { state = 335 state = 672 state = 1048 state = 1049 state = 1051 state = 1055 state = 1058 state = 1062 state = 1064 } }
+		remove_dynamic_modifier = { modifier = JAP_pacific_southern_route_strained_modifier }
+		remove_dynamic_modifier = { modifier = JAP_pacific_southern_route_disrupted_modifier }
+		if = { limit = { JAP = { NOT = { JAP_pacific_southern_route_secure = yes } JAP_pacific_southern_route_strained = yes } } add_dynamic_modifier = { modifier = JAP_pacific_southern_route_strained_modifier days = 40 } }
+		else_if = { limit = { JAP = { NOT = { JAP_pacific_southern_route_secure = yes } NOT = { JAP_pacific_southern_route_strained = yes } } } add_dynamic_modifier = { modifier = JAP_pacific_southern_route_disrupted_modifier days = 40 } }
+	}
+}
+
+JAP_pacific_deactivate_system = {
+	remove_dynamic_modifier = { modifier = JAP_pacific_war_situation }
+	remove_dynamic_modifier = { modifier = JAP_pacific_occupation_policy }
+	clr_country_flag = JAP_pacific_philippines_isolated
+	clr_country_flag = JAP_pacific_philippines_blockaded
+	clr_country_flag = JAP_pacific_marianas_isolated
+	clr_country_flag = JAP_pacific_marianas_blockaded
+	clr_country_flag = JAP_pacific_new_guinea_isolated
+	clr_country_flag = JAP_pacific_new_guinea_blockaded
+	clr_country_flag = JAP_pacific_wake_isolated
+	clr_country_flag = JAP_pacific_wake_blockaded
+	clr_country_flag = JAP_pacific_midway_isolated
+	clr_country_flag = JAP_pacific_midway_blockaded
+	clr_country_flag = JAP_pacific_hawaii_isolated
+	clr_country_flag = JAP_pacific_hawaii_blockaded
+	clr_country_flag = JAP_pacific_iwo_jima_isolated
+	clr_country_flag = JAP_pacific_iwo_jima_blockaded
+	clr_country_flag = JAP_pacific_okinawa_isolated
+	clr_country_flag = JAP_pacific_okinawa_blockaded
+}

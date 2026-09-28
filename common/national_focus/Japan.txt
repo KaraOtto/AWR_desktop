@@ -1,10 +1,10 @@
 focus_tree = {
-	id = japan_wtt_focus #heavily modded, no label
+	id = japan_wtt_focus
 	
 	country = {
 		factor = 0
 		modifier = {
-			add = 10 #MODDED
+			add = 10
 			tag = JAP
 		}
 	}
@@ -14,14 +14,15 @@ focus_tree = {
 	continuous_focus_position = { 
 		x = 50 
 		y = 1350 
-	}  #MODDED
+	}
+
 
 
 
 	focus = {#清洗皇道派
 		id =  qxhdp
-		x = 29
-		y = 1
+		x = 30
+		y = 0
 		cost = 5
 		icon = GFX_focus_JAP_purge_the_kodoha_faction
 		continue_if_invalid = no
@@ -40,7 +41,7 @@ focus_tree = {
 		cost = 5
 		icon = GFX_focus_generic_secret_service_agency
 		prerequisite = { 
-			focus = jwzg
+			focus = jwzg  focus = cssyz
 			
 		}
 		continue_if_invalid = no
@@ -52,7 +53,7 @@ focus_tree = {
 
 	focus = {#强化枢密院
 		id =  qhsmy
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = ngdcj
 		cost = 5
@@ -69,7 +70,7 @@ focus_tree = {
 
 	focus = {#强化陆军省
 		id =  qhljs
-		x = -10
+		x = -6
 		y = 1
 		relative_position_id = jwzg
 		cost = 5
@@ -106,7 +107,7 @@ focus_tree = {
 
 	focus = {#强化思想统治
 		id =  qhsitz
-		x = 6
+		x = 4
 		y = 1
 		relative_position_id = jwzg
 		cost = 5
@@ -141,7 +142,7 @@ focus_tree = {
 
 	focus = {#特别高等警察
 		id =  tgk
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = zawc
 		cost = 5
@@ -162,7 +163,7 @@ focus_tree = {
 
 	focus = {#军政协调
 		id =  jzxt
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = qhljs
 		cost = 5
@@ -198,7 +199,7 @@ focus_tree = {
 
 	focus = {#战时行政体制
 		id =  zswd
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = wcwd
 		cost = 5
@@ -235,7 +236,7 @@ focus_tree = {
 
 	focus = {#第二次近卫文麿内阁
 		id =  decjw
-		x = 4
+		x = 3
 		y = 1
 		relative_position_id = gjzyyyh
 		cost = 5
@@ -273,40 +274,28 @@ focus_tree = {
 
 
 	focus = {#大政翼赞会
-		id =  dzyzh
-		x = 0
+		id = dzyzh
+		x = -4
 		y = 1
-		relative_position_id = wcgjwd
+		relative_position_id = jbgcgy
 		cost = 5
 		icon = GFX_focus_JAP_imperial_rule_assistance_association
-		
-		prerequisite = { 
-			focus = wcgjwd
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = jbgcgy }
 		completion_reward = {
 			#
-		}
-		available = {
-			has_completed_focus = jbgcgy
 		}
 	}
 
 
 
-focus = {#内阁情报局
-		id =  ngqbj
+	focus = {#内阁情报局
+		id = ngqbj
 		x = -2
 		y = 1
-		relative_position_id = dzyzh
+		relative_position_id = jbgcgy
 		cost = 5
 		icon = GFX_focus_generic_secret_service_agency
-		prerequisite = { 
-			focus = dzyzh 
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = jbgcgy }
 		completion_reward = {
 			#
 		}
@@ -316,35 +305,66 @@ focus = {#内阁情报局
 	
 
 
-	focus = {#东条英机内阁
-		id =  dtng
+	focus = {#经济新体制确立要纲
+		id = JAP_new_economic_structure
+		x = 4
+		y = 1
+		relative_position_id = jbgcgy
+		cost = 5
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = jbgcgy }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#第三次近卫文麿内阁
+		id = JAP_third_konoe_cabinet
+		x = 0
+		y = 3
+		relative_position_id = jbgcgy
+		cost = 5
+		icon = GFX_focus_JAP_konoes_first_cabinet
+		prerequisite = { focus = jbgcgy }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#日美谈判
+		id = JAP_us_negotiations
 		x = 2
 		y = 1
-		relative_position_id = dzyzh
+		relative_position_id = JAP_third_konoe_cabinet
+		cost = 5
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = JAP_third_konoe_cabinet }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#东条英机内阁
+		id = dtng
+		x = 0
+		y = 2
+		relative_position_id = JAP_third_konoe_cabinet
 		cost = 5
 		icon = GFX_focus_JAP_tojos_premiership
-		prerequisite = { 
-			focus = dzyzh
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = JAP_third_konoe_cabinet }
 		completion_reward = {
 			#
 		}
 	}
 
 	focus = {#金属征集令
-		id =  zjjs
-		relative_position_id = dtng
-		x = 0
+		id = zjjs
+		x = -2
 		y = 1
+		relative_position_id = JAP_third_konoe_cabinet
 		cost = 5
 		icon = GFX_focus_CONGO_copper_cartridges
-		prerequisite = { 
-			focus = dtng 
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = JAP_third_konoe_cabinet }
 		completion_reward = {
 			#
 		}
@@ -354,7 +374,7 @@ focus = {#内阁情报局
 	focus = {#成立大日本妇女会
 		id = clfnh
 		relative_position_id = dtng
-		x = 2
+		x = 3
 		y = 1
 		cost = 5
 		icon = GFX_focus_JAP_form_the_dai_nippon_fujinkai
@@ -370,7 +390,7 @@ focus = {#内阁情报局
 	focus = {#成立防空监视团
 		id = clfkjs
 		relative_position_id = dtng
-		x = -6
+		x = -3
 		y = 1
 		cost = 5
 		icon = GFX_focus_SWE_lottakoren
@@ -388,8 +408,8 @@ focus = {#内阁情报局
 	focus = {#内阁集权
 		id =  ngjq
 		relative_position_id = dtng
-		x = -2
-		y = 1
+		x = 2
+		y = 2
 		cost = 5
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { 
@@ -404,18 +424,14 @@ focus = {#内阁情报局
 
 
 
-	focus = {#发布臣民之道宣言
-		id =  fbcm
-		relative_position_id = ngjq
+	focus = {#臣民之道
+		id = fbcm
 		x = 0
 		y = 1
+		relative_position_id = JAP_third_konoe_cabinet
 		cost = 5
 		icon = GFX_focus_hol_the_foundations_of_defense
-		prerequisite = { 
-			focus = ngjq 
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = JAP_third_konoe_cabinet }
 		completion_reward = {
 			#
 		}
@@ -440,8 +456,8 @@ focus = {#内阁情报局
 	focus = {#首相权力强化
 		id =  sxqlqh
 		relative_position_id = dtng
-		x = -4
-		y = 1
+		x = -1
+		y = 2
 		cost = 5
 		icon = GFX_focus_JAP_supreme_council_for_direction_of_war
 		prerequisite = { 
@@ -453,21 +469,14 @@ focus = {#内阁情报局
 			#
 		}
 	}
-	focus = {#大本营政府联络会议
-		id =  sdbyll
-		relative_position_id = jgyz
-		x = 0
-		y = 2
+	focus = {#重开大本营政府联络会议
+		id = sdbyll
+		x = 1
+		y = 1
+		relative_position_id = jbgcgy
 		cost = 5
 		icon = GFX_goal_tripartite_pact
-		prerequisite = { 
-			focus = qhy
-		}
-		prerequisite = { 
-			focus = gmjszdy
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = jbgcgy }
 		completion_reward = {
 			#
 		}
@@ -475,7 +484,7 @@ focus = {#内阁情报局
 
 	focus = {#战时行政特例
 		id =  zstl
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = sdbyll
 		cost = 5
@@ -526,7 +535,7 @@ focus = {#内阁情报局
 
 	focus = {#最高战争指导会议
 		id =  zgzzzd
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = sdbyll
 		cost = 5
@@ -543,7 +552,7 @@ focus = {#内阁情报局
 
 	focus = {#军需省
 		id =  jss
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = zgzzzd
 		cost = 5
@@ -558,7 +567,7 @@ focus = {#内阁情报局
 
 	focus = {#战时行政改革
 		id =  zsxzgg
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = sdbyll
 		cost = 5
@@ -576,8 +585,8 @@ focus = {#内阁情报局
 
 	focus = {#小矶国昭内阁
 		id =  xjng
-		x = 7
-		y = 0
+		x = 6
+		y = 20
 		cost = 5
 		icon = GFX_goal_generic_forceful_treaty
 		continue_if_invalid = no
@@ -620,7 +629,7 @@ focus = {#内阁情报局
 	}
 
 	focus = {#本土决战体制
-		id =  btjz
+		id =  btjz1 #原重复ID btjz：政治体制分支
 		relative_position_id = zsjjtz
 		x = -2
 		y = 1
@@ -764,9 +773,6 @@ focus = {#内阁情报局
 		relative_position_id = hfjb
 		cost = 5
 		icon = GFX_focus_JAP_reprimand_hamada_kunimatsu
-		mutually_exclusive = {
-			focus = qgbl
-		}
 		prerequisite = { 
 			focus = hfjb
 		}
@@ -784,9 +790,6 @@ focus = {#内阁情报局
 		relative_position_id = scbt
 		cost = 5
 		icon = GFX_goal_generic_forceful_treaty
-		mutually_exclusive = {
-			focus = qgbl
-		}
 		prerequisite = { 
 			focus = scbt
 		}
@@ -1065,212 +1068,314 @@ focus = {#内阁情报局
 
 
 
-	focus = {	#建立东亚新秩序
-		id = jldyxzx
-		icon = GFX_focus_jldyxzx
-		cost = 5
-		x = 46
-		y = 1
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#广田三原则
-		id =  gtsyz
-		x = 0
-		y = 1
-		relative_position_id = jldyxzx
+	focus = {#国策之基准
+		id = gtsyz
+		x = 31
+		y = 22
 		cost = 5
 		icon = GFX_focus_generic_treaty
-		prerequisite = { 
-			focus = jldyxzx
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#试探中国（触发77）
+	focus = {#对支实行策
 		id = stzg
-		icon = GFX_stzg
-		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = gtsyz
-		prerequisite = {
-			focus = gtsyz
-		}
+		cost = 5
+		icon = GFX_stzg
+		prerequisite = { focus = gtsyz }
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#华北特殊化
+	focus = {#华北工作
+		id = JAP_north_china_work
+		x = 0
+		y = 1
+		relative_position_id = stzg
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = stzg }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#华北特殊化
 		id = hbtsh
+		x = 0
+		y = 1
+		relative_position_id = JAP_north_china_work
+		cost = 5
 		icon = GFX_focus_hbtsh
-		cost = 5
-		x = -1
-		y = 1
-		relative_position_id = stzg
-		prerequisite = {
-			focus = stzg
-		}
+		prerequisite = { focus = JAP_north_china_work }
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#全面侵华
+	#卢沟桥事变由事件处理
+
+	focus = {#扩大中国事变
 		id = qmqh
-		icon = GFX_focus_qmqh
+		x = 0
+		y = 2
+		relative_position_id = hbtsh
 		cost = 5
-		x = 1
-		y = 1
-		relative_position_id = stzg
-		prerequisite = {
-			focus = stzg
-		}
+		icon = GFX_focus_qmqh
+		prerequisite = { focus = hbtsh }
+		available = { has_war_with = CHI }
 		completion_reward = {
 			#
 		}
 	}
 
-
-	focus = {#兴亚院
-		id =  xyy
+	focus = {#建立东亚新秩序
+		id = jldyxzx
 		x = 0
 		y = 1
 		relative_position_id = qmqh
 		cost = 5
-		icon =GFX_focus_JAP_new_order_in_east_asia
-		prerequisite = { 
-			focus = qmqh
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		icon = GFX_focus_jldyxzx
+		prerequisite = { focus = qmqh }
 		completion_reward = {
 			#
 		}
 	}
-	
-	focus = {#大东亚省
-		id =  ddys
+
+	focus = {#兴亚院
+		id = xyy
 		x = 0
 		y = 1
-		relative_position_id = xyy
-		cost = 5
-		icon =  GFX_focus_JAP_greater_east_asian_co_properity_sphere
-		prerequisite = { 
-			focus =xyy
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {	#北进论
-		id = bjl
-		icon = GFX_Focus_bjl
-		cost = 5
-		x = -4
-		y = 1
 		relative_position_id = jldyxzx
-		prerequisite = {
-			focus = jldyxzx
-		}
+		cost = 5
+		icon = GFX_focus_JAP_new_order_in_east_asia
+		prerequisite = { focus = jldyxzx }
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#试探苏联（诺门罕）
-		id = stsl
-		icon = GFX_focus_stsl
+	focus = {#北进论
+		id = bjl
+		x = -8
+		y = 1
+		relative_position_id = gtsyz
 		cost = 5
+		icon = GFX_Focus_bjl
+		prerequisite = { focus = gtsyz }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#强化关东军
+		id = JAP_strengthen_kwantung_army
 		x = 0
 		y = 1
 		relative_position_id = bjl
-		prerequisite = {
-			focus = bjl
-		}
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = bjl }
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {#调整国家政策
-		id =  tzgjzc
+	focus = {#试探苏联
+		id = stsl
+		x = 0
+		y = 1
+		relative_position_id = JAP_strengthen_kwantung_army
+		cost = 5
+		icon = GFX_focus_stsl
+		prerequisite = { focus = JAP_strengthen_kwantung_army }
+		completion_reward = {
+			#
+		}
+	}
+
+	#诺门罕冲突由事件处理
+
+	focus = {#调整国策
+		id = tzgjzc
 		x = -1
 		y = 1
 		relative_position_id = stsl
 		cost = 5
 		icon = GFX_focus_generic_japanese_imperial_glory
-		prerequisite = { 
-			focus = stsl
-		}
-		continue_if_invalid = no
-		cancel_if_invalid = yes
+		prerequisite = { focus = stsl }
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#苏日互不侵犯条约
+	focus = {#日苏中立条约
 		id = srhbqfty
-		icon = GFX_focus_srhbqfty
-		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = tzgjzc
-		prerequisite = {
-			focus = tzgjzc
+		cost = 5
+		icon = GFX_focus_srhbqfty
+		prerequisite = { focus = tzgjzc }
+		completion_reward = {
+			#
 		}
-		completion_reward = { }
 	}
 
-	focus = {	#对苏宣战
-		id = JAP_declare_war_on_SOV
-		icon = GFX_focus_JAP_declare_war_on_SOV
-		cost = 5
+	focus = {#北方作战准备
+		id = JAP_northern_operation_preparations
 		x = 1
 		y = 1
 		relative_position_id = stsl
-		prerequisite = {
-			focus = stsl
-		}
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {	#南进论
-		id = njl
-		icon = GFX_Focus_bjl
 		cost = 5
-		x = 4
-		y = 1
-		relative_position_id = jldyxzx
-		prerequisite = {
-			focus = jldyxzx
-		}
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = stsl }
 		completion_reward = {
 			#
 		}
 	}
 
+	focus = {#北方作战
+		id = JAP_declare_war_on_SOV
+		x = 0
+		y = 1
+		relative_position_id = JAP_northern_operation_preparations
+		cost = 5
+		icon = GFX_focus_JAP_declare_war_on_SOV
+		prerequisite = { focus = JAP_northern_operation_preparations }
+		completion_reward = {
+			#
+		}
+	}
 
+	focus = {#南进论
+		id = njl
+		x = 5
+		y = 1
+		relative_position_id = gtsyz
+		cost = 5
+		icon = GFX_Focus_bjl
+		prerequisite = { focus = gtsyz }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#世界局势推移处理要纲
+		id = JAP_world_situation_outline
+		x = 0
+		y = 1
+		relative_position_id = njl
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = njl }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#进驻北部法属印度支那
+		id = JAP_northern_indochina
+		x = 0
+		y = 1
+		relative_position_id = JAP_world_situation_outline
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_world_situation_outline }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#对南方施策要纲
+		id = JAP_southern_policy_outline
+		x = 0
+		y = 1
+		relative_position_id = JAP_northern_indochina
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_northern_indochina }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#进驻南部法属印度支那
+		id = JAP_southern_indochina
+		x = 0
+		y = 1
+		relative_position_id = JAP_southern_policy_outline
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_southern_policy_outline }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#确保南方资源
+		id = JAP_secure_southern_resources
+		x = 0
+		y = 1
+		relative_position_id = JAP_southern_indochina
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_southern_indochina }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#帝国国策遂行要领
+		id = JAP_imperial_policy_execution
+		x = 0
+		y = 1
+		relative_position_id = JAP_secure_southern_resources
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_secure_southern_resources }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#虎！虎！虎！
+		id = JAP_tora_tora_tora
+		x = 0
+		y = 1
+		relative_position_id = JAP_imperial_policy_execution
+		cost = 5
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = { focus = JAP_imperial_policy_execution }
+		completion_reward = {
+			#
+		}
+	}
+
+	focus = {#大东亚省
+		id = ddys
+		x = 0
+		y = 1
+		relative_position_id = mxdygr
+		cost = 5
+		icon = GFX_focus_JAP_greater_east_asian_co_properity_sphere
+		prerequisite = { focus = mxdygr }
+		completion_reward = {
+			#
+		}
+	}
 
 	focus = {	#昭和工业基础
 		id = zhgy
 		icon = GFX_focus_JAP_ministry_of_commerce_and_industry
 		cost = 5
-		x = 63
-		y = 1
+		x = 55
+		y = 0
 		
 		
 		completion_reward = {
@@ -1646,7 +1751,7 @@ focus = {#内阁情报局
 		id = jxsc
 		icon = GFX_focus_SIA_the_hammers_that_strike
 		cost = 5
-		x = 6
+		x = 7
 		y = 1
 		relative_position_id = hxgy
 		relative_position_id = jmjx
@@ -1701,7 +1806,7 @@ focus = {#内阁情报局
 		id = qmzz
 		icon = GFX_focus_ITA_generic_fascist_workers
 		cost = 5
-		x = 1
+		x = 2
 		y = 1
 		
 		relative_position_id = zdy
@@ -1880,7 +1985,7 @@ focus = {#内阁情报局
 		x = -5
 		y = 1
 		mutually_exclusive = {
-			 focus = btjz
+			 focus = btjz2
 		}
 		relative_position_id = zjzz
 		relative_position_id = zsgy
@@ -1904,7 +2009,7 @@ focus = {#内阁情报局
 		}
 	}
 	focus = {	#本土决战准备
-		id = btjz
+		id = btjz2 #原重复ID btjz：工业准备分支
 		icon = GFX_goal_generic_military_sphere
 		cost = 5
 		x = -1
@@ -1940,9 +2045,9 @@ focus = {#内阁情报局
 		x = -2
 		y = 1
 		
-		relative_position_id = btjz
+		relative_position_id = btjz2
 	    prerequisite = {
-			 focus = btjz
+			 focus = btjz2
 		}
 		completion_reward = {
 			#
@@ -1955,9 +2060,9 @@ focus = {#内阁情报局
 		x = 0
 		y = 1
 		
-		relative_position_id = btjz
+		relative_position_id = btjz2
 	    prerequisite = {
-			 focus = btjz
+			 focus = btjz2
 		}
 		completion_reward = {
 			#
@@ -1970,20 +2075,20 @@ focus = {#内阁情报局
 		x = 2
 		y = 1
 		
-		relative_position_id = btjz
+		relative_position_id = btjz2
 	    prerequisite = {
-			 focus = btjz
+			 focus = btjz2
 		}
 		completion_reward = {
 			#
 		}
 	}
 
-	focus = {	#中央经济委员会
-		id = zywy
+	focus = {	#中央经济委员会1
+		id = zywy1 #原重复ID zywy：昭和研究会分支
 		icon = GFX_focus_generic_economic_recovery
 		cost = 5
-		x = 12
+		x = 11
 		y = 1
 		relative_position_id = zhgy
 		prerequisite = {
@@ -1993,11 +2098,11 @@ focus = {#内阁情报局
 			#
 		}
 	}
-	focus = {	#中央经济委员会
-		id = zywy
+	focus = {	#中央经济委员会2
+		id = zywy2 #原重复ID zywy：财阀政策分支
 		icon = GFX_focus_generic_economic_recovery
 		cost = 5
-		x = 12
+		x = 14
 		y = 1
 		relative_position_id = zhgy
 		prerequisite = {
@@ -2013,11 +2118,11 @@ focus = {#内阁情报局
 		id = kdyj
 		icon = GFX_focus_JAP_expand_the_showa_research_association
 		cost = 5
-		x = 3
+		x = 0
 		y = 1
-		relative_position_id = zywy
+		relative_position_id = zywy1
 		prerequisite = {
-			focus = zywy
+			focus = zywy1
 		}
 		completion_reward = {
 			#
@@ -2030,9 +2135,9 @@ focus = {#内阁情报局
 		cost = 5
 		x = 0
 		y = 1
-		relative_position_id = zywy
+		relative_position_id = zywy2
 		prerequisite = {
-			focus = zywy
+			focus = zywy2
 		}
 		completion_reward = {
 			#
@@ -2157,8 +2262,8 @@ focus = {#内阁情报局
 
 	focus = {#帝国国防法案
 		id =  dggffa
-		x = 22
-		y = 14
+		x = 99
+		y = 0
 		cost = 5
 		icon = GFX_focus_JAP_the_imperial_defense_plan
 		continue_if_invalid = no
@@ -2200,8 +2305,8 @@ focus = {#内阁情报局
 			#
 		}
 	}
-	focus = {#万岁冲锋
-		id =  wscf
+	focus = {#万岁冲锋1
+		id =  wscf1 #原重复ID wscf：步兵战术分支
 		relative_position_id = ggbbtz
 		x = 1
 		y = 1
@@ -2217,8 +2322,8 @@ focus = {#内阁情报局
 		}
 	}
 
-	focus = {#万岁冲锋
-		id =  wscf
+	focus = {#万岁冲锋2
+		id =  wscf2 #原重复ID wscf：机械化改革分支
 		relative_position_id = ggbbtz
 		x = 0
 		y = 1
@@ -2236,13 +2341,13 @@ focus = {#内阁情报局
 
 	focus = {#步兵战术改革
 		id =  bbzsgg
-		relative_position_id = wscf
+		relative_position_id = wscf1
 		x = 2
 		y = 1
 		cost = 5
 		icon = GFX_focus_JAP_supremacy_of_will
 		prerequisite = { 
-			focus = wscf 
+			focus = wscf1 
 		}
 		mutually_exclusive = {
 			 focus = csjxhgg
@@ -2312,13 +2417,13 @@ focus = {#内阁情报局
 
 	focus = {#尝试机械化改革
 		id =  csjxhgg
-		relative_position_id = wscf
+		relative_position_id = wscf2
 		x = -2
 		y = 1
 		cost = 5
 		icon = GFX_focus_generic_japanese_imperial_glory
 		prerequisite = { 
-			focus = wscf 
+			focus = wscf2 
 		}
 		mutually_exclusive = {
 			 focus = bbzsgg
@@ -2613,9 +2718,6 @@ focus = {#内阁情报局
 		x = 0
 		y = 1
 		cost = 5
-		mutually_exclusive = {
-			 focus = zxfy
-		}
 		icon = GFX_focus_generic_supply_line
 		prerequisite = { 
 			focus = yjwgtk  focus = bpxt focus = jdzz
@@ -2952,7 +3054,7 @@ focus = {#内阁情报局
 		icon = GFX_goal_generic_navy_anti_submarine
 
 		prerequisite = { 
-			focus = zjjdbd focus = jqhjhl
+			focus = zjjdbd
 		}
 		continue_if_invalid = no
 		cancel_if_invalid = yes
@@ -3466,708 +3568,6 @@ focus = {#内阁情报局
 			#
 		}
 	}
-
-
-
-
-	#====================== 太平洋战争国策线 ======================#
-
-
-
-
-	focus = {#初期太平洋攻势
-		id =  cqtpygs
-		x = 58
-		y = 15
-		cost = 5
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-	
-	focus = {#扩大战争范围
-		id =  kdzzfw
-		x = 0
-		y = 1
-		cost = 5
-		relative_position_id = cqtpygs
-		prerequisite = { 
-			focus = cqtpygs
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#中途岛海战
-		id =  ztdhz
-		x = -4
-		y = 1
-		cost = 5
-		relative_position_id = kdzzfw
-		prerequisite = { 
-			focus = kdzzfw
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#中太平洋攻势
-		id =  ztpygs
-		x = -2
-		y = 1
-		cost = 5
-		relative_position_id = ztdhz
-		prerequisite = { 
-			focus = ztdhz
-		}
-		mutually_exclusive = {
-			 focus = ztpyfyq
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#中太平洋防御圈
-		id =  ztpyfyq
-		x = 2
-		y = 1
-		cost = 5
-		relative_position_id = ztdhz
-		prerequisite = { 
-			focus = ztdhz
-		}
-		mutually_exclusive = {
-			 focus = ztpygs
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	focus = {#瓜达尔卡纳尔岛海战
-		id =  gdeknehz
-		x = 4
-		y = 1
-		cost = 5
-		relative_position_id = kdzzfw
-		prerequisite = { 
-			focus = kdzzfw
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#南太平洋攻势
-		id =  ntpygs
-		x = -2
-		y = 1
-		cost = 5
-		relative_position_id = gdeknehz
-		prerequisite = { 
-			focus = gdeknehz
-		}
-		mutually_exclusive = {
-			 focus = ntpyfyq
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#南太平洋防御圈
-		id =  ntpyfyq
-		x = 2
-		y = 1
-		cost = 5
-		relative_position_id = gdeknehz
-		prerequisite = { 
-			focus = gdeknehz
-		}
-		mutually_exclusive = {
-			 focus = ntpygs
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	focus = {#太平洋全面攻势
-		id =  tpyqmgs
-		x = -6
-		y = 3
-		cost = 5
-		relative_position_id = kdzzfw
-		prerequisite = { 
-			focus = ztpygs
-		}
-		prerequisite = { 
-			focus = ntpygs
-		}
-		mutually_exclusive = {
-			 focus = tpyzljc
-		}
-		mutually_exclusive = {
-			 focus = jdgfq
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#扩大太平洋攻势
-		id =  kdtpygs
-		x = -2
-		y = 1
-		cost = 5
-		relative_position_id = tpyqmgs
-		prerequisite = { 
-			focus = tpyqmgs
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-	focus = {#夺取美军前进基地
-		id =  dqmjqjjd
-		x = 2
-		y = 1
-		cost = 5
-		relative_position_id = tpyqmgs
-		prerequisite = { 
-			focus = tpyqmgs
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#切断太平洋交通线
-		id =  qdtpyjtx
-		x = -1
-		y = 2
-		cost = 5
-		relative_position_id = tpyqmgs
-		prerequisite = { 
-			focus = dqmjqjjd
-		}
-        prerequisite = { 
-			focus = kdtpygs
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#孤立太平洋舰队
-		id =  gltpyjd
-		x = 1
-		y = 2
-		cost = 5
-		relative_position_id = tpyqmgs
-		prerequisite = { 
-			focus = dqmjqjjd
-		}
-        prerequisite = { 
-			focus = kdtpygs
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#迫使美国议和
-		id =  psmgyh
-		x = 0
-		y = 3
-		cost = 5
-		relative_position_id = tpyqmgs
-		prerequisite = { 
-			focus = gltpyjd  focus = tpyjz
-		}
-        prerequisite = { 
-			focus = qdtpyjtx
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	focus = {#太平洋战略僵持
-		id =  tpyzljc
-		x = 0
-		y = 3
-		cost = 5
-		relative_position_id = kdzzfw
-		prerequisite = { 
-			focus = ztpygs focus = ntpyfyq focus = ntpygs focus = ztpyfyq
-		}
-		
-		mutually_exclusive = {
-			 focus = tpyqmgs
-		}
-		mutually_exclusive = {
-			 focus = jdgfq
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#重整作战方针
-		id =  czzzfz
-		x = -2
-		y = 1
-		cost = 5
-		relative_position_id = tpyzljc
-		prerequisite = { 
-			focus = tpyzljc
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-	focus = {#舰队战力整备
-		id =  jdzlzb
-		x = 2
-		y = 1
-		cost = 5
-		relative_position_id = tpyzljc
-		prerequisite = { 
-			focus = tpyzljc
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#航空战力强化
-		id =  hkzlqh
-		x = 0
-		y = 1
-		cost = 5
-		relative_position_id = tpyzljc
-		prerequisite = { 
-			focus = tpyzljc
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#太平洋决战
-		id =  tpyjz
-		x = 0
-		y = 2
-		cost = 5
-		relative_position_id = tpyzljc
-		prerequisite = { 
-			focus = hkzlqh
-		}
-        prerequisite = { 
-			focus = jdzlzb
-		}
-		prerequisite = { 
-			focus = czzzfz
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	focus = {#绝对国防圈
-		id =  jdgfq
-		x = 6
-		y = 3
-		cost = 5
-		relative_position_id = kdzzfw
-		prerequisite = { 
-			focus = ztpyfyq
-		}
-		prerequisite = { 
-			focus = ntpyfyq
-		}
-		mutually_exclusive = {
-			 focus = tpyqmgs
-		}
-		mutually_exclusive = {
-			 focus = tpyzljc
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-	focus = {#马里亚纳防卫
-		id =  mlynfw
-		x = -2
-		y = 1
-		cost = 5
-		relative_position_id = jdgfq
-		prerequisite = { 
-			focus = jdgfq
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#菲律宾防卫
-		id =  flbfw
-		x = 0
-		y = 1
-		cost = 5
-		relative_position_id = jdgfq
-		prerequisite = { 
-			focus = jdgfq
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-	focus = {#捷号作战
-		id =  jhzz
-		x = 2
-		y = 1
-		cost = 5
-		relative_position_id = jdgfq
-		prerequisite = { 
-			focus = jdgfq
-		}
-
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-	focus = {#莱特湾海战
-		id =  ltwhz
-		x = 0
-		y = 2
-		cost = 5
-		relative_position_id = jdgfq
-		prerequisite = { 
-			focus = flbfw
-		}
-        prerequisite = { 
-			focus = jhzz
-		}
-		prerequisite = { 
-			focus = mlynfw
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-	focus = {#本土防卫准备
-		id =  btfwzb
-		x = 0
-		y = 1
-		cost = 5
-		relative_position_id = ltwhz
-		prerequisite = { 
-			focus = ltwhz focus = tpyjz
-		}
-		icon = GFX_focus_JAP_purge_the_kodoha_faction
-		continue_if_invalid = no
-		cancel_if_invalid = yes
-		completion_reward = {
-			#
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#==================== 太平洋战争国策线结束 ====================#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

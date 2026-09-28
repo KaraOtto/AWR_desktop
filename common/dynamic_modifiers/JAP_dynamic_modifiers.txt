@@ -1,0 +1,113 @@
+JAP_cis_nanjing_devastation = {
+	enable = { always = yes }
+	local_factories = -0.35
+	local_resources = -0.25
+	local_building_slots_factor = -0.15
+	resistance_target = 0.20
+	compliance_growth = -0.08
+}
+
+JAP_cis_severe_local_destruction = {
+	enable = { always = yes }
+	local_factories = -0.25
+	local_resources = -0.20
+	local_building_slots_factor = -0.10
+	resistance_target = 0.15
+	compliance_growth = -0.05
+}
+
+# The sole Pacific military spirit: strategic-area control supplies the base
+# tier, while completed military decisions add their active values here.
+JAP_pacific_war_situation = {
+	enable = { always = yes }
+	icon = GFX_idea_generic_naval_invasion
+	invasion_preparation = JAP_pacific_situation_invasion_preparation
+	naval_invasion_capacity = JAP_pacific_situation_invasion_capacity
+	amphibious_invasion = JAP_pacific_situation_amphibious_invasion
+	naval_invasion_penalty = JAP_pacific_situation_naval_invasion_penalty
+	shore_bombardment_bonus = JAP_pacific_situation_shore_bombardment_bonus
+	navy_org_factor = JAP_pacific_military_navy_org
+	positioning = JAP_pacific_military_positioning
+	naval_speed_factor = JAP_pacific_military_naval_speed
+	army_org_regain = JAP_pacific_military_army_org_regain
+	supply_consumption_factor = JAP_pacific_military_supply_consumption
+	convoy_escort_efficiency = JAP_pacific_military_convoy_escort
+	naval_detection = JAP_pacific_military_naval_detection
+	spotting_chance = JAP_pacific_military_spotting_chance
+	air_mission_efficiency = JAP_pacific_military_air_mission_efficiency
+	air_accidents_factor = JAP_pacific_military_air_accidents
+	naval_strike_targetting_factor = JAP_pacific_military_naval_targeting
+	air_wing_xp_loss_when_killed_factor = JAP_pacific_military_air_xp_loss
+	navy_fuel_consumption_factor = JAP_pacific_military_navy_fuel
+	repair_speed_factor = JAP_pacific_military_repair_speed
+	naval_invasion_prep_speed = JAP_pacific_military_invasion_prep_speed
+	navy_max_range_factor = JAP_pacific_military_navy_range
+	fuel_gain_factor = JAP_pacific_military_fuel_gain
+	local_resources_factor = JAP_pacific_military_local_resources
+	naval_retreat_speed = JAP_pacific_military_retreat_speed
+	naval_retreat_chance_after_initial_combat = JAP_pacific_military_retreat_chance
+}
+
+# Unified occupation spirit: decisions move one policy level instead of
+# creating a pile of mutually overlapping occupation ideas.
+JAP_pacific_occupation_policy = {
+	enable = { always = yes }
+	icon = GFX_idea_generic_conference
+	local_resources_factor = JAP_pacific_occupation_local_resources
+	local_factories = JAP_pacific_occupation_local_factories
+	resistance_target_on_our_occupied_states = JAP_pacific_occupation_resistance_target
+	compliance_growth_on_our_occupied_states = JAP_pacific_occupation_compliance_growth
+	required_garrison_factor = JAP_pacific_occupation_garrison
+	production_speed_buildings_factor = JAP_pacific_occupation_construction
+}
+
+# State-scoped island logistics modifiers.  State modifiers can change local
+# supply and organisation recovery, but not a division's maximum organisation.
+JAP_pacific_island_isolated = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	supply_factor = -0.15
+	local_org_regain = -0.22
+	attrition_for_controller = 0.03
+	local_factories = -0.10
+}
+JAP_pacific_island_blockaded = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	supply_factor = -0.30
+	local_org_regain = -0.32
+	attrition_for_controller = 0.08
+	local_factories = -0.25
+	state_resources_factor = -0.25
+}
+JAP_pacific_airlift_relief = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	supply_factor = 0.12
+	local_org_regain = 0.15
+}
+JAP_pacific_risky_sea_supply = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	supply_factor = 0.10
+	local_org_regain = 0.08
+}
+JAP_pacific_island_stockpiles = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	supply_factor = 0.10
+	local_org_regain = 0.05
+}
+
+# Southern resources remain in their states; route disruption cuts the
+# resource factor instead of teleporting oil directly to Japan.
+JAP_pacific_southern_route_strained_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	state_resources_factor = -0.30
+}
+JAP_pacific_southern_route_disrupted_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_sabotaged_resource
+	state_resources_factor = -0.65
+}

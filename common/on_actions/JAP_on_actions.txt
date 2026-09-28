@@ -1,0 +1,141 @@
+on_actions = {
+	on_startup = {
+		effect = { JAP = { JAP_cis_initialize_system = yes } }
+	}
+
+	# 日本专用月度钩子：不做每日扫描，也不遍历全球所有国家。
+	on_monthly_JAP = {
+		effect = {
+			JAP_cis_initialize_system = yes
+			if = {
+				limit = { JAP_cis_system_active = yes }
+				if = {
+					limit = { NOT = { has_country_flag = JAP_cis_china_war_active } }
+					set_country_flag = JAP_cis_china_war_active
+					set_variable = { JAP_cis_china_war_months = 0 }
+				}
+				add_to_variable = { JAP_cis_china_war_months = 1 }
+				JAP_cis_refresh_chinese_side = yes
+				if = {
+					limit = {
+						date > 1937.11.30
+						controls_state = 1035
+						NOT = { has_country_flag = JAP_cis_nanjing_massacre_happened }
+					}
+					country_event = { id = JAP_china_incident.1 hours = 6 }
+				}
+				if = {
+					limit = { date > 1939.1.1 JAP_cis_has_resistance_problem = yes }
+					random = { chance = 12 country_event = { id = JAP_china_incident.20 days = 1 } }
+				}
+				if = {
+					limit = {
+						date > 1940.1.1
+						JAP_cis_controls_north_china = yes
+						JAP_cis_policy_at_least_clear_villages = yes
+						JAP_cis_has_resistance_problem = yes
+						NOT = { has_country_flag = JAP_cis_three_alls_cooldown }
+					}
+					random = { chance = 7 country_event = { id = JAP_china_incident.30 days = 1 } }
+				}
+			}
+			else = {
+				if = {
+					limit = { has_country_flag = JAP_cis_china_war_active }
+					JAP_cis_deactivate_wartime_system = yes
+				}
+				clr_country_flag = JAP_cis_china_war_active
+				set_variable = { JAP_cis_china_war_months = 0 }
+			}
+		}
+	}
+
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					OR = { ROOT = { original_tag = JAP } FROM = { original_tag = JAP } }
+					OR = { ROOT = { JAP_cis_is_chinese_country = yes } FROM = { JAP_cis_is_chinese_country = yes } }
+				}
+				JAP = {
+					JAP_cis_initialize_system = yes
+					set_country_flag = JAP_cis_china_war_active
+					set_variable = { JAP_cis_china_war_months = 0 }
+					JAP_cis_refresh_chinese_side = yes
+				}
+			}
+		}
+	}
+
+	# 控制权变化作用域：ROOT 为新控制者，FROM 为旧控制者，FROM.FROM 为对应 State。
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { original_tag = JAP JAP_cis_system_active = yes }
+					FROM.FROM = { state = 1035 }
+					date > 1937.11.30
+					JAP = { NOT = { has_country_flag = JAP_cis_nanjing_massacre_happened } }
+				}
+				JAP = { country_event = { id = JAP_china_incident.1 hours = 6 } }
+			}
+		}
+	}
+}
+
+on_actions = {
+	on_startup = {
+		effect = {
+			JAP = { JAP_pacific_initialize_system = yes }
+		}
+	}
+
+	# Weekly updates are restricted to JAP and eight predefined island groups.
+	on_weekly_JAP = {
+		effect = {
+			JAP_pacific_initialize_system = yes
+			if = {
+				limit = { JAP_pacific_system_active = yes }
+				set_country_flag = JAP_pacific_war_active
+				JAP_pacific_update_war_situation = yes
+				JAP_pacific_refresh_military_measures = yes
+				JAP_pacific_refresh_occupation_policy = yes
+				JAP_pacific_update_island_isolation = yes
+			}
+			else_if = {
+				limit = { has_country_flag = JAP_pacific_war_active }
+				JAP_pacific_deactivate_system = yes
+				clr_country_flag = JAP_pacific_war_active
+			}
+		}
+	}
+
+	# Resource-route penalties only need a monthly refresh.
+	on_monthly_JAP = {
+		effect = {
+			if = {
+				limit = { JAP_pacific_system_active = yes }
+				JAP_pacific_update_southern_resource_route = yes
+			}
+		}
+	}
+
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					OR = { ROOT = { original_tag = JAP } FROM = { original_tag = JAP } }
+				}
+				JAP = {
+					JAP_pacific_initialize_system = yes
+					if = {
+						limit = { JAP_pacific_system_active = yes }
+						set_country_flag = JAP_pacific_war_active
+						JAP_pacific_update_war_situation = yes
+						JAP_pacific_refresh_military_measures = yes
+					}
+				}
+			}
+		}
+	}
+}

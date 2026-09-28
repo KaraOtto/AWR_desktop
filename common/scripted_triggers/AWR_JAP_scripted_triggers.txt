@@ -176,6 +176,7 @@ hull_note_available_trigger = {
 		}
 	}
 }
+
 ECA_transfer_state_trigger = {
 	controller = {
 		#has_full_control_of_state = PREV
@@ -757,3 +758,270 @@ is_JAP_or_its_puppet = {
 	}
 }
 		
+# 中国事变公共触发器：路线、战争与地区控制条件集中在此处。
+# 后续国策只需调用这些触发器，不必复制每项决议的判断。
+
+JAP_cis_is_invasion_route = {
+	original_tag = JAP
+	OR = {
+		has_government = fascism
+		AND = {
+			has_government = neutrality
+			NOT = { has_completed_focus = JAP_purge_the_militarists }
+			NOT = { has_completed_focus = JAP_strengthen_civilian_government }
+			NOT = { has_completed_focus = JAP_the_unthinkable_option }
+		}
+	}
+}
+
+JAP_cis_is_chinese_country = {
+	OR = {
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = GXC
+		original_tag = GDC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = SIK
+		original_tag = MAN
+		original_tag = MEN
+		original_tag = RNG
+		original_tag = TIB
+	}
+}
+
+JAP_cis_is_valid_chinese_opponent = {
+	exists = yes
+	JAP_cis_is_chinese_country = yes
+	OR = {
+		has_war_with = JAP
+		AND = {
+			is_in_faction = yes
+			faction_leader = { has_war_with = JAP }
+		}
+	}
+}
+
+JAP_cis_at_war_in_china = {
+	OR = {
+		has_war_with = CHI
+		has_war_with = PRC
+		has_war_with = GXC
+		has_war_with = GDC
+		has_war_with = YUN
+		has_war_with = SHX
+		has_war_with = XSM
+		has_war_with = SIK
+		has_war_with = MAN
+		has_war_with = MEN
+		has_war_with = RNG
+		has_war_with = TIB
+		AND = {
+			has_global_flag = JAP_cis_chinese_side_identified
+			has_war_with = event_target:JAP_cis_chinese_side
+		}
+	}
+}
+
+JAP_cis_system_active = {
+	JAP_cis_is_invasion_route = yes
+	JAP_cis_at_war_in_china = yes
+}
+
+JAP_cis_controls_north_china = {
+	controls_state = 608
+	controls_state = 614
+	controls_state = 1038
+}
+
+JAP_cis_controls_central_china = {
+	controls_state = 613
+	controls_state = 1035
+	controls_state = 1036
+}
+
+JAP_cis_controls_south_china = {
+	controls_state = 592
+	controls_state = 593
+}
+
+JAP_cis_controls_yangtze_route = {
+	controls_state = 613
+	controls_state = 1034
+	controls_state = 1035
+	controls_state = 1036
+}
+
+JAP_cis_has_significant_military_advantage = {
+	controls_state = 1035
+	controls_state = 1036
+	controls_state = 592
+	check_variable = { JAP_cis_china_war_months > 17 }
+}
+
+JAP_cis_has_resistance_problem = {
+	any_controlled_state = {
+		OR = { is_core_of = CHI is_core_of = PRC }
+		has_resistance = yes
+		resistance > 20
+	}
+}
+
+JAP_cis_policy_at_least_suppression = {
+	check_variable = { JAP_cis_occupation_policy_level > 0 }
+}
+
+JAP_cis_policy_at_least_clear_villages = {
+	check_variable = { JAP_cis_occupation_policy_level > 1 }
+}
+
+JAP_cis_policy_total_security_war = {
+	check_variable = { JAP_cis_occupation_policy_level > 2 }
+}
+
+# Pacific War system activation. It appears only after JAP is actually at war
+# with the USA, while remaining independent from focuses and ideology.
+JAP_pacific_system_active = {
+	original_tag = JAP
+	has_war_with = USA
+}
+
+# Strategic-area control triggers.  These deliberately use actual Japanese
+# control; faction colouring is handled separately by the map scripted GUI.
+JAP_pacific_controls_japan_home = {
+	controls_state = 282 controls_state = 528 controls_state = 529 controls_state = 530
+	controls_state = 531 controls_state = 532 controls_state = 533 controls_state = 534
+	controls_state = 535 controls_state = 536 controls_state = 1018 controls_state = 1019
+	controls_state = 1020
+}
+JAP_pacific_controls_taiwan = { controls_state = 524 }
+JAP_pacific_controls_okinawa = { controls_state = 526 }
+JAP_pacific_controls_iwo_jima = { controls_state = 645 }
+JAP_pacific_controls_malaya = {
+	controls_state = 336 controls_state = 1060 controls_state = 1061 controls_state = 1062
+	controls_state = 1063 controls_state = 1064 controls_state = 1065
+}
+JAP_pacific_controls_singapore = { controls_state = 1021 }
+JAP_pacific_controls_philippines = {
+	controls_state = 327 controls_state = 623 controls_state = 624 controls_state = 625
+	controls_state = 626 controls_state = 627 controls_state = 628 controls_state = 1025
+	controls_state = 1026 controls_state = 1027
+}
+JAP_pacific_controls_dei = {
+	controls_state = 334 controls_state = 335 controls_state = 667 controls_state = 668
+	controls_state = 669 controls_state = 672 controls_state = 673 controls_state = 1047
+	controls_state = 1048 controls_state = 1049 controls_state = 1050 controls_state = 1051
+	controls_state = 1052 controls_state = 1053 controls_state = 1054 controls_state = 1055
+	controls_state = 1056 controls_state = 1057 controls_state = 1058
+}
+JAP_pacific_controls_marianas = { controls_state = 638 controls_state = 639 controls_state = 646 }
+JAP_pacific_controls_new_guinea = {
+	controls_state = 523 controls_state = 634 controls_state = 669 controls_state = 979
+	controls_state = 1057 controls_state = 1070 controls_state = 1073
+}
+JAP_pacific_controls_wake = { controls_state = 632 }
+JAP_pacific_controls_midway = { controls_state = 631 }
+JAP_pacific_controls_hawaii = { controls_state = 629 }
+
+# Partial-control triggers are used by isolation and emergency decisions.
+JAP_pacific_controls_any_philippines = { OR = { controls_state = 327 controls_state = 623 controls_state = 624 controls_state = 625 controls_state = 626 controls_state = 627 controls_state = 628 controls_state = 1025 controls_state = 1026 controls_state = 1027 } }
+JAP_pacific_controls_any_marianas = { OR = { controls_state = 638 controls_state = 639 controls_state = 646 } }
+JAP_pacific_controls_any_new_guinea = { OR = { controls_state = 523 controls_state = 634 controls_state = 669 controls_state = 979 controls_state = 1057 controls_state = 1070 controls_state = 1073 } }
+
+# HOI4 does not expose per-sea-zone naval supremacy as a script trigger.
+# This real vanilla naval-strength comparison is the strategic approximation.
+JAP_pacific_fleet_can_cover_routes = {
+	has_equipment = { convoy > 49 }
+	OR = {
+		NOT = { has_war_with = USA }
+		NOT = { USA = { exists = yes } }
+		naval_strength_comparison = {
+			other = USA
+			ratio > 0.54
+			sub_unit_def_weights = { carrier = 2 battleship = 1 battle_cruiser = 1 heavy_cruiser = 0.5 light_cruiser = 0.25 destroyer = 0.1 submarine = 0.05 }
+		}
+	}
+}
+
+JAP_pacific_philippines_route_secure = { JAP_pacific_controls_taiwan = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_marianas_route_secure = { JAP_pacific_controls_iwo_jima = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_new_guinea_route_secure = { JAP_pacific_controls_philippines = yes JAP_pacific_controls_dei = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_wake_route_secure = { JAP_pacific_controls_marianas = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_midway_route_secure = { JAP_pacific_controls_wake = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_hawaii_route_secure = { JAP_pacific_controls_midway = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_iwo_jima_route_secure = { JAP_pacific_controls_japan_home = yes JAP_pacific_fleet_can_cover_routes = yes }
+JAP_pacific_okinawa_route_secure = { JAP_pacific_controls_japan_home = yes JAP_pacific_fleet_can_cover_routes = yes }
+
+JAP_pacific_any_island_isolated = {
+	OR = {
+		has_country_flag = JAP_pacific_philippines_isolated has_country_flag = JAP_pacific_philippines_blockaded
+		has_country_flag = JAP_pacific_marianas_isolated has_country_flag = JAP_pacific_marianas_blockaded
+		has_country_flag = JAP_pacific_new_guinea_isolated has_country_flag = JAP_pacific_new_guinea_blockaded
+		has_country_flag = JAP_pacific_wake_isolated has_country_flag = JAP_pacific_wake_blockaded
+		has_country_flag = JAP_pacific_midway_isolated has_country_flag = JAP_pacific_midway_blockaded
+		has_country_flag = JAP_pacific_hawaii_isolated has_country_flag = JAP_pacific_hawaii_blockaded
+		has_country_flag = JAP_pacific_iwo_jima_isolated has_country_flag = JAP_pacific_iwo_jima_blockaded
+		has_country_flag = JAP_pacific_okinawa_isolated has_country_flag = JAP_pacific_okinawa_blockaded
+	}
+}
+
+# Southern route grades regulate real resources in controlled southern states.
+JAP_pacific_southern_route_secure = {
+	JAP_pacific_controls_taiwan = yes
+	JAP_pacific_controls_philippines = yes
+	JAP_pacific_controls_singapore = yes
+	JAP_pacific_fleet_can_cover_routes = yes
+	OR = {
+		has_equipment = { convoy > 99 }
+		AND = { has_country_flag = JAP_pacific_malacca_route_prepared has_equipment = { convoy > 74 } }
+	}
+}
+JAP_pacific_southern_route_strained = {
+	OR = {
+		has_equipment = { convoy > 39 }
+		AND = { has_country_flag = JAP_pacific_malacca_route_prepared has_equipment = { convoy > 24 } }
+	}
+	OR = { JAP_pacific_controls_taiwan = yes JAP_pacific_controls_philippines = yes JAP_pacific_controls_singapore = yes }
+}
+
+JAP_pacific_has_nearby_airlift_base = {
+	has_equipment = { transport_plane_equipment > 19 }
+	OR = {
+		524 = { is_controlled_by = ROOT non_damaged_building_level = { building = air_base level > 0 } }
+		526 = { is_controlled_by = ROOT non_damaged_building_level = { building = air_base level > 0 } }
+		646 = { is_controlled_by = ROOT non_damaged_building_level = { building = air_base level > 0 } }
+		327 = { is_controlled_by = ROOT non_damaged_building_level = { building = air_base level > 0 } }
+	}
+}
+
+JAP_pacific_has_southern_occupation = {
+	OR = {
+		controls_state = 1021 controls_state = 327 controls_state = 623
+		controls_state = 335 controls_state = 672 controls_state = 1062 controls_state = 1064
+	}
+}
+
+# State-scoped target filter used by the three island emergency decisions.
+JAP_pacific_is_isolated_state_target = {
+	is_controlled_by = ROOT
+	OR = {
+		AND = {
+			OR = { state = 327 state = 623 state = 624 state = 625 state = 626 state = 627 state = 628 state = 1025 state = 1026 state = 1027 }
+			ROOT = { OR = { has_country_flag = JAP_pacific_philippines_isolated has_country_flag = JAP_pacific_philippines_blockaded } }
+		}
+		AND = {
+			OR = { state = 638 state = 639 state = 646 }
+			ROOT = { OR = { has_country_flag = JAP_pacific_marianas_isolated has_country_flag = JAP_pacific_marianas_blockaded } }
+		}
+		AND = {
+			OR = { state = 523 state = 634 state = 669 state = 979 state = 1057 state = 1070 state = 1073 }
+			ROOT = { OR = { has_country_flag = JAP_pacific_new_guinea_isolated has_country_flag = JAP_pacific_new_guinea_blockaded } }
+		}
+		AND = { state = 632 ROOT = { OR = { has_country_flag = JAP_pacific_wake_isolated has_country_flag = JAP_pacific_wake_blockaded } } }
+		AND = { state = 631 ROOT = { OR = { has_country_flag = JAP_pacific_midway_isolated has_country_flag = JAP_pacific_midway_blockaded } } }
+		AND = { state = 629 ROOT = { OR = { has_country_flag = JAP_pacific_hawaii_isolated has_country_flag = JAP_pacific_hawaii_blockaded } } }
+		AND = { state = 645 ROOT = { OR = { has_country_flag = JAP_pacific_iwo_jima_isolated has_country_flag = JAP_pacific_iwo_jima_blockaded } } }
+		AND = { state = 526 ROOT = { OR = { has_country_flag = JAP_pacific_okinawa_isolated has_country_flag = JAP_pacific_okinawa_blockaded } } }
+	}
+}

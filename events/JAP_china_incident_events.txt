@@ -1,0 +1,229 @@
+add_namespace = JAP_china_incident
+
+# 南京：自动历史事件链，不设计为玩家购买增益的普通决议。
+country_event = {
+	id = JAP_china_incident.1
+	title = JAP_china_incident.1.t
+	desc = JAP_china_incident.1.d
+	picture = GFX_report_event_japanese_soldiers_01
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.1.a
+		country_event = { id = JAP_china_incident.2 hours = 12 }
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.2
+	title = JAP_china_incident.2.t
+	desc = JAP_china_incident.2.d
+	picture = GFX_report_event_japanese_soldiers_01
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.2.a
+		JAP_cis_apply_nanjing_massacre_consequences = yes
+		news_event = { id = JAP_china_incident.3 hours = 6 }
+	}
+}
+
+news_event = {
+	id = JAP_china_incident.3
+	title = JAP_china_incident.3.t
+	desc = JAP_china_incident.3.d
+	picture = GFX_report_event_japanese_soldiers_01
+	is_triggered_only = yes
+	major = yes
+	option = { name = JAP_china_incident.3.a }
+}
+
+country_event = {
+	id = JAP_china_incident.10
+	title = JAP_china_incident.10.t
+	desc = JAP_china_incident.10.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = { name = JAP_china_incident.10.a }
+}
+
+country_event = {
+	id = JAP_china_incident.11
+	title = JAP_china_incident.11.t
+	desc = JAP_china_incident.11.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = { name = JAP_china_incident.11.a }
+}
+
+# 月度占领事件路由：仅在日本控制的中国核心区已经出现明显抵抗时触发。
+country_event = {
+	id = JAP_china_incident.20
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		random_list = {
+			30 = { country_event = { id = JAP_china_incident.21 hours = 1 } }
+			25 = { country_event = { id = JAP_china_incident.22 hours = 1 } }
+			25 = { country_event = { id = JAP_china_incident.23 hours = 1 } }
+			20 = { country_event = { id = JAP_china_incident.24 hours = 1 } }
+		}
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.21
+	title = JAP_china_incident.21.t
+	desc = JAP_china_incident.21.d
+	picture = GFX_report_event_china_ledo_road
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.21.a
+		add_command_power = -10
+		random_state = {
+			limit = { controller = { original_tag = JAP } OR = { is_core_of = CHI is_core_of = PRC } has_resistance = yes }
+			damage_building = { type = infrastructure damage = 1.0 }
+			add_resistance = 3
+		}
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.22
+	title = JAP_china_incident.22.t
+	desc = JAP_china_incident.22.d
+	picture = GFX_report_event_china_ledo_road
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.22.a
+		add_stability = -0.01
+		random_state = {
+			limit = { controller = { original_tag = JAP } OR = { is_core_of = CHI is_core_of = PRC } has_resistance = yes }
+			add_resistance = 6
+			add_compliance = -2
+		}
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.23
+	title = JAP_china_incident.23.t
+	desc = JAP_china_incident.23.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.23.a
+		add_political_power = -15
+		random_state = {
+			limit = { controller = { original_tag = JAP } OR = { is_core_of = CHI is_core_of = PRC } has_resistance = yes }
+			add_resistance = 5
+			add_compliance = -3
+		}
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.24
+	title = JAP_china_incident.24.t
+	desc = JAP_china_incident.24.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.24.a
+		if = {
+			limit = { has_country_flag = JAP_cis_security_delegated }
+			every_controlled_state = {
+				limit = { OR = { is_core_of = CHI is_core_of = PRC } NOT = { is_core_of = JAP } }
+				add_resistance = -2
+			}
+		}
+		else = { add_stability = -0.01 }
+	}
+}
+
+# “三光”事件链同时要求历史时期、华北控制、抵抗及升级后的高压治安政策。
+# 该内容只通过自动事件触发，不作为可主动点击的决议。
+country_event = {
+	id = JAP_china_incident.30
+	title = JAP_china_incident.30.t
+	desc = JAP_china_incident.30.d
+	picture = GFX_report_event_japanese_soldiers_01
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.30.a
+		set_country_flag = { flag = JAP_cis_three_alls_cooldown days = 180 }
+		add_stability = -0.02
+		add_war_support = -0.01
+		597 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+		614 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+		1038 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+		1039 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
+		every_country = {
+			limit = { is_major = yes NOT = { tag = JAP } }
+			add_opinion_modifier = { target = JAP modifier = JAP_cis_brutal_occupation_opinion }
+		}
+		news_event = { id = JAP_china_incident.31 hours = 6 }
+	}
+}
+
+news_event = {
+	id = JAP_china_incident.31
+	title = JAP_china_incident.31.t
+	desc = JAP_china_incident.31.d
+	picture = GFX_report_event_japanese_soldiers_01
+	is_triggered_only = yes
+	major = yes
+	option = { name = JAP_china_incident.31.a }
+}
+
+# 政治解决：决议只负责开启谈判。中国方面可以拒绝；接受时也只是议和，绝非直接投降。
+country_event = {
+	id = JAP_china_incident.40
+	title = JAP_china_incident.40.t
+	desc = JAP_china_incident.40.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.40.a
+		event_target:JAP_cis_chinese_side = { country_event = { id = JAP_china_incident.41 hours = 12 } }
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.41
+	title = JAP_china_incident.41.t
+	desc = JAP_china_incident.41.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = {
+		name = JAP_china_incident.41.a
+		ai_chance = {
+			base = 5
+			modifier = { factor = 3 surrender_progress > 0.65 }
+			modifier = { factor = 3 surrender_progress > 0.80 }
+		}
+		white_peace = JAP
+		JAP = { country_event = { id = JAP_china_incident.42 hours = 6 } }
+	}
+	option = {
+		name = JAP_china_incident.41.b
+		ai_chance = { base = 95 }
+		JAP = { country_event = { id = JAP_china_incident.43 hours = 6 } }
+	}
+}
+
+country_event = {
+	id = JAP_china_incident.42
+	title = JAP_china_incident.42.t
+	desc = JAP_china_incident.42.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = { name = JAP_china_incident.42.a add_stability = 0.03 }
+}
+
+country_event = {
+	id = JAP_china_incident.43
+	title = JAP_china_incident.43.t
+	desc = JAP_china_incident.43.d
+	picture = GFX_report_event_japanese_reply
+	is_triggered_only = yes
+	option = { name = JAP_china_incident.43.a add_war_support = 0.01 }
+}

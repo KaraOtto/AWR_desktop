@@ -1,0 +1,1222 @@
+JAP_cis_china_incident_category = {	#侵华战争
+	# 1937：增兵、运输、征粮与初期军事管制。
+	JAP_cis_reinforce_china_expeditionary_army = {
+		icon = generic_prepare_civil_war
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_reinforced_china_army 
+			} 
+		}
+		available = { 
+			date > 1937.1.1 
+			JAP_cis_system_active = yes 
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_reinforced_china_army 
+			add_ideas = JAP_cis_china_expeditionary_army 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_requisition_local_transport = {
+		icon = generic_industry
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_requisitioned_local_transport 
+			} 
+		}
+		available = { 
+			date > 1937.1.1 
+			JAP_cis_system_active = yes 
+			controls_state = 608 
+		}
+		cost = 35
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_requisitioned_local_transport 
+			add_ideas = JAP_cis_local_transport_requisition 
+			JAP_cis_apply_mild_occupation_cost = yes 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_expand_grain_requisition = {
+		icon = generic_industry
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_expanded_grain_requisition 
+			} 
+		}
+		available = { 
+			date > 1937.1.1 
+			JAP_cis_system_active = yes 
+			controls_state = 614 
+		}
+		cost = 35
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_expanded_grain_requisition 
+			add_offsite_building = { 
+				type = arms_factory 
+				level = 1 
+			} 
+			JAP_cis_apply_harsh_occupation_cost = yes 
+		}
+		ai_will_do = { 
+			factor = 0.8 
+		}
+	}
+
+	JAP_cis_impose_military_administration = {
+		icon = generic_political_actions
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_imposed_military_administration 
+			} 
+		}
+		available = { 
+			date > 1937.1.1 
+			JAP_cis_system_active = yes 
+			controls_state = 608 
+			controls_state = 614 
+		}
+		cost = 40
+
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_imposed_military_administration 
+			add_ideas = JAP_cis_military_administration 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_support_local_maintenance_associations = {
+		icon = generic_political_actions
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_local_maintenance_associations 
+			} 
+		}
+		available = { 
+			date > 1937.1.1 
+			has_country_flag = JAP_cis_imposed_military_administration 
+			controls_state = 608 
+		}
+		cost = 30
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = JAP_cis_local_maintenance_associations
+			every_controlled_state = { 
+				limit = { 
+					OR = { 
+						state = 608 
+						state = 614 
+						state = 597 
+						state = 1038 
+						state = 1039 
+					} 
+				} 
+				add_resistance = -3 
+				add_compliance = 3 
+			}
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	# 1938：大陆交通、长江水运与占领区基础设施。
+	JAP_cis_reorganize_continental_transport = {
+		icon = generic_industry
+		visible = { 
+			NOT = { 
+				has_country_flag = JAP_cis_continental_transport_reorganized 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			controls_state = 608 
+			controls_state = 613 
+			controls_state = 1035 
+		}
+		cost = 45
+		days_remove = 70
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_continental_transport_project 
+		}
+		remove_effect = {
+			set_country_flag = JAP_cis_continental_transport_reorganized
+			608 = { 
+				add_building_construction = { 
+					type = infrastructure level = 1 
+					instant_build = yes 
+				} 
+			}
+			613 = { 
+				add_building_construction = { 
+					type = infrastructure level = 1 
+					instant_build = yes 
+				} 
+			}
+			1035 = { 
+				add_building_construction = { 
+					type = infrastructure level = 1 
+					instant_build = yes 
+				} 
+			}
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_expand_yangtze_shipping = {
+		icon = generic_naval
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_yangtze_shipping_expanded 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_yangtze_route = yes 
+		}
+		cost = 45
+		days_remove = 60
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_yangtze_shipping_project 
+		}
+		remove_effect = {
+			set_country_flag = JAP_cis_yangtze_shipping_expanded
+			613 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+			1035 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+			1036 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_repair_occupied_railways = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_railways_repaired 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			controls_state = 597 
+			controls_state = 598 
+			controls_state = 1034 
+		}
+		cost = 50
+		days_remove = 90
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_rail_repair_project 
+		}
+		remove_effect = {
+			set_country_flag = JAP_cis_railways_repaired
+			597 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+			598 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+			1034 = { 
+				add_building_construction = { 
+					type = infrastructure 
+					level = 1 
+					instant_build = yes 
+				} 
+			}
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	# 长期资源开发项目：互斥施工，完成后不可重复刷取。
+	JAP_cis_develop_north_china_resources = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_north_resources_developed 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_north_china = yes 
+			NOT = { 
+				has_country_flag = JAP_cis_resource_project_in_progress 
+			} 
+		}
+		cost = 65
+		days_remove = 105
+		fire_only_once = yes
+		complete_effect = { 
+			JAP_cis_begin_development_project = yes 
+		}
+		remove_effect = { 
+			set_country_flag = JAP_cis_north_resources_developed 
+			JAP_cis_complete_north_development = yes 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_develop_central_china_resources = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_central_resources_developed 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_central_china = yes 
+			NOT = { 
+				has_country_flag = JAP_cis_resource_project_in_progress 
+			} 
+		}
+		cost = 65
+		days_remove = 110
+		fire_only_once = yes
+		complete_effect = { 
+			JAP_cis_begin_development_project = yes 
+		}
+		remove_effect = { 
+			set_country_flag = JAP_cis_central_resources_developed 
+			JAP_cis_complete_central_development = yes 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_develop_south_china_resources = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_south_resources_developed 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_south_china = yes 
+			NOT = { 
+				has_country_flag = JAP_cis_resource_project_in_progress 
+			} 
+		}
+		cost = 65
+		days_remove = 120
+		fire_only_once = yes
+		complete_effect = { 
+			JAP_cis_begin_development_project = yes 
+		}
+		remove_effect = { 
+			set_country_flag = JAP_cis_south_resources_developed 
+			JAP_cis_complete_south_development = yes 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	# 开发机构及华北、华中金融控制体系。
+	JAP_cis_establish_north_china_development_company = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_north_china_development_company 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_north_china = yes 
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_north_china_development_company 
+			add_offsite_building = { 
+				type = industrial_complex 
+				level = 1 
+			} 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_establish_central_china_promotion_company = {
+		icon = generic_industry
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_central_china_promotion_company 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			JAP_cis_controls_central_china = yes 
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_central_china_promotion_company 
+			add_offsite_building = { 
+				type = industrial_complex 
+				level = 1 
+			} 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_establish_federal_reserve_bank = {
+		icon = generic_political_actions
+		visible = { 
+			date > 1937.9.1 
+			NOT = { 
+				has_country_flag = JAP_cis_federal_reserve_bank 
+			} 
+		}
+		available = { 
+			date > 1938.1.1 
+			controls_state = 608 
+			has_country_flag = JAP_cis_provisional_government 
+		}
+		cost = 45
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_federal_reserve_bank 
+			add_political_power = 20 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_exclude_fabi_circulation = {
+		icon = generic_political_actions
+		visible = { 
+			has_country_flag = JAP_cis_federal_reserve_bank 
+			NOT = { 
+				has_country_flag = JAP_cis_fabi_excluded 
+			} 
+		}
+		available = { 
+			has_country_flag = JAP_cis_federal_reserve_bank 
+			JAP_cis_controls_north_china = yes 
+		}
+		cost = 35
+		fire_only_once = yes
+		complete_effect = { 
+			set_country_flag = JAP_cis_fabi_excluded 
+			add_stability = 0.01 
+			JAP_cis_apply_mild_occupation_cost = yes 
+		}
+		ai_will_do = { 
+			factor = 1 
+		}
+	}
+
+	JAP_cis_strengthen_north_china_financial_control = {
+		icon = generic_political_actions
+		visible = { has_country_flag = JAP_cis_fabi_excluded NOT = { has_country_flag = JAP_cis_north_financial_control } }
+		available = { has_country_flag = JAP_cis_fabi_excluded JAP_cis_controls_north_china = yes }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_north_financial_control add_political_power = 25 JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 1 }
+	}
+
+	# 合作政权：按历史时间、实际控制区及前置机构逐步开放。
+	JAP_cis_form_provisional_government = {
+		icon = generic_political_actions
+		visible = { date > 1937.8.1 NOT = { has_country_flag = JAP_cis_provisional_government } }
+		available = { date > 1937.12.1 controls_state = 608 has_country_flag = JAP_cis_local_maintenance_associations }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_provisional_government 608 = { add_compliance = 5 add_resistance = -3 } 614 = { add_compliance = 5 add_resistance = -3 } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_form_reformed_government = {
+		icon = generic_political_actions
+		visible = { date > 1938.1.1 NOT = { has_country_flag = JAP_cis_reformed_government } }
+		available = { date > 1938.3.1 controls_state = 613 controls_state = 1035 has_country_flag = JAP_cis_imposed_military_administration }
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_reformed_government 1035 = { add_compliance = 4 add_resistance = -2 } 613 = { add_compliance = 4 add_resistance = -2 } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_support_wang_jingwei_activities = {
+		icon = generic_political_actions
+		visible = { date > 1938.9.1 NOT = { has_country_flag = JAP_cis_wang_jingwei_activities } }
+		available = { date > 1939.1.1 has_country_flag = JAP_cis_reformed_government controls_state = 1035 }
+		cost = 55
+		days_remove = 120
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_wang_project_active }
+		remove_effect = { set_country_flag = JAP_cis_wang_jingwei_activities country_event = { id = JAP_china_incident.10 hours = 6 } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_establish_nanjing_national_government = {
+		icon = generic_political_actions
+		visible = { date > 1939.9.1 has_country_flag = JAP_cis_wang_jingwei_activities NOT = { has_country_flag = JAP_cis_nanjing_government } }
+		available = { date > 1940.3.1 controls_state = 1035 has_country_flag = JAP_cis_reformed_government has_country_flag = JAP_cis_wang_jingwei_activities }
+		cost = 65
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_nanjing_government add_ideas = JAP_cis_collaboration_administration country_event = { id = JAP_china_incident.11 hours = 6 } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_establish_central_reserve_bank = {
+		icon = generic_political_actions
+		visible = { has_country_flag = JAP_cis_nanjing_government NOT = { has_country_flag = JAP_cis_central_reserve_bank } }
+		available = { has_country_flag = JAP_cis_nanjing_government controls_state = 1035 }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_central_reserve_bank add_political_power = 25 }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_integrate_central_china_finance = {
+		icon = generic_political_actions
+		visible = { has_country_flag = JAP_cis_central_reserve_bank NOT = { has_country_flag = JAP_cis_central_finance_integrated } }
+		available = { has_country_flag = JAP_cis_central_reserve_bank JAP_cis_controls_central_china = yes }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_central_finance_integrated add_stability = 0.01 }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_expand_nanjing_government_authority = {
+		icon = generic_political_actions
+		visible = { has_country_flag = JAP_cis_nanjing_government NOT = { has_country_flag = JAP_cis_nanjing_authority_expanded } }
+		available = { has_country_flag = JAP_cis_nanjing_government controls_state = 1035 controls_state = 1036 }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = JAP_cis_nanjing_authority_expanded
+			1035 = { add_compliance = 8 add_resistance = -5 }
+			1036 = { add_compliance = 8 add_resistance = -5 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_expand_collaboration_army = {
+		icon = generic_prepare_civil_war
+		visible = { has_country_flag = JAP_cis_nanjing_government NOT = { has_country_flag = JAP_cis_collaboration_army_expanded } }
+		available = { date > 1940.3.1 has_country_flag = JAP_cis_nanjing_authority_expanded }
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_collaboration_army_expanded add_manpower = 75000 army_experience = 5 }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_delegate_security_to_collaborators = {
+		icon = generic_political_actions
+		visible = { has_country_flag = JAP_cis_collaboration_army_expanded NOT = { has_country_flag = JAP_cis_security_delegated } }
+		available = { has_country_flag = JAP_cis_collaboration_army_expanded }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = JAP_cis_security_delegated
+			every_controlled_state = { limit = { OR = { is_core_of = CHI is_core_of = PRC } NOT = { is_core_of = JAP } } add_resistance = -5 add_compliance = 5 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# 战争长期化：短期榨取与治安收益会同步累积长期占领代价。
+	JAP_cis_expand_war_supporting_war = {
+		icon = generic_industry
+		visible = { date > 1938.7.1 NOT = { has_country_flag = JAP_cis_war_supporting_war } }
+		available = { date > 1939.1.1 check_variable = { JAP_cis_china_war_months > 11 } }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_war_supporting_war add_ideas = JAP_cis_occupation_extraction JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 0.8 }
+	}
+
+	JAP_cis_strengthen_continental_transport_protection = {
+		icon = generic_prepare_civil_war
+		visible = { date > 1938.7.1 NOT = { has_country_flag = JAP_cis_transport_protected } }
+		available = { date > 1939.1.1 has_country_flag = JAP_cis_continental_transport_reorganized JAP_cis_has_resistance_problem = yes }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_transport_protected add_command_power = 20 }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_cis_strengthen_occupation_economic_control = {
+		icon = generic_industry
+		visible = { date > 1938.7.1 NOT = { has_country_flag = JAP_cis_economic_control_strengthened } }
+		available = { date > 1939.1.1 has_country_flag = JAP_cis_war_supporting_war }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_economic_control_strengthened add_offsite_building = { type = arms_factory level = 1 } JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 0.8 }
+	}
+
+	JAP_cis_strengthen_grain_requisition = {
+		icon = generic_industry
+		visible = { date > 1939.7.1 has_country_flag = JAP_cis_expanded_grain_requisition NOT = { has_country_flag = JAP_cis_grain_requisition_strengthened } }
+		available = { date > 1940.1.1 has_country_flag = JAP_cis_war_supporting_war JAP_cis_has_resistance_problem = yes }
+		cost = 35
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_grain_requisition_strengthened add_offsite_building = { type = arms_factory level = 1 } JAP_cis_apply_extreme_occupation_cost = yes }
+		ai_will_do = { factor = 0.45 }
+	}
+
+	JAP_cis_expand_material_requisition = {
+		icon = generic_industry
+		visible = { date > 1938.7.1 NOT = { has_country_flag = JAP_cis_material_requisition_expanded } }
+		available = { date > 1939.1.1 has_country_flag = JAP_cis_economic_control_strengthened }
+		cost = 30
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_material_requisition_expanded add_offsite_building = { type = industrial_complex level = 1 } JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 0.7 }
+	}
+
+	# 劳务征用与治安政策升级链。
+	JAP_cis_expand_labor_requisition = {
+		icon = generic_industry
+		visible = { date > 1937.9.1 NOT = { has_country_flag = JAP_cis_labor_requisition_expanded } }
+		available = { date > 1938.1.1 has_country_flag = JAP_cis_imposed_military_administration controls_state = 1035 }
+		cost = 35
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_labor_requisition_expanded add_ideas = JAP_cis_forced_labor_program JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 0.6 }
+	}
+
+	JAP_cis_security_rectification = {
+		icon = generic_prepare_civil_war
+		visible = { date > 1938.7.1 check_variable = { JAP_cis_occupation_policy_level < 1 } }
+		available = { date > 1939.1.1 JAP_cis_has_resistance_problem = yes }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = { JAP_cis_set_security_policy_1 = yes }
+		ai_will_do = { factor = 0.8 }
+	}
+
+	JAP_cis_expand_security_warfare = {
+		icon = generic_prepare_civil_war
+		visible = { date > 1939.1.1 JAP_cis_policy_at_least_suppression = yes NOT = { has_country_flag = JAP_cis_security_warfare_expanded } }
+		available = { date > 1939.7.1 JAP_cis_has_resistance_problem = yes controls_state = 614 controls_state = 597 }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_security_warfare_expanded add_command_power = 15 JAP_cis_apply_harsh_occupation_cost = yes }
+		ai_will_do = { factor = 0.65 }
+	}
+
+	JAP_cis_clear_countryside = {
+		icon = generic_prepare_civil_war
+		visible = { date > 1939.7.1 JAP_cis_policy_at_least_suppression = yes check_variable = { JAP_cis_occupation_policy_level < 2 } }
+		available = { date > 1940.1.1 JAP_cis_has_resistance_problem = yes check_variable = { JAP_cis_china_war_months > 23 } }
+		cost = 55
+		fire_only_once = yes
+		complete_effect = { JAP_cis_set_security_policy_2 = yes }
+		ai_will_do = { factor = 0.6 }
+	}
+
+	JAP_cis_total_security_war = {
+		icon = generic_prepare_civil_war
+		visible = { date > 1940.7.1 JAP_cis_policy_at_least_clear_villages = yes check_variable = { JAP_cis_occupation_policy_level < 3 } }
+		available = { date > 1941.1.1 JAP_cis_has_resistance_problem = yes check_variable = { JAP_cis_china_war_months > 35 } }
+		cost = 70
+		fire_only_once = yes
+		complete_effect = { JAP_cis_set_security_policy_3 = yes }
+		ai_will_do = { factor = 0.35 }
+	}
+
+	JAP_cis_expand_forced_labor_recruitment = {
+		icon = generic_industry
+		visible = { date > 1941.7.1 NOT = { has_country_flag = JAP_cis_forced_labor_recruitment } }
+		available = { date > 1942.1.1 has_country_flag = JAP_cis_labor_requisition_expanded JAP_cis_policy_at_least_suppression = yes }
+		cost = 40
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_forced_labor_recruitment add_offsite_building = { type = arms_factory level = 1 } JAP_cis_apply_extreme_occupation_cost = yes }
+		ai_will_do = { factor = 0.4 }
+	}
+
+	JAP_cis_transport_chinese_labor_to_home_islands = {
+		icon = generic_industry
+		visible = { date > 1942.7.1 NOT = { has_country_flag = JAP_cis_labor_transported_home } }
+		available = { date > 1943.1.1 has_country_flag = JAP_cis_forced_labor_recruitment controls_state = 613 }
+		cost = 45
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_labor_transported_home add_offsite_building = { type = industrial_complex level = 1 } add_stability = -0.02 JAP_cis_apply_extreme_occupation_cost = yes }
+		ai_will_do = { factor = 0.3 }
+	}
+
+	JAP_cis_wartime_emergency_requisition = {
+		icon = generic_industry
+		visible = { date > 1943.7.1 NOT = { has_country_flag = JAP_cis_emergency_requisition } }
+		available = { date > 1944.1.1 check_variable = { JAP_cis_china_war_months > 59 } }
+		cost = 50
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_emergency_requisition add_war_support = 0.03 add_offsite_building = { type = arms_factory level = 1 } JAP_cis_apply_extreme_occupation_cost = yes }
+		ai_will_do = { factor = 0.35 }
+	}
+
+	# 只开启谈判事件链；不会直接迫使中国投降。
+	JAP_cis_seek_political_settlement = {
+		icon = generic_political_actions
+		visible = { date > 1938.7.1 check_variable = { JAP_cis_china_war_months > 11 } NOT = { has_country_flag = JAP_cis_settlement_attempted } }
+		available = { JAP_cis_has_significant_military_advantage = yes has_global_flag = JAP_cis_chinese_side_identified }
+		cost = 75
+		fire_only_once = yes
+		complete_effect = { set_country_flag = JAP_cis_settlement_attempted country_event = { id = JAP_china_incident.40 hours = 6 } }
+		ai_will_do = { factor = 0.5 }
+	}
+}
+
+JAP_pacific_war_category = {	#太平洋战争
+
+	# ---------------------------------------------------------------------
+	# Combined Fleet: short operational preparations, not permanent power.
+	# ---------------------------------------------------------------------
+	JAP_pacific_concentrate_combined_fleet = {
+		icon = generic_naval
+		cost = 40
+		days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes }
+		available = { command_power > 20 NOT = { has_country_flag = JAP_pacific_mil_combined_fleet_active } }
+		complete_effect = {
+			add_command_power = -20
+			custom_effect_tooltip = JAP_pacific_concentrate_combined_fleet_effect_tt
+			hidden_effect = {
+				set_country_flag = { flag = JAP_pacific_mil_combined_fleet_active value = 1 days = 30 }
+				JAP_pacific_refresh_military_measures = yes
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_prelanding_bombardment = {
+		icon = generic_naval
+		cost = 35
+		days_re_enable = 60
+		visible = { JAP_pacific_system_active = yes }
+		available = {
+			command_power > 24 has_navy_experience > 4 fuel_ratio > 0.05
+			NOT = { has_country_flag = JAP_pacific_mil_shore_preparation_active }
+			NOT = { has_country_flag = JAP_pacific_mil_shore_preparation_superior_active }
+		}
+		complete_effect = {
+			add_command_power = -25 navy_experience = -5 add_fuel = -750
+			if = {
+				limit = { OR = { has_country_flag = JAP_pacific_situation_level_4 has_country_flag = JAP_pacific_situation_level_5 } }
+				custom_effect_tooltip = JAP_pacific_prelanding_bombardment_superior_effect_tt
+			}
+			else = { custom_effect_tooltip = JAP_pacific_prelanding_bombardment_effect_tt }
+			hidden_effect = {
+				if = {
+					limit = { OR = { has_country_flag = JAP_pacific_situation_level_4 has_country_flag = JAP_pacific_situation_level_5 } }
+					set_country_flag = { flag = JAP_pacific_mil_shore_preparation_superior_active value = 1 days = 21 }
+				}
+				else = { set_country_flag = { flag = JAP_pacific_mil_shore_preparation_active value = 1 days = 21 } }
+				JAP_pacific_refresh_military_measures = yes
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_naval_air_recon = {
+		icon = generic_air
+		cost = 30
+		days_re_enable = 90
+		visible = { JAP_pacific_system_active = yes }
+		available = { has_air_experience > 4 fuel_ratio > 0.03 NOT = { has_country_flag = JAP_pacific_mil_naval_air_recon_active } }
+		complete_effect = {
+			air_experience = -5 add_fuel = -350
+			custom_effect_tooltip = JAP_pacific_naval_air_recon_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_naval_air_recon_active value = 1 days = 30 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_carrier_pilot_training = {
+		icon = generic_air
+		cost = 45
+		days_re_enable = 180
+		visible = { JAP_pacific_system_active = yes }
+		available = { has_air_experience > 9 fuel_ratio > 0.05 NOT = { has_country_flag = JAP_pacific_mil_carrier_training_active } }
+		complete_effect = {
+			air_experience = -10 add_fuel = -500
+			custom_effect_tooltip = JAP_pacific_carrier_pilot_training_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_carrier_training_active value = 1 days = 60 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_emergency_fleet_supply_decision = {
+		icon = generic_naval
+		cost = 35
+		days_re_enable = 90
+		visible = { JAP_pacific_system_active = yes fuel_ratio < 0.35 }
+		available = { has_equipment = { convoy > 19 } NOT = { has_country_flag = JAP_pacific_mil_emergency_supply_active } }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = -20 }
+			custom_effect_tooltip = JAP_pacific_emergency_fleet_supply_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_emergency_supply_active value = 1 days = 30 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_force_landing = {
+		icon = generic_naval
+		cost = 70
+		days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes }
+		available = {
+			command_power > 39 fuel_ratio > 0.08 has_equipment = { convoy > 29 }
+			NOT = { has_country_flag = JAP_pacific_mil_forced_landing_active }
+		}
+		complete_effect = {
+			add_command_power = -40 add_fuel = -1250
+			add_equipment_to_stockpile = { type = convoy_1 amount = -30 }
+			custom_effect_tooltip = JAP_pacific_force_landing_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_forced_landing_active value = 1 days = 21 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	# ---------------------------------------------------------------------
+	# Landing craft and forward bases.
+	# ---------------------------------------------------------------------
+	JAP_pacific_expand_landing_flotilla = {
+		icon = generic_naval
+		cost = 75 days_remove = 90 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes NOT = { has_country_flag = JAP_pacific_landing_flotilla_done } }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_expand_landing_flotilla_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_landing_flotilla_done set_country_flag = JAP_pacific_mil_landing_flotilla JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_establish_forward_anchorage = {
+		icon = generic_naval
+		cost = 60 days_remove = 75 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes OR = { JAP_pacific_controls_any_philippines = yes JAP_pacific_controls_marianas = yes JAP_pacific_controls_new_guinea = yes } }
+		available = { OR = { controls_state = 646 controls_state = 327 controls_state = 634 } }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_establish_forward_anchorage_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_mil_forward_anchorage JAP_pacific_refresh_military_measures = yes }
+			if = { limit = { controls_state = 646 } 646 = { add_building_construction = { type = naval_base level = 1 instant_build = yes } } }
+			else_if = { limit = { controls_state = 327 } 327 = { add_building_construction = { type = naval_base level = 1 instant_build = yes } } }
+			else = { 634 = { add_building_construction = { type = naval_base level = 1 instant_build = yes } } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_rapid_repair_captured_port = {
+		icon = generic_construction
+		cost = 35 days_re_enable = 90 state_target = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_has_southern_occupation = yes }
+		target_trigger = { FROM = { is_controlled_by = ROOT OR = { state = 1021 state = 327 state = 335 } } }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_selected_state_effect_tt
+			FROM = { add_building_construction = { type = naval_base level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_repair_captured_airfield = {
+		icon = generic_air
+		cost = 35 days_re_enable = 90 state_target = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_has_southern_occupation = yes }
+		target_trigger = { FROM = { is_controlled_by = ROOT OR = { state = 327 state = 646 state = 634 } } }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_selected_state_effect_tt
+			FROM = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_fortify_island = {
+		icon = generic_defence
+		cost = 45 days_remove = 60 days_re_enable = 120 state_target = yes
+		visible = { JAP_pacific_system_active = yes OR = { controls_state = 526 controls_state = 645 controls_state = 646 controls_state = 632 } }
+		target_trigger = { FROM = { is_controlled_by = ROOT OR = { state = 526 state = 645 state = 646 state = 632 } } }
+		modifier = { civilian_factory_use = 1 }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_selected_state_effect_tt
+			FROM = { add_building_construction = { type = coastal_bunker level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_build_underground_works = {
+		icon = generic_defence
+		cost = 65 days_remove = 90 fire_only_once = yes state_target = yes
+		visible = { JAP_pacific_system_active = yes OR = { controls_state = 526 controls_state = 645 controls_state = 646 } }
+		target_trigger = { FROM = { is_controlled_by = ROOT OR = { state = 526 state = 645 state = 646 } } }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_selected_state_effect_tt
+			FROM = { add_building_construction = { type = bunker level = 2 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_stockpile_island_supplies = {
+		icon = generic_logistics
+		cost = 35 days_re_enable = 90 state_target = yes
+		visible = { JAP_pacific_system_active = yes OR = { controls_state = 526 controls_state = 645 controls_state = 646 controls_state = 632 controls_state = 631 } }
+		target_trigger = { FROM = { is_controlled_by = ROOT OR = { state = 526 state = 645 state = 646 state = 632 state = 631 } } }
+		available = { has_equipment = { convoy > 14 } }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = -15 }
+			custom_effect_tooltip = JAP_pacific_selected_state_effect_tt
+			FROM = { add_dynamic_modifier = { modifier = JAP_pacific_island_stockpiles days = 120 } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# ---------------------------------------------------------------------
+	# Sea communications and convoy policy.
+	# ---------------------------------------------------------------------
+	JAP_pacific_expand_convoy_transport = {
+		icon = generic_logistics
+		cost = 55 days_remove = 75 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = 20 }
+			custom_effect_tooltip = JAP_pacific_expand_convoy_transport_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_mil_convoy_transport JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_southern_convoy_escort_decision = {
+		icon = generic_naval
+		cost = 45 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes JAP_pacific_has_southern_occupation = yes }
+		available = { command_power > 14 NOT = { has_country_flag = JAP_pacific_mil_southern_escort_active } }
+		complete_effect = {
+			add_command_power = -15
+			custom_effect_tooltip = JAP_pacific_southern_convoy_escort_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_southern_escort_active value = 1 days = 45 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_strengthen_asw_watch = {
+		icon = generic_naval
+		cost = 40 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_war = yes }
+		available = { has_navy_experience > 4 NOT = { has_country_flag = JAP_pacific_mil_asw_active } }
+		complete_effect = {
+			navy_experience = -5
+			custom_effect_tooltip = JAP_pacific_strengthen_asw_watch_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_asw_active value = 1 days = 45 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_disperse_convoys = {
+		icon = generic_logistics
+		cost = 35 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_equipment = { convoy > 39 } }
+		available = { NOT = { has_country_flag = JAP_pacific_mil_dispersed_convoys_active } }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_disperse_convoys_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_dispersed_convoys_active value = 1 days = 45 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_expand_oil_tanker_fleet = {
+		icon = generic_production
+		cost = 60 days_remove = 105 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_controls_dei = yes }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = 15 }
+			custom_effect_tooltip = JAP_pacific_expand_oil_tanker_fleet_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_mil_oil_tankers JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_emergency_convoy_replacement = {
+		icon = generic_production
+		cost = 45 days_remove = 45 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_equipment = { convoy < 100 } }
+		modifier = { civilian_factory_use = 3 }
+		complete_effect = { add_equipment_to_stockpile = { type = convoy_1 amount = 30 } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_risky_sea_transport = {
+		icon = generic_logistics
+		cost = 35 days_re_enable = 60 state_target = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_any_island_isolated = yes }
+		target_trigger = { FROM = { JAP_pacific_is_isolated_state_target = yes } }
+		available = { has_equipment = { convoy > 24 } }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = -25 }
+			custom_effect_tooltip = JAP_pacific_risky_sea_transport_effect_tt
+			FROM = { add_dynamic_modifier = { modifier = JAP_pacific_risky_sea_supply days = 30 } }
+		}
+		ai_will_do = { factor = 0.25 }
+	}
+
+	# ---------------------------------------------------------------------
+	# Southern resources stay in their states and remain route-dependent.
+	# ---------------------------------------------------------------------
+	JAP_pacific_develop_malaya_resources = {
+		icon = generic_production
+		cost = 70 days_remove = 105 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes OR = { controls_state = 1062 controls_state = 1064 } }
+		available = { controls_state = 1062 controls_state = 1064 }
+		modifier = { civilian_factory_use = 3 }
+		complete_effect = {
+			1062 = { add_resource = { type = tungsten amount = 3 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			1064 = { add_resource = { type = rubber amount = 6 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_take_over_singapore_base = {
+		icon = generic_naval
+		cost = 65 days_remove = 90 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes controls_state = 1021 }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = { 1021 = { add_building_construction = { type = naval_base level = 2 instant_build = yes } add_building_construction = { type = infrastructure level = 1 instant_build = yes } } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_prepare_malacca_route = {
+		icon = generic_logistics
+		cost = 55 days_remove = 75 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_controls_singapore = yes }
+		available = { has_equipment = { convoy > 49 } }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = {
+			1021 = { add_building_construction = { type = naval_base level = 1 instant_build = yes } }
+			custom_effect_tooltip = JAP_pacific_prepare_malacca_route_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_malacca_route_prepared JAP_pacific_update_southern_resource_route = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_repair_dei_oilfields = {
+		icon = generic_production
+		cost = 80 days_remove = 120 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes OR = { controls_state = 335 controls_state = 672 controls_state = 1058 } }
+		available = { controls_state = 335 controls_state = 672 }
+		modifier = { civilian_factory_use = 4 }
+		complete_effect = {
+			335 = { add_resource = { type = oil amount = 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			672 = { add_resource = { type = oil amount = 4 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			if = { limit = { controls_state = 1058 } 1058 = { add_resource = { type = oil amount = 3 } } }
+			custom_effect_tooltip = JAP_pacific_repair_dei_oilfields_route_effect_tt
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_prepare_philippine_transfer_base = {
+		icon = generic_logistics
+		cost = 60 days_remove = 90 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_controls_philippines = yes }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = { 327 = { add_building_construction = { type = naval_base level = 1 instant_build = yes } add_building_construction = { type = infrastructure level = 1 instant_build = yes } } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_expand_philippine_airbase = {
+		icon = generic_air
+		cost = 55 days_remove = 75 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_controls_philippines = yes }
+		modifier = { civilian_factory_use = 2 }
+		complete_effect = { 327 = { add_building_construction = { type = air_base level = 2 instant_build = yes } } 624 = { add_building_construction = { type = air_base level = 1 instant_build = yes } } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_expand_southern_oil_transport = {
+		icon = generic_production
+		cost = 65 days_remove = 105 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_controls_dei = yes }
+		available = { JAP_pacific_controls_singapore = yes JAP_pacific_controls_philippines = yes has_equipment = { convoy > 99 } }
+		modifier = { civilian_factory_use = 3 }
+		complete_effect = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = 20 }
+			custom_effect_tooltip = JAP_pacific_expand_southern_oil_transport_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_mil_southern_oil_transport JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# ---------------------------------------------------------------------
+	# Island emergencies.  Evacuation teleports only JAP divisions home;
+	# equipment loss is a national-stockpile approximation imposed by script.
+	# ---------------------------------------------------------------------
+	JAP_pacific_evacuate_island_garrison = {
+		icon = generic_retreat
+		cost = 65 days_re_enable = 45 state_target = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_any_island_isolated = yes }
+		target_trigger = { FROM = { JAP_pacific_is_isolated_state_target = yes } }
+		available = { has_equipment = { convoy > 9 } command_power > 19 }
+		complete_effect = {
+			add_command_power = -20 add_equipment_to_stockpile = { type = convoy_1 amount = -10 }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -800 }
+			add_equipment_to_stockpile = { type = support_equipment amount = -100 }
+			custom_effect_tooltip = JAP_pacific_evacuate_island_garrison_effect_tt
+			FROM = { teleport_armies = { limit = { tag = JAP } } }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	JAP_pacific_airlift_island_supplies = {
+		icon = generic_air
+		cost = 45 days_re_enable = 45 state_target = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_any_island_isolated = yes }
+		target_trigger = { FROM = { JAP_pacific_is_isolated_state_target = yes } }
+		available = { JAP_pacific_has_nearby_airlift_base = yes fuel_ratio > 0.03 }
+		complete_effect = {
+			add_fuel = -500
+			custom_effect_tooltip = JAP_pacific_airlift_island_supplies_effect_tt
+			FROM = { add_dynamic_modifier = { modifier = JAP_pacific_airlift_relief days = 30 } }
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	JAP_pacific_recall_combined_fleet = {
+		icon = generic_naval
+		cost = 35 days_re_enable = 90
+		visible = { JAP_pacific_system_active = yes OR = { JAP_pacific_any_island_isolated = yes has_country_flag = JAP_pacific_situation_level_1 } }
+		available = { command_power > 19 NOT = { has_country_flag = JAP_pacific_mil_fleet_withdrawal_active } }
+		complete_effect = {
+			add_command_power = -20
+			custom_effect_tooltip = JAP_pacific_recall_combined_fleet_effect_tt
+			hidden_effect = { set_country_flag = { flag = JAP_pacific_mil_fleet_withdrawal_active value = 1 days = 21 } JAP_pacific_refresh_military_measures = yes }
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	# ---------------------------------------------------------------------
+	# Unified occupation policy.  Positive levels favour direct extraction;
+	# negative levels favour collaboration and long-term stability.
+	# ---------------------------------------------------------------------
+	JAP_pacific_establish_southern_military_administration = {
+		icon = generic_political_actions
+		cost = 50 fire_only_once = yes
+		visible = { JAP_pacific_system_active = yes JAP_pacific_has_southern_occupation = yes }
+		complete_effect = {
+			custom_effect_tooltip = JAP_pacific_establish_southern_military_administration_effect_tt
+			hidden_effect = { set_country_flag = JAP_pacific_southern_administration JAP_pacific_refresh_occupation_policy = yes }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_expand_resource_collection = {
+		icon = generic_production
+		cost = 40 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration }
+		available = { check_variable = { JAP_pacific_occupation_level < 2 } }
+		complete_effect = { custom_effect_tooltip = JAP_pacific_occupation_direct_effect_tt hidden_effect = { JAP_pacific_shift_occupation_direct = yes } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_requisition_local_transport = {
+		icon = generic_logistics
+		cost = 35 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration }
+		available = { check_variable = { JAP_pacific_occupation_level < 2 } }
+		complete_effect = { add_equipment_to_stockpile = { type = convoy_1 amount = 10 } custom_effect_tooltip = JAP_pacific_occupation_direct_effect_tt hidden_effect = { JAP_pacific_shift_occupation_direct = yes } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_support_local_collaborators = {
+		icon = generic_political_actions
+		cost = 45 days_re_enable = 120
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration }
+		available = { check_variable = { JAP_pacific_occupation_level > -2 } }
+		complete_effect = { custom_effect_tooltip = JAP_pacific_occupation_cooperative_effect_tt hidden_effect = { JAP_pacific_shift_occupation_cooperative = yes } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_expand_labour_requisition = {
+		icon = generic_production
+		cost = 45 days_re_enable = 180
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration date > 1941.1.1 }
+		available = { check_variable = { JAP_pacific_occupation_level < 2 } }
+		complete_effect = { add_stability = -0.02 custom_effect_tooltip = JAP_pacific_occupation_direct_effect_tt hidden_effect = { JAP_pacific_shift_occupation_direct = yes } }
+		ai_will_do = { factor = 0.5 }
+	}
+
+	JAP_pacific_restore_local_economy = {
+		icon = generic_construction
+		cost = 55 days_remove = 90 days_re_enable = 180
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration }
+		modifier = { civilian_factory_use = 2 }
+		available = { check_variable = { JAP_pacific_occupation_level > -2 } }
+		complete_effect = { custom_effect_tooltip = JAP_pacific_occupation_cooperative_effect_tt hidden_effect = { JAP_pacific_shift_occupation_cooperative = yes } }
+		ai_will_do = { factor = 1 }
+	}
+
+	JAP_pacific_moderate_occupation_policy = {
+		icon = generic_political_actions
+		cost = 35 days_re_enable = 90
+		visible = { JAP_pacific_system_active = yes has_country_flag = JAP_pacific_southern_administration check_variable = { JAP_pacific_occupation_level > 0 } }
+		complete_effect = { custom_effect_tooltip = JAP_pacific_occupation_cooperative_effect_tt hidden_effect = { JAP_pacific_shift_occupation_cooperative = yes } }
+		ai_will_do = { factor = 1 }
+	}
+}
+

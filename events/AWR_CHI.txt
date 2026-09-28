@@ -1,6 +1,67 @@
 add_namespace = AWR_CHI
 add_namespace = CHI_corruption
 add_namespace = AWR_CHI_state
+
+country_event = {	#中央要求我们服从
+	id = AWR_CHI.1
+	title = AWR_CHI.1.t
+	desc = AWR_CHI.1.desc
+	picture = GFX_event_AWR_CHI.1
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_CHI.1.a
+		FROM = {
+			country_event = {
+				id = AWR_CHI.2
+			}
+		}
+	}
+
+	option = {
+		name = AWR_CHI.1.b
+		FROM = {
+			country_event = {
+				id = AWR_CHI.3
+			}
+		}
+	}
+}
+
+country_event = {	#明智的选择
+	id = AWR_CHI.2
+	title = AWR_CHI.2.t
+	desc = AWR_CHI.2.desc
+	picture = GFX_event_AWR_CHI.2
+	is_triggered_only = yes
+	option = {
+		name = AWR_CHI.2.a
+		FROM = {
+			set_autonomy = {
+				target = CHI
+				autonomy_state = autonomy_CHI_zongduxiaqu
+			}
+		}
+	}
+}
+
+country_event = {	#他们会后悔的
+	id = AWR_CHI.3
+	title = AWR_CHI.3.t
+	desc = AWR_CHI.3.desc
+	picture = GFX_event_AWR_CHI.3
+	is_triggered_only = yes
+	option = {
+		name = AWR_CHI.3.a
+		ROOT = {
+			create_wargoal = { 
+				target = FROM
+				type = annex_everything 
+			}
+		}
+	}
+}
+
 country_event = { #张国焘前来投奔
 	id = AWR_CHI.1000
 	title = AWR_CHI.1000.t
