@@ -271,12 +271,18 @@ PRC_shanghai_economy_war_category = {	#上海经济战
 	priority = 993
 	scripted_gui = PRC_shanghai_economy_war_gui
 	visible = {
-		613 = { 
-				is_controlled_by = PRC 
-			}	
-		1094 = { 
-			is_controlled_by = PRC 
-		}	
+		tag = PRC
+		OR = {
+			AND = {
+				613 = { 
+					is_controlled_by = PRC 
+				}	
+				1094 = { 
+					is_controlled_by = PRC 
+				}	
+			}
+			is_debug = yes
+		}
 	}
 }
 

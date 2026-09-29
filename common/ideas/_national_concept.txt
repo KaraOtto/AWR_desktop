@@ -18,8 +18,8 @@ ideas = {
 			cost = 0
 
 			modifier = {
-				research_speed_factor = 0.25
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.50
+				research_speed_factor = 0.10
+				SPECIAL_PROJECT_SPEED_FACTOR = 0.10
 				TECHNOLOGY_RESEARCH_BREAKTHROUGH_BONUS = 0.02
 				stability_factor = -0.25
 			}
@@ -28,7 +28,7 @@ ideas = {
 			
 		}
 
-		materialism = {#唯物
+		materialism = {	#唯物
 			picture = materialism
 			allowed = {
 				always = yes
@@ -43,15 +43,15 @@ ideas = {
 			cost = 0
 
 			modifier = {
-				research_speed_factor = 0.10
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.25
+				research_speed_factor = 0.05
+				SPECIAL_PROJECT_SPEED_FACTOR = 0.05
 				TECHNOLOGY_RESEARCH_BREAKTHROUGH_BONUS = 0.01
 			}
 
 			cancel_if_invalid = no
 		}
 
-		pragmatism = {#实用主义
+		pragmatism = {	#实用主义
 			picture = pragmatism
 			available = {
 				always = no
@@ -60,8 +60,8 @@ ideas = {
 			cost = 0
 
 			modifier = {
-				research_speed_factor = 0.05
-				SPECIAL_PROJECT_SPEED_FACTOR = 0.10
+				research_speed_factor = 0.025
+				SPECIAL_PROJECT_SPEED_FACTOR = 0.025
 				political_power_factor = 0.05
 				stability_factor = 0.05
 			}
@@ -294,21 +294,18 @@ ideas = {
 			cost = 0
 
 			modifier = {
-				guarantee_tension = 100
-				justify_war_goal_time = 100
+				guarantee_tension = 1
+				justify_war_goal_time = 1
 				enemy_justify_war_goal_time = 1.0
-				war_support_factor = -0.25
+				war_support_factor = -0.50
 				offensive_war_stability_factor = -1.00
-
-				industrial_capacity_factory = 0.15
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
 				factory_energy_consumption = -0.30
 				global_building_slots_factor = 0.20
-				production_speed_buildings_factor = 0.3
-				stability_factor = 0.10
-				defensive_war_stability_factor = 0.25
-				army_core_defence_factor = 0.05
-				army_core_attack_factor = 0.05
-
+				production_speed_buildings_factor = 0.20
+				consumer_goods_factor = -0.15
+				training_time_factor = 0.50
 			}
 
 			rule = {
@@ -335,19 +332,20 @@ ideas = {
 			cost = 0
 
 			modifier = {
-				guarantee_tension = 1.00
-				justify_war_goal_time = 1.00
-
+				guarantee_tension = 0.50
+				justify_war_goal_time = 0.50
+				enemy_justify_war_goal_time = 0.50
+				war_support_factor = -0.25
+				offensive_war_stability_factor = -0.50
 				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
 				factory_energy_consumption = -0.15
 				global_building_slots_factor = 0.10
-				production_speed_buildings_factor = 0.15
-				stability_factor = 0.05
-				war_support_factor = -0.10
-				defensive_war_stability_factor = 0.25
-				offensive_war_stability_factor = -0.25
-				army_core_defence_factor = 0.10
-				army_core_attack_factor = 0.10
+				production_speed_buildings_factor = 0.10
+				consumer_goods_factor = -0.075
+				training_time_factor = 0.25
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
 			}
 
 			rule = {
@@ -371,7 +369,12 @@ ideas = {
 				defensive_war_stability_factor = 0.10
 				army_claim_attack_factor = 0.05
 				army_claim_defence_factor = 0.05
-				production_speed_buildings_factor = 0.10
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
 			}
 
 			default = yes
@@ -395,14 +398,19 @@ ideas = {
 
 			modifier = {
 				offensive_war_stability_factor = 0.10
-				justify_war_goal_time = -0.25
-				army_claim_attack_factor = 0.10
-				army_claim_defence_factor = 0.10
+				justify_war_goal_time = -0.20
+				army_claim_attack_factor = 0.05
+				army_claim_defence_factor = 0.05
 				army_org_factor = 0.05
 				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
 				training_time_army_factor = -0.10
 				production_speed_buildings_factor = -0.05
-				stability_factor = -0.05
+				war_support_factor = 0.15
+				naval_invasion_division_cap = 15
+				air_invasion_division_cap = 15
+				annex_cost_factor = -0.10
+				puppet_cost_factor = -0.25
 			}
 
 			cancel_if_invalid = no
@@ -425,16 +433,19 @@ ideas = {
 
 			modifier = {
 				offensive_war_stability_factor = 0.20
-				justify_war_goal_time = -0.5
-				army_claim_attack_factor = 0.20
-				army_claim_defence_factor = 0.20
+				justify_war_goal_time = -0.40
+				army_claim_attack_factor = 0.10
+				army_claim_defence_factor = 0.10
 				army_org_factor = 0.10
 				army_attack_factor = 0.10
+				breakthrough_factor = 0.10
 				training_time_army_factor = -0.20
+				production_speed_buildings_factor = -0.10
+				war_support_factor = 0.30
 				naval_invasion_division_cap = 30
 				air_invasion_division_cap = 30
-				production_speed_buildings_factor = -0.15
-				stability_factor = -0.15
+				annex_cost_factor = -0.20
+				puppet_cost_factor = -0.50
 			}
 			
 			cancel_if_invalid = no

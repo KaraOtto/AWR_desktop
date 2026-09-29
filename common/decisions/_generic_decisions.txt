@@ -3181,8 +3181,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deny_the_value_of_subjective_thoughts
-			has_idea = materialism
+			has_country_flag = materialism_5
 		}
 
 		complete_effect = {
@@ -3197,7 +3196,8 @@ national_concept_base_category = {	#哲学思潮
 
 		remove_effect = {
 			add_ideas = extreme_materialism
-			clr_country_flag = deny_the_value_of_subjective_thoughts
+			clr_country_flag = materialism_5
+			set_country_flag = materialism_6
 		}
 	}
 
@@ -3205,7 +3205,9 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deconstruct_morality
+			OR = {
+				has_country_flag = materialism_4
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3219,8 +3221,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = deconstruct_morality
-			set_country_flag = deny_the_value_of_subjective_thoughts
+			clr_country_flag = materialism_4
+			set_country_flag = materialism_5
 		}
 	}
 
@@ -3228,7 +3230,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deny_the_value_of_subjective_thoughts
+			has_country_flag = materialism_6
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3242,8 +3244,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = deny_the_value_of_subjective_thoughts
-			set_country_flag = deconstruct_morality
+			clr_country_flag = materialism_6
+			set_country_flag = materialism_5
 		}
 	}
 
@@ -3251,7 +3253,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deconstruct_subjective_feelings
+			OR = {
+				has_country_flag = materialism_5
+				has_country_flag = materialism_3
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3265,8 +3270,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = deconstruct_subjective_feelings
-			set_country_flag = deconstruct_morality
+			clr_country_flag = materialism_3
+			set_country_flag = materialism_4
 		}
 	}
 
@@ -3274,7 +3279,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deconstruct_morality
+			has_country_flag = materialism_5
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3288,8 +3293,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = deconstruct_morality
-			set_country_flag = deconstruct_subjective_feelings
+			clr_country_flag = materialism_5
+			set_country_flag = materialism_4
 		}
 	}
 	
@@ -3297,15 +3302,11 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			NOT = {
-				has_country_flag = deconstruct_subjective_feelings
-				has_country_flag = choose_pragmatism
-			}
+			has_country_flag = materialism_2
 		}
 		fire_only_once = no
 		complete_effect = {
 			add_stability = -0.15
-			set_country_flag = choose_extreme_materialism
 		}
 
 		days_remove = 180
@@ -3315,7 +3316,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			set_country_flag = deconstruct_subjective_feelings
+			set_country_flag = materialism_3
+			clr_country_flag = materialism_2
 		}
 	}
 
@@ -3323,7 +3325,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = deconstruct_subjective_feelings
+			has_country_flag = materialism_4
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3337,8 +3339,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = deconstruct_subjective_feelings
-			clr_country_flag = choose_extreme_materialism
+			clr_country_flag = materialism_4
+			set_country_flag = materialism_3
 		}
 	}
 
@@ -3347,8 +3349,8 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			OR = {
-				has_country_flag = accept_subjective_feelings
-				has_country_flag = accept_materialis_education
+				has_country_flag = materialism_3
+				has_country_flag = materialism_1
 			}
 			NOT = {
 				has_idea = materialism
@@ -3358,7 +3360,7 @@ national_concept_base_category = {	#哲学思潮
 		complete_effect = {
 			if = {
 				limit = {
-					has_country_flag = accept_subjective_feelings
+					has_country_flag = materialism_3
 				}
 				add_stability = 0.10
 			}
@@ -3368,6 +3370,9 @@ national_concept_base_category = {	#哲学思潮
 
 		remove_effect = {
 			add_ideas = materialism
+			clr_country_flag = materialism_1
+			clr_country_flag = materialism_3
+			set_country_flag = materialism_2
 		}
 	}
 
@@ -3375,10 +3380,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			NOT = {
-				has_country_flag = pragmatism_publicity
-				has_country_flag = choose_extreme_materialism
-			}
+			has_country_flag = materialism_2
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3389,9 +3391,8 @@ national_concept_base_category = {	#哲学思潮
 			stability_weekly = 0.002
 		}
 		remove_effect = {
-			set_country_flag = pragmatism_publicity
-			clr_country_flag = choose_materialism
-			clr_country_flag = materialism_education
+			set_country_flag = materialism_1
+			clr_country_flag = materialism_2
 		}
 	}
 
@@ -3400,14 +3401,13 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			NOT = {
-				has_country_flag = materialism_education
-				has_country_flag = choose_idealism
+				has_country_flag = choose_pragmatism
 			}
+			has_idea = pragmatism
 		}
 		fire_only_once = no
 		complete_effect = {
 			set_country_flag = choose_materialism
-			
 		}
 		days_remove = 180
 		modifier = {
@@ -3415,8 +3415,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			set_country_flag = materialism_education
-			clr_country_flag = choose_pragmatism
+			set_country_flag = materialism_1
+			clr_country_flag = choose_materialism
 		}
 	}
 	
@@ -3424,7 +3424,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = pragmatism_publicity
+			OR = {
+				has_country_flag = materialism_1
+				has_country_flag = idealism_1
+			}
 			NOT = {
 				has_idea = pragmatism
 				has_country_flag = choose_idealism
@@ -3432,13 +3435,17 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		complete_effect = {
-			#
+			set_country_flag = choose_pragmatism
+		
 		}
 
 		days_remove = 180
 
 		remove_effect = {
 			add_ideas = pragmatism
+			clr_country_flag = materialism_1
+			clr_country_flag = idealism_1
+			clr_country_flag = choose_pragmatism
 		}
 	}
 
@@ -3447,9 +3454,9 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			NOT = {
-				has_country_flag = sereach_for_miracles
-				has_country_flag = choose_materialism
+				has_country_flag = choose_pragmatism
 			}
+			has_idea = pragmatism
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3461,8 +3468,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			set_country_flag = sereach_for_miracles
-			clr_country_flag = pragmatism_publicity
+			set_country_flag = idealism_1
+			clr_country_flag = choose_idealism
 			clr_country_flag = choose_pragmatism
 		}
 	}
@@ -3472,9 +3479,9 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			NOT = {
-				has_country_flag = deconstruct_miracles
-				has_country_flag = choose_extreme_idealism
+				has_country_flag = choose_idealism
 			}
+			has_country_flag = idealism_2
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3486,8 +3493,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			set_country_flag = deconstruct_miracles
-			clr_country_flag = sereach_for_miracles
+			set_country_flag = idealism_1
+			clr_country_flag = idealism_2
 			clr_country_flag = choose_idealism
 
 			clr_country_flag = Christianity
@@ -3502,8 +3509,8 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			OR = {
-				has_country_flag = accept_subjective_feelings
-				has_country_flag = accept_materialis_education
+				has_country_flag = idealism_1
+				has_country_flag = idealism_3
 			}
 			NOT = {
 				has_idea = idealism
@@ -3514,7 +3521,7 @@ national_concept_base_category = {	#哲学思潮
 			if = {
 				limit = {
 					NOT = {
-						has_country_flag = expand_the_influence_of_religions
+						has_country_flag = idealism_3
 					}
 				}
 				country_event = {
@@ -3527,6 +3534,9 @@ national_concept_base_category = {	#哲学思潮
 
 		remove_effect = {
 			add_ideas = idealism
+			clr_country_flag = idealism_1
+			clr_country_flag = idealism_3
+			set_country_flag = idealism_2
 		}
 	}
 
@@ -3535,14 +3545,14 @@ national_concept_base_category = {	#哲学思潮
 		cost = 50
 		visible = {
 			NOT = {
-				has_country_flag = expand_the_influence_of_religions
+				has_country_flag = idealism_3
 				has_country_flag = choose_pragmatism
 			}
+			has_country_flag = idealism_2
 		}
 		fire_only_once = no
 		complete_effect = {
 			add_stability = -0.15
-			set_country_flag = choose_extreme_idealism
 		}
 
 		days_remove = 180
@@ -3552,7 +3562,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			set_country_flag = expand_the_influence_of_religions
+			set_country_flag = idealism_3
+			clr_country_flag = idealism_2
 		}
 	}
 
@@ -3560,7 +3571,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = expand_the_influence_of_religions
+			has_country_flag = idealism_4
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3574,8 +3585,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = expand_the_influence_of_religions
-			clr_country_flag = choose_extreme_idealism
+			clr_country_flag = idealism_4
+			set_country_flag = idealism_3
 		}
 	}
 
@@ -3583,7 +3594,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = expand_the_influence_of_religions
+			has_country_flag = idealism_3
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3597,8 +3608,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = expand_the_influence_of_religions
-			set_country_flag = set_religion_law
+			clr_country_flag = idealism_3
+			set_country_flag = idealism_4
 		}
 	}
 
@@ -3606,7 +3617,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = set_religion_law
+			has_country_flag = idealism_5
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3620,8 +3631,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = set_religion_law
-			set_country_flag = expand_the_influence_of_religions
+			clr_country_flag = idealism_5
+			set_country_flag = idealism_4
 		}
 	}
 
@@ -3629,7 +3640,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = abolish_religion_law
+			has_country_flag = idealism_4
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3639,8 +3650,8 @@ national_concept_base_category = {	#哲学思潮
 		days_remove = 180
 
 		remove_effect = {
-			clr_country_flag = abolish_religion_law
-			set_country_flag = set_the_state_religion
+			clr_country_flag = idealism_4
+			set_country_flag = idealism_5
 		}
 	}
 
@@ -3648,7 +3659,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = set_the_state_religion
+			has_country_flag = idealism_6
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3662,8 +3673,8 @@ national_concept_base_category = {	#哲学思潮
 		}
 
 		remove_effect = {
-			clr_country_flag = set_the_state_religion
-			set_country_flag = abolish_the_state_religion
+			clr_country_flag = idealism_6
+			set_country_flag = idealism_5
 		}
 	}
 
@@ -3671,7 +3682,7 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = set_the_state_religion
+			has_country_flag = idealism_5
 			has_idea = idealism
 		}
 
@@ -3683,7 +3694,8 @@ national_concept_base_category = {	#哲学思潮
 
 		remove_effect = {
 			add_ideas = extreme_idealism
-			clr_country_flag = set_the_state_religion
+			clr_country_flag = idealism_5
+			set_country_flag = idealism_6
 		}
 	}
 }
