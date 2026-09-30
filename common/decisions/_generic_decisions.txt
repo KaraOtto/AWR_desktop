@@ -3181,7 +3181,11 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_5
+			
+			OR = {
+				is_debug = yes
+				has_country_flag = materialism_5
+			}
 		}
 
 		complete_effect = {
@@ -3207,6 +3211,7 @@ national_concept_base_category = {	#哲学思潮
 		visible = {
 			OR = {
 				has_country_flag = materialism_4
+				is_debug = yes
 			}
 		}
 		fire_only_once = no
@@ -3230,7 +3235,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_6
+			OR = {
+				has_country_flag = materialism_6
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3256,6 +3264,7 @@ national_concept_base_category = {	#哲学思潮
 			OR = {
 				has_country_flag = materialism_5
 				has_country_flag = materialism_3
+				is_debug = yes
 			}
 		}
 		fire_only_once = no
@@ -3279,7 +3288,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_5
+			OR = {
+				has_country_flag = materialism_5
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3302,7 +3314,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_2
+			OR = {
+				has_country_flag = materialism_2
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3325,7 +3340,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_4
+			OR = {
+				has_country_flag = materialism_4
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3347,13 +3365,18 @@ national_concept_base_category = {	#哲学思潮
 	accept_materialism = {	#接受唯物主义
 		icon = generic_research
 		cost = 50
-		visible = {
+		visible = {			
 			OR = {
-				has_country_flag = materialism_3
-				has_country_flag = materialism_1
-			}
-			NOT = {
-				has_idea = materialism
+				AND = {
+					OR = {
+						has_country_flag = materialism_3
+						has_country_flag = materialism_1
+					}
+					NOT = {
+						has_idea = materialism
+					}
+				}
+				is_debug = yes
 			}
 		}
 
@@ -3380,7 +3403,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = materialism_2
+			OR = {
+				is_debug = yes
+				has_country_flag = materialism_2
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3399,11 +3425,16 @@ national_concept_base_category = {	#哲学思潮
 	materialism_education = {	#进行唯物主义教育
 		icon = generic_research
 		cost = 50
-		visible = {
-			NOT = {
-				has_country_flag = choose_pragmatism
+		visible = {			
+			OR = {
+				AND = {
+					NOT = {
+						has_country_flag = choose_pragmatism
+					}
+					has_idea = pragmatism
+				}
+				is_debug = yes
 			}
-			has_idea = pragmatism
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3423,14 +3454,19 @@ national_concept_base_category = {	#哲学思潮
 	accept_pragmatism = {	#接受实用主义
 		icon = generic_research
 		cost = 50
-		visible = {
+		visible = {	
 			OR = {
-				has_country_flag = materialism_1
-				has_country_flag = idealism_1
-			}
-			NOT = {
-				has_idea = pragmatism
-				has_country_flag = choose_idealism
+				AND = {
+					OR = {
+						has_country_flag = materialism_1
+						has_country_flag = idealism_1
+					}
+					NOT = {
+						has_idea = pragmatism
+						has_country_flag = choose_idealism
+					}
+				}
+				is_debug = yes
 			}
 		}
 
@@ -3452,11 +3488,16 @@ national_concept_base_category = {	#哲学思潮
 	sereach_for_miracles = {	#寻找神迹
 		icon = generic_research
 		cost = 50
-		visible = {
-			NOT = {
-				has_country_flag = choose_pragmatism
+		visible = {			
+			OR = {
+				AND = {
+					NOT = {
+						has_country_flag = choose_pragmatism
+					}
+					has_idea = pragmatism
+				}
+				is_debug = yes
 			}
-			has_idea = pragmatism
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3477,11 +3518,16 @@ national_concept_base_category = {	#哲学思潮
 	deconstruct_miracles = {	#解构神迹
 		icon = generic_research
 		cost = 50
-		visible = {
-			NOT = {
-				has_country_flag = choose_idealism
+		visible = {		
+			OR = {
+				AND = {
+					NOT = {
+						has_country_flag = choose_idealism
+					}
+					has_country_flag = idealism_2
+				}
+				is_debug = yes
 			}
-			has_country_flag = idealism_2
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3507,13 +3553,18 @@ national_concept_base_category = {	#哲学思潮
 	accept_idealism = {	#接受唯心主义
 		icon = generic_research
 		cost = 50
-		visible = {
+		visible = {		
 			OR = {
-				has_country_flag = idealism_1
-				has_country_flag = idealism_3
-			}
-			NOT = {
-				has_idea = idealism
+				AND = {
+					OR = {
+						has_country_flag = idealism_1
+						has_country_flag = idealism_3
+					}
+					NOT = {
+						has_idea = idealism
+					}
+				}
+				is_debug = yes
 			}
 		}
 
@@ -3544,11 +3595,16 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			NOT = {
-				has_country_flag = idealism_3
-				has_country_flag = choose_pragmatism
+			OR = {
+				AND = {
+					NOT = {
+						has_country_flag = idealism_3
+						has_country_flag = choose_pragmatism
+					}
+					has_country_flag = idealism_2
+				}
+				is_debug = yes
 			}
-			has_country_flag = idealism_2
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3571,7 +3627,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_4
+			OR = {
+				has_country_flag = idealism_4
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3594,7 +3653,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_3
+			OR = {
+				has_country_flag = idealism_3
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3617,7 +3679,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_5
+			OR = {
+				has_country_flag = idealism_5
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3640,7 +3705,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_4
+			OR = {
+				has_country_flag = idealism_4
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3659,7 +3727,10 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_6
+			OR = {
+				has_country_flag = idealism_6
+				is_debug = yes
+			}
 		}
 		fire_only_once = no
 		complete_effect = {
@@ -3682,8 +3753,13 @@ national_concept_base_category = {	#哲学思潮
 		icon = generic_research
 		cost = 50
 		visible = {
-			has_country_flag = idealism_5
-			has_idea = idealism
+			OR = {
+				AND = {
+					has_country_flag = idealism_5
+					has_idea = idealism
+				}
+				is_debug = yes
+			}
 		}
 
 		complete_effect = {

@@ -1,34 +1,50 @@
 state={
 	id=1040
 	name="STATE_1040"
-
-	provinces = {
-		1114 1172 1196 1383 1522 1653 4501 10346
-	}
-	resources={
-		rubber=18
-	}
-	history={
-		owner = YUN
-		add_core_of = YUN
+	provinces={5031 7803 10770 10899 }
+	state_category = pastoral
+history={
+	victory_points = {
+			5031 3
+		}
+		owner = XSM
+		add_core_of = XSM
 		add_core_of = CHI
-		
-		buildings = {
-			infrastructure = 2
-			industrial_complex = 1
-			arms_factory = 1
-		}
-		1939.1.1 = {
-			owner = YUN
+		add_core_of = PRC
 
+		
+
+		buildings = {
+			infrastructure = 1
 		}
-		victory_points = {
-			4501 3 
+
+		1936.1.1 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender" 
+				}
+				NXM = { transfer_state = PREV }
+				add_core_of = NXM
+				remove_core_of = XSM
+			}
 		}
+
+		1938.10.25 = {
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "Waking the Tiger" 
+					}
+				}
+				CHI = {
+					transfer_state = PREV
+				}
+			}
+		}
+
 	}
-	
-	manpower=3612600 # (12042000 x0.3)
-	buildings_max_level_factor=1.000
-	local_supplies=0.000
-	state_category=town
+	manpower=2000000
+	buildings_max_level_factor=1
+	state_category=wasteland
+	local_supplies=0
 }
