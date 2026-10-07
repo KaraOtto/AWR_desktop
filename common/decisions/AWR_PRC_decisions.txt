@@ -7601,6 +7601,7 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
         remove_effect = {
             custom_effect_tooltip = yan_an_zheng_feng_prog_var_up_15
             add_ideas = PRC_yan_an_zheng_feng_jing_yan
+			remove_ideas = line_struggle0
             remove_ideas = line_struggle1
             remove_ideas = line_struggle2
             remove_ideas = line_struggle3
@@ -19326,7 +19327,7 @@ PRC_economy_cooperation_decision_category = {	#经济合作
 	}
 }
 
-PRC_shanghai_economy_war_category = {	#上海经济战
+PRC_silver_dollar_war_category = {	#银元之战
 
 	debug_silver_dollar_war_start = {	#测试银元之战
 		visible = {
@@ -19336,17 +19337,6 @@ PRC_shanghai_economy_war_category = {	#上海经济战
 		complete_effect = {
 			clr_country_flag = rice_cotton_coal_war_start
 			set_country_flag = silver_dollar_war_start
-		}
-	}
-
-	debug_rice_cotton_coal_war_start = {	#测试米棉之战
-		visible = {
-			is_debug = yes
-		}
-
-		complete_effect = {
-			clr_country_flag = silver_dollar_war_start
-			set_country_flag = rice_cotton_coal_war_start
 		}
 	}
 
@@ -19587,6 +19577,19 @@ PRC_shanghai_economy_war_category = {	#上海经济战
 			subtract_from_variable = {
 				capitalist_assets = PRC_temp_interest
 			}
+		}
+	}
+}
+
+PRC_rice_cotton_coal_war_category = {	#米棉之战
+	debug_rice_cotton_coal_war_start = {	#测试米棉之战
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			clr_country_flag = silver_dollar_war_start
+			set_country_flag = rice_cotton_coal_war_start
 		}
 	}
 
@@ -19896,5 +19899,4 @@ PRC_shanghai_economy_war_category = {	#上海经济战
 			}
 		}
 	}
-
 }

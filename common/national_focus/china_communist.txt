@@ -15,6 +15,30 @@ focus_tree = {
 		x = 10 
 		y = 2000 
 	}
+
+	#Focus Path shortcuts
+
+	shortcut = {
+		name = PRC_trotskyist_shortcut
+		target = PRC_trotskyist_coup
+		scroll_wheel_factor = 0.60
+	}
+	shortcut = {
+		name = PRC_zhang_guotao_shortcut
+		target = PRC_challenge_the_first_red_army_focus
+		scroll_wheel_factor = 0.65
+	}
+	shortcut = {
+		name = PRC_28b_shortcut
+		target = PRC_consolidate_wang_mings_authority_focus
+		scroll_wheel_factor = 0.70
+	}
+	shortcut = {
+		name = PRC_maoist_shortcut
+		target = PRC_route_struggle_focus
+		scroll_wheel_factor = 0.85
+	}
+
 	
 	focus = {#瓦窑堡会议闭幕
 		id = PRC_wayaobaohuiyi_end
@@ -72,18 +96,18 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						owns_state = 1044
+						owns_state = 1162
 					}
 				}
 				OR = {
 					divisions_in_border_state = {
-						state = 622
-						border_state = 1133
+						state = 1090
+						border_state = 1082
 						size > 0
 					}
 					divisions_in_border_state = {
-						state = 1085
-						border_state = 1133
+						state = 622
+						border_state = 1082
 						size > 0
 					}
 				}
@@ -179,7 +203,7 @@ focus_tree = {
 		bypass = {
 			SHX = {
 				NOT = {
-					has_full_control_of_state = 1133
+					has_full_control_of_state = 1082
 				}
 			}
 		}
@@ -207,7 +231,7 @@ focus_tree = {
 			not = { 
 				has_global_flag = CHI_unite_PRC 
 			}
-			controls_state = 1133
+			controls_state = 1082
 			country_exists = SHX
 			NOT = { 
 				is_in_faction_with = SHX 
@@ -221,7 +245,7 @@ focus_tree = {
 					country_exists = SHX 
 				}
 				SHX = { 
-					has_government = root 
+					has_government = ROOT 
 				}
 				is_in_faction_with = SHX
 				has_global_flag = CHI_unite_PRC
@@ -280,10 +304,10 @@ focus_tree = {
 		    EGM = {
 				OR = {
 					NOT = {
-						has_full_control_of_state = 1045 
+						has_full_control_of_state = 1045
 					}
 					NOT = {
-						has_full_control_of_state = 1089
+						has_full_control_of_state = 622
 					}
 					is_in_faction_with = ROOT
 				}
@@ -317,22 +341,22 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						owns_state = 1089
+						owns_state = 622
 					}
 				}				
 				divisions_in_border_state = {
-					state = 1093
-					border_state = 1089
+					state = 1164
+					border_state = 622
 					size > 0
 				}								
 				else_if = {
 					limit = {
 						NOT = {
-							owns_state = 1044
+							owns_state = 1162
 						}
 					}
 					divisions_in_border_state = {
-						state = 1089
+						state = 622
 						border_state = 1045
 						size > 0
 					}
@@ -445,6 +469,10 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = PRC_Red_Army
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
+		}
 		prerequisite = {
 			focus = PRC_chongshensandajilv
 		}
@@ -672,51 +700,26 @@ focus_tree = {
 			unlock_decision_tooltip = PRC_huifuguominjingji_shangye 
 			
         	hidden_effect = {			
-       			716 = {
-            		remove_core_of = XIA
-        		}
-        		1102 = {
-            		remove_core_of = XIA
-        		}
-        		328 = {
-            		remove_core_of = XIA
-        		}
-        		745 = {
-            		remove_core_of = XIA
-        		}
-        		1098 = {
-            		remove_core_of = XIA
-        		}
-				1099 = {
-            		remove_core_of = XIA
-        		}
-       			1097 = {
-            		remove_core_of = XIA
-        		}
-				717 = {
-            		remove_core_of = XIA
-        		}
-	    		1100 = {
-            		remove_core_of = XIA
-        		}
-				714 = {
-            		remove_core_of = XIA
-        		}
-				1103 = {
-            		remove_core_of = XIA
-        		}
-				761 = {
-            		remove_core_of = XIA
-        		}
-        		1101 = {
-            		remove_core_of = XIA
-        		}
-				715 = {
-            		remove_core_of = XIA
-        		}
-				610 = {
-            		remove_core_of = XIA
-        		}
+       			every_state = {
+					limit = {
+						any_of_scopes = {
+							array = global.OTL_china
+						}
+					}
+					remove_core_of = XIA
+					remove_core_of = XSM
+					remove_core_of = NXM
+					remove_core_of = GSM
+					remove_core_of = EGM
+					remove_core_of = YUN
+					remove_core_of = GDC
+					remove_core_of = GXC
+					remove_core_of = SND
+					remove_core_of = HBC
+					remove_core_of = SHX
+					remove_core_of = SUY
+					
+				}
 			}		
 		}
 		available = {
@@ -737,7 +740,7 @@ focus_tree = {
 		}
 
 	}
-	
+	#做到这里
 	focus = {#一五计划
 		id = PRC_Five_year_plans_of_China
 		icon = GFX_focus_PRC_Five_year_plans_of_China
@@ -987,7 +990,7 @@ focus_tree = {
 	}
 
 	focus = {#中国共产党六届六中全会
-		id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		id = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
 		icon = GFX_focus_prc_important_conference
 		cost = 5
 		x = 0
@@ -1029,7 +1032,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			set_global_flag = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus_focus_flag
+			set_global_flag = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus_focus_flag
 			add_political_power = 100
 			swap_ideas = {
 				remove_idea = line_struggle2
@@ -1101,10 +1104,10 @@ focus_tree = {
 		cost = 5
 		x = 0
 		y = 1
-		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		relative_position_id = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
 		
 		prerequisite = {
-			focus = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+			focus = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
 		}
 		ai_will_do = {
 			factor = 10
@@ -1459,7 +1462,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			has_full_control_of_state = 622  #Northern Shensi
+			has_full_control_of_state = 1090  #Northern Shensi
 			XIC = {
 				has_full_control_of_state = 744  #South Shensi
 			}
@@ -2057,7 +2060,7 @@ focus_tree = {
 				CHI = { 
 					has_completed_focus = CHI_Truce_of_the_Civil_War 
 				}
-				1090 = { 
+				1091 = { 
 					is_controlled_by = root 
 				}
 			}
@@ -2491,9 +2494,9 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-                    controls_state = 622
+                    controls_state = 1090
 				}
-				622 = {
+				1090 = {
 					ETH_upgrade_state_category = yes
 					add_building_construction = {
 						type = infrastructure
@@ -2759,7 +2762,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			controls_state = 622
+			controls_state = 1090
 		}
 	}
 	
@@ -3030,7 +3033,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
+			FOCUS_FILTER_ZHANG_GUOTAO
 		}
+		
 		completion_reward = {
 			set_global_flag = PRC_West_road_army_victory_focus_flag			
 			custom_effect_tooltip = always_ban_after_die
@@ -3080,7 +3085,7 @@ focus_tree = {
 					}
 					modify_parliament_seat = yes
 					NXM = {
-						transfer_state = 1044
+						transfer_state = 1162
 					}
 				}
 			}
@@ -3150,6 +3155,9 @@ focus_tree = {
 		}
 		x = 0
 		y = 1
+		search_filters = {
+			FOCUS_FILTER_ZHANG_GUOTAO
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -3207,7 +3215,9 @@ focus_tree = {
 		relative_position_id = PRC_zaicisufan		
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
+			FOCUS_FILTER_ZHANG_GUOTAO
 		}
+		
 		completion_reward = {
 			add_political_power = 120
 			army_experience = 5		
@@ -3362,6 +3372,9 @@ focus_tree = {
 		relative_position_id = PRC_End_of_Long_March
 		ai_will_do = {
 			factor = 1
+		}
+		search_filters = {
+			FOCUS_FILTER_MAOIST
 		}
 		available_if_capitulated = yes
 		completion_reward = {
@@ -3552,6 +3565,9 @@ focus_tree = {
 		relative_position_id = PRC_grand_northwest_alliance_focus
 		x = 1
 		y = 1
+		search_filters = {
+			FOCUS_FILTER_ZHANG_GUOTAO
+		}
 		available_if_capitulated = yes
 		completion_reward = {
 			set_global_flag = PRC_challenge_the_first_red_army_focus_focus_flag
@@ -3653,7 +3669,7 @@ focus_tree = {
 	focus = {#向苏联请求援助
 		id = PRC_request_supply_from_the_soviet_union_focus
 		icon = GFX_focus_PRC_request_supply_from_the_soviet_union_focus
-		cost = 7.15
+		cost = 5
 		prerequisite = {
 			focus = PRC_West_road_army_victory
 		}
@@ -3661,6 +3677,9 @@ focus_tree = {
 		x = -1
 		y = 1
 		available_if_capitulated = yes
+		search_filters = {
+			FOCUS_FILTER_INCOMPETENT_HEAVY_INDUSTRY
+		}
 		completion_reward = {
 			add_political_power = -150
 			
@@ -3669,10 +3688,10 @@ focus_tree = {
 			
 			if = {
 				limit = {
-					has_idea = incompetent_heavy_industry
+					has_idea = incompetent_heavy_industry_1
 				}
 				swap_ideas = {
-					remove_idea = incompetent_heavy_industry
+					remove_idea = incompetent_heavy_industry_1
 					add_idea = incompetent_heavy_industry_2
 				}
 			}
@@ -3765,6 +3784,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		bypass = {
 			has_global_flag = no_nw_alliance_flag
+		}
+		search_filters = {
+			FOCUS_FILTER_ZHANG_GUOTAO
 		}
 		completion_reward = {
 			add_political_power = 100		
@@ -3981,9 +4003,12 @@ focus_tree = {
 		cost = 5
 		x = -3
 		y = 0
-		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		relative_position_id = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
 		prerequisite = {
 			focus = PRC_End_of_Long_March
+		}
+		search_filters = {
+			FOCUS_FILTER_MAOIST
 		}
 		ai_will_do = {
 			factor = 5
@@ -4049,6 +4074,9 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
 		}
+		search_filters = {
+			FOCUS_FILTER_MAOIST
+		}
 		x = 0
 		y = 1
 		relative_position_id = PRC_found_the_military_commission_general_political_department_focus
@@ -4110,7 +4138,9 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
 		}
-
+		search_filters = {
+			FOCUS_FILTER_MAOIST
+		}
 		x = -1
 		y = 2
 		relative_position_id = PRC_found_the_military_commission_general_political_department_focus
@@ -4168,7 +4198,9 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_found_the_military_commission_general_political_department_focus
 		}
-
+		search_filters = {
+			FOCUS_FILTER_MAOIST
+		}
 		x = 1
 		y = 2
 		relative_position_id = PRC_found_the_military_commission_general_political_department_focus
@@ -4235,6 +4267,9 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = PRC_promote_prolonged_warfare_focus
+		}
+		search_filters = {
+			FOCUS_FILTER_MAOIST
 		}
 		x = 0
 		y = 2
@@ -4328,7 +4363,10 @@ focus_tree = {
 		}
 		x = 3
 		y = 0
-		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		relative_position_id = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
+		search_filters = {
+			FOCUS_FILTER_28B
+		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
@@ -4356,6 +4394,9 @@ focus_tree = {
 		id = PRC_expand_changjiang_bureau_focus
 		icon = GFX_focus_prc_changjiang_bureau
 		cost = 10
+		search_filters = {
+			FOCUS_FILTER_28B
+		}
 		prerequisite = {
 			focus = PRC_demand_another_politburo_meeting_focus
 		}
@@ -4424,13 +4465,16 @@ focus_tree = {
 		cost = 3.6
 		x = 7
 		y = 0
-		relative_position_id = PRC_6th_plenary_session_of_the_6th_CPC_central_committee_focus
+		relative_position_id = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
 				date < 1937.11.1
 			}
+		}
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
 		}
 		available_if_capitulated = yes
 		completion_reward = {
@@ -4462,6 +4506,9 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_question_of_chen_duxiu_focus
 		available_if_capitulated = yes
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
+		}
 		completion_reward = {
 			set_global_flag = PRC_minority_faction_focus_focus_flag
 			custom_effect_tooltip = available_political_advisor
@@ -4503,8 +4550,11 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_question_of_chen_duxiu_focus
 		available_if_capitulated = yes
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
+		}
 		completion_reward = {
-		set_global_flag = PRC_majority_faction_focus_focus_flag
+			set_global_flag = PRC_majority_faction_focus_focus_flag
 			set_temp_variable = { 
 				temp_member = 4 
 			}
@@ -4549,6 +4599,9 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_majority_faction_focus
 		available_if_capitulated = yes
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
+		}
 		completion_reward = {
 			add_political_power = 75
 			country_event = {
@@ -4606,6 +4659,9 @@ focus_tree = {
 		}
 		x = -1
 		y = 2
+		search_filters = {
+			FOCUS_FILTER_28B
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -4662,6 +4718,9 @@ focus_tree = {
 		id = PRC_submit_to_comintern_and_the_united_front_focus
 		icon = GFX_focus_submit_to_comintern_and_united_front
 		cost = 10
+		search_filters = {
+			FOCUS_FILTER_28B
+		}
 		prerequisite = {
 			focus = PRC_demand_another_politburo_meeting_focus
 		}
@@ -4708,8 +4767,8 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
-		mutually_exclusive = {
-			focus = PRC_consolidate_wang_mings_authority_focus
+		search_filters = {
+			FOCUS_FILTER_28B
 		}
 		relative_position_id = PRC_submit_to_comintern_and_the_united_front_focus
 		available_if_capitulated = yes
@@ -4849,6 +4908,9 @@ focus_tree = {
 		}
 		x = -2
 		y = 0
+		search_filters = {
+			FOCUS_FILTER_28B
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -5041,6 +5103,9 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = PRC_minority_faction_focus
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -5087,6 +5152,9 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = PRC_cooperate_with_fourth_international_focus
+		search_filters = {
+			FOCUS_FILTER_TROTSKYIST
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -9036,12 +9104,12 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					622 = {
+					1090 = {
 						is_owned_and_controlled_by = ROOT
 						is_fully_controlled_by = ROOT
 					}
 				}
-				622 = { 
+				1090 = { 
 				    add_building_construction = {
 					    type = supply_node
 					    level = 1
@@ -17379,6 +17447,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_INCOMPETENT_HEAVY_INDUSTRY
 		}
 		completion_reward = {
 			add_cic = 750
@@ -17391,22 +17460,7 @@ focus_tree = {
 					add_idea = incompetent_heavy_industry_2
 				} 
 			}
-			if = {
-				limit = {
-					has_idea = incompetent_heavy_industry_2
-				}
-				swap_ideas = {
-					remove_idea = incompetent_heavy_industry_2
-					add_idea = incompetent_heavy_industry_3
-				} 
-			}
-			if = {
-				limit = {
-					has_idea = incompetent_heavy_industry_3
-				}
-				remove_ideas = incompetent_heavy_industry_3
-			}	
-			
+
 			add_dynamic_modifier = {
 				modifier = PRC_gongyehua_dynamic_modifier
 			}
@@ -17468,6 +17522,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_INCOMPETENT_HEAVY_INDUSTRY
 		}
 		completion_reward = {
 			add_cic = 1000
@@ -17516,12 +17571,7 @@ focus_tree = {
 					add_idea = incompetent_heavy_industry_3
 				} 
 			}
-			if = {
-				limit = {
-					has_idea = incompetent_heavy_industry_3
-				}
-				remove_ideas = incompetent_heavy_industry_3
-			}			
+			
 			add_tech_bonus = {
 				name = industry #(取研究类型名开头即可)
 				bonus = 3 #研究加成(1 = +100%)
@@ -17630,10 +17680,7 @@ focus_tree = {
 				any_of_scopes = {
 					array = global.small_china
 					tooltip = small_china_tt
-					#custom_trigger_tooltip = {
-					#	tooltip = is_NOT_controlled_by_jap_or_its_puppet_tt
-						is_controlled_by_jap_or_its_puppet = yes
-					#}
+					is_controlled_by_jap_or_its_puppet = yes
 				}
 			}
 			608 = {
@@ -17661,7 +17708,7 @@ focus_tree = {
 	focus = {#重工业加速发展
 		id = PRC_zhonggongyejiasu
 		icon = GFX_focus_PRC_zhonggongyejiasu
-		cost = 2.15
+		cost = 5
 		prerequisite = {
 			focus = PRC_rejuvenate_heavy_industry
 		}
@@ -17677,6 +17724,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_INCOMPETENT_HEAVY_INDUSTRY
 		}
 		completion_reward = {
 			add_cic = 250
@@ -17775,7 +17823,7 @@ focus_tree = {
 	focus = {#农、轻、重协调发展
 		id = PRC_nongqingzhongbili
 		icon = GFX_focus_PRC_nongqingzhongbili
-		cost = 2.15
+		cost = 10
 		prerequisite = {
 			focus = PRC_rejuvenate_heavy_industry
 		}
@@ -17791,6 +17839,42 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_INCOMPETENT_HEAVY_INDUSTRY
+		}
+		select_effect = {
+			##假意置换民族精神
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_gongyehua_tooltip_original
+					add_idea = PRC_gongyehua_tooltip_original_1
+				}
+			}
+			#真正的动态修正 #
+			add_to_variable = { 
+				PRC_gongyehua_consumer_goods_factor = 0.10 
+			}
+
+			add_to_variable = { 
+				PRC_gongyehua_production_speed_arms_factory_factor = -0.05 
+			}
+			add_to_variable = { 
+				PRC_gongyehua_production_speed_industrial_complex_factor = -0.05 
+			}
+			add_to_variable = { 
+				PRC_gongyehua_production_speed_dockyard_factor = -0.05 
+			}
+			
+			add_to_variable = { 
+				PRC_gongyehua_industrial_capacity_factory = -0.10
+			}
+			add_to_variable = { 
+				PRC_gongyehua_industrial_capacity_dockyard = -0.10
+			}
+
+			add_to_variable = { 
+				PRC_gongyehua_production_factory_max_efficiency_factor = -0.05 
+			}
+
 		}
 		completion_reward = {
 			add_cic = 250
@@ -17807,35 +17891,36 @@ focus_tree = {
 				PRC_gongyehua_production_factory_efficiency_gain_factor = 0.05 
 			}
 			add_to_variable = { 
-				PRC_gongyehua_production_factory_max_efficiency_factor = -0.05 
-			}
-			add_to_variable = { 
-				PRC_gongyehua_consumer_goods_factor = 0.10 
-			}
-			add_to_variable = { 
-				PRC_gongyehua_research_speed_factor = 0.05 
-			}
-			add_to_variable = { 
 				PRC_gongyehua_production_factory_start_efficiency_factor = 0.05 
 			}
 			add_to_variable = { 
 				PRC_gongyehua_line_change_production_efficiency_factor = 0.05 
 			}
+
 			add_to_variable = { 
 				PRC_gongyehua_production_lack_of_resource_penalty_factor = -0.15 
+			}
+			
+			add_to_variable = { 
+				PRC_gongyehua_production_speed_infrastructure_factor = 0.10
+			}
+			add_to_variable = { 
+				PRC_gongyehua_production_speed_arms_factory_factor = 0.05
 			}
 			add_to_variable = { 
 				PRC_gongyehua_production_speed_industrial_complex_factor = 0.10 
 			}
 			add_to_variable = { 
-				PRC_gongyehua_production_speed_arms_factory_factor = -0.05 
+				PRC_gongyehua_production_speed_dockyard_factor = 0.05 
+			}
+
+			add_to_variable = { 
+				PRC_gongyehua_industrial_capacity_factory = 0.15 
 			}
 			add_to_variable = { 
-				PRC_gongyehua_industrial_capacity_factory = 0.05 
+				PRC_gongyehua_industrial_capacity_dockyard = 0.15 
 			}
-			add_to_variable = { 
-				PRC_gongyehua_industrial_capacity_dockyard = 0.05 
-			}
+
 			add_to_variable = { 
 				PRC_gongyehua_conversion_cost_mil_to_civ_factor = -0.15 
 			}
@@ -17845,6 +17930,30 @@ focus_tree = {
 			
 			one_random_industrial_complex = yes
 			one_random_industrial_complex = yes
+			if = {
+				limit = {
+					has_idea = incompetent_heavy_industry_1
+				}
+				swap_ideas = {
+					remove_idea = incompetent_heavy_industry_1
+					add_idea = incompetent_heavy_industry_2
+				} 
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_heavy_industry_2
+				}
+				swap_ideas = {
+					remove_idea = incompetent_heavy_industry_2
+					add_idea = incompetent_heavy_industry_3
+				} 
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_heavy_industry_3
+				}
+				remove_ideas = incompetent_heavy_industry_3
+			}
 		}
 		available = {
 			#

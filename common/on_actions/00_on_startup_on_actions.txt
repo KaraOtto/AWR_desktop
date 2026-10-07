@@ -107,6 +107,9 @@ on_actions = {
 						is_core_of = SIK
 						is_core_of = TIB
 						is_core_of = TAN
+						is_core_of = MEN
+						is_core_of = SND
+						is_core_of = MAN
 					}
 				}
 				add_to_array = {
@@ -124,6 +127,26 @@ on_actions = {
 				}
 				add_to_array = {
 					global.small_china = THIS
+				}
+			}
+		}
+	}
+
+	on_startup = {	#现今中国势力
+		effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = CHI
+						is_core_of = SIK
+						is_core_of = TIB
+						is_core_of = MEN
+						is_core_of = SND
+						is_core_of = MAN
+					}
+				}
+				add_to_array = {
+					global.OTL_china = THIS
 				}
 			}
 		}
@@ -170,6 +193,9 @@ on_actions = {
 					
 				}
 				set_state_flag = Qing_dynasty_territory
+				add_to_array = {
+					global.Qing_dynasty_china = THIS
+				}
 			}
 		}
 	}
