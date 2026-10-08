@@ -1139,6 +1139,83 @@ PRC_personnel_shortage_down = {	#缓解缺乏技术人才
 	}
 }
 
+line_struggle_up = {
+	if = {
+		limit = {
+			NOT = {
+				has_idea = line_struggle0
+				has_idea = line_struggle1
+				has_idea = line_struggle2
+				has_idea = line_struggle3
+			}
+		}
+		add_ideas = line_struggle0
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle0
+		}
+		swap_ideas = {
+			remove_idea = line_struggle0
+			add_idea = line_struggle1
+		}
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle1
+		}
+		swap_ideas = {
+			remove_idea = line_struggle1
+			add_idea = line_struggle2
+		}
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle2
+		}
+		swap_ideas = {
+			remove_idea = line_struggle2
+			add_idea = line_struggle3
+		}
+	}
+}
+
+line_struggle_down = {
+	if = {
+		limit = {
+			has_idea = line_struggle3
+		}
+		swap_ideas = {
+			remove_idea = line_struggle3
+			add_idea = line_struggle2
+		}
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle2
+		}
+		swap_ideas = {
+			remove_idea = line_struggle2
+			add_idea = line_struggle1
+		}
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle1
+		}
+		swap_ideas = {
+			remove_idea = line_struggle1
+			add_idea = line_struggle0
+		}
+	}
+	if = {
+		limit = {
+			has_idea = line_struggle0
+		}
+		remove_ideas = line_struggle0
+	}
+}
+
 #整风运动
 CPC_mao_zheng_feng_clamper = {	
     clamp_variable = {

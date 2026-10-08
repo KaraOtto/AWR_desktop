@@ -740,7 +740,7 @@ focus_tree = {
 		}
 
 	}
-	#做到这里
+
 	focus = {#一五计划
 		id = PRC_Five_year_plans_of_China
 		icon = GFX_focus_PRC_Five_year_plans_of_China
@@ -791,7 +791,7 @@ focus_tree = {
 
 				else = {
 					add_timed_idea = {
-						idea = PRC_Five_year_plans_of_China_high
+						idea = PRC_Five_year_plans_of_China
 						days = 1800
 					}
 					add_tech_bonus = {
@@ -810,124 +810,7 @@ focus_tree = {
 					}
 				}
 			}
-			 
 			
-			IF = {
-				limit = {
-					has_dlc = "Arms Against Tyranny"
-					has_global_flag = be_high
-					PRC = {
-						is_ai = no
-					}
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_shenyang_tank_manufacturer
-				mio:PRC_shenyang_tank_manufacturer = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_harbin_tank_manufacturer
-				mio:PRC_harbin_tank_manufacturer = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_xian_tank_manufacturer
-				mio:PRC_xian_tank_manufacturer = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_South_Industry
-				mio:PRC_South_Industry = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_North_Heavy_Industry
-				mio:PRC_North_Heavy_Industry = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_First_Motor
-				mio:PRC_First_Motor = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_North_Industry
-				mio:PRC_North_Industry = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_Six_two_six
-				mio:PRC_Six_two_six = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_Shenyang_Aircraft
-				mio:PRC_Shenyang_Aircraft = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_Chengdu_Aircraft
-				mio:PRC_Chengdu_Aircraft = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_xian_air
-				mio:PRC_xian_air = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_Shanghai_Aircraft
-				mio:PRC_Shanghai_Aircraft = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_jiangnan_shipyard_group
-				mio:PRC_jiangnan_shipyard_group = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_bohai_shipyard_group
-				mio:PRC_bohai_shipyard_group = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_dalian_shipyard_group
-				mio:PRC_dalian_shipyard_group = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_State_Shipbuilding
-				mio:PRC_State_Shipbuilding = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = PRC_LiaoNan_Shipbuilding
-				mio:PRC_LiaoNan_Shipbuilding = {
-					add_mio_size = 5
-					add_mio_funds = 2000
-				}
-				custom_effect_tooltip = available_mio_tt
-			}
 			unlock_decision_category_tooltip = PRC_military_industrial_organization
 			
 		}
@@ -964,10 +847,7 @@ focus_tree = {
 		completion_reward = {
 			set_global_flag = PRC_End_of_Long_March_focus_flag
 			add_political_power = 100
-			swap_ideas = {
-				remove_idea = line_struggle1
-				add_idea = line_struggle2
-			}
+			
 			country_event = {
 				id = AWR_PRC.14
 			}
@@ -1034,10 +914,7 @@ focus_tree = {
 		completion_reward = {
 			set_global_flag = PRC_sixth_plenary_session_of_the_sixth_CPC_central_committee_focus_focus_flag
 			add_political_power = 100
-			swap_ideas = {
-				remove_idea = line_struggle2
-				add_idea = line_struggle3
-			}
+			line_struggle_down = yes
 			if = {
 				limit = {
 					has_global_flag = wang_jiaxiang_return_from_soviet
@@ -1126,7 +1003,7 @@ focus_tree = {
 		completion_reward = {
 			set_global_flag = PRC_enlarged_central_politburo_conference_focus_focus_flag
 			add_political_power = 125
-			remove_ideas = line_struggle3
+			line_struggle_down = yes
 			country_event = {
 				id = AWR_PRC.24
 			}
@@ -1152,6 +1029,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
+			line_struggle_down = yes
 			country_event = {
 				id = AWR_PRC.104
 			}
@@ -1272,7 +1150,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = PRC_kaizhonggongqida #"当选择此项时，召开为期§Y50§!天的§G中国共产党第七次全国代表大会§!"
 			custom_effect_tooltip = PRC_timeaxis_98_tooltip #"§C这次大注定会作为“团结的大会、胜利的大会”而载入史册§!"
-			
+			line_struggle_down = yes
 			#论联合政府
 			if = {
 				limit = { 
@@ -1464,7 +1342,7 @@ focus_tree = {
 		available = {
 			has_full_control_of_state = 1090  #Northern Shensi
 			XIC = {
-				has_full_control_of_state = 744  #South Shensi
+				has_full_control_of_state = 1091  #South Shensi
 			}
 		}
 		bypass = {
@@ -2046,13 +1924,13 @@ focus_tree = {
 			}
 			custom_effect_tooltip = PRC_jinzhuyanan_tt
 			hidden_effect = {
-		    if = {
-				limit = { 
-					is_ai = no 
-				}			
-				play_song = "nea_yanansong"	
-			}				
-		}			
+				if = {
+					limit = { 
+						is_ai = no 
+					}			
+					play_song = "nea_yanansong"	
+				}				
+			}			
 		}
 		available = {
 			OR = {
@@ -2061,7 +1939,7 @@ focus_tree = {
 					has_completed_focus = CHI_Truce_of_the_Civil_War 
 				}
 				1091 = { 
-					is_controlled_by = root 
+					is_controlled_by = ROOT 
 				}
 			}
 		}
@@ -2219,6 +2097,10 @@ focus_tree = {
 
 		cost = 4
 
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+
 		ai_will_do = {
 			factor = 1
 		}
@@ -2280,6 +2162,7 @@ focus_tree = {
 					id = PRC_zhang_guotao.1
 				}
 			}
+			line_struggle_down = yes
 		}
 	}
 		
@@ -2424,9 +2307,9 @@ focus_tree = {
 			custom_effect_tooltip = improve_huanghe_yanxian
 			if = {
 				limit = {
-                    controls_state = 744
+                    controls_state = 1091
 				}
-				744 = {
+				1091 = {
 					add_building_construction = {
 						type = dam
 						level = 1
@@ -4379,6 +4262,7 @@ focus_tree = {
 			country_event = {
 				id = AWR_PRC.103
 			}
+			line_struggle_up = yes
 		}
 		available = {
 			has_idea = changjiang_bureau
@@ -4408,6 +4292,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			line_struggle_up = yes
 			swap_ideas = {
 				add_idea = xingxingzhihuo_keyiliaoyuan_2
 				remove_idea = xingxingzhihuo_keyiliaoyuan
@@ -4478,6 +4363,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			line_struggle_up = yes
 			add_political_power = 25
 			PRC = {
 				country_event = {
@@ -4668,6 +4554,7 @@ focus_tree = {
 		relative_position_id = PRC_demand_another_politburo_meeting_focus
 		available_if_capitulated = yes
 		completion_reward = {
+			line_struggle_down = yes
 		    if = {
 				limit = {
 					leader_is_zhang_guotao = no
@@ -4773,6 +4660,7 @@ focus_tree = {
 		relative_position_id = PRC_submit_to_comintern_and_the_united_front_focus
 		available_if_capitulated = yes
 		completion_reward = {
+
 			custom_effect_tooltip = zhengzhiju_gui_will_change
 			country_event = {
 				id = AWR_PRC.87
@@ -4845,6 +4733,12 @@ focus_tree = {
 						dangdelilunxuanchuanjia
 					}
 				}
+			}
+			remove_ideas = {
+				line_struggle0
+				line_struggle1
+				line_struggle2
+				line_struggle3
 			}
 		}
 		available = { #guo
@@ -4969,6 +4863,12 @@ focus_tree = {
 					}
 				}
 			}
+			remove_ideas = {
+				line_struggle0
+				line_struggle1
+				line_struggle2
+				line_struggle3
+			}
 		}
 		available = {
 		    SOV = { 
@@ -5014,7 +4914,7 @@ focus_tree = {
 		}
 	}
 	
-	focus = {#共和制
+	focus = {#中央集权制
 		id = PRC_Republican
 		icon = GFX_focus_PRC_Republican
 		cost = 5
@@ -5195,6 +5095,12 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			remove_ideas = {
+				line_struggle0
+				line_struggle1
+				line_struggle2
+				line_struggle3
+			}
 			random_other_country = {
 				limit = { 
 					has_country_leader = { 
@@ -10287,7 +10193,6 @@ focus_tree = {
 		}
 		available = {
 			has_completed_focus = PRC_Five_year_plans_of_China
-			has_global_flag = establish_PRC_shenyang_tank_manufacturer
 			has_global_flag = establish_PRC_harbin_tank_manufacturer
 			has_global_flag = establish_PRC_xian_tank_manufacturer
 			has_global_flag = establish_PRC_South_Industry
@@ -14261,7 +14166,6 @@ focus_tree = {
 		}
 		available = {
 			has_completed_focus = PRC_Five_year_plans_of_China
-			has_global_flag = establish_PRC_shenyang_tank_manufacturer
 			has_global_flag = establish_PRC_harbin_tank_manufacturer
 			has_global_flag = establish_PRC_xian_tank_manufacturer
 			has_global_flag = establish_PRC_South_Industry
