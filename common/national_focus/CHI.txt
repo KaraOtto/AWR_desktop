@@ -253,78 +253,13 @@ focus_tree = {
 			
 			focus = CHI_National_Defense_Council_focus
 		}
-		
 		x = 3
 		y = 2
+
 		ai_will_do = {
 			factor = 0
 		}
-		#will_lead_to_war_with = PRC
-		# will_lead_to_war_with = GDC
-		# will_lead_to_war_with = GXC
-		# will_lead_to_war_with = SIC
-		# will_lead_to_war_with = SHX
-		# will_lead_to_war_with = XSM
-		# will_lead_to_war_with = NXM
-		# will_lead_to_war_with = GSM
-		# will_lead_to_war_with = EGM
-		# will_lead_to_war_with = SHC
-		# will_lead_to_war_with = XIK
-		# will_lead_to_war_with = YUN
-		# will_lead_to_war_with = HMI
-		# will_lead_to_war_with = TNG
-		# will_lead_to_war_with = KHR
-		# will_lead_to_war_with = XIA
-		# will_lead_to_war_with = KRS
-		# will_lead_to_war_with = ATM 
-		# will_lead_to_war_with = SUY
 		
-		# completion_reward = {
-		# 	#custom_effect_tooltip = declare_war_on_all_warlords_tt
-		# 	every_other_country = {
-		# 		limit = {
-		# 			#is_warlord = yes
-		# 			is_non_sik_warlord = yes
-		# 			is_subject = no
-		# 			#NOT = {
-		# 			#	has_war_with = SIK
-		# 			#}
-		# 		}
-		# 		country_event = {
-		# 			id = wtt_china.1
-		# 		}
-		# 	}
-		# 	unlock_decision_category_tooltip = CHI_integrate_the_warlords
-		# 	hidden_effect = {
-		# 		set_country_flag = CHI_subjugate_warlords_flag
-		# 		if = {
-		# 			limit = {
-		# 				NOT = {
-		# 					HBC = {
-		# 						has_war_with = JAP
-		# 					}
-		# 				}
-		# 			}
-		# 			HBC = {
-		# 				country_event = {
-		# 					id = hpc.2
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# }
-		# available = {
-		# 	any_other_country = {
-		# 		exists = yes
-		# 		is_non_sik_warlord = yes
-		# 		#is_warlord = yes
-		# 	}
-		# 	is_in_faction = no
-		# 	NOT = {
-		# 		has_global_flag = CHI_unite_PRC
-		# 		#country_exists = PRC
-		# 	}
-		# }
 		completion_reward = {
 
 		}
@@ -4410,910 +4345,6 @@ focus_tree = {
 		}
 	}
 	
-	focus = {#国策0101改革军事学校
-		id = CHI_reform_military_academy
-		icon = GFX_focus_chi_whampoa_military_academy
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		x = 62
-		y = 1
-		
-		completion_reward = {
-			army_experience = 25
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		    add_ideas = CHI_whampoa_military_academy
-			custom_effect_tooltip = available_chief_of_army			
-			show_ideas_tooltip = CHI_chen_cheng			
-		}
-		available = {
-			is_subject = no
-		}
-	}
-	focus = {#国策0101黄埔步枪
-		id = CHI_whampoa_rifle
-		icon = GFX_focus_chi_whampoa_military_academy
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_reform_military_academy
-		}
-		x = 61
-		y = 2
-		
-		completion_reward = {
-		swap_ideas = {
-		remove_idea = chi_whampoa_military_academy	
-		add_idea = chi_huangpujunhun
-		}		
-			add_tech_bonus = {
-				name = infantry_equipment
-				bonus = 1
-				uses = 2
-				category = infantry_weapons
-			}
-		}
-		available = {
-			is_subject = no
-		}
-	}
-	focus = {#国策0101优化装备生产
-		id = CHI_increase_equipment_production_focus
-		icon = GFX_focus_chi_whampoa_military_academy
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_reform_military_academy
-		}
-		x = 63
-		y = 2
-		ai_will_do = {
-			factor = 10
-		}
-		#
-		completion_reward = {
-			add_ideas = CHI_optimized_equipment_production_idea
-		}
-		available = {
-		}
-		bypass = {
-		}
-	}
-	focus = {#国策0101后勤改革
-		id = CHI_logistical_reform_focus
-		icon = GFX_focus_chi_whampoa_military_academy
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_increase_equipment_production_focus
-		}
-		prerequisite = {
-			focus = CHI_whampoa_rifle
-		}
-		x = 62
-		y = 3
-		ai_will_do = {
-			factor = 10
-		}
-		#
-		completion_reward = {
-			add_ideas = CHI_reformed_logistics
-		}
-		available = {
-		}
-		bypass = {
-		}
-	}
-	focus = {#国策0101研究外国坦克设计
-		id = CHI_learn_foreign_tank_design_focus
-		icon = GFX_focus_chi_whampoa_military_academy
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_logistical_reform_focus
-		}
-		x = 62
-		y = 5
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			add_breakthrough_progress = {
-				specialization = specialization_land
-				value = 3
-			}
-			learn_tank_designs = yes
-		}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = already_learned_armor_design
-				NOT = {
-					has_idea = no_proper_equipment_design_armor_naval_air
-					has_idea = no_proper_equipment_design_armor_air
-					has_idea = no_proper_equipment_design_armor_naval
-					has_idea = no_proper_equipment_design_armor
-				}
-			}
-		}
-	}
-	focus = {#国策0101重视装甲部队
-		id = CHI_china_first_tank_focus
-		icon = GFX_focus_generic_tank_production
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_learn_foreign_tank_design_focus
-		}
-		x = 62
-		y = 6
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = armor_bonus
-				bonus = 1
-				uses = 2
-				category = armor
-			}
-			show_ideas_tooltip = jiang_weiguo		
-            add_ideas = chi_zhuangjiabudui				
-		}
-		available = {
-		}
-		bypass = {
-		}
-	}
-	focus = {#国策0101重组陆军
-		id = CHI_army_reorganisation_focus
-		icon = GFX_CHI_Chinese_National_Army
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_ARMY_XP
-		}
-		prerequisite = {
-			focus = CHI_logistical_reform_focus
-		}
-		x = 63
-		y = 4
-		ai_will_do = {
-			factor = 10
-		}
-		available = {
-			has_idea = military_unable_to_organize_4
-		}
-		completion_reward = { 
-			swap_ideas = {
-				remove_idea = military_unable_to_organize_4
-				add_idea = military_unable_to_organize_5
-			}
-		}
-	}
-	focus = {#国策0101研究外国飞机设计
-		id = CHI_study_foreign_air_focus
-		icon = GFX_goal_generic_air_fighter
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		x = 65
-		y = 1
-		
-		completion_reward = {
-				add_breakthrough_progress = {
-					specialization = specialization_air
-					value = 3
-				}
-			learn_air_designs = yes		
-		}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = already_learned_air_design
-				NOT = {
-					has_idea = no_proper_equipment_design_armor_naval_air
-					has_idea = no_proper_equipment_design_naval_air
-					has_idea = no_proper_equipment_design_armor_air
-					has_idea = no_proper_equipment_design_air
-				}
-			}
-		}
-	}
-	focus = {#国策0101扩建空军基地
-		id = CHI_air_bases_expansion_focus
-		icon = GFX_goal_generic_air_fighter
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		prerequisite = {
-			focus = CHI_study_foreign_air_focus
-		}
-		x = 65
-		y = 2
-		ai_will_do = {
-			factor = 10
-		}
-		#
-		
-		completion_reward = {
-			unlock_decision_tooltip = CHI_air_reform_redux_0
-			air_experience = 25
-			if = {
-				limit = {
-					613 = {
-						NOT = {
-							free_building_slots = {
-								building = air_base
-								size > 1
-							}
-						}
-					}
-				}
-				random_owned_state = {
-					if = {
-						limit = {
-							free_building_slots = {
-								building = air_base
-								size > 1
-							}
-						}
-						add_building_construction = {
-							type = air_base
-							level = 2
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					613 = {
-						free_building_slots = {
-							building = air_base
-							size > 1
-						}
-					}
-				}
-				613 = {
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			random_owned_state = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = air_base
-							size > 1
-						}
-					}
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			random_owned_state = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = air_base
-							size > 1
-						}
-					}
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = air_doctrine
-			}
-		}
-	}
-	focus = {#国策0101重视陆上支援
-		id = CHI_land_focus
-		icon = GFX_goal_generic_air_fighter
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		prerequisite = {
-			focus = CHI_air_bases_expansion_focus
-		}
-		# mutually_exclusive = {
-		# 	focus = CHI_coast_focus
-		# }
-		x = 64
-		y = 3
-		#
-		completion_reward = {
-			add_ideas = CHI_land_focus_idea
-		}
-	}
-	focus = {#国策0101重视海军航空兵
-		id = CHI_coast_focus
-		icon = GFX_goal_generic_air_naval_bomber
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		prerequisite = {
-			focus = CHI_air_bases_expansion_focus
-		}
-		# mutually_exclusive = {
-		# 	focus = CHI_land_focus
-		# }
-		x = 66
-		y = 3
-		
-		completion_reward = {
-			add_ideas = CHI_coast_focus_idea
-		}
-	}
-	focus = {#国策0101重组空军
-		id = CHI_reorganization_of_the_air_force_focus
-		icon = GFX_CHI_Chinese_National_Air_Force
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_AIR_XP
-		}
-		prerequisite = {
-			focus = CHI_land_focus
-			focus = CHI_coast_focus
-		}
-		x = 65
-		y = 4
-		ai_will_do = {
-			factor = 10
-		}
-		available = {
-			has_idea = air_power_start_from_guangzhou_3
-		}
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = air_power_start_from_guangzhou_3
-				add_idea = air_power_start_from_guangzhou_4
-			}
-			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = CHI_wang_shuming
-		}
-	}
-	focus = {#国策0101研究外国舰艇设计
-		id = CHI_study_foreign_ship
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		x = 68
-		y = 1
-		
-		completion_reward = {
-			add_breakthrough_progress = {
-				specialization = specialization_naval
-				value = 3
-			}
-			learn_naval_designs = yes
-		}
-		bypass = {
-			custom_trigger_tooltip = {
-				tooltip = already_learned_naval_design
-				NOT = {
-					has_idea = no_proper_equipment_design_armor_naval_air
-					has_idea = no_proper_equipment_design_naval_air
-					has_idea = no_proper_equipment_design_armor_naval
-					has_idea = no_proper_equipment_design_naval
-				}
-			}
-		}
-	}
-	focus = {#国策0101海军扩张
-		id = CHI_naval_expansion_focus
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_study_foreign_ship
-		}
-		x = 67
-		y = 2
-		ai_will_do = {
-			factor = 10
-		}
-		available = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							is_controlled_by = ROOT
-							is_coastal = yes
-						}
-					}
-				}
-				any_owned_state = {
-					is_controlled_by = ROOT
-					is_coastal = yes
-				}
-			}
-		}
-		#
-		
-		completion_reward = {
-			navy_experience = 25
-			two_random_dockyards = yes
-			two_random_dockyards = yes
-			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.5
-				uses = 2
-				category = naval_doctrine
-			}
-		}
-	}
-	focus = {#国策0101扩建江南造船厂
-		id = CHI_expand_Kiangnan_shipyard
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 7.15
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_study_foreign_ship
-		}
-		x = 69
-		y = 2
-		#
-		completion_reward = {
-			613 = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = dockyard
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			596 = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = dockyard
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			#if = {
-			#	limit = {
-			#		amount_taken_ideas = {
-			#		    amount < 2
-			#		    slots = {
-			#		        naval_manufacturer
-			#		    }
-			#		}
-			#	}
-			#	add_ideas = kiangnan_shipyard_group
-			#}
-			hidden_effect = {
-				news_event = {
-					days = 3
-					id = news.5018
-				}
-			}
-		}
-		available = {
-			613 = {
-				is_controlled_by = CHI
-			}
-			596 = {
-				is_controlled_by = CHI
-			}
-		}
-	}
-	focus = {#国策0101制霸太平洋
-		id = CHI_pacific_fleet
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_naval_expansion_focus
-		}
-		prerequisite = {
-			focus = CHI_expand_Kiangnan_shipyard
-		}
-		x = 68
-		y = 3
-		available = {
-			num_of_naval_factories > 15
-		}
-		
-		completion_reward = {
-			unlock_decision_tooltip = CHI_navy_reform_redux_0
-			navy_experience = 25
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 0.25
-				uses = 4
-				category = naval_equipment
-			}
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 0.5
-				uses = 1
-				category = naval_mines
-			}
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 0.5
-				uses = 1
-				category = asw_tech
-			}
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 0.5
-				uses = 1
-				category = marine_tech
-			}
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 0.5
-				uses = 1
-				category = naval_bomber
-			}
-		}
-	}
-	focus = {#国策1010重庆谈判
-		id = CHI_Chungking_Negotiations_focus
-		icon = GFX_focus_generic_china1
-		cost = 1
-		prerequisite = {
-			focus = CHI_Second_United_Front_focus
-		}
-		x = 14
-		y = 2
-		ai_will_do = {
-			factor = 1000
-		}
-		
-		
-		available = {
-			is_legit_china = yes
-			NOT = {
-			has_war_with = JAP
-		    }			
-			OR = {
-			    has_global_flag = CHI_no_longer_united_flag
-				JAP = {
-					is_subject_of = ROOT
-				}
-				JAP = {
-					is_subject_of = PRC
-				}				
-				JAP = {
-					exists = no
-				}
-			}
-			#has_completed_focus = CHI_Second_United_Front_focus
-			event_target:WTT_communist_china = {
-				exists = yes
-				NOT = {
-					OR = {
-						has_war_with = ROOT
-						#focus_progress = {#
-							#focus = PRC_War_of_Liberation
-							#progress > 0
-					    #}
-					}
-				}
-			}
-			605 = {
-                controller = {
-					NOT = {
-						has_war_with = ROOT
-					}
-				}
-			}
-		}
-		completion_reward = {
-			event_target:WTT_communist_china = {
-				country_event = {
-					id = ccw.118 hours = 6
-				}
-			}
-			custom_effect_tooltip = if_approved_tt
-		}
-		bypass = {
-		OR = {
-		PRC = {
-		has_completed_focus = PRC_War_of_Liberation
-		}		
-        NOT = { country_exists = PRC } 
-		has_global_flag = roc_in_taiwan_flag
-			}
-		}
-	}	
-	focus = {#国策0101重组海军
-		id = CHI_navy_reorganization
-		icon = GFX_CHI_Chinese_National_Navy
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_pacific_fleet
-		}
-		x = 67
-		y = 4
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = navy_power_start_from_fujian_2
-				add_idea = navy_power_start_from_fujian_32
-			}
-			add_ideas = CHI_navy_reorganized
-			custom_effect_tooltip = available_chief_of_navy
-			show_ideas_tooltip = CHI_gui_yongqing
-		}
-		available = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							is_controlled_by = ROOT
-							is_coastal = yes
-						}
-					}
-				}
-				any_owned_state = {
-					is_controlled_by = ROOT
-					is_coastal = yes
-				}
-			}
-		}
-	}
-	focus = {#国策0101中国特种部队
-		id = CHI_chinese_special_force
-		icon = GFX_goal_generic_special_forces
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = {
-			focus = CHI_army_reorganisation_focus
-		}
-		prerequisite = {
-			focus = CHI_reorganization_of_the_air_force_focus
-		}
-		prerequisite = {
-			focus = CHI_navy_reorganization
-		}
-		x = 65
-		y = 5
-		available = {
-			has_idea = CHI_army_corruption_3
-		}
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			
-			
-			army_experience = 150
-			navy_experience = 150
-			air_experience = 150
-			add_tech_bonus = {
-				name = special_bonus
-				bonus = 1
-				uses = 6
-				technology = paratroopers
-				technology = paratroopers2
-				technology = tech_mountaineers
-				technology = tech_mountaineers2
-				technology = tech_engineers
-				technology = tech_engineers2
-				technology = tech_engineers3
-				technology = tech_recon
-				technology = tech_recon2
-				technology = tech_recon3
-			}
-			custom_effect_tooltip = available_military_high_command
-			show_ideas_tooltip = CHI_liang_xuzhao
-		}
-	}
-	focus = {#国策0101重视潜艇部队
-		id = CHI_chinese_submarine_focus
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_pacific_fleet
-		}
-		x = 68
-		y = 5
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = USA_fleet_submarines
-				bonus = 1.0
-				uses = 1
-				category = submarine_doctrine
-			}
-			add_tech_bonus = {
-				name = USA_fleet_submarines
-				bonus = 1.0
-				uses = 2
-				category = ss_tech
-			}
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				set_technology = { cruiser_submarines = 1 }
-			}
-		}
-		available = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							is_controlled_by = ROOT
-							is_coastal = yes
-						}
-					}
-				}
-				any_owned_state = {
-					is_controlled_by = ROOT
-					is_coastal = yes
-				}
-			}
-		}
-	}
-	focus = {#国策0101建造航母
-		id = CHI_carrier_construction_focus
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_chinese_submarine_focus
-		}
-		x = 68
-		y = 6
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 1
-				uses = 1
-				category = naval_air
-			}
-			add_tech_bonus = {
-				name = navy_bonus
-				bonus = 1
-				uses = 1
-				category = cv_tech
-			}
-			add_ideas = CHI_carrier_construction_idea
-		}
-		available = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							is_controlled_by = ROOT
-							is_coastal = yes
-						}
-					}
-				}
-				any_owned_state = {
-					is_controlled_by = ROOT
-					is_coastal = yes
-				}
-			}
-		}
-		
-	}
-	focus = {#国策0101建造核潜艇
-		id = CHI_chinese_nuclear_submarine_focus
-		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10.00
-		search_filters = {
-			FOCUS_FILTER_NAVY_XP
-		}
-		prerequisite = {
-			focus = CHI_chinese_submarine_focus
-			
-		}
-		
-		x = 70
-		y = 6
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			add_design_template_bonus = {
-					name = sp_naval_nuclear_submarine_free_design
-					uses = 1
-					cost_factor = 1
-					equipment = ship_hull_nuclear_submarine
-			}
-		# enable_equipments = { # 这一段我也不清楚具体的效果该怎么写
-		# 	limit = { has_dlc = "Man the Guns"}
-		# 	ship_hull_nuclear_submarine
-		# }
-		# enable_equipments = {
-		# 	limit = { 
-		# 		not = { has_dlc = "Man the Guns" }
-		# 	}
-		# 	nuclear_submarine
-		# }
-		
-		}
-		available = {
-			custom_trigger_tooltip = {#科学家已回国
-				tooltip = Kexuejia_Yijinghuigui
-			}
-			has_country_flag = Kexuejia_Yijinghuigui
-		}
-	}
-	
 	focus = {#国策1111团结并且做好准备
 		id = united_and_ready
 		icon = GFX_focus_generic_china1
@@ -8486,7 +7517,7 @@ focus = {
 
 	focus = {
 		id = CHI_unified_purchase_and_sale #统购统销
-		icon = 1
+		icon = GFX_focus_generic_monetary_union
 		cost = 5
 		x = 0
 		y = 1
@@ -8616,7 +7647,7 @@ focus = {
 
 	focus = {
 		id = CHI_national_reconstruction_commission #技官建委
-		icon = 1
+		icon = GFX_focus_generic_industrial_experts
 		cost = 5
 		x = -2
 		y = 1
@@ -8636,7 +7667,7 @@ focus = {
 
 	focus = {
 		id = CHI_urban_planning #城市规划
-		icon = 1
+		icon = GFX_focus_generic_military_industry
 		cost = 5
 		x = 0
 		y = 1
@@ -8716,7 +7747,7 @@ focus = {
 
 	focus = {
 		id = CHI_arsenal_expansion #兵工厂扩建
-		icon = 1
+		icon = GFX_focus_generic_combined_arms
 		cost = 5
 		x = 0
 		y = 1
@@ -8806,7 +7837,7 @@ focus = {
 		id = CHI_reorganize_nra
 		icon = GFX_focus_NRA
 		cost = 3
-		x = 85
+		x = 76
 		y = 0
 
 		ai_will_do = {
@@ -8850,7 +7881,7 @@ focus = {
 
 	focus = {	#步兵整训方案
 		id = CHI_infantry_training_plan 
-		icon = 1
+		icon = GFX_focus_CHI_enforce_virtues
 		cost = 5
 		x = -1
 		y = 1
@@ -8861,6 +7892,13 @@ focus = {
 
 		ai_will_do = {
 			factor = 50
+		}
+
+		available = {
+			OR = {
+				NOT = { has_completed_focus = CHI_armored_forces_preparatory_office }
+				has_completed_focus = CHI_armored_division
+			}
 		}
 
 		search_filters = {
@@ -8874,7 +7912,7 @@ focus = {
 
 	focus = {
 		id = CHI_division_area_system #师管区体系
-		icon = 1
+		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
 		x = -3
 		y = 1
@@ -8896,7 +7934,7 @@ focus = {
 
 	focus = {
 		id = CHI_infantry_support_weapons #步兵支援武器
-		icon = 1
+		icon = GFX_goal_generic_small_arms
 		cost = 5
 		x = -1
 		y = 1
@@ -8918,7 +7956,7 @@ focus = {
 
 	focus = {
 		id = CHI_artillery_technical_research_department #炮兵技术研究处
-		icon = 1
+		icon = GFX_focus_SMB_mountain_guns
 		cost = 5
 		x = 1
 		y = 1
@@ -8940,7 +7978,7 @@ focus = {
 
 	focus = {
 		id = CHI_logistics_supply_system #后勤补给体系
-		icon = 1
+		icon = GFX_focus_generic_supply_line
 		cost = 5
 		x = -1
 		y = 1
@@ -8963,7 +8001,7 @@ focus = {
 
 	focus = {
 		id = CHI_armored_forces_preparatory_office #装甲兵筹备处
-		icon = 1
+		icon = GFX_focus_generic_tank_assembly
 		cost = 5
 		x = 1
 		y = 1
@@ -8976,6 +8014,13 @@ focus = {
 			factor = 50
 		}
 
+		available = {
+			OR = {
+				NOT = { has_completed_focus = CHI_infantry_training_plan }
+				has_completed_focus = CHI_logistics_supply_system
+			}
+		}
+
 		search_filters = {
 			FOCUS_FILTER_ARMY_XP
 		}
@@ -8985,7 +8030,7 @@ focus = {
 
 	focus = {
 		id = CHI_mechanization_school #机械化学校
-		icon = 1
+		icon = GFX_goal_generic_army_tanks
 		cost = 5
 		x = 3
 		y = 1
@@ -9007,7 +8052,7 @@ focus = {
 
 	focus = {
 		id = CHI_armored_group_organization #装甲兵团编成
-		icon = 1
+		icon = GFX_focus_generic_heavy_tank
 		cost = 5
 		x = -1
 		y = 1
@@ -9029,7 +8074,7 @@ focus = {
 
 	focus = {
 		id = CHI_independent_armored_brigade #独立装甲旅
-		icon = 1
+		icon = GFX_focus_generic_tank_assault
 		cost = 5
 		x = 1
 		y = 1
@@ -9051,7 +8096,7 @@ focus = {
 
 	focus = {
 		id = CHI_armored_division #装甲师
-		icon = 1
+		icon = GFX_focus_CHI_200th_division
 		cost = 5
 		x = -1
 		y = 1
@@ -9074,7 +8119,7 @@ focus = {
 
 	focus = {
 		id = CHI_ministry_of_operations #军令部
-		icon = 1
+		icon = GFX_goal_generic_position_armies
 		cost = 5
 		x = 0
 		y = 1
@@ -9097,7 +8142,7 @@ focus = {
 
 	focus = {
 		id = CHI_ministry_of_military_administration #军政部
-		icon = 1
+		icon = GFX_focus_CHI_political_advisors_in_every_division
 		cost = 5
 		x = 0
 		y = 1
@@ -9120,7 +8165,7 @@ focus = {
 
 	focus = {
 		id = CHI_political_department #政治部
-		icon = 1
+		icon = GFX_focus_generic_full_social_mobilization
 		cost = 5
 		x = 1
 		y = 1
@@ -9143,7 +8188,7 @@ focus = {
 
 	focus = {
 		id = CHI_ministry_of_military_training #军训部
-		icon = 1
+		icon = GFX_focus_generic_little_entente
 		cost = 5
 		x = -2
 		y = 1
@@ -9165,7 +8210,7 @@ focus = {
 
 	focus = {
 		id = CHI_army_university #陆军大学
-		icon = 1
+		icon = GFX_focus_CHI_revise_the_national_curriculum
 		cost = 5
 		x = 0
 		y = 1
@@ -9187,7 +8232,7 @@ focus = {
 
 	focus = {
 		id = CHI_medical_service_department #卫生勤务部
-		icon = 1
+		icon = GFX_focus_generic_reinforcing_the_supply_network
 		cost = 5
 		x = 2
 		y = 1
@@ -9209,15 +8254,60 @@ focus = {
 
 	focus = {
 		id = CHI_independent_brigade_of_the_revenue_police_general_corps #税警总团独立旅
-		icon = 1
+		icon = GFX_focus_GER_gebirgsjager
 		cost = 5
 		x = -1
-		y = 2
+		y = 1
 		relative_position_id = CHI_army_university
 		prerequisite = {
 			focus = CHI_ministry_of_military_training
 			focus = CHI_army_university
 			focus = CHI_medical_service_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_combat_vehicle #战争机车
+		icon = GFX_focus_GER_kriegslokomotive
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_independent_brigade_of_the_revenue_police_general_corps
+		prerequisite = {
+			focus = CHI_independent_brigade_of_the_revenue_police_general_corps
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_marching_toward_mechanization #迈向机械化
+		icon = GFX_focus_generic_mechanized
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_independent_brigade_of_the_revenue_police_general_corps
+		prerequisite = {
+			focus = CHI_independent_brigade_of_the_revenue_police_general_corps
+			focus = CHI_organization_of_the_special_detachment
 		}
 
 		ai_will_do = {
@@ -9233,10 +8323,10 @@ focus = {
 
 	focus = {
 		id = CHI_organization_of_the_special_detachment #别动队编组
-		icon = 1
+		icon = GFX_focus_CHL_departemento_de_las_tropas_nacistas_de_asalto
 		cost = 5
 		x = 1
-		y = 2
+		y = 1
 		relative_position_id = CHI_army_university
 		prerequisite = {
 			focus = CHI_ministry_of_military_training
@@ -9256,15 +8346,38 @@ focus = {
 	}
 
 	focus = {
-		id = CHI_army_modernization #陆军现代化
-		icon = 1
+		id = CHI_kunlun_project #昆仑计划
+		icon = GFX_focus_JAP_army_weapons_administration_hq
 		cost = 5
-		x = -1
+		x = 1
 		y = 1
 		relative_position_id = CHI_organization_of_the_special_detachment
 		prerequisite = {
-			focus = CHI_independent_brigade_of_the_revenue_police_general_corps
 			focus = CHI_organization_of_the_special_detachment
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_army_modernization #整军经武
+		icon = GFX_focus_CHI_utmost_loyalty
+		cost = 5
+		x = -1
+		y = 2
+		relative_position_id = CHI_organization_of_the_special_detachment
+		prerequisite = {
+			focus = CHI_combat_vehicle
+			focus = CHI_marching_toward_mechanization
+			focus = CHI_kunlun_project
 		}
 
 		ai_will_do = {
@@ -9301,6 +8414,368 @@ focus = {
 	}
 
 	focus = {
+		id = CHI_aviation_procurement_plan #航空采购计划
+		icon = GFX_focus_generic_air_partners
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_nra_air
+		prerequisite = {
+			focus = CHI_nra_air
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_introduction_of_aviation_design #引进航空设计
+		icon = GFX_focus_CHI_appropriate_design
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_aviation_procurement_plan
+		prerequisite = {
+			focus = CHI_aviation_procurement_plan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_first_aircraft_factory_of_the_aviation_commission #航委第一飞机制造厂
+		icon = GFX_focus_generic_aircraft_production
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_nra_air
+		prerequisite = {
+			focus = CHI_nra_air
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_unified_aviation_industry_standards #统一航空工业标准
+		icon = GFX_focus_generic_daytime_bombing
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_first_aircraft_factory_of_the_aviation_commission
+		prerequisite = {
+			focus = CHI_first_aircraft_factory_of_the_aviation_commission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_improve_torpedoes #改进鱼雷
+		icon = GFX_goal_generic_air_naval_bomber
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_unified_aviation_industry_standards
+		prerequisite = {
+			focus = CHI_unified_aviation_industry_standards
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_central_aviation_academy_expansion #扩建中央航空学校
+		icon = GFX_focus_generic_pilot_training
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_first_aircraft_factory_of_the_aviation_commission
+		prerequisite = {
+			focus = CHI_aviation_procurement_plan
+			focus = CHI_first_aircraft_factory_of_the_aviation_commission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_master_the_sky #掌控天空
+		icon = GFX_focus_CHI_operation_zet
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_central_aviation_academy_expansion
+		prerequisite = {
+			focus = CHI_central_aviation_academy_expansion
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_coordinate_with_the_army #协同陆军
+		icon = GFX_focus_generic_tank_air_support
+		cost = 5
+		x = -2
+		y = 2
+		relative_position_id = CHI_master_the_sky
+		prerequisite = {
+			focus = CHI_armored_division
+		}
+		prerequisite = {
+			focus = CHI_master_the_sky
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ranged_projectile_capability #远程投射能力
+		icon = GFX_goal_generic_air_bomber
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_central_aviation_academy_expansion
+		prerequisite = {
+			focus = CHI_central_aviation_academy_expansion
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_establish_independent_air_force_command_system #建立独立空军指挥体系
+		icon = GFX_focus_CHI_formalise_training_regime
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_ranged_projectile_capability
+		prerequisite = {
+			focus = CHI_master_the_sky
+			focus = CHI_ranged_projectile_capability
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_value_the_locational_advantage #重视方位优势
+		icon = GFX_focus_CHI_positional_advantage
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_independent_air_force_command_system
+		prerequisite = {
+			focus = CHI_establish_independent_air_force_command_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_evade_the_solid_attack_the_hollow #避实击虚
+		icon = GFX_goal_poland_goal
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_independent_air_force_command_system
+		prerequisite = {
+			focus = CHI_establish_independent_air_force_command_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_tianlong_project #天龙计划
+		icon = GFX_focus_generic_jet_planes
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_tiankong_project #天空计划
+		icon = GFX_focus_rocketry
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_yunnan_airborne_troops #云南空降部队
+		icon = GFX_focus_generic_paratrooper
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_air_modernization #自铸长空
+		icon = GFX_focus_generic_escort_efficiency
+		cost = 5
+		x = -1
+		y = 2
+		relative_position_id = CHI_evade_the_solid_attack_the_hollow
+		prerequisite = {
+			focus = CHI_tianlong_project
+			focus = CHI_tiankong_project
+			focus = CHI_yunnan_airborne_troops
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
 		id = CHI_nra_navy #国民革命军海军
 		icon = GFX_CHI_Chinese_National_Navy
 		cost = 1
@@ -9309,6 +8784,462 @@ focus = {
 		relative_position_id = CHI_reorganize_nra
 		prerequisite = {
 			focus = CHI_reorganize_nra
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_expand_jiangnan_shipyard #扩建江南造船厂
+		icon = GFX_focus_generic_refit_civilian_ships
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_nra_navy
+		prerequisite = {
+			focus = CHI_nra_navy
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mobile_operating_base #机动作战基地
+		icon = GFX_focus_generic_air_carrier
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_expand_jiangnan_shipyard
+		prerequisite = {
+			focus = CHI_expand_jiangnan_shipyard
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_naval_area_defense_plan #海军分防计划
+		icon = GFX_goal_generic_navy_carrier
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_mobile_operating_base
+		prerequisite = {
+			focus = CHI_mobile_operating_base
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_carrier_strike_group #航母打击群
+		icon = GFX_focus_generic_multi_role_aircraft
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_naval_area_defense_plan
+		prerequisite = {
+			focus = CHI_naval_area_defense_plan
+		}
+		prerequisite = {
+			focus = CHI_improve_torpedoes
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_naval_preparation #海军整备
+		icon = GFX_focus_generic_naval_discipline
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_nra_navy
+		prerequisite = {
+			focus = CHI_nra_navy
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_submarine_research_class #潜艇研究班
+		icon = GFX_goal_generic_navy_submarine
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_naval_preparation
+		prerequisite = {
+			focus = CHI_naval_preparation
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mine_production #水雷生产
+		icon = GFX_focus_generic_destroyer
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_submarine_research_class
+		prerequisite = {
+			focus = CHI_submarine_research_class
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_conventional_tactics #常规战术
+		icon = GFX_goal_generic_navy_battleship
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_naval_preparation
+		prerequisite = {
+			focus = CHI_expand_jiangnan_shipyard
+			focus = CHI_naval_preparation
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_establish_the_naval_headquarters #成立海军总司令部
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_conventional_tactics
+		prerequisite = {
+			focus = CHI_conventional_tactics
+			focus = CHI_mobile_operating_base
+			focus = CHI_submarine_research_class
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_collaborative_push #协同推进
+		icon = GFX_focus_generic_large_navy
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_the_naval_headquarters
+		prerequisite = {
+			focus = CHI_establish_the_naval_headquarters
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_long_range_operations #远程作战
+		icon = GFX_focus_generic_cruiser_submarines
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_collaborative_push
+		prerequisite = {
+			focus = CHI_collaborative_push
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_underwater_strike #水下打击
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_the_naval_headquarters
+		prerequisite = {
+			focus = CHI_establish_the_naval_headquarters
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_wolf_pack_tactics #学习狼群战术
+		icon = GFX_goal_generic_wolf_pack
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_underwater_strike
+		prerequisite = {
+			focus = CHI_underwater_strike
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_enhance_naval_research #增进海军研究
+		icon = GFX_focus_generic_navy_research_bonus
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_underwater_strike
+		prerequisite = {
+			focus = CHI_collaborative_push
+			focus = CHI_underwater_strike
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_modern_aircraft_carrier #现代化航空母舰
+		icon = GFX_focus_GER_graf_zeppelin
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_modern_battleship #现代化战列舰
+		icon = GFX_focus_generic_navy_battleship2
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_amphibious_forces #两栖作战部队
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_advanced_submarine #新型潜艇
+		icon = GFX_focus_generic_midget_submarines
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_navy_modernization #有港可归
+		icon = GFX_focus_SMB_blue_water_fleet
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = CHI_advanced_submarine
+		prerequisite = {
+			focus = CHI_modern_aircraft_carrier
+			focus = CHI_modern_battleship
+			focus = CHI_amphibious_forces
+			focus = CHI_advanced_submarine
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_the_homeland #山河有主
+		icon = GFX_focus_CHI_combined_logistics_command
+		cost = 5
+		x = -9
+		y = 1
+		relative_position_id = CHI_navy_modernization
+		prerequisite = {
+			focus = CHI_navy_modernization
+		}
+		prerequisite = {
+			focus = CHI_army_modernization
+		}
+		prerequisite = {
+			focus = CHI_air_modernization
 		}
 
 		ai_will_do = {

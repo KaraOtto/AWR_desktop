@@ -931,6 +931,27 @@ ideas = {
 			}
 		}
 
+		chi_martial_law_idea_eywor = {
+		    picture = kmt_gun
+			
+			allowed = {
+			    always = no
+			}
+			
+			cancel = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_weekly_factor = 0.001
+				drift_defence_factor = 0.05
+				monthly_population = -0.25
+				neutrality_drift = 0.1
+				communism_drift = -0.1
+			}
+		}
+
 		CHI_the_blueshirts = {
 			removal_cost = -1
 			allowed = {
@@ -1879,6 +1900,41 @@ ideas = {	#腐败机制
 			modifier = { 
 				political_power_factor = -0.05 
 			} 
+		}
+	}
+
+	industrial_concern = {
+		Carlowitz_Co_idea = {		
+			allowed = {
+				OR = {
+					original_tag = CHI
+					original_tag = PRC
+					original_tag = MAN
+					original_tag = SIK
+					original_tag = EHB
+					original_tag = RFM
+					original_tag = CCP
+					is_originally_warlord = yes
+				}
+			}
+			available = {
+				num_of_factories > 10
+				NOT = {
+					has_war_with = GER
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					NOT = {
+						has_global_flag = falkenhausen_recalled
+					}
+				}
+			}
+			ai_will_do = {
+				factor = 1
+			}
+			traits = { manufacturers_agents }
 		}
 	}
 }

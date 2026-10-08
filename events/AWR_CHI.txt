@@ -62,6 +62,66 @@ country_event = {	#他们会后悔的
 	}
 }
 
+country_event = {
+	id = AWR_CHI.4
+	title = AWR_CHI.4.t
+	desc = AWR_CHI.4.desc
+	picture = GFX_report_event_chiang_kai_shek_speaking_kmt
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_CHI.4.a
+		swap_ideas = {
+			remove_idea = chi_december_ninth_movement_1
+			add_idea = chi_december_ninth_movement_2
+		}
+		hidden_effect = {
+			country_event = {
+				id =  AWR_CHI.5
+				days = 340
+			}
+		}
+	}
+}
+
+country_event = { #Chiang Meets With 12-9 Students #part 2
+	id = AWR_CHI.5
+	title = AWR_CHI.5.t
+	desc = AWR_CHI.5.desc
+	picture = GFX_report_event_chiang_speech
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_CHI.5.a
+		remove_ideas = chi_december_ninth_movement_2
+		add_timed_idea = {
+			idea = chi_december_ninth_movement_3
+			days = 180
+		}
+		add_timed_idea = {
+			idea = chi_martial_law_idea_eywor
+			days = 180
+		}
+		hidden_effect = {
+		}
+	}
+}
+
+country_event = { #Chiang defends himself early january
+	id = AWR_CHI.6
+	title = AWR_CHI.6.t
+	desc = AWR_CHI.6.desc
+	picture = GFX_report_event_chiang_kai_shek_speech_alt
+	is_triggered_only = yes
+
+	option = {
+		name = AWR_CHI.6.a
+		add_political_power = -10
+		hidden_effect = {
+		}
+	}
+}
+
 country_event = { #张国焘前来投奔
 	id = AWR_CHI.1000
 	title = AWR_CHI.1000.t

@@ -12,6 +12,7 @@ autonomy_state = {
 	
 	rule = {
 		desc = "RULE_DESC_IS_A_SUBJECT"
+
 		can_not_declare_war = yes
 		can_decline_call_to_war = no
 		can_be_spymaster = no
@@ -23,11 +24,14 @@ autonomy_state = {
 		autonomy_manpower_share = 0.7
 		can_master_build_for_us = 1
 		conscription_factor = -0.25
-		#extra_trade_to_overlord_factor = 0.6
-		#overlord_trade_cost_factor = -0.6
+		extra_trade_to_overlord_factor = 0.6
+		overlord_trade_cost_factor = -0.6
 		cic_to_overlord_factor = 0.25
 		license_subject_master_purchase_cost = -1
 		autonomy_gain_global_factor = -0.3
+		peace_score_ratio_transferred_to_overlord = 0.05
+		lend_lease_tension_with_overlord = -0.30
+		faction_influence_contribution_factor = -0.25
 	}
 	
 	ai_subject_wants_higher = {
@@ -44,15 +48,29 @@ autonomy_state = {
 
 	allowed = {
 		has_dlc = "Death or Dishonor"
-		has_government = fascism
-		 v
-		NOT = {
-			JAP_autonomy_check = yes
+		OVERLORD = { has_government = fascism }
+		if = {
+			limit = { has_dlc = "Waking the Tiger" }
+			NOT = { OVERLORD = { original_tag = JAP } }
+			NOT = { OVERLORD = { original_tag = MAN } }
 		}
-		NOT = {
-			CHI_autonomy_check = yes
+
+		if = {
+			limit = {
+				has_dlc = "No Compromise, No Surrender"
+			}
+
+			NOT = {
+				AND = {
+					OVERLORD = { has_government = fascism } 
+					OVERLORD = { tag = CHI } 
+				}
+				AND = {
+					OVERLORD = { has_government = neutrality } 
+					OVERLORD = { tag = CHI } 
+				}
+			}
 		}
-		 ^
 	}
 
 	can_take_level = {
