@@ -1448,3 +1448,24 @@ on_actions = {  #AI自动触发
         }
     }
 }
+
+on_actions = {
+    on_monthly_PRC = {
+        effect = {
+            if = {
+                limit = {
+                    has_idea = PRC_idea_Nation_economic_recovery_period
+                    has_idea = PRC_idea_Nation_economic_recovery_period_hidden
+                    NOT = {
+                        OR = {
+                            has_idea = extreme_poverty
+                            has_idea = poverty
+                            has_idea = little_poverty
+                        }
+                    }
+                }
+                remove_ideas = PRC_idea_Nation_economic_recovery_period_hidden
+            }
+        }
+    }
+}

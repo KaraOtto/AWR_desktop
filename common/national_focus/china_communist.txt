@@ -690,6 +690,13 @@ focus_tree = {
 				days = 360
 			}
 
+			hidden_effect = {
+				add_timed_idea = {
+					idea = PRC_idea_Nation_economic_recovery_period_hidden 
+					days = 360
+				}
+			}
+
 			prc_manmuchuangyi_level_down = yes
 
 			
@@ -828,7 +835,7 @@ focus_tree = {
 	focus = {#苏区会议
 		id = PRC_End_of_Long_March
 		icon = GFX_focus_PRC_End_of_Long_March
-		cost = 2.18
+		cost = 2.17
 		x = 16
 		y = 0
 		ai_will_do = {
@@ -1012,8 +1019,8 @@ focus_tree = {
 	}
 
 	focus = { #中国共产党第六届中央委员会第七次全体会议
-		id = PRC_7th_plenary_session_of_the_6th_CPC_central_committee_focus
-		icon = GFX_focus_PRC_7th_plenary_session_of_the_6th_CPC_central_committee_focus
+		id = PRC_seventh_plenary_session_of_the_sixth_CPC_central_committee_focus
+		icon = GFX_focus_PRC_seventh_plenary_session_of_the_sixth_CPC_central_committee_focus
 		cost = 5
 		prerequisite = {
 			focus = PRC_enlarged_central_politburo_conference_focus
@@ -1124,13 +1131,13 @@ focus_tree = {
 	}
 
 	focus = { #中共七大
-		id = PRC_7th_National_Congress_focus
-		icon = GFX_focus_PRC_7th_National_Congress_focus
+		id = PRC_seventh_National_Congress_focus
+		icon = GFX_focus_PRC_seventh_National_Congress_focus
 		cost = 7.15
 		prerequisite = {
-			focus = PRC_7th_plenary_session_of_the_6th_CPC_central_committee_focus
+			focus = PRC_seventh_plenary_session_of_the_sixth_CPC_central_committee_focus
 		}
-		relative_position_id = PRC_7th_plenary_session_of_the_6th_CPC_central_committee_focus
+		relative_position_id = PRC_seventh_plenary_session_of_the_sixth_CPC_central_committee_focus
 		x = 0
 		y = 1
 		ai_will_do = {
@@ -1322,10 +1329,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = if_they_accept_tt
 			effect_tooltip = {
-				1030 = {
+				1091 = {
 					set_demilitarized_zone = yes
 				}
-				1053 = {
+				1092 = {
 					set_demilitarized_zone = yes
 				}
 				add_political_power = 100
@@ -1442,7 +1449,7 @@ focus_tree = {
 	focus = {#洛川会议
 		id = PRC_Join_the_war
 		icon = GFX_focus_prc_social_democracy
-		cost = 3.6
+		cost = 2
 		prerequisite = {
 			focus = PRC_contact_Zhang_Xueliang_focus
 		}
@@ -1628,7 +1635,7 @@ focus_tree = {
 								tag = ROOT
 								is_in_faction_with = ROOT
 							}
-							controls_state = 621
+							controls_state = 1084
 						}
 					}
 				}
@@ -1687,7 +1694,7 @@ focus_tree = {
 		completion_reward = {
 			set_global_flag = PRC_partisan_offensive_focus_flag
 			unlock_decision_category_tooltip = AWR_communist_infiltration
-			custom_effect_tooltip = RCM_communist_infiltration_tt
+			custom_effect_tooltip = AWR_communist_infiltration_tt
 			add_command_power = 30
 			hidden_effect = {
 				set_country_flag = communist_infiltration
@@ -1854,16 +1861,16 @@ focus_tree = {
 				category = land_doctrine
 			}
 			custom_effect_tooltip = PRC_Breaking_operations_tt_aazz	
-		hidden_effect = {
-			if = {
-				limit = {
-					PRC = { 
-						is_ai = no 
-					}  
-				}	
-				play_song = "弹起我心爱的土琵琶（老版）"
-			}				
-		}			
+			hidden_effect = {
+				if = {
+					limit = {
+						PRC = { 
+							is_ai = no 
+						}  
+					}	
+					play_song = "弹起我心爱的土琵琶（老版）"
+				}				
+			}			
 		}
 		available = {
 			has_war = yes
@@ -1983,7 +1990,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			controls_state = 1090
+			controls_state = 1091
 			has_completed_focus = PRC_makeshift_research_facility
 		}
 	}
@@ -3127,7 +3134,8 @@ focus_tree = {
 					}
 				}
 				create_wargoal = {
-					target = SIC type = liberate_wargoal
+					target = SIC 
+					type = liberate_wargoal
 				}
 			}
 			if = {
@@ -3141,7 +3149,8 @@ focus_tree = {
 					}
 				}
 				create_wargoal = {
-					target = XIK type = liberate_wargoal
+					target = XIK 
+					type = liberate_wargoal
 				}
 			}					
         }						 
@@ -3350,7 +3359,8 @@ focus_tree = {
 					}
 				}
 				create_wargoal = {
-					target = XSM type = liberate_wargoal
+					target = XSM 
+					type = liberate_wargoal
 				}
 			}
 			if = {
@@ -3819,17 +3829,6 @@ focus_tree = {
 				}
 			}
 			OR = {
-				AND = {
-					SIK = {
-						has_country_flag = wtt_political_struggle
-					}
-					custom_trigger_tooltip = {
-						tooltip = ROOT_more_support_than_SIK_tt
-						check_variable = { 
-							Root.total_political_support_points > SIK.total_political_support_points 
-						}
-					}
-				}
 				
 				AND = {
 					SOV = {
@@ -3904,7 +3903,6 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
-			
 			swap_ideas = {
 				add_idea = military_commission_ZHONGYANGJUNWEI
 				remove_idea = military_commission_zhonggejunwei
@@ -4013,7 +4011,7 @@ focus_tree = {
 			}
 		}
 	}
-
+	#做到这里
 	focus = {#有限的统一战线
 		id = PRC_disrespect_the_united_front_focus
 		icon = GFX_focus_PRC_disrespect_the_united_front_focus
@@ -4951,7 +4949,7 @@ focus_tree = {
 				limit = {
 					leader_is_maoist = yes
 				}
-				has_completed_focus = PRC_7th_National_Congress_focus
+				has_completed_focus = PRC_seventh_National_Congress_focus
 			}
 		}
 
@@ -7270,7 +7268,7 @@ focus_tree = {
             	has_completed_focus = PRC_Federal_Republic	
             	has_completed_focus = PRC_For_the_Soviets			
             }
-            has_completed_focus = PRC_7th_National_Congress_focus			
+            has_completed_focus = PRC_seventh_National_Congress_focus			
 		}
 	}
 
