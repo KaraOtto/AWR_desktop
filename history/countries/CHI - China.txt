@@ -44,6 +44,7 @@ set_variable = { CHI_industry_dynamic_modifier_production_speed_industrial_compl
 set_variable = { CHI_research_dynamic_modifier_research_speed_factor = 0.03 }
 
 recruit_character = CHI_chiang_kai_shek
+recruit_character = CHI_xiang_ying
 recruit_character = CHI_huang_qixiang
 recruit_character = CHI_xu_fulin
 recruit_character = CHI_lin_sen
@@ -54,12 +55,12 @@ recruit_character = CHI_yu_youren
 recruit_character = CHI_chenbijun
 recruit_character = CHI_cai_yuanpei
 recruit_character = CHI_zhang_qun
-recruit_character = CHI_kung_hsiang_hsi
-recruit_character = CHI_t_v_soong
+recruit_character = CHI_kong_xiangxi
+recruit_character = CHI_song_ziwen
 recruit_character = CHI_soong_mei_ling
 recruit_character = CHI_chen_guofu
 recruit_character = CHI_chen_lifu
-recruit_character = CHI_wangjingwei
+recruit_character = CHI_wang_jingwei
 recruit_character = CHI_du_yuesheng
 recruit_character = CHI_jiang_jingguo
 recruit_character = CHI_weng_wenhao
@@ -188,6 +189,11 @@ recruit_character = CHI_wang_shijie
 recruit_character = CHI_zhu_jiahua
 recruit_character = CHI_hang_liwu
 recruit_character = CHI_xu_tingyao
+recruit_character = CHI_wang_chonghui
+recruit_character = CHI_guo_taiqi
+recruit_character = CHI_wu_tiecheng
+recruit_character = CHI_ye_gongchao
+recruit_character = CHI_william_henry_donald
 
 set_technology = {
 	infantry_weapons = 1
@@ -239,6 +245,7 @@ add_ideas = {
 	CHI_superior_to_the_wrl_000
 	CHI_superior_to_the_wrl_000_for_tt
 	CHI_alexander_von_falkenhausen
+	CHI_william_henry_donald
 	CHI_lin_sen
 	CHI_yang_yongtai
 	CHI_prince_de_defect
@@ -278,10 +285,10 @@ add_timed_idea = {
 set_convoys = 40
 
 set_popularities = {
-	democratic = 15
+	democratic = 10
 	socialism = 10
 	fascism = 25
-	communism = 0
+	communism = 5
 	neutrality = 50
 }
 
@@ -290,16 +297,6 @@ set_politics = {
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
-}
-
-create_country_leader = {
-	name = "None"
-	desc = ""
-	picture = "gfx/leaders/leader_unknown.dds"
-	expire = "1965.1.1"
-	ideology = marxism
-	traits = {
-	}
 }
 
 add_opinion_modifier = { target = PRC modifier = hostile_status }
@@ -339,6 +336,7 @@ give_guarantee = TIB
 
 create_intelligence_agency = {
 	name="中华民族复兴社"
+	icon = "GFX_intelligence_agency_logo_chi"
 }
 if = {
 	limit = {

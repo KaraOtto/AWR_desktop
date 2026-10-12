@@ -1,6 +1,7 @@
 add_namespace = AWR_CHI
 add_namespace = CHI_corruption
 add_namespace = AWR_CHI_state
+add_namespace = CHI_inner_circle
 
 country_event = {	#中央要求我们服从
 	id = AWR_CHI.1
@@ -62,7 +63,7 @@ country_event = {	#他们会后悔的
 	}
 }
 
-country_event = {
+country_event = { #应对12·9
 	id = AWR_CHI.4
 	title = AWR_CHI.4.t
 	desc = AWR_CHI.4.desc
@@ -84,7 +85,7 @@ country_event = {
 	}
 }
 
-country_event = { #Chiang Meets With 12-9 Students #part 2
+country_event = { #戒严令
 	id = AWR_CHI.5
 	title = AWR_CHI.5.t
 	desc = AWR_CHI.5.desc
@@ -107,7 +108,7 @@ country_event = { #Chiang Meets With 12-9 Students #part 2
 	}
 }
 
-country_event = { #Chiang defends himself early january
+country_event = { #early january 蒋继续绥靖
 	id = AWR_CHI.6
 	title = AWR_CHI.6.t
 	desc = AWR_CHI.6.desc
@@ -119,6 +120,24 @@ country_event = { #Chiang defends himself early january
 		add_political_power = -10
 		hidden_effect = {
 		}
+	}
+}
+
+country_event = {
+	id = AWR_CHI.7
+	title = AWR_CHI.7.t
+	desc = AWR_CHI.7.desc
+	picture = GFX_report_event_china_flag
+
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+    fire_only_once = yes
+	
+	option = {
+		name = AWR_CHI.7.a
 	}
 }
 
@@ -734,6 +753,433 @@ state_event = {	#完全接管[From.From.GetName]
 				}
 			}
 			custom_effect_tooltip = com_can_no_longer_influence	
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.01
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_chen_cheng2 }
+			}
+			activate_shine_on_focus = CHI_chen_cheng2
+			set_country_flag = { flag = CHI_chen_cheng2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.02 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_chen_cheng3 }
+			}
+			activate_shine_on_focus = CHI_chen_cheng3
+			set_country_flag = { flag = CHI_chen_cheng3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.02 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.02
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_chen_cheng2
+			}
+			complete_national_focus = {
+				focus = CHI_chen_cheng2
+				use_side_message = yes
+				originator_name = CHI_chen_cheng
+			}
+			clr_country_flag = CHI_chen_cheng2_in_progress_flag
+			country_event = { id = CHI_inner_circle.01 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_chen_cheng3
+			}
+			complete_national_focus = {
+				focus = CHI_chen_cheng3
+				use_side_message = yes
+				originator_name = CHI_chen_cheng
+			}
+			clr_country_flag = CHI_chen_cheng3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.03
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_jiang_jingguo2 }
+			}
+			activate_shine_on_focus = CHI_jiang_jingguo2
+			set_country_flag = { flag = CHI_jiang_jingguo2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.04 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_jiang_jingguo3 }
+			}
+			activate_shine_on_focus = CHI_jiang_jingguo3
+			set_country_flag = { flag = CHI_jiang_jingguo3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.04 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.04
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_jiang_jingguo2
+			}
+			complete_national_focus = {
+				focus = CHI_jiang_jingguo2
+				use_side_message = yes
+				originator_name = CHI_jiang_jingguo
+			}
+			clr_country_flag = CHI_jiang_jingguo2_in_progress_flag
+			country_event = { id = CHI_inner_circle.03 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_jiang_jingguo3
+			}
+			complete_national_focus = {
+				focus = CHI_jiang_jingguo3
+				use_side_message = yes
+				originator_name = CHI_jiang_jingguo
+			}
+			clr_country_flag = CHI_jiang_jingguo3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.05
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_chen_guofu2 }
+			}
+			activate_shine_on_focus = CHI_chen_guofu2
+			set_country_flag = { flag = CHI_chen_guofu2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.06 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_chen_guofu3 }
+			}
+			activate_shine_on_focus = CHI_chen_guofu3
+			set_country_flag = { flag = CHI_chen_guofu3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.06 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.06
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_chen_guofu2
+			}
+			complete_national_focus = {
+				focus = CHI_chen_guofu2
+				use_side_message = yes
+				originator_name = CHI_chen_guofu
+			}
+			clr_country_flag = CHI_chen_guofu2_in_progress_flag
+			country_event = { id = CHI_inner_circle.05 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_chen_guofu3
+			}
+			complete_national_focus = {
+				focus = CHI_chen_guofu3
+				use_side_message = yes
+				originator_name = CHI_chen_guofu
+			}
+			clr_country_flag = CHI_chen_guofu3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.07
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_dai_li2 }
+			}
+			activate_shine_on_focus = CHI_dai_li2
+			set_country_flag = { flag = CHI_dai_li2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.08 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_dai_li3 }
+			}
+			activate_shine_on_focus = CHI_dai_li3
+			set_country_flag = { flag = CHI_dai_li3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.08 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.08
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_dai_li2
+			}
+			complete_national_focus = {
+				focus = CHI_dai_li2
+				use_side_message = yes
+				originator_name = CHI_dai_li
+			}
+			clr_country_flag = CHI_dai_li2_in_progress_flag
+			country_event = { id = CHI_inner_circle.07 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_dai_li3
+			}
+			complete_national_focus = {
+				focus = CHI_dai_li3
+				use_side_message = yes
+				originator_name = CHI_dai_li
+			}
+			clr_country_flag = CHI_dai_li3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.09
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_he_yingqin2 }
+			}
+			activate_shine_on_focus = CHI_he_yingqin2
+			set_country_flag = { flag = CHI_he_yingqin2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.10 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_he_yingqin3 }
+			}
+			activate_shine_on_focus = CHI_he_yingqin3
+			set_country_flag = { flag = CHI_he_yingqin3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.10 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.10
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_he_yingqin2
+			}
+			complete_national_focus = {
+				focus = CHI_he_yingqin2
+				use_side_message = yes
+				originator_name = CHI_he_yingqin
+			}
+			clr_country_flag = CHI_he_yingqin2_in_progress_flag
+			country_event = { id = CHI_inner_circle.09 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_he_yingqin3
+			}
+			complete_national_focus = {
+				focus = CHI_he_yingqin3
+				use_side_message = yes
+				originator_name = CHI_he_yingqin
+			}
+			clr_country_flag = CHI_he_yingqin3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.11
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_song_ziwen2 }
+			}
+			activate_shine_on_focus = CHI_song_ziwen2
+			set_country_flag = { flag = CHI_song_ziwen2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.12 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_song_ziwen3 }
+			}
+			activate_shine_on_focus = CHI_song_ziwen3
+			set_country_flag = { flag = CHI_song_ziwen3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.12 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.12
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_song_ziwen2
+			}
+			complete_national_focus = {
+				focus = CHI_song_ziwen2
+				use_side_message = yes
+				originator_name = CHI_song_ziwen
+			}
+			clr_country_flag = CHI_song_ziwen2_in_progress_flag
+			country_event = { id = CHI_inner_circle.11 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_song_ziwen3
+			}
+			complete_national_focus = {
+				focus = CHI_song_ziwen3
+				use_side_message = yes
+				originator_name = CHI_song_ziwen
+			}
+			clr_country_flag = CHI_song_ziwen3_in_progress_flag
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.13
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_kong_xiangxi2 }
+			}
+			activate_shine_on_focus = CHI_kong_xiangxi2
+			set_country_flag = { flag = CHI_kong_xiangxi2_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.14 days = 141 }
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = CHI_kong_xiangxi3 }
+			}
+			activate_shine_on_focus = CHI_kong_xiangxi3
+			set_country_flag = { flag = CHI_kong_xiangxi3_in_progress_flag days = 141 value = 1 }
+			country_event = { id = CHI_inner_circle.14 days = 141 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI_inner_circle.14
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_kong_xiangxi2
+			}
+			complete_national_focus = {
+				focus = CHI_kong_xiangxi2
+				use_side_message = yes
+				originator_name = CHI_kong_xiangxi
+			}
+			clr_country_flag = CHI_kong_xiangxi2_in_progress_flag
+			country_event = { id = CHI_inner_circle.13 days = 75 random_days = 45 }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = CHI_kong_xiangxi3
+			}
+			complete_national_focus = {
+				focus = CHI_kong_xiangxi3
+				use_side_message = yes
+				originator_name = CHI_kong_xiangxi
+			}
+			clr_country_flag = CHI_kong_xiangxi3_in_progress_flag
 		}
 	}
 }

@@ -11,7 +11,17 @@ leader_traits = {#政治
 		}
 	}
 
-	dangguolingxiu = {
+	huangpuxiaozhang = {
+		random = no
+		experience_gain_factor = 0.025
+		high_command_cost_factor = -0.1 #总司令花费
+		air_chief_cost_factor = -0.1 #空军部长花费
+		navy_chief_cost_factor = -0.1 #海军部长花费
+		army_chief_cost_factor = -0.1 #陆军部长花费
+		theorist_cost_factor = -0.1 #理论家花费		
+	}
+
+	huangpuxiaozhang_better = {
 		random = no
 		experience_gain_factor = 0.05
 		experience_gain_army_factor = 0.05
@@ -23,14 +33,20 @@ leader_traits = {#政治
 		theorist_cost_factor = -0.2 #理论家花费		
 	}
 
-	huangpuxiaozhang = {
+	qinliqinwei = { #蒋介石亲力亲为
 		random = no
-		experience_gain_factor = 0.025
-		high_command_cost_factor = -0.1 #总司令花费
-		air_chief_cost_factor = -0.1 #空军部长花费
-		navy_chief_cost_factor = -0.1 #海军部长花费
-		army_chief_cost_factor = -0.1 #陆军部长花费
-		theorist_cost_factor = -0.1 #理论家花费		
+		command_power_gain_mult = 0.15
+		max_command_power = 30
+		army_morale_factor = 0.10
+	}
+	
+	junduiguanlian = { #蒋介石军队关联
+		random = yes
+		high_command_cost_factor = -0.15 #总司令花费
+		air_chief_cost_factor = -0.15 #空军部长花费
+		navy_chief_cost_factor = -0.15 #海军部长花费
+		army_chief_cost_factor = -0.15 #陆军部长花费
+		theorist_cost_factor = -0.15 #理论家花费		
 	}
 
 	beifashuangjie = {#北伐双杰
@@ -200,23 +216,6 @@ leader_traits = {#政治
 		war_support_factor = -0.05
 	}
 
-	qinliqinwei = { #蒋介石亲力亲为
-		random = no
-		command_power_gain_mult = 0.15
-		max_command_power = 30
-		army_morale_factor = 0.10
-	}
-	
-	junduiguanlian = { #蒋介石军队关联
-		random = yes
-		high_command_cost_factor = -0.15 #总司令花费
-		air_chief_cost_factor = -0.15 #空军部长花费
-		navy_chief_cost_factor = -0.15 #海军部长花费
-		army_chief_cost_factor = -0.15 #陆军部长花费
-		theorist_cost_factor = -0.15 #理论家花费
-		
-	}
-
 	CHI_dislikes_chiang = {#与蒋不和
 	    random = no
 		ai_strategy = {
@@ -256,7 +255,6 @@ leader_traits = {#政治
 			defense_bonus_against = 0.025
 		}
 	}
-
 }
 
 leader_traits = {#军事
@@ -673,5 +671,91 @@ leader_traits = {#军事
 		ai_will_do = {
 			factor = 1
 		}
+	}
+
+	CHI_the_survivor = { #不倒翁
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.1
+		stability_factor = 0.1
+		compliance_gain = 0.1
+	}
+
+	CHI_waijiaobubuzhang = { #外交部部长
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.05
+		opinion_gain_monthly_factor = 0.1
+		improve_relations_maintain_cost_factor = -0.1
+	}
+
+	CHI_the_textualist = { #条文至上
+		random = no
+		sprite = 13
+
+		political_power_cost = 0.05
+		stability_weekly = 0.005
+		drift_defence_factor = 0.1
+	}
+
+	CHI_the_salon_diplomat = { #沙龙外交
+		random = no
+		sprite = 13
+
+		stability_factor = -0.05
+		opinion_gain_monthly_factor = 0.2
+		trade_opinion_factor = 0.2
+		license_purchase_cost = -0.2
+		license_production_speed = 0.2
+	}
+
+	CHI_the_dollar_man = { #美金先生
+		random = no
+		sprite = 13
+
+		political_power_factor = -0.05
+		consumer_goods_expected_value = -0.05
+		production_speed_buildings_factor = 0.05
+	}
+
+	CHI_constitutional_scholar = { #宪政学者
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.05
+		stability_weekly = 0.005
+		democratic_drift = 0.05
+	}
+
+	CHI_mediator = { #斡旋者
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.1
+		stability_factor = 0.05
+		war_support_factor = -0.05
+		improve_relations_maintain_cost_factor = -0.1
+	}
+
+	CHI_literati_politician = { #书生从政
+		random = no
+		sprite = 13
+
+		political_power_factor = -0.1
+		stability_factor = -0.05
+		opinion_gain_monthly_factor = 0.1
+        drift_defence_factor = 0.10
+	}
+
+	CHI_foreign_fixer = { #客卿
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.05
+		opinion_gain_monthly_factor = 0.05
+		improve_relations_maintain_cost_factor = -0.05
+		justify_war_goal_time = 0.1
 	}
 }

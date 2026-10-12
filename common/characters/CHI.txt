@@ -26,7 +26,7 @@
 		country_leader={
 			ideology = sanmin_military_rule
 			desc=POLITICS_CHIANG_KAISHEK_DESC
-			traits={ generallissimo dictator anti_communist junduiguanlian qinliqinwei }
+			traits={ generallissimo dictator anti_communist huangpuxiaozhang qinliqinwei }
 			expire="1965.1.1.1"
 			id=5002
 		}
@@ -42,12 +42,12 @@
 		}
 	}
 	
-	CHI_wangjingwei={#guo
-		name=CHI_wangjingwei
+	CHI_wang_jingwei={
+		name=CHI_wang_jingwei
 		portraits={
 			civilian={
-			    small="GFX_idea_CHI_wangjingwei"
-				large="GFX_Portrait_CHI_wangjingwei"
+			    small="GFX_idea_CHI_wang_jingwei"
+				large="GFX_Portrait_CHI_wang_jingwei"
 			}
 		}
 		country_leader={
@@ -55,19 +55,19 @@
 			traits={ emergency_powers quxianjiuguo wencaiyiyi }
 			expire="1965.1.1.1"
 			id=-1
-            desc=CHI_wangjingwei_desc
+            desc=CHI_wang_jingwei_desc
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = CHI_wangjingwei
+			idea_token = CHI_wang_jingwei
 			
 			visible = {
 			}
 			available = {
 				NOT = { has_global_flag = wang_join_japan_faction }
 				NOT = {
-                    has_war_with = WAN
-				}				
+                    has_war_with = RNG
+				}		
 			}
 			traits = { xingzhengyuanzhang }			
 			allowed = {
@@ -78,9 +78,26 @@
 				factor = 999
 				modifier = {
 				    factor = 0
-					not = { has_country_leader = { ruling_only = yes name = "汪精卫" } }
+					not = { has_country_leader = { ruling_only = yes character = CHI_wang_jingwei } }
 				}
 			}
+		}
+	}
+
+	CHI_xiang_ying = {
+		name=PRC_xiang_ying
+		portraits={
+			civilian = {
+				large="GFX_Portrait_PRC_Xiang_Ying"
+			}
+		}
+		country_leader = {
+			ideology = marxism_leninism
+			traits = {
+			}
+			expire="1965.1.1.1"
+			id=-1
+			desc = PRC_xiang_ying_desc
 		}
 	}
 
@@ -93,7 +110,7 @@
 			}
 		}
 		country_leader={
-			ideology = authoritarian_socialism
+			ideology = authoritaria socialism
 			traits={ 
 				beifashuangjie 
 				social_reformer 
@@ -443,7 +460,7 @@
 	}
 	
 	CHI_zhang_qun={
-		name =CHI_zhang_qun #張羣 1889年5月9日—1990年12月14日 四川省華陽縣，外交部部長 1935年12月12日-1937年3月4日、行政院院長 1947年4月23日-1948年5月29日
+		name =CHI_zhang_qun #张群 1889年5月9日—1990年12月14日 四川省華陽縣，外交部部長 1935年12月12日-1937年3月4日、行政院院長 1947年4月23日-1948年5月29日
 		portraits = {
 			civilian = { 
 				small="GFX_idea_CHI_zhang_qun" 
@@ -453,7 +470,7 @@
 		advisor={
 			slot = political_advisor
 			idea_token = CHI_zhang_qun
-			traits = { silent_workhorse }
+			traits = { CHI_the_survivor CHI_waijiaobubuzhang }
 			visible = {
 				tag = event_target:WTT_current_china_leader
 				if = {
@@ -519,7 +536,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government = socialism }
 					NOT = { has_government = communism }
 				}
 			}			
@@ -541,7 +558,7 @@
 			allowed = { }
 			available = {
 				OR = {
-		        	has_idea = CHI_wangjingwei
+		        	has_idea = CHI_wang_jingwei
                 	has_government = fascism			
 				}
 			}			
@@ -552,7 +569,7 @@
 		name =CHI_jiang_jingguo #蒋经国
 		portraits = {
 			civilian = { 
-				small="GFX_idea_CHI_jiangjingguo" 
+				small="GFX_idea_CHI_jiang_jingguo" 
 			}
 		}
 		advisor={
@@ -583,7 +600,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government = socialism }
 					NOT = { has_government = communism }
                     has_global_flag = jingguo_huiguo_flag
 				}
@@ -628,7 +645,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government = socialism }
 					NOT = { has_government = communism }
 				}
 			}			
@@ -670,7 +687,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}
 			    NOT = { has_completed_focus = CHI_the_fall_of_mainland }	
@@ -714,7 +731,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}	
 			}			
@@ -756,7 +773,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}	
 			}			
@@ -798,7 +815,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}
 	            date < 1953.10.30	
@@ -841,7 +858,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}	
 			}			
@@ -883,7 +900,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 	                date < 1938.1.1
 				}	
@@ -934,14 +951,14 @@
 		}
 	}
 	
-	CHI_kung_hsiang_hsi={
-		name =CHI_kung_hsiang_hsi #孔祥熙 1880年9月11日—1967年8月16日 山西省太谷縣，行政院院長 1938年1月1日-1939年12月11日
+	CHI_kong_xiangxi={
+		name =CHI_kong_xiangxi #孔祥熙 1880年9月11日—1967年8月16日 山西省太谷縣，行政院院長 1938年1月1日-1939年12月11日
 		portraits = {
-			civilian = { small="GFX_idea_CHI_kung_hsiang_hsi" }
+			civilian = { small="GFX_idea_CHI_kong_xiangxi" }
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = CHI_kung_hsiang_hsi
+			idea_token = CHI_kong_xiangxi
 			traits = { robber_baron }
 			visible = {
 				tag = event_target:WTT_current_china_leader
@@ -967,7 +984,7 @@
 			}
 			available = {
 				AND = {
-					NOT = { has_government = n_socialism }
+					NOT = { has_government =  socialism }
 					NOT = { has_government = communism }
 				}
 			}
@@ -983,15 +1000,15 @@
 		}
 	}
 
-	CHI_t_v_soong={
-		name =CHI_t_v_soong #宋子文 1894年12月4日—1971年4月26日 廣東省文昌縣，外交部部長 1942年10月30日—1945年7月30日、行政院院長 1945年6月25日—1947年3月1日
+	CHI_song_ziwen={
+		name =CHI_song_ziwen #宋子文 1894年12月4日—1971年4月26日 廣東省文昌縣，外交部部長 1942年10月30日—1945年7月30日、行政院院長 1945年6月25日—1947年3月1日
 		portraits = {
-			civilian = { small="GFX_idea_CHI_t_v_soong" }
+			civilian = { small="GFX_idea_CHI_song_ziwen" }
 		}
 		advisor={
 			slot = political_advisor
-			idea_token = CHI_t_v_soong
-			traits = { financial_expert }
+			idea_token = CHI_song_ziwen
+			traits = { CHI_the_dollar_man }
 			available = {
 			}
 			visible = {
@@ -1713,7 +1730,7 @@
 
 			do_effect = {
 				NOT = {
-					has_government = n_socialism
+					has_government = socialism
 				}
 			}
 			ai_will_do = {
@@ -1742,7 +1759,7 @@
 						original_tag = CHI
 					}
 					OR = {
-						has_government = n_socialism
+						has_government = socialism
 						has_government = democratic
 					}
 					NOT = { has_country_flag = dongsun_to_cdl }
@@ -1761,7 +1778,7 @@
 	}
 
 	CHI_shen_junru={
-		name =CHI_shen_junru #沈鈞儒
+		name =PRC_shen_junru #沈鈞儒
 		portraits = {
 			civilian = { small="GFX_idea_CHI_shen_junru" }
 		}
@@ -4454,7 +4471,7 @@
 			NOT = {
 				OR = {
 					has_government = communism
-					has_government = n_socialism
+					has_government = socialism
 				}
 			}
 		}
@@ -5381,6 +5398,7 @@
 		}
 		advisor = {
 			slot = political_advisor
+			idea_token = CHI_wu_dingchang
 			allowed = {
 				tag = CHI
 			}
@@ -5403,6 +5421,7 @@
 		}
 		advisor = {
 			slot = political_advisor
+			idea_token = CHI_wang_shijie
 			allowed = {
 				tag = CHI
 			}
@@ -5411,6 +5430,7 @@
 			available = {
 			}
 			traits = { 
+				CHI_constitutional_scholar
 				CHI_jiaoyububuzhang
 			}
 		}
@@ -5425,6 +5445,7 @@
 		}
 		advisor = {
 			slot = political_advisor
+			idea_token = CHI_zhu_jiahua
 			allowed = {
 				tag = CHI
 			}
@@ -5448,6 +5469,7 @@
 		}
 		advisor = {
 			slot = political_advisor
+			idea_token = CHI_hang_liwu
 			allowed = {
 				tag = CHI
 			}
@@ -5480,6 +5502,122 @@
 			planning_skill = 3
 			logistics_skill = 3
 			desc = CHI_xu_tingyao_desc
+		}
+	}
+
+	CHI_wang_chonghui = { #王宠惠
+		name = CHI_wang_chonghui
+		portraits = {
+			civilian = {
+				small = "GFX_idea_CHI_wang_chonghui"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = CHI_wang_chonghui
+			allowed = {
+				tag = CHI
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = { 
+				CHI_the_textualist
+			}
+		}
+	}
+
+	CHI_guo_taiqi = { #郭泰祺
+		name = CHI_guo_taiqi
+		portraits = {
+			civilian = {
+				small = "GFX_idea_CHI_guo_taiqi"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = CHI_guo_taiqi
+			allowed = {
+				tag = CHI
+			}
+			visible = {
+			}
+			available = {
+				has_completed_focus = CHI_befriend_with_britain
+			}
+			traits = { 
+				CHI_the_salon_diplomat
+			}
+		}
+	}
+
+	CHI_wu_tiecheng = { #吴铁城
+		name = CHI_wu_tiecheng
+		portraits = {
+			civilian = {
+				small = "GFX_idea_CHI_wu_tiecheng"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = CHI_wu_tiecheng
+			allowed = {
+				tag = CHI
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = { 
+				CHI_mediator
+			}
+		}
+	}
+
+	CHI_ye_gongchao = { #叶公超
+		name = CHI_ye_gongchao
+		portraits = {
+			civilian = {
+				small = "GFX_idea_CHI_ye_gongchao"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = CHI_ye_gongchao
+			allowed = {
+				tag = CHI
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = { 
+				CHI_literati_politician
+			}
+		}
+	}
+
+	CHI_william_henry_donald = { #端纳
+		name = CHI_william_henry_donald
+		portraits = {
+			civilian = {
+				small = "GFX_idea_CHI_william_henry_donald"
+			}
+		}
+		advisor = {
+			slot = foreign_advisor
+			idea_token = CHI_william_henry_donald
+			allowed = {
+				tag = CHI
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = { 
+				CHI_foreign_fixer
+			}
 		}
 	}
 
