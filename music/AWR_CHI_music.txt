@@ -1,0 +1,80 @@
+music_station = "AWR_CHI_music"
+############民国政府音乐
+
+music = {
+	song = "Descendants_of_the_Dragon_fascism"
+	chance = {
+	factor = 0
+		modifier = {
+			factor = 1
+			OR = {
+				tag = CHI
+				tag = PRC
+				is_warlord = yes
+			}
+			OR = {
+				has_government = fascism
+				has_government = national_bolshevitism
+			}
+			date > 1942.1.1
+		}		
+	}
+}
+
+music = {
+	song = "Descendants_of_the_Dragon_communism"
+	chance = {
+	factor = 0
+		modifier = {
+			factor = 1
+			OR = {
+				tag = CHI
+				tag = PRC
+				is_warlord = yes
+			}
+			has_government = communism
+			NOT = {
+				has_government = national_bolshevitism
+				has_war = yes
+			}
+			date > 1942.1.1
+		}		
+	}
+}
+
+music = {
+	song = "Descendants_of_the_Dragon_democracy_and_socialism"
+	chance = {
+	factor = 0
+		modifier = {
+			factor = 1
+			OR = {
+				tag = CHI
+				tag = PRC
+				is_warlord = yes
+			}
+			OR = {
+				has_government = socialism
+				has_government = democratic
+			}
+			
+			date > 1942.1.1
+		}		
+	}
+}
+
+music = {
+	song = "Descendants_of_the_Dragon_neutrality"
+	chance = {
+	factor = 0
+		modifier = {
+			factor = 1
+			OR = {
+				tag = CHI
+				tag = PRC
+				is_warlord = yes
+			}
+			has_government = neutrality
+		}		
+	}
+}

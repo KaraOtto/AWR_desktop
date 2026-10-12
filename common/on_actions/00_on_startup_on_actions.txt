@@ -105,6 +105,7 @@ on_actions = {
 				add_to_array = {
 					global.big_china = THIS
 				}
+				set_state_flag = big_china_territory
 			}
 		}
 	}
@@ -113,11 +114,14 @@ on_actions = {
 		effect = {	#民国势力
 			every_state = { 
 				limit = {
-					is_core_of = CHI
+					OR = {
+						is_core_of = CHI
+					}
 				}
 				add_to_array = {
 					global.small_china = THIS
 				}
+				set_state_flag = small_china_territory
 			}
 		}
 	}
@@ -135,6 +139,7 @@ on_actions = {
 						is_core_of = MAN
 					}
 				}
+				set_state_flag = OTL_china_territory
 				add_to_array = {
 					global.OTL_china = THIS
 				}
@@ -160,12 +165,11 @@ on_actions = {
 						state = 409
 						state = 408
 						#外西北
-						state = 654                                      						
-						state = 588   
-						state = 589   
-						state = 586 
-						state = 732
-						state = 1022
+						state = 1133                                      						
+						state = 1134 
+						state = 1135
+						state = 1136
+						state = 1137
 						#库页岛
 						state = 655
 						state = 537
@@ -174,11 +178,12 @@ on_actions = {
 						#藏南
 						state = 434
 						#克什米尔
-						state = 1068
-						state = 1076
+						state = 1132
+						state = 1165
 						#瓦罕走廊
-						state = 1065
-
+						state = 1173
+						#江心坡
+						state = 1139
 					}
 					
 				}
@@ -201,89 +206,6 @@ on_actions = {
 					
 				}
 				set_state_flag = ethnic_minorities_area
-			}
-		}
-	}
-}
-
-on_actions = {	#思潮tag
-	on_startup = {
-		effect = {
-			every_country = {
-				if = {
-					limit = {
-						has_idea = materialism
-					}
-					set_country_flag = materialism_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_materialism
-					}
-					set_country_flag = materialism_6
-				}
-				if = {
-					limit = {
-						has_idea = idealism
-					}
-					set_country_flag = idealism_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_idealism
-					}
-					set_country_flag = idealism_6
-				}
-
-				if = {
-					limit = {
-						has_idea = friendly
-					}
-					set_country_flag = friendly_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_friendly
-					}
-					set_country_flag = friendly_6
-				}
-				if = {
-					limit = {
-						has_idea = unfriendly
-					}
-					set_country_flag = unfriendly_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_unfriendly
-					}
-					set_country_flag = unfriendly_6
-				}
-
-				if = {
-					limit = {
-						has_idea = pacifism
-					}
-					set_country_flag = pacifism_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_pacifism
-					}
-					set_country_flag = pacifism_6
-				}
-				if = {
-					limit = {
-						has_idea = expansionism
-					}
-					set_country_flag = expansionism_2
-				}
-				if = {
-					limit = {
-						has_idea = extreme_expansionism
-					}
-					set_country_flag = expansionism_6
-				}
 			}
 		}
 	}
