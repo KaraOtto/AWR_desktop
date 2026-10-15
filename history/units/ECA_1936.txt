@@ -1,0 +1,73 @@
+﻿division_template = {
+	name = "Chato Kempeitai"				# Represents a corps of 3 NRA divisions (2 brigades of 2 regiments each)
+	division_names_group = ECA_INF_02						# Militia-level training and equipment
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		#infantry = { x = 1 y = 0 }
+		#infantry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Chato Keibi-gun"			# Cavalry Division
+     division_names_group = ECA_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		#infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		#infantry = { x = 1 y = 2 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 } 	# Heavy Arty Regiment had 2x 155mm battalions
+		#recon = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Paoan T'uan"	
+	division_names_group = WRL_INF_03
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "Ch'atung Chingpei Ti 1 Shih"
+		location = 828
+		division_template = "Chato Keibi-gun"
+	   # start_manpower_factor = 0.4 #they had 3500 men in 1933, for each division they got roughly 1750
+		start_equipment_factor = 0.4
+	    officer={
+			name = "Liu Chikuang"
+		}
+	}
+	division = {
+		name = "Ch'atung Chingpei Ti 2 Shih"
+		location = 828
+		division_template = "Chato Keibi-gun"
+		#start_manpower_factor = 0.4 #they had 3500 men in 1933, for each division they got roughly 1750
+		start_equipment_factor = 0.4
+	    officer={
+			name = "Lu Paoshan"
+		}
+	}
+    #source: file:///C:/Users/user/Downloads/20221026155302_0ad5292c158f3924f8b480367fcbeb94.pdf (1933)
+}
+
+##### STARTING PRODUCTION #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "JAP"
+		}
+		requested_factories = 1
+		progress = 0.82
+		efficiency = 100
+	}
+}

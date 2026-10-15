@@ -1,0 +1,637 @@
+ideas = {
+	country = {
+		#EGM 陇东
+		EGM_war_weariness = {
+			picture = cave_to_prc
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+
+            cancel = {
+				OR = {
+					tag = PRC
+					is_ally_with = PRC
+					AND = {
+						has_war_together_with = PRC
+						NOT = {
+							has_war_with = PRC
+						}
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = -0.2
+				army_org_factor = -0.25
+                #army_defence_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = PRC
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+		}
+
+		#GXC 广西
+		EFM_Southwest_two_agencies = {	
+			picture = liangguang_kmt
+
+			available = {
+				NOT = { is_subject = yes }
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				economy_cost_factor = -0.1
+				trade_laws_cost_factor = -0.1
+				political_advisor_cost_factor = -0.1
+			}
+		}
+
+		GXC_old_officals = {
+			picture = usa_great_depression
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.3
+                industrial_capacity_factory = -0.1
+				political_power_gain = -0.1
+			}
+		}
+
+		GXC_Guangxi_economy = {	
+			picture = prc_permit_opium_trade
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.25
+				war_support_factor = -0.15
+			}
+		}
+
+		GXC_org = {
+			picture = generic_spy_intel
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				#stability_factor = 0.05
+				war_stability_factor = 0.1
+				encryption_factor = 0.05
+				drift_defence_factor = 0.05
+				resistance_activity = -0.1
+			}
+		}
+
+		GXC_Iron_will = {		
+			picture = MEX_politicised_army
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_infantry_attack_factor = 0.1
+				army_infantry_defence_factor = 0.1			
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				army_org_factor = 0.05
+			}
+		}
+
+		GXC_New_guangxi_clique = {		
+			picture = regional_warlord
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.15
+				command_power_gain_mult = 0.2
+                army_core_attack_factor = 0.15
+                army_core_defence_factor = 0.15
+			}
+		}
+
+		GXC_Militia_system = {
+		
+			picture = citizen_militia_1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				mobilization_speed = 0.05
+				training_time_factor = -0.05
+			    modifier_army_sub_unit_militia_attack_factor = 0.025
+				modifier_army_sub_unit_militia_defence_factor = 0.025
+			}
+		}
+
+		GXC_Baojia_system = {		
+			picture = POL_ideology_drift_defence
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.15
+			    stability_weekly = 0.001
+			}
+		}
+
+		GXC_Japanese_consultant = {		
+			picture = warrior_traditions_idea
+			
+			available = {
+				NOT = { has_war_with = JAP }
+			}
+
+            cancel = { 
+			    AND = {
+					is_ally_with = event_target:WTT_current_china_leader 
+				    CHI = { is_ally_with = JAP } 
+				}
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {				
+			    land_doctrine_cost_factor = -0.05
+			}
+		}
+
+		#HBC 河北
+		HBC_banditry = {
+			picture = tfv_can_conscription_crisis
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			cancel = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				monthly_population = -0.2
+			    stability_weekly = -0.002
+            }
+		}
+
+		#XIC 西安
+		XIC_918_918 = {
+			removal_cost = -1
+
+			picture = jiachouguowen
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			available = {
+				NOT = { 
+					is_in_faction_with = JAP 
+				}
+			}
+
+			cancel = {
+				716 = {
+					owner = {
+						OR = {
+							TAG = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+			
+			targeted_modifier = {
+				tag = JAP			                			                
+				breakthrough_bonus_against = 0.2
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+			}
+			targeted_modifier = {
+				tag = MAN			                			                
+				breakthrough_bonus_against = 0.2
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+			}
+
+			modifier = {
+				war_support_weekly = 0.001
+				weekly_casualties_war_support = 0.001
+				war_stability_factor = 0.5
+			}
+		}
+
+		#NXM 宁夏
+		NXM_sending_reinforcement = {	#宁夏援军
+			picture = generic_volunteer_expedition_bonus
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+
+			 available = { 
+				EGM = { 
+					has_war_with = PRC 
+				}
+			 }
+
+            cancel = {
+				has_war = yes
+			}
+
+			on_add = {
+			    set_rule = {
+                    can_send_volunteers = yes
+                }
+			}
+			
+			on_remove = {
+			    set_rule = {
+                    can_send_volunteers = no
+                }
+			}
+
+			removal_cost = -1
+
+			modifier = {
+			    send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+			    send_volunteer_size = 4
+			}
+		}
+
+		#SND 山东
+		chi_former_guominjun_remnants = {
+		    picture = chi_former_guominjun_remnants
+			
+			allowed = {
+			    always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.05
+				army_morale_factor = 0.025
+				land_reinforce_rate = 0.02
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+			}
+		}
+
+		SND_zongchangs_legacy_idea = {
+		    picture = SND_zongchangs_legacy
+			
+			allowed = {
+			    always = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.035
+				political_power_gain = -0.05
+				consumer_goods_factor = -0.05
+                research_speed_factor = 0.025				
+				industrial_capacity_factory = 0.05
+				neutrality_drift = 0.01
+				communism_drift = -0.01
+				democratic_drift = -0.01
+			}
+		}
+
+		#SHX 山西
+		SHX_Anti_communist = {
+		
+			picture = ger_bulwark_against_bolshevism
+
+			available = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				communism_drift = -0.05
+				stability_factor = 0.05
+			}
+		}
+
+		SHX_weak_army = {	
+			picture = chi_army_corruption
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = -0.15
+				army_attack_factor = -0.15
+				army_defence_factor = -0.15
+				command_power_gain_mult = -0.15
+				experience_gain_army_factor = -0.15
+			}
+		}
+
+		#SIC 四川
+		sic_yapianshui = { #鸦片税
+    
+            name = sic_yapianshui
+    
+            picture = prc_permit_opium_trade
+            
+            
+            
+            available = {
+ 				has_government = neutrality           
+            }
+            
+            cancel = {
+				OR = {
+					has_idea = CHI_embrace_the_opium_trade
+					has_completed_focus = CHI_root_out_corruption		
+				}			
+            }
+
+            removal_cost = -1
+            
+            modifier = {
+                consumer_goods_factor = -0.25
+                stability_factor = -0.10
+            }
+    	}
+
+		CHI_wang_zuanxu_in_sic = {	#省主席：王缵绪
+			picture = SIC_Wang_Zuanxu
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				is_subject_of = event_target:WTT_current_china_leader
+			}
+
+			cancel = {
+				NOT = {
+					is_ally_with = event_target:WTT_current_china_leader
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = -0.15
+				autonomy_gain_warscore_factor = -0.25
+				master_ideology_drift = 0.025
+				autonomy_manpower_share = 0.25
+			}
+		}
+
+		CHI_chiang_in_sic = {	#新主席
+			picture = chiang
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				is_subject_of = event_target:WTT_current_china_leader
+			}
+
+			cancel = {
+				NOT = {
+					is_ally_with = event_target:WTT_current_china_leader
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				war_stability_factor = 0.15
+				political_power_factor = -0.15
+				stability_factor = 0.1
+				master_ideology_drift = 0.025
+				autonomy_gain_warscore_factor = -0.5
+				autonomy_manpower_share = 0.3
+			}
+		}
+
+		#XIK 西康
+        xik_zhangguotao = { 
+    
+            name = xik_zhangguotao
+    
+            picture = chinese_burning_red_army_flag
+            
+            allowed = {
+				#
+            }
+            
+            available = {
+				has_government = neutrality			
+            }
+            
+            cancel = {
+            	has_completed_focus = CHI_cooperation_with_the_communists			
+            }
+
+            removal_cost = -1
+            
+            modifier = {
+                stability_factor = -0.10
+                communism_drift = 0.05
+            }
+    	}
+
+		#XSM 青海
+		MON_nomadic = {
+			picture = nomadic
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+
+			available = {
+			}
+
+			cancel = {
+			}
+
+			modifier = {
+				conscription = 0.03
+				production_factory_efficiency_gain_factor = -0.15
+				cavalry_attack_factor = 0.15 #MODDED
+				cavalry_defence_factor = 0.15 #MODDED
+			}
+
+			removal_cost = -1
+		}
+
+		xsm_majiajun = {			
+            picture = xsm_majiajun
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+            available = {                                                   
+				surrender_progress < 0.8
+            }
+			
+			cancel = {
+				or = {
+					tag = event_target:WTT_current_china_leader
+					and = { tag = KHM is_ai = yes }
+				}
+			}
+                                                     
+			modifier = {
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.15
+				army_speed_factor = 0.10
+				terrain_penalty_reduction = 0.15
+				attrition = -0.25
+				army_morale_factor = 0.15
+				no_supply_grace = 48
+				supply_consumption_factor = -0.15
+				out_of_supply_factor = -0.15
+				surrender_limit = 0.5
+			}
+
+			removal_cost = -1
+		
+			do_effect = {
+				or = {
+					and = { original_tag = KHM is_ai = no }
+					original_tag = XSM
+					original_tag = GSM
+					original_tag = NXM
+				}
+			}
+	    }
+
+		#YUN 云南
+		yun_jiangwutang = { #云南讲武堂
+		
+		    name = yun_jiangwutang
+
+			picture = YUN_jiangwutang
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_leader_cost_factor = -0.5
+				army_leader_start_planning_level = 1
+				army_morale_factor = 0.05
+				army_org_factor = 0.05				
+			}
+		}
+
+		yun_democratic_fortress = {
+		    picture = yun_democratic_fortress
+			
+			allowed = {
+			}
+			
+			cancel = {
+				NOT = {
+					has_country_leader = {
+						character = YUN_long_yun
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				party_popularity_stability_factor = 0.05
+				army_core_defence_factor = 0.05
+				drift_defence_factor = 0.05
+			}
+		}
+	}
+}

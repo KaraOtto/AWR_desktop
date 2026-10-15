@@ -16,12 +16,12 @@ characters = {
 		name = GER_adolf_hitler
 		portraits = {
 			civilian = {
-				large=GFX_portrait_GER_adolf_hitler
-				small="GFX_idea_GER_adolf_hitler"
+				large = GFX_portrait_GER_adolf_hitler
+				small = "GFX_idea_GER_adolf_hitler"
 			}
 			army={
-				large="gfx/leaders/GER/xitele.png"
-				small="GFX_idea_GER_adolf_hitler"
+				large = "gfx/leaders/GER/Army_GER_adolf_hitler.png"
+				small = "GFX_idea_GER_adolf_hitler"
 			}
 		}
 
@@ -32,7 +32,7 @@ characters = {
 			expire = "1965.1.1.1"
 			id = -1
 		}
-				advisor={
+		advisor={
 			slot = army_chief
 			idea_token = GER_adolf_hitler
 			allowed = {
@@ -61,8 +61,8 @@ characters = {
 			logistics_skill=4
 			legacy_id=0
 			visible = {
-			has_country_leader = { ruling_only = yes character = GER_adolf_hitler }
-			has_global_flag = GER_adolf_hitler_general
+				has_country_leader = { ruling_only = yes character = GER_adolf_hitler }
+				has_global_flag = GER_adolf_hitler_general
 			}
 		}
 	}
@@ -207,6 +207,21 @@ characters = {
 		}
 	}
 
+	GER_otto_wels = {
+		name = GER_otto_wels
+		portraits = {
+			civilian = {
+				large = "GFX/leaders/GER/Portrait_Germany_Otto_Wels.dds"
+			}
+		}
+		country_leader = {
+			ideology = democratic_socialism
+			traits = { }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+
 	GER_hans_vogel = {
 		name = GER_hans_vogel
 		portraits = {
@@ -344,7 +359,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 1500
+				factor = 1.500
 			}
 		}
 		
@@ -439,8 +454,8 @@ characters = {
 		name = GER_werner_von_fritsch
 		portraits = {
 			army = {
-				small="GFX_idea_werner_von_fritsch"
-				large="gfx/leaders/GER/Fritsch.jpg"
+				large = "gfx/leaders/GER/Fritsch.jpg"
+				small = "GFX_idea_werner_von_fritsch"
 			}
 		}
 
@@ -595,12 +610,12 @@ characters = {
 		
 		corps_commander = {
 			visible = { 
-			               AND = {
-			                has_completed_focus = GER_adopt_new_panzer_doctrine 
-			                NOT = { has_global_flag = GER_erwin_rommel_go_to_africa }
-							NOT = { has_global_flag = GER_erwin_rommel_died }
-			                }
-			            }
+			    AND = {
+			        has_completed_focus = GER_adopt_new_panzer_doctrine 
+			        NOT = { has_global_flag = GER_erwin_rommel_go_to_africa }
+					NOT = { has_global_flag = GER_erwin_rommel_died }
+			    }
+			}
 			traits = { trait_reckless media_personality armor_officer war_hero trickster }
 			skill = 4
 			attack_skill = 5
@@ -992,7 +1007,7 @@ characters = {
 			ai_will_do = {
 				factor = 0.000
 			}
-			desc=GER_Skorzney_desc
+			desc = GER_Skorzney_desc
 		}
 		corps_commander={
 		    traits={ rising_young_officer infantry_officer adaptable trait_reckless trickster commando trait_mountaineer hill_fighter ranger guerilla_fighter }
@@ -1002,9 +1017,9 @@ characters = {
 			planning_skill=4
 			logistics_skill=4
 			legacy_id=0
-			desc=GER_Skorzney_desc
+			desc = GER_Skorzney_desc
 			visible = {
-			has_global_flag = GER_Skorzney_general
+				has_global_flag = GER_Skorzney_general
 			}
 		}
 	}
@@ -1175,8 +1190,8 @@ characters = {
 		name = GER_felix_steiner
 		portraits = {
 			army = {
-				large="gfx/leaders/GER/portrait_ger_felix_steiner.dds"
-				small=GFX_portrait_GER_felix_steiner_small
+				large = "gfx/leaders/GER/portrait_ger_felix_steiner.dds"
+				small = GFX_portrait_GER_felix_steiner_small
 			}
 		}
 		corps_commander = {
@@ -1345,7 +1360,7 @@ characters = {
 		}
 	}
 
-	GER_alexander_von_falkenhausen = { #TODO_Manu: Deal with the von Falkenhausen plague situation, there are 11 more von Falkenhausen impostors
+	GER_alexander_von_falkenhausen = { #MM: Deal with the von Falkenhausen plague situation, there are 11 more von Falkenhausen impostors
 		name = CHI_alexander_von_falkenhausen
 		portraits = {
 			army = {
@@ -1533,7 +1548,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 9999
+				base = 2
 			}
 		}
 		
@@ -1744,7 +1759,7 @@ characters = {
 		}
 	}
 
-	GER_walther_wever = { #TODO_Manu: Died in June 1936, probably remove him
+	GER_walther_wever = { #MM: Died in June 1936, probably remove him
 		name = GER_walther_wever
 		portraits = {
 			army = {
@@ -1783,9 +1798,6 @@ characters = {
 			}
 			traits = {
 				dive_bomber
-			}
-			ai_will_do = {
-				factor = 5000
 			}
 		}
 	}
@@ -1898,6 +1910,9 @@ characters = {
 			idea_token = wilhelm_keitel
 			allowed = {
 				original_tag = GER
+			}
+			visible = {
+				has_government = fascism
 			}
 			available = {
 				has_government = fascism
@@ -2072,12 +2087,12 @@ characters = {
 		name = GER_hermann_goring
 		portraits = {
 			army = {
-				small="GFX_idea_GER_hermann_goringzz"
-				large=GFX_portrait_GER_hermann_goring
+				small = "GFX_idea_GER_hermann_goringzz"
+				large = GFX_portrait_GER_hermann_goring
 			}
 			civilian = {
-				large="gfx/leaders/GER/gelin.jpg"
-				small="GFX_idea_GER_hermann_goringzz"
+				large = "gfx/leaders/GER/gelin.jpg"
+				small = "GFX_idea_GER_hermann_goringzz"
 			}
 		}
 
@@ -2091,7 +2106,7 @@ characters = {
 				has_government = fascism
 			}
 			visible = {
-				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
+				#always = yes #MM: Part of Inner Circle. 
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
@@ -2168,7 +2183,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 0.500
+				factor = 0.250
 			}
 		}
 	}
@@ -2187,7 +2202,7 @@ characters = {
 				original_tag = GER
 			}
 			available = {
-				NOT = { has_government = fascism } #TODO_Manu: Maybe political focuses?
+				NOT = { has_government = fascism } 
 				has_completed_focus = GER_reorganize_the_luftwaffe
 			}
 			traits = {
@@ -2242,7 +2257,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 5000
+				factor = 2.000
 			}
 		}
 		corps_commander={
@@ -2327,7 +2342,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 5000
+				base = 1.000
 			}
 		}
 	}
@@ -2604,17 +2619,11 @@ characters = {
 				original_tag = GER
 			}
 			available = {
-                                OR = {
-				has_government = fascism
-				has_country_flag = GER_reinstated_nazi_leadership
-			         }
+                has_country_flag = GER_reinstated_nazi_leadership
 			}
 			visible = {
 				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
-                                OR = {
-				has_government = fascism
-				has_country_flag = GER_reinstated_nazi_leadership
-			         }
+                has_country_flag = GER_reinstated_nazi_leadership
 			}
 			traits = {
 				GER_reich_engineer fortification_engineer 
@@ -2646,11 +2655,11 @@ characters = {
 			         }
 			}
 			visible = {
-				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
-                                OR = {
-				has_government = fascism
-				has_country_flag = GER_reinstated_nazi_leadership
-			         }
+				always = yes #TODO_Manu: Part of Inner Circle. 
+                OR = {
+					has_government = fascism
+					has_country_flag = GER_reinstated_nazi_leadership
+			    }
 			}
 			traits = {
 				GER_reich_architect armaments_organizer 
@@ -2781,10 +2790,10 @@ characters = {
 				original_tag = GER
 			}
 			available = {
-                                OR = {
-				has_government = fascism
-				has_country_flag = GER_reinstated_nazi_leadership
-			         }
+                OR = {
+					has_government = fascism
+					has_country_flag = GER_reinstated_nazi_leadership
+			    }
 				if = {
 					limit = {
 						has_dlc = "Man the Guns"
@@ -2795,19 +2804,21 @@ characters = {
 				}
 			}
 			visible = {
-                                OR = {
-				has_government = fascism
-				has_country_flag = GER_reinstated_nazi_leadership
-			         }
+                OR = {
+					has_government = fascism
+					has_country_flag = GER_reinstated_nazi_leadership
+			    }
 			}
 			traits = {
 				GER_reich_minister_of_propaganda fascist_demagogue propaganda_expert 
 			}
 			do_effect = {
-			always = yes
+				NOT = {
+					has_government = fascism 
+				}
 			}
 			ai_will_do = {
-				factor = 24.000
+				base = 0
 			}
 		}
 	}
@@ -2836,17 +2847,14 @@ characters = {
 				}
 			}
 			visible = {
-				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
+				always = yes #MM: Part of Inner Circle. 
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
 				}
 			}
 			traits = {
-				amateur_aviator_hess GER_first_among_equals #TODO_Manu: Maybe change trait
-			}
-			ai_will_do = {
-				factor = 24
+				amateur_aviator_hess GER_first_among_equals
 			}
 		}
 	}
@@ -2879,7 +2887,7 @@ characters = {
 				}
 			}
 			visible = {
-				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
+				always = yes #MM: Part of Inner Circle. 
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
@@ -2889,10 +2897,7 @@ characters = {
 				custom_effect_tooltip = GER_SS_himmler_recruit
 			}
 			traits = {
-				prince_of_terror #TODO_Manu: Probably change trait
-			}
-			ai_will_do = {
-				factor = 24
+				prince_of_terror
 			}
 		}
 	}
@@ -2918,14 +2923,14 @@ characters = {
 				}
 			}
 			visible = {
-				always = yes #TODO_Manu: Part of Inner Circle. REMOVE COMPLETELY IF NOT USED BY ALT-HIST
+				always = yes #MM: Part of Inner Circle. 
 				has_government = fascism
 				NOT = {
 					has_completed_focus = GER_oppose_hitler_ww
 				}
 			}
 			ai_will_do = {
-				factor = 24
+				factor = 0
 			}
 			traits = {
 				GER_secretary_to_the_fuhrer silent_workhorse 
@@ -3043,15 +3048,13 @@ characters = {
 	}
 
 	GER_reinhard_heydrich = {
-			allowed = {
-				tag = GER
-			}
+			
 			name = GER_reinhard_heydrich
 			portraits = {
 				civilian = {
-				large="gfx/leaders/GER/haidelixi.png"
-				small="gfx/interface/ideas/idea_GER_generic_land_1.dds"
-			}
+					large="gfx/leaders/GER/haidelixi.png"
+					small="gfx/interface/ideas/idea_GER_generic_land_1.dds"
+				}
 				army = {
 					small = GFX_portrait_GER_reinhard_heydrich_small
 				}
@@ -3264,7 +3267,7 @@ characters = {
 				}
 			}
 			traits = {
-				economist 
+				GER_price_commissioner 
 			}
 			ai_will_do = {
 				factor = 0.000
@@ -3405,7 +3408,7 @@ characters = {
 					has_completed_focus = GER_reestablish_free_elections 
 				}
 				ELSE = {
-					has_completed_focus = GER_re_establish_free_elections_ww
+					has_completed_focus = GER_monarchist_sentiment
 				}
 			}
 			traits = {
@@ -3426,19 +3429,6 @@ characters = {
 			}
 		}
 		# Will work as a dynamic modifier for the Reichskommissariat system
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = GER_alfred_rosenberg
-		#	allowed = {
-		#		original_tag = GER
-		#	}
-		#	available = {
-		#		has_government = fascism
-		#	}
-		#	traits = {
-		#		#TODO_Manu: New trait
-		#	}
-		#}		
 	}
 
 	GER_hans_luther = {
@@ -3464,10 +3454,9 @@ characters = {
 			}
 			available = {
 				NOT = { has_government = fascism }
-				#NOT = { has_government = communism } # TODO_Manu: Also not available to commies?
 			}
 			traits = {
-				the_banker #TODO_Manu: New trait, similar but adjusting ideology acceptances 
+				GER_former_reichsbank_president
 			}
 			ai_will_do = {
 				base = 2
@@ -4324,7 +4313,7 @@ characters = {
 				small = GFX_idea_von_braun
 			}
 		}
-		advisor={
+		advisor = { #MM: Old Theorist role -> Now Scientist
 			cost = 100
 			slot = theorist
 			idea_token = von_braun

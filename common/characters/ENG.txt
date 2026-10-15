@@ -1,6 +1,6 @@
 characters={
 	ENG_winston_churchill={
-		name = ENG_winston_churchill
+		name=ENG_winston_churchill
 		portraits={
 			civilian={
 				large=GFX_portrait_ENG_winston_churchill
@@ -13,20 +13,50 @@ characters={
 			slot = political_advisor
 			idea_token = ENG_winston_churchill
 			available  = {
-				has_government  = neutrality 
-				has_completed_focus  = ENG_the_kings_party 
-				if  = {
-					limit  = {
-						has_dlc = "Man the Guns"
+				if = {
+					limit = {
+						original_tag = ENG
 					}
-					NOT = {
-						has_autonomy_state  = autonomy_supervised_state
+					has_government  = neutrality 
+					has_completed_focus  = ENG_the_kings_party 
+					if  = {
+						limit  = {
+							has_dlc = "Man the Guns"
+						}
+						NOT = {
+							has_autonomy_state  = autonomy_supervised_state
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						original_tag = RAJ
+					}
+					OR = {
+						has_government = neutrality
+						has_government = democratic
 					}
 				}
 			}
 			allowed  = {
-				original_tag  = ENG
-				has_dlc = "Man the Guns"
+				OR = {
+					AND = {
+						has_dlc = "Man the Guns"
+						original_tag = ENG
+					}
+					AND = {
+						has_dlc = "Graveyard of Empires"
+						original_tag = RAJ
+					}
+				}
+			}
+			visible = {
+				if = {
+					limit = {
+						original_tag = RAJ
+					}
+					NOT = { has_character_flag = RAJ_churchill_as_country_leader_flag }
+				}
 			}
 			traits  = {
 				royalist_bulldog 
@@ -36,11 +66,12 @@ characters={
 			}
 		}
 
-		country_leader={
+		country_leader={ #This country leader role is copied as Non-Aligned if Churchill is sent to RAJ - Changes here should be applied in event GOE_RAJ_loyalist.11
 			ideology=conservatism
-			desc = ENG_winston_churchill_d
+			desc = ENG_winston_churchill_desc
 			traits = {
-				british_bulldog ENG_qiujier_trait
+				british_bulldog 
+				ENG_qiujier_trait
 			}
 			expire="1965.1.1.1"
 			id=-1
@@ -55,8 +86,8 @@ characters={
 			}
 		}
 		country_leader={
-			ideology=liberalism
-			desc = ENG_stanley_baldwin_d
+			ideology=conservatism
+			desc = ENG_stanley_baldwin_desc
 			traits={ conservative_grandee }
 			expire="1938.1.1.1"
 			id=-1
@@ -161,8 +192,8 @@ characters={
 			}
 		}
 		country_leader={
-			ideology=liberalism
-			desc = ENG_neville_chamberlain_d
+			ideology=conservatism
+			desc = ENG_neville_chamberlain_desc
 			traits = { chamberlain_appeaser rearmer }
 			expire="1965.1.1.1"
 			id=-1
@@ -170,18 +201,42 @@ characters={
 		
 	}
 
-	ENG_horatio_dundas={
-		name=ENG_horatio_dundas
-		portraits={
-			civilian={
-				large=GFX_portrait_ENG_horatio_dundas
+	#ENG_horatio_dundas={
+	#	name=ENG_horatio_dundas
+	#	portraits={
+	#		civilian={
+	#			large=GFX_portrait_ENG_horatio_dundas
+	#		}
+	#	}
+	#	country_leader={
+	#		ideology=centrism
+	#		traits={ quartermaster_general compassionate_gentleman }
+	#		expire="1945.1.1.12"
+	#		id=-1
+	#	}
+	#}
+
+	ENG_george_v = {
+		name = ENG_george_v
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/ENG/george_V.png"
 			}
 		}
-		country_leader={
-			ideology=centrism
-			traits={ quartermaster_general compassionate_gentleman }
-			expire="1945.1.1.12"
-			id=-1
+		country_leader = {
+			ideology = moderatism
+			traits = {}
+			expire = "1936.1.20"
+			id = -1
+		}
+	}
+
+	ENG_robert_menzies={ #Through AST focus tree, Australian PM Menzies can become leader in ENG
+		name=AST_robert_menzies
+		portraits={
+			civilian={
+				large = GFX_portrait_AST_robert_menzies
+			}
 		}
 	}
 
@@ -1645,9 +1700,18 @@ characters={
 	ENG_clement_attlee={
 		name=ENG_clement_attlee
 		portraits={
+			civilian={
+				large="GFX/leaders/ENG/Portrait_Britain_Clement_Attlee.dds"
+			}
 			army={
 				small="GFX_idea_clement_attlee"
 			}
+		}
+		country_leader={
+			ideology=democratic_socialism
+			traits={ }
+			expire="1965.1.1"
+			id=-1
 		}
 		advisor={
 			slot = political_advisor

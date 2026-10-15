@@ -15931,92 +15931,7 @@ CHI = {
 914 = {	set_variable = { This.true_test_id = This.id }	add_to_variable = { This.true_test_id = 1073741 } multiply_variable = { This.true_test_id = 1000 } add_to_variable = { This.true_test_id = 824 } }
 915 = {	set_variable = { This.true_test_id = This.id }	add_to_variable = { This.true_test_id = 1073741 } multiply_variable = { This.true_test_id = 1000 } add_to_variable = { This.true_test_id = 824 } }
 
-#trans-siberian railway
-219 = { level_6_infra = yes }
-#239 = { level_6_infra = yes }
-#254 = { level_6_infra = yes }
-251 = { level_6_infra = yes }
-253 = { level_6_infra = yes }
-252 = { level_6_infra = yes }
-256 = { level_6_infra = yes }
-652 = { level_6_infra = yes }
-582 = { level_6_infra = yes }
-403 = { level_6_infra = yes }
-571 = { level_6_infra = yes }
-570 = { level_6_infra = yes }
-651 = { level_6_infra = yes }
-257 = { level_6_infra = yes }
-#401 = { level_6_infra = yes }
-#402 = { level_6_infra = yes }
-404 = { level_6_infra = yes }
-#407 = { level_6_infra = yes }
-408 = { level_6_infra = yes }
-409 = { level_6_infra = yes }
-561 = { level_6_infra = yes }
-563 = { level_6_infra = yes }
-564 = { level_6_infra = yes }
-566 = { level_6_infra = yes }
-567 = { level_6_infra = yes }
-568 = { level_6_infra = yes }
-569 = { level_6_infra = yes }
-654 = { level_6_infra = yes }
-657 = { level_6_infra = yes }
 
-408 = {
-    add_building_construction = {
-    	type = infrastructure
-    	level = 1
-    	instant_build = yes
-    }
-}
-
-FRA = {
-    #add_ideas = volunteer_only
-    add_war_support = 0.5
-    add_ideas = free_trade
-}
-USA = {
-	add_timed_idea = { idea = USA_paihua days = 2906 }
-    #news_event = { #AFC #guo
-    #    days = 1708
-    #    id = rcmUSA.9
-    #}
-    create_country_leader = {
-		name = "Norman Thomas"
-		desc = ""
-		picture = "Portait_USA_Norman_Thomas.dds"
-		expire = "1965.1.1"
-		ideology = religious_socialism
-		traits = {
-            christian_socialist
-		}
-	}
-
-	every_owned_state = { #guo
-		limit = {
-			is_core_of = USA
-		}
-		add_extra_state_shared_building_slots = 20
-		add_building_construction = {
-			type = industrial_complex
-			level = 4
-			instant_build = yes
-		}
-	}
-}
-
-GER = {
-	add_popularity = {
-		ideology = socialism
-		popularity = 0.13
-	}
-}
-BEL = {
-	add_popularity = {
-		ideology = socialism
-		popularity = 0.13
-	}
-}
 every_state = { #china biggest extent, used to limit scopes and improve performance
 	limit = {
 		OR = {
@@ -16182,13 +16097,6 @@ every_state = {
 	}
 }
 
-648 = {
-    add_building_construction = {
-		type = air_base
-		level = 3
-		instant_build = yes
-	}
-}
 MAN = {
     every_owned_state = {
         limit = {
@@ -16203,54 +16111,7 @@ MAN = {
         }
     }
 }
-645 = {
-    add_building_construction = {
-		type = air_base
-		level = 3
-		instant_build = yes
-	}
-}
-158 = { 
-	add_building_construction = {
-		type = bunker
-		level = 2
-		province = 611
-		instant_build = yes
-	}
-	add_building_construction = {
-		type = bunker
-		level = 2
-		province = 6780
-		instant_build = yes
-	}
-	add_building_construction = {
-		type = bunker
-		level = 2
-		province = 9738
-		instant_build = yes
-	}
-	add_building_construction = {
-		type = bunker
-		level = 2
-		province = 11721
-		instant_build = yes
-	}
-	add_building_construction = {
-		type = bunker
-		level = 2
-		province = 11891
-		instant_build = yes
-	}
-}
 
-SOV = {
-	#give_guarantee = SIK
-    puppet = TAN
-	puppet = MON
-}
-SIK = {
-    give_military_access = KHR
-}
 PLM = {
 	add_opinion_modifier = { target = CHI modifier = hostile_status }
 	reverse_add_opinion_modifier = { target = CHI modifier = hostile_status }
@@ -16269,53 +16130,15 @@ PLM = {
 PLM = { #must be written after puppet effect
 	give_military_access = SUY
 }
-EGM = {
-    give_military_access = NXM
-	give_military_access = NEA
-	give_military_access = SHC
-}
-NXM = {
-    give_military_access = EGM
-}
-IRQ = {
-    give_military_access = ENG
-}
+
 ENG = {
 	if = {
 		limit = {
 			has_dlc = "Together for Victory"
 		}
 		set_autonomy = {
-			target = NZL
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
-			target = AST
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
-			target = CAN
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
-			target = SAF
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
-			target = EGY
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
-			target = OMA
-			autonomous_state = autonomy_dominion
-		}
-		set_autonomy = {
 			target = SST
 			autonomous_state = autonomy_integrated_puppet
-		}
-		set_autonomy = {
-			target = BUR
-			autonomous_state = autonomy_colony
 		}
 		set_autonomy = {
 			target = BOR
@@ -16325,160 +16148,6 @@ ENG = {
 			target = SAR
 			autonomous_state = autonomy_colony
 		}
-		else = {
-			#puppet = NZL
-			#puppet = CAN
-			#puppet = AST
-			#puppet = SAF
-			puppet = MAL
-			puppet = SST
-			puppet = RAJ
-			puppet = BUR
-			puppet = SAR
-			puppet = BOR
-			puppet = EGY
-			puppet = OMA
-		}
-	}
-
-	set_popularities = {
-		democratic = 59
-		fascism = 2
-		socialism = 38
-		communism = 1
-		neutrality = 0
-	}
-	set_politics = {
-
-		ruling_party = democratic
-		last_election = "1935.11.14"
-		election_frequency = 48
-		elections_allowed = yes ##suspended through duration of war, which is handled via event
 	}
 	add_to_faction = SST
-	add_to_faction = NEP
-	create_country_leader = {
-		name = "Clement Attlee"
-		desc = ""
-		picture = "Portrait_Britain_Clement_Attlee.dds"
-		expire = "1965.1.1"
-		ideology = n_democratic_socialism
-		traits = {
-
-		}
-	}
 }
-GER = {
-	create_country_leader = {
-		name = "Otto Wels"
-		desc = ""
-		picture = "Portrait_Germany_Otto_Wels.dds"
-		expire = "1965.1.1"
-		ideology = democratic_socialism
-		traits = {
-
-		}
-	}
-}
-
-1939.1.1 = {
-	every_country = {
-		limit = {
-			is_warlord = yes
-			is_subject_of = CHI
-		}
-		set_popularities = {
-			democratic = 0
-			fascism = 0
-			communism = 0
-			socialism = 0
-			neutrality = 100
-		}
-		set_politics = {
-			ruling_party = neutrality
-			last_election = "1936.1.1"
-			election_frequency = 48
-			elections_allowed = no
-		}
-		complete_national_focus = CHI_secure_internal_politics
-		complete_national_focus = CHI_cooperation_with_the_nationalists
-	}
-	if = {
-		limit = {
-			has_dlc = "Waking the Tiger"
-		}
-		random_country = {
-			limit = {
-				tag = RFM
-			}
-			add_ideas = {
-				JPG_illegal_regime_1
-				warlord_economy
-				PRC_government_corruption
-				CHI_fractured_administration_1
-				CHI_incompetent_officers
-			}
-
-		}
-	}
-	every_country = {
-		limit = {
-			has_dlc = "Waking the Tiger"
-			is_warlord = yes
-		}
-		complete_national_focus = CHI_secure_internal_politics
-		complete_national_focus = CHI_cooperation_with_the_nationalists
-		#complete_national_focus = CHI_industrial_investment
-		#complete_national_focus = CHI_public_education_reform
-		#complete_national_focus = CHI_long_term_economic_planning
-		complete_national_focus = CHI_technological_cooperation
-		complete_national_focus = WRL_army_expansion
-		complete_national_focus = WRL_industrial_investment
-		
-		#complete_national_focus = CHI_new_model_province
-		complete_national_focus = CHI_root_out_corruption
-		complete_national_focus = CHI_land_reform
-		complete_national_focus = CHI_reform_the_administration
-	}
-
-}
-every_country = {
-	limit = {
-		is_warlord = yes
-		is_subject_of = CHI
-	}
-	set_popularities = {
-		democratic = 0
-		fascism = 0
-		communism = 0
-		socialism = 0
-		neutrality = 100
-	}
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1936.1.1"
-		election_frequency = 48
-		elections_allowed = no
-	}
-	add_stability = 0.1
-	#add_ideas = free_trade
-}
-USA = {
-    if = {
-        limit = {
-            has_unit_leader = 601
-        }
-        remove_unit_leader = 601
-    }
-}
-COR = {
-    remove_state_core = 1
-}
-
-ENG = {
-    add_ideas = RCM_sun_never_sets
-}
-1939.1.1 = {
-    set_global_flag = dont_do_this_flag
-}
-

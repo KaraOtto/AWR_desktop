@@ -1,0 +1,206 @@
+characters={
+
+	KHM_ma_hushan={
+		name=KHM_ma_hushan #1910年生於甘肅，(可能是)陸軍中將，(國方說法)1954年6月1日在蘭州被處決，(中共說法)1953年4月9日被漠泥溝被擊斃
+		portraits={
+			civilian={
+				large="gfx/leaders/KHM/Portrait_Ma_Hushan.dds"
+			}
+			army={
+				small="gfx/leaders/KHM/idea_ma_hushan.dds"
+				large="gfx/leaders/KHM/Portrait_Ma_Hushan.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+		corps_commander={
+			traits={ cavalry_officer harsh_leader difangshilipai}
+			skill=1
+			attack_skill=1 #2
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+			desc = KHM_ma_hushan_desc
+		}
+        advisor={	
+			slot = army_chief
+			idea_token = KHM_ma_hushan
+			ledger = army
+			traits = { army_chief_organizational_1 }		    
+			cost = 50
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	
+	KHM_ma_zhongying={
+		name=KHM_ma_zhongying #1910年生於甘肅省河州，1929後陸軍中將，1934年7月進入蘇聯，之後下落不明，可能死於1937
+		portraits={
+			army={
+				small="gfx/leaders/KHM/idea_ma_zhongying.dds"
+				large="gfx/leaders/KHM/Portrait_Ma_Zhongying.dds"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = ma_zhongying_return } 
+			traits={ cavalry_leader harsh_leader }
+			skill=2
+			attack_skill=2 #3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+			desc = KHM_ma_zhongying_desc
+		}
+		advisor={	
+			visible = { original_tag = KHM } 
+			available = { has_country_flag = ma_zhongying_return } 
+			idea_token = KHM_ma_zhongying
+			slot = theorist
+			ledger = army
+			traits = { military_theorist }		    
+			cost = 100
+		}
+		advisor={	
+			visible = { original_tag = KHM } 
+			available = { has_country_flag = ma_zhongying_return } 
+			slot = army_chief
+			idea_token = KHM_ma_zhongying
+			ledger = army
+			traits = { army_chief_organizational_2 }		    
+			cost = 100
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+
+	KHM_ma_yanliang={ 
+		name=KHM_ma_yanliang #馬彥良(?~1987) 1937前曾任新編第三十六師第一旅旅長 政协临夏州第二届委员会常务委员 政协临夏州第五届委员会副主席 (1982年8月——1987年6月)
+		portraits={
+			army={
+				#small = GFX_idea_generic_army_art_asian_2d
+				large="gfx/leaders/KHM/Portrait_tng_general_2.dds"
+			}
+		}
+		corps_commander={
+			visible = { has_country_flag = ma_yanliang_return } 
+			traits={ cavalry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}	
+	}
+	KHM_ma_shengkui={ 
+		name=KHM_ma_shengkui #馬生貴(?~?) 新編第三十六師第一旅旅長 
+		portraits={
+			army={
+				small = GFX_idea_generic_army_regrouping
+				large="gfx/leaders/KHM/Portrait_tng_general.dds"
+			}
+		}
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	KHM_ma_rulong={ 
+		name=KHM_ma_rulong #馬如龍(?~?) 新編第三十六師第二旅旅長 
+		portraits={
+			army={
+				small = GFX_idea_generic_army_infantry 
+				large="gfx/leaders/KHM/Portrait_tng_general_4.dds"
+			}
+		}
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = KHM_ma_rulong
+			ledger = army
+			traits = { army_regrouping_1 }
+            cost = 50 
+		}		
+	}
+	#advisors
+	KHM_bai_zili={
+		name=KHM_bai_zili #拜自立(?~1937) 新編第三十六師參謀長
+		portraits = { 
+			army = { 
+				small = GFX_idea_generic_army_art_asian_2d
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = KHM_bai_zili
+			ledger = army
+			traits = { army_infantry_1 }
+			ai_will_do = {
+				factor = 200
+			}
+			available = {
+				has_completed_focus = KHM_army_staff 
+			}
+			cost = 50 
+		}		
+	}
+
+	KHM_ma_zhancang={
+		name=KHM_ma_zhancang #馬占倉(?~1937) 
+		portraits = { 
+			army = { 
+				small = GFX_idea_generic_army_entrenchment
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = KHM_ma_zhancang
+			ledger = army
+			traits = { army_entrenchment_2 }
+            cost = 100
+		}	
+	}
+	
+	KHM_ge_jiyun={
+		name=KHM_ge_jiyun #葛霽雲(1896~1941)
+		portraits = { 
+			army = { 
+				small="gfx/leaders/KHM/idea_ge_jiyun.dds"
+			}
+		}
+		advisor={
+			idea_token = KHM_ge_jiyun
+			slot = political_advisor
+			available = {
+				has_completed_focus = KHM_send_ma_hushan_to_ussr
+			}
+			traits = { communist_revolutionary }
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+	}
+}

@@ -83,7 +83,10 @@ no_garrison = {
 
 		modifier = {
 			FROM = {
-				is_democratic_type = yes #guo
+				OR = {
+    				has_government = democratic
+    				has_government = socialism
+    			}
 			}
 			has_active_resistance = no
 			add = 200
@@ -114,7 +117,10 @@ autonomous_occupation = {#guo
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
 
 	visible = {
-		is_democratic_type = yes #guo #? on design
+		OR = {
+    		has_government = democratic
+    		has_government = socialism
+    	}
 	}
 
 	state_modifier = {
@@ -170,7 +176,6 @@ foreign_civilian_oversight = {#guo
 		
 		modifier = {#guo
 			check_variable  = { resistance_target_without_law < 0.25}
-			is_fascism_type = yes
 			add = 5000
 		}
 	}
@@ -200,7 +205,6 @@ local_police_force_garrison = {#guo
 		
 		modifier = {#guo
 			check_variable  = { resistance_target_without_law < 0.50}
-			is_fascism_type = yes
 			add = 5000
 		}
 

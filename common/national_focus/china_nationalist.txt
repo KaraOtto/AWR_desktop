@@ -1,0 +1,6812 @@
+focus_tree = {	
+	id = china
+	country = {
+		factor = 0
+		modifier = {
+			add = 10000
+			tag = CHI
+			
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 50 y = 2000 }
+
+	inlay_window = {
+		id = chi_inner_circle_inlay_window
+		position = { x = 1000 y = 2000 }
+	}
+	
+	focus = {#国策0010继续训政
+		id = CHI_one_party_tutelage
+		icon = GFX_focus_CHI_chongbaichiangkaishen
+		cost = 3.6
+		prerequisite = {
+			focus = CHI_institutional_reform_focus
+		}
+		mutually_exclusive = {
+			focus = CHI_prepare_for_constitionalization_focus
+			focus = CHI_support_kmt_opposition_focus
+		}
+		x = 3
+		y = 0
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_HISTORICAL
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+			army_experience = 10			
+			add_political_power = 75
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_country_leader_trait = ROC_red_general
+			hidden_effect = {
+				CHI_chiang_kai_shek = {
+					add_country_leader_trait = {
+						ideology = sanmin_military_rule
+						trait = ROC_red_general
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {#国策1000给西藏下最后通牒
+		id = CHI_Tibet_Ultimatum
+		icon = GFX_focus_tibzhanzheng
+		cost = 10.00
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = {
+			focus = CHI_Found_Faction
+			focus = CHI_Faction_Research
+			focus = CHI_Isolationism
+		}
+		# mutually_exclusive = {
+		# 	focus = CHI_Befriend_Tibet
+		# }
+		x = 55
+		y = 19
+		available = {
+			TIB = {
+				exists = yes
+			    NOT = {
+					is_subject_of = ROOT
+					has_war_with = ROOT
+				}
+			}
+		}
+		will_lead_to_war_with = TIB
+		ai_will_do = {
+			factor = 25
+		}
+		
+		completion_reward = {
+			#add_state_claim = 322
+			#add_state_claim = 757
+			#add_state_claim = 758
+			TIB = {
+				country_event = {
+					id = rcmchina.340
+					days = 5
+				}
+			}
+		}
+	}
+	
+	focus = {#国策1000不承认麦克马洪线
+		id = CHI_renounce_the_mcmahon_line
+		icon = GFX_focus_attack_india
+		cost = 5.00
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = {	
+			focus = CHI_Tibet_Ultimatum
+		}	
+		x = -1
+		y = 1
+		relative_position_id = CHI_Tibet_Ultimatum
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+			factor = 0
+			is_historical_focus_on = yes
+			}
+		}
+
+		will_lead_to_war_with = RAJ
+        will_lead_to_war_with = ENG
+
+		available = {
+		}
+
+		bypass = {
+			OR = {
+				and = {#guo
+				owns_state = 434
+				owns_state = 1021
+				}
+				RAJ = {
+					has_war_with = root
+				}
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_state_claim = 434			
+			add_state_claim = 1021
+			
+			if = { #guo
+				limit = {
+					RAJ = {
+						is_subject = no
+					}
+				}
+				RAJ = {
+					country_event = AWR_general_China.4
+				}
+			}
+			else = {
+				RAJ = {
+					OVERLORD = {
+						country_event = AWR_general_China.5
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {#国策1000声索外蒙古
+		id = CHI_Demand_Outer_Mongolia
+		icon = GFX_focus_generic_attack_mongolia
+		cost = 10.00
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = {	
+			focus = CHI_Tibet_Ultimatum
+		}
+		
+		x = 1
+		y = 1
+		relative_position_id = CHI_Tibet_Ultimatum
+
+		available = {
+			MON = {
+				exists = yes
+			}
+			MON = {
+				is_in_faction_with = SOV
+			}
+		}
+
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				has_government = fascism
+				factor = 3
+			}
+		}
+
+		will_lead_to_war_with = SOV
+		will_lead_to_war_with = MON
+		
+		completion_reward = {
+			add_state_claim = 330
+			add_state_claim = 329
+			add_state_claim = 817
+			add_state_claim = 818
+			add_state_claim = 1025
+			add_state_claim = 1026
+			add_state_claim = 819
+			add_state_claim = 820
+			add_state_claim = 1024
+			if = {
+				limit = {
+					CHI = {
+						NOT = {
+							has_war_with = SOV
+						}
+					}
+				}
+				SOV = {
+					country_event = {
+						id = rcmchina.345
+						days = 7
+					}
+				}
+			}
+		}
+	}
+		
+## 戡乱战争 ##
+focus = {
+	id = CHI_neizhanzongdongyuan
+	icon = GFX_goal_CHI_ZXDZBYB
+	x = 56
+	y = 11
+	cost = 1
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+        has_war_with = PRC
+		NOT = { has_idea = prc_kmt_shuangshixieding }
+		NOT = { has_war_with = JAP }		
+		has_completed_focus = CHI_political_consultative_assembly_focus		
+		has_global_flag = CHI_no_longer_united_flag
+	}
+
+	available_if_capitulated = yes
+
+	completion_reward = {
+        add_political_power = 100
+		add_ideas = chi_kanluan
+	}
+}
+
+focus = {
+	id = CHI_CCW_directing_our_operations
+	icon = GFX_focus_CHI_CCW_directing_our_operations
+	relative_position_id = CHI_neizhanzongdongyuan
+	prerequisite = { focus = CHI_neizhanzongdongyuan }
+	x = 0
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_ccw_ministry_of_national_defence
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_end_the_ko_hsin_movement
+	icon = GFX_goal_CHI_XDD
+	relative_position_id = CHI_CCW_directing_our_operations
+	mutually_exclusive = { focus = CHI_CCW_continue_the_ko_hsin_movement }
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -1
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_idea = new_life
+	}
+
+	bypass = {
+		NOT = { has_idea = new_life }
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+		add_political_power = 100
+		add_stability = -0.25
+		remove_ideas = new_life
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_continue_the_ko_hsin_movement
+	icon = GFX_goal_CHI_YDZ
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	mutually_exclusive = { focus = CHI_CCW_end_the_ko_hsin_movement }
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = 2
+	y = 0
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 0
+	}
+
+	available = {
+		has_idea = new_life
+	}
+
+	bypass = {
+		NOT = { has_idea = new_life }
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = -100
+		add_stability = 0.25
+			swap_ideas = {
+				remove_idea = new_life
+				add_idea = new_life2
+			}		
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_temporary_provisions
+	icon = GFX_focus_CHI_50s_politics_reform
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 0
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_dongyuankanluan
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_call_up_domestic_militias
+	icon = GFX_focus_CHI_CCW_call_up_domestic_militias
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 3
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 5
+			has_war = yes
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+	    add_ideas = chi_huanxiangtuan2
+		custom_effect_tooltip = create_2_divs_in_state_tt
+		division_template = {
+			name = "Sanchiao Minping"
+			#is_locked = yes
+			regiments = {
+        		irregular_infantry = { x = 0 y = 0 }
+        		irregular_infantry = { x = 0 y = 1 }
+       			irregular_infantry = { x = 1 y = 0 }
+    		}
+		}
+		every_controlled_state = {
+			limit = {
+				state_population_k > 1500
+			}
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.2 start_equipment_factor = 1 start_manpower_factor = 0.6"
+    			owner = CHI
+				count = 2
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_anti_communist_crusade
+	icon = GFX_focus_CHI_CCW_anti_communist_crusade
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = -1
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+   		add_timed_idea = {
+			idea = chi_ccw_anti_communist_idea
+			days = 365
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_mobilize_to_suppress_bandits
+	icon = GFX_goal_YUN_army_expansion
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 2
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_war_support = 0.05
+		add_manpower = 550000
+		swap_ideas = {
+		remove_idea = chi_kanluan
+		add_idea = chi_kanluan2
+		}		
+		if = {
+			limit = {
+				has_idea = chi_initial_offensive_buff
+			}
+			modify_timed_idea = {
+				idea = chi_initial_offensive_buff
+				days = 90
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_left_stranded
+	icon = GFX_goal_CHI_BFXC
+	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
+	prerequisite = { focus = CHI_CCW_end_the_ko_hsin_movement focus = CHI_CCW_continue_the_ko_hsin_movement }
+	x = 1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 0
+	}
+
+	available = {
+		has_idea = chi_zhongmeitiaoyue
+		CHI = {
+        is_ai = no			
+		}		
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = this_will_have_zainan_consequences_tt
+		USA = {
+			country_event = {
+				id = ccw.773
+				days = 1
+			}			
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_a_quick_and_swift_war
+	icon = GFX_focus_CHI_CCW_a_quick_and_swift_war
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -6
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 5
+			has_war_with = PRC
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+   		add_timed_idea = {
+			idea = chi_jingong
+			days = 365
+		}	
+		if = {
+			limit = {
+				has_idea = chi_initial_offensive_buff
+			}
+			modify_timed_idea = {
+				idea = chi_initial_offensive_buff
+				days = 60
+			}
+		}
+		army_experience = 50
+		add_command_power = 50
+		CHI_sun_liren = {
+			gain_xp = 1500
+			add_defense = 1
+			add_attack = 1
+			add_planning = 1
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_take_over_dongbei
+	icon = GFX_focus_CHI_CCW_take_over_dongbei
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -2
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_242
+					region = 242
+				}
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_243
+					region = 243
+				}
+				custom_trigger_tooltip = {
+					tooltip = is_in_strat_155
+					region = 155
+				}
+			}
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = prc_northeast_offensive
+					scope = PRC
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			any_controlled_state = {
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_242
+						region = 242
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_243
+						region = 243
+					}
+					custom_trigger_tooltip = {
+						tooltip = is_in_strat_155
+						region = 155
+					}
+				}
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_take_over_dongbei_mission
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				or = {
+					region = 242
+					region = 155
+					region = 243
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_blitz_yenan
+	icon = GFX_focus_CHI_CCW_blitz_yenan
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = 0
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		NOT = { has_active_mission = eywor_chi_battle_of_yanan }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 622
+					state = 1030
+					state = 1067
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 622
+				controls_state = 1030
+				controls_state = 1067
+			}
+		}
+	}
+
+	bypass = {
+		AND = {
+             OR = {
+				1030 = { is_controlled_by = ROOT }
+				1030 = { 
+					controller = { has_war_with = event_target:WTT_communist_china }
+				}
+			}
+			OR = {
+				622 = { is_controlled_by = ROOT }
+				622 = { 
+					controller = { has_war_with = event_target:WTT_communist_china }
+				}
+			}
+		}  
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_blitz_yenan
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 622
+					state = 1030
+					state = 1067
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_shantung_campaign
+	icon = GFX_focus_CHI_CCW_shantung_campaign
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -1
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 597
+					state = 1077
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 597
+				controls_state = 1077
+				controls_state = 598
+				controls_state = 997
+				controls_state = 607
+				controls_state = 1036
+				controls_state = 606
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_shantung_campaign
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 597
+					state = 1077
+					state = 598
+					state = 997
+					state = 607
+					state = 1043
+					state = 606
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_hopeh_campaign
+	icon = GFX_focus_CHI_CCW_hopeh_campaign
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = -3
+	y = 2
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		NOT = { has_country_flag = chi_campaign_is_ongoing }
+		any_controlled_state = {
+			any_neighbor_state = {
+				OR = {
+					state = 614
+					state = 608
+					state = 609
+				}
+			}
+		}
+		any_enemy_country = {
+			OR = {
+				hidden_trigger = {
+					tag = PRC
+				}
+				is_warlord = yes
+				is_legit_china = yes
+			}
+			OR = {
+				controls_state = 614
+				controls_state = 608
+				controls_state = 609
+			}
+		}
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		activate_mission = eywor_chi_hopeh_offensive
+		set_country_flag = chi_campaign_is_ongoing
+		every_state = {
+			limit = {
+				OR = {
+					state = 614
+					state = 608
+					state = 609
+				}
+			}
+			add_dynamic_modifier = { modifier = chi_ccw_offensive_modifier scope = ROOT }
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_northwest_insurgency
+	icon = GFX_focus_CHI_CCW_northwest_insurgency
+	relative_position_id = CHI_CCW_a_quick_and_swift_war
+	prerequisite = { focus = CHI_CCW_a_quick_and_swift_war }
+	x = 2
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		KHM = {exists = no }
+		XSM = {
+			any_controlled_state = {
+				any_neighbor_state = {
+					controller = { tag = PRC }
+				}
+			}
+			has_war_together_with = ROOT
+			exists = yes
+		}
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		KHM = {
+			KHM_ma_hushan = { set_nationality = XSM }
+			KHM_ma_yanliang = { set_nationality = XSM }
+			#KHM_ma_shengkui = { set_nationality = XSM } #Decommissioned in 1937?
+			KHM_ma_rulong = { set_nationality = XSM }
+			KHM_la_shouli = { set_nationality = XSM }
+			KHM_ma_fuyuan = { set_nationality = XSM }
+			KHM_xian_fuhai = { set_nationality = XSM }
+			KHM_maifusi = { set_nationality = XSM }
+			KHM_bai_zili = { set_nationality = XSM }
+			KHM_ma_zhancang = { set_nationality = XSM }
+			KHM_wang_haifeng = { set_nationality = XSM }
+			KHM_ge_jiyun = { set_nationality = XSM }
+			KHM_su_jishan = { set_nationality = XSM }
+			KHM_zheng_yijun = { set_nationality = XSM }
+		}
+		XSM = {
+			add_ideas = XSM_northwest_insurgency
+			add_manpower = 350000
+			division_template = {
+				name = "Sanchiao Minping"
+				regiments = {
+        			irregular_infantry = { x = 0 y = 0 }
+        			irregular_infantry = { x = 0 y = 1 }
+       				irregular_infantry = { x = 0 y = 2 }
+					irregular_infantry = { x = 0 y = 3 }
+					irregular_infantry = { x = 1 y = 0 }
+    			}
+			}
+		}
+		604 = {
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.1"
+    			owner = XSM
+				count = 8
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_arm_the_insurgents
+	icon = GFX_goal_YUN_arms_scavenging
+	relative_position_id = CHI_CCW_northwest_insurgency
+	prerequisite = { focus = CHI_CCW_northwest_insurgency }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		XSM = {
+		swap_ideas = {
+			remove_idea = XSM_northwest_insurgency
+			add_idea = XSM_northwest_insurgency2
+		}		
+			add_equipment_to_stockpile = {
+				type = infantry_equipment 
+				amount = 25000
+				producer = CHI
+			}
+			add_manpower = 150000
+		}
+		604 = {
+			create_unit = {
+    			division = "name = \"Minping Shih\" division_template = \"Sanchiao Minping\" start_experience_factor = 0.1"
+    			owner = XSM
+				count = 4
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_promote_ma_hushan
+	icon = GFX_focus_CHI_CCW_promote_ma_hushan
+	relative_position_id = CHI_CCW_northwest_insurgency
+	prerequisite = { focus = CHI_CCW_northwest_insurgency }
+	x = 1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		KHM = {
+		NOT = {
+		has_country_leader = { character = KHM_ma_hushan ruling_only = yes }	
+		}					
+		}
+	}
+
+	bypass = {
+		XSM = {
+			exists = no
+		}
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+            CHI = {
+                   set_autonomy = { target = XSM autonomy_state = autonomy_CHI_zongduxiaqu freedom_level = 0.50  }
+            }	
+		XSM = {
+			promote_character = {
+    			character = KHM_ma_hushan
+    			ideology = despotism
+			}
+			add_country_leader_trait = baizhanlaobing
+			add_country_leader_trait = ROC_red_general			
+		}
+		if = {
+			limit = {
+			283 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    283 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}
+		if = {
+			limit = {
+			1045 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    1045 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}	
+		if = {
+			limit = {
+			1053 = {
+				is_controlled_by_ROOT_or_puppet = yes
+			}
+			}
+	    1053 = {
+        add_building_construction = {
+						type = bunker
+						level = 4
+						province = 2022
+						instant_build = yes
+					}						
+        }
+		}				
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_ching_kuos_shanghai_adventure
+	icon = GFX_focus_CHI_CCW_ching_kuos_shanghai_adventure
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = -3
+	y = 1
+
+	cost = 3.6
+
+	ai_will_do = {
+		base = 20
+	}
+
+	available = {
+		1078 = { is_owned_and_controlled_by = ROOT }
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = ching_kuo_start_mayhem_in_shanghai_tt
+					country_event = {
+						id = ccw.754
+					}	
+		custom_effect_tooltip = if_successful_tt
+		effect_tooltip = {
+        add_timed_idea = { idea = CHI_minxinjinshi days = 50 }
+				CHI = {
+					country_event = {
+						id = ccw.759
+					}
+				}		
+		}
+		custom_effect_tooltip = if_unsuccessful_tt
+		effect_tooltip = {				
+        add_timed_idea = { idea = CHI_bengkui days = 50 }					
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_the_retreat_to_taipei
+	icon = GFX_focus_CHI_CCW_the_retreat_to_taipei
+	relative_position_id = CHI_CCW_directing_our_operations
+	prerequisite = { focus = CHI_CCW_directing_our_operations }
+	x = 5
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		controls_state = 524
+		has_war_with = PRC
+	    has_global_flag = event_huaihaizhanyifashengle
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_ideas = chi_ccw_fighting_retreat_idea
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_plunder_the_cities
+	icon = GFX_focus_BRA_utilize_security_law
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_the_retreat_to_taipei }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		every_controlled_state = {
+			limit = {
+				is_controlled_by = ROOT
+				NOT = {
+					state = 524
+				}
+			}
+			damage_building = {
+				type = infrastructure
+    			damage = 5
+			}
+			damage_building = {
+				type = arms_factory
+    			damage = 8
+			}
+			damage_building = {
+				type = industrial_complex
+    			damage = 5
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_seize_the_gold
+	icon = GFX_focus_usa_reestablish_the_gold_standard
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_the_retreat_to_taipei }
+	x = 1
+	y = 1
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_timed_idea = {
+			idea = chi_ccw_seize_the_gold_idea
+			days = 180
+		}
+		PRC = {
+			add_timed_idea = {
+				idea = prc_ccw_seize_the_gold_idea
+				days = 180
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_further_monetary_transfer
+	icon = GFX_focus_mex_privatisation
+	relative_position_id = CHI_CCW_seize_the_gold
+	prerequisite = { focus = CHI_CCW_seize_the_gold }
+	x = 1
+	y = 1
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+		modifier = {
+			add = 15
+			has_completed_focus = CHI_CCW_seize_the_gold
+		}
+	}
+
+	available = {
+		has_war_with = PRC
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		if = {
+			limit = {
+				has_idea = chi_ccw_seize_the_gold_idea
+			}
+			modify_timed_idea = {
+				idea = chi_ccw_seize_the_gold_idea
+				days = 180
+			}
+			PRC = {
+				modify_timed_idea = {
+					idea = prc_ccw_seize_the_gold_idea
+					days = 180
+				}
+			}
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_fighting_retreat
+	icon = GFX_goal_YUN_dadao_march
+	relative_position_id = CHI_CCW_the_retreat_to_taipei
+	prerequisite = { focus = CHI_CCW_plunder_the_cities focus = CHI_CCW_seize_the_gold }
+	x = 0
+	y = 2
+
+	cost = 1.0
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = chi_ccw_fighting_retreat_idea
+			add_idea = chi_ccw_fighting_retreat_upgrade_idea
+		}
+		hidden_effect = {
+		}
+	}
+}
+focus = {
+	id = CHI_CCW_destroy_industrial_sites
+	icon = GFX_focus_CHI_CCW_destroy_industrial_sites
+	relative_position_id = CHI_CCW_plunder_the_cities
+	prerequisite = { focus = CHI_CCW_plunder_the_cities }
+	x = -1
+	y = 1
+
+	cost = 2.15
+
+	ai_will_do = {
+		base = 15
+	}
+
+	available = {
+	}
+
+	bypass = {
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		custom_effect_tooltip = destroy_industrial_sites_tt
+		custom_effect_tooltip = if_successful_tt
+		effect_tooltip = {
+			add_political_power = 125		
+			add_stability = 0.1
+			add_war_support = 0.1
+			every_controlled_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = {
+						state = 524
+					}
+				}
+				damage_building = {
+					type = infrastructure
+    				damage = 5
+				}
+				damage_building = {
+					type = arms_factory
+    				damage = 8
+				}
+				damage_building = {
+					type = industrial_complex
+    				damage = 5
+				}
+			}
+		}
+		custom_effect_tooltip = if_unsuccessful_tt
+		effect_tooltip = {
+			add_political_power = -250
+			add_stability = -0.2
+			add_war_support = -0.25
+			every_controlled_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = {
+						state = 524
+					}
+				}
+				damage_building = {
+					type = infrastructure
+    				damage = 2
+				}
+				damage_building = {
+					type = arms_factory
+    				damage = 2
+				}
+				damage_building = {
+					type = industrial_complex
+    				damage = 2
+				}
+			}
+		}
+		hidden_effect = {
+			random_list = {
+				70 = {
+					country_event = cw_ccw_events.22
+				}
+				30 = {
+					country_event = cw_ccw_events.23
+				}
+			}
+		}
+	}
+}
+
+
+#核心圈
+	focus = {
+		id = CHI_PEO  
+		icon = GFX_focus_GER_ally_chiang_kai_shek
+		cost = 5	
+		x = -9
+		y = 5
+		relative_position_id = CHI_one_party_tutelage
+		prerequisite = {
+			focus = CHI_one_party_tutelage
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_country_leader = {
+				character = CHI_chiang_kai_shek
+				ruling_only = yes
+			}		
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+			FOCUS_FILTER_HISTORICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+			FOCUS_FILTER_MILITARY_CHARACTER
+		}
+
+		completion_reward = {  
+			custom_effect_tooltip = GER_fuhrerprinzip_inner_circle_tt
+			add_political_power = 50
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			CHI_chiang_kai_shek = {
+				swap_country_leader_traits = {
+					remove = huangpuxiaozhang
+					add = huangpuxiaozhang_better
+					ideology = sanmin_training_governance
+				}
+			}
+			hidden_effect = {
+				CHI_chiang_kai_shek = {
+					swap_country_leader_traits = {
+						remove = huangpuxiaozhang
+						add = huangpuxiaozhang_better
+						ideology = sanmin_military_rule
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_chen_cheng1
+		icon = GFX_goal_chencheng	
+		x = -6
+		y = 1
+		relative_position_id = CHI_PEO
+		prerequisite = { focus =  CHI_PEO }	
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_chen_cheng
+			}
+			show_ideas_tooltip = CHI_chen_cheng_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_chen_cheng
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_chen_cheng_trait
+				country_event = { id = CHI_inner_circle.01 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 1 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 1 }
+			}
+
+			swap_ideas = {
+				remove_idea = CHI_tumu	
+				add_idea = CHI_tumu1
+			}
+		}
+	}	
+	focus = {
+		id = CHI_chen_cheng2
+		icon = GFX_focus_SWE_let_fly_all_guns
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_chen_cheng1
+		prerequisite = { focus =  CHI_chen_cheng1 }
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_chen_cheng2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_chen_cheng
+						FLAG_DAYS = [?CHI_chen_cheng2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_chen_cheng
+						FOCUS = CHI_chen_cheng1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_tumu1	
+				add_idea = CHI_tumu2
+			}			
+		}
+	}
+	focus = {
+		id = CHI_chen_cheng3
+		icon = GFX_focus_GER_appease_the_wehrmacht	
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_chen_cheng2
+		prerequisite = { focus =  CHI_chen_cheng2 }	
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_chen_cheng3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_chen_cheng
+						FLAG_DAYS = [?CHI_chen_cheng3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_chen_cheng
+						FOCUS = CHI_chen_cheng1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_tumu2
+				add_idea = CHI_tumu3
+			}									
+		}
+	}
+
+	focus = {
+		id = CHI_jiang_jingguo1
+		icon = GFX_goal_CHI_inner_jiangjingguo	
+		x = -4
+		y = 1
+		relative_position_id = CHI_PEO
+		prerequisite = { focus = CHI_PEO }	
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_global_flag = jingguo_huiguo_flag		
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_jiang_jingguo
+			}
+			show_ideas_tooltip = CHI_jiang_jingguo_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_jiang_jingguo
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_jiang_jingguo_trait
+				country_event = { id = CHI_inner_circle.03 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 2 }
+			}
+			
+			swap_ideas = {
+				remove_idea = CHI_zhongyang
+				add_idea = CHI_zhongyang1
+			}	
+		}
+	}
+	focus = {
+		id = CHI_jiang_jingguo2
+		icon = GFX_focus_SOV_breadbasket_of_the_union	
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_jiang_jingguo1
+		prerequisite = { focus =  CHI_jiang_jingguo1 }	
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_jiang_jingguo2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_jiang_jingguo
+						FLAG_DAYS = [?CHI_jiang_jingguo2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_jiang_jingguo
+						FOCUS = CHI_jiang_jingguo1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_zhongyang1
+				add_idea = CHI_zhongyang2
+			}				
+		}
+	}
+	focus = {
+		id = CHI_jiang_jingguo3
+		icon = GFX_focus_generic_full_employment	
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_jiang_jingguo2
+		prerequisite = { focus =  CHI_jiang_jingguo2 }	
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_jiang_jingguo3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_jiang_jingguo
+						FLAG_DAYS = [?CHI_jiang_jingguo3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_jiang_jingguo
+						FOCUS = CHI_jiang_jingguo1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_zhongyang2
+				add_idea = CHI_zhongyang3
+			}							
+		}
+	}
+
+	focus = {
+		id = CHI_chen_guofu1
+		icon = GFX_goal_chenguofu
+		x = -2
+		y = 1
+		relative_position_id = CHI_PEO
+		prerequisite = { focus = CHI_PEO }
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_chen_guofu
+			}
+			show_ideas_tooltip = CHI_chen_guofu_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_chen_guofu
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_chen_guofu_trait
+				country_event = { id = CHI_inner_circle.05 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 3 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 3 }
+			}
+
+			swap_ideas = {
+				remove_idea = CHI_ccxi
+				add_idea = CHI_ccxi1
+			}
+		}
+	}
+	focus = {
+		id = CHI_chen_guofu2
+		icon = GFX_focus_GER_expand_ss_security_duties	
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_chen_guofu1
+		prerequisite = { focus =  CHI_chen_guofu1 }
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_chen_guofu2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_chen_guofu
+						FLAG_DAYS = [?CHI_chen_guofu2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_chen_guofu
+						FOCUS = CHI_chen_guofu1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_ccxi1
+				add_idea = CHI_ccxi2
+			}			
+		}
+	}
+	focus = {
+		id = CHI_chen_guofu3
+		icon = GFX_focus_generic_total_war	
+		text_icon = GER_inner_circle_focus_style
+		x = 0
+		y = 1
+		relative_position_id = CHI_chen_guofu2
+		prerequisite = { focus =  CHI_chen_guofu2 }	
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_chen_guofu3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_chen_guofu
+						FLAG_DAYS = [?CHI_chen_guofu3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_chen_guofu
+						FOCUS = CHI_chen_guofu1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {	
+			swap_ideas = {
+				remove_idea = CHI_ccxi2
+				add_idea = CHI_ccxi3
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_dai_li1
+		icon = GFX_goal_CHI_inner_daichunfeng
+		prerequisite = { focus = CHI_PEO }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_PEO
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_dai_li
+			}
+			show_ideas_tooltip = CHI_dai_li_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_dai_li
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_dai_li_trait
+				country_event = { id = CHI_inner_circle.07 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 4 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 4 }
+			}
+			add_trait = {
+				character = CHI_dai_li
+				slot = political_advisor
+				trait = AUS_veteran_head_of_agency
+			}
+		}
+	}
+	focus = {
+		id = CHI_dai_li2
+		icon = GFX_focus_generic_secret_service_agency
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_dai_li1 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_dai_li1
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_dai_li2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_dai_li
+						FLAG_DAYS = [?CHI_dai_li2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_dai_li
+						FOCUS = CHI_dai_li1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_dai_li
+				slot = political_advisor
+				trait = SWI_intelligence_officer
+			}			
+		}
+	}
+	focus = {
+		id = CHI_dai_li3
+		icon = GFX_goal_generic_intelligence_exchange
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_dai_li2 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_dai_li2
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_dai_li3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_dai_li
+						FLAG_DAYS = [?CHI_dai_li3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_dai_li
+						FOCUS = CHI_dai_li1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_dai_li
+				slot = political_advisor
+				trait = HUN_military_intelligence_officer
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_he_yingqin1
+		icon = GFX_goal_heyingqin
+		prerequisite = { focus =  CHI_PEO }		
+		x = 2
+		y = 1
+		relative_position_id = CHI_PEO
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_he_yingqin
+			}
+			show_ideas_tooltip = CHI_he_yingqin_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_he_yingqin
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_he_yingqin_trait
+				country_event = { id = CHI_inner_circle.09 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 5 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 5 }
+			}
+
+			swap_ideas = {
+				remove_idea = CHI_huangpu	
+				add_idea = CHI_huangpu1
+			}
+		}
+	}
+	focus = {
+		id = CHI_he_yingqin2
+		icon = GFX_focus_secret_rearmament
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_he_yingqin1 }	
+		x = 0
+		y = 1
+		relative_position_id = CHI_he_yingqin1
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_he_yingqin2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_he_yingqin
+						FLAG_DAYS = [?CHI_he_yingqin2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_he_yingqin
+						FOCUS = CHI_he_yingqin1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_huangpu1	
+				add_idea = CHI_huangpu2
+			}	
+		}
+	}
+	focus = {
+		id = CHI_he_yingqin3
+		icon = GFX_focus_CHL_departemento_de_las_tropas_nacistas_de_asalto
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_he_yingqin2 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_he_yingqin2
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_he_yingqin3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_he_yingqin
+						FLAG_DAYS = [?CHI_he_yingqin3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_he_yingqin
+						FOCUS = CHI_he_yingqin1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_huangpu2
+				add_idea = CHI_huangpu3
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_song_ziwen1
+		icon = GFX_goal_CHI_inner_songziwen
+		prerequisite = { focus =  CHI_PEO }	
+		x = 4
+		y = 1
+		relative_position_id = CHI_PEO
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_song_ziwen
+			}
+			show_ideas_tooltip = CHI_song_ziwen_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_song_ziwen
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_song_ziwen_trait
+				country_event = { id = CHI_inner_circle.11 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 6 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 6 }
+			}
+
+			add_trait = {
+				character = CHI_song_ziwen
+				slot = political_advisor
+				trait = skillful_diplomat
+			}
+		}
+	}
+	focus = {
+		id = CHI_song_ziwen2
+		icon = GFX_goal_generic_improve_relations
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_song_ziwen1 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_song_ziwen1
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_song_ziwen2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_song_ziwen
+						FLAG_DAYS = [?CHI_song_ziwen2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_song_ziwen
+						FOCUS = CHI_song_ziwen1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_song_ziwen
+				slot = political_advisor
+				trait = SWI_diplomat
+			}	
+		}
+	}
+	focus = {
+		id = CHI_song_ziwen3
+		icon = GFX_focus_ARG_defense_and_democracy
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_song_ziwen2 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_song_ziwen2
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_song_ziwen3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_song_ziwen
+						FLAG_DAYS = [?CHI_song_ziwen3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_song_ziwen
+						FOCUS = CHI_song_ziwen1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_song_ziwen
+				slot = political_advisor
+				trait = modernizer_and_diplomat
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_kong_xiangxi1
+		icon = GFX_goal_kongxiangxi
+		prerequisite = { focus =  CHI_PEO }		
+		x = 6
+		y = 1
+		relative_position_id = CHI_PEO
+		cost = 2
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_tt
+				CHARACTER = CHI_kong_xiangxi
+			}
+			show_ideas_tooltip = CHI_kong_xiangxi_trait
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = {
+				localization_key = GER_ascension_of_character_focus_tt
+				CHARACTER = CHI_kong_xiangxi
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = {
+				add_ideas = CHI_kong_xiangxi_trait
+				country_event = { id = CHI_inner_circle.13 days = 75 random_days = 45 }
+			}
+
+			if = {
+				limit = {  
+					check_variable = { CHI_ascended_advisor_1 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_1 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_2 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_2 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_3 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_3 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_4 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_4 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_5 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_5 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_6 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_6 = 7 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { CHI_ascended_advisor_7 = 0 }
+				}
+				set_variable = { CHI_ascended_advisor_7 = 7 }
+			}
+
+			add_trait = {
+				character = CHI_kong_xiangxi
+				slot = political_advisor
+				trait = industry_magnate
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_kong_xiangxi2
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_kong_xiangxi1 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_kong_xiangxi1
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_kong_xiangxi2_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_kong_xiangxi
+						FLAG_DAYS = [?CHI_kong_xiangxi2_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_kong_xiangxi
+						FOCUS = CHI_kong_xiangxi1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_kong_xiangxi
+				slot = political_advisor
+				trait = ecomonist_publicist
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_kong_xiangxi3
+		icon = GFX_focus_mex_privatisation
+		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus =  CHI_kong_xiangxi2 }		
+		x = 0
+		y = 1
+		relative_position_id = CHI_kong_xiangxi2
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = CHI_kong_xiangxi3_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 140 } 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = CHI_kong_xiangxi
+						FLAG_DAYS = [?CHI_kong_xiangxi3_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { 
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = CHI_kong_xiangxi
+						FOCUS = CHI_kong_xiangxi1
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_trait = {
+				character = CHI_kong_xiangxi
+				slot = political_advisor
+				trait = economy_reformer
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_PEO2
+		icon = GFX_goal_CHI_ZSHPGMTXH
+		prerequisite = { focus =  CHI_chen_cheng3 }
+		prerequisite = { focus =  CHI_jiang_jingguo3 }
+		prerequisite = { focus =  CHI_chen_guofu3 }
+		prerequisite = { focus =  CHI_dai_li3 }
+		prerequisite = { focus =  CHI_he_yingqin3 }
+		prerequisite = { focus =  CHI_song_ziwen3 }
+		prerequisite = { focus =  CHI_kong_xiangxi3 }
+		x = 0
+		y = 1
+		relative_position_id = CHI_dai_li3
+		cost = 5
+
+		available = {			
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INNER_CIRCLE
+		}
+
+		completion_reward = {
+			add_political_power = 100
+			add_country_leader_trait = GER_loyal_inner_circle
+			add_ideas = CHI_zhongchengjituan										
+		}
+	}
+
+	#科研线
+	focus = { #中央研究院
+		id = CHI_academia_sinica
+		icon = GFX_goal_academia_reform
+		cost = 1
+		x = 9
+		y = 0
+		relative_position_id = CHI_the_end_of_the_golden_decade
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = CHI_research_dynamic_modifier
+			}
+		}
+	}
+
+	focus = { #公立学校计划
+		id = CHI_public_school_program
+		icon = GFX_focus_zhidu_reform
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_academia_sinica
+		prerequisite = { focus = CHI_academia_sinica }
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = CHI_higher_education_reorganization #高等教育整顿
+		icon = GFX_focus_PRC_reestablish_moscow_sun_yat_sen_university
+		cost = 5
+		x = 1
+		y = 2
+		relative_position_id = CHI_academia_sinica
+		prerequisite = { focus = CHI_academia_sinica }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { 
+			custom_effect_tooltip = CHI_research_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_research_dynamic_modifier_research_speed_factor = 0.03
+				tooltip = research_speed_factor_tt
+			}
+		}
+	}
+
+	focus = { #改革中央研究院
+		id = CHI_academy_rf
+		icon = GFX_goal_academia_expand
+		cost = 5
+		x = 0
+		y = 3
+		relative_position_id = CHI_academia_sinica
+		prerequisite = { focus = CHI_academia_sinica }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = CHI_wartime_scientific_mobilization #战时科研动员
+		icon = GFX_focus_generic_education
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_academy_rf
+		prerequisite = { focus = CHI_academy_rf }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_joint_military_industrial_research_institute #联合军工研究所
+		icon = GFX_goal_keyan
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_wartime_scientific_mobilization
+		prerequisite = { focus = CHI_wartime_scientific_mobilization }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_wartime_radio_research #战时无线电研究
+		icon = GFX_goal_CHI_YLDXBD
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_academy_rf
+		prerequisite = { focus = CHI_academy_rf }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_chemical_warfare_defense_research #化学战防御研究
+		icon = GFX_focus_generic_military_academy
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_wartime_radio_research
+		prerequisite = { focus = CHI_wartime_radio_research }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_academy_ex #扩大中央研究院
+		icon = GFX_focus_ARG_universidad_de_buenos_aires
+		cost = 5
+		x = 0
+		y = 3
+		relative_position_id = CHI_academy_rf
+		prerequisite = { focus = CHI_academy_rf }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_academy_ex_tt
+				NOT = {
+					OR = {
+						has_idea = iliterate_population_1
+						has_idea = iliterate_population_2
+						has_idea = iliterate_population_3
+					}
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = CHI_postwar_research_planning #战后科研规划
+		icon = GFX_goal_CHI_DFJH
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_academy_ex
+		prerequisite = { focus = CHI_academy_ex }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		completion_reward = { }
+	}
+
+	#工业线
+	focus = { #黄金十年的尾声
+		id = CHI_the_end_of_the_golden_decade
+		icon = GFX_focus_GER_wirtschaftswunder
+		x = 48
+		y = 0
+		cost = 1
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = {
+			country_event = AWR_CHI.7
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_dynamic_modifier = {
+				modifier = CHI_industry_dynamic_modifier
+			}
+		}
+	}
+
+	focus = { #政府救助
+		id = CHI_government_bailout_focus
+		icon = GFX_focus_government_bailout
+		cost = 2
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_end_of_the_golden_decade
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_idea_with_trait = financial_expert
+		}
+		bypass = {
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		
+		completion_reward = {
+			add_political_power = -50
+
+			custom_effect_tooltip = CHI_industry_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_industry_dynamic_modifier_line_change_production_efficiency_factor = 0.1
+				tooltip = line_change_production_efficiency_factor_tt
+			}
+			add_to_variable = {
+				CHI_industry_dynamic_modifier_production_factory_max_efficiency_factor = -0.05
+				tooltip = production_factory_max_efficiency_factor_tt
+			}
+			add_to_variable = {
+				CHI_industry_dynamic_modifier_consumer_goods_expected_value = 0.05
+				tooltip = consumer_goods_expected_value_tt
+			}
+		}
+	}
+
+	focus = { #放弃银本位制
+		id = CHI_monetary_reform
+		icon = GFX_focus_abandon_the_silver_standard
+		cost = 2
+		relative_position_id = CHI_the_end_of_the_golden_decade
+		x = -4
+		y = 1
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+		
+		available = {
+			OR = {
+				has_idea = CHI_kong_xiangxi
+				has_idea = agrarian_reform_idea
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		
+		completion_reward = {
+			unlock_decision_tooltip = monetary_reform_decision
+		}
+	}
+
+	focus = {
+		id = CHI_local_tax_system_reorganization #税制改革
+		icon = GFX_focus_mex_privatisation
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_monetary_reform
+		prerequisite = { focus = CHI_monetary_reform }
+		available = {
+			has_war = yes
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { 
+			custom_effect_tooltip = CHI_local_tax_system_reorganization_tt
+			hidden_effect = {
+				country_event = {
+					id = CHI_tax.1
+					days = 1
+				}
+			}
+		}
+	}
+
+	focus = { #实业部
+		id = CHI_industrial_department
+		icon = GFX_goal_CHI_QGSMLHH
+		cost = 3.6
+		x = -2
+		y = 1
+		relative_position_id = CHI_the_end_of_the_golden_decade
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = CHI_national_economi_construction_movement #国民经济建设运动
+		icon = GFX_focus_CHI_planned_economy
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_industrial_department
+		prerequisite = { 
+			focus = CHI_monetary_reform
+			focus = CHI_industrial_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+		
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mineral_resource_control #矿产资源统制
+		icon = GFX_focus_generic_central_planning
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_industrial_department
+		prerequisite = { focus = CHI_industrial_department }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_industrial_concentration #工业集中化
+		icon = GFX_focus_nationalize_companies
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_national_economi_construction_movement
+		prerequisite = { 
+			focus = CHI_local_tax_system_reorganization
+			focus = CHI_national_economi_construction_movement
+			focus = CHI_mineral_resource_control
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_central_geological_survey #中央地质调查所
+		icon = GFX_goal_PRC_national_resource_exploration
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_industrial_concentration
+		prerequisite = { focus = CHI_industrial_concentration }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_professional_mining_administration #矿政专业化
+		icon = GFX_goal_generic_construction2
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_central_geological_survey
+		prerequisite = { focus = CHI_central_geological_survey }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_highway_administration #公路总局
+		icon = GFX_goal_dangguo
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_industrial_concentration
+		prerequisite = { focus = CHI_industrial_concentration }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_transport_control #运输统制
+		icon = GFX_goal_CHI_yiwujihua
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_highway_administration
+		prerequisite = { focus = CHI_highway_administration }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_revitalization_of_light_industry #振兴轻工业
+		icon = GFX_focus_SOV_organize_wreckers
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_industrial_concentration
+		prerequisite = { focus = CHI_industrial_concentration }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_unified_purchase_and_sale #统购统销
+		icon = GFX_focus_generic_monetary_union
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_revitalization_of_light_industry
+		prerequisite = { focus = CHI_revitalization_of_light_industry }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = { #国家资源委员会
+		id = CHI_national_resources_commission
+		icon = GFX_goal_CHI_GMGMCY
+		cost = 3.6
+		x = 2
+		y = 1
+		relative_position_id = CHI_the_end_of_the_golden_decade
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus_CHI
+				bonus = 1
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_heavy_industry_construction_plan #重工业建设计划
+		icon = GFX_goal_PRC_rejuvenate_heavy_industry
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_national_resources_commission
+		prerequisite = { focus = CHI_national_resources_commission }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ordnance_department #军政部兵工署
+		icon = GFX_goal_generic_production2
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = CHI_the_end_of_the_golden_decade
+		prerequisite = { focus = CHI_the_end_of_the_golden_decade }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ordnance_preparedness_layout #兵工战备布局
+		icon = GFX_goal_CHI_chengligongyebu
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_ordnance_department
+		prerequisite = { focus = CHI_ordnance_department }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_production_control #生产统制
+		icon = GFX_goal_generic_production
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_ordnance_preparedness_layout
+		prerequisite = {
+			focus = CHI_heavy_industry_construction_plan
+			focus = CHI_ordnance_preparedness_layout 
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_national_reconstruction_commission #技官建委
+		icon = GFX_goal_CHI_GLLGHG
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_production_control
+		prerequisite = { focus = CHI_production_control }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_urban_planning #城市规划
+		icon = GFX_goal_CHI_JGC
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_national_reconstruction_commission
+		prerequisite = { focus = CHI_national_reconstruction_commission }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_central_steel_works #中央钢铁厂
+		icon = GFX_goal_CHI_DLGT
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_production_control
+		prerequisite = { focus = CHI_production_control }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_machine_tool_self_sufficiency #机床自给
+		icon = GFX_focus_generic_modernize_industry
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_central_steel_works
+		prerequisite = { focus = CHI_central_steel_works }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_supply_chain_improvement #完善供应链
+		icon = GFX_focus_generic_reorient_production
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_production_control
+		prerequisite = { focus = CHI_production_control }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_arsenal_expansion #兵工厂扩建
+		icon = GFX_goal_CHI_TXJJLX
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_supply_chain_improvement
+		prerequisite = { focus = CHI_supply_chain_improvement }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_completion_of_major_industrial_equipment #重器初成
+		icon = GFX_goal_CHI_GYGC
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_urban_planning
+		prerequisite = {
+			focus = CHI_transport_control
+			focus = CHI_unified_purchase_and_sale
+			focus = CHI_urban_planning
+			focus = CHI_arsenal_expansion
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {
+		id = CHI_reconstruction_and_development #重建与发展
+		icon = GFX_focus_GER_autarky_achieved
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_completion_of_major_industrial_equipment
+		prerequisite = { focus = CHI_completion_of_major_industrial_equipment }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_the_second_golden_decade #再续黄金十年
+		icon = GFX_focus_generic_currency_reforms
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_completion_of_major_industrial_equipment
+		prerequisite = { focus = CHI_completion_of_major_industrial_equipment }
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		
+		completion_reward = { }
+	}
+
+	#军事线
+	focus = { #改组国民革命军
+		id = CHI_reorganize_nra
+		icon = GFX_focus_NRA
+		cost = 3
+		x = 76
+		y = 0
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_completed_focus = CHI_academia_sinica
+		}
+		
+		completion_reward = {
+			army_experience = 15
+			add_political_power = 50
+			unlock_decision_tooltip = CHI_army_reform
+		}
+	}
+
+	focus = {	#国民革命军陆军
+		id = CHI_nra_army 
+		icon = GFX_CHI_Chinese_National_Army
+		cost = 1
+		x = -9
+		y = 1
+		relative_position_id = CHI_reorganize_nra
+		prerequisite = {
+			focus = CHI_reorganize_nra
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {	#步兵整训方案
+		id = CHI_infantry_training_plan 
+		icon = GFX_focus_CHI_enforce_virtues
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_nra_army
+		prerequisite = {
+			focus = CHI_nra_army
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			OR = {
+				NOT = { has_completed_focus = CHI_armored_forces_preparatory_office }
+				has_completed_focus = CHI_armored_division
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { 
+			#
+		}
+	}
+
+	focus = {
+		id = CHI_division_area_system #师管区体系
+		icon = GFX_goal_CHI_fangqv
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = CHI_infantry_training_plan
+		prerequisite = {
+			focus = CHI_infantry_training_plan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_infantry_support_weapons #步兵支援武器
+		icon = GFX_goal_generic_small_arms
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_division_area_system
+		prerequisite = {
+			focus = CHI_division_area_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_artillery_technical_research_department #炮兵技术研究处
+		icon = GFX_goal_CHI_TYZSZB2
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_division_area_system
+		prerequisite = {
+			focus = CHI_division_area_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_logistics_supply_system #后勤补给体系
+		icon = GFX_focus_generic_supply_line
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_artillery_technical_research_department
+		prerequisite = {
+			focus = CHI_infantry_support_weapons
+			focus = CHI_artillery_technical_research_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_armored_forces_preparatory_office #装甲兵筹备处
+		icon = GFX_focus_generic_tank_assembly
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_nra_army
+		prerequisite = {
+			focus = CHI_nra_army
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			OR = {
+				NOT = { has_completed_focus = CHI_infantry_training_plan }
+				has_completed_focus = CHI_logistics_supply_system
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mechanization_school #机械化学校
+		icon = GFX_goal_CHI_JXH
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = CHI_armored_forces_preparatory_office
+		prerequisite = {
+			focus = CHI_armored_forces_preparatory_office
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_armored_group_organization #装甲兵团编成
+		icon = GFX_goal_CHI_ZGZJS
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_mechanization_school
+		prerequisite = {
+			focus = CHI_mechanization_school
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_independent_armored_brigade #独立装甲旅
+		icon = GFX_focus_generic_tank_assault
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_mechanization_school
+		prerequisite = {
+			focus = CHI_mechanization_school
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_armored_division #装甲师
+		icon = GFX_focus_CHI_200th_division
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_independent_armored_brigade
+		prerequisite = {
+			focus = CHI_armored_group_organization
+			focus = CHI_independent_armored_brigade
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ministry_of_operations #军令部
+		icon = GFX_goal_generic_position_armies
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_infantry_training_plan
+		prerequisite = {
+			focus = CHI_infantry_training_plan
+			focus = CHI_armored_forces_preparatory_office
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ministry_of_military_administration #军政部
+		icon = GFX_goal_CHI_JSWYH
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_armored_forces_preparatory_office
+		prerequisite = {
+			focus = CHI_infantry_training_plan
+			focus = CHI_armored_forces_preparatory_office
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_political_department #政治部
+		icon = GFX_focus_CHI_CCW_call_up_domestic_militias
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_ministry_of_operations
+		prerequisite = {
+			focus = CHI_ministry_of_operations
+			focus = CHI_ministry_of_military_administration
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ministry_of_military_training #军训部
+		icon = GFX_goal_CHI_BZH
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_political_department
+		prerequisite = {
+			focus = CHI_political_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_army_university #陆军大学
+		icon = GFX_focus_CHI_revise_the_national_curriculum
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_political_department
+		prerequisite = {
+			focus = CHI_political_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_medical_service_department #卫生勤务部
+		icon = GFX_focus_generic_reinforcing_the_supply_network
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_political_department
+		prerequisite = {
+			focus = CHI_political_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_independent_brigade_of_the_revenue_police_general_corps #税警总团独立旅
+		icon = GFX_goal_CHI_JRYFCMLWTZ
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_army_university
+		prerequisite = {
+			focus = CHI_ministry_of_military_training
+			focus = CHI_army_university
+			focus = CHI_medical_service_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_combat_vehicle #战争机车
+		icon = GFX_focus_GER_kriegslokomotive
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_independent_brigade_of_the_revenue_police_general_corps
+		prerequisite = {
+			focus = CHI_independent_brigade_of_the_revenue_police_general_corps
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_marching_toward_mechanization #迈向机械化
+		icon = GFX_focus_generic_mechanized
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_independent_brigade_of_the_revenue_police_general_corps
+		prerequisite = {
+			focus = CHI_independent_brigade_of_the_revenue_police_general_corps
+			focus = CHI_organization_of_the_special_detachment
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_organization_of_the_special_detachment #别动队编组
+		icon = GFX_goal_CHI_JTJCJSH
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_army_university
+		prerequisite = {
+			focus = CHI_ministry_of_military_training
+			focus = CHI_army_university
+			focus = CHI_medical_service_department
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_kunlun_project #昆仑计划
+		icon = GFX_focus_JAP_army_weapons_administration_hq
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_organization_of_the_special_detachment
+		prerequisite = {
+			focus = CHI_organization_of_the_special_detachment
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_army_modernization #整军经武
+		icon = GFX_goal_CHI_CTBZ
+		cost = 5
+		x = -1
+		y = 2
+		relative_position_id = CHI_organization_of_the_special_detachment
+		prerequisite = {
+			focus = CHI_combat_vehicle
+			focus = CHI_marching_toward_mechanization
+			focus = CHI_kunlun_project
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_ARMY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_nra_air #国民革命军空军
+		icon = GFX_CHI_Chinese_National_Air_Force
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_reorganize_nra
+		prerequisite = {
+			focus = CHI_reorganize_nra
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_aviation_procurement_plan #航空采购计划
+		icon = GFX_goal_CHI_YFDPGTDQL
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_nra_air
+		prerequisite = {
+			focus = CHI_nra_air
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_introduction_of_aviation_design #引进航空设计
+		icon = GFX_focus_CHI_appropriate_design
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_aviation_procurement_plan
+		prerequisite = {
+			focus = CHI_aviation_procurement_plan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_first_aircraft_factory_of_the_aviation_commission #航委第一飞机制造厂
+		icon = GFX_focus_generic_aircraft_production
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_nra_air
+		prerequisite = {
+			focus = CHI_nra_air
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_unified_aviation_industry_standards #统一航空工业标准
+		icon = GFX_focus_generic_daytime_bombing
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_first_aircraft_factory_of_the_aviation_commission
+		prerequisite = {
+			focus = CHI_first_aircraft_factory_of_the_aviation_commission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_improve_torpedoes #改进鱼雷
+		icon = GFX_goal_generic_air_naval_bomber
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_unified_aviation_industry_standards
+		prerequisite = {
+			focus = CHI_unified_aviation_industry_standards
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_central_aviation_academy_expansion #扩建中央航空学校
+		icon = GFX_focus_generic_pilot_training
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_first_aircraft_factory_of_the_aviation_commission
+		prerequisite = {
+			focus = CHI_aviation_procurement_plan
+			focus = CHI_first_aircraft_factory_of_the_aviation_commission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_master_the_sky #掌控天空
+		icon = GFX_focus_CHI_operation_zet
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_central_aviation_academy_expansion
+		prerequisite = {
+			focus = CHI_central_aviation_academy_expansion
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_coordinate_with_the_army #协同陆军
+		icon = GFX_goal_CHI_xxxf
+		cost = 5
+		x = -2
+		y = 2
+		relative_position_id = CHI_master_the_sky
+		prerequisite = {
+			focus = CHI_armored_division
+		}
+		prerequisite = {
+			focus = CHI_master_the_sky
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_ranged_projectile_capability #远程投射能力
+		icon = GFX_goal_generic_air_bomber
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_central_aviation_academy_expansion
+		prerequisite = {
+			focus = CHI_central_aviation_academy_expansion
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_establish_independent_air_force_command_system #建立独立空军指挥体系
+		icon = GFX_CHI_air_army_reform
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_ranged_projectile_capability
+		prerequisite = {
+			focus = CHI_master_the_sky
+			focus = CHI_ranged_projectile_capability
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_value_the_locational_advantage #重视方位优势
+		icon = GFX_focus_chi_aircraft_development
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_independent_air_force_command_system
+		prerequisite = {
+			focus = CHI_establish_independent_air_force_command_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_evade_the_solid_attack_the_hollow #避实击虚
+		icon = GFX_goal_poland_goal
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_independent_air_force_command_system
+		prerequisite = {
+			focus = CHI_establish_independent_air_force_command_system
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_tianlong_project #天龙计划
+		icon = GFX_focus_generic_jet_planes
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_tiankong_project #天空计划
+		icon = GFX_focus_rocketry
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_yunnan_airborne_troops #云南空降部队
+		icon = GFX_focus_generic_paratrooper
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_value_the_locational_advantage
+		prerequisite = {
+			focus = CHI_value_the_locational_advantage
+			focus = CHI_evade_the_solid_attack_the_hollow
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_air_modernization #自铸长空
+		icon = GFX_focus_generic_escort_efficiency
+		cost = 5
+		x = -1
+		y = 2
+		relative_position_id = CHI_evade_the_solid_attack_the_hollow
+		prerequisite = {
+			focus = CHI_tianlong_project
+			focus = CHI_tiankong_project
+			focus = CHI_yunnan_airborne_troops
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_nra_navy #国民革命军海军
+		icon = GFX_CHI_Chinese_National_Navy
+		cost = 1
+		x = 9
+		y = 1
+		relative_position_id = CHI_reorganize_nra
+		prerequisite = {
+			focus = CHI_reorganize_nra
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_expand_jiangnan_shipyard #扩建江南造船厂
+		icon = GFX_focus_generic_refit_civilian_ships
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_nra_navy
+		prerequisite = {
+			focus = CHI_nra_navy
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mobile_operating_base #机动作战基地
+		icon = GFX_focus_generic_air_carrier
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_expand_jiangnan_shipyard
+		prerequisite = {
+			focus = CHI_expand_jiangnan_shipyard
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_naval_area_defense_plan #海军分防计划
+		icon = GFX_goal_generic_navy_carrier
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_mobile_operating_base
+		prerequisite = {
+			focus = CHI_mobile_operating_base
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_carrier_strike_group #航母打击群
+		icon = GFX_focus_generic_multi_role_aircraft
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_naval_area_defense_plan
+		prerequisite = {
+			focus = CHI_naval_area_defense_plan
+		}
+		prerequisite = {
+			focus = CHI_improve_torpedoes
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_naval_preparation #海军整备
+		icon = GFX_focus_generic_naval_discipline
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_nra_navy
+		prerequisite = {
+			focus = CHI_nra_navy
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_submarine_research_class #潜艇研究班
+		icon = GFX_goal_generic_navy_submarine
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_naval_preparation
+		prerequisite = {
+			focus = CHI_naval_preparation
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_mine_production #水雷生产
+		icon = GFX_focus_generic_destroyer
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_submarine_research_class
+		prerequisite = {
+			focus = CHI_submarine_research_class
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_conventional_tactics #常规战术
+		icon = GFX_goal_generic_navy_battleship
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_naval_preparation
+		prerequisite = {
+			focus = CHI_expand_jiangnan_shipyard
+			focus = CHI_naval_preparation
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_establish_the_naval_headquarters #成立海军总司令部
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_conventional_tactics
+		prerequisite = {
+			focus = CHI_conventional_tactics
+			focus = CHI_mobile_operating_base
+			focus = CHI_submarine_research_class
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_collaborative_push #协同推进
+		icon = GFX_focus_generic_large_navy
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_the_naval_headquarters
+		prerequisite = {
+			focus = CHI_establish_the_naval_headquarters
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_long_range_operations #远程作战
+		icon = GFX_focus_generic_cruiser_submarines
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_collaborative_push
+		prerequisite = {
+			focus = CHI_collaborative_push
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_underwater_strike #水下打击
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_the_naval_headquarters
+		prerequisite = {
+			focus = CHI_establish_the_naval_headquarters
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_wolf_pack_tactics #学习狼群战术
+		icon = GFX_goal_generic_wolf_pack
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_underwater_strike
+		prerequisite = {
+			focus = CHI_underwater_strike
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_enhance_naval_research #增进海军研究
+		icon = GFX_focus_generic_navy_research_bonus
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_underwater_strike
+		prerequisite = {
+			focus = CHI_collaborative_push
+			focus = CHI_underwater_strike
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_modern_aircraft_carrier #现代化航空母舰
+		icon = GFX_focus_GER_graf_zeppelin
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_modern_battleship #现代化战列舰
+		icon = GFX_focus_generic_navy_battleship2
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_amphibious_forces #两栖作战部队
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_advanced_submarine #新型潜艇
+		icon = GFX_focus_generic_midget_submarines
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = CHI_enhance_naval_research
+		prerequisite = {
+			focus = CHI_enhance_naval_research
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_navy_modernization #有港可归
+		icon = GFX_focus_SMB_blue_water_fleet
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = CHI_advanced_submarine
+		prerequisite = {
+			focus = CHI_modern_aircraft_carrier
+			focus = CHI_modern_battleship
+			focus = CHI_amphibious_forces
+			focus = CHI_advanced_submarine
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_the_homeland #山河有主
+		icon = GFX_goal_CHI_DBZLHZZ
+		cost = 5
+		x = -9
+		y = 1
+		relative_position_id = CHI_navy_modernization
+		prerequisite = {
+			focus = CHI_navy_modernization
+		}
+		prerequisite = {
+			focus = CHI_army_modernization
+		}
+		prerequisite = {
+			focus = CHI_air_modernization
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = {
+			FOCUS_FILTER_NAVY_XP
+		}
+
+		completion_reward = { }
+	}
+
+	#外交线
+	focus = {
+		id = CHI_ministry_of_foreign_affairs #外交部
+		icon = GFX_goal_kmt_china
+		cost = 1
+		x = 30
+		y = 13
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			is_subject = no
+		}
+
+		completion_reward = { 
+			add_timed_idea = {
+				idea = CHI_diplomatic_effort_idea
+				days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_befriend_with_japan #与日本交好
+		icon = GFX_goal_generic_befriend_japan_alt
+		cost = 1
+		x = -9
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_japan_officers_group #日本军官团
+		icon = GFX_goal_CHI_support_pro_japanese_faction
+		cost = 1
+		x = -2
+		y = 1
+		relative_position_id = CHI_befriend_with_japan
+		prerequisite = {
+			focus = CHI_befriend_with_japan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_military_equipment_assistance #军事装备援助
+		icon = GFX_focus_JAPCHI_ribenzhuangbei
+		cost = 1
+		x = -1
+		y = 1
+		relative_position_id = CHI_japan_officers_group
+		prerequisite = {
+			focus = CHI_japan_officers_group
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_joint_armored_vehicle_research #联合装甲研发
+		icon = GFX_focus_JAP_the_ultimate_tank
+		cost = 1
+		x = 1
+		y = 1
+		relative_position_id = CHI_military_equipment_assistance
+		prerequisite = {
+			focus = CHI_military_equipment_assistance
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_china_japan_trade_agreement #中日贸易协定
+		icon = GFX_focus_PHI_develop_japanese_trade_connections
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_japan
+		prerequisite = {
+			focus = CHI_befriend_with_japan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_barter_loan #易货贷款
+		icon = GFX_focus_PHI_encourage_japanese_investment
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_china_japan_trade_agreement
+		prerequisite = {
+			focus = CHI_china_japan_trade_agreement
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_japan_industrial_aid #日本工业援助
+		icon = GFX_focus_JAP_ministry_of_commerce_and_industry
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_barter_loan
+		prerequisite = {
+			focus = CHI_barter_loan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_strengthen_china_japan_cooperation #加强中日合作
+		icon = GFX_focus_government_reorganization
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_japan_industrial_aid
+		prerequisite = {
+			focus = CHI_japan_industrial_aid
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_befriend_with_italy #与意大利交好
+		icon = GFX_focus_befriend_italy
+		cost = 1
+		x = -6
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ITA
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_camco #中意飞机制造厂
+		icon = GFX_focus_CHI_camco_primacy
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_italy
+		prerequisite = {
+			focus = CHI_befriend_with_italy
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ITA
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_italian_air_force_mission #意大利空军顾问团
+		icon = GFX_goal_italy_fiat_g_50
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_camco
+		prerequisite = {
+			focus = CHI_camco
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ITA
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_invite_financial_experts #邀请财政专家
+		icon = GFX_goal_italy_expand_the_iri_role
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_italian_air_force_mission
+		prerequisite = {
+			focus = CHI_italian_air_force_mission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ITA
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_strengthen_china_italy_cooperation #加强中意合作
+		icon = GFX_focus_BRA_joint_italian_motor_development
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_invite_financial_experts
+		prerequisite = {
+			focus = CHI_invite_financial_experts
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ITA
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_befriend_with_germany #与德国交好
+		icon = {
+			GFX_focus_chi_mission_to_germany = {
+				GER = { has_government = fascism }
+			}
+			GFX_focus_generic_befriend_germany_democratic = {
+				NOT = {
+					GER = { has_government = fascism }
+				}
+			}
+		}
+		dynamic = yes
+		cost = 1
+		x = -3
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_deepen_the_hebulou_treaty #深化合步楼条约
+		icon = GFX_focus_GER_customs_union
+		overlay = GFX_focus_fast_overlay_generic_clock
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_germany
+		prerequisite = {
+			focus = CHI_befriend_with_germany
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INTERNATIONAL_TRADE
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				reduce_focus_completion_cost = {
+					focus = CHI_central_steel_works
+					cost = 14
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_german_weapons_assistance #德国武器援助
+		icon = GFX_goal_deguoyuanzhu
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_deepen_the_hebulou_treaty
+		prerequisite = {
+			focus = CHI_deepen_the_hebulou_treaty
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		completion_reward = { 
+			GER = {
+				country_event = {
+					id = rcmchina.254
+				}
+			}
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 2
+				}
+				add_offsite_building = {
+					type = arms_factory
+					level = 2
+				}
+				add_tech_bonus = {
+					name = infantry_equipment_ger
+					bonus = 1
+					uses = 1
+					category = infantry_weapons
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_study_german_design #学习德国设计
+		icon = GFX_goal_sino_german_coop
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_german_weapons_assistance
+		prerequisite = {
+			focus = CHI_german_weapons_assistance
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = { #国民政府参谋本部
+		id = CHI_chinese_general_staff
+		icon = GFX_focus_canmouzongbu
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_deepen_the_hebulou_treaty
+		prerequisite = {
+			focus = CHI_deepen_the_hebulou_treaty
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_command_power = 50
+			add_ideas = CHI_chinese_general_staff
+		}
+	}
+
+	focus = { #德式训练法
+		id = CHI_german_training_method
+		icon = GFX_focus_CHI_utilize_german_contacts
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_chinese_general_staff
+		prerequisite = {
+			focus = CHI_chinese_general_staff
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+		
+		available = {
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+
+		completion_reward = {
+			army_experience = 50
+			add_command_power = 50
+			add_ideas = CHI_german_style_training_idea
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = CHI_sixty_divisions_plan
+			CHI_sun_liren = {
+				gain_xp = 1500
+				add_defense = 1
+				add_attack = 1
+				add_planning = 1
+			}
+		}
+	}
+
+	focus = { #加强中德合作
+		id = CHI_axis_help_diplo_focus
+		icon = GFX_focus_chi_axis_help
+		cost = 5		
+		x = -1
+		y = 1
+		relative_position_id = CHI_german_training_method
+		prerequisite = {
+			focus = CHI_study_german_design
+			focus = CHI_german_training_method
+		}
+		
+		completion_reward = {
+			country_event = {
+				days = 1
+				id = rcmchina.228
+			}
+			custom_effect_tooltip = if_approved_tt
+			effect_tooltip = {
+				GER = { complete_national_focus = GER_befriend_china }
+				add_ideas = CHI_german_coop
+				remove_ideas = CHI_nine_power_treaty
+				random_owned_controlled_state = {
+					limit = {
+						is_core_of = ROOT
+						has_resources_amount = {
+							resource = tungsten
+							amount > 39
+							delivered = yes
+						}
+					}
+					set_state_flag = GER_tungsten_state_flag
+					ROOT = {
+                        give_resource_rights = {
+							receiver = GER state = PREV
+						}
+					}	
+				}
+				add_equipment_subsidy = {
+					cic = 1500
+					equipment_type = infantry_equipment
+					seller_tags = { GER }
+				}
+				add_equipment_subsidy = {
+					cic = 1500
+					equipment_type = support_equipment
+					seller_tags = { GER }
+				}
+				add_equipment_subsidy = {
+					cic = 1500
+					equipment_type = artillery_equipment
+					seller_tags = { GER }
+				}
+				add_equipment_subsidy = {
+					cic = 1000
+					equipment_type = light_tank_chassis
+					seller_tags = { GER }
+				}
+				add_equipment_subsidy = {
+					cic = 1000
+					equipment_type = small_plane_airframe
+					seller_tags = { GER }
+				}
+				unlock_decision_category_tooltip = rcm_chi_german_coop_cat
+			}
+		}
+		available = {
+			num_of_factories > 30
+			any_owned_state = {
+				is_controlled_by = ROOT
+				has_resources_amount = {
+					resource = tungsten
+					amount > 39
+					delivered = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+						}
+					}
+				}
+				NOT = {
+					has_global_flag = falkenhausen_recalled
+				}
+			}
+			RCM_GER_will_support = yes
+			has_idea = kung_hsiang_hsi			
+		}
+		cancel = {
+			has_opinion_modifier = ger_refuse_chi
+		}
+	}
+
+	focus = {
+		id = CHI_befriend_with_soviet #与苏联交好
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		cost = 1
+		x = 0
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = { #共产国际的支持
+		id = CHI_mission_to_the_soviet_union
+		icon = GFX_goal_sulianyuanzhu
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_befriend_with_soviet
+		prerequisite = {
+			focus = CHI_befriend_with_soviet
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+		
+		completion_reward = {
+			SOV = {
+				country_event = {
+					id = rcmchina.257
+				}
+			}
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 2
+				}
+				add_offsite_building = {
+					type = arms_factory
+					level = 2
+				}
+				add_doctrine_cost_reduction = {
+					name = land_doc_bonus
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
+		}
+	}
+
+	focus = { #中苏互不侵犯条约
+		id = CHI_sov_pact_focus
+		icon = GFX_goal_zhongsutiaoyue
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_mission_to_the_soviet_union
+		prerequisite = {
+			focus = CHI_mission_to_the_soviet_union
+			focus = CHI_northwest_international_corridor
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+			SOV = {
+				country_event = {
+					id = rcmsoviet.1023
+				}
+			}
+			custom_effect_tooltip = if_approved_tt		
+			add_ideas = CHI_sov_pact			
+		    add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 20000
+				producer = SOV
+		    }  			
+			add_equipment_subsidy = {
+				cic = 2000
+				equipment_type = infantry_equipment
+				seller_tags = { SOV }
+			}		
+		}
+	}
+
+	focus = { #订购坦克
+		id = CHI_purchase_tanks
+		icon = GFX_focus_tanke
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_sov_pact_focus
+		prerequisite = {
+			focus = CHI_sov_pact_focus
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = SOV_morozov_design_bureau
+		    set_technology = {
+		        gwtank_chassis = 1
+		        basic_light_tank_chassis = 1
+		        engine_tech_1 = 1
+		        engine_tech_2 = 1
+	        }
+			create_equipment_variant = {
+				name = "T-26TU mod. 1933"
+				type = light_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon_2
+					turret_type_slot = tank_light_two_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+					special_type_slot_1 = tank_radio_1
+				}
+				upgrades = {
+					tank_nsb_engine_upgrade = 2
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "GFX_SOV_basic_light_tank_medium"
+			}
+			add_equipment_to_stockpile = {
+                type = light_tank_chassis_1
+                amount = 250
+                producer = SOV
+                variant_name = "T-26TU mod. 1933"
+            }
+			division_template = {
+				name = "国民革命军装甲部队" 
+				is_locked = no 
+				priority = 0 
+				regiments = { 
+					motorized = { x = 0 y = 0 } 
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+
+					light_armor = { x = 2 y = 0 }
+					light_armor = { x = 2 y = 1 }
+					light_armor = { x = 2 y = 2 }
+				}
+				support = { 
+					engineer = { x = 0 y = 0 } 
+					light_tank_recon = { x = 0 y = 1 }
+				}
+	 		}  
+			capital_scope = {
+				create_unit = {
+					division = "name = \"国民革命军装甲部队\" division_template = \"国民革命军装甲部队\" start_experience_factor = 0.5 start_equipment_factor = 1"
+					owner = CHI
+					count = 1 
+				}	
+			}
+		}
+	}
+
+	focus = { #苏联航空志愿队
+		id = CHI_the_soviet_volunteer_group
+		icon = GFX_focus_soviet_volunteers_group
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_purchase_tanks
+		prerequisite = {
+			focus = CHI_purchase_tanks
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+			has_idea = CHI_sov_pact
+		}
+		
+		completion_reward = {
+			SOV = {
+				country_event = {
+					id = rcmsoviet.1012
+				}
+			}
+			if = {
+				limit = {
+					amount_taken_ideas = {
+					    amount > 1
+					    slots = {
+					        foreign_advisor
+					    }
+					}
+				}
+				custom_effect_tooltip = available_foreign_advisor				
+				show_ideas_tooltip = CHI_pavel_zhigarev								
+				else = {
+					add_ideas = CHI_pavel_zhigarev				
+				}
+			}
+			custom_effect_tooltip = SOV_qiyong_cuikefu		
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_0
+				amount = 1096
+				producer = SOV
+			}		
+			hidden_effect = {
+				SOV = {
+					country_event = {
+						months = 2
+						id = rcmsoviet.1013
+					}
+					country_event = {
+						months = 4
+						id = rcmsoviet.1014
+					}
+					country_event = {
+						months = 12
+						id = rcmsoviet.1015
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_northwest_international_corridor #西北国际通道
+		icon = GFX_COOP_sinkiang_offer
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_befriend_with_soviet
+		prerequisite = {
+			focus = CHI_befriend_with_soviet
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = SOV
+			NOT = {
+				has_war_with = SOV
+			}
+			has_idea = CHI_sov_pact
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_befriend_with_britain #与英国交好
+		icon = GFX_focus_chi_british_cooperation
+		cost = 1
+		x = 3
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { 
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = CHI_guo_taiqi
+		}
+	}
+
+	focus = { #滇缅路计划
+		id = CHI_allies_help_focus
+		icon = GFX_focus_yingguoyuanzhu
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_britain
+		prerequisite = {
+			focus = CHI_befriend_with_britain
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+		
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = rcmchina.260 hours = 12
+				}
+			}
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				unlock_decision_tooltip = CHI_build_burma_road
+				add_tech_bonus = {
+					name = dd_bonus
+					bonus = 1
+					ahead_reduction = 1
+					uses = 1
+					category = dd_tech
+				}
+			}
+
+			if = {
+				limit = {
+					FRA_will_support_zz = yes
+					988 = {
+						CONTROLLER = {
+							NOT = { has_war_with = ROOT }
+							OR = {
+								original_tag = FRA
+								is_subject_of = FRA
+							}
+						}
+					}
+				}
+				custom_effect_tooltip = chi_vin_route
+				FRA = { set_country_flag = I_should_aid@FROM }
+				988 = { set_state_flag = CHI_needed_for_hanoi_route }
+				1040 = { set_state_flag = CHI_needed_for_hanoi_route }	
+				set_variable = { CHI_hanoi_route_current_level = 2 }
+				add_offsite_building = { type = arms_factory level = 2 }
+			}		
+		}
+	}
+
+	focus = {
+		id = CHI_stabilization_fund #设立平准基金
+		icon = GFX_focus_ENG_home_defense
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_allies_help_focus
+		prerequisite = {
+			focus = CHI_allies_help_focus
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_china_britain_fiscal_agreement #中英财政协定
+		icon = GFX_focus_PRC_50s_lenient_treatment_for_landlords
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_stabilization_fund
+		prerequisite = {
+			focus = CHI_stabilization_fund
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_Hong_Kong_transfer_station #香港转运站
+		icon = GFX_goal_ENG_pride_of_the_fleet
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_allies_help_focus
+		prerequisite = {
+			focus = CHI_allies_help_focus
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_introduce_air_design #引进飞机设计
+		icon = GFX_goal_ENG_coa_air_force
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_Hong_Kong_transfer_station
+		prerequisite = {
+			focus = CHI_Hong_Kong_transfer_station
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { 
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_0
+				amount = 125
+				producer = ENG
+				variant_name = "Hawker Fury"
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_strengthen_China_britain_cooperation #加强中英合作
+		icon = GFX_goal_ENG_lady_britannia
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_introduce_air_design
+		prerequisite = {
+			focus = CHI_china_britain_fiscal_agreement
+			focus = CHI_introduce_air_design
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_befriend_with_france #与法国交好
+		icon = GFX_focus_chi_reach_out_to_france
+		cost = 1
+		x = 6
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_hanoi_transportation_line #河内交通线
+		icon = GFX_goal_strike_indochina
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_france
+		prerequisite = {
+			focus = CHI_befriend_with_france
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_french_military_mission #法国军事顾问团
+		icon = GFX_goal_FRA_legacy_of_the_grande_armee
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_hanoi_transportation_line
+		prerequisite = {
+			focus = CHI_hanoi_transportation_line
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_french_armor_design #法国装甲设计
+		icon = GFX_goal_FRA_somua
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_french_military_mission
+		prerequisite = {
+			focus = CHI_french_military_mission
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_befriend_with_usa #与美国交好
+		icon = GFX_focus_generic_befriend_usa
+		cost = 1
+		x = 9
+		y = 1
+		relative_position_id = CHI_ministry_of_foreign_affairs
+		prerequisite = {
+			focus = CHI_ministry_of_foreign_affairs
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_the_hump_route #驼峰航线
+		icon = GFX_focus_generic_armored_air_support
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_befriend_with_usa
+		prerequisite = {
+			focus = CHI_befriend_with_usa
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_stilwell_road #史迪威公路
+		icon = GFX_focus_RAJ_the_jewel_becomes_the_crown
+		cost = 5
+		x = -3
+		y = 3
+		relative_position_id = CHI_the_hump_route
+		prerequisite = {
+			focus = CHI_the_hump_route
+		}
+		prerequisite = {
+			focus = CHI_allies_help_focus
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_tung_oil_loan #桐油借款
+		icon = GFX_goal_CHI_gongsiheying
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_hump_route
+		prerequisite = {
+			focus = CHI_the_hump_route
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_lend_lease_act #租借法案
+		icon = GFX_Goal_USA_desegregation
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_tung_oil_loan
+		prerequisite = {
+			focus = CHI_tung_oil_loan
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {#国策0111新平等条约
+		id = CHI_allies_help_diplo_focus
+		icon = GFX_goal_CHI_BFXC
+		cost = 10.00
+		x = 0
+		y = 1
+		relative_position_id = CHI_lend_lease_act
+		prerequisite = {
+			focus = CHI_lend_lease_act
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			not = { has_completed_focus = CHI_axis_help_diplo_focus }
+			has_idea = CHI_nine_power_treaty#guo		
+			RCM_USA_UK_will_support = yes
+		}
+
+		bypass = {#guo
+			not = { has_idea = CHI_nine_power_treaty }
+		}
+		
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = rcmchina.266
+				}
+			}
+			USA = {
+				country_event = {
+					id = rcmchina.267
+				}
+			}
+			custom_effect_tooltip = if_approved_tt
+			effect_tooltip = {
+				add_ideas = CHI_new_equal_treaty
+				remove_ideas = CHI_nine_power_treaty
+			}
+		}
+	}
+
+	focus = {#国策0111飞虎队
+		id = CHI_invite_the_flying_tigers
+		icon = GFX_focus_feihudui
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_befriend_with_usa
+		prerequisite = {
+			focus = CHI_befriend_with_usa
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_war_with = JAP
+			has_idea = CHI_claire_lee_chennault
+			605 = {
+				is_owned_and_controlled_by = ROOT
+			}
+			NOT = {
+				has_idea = CHI_sov_pact
+			}
+			if = {
+				limit = {
+					not = {
+				        has_dlc = "By Blood Alone"
+					}
+				}
+			    USA = {
+				    has_tech = fighter1
+				    has_tech = tactical_bomber1
+				}
+			    else = {
+			        USA = {
+				        has_tech = basic_small_airframe
+				        has_tech = basic_medium_airframe
+				    }
+			    }	
+		    }	
+			RCM_USA_will_support = yes			
+		}
+
+		bypass = {
+			NOT = {
+				has_war_with = JAP
+			}
+			OR = {
+				has_global_flag = JAP_defeated
+				JAP = {
+					is_subject = yes
+				}
+				NOT = {
+					country_exists = JAP
+				}
+				NOT = {
+					any_of_scopes = {
+						array = global.small_china
+						tooltip = small_china_tt
+						is_controlled_by_jap_or_its_puppet = yes
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+			USA = {
+				country_event = {
+					id = rcmchina.273
+				}
+			}
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				add_ace = {
+					name = "Edward"
+					surname = "Rector"
+					callsign = "Ed"
+					type = fighter_genius
+					is_female = no
+				}
+				add_ace = {
+					name = "Robert"
+					surname = "Smith"
+					callsign = "R.T."
+					type = fighter_genius
+					is_female = no
+				}
+			}
+			custom_effect_tooltip = CHI_flying_tiger_tt
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_0
+				amount = 125
+				producer = USA
+				variant_name = "P-6"
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_usa_military_advisory_group #美国军事顾问团
+		icon = GFX_Goal_USA_department_of_defense
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_invite_the_flying_tigers
+		prerequisite = {
+			focus = CHI_invite_the_flying_tigers
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_SACO #中美特种技术合作所
+		icon = GFX_focus_CHI_50s_restore_usa_ties
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_usa_military_advisory_group
+		prerequisite = {
+			focus = CHI_usa_military_advisory_group
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
+		}
+
+		completion_reward = { }
+	}
+}

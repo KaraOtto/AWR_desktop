@@ -31,7 +31,7 @@ ideas = {
 			}
 		}
 		
-		general_staff = { #guo
+		general_staff = {
 			
 			allowed = {
 				original_tag = GER
@@ -43,37 +43,32 @@ ideas = {
 
 			removal_cost = -1
 			
-			traits = {
-				plus_point_2_per_week  
-			}
-			
 			modifier = {
-            experience_loss_factor = -0.15
-            ai_focus_aggressive_factor = 0.5
-            mobilization_speed = 0.25
-            ai_desired_divisions_factor = 1.5  
-            max_command_power = 50
-            command_power_gain = 0.5
-            land_doctrine_cost_factor = -0.15
-            air_doctrine_cost_factor = -0.15
-            high_command_cost_factor = -0.25
-            operative_slot = 3
-            experience_gain_factor = 0.1
-            experience_gain_army_factor = 0.1#陆军经验增长
-            experience_gain_air_factor = 0.1#陆军经验增长
-            army_morale_factor = 0.1
-            max_planning = 0.1
-			army_org_factor = 0.10
-			planning_speed = 0.25
-            air_mission_efficiency = 0.10
-            terrain_penalty_reduction = 0.10
-			land_reinforce_rate = 0.05
-			org_loss_when_moving = -0.10
-			coordination_bonus = 0.1
-			initiative_factor = 0.1
-			minimum_training_level = -0.1
-			training_time_factor = -0.1
-			ammunition_consumption_factor = -0.15
+            	experience_loss_factor = -0.15
+            	ai_focus_aggressive_factor = 0.5
+            	mobilization_speed = 0.25
+            	ai_desired_divisions_factor = 1.5  
+            	max_command_power = 50
+            	command_power_gain = 0.5
+            	land_doctrine_cost_factor = -0.15
+            	air_doctrine_cost_factor = -0.15
+            	high_command_cost_factor = -0.25
+            	operative_slot = 3
+            	experience_gain_factor = 0.1
+            	experience_gain_army_factor = 0.1#陆军经验增长
+            	experience_gain_air_factor = 0.1#陆军经验增长
+            	army_morale_factor = 0.1
+           	 	max_planning = 0.1
+				army_org_factor = 0.10
+				planning_speed = 0.25
+            	air_mission_efficiency = 0.10
+            	terrain_penalty_reduction = 0.10
+				land_reinforce_rate = 0.05
+				org_loss_when_moving = -0.10
+				coordination_bonus = 0.1
+				initiative_factor = 0.1
+				minimum_training_level = -0.1
+				training_time_factor = -0.1
 			}
 		}
 
@@ -1166,7 +1161,7 @@ ideas = {
 
 			targeted_modifier = {
 				tag = SOV
-				attack_bonus_against = 0.10
+				breakthrough_bonus_against = 0.15
 				defense_bonus_against = 0.05
 			}
 
@@ -2412,7 +2407,7 @@ ideas = {
 
 			modifier = {
 				attrition = -0.05
-				supply_factor = 0.05
+				supply_consumption_factor = -0.05
 				supply_node_range = 0.1
 				naval_attrition = -0.05
 			}
@@ -3180,7 +3175,7 @@ ideas = {
 			modifier = {
 				weekly_manpower = 50
 				conscription_factor = 0.05
-				democratic_drift = 0.04
+				democratic_drift = 0.05
 			}
 		}
 
@@ -3432,7 +3427,7 @@ ideas = {
 				trade_laws_cost_factor = -0.2
 				economy_cost_factor = -0.2
 				monthly_population = 0.1
-				defensive_war_stability_factor = 0.1
+				defensive_war_stability_factor = 0.15
 				party_popularity_stability_factor = 0.15
 			}
 		}
@@ -3460,7 +3455,7 @@ ideas = {
 				navy_chief_cost_factor = -0.1
 				mobilization_laws_cost_factor = -0.2
 				monthly_population = 0.1
-				defensive_war_stability_factor = 0.1
+				defensive_war_stability_factor = 0.15
 				party_popularity_stability_factor = 0.15
 			}
 		}
@@ -3485,7 +3480,7 @@ ideas = {
 				trade_laws_cost_factor = -0.2
 				economy_cost_factor = -0.2
 				monthly_population = 0.1
-				defensive_war_stability_factor = 0.1
+				defensive_war_stability_factor = 0.15
 				party_popularity_stability_factor = 0.15
 				send_volunteers_tension = -0.5
 				send_volunteer_size = 2
@@ -3516,7 +3511,7 @@ ideas = {
 				navy_chief_cost_factor = -0.1
 				mobilization_laws_cost_factor = -0.2
 				monthly_population = 0.1
-				defensive_war_stability_factor = 0.1
+				defensive_war_stability_factor = 0.15
 				party_popularity_stability_factor = 0.15
 				send_volunteers_tension = -0.5
 				send_volunteer_size = 2
@@ -3886,6 +3881,7 @@ ideas = {
 				IF = {
 					limit = {
 						is_subject = no
+						communism > 0.39 # It needs to be 40% or higher
 					}
 					country_event = {
 						id = wuw_GER_diplomacy.75
@@ -4260,7 +4256,7 @@ ideas = {
 			modifier = { #REMINDER to always update these if the dynamic modifier is altered!
 				army_org_factor = 0.05
 				planning_speed = 0.25
-				supply_factor = -0.15
+				supply_consumption_factor = 0.15
 			}
 		}
 		GER_army_1939_fake_ns = { #Fake National Spirit for showing off dynamic modifier at games start-up
@@ -4276,7 +4272,7 @@ ideas = {
 			modifier = { #REMINDER to always update these if the dynamic modifier is altered!
 				army_org_factor = 0.05
 				planning_speed = 0.25
-				supply_factor = -0.15
+				supply_consumption_factor = 0.15
 				unit_leader_as_advisor_cp_cost_factor = -0.15
 				coordination_bonus = 0.05
 			}
@@ -4740,6 +4736,7 @@ ideas = {
 
 		GER_germaniawerft_improved = {
 			name = germaniawerft
+			picture = germaniawerft
 			allowed = {
 				original_tag = GER
 			}
@@ -4782,6 +4779,7 @@ ideas = {
 
 		GER_blohm_und_voss_improved = {
 			name = blohm_und_voss
+			picture = blohm_und_voss
 
 			allowed = {
 				original_tag = GER
@@ -5546,6 +5544,69 @@ ideas = {
 
 			traits = { armored_car_manufacturer }
 		}
+
+		GER_henschel_kassel_manufacturer = {
+
+			name = "GER_henschel_kassel_organization"
+
+			picture = GER_henschel_civilian
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			# available = {
+			# 	controls_state = 55
+			# }
+
+			visible = {
+			}
+
+			research_bonus = {
+				train_tech = 0.15
+				support_tech = 0.07
+			}
+
+			equipment_bonus = {
+				train_equipment = {
+					build_cost_ic = -0.10
+					armor_value = 0.10
+					air_attack = 0.10
+					instant = yes
+				}
+			}
+
+			cost = 150
+
+			traits = { train_equipment_manufacturer }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		GER_focke_achgelis = {
+
+			name = "GER_focke_achgelis_organization"
+
+			picture = GER_focke_achgelis
+
+			allowed = {
+				original_tag = GER
+				has_dlc = "Gotterdammerung"
+			}
+
+			research_bonus = {
+				support_tech = 0.05
+				air_equipment = 0.05
+			}
+
+			traits = { helicopter_equipment_manufacturer }
+
+			ai_will_do = {
+				factor = 0		
+			}
+		}
 	}
 
 	industrial_concern = {
@@ -6177,16 +6238,16 @@ ideas = {
 				resistance_damage_to_garrison = -0.25
 				foreign_subversive_activites = -0.3
 				non_core_manpower = 0.02
+
 				subversive_activites_upkeep = -0.25
-				intel_from_combat_factor = 0.25
-				resistance_damage_to_garrison = -0.05
-				required_garrison_factor = -0.05
 				operative_slot = 3
+				intelligence_agency_defense = 5
+				intel_from_combat_factor = 0.25
+				required_garrison_factor = -0.05
 				army_intel_to_others = -10
 				civilian_intel_to_others = -10
 				navy_intel_to_others = -10
 				airforce_intel_to_others = -10
-				intelligence_agency_defense = 5
 				agency_upgrade_time = -0.15
 				operation_infiltrate_outcome = 0.10 #渗透效率
 				operation_outcome = 0.10 #行动效率

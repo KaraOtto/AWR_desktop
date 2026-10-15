@@ -12,7 +12,14 @@ operations = {
 		}
 
 		available = {
-			event_target:WTT_current_china_leader = { is_fascism_type = yes is_subject = no is_in_faction = no }
+			event_target:WTT_current_china_leader = { 
+				OR = {
+    				has_government = fascism
+    				has_government = neutrality
+    			}
+				is_subject = no 
+				is_in_faction = no 
+			}
 			threat > 0.5
 		}
 
@@ -68,7 +75,7 @@ operations = {
 			limit = { has_war_with = CZE }
 			CZE = { has_capitulated = yes }
 			}
-			or = { 451 = { is_controlled_by_enemy = yes } 663 = { is_controlled_by_enemy = yes } } #date > 1941.2.1
+			or = { 451 = { controller = { has_war_with = ROOT } } 663 = { controller = { has_war_with = ROOT } } } #date > 1941.2.1
 			448 = { is_controlled_by_ROOT_or_ally = yes }
 			115 = { is_controlled_by_ROOT_or_ally = yes }
 			2 = { is_controlled_by_ROOT_or_ally = yes }
@@ -117,10 +124,10 @@ operations = {
 			base = 0
 			modifier = {
 			add = 9000
-			458 = { is_controlled_by_enemy = yes }
-			448 = { is_controlled_by_enemy = yes }
-			450 = { is_controlled_by_enemy = yes }
-			460 = { is_controlled_by_enemy = yes }
+			458 = { controller = { has_war_with = ROOT } }
+			448 = { controller = { has_war_with = ROOT } }
+			450 = { controller = { has_war_with = ROOT } }
+			460 = { controller = { has_war_with = ROOT } }
 			}
 			modifier = {
 			add = 9000

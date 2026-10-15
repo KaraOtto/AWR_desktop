@@ -60,5 +60,164 @@ ideas = {
 			removal_cost = -1
 			modifier = { production_factory_max_efficiency_factor = 0.05 production_speed_buildings_factor = 0.05 resistance_target_on_our_occupied_states = 0.12 compliance_growth_on_our_occupied_states = -0.10 required_garrison_factor = 0.10 }
 		}
+
+		balance_idea_japan_buff = {
+	
+	        picture = jap_morale_boost
+	
+	        allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				OR = {
+			    	has_government = neutrality
+					has_government = fascism
+				}
+				is_subject = no
+			}
+			cancel = {
+				OR = {
+           			has_war_with = USA
+            		has_war_with = ENG		
+            		has_war_with = GER	
+            		has_war_with = SOV		
+            		has_war_with = ITA	
+            		has_war_with = FRA	
+            		has_idea = jap_bentujuezhan 			
+				}
+			}
+			modifier = {
+				dig_in_speed_factor = 0.1
+				max_dig_in_factor = 0.1
+				industrial_capacity_dockyard = 0.15
+		        production_factory_max_efficiency_factor = 0.15
+		        production_factory_efficiency_gain_factor = 0.15
+		        production_factory_start_efficiency_factor = 0.15
+		        line_change_production_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.25
+				army_org_factor = 0.2
+		        army_morale_factor = 0.2
+				land_reinforce_rate = 0.05
+				experience_loss_factor = -0.2
+				supply_node_range = 0.30
+				org_loss_at_low_org_factor = -0.15
+			    terrain_penalty_reduction = 0.15
+				naval_invasion_penalty = -0.5
+				ai_focus_aggressive_factor = 0.5
+				out_of_supply_factor = -0.15
+                supply_consumption_factor = -0.15
+			    attrition = -0.25
+				army_defence_factor = 0.2
+				
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
+			}
+			on_remove = {
+				every_state = {
+	        		limit = {
+						is_core_of = event_target:WTT_current_china_leader
+	        			has_dynamic_modifier = { modifier = jap_shanghai_modifier scope = JAP }
+	        		}
+	        		remove_dynamic_modifier = { modifier = jap_shanghai_modifier scope = JAP }
+					remove_dynamic_modifier = { modifier = jap_shanghai_modifier scope = SIA }
+	        	}
+			}
+			removal_cost = -1
+		}
+
+		balance_idea_japan_buff2 = {
+			name = balance_idea_japan_buff
+	
+	        picture = jap_morale_boost
+	
+	        allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				OR = {
+			    has_government = neutrality
+				has_government = fascism
+				}
+				is_subject = no	
+			}
+			cancel = {
+            	has_idea = jap_bentujuezhan 			
+			}
+			modifier = {
+				dig_in_speed_factor = 0.1
+				max_dig_in_factor = 0.1
+				industrial_capacity_dockyard = 0.15
+		        production_factory_max_efficiency_factor = 0.15
+		        production_factory_efficiency_gain_factor = 0.15
+		        production_factory_start_efficiency_factor = 0.15
+		        line_change_production_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.25
+				army_org_factor = 0.2
+		        army_morale_factor = 0.2
+				land_reinforce_rate = 0.05
+				experience_loss_factor = -0.2
+				supply_node_range = 0.30
+				org_loss_at_low_org_factor = -0.15
+			    terrain_penalty_reduction = 0.15
+				naval_invasion_penalty = -0.5
+				ai_focus_aggressive_factor = 0.5
+				out_of_supply_factor = -0.15
+                supply_consumption_factor = -0.15
+			    attrition = -0.25
+				army_defence_factor = 0.2
+				
+				army_attack_factor = 0.15
+				breakthrough_factor = 0.15
+			}
+			on_remove = {
+				every_state = {
+	        		limit = {
+						is_core_of = event_target:WTT_current_china_leader
+	        			has_dynamic_modifier = { modifier = jap_shanghai_modifier scope = JAP }
+	        		}
+	        		remove_dynamic_modifier = { modifier = jap_shanghai_modifier scope = JAP }
+					remove_dynamic_modifier = { modifier = jap_shanghai_modifier scope = SIA }
+	        	}
+			}
+			removal_cost = -1
+		}
+
+		jap_juexingji = {
+	
+	        picture = vietnamese_famine
+	
+	        allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+			    	has_government = neutrality
+					has_government = fascism
+				}
+			}
+			available = {
+				OR = {
+			    	has_government = neutrality
+					has_government = fascism
+				}
+			}
+			cancel = { 
+			   
+			}
+			modifier = {
+				breakthrough_factor = 0.05
+				army_speed_factor = 0.05
+				experience_loss_factor = 0.05
+				pocket_penalty = -0.1
+				war_support_factor = 0.1
+			} 
+			removal_cost = -1
+	}
 	}
 }

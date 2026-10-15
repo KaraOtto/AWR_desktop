@@ -2038,10 +2038,22 @@ country_event = {	#ww3
 		set_global_flag = Super_WW3_NATO
 		
 		random_country = {
-		limit = { is_major = yes is_faction_leader = yes is_subject = no is_democratic_type = yes or = { is_in_faction_with = ENG is_in_faction_with = USA } }
+			limit = { 
+				is_major = yes 
+				is_faction_leader = yes 
+				is_subject = no 
+				OR = {
+    				has_government = democratic
+    				has_government = socialism
+    			}
+				or = { 
+					is_in_faction_with = ENG 
+					is_in_faction_with = USA 
+				} 
+			}
 		    add_named_threat = {
-			threat = 100
-			name = ww3_break_nato
+				threat = 100
+				name = ww3_break_nato
 			}
 		}
 	}

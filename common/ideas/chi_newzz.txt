@@ -136,8 +136,6 @@ ideas = {
 				no_supply_grace = 144
 				supply_consumption_factor = -0.35
 				out_of_supply_factor = -0.35
-				ammunition_factor = 0.80
-				ammunition_capacity_factor = 0.80
 				justify_war_goal_time = -0.50
 		        generate_wargoal_tension = -1
 			}
@@ -711,25 +709,6 @@ ideas = {
             }
     	}
 
-		prc_ducai = {
-            name = prc_ducai		
-			picture = ducai
-			allowed = {
-				always = no
-			}
-			available = {
-			leader_is_zhang_guotao = yes			
-			}
-			removal_cost = -1
-			modifier = {
-				war_stability_factor = 0.2
-				political_power_factor = 0.2
-				resistance_growth = -0.2
-				drift_defence_factor = 0.2
-				war_support_factor = 0.2
-			}
-		}
-
 	    sik_xinjiangbingtuan = { #新疆兵团
     
             name = sik_xinjiangbingtuan
@@ -751,23 +730,6 @@ ideas = {
 				global_building_slots_factor = 0.10
 				
 				
-            }
-    	}
-
-	    tib_banchan = {
-    
-            name = tib_banchan
-    
-            picture = PRC_TIB_Youth_Banchan
-            removal_cost = -1
-            
-            modifier = {
-				production_speed_buildings_factor = 0.05
-				political_power_gain = 0.10
-				stability_factor = 0.15
-				war_support_factor = -0.10
-				communism_drift = 0.01
-			
             }
     	}
 
@@ -1588,28 +1550,9 @@ ideas = {
             modifier = {
 				weekly_manpower = -100
 				conscription_factor = 0.10			
-				roduction_speed_bunker_factor = 0.50
+				production_speed_bunker_factor = 0.50
 				production_speed_infrastructure_factor = 0.25
 				production_speed_supply_node_factor = 0.25
-            }
-    	}
-
-		PRC_youqinzhuyi = { #右倾主义
-    
-            name = PRC_youqinzhuyi
-    
-            picture = PRC_Right_Zhangguotao
-            
-            cancel = {
-            	has_completed_focus = PRC_West_road_army_victory				
-            }
-
-            removal_cost = -1
-			        
-            modifier = {
-				stability_factor = -0.1			
-				land_reinforce_rate = -0.1
-				army_org_factor = -0.15
             }
     	}
 
@@ -2375,7 +2318,6 @@ ideas = {
 				SUPPLY_NODE_RANGE = 0.30
 				org_loss_at_low_org_factor = -0.20
 				terrain_penalty_reduction = 0.20
-				ammunition_consumption_factor = -0.15
 				attrition = -0.15
 			}
 			
@@ -2839,7 +2781,7 @@ ideas = {
 
 			modifier = {
 				political_power_gain = 1.50
-				war_support = 0.10
+				war_support_factor = 0.10
 				war_support_weekly = 0.01
 				democratic_drift = 0.15
 				political_power_factor = 0.40
@@ -3058,7 +3000,6 @@ ideas = {
             modifier = {
                 stability_factor = -0.25
 				weekly_manpower = 1000
-				build_cost_ic = -0.15
 				war_support_weekly = -0.010								
                 army_artillery_attack_factor = 0.25
                 army_artillery_defence_factor = 0.25				
@@ -3388,10 +3329,8 @@ ideas = {
 			modifier = {
 				democratic_acceptance = 85
 				custom_modifier_tooltip = CHI_minquan_idea
-				hidden_effect = {
-					democratic_drift = 0.10
-				    drift_defence_factor = 0.53					
-				}
+				democratic_drift = 0.10
+				drift_defence_factor = 0.53
 			}
 		}
 
@@ -3458,148 +3397,6 @@ ideas = {
 			    can_puppet = yes
 			    can_only_justify_war_on_threat_country = no
 			}
-		}
-
-		chi_shijiehuimie = {
-	
-		    picture = chi_guoguangjihua
-			
-			allowed = {
-                tag = chi
-			}
-			
-			
-			available = {
-                always = yes
-			}
-			
-			cancel = {
-                always = no
-			}
-
-			removal_cost = -1
-
-			equipment_bonus = {
-				category_all_infantry = {
-					hard_attack = 0.25
-					ap_attack = 1
-					instant = yes
-				}
-
-				category_cavalry = {
-					hard_attack = 0.1
-					ap_attack = 0.4
-					instant = yes
-				}
-
-				category_artillery = {
-					hard_attack = 1
-					instant = yes
-				}
-
-				artillery = {
-					hard_attack = 2
-					soft_attack = 0.15
-					instant = yes
-				}
-				artillery_brigade = {
-					hard_attack = 2.5
-					instant = yes
-				}
-				mot_artillery_brigade = {
-					hard_attack = 1
-					instant = yes
-				}
-				category_self_propelled_artillery = {
-					hard_attack = 0.5
-					instant = yes
-				}
-
-				category_tank_destroyers = {
-					hard_attack = 0.15
-					ap_attack = 0.2
-					instant = yes
-				}
-
-				anti_tank = {
-					hard_attack = 0.1
-					ap_attack = 0.2
-					instant = yes
-				}
-				anti_tank_brigade = {
-					hard_attack = 0.1
-					ap_attack = 0.2
-					instant = yes
-				}
-				mot_anti_tank_brigade = {
-					hard_attack = 0.1
-					ap_attack = 0.2
-					instant = yes
-				}
-
-				anti_air = {
-					air_attack = 0.1
-					instant = yes
-				}
-				anti_air_brigade = {
-					air_attack = 0.1
-					instant = yes
-				}
-				mot_anti_air_brigade = {
-					air_attack = 0.1
-					instant = yes
-				}	
-			}
-
-			modifier = {
-				army_attack_factor = 0.12
-				tactic_overwhelming_fire_preferred_weight_factor = 1
-				training_time_army_factor = -0.15
-				generate_wargoal_tension = -1
-				join_faction_tension = -1
-				production_speed_nuclear_facility_factor = 0.2
-				nuclear_production_factor = 0.2
-				production_speed_arms_factory_factor = 0.15
-				production_speed_industrial_complex_factor = -0.15
-				special_forces_cap = 0.3
-				air_volunteer_cap = 3
-				send_volunteer_divisions_required = -0.5
-				send_volunteer_size = 6
-				send_volunteers_tension = -1
-				embargo_threshold_factor = -5
-				production_speed_infrastructure_factor = 0.2
-				production_speed_industrial_complex_factor = 0.1
-				consumer_goods_factor = -0.2
-				air_cas_efficiency = 0.15
-				nuclear_production_factor = 0.15
-				attrition = -0.08
-				supply_consumption_factor = -0.1
-				production_speed_buildings_factor = 0.2
-				production_factory_efficiency_gain_factor = 0.1
-			}
-		}
-
-		PRC_zhongjiemajiajun = {
-
-			picture = chi_army_corruption3
-
-			allowed = {
-				has_government = communism
-			}
-
-			allowed_civil_war = {
-				has_government = communism
-			}
-
-			targeted_modifier = {
-				tag = XSM
-				attack_bonus_against = 0.25
-			}
-			targeted_modifier = {
-				tag = NXM
-				attack_bonus_against = 0.25
-			}
-			
 		}
 
 		usa_lianheguopin2 = {

@@ -18,8 +18,8 @@ is_literally_china = { #for allowed trigger
 		original_tag = SHC
 		original_tag = GSM
 		original_tag = EGM
-		original_tag = TNG
-		original_tag = HMI
+		original_tag = KHM
+		original_tag = KUM
 		original_tag = MAN
 	    original_tag = KHR
 		original_tag = XIA
@@ -49,8 +49,8 @@ is_literally_china_including_chinese_puppets = {
 		original_tag = SHC
 		original_tag = GSM
 		original_tag = EGM
-		original_tag = TNG
-		original_tag = HMI
+		original_tag = KHM
+		original_tag = KUM
 		original_tag = MAN
 		original_tag = SCG
 		original_tag = NSG
@@ -148,8 +148,8 @@ is_warlord = {	#是军阀
 			tag = SHC
 			tag = GSM
 			tag = EGM
-			tag = HMI
-			tag = TNG
+			tag = KUM
+			tag = KHM
 		    tag = MEN
 		    tag = KHR
 			tag = XIA
@@ -331,4 +331,68 @@ CHI_power_blocs_ultranationalist_route_available = {
 	CHI_power_blocs_civil_war_won = yes
 	fascism > 0.6
 	CHI_power_blocs_ultranationalist_balance = yes
+}
+
+stilwell_check = {
+	NOT = {
+		has_global_flag = CHI_USA_ties_severed
+	}
+	NOT = { has_global_flag = stilwell_resign }
+	NOT = { has_government = fascism }
+	NOT = { has_war_with = USA }
+}
+chennalt_check = {
+	NOT = {
+		has_global_flag = CHI_USA_ties_severed
+	}
+	AND = {
+		NOT = { has_global_flag = chennault_return }
+		has_global_flag = flying_tiger
+	}
+	NOT = { has_government = fascism }
+	NOT = { has_war_with = USA }
+}
+wedemeyer_check = {
+	NOT = {
+		has_global_flag = CHI_USA_ties_severed
+	}
+	has_global_flag = stilwell_resign
+	NOT = { has_government = fascism }
+	NOT = { has_war_with = USA }
+}
+pavel_r_in_USSR = {
+	OR = {
+		CHI = {
+			NOT = { has_completed_focus = CHI_the_soviet_volunteer_group }
+		}
+		has_global_flag = SOV_recalled_advisors
+		has_global_flag = term_over_pavel_r
+	}
+}
+pavel_z_in_USSR = {
+	OR = {
+		CHI = {
+			NOT = { has_completed_focus = CHI_the_soviet_volunteer_group }
+		}
+		has_global_flag = SOV_recalled_advisors
+		has_global_flag = term_over_pavel_z
+	}
+}
+
+should_have_chinese_medals_trigger = {
+	is_literally_china = yes
+    NOT = { has_government = communism }
+    NOT = { original_tag = KHR }
+    NOT = { original_tag = KRS }
+    NOT = { original_tag = ATM }
+    NOT = { original_tag = PRC }
+	NOT = { original_tag = MAN }
+    NOT = { has_completed_focus = SIK_east_turkestan_council } 
+	NOT = { has_completed_focus = SIK_Turkic_land }
+    NOT = { has_idea = SIK_For_the_TAR_revolution  }
+}
+should_have_chinese_reform_medals_trigger = {
+	is_literally_china = yes
+    NOT = { has_government = communism }
+    has_completed_focus = CHI_german_training_method
 }

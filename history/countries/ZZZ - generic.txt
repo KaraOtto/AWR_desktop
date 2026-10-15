@@ -2,56 +2,6 @@ capital = 1
 
 ##########vvvvvvvvvvvvvvvvvvvvv###################
 
-SIK = { 
-set_cosmetic_tag = SIK_SHENG 
-	add_ideas = incompetent_heavy_industry
-}
-JAP = { 
-	set_cosmetic_tag = JAP_DIGUO 
-}
-
-
-SOV = {
-	recruit_character = SOV_bafuluofu
-	recruit_character = SOV_bagramyan
-	recruit_character = SOV_yeliaomianke
-	recruit_character = SOV_malinuofusiji
-	recruit_character = SOV_meiliecikefu
-	recruit_character = SOV_tuoerbuxin
-	recruit_character = SOV_Vasily_Sokolovsky
-	recruit_character = SOV_katukov
-	recruit_character = SOV_biliuzuofu
-	recruit_character = SOV_feiduolianke
-	recruit_character = SOV_apanaxianke
-	recruit_character = SOV_qiulieniefu
-	recruit_character = SOV_luotemisi
-
-	recruit_character = SOV_kalashnikov
-	recruit_character = SOV_Andrei_Andreyev
-	recruit_character = SOV_Zhdanov
-	recruit_character = SOV_Malenkov
-	recruit_character = SOV_Ordzhonikidze
-	recruit_character = SOV_Viktor_Abakumov
-	recruit_character = SOV_Dmitri_Ustinov
-
-	add_ideas = SOV_socialism_in_one_country_idea
-	add_ideas = SOV_nkvd_nsb
-	add_opinion_modifier = { target = GER modifier = SOV_anti_nazi_zz }
-	add_opinion_modifier = { target = GER modifier = embargo }
-	create_intelligence_agency = yes
-	upgrade_intelligence_agency = upgrade_form_department
-	upgrade_intelligence_agency = upgrade_passive_defense
-	upgrade_intelligence_agency = upgrade_psycho_warfare
-}
-
-
-
-
-warlord_traits_added = yes
-
-USA = {
-	add_country_leader_trait = lunyijuren
-}
 	
 AST = {
 	add_country_leader_trait = fulizhichizhe
@@ -67,27 +17,11 @@ SWE = {
 }
 DEN = {
 	add_country_leader_trait = fulizhichizhe
-}
-
-SIA = {
-	add_country_leader_trait = popular_figurehead
-}
-ATM = {
-	add_country_leader_trait = difangshilipai
-
-}	
-KRS = {
-	add_country_leader_trait = difangshilipai
-
 }	
 
 PLM = {
 	add_country_leader_trait = difangshilipai
 
-}
-
-EHB = {
-	add_ideas = EHB_for_ai
 }
 
 CCP = {
@@ -108,351 +42,14 @@ SCG = {
 	add_ideas = JPG_illegal_regime_2
 }
 
-every_country = { #no MAN, PRC, CHI
-	limit = {
-		is_chinese_warlord = yes
-        has_focus_tree = china_warlord_focus
-	}
-	add_ideas = CHI_warlord_state_idea
-}
-
-MAN = {
-	1005 = {
-		set_victory_points = {
-			province = 13433
-			value = 1
-		}
-	}
-	add_ideas = MAN_expanded_opium_field_overlord
-	add_ideas = man_unit_731
-	build_railway = { 
-		path = { 13150 4506 }				
-	}
-}			
-PHI = {
-	add_ideas = Macarthur	
-	set_party_name = {
-		ideology = democratic
-		name = "菲律宾国民党"
-		long_name = "菲律宾国民党"					
-	}	
-}
-
-LIT = {
-	add_ideas = Peru_on_our_own 		
-}
- 
-GSM = {
-	add_country_leader_trait = difangshilipai
-	add_country_leader_trait = anti_communist
-	add_equipment_to_stockpile = {
-		type = infantry_equipment
-		amount = 3500
-		producer = GSM
-	}
-	add_equipment_to_stockpile = {
-		type = support_equipment
-		amount = 500
-		producer = GSM
-	}		
 
 
-}
-
-HMI = {
-add_country_leader_trait = difangshilipai
-
-}	
-TNG = {
-add_ideas = xsm_majiajun
-
-add_country_leader_trait = difangshilipai
-
-}
-
-
-
-MON = {
-add_ideas = mon_weibeichengren
-}
 
 PLM = {
 add_ideas = balance_idea_plm
 }
 
-POL = {
-add_ideas = balance_idea_pol_motherland
-}
 
-SWE = {
-add_ideas = swe_ger_maoyixieding
-add_ai_strategy = {
-		type = befriend
-		id = GER
-		value = 100
-	}
-}
-
-
-###初始工业重置vvv
-447 = {
-add_building_construction = {
-						type = bunker
-						level = 5
-						province = 1071
-						instant_build = yes
-					}
-add_building_construction = {
-						type = coastal_bunker
-						level = 5
-						province = 1071
-						instant_build = yes
-					}						
-add_building_construction = {
-						type = bunker
-						level = 5
-						province = 4076
-						instant_build = yes
-					}		
-add_building_construction = {
-						type = coastal_bunker
-						level = 5
-						province = 4076
-						instant_build = yes
-					}						
-}
-615 = {
-add_building_construction = {
-					type = air_base
-					level = 1
-					instant_build = yes
-				}
-}
-750 = {
-add_building_construction = {
-					type = air_base
-					level = 3
-					instant_build = yes
-				}
-}
-1036 = {
-add_building_construction = {
-					type = air_base
-					level = 3
-					instant_build = yes
-				}
-}
-605 = {
-add_building_construction = {
-					type = air_base
-					level = 5
-					instant_build = yes
-				}
-}
-
-
-#苏联补给站
-build_railway = {
-	path = { 4677 4792 13323 }				
-}
-819 = {
-add_building_construction = {
-		type = supply_node
-		level = 1
-		province = 13323
-		instant_build = yes
-	}
-}
-
-561 = {
-add_building_construction = {
-		type = supply_node
-		level = 1
-		province = 12543
-		instant_build = yes
-	}
-}
-
-SOV = {
-    every_owned_state = {
-	    add_extra_state_shared_building_slots = 3
-	}
-}
-
-JAP = {
-    every_owned_state = {
-	    add_extra_state_shared_building_slots = 5
-	}
-add_ideas = jap_heilong
-}
-
-GER = {
-    every_owned_state = {
-	    add_extra_state_shared_building_slots = 3
-	}
-}
-
-#美国 #350厂 在AAA文件
-393 = {
-add_extra_state_shared_building_slots = 20
-add_building_construction = {
-						type = arms_factory
-						level = 5
-						instant_build = yes
-					}
-add_building_construction = {
-						type = industrial_complex
-						level = 9
-						instant_build = yes
-					}
-}
-395 = {
-add_extra_state_shared_building_slots = 4
-add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-}
-261 = {
-add_extra_state_shared_building_slots = 20
-add_building_construction = {
-						type = arms_factory
-						level = 5
-						instant_build = yes
-					}
-add_building_construction = {
-						type = industrial_complex
-						level = 5
-						instant_build = yes
-					}
-}
-
-#德国 +19
-51 = {
-add_extra_state_shared_building_slots = 18
-add_building_construction = {
-						type = industrial_complex
-						level = 12
-						instant_build = yes
-					}
-}
-42 = {
-add_extra_state_shared_building_slots = 15
-add_building_construction = {
-						type = industrial_complex
-						level = 9
-						instant_build = yes
-					}
-}
-
-#日本 +2
-282 = {
-add_extra_state_shared_building_slots = 5
-add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-}
-528 = {
-add_extra_state_shared_building_slots = 10
-add_building_construction = {
-						type = fuel_silo
-						level = 5
-						instant_build = yes
-					}
-}
-
-#满洲 +14
-716 = {
-add_extra_state_shared_building_slots = 6
-add_building_construction = {
-						type = industrial_complex
-						level = 6
-						instant_build = yes
-					}
-}
-328 = {
-add_extra_state_shared_building_slots = 5
-add_building_construction = {
-						type = industrial_complex
-						level = 5
-						instant_build = yes
-					}
-}
-
-#英国 +23
-126 = { 
-add_extra_state_shared_building_slots = 10
-add_building_construction = {
-						type = industrial_complex
-						level = 10
-						instant_build = yes
-					}
-}	
-132 = { 
-add_extra_state_shared_building_slots = 8
-add_building_construction = {
-						type = industrial_complex
-						level = 8
-						instant_build = yes
-					}
-}												
-
-#法国 +18
-build_railway = { 
-		path = { 6784 3768 }				
-}
-32 = {
-add_building_construction = {
-					type = supply_node
-					level = 1
-					province = 3768
-					instant_build = yes
-				}
-}				
-16 = { 
-add_extra_state_shared_building_slots = 9
-add_building_construction = {
-						type = arms_factory
-						level = 6
-						instant_build = yes
-					}
-add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-}
-20 = { 
-add_extra_state_shared_building_slots = 9
-add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-add_building_construction = {
-						type = industrial_complex
-						level = 8
-						instant_build = yes
-					}
-}
-
-#捷克 #35厂 +10
-9 = {
-add_extra_state_shared_building_slots = 10
-add_building_construction = {
-						type = arms_factory
-						level = 5
-						instant_build = yes
-					}
-add_building_construction = {
-						type = industrial_complex
-						level = 5
-						instant_build = yes
-					}
-}
 ###初始工业重置^^^
 
 PAL = {		
@@ -635,10 +232,10 @@ SIK = {
 	}
 	add_country_leader_trait = prince_of_terror
 	set_truce = { 
-		target = TNG days = 365 
+		target = KHM days = 365 
 	}
 	add_opinion_modifier = { 
-		target = TNG modifier = hostile_status 
+		target = KHM modifier = hostile_status 
 	}	## MODDED
 }
 
@@ -733,8 +330,8 @@ every_country = {
 			tag = XSM
 			tag = NXM
 			tag = TIB
-			tag = TNG
-			tag = HMI
+			tag = KHM
+			tag = KUM
 			tag = SIK
 			tag = SHC
 			tag = XIA

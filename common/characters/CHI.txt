@@ -110,7 +110,7 @@
 			}
 		}
 		country_leader={
-			ideology = authoritaria socialism
+			ideology = authoritarian_socialism
 			traits={ 
 				beifashuangjie 
 				social_reformer 
@@ -131,7 +131,10 @@
 				if = {
 					limit = {
 						original_tag = CHI
-						is_fascism_type = yes
+						OR = {
+    						has_government = fascism
+    						has_government = neutrality
+    					}
 					}
 					has_global_flag = CHI_huang_qixiang_come_back
 					not = { 
@@ -140,7 +143,14 @@
 					NOT = { has_completed_focus = ack_hiro_sen_focus }
 					NOT = { has_government = fascism }
 					if = {
-						limit = { JAP = { is_fascism_type = yes } }
+						limit = { 
+							JAP = { 
+								OR = {
+    								has_government = fascism
+    								has_government = neutrality
+    							}
+							} 
+						}
 						NOT = { is_in_faction_with = JAP }
 					}
 				}
@@ -167,14 +177,24 @@
 				if = {
 					limit = {
 						original_tag = CHI
-						is_fascism_type = yes
+						OR = {
+    						has_government = fascism
+    						has_government = neutrality
+    					}
 					}
 					has_global_flag = CHI_huang_qixiang_come_back
 					not = { has_war_with = event_target:WTT_communist_china has_global_flag = PRC_civil_war_started }
 					NOT = { has_completed_focus = ack_hiro_sen_focus }
 					NOT = { has_government = fascism }
 					if = {
-						limit = { JAP = { is_fascism_type = yes } }
+						limit = { 
+							JAP = { 
+								OR = {
+    								has_government = fascism
+    								has_government = neutrality
+    							}
+							} 
+						}
 						NOT = { is_in_faction_with = JAP }
 					}
 				}
@@ -4537,14 +4557,14 @@
 		}
 	}
 
-	CHI_claire_chennault={
-		name =CHI_claire_chennault
+	CHI_claire_lee_chennault={
+		name =CHI_claire_lee_chennault
 		portraits = {
-			army = { small="GFX_idea_CHI_claire_chennault" }
+			army = { small="GFX_idea_CHI_claire_lee_chennault" }
 		}
 		advisor={
 			slot = foreign_advisor
-			idea_token = CHI_claire_chennault
+			idea_token = CHI_claire_lee_chennault
 			ledger = air
 			visible = {
 				USA = {
@@ -5281,7 +5301,7 @@
 		name=CHI_lisiguang
 		portraits={
 			army={			
-				small="gfx/interface/ideas/lisiguang.png"
+				small="gfx/leaders/CHI/CHI_lisiguang.png"
 			}
 		}
 		advisor={
