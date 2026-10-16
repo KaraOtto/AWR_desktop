@@ -2997,7 +2997,13 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 		}
 		available = { 
 			X_xchinese_propaganda_poster_slot_available = yes
-			has_idea = PRC_maoism
+			ROOT = {
+				OR = {
+					has_government = mao_zedong_thought
+					has_government = maoism
+					has_country_leader = PRC_mao_zedong
+				}
+			}
 		}
 		visible = {
 			has_government = communism
