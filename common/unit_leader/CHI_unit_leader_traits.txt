@@ -140,4 +140,254 @@ leader_traits = {
 			naval_speed_factor = -0.05
 		} 
 	}
+
+	NRA_Generallissimo = {
+		type = field_marshal
+		trait_type = assignable_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+
+		allowed = {
+			FROM = { 
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+				}
+				NOT = { has_government = communism } 
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}
+		}
+
+		prerequisites = {
+			always = no
+		}
+
+		field_marshal_modifier = {
+			max_army_group_size = 3
+		}
+		modifier = {
+			org_loss_when_moving = -0.1
+			army_morale_factor = 0.1
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+
+		gui_row = 17
+		gui_column = 2
+	}
+
+	NRA_General_1stRank = {
+		type = corps_commander
+		trait_type = assignable_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}
+		
+		prerequisites = {
+			has_trait = NRA_General_2ndRank
+			NOT = {
+			    has_trait = recently_promoted
+			}		
+		}
+		
+		custom_effect_tooltip = max_army_group_size_5
+		modifier = {
+			org_loss_when_moving = -0.1
+			army_morale_factor = 0.1
+		}
+
+		on_add = {
+			remove_unit_leader_trait = NRA_General_2ndRank
+			if = {
+				limit = { NOT = { has_trait = recently_promoted } }
+				add_timed_unit_leader_trait = {
+					trait = recently_promoted
+					days = 100
+				}
+			}
+		}											
+	
+		ai_will_do = {
+			factor = 1
+		}
+
+		gui_row = 16
+		gui_column = 1
+	}
+
+	NRA_General_2ndRank = {
+		type = field_marshal
+		trait_type = assignable_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}
+
+		prerequisites = {
+			has_trait = NRA_Lieut_General
+			NOT = {
+			    has_trait = recently_promoted
+			}
+		}
+
+		custom_effect_tooltip = max_army_group_size_3
+		field_marshal_modifier = {
+			hidden_modifier = {
+				max_army_group_size = -2
+			}
+		}
+		modifier = {
+			org_loss_when_moving = -0.1
+			army_morale_factor = 0.1
+		}
+		
+		on_add = {
+			remove_unit_leader_trait = NRA_Lieut_General
+			if = {
+				limit = { NOT = { has_trait = recently_promoted } }
+				add_timed_unit_leader_trait = {
+					trait = recently_promoted
+					days = 100
+				}
+			}
+		}
+			
+		ai_will_do = {
+			factor = 1
+		}
+
+		gui_row = 17
+		gui_column = 1
+	}
+
+	NRA_Lieut_General = {
+        type = corps_commander
+        trait_type = assignable_trait
+        gain_xp = {
+            always = no
+        }
+
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}
+
+		prerequisites = {
+			has_trait = NRA_Major_General
+			NOT = {
+			    has_trait = recently_promoted
+			}
+		}
+
+		modifier = {
+			org_loss_when_moving = -0.1
+		}
+
+        ai_will_do = {
+            factor = 1
+        }
+
+		on_add = {
+			remove_unit_leader_trait = NRA_Major_General
+			if = {
+				limit = { NOT = { has_trait = recently_promoted } }
+				add_timed_unit_leader_trait = {
+					trait = recently_promoted
+					days = 100
+				}
+			}
+		}
+
+		gui_row = 18
+		gui_column = 1
+    }
+
+	NRA_Major_General = {
+        type = corps_commander
+        trait_type = assignable_trait
+        gain_xp = {
+            always = no
+        }
+
+		allowed = {
+			FROM = {
+			    OR = {
+				    tag = CHI
+				    is_warlord = yes
+			    }	
+			    NOT = { has_government = communism }
+			    NOT = { original_tag = KHR }
+				NOT = { original_tag = ATM }
+			}	
+		}
+
+		prerequisites = {
+			NOT = {
+				has_trait = NRA_Generallissimo
+				has_trait = NRA_General_1stRank
+				has_trait = NRA_General_2ndRank
+				has_trait = NRA_Lieut_General
+				has_trait = NRA_Major_General
+			}
+		}
+
+		modifier = {
+			org_loss_when_moving = -0.05
+		} 
+
+        ai_will_do = {
+            factor = 1
+        }
+
+		on_add = {
+			if = {
+				limit = { NOT = { has_trait = recently_promoted } }
+				add_timed_unit_leader_trait = {
+					trait = recently_promoted
+					days = 100
+				}
+			}
+		}
+
+		gui_row = 19
+		gui_column = 1
+    }
 }
