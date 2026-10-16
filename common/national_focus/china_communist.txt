@@ -411,7 +411,11 @@ focus_tree = {
 		}
 		relative_position_id = PRC_huininghuishi
 		available_if_capitulated = yes
-		completion_reward = {		
+		completion_reward = {
+			create_field_marshal = {
+				unlock_commander_ability = qiangxingjun
+			}
+			
 		    custom_effect_tooltip = PRC_jiesuo_qiangxingjun
 			set_global_flag = PRC_Red_Army_focus_flag
 			army_experience = 100
@@ -1972,7 +1976,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_research_slot = 1
-			
+			create_field_marshal = {
+				unlock_commander_ability = qianghuaxietong
+			}
 		    custom_effect_tooltip = PRC_jiesuo_qianghuaxietong
 			set_global_flag = PRC_kangda_focus_focus_flag
 			unlock_decision_tooltip = PRC_specialized_training_decision
@@ -5216,7 +5222,7 @@ focus_tree = {
 	
 	focus = { #重拾正面战场
 		id = PRC_zhengmianzhanchang
-		icon = GFX_focus_zhengmianzhanchang
+		icon = GFX_focus_PRC_zhengmianzhanchang
 		cost = 10
 		prerequisite = {
 			focus = PRC_consolidate_wang_mings_authority_focus
@@ -5324,8 +5330,8 @@ focus_tree = {
 	}
 
 	focus = {#提高新理论的可行性
-		id = PRC_tigaolilun_focus
-		icon = GFX_focus_rise_the_feasibiliyt_of_new_theory
+		id = PRC_rise_the_feasibiliyt_of_new_theory
+		icon = GFX_focus_PRC_rise_the_feasibiliyt_of_new_theory
 		cost = 10
 		prerequisite = {
 			focus = PRC_gongjianzhan_focus
@@ -5367,12 +5373,12 @@ focus_tree = {
 
 	focus = {#快速胜利学说
 		id = PRC_swift_victory_idea_focus
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_focus_PRC_swift_victory_idea_focus
 		cost = 10
 		prerequisite = {
-			focus = PRC_tigaolilun_focus
+			focus = PRC_rise_the_feasibiliyt_of_new_theory
 		}
-		relative_position_id = PRC_tigaolilun_focus
+		relative_position_id = PRC_rise_the_feasibiliyt_of_new_theory
 		x = 0
 		y = 1
 		ai_will_do = {
@@ -9741,7 +9747,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_New_Red_Army
 		}
-		x = 85
+		x = 87
 		y = 0
 
 		ai_will_do = {
@@ -17943,7 +17949,10 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_state_grid_construction
 		}
-		x = -2
+		prerequisite = {
+			focus = PRC_build_direct_municipalities
+		}
+		x = -1
 		y = 1
 		relative_position_id = PRC_state_grid_construction
 		select_effect = {
@@ -18089,23 +18098,6 @@ focus_tree = {
 				uses = 1
 				category = construction_tech
 			}
-			
-			every_state = { 
-				limit = { 
-					or = { 
-						is_owned_by = root 
-						owner = { 
-							is_subject_of = root 
-						} 
-					} 
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
 		}
 		bypass = {
 			#
@@ -18177,11 +18169,11 @@ focus_tree = {
 	focus = {#水利建设
 		id = PRC_infrastructure_effort_iii
 		icon = GFX_focus_PRC_infrastructure_effort_iii
-		cost = 3.6
+		cost = 2
 		prerequisite = {
 			focus = PRC_infrastructure_effort_ii
 		}
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = PRC_infrastructure_effort_ii
 		
@@ -18234,6 +18226,10 @@ focus_tree = {
 				}
 	            add_extra_state_shared_building_slots = 3
 	        }
+
+			country_event = {
+				id = AWR_PRC.328
+			}
 		}
 		bypass = {
 			#
@@ -18250,7 +18246,7 @@ focus_tree = {
 	focus = {	#国家电网建设
 		id = PRC_state_grid_construction
 		icon = GFX_focus_PRC_state_grid_construction
-		cost = 3.6
+		cost = 3
 		prerequisite = {
 			focus = PRC_infrastructure_effort_iii
 		}
@@ -18264,6 +18260,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_ideas = PRC_state_grid_construction
+			unlock_decision_tooltip = PRC_state_grid_construction_plan
 		}
 		available = {
 			custom_trigger_tooltip = {
@@ -18272,6 +18269,83 @@ focus_tree = {
 					has_completed_focus = PRC_tuijingongsiheying
 					has_completed_focus = PRC_jieguanqiye
 				}
+			}
+		}
+	}
+
+	focus = {	#推进城市化
+		id = PRC_urbanization_construction
+		icon = GFX_focus_PRC_urbanization_construction
+		cost = 3
+		prerequisite = {
+			focus = PRC_infrastructure_effort_ii
+		}
+		relative_position_id = PRC_infrastructure_effort_ii
+		x = 1
+		y = 1
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = PRC_state_urbanization_construction_plan
+		}
+		available = {
+			ROOT = {
+				num_of_factories > 299
+			}
+		}
+	}
+
+	focus = {	#建设直辖市
+		id = PRC_build_direct_municipalities
+		icon = GFX_focus_PRC_build_direct_municipalities
+		cost = 2
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = PRC_urbanization_construction
+		}
+		relative_position_id = PRC_urbanization_construction
+		completion_reward = { 
+			unlock_decision_tooltip = PRC_build_direct_municipalities_plan
+			592 = {	#广州
+				set_state_flag = candidate_direct_municipalities
+			}
+			605 = {	#重庆
+				set_state_flag = candidate_direct_municipalities
+			}
+			608 = {	#北京
+				set_state_flag = candidate_direct_municipalities
+			}
+			1035 = {	#南京
+				set_state_flag = candidate_direct_municipalities
+			}
+			613 = {	#沪东
+				set_state_flag = candidate_direct_municipalities
+			}
+			1114 = {	#沪西
+				set_state_flag = candidate_direct_municipalities
+			}
+			745 = {		#大连
+				set_state_flag = candidate_direct_municipalities
+			}
+			1091 = {	#延安
+				set_state_flag = candidate_direct_municipalities
+			}
+			743 = {	#青岛
+				set_state_flag = candidate_direct_municipalities
+			}
+			744 = {	#西安
+				set_state_flag = candidate_direct_municipalities
+			}
+
+			set_variable = {
+				var = num_of_direct_municipalities
+				value = 0
+			}
+		}
+
+		available = {
+			ROOT = {
+				num_of_factories > 499
 			}
 		}
 	}
@@ -18493,7 +18567,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Five_year_plans_of_China
 		}
-		x = 11
+		x = 12
 		y = 1
 		relative_position_id = PRC_Five_year_plans_of_China
 		available_if_capitulated = yes
@@ -19195,7 +19269,7 @@ focus_tree = {
 		id = PRC_focus_on_diplomacy
 		icon = GFX_focus_PRC_focus_on_diplomacy
 		cost = 2.14
-		x = 160
+		x = 162
 		y = 0
 		ai_will_do = {
 			factor = 0

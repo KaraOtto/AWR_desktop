@@ -243,7 +243,6 @@ PRC_move_capital_cat = {	#转移中央机关驻地
 }
 
 
-
 PRC_Army_Reform_category = {	#军事改革
 	priority = 994
 	icon = PRC_Army_Reform
@@ -305,12 +304,39 @@ PRC_rice_cotton_coal_war_category = {	#米棉之战
 	}
 }
 
+PRC_national_construction_plan_category = {	#国家建设计划
+	priority = 992
+	icon = generic_factory
+	visible = {
+		tag = PRC
+		has_completed_focus = PRC_infrastructure_effort_i
+	}
+}
+
 PRC_economy_cooperation_decision_category  = {	#经济合作
-	priority = 10
+	priority = 11
 	icon = generic_factory
 	visible = {
 		tag = PRC
 		has_completed_focus = PRC_embrace_multipolarization
+	}
+}
+
+PRC_comecon_dec_cat = {	#世界人民大团结
+	priority = 10
+
+	icon = SOV_civil_puppet_interaction
+	picture = GFX_decision_cat_picture_soviet_comecon
+
+	allowed = {
+		OR = {
+			TAG = event_target:WTT_communist_china
+			TAG = PRC
+		}
+	}
+
+	visible = {
+		has_completed_focus = PRC_internationalist_clique_focus
 	}
 }
 
@@ -406,24 +432,6 @@ PRC_oceanian_liberation_category = {
 			has_completed_focus = PRC_internationalist_clique_focus
 			has_completed_focus = PRC_support_the_national_independence_movement
 		}
-	}
-}
-
-PRC_comecon_dec_cat = {	#世界人民大团结
-	priority = 5
-
-	icon = SOV_civil_puppet_interaction
-	picture = GFX_decision_cat_picture_soviet_comecon
-
-	allowed = {
-		OR = {
-			TAG = event_target:WTT_communist_china
-			TAG = PRC
-		}
-	}
-
-	visible = {
-		has_completed_focus = PRC_internationalist_clique_focus
 	}
 }
 

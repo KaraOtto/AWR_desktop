@@ -1,0 +1,83 @@
+buildings = {
+
+	three_gorges_dam = {	#三峡大坝
+        # 地图显示
+        show_on_map = 1
+
+        # 造价：原版水坝的两倍
+        base_cost = 40000
+
+        # 与原版相同的建筑图标
+        icon_frame = 26
+        special_icon = GFX_dam_icon_small
+
+        # 建筑基础属性
+        value = 5
+        tags = { dam_building }
+
+        spawn_point = dam_spawn
+
+        # 与原版相同的受损机制
+        damage_factor = -1
+        province_damage_modifiers = { flooded }
+
+        # 与原版相同的建造和显示规则
+        is_buildable = no
+        need_detection = yes
+        detecting_intel_type = civilian
+        only_display_if_exists = yes
+
+        # 每个省份最多一座
+        level_cap = {
+            province_max = 1
+        }
+
+        # 显示建筑修正
+        show_modifier = yes
+
+        # 地区修正：
+        state_modifiers = {
+            state_production_speed_buildings_factor = 0.30
+            local_building_slots_factor = 0.50
+            state_resources_factor = 0.30
+			local_factory_energy_consumption = -0.75
+        }
+    }
+
+	commercial_nuclear_reactor = {	#商用反应堆
+		dlc_allowed = { has_dlc = Gotterdammerung }
+		hide_if_missing_tech = yes
+		missing_tech_loc = { 
+			localization_key = SP_BUILDING_MISSING_PROJECT
+			PROJECT = sp_commercial_nuclear_reactor
+		}
+		spawn_point = nuclear_reactor_spawn
+		show_on_map = 1
+		base_cost = 35000
+		icon_frame = 27
+		nuclear_reactor = yes
+		affects_energy = yes
+		value = 10
+		infrastructure_construction_effect = yes
+		
+		country_modifiers = {
+			modifiers = {
+				nuclear_production_factor = 3
+				thermonuclear_production_factor = 2
+			}
+		}
+
+		state_modifiers = {
+			state_production_speed_buildings_factor = 0.30
+			local_building_slots_factor = 0.25
+			state_resources_factor = 0.30
+			local_factory_energy_consumption = -0.50
+		}
+
+		level_cap = {
+			state_max = 1
+			shares_slots = yes
+			group_by = reactors
+		}
+	}
+}

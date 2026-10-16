@@ -7826,6 +7826,7 @@ war_measures = {	#通用决议——战时措施
 			army_speed_factor = -0.02
 			equipment_capture = 0.02
 			org_loss_when_moving = 0.05
+			ammunition_consumption_factor = -0.1
 		}
 	}
 
@@ -19898,6 +19899,489 @@ PRC_rice_cotton_coal_war_category = {	#米棉之战
 			country_event = {
 				id = AWR_PRC.278
 				hours = 6
+			}
+		}
+	}
+}
+
+PRC_national_construction_plan_category = {	##国家建设计划
+
+	PRC_highway_contruction_plan = {	#国家公路建设
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_completed_focus = PRC_infrastructure_effort_i
+			tag = PRC
+		}
+
+		available = {
+			industrial_complex > 29
+		}
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			#
+		}
+
+		modifier = {
+			civilian_factory_use = 30
+		}
+
+		remove_effect = {
+			every_state = { 
+				limit = { 
+					or = { 
+						is_owned_by = ROOT
+						owner = { 
+							is_subject_of = ROOT
+						} 
+					} 
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	PRC_railway_contruction_plan = {	#国家铁路建设
+		icon = GFX_decision_generic_construction
+
+		visible = {
+			has_completed_focus = PRC_infrastructure_effort_ii
+			tag = PRC
+		}
+
+		available = {
+			industrial_complex > 29
+		}
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			#
+		}
+
+		modifier = {
+			civilian_factory_use = 30
+		}
+
+		remove_effect = {
+			#
+		}
+	}
+
+	PRC_Qing_Zang_railway_construction_plan = {		#青藏铁路
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_completed_focus = PRC_infrastructure_effort_ii
+			tag = PRC
+		}
+
+		available = {
+			industrial_complex > 29
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = XSM
+						is_core_of = TIB
+					}
+				}
+				is_controlled_by_ROOT_or_ally = yes
+			}
+		}
+
+		fire_only_once = yes
+
+		days_remove = 180
+
+		complete_effect = {
+			#
+		}
+
+		modifier = {
+			civilian_factory_use = 30
+		}
+
+		remove_effect = {
+			build_railway = {
+				level = 5
+				path = {
+					2098 5080 12899 7940 10834 10796 2099 2053 10490 12732
+				}
+			}
+
+			757 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 2098
+					instant_build = yes
+				}
+			}
+
+			754 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 12732
+					instant_build = yes
+				}
+			}
+
+			hidden_effect = {
+				play_song = "Heavenly_Road"
+			}
+		}
+	}
+
+	PRC_the_Three_Gorges_Project_construction = {	#三峡工程建设
+
+		icon = GFX_decision_generic_construction
+
+		visible = {
+			has_completed_focus = PRC_infrastructure_effort_iii
+			tag = PRC
+		}
+
+		available = {
+			industrial_complex > 29
+			620 = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+			}
+			1120 = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+			}
+		}
+
+		fire_only_once = yes
+
+		days_remove = 180
+
+		complete_effect = {
+			#
+		}
+
+		modifier = {
+			civilian_factory_use = 30
+		}
+
+		remove_effect = {
+			620 = {
+				add_building_construction = {
+					type = three_gorges_dam
+					level = 1
+					province = 7596
+					instant_build = yes
+				}
+			}
+
+			1120 = {
+				add_building_construction = {
+					type = three_gorges_dam
+					level = 1
+					province = 10757
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	PRC_state_grid_construction_plan = {	#国家电网建设
+		icon = GFX_decision_generic_construction
+		cost = 50
+        fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_state_grid_construction
+		}
+
+        available = {
+            any_owned_state = {
+                infrastructure > 3
+                is_controlled_by = ROOT
+                industrial_infrastructure < 1
+                energy_infrastructure < 1
+            }
+        }
+
+        remove_effect = {
+            custom_effect_tooltip = MY_build_power_grid_tt
+
+            hidden_effect = {
+
+                # 第一步：计算所有符合条件州的资源总量
+                every_owned_state = {
+                    limit = {
+                        infrastructure > 3
+                        is_controlled_by = ROOT
+                        industrial_infrastructure < 1
+                        energy_infrastructure < 1
+                    }
+
+                    set_state_flag = MY_grid_candidate
+
+                    set_variable = {
+                        var = MY_grid_resources
+                        value = resource@steel
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@oil
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@aluminium
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@rubber
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@tungsten
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@chromium
+                    }
+                    add_to_variable = {
+                        var = MY_grid_resources
+                        value = resource@coal
+                    }
+                }
+
+                # 第二步：最多选择15个州
+                for_loop_effect = {
+                    start = 0
+                    end = 15
+
+                    # 每轮重置最高资源量
+                    set_temp_variable = {
+                        MY_grid_max = -1
+                    }
+
+                    # 找出剩余州中的最大资源量
+                    every_owned_state = {
+                        limit = {
+                            has_state_flag = MY_grid_candidate
+                            NOT = {
+                                has_state_flag = MY_grid_selected
+                            }
+                        }
+
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = MY_grid_resources
+                                    value = MY_grid_max
+                                    compare = greater_than
+                                }
+                            }
+                            set_temp_variable = {
+                                MY_grid_max = MY_grid_resources
+                            }
+                        }
+                    }
+
+                    # 在资源量最高的州中随机选择一个
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = MY_grid_max
+                                value = 0
+                                compare = greater_than_or_equals
+                            }
+                        }
+
+                        random_owned_state = {
+                            limit = {
+                                has_state_flag = MY_grid_candidate
+                                NOT = {
+                                    has_state_flag = MY_grid_selected
+                                }
+                                check_variable = {
+                                    var = MY_grid_resources
+                                    value = MY_grid_max
+                                    compare = equals
+                                }
+                            }
+
+                            set_state_flag = MY_grid_selected
+
+                            # 增加一个建筑槽位
+                            add_extra_state_shared_building_slots = 1
+
+                            # 瞬间建造一个大容量电网
+                            add_building_construction = {
+                                type = industrial_infrastructure
+                                level = 1
+                                instant_build = yes
+                            }
+                        }
+                    }
+                }
+
+                # 第三步：清除临时使用的州变量与标记
+                every_owned_state = {
+                    limit = {
+                        has_state_flag = MY_grid_candidate
+                    }
+
+                    clr_state_flag = MY_grid_candidate
+                    clr_state_flag = MY_grid_selected
+                    clear_variable = MY_grid_resources
+                }
+            }
+        }
+
+        ai_will_do = {
+            factor = 1
+        }
+	}
+
+	PRC_state_urbanization_construction_plan = {	#地区城市化
+		icon = GFX_decision_generic_construction
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_core_of = ROOT
+				NOT = {
+					has_state_category = metropolis
+				}
+				NOT = {
+					has_state_category = megalopolis
+				}
+				NOT = {
+					has_state_category = wasteland
+				}
+				NOT = {
+					has_state_category = enclave
+				}
+				NOT = {
+					has_state_category = tiny_island
+				}
+				NOT = {
+					has_state_category = small_island
+				}
+			}
+		}
+
+		highlight_states = {
+			FROM = {
+				is_core_of = ROOT
+				NOT = {
+					has_state_category = metropolis
+				}
+				NOT = {
+					has_state_category = megalopolis
+				}
+				NOT = {
+					has_state_category = wasteland
+				}
+				NOT = {
+					has_state_category = enclave
+				}
+				NOT = {
+					has_state_category = tiny_island
+				}
+				NOT = {
+					has_state_category = small_island
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = PRC_build_direct_municipalities
+		}
+
+		available = {
+			industrial_complex > 14
+		}
+
+		cost = 50
+
+		modifier = {
+			civilian_factory_use = 15
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			#
+		}
+
+		remove_effect = {
+			FROM = {
+				state_category_level_up = yes
+			}
+		}
+	}
+
+	PRC_build_direct_municipalities_plan = {	#设立直辖市
+		icon = GFX_generic_factory
+		state_target = yes
+		
+		target_trigger = {
+			FROM = {
+				has_state_flag = candidate_direct_municipalities
+			}
+			NOT = {
+				has_state_category = megalopolis
+			}
+		}
+
+		highlight_states = {
+			FROM = {
+				has_state_flag = candidate_direct_municipalities
+			}
+			NOT = {
+				has_state_category = megalopolis
+			}
+		}
+
+		visible = {
+			has_completed_focus = PRC_build_direct_municipalities
+			check_variable = {
+				var = num_of_direct_municipalities
+				value = 5
+				compare = less_than
+			}
+		}
+
+		available = {
+			industrial_complex > 29
+		}
+
+		cost = 100
+
+		days_remove = 90
+
+		complete_effect = {
+			#
+		}
+
+		modifier = {
+			civilian_factory_use = 30
+		}
+
+		remove_effect = {
+			FROM = {
+				set_state_category = megalopolis
+			}
+
+			add_to_variable = {
+				var = num_of_direct_municipalities
+				value = 1
 			}
 		}
 	}
