@@ -1,37 +1,11 @@
 capital = 439
-if = {
-	limit = {
-		has_dlc = "Graveyard of Empires"
-	}
-	set_oob = "RAJ_1936_GOE"
-}
-if = {
-	limit = {
-		NOT = { has_dlc = "Graveyard of Empires" }
-	}
-	set_oob = "RAJ_1936"	
-}
 
-if = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "RAJ_1936_air_bba"
-		set_technology = {
-			aa_lmg = 1
-			engines_1 = 1
-			aircraft_construction = 1
-			iw_small_airframe = 1
-		}
-	else = {
-		set_air_oob = "RAJ_1936_air_legacy"
-		set_technology = {
-			CAS1 = 1
-			early_fighter = 1
-		}
-	}
-}
+set_oob = "RAJ_1936_GOE"
+set_air_oob = "RAJ_1936_air_bba"
 
 set_stability = 0.6
 set_war_support = 0.1
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -40,12 +14,17 @@ set_technology = {
 	tech_support = 1		
 	tech_engineers = 1
 	tech_recon = 1
-	#trench_warfare = 1
-	#fleet_in_being = 1
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
 	gw_artillery = 1
+	aa_lmg = 1
+	engines_1 = 1
+	aircraft_construction = 1
+	iw_small_airframe = 1
+	mtg_transport = 1
+	camelry = 1
+	gwtank_chassis = 1
 }
 
 set_grand_doctrine = grand_battleplan
@@ -140,9 +119,6 @@ if = {
 	recruit_character = RAJ_abdul_ghaffar_khan
 	recruit_character = RAJ_GOE_muhammad_musa
 	
-	else = {
-		recruit_character = RAJ_karam_singh_mann
-	}
 }
 
 
@@ -165,39 +141,8 @@ if = {
 
 
 if = {
-	limit = {
-		not = { has_dlc =  "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
-
-if = {
-	limit = {
-		has_dlc = "Battle for the Bosporus"
-	}
-	set_technology = { camelry = 1 }
-}
-
-if = {
 	limit = { 
 		has_dlc = "Together for Victory" 
-		
-	}
-
-	if = {
-		limit = { NOT = { has_dlc = "Graveyard of Empires" } }
-		add_ideas = RAJ_agrarian_society
 		
 	}
 
@@ -220,23 +165,6 @@ if = {
 	set_variable = { RAJ_agrarian_society_mobilization_speed = -0.72 } #3
 	add_ideas = idea_RAJ_great_depression_1
 
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
 }
 
 set_convoys = 20
@@ -273,6 +201,7 @@ set_popularities = {
 	fascism = 2
 	communism = 1
 	neutrality = 80
+	socialism = 0
 }
 
 if = {
@@ -289,28 +218,6 @@ if = {
 		nationalities = { RAJ }
 	}
 }
-
-#432 = {
-#	add_dynamic_modifier = {
-#		modifier = malaria
-#	}
-#}
-#434 = {
-#	add_dynamic_modifier = {
-#		modifier = malaria
-#	}
-#}
-#640 = {
-#	add_dynamic_modifier = {
-#		modifier = malaria
-#	}
-#}
-#
-#288 = {
-#	add_dynamic_modifier = {
-#		modifier = malaria
-#	}
-#}
 
 every_owned_state = {
 	limit = { NOT = { state = 992 } } #province of Áden
@@ -384,30 +291,8 @@ if = {
 		producer = RAJ
 	}
 }
-if = {
-	limit = { #If not having goe core everything again since non dlc cant recore
-		NOT = { has_dlc = "Graveyard of Empires" }
-	}
-	every_owned_state = {
-		limit = {
-			NOT = {
-				state = 992
-				state = 441
-				state = 787
-				state = 442
-				state = 987
-				state = 440
-				state = 445
-				state = 444
-				state = 1012
-				state = 432
-				state = 434
-				state = 990
-			}
-		}
-		add_core_of = RAJ
-	}
-}
+
+give_guarantee = BHU
 
 if = {
 	limit = {
@@ -415,14 +300,6 @@ if = {
 	}
 	country_event = { id = GOE_RAJ_partition.1 days = 40 random_days = 25 }
 	country_event = { id = GOE_RAJ.32 days = 30 random_days = 80 }
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "Arms Against Tyranny" }
-	}
-	set_variable = { global.khadi_level = 0 }
-	set_variable = { global.gun_and_shell_level = 0 }
 }
 
 set_variable = { RAJ_recruitment_offices_timeout_max = 12 } 

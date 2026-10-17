@@ -25,6 +25,16 @@ Type_59_tank_improvement = {	#59式坦克改进研究专家
 		sp_tag_tank_speed_factor = 0.10
 	}
 }
+scientist_trait_land = {
+	specialization = { specialization_land }
+	available = { 
+		always = no 
+	}
+	modifier = {
+		sp_tag_artillery_speed_factor = 0.25
+		sp_tag_tank_speed_factor = 0.25
+	}
+}
 ###海军
 famous_scientist_naval = {	#著名科学家
 	specialization = {
@@ -90,6 +100,16 @@ modern_battleship_research_pioneer = {	#现代战列舰研究先驱
 	}
 	modifier = {
 		sp_naval_modern_battleship_speed_factor = 0.30
+	}
+}
+
+scientist_trait_naval = {
+	specialization = { specialization_naval }
+	available = { 
+		always = no 
+	}
+	modifier = {
+		sp_tag_surface_ship_speed_factor = 0.25
 	}
 }
 ###空军
@@ -210,6 +230,19 @@ two_bombs_pinoneer_rocket = {	#“两弹”元勋
 	}
 	modifier = {
 		sp_tag_rocket_speed_factor = 0.50
+	}
+}
+
+scientist_trait_air = {
+	specialization = { specialization_air }
+	available = { 
+		always = no 
+	}
+	modifier = {
+		sp_tag_aircraft_speed_factor = 0.25
+		sp_tag_jet_speed_factor = 0.25
+		sp_tag_rocket_speed_factor = 0.25
+		sp_tag_helicopter_speed_factor = 0.25
 	}
 }
 
@@ -336,3 +369,33 @@ Chinese_thermo_nuclear_bomb_father = {	#中国氢弹之父
 	}
 }
 
+scientist_trait_nuclear = {
+	specialization = { specialization_nuclear }
+	available = { 
+		always = no 
+	}
+	modifier = {
+		specialization_nuclear_speed_factor = 0.25
+	}
+}
+
+scientist_trait_project = {
+	specialization = { specialization_nuclear }
+	available = { 
+		always = no 
+	}
+	modifier = {
+		special_project_speed_factor = 0.5
+	}
+}
+
+scientist_trait_scientist = {
+	available = { 
+		always = no
+	}
+	modifier = {
+		special_project_speed_factor = 0.5
+		scientist_breakthrough_bonus_factor = 0.5
+		scientist_xp_gain_factor = 0.5
+	}
+}

@@ -208,6 +208,23 @@ characters={
 					mobile_warfare_expert
 				}
 		}
+		advisor={
+			slot = high_command
+			idea_token = USA_george_s_patton
+			ledger = army					
+			allowed = {
+				original_tag = USA
+			}		
+			traits = { army_armored_3 }
+			cost = 200					
+			ai_will_do = {
+				factor = 100
+				modifier = {
+				    factor = 9999
+				    has_war = yes
+				}
+			}
+		}	
 
 		corps_commander={
 			traits={ career_officer trait_reckless harsh_leader armor_officer war_hero trickster panzer_leader adaptable organizer }
@@ -241,6 +258,23 @@ characters={
 			
 			traits = {
 				superior_firepower_expert
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = USA_omar_bradley
+			ledger = army					
+			allowed = {
+				original_tag = USA
+			}			
+			traits = { army_regrouping_3 }
+			cost = 200					
+			ai_will_do = {
+				factor = 75
+				modifier = {
+				    factor = 9999
+				    has_war = yes
+				}
 			}
 		}
 
@@ -282,6 +316,19 @@ characters={
 				factor = 1.000
 			}
 		}
+		advisor={
+			slot = theorist
+			idea_token = USA_aike111
+			ledger = army				
+			allowed = {
+				original_tag = USA
+			}
+			traits = { grand_battle_plan_expert }
+			cost = 150
+			ai_will_do = {
+				factor = 0
+			}
+		}		
 		
 		field_marshal={
 			traits={ brilliant_strategist adaptable trait_cautious rising_young_officer career_officer armor_officer politically_connected organizer logistics_wizard  expert_delegator }
@@ -863,6 +910,20 @@ characters={
 				factor = 1.000
 			}
 		}
+		advisor={
+			slot = theorist
+			idea_token = USA_nimizi111
+			ledger = army	
+            
+			allowed = {
+				original_tag = USA
+			}
+			traits = { grand_fleet_proponent }
+			cost = 150
+			ai_will_do = {
+				factor = 0
+			}
+		}	
 		
 		navy_leader={
 			traits={ gentlemanly naval_lineage superior_tactician spotter blue_water_expert }
@@ -1393,6 +1454,29 @@ characters={
 				factor = 1.000
 			}
 		}
+		advisor={
+			slot = theorist
+			idea_token = USA_chennade111
+			ledger = army			
+            available = { #EYWOR MODDED
+				OR = {
+					AND = {
+						has_global_flag = flying_tiger
+						original_tag = USA
+						has_global_flag = chennault_return
+					}
+					NOT = { has_global_flag = flying_tiger }
+				}
+			} #EYWOR MODDED
+			allowed = {
+				original_tag = USA
+			}
+			traits = { dive_bomber }
+			cost = 150
+			ai_will_do = {
+				factor = 0
+			}
+		}		
 	}
 	
 	USA_thomas_kinkaid={
@@ -2109,4 +2193,411 @@ characters={
 		}
 	}
 
+	USA_James_Alward_Van_Fleet={
+		name="詹姆斯·范佛里特"
+		portraits={
+			army={			
+                large="gfx/leaders/USA/USA_James_Alward_Van_Fleet.jpg"
+			}
+		}		
+		corps_commander={
+			traits={ rising_young_officer  career_officer  infantry_officer  bearer_of_artillery  trait_mountaineer  }
+			skill=4
+			attack_skill=5
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=0
+		}		
+	}
+
+	USA_Joseph_Taggett_McNani={
+		name="约瑟夫·塔格特·麦克纳尼"
+		portraits={
+			army={				
+                large="gfx/leaders/USA/USA_Joseph_Taggett_McNani.jpg"
+			}
+		}	
+		field_marshal={
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=5
+			logistics_skill=4
+			legacy_id =-1			
+		    traits = {  career_officer  infantry_officer organizer thorough_planner logistics_wizard }		    
+		}		
+	}
+
+	USA_Adna_Chaffee={
+		name=USA_Adna_Chaffee
+		portraits={
+			army={
+				small="GFX_idea_Adna_Chaffee"
+                large="gfx/leaders/USA/r56_portrait_USA_Adna_Chaffee.jpg"
+			}
+		}
+		advisor={
+			cost = 150		
+			slot = theorist
+			idea_token = USA_Adna_Chaffee
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}			
+			traits = {
+				mobile_warfare_expert
+			}	
+			ai_will_do  = {
+				factor = 0
+			}				
+		}
+		corps_commander={#guo
+			traits={  armor_officer war_hero  panzer_leader  career_officer cavalry_officer }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=0
+		}
+	}
+
+	USA_malin_craig={
+		name=USA_malin_craig
+		portraits={
+			army={
+				small="GFX_idea_USA_malin_craig"
+                large="gfx/leaders/USA/USA_malin_craig.jpg"
+			}
+		}
+		advisor={
+			cost = 100		
+			slot = army_chief
+			idea_token = USA_malin_craig
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}			
+			traits = {
+				army_chief_drill_2
+			}		
+			ai_will_do  = {
+				factor = 50
+				modifier = {
+					add = -999
+					any_enemy_country = { is_major = yes }
+				}
+		    }
+		}
+		field_marshal={
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id =-1			
+		    traits = {  career_officer  war_hero  cavalry_officer  organizer  thorough_planner }		    
+		}		
+	}
+
+	USA_John_Edgar_Hoovercivilianpng={
+		name=USA_John_Edgar_Hoovercivilianpng
+		portraits={
+			army={
+				small="GFX_idea_USA_John_Edgar_Hoovercivilianpng"
+                large="gfx/leaders/USA/USA_John_Edgar_Hoovercivilianpng.jpg"
+			}
+			civilian={
+				small="GFX_idea_USA_John_Edgar_Hoovercivilianpng"
+                large="gfx/leaders/USA/USA_John_Edgar_Hoovercivilianpng.jpg"
+			}
+		}		
+		country_leader={
+			ideology=oligarchism
+			traits={ anti_communist ideological_crusader }
+			expire="1969.1.1.1"
+			id=-1
+			desc=USA_John_Edgar_Hoovercivilianpng_desc
+		}	
+		advisor={
+			cost = 200
+			can_be_fired = no
+			slot = political_advisor
+			idea_token = USA_John_Edgar_Hoovercivilianpng
+			
+			allowed = {
+				original_tag = USA
+			}
+				
+			ai_will_do  = {
+				factor = 1
+			}		
+				
+			available = {
+				NOT = { has_government = communism }
+			}
+				
+			visible = {
+				NOT = { has_government = communism }
+			}
+				
+			traits = {
+				prince_of_terror
+				SWI_intelligence_officer
+			}			
+		}		
+	}
+
+	USA_jacob_devers={
+		name=USA_jacob_devers
+		portraits={
+			army={
+				small="GFX_idea_USA_jacob_devers"
+                large="gfx/leaders/USA/GFX_idea_USA_jacob_devers.jpg"
+			}
+		}			
+		advisor={
+			cost = 100
+			
+			slot = high_command
+			idea_token = USA_jacob_devers
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}			
+			traits = {
+				army_concealment_2
+			}		
+			ai_will_do  = {
+				factor = 0
+			}				
+		}		
+		corps_commander={
+			traits={ artillery_officer  career_officer  skilled_staffer  naval_liason    }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=3
+			legacy_id=0
+		}
+	}
+
+	USA_holland_smith={
+		name=USA_holland_smith
+		portraits={
+			army={
+				small="GFX_idea_USA_holland_smith"
+                large="gfx/leaders/USA/Portrait_USA_Holland_Smith.jpg"
+			}
+		}		
+		advisor={
+			cost = 200			
+			slot = high_command
+			idea_token = USA_holland_smith
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}
+			available = { has_completed_focus = USA_expand_the_USMC }
+			traits = {
+				navy_amphibious_assault_3
+			}		
+            ai_will_do = {
+				factor = 1			
+		    }				
+		}	
+		corps_commander={
+			traits={ war_hero  naval_invader  invader_ii  naval_liason camouflage_expert commando trickster }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=4
+			legacy_id=0
+		}
+	}
+
+	USA_Benjamin_O_Davis={
+		name=USA_Benjamin_O_Davis
+		portraits={
+			army={
+				small="GFX_idea_USA_Benjamin_O_Davis"               
+			}
+		}
+		advisor={
+			cost = 100			
+			slot = high_command
+			idea_token = USA_Benjamin_O_Davis
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}
+			available = { has_completed_focus = USA_air_war_plans_division }
+			ai_will_do  = {
+				factor = 50
+			}
+			traits = {
+				air_air_superiority_2
+			}			
+		}
+	}
+
+	USA_james_gavin={
+		name=USA_james_gavin
+		portraits={
+			army={
+				small="GFX_idea_USA_james_gavin"
+                large="gfx/leaders/USA/GFX_idea_USA_james_gavin.jpg"
+			}
+		}
+		advisor={
+			cost = 100			
+			slot = high_command
+			idea_token = USA_james_gavin
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}
+			available = { has_completed_focus = USA_airborne_divisions }
+			ai_will_do  = {
+				factor = 1			
+			}
+			traits = {
+				air_airborne_2
+			}			
+		}		
+		corps_commander={
+			traits={ rising_young_officer  career_officer  infantry_officer   commando   skirmisher paratrooper  expert_improviser      }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=0
+		}	
+	}
+
+	USA_john_pershing={
+		name=USA_john_pershing
+		portraits={
+			army={
+				small="GFX_idea_USA_john_pershing"
+                
+			}
+		}
+		advisor={
+			cost = 200			
+			slot = army_chief
+			idea_token = USA_john_pershing
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}
+			available = { or = { has_completed_focus = USA_war_propaganda has_completed_focus = USA_war_powers_act } }
+			traits = {
+				army_chief_offensive_3
+			}
+			ai_will_do  = {
+			    factor = 700
+		    }
+		}
+		advisor={
+			slot = theorist
+			idea_token = USA_panxin
+			ledger = army	
+			
+            available = { or = { has_completed_focus = USA_war_propaganda has_completed_focus = USA_war_powers_act } }
+			allowed = {
+				original_tag = USA
+			}
+			traits = { mass_assault_expert }
+			cost = 150
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	USA_Maxwell_Taylor={
+		name=USA_Maxwell_Taylor
+		portraits={
+			army={				
+                large="gfx/leaders/USA/USA_Maxwell_Taylor.jpg"
+			}
+		}		
+		corps_commander={
+			traits={ rising_young_officer  career_officer  infantry_officer  commando engineer_officer  skirmisher paratrooper  expert_improviser      }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=0
+		}	
+	}
+
+	USA_Matthew_Bunker_Ridgway={
+		name=USA_Matthew_Bunker_Ridgway
+		portraits={
+			army={			
+                large="gfx/leaders/USA/USA_Matthew_Bunker_Ridgway.jpg"
+			}
+		}		
+		corps_commander={
+			traits={ rising_young_officer  career_officer  infantry_officer  commando   trickster  brilliant_strategist   adaptable skilled_staffer }
+			skill=5
+			attack_skill=4
+			defense_skill=5
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=0
+		}	
+	}
+
+	USA_albert_coady_wedemeyer={
+		name=USA_albert_coady_wedemeyer
+		portraits={
+			army={
+				small="GFX_idea_USA_albert_coady_wedemeyer"
+				large="gfx/leaders/USA/USA_albert_coady_wedemeyer.jpg"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = USA_albert_coady_wedemeyer
+			ledger = army
+			allowed = {
+				original_tag = USA
+			}
+			available = {
+				NOT = {
+					has_country_flag = albert_wedemeyer_sent_to_china
+				}
+			}
+			traits = {
+				army_chief_planning_2_high_command
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}	
+		corps_commander={
+			traits={ career_officer infantry_officer skilled_staffer }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
+			legacy_id=0
+			desc=USA_albert_coady_wedemeyer_desc
+			visible = {
+				NOT = {
+					has_country_flag = albert_wedemeyer_sent_to_china
+				}
+			}
+		}
+	}
 }

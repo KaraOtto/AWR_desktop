@@ -98,6 +98,7 @@ add_ideas = {
 	george_v
 	MTG_naval_treaty_adherent
 	RCM_sun_never_sets
+	eng_junqing6chu
 }
 	
 set_convoys = 1000
@@ -112,11 +113,11 @@ if = {
 	}
 	set_autonomy = {
 		target = MAL
-		autonomous_state = autonomy_integrated_puppet
+		autonomous_state = autonomy_ENG_baohuguo
 	}
 	set_autonomy = {
 		target = RAJ
-		autonomous_state = autonomy_colony
+		autonomous_state = autonomy_wangguan
 		freedom_level = 0.35
 	}
 	set_autonomy = {
@@ -151,17 +152,17 @@ if = {
 	}
 	set_autonomy = {
 		target = EGY
-		autonomous_state = autonomy_dominion
+		autonomous_state = autonomy_BRITISH_wangguan
 		freedom_level = 0.2
 	}
 	set_autonomy = {
 		target = PAL
-		autonomous_state = autonomy_integrated_puppet
+		autonomous_state = autonomy_ENG_baohuguo
 		freedom_level = 0.5
 	}
 	set_autonomy = {
 		target = JOR
-		autonomous_state = autonomy_colony
+		autonomous_state = autonomy_ENG_baohuguo
 		freedom_level = 0.2
 	}
 	set_autonomy = {
@@ -173,6 +174,31 @@ if = {
 		target = HOK
 		autonomous_state = autonomy_colony
 		freedom_level = 0.4
+	}
+	set_autonomy = {
+		target = SST
+		autonomous_state = autonomy_ENG_baohuguo
+		freedom_level = 0.6
+	}
+	set_autonomy = { 
+		target = SAR 
+		autonomy_state = autonomy_ENG_baohuguo 
+		freedom_level = 0.50  
+	}
+	set_autonomy = { 
+		target = BRN 
+		autonomy_state = autonomy_ENG_baohuguo 
+		freedom_level = 0.50  
+	}
+	set_autonomy = { 
+		target = BOR 
+		autonomy_state = autonomy_ENG_baohuguo 
+		freedom_level = 0.50  
+	}
+	set_autonomy = { 
+		target = BOT 
+		autonomy_state = autonomy_ENG_baohuguo 
+		freedom_level = 0.50  
 	}
 }
 
@@ -192,7 +218,7 @@ set_popularities = {
 	socialism = 38
 }
 
-
+set_faction_name = yinglianbang
 create_faction_from_template = faction_template_allies
 add_faction_goal_slot = {
 	category  = long_term
@@ -204,13 +230,21 @@ add_to_faction = CAN
 add_to_faction = AST
 add_to_faction = NZL
 add_to_faction = SAF
+add_to_faction = OMA
 
 give_military_access = RAJ
 add_to_faction = RAJ		# Must be after puppet
 add_to_faction = MAL
+add_to_faction = EGY
 
 give_guarantee = BEL
 give_guarantee = IRQ
+give_guarantee = IRE
+give_guarantee = YEM
+
+give_guarantee = HOL
+give_guarantee = LUX
+give_guarantee = SWI
 
 #give_guarantee = CZE
 
@@ -318,6 +352,10 @@ recruit_character = ENG_robert_menzies
 
 recruit_character = ENG_jack_churchill
 
+create_intelligence_agency = yes
+upgrade_intelligence_agency = upgrade_form_department
+upgrade_intelligence_agency = upgrade_passive_defense
+upgrade_intelligence_agency = upgrade_psycho_warfare
 if = {
 	limit = {
 		has_dlc = "La Resistance"
