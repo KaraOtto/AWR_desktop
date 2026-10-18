@@ -348,6 +348,87 @@ country_event = {	#贵州投敌
 	}
 }
 
+country_event = { #张灵甫自杀
+	id = AWR_CHI.1006
+	title = AWR_CHI.1006.t
+	desc = AWR_CHI.1006.desc
+	picture = GFX_zhanglingfu
+	trigger = {
+	tag = CHI	
+    }		
+	fire_only_once = yes
+	is_triggered_only = yes	
+	option = {
+		name = AWR_CHI.1006.a
+		add_war_support = -0.10	
+        retire_character = CHI_zhang_lingfu
+	}	
+}
+
+country_event = { #杜聿明被俘
+	id = AWR_CHI.1007
+	title = AWR_CHI.1007.t
+	desc = AWR_CHI.1007.desc
+	picture = GFX_duyuming
+	trigger = {
+	tag = CHI	
+    }		
+	fire_only_once = yes
+	is_triggered_only = yes	
+	option = {
+		name = AWR_CHI.1007.a
+		add_war_support = -0.03		
+	}	
+}
+
+country_event = { #文白无能，丧权辱国！
+	id = AWR_CHI.1008
+	title = AWR_CHI.1008.t
+	desc = AWR_CHI.1008.desc
+	picture = GFX_wenxi
+	trigger = {
+		tag = CHI	
+		has_war_with = PRC
+		1015 = {
+			is_controlled_by = PRC
+		}
+		has_global_flag = PRC_civil_war_started	
+    }		
+	fire_only_once = yes	
+	immediate = {
+		hidden_effect = {
+			PRC = {
+				country_event = { 
+					id = AWR_PRC.307 
+				}	
+			}	
+		}	
+	}	
+	option = {
+		name = AWR_CHI.1008.a
+		add_political_power = -50		
+	}	
+}
+
+country_event = { #邱清泉殉国
+	id = AWR_CHI.1009
+	title = AWR_CHI.1009.t
+	desc = AWR_CHI.1009.desc
+	picture = GFX_qiu
+	trigger = {
+		tag = CHI	
+		is_ai = yes
+    }		
+	fire_only_once = yes
+	is_triggered_only = yes	
+	option = {
+		name = AWR_CHI.1009.a
+		add_war_support = -0.01
+        retire_character = CHI_qiu_qingquan		
+	}	
+}
+
+
 country_event = {	#轻度腐败案件
 	id = CHI_corruption.10
 	title = CHI_corruption.10.t
@@ -1168,7 +1249,11 @@ country_event = {
 				originator_name = CHI_kong_xiangxi
 			}
 			clr_country_flag = CHI_kong_xiangxi2_in_progress_flag
-			country_event = { id = CHI_inner_circle.13 days = 75 random_days = 45 }
+			country_event = { 
+				id = CHI_inner_circle.13 
+				days = 75 
+				random_days = 45 
+			}
 		}
 		else_if = {
 			limit = {
