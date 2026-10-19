@@ -110,8 +110,8 @@ on_actions = {
 		}
 	}
 
-	on_startup = {
-		effect = {	#民国势力
+	on_startup = {	#民国势力
+		effect = {	
 			every_state = { 
 				limit = {
 					OR = {
@@ -209,4 +209,26 @@ on_actions = {
 			}
 		}
 	}
+}
+
+on_actions = {	#月度刷新钢产出
+    on_monthly = {
+        effect = {
+			every_country = {
+				if = {
+					limit = {
+						has_dynamic_modifier = cfs_smelting
+						has_tech = basic_machine_tools
+						check_variable = {
+							var = cfs_rate
+							value = 15
+							compare = less_than
+						}
+					}
+
+					cfs_refresh = yes
+				}
+			}
+        }
+    }
 }

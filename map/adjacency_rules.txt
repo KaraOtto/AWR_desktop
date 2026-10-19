@@ -410,3 +410,53 @@ adjacency_rule = {
 	icon = 6979
 	offset = { 9 0 6 }
 }
+
+#马六甲海峡
+adjacency_rule =
+{
+	name = "马六甲海峡"
+
+	is_friend = {
+		MAL_is_friend_for_bosphorus = yes
+	}
+	contested =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	enemy =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	friend =
+	{
+		army = yes
+		navy = yes
+		submarine = yes
+		trade = yes
+	}
+	neutral =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = yes
+	}
+	
+	required_provinces = { 7427 7463 }
+
+	is_disabled = { #什么情况下不可以
+		OR = {
+
+		}
+		tooltip = maluga_disable_tt #提示
+	}
+	
+	icon = 7427
+	offset = { -2 0 -9 }
+}

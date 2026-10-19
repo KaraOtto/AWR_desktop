@@ -267,7 +267,7 @@ unbalanced_industry_level_down = {
 	}
 }
 
-state_category_level_up = {
+state_category_level_up = {	#提升地区类型
 	if = {
 		limit = {
 			has_state_category = pastoral
@@ -309,4 +309,182 @@ state_category_level_up = {
 		}
 		set_state_category = metropolis
 	}
+}
+
+
+###民工炼钢
+cfs_refresh = {
+
+    # 避免民工数量小于0或超过当前民工总数
+    clamp_variable = {
+        var = cfs_civs
+        min = 0
+        max = num_of_civilian_factories
+    }
+
+    # 基础机床：5钢
+    set_variable = {
+        var = cfs_rate
+        value = 5
+    }
+
+    # 1937机床：6钢
+    if = {
+        limit = {
+            has_tech = improved_machine_tools
+        }
+        set_variable = {
+            var = cfs_rate
+            value = 6
+        }
+    }
+
+    # 1939机床：8钢
+    if = {
+        limit = {
+            has_tech = advanced_machine_tools
+        }
+        set_variable = {
+            var = cfs_rate
+            value = 8
+        }
+    }
+
+    # 1941机床：11钢
+    if = {
+        limit = {
+            has_tech = assembly_line_production
+        }
+        set_variable = {
+            var = cfs_rate
+            value = 11
+        }
+    }
+
+    # 1943机床：15钢
+    if = {
+        limit = {
+            OR = {
+                has_tech = flexible_line
+                has_tech = streamlined_line
+            }
+        }
+        set_variable = {
+            var = cfs_rate
+            value = 15
+        }
+    }
+
+    # 总钢产量 = 民工数量 × 单厂效率
+    set_variable = {
+        var = cfs_output
+        value = cfs_civs
+    }
+
+    multiply_variable = {
+        var = cfs_output
+        value = cfs_rate
+    }
+
+    # 只在至少投入1座民工时启用修正
+    if = {
+        limit = {
+            check_variable = {
+                var = cfs_civs
+                value = 0
+                compare = greater_than
+            }
+        }
+
+        if = {
+            limit = {
+                NOT = {
+                    has_dynamic_modifier = cfs_smelting
+                }
+            }
+            add_dynamic_modifier = {
+                modifier = cfs_smelting
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = {
+                has_dynamic_modifier = cfs_smelting
+            }
+            remove_dynamic_modifier = {
+                modifier = cfs_smelting
+            }
+        }
+    }
+
+    force_update_dynamic_modifier = yes
+}
+
+cfs_change_civs = {
+    add_to_variable = {
+        var = cfs_civs
+        value = $CHANGE$
+    }
+
+    cfs_refresh = yes
+}
+
+cfs_auto_allocate = {
+
+    # 先同步当前机床科技效率和产量
+    cfs_refresh = yes
+
+    # 原有炼钢量 - 当前钢铁余额
+    # 得到需要由炼钢系统承担的总钢铁数量
+    set_variable = {
+        var = cfs_target
+        value = cfs_output
+    }
+
+    subtract_from_variable = {
+        var = cfs_target
+        value = resource@steel
+    }
+
+    # 除以单厂效率
+    divide_variable = {
+        var = cfs_target
+        value = cfs_rate
+    }
+
+    # 正数向上取整，避免钢铁供给不足
+    add_to_variable = {
+        var = cfs_target
+        value = 0.4999
+    }
+
+    round_variable = cfs_target
+
+    # 最大投入数量 = 已投入民工 + 额外可用民工
+    set_variable = {
+        var = cfs_cap
+        value = num_of_civilian_factories_available_for_projects
+    }
+
+    add_to_variable = {
+        var = cfs_cap
+        value = cfs_civs
+    }
+
+    # 不允许负数，不允许超额分配
+    clamp_variable = {
+        var = cfs_target
+        min = 0
+        max = cfs_cap
+    }
+
+    # 更新实际投入民工
+    set_variable = {
+        var = cfs_civs
+        value = cfs_target
+    }
+
+    # 重新计算钢铁产量
+    cfs_refresh = yes
 }
