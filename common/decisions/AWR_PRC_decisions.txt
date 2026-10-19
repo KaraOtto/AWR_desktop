@@ -1,137 +1,5 @@
 @DAYS_DETERMINED = 180 
 
-China_government_reform_decisions = {
-
-	China_government_reform_decisions_2g = {
-		icon = generic_wall_line
-		cost = 150
-		allowed = {
-			has_political_power > 150 
-		}
-		available = {
-			has_idea = China_weak_control_of_the_land
-		}
-		visible = {
-			has_idea = China_weak_control_of_the_land
-		}
-		days_remove = 120
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = China_weak_control_of_the_land
-				add_idea = China_weak_control_of_the_land_2
-			}
-		}
-	}
-
-	China_government_reform_decisions_3g = {
-		icon = generic_wall_line
-		cost = 150
-		allowed = {
-			has_political_power > 150 
-		}
-		available = {
-			has_idea = China_weak_control_of_the_land_2
-		}
-		visible = {
-			has_idea = China_weak_control_of_the_land_2
-		}
-		days_remove = 120
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = China_weak_control_of_the_land_2
-				add_idea = China_weak_control_of_the_land_3
-			}
-		}
-	}
-
-	China_government_reform_decisions_4g = {
-		icon = generic_wall_line
-		cost = 150
-		allowed = {
-			has_political_power > 150 
-		}
-		available = {
-			has_idea = China_weak_control_of_the_land_3
-		}
-		visible = {
-			has_idea = China_weak_control_of_the_land_3
-		}
-		days_remove = 120
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = China_weak_control_of_the_land_3
-				add_idea = China_weak_control_of_the_land_4
-			}
-		}
-	}
-
-	China_government_reform_decisions_5g = {
-		icon = generic_wall_line
-		cost = 150
-		allowed = {
-			has_political_power > 150 
-		}
-		available = {
-			has_idea = China_weak_control_of_the_land_4
-		}
-		visible = {
-			has_idea = China_weak_control_of_the_land_4
-		}
-		days_remove = 120
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = China_weak_control_of_the_land_4
-				add_idea = China_weak_control_of_the_land_5
-			}
-		}
-	}
-}
-
-CHI_spy_family_NBIS_recharge_cat = {
-	CHI_spy_family_NBIS_recharge = {
-		icon = generic_nationalism
-		allowed = {
-			tag = CHI
-		}
-		fire_only_once = yes
-		available = {
-			agency_upgrade_number > 6
-		}
-		visible = {
-			tag = CHI
-			
-		}
-		complete_effect = {
-			swap_ideas = {
-				remove_idea = NBIS_spy_family
-				add_idea = NBIS_spy_family_guy
-			}
-		}
-	}
-	CHI_restore_power_to_clean_up_G4_robber = {
-		icon = generic_wall_line
-		allowed = {
-			tag = CHI
-		}
-		fire_only_once = yes
-		available = {
-			has_political_power  > 1000
-			surrender_progress > 0.6
-		}
-		visible = {
-			
-			tag = CHI
-			
-			
-		}
-		complete_effect = {
-			add_political_power = -1000
-			custom_effect_tooltip = this_is_a_hard_road_to_victory
-			country_event = CHI_right_line.31 
-		}
-	}
-}
-
 parliament_gui_decision_category = {	#全国人民代表大会
 
 	PRC_support_mao_clique = {	#积累毛泽东支持
@@ -2999,9 +2867,12 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			X_xchinese_propaganda_poster_slot_available = yes
 			ROOT = {
 				OR = {
-					has_government = mao_zedong_thought
-					has_government = maoism
-					has_country_leader = PRC_mao_zedong
+					has_country_leader_ideology = mao_zedong_thought
+					has_country_leader_ideology = maoism
+					has_country_leader = { 
+						ruling_only = yes 
+						character = prc_mao_zedong 
+					}
 				}
 			}
 		}
@@ -6938,39 +6809,6 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
         }
     }
 
-    AWR_PRC_set_up_general_study_committee = {	#成立综合研究委员会
-		icon = eng_trade_unions_support
-		visible = {
-			has_completed_focus = PRC_route_struggle_focus
-		}
-		available = {
-			#
-		}
-		fire_only_once = yes
-		cost = 0
-		days_remove = 30
-		days_re_enable = 7
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 500
-		}
-	
-		remove_effect = {
-			country_event = {
-				id = AWR_PRC.70	
-			}
-		}
-		complete_effect = {
-			hidden_effect = {
-				country_event = { 
-					id = AWR_PRC.71 
-					days = 15 
-					random_days = 5 
-				}
-			}
-		}
-	}
-
     zheng_dun_san_feng = {	#整顿三风
         allowed = {
             always = yes
@@ -7037,36 +6875,6 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
         complete_effect = {
             set_country_flag = zheng_dun_xue_feng_begin
         }
-    }
-
-    AWR_PRC_perform_speech_on_yanan_forum = {	#在延安文艺座谈会上的演说
-        icon = hol_radio_oranje
-        visible = {
-            has_global_flag = zheng_dun_xue_feng_begin
-        }
-        available = {
-            has_global_flag = zheng_dun_xue_feng_begin
-
-        }
-        ai_will_do = {
-            factor = 500
-        }
-        fire_only_once = yes
-        cost = 0
-        days_remove = 35
-        days_re_enable = 7
-        fire_only_once = yes
-
-        remove_effect = {
-            set_global_flag = did_speech_flag
-            country_event = {
-                id = AWR_PRC.72
-            }
-            add_to_variable = {
-                yan_an_zheng_feng_prog_var = 0.05
-            }
-        }
-
     }
 
     pipan_jiaotiao = {	#批判教条主义
@@ -7861,369 +7669,6 @@ war_measures = {	#通用决议——战时措施
 	}
 }
 
-PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
-	PRC_occupy_northeast_timer = {	#东北地区移交工作正进行中
-		icon = revolt
-		is_good = yes
-		available = { #objective
-			always = no
-		}
-		days_mission_timeout = 200
-		fire_only_once = yes
-		is_good = no
-		activation = {
-			always = no
-		}
-		
-		timeout_effect = {
-			SOV = { 
-				country_event = {
-					id = AWR_SOV.1
-				} 
-			} 
-			custom_effect_tooltip = demand_northeast_tt
-			custom_effect_tooltip = ne_tut_tt
-			custom_effect_tooltip = current_effect_tt
-			event_target:WTT_current_china_leader = {
-				division_template = { #guo
-					name = "东北驻防军" #names to be determined
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-					}
-				}
-				every_core_state = {
-					limit = {
-						is_MAN_state_for_takeover = yes
-						is_owned_and_controlled_by = SOV
-						NOT = {
-							is_core_of = event_target:WTT_communist_china
-							state = 745
-						}
-					}
-					create_unit = { #guo
-						division = "name = \"东北驻防军\" division_template = \"东北驻防军\" start_experience_factor = 0.4"
-						owner = PREV
-					}					
-					if = {
-						limit = {
-							has_state_flag = strong_kmt_garrison
-						}						
-						create_unit = {
-							division = "name = \"东北驻防军\" division_template = \"东北驻防军\" start_experience_factor = 0.4"
-							owner = PREV
-						}
-					}
-					transfer_state_to = event_target:WTT_current_china_leader
-				}
-			}
-			event_target:WTT_communist_china = {
-				division_template = { 
-					name = "东北人民自治军" 
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-					}
-				}
-				every_core_state = {
-					limit = {
-						is_MAN_state_for_takeover = yes
-						is_owned_and_controlled_by = SOV
-						NOT = {
-							state = 745
-						}
-					}
-					create_unit = { 
-						division = "name = \"东北人民自治军\" division_template = \"东北人民自治军\" start_experience_factor = 0.4"
-						owner = PREV
-					}					
-					if = {
-						limit = {
-							NOT = { 
-								is_core_of = event_target:WTT_current_china_leader 
-							}
-						}						
-						create_unit = {
-							division = "name = \"东北人民自治军\" division_template = \"东北人民自治军\" start_experience_factor = 0.4"
-							owner = PREV
-						}
-					}
-					transfer_state_to = event_target:WTT_communist_china
-				}
-			}
-		}
-	}
-
-	PRC_occupy_northeast = {	#东北地区移交工作正进行中
-		icon = {
-			key = GFX_decision_ccp_extra
-			trigger = {
-				FROM = {
-					is_core_of = event_target:WTT_communist_china
-					NOT = {
-						is_core_of = event_target:WTT_current_china_leader
-					}
-				}
-			}
-		}
-		icon = {
-			key = GFX_decision_ccp
-			trigger = {
-				FROM = {
-					is_core_of = event_target:WTT_communist_china
-					is_core_of = event_target:WTT_current_china_leader
-				}
-			}
-		}
-		icon = {
-			key = GFX_decision_kmt
-			trigger = {
-				FROM = {
-					NOT = {
-						is_core_of = event_target:WTT_communist_china
-					}
-					is_core_of = event_target:WTT_current_china_leader
-				}
-			}
-		}
-		icon = {
-			key = GFX_decision_kmt_extra
-			trigger = {
-				FROM = {
-					NOT = {
-						is_core_of = event_target:WTT_communist_china
-					}
-					is_core_of = event_target:WTT_current_china_leader
-					has_state_flag = strong_kmt_garrison
-				}
-			}
-		}
-		allowed = {
-			is_literally_china = yes
-		}
-		state_target = yes
-		target_trigger = {
-			FROM = {
-				is_owned_and_controlled_by = SOV
-				is_MAN_state_for_takeover = yes
-				NOT = {
-					state = 745
-				}
-				
-				NOT = { #guo
-					has_dynamic_modifier = { 
-						modifier = anti_partisan_area 
-					}
-				}
-			}
-		}
-		visible = {
-			has_active_mission = PRC_occupy_northeast_timer
-		}
-		on_map_mode = map_only
-		days_remove = 30 #guo
-		available = {
-			FROM = { 
-				NOT = { 
-					has_state_flag = strong_kmt_garrison 
-				} 
-			}
-			hidden_trigger = {
-				command_power > 19
-				political_power_growth > 0.75
-			}
-			FROM = {
-				is_core_of = event_target:WTT_current_china_leader
-			}
-			NOT = { #guo
-				has_dynamic_modifier = { 
-					modifier = anti_partisan_area 
-				}
-			}
-		}
-		custom_cost_trigger = {
-			command_power > 19
-			political_power_growth > 0.75
-		}
-		custom_cost_text = cp_at_least_20_pol_neg_075
-		is_good = no
-		modifier = {
-			political_power_gain = -0.75
-		}
-		complete_effect = {
-			hidden_effect = {
-				FROM = {
-					event_target:WTT_current_china_leader = {					
-						PREV = { 
-							state_event = { 
-								days = 10 
-								random_days = 4 
-								id = AWR_CHI_state.1 
-								trigger_for = PREV 
-							} 
-						}
-					}
-				}
-				add_command_power = -20
-			}
-		}
-		ai_will_do = {
-			factor = 1000 #guo
-			modifier = {
-				factor = 0
-				FROM = {
-					is_core_of = event_target:WTT_communist_china
-					
-					not = { 
-						state = 328 
-					}
-				    not = { 
-						state = 1097
-					}
-				    not = { 
-						state = 1100
-					}
-				}
-			}
-			modifier = {
-				add = 20000 
-				FROM = { 
-					any_neighbor_state = { 
-						is_controlled_by = event_target:WTT_communist_china 
-					} 
-				}
-			}
-			modifier = {
-				add = 12000 
-				FROM = { 
-					any_neighbor_state = { 
-						has_state_flag = commie_ridden_states 
-					} 
-				}
-			}
-			modifier = {
-				add = 12000 #guo
-				FROM = { 
-					any_neighbor_state = { 
-						is_core_of = event_target:WTT_communist_china 
-						not = { 
-							has_state_flag = we_will_help_the_legit_government 
-						} 
-					} 
-				}
-			}
-			modifier = {
-				add = 9999 #guo
-				FROM = {
-					OR = {
-						state = 328
-						state = 1097
-						state = 1100
-					}
-				}
-			}
-			modifier = {
-				add = 9999 #guo
-				FROM = {
-					OR = {
-						state = 328
-						state = 1097
-						state = 1100
-						
-						state = 716
-						state = 1102
-					}
-					NOT = {
-						is_core_of = event_target:WTT_communist_china
-					}
-				}
-			}
-			modifier = {
-				add = 8888 #guo
-				FROM = {					
-					NOT = {
-						is_core_of = event_target:WTT_communist_china
-					}
-				}
-			}
-		}
-		remove_effect = {
-			if = {
-				limit = {
-					FROM = {
-						NOT = {
-							is_core_of = event_target:WTT_communist_china
-						}
-						is_core_of = event_target:WTT_current_china_leader
-					}
-				}
-				event_target:WTT_current_china_leader = {
-					FROM = {
-						state_event = { 
-							id = AWR_CHI_state.2 
-							trigger_for = PREV 
-						}
-					}
-				}
-				event_target:WTT_communist_china = {
-					FROM = {
-						state_event = { 
-							id = AWR_CHI_state.3 
-							trigger_for = PREV 
-						}
-					}
-				}
-				FROM = {				
-					add_core_of = event_target:WTT_communist_china
-				}
-				custom_effect_tooltip = increase_garrison_tt
-				custom_effect_tooltip = decrease_garrison_nat_good
-			}
-			else_if = {
-				limit = {
-					FROM = {
-						is_core_of = event_target:WTT_communist_china
-						is_core_of = event_target:WTT_current_china_leader
-					}
-				}
-				event_target:WTT_current_china_leader = {
-					FROM = {
-						state_event = { 
-							id = AWR_CHI_state.4 
-							trigger_for = PREV 
-						}
-					}
-				}
-				event_target:WTT_communist_china = {
-					FROM = {
-						state_event = { 
-							id = AWR_CHI_state.5 
-							trigger_for = PREV 
-						}
-					}
-				}
-				FROM = {					
-					remove_core_of = event_target:WTT_current_china_leader
-				}
-				custom_effect_tooltip = increase_garrison_tt
-				custom_effect_tooltip = nat_can_no_longer_influence
-			}
-			custom_effect_tooltip = troops_spawn_ccw_tt
-		}
-	}
-}
-
-@offsive_days = 30
 PRC_civil_war_offensives = {	#内战攻势
 
 	PRC_northern_man_offensive = {	#北满
@@ -8274,7 +7719,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -8413,7 +7858,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -8547,7 +7992,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -8686,7 +8131,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -8823,7 +8268,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -8957,7 +8402,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9090,7 +8535,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9223,7 +8668,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9356,7 +8801,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9493,7 +8938,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9630,7 +9075,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -9767,7 +9212,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 
 		visible = {
@@ -9905,7 +9350,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10042,7 +9487,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10191,7 +9636,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10324,7 +9769,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10457,7 +9902,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10606,7 +10051,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10739,7 +10184,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10872,7 +10317,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_remove = @offsive_days
+		days_remove = 30
 
 		visible = {
 			tag = event_target:WTT_communist_china
@@ -10963,7 +10408,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11011,7 +10456,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11077,7 +10522,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11143,7 +10588,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11209,7 +10654,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11275,7 +10720,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11341,7 +10786,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11407,7 +10852,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11473,7 +10918,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11539,7 +10984,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11605,7 +11050,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11671,7 +11116,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11737,7 +11182,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11805,7 +11250,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11871,7 +11316,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -11937,7 +11382,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12003,7 +11448,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12069,7 +11514,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12135,7 +11580,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12201,7 +11646,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12267,7 +11712,7 @@ PRC_civil_war_offensives = {	#内战攻势
 
 		fire_only_once = yes
 
-		days_mission_timeout = @offsive_days
+		days_mission_timeout = 30
 
 		is_good = no
 
@@ -12579,7 +12024,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				SUY = {
 					white_peace = ROOT
 					retire_character = SHX_fu_zuoyi
-					SHX_Dong_Qiwu = {
+					SUY_Dong_Qiwu = {
 						add_country_leader_role = {
 							promote_leader = yes
 							country_leader = {
