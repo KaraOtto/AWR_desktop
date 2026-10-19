@@ -1,10 +1,41 @@
 ﻿capital = 267
 
-set_oob = "AFG_1936_nsb"
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "AFG_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "AFG_1936_nsb"
+}
 
 set_technology = {
 	infantry_weapons = 1
-	gwtank_chassis = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = { #vanilla keeps the old system, nsb afghanistan will no longer produce some of the most advanced tanks in the world
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = { 
+		gwtank_chassis = 1
+		
+	}
 }
 
 IF = {
@@ -42,8 +73,6 @@ IF = {
 	recruit_character = AFG_inyatullah_khan
 	recruit_character = AFG_sheikh_omar_mojadidi
 	recruit_character = AFG_abdul_hadi_dawi
-
-	recruit_character = AFG_ghulam_muhammad_farhad
 
 	# Generics
 	recruit_character = AFG_generic_army_1
@@ -226,3 +255,180 @@ IF = {
 	set_country_flag = AFG_quami_is_active
 
 }
+IF = {
+	limit = {
+		NOT = { has_dlc = "Graveyard of Empires"}
+	}
+	recruit_character = AFG_mohammed_zahir_shah
+	recruit_character = AFG_akram_sattari
+	recruit_character = AFG_yaqub_khan
+	recruit_character = AFG_mihrdil_shahnawaz
+	recruit_character = AFG_sardar_shah_wali_khan
+	recruit_character = AFG_hares_muzafar
+	recruit_character = AFG_asadullah_seraj_khan
+	recruit_character = AFG_gholam_wali
+	recruit_character = AFG_nasirullah_husain
+	recruit_character = AFG_muhammad_amin_bughra
+	recruit_character = AFG_azam_ataullah
+	recruit_character = AFG_mohammed_daoud_khan
+	recruit_character = AFG_renato_bardolucci
+	recruit_character = AFG_ali_muhammed_khan
+	recruit_character = AFG_mohammed_etemadi_khan
+	recruit_character = AFG_aalem_daana
+	recruit_character = AFG_wazir_akbar_khan
+	recruit_character = AFG_mahmud_khan
+	recruit_character = AFG_haji_faiz_muhammed_zikeria
+	recruit_character = AFG_mohammad_hashim_khan
+	recruit_character = AFG_muhammed_nowroz
+	
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	
+	set_popularities = {
+		fascism = 15
+		communism = 10
+		neutrality = 75
+	}
+
+	### Techs ###
+	set_technology = {
+		gw_artillery = 1
+	}
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	IF = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+		}
+		#1936
+		complete_national_focus = AFG_support_king_zahir
+		complete_national_focus = AFG_expand_telegraph_network
+		complete_national_focus = AFG_biding_our_time
+		complete_national_focus = AFG_visit_foreign_capitals
+		complete_national_focus = AFG_placeholder_1
+		complete_national_focus = AFG_fruit_packing
+		complete_national_focus = AFG_ministry_of_supply
+		complete_national_focus = AFG_implement_currency_controls
+		complete_national_focus = AFG_sugar_processing
+		complete_national_focus = AFG_clear_malarial_swamps
+		 #1937
+		complete_national_focus = AFG_clear_malarial_swamps
+		complete_national_focus = AFG_infrastructure_construction
+		complete_national_focus = AFG_electrification
+		complete_national_focus = AFG_establish_radio_networks
+		#1938
+		complete_national_focus = AFG_expand_karakul_lambskin_industry
+		complete_national_focus = AFG_reform_2
+		complete_national_focus = AFG_secure_dynasty
+		complete_national_focus = AFG_maintain_neutrality
+		#1939
+		complete_national_focus = AFG_qargha_dam
+		complete_national_focus = AFG_maintain_quami
+		complete_national_focus = AFG_introduce_national_service
+		complete_national_focus = AFG_asymmetric_warfare
+
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = PER
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = IRQ
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
+	}
+	IF = {
+		limit = {
+			NOT = { has_dlc = "Graveyard of Empires" }
+		}
+		# Generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = construction_effort_2
+		complete_national_focus = production_effort_2
+		complete_national_focus = infrastructure_effort
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort		
+	}
+	
+
+	oob = "AFG_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AFG_1939_air_bba"
+		else = {
+			set_air_oob = "AFG_1939_air_legacy"
+			set_technology = {
+				early_fighter = 1
+				CAS1 = 1
+			}
+		}
+	}
+	set_technology = {
+		
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+	set_grand_doctrine = grand_battleplan
+	set_grand_doctrine = new_fleet_in_being
+	set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+1939.1.1 = {
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = {
+		fascism = 20
+		communism = 10
+		neutrality = 70
+	}
+}
+

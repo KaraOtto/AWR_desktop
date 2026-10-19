@@ -718,6 +718,184 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetEconomyLawTT
+	text = {
+		trigger = {
+			has_idea = civilian_economy
+		}
+		localization_key = plus_point_2_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = low_economic_mobilisation
+		}
+		localization_key = minus_point_1_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = partial_economic_mobilisation
+		}
+		localization_key = minus_point_2_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = war_economy
+		}
+		localization_key = minus_point_3_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = tot_economic_mobilisation
+		}
+		localization_key = minus_point_5_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = unstable_economy
+		}
+		localization_key = plus_point_1_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = warlord_economy
+		}
+		localization_key = plus_point_2_per_week
+	}
+	text = {
+		localization_key = No_effect_on_SC_tt
+	}
+}
+defined_text = {
+	name = GetInflationTT
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_none
+		}
+		#localization_key = plus_point_1_per_week
+		localization_key = No_effect_on_SC_tt
+	}
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_1
+		}
+		localization_key = minus_point_1_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_2
+		}
+		localization_key = minus_point_2_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_3
+		}
+		localization_key = minus_point_3_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_4
+		}
+		localization_key = minus_point_4_per_week
+	}
+	text = {
+		trigger = {
+			has_idea = CHI_hyper_inflation_5
+		}
+		localization_key = minus_point_5_per_week
+	}
+	text = {
+		localization_key = No_effect_on_SC_tt
+	}
+}
+defined_text = {
+	name = GetMobLawTT
+	text = {
+		trigger = {
+			has_idea = extensive_conscription
+		}
+		localization_key = SC_cap_90_percent
+	}
+	text = {
+		trigger = {
+			has_idea = service_by_requirement
+		}
+		localization_key = SC_cap_80_percent
+	}
+	text = {
+		trigger = {
+			has_idea = all_adults_serve
+		}
+		localization_key = SC_cap_70_percent
+	}
+	text = {
+		trigger = {
+			has_idea = scraping_the_barrel
+		}
+		localization_key = SC_cap_60_percent
+	}
+	text = {
+		localization_key = No_effect_on_SC_tt
+	}
+}
+defined_text = {
+	name = GetRorGStabBonus
+	text = {
+		trigger = {
+			check_variable = {
+				This.supply_condition_stabiliy_bonus > 0
+			}
+		}
+		localization_key = G_text
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				This.supply_condition_stabiliy_bonus < 0
+			}
+		}
+		localization_key = R_text
+	}
+	text = {
+		localization_key = Y_text
+	}
+}
+defined_text = {
+	name = GetRorGWeeklyBonus
+	text = {
+		trigger = {
+			check_variable = {
+				This.supply_condition_weeky > 0
+			}
+		}
+		localization_key = G_text
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				This.supply_condition_weeky < 0
+			}
+		}
+		localization_key = R_text
+	}
+	text = {
+		localization_key = Y_text
+	}
+}
+defined_text = {
+	name = GetSurrenderProgressorNo
+	text = {
+		trigger = {
+			has_war = yes
+			surrender_progress > 0
+		}
+		localization_key = has_war_surrender_progress
+	}
+	text = {
+		localization_key = ""
+	}
+}
+defined_text = {
 	name = GetCentralorNo
 	text = {
 		trigger = {
@@ -765,7 +943,37 @@ defined_text = {
 		localization_key = ""
 	}
 }
+defined_text = {
+	name = GetUSASanction
+	text = {
+		trigger = {
+			has_idea = JAP_USA_sanctions_idea_1
+		}
+		localization_key = sanction_neg_10_percent_modifier_tt
+	}
+	text = {
+		trigger = {
+			has_idea = JAP_USA_sanctions_idea_2
+		}
+		localization_key = sanction_neg_20_percent_modifier_tt
+	}
+	text = {
+		trigger = {
+			has_idea = JAP_USA_sanctions_idea_3
+		}
+		localization_key = sanction_neg_30_percent_modifier_tt
+	}
+	text = {
+		trigger = {
+			has_idea = JAP_USA_sanctions_idea_4
+		}
+		localization_key = sanction_neg_40_percent_modifier_tt
+	}
 
+	text = {
+		localization_key = ""
+	}
+}
 defined_text = {
 	name = GetSEPorSTP
 	text = {
@@ -776,6 +984,63 @@ defined_text = {
 	}
 	text = {
 		localization_key = STP_tt
+	}
+}
+
+defined_text = {
+	name = GetreceivedFA
+	text = {
+		trigger = {
+			check_variable = {
+				This.recieved_foreign_aid > 0
+			}
+		}
+		localization_key = recieved_foreign_aid_tt
+	}
+	text = {
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetsendFA
+	text = {
+		trigger = {
+			has_country_flag = counter_set_for_foreign_aid
+			check_variable = {
+				This.num_of_foreign_aid_temp < 0
+			}
+		}
+		localization_key = sent_foreign_aid_tt
+	}
+	text = {
+		localization_key = ""
+	}
+}
+defined_text = {
+	name = Getimproved_supply_conditions
+	text = {
+		trigger = {
+			ROOT = {
+				has_country_flag = improved_supply_conditions_flag
+			}
+		}
+		localization_key = improved_supply_conditions_tt
+	}
+	text = {
+		localization_key = ""
+	}
+}
+defined_text = {
+	name = GetOneProtractedWar
+	text = {
+		trigger = {
+			has_idea = on_protracted_war
+		}
+		localization_key = on_protracted_war_tt
+	}
+	text = {
+		localization_key = ""
 	}
 }
 

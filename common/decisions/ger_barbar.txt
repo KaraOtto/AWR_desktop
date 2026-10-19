@@ -172,6 +172,14 @@ operations = {
 			}
 			}
 			}
+			
+			if = {
+			limit = { R36 = { exists = yes is_subject_of = root has_capitulated = no } }
+			every_state = {
+			limit = { has_state_flag = GER_erwin_rommel_in_africa_state is_controlled_by_ROOT_or_ally = yes }
+			transfer_state_to = R36
+			}
+			}
 		}
 	}
 	
@@ -1100,11 +1108,11 @@ operations = {
 			hidden_effect = { remove_ideas = ger_eng_navy_agreement }
 	        hidden_effect = { remove_ideas = ger_eng_navy_agreement_cheating_reduced }
 			ENG = { 
-				country_event = ger_eng_navy_agreement.1
-				add_opinion_modifier = {
-					modifier = ger_eng_navy_agreement_broken
-					target = ROOT
-		    	}
+			country_event = ger_eng_navy_agreement.1
+			add_opinion_modifier = {
+			modifier = ger_eng_navy_agreement_broken
+			target = ROOT
+		    }
 			}
 		}
 	}

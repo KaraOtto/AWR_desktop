@@ -939,7 +939,7 @@ production_speed_arms_factory_factor = 0.1
 		
         dulizuozhan = {
 			
-            picture = hol_de_vaarplicht
+                                                picture = hol_de_vaarplicht
 
 			allowed = {
 				always = no
@@ -949,34 +949,39 @@ production_speed_arms_factory_factor = 0.1
 				always = yes
 			}
 
-            available = {                                                                                               
-                any_other_country = {
-                    has_government = fascism
-					is_major = yes
-					has_war_with = ROOT
-				}                                    
-            }
+                                                available = {                                                                                               
+                                                                  any_other_country = {
+                                            has_government = fascism
+is_major = yes
+has_war_with = ROOT
+}                                    
+                                                }
 
-            visible = {
+                                                visible = {
                                                            
-            }
+                                                }
 			
-            cancel = {
+                                                cancel = {
                                                               
-            }
+                                                }
 
-            targeted_modifier = {
+                                                targeted_modifier = {
 								
 			}
 
 			modifier = {
-                army_attack_factor = -0.1
-				breakthrough_factor = -0.1
-				army_defence_factor = -0.1
-				army_morale_factor = -0.2
-				stability_weekly = -0.003
-				war_support_weekly = -0.003
-			}                                           		
+                                                               army_attack_factor = -0.1
+breakthrough_factor = -0.1
+army_defence_factor = -0.1
+army_morale_factor = -0.2
+stability_weekly = -0.003
+war_support_weekly = -0.003
+			}
+                                                traits = {
+				minus_point_1_per_week  
+			}
+
+		
 		}
 		
         eng_shehuifulifaan = {
@@ -1392,7 +1397,7 @@ consumer_goods_factor = 0.15
                                                 
 		}
 
-        SAF_gold_exports1 = {#guo
+                                SAF_gold_exports1 = {#guo
 			picture = SPR_seize_the_gold_reserves
 			allowed = {
 				original_tag = FRA
@@ -1403,15 +1408,19 @@ consumer_goods_factor = 0.15
 				always = no
 			}
 
-            available = {
-                controls_state = 772
+                                                available = {
+                                                              controls_state = 772
 			}
 
 			removal_cost = -1
 			
 			modifier = {
-                consumer_goods_factor = -0.06                                                              
-			}                                        
+                                                                 consumer_goods_factor = -0.06
+                                                                
+			}
+                                                traits = {
+				plus_point_1_per_week  
+			}
 		}
 
         FRA_FREE_army = {#guo
@@ -1532,7 +1541,9 @@ compliance_gain = 0.5
             	has_war = yes    
             }
 			removal_cost = -1
-			
+			traits = {
+				plus_point_1_per_week  
+			}
 			modifier = {
 				stability_factor = -0.1
 				production_speed_synthetic_refinery_factor = 0.25

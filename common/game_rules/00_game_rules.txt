@@ -589,6 +589,7 @@ allow_scorched_earth = {
 
 GER_ai_behavior = {
 	name = "GER_AI_BEHAVIOR"
+	required_dlc = "Waking the Tiger"
 	group = "RULE_GROUP_AI_BEHAVIOR"
 	default = {
 		name = DEFAULT
@@ -610,21 +611,6 @@ GER_ai_behavior = {
 		name = KAISER
 		text = "RULE_OPTION_KAISER"
 		desc = "RULE_KAISER_GER_AI_DESC"
-	}
-	option = {
-		name = GER_ALT_FASCIST
-		text = "RULE_OPTION_GER_ALT_FASCIST"
-		desc = "RULE_OPTION_GER_ALT_FASCIST_AI_DESC"
-	}
-	option = {
-		name = GER_COMMUNIST_STALINIST
-		text = "RULE_OPTION_GER_COMMUNIST_STALINIST"
-		desc = "RULE_OPTION_GER_COMMUNIST_STALINIST_AI_DESC"
-	}
-	option = {
-		name = GER_COMMUNIST_SPARTACUS
-		text = "RULE_OPTION_GER_COMMUNIST_SPARTACUS"
-		desc = "RULE_OPTION_GER_COMMUNIST_SPARTACUS_AI_DESC"
 	}
 	option = {
 		name = RANDOM
@@ -686,8 +672,10 @@ SOV_ai_behavior = {
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
 	}
 }
+######## 
 JAP_ai_behavior = {
 	name = "JAP_AI_BEHAVIOR"
+	#required_dlc = "Waking the Tiger"  
 	group = "RULE_GROUP_AI_BEHAVIOR"
 	default = {
 		name = DEFAULT
@@ -736,6 +724,107 @@ JAP_ai_behavior = {
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
 	}
 }
+
+          
+CHI_ai_behavior = {
+	name = "CHI_AI_BEHAVIOR"		 
+	#required_dlc = "Waking the Tiger"		 
+	group = "RULE_GROUP_AI_BEHAVIOR"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
+	}
+	option = {
+		name = HISTORICAL
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_OPTION_HISTORICAL_CHI_AI_DESC"		 
+		allow_achievements = yes
+	}
+	option = {
+		name = CONSTITUTIONALIZATION
+		text = "RULE_OPTION_CONSTITUTIONALIZATION"
+		desc = "RULE_OPTION_CONSTITUTIONALIZATION_CHI_AI_DESC"		 
+	}
+	option = {
+		name = HUANG_QIXIANG
+		text = "RULE_OPTION_HUANG_QIXIANG"
+		desc = "RULE_OPTION_HUANG_QIXIANG_CHI_AI_DESC"		 
+	}
+	option = {
+		name = ZHANG_LAN
+		text = "RULE_OPTION_ZHANG_LAN"
+		desc = "RULE_OPTION_ZHANG_LAN_CHI_AI_DESC"		 
+	}
+	option = {
+		name = ALTERNATE
+		text = "RULE_OPTION_BLUESHIRTS"
+		desc = "RULE_OPTION_BLUESHIRTS_CHI_AI_DESC"		 
+	}
+	option = {
+		name = PRO_JAP_CHINA
+		text = "RULE_OPTION_PRO_JAP_CHINA"
+		desc = "RULE_OPTION_PRO_JAP_CHINA_CHI_AI_DESC"		 
+	}
+	option = {
+		name = RANDOM
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_OPTION_RANDOM_AI_DESC"		 
+	}
+}
+PRC_ai_behavior = {
+	name = "PRC_AI_BEHAVIOR"
+	#required_dlc = "Waking the Tiger"		 
+	group = "RULE_GROUP_AI_BEHAVIOR"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
+	}
+	option = {
+		name = HISTORICAL
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_OPTION_HISTORICAL_PRC_AI_DESC"		 
+		allow_achievements = yes
+	}
+	option = {
+		name = ALTERNATE
+		text = "RULE_OPTION_ALTERNATE"		 
+		desc = "RULE_OPTION_ALTERNATE_PRC_AI_DESC"
+	}
+	option = {
+		name = RANDOM
+		text = "RULE_OPTION_RANDOM"		 
+		desc = "RULE_OPTION_RANDOM_AI_DESC"
+	}
+}
+MAN_ai_behavior = {
+	name = "MAN_AI_BEHAVIOR"
+	#required_dlc = "Waking the Tiger"    
+	group = "RULE_GROUP_AI_BEHAVIOR"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
+	}
+	option = {
+		name = OBEDIENCE
+		text = "RULE_OPTION_OBEDIENCE"
+		desc = "RULE_OPTION_OBEDIENCE_MAN_AI_DESC"		 
+		allow_achievements = yes
+	}
+	option = {
+		name = INDEPENDENCE
+		text = "RULE_OPTION_INDEPENDENCE"
+		desc = "RULE_OPTION_INDEPENDENCE_MAN_AI_DESC"		 
+	}
+	option = {
+		name = RANDOM
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_OPTION_RANDOM_AI_DESC"
+	}
+}
+ #       
 
 ITA_ai_behavior = {
 	name = "ITA_AI_BEHAVIOR"
@@ -924,7 +1013,6 @@ AST_ai_behavior = {
 		text = "RULE_OPTION_DEFAULT"
 		desc = "RULE_OPTION_DEFAULT_AI_DESC"
 	}
-	# BASE GAME
 	option = {
 		name = COMMUNIST
 		text = "RULE_OPTION_COMMUNIST"
@@ -950,49 +1038,6 @@ AST_ai_behavior = {
 		name = RANDOM
 		text = "RULE_OPTION_RANDOM"
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-	# TAOG
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_AST_AI_RANDOM_TAOG_HISTORICAL"
-		desc = "RULE_OPTION_AST_AI_RANDOM_TAOG_HISTORICAL_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = ADELA
-		text = "RULE_OPTION_AST_ADELA_FASCIST_TAOG_AI"
-		desc = "RULE_OPTION_AST_ADELA_FASCIST_TAOG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = PETER
-		text = "RULE_OPTION_AST_PETER_FASCIST_TAOG_AI"
-		desc = "RULE_OPTION_AST_PETER_FASCIST_TAOG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = DEMOCRATIC_TAOG
-		text = "RULE_OPTION_AST_RANDOM_DEMOCRATIC_TAOG_AI"
-		desc = "RULE_OPTION_AST_RANDOM_DEMOCRATIC_TAOG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = ANTICOMMONWEALTHCOMMUNIST
-		text = "RULE_OPTION_AST_ANTI_COMMONWEALTH_COMMUNIST_TAOG_AI"
-		desc = "RULE_OPTION_AST_ANTI_COMMONWEALTH_COMMUNIST_TAOG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COMINTERNCOMMUNIST
-		text = "RULE_OPTION_AST_COMINTERN_COMMUNIST_TAOG_AI"
-		desc = "RULE_OPTION_AST_COMINTERN_COMMUNIST_TAOG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM" 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		allow_achievements = no
 	}
 }
 
@@ -1114,76 +1159,6 @@ RAJ_ai_behavior = {
 		text = "RULE_OPTION_DEFAULT"
 		desc = "RULE_OPTION_DEFAULT_AI_DESC"
 	}
-
-	#GOE ONLY
-	option = {
-		name = GOE_HISTORICAL
-		text = "RULE_OPTION_GOE_HISTORICAL"
-		desc = "RULE_OPTION_GOE_HISTORICAL_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-		allow_achievements = yes
-	}
-
-	option = {
-		name = GOE_INDIA_UNITED
-		text = "RULE_OPTION_GOE_INDIA_UNITED"
-		desc = "RULE_OPTION_GOE_INDIA_UNITED_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-		allow_achievements = yes
-	}
-
-	option = {
-		name = GOE_INDIA_FASCISM_BOSE
-		text = "RULE_OPTION_GOE_INDIA_FASCISM_BOSE"
-		desc = "RULE_OPTION_GOE_INDIA_FASCISM_BOSE_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_FASCISM_HINDUTVA 
-		text = "RULE_OPTION_GOE_INDIA_FASCISM_HINDUTVA"
-		desc = "RULE_OPTION_GOE_INDIA_FASCISM_HINDUTVA_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_EAST_INDIA_COMPANY
-		text = "RULE_OPTION_GOE_INDIA_EAST_INDIA_COMPANY"
-		desc = "RULE_OPTION_GOE_INDIA_EAST_INDIA_COMPANY_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_MUGHAL
-		text = "RULE_OPTION_GOE_INDIA_MUGHAL"
-		desc = "RULE_OPTION_GOE_INDIA_MUGHAL_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_COMMUNISM
-		text = "RULE_OPTION_GOE_INDIA_COMMUNISM"
-		desc = "RULE_OPTION_GOE_INDIA_COMMUNISM_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_COMMUNISM_URBAN
-		text = "RULE_OPTION_GOE_INDIA_COMMUNISM_URBAN"
-		desc = "RULE_OPTION_DEMOCRATIC_HISTORICAL_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	option = {
-		name = GOE_INDIA_LOYALTY 
-		text = "RULE_OPTION_OBEDIENCE"
-		desc = "RULE_OPTION_DEMOCRATIC_HISTORICAL_RAJ_AI_DESC"
-		required_dlc = "Graveyard of Empires"
-	}
-
-	#END GOE
-
-	#TFV ONLY
 	option = {
 		name = COMMUNIST
 		text = "RULE_OPTION_COMMUNIST"
@@ -1200,8 +1175,6 @@ RAJ_ai_behavior = {
 		text = "RULE_OPTION_FASCIST"
 		desc = "RULE_FASCIST_RAJ_AI_DESC"
 	}
-
-	#END TFV
 	option = {
 		name = RANDOM
 		text = "RULE_OPTION_RANDOM"
@@ -1220,7 +1193,7 @@ HUN_ai_behavior = {
 	}
 	option = {
 		name = COMMUNIST
-		text = "RULE_OPTION_HUN_COMMUNIST_STALINISM"
+		text = "RULE_OPTION_COMMUNIST"
 		desc = "RULE_OPTION_COMMUNIST_HUN_AI_DESC"
 	}
 	option = {
@@ -1230,54 +1203,19 @@ HUN_ai_behavior = {
 	}
 	option = {
 		name = DEMOCRATIC
-		text = "RULE_OPTION_HUN_DEMOCRATIC_KING"
+		text = "RULE_OPTION_DEMOCRATIC"
 		desc = "RULE_OPTION_DEMOCRATIC_HUN_AI_DESC"
 	}
 	option = {
 		name = FASCIST_ALTERNATE
-		text = "RULE_OPTION_HUN_ROME_PROTOCOLS"
+		text = "RULE_OPTION_FASCIST_ALTERNATE"
 		desc = "RULE_FASCIST_ALTERNATE_HUN_AI_DESC"
 	}
 	option = {
 		name = FASCIST_HISTORICAL
-		text = "RULE_OPTION_HUN_HISTORICAL"
+		text = "RULE_OPTION_FASCIST_HISTORICAL"
 		desc = "RULE_FASCIST_HUN_AI_DESC"
 		allow_achievements = yes
-	}
-	option = {
-		name = FASCIST_KING
-		text = "RULE_OPTION_HUN_FASCIST_KING"
-		desc = "RULE_FASCIST_ALTERNATE_KING_HUN_AI_DESC"
-	}
-	option = {
-		name = HABSBURG_HUNGARY
-		text = "RULE_OPTION_HUN_HABSBURG_HUNGARY"
-		desc = "RULE_HABSBURG_HUNGARY_HUN_AI_DESC"
-	}
-	option = {
-		name = HORTHYIST_KING_HUNGARY
-		text = "RULE_OPTION_HUN_HORTHYIST_KING_HUNGARY"
-		desc = "RULE_HORTHYIST_KING_HUNGARY_HUN_AI_DESC"
-	}
-	option = {
-		name = REPUBLICAN_DEMOCRACY
-		text = "RULE_OPTION_HUN_REPUBLICAN_DEMOCRACY"
-		desc = "RULE_REPUBLICAN_DEMOCRACY_HUN_AI_DESC"
-	}
-	option = {
-		name = REPUBLICAN_DEMOCRACY_EXPANSIONIST
-		text = "RULE_OPTION_HUN_REPUBLICAN_DEMOCRACY_EXPANSIONIST"
-		desc = "RULE_REPUBLICAN_DEMOCRACY_EXPANSIONIST_HUN_AI_DESC"
-	}
-	option = {
-		name = RESTORE_THE_SOCIALIST_REPUBLIC
-		text = "RULE_OPTION_HUN_RESTORE_THE_SOCIALIST_REPUBLIC"
-		desc = "RULE_RESTORE_THE_SOCIALIST_REPUBLIC_HUN_AI_DESC"
-	}
-	option = {
-		name = ARROW_CROSS_MOVEMENT
-		text = "RULE_OPTION_HUN_ARROW_CROSS_MOVEMENT"
-		desc = "RULE_ARROW_CROSS_MOVEMENT_HUN_AI_DESC"
 	}
 	option = {
 		name = RANDOM
@@ -1389,12 +1327,6 @@ CZE_ai_behavior = {
 		desc = "RULE_FASCIST_CZE_AI_DESC"
 	}
 	option = {
-		name = MONARCHIST
-		text = "RULE_OPTION_NEUTRALITY_MONARCHIST"
-		desc = "RULE_OPTION_MONARCHIST_CZE_AI_DESC"
-		required_dlc = "Peace For Our Time"
-	}
-	option = {
 		name = HISTORICAL
 		text = "RULE_OPTION_HISTORICAL"
 		desc = "RULE_HISTORICAL_CZE_AI_DESC"
@@ -1406,136 +1338,7 @@ CZE_ai_behavior = {
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
 	}
 }
-
-
-CHI_ai_behavior = {
-	name = "CHI_AI_BEHAVIOR" 
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_CHI_AI_DESC"		 
-		allow_achievements = yes
-	}
-	option = {
-		name = CONSTITUTIONALIZATION
-		text = "RULE_OPTION_CONSTITUTIONALIZATION"
-		desc = "RULE_OPTION_CONSTITUTIONALIZATION_CHI_AI_DESC"		 
-	}
-	option = {
-		name = HUANG_QIXIANG
-		text = "RULE_OPTION_HUANG_QIXIANG"
-		desc = "RULE_OPTION_HUANG_QIXIANG_CHI_AI_DESC"		 
-	}
-
-
-	option = {
-		name = ZHANG_LAN
-		text = "RULE_OPTION_ZHANG_LAN"
-		desc = "RULE_OPTION_ZHANG_LAN_CHI_AI_DESC"		 
-	}
-
-	option = {
-		name = ALTERNATE
-		text = "RULE_OPTION_BLUESHIRTS"
-		desc = "RULE_OPTION_BLUESHIRTS_CHI_AI_DESC"		 
-	}
-
-	option = {
-		name = PRO_JAP_CHINA
-		text = "RULE_OPTION_PRO_JAP_CHINA"
-		desc = "RULE_OPTION_PRO_JAP_CHINA_CHI_AI_DESC"		 
-	}
-
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"		 
-	}
-}
-
-PRC_ai_behavior = {
-	name = "PRC_AI_BEHAVIOR" 
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
-	}
-
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_PRC_AI_DESC"		 
-		allow_achievements = yes
-	}
-	option = {
-		name = ALTERNATE
-		text = "RULE_OPTION_ALTERNATE"		 
-		desc = "RULE_OPTION_ALTERNATE_PRC_AI_DESC"
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"		 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
-
-MAN_ai_behavior = {
-	name = "MAN_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"		 
-	}
-	option = {
-		name = OBEDIENCE
-		text = "RULE_OPTION_OBEDIENCE"
-		desc = "RULE_OPTION_OBEDIENCE_MAN_AI_DESC"		 
-		allow_achievements = yes
-	}
-	option = {
-		name = OBEDIENCE_CHINA
-		text = "RULE_OPTION_OBEDIENCE_CHINA"
-		desc = "RULE_OPTION_OBEDIENCE_CHINA_MAN_AI_DESC"
-	}
-	option = {
-		name = INDEPENDENCE
-		text = "RULE_OPTION_INDEPENDENCE"
-		desc = "RULE_OPTION_INDEPENDENCE_MAN_AI_DESC"		 
-	}
-	option = {
-		name = INDEPENDENCE_FAS
-		text = "RULE_OPTION_INDEPENDENCE_FAS"
-		desc = "RULE_OPTION_INDEPENDENCE_FAS_MAN_AI_DESC"
-	}
-	option = {
-		name = INDEPENDENCE_NEU
-		text = "RULE_OPTION_INDEPENDENCE_NEU"
-		desc = "RULE_OPTION_INDEPENDENCE_NEU_MAN_AI_DESC"
-	}
-	option = {
-		name = INDEPENDENCE_DEM
-		text = "RULE_OPTION_INDEPENDENCE_DEM"
-		desc = "RULE_OPTION_INDEPENDENCE_DEM_MAN_AI_DESC"
-	}
-	option = {
-		name = INDEPENDENCE_COM
-		text = "RULE_OPTION_INDEPENDENCE_COM"
-		desc = "RULE_OPTION_INDEPENDENCE_COM_MAN_AI_DESC"
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
+ 
 ENG_ai_behavior = {
 	name = "ENG_AI_BEHAVIOR"
 	group = "RULE_GROUP_AI_BEHAVIOR"
@@ -1584,6 +1387,7 @@ ENG_ai_behavior = {
 
 USA_ai_behavior = {
 	name = "USA_AI_BEHAVIOR"
+	required_dlc = "Man the Guns"
 	group = "RULE_GROUP_AI_BEHAVIOR"
 	default = {
 		name = DEFAULT
@@ -1591,9 +1395,24 @@ USA_ai_behavior = {
 		desc = "RULE_OPTION_DEFAULT_AI_DESC"
 	}
 	option = {
-		name = COMMUNIST
-		text = "RULE_OPTION_COMMUNIST"
-		desc = "RULE_OPTION_COMMUNIST_USA_AI_DESC"
+		name = COMMUNIST_STALINIST  
+		text = "RULE_OPTION_COMMUNIST_STALINIST"  
+		desc = "RULE_OPTION_COMMUNIST_STALINIST_USA_AI_DESC"  
+	}
+	option = {
+		name = COMMUNIST_TROTSKYIST  
+		text = "RULE_OPTION_COMMUNIST_TROTSKYIST"  
+		desc = "RULE_OPTION_COMMUNIST_TROTSKYIST_USA_AI_DESC"  
+	}
+	option = {
+		name = SOCIALIST_MILITANT  
+		text = "RULE_OPTION_SOCIALIST_MILITANT"  
+		desc = "RULE_OPTION_SOCIALIST_MILITANT_USA_AI_DESC"  
+	}
+	option = {
+		name = SOCIALIST_OLD_GAURD  
+		text = "RULE_OPTION_SOCIALIST_OLD_GAURD"  
+		desc = "RULE_OPTION_SOCIALIST_OLD_GAURD_USA_AI_DESC"  
 	}
 	option = {
 		name = DEMOCRATIC_HISTORICAL
@@ -2015,7 +1834,7 @@ LIT_ai_behavior = {
 	option = {
 		name = DEMOCRATIC
 		text = "RULE_OPTION_DEMOCRATIC"
-		desc = "RULE_ENTENTE_LIT_AI_DESC"
+		desc = "RULE_ENTENTE_LAT_AI_DESC"
 		allow_achievements = no
 	}
 	option = {
@@ -2626,7 +2445,7 @@ URG_AI_BEHAVIOR = {
 		name = HISTORICAL
 		text = "RULE_OPTION_HISTORICAL"
 		desc = "RULE_OPTION_HISTORICAL_URG_AI_DESC"
-		allow_achievements = yes
+		allow_achievements = no
 	}
 	option = {
 		name = DEMOCRATIC_ALT
@@ -2683,457 +2502,6 @@ PAR_AI_BEHAVIOR = {
 		text = "RULE_OPTION_RANDOM" 
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
 		allow_achievements = no
-	}
-}
-
-AUS_AI_BEHAVIOR = {
-	name = "AUS_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Gotterdammerung"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_AUS_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = AUS_MONARCHIST_PUPPET
-		text = "RULE_OPTION_MONARCHIST_PUPPET_AUS_AI"
-		desc = "RULE_OPTION_MONARCHIST_PUPPET_AUS_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_MONARCHIST_ANNEX
-		text = "RULE_OPTION_MONARCHIST_ANNEX_AUS_AI"
-		desc = "RULE_OPTION_MONARCHIST_ANNEX_AUS_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_NEUTRALITY_FEDERATIVE
-		text = "RULE_OPTION_AUS_NEUTRALITY_FEDERATIVE_AI"
-		desc = "RULE_OPTION_AUS_NEUTRALITY_FEDERATIVE_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_COMMUNIST_SOV_ALIGNED
-		text = "RULE_OPTION_AUS_COMMUNIST_SOV_ALIGNED_AI"
-		desc = "RULE_OPTION_AUS_COMMUNIST_SOV_ALIGNED_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_COMMUNIST
-		text = "RULE_OPTION_AUS_COMMUNIST_AI"
-		desc = "RULE_OPTION_AUS_COMMUNIST_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_DEMOCRATIC_FEDERATIVE
-		text = "RULE_OPTION_AUS_DEMOCRATIC_FEDERATIVE_AI"
-		desc = "RULE_OPTION_AUS_DEMOCRATIC_FEDERATIVE_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_DEMOCRATIC_ALLIES
-		text = "RULE_OPTION_AUS_DEMOCRATIC_ALLIES_AI"
-		desc = "RULE_OPTION_AUS_DEMOCRATIC_ALLIES_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = AUS_DEMOCRATIC_ALPINE_FEDERATION
-		text = "RULE_OPTION_AUS_DEMOCRATIC_ALPINE_FEDERATION_AI"
-		desc = "RULE_OPTION_AUS_DEMOCRATIC_ALPINE_FEDERATION_AI_DESC"
-		allow_achievements = no
-	}
-
-	option = {
-		name = AUS_ANTI_ANSCLUSS_STRESS
-		text = "RULE_OPTION_AUS_ANTI_ANSCLUSS_STRESS_AI"
-		desc = "RULE_OPTION_AUS_ANTI_ANSCLUSS_STRESS_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM" 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		allow_achievements = no
-	}
-}
-
-BEL_AI_BEHAVIOR = {
-	name = "BEL_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Gotterdammerung"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_BEL_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = NATIONALIST_FASCIST
-		text = "RULE_OPTION_NATIONALIST_FASCIST_BEL_AI"
-		desc = "RULE_OPTION_NATIONALIST_FASCIST_BEL_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = EXPANSIONIST_FASCIST
-		text = "RULE_OPTION_EXPANSIONIST_FASCIST_BEL_AI"
-		desc = "RULE_OPTION_EXPANSIONIST_FASCIST_BEL_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = DEFENSIVE_DEMOCRAT
-		text = "RULE_OPTION_DEFENSIVE_DEMOCRAT_BEL_AI"
-		desc = "RULE_OPTION_DEFENSIVE_DEMOCRAT_BEL_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COMMUNIST
-		text = "RULE_OPTION_COMMUNIST_BEL_AI"
-		desc = "RULE_OPTION_COMMUNIST_BEL_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM" 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		allow_achievements = no
-	}
-}
-
-COG_AI_BEHAVIOR = {
-	name = "COG_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Gotterdammerung"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_COG_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = COG_DEM_INDEPENDENCE
-		text = "RULE_OPTION_COG_DEM_INDEPENDENCE_AI"
-		desc = "RULE_OPTION_COG_DEM_INDEPENDENCE_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COG_COM_INDEPENDENCE
-		text = "RULE_OPTION_COG_COM_INDEPENDENCE_AI"
-		desc = "RULE_OPTION_COG_COM_INDEPENDENCE_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COG_COM_REVOLUTION
-		text = "RULE_OPTION_COG_COM_REVOLUTION_AI"
-		desc = "RULE_OPTION_COG_COM_REVOLUTION_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM" 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		allow_achievements = no
-	}
-}
-
-AFG_ai_behavior = {
-	name = "AFG_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Graveyard of Empires"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_AFG_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = FASCISM
-		text = "RULE_OPTION_FASCISM"
-		desc = "RULE_OPTION_FASCISM_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = DEMOCRATIC
-		text = "RULE_OPTION_DEMOCRATIC"
-		desc = "RULE_OPTION_DEMOCRATIC_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COMMUNIST
-		text = "RULE_OPTION_COMMUNIST"
-		desc = "RULE_OPTION_COMMUNIST_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = CALIPHATE
-		text = "RULE_OPTION_CALIPHATE_AFG"
-		desc = "RULE_OPTION_CALIPHATE_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = EMPIRE
-		text = "RULE_OPTION_EMPIRE_AFG"
-		desc = "RULE_OPTION_EMPIRE_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = MUGHALS
-		text = "RULE_OPTION_MUGHAL_AFG"
-		desc = "RULE_OPTION_MUGHAL_AFG_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
-
-IRQ_ai_behavior = {
-	name = "IRQ_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Graveyard of Empires"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL_IRQ_AI"
-		desc = "RULE_OPTION_HISTORICAL_IRQ_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = FASCISM
-		text = "RULE_OPTION_FASCISM_IRQ_AI"
-		desc = "RULE_OPTION_FASCISM_IRQ_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = HASHEMITE_IRQ
-		text = "RULE_OPTION_HASHEMITE_IRQ_AI"
-		desc = "RULE_OPTION_HASHEMITE_IRQ_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = SIDQI_IRQ
-		text = "RULE_OPTION_SIDQI_IRQ_AI"
-		desc = "RULE_OPTION_SIDQI_IRQ_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = KURDISTAN_IRQ
-		text = "RULE_OPTION_KURDISTAN_IRQ_AI"
-		desc = "RULE_OPTION_KURDISTAN_IRQ_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
-
-PER_ai_behavior = {
-	name = "PER_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "Graveyard of Empires"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL_PER_AI"
-		desc = "RULE_OPTION_HISTORICAL_PER_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = IMPERIAL_PER
-		text = "RULE_OPTION_IMPERIAL_PER_AI"
-		desc = "RULE_OPTION_IMPERIAL_PER_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = DEMOCRATIC_PER
-		text = "RULE_OPTION_DEMOCRATIC_PER_AI"
-		desc = "RULE_OPTION_DEMOCRATIC_PER_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COMMUNISM_PER
-		text = "RULE_OPTION_COMMUNISM_PER_AI"
-		desc = "RULE_OPTION_COMMUNISM_PER_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = FASCISM_PER
-		text = "RULE_OPTION_FASCISM_PER_AI"
-		desc = "RULE_OPTION_FASCISM_PER_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
-
-PHI_AI_BEHAVIOR = {
-	name = "PHI_AI_BEHAVIOR"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	required_dlc = "No Compromise, No Surrender"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL"
-		desc = "RULE_OPTION_HISTORICAL_PHI_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = FLEXIBLE
-		text = "RULE_OPTION_FLEXIBLE_PHI_AI"
-		desc = "RULE_OPTION_FLEXIBLE_PHI_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = FASCIST
-		text = "RULE_OPTION_FASCIST_PHI_AI"
-		desc = "RULE_OPTION_FASCIST_PHI_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = MONARCHIST
-		text = "RULE_OPTION_MONARCHIST_PHI_AI"
-		desc = "RULE_OPTION_MONARCHIST_PHI_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = COMMUNIST
-		text = "RULE_OPTION_COMMUNIST_PHI_AI"
-		desc = "RULE_OPTION_COMMUNIST_PHI_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = MACARTHUR
-		text = "RULE_OPTION_MACARTHUR_PHI_AI"
-		desc = "RULE_OPTION_MACARTHUR_PHI_AI_DESC"
-		allow_achievements = no
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM" 
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		allow_achievements = no
-	}
-}
-
-INS_ai_behavior = {
-	name = "INS_ai_behavior"
-	required_dlc = "Thunder at Our Gates"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-	option = {
-		name = TRUE_HISTORICAL
-		text = "RULE_OPTION_TRUE_HISTORICAL_INS_AI"
-		desc = "RULE_OPTION_TRUE_HISTORICAL_INS_AI_DESC"
-		allow_achievements = yes
-	}
-	option = {
-		name = LOYALIST
-		text = "RULE_OPTION_LOYALIST_INS_AI"
-		desc = "RULE_OPTION_LOYALIST_INS_AI_DESC"
-	}
-	option = {
-		name = REVOLUTION_DEMOCRATIC
-		text = "RULE_OPTION_REVOLUTION_DEMOCRATIC_INS_AI"
-		desc = "RULE_OPTION_REVOLUTION_DEMOCRATIC_INS_AI_DESC"
-	}
-	option = {
-		name = REVOLUTION_UNALIGNED
-		text = "RULE_OPTION_REVOLUTION_UNALIGNED_INS_AI"
-		desc = "RULE_OPTION_REVOLUTION_UNALIGNED_INS_AI_DESC"
-	}
-	option = {
-		name = REVOLUTION_COMMUNIST
-		text = "RULE_OPTION_REVOLUTION_COMMUNIST_INS_AI"
-		desc = "RULE_OPTION_REVOLUTION_COMMUNIST_INS_AI_DESC"
-	}
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-	}
-}
-
-SIA_ai_behavior = {
-	name = "SIA_ai_behavior"
-	required_dlc = "Thunder at Our Gates"
-	group = "RULE_GROUP_AI_BEHAVIOR"
-
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_AI_DESC"
-	}
-
-	option = {
-		name = HISTORICAL
-		text = "RULE_OPTION_HISTORICAL_SIA_AI"
-		desc = "RULE_OPTION_HISTORICAL_SIA_AI_DESC"
-		allow_achievements = yes
-	}
-
-	option = {
-		name = MONARCHIST
-		text = "RULE_OPTION_MONARCHIST_SIA_AI"
-		desc = "RULE_OPTION_MONARCHIST_SIA_AI_DESC"
-		allow_achievements = no
-	}
-
-	option = {
-		name = DEMOCRATIC
-		text = "RULE_OPTION_DEMOCRATIC"
-		desc = "RULE_OPTION_DEMOCRATIC_SIA_AI_DESC"
-		allow_achievements = no
-	}
-
-	option = {
-		name = RANDOM
-		text = "RULE_OPTION_RANDOM"
-		desc = "RULE_OPTION_RANDOM_AI_DESC"
-		
 	}
 }
 
@@ -3312,11 +2680,6 @@ raj_fragmentation_status = {
 		text = "RULE_OPTION_RAJ_FRAGMENTED"
 		desc = "RULE_OPTION_RAJ_FRAGMENTED_DESC"
 	}
-	option = {
-		name = RAJ_PRINCELY_STATES_FREE
-		text = "RULE_OPTION_RAJ_PRINCELY_STATES_FREE"
-		desc = "RULE_OPTION_RAJ_PRINCELY_STATES_FREE_DESC"
-	}
 }
 eth_fragmentation_status = {
 	name = "ETH_FRAGMENTATION_STATUS" 
@@ -3368,6 +2731,7 @@ nordics_fragmentation_status = {
 		desc = "RULE_OPTION_NORDICS_FRAGMENTED_DESC"
 	}
 }
+
 quebec_colonization_status = {
 	name = "QUEBEC_COLONIZATION_STATUS"
 	required_dlc = "Man the Guns"
@@ -3383,22 +2747,6 @@ quebec_colonization_status = {
 		desc = "RULE_OPTION_QUEBEC_DESC"
 	}
 }
-germany_fragmentation_status = {
-	name = "GERMANY_FRAGMENTATION_STATUS"
-	required_dlc = "Man the Guns"
-	group = "RULE_GROUP_GAME_SETUP"
-	default = {
-		name = DEFAULT
-		text = "RULE_OPTION_DEFAULT"
-		desc = "RULE_OPTION_DEFAULT_GER_FRAGEMNTATION_DESC"
-	}
-	option = {
-		name = GERMANY_FRAGMENTED
-		text = "RULE_OPTION_GERMANY_FRAGMENTED"
-		desc = "RULE_OPTION_GERMANY_FRAGMENTED_DESC"
-	}
-}
-
 
 
  #     #  ###       #####   #######  #######  #######  ###  #     #   #####    #####  
@@ -3435,13 +2783,13 @@ germany_fragmentation_status = {
 peace_score_to_overlord = {
 	name = "PEACE_SCORE_TO_OVERLORD"
 	group = "RULE_GROUP_PEACE_SCORE"
-	default = {
+	option = {
 		name = YES
 		text = "RULE_OPTION_YES"
 		desc = "RULE_OPTION_PEACE_SCORE_TO_OVERLORD_YES_DESC"
 		allow_achievements = yes
 	}
-	option = {
+	default = {
 		name = NO
 		text = "RULE_OPTION_NO"
 		desc = "RULE_OPTION_PEACE_SCORE_TO_OVERLORD_NO_DESC"
