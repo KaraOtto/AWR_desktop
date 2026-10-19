@@ -210,6 +210,24 @@ on_actions = {
 		}
 	}
 
+	on_daily = {
+		effect = {
+			every_country = {
+
+				if = {
+					limit = {
+						is_ai = no
+					}
+					set_variable = {	#月度变化
+						var = economy_development_monthly
+						value = modifier@AWR_economy_development_monthly
+					}
+				}
+				
+			}
+		}
+	}
+
 	on_daily = {	#经济发展提升
 		effect = {
 			every_country = {

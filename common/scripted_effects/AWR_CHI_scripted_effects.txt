@@ -364,30 +364,41 @@ CHI_power_blocs_raise_technocrat = {	#技术官僚影响力
 }
 
 #腐败机制
-CHI_corruption_initialize = {	#初始化
-	set_country_flag = CHI_corruption_initialized
-	set_country_flag = CHI_corruption_leader_background_army
-	set_variable = { 
-		CHI_army_corruption = 0.25 
-	}
-	set_variable = { 
-		CHI_capital_corruption = 0.20 
-	}
-	set_variable = { 
-		CHI_technocrat_corruption = 0.15 
-	}
-	set_variable = { 
-		CHI_army_corruption_coefficient = 0.07 
-	}
-	set_variable = { 
-		CHI_capital_corruption_coefficient = 0.06 
-	}
-	set_variable = { 
-		CHI_technocrat_corruption_coefficient = 0.05 
-	}
-	set_variable = { 
-		CHI_corruption_monthly_priority = 0 
-	}
+
+CHI_corruption_initialize = { # 初始化腐败机制
+
+    # 设置初始化标记
+    set_country_flag = CHI_corruption_initialized
+    set_country_flag = CHI_corruption_leader_background_army
+
+    # 初始化三个集团的腐败值
+    set_variable = {
+        CHI_army_corruption = 0.25
+    }
+    set_variable = {
+        CHI_capital_corruption = 0.20
+    }
+    set_variable = {
+        CHI_technocrat_corruption = 0.15
+    }
+
+    # 初始化基础月度腐败系数
+    set_variable = {
+        CHI_army_corruption_coefficient_base = 0.06
+    }
+    set_variable = {
+        CHI_capital_corruption_coefficient_base = 0.05
+    }
+    set_variable = {
+        CHI_technocrat_corruption_coefficient_base = 0.04
+    }
+
+
+    # 初始化腐败事件优先顺序
+    set_variable = {
+        CHI_corruption_monthly_priority = 0
+    }
+
 }
 
 CHI_corruption_clamp = {	#腐败值区间
@@ -422,7 +433,54 @@ CHI_corruption_clear_incident_flags = {	#消除标记
 	clr_country_flag = CHI_corruption_incident_air_kickback
 }
 
+CHI_corruption_monthly_update = {	#刷新月度腐败值
+	set_variable = {
+        temp_CHI_army_corruption_coefficient = modifier@AWR_corruption_coefficient_army_monthly
+    }
+    set_variable = {
+        temp_CHI_capital_corruption_coefficient = modifier@AWR_corruption_coefficient_capital_monthly
+    }
+    set_variable = {
+        temp_CHI_technocrat_corruption_coefficient = modifier@AWR_corruption_coefficient_technocrat_monthly
+    }
+
+	add_to_variable = {
+		temp_CHI_army_corruption_coefficient = modifier@AWR_corruption_coefficient_all_monthly
+	}
+	add_to_variable = {
+		temp_CHI_capital_corruption_coefficient = modifier@AWR_corruption_coefficient_all_monthly
+	}
+	add_to_variable = {
+		temp_CHI_technocrat_corruption_coefficient = modifier@AWR_corruption_coefficient_all_monthly
+	}
+
+	add_to_variable = {
+		temp_CHI_army_corruption_coefficient = CHI_army_corruption_coefficient_base
+	}
+	add_to_variable = {
+		temp_CHI_capital_corruption_coefficient = CHI_capital_corruption_coefficient_base
+	}
+	add_to_temp_variable = {
+		temp_CHI_technocrat_corruption_coefficient = CHI_technocrat_corruption_coefficient_base
+	}
+
+	set_variable = {
+		var = CHI_army_corruption_coefficient
+		value = temp_CHI_army_corruption_coefficient
+	}
+	set_variable = {
+		var = CHI_capital_corruption_coefficient
+		value = temp_CHI_capital_corruption_coefficient
+	}
+	set_variable = {
+		var = CHI_technocrat_corruption_coefficient
+		value = temp_CHI_technocrat_corruption_coefficient
+	}
+}
+
 CHI_corruption_monthly_tick = {	#腐败值月度增长
+	CHI_corruption_monthly_update = yes
+	###正式加腐败值
 	add_to_variable = { 
 		CHI_army_corruption = CHI_army_corruption_coefficient 
 	}

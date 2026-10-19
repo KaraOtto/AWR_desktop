@@ -381,10 +381,10 @@ leader_traits = {#军事
 		}
 	}
 
-	zhi_nang = {
+	zhi_nang = {	#当代卧龙
 		random = no
 		sprite = 13
-		political_power_factor = 0.15	
+		political_power_factor = 0.20	
 		stability_factor = 0.10
 
 		ai_will_do = {
@@ -396,19 +396,20 @@ leader_traits = {#军事
 		sprite = 12	 
 		random = no	
         stability_factor = 0.15
-		consumer_goods_factor = 0.05#生活消费品				
+		consumer_goods_factor = 0.05 #生活消费品				
 	    war_support_factor = -0.05
 		ai_will_do = {
 			factor = 1
 		}				
 	}
 
-	fan_fu = {
+	fan_fu = {	#铁腕反腐
 		sprite = 12	
 		random = no
 		local_resources_factor = 0.15
-		production_factory_start_efficiency_factor = 0.1
-        global_building_slots_factor = 0.15
+		consumer_goods_factor = -0.05
+        industrial_capacity_factory = 0.05
+		AWR_corruption_coefficient_all_monthly = -0.01
 		ai_will_do = {
 			factor = 1
 		}				
@@ -449,11 +450,11 @@ leader_traits = {#军事
 	wen_xue = {
 		sprite = 13		
 		random = no
-		political_power_factor = 0.05		
+		political_power_factor = 0.10	
+		stability_factor = 0.05	
         opinion_gain_monthly_factor = 0.15
         trade_opinion_factor = 0.15		
-		war_support_factor = -0.05
-		research_speed_factor = 0.05				
+		war_support_factor = -0.05			
 		communism_drift = -0.05
 		fascism_drift = -0.05
 		democratic_acceptance = 10
@@ -512,7 +513,7 @@ leader_traits = {#军事
         sprite = 10		
         production_speed_industrial_complex_factor = 0.20
 		consumer_goods_factor = -0.15#生活消费品			
-		production_factory_efficiency_gain_factor = 0.10#生产效率增长
+		production_factory_efficiency_gain_factor = 0.10 #生产效率增长
 
 		ai_will_do = {
 			factor = 1
@@ -520,23 +521,20 @@ leader_traits = {#军事
 	}
 
 	zhong_keyuan = {
-		random = no
-		political_power_factor = 0.05		
+		random = no	
 		research_speed_factor = 0.10
-		stability_factor = 0.05
-        drift_defence_factor = 0.10
+		special_project_speed_factor = 0.10
 		ai_will_do = {
 			factor = 1
 		}				
 	}
 
-	robber_baron = {
+	robber_baron = {	#强盗贵族
 		sprite = 10
 		random = no
-		#socialism_drift = -0.02
-		#communism_drift = 0.01 #0.01
-		industrial_capacity_factory = 0.10
-		production_factory_max_efficiency_factor = 0.05 #guo
+		AWR_corruption_coefficient_capital_monthly = 0.01
+		industrial_capacity_factory = 0.20
+		production_factory_max_efficiency_factor = 0.10
 		stability_factor = -0.05
 		war_support_factor = -0.05
 		ai_will_do = {
@@ -757,5 +755,18 @@ leader_traits = {#军事
 		opinion_gain_monthly_factor = 0.05
 		improve_relations_maintain_cost_factor = -0.05
 		justify_war_goal_time = 0.1
+	}
+
+	capital_corruption = {	#官僚资本腐败
+		random = no
+		AWR_corruption_coefficient_capital_monthly = 0.01
+	}
+	army_corruption = {	#军队腐败
+		random = no
+		AWR_corruption_coefficient_army_monthly = 0.01
+	}
+	technocrat_corruption = {	#技术官僚腐败
+		random = no
+		AWR_corruption_coefficient_technocrat_monthly = 0.01
 	}
 }
