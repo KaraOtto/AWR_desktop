@@ -979,16 +979,9 @@ focus = {
 			KHM_ma_yanliang = { set_nationality = XSM }
 			#KHM_ma_shengkui = { set_nationality = XSM } #Decommissioned in 1937?
 			KHM_ma_rulong = { set_nationality = XSM }
-			KHM_la_shouli = { set_nationality = XSM }
-			KHM_ma_fuyuan = { set_nationality = XSM }
-			KHM_xian_fuhai = { set_nationality = XSM }
-			KHM_maifusi = { set_nationality = XSM }
 			KHM_bai_zili = { set_nationality = XSM }
 			KHM_ma_zhancang = { set_nationality = XSM }
-			KHM_wang_haifeng = { set_nationality = XSM }
 			KHM_ge_jiyun = { set_nationality = XSM }
-			KHM_su_jishan = { set_nationality = XSM }
-			KHM_zheng_yijun = { set_nationality = XSM }
 		}
 		XSM = {
 			add_ideas = XSM_northwest_insurgency
@@ -5853,8 +5846,11 @@ focus = {
 					has_global_flag = falkenhausen_recalled
 				}
 			}
-			RCM_GER_will_support = yes
-			has_idea = kung_hsiang_hsi			
+			country_exists = GER
+			NOT = {
+				has_war_with = GER
+			}
+			has_idea = CHI_kong_xiangxi			
 		}
 		cancel = {
 			has_opinion_modifier = ger_refuse_chi
@@ -6102,21 +6098,8 @@ focus = {
 					id = rcmsoviet.1012
 				}
 			}
-			if = {
-				limit = {
-					amount_taken_ideas = {
-					    amount > 1
-					    slots = {
-					        foreign_advisor
-					    }
-					}
-				}
-				custom_effect_tooltip = available_foreign_advisor				
-				show_ideas_tooltip = CHI_pavel_zhigarev								
-				else = {
-					add_ideas = CHI_pavel_zhigarev				
-				}
-			}
+			custom_effect_tooltip = available_foreign_advisor				
+			show_ideas_tooltip = CHI_pavel_zhigarev
 			custom_effect_tooltip = SOV_qiyong_cuikefu		
 			add_equipment_to_stockpile = {
 				type = small_plane_airframe_0
@@ -6234,28 +6217,7 @@ focus = {
 					uses = 1
 					category = dd_tech
 				}
-			}
-
-			if = {
-				limit = {
-					FRA_will_support_zz = yes
-					988 = {
-						CONTROLLER = {
-							NOT = { has_war_with = ROOT }
-							OR = {
-								original_tag = FRA
-								is_subject_of = FRA
-							}
-						}
-					}
-				}
-				custom_effect_tooltip = chi_vin_route
-				FRA = { set_country_flag = I_should_aid@FROM }
-				988 = { set_state_flag = CHI_needed_for_hanoi_route }
-				1040 = { set_state_flag = CHI_needed_for_hanoi_route }	
-				set_variable = { CHI_hanoi_route_current_level = 2 }
-				add_offsite_building = { type = arms_factory level = 2 }
-			}		
+			}	
 		}
 	}
 
@@ -6439,7 +6401,23 @@ focus = {
 			}
 		}
 
-		completion_reward = { }
+		completion_reward = { 
+			988 = {
+				CONTROLLER = {
+					NOT = { has_war_with = ROOT }
+					OR = {
+						original_tag = FRA
+						is_subject_of = FRA
+					}
+				}
+			}
+			custom_effect_tooltip = chi_vin_route
+			FRA = { set_country_flag = I_should_aid@FROM }
+			988 = { set_state_flag = CHI_needed_for_hanoi_route }
+			1040 = { set_state_flag = CHI_needed_for_hanoi_route }	
+			set_variable = { CHI_hanoi_route_current_level = 2 }
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
 	}
 
 	focus = {
@@ -6638,7 +6616,14 @@ focus = {
 		available = {
 			not = { has_completed_focus = CHI_axis_help_diplo_focus }
 			has_idea = CHI_nine_power_treaty#guo		
-			RCM_USA_UK_will_support = yes
+			country_exists = ENG
+			NOT = {
+				has_war_with = ENG
+			}
+			country_exists = USA
+			NOT = {
+				has_war_with = USA
+			}
 		}
 
 		bypass = {#guo
@@ -6685,27 +6670,14 @@ focus = {
 			605 = {
 				is_owned_and_controlled_by = ROOT
 			}
+			USA = {
+				has_tech = basic_small_airframe
+				has_tech = basic_medium_airframe
+			}	
+			country_exists = USA
 			NOT = {
-				has_idea = CHI_sov_pact
-			}
-			if = {
-				limit = {
-					not = {
-				        has_dlc = "By Blood Alone"
-					}
-				}
-			    USA = {
-				    has_tech = fighter1
-				    has_tech = tactical_bomber1
-				}
-			    else = {
-			        USA = {
-				        has_tech = basic_small_airframe
-				        has_tech = basic_medium_airframe
-				    }
-			    }	
-		    }	
-			RCM_USA_will_support = yes			
+				has_war_with = USA
+			}		
 		}
 
 		bypass = {

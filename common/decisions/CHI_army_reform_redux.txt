@@ -232,14 +232,14 @@ CHI_army_reform_redux = {
 
 	CHI_sixty_divisions_plan = {
 		icon = generic_operation
-		allowed = {
-				has_stability = 0.5
+			allowed = {
+				tag = CHI
 			}
 
 			available = {
 			    has_idea = CHI_german_coop 
 				num_divisions > 59 
-				tag = CHI
+				as_stability > 0.5
 			}
 			cost = 75
 			ai_will_do = {
@@ -258,7 +258,7 @@ CHI_army_reform_redux = {
 			}
 			complete_effect = {
 				custom_effect_tooltip = a_necessary_method_tt
-				reduce_current_party_support_ratio = 0.3
+				reduce_current_party_support_ratio = yes
 			}
 			remove_effect = {
 
