@@ -1,6 +1,7 @@
 ﻿capital = 988
 
 oob = "FIC_1936"
+set_naval_oob = "FIC_1936_naval_mtg"
 
 recruit_character = FIC_Rene_Robin
 recruit_character = FIC_le_hong_phong
@@ -28,22 +29,6 @@ recruit_character = FIC_Gabriel_Sabattier
 recruit_character = FIC_Jean_Decoux
 recruit_character = FIC_Régis_Bérenger
 
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "FIC_1936_naval_mtg"
-	else = {
-		set_naval_oob = "FIC_1936_naval_legacy"
-	}
-}
-
-FRA = {
-	set_autonomy = {
-		target = FIC
-		autonomous_state = autonomy_colony
-		freedom_level = 0.35
-	}
-}
-
 set_research_slots = 2
 set_convoys = 10
 
@@ -61,79 +46,20 @@ set_technology = {
 	interwar_antiair = 1
 	trench_warfare = 1
 	fleet_in_being = 1
+	gwtank_chassis = 1
+	basic_light_tank_chassis = 1
+	improved_light_tank_chassis = 1
+	early_ship_hull_submarine = 1
+	basic_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_cruiser = 1
+	early_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+	mtg_transport = 1
+	basic_battery = 1
+	basic_torpedo = 1
 }
-if = {
-	limit = {
-		NOT = { has_dlc = "By Blood Alone" }
-	}
-	set_technology = {
-		early_fighter = 1
-		naval_bomber1 = 1
-		cv_early_fighter = 1
-		cv_naval_bomber1 = 1
-		early_bomber = 1
-		tactical_bomber1 = 1
-		CAS1 = 1
-	}
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-		basic_light_tank = 1
-		improved_light_tank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-		basic_light_tank_chassis = 1
-		improved_light_tank_chassis = 1
-	}
-}
-
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		early_submarine = 1
-		basic_submarine = 1
-		early_destroyer = 1
-		early_light_cruiser = 1
-		basic_light_cruiser = 1
-		early_heavy_cruiser = 1
-		basic_heavy_cruiser = 1
-		early_battleship = 1
-		early_battlecruiser = 1
-		early_carrier = 1
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
-		basic_ship_hull_cruiser = 1
-		early_ship_hull_heavy = 1
-		early_ship_hull_carrier = 1
-		mtg_transport = 1
-		basic_battery = 1
-		basic_torpedo = 1
-	}
-}
-
 
 add_stability = -0.2
 add_war_support = -0.1
@@ -146,111 +72,6 @@ add_ideas = {
 	no_proper_equipment_design_armor_naval_air
 	fic_repression
 	FIC_opium_profits
-}
-
-1939.1.1 = {
-
-	add_political_power = 1198
-	set_stability = 0.65
-
-
-	#generic focuses
-	complete_national_focus = FIC_colonial_loan
-	complete_national_focus = FIC_help_peasants
-	complete_national_focus = FIC_hydraulic_works
-	complete_national_focus = FIC_opium_monopolies
-	complete_national_focus = FIC_transindochinese_railway
-	complete_national_focus = FIC_small_scale_industrialisation
-	complete_national_focus = FIC_develop_hanoi_arsenal
-	complete_national_focus = FIC_exploit_resources
-	complete_national_focus = FIC_payback_colonial_loan
-	complete_national_focus = FIC_strengthen_military_intel
-	complete_national_focus = FIC_increase_mil_spending
-	complete_national_focus = FIC_reduce_illiteracy
-	complete_national_focus = FIC_translate_military_textbooks
-	complete_national_focus = FIC_expand_hanoi_univ
-	complete_national_focus = FIC_defence_of_indochina
-	complete_national_focus = FIC_colonial_reforms
-	complete_national_focus = FIC_end_repressions
-	complete_national_focus = FIC_improve_workers_condition
-	complete_national_focus = FIC_individual_freedoms
-	complete_national_focus = FIC_allow_syndicates
-
-	add_ideas = {
-		#laws
-		partial_economic_mobilisation
-		limited_conscription
-		FIC_opium_profits_1
-		FIC_iliterate_population_1
-		fic_vietnamese_textbooks
-		fic_resource_effort
-		fic_strengthened_mil_intel
-		fic_better_working_conditions_1
-	}
-
-	remove_ideas = {
-		FIC_economic_crisis
-		FIC_iliterate_population
-		fic_colonial_reforms
-		FIC_colonial_loan_6
-	}
-
-	set_technology = {
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-		computing_machine = 1
-		basic_encryption = 1
-		basic_decryption = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		synth_oil_experiments = 1
-		oil_processing = 1
-		improved_oil_processing = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		concentrated_industry = 1
-		concentrated_industry2 = 1
-		concentrated_industry3 = 1
-	}
-	oob = "FIC_1939"
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-			set_naval_oob = "FIC_1939_naval_mtg"
-		else = {
-			set_naval_oob = "FIC_1939_naval_legacy"
-		}
-	}
-	set_popularities = {
-		fascism = 5
-		democratic = 18
-		socialism = 7
-		communism = 3
-		neutrality = 67
-	}
-
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1936.1.1"
-		election_frequency = 48
-		elections_allowed = no
-	}
-
-
-	create_country_leader = {
-		name = "Jules Brévié"
-		desc = "POLITICS_JULES_BREVIE_DESC"
-		picture = "Portrait_Indochina_Joseph_Jules_Brevie.dds"
-		expire = "1939.8.23"
-		ideology = oligarchism
-	}
 }
 
 set_popularities = {
