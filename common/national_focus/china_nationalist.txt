@@ -29,7 +29,7 @@ focus_tree = {
 			focus = CHI_prepare_for_constitionalization_focus
 			focus = CHI_support_kmt_opposition_focus
 		}
-		x = 3
+		x = 6
 		y = 0
 
 		ai_will_do = {
@@ -61,6 +61,277 @@ focus_tree = {
 						trait = ROC_red_general
 					}
 				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+		icon = GFX_goal_CHI_GZZYZZB
+		cost = 3
+		x = 0
+		y = 1
+		relative_position_id = CHI_one_party_tutelage
+		prerequisite = {
+			focus = CHI_one_party_tutelage
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = CHI_reinforce_new_life_movement
+		icon = GFX_focus_new_life_movement
+		cost = 5
+		prerequisite = {
+			focus = one_party_tutelage
+		}
+		x = 0
+		y = 1
+		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+		prerequisite = {
+			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+		}
+
+		ai_will_do = {
+			factor = 80
+		}
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_ideas = new_life
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = CHI_soong_mei_ling
+		}
+	}
+
+	focus = {
+		id = strengthen_cc
+		icon = GFX_focus_cc_clique
+		cost = 5
+		prerequisite = {
+			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+		}
+		x = -2
+		y = 2
+		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			has_idea = central_club
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = chen_lifu
+					}
+					amount_taken_ideas = {
+					    amount < 4
+					    slots = {
+					        political_advisor
+					    }
+					}
+				}
+				add_ideas = chen_lifu
+			}
+			unlock_decision_tooltip = CHI_garner_support_for_CC_clique
+			swap_ideas = {
+				add_idea = central_club_stronger
+				remove_idea = central_club
+			}
+		}
+	}
+
+	focus = {
+		id = strengthen_bs
+		icon = GFX_focus_bs
+		cost = 5
+		prerequisite = {
+			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+		}
+		x = 2
+		y = 2
+		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
+
+		ai_will_do = {
+			factor = 15
+		}
+
+		available = {			
+			#NOT = {
+			#	is_in_faction_with = JAP
+			#}
+			#has_idea = dai_li
+			has_idea = the_blueshirts
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = dai_li
+					}
+					amount_taken_ideas = {
+					    amount < 4
+					    slots = {
+					        political_advisor
+					    }
+					}
+				}
+				add_ideas = dai_li
+			}
+			unlock_decision_tooltip = CHI_garner_support_for_blue_shirts_society
+			swap_ideas = {
+				add_idea = the_blueshirts_stronger
+				remove_idea = the_blueshirts
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_constit_draft_focus
+		icon = GFX_focus_weiyuanhui
+		cost = 5
+		prerequisite = {
+			focus = CHI_one_party_tutelage
+		}
+		x = 5
+		y = 1
+		relative_position_id = CHI_one_party_tutelage
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = CHI_support_kmt_opposition_focus
+			}
+			#has_idea = carsun_chang
+			if = {
+				limit = {
+					JAP = {
+						is_subject = no
+					}
+				}
+				NOT = {
+					is_in_faction_with = JAP
+				}
+			}
+			NOT = {
+				OR = {
+					has_government = fascism
+					has_government = communism
+					has_government = n_socialism
+				}
+			}
+		}
+
+		bypass = {
+			OR = {
+				has_completed_focus = CHI_support_kmt_opposition_focus
+				hidden_trigger = {
+					has_country_flag = yang_hucheng_in_charge
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_ideas = CHI_may_fifth_DC	
+			add_political_power = 50
+			swap_ideas = {
+				add_idea = chiang1
+				remove_idea = chiang
+			}
+			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
+			set_variable = {
+				chi_constitutionalization_pressure = 0
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_national_political_council_focus
+		icon = GFX_focus_CHI_canzhenghui
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_constit_draft_focus
+		prerequisite = {
+			focus = CHI_constit_draft_focus
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			if = {
+				limit = {
+					JAP = {
+						is_subject = no
+					}
+				}
+				NOT = {
+					is_in_faction_with = JAP
+				}
+			}
+			NOT = {
+				OR = {
+					has_government = fascism
+					has_government = communism
+					has_government = n_socialism
+				}
+			}
+		}
+
+		bypass = {
+			OR = {
+				has_completed_focus = CHI_support_kmt_opposition_focus
+				hidden_trigger = {
+					has_country_flag = yang_hucheng_in_charge
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			unlock_decision_tooltip = CHI_reassure_commitment_to_constitutionalization
+			add_political_power = 50
+			swap_ideas = {
+				add_idea = chiang2
+				remove_idea = chiang1
+			}
+			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
+			set_variable = {
+				chi_constitutionalization_pressure = 0
 			}
 		}
 	}
@@ -1500,7 +1771,7 @@ focus = {
 		id = CHI_PEO  
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		cost = 5	
-		x = -9
+		x = -17
 		y = 5
 		relative_position_id = CHI_one_party_tutelage
 		prerequisite = {
