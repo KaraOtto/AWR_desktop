@@ -1,0 +1,592 @@
+# 日本国策解锁的特殊科研项目（照原版 sp_air_helicopter 等专项计划的写法）
+# 由“先进航空研究”下的秋水计划、橘花计划、震电计划、樱花计划四个国策解锁，需要“诸神黄昏”DLC。
+
+JAP_nf_sp_shusui = {
+	specialization = specialization_air
+	icon = GFX_sp_rockets_rocket_interceptor
+	project_tags = { sp_tag_rocket sp_tag_aircraft }
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Gotterdammerung"
+	}
+	visible = {
+		FROM = {
+			has_completed_focus = qsjh
+		}
+	}
+	available = {
+		FROM = {
+			has_tech = experimental_rockets
+		}
+	}
+	breakthrough_cost = {
+		specialization_air = 1
+	}
+	resource_cost = {
+		resources = {
+			aluminium = 8
+			tungsten = 4
+			chromium = 4
+		}
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+	ai_will_do = {
+		base = 1
+	}
+	project_output = {
+		country_effects = {
+			if = {
+				limit = {
+					NOT = {
+						is_special_project_completed = sp:sp_rocket_interceptor
+					}
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_rocket_interceptor
+				}
+				hidden_effect = {
+					complete_special_project = sp:sp_rocket_interceptor
+				}
+			}
+			JAP_nf_add_or_modify_air = yes
+			add_to_variable = {
+				JAP_nf_air_air_superiority_efficiency = 0.05
+				tooltip = air_superiority_efficiency_tt
+			}
+		}
+	}
+	generic_prototype_rewards = {
+		sp_rockets_scientist_xp_generic_reward
+		sp_rockets_political_interference_generic_reward
+		sp_rockets_onsite_explosion_generic_reward
+		sp_rockets_generic_major_breakthrough_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_scientist_xp_2
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_air_xp_2
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_major_progress_2
+		sp_air_generic_reward_test_failure_1
+		sp_air_generic_reward_test_failure_2
+	}
+	unique_prototype_rewards = {
+		JAP_nf_sp_shusui_fuel_reward = {
+			fire_only_once = yes
+			threshold = {
+				min = 20
+				max = 80
+			}
+			weight = {
+				base = 100
+			}
+			option = {
+				token = JAP_nf_sp_shusui_fuel_safe
+				default = yes
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+					}
+					scientist_effects = {
+						add_scientist_xp = {
+							experience = constant:sp_scientist_xp_gain.medium
+							specialization = specialization_air
+						}
+					}
+				}
+			}
+			option = {
+				token = JAP_nf_sp_shusui_fuel_rush
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.medium
+						}
+						air_experience = -10
+					}
+				}
+			}
+		}
+	}
+}
+
+JAP_nf_sp_kikka = {
+	specialization = specialization_air
+	icon = GFX_sp_air_jet_engine
+	project_tags = { sp_tag_aircraft sp_tag_jet }
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Gotterdammerung"
+	}
+	visible = {
+		FROM = {
+			has_completed_focus = jhjh
+		}
+	}
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				has_tech = engines_2
+				OR = {
+					has_tech = improved_small_airframe
+					has_tech = improved_medium_airframe
+				}
+			}
+			else = {
+				OR = {
+					has_tech = fighter2
+					has_tech = tactical_bomber2
+				}
+			}
+		}
+	}
+	breakthrough_cost = {
+		specialization_air = 2
+	}
+	resource_cost = {
+		resources = {
+			chromium = 8
+			aluminium = 4
+			steel = 2
+		}
+	}
+	prototype_time = sp_time.prototype.long
+	complexity = sp_complexity.medium
+	ai_will_do = {
+		base = 1
+	}
+	project_output = {
+		country_effects = {
+			if = {
+				limit = {
+					NOT = {
+						is_special_project_completed = sp:sp_air_jet_engine
+					}
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_air_jet_engine
+				}
+				hidden_effect = {
+					complete_special_project = sp:sp_air_jet_engine
+				}
+			}
+			JAP_nf_add_or_modify_air = yes
+			add_to_variable = {
+				JAP_nf_air_ground_attack_factor = 0.05
+				tooltip = ground_attack_factor_tt
+			}
+			add_to_variable = {
+				JAP_nf_air_naval_strike_attack_factor = 0.05
+				tooltip = naval_strike_attack_factor_tt
+			}
+		}
+	}
+	generic_prototype_rewards = {
+		sp_air_scientist_xp_generic_reward
+		sp_air_political_interference_generic_reward
+		sp_air_generic_major_breakthrough_reward
+		sp_air_generic_aerodynamics_advancements_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_scientist_xp_2
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_air_xp_2
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_major_progress_2
+		sp_air_generic_reward_test_failure_1
+		sp_air_generic_reward_test_failure_2
+	}
+	unique_prototype_rewards = {
+		JAP_nf_sp_kikka_engine_reward = {
+			fire_only_once = yes
+			threshold = {
+				min = 30
+				max = 90
+			}
+			weight = {
+				base = 100
+			}
+			option = {
+				token = JAP_nf_sp_kikka_engine_ne20
+				default = yes
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.medium
+						}
+					}
+				}
+			}
+			option = {
+				token = JAP_nf_sp_kikka_engine_german
+				iteration_output = {
+					country_effects = {
+						add_political_power = -50
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.high
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+JAP_nf_sp_shinden = {
+	specialization = specialization_air
+	icon = GFX_sp_air_supersonic_jet
+	project_tags = { sp_tag_aircraft }
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Gotterdammerung"
+	}
+	visible = {
+		FROM = {
+			has_completed_focus = zdjh
+		}
+	}
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				has_tech = improved_small_airframe
+			}
+			else = {
+				has_tech = fighter2
+			}
+		}
+	}
+	breakthrough_cost = {
+		specialization_air = 1
+	}
+	resource_cost = {
+		resources = {
+			aluminium = 8
+			steel = 4
+		}
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+	ai_will_do = {
+		base = 1
+	}
+	project_output = {
+		country_effects = {
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_bonus = {
+					name = JAP_nf_sp_shinden_bonus
+					bonus = {
+						small_plane_airframe = {
+							maximum_speed = 0.05
+							air_attack = 0.05
+						}
+					}
+				}
+			}
+			else = {
+				add_equipment_bonus = {
+					name = JAP_nf_sp_shinden_bonus
+					bonus = {
+						fighter_equipment = {
+							maximum_speed = 0.05
+							air_attack = 0.05
+						}
+					}
+				}
+			}
+			JAP_nf_add_or_modify_air = yes
+			add_to_variable = {
+				JAP_nf_air_air_superiority_efficiency = 0.05
+				tooltip = air_superiority_efficiency_tt
+			}
+		}
+	}
+	generic_prototype_rewards = {
+		sp_air_scientist_xp_generic_reward
+		sp_air_political_interference_generic_reward
+		sp_air_generic_aerodynamics_advancements_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_scientist_xp_2
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_air_xp_2
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_major_progress_2
+		sp_air_generic_reward_test_failure_1
+		sp_air_generic_reward_test_failure_2
+	}
+	unique_prototype_rewards = {
+		JAP_nf_sp_shinden_layout_reward = {
+			fire_only_once = yes
+			threshold = {
+				min = 30
+				max = 90
+			}
+			weight = {
+				base = 100
+			}
+			option = {
+				token = JAP_nf_sp_shinden_layout_speed
+				default = yes
+				iteration_output = {
+					country_effects = {
+						if = {
+							limit = {
+								has_dlc = "By Blood Alone"
+							}
+							add_equipment_bonus = {
+								name = JAP_nf_sp_shinden_speed
+								bonus = {
+									small_plane_airframe = {
+										maximum_speed = 0.05
+									}
+								}
+							}
+						}
+						else = {
+							add_equipment_bonus = {
+								name = JAP_nf_sp_shinden_speed
+								bonus = {
+									fighter_equipment = {
+										maximum_speed = 0.05
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			option = {
+				token = JAP_nf_sp_shinden_layout_guns
+				iteration_output = {
+					country_effects = {
+						if = {
+							limit = {
+								has_dlc = "By Blood Alone"
+							}
+							add_equipment_bonus = {
+								name = JAP_nf_sp_shinden_guns
+								bonus = {
+									small_plane_airframe = {
+										air_attack = 0.05
+									}
+								}
+							}
+						}
+						else = {
+							add_equipment_bonus = {
+								name = JAP_nf_sp_shinden_guns
+								bonus = {
+									fighter_equipment = {
+										air_attack = 0.05
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+JAP_nf_sp_ohka = {
+	specialization = specialization_air
+	icon = GFX_sp_rockets_flying_bomb
+	project_tags = { sp_tag_rocket sp_tag_guided_bomb }
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Gotterdammerung"
+	}
+	visible = {
+		FROM = {
+			has_completed_focus = yhjh
+		}
+	}
+	available = {
+		FROM = {
+			has_tech = experimental_rockets
+		}
+	}
+	breakthrough_cost = {
+		specialization_air = 1
+	}
+	resource_cost = {
+		resources = {
+			steel = 6
+			aluminium = 4
+		}
+	}
+	prototype_time = sp_time.prototype.short
+	complexity = sp_complexity.medium
+	ai_will_do = {
+		base = 1
+	}
+	project_output = {
+		country_effects = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+				custom_effect_tooltip = JAP_strengthen_the_divine_wind_effect
+				hidden_effect = {
+					set_technology = {
+						suicide_craft = 1
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = JAP_strengthen_the_divine_wind_effect_bba
+				hidden_effect = {
+					set_technology = {
+						suicide_charge = 1
+						popup = no
+					}
+				}
+			}
+			JAP_nf_add_or_modify_air = yes
+			add_to_variable = {
+				JAP_nf_air_naval_strike_attack_factor = 0.10
+				tooltip = naval_strike_attack_factor_tt
+			}
+		}
+	}
+	generic_prototype_rewards = {
+		sp_rockets_scientist_xp_generic_reward
+		sp_rockets_political_interference_generic_reward
+		sp_rockets_onsite_explosion_generic_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_test_failure_1
+	}
+}
+
+JAP_nf_sp_yamato = {
+	specialization = specialization_naval
+	icon = GFX_sp_naval_super_heavy_battleship
+	project_tags = sp_tag_surface_ship
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Gotterdammerung"
+	}
+	visible = {
+		FROM = {
+			has_completed_focus = dhhzlj
+		}
+	}
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				has_tech = early_ship_hull_heavy
+			}
+			else = {
+				has_tech = early_battleship
+			}
+		}
+	}
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+	resource_cost = {
+		resources = {
+			steel = 10
+			chromium = 4
+			tungsten = 4
+		}
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+	ai_will_do = {
+		base = 5
+	}
+	project_output = {
+		country_effects = {
+			if = {
+				limit = {
+					NOT = {
+						is_special_project_completed = sp:sp_naval_super_heavy_battleship
+					}
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_naval_super_heavy_battleship
+				}
+				hidden_effect = {
+					complete_special_project = sp:sp_naval_super_heavy_battleship
+				}
+			}
+			JAP_nf_add_or_modify_navy = yes
+			add_to_variable = {
+				JAP_nf_navy_navy_capital_ship_attack_factor = 0.05
+				tooltip = navy_capital_ship_attack_factor_tt
+			}
+			add_to_variable = {
+				JAP_nf_navy_naval_coordination = 0.05
+				tooltip = naval_coordination_tt
+			}
+		}
+	}
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+		sp_naval_generic_reward_armor_tech_1
+		sp_naval_generic_reward_artillery_tech_1
+	}
+	unique_prototype_rewards = {
+		JAP_nf_sp_yamato_secrecy_reward = {
+			fire_only_once = yes
+			threshold = {
+				min = 20
+				max = 80
+			}
+			weight = {
+				base = 100
+			}
+			option = {
+				token = JAP_nf_sp_yamato_secrecy_strict
+				default = yes
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+						navy_experience = 25
+					}
+				}
+			}
+			option = {
+				token = JAP_nf_sp_yamato_secrecy_rush
+				iteration_output = {
+					country_effects = {
+						add_political_power = -50
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.medium
+						}
+					}
+				}
+			}
+		}
+	}
+}
