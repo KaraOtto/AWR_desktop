@@ -1,0 +1,69 @@
+
+# 所有AI国家的陆军师数软上限
+global_army_cap = {
+    allowed = {
+        NOT = {
+			has_global_flag = No_ai_restriction
+		}
+    }
+
+    enable = {
+        num_divisions > @AI_army_num_divisions
+    }
+
+    abort_when_not_enabled = yes
+
+    ai_strategy = {
+        type = ai_wanted_divisions_factor
+        value = -2000
+    }
+}
+
+# 所有AI国家的已部署飞机数量软上限
+global_air_cap = {
+    allowed = {
+        NOT = {
+			has_global_flag = No_ai_restriction
+		}
+    }
+
+    enable = {
+        check_variable = {
+            var = num_deployed_planes
+            value = AI_aircraft_num_divisions
+            compare = greater_than_or_equals
+        }
+    }
+
+    abort_when_not_enabled = yes
+
+    ai_strategy = {
+        type = equipment_production_factor
+        id = fighter
+        value = -2000
+    }
+
+    ai_strategy = {
+        type = equipment_production_factor
+        id = cas
+        value = -2000
+    }
+
+    ai_strategy = {
+        type = equipment_production_factor
+        id = naval_bomber
+        value = -2000
+    }
+
+    ai_strategy = {
+        type = equipment_production_factor
+        id = tactical_bomber
+        value = -2000
+    }
+
+    ai_strategy = {
+        type = equipment_production_factor
+        id = strategic_bomber
+        value = -2000
+    }
+}

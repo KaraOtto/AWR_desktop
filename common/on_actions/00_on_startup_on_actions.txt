@@ -75,7 +75,6 @@ on_actions = {	#开局事件
 		}
 	}
 
-
 	on_startup = {	#PRC党内斗争gui
 		effect = {
 			PRC = {
@@ -231,4 +230,437 @@ on_actions = {	#月度刷新钢产出
 			}
         }
     }
+}
+
+on_actions = {
+	on_monthly_GER = {	#德国
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = be_high
+					date > 1939.5.30
+					GER = {
+						NOT = {
+							has_country_flag = GER_add_units_first
+						}
+						is_ai = yes
+					}
+				}
+
+				set_country_flag = GER_add_units_first
+				
+					
+				GER = {
+					set_technology = {
+						# 中型坦克底盘
+						basic_medium_tank_chassis = 1
+						popup = no
+					}
+
+					complete_special_project = sp:sp_land_flamethrower_tank
+
+					complete_special_project = sp:sp_land_military_engineering_vehicles
+
+					# =========================
+					# 1. 基础型中型坦克
+					# =========================
+					create_equipment_variant = {
+						name = "38年德制坦克"
+						type = medium_tank_chassis_1
+						parent_version = 0
+
+						modules = {
+							# 基础中型榴弹炮
+							main_armament_slot = tank_medium_howitzer
+
+							# 三人炮塔
+							turret_type_slot = tank_medium_three_man_tank_turret
+
+							# 台车式悬挂
+							suspension_type_slot = tank_bogie_suspension
+
+							# 铆接装甲
+							armor_type_slot = tank_riveted_armor
+
+							# 汽油发动机
+							engine_type_slot = tank_gasoline_engine
+
+							# 无线电I
+							special_type_slot_1 = tank_radio_1
+
+							# 湿式弹药架
+							special_type_slot_2 = wet_ammo_storage
+
+							# 易维护改装
+							special_type_slot_3 = easy_maintenance
+
+							# 重机枪副炮塔
+							special_type_slot_4 = secondary_turret_hmg
+						}
+
+						upgrades = {
+							tank_nsb_armor_upgrade = 4
+							tank_nsb_engine_upgrade = 4
+						}
+						design_team = mio:GER_henschel_organization
+					}
+
+					# =========================
+					# 3. 基础型中型坦克歼击车
+					# =========================
+					create_equipment_variant = {
+						name = "38年德制坦克歼击车"
+						type = medium_tank_destroyer_equipment_1
+						parent_version = 0
+
+						modules = {
+							# 基础中型加农炮
+							main_armament_slot = tank_medium_cannon
+
+							# 三人炮塔
+							turret_type_slot = tank_medium_three_man_tank_turret
+
+							# 台车式悬挂
+							suspension_type_slot = tank_bogie_suspension
+
+							# 铆接装甲
+							armor_type_slot = tank_riveted_armor
+
+							# 汽油发动机
+							engine_type_slot = tank_gasoline_engine
+
+							# 无线电I
+							special_type_slot_1 = tank_radio_1
+
+							# 湿式弹药架
+							special_type_slot_2 = wet_ammo_storage
+
+							# 易维护改装
+							special_type_slot_3 = easy_maintenance
+
+							# 锥膛炮适配器
+							special_type_slot_4 = squeezebore_adaptor
+
+							
+						}
+
+						upgrades = {
+							tank_nsb_armor_upgrade = 4
+							tank_nsb_engine_upgrade = 4
+						}
+
+						#obsolete = no
+
+						design_team = mio:GER_henschel_organization
+					}
+
+					# ============================
+					# 1938年中型喷火坦克
+					# 低成本支援连设计
+					# ============================
+
+					create_equipment_variant = {
+						name = "38年德制喷火坦克"
+						type = medium_tank_flame_chassis_1
+						parent_version = 0
+
+						design_team = mio:GER_daimler_benz_organization
+
+						modules = {
+							# 喷火器
+							main_armament_slot = flamethrower
+
+							# 中型固定战斗室
+							turret_type_slot = tank_medium_fixed_superstructure_turret
+
+							# 台车式悬挂
+							suspension_type_slot = tank_bogie_suspension
+
+							# 铆接装甲
+							armor_type_slot = tank_riveted_armor
+
+							# 汽油发动机
+							engine_type_slot = tank_gasoline_engine
+						}
+
+						upgrades = {
+							tank_nsb_armor_upgrade = 0
+							tank_nsb_engine_upgrade = 0
+						}
+					}
+
+					# ============================
+					# 装甲支援车
+					# 使用独立装备类型
+					# ============================
+
+					create_equipment_variant = {
+						name = "德制装甲支援车"
+						type = armored_support_vehicle_1
+						parent_version = 0
+
+						upgrades = {
+							tank_reliability_upgrade = 1
+							tank_engine_upgrade = 1
+							tank_armor_upgrade = 1
+							tank_gun_upgrade = 0
+						}
+					}
+					
+
+					division_template = {
+						name = "步兵装甲师"
+
+						regiments = {
+							# 10个步兵营
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 0 y = 4 }
+
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 1 y = 3 }
+							infantry = { x = 1 y = 4 }
+
+							# 4个中型坦克营
+							medium_armor = { x = 2 y = 0 }
+							medium_armor = { x = 2 y = 1 }
+							medium_armor = { x = 2 y = 2 }
+							medium_armor = { x = 2 y = 3 }
+
+							# 4个中型坦克歼击车营
+							medium_tank_destroyer_brigade = { x = 3 y = 0 }
+							medium_tank_destroyer_brigade = { x = 3 y = 1 }
+							medium_tank_destroyer_brigade = { x = 3 y = 2 }
+							medium_tank_destroyer_brigade = { x = 3 y = 3 }
+						}
+						support = {
+							# 突击工兵连
+							assault_engineer = { x = 0 y = 0 }
+
+							# 轻装甲侦察连
+							light_tank_recon = { x = 0 y = 1 }
+
+							# 野战医院
+							field_hospital = { x = 0 y = 2 }
+
+							# 后勤连
+							logistics_company = { x = 0 y = 3 }
+
+							# 中型喷火坦克连
+							medium_flame_tank = { x = 0 y = 4 }
+						}
+					}
+
+					capital_scope = {	#步兵装甲师
+						create_unit = {
+							division = "name = \"步兵装甲师\" division_template = \"步兵装甲师\" start_experience_factor = 1.0 "
+							owner = GER
+							count = 24
+						}
+					}
+
+					# =========================
+                    # 2. 增加70个地图外军工
+                    # =========================
+                    add_offsite_building = {
+                        type = arms_factory
+                        level = 70
+                    }
+
+                    # =========================
+                    # 3. 1938年中型坦克生产线
+                    # =========================
+                    add_equipment_production = {
+                        equipment = {
+                            type = medium_tank_chassis_1
+                            creator = GER
+                            version_name = "38年德制坦克"
+                        }
+
+                        requested_factories = 20
+                        progress = 0
+                        efficiency = 50
+
+                        industrial_manufacturer = mio:GER_henschel_organization
+                    }
+
+                    # =========================
+                    # 4. 1938年中型坦歼生产线
+                    # =========================
+                    add_equipment_production = {
+                        equipment = {
+                            type = medium_tank_destroyer_chassis_1
+                            creator = GER
+                            version_name = "38年德制坦克歼击车"
+                        }
+
+                        requested_factories = 20
+                        progress = 0
+                        efficiency = 50
+
+                        industrial_manufacturer = mio:GER_henschel_organization
+                    }
+
+					# =============================
+                    # 7. 中型喷火坦克：15军工
+                    # =============================
+
+                    add_equipment_production = {
+                        equipment = {
+                            type = medium_tank_flame_chassis_1
+                            creator = GER
+                            version_name = "38年德制喷火坦克"
+                        }
+
+                        requested_factories = 15
+                        progress = 0
+                        efficiency = 50
+
+                        industrial_manufacturer = mio:GER_daimler_benz_organization
+                    }
+
+                    # =============================
+                    # 8. 装甲支援车：15军工
+                    # =============================
+
+                    # 奔驰兼容该装备类型时指定奔驰
+                    if = {
+                        limit = {
+                            mio:GER_daimler_benz_organization = {
+                                has_mio_equipment_type = armored_support_vehicle
+                            }
+                        }
+
+                        add_equipment_production = {
+                            equipment = {
+                                type = armored_support_vehicle_1
+                                creator = GER
+                                version_name = "德制装甲支援车"
+                            }
+
+                            requested_factories = 15
+                            progress = 0
+                            efficiency = 50
+
+                            industrial_manufacturer = mio:GER_daimler_benz_organization
+                        }
+                    }
+				}
+			}
+
+			if = {
+				limit = {
+					has_global_flag = be_high
+					date > 1940.12.1
+					GER = {
+						NOT = {
+							has_country_flag = GER_add_units_second
+						}
+						is_ai = yes
+					}
+				}
+
+				set_country_flag = GER_add_units_second
+
+				GER = {
+					set_technology = {
+						# 机械化步兵 I、II、III
+						mechanised_infantry = 1
+
+						# 中型坦克底盘
+						improved_medium_tank_chassis = 1
+
+						popup = no
+					}
+
+					division_template = {
+						name = "机械化装甲师"
+
+						regiments = {
+							# 10个机械化步兵营
+							mechanized = { x = 0 y = 0 }
+							mechanized = { x = 0 y = 1 }
+							mechanized = { x = 0 y = 2 }
+							mechanized = { x = 0 y = 3 }
+							mechanized = { x = 0 y = 4 }
+
+							mechanized = { x = 1 y = 0 }
+							mechanized = { x = 1 y = 1 }
+							mechanized = { x = 1 y = 2 }
+							mechanized = { x = 1 y = 3 }
+							mechanized = { x = 1 y = 4 }
+
+							# 4个中型坦克营
+							medium_armor = { x = 2 y = 0 }
+							medium_armor = { x = 2 y = 1 }
+							medium_armor = { x = 2 y = 2 }
+							medium_armor = { x = 2 y = 3 }
+
+							# 4个中型坦克歼击车营
+							medium_tank_destroyer_brigade = { x = 3 y = 0 }
+							medium_tank_destroyer_brigade = { x = 3 y = 1 }
+							medium_tank_destroyer_brigade = { x = 3 y = 2 }
+							medium_tank_destroyer_brigade = { x = 3 y = 3 }
+						}
+						support = {
+							# 突击工兵连
+							assault_engineer = { x = 0 y = 0 }
+
+							# 轻装甲侦察连
+							light_tank_recon = { x = 0 y = 1 }
+
+							# 野战医院
+							field_hospital = { x = 0 y = 2 }
+
+							# 后勤连
+							logistics_company = { x = 0 y = 3 }
+
+							# 中型喷火坦克连
+							medium_flame_tank = { x = 0 y = 4 }
+						}
+					}
+
+					capital_scope = {	#机械化装甲师
+						create_unit = {
+							division = "name = \"机械化装甲师\" division_template = \"机械化装甲师\" start_experience_factor = 1.0 "
+							owner = GER
+							count = 48
+						}
+					}
+
+					
+					# =========================
+                    # 2. 增加50个地图外军工
+                    # =========================
+                    add_offsite_building = {
+                        type = arms_factory
+                        level = 50
+                    }
+					# =========================
+                    # 4. 1938年中型坦歼生产线
+                    # =========================
+                    add_equipment_production = {
+                        equipment = {
+                            type = mechanized_equipment
+                            creator = GER
+                            version_name = "40年德制步兵战车"
+                        }
+
+                        requested_factories = 50
+                        progress = 0
+                        efficiency = 50
+                        # 制造商：欧宝
+    					industrial_manufacturer = mio:GER_opel_organization
+                    }
+
+				}
+				
+				
+			}
+		}
+	}
 }

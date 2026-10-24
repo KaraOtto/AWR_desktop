@@ -40,5 +40,41 @@ ideas = {
 		        ai_call_ally_desire_factor = -2000 #AI修正:请求盟友加入战争意愿
 			}
 		}
+
+		AI_idea_be_high = {	#AI加强buff
+
+			allowed = {
+				#
+			}
+			
+			allowed_civil_war = {
+				#
+			}
+			
+			available = {
+				is_ai = yes
+				has_global_flag = be_high
+			}
+			
+			cancel = {
+			    OR = {
+					is_ai = NO
+					NOT = {
+						has_global_flag = be_high
+					}
+				}
+			}
+			modifier = {
+
+                # 基础生产效率 +50%
+                production_factory_start_efficiency_factor = 0.5
+
+                # 生产效率增长 +1000%
+                production_factory_efficiency_gain_factor = 10.0
+
+                # 缺乏战略资源惩罚 -100%
+                production_lack_of_resource_penalty_factor = -1.0
+            }
+		}
 	}
 }

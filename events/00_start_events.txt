@@ -11,52 +11,75 @@ country_event = { #欢迎来到八年抗战
 	
 	option = {
 		name = start_events.1.a
-		if = {
-			limit = {
-				OR = {
-					tag = PRC
-					tag = CHI
-				}
-				date < 1939.1.1
-			}
-			country_event = {
-				id = start_events.2
-			}
+
+		country_event = {	#CPU释放
+			id = start_events.2
 		}
-		if = {
+	}
+}
+
+country_event = {	#国家数值限制
+	id = start_events.2
+	title = start_events.2.t
+	desc = start_events.2.desc
+	picture = GFX_report_event_chinese_high_commander
+	is_triggered_only = yes
+
+	option = {	#无限制
+		name = start_events.2.a
+
+		set_global_flag = No_ai_restriction
+
+		if = {	#中共
 			limit = {
-				OR = {
-					tag = MAN
-					tag = EHB
-					tag = RFM
-				}
-				is_warlord = yes
+				tag = PRC
+				date < 1939.1.1
 			}
 			country_event = {
 				id = start_events.3
 			}
 		}
-		if = {
+		if = {	#民国和军阀
 			limit = {
-				tag = GER
-				is_warlord = yes
+				OR = {
+					tag = CHI
+					is_warlord = yes
+				}
 			}
 			country_event = {
 				id = start_events.4
 			}
 		}
-		if = {
-			limit = {#苏联
-				tag = SOV
-				is_warlord = yes
+		if = {	#日本及其盟友
+			limit = {
+				OR = {
+					tag = JAP
+					is_subject_of = JAP
+				}
 			}
 			country_event = {
 				id = start_events.5
 			}
 		}
-		if = {
+		if = {	#德国
 			limit = {
-				OR = {#盟军
+				tag = GER
+			}
+			country_event = {
+				id = start_events.6
+			}
+		}
+		if = {	#苏联
+			limit = {
+				tag = SOV
+			}
+			country_event = {
+				id = start_events.7
+			}
+		}
+		if = {	#盟军
+			limit = {
+				OR = {
 					tag = USA
 					tag = FRA
 					tag = ENG
@@ -64,23 +87,23 @@ country_event = { #欢迎来到八年抗战
 				is_warlord = yes
 			}
 			country_event = {
-				id = start_events.6
+				id = start_events.8
 			}
 		}
-		if = {
+		if = {	#意大利
 			limit = {
 				tag = ITA
 				is_warlord = yes
 			}
 			country_event = {
-				id = start_events.7
+				id = start_events.9
 			}
 		}
-		else_if = {#其他国家
+		if = {#其他国家
 			limit = {
 				NOT = {
 					tag = USA
-					tag =ENG
+					tag = ENG
 					tag = FRA
 					tag = GER
 					tag = JAP
@@ -88,20 +111,321 @@ country_event = { #欢迎来到八年抗战
 					tag = CHI
 					tag = PRC
 					tag = SOV
-
+					is_warlord = yes
 				}
 			}
 			country_event = {
+				id = start_events.10
+			}
+		}
+	}
+
+	option = {
+		name = start_events.2.b
+		set_variable = {
+			var = AI_army_num_divisions
+			value = 900
+		}
+		set_variable = {
+			var = AI_aircraft_num_divisions
+			value = 20000
+		}
+
+		if = {	#中共
+			limit = {
+				tag = PRC
+				date < 1939.1.1
+			}
+			country_event = {
+				id = start_events.3
+			}
+		}
+		if = {	#民国和军阀
+			limit = {
+				OR = {
+					tag = CHI
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.4
+			}
+		}
+		if = {	#日本及其盟友
+			limit = {
+				OR = {
+					tag = JAP
+					is_subject_of = JAP
+				}
+			}
+			country_event = {
+				id = start_events.5
+			}
+		}
+		if = {	#德国
+			limit = {
+				tag = GER
+			}
+			country_event = {
+				id = start_events.6
+			}
+		}
+		if = {	#苏联
+			limit = {
+				tag = SOV
+			}
+			country_event = {
+				id = start_events.7
+			}
+		}
+		if = {	#盟军
+			limit = {
+				OR = {
+					tag = USA
+					tag = FRA
+					tag = ENG
+				}
+				is_warlord = yes
+			}
+			country_event = {
 				id = start_events.8
+			}
+		}
+		if = {	#意大利
+			limit = {
+				tag = ITA
+				is_warlord = yes
+			}
+			country_event = {
+				id = start_events.9
+			}
+		}
+		if = {#其他国家
+			limit = {
+				NOT = {
+					tag = USA
+					tag = ENG
+					tag = FRA
+					tag = GER
+					tag = JAP
+					tag = ITA
+					tag = CHI
+					tag = PRC
+					tag = SOV
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.10
+			}
+		}
+	}
+
+	option = {
+		name = start_events.2.c
+		set_variable = {
+			var = AI_army_num_divisions
+			value = 600
+		}
+		set_variable = {
+			var = AI_aircraft_num_divisions
+			value = 10000
+		}
+		if = {	#中共
+			limit = {
+				tag = PRC
+				date < 1939.1.1
+			}
+			country_event = {
+				id = start_events.3
+			}
+		}
+		if = {	#民国和军阀
+			limit = {
+				OR = {
+					tag = CHI
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.4
+			}
+		}
+		if = {	#日本及其盟友
+			limit = {
+				OR = {
+					tag = JAP
+					is_subject_of = JAP
+				}
+			}
+			country_event = {
+				id = start_events.5
+			}
+		}
+		if = {	#德国
+			limit = {
+				tag = GER
+			}
+			country_event = {
+				id = start_events.6
+			}
+		}
+		if = {	#苏联
+			limit = {
+				tag = SOV
+			}
+			country_event = {
+				id = start_events.7
+			}
+		}
+		if = {	#盟军
+			limit = {
+				OR = {
+					tag = USA
+					tag = FRA
+					tag = ENG
+				}
+				is_warlord = yes
+			}
+			country_event = {
+				id = start_events.8
+			}
+		}
+		if = {	#意大利
+			limit = {
+				tag = ITA
+				is_warlord = yes
+			}
+			country_event = {
+				id = start_events.9
+			}
+		}
+		if = {#其他国家
+			limit = {
+				NOT = {
+					tag = USA
+					tag = ENG
+					tag = FRA
+					tag = GER
+					tag = JAP
+					tag = ITA
+					tag = CHI
+					tag = PRC
+					tag = SOV
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.10
+			}
+		}
+	}
+
+	option = {	#
+		name = start_events.2.d
+		set_variable = {
+			var = AI_army_num_divisions
+			value = 300
+		}
+		set_variable = {
+			var = AI_aircraft_num_divisions
+			value = 5000
+		}
+		if = {	#中共
+			limit = {
+				tag = PRC
+				date < 1939.1.1
+			}
+			country_event = {
+				id = start_events.3
+			}
+		}
+		if = {	#民国和军阀
+			limit = {
+				OR = {
+					tag = CHI
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.4
+			}
+		}
+		if = {	#日本及其盟友
+			limit = {
+				OR = {
+					tag = JAP
+					is_subject_of = JAP
+				}
+			}
+			country_event = {
+				id = start_events.5
+			}
+		}
+		if = {	#德国
+			limit = {
+				tag = GER
+			}
+			country_event = {
+				id = start_events.6
+			}
+		}
+		if = {	#苏联
+			limit = {
+				tag = SOV
+			}
+			country_event = {
+				id = start_events.7
+			}
+		}
+		if = {	#盟军
+			limit = {
+				OR = {
+					tag = USA
+					tag = FRA
+					tag = ENG
+				}
+				is_warlord = yes
+			}
+			country_event = {
+				id = start_events.8
+			}
+		}
+		if = {	#意大利
+			limit = {
+				tag = ITA
+				is_warlord = yes
+			}
+			country_event = {
+				id = start_events.9
+			}
+		}
+		if = {#其他国家
+			limit = {
+				NOT = {
+					tag = USA
+					tag = ENG
+					tag = FRA
+					tag = GER
+					tag = JAP
+					tag = ITA
+					tag = CHI
+					tag = PRC
+					tag = SOV
+					is_warlord = yes
+				}
+			}
+			country_event = {
+				id = start_events.10
 			}
 		}
 	}
 }
 
 country_event = { #PRC注意事项
-	id = start_events.2
-	title = start_events.2.t
-	desc = start_events.2.desc
+	id = start_events.3
+	title = start_events.3.t
+	desc = start_events.3.desc
 	picture = GFX_zhonghuasuweiaitupian
 	is_triggered_only = yes
 
@@ -110,18 +434,38 @@ country_event = { #PRC注意事项
 	}
 	
 	option = {
-		name = start_events.2.a
+		name = start_events.3.a
 		custom_effect_tooltip = check_game_rules_to_turn_this_of
 		country_event = {
-			id = start_events.8
+			id = start_events.10
+		}
+	}
+}
+
+country_event = { #中华民国及军阀
+	id = start_events.4
+	title = start_events.4.t
+	desc = start_events.4.desc
+	picture = GFX_zhonghuasuweiaitupian
+	is_triggered_only = yes
+
+	immediate = {
+		#
+	}
+	
+	option = {
+		name = start_events.4.a
+		custom_effect_tooltip = check_game_rules_to_turn_this_of
+		country_event = {
+			id = start_events.10
 		}
 	}
 }
 
 country_event = { #日本及其盟友注意事项
-	id = start_events.3
-	title = start_events.3.t
-	desc = start_events.3.desc
+	id = start_events.5
+	title = start_events.5.t
+	desc = start_events.5.desc
 	is_triggered_only = yes
 	picture = GFX_report_event_physics_lab_02
 	immediate = {
@@ -129,48 +473,15 @@ country_event = { #日本及其盟友注意事项
 	}
 	
 	option = {
-		name = start_events.3.a
+		name = start_events.5.a
 		custom_effect_tooltip = check_game_rules_to_turn_this_off
 		country_event = {
-			id = start_events.9
+			id = start_events.11
 		}
 	}
 }
+
 country_event = { #德国注意事项
-	id = start_events.4
-	title = start_events.4.t
-	desc = start_events.4.desc
-	picture = GFX_zhonghuasuweiaitupian
-	is_triggered_only = yes
-	immediate = {
-		#
-	}
-	
-	option = {
-		name = start_events.4.a
-		country_event = {
-			id = start_events.8
-		}
-	}
-}
-country_event = { #苏联注意事项
-	id = start_events.5
-	title = start_events.5.t
-	desc = start_events.5.desc
-	picture = GFX_zhonghuasuweiaitupian
-	is_triggered_only = yes
-	immediate = {
-		#
-	}
-	
-	option = {
-		name = start_events.5.a
-		country_event = {
-			id = start_events.8
-		}
-	}
-}
-country_event = { #盟军主要国家注意事项
 	id = start_events.6
 	title = start_events.6.t
 	desc = start_events.6.desc
@@ -183,12 +494,12 @@ country_event = { #盟军主要国家注意事项
 	option = {
 		name = start_events.6.a
 		country_event = {
-			id = start_events.8
+			id = start_events.10
 		}
 	}
 }
 
-country_event = { #意大利注意事项
+country_event = { #苏联注意事项
 	id = start_events.7
 	title = start_events.7.t
 	desc = start_events.7.desc
@@ -201,14 +512,51 @@ country_event = { #意大利注意事项
 	option = {
 		name = start_events.7.a
 		country_event = {
-			id = start_events.8
+			id = start_events.10
 		}
 	}
 }
-country_event = { #日本ai难度选择
+
+country_event = { #盟军主要国家注意事项
 	id = start_events.8
 	title = start_events.8.t
 	desc = start_events.8.desc
+	picture = GFX_zhonghuasuweiaitupian
+	is_triggered_only = yes
+	immediate = {
+		#
+	}
+	
+	option = {
+		name = start_events.8.a
+		country_event = {
+			id = start_events.10
+		}
+	}
+}
+
+country_event = { #意大利注意事项
+	id = start_events.9
+	title = start_events.9.t
+	desc = start_events.9.desc
+	picture = GFX_zhonghuasuweiaitupian
+	is_triggered_only = yes
+	immediate = {
+		#
+	}
+	
+	option = {
+		name = start_events.9.a
+		country_event = {
+			id = start_events.10
+		}
+	}
+}
+
+country_event = { #日本ai难度选择
+	id = start_events.10
+	title = start_events.10.t
+	desc = start_events.10.desc
 
 	is_triggered_only = yes
 	
@@ -217,17 +565,17 @@ country_event = { #日本ai难度选择
 	}
 	
 	option = { #简单
-		name = start_events.8.a
+		name = start_events.10.a
 		ai_chance = {
 			base = 0
 		}		
 		set_global_flag = japan_easy	
 		country_event = {
-			id = start_events.9
+			id = start_events.11
 		}
 	}
 	option = { #普通
-		name = start_events.8.b
+		name = start_events.10.b
 		ai_chance = {
 			base = 0
 		}
@@ -241,7 +589,7 @@ country_event = { #日本ai难度选择
 							is_ai = yes
 						}
 					}
-					division_template = {
+					division_template = {	#甲种师团
 						name = "甲种师团"
 						regiments = {
 							infantry = { x = 0 y = 0 }
@@ -271,71 +619,28 @@ country_event = { #日本ai难度选择
 							rangers_support = { x = 0 y = 2 }
 						}
 					}
-		            capital_scope = {
+		            capital_scope = {	#甲种师团数
 						create_unit = {
-						division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 "
-						owner = JAP
-						count = 5
-						}
-					}
-			
-			    	create_equipment_variant = {
-		    			name = "步兵战车"
-						type = light_tank_chassis_1
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						allow_without_tech = yes
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = extra_ammo_storage
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 4
-						}
-					}
-		
-		    		create_equipment_variant = {
-		    			name = "步兵战车二型"
-						type = light_tank_chassis_2
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = easy_maintenance
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 8
+							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 "
+							owner = JAP
+							count = 6
 						}
 					}
         		}
             }			
 		}
 		country_event = {
-			id = start_events.9
+			id = start_events.11
 		}
 	}
 	option = { #加强
-		name = start_events.8.c
+		name = start_events.10.c
 		ai_chance = {
 			base = 1
 		}
 		set_global_flag = japan_difficult	
 		country_event = {
-			id = start_events.9
+			id = start_events.11
 		}			
 		hidden_effect = {
 			JAP = { 
@@ -348,7 +653,7 @@ country_event = { #日本ai难度选择
 							is_ai = yes
 						}
 					}
-					division_template = {
+					division_template = {	#甲种师团
 						name = "甲种师团"
 						regiments = {
 		    				infantry = { x = 0 y = 0 }
@@ -379,67 +684,24 @@ country_event = { #日本ai难度选择
 	   			 		}
 	    			}
 		
-		            capital_scope = {
+		            capital_scope = {	#甲种师团火星兵
 						create_unit = {
 							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 "
 							owner = JAP
-							count = 5
+							count = 12
 			    		}
-					}
-			
-			    	create_equipment_variant = {
-		    			name = "步兵战车"
-						type = light_tank_chassis_1
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						allow_without_tech = yes
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = extra_ammo_storage
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 4
-						}
-					}
-		
-		   			create_equipment_variant = {
-		   				name = "步兵战车二型"
-						type = light_tank_chassis_2
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = easy_maintenance
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 8
-						}
 					}
                 }
             }			
 		}
 	}
 	option = { #超级加强
-		name = start_events.8.d
+		name = start_events.10.d
 		ai_chance = {
 			base = 1
 		}
 		country_event = {
-			id = start_events.9
+			id = start_events.11
 		}
 		set_global_flag = japan_very_difficult
 		effect_tooltip = { 
@@ -447,19 +709,7 @@ country_event = { #日本ai难度选择
 				add_ideas = balance_idea_japan_buff2 
 				add_ideas = jap_juexingji 
 			} 
-		}
-		CHI = {
-			add_timed_idea = {
-				idea = CHI_legacy_of_defense_of_the_great_wall
-				days = 730
-			}		
-		}
-		PRC = {
-			add_timed_idea = {
-				idea = CHI_digu
-				days = 730
-			}		
-		}					
+		}				
 		hidden_effect = {
 			JAP = { 
 				add_ideas = balance_idea_japan_buff2 
@@ -472,7 +722,7 @@ country_event = { #日本ai难度选择
 							is_ai = yes
 						}
 					}
-					division_template = {
+					division_template = {	#甲种师团
 						name = "甲种师团"
 						regiments = {
 		            		infantry = { x = 0 y = 0 }
@@ -503,55 +753,12 @@ country_event = { #日本ai难度选择
 	    				}
 	    			}
 		
-		            capital_scope = {
+		            capital_scope = {	#甲种师团火星兵
 						create_unit = {
 							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 "
 							owner = JAP
-							count = 5
+							count = 24
 			    		}
-					}
-			
-			    	create_equipment_variant = {
-		    			name = "步兵战车"
-						type = light_tank_chassis_1
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						allow_without_tech = yes
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = extra_ammo_storage
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 4
-						}
-					}
-		
-		    		create_equipment_variant = {
-		    			name = "步兵战车二型"
-						type = light_tank_chassis_2
-						design_team = mio:JAP_mitsubishi_heavy_industries_organization
-						modules = {
-							main_armament_slot = tank_heavy_machine_gun
-							turret_type_slot = tank_light_two_man_tank_turret
-							suspension_type_slot = tank_bogie_suspension
-							armor_type_slot = tank_riveted_armor
-							engine_type_slot = tank_diesel_engine
-							special_type_slot_1 = sloped_armor
-							special_type_slot_2 = easy_maintenance
-							special_type_slot_3 = extra_ammo_storage
-							special_type_slot_4 = extra_ammo_storage
-						}
-						upgrades = {
-							tank_nsb_engine_upgrade = 0
-							tank_nsb_armor_upgrade = 8
-						}
 					}
                 }
             }			
@@ -559,11 +766,10 @@ country_event = { #日本ai难度选择
 	}	
 }
 
-
 country_event = { #和谐西藏?
-	id = start_events.9
-	title = start_events.9.t
-	desc = start_events.9.desc
+	id = start_events.11
+	title = start_events.11.t
+	desc = start_events.11.desc
 	picture = GFX_report_event_xizang	
 	
 	is_triggered_only = yes
@@ -573,16 +779,16 @@ country_event = { #和谐西藏?
 	}
 	
 	option = {#不需要
-		name = start_events.9.a
+		name = start_events.11.a
 		ai_chance = {
 			base = 1
 		}	
 		country_event = {
-			id = start_events.10
+			id = start_events.12
 		}		
 	}
 	option = {#需要
-		name = start_events.9.b
+		name = start_events.11.b
 		ai_chance = {
 			base = 0
 		}
@@ -596,28 +802,34 @@ country_event = { #和谐西藏?
 			}				  
         }
 		country_event = {
-			id = start_events.10
+			id = start_events.12
 		}		
 	}
 	
 }
 
 country_event = {#主要国家数值决定
-	id = start_events.10
-	title = start_events.10.t
-	desc = start_events.10.desc
+	id = start_events.12
+	title = start_events.12.t
+	desc = start_events.12.desc
 	picture = how_strong_east_asia_will_be	
 	is_triggered_only = yes
 	option = {#我喜欢天堂之战
-		name = start_events.10.a
+		name = start_events.12.a
 		trigger = {
 			is_ai = no
 		}
-
+		every_country = {
+			limit = {
+				is_major = yes
+				is_ai = yes
+			}
+			add_ideas = AI_idea_be_high
+		}
 		set_global_flag = be_high
 	}
 	option = {#我希望数值保守些
-		name = start_events.10.b
+		name = start_events.12.b
 		trigger = {
 			is_ai = no
 		}
