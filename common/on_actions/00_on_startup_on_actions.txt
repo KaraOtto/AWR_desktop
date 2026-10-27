@@ -245,12 +245,113 @@ on_actions = {
 						}
 						is_ai = yes
 					}
+					NOT = {
+						has_country_flag = GER_add_units_first
+					}
 				}
 
 				set_country_flag = GER_add_units_first
 				
 					
 				GER = {
+					# 1940年飞机增援：
+					# 战斗机：2组四联重机枪+1组四联轻机枪；CAS：3组重型炸弹挂架。
+					# 按本地参数，含机身及任务载重分别为23/25/19，均不超过发动机III的25推力。
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_1940_air_designs_created
+							}
+						}
+
+						set_technology = {
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							air_torpedoe_1 = 1
+							air_torpedoe_2 = 1
+							survivability_studies = 1
+							range_improvements = 1
+							aircraft_construction = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年德制战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年德制近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年德制海军轰炸机"
+							type = small_plane_naval_bomber_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = torpedo_mounting_2
+								fixed_auxiliary_weapon_slot_1 = empty
+								fixed_auxiliary_weapon_slot_2 = empty
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = fuel_tanks_small
+								special_type_slot_3 = floats
+							}
+						}
+
+						set_country_flag = GER_1940_air_designs_created
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_airframe_2
+						amount = 500
+						producer = GER
+						variant_name = "40年德制战斗机"
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_cas_airframe_2
+						amount = 500
+						producer = GER
+						variant_name = "40年德制近地支援机"
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_naval_bomber_airframe_2
+						amount = 500
+						producer = GER
+						variant_name = "40年德制海军轰炸机"
+					}
+
 					set_technology = {
 						# 中型坦克底盘
 						basic_medium_tank_chassis = 1
@@ -511,7 +612,7 @@ on_actions = {
 
                     add_equipment_production = {
                         equipment = {
-                            type = medium_tank_flame_chassis_1
+                            type = medium_tank_flame_chassis
                             creator = GER
                             version_name = "38年德制喷火坦克"
                         }
@@ -562,11 +663,113 @@ on_actions = {
 						}
 						is_ai = yes
 					}
+					NOT = {
+						has_country_flag = GER_add_units_second
+					}
 				}
 
 				set_country_flag = GER_add_units_second
 
 				GER = {
+					# 1940年飞机增援：保留本批原有触发条件。
+					# 社区设计参考：https://steamcommunity.com/sharedfiles/filedetails/?id=2714213712
+					# 战斗机：2组四联重机枪+1组四联轻机枪；CAS：3组重型炸弹挂架。
+					# 按本地参数，含机身及任务载重分别为23/25/19，均不超过发动机III的25推力。
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_1940_air_designs_created
+							}
+						}
+
+						set_technology = {
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							air_torpedoe_1 = 1
+							air_torpedoe_2 = 1
+							survivability_studies = 1
+							range_improvements = 1
+							aircraft_construction = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年德制战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年德制近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年德制海军轰炸机"
+							type = small_plane_naval_bomber_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = torpedo_mounting_2
+								fixed_auxiliary_weapon_slot_1 = empty
+								fixed_auxiliary_weapon_slot_2 = empty
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = fuel_tanks_small
+								special_type_slot_3 = floats
+							}
+						}
+
+						set_country_flag = GER_1940_air_designs_created
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_airframe_2
+						amount = 1000
+						producer = GER
+						variant_name = "40年德制战斗机"
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_cas_airframe_2
+						amount = 1000
+						producer = GER
+						variant_name = "40年德制近地支援机"
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_naval_bomber_airframe_2
+						amount = 1000
+						producer = GER
+						variant_name = "40年德制海军轰炸机"
+					}
+
 					set_technology = {
 						# 机械化步兵 I、II、III
 						mechanised_infantry = 1
@@ -660,6 +863,1558 @@ on_actions = {
 				}
 				
 				
+			}
+		}
+	}
+}
+
+# 苏联AI三阶段强化：每日检查，到达节点后仅执行一次。
+# 沿用德国强化的be_high全局开关；8机指机械化步兵，3防空为牵引式防空营。
+# 设计参考：https://steamcommunity.com/sharedfiles/filedetails/?id=2714213712
+# 坦克：榴弹炮主战型、穿甲坦歼、廉价喷火支援；按各阶段科技配置。
+on_actions = {
+	on_monthly = {
+		effect = {
+			SOV = {
+				# 1939年9月1日：24个步兵装甲师
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						date > 1939.8.31
+						NOT = {
+							has_country_flag = AWR_SOV_add_units_first
+						}
+					}
+
+					set_technology = {
+						infantry_weapons = 1
+						infantry_weapons1 = 1
+						infantry_weapons2 = 1
+						motorised_infantry = 1
+						gwtank_chassis = 1
+						basic_light_tank_chassis = 1
+						basic_medium_tank_chassis = 1
+						gw_artillery = 1
+						interwar_artillery = 1
+						artillery1 = 1
+						interwar_antitank = 1
+						antitank1 = 1
+						interwar_antiair = 1
+						tech_support = 1
+						tech_engineers = 1
+						tech_engineers2 = 1
+						tech_recon = 1
+						tech_recon2 = 1
+						tech_field_hospital = 1
+						tech_logistics_company = 1
+						tech_maintenance_company = 1
+						tech_maintenance_company2 = 1
+						radio = 1
+						improved_radio = 1
+						popup = no
+					}
+
+					# 先完成特殊工程，再解锁装甲工兵科技。
+					complete_special_project = sp:sp_land_flamethrower_tank
+					complete_special_project = sp:sp_land_military_engineering_vehicles
+
+					set_technology = {
+						sp_armored_engineer_tech = 1
+						popup = no
+					}
+
+					create_equipment_variant = {
+						name = "39年苏制中型坦克"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_howitzer
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 4
+						}
+					}
+
+					create_equipment_variant = {
+						name = "39年苏制坦克歼击车"
+						type = medium_tank_destroyer_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 6
+						}
+					}
+
+					create_equipment_variant = {
+						name = "39年苏制喷火坦克"
+						type = medium_tank_flame_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = flamethrower
+							turret_type_slot = tank_medium_fixed_superstructure_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 0
+						}
+					}
+
+					create_equipment_variant = {
+						name = "39年苏制侦察坦克"
+						type = light_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon_2
+							turret_type_slot = tank_light_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = easy_maintenance
+							special_type_slot_3 = secondary_turret_hmg
+							special_type_slot_4 = wet_ammo_storage
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 4
+							tank_nsb_armor_upgrade = 0
+						}
+					}
+
+					create_equipment_variant = {
+						name = "39年苏制装甲工程车"
+						type = armored_support_vehicle_1
+						parent_version = 0
+						upgrades = {
+							tank_reliability_upgrade = 5
+							tank_engine_upgrade = 0
+							tank_armor_upgrade = 0
+							tank_gun_upgrade = 0
+						}
+					}
+
+					division_template = {
+						name = "苏军强化步兵装甲师"
+
+						regiments = {
+							# 8个步兵/机械化步兵营
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 1 y = 3 }
+
+							medium_armor = { x = 2 y = 0 }
+							medium_armor = { x = 2 y = 1 }
+							medium_armor = { x = 2 y = 2 }
+							medium_armor = { x = 2 y = 3 }
+
+							medium_tank_destroyer_brigade = { x = 3 y = 0 }
+							medium_tank_destroyer_brigade = { x = 3 y = 1 }
+							medium_tank_destroyer_brigade = { x = 3 y = 2 }
+							medium_tank_destroyer_brigade = { x = 3 y = 3 }
+
+							anti_air_brigade = { x = 4 y = 0 }
+							anti_air_brigade = { x = 4 y = 1 }
+							anti_air_brigade = { x = 4 y = 2 }
+
+						}
+						support = {
+							armored_engineer = { x = 0 y = 0 }
+							light_tank_recon = { x = 0 y = 1 }
+							medium_flame_tank = { x = 0 y = 2 }
+							field_hospital = { x = 0 y = 3 }
+							logistics_company = { x = 0 y = 4 }
+						}
+					}
+
+					capital_scope = {
+						create_unit = {
+							division = "name = \"苏军强化步兵装甲师\" division_template = \"苏军强化步兵装甲师\" start_experience_factor = 1.0 "
+							owner = SOV
+							count = 24
+						}
+					}
+
+					set_country_flag = AWR_SOV_add_units_first
+				}
+
+				# 1940年5月1日：24个机械化装甲师
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						date > 1940.4.30
+						NOT = {
+							has_country_flag = AWR_SOV_add_units_second
+						}
+					}
+
+					set_technology = {
+						mechanised_infantry = 1
+						improved_medium_tank_chassis = 1
+						antiair1 = 1
+						antiair2 = 1
+						tech_field_hospital2 = 1
+						tech_logistics_company2 = 1
+						popup = no
+					}
+
+					create_equipment_variant = {
+						name = "40年苏制中型坦克"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_howitzer
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 6
+							tank_nsb_armor_upgrade = 4
+						}
+					}
+
+					create_equipment_variant = {
+						name = "40年苏制坦克歼击车"
+						type = medium_tank_destroyer_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 6
+							tank_nsb_armor_upgrade = 6
+						}
+					}
+
+					create_equipment_variant = {
+						name = "40年苏制机械化步兵战车"
+						type = mechanized_equipment_1
+						parent_version = 0
+						upgrades = {
+							tank_reliability_upgrade = 5
+							mech_cost_upgrade = 5
+							tank_engine_upgrade = 0
+							tank_armor_upgrade = 0
+						}
+					}
+
+					division_template = {
+						name = "苏军强化机械化装甲师"
+
+						regiments = {
+							# 8个步兵/机械化步兵营
+							mechanized = { x = 0 y = 0 }
+							mechanized = { x = 0 y = 1 }
+							mechanized = { x = 0 y = 2 }
+							mechanized = { x = 0 y = 3 }
+							mechanized = { x = 1 y = 0 }
+							mechanized = { x = 1 y = 1 }
+							mechanized = { x = 1 y = 2 }
+							mechanized = { x = 1 y = 3 }
+
+							medium_armor = { x = 2 y = 0 }
+							medium_armor = { x = 2 y = 1 }
+							medium_armor = { x = 2 y = 2 }
+							medium_armor = { x = 2 y = 3 }
+
+							medium_tank_destroyer_brigade = { x = 3 y = 0 }
+							medium_tank_destroyer_brigade = { x = 3 y = 1 }
+							medium_tank_destroyer_brigade = { x = 3 y = 2 }
+							medium_tank_destroyer_brigade = { x = 3 y = 3 }
+
+							anti_air_brigade = { x = 4 y = 0 }
+							anti_air_brigade = { x = 4 y = 1 }
+							anti_air_brigade = { x = 4 y = 2 }
+
+						}
+						support = {
+							armored_engineer = { x = 0 y = 0 }
+							light_tank_recon = { x = 0 y = 1 }
+							medium_flame_tank = { x = 0 y = 2 }
+							field_hospital = { x = 0 y = 3 }
+							logistics_company = { x = 0 y = 4 }
+						}
+					}
+
+					capital_scope = {
+						create_unit = {
+							division = "name = \"苏军强化机械化装甲师\" division_template = \"苏军强化机械化装甲师\" start_experience_factor = 1.0 "
+							owner = SOV
+							count = 24
+						}
+					}
+
+					set_country_flag = AWR_SOV_add_units_second
+				}
+
+				# 1941年5月1日：24个机械化装甲师及两种飞机各1000架
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						date > 1941.4.30
+						NOT = {
+							has_country_flag = AWR_SOV_add_units_third
+						}
+					}
+
+					set_technology = {
+						artillery2 = 1
+						artillery3 = 1
+						artillery4 = 1
+						antitank2 = 1
+						antitank3 = 1
+						tech_engineers3 = 1
+						popup = no
+					}
+
+					create_equipment_variant = {
+						name = "41年苏制中型坦克"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_howitzer_2
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 6
+							tank_nsb_armor_upgrade = 4
+						}
+					}
+
+					create_equipment_variant = {
+						name = "41年苏制坦克歼击车"
+						type = medium_tank_destroyer_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							special_type_slot_1 = tank_radio_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = easy_maintenance
+							special_type_slot_4 = secondary_turret_hmg
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 6
+							tank_nsb_armor_upgrade = 6
+						}
+					}
+
+					set_technology = {
+						iw_small_airframe = 1
+						basic_small_airframe = 1
+						improved_small_airframe = 1
+						engines_1 = 1
+						engines_2 = 1
+						engines_3 = 1
+						aa_lmg = 1
+						aa_hmg = 1
+						early_bombs = 1
+						heavy_bombs = 1
+						survivability_studies = 1
+						range_improvements = 1
+						popup = no
+					}
+
+					create_equipment_variant = {
+						name = "40年苏制战斗机"
+						type = small_plane_airframe_2
+						parent_version = 0
+						modules = {
+							fixed_main_weapon_slot = heavy_mg_4x
+							fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+							fixed_auxiliary_weapon_slot_2 = light_mg_4x
+							engine_type_slot = engine_3_1x
+							special_type_slot_1 = drop_tanks
+							special_type_slot_2 = self_sealing_fuel_tanks_small
+							special_type_slot_3 = armor_plate_small
+						}
+					}
+
+					create_equipment_variant = {
+						name = "40年苏制近地支援机"
+						type = small_plane_cas_airframe_2
+						parent_version = 0
+						modules = {
+							fixed_main_weapon_slot = heavy_bomb_locks
+							fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+							fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+							engine_type_slot = engine_3_1x
+							special_type_slot_1 = fuel_tanks_small
+							special_type_slot_2 = empty
+							special_type_slot_3 = empty
+						}
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_airframe_2
+						amount = 1000
+						producer = SOV
+						variant_name = "40年苏制战斗机"
+					}
+
+					add_equipment_to_stockpile = {
+						type = small_plane_cas_airframe_2
+						amount = 1000
+						producer = SOV
+						variant_name = "40年苏制近地支援机"
+					}
+
+					capital_scope = {
+						create_unit = {
+							division = "name = \"苏军强化机械化装甲师\" division_template = \"苏军强化机械化装甲师\" start_experience_factor = 1.0 "
+							owner = SOV
+							count = 24
+						}
+					}
+
+					set_country_flag = AWR_SOV_add_units_third
+				}
+
+			}
+		}
+	}
+}
+
+# 英美AI有限补强：参考社区运营攻略，额度为保守平衡估计，并非攻略固定产量。
+# 每国最多两个节点，不增加工厂或生产线；师数上限含已有部队。
+# 飞机上限按全部已部署飞机加小型机库存保守计数，不影响后续正常生产。
+# 第一节点过期后不补领；第二节点也有截止日期，避免晚期集中领取。
+on_actions = {	#英美强化
+	on_monthly = {
+		effect = {
+			ENG = {
+				# ENG 第1次补强。
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						has_capitulated = no
+						date > 1939.8.31
+						date < 1940.6.1
+						NOT = {
+							has_country_flag = AWR_ENG_reinforcement_first
+						}
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_ENG_reinforcement_designs
+							}
+						}
+						set_technology = {
+							infantry_weapons = 1
+							infantry_weapons1 = 1
+							infantry_weapons2 = 1
+							motorised_infantry = 1
+							tech_support = 1
+							tech_engineers = 1
+							tech_recon = 1
+							tech_logistics_company = 1
+							gw_artillery = 1
+							interwar_artillery = 1
+							artillery1 = 1
+							interwar_antiair = 1
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							survivability_studies = 1
+							range_improvements = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年英制强化战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年英制强化近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						division_template = {
+							name = "英军强化步兵师"
+
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								artillery_brigade = { x = 3 y = 0 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								artillery = { x = 0 y = 2 }
+								anti_air = { x = 0 y = 3 }
+								logistics_company = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_ENG_reinforcement_designs
+					}
+
+					# 本批最多补发12个师；现有总师数达到48后停止。
+					for_loop_effect = {
+						start = 0
+						end = 12
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 48
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"英军强化步兵师\" division_template = \"英军强化步兵师\" start_experience_factor = 0.3 "
+									owner = ENG
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1200
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 400
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_airframe_2
+							amount = AWR_allied_air_room
+							producer = ENG
+							variant_name = "40年英制强化战斗机"
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1200
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 100
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_cas_airframe_2
+							amount = AWR_allied_air_room
+							producer = ENG
+							variant_name = "40年英制强化近地支援机"
+						}
+					}
+
+					set_country_flag = AWR_ENG_reinforcement_first
+				}
+
+				# ENG 第2次补强。
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						has_capitulated = no
+						date > 1940.5.31
+						date < 1941.6.1
+						NOT = {
+							has_country_flag = AWR_ENG_reinforcement_second
+						}
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_ENG_reinforcement_designs
+							}
+						}
+						set_technology = {
+							infantry_weapons = 1
+							infantry_weapons1 = 1
+							infantry_weapons2 = 1
+							motorised_infantry = 1
+							tech_support = 1
+							tech_engineers = 1
+							tech_recon = 1
+							tech_logistics_company = 1
+							gw_artillery = 1
+							interwar_artillery = 1
+							artillery1 = 1
+							interwar_antiair = 1
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							survivability_studies = 1
+							range_improvements = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年英制强化战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年英制强化近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						division_template = {
+							name = "英军强化步兵师"
+
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								artillery_brigade = { x = 3 y = 0 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								artillery = { x = 0 y = 2 }
+								anti_air = { x = 0 y = 3 }
+								logistics_company = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_ENG_reinforcement_designs
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_ENG_reinforcement_tank_designs
+							}
+						}
+						set_technology = {
+							gwtank_chassis = 1
+							basic_medium_tank_chassis = 1
+							improved_medium_tank_chassis = 1
+							tech_maintenance_company = 1
+							tech_maintenance_company2 = 1
+							radio = 1
+							improved_radio = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年英制强化中型坦克"
+							type = medium_tank_chassis_2
+							parent_version = 0
+							modules = {
+								main_armament_slot = tank_medium_howitzer
+								turret_type_slot = tank_medium_three_man_tank_turret
+								suspension_type_slot = tank_christie_suspension
+								armor_type_slot = tank_riveted_armor
+								engine_type_slot = tank_gasoline_engine
+								special_type_slot_1 = tank_radio_2
+								special_type_slot_2 = wet_ammo_storage
+								special_type_slot_3 = easy_maintenance
+								special_type_slot_4 = secondary_turret_hmg
+							}
+							upgrades = {
+								tank_nsb_engine_upgrade = 6
+								tank_nsb_armor_upgrade = 4
+							}
+						}
+
+						division_template = {
+							name = "英军强化装甲师"
+
+							regiments = {
+								medium_armor = { x = 0 y = 0 }
+								medium_armor = { x = 0 y = 1 }
+								medium_armor = { x = 0 y = 2 }
+								medium_armor = { x = 0 y = 3 }
+								medium_armor = { x = 1 y = 0 }
+								medium_armor = { x = 1 y = 1 }
+								medium_armor = { x = 1 y = 2 }
+								medium_armor = { x = 1 y = 3 }
+
+								motorized = { x = 2 y = 0 }
+								motorized = { x = 2 y = 1 }
+								motorized = { x = 2 y = 2 }
+								motorized = { x = 2 y = 3 }
+								motorized = { x = 3 y = 0 }
+								motorized = { x = 3 y = 1 }
+								motorized = { x = 3 y = 2 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								maintenance_company = { x = 0 y = 2 }
+								logistics_company = { x = 0 y = 3 }
+								anti_air = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_ENG_reinforcement_tank_designs
+					}
+
+					# 本批最多补发2个师；现有总师数达到58后停止。
+					for_loop_effect = {
+						start = 0
+						end = 2
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 58
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"英军强化装甲师\" division_template = \"英军强化装甲师\" start_experience_factor = 0.3 "
+									owner = ENG
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 本批最多补发12个师；现有总师数达到58后停止。
+					for_loop_effect = {
+						start = 0
+						end = 12
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 58
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"英军强化步兵师\" division_template = \"英军强化步兵师\" start_experience_factor = 0.3 "
+									owner = ENG
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1800
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 600
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_airframe_2
+							amount = AWR_allied_air_room
+							producer = ENG
+							variant_name = "40年英制强化战斗机"
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1800
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 200
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_cas_airframe_2
+							amount = AWR_allied_air_room
+							producer = ENG
+							variant_name = "40年英制强化近地支援机"
+						}
+					}
+
+					set_country_flag = AWR_ENG_reinforcement_second
+				}
+
+			}
+			USA = {
+				# USA 第1次补强。
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						has_capitulated = no
+						date > 1941.11.30
+						date < 1942.6.1
+						NOT = {
+							has_country_flag = AWR_USA_reinforcement_first
+						}
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_USA_reinforcement_designs
+							}
+						}
+						set_technology = {
+							infantry_weapons = 1
+							infantry_weapons1 = 1
+							infantry_weapons2 = 1
+							motorised_infantry = 1
+							tech_support = 1
+							tech_engineers = 1
+							tech_recon = 1
+							tech_logistics_company = 1
+							gw_artillery = 1
+							interwar_artillery = 1
+							artillery1 = 1
+							interwar_antiair = 1
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							survivability_studies = 1
+							range_improvements = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						division_template = {
+							name = "美军强化步兵师"
+
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								artillery_brigade = { x = 3 y = 0 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								artillery = { x = 0 y = 2 }
+								anti_air = { x = 0 y = 3 }
+								logistics_company = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_USA_reinforcement_designs
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_USA_reinforcement_tank_designs
+							}
+						}
+						set_technology = {
+							gwtank_chassis = 1
+							basic_medium_tank_chassis = 1
+							improved_medium_tank_chassis = 1
+							tech_maintenance_company = 1
+							tech_maintenance_company2 = 1
+							radio = 1
+							improved_radio = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化中型坦克"
+							type = medium_tank_chassis_2
+							parent_version = 0
+							modules = {
+								main_armament_slot = tank_medium_howitzer
+								turret_type_slot = tank_medium_three_man_tank_turret
+								suspension_type_slot = tank_christie_suspension
+								armor_type_slot = tank_riveted_armor
+								engine_type_slot = tank_gasoline_engine
+								special_type_slot_1 = tank_radio_2
+								special_type_slot_2 = wet_ammo_storage
+								special_type_slot_3 = easy_maintenance
+								special_type_slot_4 = secondary_turret_hmg
+							}
+							upgrades = {
+								tank_nsb_engine_upgrade = 6
+								tank_nsb_armor_upgrade = 4
+							}
+						}
+
+						division_template = {
+							name = "美军强化装甲师"
+
+							regiments = {
+								medium_armor = { x = 0 y = 0 }
+								medium_armor = { x = 0 y = 1 }
+								medium_armor = { x = 0 y = 2 }
+								medium_armor = { x = 0 y = 3 }
+								medium_armor = { x = 1 y = 0 }
+								medium_armor = { x = 1 y = 1 }
+								medium_armor = { x = 1 y = 2 }
+								medium_armor = { x = 1 y = 3 }
+
+								motorized = { x = 2 y = 0 }
+								motorized = { x = 2 y = 1 }
+								motorized = { x = 2 y = 2 }
+								motorized = { x = 2 y = 3 }
+								motorized = { x = 3 y = 0 }
+								motorized = { x = 3 y = 1 }
+								motorized = { x = 3 y = 2 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								maintenance_company = { x = 0 y = 2 }
+								logistics_company = { x = 0 y = 3 }
+								anti_air = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_USA_reinforcement_tank_designs
+					}
+
+					# 本批最多补发4个师；现有总师数达到96后停止。
+					for_loop_effect = {
+						start = 0
+						end = 4
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 96
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"美军强化装甲师\" division_template = \"美军强化装甲师\" start_experience_factor = 0.3 "
+									owner = USA
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 本批最多补发24个师；现有总师数达到96后停止。
+					for_loop_effect = {
+						start = 0
+						end = 24
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 96
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"美军强化步兵师\" division_template = \"美军强化步兵师\" start_experience_factor = 0.3 "
+									owner = USA
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1800
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 600
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_airframe_2
+							amount = AWR_allied_air_room
+							producer = USA
+							variant_name = "40年美制强化战斗机"
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 1800
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 300
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_cas_airframe_2
+							amount = AWR_allied_air_room
+							producer = USA
+							variant_name = "40年美制强化近地支援机"
+						}
+					}
+
+					set_country_flag = AWR_USA_reinforcement_first
+				}
+
+				# USA 第2次补强。
+				if = {
+					limit = {
+						has_global_flag = be_high
+						is_ai = yes
+						has_capitulated = no
+						date > 1942.5.31
+						date < 1943.1.1
+						NOT = {
+							has_country_flag = AWR_USA_reinforcement_second
+						}
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_USA_reinforcement_designs
+							}
+						}
+						set_technology = {
+							infantry_weapons = 1
+							infantry_weapons1 = 1
+							infantry_weapons2 = 1
+							motorised_infantry = 1
+							tech_support = 1
+							tech_engineers = 1
+							tech_recon = 1
+							tech_logistics_company = 1
+							gw_artillery = 1
+							interwar_artillery = 1
+							artillery1 = 1
+							interwar_antiair = 1
+							iw_small_airframe = 1
+							basic_small_airframe = 1
+							improved_small_airframe = 1
+							engines_1 = 1
+							engines_2 = 1
+							engines_3 = 1
+							aa_lmg = 1
+							aa_hmg = 1
+							early_bombs = 1
+							heavy_bombs = 1
+							survivability_studies = 1
+							range_improvements = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化战斗机"
+							type = small_plane_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+								fixed_auxiliary_weapon_slot_2 = light_mg_4x
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = drop_tanks
+								special_type_slot_2 = self_sealing_fuel_tanks_small
+								special_type_slot_3 = armor_plate_small
+							}
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化近地支援机"
+							type = small_plane_cas_airframe_2
+							parent_version = 0
+							modules = {
+								fixed_main_weapon_slot = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_1 = heavy_bomb_locks
+								fixed_auxiliary_weapon_slot_2 = heavy_bomb_locks
+								engine_type_slot = engine_3_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = empty
+								special_type_slot_3 = empty
+							}
+						}
+
+						division_template = {
+							name = "美军强化步兵师"
+
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								artillery_brigade = { x = 3 y = 0 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								artillery = { x = 0 y = 2 }
+								anti_air = { x = 0 y = 3 }
+								logistics_company = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_USA_reinforcement_designs
+					}
+
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = AWR_USA_reinforcement_tank_designs
+							}
+						}
+						set_technology = {
+							gwtank_chassis = 1
+							basic_medium_tank_chassis = 1
+							improved_medium_tank_chassis = 1
+							tech_maintenance_company = 1
+							tech_maintenance_company2 = 1
+							radio = 1
+							improved_radio = 1
+							popup = no
+						}
+
+						create_equipment_variant = {
+							name = "40年美制强化中型坦克"
+							type = medium_tank_chassis_2
+							parent_version = 0
+							modules = {
+								main_armament_slot = tank_medium_howitzer
+								turret_type_slot = tank_medium_three_man_tank_turret
+								suspension_type_slot = tank_christie_suspension
+								armor_type_slot = tank_riveted_armor
+								engine_type_slot = tank_gasoline_engine
+								special_type_slot_1 = tank_radio_2
+								special_type_slot_2 = wet_ammo_storage
+								special_type_slot_3 = easy_maintenance
+								special_type_slot_4 = secondary_turret_hmg
+							}
+							upgrades = {
+								tank_nsb_engine_upgrade = 6
+								tank_nsb_armor_upgrade = 4
+							}
+						}
+
+						division_template = {
+							name = "美军强化装甲师"
+
+							regiments = {
+								medium_armor = { x = 0 y = 0 }
+								medium_armor = { x = 0 y = 1 }
+								medium_armor = { x = 0 y = 2 }
+								medium_armor = { x = 0 y = 3 }
+								medium_armor = { x = 1 y = 0 }
+								medium_armor = { x = 1 y = 1 }
+								medium_armor = { x = 1 y = 2 }
+								medium_armor = { x = 1 y = 3 }
+
+								motorized = { x = 2 y = 0 }
+								motorized = { x = 2 y = 1 }
+								motorized = { x = 2 y = 2 }
+								motorized = { x = 2 y = 3 }
+								motorized = { x = 3 y = 0 }
+								motorized = { x = 3 y = 1 }
+								motorized = { x = 3 y = 2 }
+							}
+
+							support = {
+								engineer = { x = 0 y = 0 }
+								recon = { x = 0 y = 1 }
+								maintenance_company = { x = 0 y = 2 }
+								logistics_company = { x = 0 y = 3 }
+								anti_air = { x = 0 y = 4 }
+							}
+						}
+
+						set_country_flag = AWR_USA_reinforcement_tank_designs
+					}
+
+					# 本批最多补发4个师；现有总师数达到120后停止。
+					for_loop_effect = {
+						start = 0
+						end = 4
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 120
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"美军强化装甲师\" division_template = \"美军强化装甲师\" start_experience_factor = 0.3 "
+									owner = USA
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 本批最多补发24个师；现有总师数达到120后停止。
+					for_loop_effect = {
+						start = 0
+						end = 24
+						value = AWR_allied_division_index
+						if = {
+							limit = {
+								num_divisions < 120
+							}
+							capital_scope = {
+								create_unit = {
+									division = "name = \"美军强化步兵师\" division_template = \"美军强化步兵师\" start_experience_factor = 0.3 "
+									owner = USA
+									count = 1
+								}
+							}
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 2400
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 800
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_airframe_2
+							amount = AWR_allied_air_room
+							producer = USA
+							variant_name = "40年美制强化战斗机"
+						}
+					}
+
+					# 补发量取本批额度与飞机总量上限剩余额度中的较小值。
+					set_temp_variable = {
+						AWR_allied_air_room = 2400
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_deployed_planes
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_cas_airframe
+					}
+					subtract_from_temp_variable = {
+						AWR_allied_air_room = num_equipment@small_plane_naval_bomber_airframe
+					}
+					clamp_temp_variable = {
+						var = AWR_allied_air_room
+						min = 0
+						max = 400
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = AWR_allied_air_room
+								value = 0
+								compare = greater_than
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = small_plane_cas_airframe_2
+							amount = AWR_allied_air_room
+							producer = USA
+							variant_name = "40年美制强化近地支援机"
+						}
+					}
+
+					set_country_flag = AWR_USA_reinforcement_second
+				}
+
 			}
 		}
 	}
