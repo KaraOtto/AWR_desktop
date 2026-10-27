@@ -1,0 +1,292 @@
+ideas = {
+	country = {
+		MAN_under_developed_heavy_industry_idea = {
+			removal_cost = -1
+			picture = incompetent_heavy_industry
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.1
+					instant = yes
+				}
+				artillery_equipment = {
+					build_cost_ic = 0.2
+					instant = yes
+				}
+				anti_air_equipment = {
+					build_cost_ic = 0.2
+					instant = yes
+				}
+				anti_tank_equipment = {
+					build_cost_ic = 0.2
+					instant = yes
+				}
+				mechanized_equipment = {
+					build_cost_ic = 0.3
+					instant = yes
+				}
+				amphibious_mechanized_equipment = {
+					build_cost_ic = 0.3
+					instant = yes
+				}
+				armored_car_equipment = {
+					build_cost_ic = 0.3
+					instant = yes
+				}
+				motorized_equipment = {
+					build_cost_ic = 0.3
+					instant = yes
+				}
+				armor = {
+					build_cost_ic = 0.5
+					instant = yes
+				}
+			
+			}
+		}
+
+		MAN_left_wing_student_movement = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			traits = {				
+				stikes_will_be_frequent_when_above_40_percent
+				goes_away_below_3_percent
+			}
+			available = {
+				socialism > 0.03
+			}
+			removal_cost = -1
+			picture = leftist_students
+
+			modifier = {
+				socialism_drift = 0.02
+			}
+		}
+
+		MAN_Kwantung_Army = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = kwantung_army
+
+			modifier = {
+				war_support_factor = -0.05
+				army_org = -5
+				army_morale_factor = -0.05
+				communism_drift = -0.02
+				democratic_drift = -0.02
+				neutrality_drift = -0.02
+				fascism_drift = 0.02 #0.02
+				land_doctrine_cost_factor = 0.25
+				naval_doctrine_cost_factor = 0.5
+				air_doctrine_cost_factor = 0.5
+			}
+		}
+		MAN_Kwantung_Army2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = kwantung_army
+
+			modifier = {
+				army_org = 5
+				army_morale_factor = 0.05
+				land_doctrine_cost_factor = -0.1
+			}
+		}
+
+		MAN_puppet_of_japan = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = japan_puppet_flag
+
+			modifier = {
+				war_support_factor = -0.10
+				research_speed_factor = -0.15
+				political_power_cost = 0.25
+				#autonomy_gain = -0.1
+			}
+		}
+
+		MAN_puyi_yes_dlc = {				
+			picture = puyi_new #don't change, intentional
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_government = democratic
+						
+						is_in_faction_with = JAP #guo
+						is_subject_of = JAP #guo
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.35
+				political_power_gain = 0.50
+			}
+		}
+
+		MAN_expanded_opium_field_overlord = {
+			picture = prc_permit_opium_trade
+			allowed = {
+				always = no
+			}
+			cancel = { is_subject = no }
+			
+			removal_cost = -1
+	
+			modifier = {
+				consumer_goods_factor = -0.25
+				war_support_factor = -0.05
+				stability_factor = -0.05				
+			}
+		}
+
+		man_unit_731 = {
+		    picture = unit_731_idea
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+				has_government = fascism            
+			}
+			
+			cancel = {
+				OR = {
+            		has_war_with = JAP
+		    		is_puppet = no		
+				}			
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.05
+			    stability_factor = 0.03
+				war_support_factor = -0.1
+				monthly_population = -0.01
+				foreign_subversive_activites = -0.15
+				drift_defence_factor = 0.05
+				resistance_growth = 0.1
+			}			
+		}
+
+		man_unit_731_2 = {
+		    picture = unit_731_idea
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+				has_government = fascism            
+			}
+			
+			cancel = {
+				OR = {
+           	 		has_war_with = JAP
+		    		is_puppet = no		
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.1
+			    stability_factor = 0.05
+				war_support_factor = -0.15
+				monthly_population = -0.05
+				foreign_subversive_activites = -0.2
+				drift_defence_factor = 0.1
+				resistance_growth = 0.15
+			}
+ 			targeted_modifier = {
+				tag = CHI
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			    breakthrough_bonus_against = 0.05				
+            }
+ 			targeted_modifier = {
+				tag = PRC
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			    breakthrough_bonus_against = 0.05				
+            }			
+		}
+
+		man_unit_731_3 = {
+		    picture = unit_731_idea
+			
+			allowed = {
+			    always = no
+			}
+
+			available = {
+				has_government = fascism            
+			}
+			
+			cancel = {
+				OR = {
+            		has_war_with = JAP
+		   	 		is_puppet = no		
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.15
+			    stability_factor = 0.1
+				war_support_factor = -0.2
+				monthly_population = -0.1
+				foreign_subversive_activites = -0.25
+				drift_defence_factor = 0.15
+				resistance_growth = 0.2
+			}
+ 			targeted_modifier = {
+				tag = CHI
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			    breakthrough_bonus_against = 0.1				
+            }
+ 			targeted_modifier = {
+				tag = PRC
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			    breakthrough_bonus_against = 0.1			
+            }			
+		}
+	}
+}

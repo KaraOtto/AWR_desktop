@@ -2202,6 +2202,50 @@ ideas = {	#腐败机制
 		    	max_command_power = 30			
 			}
 		}
+
+		CHI_german_coop = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			available = {
+				NOT = {
+					has_war_with = GER
+				}
+			}
+			removal_cost = -1
+			targeted_modifier = {
+				tag = GER
+				ai_license_acceptance = 50
+				license_purchase_cost = -1
+				license_tech_difference_speed = 0.1
+				license_production_speed = 0.1
+				extra_trade_to_target_factor = 0.4
+				trade_cost_for_target_factor = -0.4
+			}
+			modifier = {
+			}
+		}
+
+		CHI_new_equal_treaty = {
+			allowed = {
+				always = no
+			}
+			picture = idea_can_wartime_prices_and_trade_board
+			allowed_civil_war = {
+				has_government = neutrality
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = 0.1
+				stability_factor = 0.10
+			}
+		}
 	}
 
 	industrial_concern = {

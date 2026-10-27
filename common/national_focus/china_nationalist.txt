@@ -29,7 +29,7 @@ focus_tree = {
 			focus = CHI_prepare_for_constitionalization_focus
 			focus = CHI_support_kmt_opposition_focus
 		}
-		x = 6
+		x = 5
 		y = 0
 
 		ai_will_do = {
@@ -41,6 +41,7 @@ focus_tree = {
 
 		search_filters = {
 			FOCUS_FILTER_HISTORICAL
+			FOCUS_FILTER_POLITICAL
 		}
 		
 		completion_reward = {
@@ -90,14 +91,11 @@ focus_tree = {
 		icon = GFX_focus_new_life_movement
 		cost = 5
 		prerequisite = {
-			focus = one_party_tutelage
+			focus = CHI_one_party_tutelage
 		}
-		x = 0
+		x = -5
 		y = 1
-		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
-		prerequisite = {
-			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
-		}
+		relative_position_id = CHI_one_party_tutelage
 
 		ai_will_do = {
 			factor = 80
@@ -128,7 +126,7 @@ focus_tree = {
 			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 		}
 		x = -2
-		y = 2
+		y = 1
 		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 
 		ai_will_do = {
@@ -136,7 +134,7 @@ focus_tree = {
 		}
 
 		available = {
-			has_idea = central_club
+			has_idea = CHI_central_club
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -145,7 +143,7 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_idea = chen_lifu
+						has_idea = CHI_chen_lifu
 					}
 					amount_taken_ideas = {
 					    amount < 4
@@ -154,12 +152,283 @@ focus_tree = {
 					    }
 					}
 				}
-				add_ideas = chen_lifu
+				add_ideas = CHI_chen_lifu
 			}
 			unlock_decision_tooltip = CHI_garner_support_for_CC_clique
 			swap_ideas = {
-				add_idea = central_club_stronger
-				remove_idea = central_club
+				add_idea = CHI_central_club_stronger
+				remove_idea = CHI_central_club
+			}
+		}
+	}
+
+	focus = {
+		id = found_cbis
+		icon = GFX_focus_jongtong
+		cost = 5
+		prerequisite = {
+			focus = strengthen_cc
+		}
+		x = 0
+		y = 1
+		relative_position_id = strengthen_cc
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			has_intelligence_agency = yes
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_constitutionalization_pressure < chi_support_CC
+				}
+			}
+			OR = {
+				has_government = fascism
+				has_government = neutrality
+			}
+			if = {
+				limit = { is_ai = no }
+				has_idea = CHI_chen_lifu
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			upgrade_intelligence_agency = upgrade_economy_civilian
+
+			custom_effect_tooltip = blank_line			
+			add_ideas = CBIS
+			add_to_variable = {
+				chi_support_CC = 5
+			}
+			add_to_variable = {
+				chi_constitutionalization_pressure = -5
+			}
+
+			custom_effect_tooltip = blank_line
+			custom_effect_tooltip = RCM_CC_support_up
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+		}
+	}
+
+	focus = {
+		id = strengthen_the_kmt
+		icon = GFX_focus_chi_jongtong_sectors
+		cost = 5
+		prerequisite = {
+			focus = strengthen_cc
+		}
+		x = -1
+		y = 2
+		relative_position_id = strengthen_cc
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_support_CC > chi_constitutionalization_pressure
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.2
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CBIS
+					}
+					NOT = {
+						has_idea = CBIS_indoctrination
+					}
+				}
+				swap_ideas = {
+					add_idea = CBIS_kmt
+					remove_idea = CBIS
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CBIS
+					}
+					has_idea = CBIS_indoctrination
+				}
+				swap_ideas = {
+					add_idea = CBIS_kmt_indoctrination
+					remove_idea = CBIS_indoctrination
+				}
+			}
+			if = {
+				limit = {
+					has_idea = CBIS
+					NOT = {
+						has_idea = CBIS_indoctrination
+					}
+				}
+				swap_ideas = {
+					add_idea = CBIS_kmt
+					remove_idea = CBIS
+				}
+			}
+			add_to_variable = {
+				chi_support_CC = 5
+			}
+			custom_effect_tooltip = RCM_CC_support_up
+		}
+	}
+
+	focus = {
+		id = political_indoctrination
+		icon = GFX_focus_chi_party_net
+		cost = 5
+		prerequisite = {
+			focus = strengthen_cc
+		}
+		x = 1
+		y = 2
+		relative_position_id = strengthen_cc
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_support_CC > chi_constitutionalization_pressure
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CBIS
+					}
+					NOT = {
+						has_idea = CBIS_kmt
+					}
+				}
+				swap_ideas = {
+					add_idea = CBIS_indoctrination
+					remove_idea = CBIS
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CBIS
+					}
+					has_idea = CBIS_kmt
+				}
+				swap_ideas = {
+					add_idea = CBIS_kmt_indoctrination
+					remove_idea = CBIS_kmt
+				}
+			}
+			if = {
+				limit = {
+					has_idea = CBIS
+					NOT = {
+						has_idea = CBIS_kmt
+					}
+				}
+				swap_ideas = {
+					add_idea = CBIS_indoctrination
+					remove_idea = CBIS
+				}
+			}
+			add_to_variable = {
+				chi_constitutionalization_pressure = -5
+			}
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+		}
+	}
+
+	focus = {
+		id = CHI_yi_dang_zhi_guo_focus
+		icon = GFX_focus_yi_dang_zhi_guo
+		cost = 10.00
+		prerequisite = {
+			focus = found_cbis
+		}
+		prerequisite = {
+			focus = centralizing_power
+		}
+		mutually_exclusive = {
+			focus = CHI_axis_help_party_focus
+		}
+		x = 0
+		y = 2
+		relative_position_id = found_cbis
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+			has_government = neutrality
+			neutrality > 0.5
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_50
+				check_variable = {
+					chi_support_CC > 49
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_BS
+				check_variable = {
+					chi_support_CC > chi_support_blue_shirts
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_CC_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_support_CC > chi_constitutionalization_pressure
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = CHI_time_of_neutrality
+				has_country_flag = one_party_neutrality
+			}
+		}
+
+		bypass = {
+			AND = {
+				has_global_flag = PCA_nationalist_concede
+				has_global_flag = PRC_joined_our_government
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			custom_effect_tooltip = THIS_IS_HISTORICAL_TT
+			add_ideas = dangguo_system
+			custom_effect_tooltip = kmt_all
+			hidden_effect = {
+				set_political_party = {
+					ideology = neutrality
+					popularity = 100
+				}
 			}
 		}
 	}
@@ -172,19 +441,15 @@ focus_tree = {
 			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 		}
 		x = 2
-		y = 2
+		y = 1
 		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 
 		ai_will_do = {
 			factor = 15
 		}
 
-		available = {			
-			#NOT = {
-			#	is_in_faction_with = JAP
-			#}
-			#has_idea = dai_li
-			has_idea = the_blueshirts
+		available = {
+			has_idea = CHI_the_blueshirts
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -193,7 +458,7 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_idea = dai_li
+						has_idea = CHI_dai_li
 					}
 					amount_taken_ideas = {
 					    amount < 4
@@ -202,13 +467,317 @@ focus_tree = {
 					    }
 					}
 				}
-				add_ideas = dai_li
+				add_ideas = CHI_dai_li
 			}
 			unlock_decision_tooltip = CHI_garner_support_for_blue_shirts_society
 			swap_ideas = {
-				add_idea = the_blueshirts_stronger
-				remove_idea = the_blueshirts
+				add_idea = CHI_the_blueshirts_stronger
+				remove_idea = CHI_the_blueshirts
 			}
+		}
+	}
+
+	focus = {
+		id = found_mbis
+		icon = GFX_focus_juntong
+		cost = 5
+		prerequisite = {
+			focus = strengthen_bs
+		}
+		x = 0
+		y = 1
+		relative_position_id = strengthen_bs
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				has_intelligence_agency = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_BS_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_constitutionalization_pressure < chi_support_blue_shirts
+				}
+			}
+			OR = {
+				has_government = fascism
+				has_government = neutrality
+			}
+			if = {
+				limit = { is_ai = no }
+				has_idea = CHI_dai_li
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			upgrade_intelligence_agency = upgrade_army_department
+				
+			custom_effect_tooltip = blank_line		
+			add_ideas = NBIS
+			add_to_variable = {
+				chi_support_blue_shirts = 5
+			}
+			add_to_variable = {
+				chi_constitutionalization_pressure = -5
+			}
+			custom_effect_tooltip = blank_line
+			custom_effect_tooltip = RCM_blueshirts_support_up
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+		    division_template = {
+		    name = "苏浙行动委员会别动队"
+		    regiments = {
+		            militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+		    }
+	        }
+			random_owned_controlled_state = {
+				prioritize = { 1078 }
+				create_unit = {
+					division = "division_template = \"苏浙行动委员会别动队\" start_experience_factor = 0.2 start_equipment_factor = 0.5 start_manpower_factor = 0.05"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"苏浙行动委员会别动队\" start_experience_factor = 0.2 start_equipment_factor = 0.5 start_manpower_factor = 0.05"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"苏浙行动委员会别动队\" start_experience_factor = 0.2 start_equipment_factor = 0.5 start_manpower_factor = 0.05"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"苏浙行动委员会别动队\" start_experience_factor = 0.2 start_equipment_factor = 0.5 start_manpower_factor = 0.05"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"苏浙行动委员会别动队\" start_experience_factor = 0.2 start_equipment_factor = 0.5 start_manpower_factor = 0.05"
+					owner = ROOT
+				}
+			}			
+		}
+	}
+
+	focus = {
+		id = CHI_commando_unit_organization
+		icon = GFX_goal_CHI_JSWYH
+		cost = 5
+		prerequisite = {
+			focus = strengthen_bs
+		}
+		x = -1
+		y = 2
+		relative_position_id = strengthen_bs
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = { }
+	}
+
+	focus = {
+		id = espionage_network
+		icon = GFX_goal_jiandiewang
+		cost = 5
+		prerequisite = {
+			focus = strengthen_bs
+		}
+		x = 1
+		y = 2
+		relative_position_id = strengthen_bs
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = chi_BS_support_greater_than_20
+				check_variable = {
+					chi_support_blue_shirts > 19
+				}
+			}
+			OR = {
+				has_government = fascism
+				has_government = neutrality
+			}			
+			has_idea = CHI_dai_li
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {	
+			swap_ideas = {
+				add_idea = NBIS_esp
+				remove_idea = NBIS
+			}
+			add_to_variable = {
+				chi_constitutionalization_pressure = -5
+			}
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+
+			custom_effect_tooltip = blank_line
+			custom_effect_tooltip = blank_line
+			custom_effect_tooltip = separate_line_tt
+			custom_effect_tooltip = RCM_25_percent_assassinate_chance
+			effect_tooltip = {
+				country_event = rcmchina.367
+				effect_tooltip = {
+					add_political_power = 15		
+				}				
+			}
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+			#custom_effect_tooltip = blank_line
+			#custom_effect_tooltip = separate_line_tt
+			#add_to_variable = {
+			#	chi_constitutionalization_pressure = -5
+			#}
+			#custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
+		}
+	}
+
+	focus = {
+		id = CHI_axis_help_party_focus
+		icon = GFX_focus_CHI_lanyishe
+		cost = 5
+		prerequisite = {
+			focus = centralizing_power
+		}
+		prerequisite = {
+			focus = found_mbis
+		}
+		mutually_exclusive = {
+			focus = CHI_yi_dang_zhi_guo_focus
+		}
+		x = 0
+		y = 2
+		relative_position_id = found_mbis
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		search_filters = { 
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+
+		completion_reward = {
+			hidden_effect = {
+				set_cosmetic_tag = CHI_BS #change to ROC flag
+			}
+			country_event = { id = rcmchina.375 }
+				add_stability = 0.25
+				add_ideas = chi_defeat_jap111
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				set_rule = {
+					can_send_volunteers = yes
+				}
+		}
+		available = {
+			NOT = {
+				has_global_flag = Three_Principle_Youth_Corps_established
+			}
+			fascism > 0.5
+			custom_trigger_tooltip = {
+				tooltip = chi_BS_support_greater_than_50
+				check_variable = {
+					chi_support_blue_shirts > 49
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_BS_support_greater_than_CC
+				check_variable = {
+					chi_support_blue_shirts > chi_support_CC
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_BS_support_greater_than_constitutionalization_pressure
+				check_variable = {
+					chi_support_blue_shirts > chi_constitutionalization_pressure
+				}
+			}
+			NOT = {
+				ROOT = {
+					has_global_flag = PCA_nationalist_concede
+					has_global_flag = PRC_joined_our_government
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = CHI_time_of_neutrality
+				has_country_flag = one_party_neutrality
+			}
+		}
+		bypass = {
+			has_government = fascism
+		}
+	}
+
+	focus = {
+		id = centralizing_power
+		icon = GFX_goal_dangguo
+		cost = 3.6
+		prerequisite = {
+			focus = strengthen_cc
+		}
+		prerequisite = {
+			focus = strengthen_bs
+		}
+		x = -2
+		y = 1
+		relative_position_id = strengthen_bs
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			if = {
+				limit = {
+					country_exists = JAP
+					NOT = {
+						is_in_faction_with = JAP
+					}
+				}
+				has_war_with = JAP
+			}
+			custom_trigger_tooltip = {
+				tooltip = chi_constitutionalization_pressure_less_than_20
+				check_variable = {
+					chi_constitutionalization_pressure < 20
+				}
+			}
+		}
+
+		bypass = {
+			not_has_fractured_administration = yes
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			country_event = { id = rcmchina.379 }
+			add_country_leader_trait = kmt_zongcai #guo				
+			add_ideas = CHI_extraordinary_national_protocol_idea
+			custom_effect_tooltip = goes_away_when_at_peace_with_JAP_tt
+			#add_political_power = 100
+			custom_effect_tooltip = blank_line
+			set_country_flag = RCM_admin_reforms_decision_flag
+			unlock_decision_tooltip = RCM_admin_reforms_decision
+			custom_effect_tooltip = chi_constitutionalization_pressure_minus_5_tt
 		}
 	}
 
@@ -246,7 +815,7 @@ focus_tree = {
 				OR = {
 					has_government = fascism
 					has_government = communism
-					has_government = n_socialism
+					has_government = socialism
 				}
 			}
 		}
@@ -306,7 +875,7 @@ focus_tree = {
 				OR = {
 					has_government = fascism
 					has_government = communism
-					has_government = n_socialism
+					has_government = socialism
 				}
 			}
 		}
@@ -326,8 +895,8 @@ focus_tree = {
 			unlock_decision_tooltip = CHI_reassure_commitment_to_constitutionalization
 			add_political_power = 50
 			swap_ideas = {
-				add_idea = chiang2
-				remove_idea = chiang1
+				add_idea = CHI_chiang2
+				remove_idea = CHI_chiang1
 			}
 			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
 			set_variable = {
@@ -1771,7 +2340,7 @@ focus = {
 		id = CHI_PEO  
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		cost = 5	
-		x = -17
+		x = -15
 		y = 5
 		relative_position_id = CHI_one_party_tutelage
 		prerequisite = {
@@ -4528,7 +5097,7 @@ focus = {
 	}
 
 	focus = {
-		id = CHI_organization_of_the_special_detachment #别动队编组
+		id = CHI_organization_of_the_special_detachment #交警总队
 		icon = GFX_goal_CHI_JTJCJSH
 		cost = 5
 		x = 1
