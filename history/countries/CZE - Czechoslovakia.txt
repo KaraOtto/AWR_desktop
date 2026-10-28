@@ -1,95 +1,12 @@
 capital = 9
 
-if = {
-	limit = {
-		has_dlc = "Peace For Our Time"
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_dlc = "No Step Back"
-			}
-		}
-		set_oob = "CZE_1936_mun"
-	}
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-		set_oob = "CZE_1936_nsb_mun"
-	}
-}
-
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "Peace For Our Time"
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_dlc = "No Step Back"
-			}
-		}
-		set_oob = "CZE_1936"
-	}
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-		set_oob = "CZE_1936_nsb"
-	}
-}
-
-if = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "CZE_1936_air_bba"
-		set_technology = {
-			aa_lmg = 1
-			engines_1 = 1
-			engines_2 = 1
-			iw_small_airframe = 1
-			iw_medium_airframe = 1
-			early_bombs = 1
-			bba_early_transport_plane = 1
-		}
-	else = {
-		set_air_oob = "CZE_1936_air_legacy"
-		set_technology = {
-			early_fighter = 1
-			early_bomber = 1
-			CAS1 = 1
-			early_transport_plane = 1
-		}
-	}
-}
-
-IF = {
-	limit = { has_dlc = "Man the Guns" }
-		set_technology = {
-			mtg_transport = 1
-			basic_battery = 1
-		}
-	ELSE = {
-		set_technology = {
-			transport = 1
-		}
-	}
-}
+set_oob = "CZE_1936_nsb_mun"
+set_air_oob = "CZE_1936_air_bba"
 
 set_research_slots = 3
 
 ### SETUP STABILITY ###
-if = {
-	limit = {
-		has_dlc = "Peace For Our Time"
-	}
-	set_stability = 0.56 #to account for Taticek idea and Bojnice castle 60+15+5=~70
-	else = {
-		set_stability = 0.80
-	}
-}
+set_stability = 0.56
 
 set_technology = {
 	infantry_weapons = 1
@@ -103,10 +20,22 @@ set_technology = {
 	gw_artillery = 1
 	interwar_antitank = 1
 	interwar_antiair = 1
-
 	fuel_silos = 1
 	basic_train = 1
 	basic_fortification_tech = 1
+	aa_lmg = 1
+	engines_1 = 1
+	engines_2 = 1
+	iw_small_airframe = 1
+	iw_medium_airframe = 1
+	early_bombs = 1
+	bba_early_transport_plane = 1
+	mtg_transport = 1
+	basic_battery = 1
+	gwtank_chassis = 1
+	basic_light_tank_chassis = 1
+	improved_light_tank_chassis = 1
+	armored_car1 = 1
 }
 
 add_breakthrough_progress = {
@@ -122,36 +51,6 @@ add_breakthrough_progress = {
 add_breakthrough_progress = {
 	specialization = specialization_naval
 	value = 0.01
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-		basic_light_tank = 1
-		improved_light_tank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-		basic_light_tank_chassis = 1
-		improved_light_tank_chassis = 1
-	}
-}
-
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
-	set_technology = {
-		armored_car1 = 1
-	}
 }
 
 ### INFANTRY VARIANTS ###
@@ -187,7 +86,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	type = transport_plane_equipment_1
-	design_team = mio:CZE_aero_organization
+	design_team = mio:CZE_letov_organization
 	show_position = no
 	mark_older_equipment_obsolete = yes
 }
@@ -255,7 +154,7 @@ if = {
 	create_equipment_variant = {
 		name = "Letov S-16"
 		type = small_plane_cas_airframe_0
-		design_team = mio:CZE_letov_organization
+		design_team = mio:CZE_aero_organization
 		modules = {
 			fixed_main_weapon_slot = bomb_locks
 			engine_type_slot = engine_1_1x
@@ -462,22 +361,6 @@ recruit_character = CZE_zdenek_fierlinger
 recruit_character = CZE_karel_pavala
 recruit_character = CZE_zdenko_hudecek
 
-#No Pfot only
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "Peace For Our Time"
-		}
-	}
-	recruit_character = CZE_robert_rychtrmoc
-		CZE_robert_rychtrmoc = {	#make sure the other non-aligned options dont take priority due to later position
-		 	promote_character = yes
-		}
-	recruit_character = CZE_ludvik_svoboda
-	recruit_character = CZE_gustav_husak		
-	recruit_character = CZE_karel_kuttelwascher	
-}
-
 if = {
 	limit = {
 		has_dlc = "Peace For Our Time"
@@ -575,31 +458,6 @@ IF = {
 		has_dlc = "La Resistance"
 	}
 	CZE_create_paul_thummel_operative = yes
-}
-
-### SETUP NATIONAL SPIRITS AND DIPLO NO PFOT ###
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "Peace For Our Time"
-		}
-		has_dlc = "Death or Dishonor"
-	}
-	add_ideas = {
-		CZE_skoda_works
-		CZE_divided_nation
-	}
-	give_guarantee = YUG
-	give_guarantee = ROM
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "Death or Dishonor" }
-	}
-	add_ideas = {
-		CZE_fortification_focus
-	}
 }
 
 ### SETUP NATIONAL SPIRITS PFOT ### - WARNING: NEEDS TO GO AFTER CHARACTER RECRUITMENT!
@@ -706,27 +564,6 @@ if = {
 			}
 			add_dynamic_modifier = {
 				modifier = CZE_first_sudetenland_fortification_program_GD
-			}
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-		every_owned_state = {
-			limit = {
-				OR = {
-					state = 9 #Bohemia
-					state = 69 #North Sudetenland
-					state = 972 #South Sudetenland
-					state = 74 #Czeske Slezsko
-					state = 70 #Western Slovakia
-				}
-			}
-			add_dynamic_modifier = {
-				modifier = CZE_first_sudetenland_fortification_program
 			}
 		}
 	}
@@ -981,28 +818,7 @@ if = {
     	cost_factor = 0
 	}
 }
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	create_production_license = { #T-32
-		target = YUG
-		equipment = {
-			type = light_tank_equipment_2
-			version = 1
-		}
-		cost_factor = 0
-	}
-	#Don't need the license in this context
-	# create_production_license = { #AH-IV
-	# 	target = ROM
-	# 	equipment = {
-	# 		type = light_tank_equipment_1
-	# 		version = 1
-	# 	}
-	# 	cost_factor = 0
-	# }
-}
+
 #South America
 PRU = {
 	add_relation_modifier = {
@@ -1280,27 +1096,6 @@ if = {
 			cost_factor = 0
 		}
 	}
-	if = {
-		limit = {
-			NOT = { has_dlc = "No Step Back" }
-		}
-		create_production_license = { #AH-IV
-			target = PER
-			equipment = {
-				type = light_tank_equipment_1
-				version = 1
-			}
-			cost_factor = 0
-		}
-		create_production_license = { #TNHP
-    		target = PER
-    		equipment = {
-        		type = light_tank_equipment_2
-       			version = 1
-   			}
-    		cost_factor = 0
-		}
-	}
 	PER = {
 		add_relation_modifier = {
 			target = ROOT
@@ -1335,113 +1130,3 @@ if = {
 		give_market_access = PER
 	}
 }
-
-### 1939 SETUP ###
-
-1939.1.1 = { #Everything I did before I got eaten
-
-	add_political_power = 1198
-	add_command_power = 100
-
-	set_grand_doctrine = grand_battleplan
-	set_grand_doctrine = new_battlefield_support
-
-	set_technology = {
-		#doctrines
-		# formation_flying = 1
-		# grand_battle_plan = 1
-		# trench_warfare = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		mechanical_computing = 1
-		computing_machine = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		fuel_silos = 1
-		construction1 = 1
-		concentrated_industry = 1
-	}
-
-	complete_special_project = {
-		project = sp:sp_air_radar
-	}
-
-	if = {
-		limit = {
-			has_dlc = "Peace For Our Time"
-		}
-		if = {
-			limit = {
-				has_dynamic_modifier = {
-					modifier = CZE_a_divided_nation_dynamic_modifier
-				}
-			}
-			remove_dynamic_modifier = { modifier = CZE_a_divided_nation_dynamic_modifier }
-		}
-
-		#National Focuses
-		complete_national_focus = CZE_force_the_industrialists_hand
-		complete_national_focus = CZE_continue_armed_force_reform
-		complete_national_focus = CZE_form_the_state_defense_guard
-		complete_national_focus = CZE_the_second_fortification_program	
-		complete_national_focus = CZE_vonapo_20
-		complete_national_focus = CZE_placate_benes_faction
-		complete_national_focus = CZE_no_compromise_with_the_sdp
-		complete_national_focus = CZE_keep_focus_on_weapon_exports
-		complete_national_focus = CZE_establish_a_armament_factory_in_uhersky_brod
-		complete_national_focus = CZE_the_slovak_arrow
-		complete_national_focus = CZE_merge_the_financial_and_state_guard
-		complete_national_focus = CZE_department_two_expansion
-		complete_national_focus = CZE_continue_the_central_bohemia_plan
-		complete_national_focus = CZE_free_tuka
-		complete_national_focus = CZE_air_force_officer_recruitment
-		complete_national_focus = CZE_reorient_the_broad_coalition
-		complete_national_focus = CZE_king_of_the_castle
-		complete_national_focus = CZE_bribery_investigations
-		complete_national_focus = CZE_opl_exercises
-		complete_national_focus = CZE_closer_ties_with_the_moderate_germany_parties
-		complete_national_focus = CZE_national_defense_act
-		complete_national_focus = CZE_contact_henlein
-		complete_national_focus = CZE_car_and_oil_rationing
-		complete_national_focus = CZE_establish_the_fall_backlines
-		complete_national_focus = CZE_deepend_ties_with_the_trademans
-		complete_national_focus = CZE_grow_ckd_secondary_facilities
-		complete_national_focus = CZE_bolster_domestic_construction
-		complete_national_focus = CZE_compromise_with_the_veteran_agrarian
-
-		# ONES THAT HAVE TO BE BYPASSED
-		unlock_national_focus = CZE_mobilize_the_reserves
-		unlock_national_focus = CZE_coalition_building
-		unlock_national_focus = CZE_continue_industrial_relocation_schemes
-		unlock_national_focus = CZE_devaluate_the_koruna
-
-		#Skoda setup
-		unlock_national_focus = CZE_raise_more_industrial_funds
-		CZE_start_skoda_GUI = yes
-		mark_focus_tree_layout_dirty = yes
-		add_dynamic_modifier = { modifier = CZE_skoda_works_dynamic_modifier }
-
-		remove_ideas = {
-			CZE_sudeten_german_quandary
-			CZE_taticek_of_czechoslovakia
-			CZE_industrialists_veto
-			CZE_industrialists_veto_2
-			CZE_agrarian_politics_1
-			CZE_a_divided_nation_fake_ns
-		}
-
-		#Second Republic was a thing
-		CZE_get_rid_of_the_auto_blok = yes
-		CZE_emil_hacha = {
-			add_country_leader_trait = CZE_3rd_prezident
-		}
-		set_cosmetic_tag = CZE_fall_of_the_republic
-	}
-}
-
-
-

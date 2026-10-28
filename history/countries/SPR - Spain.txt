@@ -2,86 +2,11 @@
 
 oob = "SPR_1936"
 
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "SPR_1936_naval_mtg"
-	else = {
-		set_naval_oob = "SPR_1936_naval_legacy"
-	}
-}
-if = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "SPR_1936_air_bba"
-	else = {
-		set_air_oob = "SPR_1936_air_legacy"
-	}
-}
+set_naval_oob = "SPR_1936_naval_mtg"
+set_air_oob = "SPR_1936_air_bba"
 
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "La Resistance"
-		}
-	}
-	recruit_character = SPR_niceto_alcala_zamora
-	recruit_character = SPR_jose_diaz
-	recruit_character = SPR_alejandro_lerroux
-	recruit_character = SPA_francisco_franco
-	recruit_character = SPR_jose_asensio_torrado
-	recruit_character = SPA_ricardo_rada
-	recruit_character = SPR_diego_hidalgo_duran
-	recruit_character = SPA_luis_carrero_blanco
-	recruit_character = SPA_joaquin_garcia_morato
-	recruit_character = SPR_andres_saborit_colomer
-	recruit_character = SPA_miguel_cabanellas
-	recruit_character = SPR_jose_miaja
-	recruit_character = SPA_juan_yague
-	recruit_character = SPA_emilio_esteban_infantes
-	recruit_character = SPA_salvador_moreno_fernandez
-	recruit_character = SPR_vicente_rojo_lluch
-	recruit_character = SPR_miguel_buiza_fernandez_palacios
-	recruit_character = SPA_jose_enrique_varela
-	recruit_character = SPA_fransisco_moreno_fernandez
-	recruit_character = SPR_luis_gonzalez_de_ubieta
-	recruit_character = SPA_emilio_herrera
-	recruit_character = SPR_carlos_masquelet_lacaci
-	recruit_character = SPR_indalecio_prieto_tuero
-	recruit_character = SPA_angel_salas_larrazabal
-	recruit_character = SPA_agustin_munoz_grandes
-	recruit_character = SPR_ignacio_hidalgo_de_cisneros
-	recruit_character = SPR_andres_garcia_la_calle
-	recruit_character = SPA_emilio_mola
-	recruit_character = SPA_alfredo_kindelan_duany
-	recruit_character = SPR_antonio_azarola_y_gresillon
-	recruit_character = SPR_nicolas_molero
-	recruit_character = SPR_dolores_ibarruri
-	recruit_character = SPR_diego_martinez_barrio
-	recruit_character = SPR_augusto_barcia_trelles
-	recruit_character = SPR_francisco_largo_caballero
-	recruit_character = SPA_karl_pius_von_habsburg
-	recruit_character = SPR_manuel_azana
-
-	set_popularities = {
-		democratic = 47
-		fascism = 46
-		communism = 7
-	}
-}
-
-if = {
-	limit = {
-		has_dlc = "Battle for the Bosporus"
-	}
-	set_technology = { camelry = 1 }
-}
-
-IF = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	complete_special_project = {
-		project = sp:sp_air_helicopter
-	}
+complete_special_project = {
+	project = sp:sp_air_helicopter
 }
 
 if = {
@@ -245,6 +170,7 @@ if = {
 	recruit_character = SPA_mauricio_de_sivatte
 	recruit_character = SPA_karl_pius_von_habsburg
 	recruit_character = SPR_manuel_azana
+	recruit_character = SPR_anarchist_commune # Recruited last so that the existing neutrality party leader is not displaced
 	165 = {
 		add_dynamic_modifier = { modifier = autonomous_state }
 	}
@@ -276,54 +202,22 @@ set_technology = {
 	gw_artillery = 1
 	interwar_antiair = 1
 	basic_train = 1
-}
-if = {
-	limit = {
-		NOT = { has_dlc = "By Blood Alone" }
-	}
-	set_technology = {
-		early_fighter = 1
-		early_bomber = 1
-		naval_bomber1 = 1
-		early_transport_plane = 1
-	}
-	else = {
-		set_technology = {
-			bba_early_transport_plane = 1
-		}
-	}
-}
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_submarine = 1
-		early_destroyer = 1
-		basic_destroyer = 1
-		early_light_cruiser = 1
-		early_heavy_cruiser = 1
-		basic_heavy_cruiser = 1
-		early_battleship = 1
-		transport = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_cruiser = 1
-		basic_ship_hull_cruiser = 1
-		early_ship_hull_heavy = 1
-		basic_battery = 1
-		#basic_medium_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		mtg_transport = 1
-	}
+	bba_early_transport_plane = 1
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_submarine = 1
+	basic_ship_hull_submarine = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_cruiser = 1
+	early_ship_hull_heavy = 1
+	basic_battery = 1
+	#basic_medium_battery = 1
+	basic_torpedo = 1
+	basic_depth_charges = 1
+	mtg_transport = 1
+	camelry = 1
 }
 
 set_politics = {
@@ -336,233 +230,8 @@ set_politics = {
 set_convoys = 150
 set_stability = 0.5
 
-1939.1.1 = {
-
-	add_political_power = 1198
-	add_command_power = 100
-	
-	if = {
-		limit = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		#generic focuses
-		complete_national_focus = army_effort
-		complete_national_focus = equipment_effort
-		complete_national_focus = motorization_effort
-		complete_national_focus = aviation_effort
-		complete_national_focus = naval_effort
-		complete_national_focus = large_navy
-		complete_national_focus = industrial_effort
-		complete_national_focus = construction_effort
-		complete_national_focus = production_effort
-
-		set_politics = {
-			ruling_party = fascism
-			last_election = "1934.3.26"
-			election_frequency = 60
-			elections_allowed = no
-		}
-		set_popularities = {
-			democratic = 22
-			fascism = 76
-			communism = 2
-		}
-	}
-
-	if = {
-		limit = {
-			has_dlc = "La Resistance"
-		}
-		add_manpower = -250000
-		remove_ideas = {
-			SPR_military_disloyalty
-			SPR_political_violence
-			SPR_national_strikes_3
-		}
-		set_country_flag = SPR_nationalist_spain_flag
-		set_cosmetic_tag = SPR_nationalist_spain
-		unlock_national_focus = SPA_a_great_spain
-		unlock_national_focus = SPA_hand_over_the_ceda_campaign_chest
-		unlock_national_focus = SPA_negotiate_carlist_support
-		unlock_national_focus = SPA_the_army_of_africa
-		unlock_national_focus = SPA_secure_the_northern_garrisons
-		complete_national_focus = SPA_con_paquito
-		unlock_national_focus = SPA_unify_the_nationalist_front
-		unlock_national_focus = SPA_save_the_alcazar
-		unlock_national_focus = SPA_martyrdom_for_primo_de_rivera
-		complete_national_focus = SPA_caudillo_of_spain
-		unlock_national_focus = SPA_consolidate_the_north
-		complete_national_focus = SPA_foment_a_carlist_split
-		unlock_national_focus = SPA_a_methodical_approach
-		unlock_national_focus = SPA_tackle_the_vulnerable_fronts
-		unlock_national_focus = SPA_portuguese_aid
-		complete_national_focus = SPA_extol_the_martyrs_of_the_war
-		complete_national_focus = SPA_banish_the_party_leaders
-		complete_national_focus = SPA_expand_conscription
-		complete_national_focus = SPA_safeguard_the_freedom_of_worship
-		complete_national_focus = SPA_fuse_the_parties
-		complete_national_focus = SPA_integrate_the_requetes
-		complete_national_focus = SPA_utilize_the_intellectuals
-		every_unit_leader = {
-			limit = {
-				NOT = { has_trait = trait_SPA_nationalist_sympathies }
-			}
-			retire = yes
-		}
-		every_unit_leader = {
-			limit = {
-				has_trait = trait_SPA_nationalist_sympathies
-			}
-			remove_unit_leader_trait = trait_SPA_nationalist_sympathies
-		}
-		set_politics = {
-			ruling_party = neutrality
-			last_election = "1934.3.26"
-			election_frequency = 60
-			elections_allowed = no
-		}
-		set_popularities = {
-			democratic = 17
-			neutrality = 38
-			fascism = 45
-		}
-	}
-	
-	oob = "SPA_1939"
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-			set_naval_oob = "SPA_1939_naval_mtg"
-		else = {
-			set_naval_oob = "SPA_1939_naval_legacy"
-		}
-	}
-	if = {
-		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "SPA_1939_air_bba"
-		else = {
-			set_air_oob = "SPA_1939_air_legacy"
-			set_technology = {
-				fighter1 = 1
-				CAS1 = 1
-				tactical_bomber1 = 1
-			}
-		}
-	}
-	load_oob = "unlock_tanks"
-	
-	set_technology = {
-		interwar_artillery = 1
-		interwar_antitank = 1
-		motorised_infantry = 1
-		infantry_weapons2 = 1
-		support_weapons = 1
-		support_weapons2 = 1
-
-		#doctrines
-		#air_superiority = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		mechanical_computing = 1
-		computing_machine = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		synth_oil_experiments = 1
-		fuel_silos = 1
-		oil_processing = 1
-		improved_oil_processing = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-		dispersed_industry3 = 1
-	}
-
-set_grand_doctrine = grand_battleplan
-set_grand_doctrine = new_fleet_in_being
-set_grand_doctrine = new_strategic_destruction
-
-	complete_special_project = {
-		project = sp:sp_air_radar
-	}
-	if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-		basic_light_tank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-		basic_light_tank_chassis = 1
-	}
-}
-	if = {
-		limit = { not = { has_dlc = "Man the Guns" } }
-		set_technology = {
-		}
-	}
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-		set_technology = {
-			basic_light_battery = 1
-		}
-	}
-
-	set_global_flag = spanish_civil_war
-	set_global_flag = scw_over
-	add_timed_idea = { idea = SPA_recovering_from_civil_war days = 1095 }
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "La Resistance" }
-	}
-}
-
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
-}
-
 ### VARIANTS ###
 # 1936 Start #
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	### Ship Variants ###
-	create_equipment_variant = {
-		name = "C Class"
-		type = submarine_1
-		upgrades = {
-			ship_reliability_upgrade = 1
-			sub_engine_upgrade = 1
-			sub_stealth_upgrade = 1
-			sub_torpedo_upgrade = 1
-		}
-	}
-	create_equipment_variant = {
-		name = "Príncipe Alfonso Class"
-		type = light_cruiser_1
-		upgrades = {
-			ship_reliability_upgrade = 1
-			ship_engine_upgrade = 1
-			ship_gun_upgrade = 1
-			ship_anti_air_upgrade = 1
-		}
-	}
-}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	# Submarines #
@@ -729,81 +398,6 @@ if = {
 			mid_1_custom_slot = ship_secondaries_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
-		}
-	}
-}
-
-# 1939 Start #
-1939.1.1 = {
-	if = {
-		limit = { not = { has_dlc = "Man the Guns" } }
-		# Ship variants #
-	}
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-		# Submarines #
-		create_equipment_variant = {
-			name = "General Mola Class"							# purchased from Italy
-			type = ship_hull_submarine_2
-			name_group = SPR_SS_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_torpedo_slot = ship_torpedo_sub_1
-				fixed_ship_engine_slot = sub_ship_engine_2
-				rear_1_custom_slot = ship_torpedo_sub_1
-			}
-			obsolete = yes
-		}
-		# Destroyers #
-		create_equipment_variant = {
-			name = "Melilla Class"								# purchased from Italy				
-			type = ship_hull_light_1
-			name_group = SPR_DD_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_1
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				mid_1_custom_slot = ship_mine_layer_1
-				rear_1_custom_slot = empty
-			}
-			obsolete = yes
-		}
-		create_equipment_variant = {
-			name = "Melilla Class" 			# purchased from Italy
-			type = ship_hull_light_1
-			name_group = SPR_DD_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_1
-				fixed_ship_anti_air_slot = empty
-				fixed_ship_fire_control_system_slot = empty
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				mid_1_custom_slot = ship_mine_layer_1
-				rear_1_custom_slot = ship_depth_charge_1
-			}
-			obsolete = yes
-		}
-		create_equipment_variant = {
-			name = "Eolo Class"									# minelayer
-			type = ship_hull_light_2
-			name_group = SPR_DD_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = empty
-				mid_1_custom_slot = ship_mine_layer_1
-				rear_1_custom_slot = ship_depth_charge_1
-			}
 		}
 	}
 }

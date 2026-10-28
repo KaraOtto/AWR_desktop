@@ -2,7 +2,6 @@
 
 set_oob = "COG_1936"
 
-# Starting tech
 set_technology = {
 	infantry_weapons = 1
 	tech_support = 1
@@ -14,27 +13,26 @@ set_technology = {
 	tech_engineers = 1
 }
 
-### Set Base Values ###
 set_war_support = 0.4 
 set_stability = 0.35
 
-### 1936 Modifiers Setup ###
 IF = {
 	limit = {
 		has_dlc = "Gotterdammerung"
 	}
 
-	# Set Flags
 	set_cosmetic_tag = COG_belgian_congo # The Belgian Congo
 	set_global_flag = COG_no_jft_done  # No focuses have yet to be completed in the JFT
 
-	### Set National Spirits ###
 	add_ideas = {
 		COG_the_invisible_roof
 		COG_vast_decentralized_state_idea
+
+		BEL_albert_de_vleeschauwer
+
+		COG_force_publique_fake_idea
 	}
 
-	### Set dynamic modifiers ###
 	add_dynamic_modifier = {
 		modifier = COG_force_publique
 	}
@@ -154,9 +152,6 @@ IF = {
 	recruit_character = COG_eugene_jungers
 	recruit_character = COG_auguste_tilkens
 	recruit_character = BEL_albert_de_vleeschauwer
-
-	# Adding the Belgian Minister of Colonies as a locked advisor
-	add_ideas = BEL_albert_de_vleeschauwer
 }
 
 # Setup 1936 politics 
@@ -170,132 +165,3 @@ set_popularities = {
 	neutrality = 80
 	democratic = 20
 }
-
-### The 1939 Scenario ###
-1939.1.1 = {
-	
-	## Without the DLC (They won't exist but for if they are released) ###
-	IF = {
-		limit = {
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-		#generic focuses
-		complete_national_focus = army_effort
-		complete_national_focus = equipment_effort
-		complete_national_focus = motorization_effort
-		complete_national_focus = aviation_effort
-		complete_national_focus = naval_effort
-		complete_national_focus = flexible_navy
-		complete_national_focus = industrial_effort
-		complete_national_focus = construction_effort
-		complete_national_focus = production_effort
-	}
-	IF = { ## With the DLC ##
-		limit = {
-			has_dlc = "Gotterdammerung"
-		}
-
-		set_oob = "COG_1939"
-
-		# Ideology and Politics 
-		set_politics = {
-			ruling_party = neutrality
-			last_election = "1936.1.1"
-			election_frequency = 48
-			elections_allowed = no
-		}
-		set_popularities = {
-			neutrality = 70
-			democratic = 25
-			fascism = 0
-			communism = 5
-		}
-
-		add_political_power = 600
-		add_command_power = 50
-
-		# ONES THAT CAN JUST BE COMPLETED NORMALLY
-		complete_national_focus = COG_governor_general_pierre_ryckmans
-		complete_national_focus = CONGO_belgian_congo
-		complete_national_focus = CONGO_rawji_group
-		complete_national_focus = CONGO_the_heart_of_africa
-		complete_national_focus = COG_invest_in_urban_centers
-		complete_national_focus = COG_strengthen_the_banque_du_congo_belge
-		complete_national_focus = COG_cooperate_with_the_comite_special_du_katanga
-		complete_national_focus = COG_establish_new_sabena_air_routes
-		complete_national_focus = COG_closer_cooperation_with_eugene_jungers
-		complete_national_focus = COG_uplift_the_apostolic_vicar_of_leopoldville
-		complete_national_focus = COG_contract_the_empain_group
-		complete_national_focus = COG_promote_marcel_maquet_to_provincial_commisioner
-		complete_national_focus = CONGO_congo_army
-		complete_national_focus = CONGO_belgian_officer_corps
-		complete_national_focus = CONGO_ccci 
-		complete_national_focus = CONGO_regional_specialization
-		complete_national_focus = COG_improve_colonial_lawmaking
-		complete_national_focus = CONGO_bakwanga_mine
-		complete_national_focus = CONGO_societe_miniere_de_bakwanga
-
-		# ONES THAT HAVE TO BE HANDELED MANUALLY
-		unlock_national_focus = COG_allow_local_autonomy
-		unlock_national_focus = CONGO_jungle_industry
-
-		add_stability = 0.05
-		every_owned_state = {
-			limit = {
-				is_core_of = ROOT
-				is_controlled_by = ROOT
-			}
-			add_extra_state_shared_building_slots = 1
-		}
-
-		# Hires Eugene Jungers by default
-		add_ideas = COG_eugene_jungers
-
-	}
-	
-	# Technically won't matter if you have the DLC or not for this
-	set_technology = {
-
-		#weaponry and army
-		infantry_weapons1 = 1
-		support_weapons = 1
-		motorised_infantry = 1
-		tech_recon = 1
-		tech_logistics_company = 1
-		tech_field_hospital = 1
-		antitank1 = 1
-		interwar_artillery = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		mechanical_computing = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_silos = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-		excavation1 = 1
-	}
-
-set_grand_doctrine = grand_battleplan
-
-	complete_special_project = {
-		project = sp:sp_air_radar
-	}
-}
-
-
-
-
-
-
-
-

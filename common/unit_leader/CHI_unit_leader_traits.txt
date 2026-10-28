@@ -185,7 +185,7 @@ leader_traits = {
 	}
 
 	NRA_General_1stRank = {
-		type = corps_commander
+		type = all
 		trait_type = assignable_trait
 		gain_xp = {
 			always = no # not gainable
@@ -217,7 +217,12 @@ leader_traits = {
 		}
 
 		on_add = {
-			remove_unit_leader_trait = NRA_General_2ndRank
+			if = {
+				limit = {
+					has_trait = NRA_General_2ndRank
+				}
+				remove_unit_leader_trait = NRA_General_2ndRank
+			}
 			if = {
 				limit = { NOT = { has_trait = recently_promoted } }
 				add_timed_unit_leader_trait = {
@@ -236,7 +241,7 @@ leader_traits = {
 	}
 
 	NRA_General_2ndRank = {
-		type = field_marshal
+		type = all
 		trait_type = assignable_trait
 		gain_xp = {
 			always = no # not gainable
@@ -273,7 +278,12 @@ leader_traits = {
 		}
 		
 		on_add = {
-			remove_unit_leader_trait = NRA_Lieut_General
+			if = {
+				limit = {
+					has_trait = NRA_Lieut_General
+				}
+				remove_unit_leader_trait = NRA_Lieut_General
+			}
 			if = {
 				limit = { NOT = { has_trait = recently_promoted } }
 				add_timed_unit_leader_trait = {
@@ -292,7 +302,7 @@ leader_traits = {
 	}
 
 	NRA_Lieut_General = {
-        type = corps_commander
+        type = all
         trait_type = assignable_trait
         gain_xp = {
             always = no
@@ -326,7 +336,12 @@ leader_traits = {
         }
 
 		on_add = {
-			remove_unit_leader_trait = NRA_Major_General
+			if = {
+				limit = {
+					has_trait = NRA_Major_General
+				}
+				remove_unit_leader_trait = NRA_Major_General
+			}
 			if = {
 				limit = { NOT = { has_trait = recently_promoted } }
 				add_timed_unit_leader_trait = {
@@ -341,7 +356,7 @@ leader_traits = {
     }
 
 	NRA_Major_General = {
-        type = corps_commander
+        type = all
         trait_type = assignable_trait
         gain_xp = {
             always = no
