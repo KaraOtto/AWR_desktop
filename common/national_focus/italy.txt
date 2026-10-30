@@ -15994,6 +15994,7 @@ focus_tree = {
 			custom_trigger_tooltip = {
 			 tooltip = ITA_claims_on_france_tt
 				any_country_with_original_tag = {
+					exists = yes
 					original_tag_to_check = FRA
 					has_government = fascism
 					owns_state = 735
@@ -16020,6 +16021,7 @@ focus_tree = {
 			if = {
 				limit = { 
 					any_country_with_original_tag = {
+						exists = yes
 						original_tag_to_check = FRA
 						has_government = fascism
 						owns_state = 1
@@ -16677,8 +16679,9 @@ focus_tree = {
 			else = {
 				has_global_flag = spanish_civil_war
 				NOT = {
-					any_country = {
-						original_tag = SPR
+					any_country_with_original_tag = {
+						exists = yes
+						original_tag_to_check = SPR
 						OR = {
 							has_government = fascism
 							has_civil_war = yes
@@ -16694,6 +16697,7 @@ focus_tree = {
 					NOT = { has_dlc = "La Resistance" }
 				}
 				any_country_with_original_tag = {
+					exists = yes
 					original_tag_to_check = SPR
 					has_government = fascism
 					has_volunteers_amount_from = {
@@ -16800,6 +16804,7 @@ focus_tree = {
 					has_dlc = "La Resistance"
 				}
 				any_other_country_with_original_tag_of = {
+					exists = yes
 					target = {SPR }
 					OR = {
 						tag = SPA
@@ -16810,6 +16815,7 @@ focus_tree = {
 			}
 			else = {
 				any_country_with_original_tag = {
+					exists = yes
 					original_tag_to_check = SPR
 					OR = {
 						has_government = fascism
@@ -16827,6 +16833,7 @@ focus_tree = {
 					has_dlc = "La Resistance"
 				}
 				any_country_with_original_tag = {
+					exists = yes
 					original_tag_to_check = SPR # Add other triggers as needed
 					OR = {
 						tag = SPA
@@ -16839,6 +16846,7 @@ focus_tree = {
 			}
 			else = {
 				any_country_with_original_tag = {
+					exists = yes
 					original_tag_to_check = SPR
 					OR = {
 						has_government = fascism
@@ -16888,8 +16896,9 @@ focus_tree = {
 				limit = {
 					NOT = { has_dlc = "La Resistance" }
 				}
-				any_other_country = {
-					original_tag = SPR
+				any_country_with_original_tag = {
+					exists = yes
+					original_tag_to_check = SPR
 					has_government = fascism
 					has_war = no
 					owns_state = 177
@@ -17064,6 +17073,7 @@ focus_tree = {
 				if = {
 					limit = {
 						any_country_with_original_tag = {
+							exists = yes
 							original_tag_to_check = ITA
 							has_war_with = ROOT
 							any_enemy_country = {
@@ -19180,6 +19190,7 @@ focus_tree = {
 			}
 			else = {
 				any_other_country_with_original_tag_of = {
+					exists = yes
 					target = {SPR}
 					has_civil_war = yes
 					NOT = { has_war_with = ROOT }
@@ -20966,6 +20977,7 @@ focus_tree = {
 			}
 			else = {
 				any_other_country_with_original_tag_of = {
+					exists = yes
 					target = {SPR}
 					has_civil_war = yes
 					NOT = { has_war_with = ROOT }
@@ -21454,7 +21466,8 @@ focus_tree = {
 		available = {
 			is_in_faction = no
 			is_subject = no
-			any_other_country_with_original_tag_of = {
+			any_other_country_of = {
+				exists = yes
 				target = {FRA ENG}
 
 				NOT = { has_government = fascism }
@@ -21469,7 +21482,8 @@ focus_tree = {
 					}
 				}
 			}
-			any_other_country_with_original_tag_of = {
+			any_other_country_of = {
+				exists = yes
 				target = {FRA ENG}
 				
 				has_opinion	= {

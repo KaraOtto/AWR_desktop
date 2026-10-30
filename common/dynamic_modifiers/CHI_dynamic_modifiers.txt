@@ -10,78 +10,75 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	enable = { tag = CHI }
 	remove_trigger = { always = no }
 
-	conscription = CHI_nra_army_conscription #适役人口
-	conscription_factor = CHI_nra_army_conscription_factor #适役人口
-	experience_gain_army_factor = CHI_nra_army_experience_gain_army_factor #陆军经验百分比
-	land_doctrine_cost_factor = CHI_nra_army_land_doctrine_cost_factor #陆军学说花费
-	training_time_factor = CHI_nra_army_training_time_factor #训练时间
+	#适役人口
+	conscription = CHI_nra_army_conscription
+	conscription_factor = CHI_nra_army_conscription_factor
+	mobilization_speed = CHI_nra_army_mobilization_speed #动员速度
+
 	attrition = CHI_nra_army_attrition #陆军损耗
-	experience_gain_army_unit_factor = CHI_nra_army_experience_gain_army_unit_factor #陆军单位经验百分比
-	army_org_factor =  CHI_nra_army_army_org_factor
-	army_morale_factor =  CHI_nra_army_army_morale_factor
 	land_reinforce_rate = CHI_nra_army_land_reinforce_rate #增援率
 	land_night_attack = CHI_nra_army_land_night_attack #夜战攻击
-	army_attack_factor = CHI_nra_army_army_attack_factor #陆军攻击
-	army_defence_factor = CHI_nra_army_army_defence_factor #陆军防御
-	breakthrough_factor = CHI_nra_army_breakthrough_factor #陆军突破
-	army_speed_factor = CHI_nra_army_army_speed_factor #陆军速度
+	INITIATIVE_FACTOR = CHI_nra_army_INITIATIVE_FACTOR #主动性
+	coordination_bonus = CHI_nra_army_coordination_bonus #协同性
 	
-	INITIATIVE_FACTOR = CHI_nra_army_INITIATIVE_FACTOR
-	coordination_bonus = CHI_nra_army_coordination_bonus
-	
-	max_dig_in = CHI_nra_army_max_dig_in #最大堑壕
-	out_of_supply_factor = CHI_nra_army_out_of_supply_factor #补给耗尽惩罚
-	org_loss_when_moving = CHI_nra_army_org_loss_when_moving #移动组织度损失
 	terrain_penalty_reduction = CHI_nra_army_terrain_penalty_reduction #地形惩罚
 	combat_width_factor = CHI_nra_army_combat_width_factor #军队宽度
 	cas_damage_reduction = CHI_nra_army_cas_damage_reduction #近空支援造成伤害降低
 	experience_loss_factor = CHI_nra_army_experience_loss_factor #有经验的士兵的损失
-	supply_consumption_factor = CHI_nra_army_supply_consumption_factor #补给消耗
-	mobilization_speed = CHI_nra_army_mobilization_speed
-	war_stability_factor = CHI_nra_army_war_stability_factor
+	war_stability_factor = CHI_nra_army_war_stability_factor #战争对稳定度惩罚修正
 	
 	#全体陆军
-	org_loss_at_low_org_factor = CHI_nra_army_org_loss_at_low_org_factor
 	army_attack_factor = CHI_nra_army_army_attack_against_major_factor
 	army_defence_factor = CHI_nra_army_army_defence_against_major_factor
 	breakthrough_factor = CHI_nra_army_army_breakthrough_against_major_factor
-	army_org = CHI_nra_army_army_org #组织度
+	army_speed_factor = CHI_nra_army_army_speed_factor #陆军速度
+
+	#组织度
+	army_morale_factor =  CHI_nra_army_army_morale_factor
+	army_org = CHI_nra_army_army_org
+	army_org_factor =  CHI_nra_army_army_org_factor
+	org_loss_when_moving = CHI_nra_army_org_loss_when_moving #移动组织度损失
+	org_loss_at_low_org_factor = CHI_nra_army_org_loss_at_low_org_factor #组织度低于25%时的损失
+
 	#堑壕值
 	dig_in_speed_factor =  CHI_nra_army_dig_in_speed_factor
+	max_dig_in = CHI_nra_army_max_dig_in #最大堑壕
 	max_dig_in_factor =  CHI_nra_army_max_dig_in_factor
 	
-	
-	
-	#登陆速度
-	invasion_preparation = CHI_nra_army_invasion_preparation
-	#登陆准备时间
-	naval_invasion_penalty =  CHI_nra_army_naval_invasion_penalty
-	#入侵惩罚
-	amphibious_invasion =  CHI_nra_army_amphibious_invasion
-	
+	#登陆
+	invasion_preparation = CHI_nra_army_invasion_preparation #登陆速度
+	naval_invasion_penalty =  CHI_nra_army_naval_invasion_penalty #登陆准备时间
+	amphibious_invasion =  CHI_nra_army_amphibious_invasion #入侵惩罚
 	
 	#计划
 	max_planning =  CHI_nra_army_max_planning
 	planning_speed =  CHI_nra_army_planning_speed
+
+	#补给
+	SUPPLY_FACTOR =  CHI_nra_army_SUPPLY_FACTOR
+	SUPPLY_NODE_RANGE =  CHI_nra_army_SUPPLY_NODE_RANGE
+	supply_consumption_factor = CHI_nra_army_supply_consumption_factor #补给消耗
+	out_of_supply_factor = CHI_nra_army_out_of_supply_factor #补给耗尽惩罚
+	TRUCK_ATTRITION_FACTOR =  CHI_nra_army_TRUCK_ATTRITION_FACTOR
 	
 	#经验乘数
 	experience_gain_army =  CHI_nra_army_experience_gain_army
+	experience_gain_army_factor = CHI_nra_army_experience_gain_army_factor #陆军经验百分比
+	experience_gain_factor =  CHI_nra_army_experience_gain_factor #将领经验获取
+	experience_gain_army_unit_factor = CHI_nra_army_experience_gain_army_unit_factor #陆军单位经验百分比
 	
-	#学说精通度
+	#学说
+	land_doctrine_cost_factor = CHI_nra_army_land_doctrine_cost_factor #陆军学说花费
 	grand_battleplan_mastery_gain_factor = CHI_nra_army_grand_battleplan_mastery_gain_factor	#决战
 	mass_assault_mastery_gain_factor = CHI_nra_army_mass_assault_mastery_gain_factor	#人海
 	superior_firepower_mastery_gain_factor = CHI_nra_army_superior_firepower_mastery_gain_factor	#优火
 	new_mobile_warfare_mastery_gain_factor = CHI_nra_army_new_mobile_warfare_mastery_gain_factor	#机动
 
-
-	#将领经验获取
-	experience_gain_factor =  CHI_nra_army_experience_gain_factor
-	#战斗中获取的步兵经验
-	experience_gain_infantry_combat_factor =  CHI_nra_army_experience_gain_infantry_combat_factor
-
-	#步兵修正
+	#步兵
 	army_infantry_attack_factor =  CHI_nra_army_army_infantry_attack_factor
 	army_infantry_defence_factor =  CHI_nra_army_army_infantry_defence_factor
+	experience_gain_infantry_combat_factor =  CHI_nra_army_experience_gain_infantry_combat_factor #战斗中获取的步兵经验
+	modifier_unit_infantry_design_cost_factor =  CHI_nra_army_unit_infantry_design_cost_factor #步兵编制花费
 	
 	#骑兵
 	cavalry_attack_factor =  CHI_nra_army_cavalry_attack_factor
@@ -91,27 +88,32 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	army_armor_attack_factor = CHI_nra_army_army_armor_attack_factor #装甲攻击
 	ARMY_ARMOR_DEFENCE_FACTOR = CHI_nra_army_ARMY_ARMOR_DEFENCE_FACTOR #装甲防御
 	ARMY_ARMOR_SPEED_FACTOR = CHI_nra_army_ARMY_ARMOR_SPEED_FACTOR #装甲速度
-
-	unit_medium_armor_design_cost_factor =  CHI_nra_army_unit_medium_armor_design_cost_factor	#中坦设计花费
-	unit_modern_armor_design_cost_factor =  CHI_nra_army_unit_modern_armor_design_cost_factor	#现代坦克设计花费
+	modifier_unit_medium_armor_design_cost_factor =  CHI_nra_army_unit_medium_armor_design_cost_factor	#中坦设计花费
+	modifier_unit_modern_armor_design_cost_factor =  CHI_nra_army_unit_modern_armor_design_cost_factor	#现代坦克设计花费
 	
 	#摩托化
 	motorized_attack_factor =  CHI_nra_army_motorized_attack_factor
 	motorized_defence_factor =  CHI_nra_army_motorized_defence_factor
-	SUPPLY_FACTOR =  CHI_nra_army_SUPPLY_FACTOR
-	SUPPLY_NODE_RANGE =  CHI_nra_army_SUPPLY_NODE_RANGE
-	TRUCK_ATTRITION_FACTOR =  CHI_nra_army_TRUCK_ATTRITION_FACTOR
+	modifier_unit_motorized_design_cost_factor = CHI_nra_army_unit_motorized_design_cost_factor #摩托化编制花费
+
 	#机械化
 	mechanized_attack_factor =  CHI_nra_army_mechanized_attack_factor
 	mechanized_defence_factor =  CHI_nra_army_mechanized_defence_factor
+	modifier_unit_mechanized_design_cost_factor = CHI_nra_army_unit_mechanized_design_cost_factor #机械化编制花费
+
 	#炮兵
 	army_artillery_attack_factor = CHI_nra_army_army_artillery_attack_factor #炮兵攻击
 	army_artillery_defence_factor =  CHI_nra_army_army_artillery_defence_factor	#炮兵防御
+	#炮兵编制花费
+	unit_artillery_brigade_design_cost_factor = CHI_nra_army_unit_artillery_brigade_design_cost_factor
+	unit_mot_artillery_brigade_design_cost_factor = CHI_nra_army_unit_mot_artillery_brigade_design_cost_factor
+	unit_rocket_artillery_brigade_design_cost_factor = CHI_nra_army_unit_rocket_artillery_brigade_design_cost_factor
 	
 	#指挥点数
 	command_power_gain =  CHI_nra_army_command_power_gain
 	command_power_gain_mult =  CHI_nra_army_command_power_gain_mult
 	max_command_power =  CHI_nra_army_max_command_power
+
 	#特种部队
 	special_forces_cap =  CHI_nra_army_special_forces_cap
 	modifier_army_sub_unit_category_special_forces_max_org_factor = CHI_nra_army_modifier_army_sub_unit_category_special_forces_max_org_factor	#组织度
@@ -120,6 +122,7 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	SPECIAL_FORCES_DEFENCE_FACTOR = CHI_nra_army_SPECIAL_FORCES_DEFENCE_FACTOR
 	SPECIAL_FORCES_NO_SUPPLY_GRACE = CHI_nra_army_SPECIAL_FORCES_NO_SUPPLY_GRACE
 	SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR = CHI_nra_army_SPECIAL_FORCES_OUT_OF_SUPPLY_FACTOR
+
 	#宪兵队
 	modifier_army_sub_unit_military_police_attack_factor  =  CHI_nra_army_modifier_army_sub_unit_military_police_attack_factor
 	modifier_army_sub_unit_military_police_defence_factor =  CHI_nra_army_modifier_army_sub_unit_military_police_defence_factor
@@ -138,11 +141,12 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	modifier_army_sub_unit_mountaineers_speed_factor = CHI_nra_army_modifier_army_sub_unit_mountaineers_speed_factor
 	modifier_army_sub_unit_mountaineers_max_org_factor = CHI_nra_army_modifier_army_sub_unit_mountaineers_max_org_factor
 	
-
 	#非正规兵
 	modifier_army_sub_unit_irregular_infantry_attack_factor = CHI_nra_army_modifier_army_sub_unit_irregular_infantry_attack_factor
 	modifier_army_sub_unit_irregular_infantry_defence_factor = CHI_nra_army_modifier_army_sub_unit_irregular_infantry_defence_factor
 	modifier_army_sub_unit_irregular_infantry_max_org_factor = CHI_nra_army_modifier_army_sub_unit_irregular_infantry_max_org_factor
+
+	#民兵
 	modifier_army_sub_unit_militia_attack_factor = CHI_nra_army_modifier_army_sub_unit_militia_attack_factor
 	modifier_army_sub_unit_militia_defence_factor = CHI_nra_army_modifier_army_sub_unit_militia_defence_factor
 	modifier_army_sub_unit_militia_max_org_factor = CHI_nra_army_modifier_army_sub_unit_militia_max_org_factor
@@ -154,23 +158,6 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	#侦察
 	recon_factor = CHI_nra_army_recon_factor
 	recon_factor_while_entrenched = CHI_nra_army_recon_factor_while_entrenched
-
-	#步兵编制花费
-	unit_infantry_design_cost_factor =  CHI_nra_army_unit_infantry_design_cost_factor
-	#炮兵编制花费
-	unit_artillery_brigade_design_cost_factor = CHI_nra_army_unit_artillery_brigade_design_cost_factor
-	unit_mot_artillery_brigade_design_cost_factor = CHI_nra_army_unit_mot_artillery_brigade_design_cost_factor
-	unit_rocket_artillery_brigade_design_cost_factor = CHI_nra_army_unit_rocket_artillery_brigade_design_cost_factor
-	#非正规军编制花费
-	unit_irregular_infantry_design_cost_factor = CHI_nra_army_unit_irregular_infantry_design_cost_factor
-	#民兵编制花费
-	unit_militia_design_cost_factor = CHI_nra_army_unit_militia_design_cost_factor
-
-	#摩托化编制花费
-	unit_motorized_design_cost_factor = CHI_nra_army_unit_motorized_design_cost_factor
-
-	#机械化编制花费
-	unit_mechanized_design_cost_factor = CHI_nra_army_unit_mechanized_design_cost_factor
 	
 	#空袭减免
 	enemy_army_bonus_air_superiority_factor = CHI_nra_army_enemy_army_bonus_air_superiority_factor

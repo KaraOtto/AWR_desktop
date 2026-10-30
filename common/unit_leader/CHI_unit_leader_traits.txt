@@ -185,7 +185,7 @@ leader_traits = {
 	}
 
 	NRA_General_1stRank = {
-		type = all
+		type = corps_commander
 		trait_type = assignable_trait
 		gain_xp = {
 			always = no # not gainable
@@ -217,6 +217,7 @@ leader_traits = {
 		}
 
 		on_add = {
+			add_max_trait = 1
 			if = {
 				limit = {
 					has_trait = NRA_General_2ndRank
@@ -224,7 +225,9 @@ leader_traits = {
 				remove_unit_leader_trait = NRA_General_2ndRank
 			}
 			if = {
-				limit = { NOT = { has_trait = recently_promoted } }
+				limit = { 
+					NOT = { has_trait = recently_promoted }
+				}
 				add_timed_unit_leader_trait = {
 					trait = recently_promoted
 					days = 100
@@ -241,7 +244,7 @@ leader_traits = {
 	}
 
 	NRA_General_2ndRank = {
-		type = all
+		type = corps_commander
 		trait_type = assignable_trait
 		gain_xp = {
 			always = no # not gainable
@@ -278,6 +281,7 @@ leader_traits = {
 		}
 		
 		on_add = {
+			add_max_trait = 1
 			if = {
 				limit = {
 					has_trait = NRA_Lieut_General
@@ -285,7 +289,9 @@ leader_traits = {
 				remove_unit_leader_trait = NRA_Lieut_General
 			}
 			if = {
-				limit = { NOT = { has_trait = recently_promoted } }
+				limit = { 
+					NOT = { has_trait = recently_promoted }
+				}
 				add_timed_unit_leader_trait = {
 					trait = recently_promoted
 					days = 100
@@ -302,7 +308,7 @@ leader_traits = {
 	}
 
 	NRA_Lieut_General = {
-        type = all
+        type = corps_commander
         trait_type = assignable_trait
         gain_xp = {
             always = no
@@ -336,6 +342,7 @@ leader_traits = {
         }
 
 		on_add = {
+			add_max_trait = 1
 			if = {
 				limit = {
 					has_trait = NRA_Major_General
@@ -343,7 +350,9 @@ leader_traits = {
 				remove_unit_leader_trait = NRA_Major_General
 			}
 			if = {
-				limit = { NOT = { has_trait = recently_promoted } }
+				limit = { 
+					NOT = { has_trait = recently_promoted }
+				}
 				add_timed_unit_leader_trait = {
 					trait = recently_promoted
 					days = 100
@@ -356,7 +365,7 @@ leader_traits = {
     }
 
 	NRA_Major_General = {
-        type = all
+        type = corps_commander
         trait_type = assignable_trait
         gain_xp = {
             always = no
@@ -394,7 +403,9 @@ leader_traits = {
 
 		on_add = {
 			if = {
-				limit = { NOT = { has_trait = recently_promoted } }
+				limit = { 
+					NOT = { has_trait = recently_promoted }
+				}
 				add_timed_unit_leader_trait = {
 					trait = recently_promoted
 					days = 100

@@ -1,58 +1,7 @@
 ﻿capital = 43 # Budapest (Northern Hungary)
 
-IF = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	set_oob = "HUN_wuw_1936"
-	ELSE_IF = {
-		limit = {
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-		set_oob = "HUN_1936"
-	}
-}
-
-IF = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "HUN_1936_air_bba"
-		set_technology = {
-			iw_small_airframe = 1
-			engines_1 = 1
-			early_bombs = 1
-			aa_lmg = 1
-		}
-	ELSE = {
-		set_air_oob = "HUN_1936_air_legacy"
-		set_technology = {
-			early_fighter = 1
-			CAS1 = 1
-		}
-	}
-}
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-		has_dlc = "By Blood Alone"
-	}
-	set_technology = {
-					photo_reconnaisance = 1
-	}
-}
-
-IF = {
-	limit = { has_dlc = "Man the Guns" }
-		set_technology = {
-			mtg_transport = 1
-		}
-	ELSE = {
-		set_technology = {
-			transport = 1
-		}
-	}
-}
+set_oob = "HUN_wuw_1936"
+set_air_oob = "HUN_1936_air_bba"
 
 ### SETUP THE CORRECT POLITICAL PARTIES ###
 
@@ -69,20 +18,8 @@ IF = {
 
 set_research_slots = 3
 
-### SETUP STABILITY AND WAR SUPPORT ###
-IF = {
-	limit = {
-		NOT = {
-			has_dlc = "Gotterdammerung"
-		}
-	}
-	set_stability = 0.7
-	set_war_support = 0.6
-	ELSE = {
-		set_stability = 0.3
-		set_war_support = 0.4
-	}
-}
+set_stability = 0.3
+set_war_support = 0.4
 
 
 set_technology = {
@@ -94,50 +31,13 @@ set_technology = {
 	gw_artillery = 1
 	fuel_silos = 1
 	basic_train = 1
-}
-
-IF = {
-	limit = {
-		NOT = {
-			has_dlc = "No Step Back"
-		}
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-IF = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-}
-
-### SETUP NATIONAL SPIRITS NO WW ###
-IF = {
-	limit = {
-		AND = {
-			has_dlc = "Death or Dishonor"
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-	}
-	add_ideas = {
-		disarmed_nation
-	}
-	IF = {
-		limit = { has_dlc = "Arms Against Tyranny" }
-		add_ideas = { HUN_treaty_of_triannon_aat }
-	}
-	IF = {
-		limit = {
-			NOT = { has_dlc = "Arms Against Tyranny" }
-		}
-		add_ideas = { HUN_treaty_of_triannon }
-	}
+	iw_small_airframe = 1
+	engines_1 = 1
+	early_bombs = 1
+	aa_lmg = 1
+	photo_reconnaisance = 1
+	mtg_transport = 1
+	gwtank_chassis = 1
 }
 
 ### SETUP HUNGARO-GERMAN RELATIONS AND NATIONAL SPIRITS ###
@@ -147,13 +47,6 @@ IF = {
 			has_dlc = "Death or Dishonor"
 			has_dlc = "Gotterdammerung"
 		}
-	}
-
-	add_ideas = {
-		disarmed_nation
-		HUN_gombos_trade_treaty
-		HUN_hungarian_national_defense_association
-		HUN_levente_associations
 	}
 
 	### OPINION MODIFIERS ###
@@ -182,7 +75,6 @@ IF = {
 
 	IF = {
 		limit = { has_dlc = "Arms Against Tyranny" }
-		add_ideas = { HUN_treaty_of_triannon_aat_wuw }
 		add_relation_rule_override = { 
 			target = GER
 			usage_desc = HUN_gombos_trade_treaty_tt
@@ -190,14 +82,16 @@ IF = {
 		}
 		give_market_access = GER
 	}
+}
 
-	IF = {
-		limit = {
-			NOT = { has_dlc = "Arms Against Tyranny" }
-		}
-		add_ideas = { HUN_treaty_of_triannon_wuw }
-	}
-
+add_ideas = {
+	disarmed_nation
+	
+	HUN_gombos_trade_treaty
+	HUN_hungarian_national_defense_association
+	HUN_levente_associations
+	HUN_treaty_of_triannon_aat_wuw
+	swi_bank
 }
 
 # The Academy of Sciences Modifier
