@@ -2341,7 +2341,7 @@ country_event = { #进驻延安
 		}
 		
 		hidden_effect = {
-			1090 = {
+			1091 = {
 				teleport_armies = { 
 					to_state = 744
 				}
@@ -2349,10 +2349,10 @@ country_event = { #进驻延安
 			if = {
 				limit = {
 					not = { 
-						controls_state = 622 
+						controls_state = 1090 
 					}
 				}
-				622 = {
+				1090 = {
 					set_demilitarized_zone = no
 					clr_state_flag = I_choose_this_state_to_DMZ
 					remove_core_of = XIC
@@ -2360,30 +2360,30 @@ country_event = { #进驻延安
 						to_state = 744
 					}
 				}
-				transfer_state = 622
+				transfer_state = 1090
 			}
 		}
 
 		hidden_effect = {
-			1090 = {
+			1091 = {
 				set_demilitarized_zone = no
 				clr_state_flag = I_choose_this_state_to_DMZ
 				remove_core_of = XIC
 			}
 		}
 		set_province_name = { 
-			id = 13428 
+			id = 13379 
 			name = "延安" 
 		}
 		
-		transfer_state = 1090
+		transfer_state = 1091
 		set_capital = { 
-			state = 1090
+			state = 1091
 		}
 		
-		1030 = {
+		1091 = {
 			set_victory_points = {
-				province = 13428
+				province = 13379
 				value = 10
 			}
 			
@@ -2485,7 +2485,7 @@ country_event = {	#大生产运动
 		name = AWR_PRC.45.a
 		add_political_power = 100	
 		add_stability = 0.10
-		1090 = {		
+		1091 = {		
 	    	add_extra_state_shared_building_slots = 3	
         }		
 	}
@@ -2572,8 +2572,8 @@ country_event = { #宁夏战役失败
 			factor = 100
 		}		
 		NXM = {
-			transfer_state = 1044
-            add_state_core = 1044			
+			transfer_state = 1162
+            add_state_core = 1162			
 		}
 	    hidden_effect = {		
 			set_global_flag = zhi_da_yi_ge 		
@@ -2630,7 +2630,7 @@ country_event = {  #我军获胜了
 		add_ideas = PRC_Victory_in_the_west
 		add_political_power = 100
 		PRC = {
-			transfer_state = 1044
+			transfer_state = 1162
 		}		
 		set_temp_variable = { 
 			temp_member = 1 
@@ -2678,7 +2678,7 @@ country_event = { #军阀发动反击
 			} 
 		}		
 		CHI = {
-			transfer_state = 1044
+			transfer_state = 1162
 		}
 		set_temp_variable = { 
 			temp_member = 1 
@@ -2706,7 +2706,7 @@ country_event = { #远征计划失败
 	trigger = {
 		country_exists = NXM
 		has_country_flag = went_with_ningxia_plan
-		1044 = {
+		1162 = {
 			is_controlled_by = PRC
 		}
 	}
@@ -2728,7 +2728,7 @@ country_event = { #远征计划失败
 			} 
 		}
 		NXM = {
-			transfer_state = 1044
+			transfer_state = 1162
 		}
 		
 		set_temp_variable = { 
@@ -2837,7 +2837,7 @@ country_event = { #军阀发动反击
 		}
 		has_country_flag = went_with_gansu_plan
 		NOT = {
-			1044 = {
+			1162 = {
 				is_controlled_by = PRC
 			}
 		}
@@ -2870,7 +2870,7 @@ country_event = { #军阀发动反击
 				}
 			}
 			CHI = { 
-				transfer_state = 1044
+				transfer_state = 1162
 			}
 		}
 		if = {
@@ -2883,9 +2883,9 @@ country_event = { #军阀发动反击
 				}
 			}
 			XII = { 
-				transfer_state = 1044
+				transfer_state = 1162
 			}
-			1044 = {
+			1162 = {
 				add_core_of = XII
 			}		
 		}
@@ -2899,9 +2899,9 @@ country_event = { #军阀发动反击
 				}
 			}
 			XIC = { 
-				transfer_state = 1044
+				transfer_state = 1162
 			}
-			1044 = {
+			1162 = {
 				add_core_of = XIC
 			}		
 		}		
@@ -2936,7 +2936,7 @@ country_event = { #远征计划失败
 			}
 		}
 		has_country_flag = went_with_gansu_plan
-		1044 = {
+		1162 = {
 			is_controlled_by = PRC
 		}
 	}
@@ -2963,7 +2963,7 @@ country_event = { #远征计划失败
 			} 
 		}
 		NXM = {
-			transfer_state = 1044
+			transfer_state = 1162
 		}
 		set_temp_variable = { 
 			temp_member = 1 
@@ -4656,7 +4656,7 @@ country_event = {	#中华联邦
 		set_capital = { 
 			state = 744 
 		} 
-		1030 = { 
+		744 = { 
         set_victory_points = {
 				province = 7301
 				value = 50
@@ -5833,9 +5833,9 @@ country_event = {	#新首都？
 	option = {	#南京
 		name = AWR_PRC.122.b
 		set_capital = { 
-			state = 1084
+			state = 1035
 		}
-		1084 = { 
+		1035 = { 
         	add_victory_points = {
 				province = 11913
 				value = 30
@@ -5863,11 +5863,11 @@ country_event = {	#新首都？
 	option = {	#延安
 		name = AWR_PRC.122.d
 		set_capital = { 
-			state = 1090
+			state = 1091
 		}
-		1090 = { 
+		1091 = { 
         	add_victory_points = {
-				province = 13428
+				province = 13379
 				value = 30
 			}
         }
@@ -6627,8 +6627,8 @@ country_event = {	#继续谈判
 			}
 		}
 		PRC = {
-			transfer_state = 1122
-			add_state_core = 1122
+			transfer_state = 1150
+			add_state_core = 1150
 		}
 	}
 	option = {
@@ -6958,10 +6958,10 @@ country_event = {	#中国要求归还唐努图瓦
 
 		if = {
 			limit = {
-				controls_state = 1122
+				controls_state = 1150
 			}
 			PRC = {
-				transfer_state = 1122
+				transfer_state = 1150
 			}
 		}
 	}
@@ -8100,28 +8100,28 @@ country_event = {	#中国要求归还外西北
 		
 		if = {
 			limit = {
-				controls_state = 586
+				controls_state = 1135
 			}
 			PRC = {
-				transfer_state = 586
+				transfer_state = 1135
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 588
+				controls_state = 1137
 			}
 			PRC = {
-				transfer_state = 588
+				transfer_state = 1137
 			}
 		}
 
 		if = {
 			limit = {
-				controls_state = 589
+				controls_state = 1134
 			}
 			PRC = {
-				transfer_state = 589
+				transfer_state = 1134
 			}
 		}
 
@@ -8145,10 +8145,10 @@ country_event = {	#中国要求归还外西北
 
 		if = {
 			limit = {
-				controls_state = 1125
+				controls_state = 1133
 			}
 			PRC = {
-				transfer_state = 1125
+				transfer_state = 1133
 			}
 		}
 	}
@@ -8316,12 +8316,12 @@ country_event = {	#中国同意了
 		name = AWR_PRC.166.a
 		add_political_power = 300
 		PRC = {
-			transfer_state = 586
-			transfer_state = 588
-			transfer_state = 589
+			transfer_state = 1135
+			transfer_state = 1137
+			transfer_state = 1134
 			transfer_state = 654
 			transfer_state = 732
-			transfer_state = 1125
+			transfer_state = 1133
 		}
 		PRC = {
 			add_timed_idea = {
@@ -8336,13 +8336,13 @@ country_event = {	#中国同意了
 			}
 		}
 		#非军事区
-		586 = {
+		1135 = {
 			set_demilitarized_zone = yes
 		}
-		588 = {
+		1137 = {
 			set_demilitarized_zone = yes
 		}
-		589 = {
+		1134 = {
 			set_demilitarized_zone = yes
 		}
 		654 = {
@@ -8351,11 +8351,11 @@ country_event = {	#中国同意了
 		732 = {
 			set_demilitarized_zone = yes
 		}
-		1125 = {
+		1133 = {
 			set_demilitarized_zone = yes
 		}
 
-		586 = {
+		1135 = {
 			set_temp_variable = {
 				var = civ
 				value = building_level@industrial_complex
@@ -8383,7 +8383,7 @@ country_event = {	#中国同意了
 				value = 586.dock
 			}
 		}
-		586 = {
+		1135 = {
 			remove_building = {
 				type = industrial_complex
 				level = 586.civ
@@ -8416,7 +8416,7 @@ country_event = {	#中国同意了
 			}
 		}
 
-		588 = {
+		1137 = {
 			set_temp_variable = {
 				var = civ
 				value = building_level@industrial_complex
@@ -8444,7 +8444,7 @@ country_event = {	#中国同意了
 				value = 588.dock
 			}
 		}
-		588 = {
+		1137 = {
 			remove_building = {
 				type = industrial_complex
 				level = 588.civ
@@ -8477,7 +8477,7 @@ country_event = {	#中国同意了
 			}
 		}
 
-		589 = {
+		1134 = {
 			set_temp_variable = {
 				var = civ
 				value = building_level@industrial_complex
@@ -8505,7 +8505,7 @@ country_event = {	#中国同意了
 				value = 589.dock
 			}
 		}
-		589 = {
+		1134 = {
 			remove_building = {
 				type = industrial_complex
 				level = 589.civ
@@ -8660,7 +8660,7 @@ country_event = {	#中国同意了
 			}
 		}
 
-		1125 = {
+		1133 = {
 			set_temp_variable = {
 				var = civ
 				value = building_level@industrial_complex
@@ -8688,7 +8688,7 @@ country_event = {	#中国同意了
 				value = 1125.dock
 			}
 		}
-		1125 = {
+		1133 = {
 			remove_building = {
 				type = industrial_complex
 				level = 1125.civ
@@ -11831,7 +11831,7 @@ country_event = { #银元之战
 			613 = { 
 				is_controlled_by = PRC 
 			}	
-			1094 = { 
+			1114 = { 
 				is_controlled_by = PRC 
 			}	
 		}		
@@ -12260,7 +12260,7 @@ country_event = {	#上海缺煤
 				days = 30
 			}
 		}
-		1094 = {
+		1114 = {
 			add_dynamic_modifier = {
 				modifier = PRC_coal_poverty
 				days = 30
@@ -14188,7 +14188,7 @@ country_event = { #for prc
 		date > 1936.6.15
 		date < 1936.12.1
 		divisions_in_state = {
-			state = 622
+			state = 1090
 			size < 3
 		}
 		1030 = { 
@@ -14206,13 +14206,13 @@ country_event = { #for prc
 		ai_chance = {
 			base = 100
 		}
-		622 = {
+		1090 = {
 			transfer_state_to = NEA
 		}			
-		622 = {
+		1090 = {
 			add_core_of = NEA
 		}
-		622 = {
+		1090 = {
 			set_demilitarized_zone = yes
 			set_state_flag = I_choose_this_state_to_DMZ
 			teleport_armies = { 
@@ -14279,13 +14279,13 @@ country_event = {
 					is_controlled_by = NEA 
 				}
 			}
-			622 = {
+			1090 = {
 			    transfer_state_to = NEA
 			}			
-            622 = {
+            1090 = {
                 add_core_of = NEA
             }
-		    622 = {
+		    1090 = {
 		        set_demilitarized_zone = yes
 		        set_state_flag = I_choose_this_state_to_DMZ
 		        teleport_armies = { 
