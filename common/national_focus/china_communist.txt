@@ -18437,100 +18437,102 @@ focus_tree = {
 			hidden_effect = {
 				remove_ideas = under_construction
 			}
-			600 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
+			if = {
+				limit = {
+					has_global_flag = be_high
 				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+				600 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-			}
-			602 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
+				602 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+				750 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-			}
-			750 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
+				606 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+				614 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-			}
-			606 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
+				620 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+				1034 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
 				}
-			}
-			614 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			620 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			1034 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
-			add_to_variable = {
-				var = economy_development_index
-				value = 1.00
+				economy_situation_up = yes
 			}
 		}
 		available = {
@@ -18539,9 +18541,11 @@ focus_tree = {
 				value = 3
 				comparison = greater_or_equal
 			}
-			count_in_collection = {
-				collection = {
+			
+			collection_size = {
+				input = {
 					input = game:scope
+					name = PRC_powerhouse_city_states_collection
 					operators = {
 						owned_states
 						limit = {
@@ -18554,11 +18558,12 @@ focus_tree = {
 						}
 					}
 				}
-				size > 12
+				value > 13
 			}
-			count_in_collection = {
-				collection = {
+			collection_size = {
+				input = {
 					input = game:scope
+					name = PRC_powerhouse_large_city_states_collection
 					operators = {
 						owned_states
 						limit = {
@@ -18570,11 +18575,12 @@ focus_tree = {
 						}
 					}
 				}
-				size > 7
+				value > 8
 			}
-			count_in_collection = {
-				collection = {
+			collection_size = {
+				input = {
 					input = game:scope
+					name = PRC_powerhouse_metropolis_states_collection
 					operators = {
 						owned_states
 						limit = {
@@ -18585,7 +18591,7 @@ focus_tree = {
 						}
 					}
 				}
-				size > 2
+				value > 3
 			}
 		}
 
