@@ -18310,35 +18310,71 @@ focus_tree = {
 		relative_position_id = PRC_urbanization_construction
 		completion_reward = { 
 			unlock_decision_tooltip = PRC_build_direct_municipalities_plan
-			592 = {	#广州
+			592 = {		#广州
 				set_state_flag = candidate_direct_municipalities
-			}
-			605 = {	#重庆
-				set_state_flag = candidate_direct_municipalities
-			}
-			608 = {	#北京
-				set_state_flag = candidate_direct_municipalities
-			}
-			1035 = {	#南京
-				set_state_flag = candidate_direct_municipalities
-			}
-			613 = {	#沪西
-				set_state_flag = candidate_direct_municipalities
-			}
+			}		
 			1114 = {	#沪东
 				set_state_flag = candidate_direct_municipalities
 			}
 			745 = {		#大连
 				set_state_flag = candidate_direct_municipalities
 			}
-			1091 = {	#延安
+			743 = {		#青岛
 				set_state_flag = candidate_direct_municipalities
 			}
-			743 = {	#青岛
+			1167 = {	#天津
 				set_state_flag = candidate_direct_municipalities
 			}
-			744 = {	#西安
-				set_state_flag = candidate_direct_municipalities
+			if = {	#北京
+				limit = {
+					capital = 608
+				}
+				608 = {		
+					set_state_flag = candidate_direct_municipalities
+				}
+			}
+			if = {	#南京
+				limit = {
+					capital = 1035
+				}
+				1035 = {	
+					set_state_flag = candidate_direct_municipalities
+				}
+			}
+			if = {	#延安
+				limit = {
+					capital = 1091
+				}
+				1091 = {	
+					set_state_flag = candidate_direct_municipalities
+				}
+			}
+			if = {	#长安/咸阳
+				limit = {
+					capital = 744
+				}
+				744 = {	
+					set_state_flag = candidate_direct_municipalities
+				}
+			}
+			if = {	#洛阳
+				limit = {
+					capital = 1099
+				}
+				1099 = {	
+					set_state_flag = candidate_direct_municipalities
+				}
+			}
+			if = {	#重庆
+				limit = {
+					OR = {
+						capital = 605
+						has_completed_focus = PRC_infrastructure_effort_iii
+					}
+				}
+				605 = {		#重庆
+					set_state_flag = candidate_direct_municipalities
+				}
 			}
 
 			set_variable = {

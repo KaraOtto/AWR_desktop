@@ -5812,7 +5812,7 @@ country_event = {	#新首都？
 	immediate = {
 		set_province_name = { 
 			id = 9843 
-			name = "Peking" 
+			name = VICTORY_POINTS_Peking
 		} 
 	}
 	option = {	#北京
@@ -5822,7 +5822,7 @@ country_event = {	#新首都？
 		}
 		608 = { 
         	add_victory_points = {
-				province = 9843
+				province = 11761
 				value = 30
 			}
         }
@@ -5845,11 +5845,15 @@ country_event = {	#新首都？
 			factor = 0
 		}
 	}
-	option = {	#西安
+	option = {	#长安
 		name = AWR_PRC.122.c
 		set_capital = { 
 			state = 744
 		}
+		set_province_name = { 
+			id = 7301 
+			name = VICTORY_POINTS_ChangAn
+		} 
 		744 = { 
         	add_victory_points = {
 				province = 7301
@@ -5875,6 +5879,51 @@ country_event = {	#新首都？
 			factor = 0
 		}
 	}
+	option = {	#洛阳
+		name = AWR_PRC.122.e
+		set_capital = { 
+			state = 1099
+		}
+		1099 = { 
+        	add_victory_points = {
+				province = 11931
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {	#咸阳
+		name = AWR_PRC.122.f
+		set_capital = { 
+			state = 744
+		}
+		744 = { 
+        	add_victory_points = {
+				province = 1976
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {	#重庆
+		name = AWR_PRC.122.g
+		set_capital = { 
+			state = 605
+		}
+		605 = { 
+        	add_victory_points = {
+				province = 6999
+				value = 30
+			}
+        }
+		ai_chance = {
+			factor = 0
+		}
+	}
 }
 
 country_event = {	#新国家
@@ -5883,13 +5932,7 @@ country_event = {	#新国家
 	desc = AWR_PRC.123.desc
 	picture = GFX_report_founding_ceremony
 	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			608 = { 
-				set_state_name = "STATE_JINGJIN" 
-			}
-		}
-	}	
+		
 	option = {
 		name = AWR_PRC.123.a
 		
@@ -14911,12 +14954,12 @@ unit_leader_event = {#刘志丹同志壮烈牺牲
 			base = 100
 		}
 		retire_character = PRC_liu_zhidan
-		set_province_name = { 
-			id = 13385
-			name = "志丹" 
+		set_province_name = { #保安
+			id = 13381
+			name = VICTORY_POINTS_Zhidan
 		}
-        1067 = { 
-			set_state_name = wuqizhenzhidan 
+        1164 = { 
+			set_state_name = STATE_Wuqi_Zhidan
 		}		
 		army_experience = -5
 		set_global_flag = zhidan_death
