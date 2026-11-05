@@ -1070,7 +1070,7 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			#
 		}
 		available = {
-		    controls_state = 998
+		    controls_state = 1082
 		}
 		#days_remove = 180
 		days_mission_timeout = 180
@@ -1244,56 +1244,6 @@ parliament_gui_decision_category = {	#全国人民代表大会
 			factor = 0
 		}
 		
-	}
-
-	PRC_West_Xizheng_shibai = {		#西征失败
-		icon = infiltrate_state
-		priority = 9999
-		allowed = {
-            tag = PRC
-		}		
-		fire_only_once = yes
-		selectable_mission = no
-		is_good = no
-		activation = {
-			always = no
-		}
-		visible = {		   
-			# 
-		}
-		cancel_trigger = {
-			has_country_flag = no_PRC_west_expedition_victory
-		}
-		available = {
-			OR = {
-				AND = {
-					616 = {
-						is_owned_by = PRC
-					}
-					756 = {
-						is_owned_by = PRC
-					}		
-				}
-				AND = {				
-					has_global_flag = zhi_da_yi_ge 
-					756 = {
-						is_owned_by = PRC
-					}		
-				}		
-			}
-		}
-		days_mission_timeout = 120
-		complete_effect = {
-			complete_national_focus = PRC_West_road_army_victory
-			add_stability = 0.1
-			add_war_support = 0.05
-		}
-		timeout_effect = {
-			set_country_flag = no_PRC_west_expedition_victory
-			hidden_effect = {		
-				set_country_flag = PRC_zhangqinqiubeifu		
-			}
-		}		
 	}
 
 	AWR_wang_shiwei_protest_mission = {		#王实味抗议
@@ -2013,10 +1963,60 @@ PRC_western_campaigns_cat = {	#西征
 			}
 		}
 	}
+
+	PRC_West_Xizheng_shibai = {		#西征失败
+		icon = infiltrate_state
+		priority = 9999
+		allowed = {
+            tag = PRC
+		}		
+		fire_only_once = yes
+		selectable_mission = no
+		is_good = no
+		activation = {
+			always = no
+		}
+		visible = {		   
+			# 
+		}
+		cancel_trigger = {
+			has_country_flag = no_PRC_west_expedition_victory
+		}
+		available = {
+			OR = {
+				AND = {
+					616 = {
+						is_owned_by = PRC
+					}
+					756 = {
+						is_owned_by = PRC
+					}		
+				}
+				AND = {				
+					has_global_flag = zhi_da_yi_ge 
+					756 = {
+						is_owned_by = PRC
+					}		
+				}		
+			}
+		}
+		days_mission_timeout = 120
+		complete_effect = {
+			complete_national_focus = PRC_West_road_army_victory
+			add_stability = 0.1
+			add_war_support = 0.05
+		}
+		timeout_effect = {
+			set_country_flag = no_PRC_west_expedition_victory
+			hidden_effect = {		
+				set_country_flag = PRC_zhangqinqiubeifu		
+			}
+		}		
+	}
 }
 
 X_xchinese_propaganda_campaigns = {	#宣传鼓动部
-	X_xchinese_propaganda_3 = { 
+	X_xchinese_propaganda_3 = { 	#弘扬爱国主义和英雄主义
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2078,7 +2078,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_4 = { # ID = 4
+	X_xchinese_propaganda_4 = { 	#团结在蒋委员长的领导下
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2144,7 +2144,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_5 = { # ID = 5
+	X_xchinese_propaganda_5 = { 	#中德友谊万岁
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2233,7 +2233,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_6 = { # ID = 6
+	X_xchinese_propaganda_6 = { 	#一寸山河一寸血
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2298,7 +2298,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_7 = { # ID = 7
+	X_xchinese_propaganda_7 = { 	#十万青年十万军
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2364,7 +2364,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_8 = { # ID = 8
+	X_xchinese_propaganda_8 = { 	#繁荣我们的产业
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2427,7 +2427,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_9 = { # ID = 9
+	X_xchinese_propaganda_9 = { 	#保持警惕
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2496,7 +2496,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_10 = { # ID = 10
+	X_xchinese_propaganda_10 = { 	#联合武装
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2559,7 +2559,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_11 = { # ID = 11
+	X_xchinese_propaganda_11 = { 	#要塞宝岛
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2641,7 +2641,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_12 = { # ID = 12
+	X_xchinese_propaganda_12 = { 	#保家卫国
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2710,7 +2710,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_13 = { # ID = 13
+	X_xchinese_propaganda_13 = { 	#全面抗战
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2774,7 +2774,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_14 = { # ID = 14
+	X_xchinese_propaganda_14 = { 	#反共宣传
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2849,7 +2849,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 	}
 
 	#communism#
-	X_xchinese_propaganda_15 = { # ID = 15
+	X_xchinese_propaganda_15 = { 	#用毛泽东思想武装头脑
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2919,7 +2919,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			multiply_variable = { X_xchinese_propaganda_15_cost = 2 }
 		}
 	}
-	X_xchinese_propaganda_16 = { # ID = 16
+	X_xchinese_propaganda_16 = { 	#既是战斗英雄，又是劳动英雄
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -2987,7 +2987,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_17 = { # ID = 17
+	X_xchinese_propaganda_17 = { 	#一切为了前线，一切为了胜利
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3049,7 +3049,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			multiply_variable = { X_xchinese_propaganda_17_cost = 2 }
 		}
 	}
-	X_xchinese_propaganda_18 = { # ID = 18
+	X_xchinese_propaganda_18 = { 	#横扫一切牛鬼蛇神
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3118,7 +3118,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_19 = { # ID = 19
+	X_xchinese_propaganda_19 = { 	#妇女能顶半边天
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3195,7 +3195,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_20 = { # ID = 20
+	X_xchinese_propaganda_20 = { 	#农业支持工业，工业反哺农业
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3257,7 +3257,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_21 = { # ID = 21
+	X_xchinese_propaganda_21 = { 	#生产长一寸
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3316,7 +3316,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_22 = { # ID = 22
+	X_xchinese_propaganda_22 = { 	#勤俭节约，艰苦奋斗
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3374,7 +3374,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_23 = { # ID = 23
+	X_xchinese_propaganda_23 = { 	#中苏友谊万岁
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3446,7 +3446,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_24 = { # ID = 24
+	X_xchinese_propaganda_24 = { 	#团结在毛主席的领导下
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3513,7 +3513,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_25 = { # ID = 25
+	X_xchinese_propaganda_25 = { 	#为人民服务
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3575,7 +3575,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 			}
 		}
 	}
-	X_xchinese_propaganda_26 = { # ID = 26
+	X_xchinese_propaganda_26 = { 	#科学技术是第一生产力
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = { 
@@ -3651,7 +3651,7 @@ X_xchinese_propaganda_campaigns = {	#宣传鼓动部
 
 political_actions = {	#政治宣传
 	
-	prc_influnce_chi_zz = {
+	prc_influnce_chi_zz = {	#扩大对国民政府的政治影响
 		priority = 9999
 
 		icon = GFX_decision_hol_exchange_intelligence_data
@@ -4341,7 +4341,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 			civilian_factory_use = 10
 		}
 	}
-
+	
 	invest_in_PRC_State_Shipbuilding = {	#投资中国船舶重工集团
 		icon = generic_factory
 		fire_only_once = yes
@@ -6170,7 +6170,7 @@ AWR_PRC_land_reform = {		#土地改革
 }
 
 PRC_Northwest_Alliance_decisions = {	#大西北联盟
-	PRC_NORTHWEST_ALLIANCE_FORM_ZZ = {
+	PRC_NORTHWEST_ALLIANCE_FORM_ZZ = {	#成立大西北联盟
 
 		icon = eng_blackshirt_speech
 
@@ -6771,7 +6771,7 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 }
 
 PRC_yan_an_zheng_feng_zz = {	#延安整风
-	test_1 = {
+	test_1 = {	#调试：推进延安整风进度
         visible = {
             always = yes
             has_country_flag = yan_an_zheng_feng
@@ -7427,7 +7427,7 @@ PRC_yan_an_zheng_feng_zz = {	#延安整风
 }
 
 PRC_move_capital_cat = {	#转移中央机关驻地
-	PRC_move_capital_decision = { 
+	PRC_move_capital_decision = {	#转移中央机关驻地至[FROM.GetName]
 		icon = GFX_decision_generic_form_nation
 		allowed = {
 			is_literally_china = yes
@@ -7595,7 +7595,7 @@ war_measures = {	#通用决议——战时措施
 		}
 	}
 
-	JPG_weapon_scavenging = {
+	JPG_weapon_scavenging = {	#收缴武器
 		icon = generic_prepare_civil_war
 
 		visible = {
@@ -7642,7 +7642,7 @@ war_measures = {	#通用决议——战时措施
 		}
 	}
 
-	JPG_no_weapon_scavenging = {
+	JPG_no_weapon_scavenging = {	#停止收缴武器
 		icon = generic_prepare_civil_war
 		visible = {
 			has_country_flag = JPG_allow_weapon_scavenging
@@ -12022,14 +12022,16 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			effect_tooltip = {
 				SUY = {
 					white_peace = ROOT
-					retire_character = SHX_fu_zuoyi
+					retire_character = SUY_fu_zuoyi
 					SUY_Dong_Qiwu = {
 						add_country_leader_role = {
 							promote_leader = yes
 							country_leader = {
 								expire = "1965.1.1"
 								ideology = despotism
-								traits = { }            
+								traits = { 
+									#
+								}            
 							} 
 						} 
 					}
@@ -12067,7 +12069,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			NOT = {
 				AND = {
 					controls_state = 750
-					controls_state = 1035
+					controls_state = 1122
 					controls_state = 602
 				}
 			}
@@ -12076,21 +12078,15 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
 				is_neighbor_of = ROOT
-				custom_trigger_tooltip = {
-					tooltip = has_cheng_qian_tt
-					any_unit_leader = {
-						has_id = 3031
-					}
-				}
-				#owns_state = 1160
+
 				OR = {
 					controls_state = 750
-					controls_state = 1035
+					controls_state = 1122
 					controls_state = 602
 					GXC = {	
 						OR = {
 							controls_state = 750
-							controls_state = 1035
+							controls_state = 1122
 							controls_state = 602
 						}
 					}
@@ -12103,7 +12099,7 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						is_controlled_by = ROOT 
 					}
 				}
-				1035 = {
+				1122 = {
 					any_neighbor_state = { 
 						is_controlled_by = ROOT 
 					}
@@ -12113,6 +12109,9 @@ PRC_contact_wrl_cat = {		#联络地方官员
 						is_controlled_by = ROOT 
 					}
 				}
+			}
+			1036 = {
+				is_controlled_by = ROOT
 			}
 		}
 
@@ -12323,14 +12322,15 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
 				NOT = {
-					controls_state = 1042
 					controls_state = 752
+					controls_state = 1155
+					controls_state = 1156
 				}
 				OR = {
-					controls_state = 1154
-					controls_state = 751
-					controls_state = 753
-					controls_state = 1086
+					any_state = {
+						is_core_of = SIC
+						is_controlled_by = event_target:WTT_current_china_leader
+					}
 					has_subject = SIC
 				}
 			}
@@ -12427,10 +12427,10 @@ PRC_contact_wrl_cat = {		#联络地方官员
 				has_war_with = ROOT
 				
 				NOT = {
-					controls_state = 608
-					controls_state = 1035
-					controls_state = 613
-					controls_state = 1114
+					any_state = {
+						is_core_of = YUN
+						is_controlled_by = event_target:WTT_current_china_leader
+					}
 				}
 			}
 			controls_state = 608
@@ -12482,8 +12482,10 @@ PRC_contact_wrl_cat = {		#联络地方官员
 			event_target:WTT_current_china_leader = {
 				has_war_with = ROOT
 				NOT = {
-					controls_state = 608
-					controls_state = 1035
+					any_state = {
+						is_core_of = NXM
+						is_controlled_by = event_target:WTT_current_china_leader
+					}
 				}
 			}
 		}
@@ -13151,7 +13153,7 @@ PRC_Army_Reform_category = {	#陆军改革
 
 PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 	# 支援舰
-	PRC_support_ships = {
+	PRC_support_ships = {	#启动支援舰工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13234,7 +13236,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		}
 	}
 	# 海上补给
-	PRC_underway_replenishment = {
+	PRC_underway_replenishment = {	#启动海上补给工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13293,7 +13295,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 消声瓦
-	PRC_anechoic_tiles = {
+	PRC_anechoic_tiles = {	#启动消声瓦工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13352,7 +13354,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 袖珍潜艇
-	PRC_midget_submarine = {
+	PRC_midget_submarine = {	#启动袖珍潜艇工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13411,7 +13413,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 巡洋潜艇
-	PRC_cruiser_submarine = {
+	PRC_cruiser_submarine = {	#启动巡洋潜艇工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13491,7 +13493,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 	}
 
 	# 鱼雷巡洋舰
-	PRC_torpedo_cruiser = {
+	PRC_torpedo_cruiser = {	#启动鱼雷巡洋舰工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13570,7 +13572,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 超重型战列舰
-	PRC_super_heavy_battleship = {
+	PRC_super_heavy_battleship = {	#启动超重型战列舰工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13649,7 +13651,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 近炸引信
-	PRC_proximity_fuze = {
+	PRC_proximity_fuze = {	#启动近炸引信工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13708,7 +13710,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 舰队潜艇
-	PRC_fleet_submarine = {
+	PRC_fleet_submarine = {	#启动舰队潜艇工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13787,7 +13789,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 无氧推进器
-	PRC_aip_engine = {
+	PRC_aip_engine = {	#启动无氧推进器工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13847,7 +13849,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 	}
 
 	# 冰航母
-	PRC_ice_carrier = {
+	PRC_ice_carrier = {	#启动冰航母工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13910,7 +13912,7 @@ PRC_naval_engineering_category = {	#中国新红军海军特殊工程项目
 		ai_will_do = { base = 0 }
 	}
 	# 核潜艇
-	PRC_nuclear_submarine = {
+	PRC_nuclear_submarine = {	#启动核潜艇工程
 		icon = generic_naval
 		fire_only_once = yes
 		days_remove = 180
@@ -13997,11 +13999,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = aluminium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 607
-				state = 615
-				state = 1087
-				state = 603
-				state = 748
+				state = 607		#豫东
+				state = 615		#晋中
+				state = 1038	#鲁中
+				state = 603		#贵州
+				state = 599		#柳州
 			} 
 		}
 		fire_only_once = yes
@@ -14011,11 +14013,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1087
-				controls_state = 603
-				controls_state = 748
+				controls_state = 607	#豫东
+				controls_state = 615	#晋中
+				controls_state = 1038	#鲁中
+				controls_state = 603	#贵州
+				controls_state = 599	#柳州
 			}
 		}
 
@@ -14033,27 +14035,27 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 20
-				state = 607
+				state = 607	#豫东
 			}
 			add_resource = {
 				type = aluminium
 				amount = 25
-				state = 615
+				state = 615	#晋中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 20
-				state = 1087
+				state = 1038	#鲁中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 15
-				state = 603
+				state = 603	#贵州
 			}
 			add_resource = {
 				type = aluminium
 				amount = 15
-				state = 748
+				state = 599	#柳州
 			}
 		}
 	}
@@ -14061,22 +14063,22 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = aluminium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 607
-				state = 615
-				state = 1087
-				state = 603
-				state = 748
+				state = 607		#豫东
+				state = 615		#晋中
+				state = 1038	#鲁中
+				state = 603		#贵州
+				state = 599		#柳州
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_aluminium_effort_ii_focus
 			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1087
-				controls_state = 603
-				controls_state = 748
+				controls_state = 607	#豫东
+				controls_state = 615	#晋中
+				controls_state = 1038	#鲁中
+				controls_state = 603	#贵州
+				controls_state = 599	#柳州
 			}
 		}
 		available = {
@@ -14097,27 +14099,27 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 35
-				state = 607
+				state = 607	#豫东
 			}
 			add_resource = {
 				type = aluminium
 				amount = 45
-				state = 615
+				state = 615	#晋中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 30
-				state = 1087
+				state = 1038	#鲁中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 25
-				state = 603
+				state = 603	#贵州
 			}
 			add_resource = {
 				type = aluminium
 				amount = 35
-				state = 748
+				state = 599		#柳州
 			}
 		}
 	}
@@ -14125,22 +14127,22 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = aluminium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 607
-				state = 615
-				state = 1087
-				state = 603
-				state = 748
+				state = 607		#豫东
+				state = 615		#晋中
+				state = 1038	#鲁中	
+				state = 603		#贵州
+				state = 599		#柳州
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_aluminium_effort_iii_focus
 			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1087
-				controls_state = 603
-				controls_state = 748
+				controls_state = 607	#豫东
+				controls_state = 615	#晋中
+				controls_state = 1038	#鲁中
+				controls_state = 603	#贵州
+				controls_state = 599	#柳州	
 			}
 		}
 		available = {
@@ -14161,27 +14163,27 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = aluminium
 				amount = 65
-				state = 607
+				state = 607	#豫东
 			}
 			add_resource = {
 				type = aluminium
 				amount = 85
-				state = 615
+				state = 615	#晋中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 75
-				state = 1087
+				state = 1038	#鲁中
 			}
 			add_resource = {
 				type = aluminium
 				amount = 45
-				state = 603
+				state = 603	#贵州
 			}
 			add_resource = {
 				type = aluminium
 				amount = 55
-				state = 603
+				state = 599		#柳州
 			}
 		}
 	}
@@ -14190,11 +14192,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = tungsten
 		highlight_states = {
  			highlight_state_targets = {
-				state = 600
-				state = 1134
-				state = 593
-				state = 602
-				state = 750
+				state = 600		#赣南
+				state = 595		#闽南
+				state = 593		#粤东
+				state = 602		#湘南
+				state = 1171	#崇左
 			} 
 		}
 		fire_only_once = yes
@@ -14204,11 +14206,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
+				controls_state = 600	#赣南
+				controls_state = 595	#闽南
+				controls_state = 593	#粤东
+				controls_state = 602	#湘南
+				controls_state = 1171	#崇左
 			}
 		}
 
@@ -14226,27 +14228,27 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 20
-				state = 600
+				state = 600	#赣南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 15
-				state = 1134
+				state = 595	#闽南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 20
-				state = 593
+				state = 593	#粤东
 			}
 			add_resource = {
 				type = tungsten
 				amount = 30
-				state = 602
+				state = 602	#湘南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 20
-				state = 750
+				state = 1171	#崇左
 			}
 		}
 	}
@@ -14254,11 +14256,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = tungsten
 		highlight_states = {
  			highlight_state_targets = {
-				state = 600
-				state = 1134
-				state = 593
-				state = 602
-				state = 750
+				state = 600		#赣南
+				state = 595		#闽南
+				state = 593		#粤东
+				state = 602		#湘南
+				state = 1171	#崇左	
 			} 
 		}
 		fire_only_once = yes
@@ -14268,11 +14270,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
+				controls_state = 600	#赣南
+				controls_state = 595	#闽南
+				controls_state = 593	#粤东
+				controls_state = 602	#湘南
+				controls_state = 1171	#崇左
 			}
 		}
 
@@ -14290,27 +14292,27 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 35
-				state = 600
+				state = 600	#赣南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 25
-				state = 1134
+				state = 595	#闽南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 55
-				state = 593
+				state = 593	#粤东
 			}
 			add_resource = {
 				type = tungsten
 				amount = 55
-				state = 602
+				state = 602	#湘南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 45
-				state = 750
+				state = 1171	#崇左
 			}
 		}
 	}
@@ -14318,11 +14320,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = tungsten
 		highlight_states = {
  			highlight_state_targets = {
-				state = 600
-				state = 1134
-				state = 593
-				state = 602
-				state = 750
+				state = 600		#赣南
+				state = 595		#闽南
+				state = 593		#粤东
+				state = 602		#湘南
+				state = 1171	#崇左
 			} 
 		}
 		fire_only_once = yes
@@ -14332,11 +14334,11 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
+				controls_state = 600	#赣南
+				controls_state = 595	#闽南
+				controls_state = 593	#粤东
+				controls_state = 602	#湘南
+				controls_state = 1171	#崇左
 			}
 		}
 
@@ -14354,36 +14356,36 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = tungsten
 				amount = 65
-				state = 600
+				state = 600	#赣南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 45
-				state = 1134
+				state = 595	#闽南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 35
-				state = 593
+				state = 593	#粤东
 			}
 			add_resource = {
 				type = tungsten
 				amount = 95
-				state = 602
+				state = 602	#湘南
 			}
 			add_resource = {
 				type = tungsten
 				amount = 55
-				state = 750
+				state = 1171	#崇左
 			}
 		}
 	}
 	#油
-	PRC_oil_effort_1 = {	#玉门油田
+	PRC_oil_effort_yumen = {	#玉门油田
 		icon = oil
 		highlight_states = {
  			highlight_state_targets = {
-				state = 756
+				state = 756	#酒泉
 			} 
 		}
 		fire_only_once = yes
@@ -14391,9 +14393,45 @@ PRC_resource_effort = {	#国家资源开采项目
 			has_completed_focus = PRC_yumen_oil_field
 		}
 		available = {
-			industrial_complex > 20
+			industrial_complex > 9
 			ROOT = {
-				controls_state = 756
+				controls_state = 756	#酒泉
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 70
+				state = 756	#酒泉
+			}
+		}
+	}
+	PRC_oil_effort_kelamayi = {	#克拉玛依油田
+		icon = oil
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1145	#昌吉
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_yumen_oil_field
+		}
+		available = {
+			industrial_complex > 19
+			ROOT = {
+				controls_state = 1145	#昌吉	
 			}
 		}
 
@@ -14410,16 +14448,109 @@ PRC_resource_effort = {	#国家资源开采项目
 		remove_effect = {
 			add_resource = {
 				type = oil
-				amount = 100
-				state = 756
+				amount = 112
+				state = 1145	#昌吉
 			}
 		}
 	}
-	PRC_oil_effort_2 = {	#大庆油田
+	PRC_oil_effort_lenghu = {	#冷湖油田
 		icon = oil
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1111
+				state = 755	#海西
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_yumen_oil_field
+		}
+		available = {
+			industrial_complex > 4
+			ROOT = {
+				controls_state = 755	#海西
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 30
+				state = 755	#海西
+			}
+		}
+	}
+	PRC_oil_effort_southwest = {	#西南油田
+		icon = oil
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 753		#川西
+				state = 1041	#川中
+				state = 1123	#川东
+				state = 1037	#川南
+			} 
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = PRC_yumen_oil_field
+		}
+		available = {
+			industrial_complex > 39
+			ROOT = {
+				controls_state = 753	#川西
+				controls_state = 1041	#川中
+				controls_state = 1123	#川东	
+				controls_state = 1037	#川南
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 40
+		}
+
+		complete_effect = {
+			#
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 30
+				state = 753		#川西
+			}
+			add_resource = {
+				type = oil
+				amount = 50
+				state = 1041	#川中
+			}
+			add_resource = {
+				type = oil
+				amount = 35
+				state = 1123	#川东
+			}
+			add_resource = {
+				type = oil
+				amount = 20
+				state = 1037	#川南
+			}
+		}
+	}
+	PRC_oil_effort_daqing = {	#大庆油田
+		icon = oil
+		highlight_states = {
+ 			highlight_state_targets = {
+				state = 1111	#大庆
 			} 
 		}
 		fire_only_once = yes
@@ -14429,7 +14560,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 1111
+				controls_state = 1111	#大庆
 			}
 		}
 
@@ -14446,17 +14577,119 @@ PRC_resource_effort = {	#国家资源开采项目
 		remove_effect = {
 			add_resource = {
 				type = oil
-				amount = 150
-				state = 1111
+				amount = 354
+				state = 1111	#大庆
 			}
 		}
 	}
+
+	#合成资源
+	PRC_refinery_technology_1 = {		#提升合成炼油厂
+		icon = oil
+		fire_only_once = yes
+		days_remove = 25
+
+		visible = {
+			has_completed_focus = PRC_daqing_oil_field
+		}
+
+		available = {
+			industrial_complex > 9
+			has_tech = rubber_processing
+			has_tech = oil_processing
+		}
+
+		modifier = {
+			research_speed_factor = -0.05
+		}
+
+		remove_effect = {
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = oil
+        	   amount = 1
+        	}
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = rubber
+        	   amount = 1
+        	}
+			set_country_flag = PRC_refinery_technology_1
+		}
+	}
+	PRC_refinery_technology_2 = {		#提升合成炼油厂
+		icon = oil
+		fire_only_once = yes
+		days_remove = 50
+
+		visible = {
+			has_completed_focus = PRC_daqing_oil_field
+			has_country_flag = PRC_refinery_technology_1
+		}
+
+		available = {
+			industrial_complex > 20
+			has_completed_focus = PRC_daqing_oil_field
+		}
+
+		modifier = {
+			research_speed_factor = -0.05
+		}
+
+		remove_effect = {
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = oil
+        	   amount = 2
+        	}
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = rubber
+        	   amount = 1
+        	}
+			set_country_flag = PRC_refinery_technology_2
+		}
+	}
+	PRC_refinery_technology_3 = {		#提升合成炼油厂
+		icon = oil
+		fire_only_once = yes
+		days_remove = 100
+
+		visible = {
+			has_completed_focus = PRC_daqing_oil_field
+			has_country_flag = PRC_refinery_technology_2
+		}
+
+		available = {
+			industrial_complex > 29
+			has_completed_focus = PRC_daqing_oil_field
+		}
+
+		modifier = {
+			research_speed_factor = -0.05
+		}
+
+		remove_effect = {
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = oil
+        	   amount = 3
+        	}
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = rubber
+        	   amount = 1
+        	}
+			set_country_flag = PRC_refinery_technology_3
+		}
+	}
+
 	#煤
 	PRC_expand_shanxi_coal_effort_1 = {	#扩大太原煤矿Ⅰ
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 615
+				state = 615	#晋中
 			} 
 		}
 		fire_only_once = yes
@@ -14466,7 +14699,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 615
+				controls_state = 615	#晋中
 			}
 		}
 
@@ -14484,7 +14717,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 88
-				state = 615
+				state = 615	#晋中
 			}
 			set_country_flag = PRC_expand_shanxi_coal_effort_1
 		}
@@ -14493,7 +14726,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 615
+				state = 615	#晋中
 			} 
 		}
 		fire_only_once = yes
@@ -14504,7 +14737,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 615
+				controls_state = 615	#晋中
 			}
 		}
 
@@ -14522,7 +14755,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 88
-				state = 615
+				state = 615	#晋中
 			}
 			set_country_flag = PRC_expand_shanxi_coal_effort_2
 			clr_country_flag = PRC_expand_shanxi_coal_effort_1
@@ -14532,7 +14765,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 615
+				state = 615	#晋中
 			} 
 		}
 		fire_only_once = yes
@@ -14543,7 +14776,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 615
+				controls_state = 615	#晋中
 			}
 		}
 
@@ -14561,7 +14794,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 88
-				state = 615
+				state = 615	#晋中
 			}
 			clr_country_flag = PRC_expand_shanxi_coal_effort_2
 		}
@@ -14570,12 +14803,12 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 716
-				state = 328
-				state = 1097
-				state = 714
-				state = 1103
-				state = 715
+				state = 716	#辽宁
+				state = 328	#延边
+				state = 1097	#冀南
+				state = 714	#鄂伦春
+				state = 1103	#承德
+				state = 715	#辽北
 			} 
 		}
 		fire_only_once = yes
@@ -14585,12 +14818,12 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 716
-				controls_state = 328
-				controls_state = 1097
-				controls_state = 714
-				controls_state = 1103
-				controls_state = 715
+				controls_state = 716	#辽宁
+				controls_state = 328	#延边
+				controls_state = 1097	#冀南
+				controls_state = 714	#鄂伦春
+				controls_state = 1103	#承德
+				controls_state = 715	#辽北
 			}
 		}
 
@@ -14608,32 +14841,32 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 132
-				state = 716
+				state = 716	#辽宁
 			}
 			add_resource = {
 				type = coal
 				amount = 85
-				state = 328
+				state = 328	#延边
 			}
 			add_resource = {
 				type = coal
 				amount = 72
-				state = 1097
+				state = 1097	#冀南
 			}
 			add_resource = {
 				type = coal
 				amount = 43
-				state = 714
+				state = 714	#鄂伦春
 			}
 			add_resource = {
 				type = coal
 				amount = 41
-				state = 1103
+				state = 1103	#承德
 			}
 			add_resource = {
 				type = coal
 				amount = 64
-				state = 715
+				state = 715	#辽北
 			}
 		}
 	}
@@ -14641,14 +14874,14 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1036
+				state = 1036	#武汉
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_coal_effort_ii_focus
 			ROOT = {
-				controls_state = 1036
+				controls_state = 1036	#武汉
 			}
 		}
 		available = {
@@ -14669,7 +14902,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 118
-				state = 1036
+				state = 1036	#武汉
 			}
 		}
 	}
@@ -14677,14 +14910,14 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = coal
 		highlight_states = {
  			highlight_state_targets = {
-				state = 606
+				state = 606	#皖西
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_coal_effort_iii_focus
 			ROOT = {
-				controls_state = 606
+				controls_state = 606	#皖西
 			}
 		}
 		available = {
@@ -14705,7 +14938,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = coal
 				amount = 164
-				state = 606
+				state = 606	#皖西
 			}
 		}
 	}
@@ -14714,7 +14947,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = rubber
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1091
+				state = 593	# 粤东
 			} 
 		}
 		fire_only_once = yes
@@ -14724,7 +14957,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 1091
+				controls_state = 593	# 粤东
 			}
 		}
 
@@ -14742,7 +14975,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = rubber
 				amount = 50
-				state = 1091
+				state = 593	# 粤东
 			}
 		}
 	}
@@ -14750,14 +14983,14 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = rubber
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1040
+				state = 1129	#滇南
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_yunnan_plantation
 			ROOT = {
-				controls_state = 1040
+				controls_state = 1129	#滇南
 			}
 		}
 		available = {
@@ -14778,7 +15011,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = rubber
 				amount = 100
-				state = 1040
+				state = 1129	#滇南
 			}
 		}
 	}
@@ -14786,14 +15019,14 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = rubber
 		highlight_states = {
  			highlight_state_targets = {
-				state = 591
+				state = 591	#海南
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_hainan_plantation
 			ROOT = {
-				controls_state = 591
+				controls_state = 591	#海南
 			}
 		}
 		available = {
@@ -14814,7 +15047,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = rubber
 				amount = 100
-				state = 591
+				state = 591	#海南
 			}
 		}
 	}
@@ -14823,7 +15056,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = chromium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 611
+				state = 611	#察哈尔
 			} 
 		}
 		fire_only_once = yes
@@ -14833,7 +15066,7 @@ PRC_resource_effort = {	#国家资源开采项目
 		available = {
 			industrial_complex > 20
 			ROOT = {
-				controls_state = 611
+				controls_state = 611	#察哈尔
 			}
 		}
 
@@ -14851,7 +15084,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = chromium
 				amount = 50
-				state = 611
+				state = 611	#察哈尔
 			}
 		}
 	}
@@ -14859,14 +15092,18 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = chromium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 1146
+				state = 1146	#塔城
+				state = 618		#阿勒泰
+				state = 1153	#哈密
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_coal_effort_ii_focus
 			ROOT = {
-				controls_state = 1146
+				controls_state = 1146	#塔城
+				controls_state = 618	#阿勒泰
+				controls_state = 1153	#哈密
 			}
 		}
 		available = {
@@ -14886,8 +15123,20 @@ PRC_resource_effort = {	#国家资源开采项目
 		remove_effect = {
 			add_resource = {
 				type = chromium
-				amount = 100
-				state = 1146
+				amount = 57
+				state = 1146	#塔城
+			}
+
+			add_resource = {
+				type = chromium
+				amount = 80
+				state = 618		#阿勒泰
+			}
+
+			add_resource = {
+				type = chromium
+				amount = 33
+				state = 1153	#哈密
 			}
 		}
 	}
@@ -14895,14 +15144,14 @@ PRC_resource_effort = {	#国家资源开采项目
 		icon = chromium
 		highlight_states = {
  			highlight_state_targets = {
-				state = 322
+				state = 322	#那曲
 			} 
 		}
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = PRC_xizang_gekuang
 			ROOT = {
-				controls_state = 322
+				controls_state = 322	#那曲
 			}
 		}
 		available = {
@@ -14923,7 +15172,7 @@ PRC_resource_effort = {	#国家资源开采项目
 			add_resource = {
 				type = chromium
 				amount = 150
-				state = 322
+				state = 322	#那曲
 			}
 		}
 	}
@@ -18461,9 +18710,9 @@ PRC_comecon_dec_cat = {	#世界人民大团结
 }
 
 # 亚洲民族解放运动
-PRC_asian_liberation_category = {
+PRC_asian_liberation_category = {	#亚洲民族解放运动
 
-	PRC_support_asian_liberation = {
+	PRC_support_asian_liberation = {	#支持[FROM.GetAdjective]民族解放运动
 
 		icon = generic_prepare_civil_war
 
@@ -18509,9 +18758,9 @@ PRC_asian_liberation_category = {
 }
 
 # 中东民族解放运动
-PRC_middle_east_liberation_category = {
+PRC_middle_east_liberation_category = {	#中东民族解放运动
 
-	PRC_support_middle_east_liberation = {
+	PRC_support_middle_east_liberation = {	#支持[FROM.GetAdjective]民族解放运动
 
 		icon = generic_prepare_civil_war
 
@@ -18562,9 +18811,9 @@ PRC_middle_east_liberation_category = {
 }
 
 # 非洲民族解放运动
-PRC_african_liberation_category = {
+PRC_african_liberation_category = {	#非洲民族解放运动
 
-	PRC_support_african_liberation = {
+	PRC_support_african_liberation = {	#支持[FROM.GetAdjective]民族解放运动
 
 		icon = generic_prepare_civil_war
 
@@ -18616,9 +18865,9 @@ PRC_african_liberation_category = {
 }
 
 # 拉丁美洲及加勒比民族解放运动
-PRC_latin_american_liberation_category = {
+PRC_latin_american_liberation_category = {	#拉丁美洲及加勒比民族解放运动
 
-	PRC_support_latin_american_liberation = {
+	PRC_support_latin_american_liberation = {	#支持[FROM.GetAdjective]民族解放运动
 
 		icon = generic_prepare_civil_war
 
@@ -18670,9 +18919,9 @@ PRC_latin_american_liberation_category = {
 }
 
 # 大洋洲民族解放运动
-PRC_oceanian_liberation_category = {
+PRC_oceanian_liberation_category = {	#大洋洲民族解放运动
 
-	PRC_support_oceanian_liberation = {
+	PRC_support_oceanian_liberation = {	#支持[FROM.GetAdjective]民族解放运动
 
 		icon = generic_prepare_civil_war
 
@@ -18725,7 +18974,7 @@ PRC_oceanian_liberation_category = {
 }
 
 PRC_economy_cooperation_decision_category = {	#经济合作
-	PRC_economy_cooperation_decision = {
+	PRC_economy_cooperation_decision = {	#邀请[FROM.GetAdjective]进行经济合作
 
 		icon = generic_factory
 

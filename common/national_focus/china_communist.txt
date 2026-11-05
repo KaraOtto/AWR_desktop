@@ -18745,13 +18745,6 @@ focus_tree = {
 				has_completed_focus = PRC_nationalize_industry_iii_focus
 			}
 			has_tech = excavation3
-			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1105
-				controls_state = 603
-				controls_state = 748
-			}
 		}
 
 	}
@@ -18780,13 +18773,6 @@ focus_tree = {
 				has_completed_focus = PRC_modern_industrialization
 			}
 			has_tech = excavation4
-			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1105
-				controls_state = 603
-				controls_state = 748
-			}
 		}
 
 	}
@@ -18811,13 +18797,6 @@ focus_tree = {
 		}
 		available = {
 			has_tech = excavation5
-			ROOT = {
-				controls_state = 607
-				controls_state = 615
-				controls_state = 1105
-				controls_state = 603
-				controls_state = 748
-			}
 		}
 
 	}
@@ -18846,13 +18825,6 @@ focus_tree = {
 				has_completed_focus = PRC_nationalize_industry_iii_focus
 			}
 			has_tech = excavation3
-			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
-			}
 		}
 
 	}
@@ -18881,13 +18853,6 @@ focus_tree = {
 				has_completed_focus = PRC_modern_industrialization
 			}
 			has_tech = excavation4
-			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
-			}
 		}
 
 	}
@@ -18912,13 +18877,6 @@ focus_tree = {
 		}
 		available = {
 			has_tech = excavation5
-			ROOT = {
-				controls_state = 600
-				controls_state = 1134
-				controls_state = 593
-				controls_state = 602
-				controls_state = 750
-			}
 		}
 
 	}
@@ -18938,23 +18896,28 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			modify_building_resources = {
-        	   building = synthetic_refinery
-        	   resource = oil
-        	   amount = 2
-        	}
-			modify_building_resources = {
-        	   building = synthetic_refinery
-        	   resource = rubber
-        	   amount = 2
-        	}
 		
 			add_tech_bonus = {
 				name = synth_bonus
 				bonus = 1
-				uses = 3
+				uses = 2
+				category = cat_synth_oil
+			}
+
+			add_tech_bonus = {
+				name = synth_bonus
+				bonus = 1
+				uses = 2
+				category = cat_synth_rubber
+			}
+
+			add_tech_bonus = {
+				name = synth_bonus
+				bonus = 1
+				uses = 2
 				category = synth_resources
 			}
+			
 			
 			1088 = {
 				add_extra_state_shared_building_slots = 2
@@ -18989,7 +18952,9 @@ focus_tree = {
 				}
 			}
             custom_effect_tooltip = available_industrial_concern
-			show_ideas_tooltip = chinese_petroleum_corporation			
+			show_ideas_tooltip = chinese_petroleum_corporation		
+
+			unlock_decision_tooltip = PRC_refinery_technology_1	
 		}
 		available = {
 			custom_trigger_tooltip = {
@@ -19000,7 +18965,7 @@ focus_tree = {
 
 	}
 
-    focus = {#玉门油田
+    focus = {#大西北油田
 		id = PRC_yumen_oil_field
 		icon = GFX_goal_generic_oil_refinery
 		cost = 5
@@ -19015,7 +18980,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			unlock_decision_tooltip = PRC_oil_effort_1
+			unlock_decision_tooltip = PRC_oil_effort_yumen
 			custom_effect_tooltip = available_industrial_concern
 			show_ideas_tooltip = kansu_petroleum_bureau				
 		}
@@ -19024,11 +18989,7 @@ focus_tree = {
 				tooltip = industry_balanced_enough
 				has_completed_focus = PRC_modern_industrialization
 			}
-			has_tech = oil_processing
-
-			ROOT = {
-				controls_state = 756
-			}
+			has_tech = excavation4
 		}
 	}
 	
@@ -19049,7 +19010,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			custom_effect_tooltip = debuff_tt
-			unlock_decision_tooltip = PRC_oil_effort_2
+			unlock_decision_tooltip = PRC_oil_effort_daqing
 		}
 		available = {
 			custom_trigger_tooltip = {
