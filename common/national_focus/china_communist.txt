@@ -12465,22 +12465,22 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			add_tech_bonus = {
-				name = dd_tech
+				name = mio_cat_tech_all_destroyer_and_modules
 				bonus = 1
 				uses = 2
-				category = dd_tech
+				category = mio_cat_tech_all_destroyer_and_modules
 			}
 			add_tech_bonus = {
-				name = cl_tech
+				name = mio_cat_tech_all_cruiser_and_modules
 				bonus = 1
 				uses = 2
-				category = cl_tech
+				category = mio_cat_tech_all_cruiser_and_modules
 			}
 			add_tech_bonus = {
-				name = ca_tech
+				name = naval_artillery
 				bonus = 1
 				uses = 2
-				category = ca_tech
+				category = naval_artillery
 			}
 		}
 		available = {
@@ -14917,12 +14917,12 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_tech = special_forces_marines
+						has_tech = marines
 					}
 				
 				}
 				set_technology = {
-					special_forces_marines = 1 
+					marines = 1 
 					popup = yes
 				}
 			}
@@ -18327,7 +18327,9 @@ focus_tree = {
 			}
 			if = {	#北京
 				limit = {
-					capital = 608
+					capital_scope = {
+						state = 608
+					}
 				}
 				608 = {		
 					set_state_flag = candidate_direct_municipalities
@@ -18335,7 +18337,9 @@ focus_tree = {
 			}
 			if = {	#南京
 				limit = {
-					capital = 1035
+					capital_scope = {
+						state = 1035
+					}
 				}
 				1035 = {	
 					set_state_flag = candidate_direct_municipalities
@@ -18343,7 +18347,9 @@ focus_tree = {
 			}
 			if = {	#延安
 				limit = {
-					capital = 1091
+					capital_scope = {
+						state = 1091
+					}
 				}
 				1091 = {	
 					set_state_flag = candidate_direct_municipalities
@@ -18351,7 +18357,9 @@ focus_tree = {
 			}
 			if = {	#长安/咸阳
 				limit = {
-					capital = 744
+					capital_scope = {
+						state = 744
+					}
 				}
 				744 = {	
 					set_state_flag = candidate_direct_municipalities
@@ -18359,7 +18367,9 @@ focus_tree = {
 			}
 			if = {	#洛阳
 				limit = {
-					capital = 1099
+					capital_scope = {
+						state = 1099
+					}
 				}
 				1099 = {	
 					set_state_flag = candidate_direct_municipalities
@@ -18368,7 +18378,9 @@ focus_tree = {
 			if = {	#重庆
 				limit = {
 					OR = {
-						capital = 605
+						capital_scope = {
+							state = 605
+						}
 						has_completed_focus = PRC_infrastructure_effort_iii
 					}
 				}

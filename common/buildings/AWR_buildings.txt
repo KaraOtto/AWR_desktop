@@ -44,6 +44,30 @@ buildings = {
         }
     }
 
+	synthetic_refinery = {	#合成炼油厂
+		show_on_map = 1
+		base_cost = 14500
+		icon_frame = 10
+		#local_resources_oil = 1 # May use local_resources_ + any resource name
+		local_resources_rubber = 1 # May use local_resources_ + any resource name
+		refinery = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		
+		show_modifier = yes
+
+		country_modifiers = {
+			modifiers = {
+				fuel_gain_from_states = 5.0 #per hour
+			}
+		}
+
+		level_cap = {
+			shares_slots = yes
+			state_max = 3
+		}
+	}
+
 	commercial_nuclear_reactor = {	#商用反应堆
 		dlc_allowed = { has_dlc = Gotterdammerung }
 		hide_if_missing_tech = yes

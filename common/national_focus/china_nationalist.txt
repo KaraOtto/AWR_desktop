@@ -1011,6 +1011,8 @@ focus_tree = {
 		}
 		completion_reward = { 
 			set_country_flag = CHI_law_of_the_state_civil_servants
+			add_stability = 0.05
+			add_ideas = CHI_anti_corruption_democracy_1
 		}
 		available = {
 			#
@@ -1030,6 +1032,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_establish_an_independent_supervisory_organ
 			clr_country_flag = CHI_law_of_the_state_civil_servants
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_democracy_1
+				add_idea = CHI_anti_corruption_democracy_2
+			}
 		}
 		available = {
 			has_country_flag = {
@@ -1052,6 +1058,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_officials_property_and_interests_declaration
 			clr_country_flag = CHI_establish_an_independent_supervisory_organ
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_democracy_2
+				add_idea = CHI_anti_corruption_democracy_3
+			}
 		}
 		available = {
 			has_country_flag = {
@@ -1074,6 +1084,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_the_fourth_right
 			clr_country_flag = CHI_officials_property_and_interests_declaration
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_democracy_3
+				add_idea = CHI_anti_corruption_democracy_4
+			}
 		}
 
 		available = {
@@ -1097,6 +1111,11 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_the_republic_under_the_sun
 			clr_country_flag = CHI_the_fourth_right
+			remove_ideas = CHI_anti_corruption_democracy_4
+			CHI_end_corruption_system = yes
+			add_stability = 0.15
+			add_war_support = 0.15
+			add_political_power = 150
 		}
 
 		available = {
@@ -1119,6 +1138,7 @@ focus_tree = {
 		}
 		completion_reward = { 
 			set_country_flag = CHI_separate_from_party_government_and_property
+			add_ideas = CHI_anti_corruption_socialism_1
 		}
 		available = {
 			#
@@ -1138,6 +1158,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_public_procurement_transparency_act
 			clr_country_flag = CHI_separate_from_party_government_and_property
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_socialism_1
+				add_idea = CHI_anti_corruption_socialism_2
+			}
 		}
 
 		available = {
@@ -1161,6 +1185,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_independent_auditing_of_state_owned_enterprises
 			clr_country_flag = CHI_public_procurement_transparency_act
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_socialism_2
+				add_idea = CHI_anti_corruption_socialism_3
+			}
 		}
 
 		available = {
@@ -1184,6 +1212,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_anti_monopoly_law
 			clr_country_flag = CHI_independent_auditing_of_state_owned_enterprises
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_socialism_3
+				add_idea = CHI_anti_corruption_socialism_4
+			}
 		}
 
 		available = {
@@ -1207,6 +1239,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_interest_groups_are_publicly_registered
 			clr_country_flag = CHI_anti_monopoly_law
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_socialism_4
+				add_idea = CHI_anti_corruption_socialism_5
+			}
 		}
 
 		available = {
@@ -1230,6 +1266,11 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_clean_society
 			clr_country_flag = CHI_interest_groups_are_publicly_registered
+			CHI_end_corruption_system = yes
+			add_stability = 0.15
+			add_war_support = 0.15
+			add_political_power = 150
+			remove_ideas = CHI_anti_corruption_socialism_5
 		}
 
 		available = {
@@ -1252,6 +1293,21 @@ focus_tree = {
 		}
 		completion_reward = { 
 			set_country_flag = CHI_crack_down_hard_on_corruption
+			add_stability = -0.15
+			add_war_support = -0.15
+			country_event = {
+				id = CHI_corruption.10
+				random_days = 30
+			}
+			country_event = {
+				id = CHI_corruption.20
+				random_days = 30
+			}
+			country_event = {
+				id = CHI_corruption.30
+				random_days = 30
+			}
+			add_ideas = CHI_anti_corruption_communism_1
 		}
 		available = {
 			#
@@ -1271,6 +1327,10 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_comprehensive_coverage_of_supervision
 			clr_country_flag = CHI_crack_down_hard_on_corruption
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_communism_1
+				add_idea = CHI_anti_corruption_communism_2
+			}
 		}
 
 		available = {
@@ -1294,6 +1354,9 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_promote_rectification_through_cases
 			clr_country_flag = CHI_comprehensive_coverage_of_supervision
+			add_war_support = 0.10
+			add_stability = 0.10
+			CHI_corruption_reduce_medium = yes
 		}
 
 		available = {
@@ -1317,6 +1380,12 @@ focus_tree = {
 		completion_reward = { 
 			set_country_flag = CHI_integrity_education
 			clr_country_flag = CHI_promote_rectification_through_cases
+			swap_ideas = {
+				remove_idea = CHI_anti_corruption_communism_2
+				add_idea = CHI_anti_corruption_communism_3
+			}
+			
+			CHI_corruption_remove_active_ideas = yes
 		}
 
 		available = {
@@ -1338,7 +1407,10 @@ focus_tree = {
 			focus = CHI_integrity_education
 		}
 		completion_reward = { 
-			#
+			remove_ideas = CHI_anti_corruption_communism_3
+			add_war_support = 0.10
+			add_stability = 0.10
+			CHI_end_corruption_system = yes
 		}
 		available = {
 			has_country_flag = {
@@ -1497,6 +1569,25 @@ focus_tree = {
 				flag = CHI_rectify_government_procurement
 				days > 139
 			}
+		}
+	}
+
+	focus = {	#结束特殊时期
+		id = CHI_stop_anti_corruption
+		icon = GFX_focus_CHI_stop_anti_corruption
+		cost = 5
+		relative_position_id = CHI_rectify_government_procurement
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = CHI_the_system_is_above_the_faction
+			focus = CHI_the_faction_is_above_the_system
+		}
+		completion_reward = {
+			#
+		}
+		available = {
+			#
 		}
 	}
 
