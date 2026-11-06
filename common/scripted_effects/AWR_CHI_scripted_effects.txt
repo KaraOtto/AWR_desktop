@@ -1786,3 +1786,69 @@ CHI_end_corruption_system = {	#腐败机制结束
 	}
 	CHI_corruption_remove_active_ideas = yes
 }
+
+# Select each person once, including characters with both advisor and military roles.
+CHI_loyalty_purge_one_corrupt_character = {
+	random_character = {
+		limit = {
+			has_character_flag = CHI_loyalty_candidate
+			CHI_has_corruption_trait = yes
+		}
+		clr_character_flag = CHI_loyalty_candidate
+		clr_character_flag = CHI_loyalty_military_candidate
+		retire = yes
+	}
+}
+
+CHI_loyalty_whitelist_one_clean_character = {
+	random_character = {
+		limit = {
+			has_character_flag = CHI_loyalty_candidate
+			CHI_has_corruption_trait = no
+			NOT = { has_character_flag = CHI_corruption_whitelist }
+			NOT = { has_trait = CHI_corruption_whitelist }
+			NOT = { has_trait = CHI_corruption_whitelist_advisor }
+		}
+		set_character_flag = CHI_corruption_whitelist
+		if = {
+			limit = { has_advisor_role = political_advisor }
+			add_trait = {
+				slot = political_advisor
+				trait = CHI_corruption_whitelist_advisor
+			}
+		}
+		if = {
+			limit = { has_character_flag = CHI_loyalty_military_candidate }
+			add_unit_leader_trait = CHI_corruption_whitelist
+		}
+	}
+}
+
+CHI_loyalty_purge_and_whitelist = {
+	every_character = {
+		clr_character_flag = CHI_loyalty_candidate
+		clr_character_flag = CHI_loyalty_military_candidate
+	}
+	every_unit_leader = {
+		set_character_flag = CHI_loyalty_candidate
+		set_character_flag = CHI_loyalty_military_candidate
+	}
+	every_character = {
+		limit = { has_advisor_role = political_advisor }
+		set_character_flag = CHI_loyalty_candidate
+	}
+	CHI_loyalty_purge_one_corrupt_character = yes
+	CHI_loyalty_purge_one_corrupt_character = yes
+	CHI_loyalty_purge_one_corrupt_character = yes
+	CHI_loyalty_purge_one_corrupt_character = yes
+	CHI_loyalty_purge_one_corrupt_character = yes
+	CHI_loyalty_whitelist_one_clean_character = yes
+	CHI_loyalty_whitelist_one_clean_character = yes
+	CHI_loyalty_whitelist_one_clean_character = yes
+	CHI_loyalty_whitelist_one_clean_character = yes
+	CHI_loyalty_whitelist_one_clean_character = yes
+	every_character = {
+		clr_character_flag = CHI_loyalty_candidate
+		clr_character_flag = CHI_loyalty_military_candidate
+	}
+}
