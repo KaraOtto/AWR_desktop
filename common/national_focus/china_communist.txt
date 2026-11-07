@@ -9080,9 +9080,53 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_seize_the_initiative
 		}
+		# 启用隐藏过时分支时，完成任一路线后隐藏另一分支并居中。
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_country_flag = PRC_liberation_offensive_chosen
+						has_completed_focus = PRC_seize_the_initiative
+					}
+				}
+			}
+		}
 		x = -4
 		y = 1
+		offset = {
+			x = 4
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					has_country_flag = PRC_liberation_defense_chosen
+					has_completed_focus = PRC_strategic_defense
+				}
+			}
+		}
 		completion_reward = {
+			hidden_effect = {
+				# 奖励执行时国策尚未标记完成，先设置标记再刷新布局。
+				set_country_flag = PRC_liberation_defense_chosen
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 			effect_tooltip = {
 				add_ideas = PRC_War_of_Liberation_defense
 			}
@@ -9370,9 +9414,53 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_strategic_defense
 		}
+		# 启用隐藏过时分支时，完成任一路线后隐藏另一分支并居中。
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_country_flag = PRC_liberation_defense_chosen
+						has_completed_focus = PRC_strategic_defense
+					}
+				}
+			}
+		}
 		x = 4
 		y = 1
+		offset = {
+			x = -4
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					has_country_flag = PRC_liberation_offensive_chosen
+					has_completed_focus = PRC_seize_the_initiative
+				}
+			}
+		}
 		completion_reward = {
+			hidden_effect = {
+				# 奖励执行时国策尚未标记完成，先设置标记再刷新布局。
+				set_country_flag = PRC_liberation_offensive_chosen
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 			add_timed_idea = {	
 				idea = PRC_War_of_Liberation_attack
 				days = 360
@@ -9710,9 +9798,10 @@ focus_tree = {
 			focus = PRC_Nanjing_campaign
 			focus = PRC_attack_Nanjing
 		}
-		relative_position_id = PRC_Nanjing_campaign
-		x = 4
-		y = 1
+		# 两条路线汇合，固定在解放战争下方，避免跟随隐藏分支偏移。
+		relative_position_id = PRC_War_of_Liberation
+		x = 0
+		y = 7
 		completion_reward = {
 			
 			swap_ideas = {
@@ -9751,6 +9840,23 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_New_Red_Army
 		}
+		# 启用隐藏过时分支时，军队路线确定后隐藏未选择的整条三军线。
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_country_flag = PRC_military_red_army_chosen
+						has_completed_focus = PRC_New_Red_Army
+					}
+				}
+			}
+		}
 		x = 87
 		y = 0
 
@@ -9759,6 +9865,19 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			hidden_effect = {
+				# 先设置路线标记，使本次奖励内的布局刷新立即生效。
+				set_country_flag = PRC_military_pla_chosen
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 			custom_effect_tooltip = zhengzhiju_gui_will_change		
 			hidden_effect = {
 		        if = {
@@ -12456,7 +12575,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_study_foreign_ship
 		}
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = PRC_study_foreign_ship
 		ai_will_do = {
@@ -12495,7 +12614,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_study_foreign_ship
 		}
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = PRC_study_foreign_ship
 		ai_will_do = {
@@ -12662,7 +12781,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Train_naval_officers
 		}
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = PRC_Train_naval_officers
 		ai_will_do = {
@@ -12713,7 +12832,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Submarine
 		}
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = PRC_Submarine
 		ai_will_do = {
@@ -12812,7 +12931,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Submarine
 		}
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PRC_Submarine
 		ai_will_do = {
@@ -13024,7 +13143,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_Train_naval_officers
 		}
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = PRC_Train_naval_officers
 		ai_will_do = {
@@ -13105,7 +13224,7 @@ focus_tree = {
 			focus = PRC_Carriers_made_by_ourselves
 		}
 		relative_position_id = PRC_Carriers_made_by_ourselves
-		x = -2
+		x = -1
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -13148,7 +13267,7 @@ focus_tree = {
 			focus = PRC_submarine_center
 		}
 		relative_position_id = PRC_Carriers_made_by_ourselves
-		x = 0
+		x = 1
 		y = 1
 		ai_will_do = {
 			factor = 1
@@ -13424,7 +13543,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_zouxiangshenlan
 		}
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = PRC_zouxiangshenlan
 		mutually_exclusive = {
@@ -13515,7 +13634,7 @@ focus_tree = {
 		prerequisite = {
 			focus = PRC_zouxiangshenlan
 		}
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = PRC_zouxiangshenlan
 		mutually_exclusive = {
@@ -13554,9 +13673,40 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = PRC_PLA
 		}
-		x = 37
+		# 启用隐藏过时分支时，军队路线确定后隐藏未选择的整条三军线。
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_country_flag = PRC_military_pla_chosen
+						has_completed_focus = PRC_PLA
+					}
+				}
+			}
+		}
+		# 独立定位，避免依赖被隐藏的解放军路线。
+		x = 124
 		y = 0
-		relative_position_id = PRC_PLA
+		offset = {
+			x = -25
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					has_country_flag = PRC_military_red_army_chosen
+					has_completed_focus = PRC_New_Red_Army
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 999
 			modifier = {
@@ -13566,6 +13716,19 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			hidden_effect = {
+				# 先设置路线标记，使本次奖励内的布局刷新立即生效。
+				set_country_flag = PRC_military_red_army_chosen
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 		    custom_effect_tooltip = PRC_jiesuo_kuaisuqianhao
 
 			add_dynamic_modifier = {
@@ -19317,19 +19480,48 @@ focus_tree = {
 		cost = 2.14
 		x = 162
 		y = 0
+		# 外交线随保留的军事线左移，收拢被隐藏路线留下的空白。
+		offset = {
+			x = -47
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					has_country_flag = PRC_military_pla_chosen
+					has_completed_focus = PRC_PLA
+				}
+			}
+		}
+		offset = {
+			x = -25
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					has_country_flag = PRC_military_red_army_chosen
+					has_completed_focus = PRC_New_Red_Army
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 0
 		}
-		#allow_branch = {
-			#NOT = {
-				#leader_is_zhang_guotao = yes
-				#leader_is_trotskyist = yes
-			#}
-			#OR = {
-				#has_completed_focus = PRC_A_New_Country
-				#has_completed_focus = PRC_For_the_Soviets
-			#}
-		#}
+		allow_branch = {
+			OR = {
+				leader_is_maoist = yes
+				leader_is_28b = yes
+			}
+			OR = {
+				has_completed_focus = PRC_A_New_Country
+				has_completed_focus = PRC_For_the_Soviets
+			}
+		}
 		completion_reward = {
 			add_political_power = 50
 		}
