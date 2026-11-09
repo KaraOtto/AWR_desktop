@@ -93,31 +93,12 @@ focus_tree = {
 				has_border_war = yes
                 has_non_aggression_pact_with = SHX
 			}
-			if = {
-				limit = {
-					NOT = {
-						owns_state = 1162
-					}
-				}
-				OR = {
-					divisions_in_border_state = {
-						state = 1090
-						border_state = 1082
-						size > 0
-					}
-					divisions_in_border_state = {
-						state = 622
-						border_state = 1082
-						size > 0
-					}
-				}
-			}
 		}
 		available_if_capitulated = yes
 		completion_reward = {
 		    set_country_flag = im_doing_east_conquest_flag
 			set_global_flag = PRC_East_conquest_focus_flag
-		    hidden_effect = { #guo
+		    hidden_effect = { 
 				random_other_country = {
 					limit = {
 						is_ai = yes
@@ -201,11 +182,16 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			SHX = {
-				NOT = {
-					has_full_control_of_state = 1082
+			OR = {
+				SHX = {
+					NOT = {
+						has_full_control_of_state = 1082
+					}
 				}
-			}
+				ROOT = {
+					has_war_with = SHX
+				}
+			}	
 		}
 		will_lead_to_war_with = SHX
 	}
@@ -263,7 +249,7 @@ focus_tree = {
 				if = {
 					limit = {
 						has_character = SHX_Bo_Yibo
-						not = { 
+						NOT = { 
 							has_government = communism 
 						}
 					}
@@ -522,7 +508,7 @@ focus_tree = {
 				add_idea = PRC_zhengzhibaoweiju_2
 			}
 			create_intelligence_agency = {
-				name= "中央特别工作委员会"
+				name = AWR_PRC_agency_central_special_work_committee
 				icon = GFX_intelligence_agency_logo_generic_9
 			}
 		}
@@ -649,7 +635,7 @@ focus_tree = {
 			
 			hidden_effect = {
 				create_intelligence_agency = {
-					name="中央社会部"
+					name = AWR_PRC_agency_central_social_affairs_department
 					icon = GFX_intelligence_agency_logo_generic_9
 				}
 			}
@@ -2320,7 +2306,7 @@ focus_tree = {
 					}
 					custom_effect_tooltip = {
 						localization_key = building_state_modifier|dam
-						INDENT = "    "
+						INDENT = " "
 					}
 					ETH_upgrade_state_category = yes
 					add_building_construction = {
@@ -19195,7 +19181,7 @@ focus_tree = {
 			has_tech = improved_oil_processing
 			
 			ROOT = {
-				controls_state = 1097
+				controls_state = 1111	#大庆
 			}
 		}
 
@@ -19264,7 +19250,7 @@ focus_tree = {
 			}
 			has_tech = excavation4
 			ROOT = {
-				controls_state = 1036
+				controls_state = 1100	#豫南
 			}
 		}
 	}
@@ -19324,7 +19310,8 @@ focus_tree = {
 				has_completed_focus = PRC_nationalize_industry_ii_focus
 			}
 			ROOT = {
-				controls_state = 1091
+				controls_state = 593
+				controls_state = 1126
 			}
 		}
 	}
@@ -19352,7 +19339,7 @@ focus_tree = {
 				has_completed_focus = PRC_nationalize_industry_ii_focus
 			}
 			ROOT = {
-				controls_state = 1040
+				controls_state = 1129
 			}
 		}
 	}
@@ -19439,7 +19426,9 @@ focus_tree = {
 			}
 			has_tech = excavation4
 			ROOT = {
-				controls_state = 1146
+				controls_state = 1146	#塔城
+				controls_state = 618	#阿勒泰
+				controls_state = 1153	#哈密
 			}
 			
 		}
