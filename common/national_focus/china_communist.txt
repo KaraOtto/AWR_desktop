@@ -19142,6 +19142,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			unlock_decision_tooltip = PRC_oil_effort_yumen
+			unlock_decision_tooltip = PRC_oil_effort_kelamayi
+			unlock_decision_tooltip = PRC_oil_effort_lenghu
+			unlock_decision_tooltip = PRC_oil_effort_southwest
 			custom_effect_tooltip = available_industrial_concern
 			show_ideas_tooltip = kansu_petroleum_bureau				
 		}
@@ -19831,7 +19834,7 @@ focus_tree = {
 			add_state_claim = 1137
 			add_state_claim = 1134
 			add_state_claim = 654
-			add_state_claim = 732
+			add_state_claim = 1136
 			add_state_claim = 1133
 		}
 		available = {
@@ -19861,7 +19864,7 @@ focus_tree = {
 			owns_state = 1137
 			owns_state = 1134
 			owns_state = 654
-			owns_state = 732
+			owns_state = 1136
 			owns_state = 1133
 		}
 	}
@@ -19992,7 +19995,8 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {	
-			#			
+			add_political_power = 50
+			add_war_support = 0.05			
 		}
 		available = {
 			CHI = {
@@ -20040,6 +20044,9 @@ focus_tree = {
 					num_of_controlled_states < 15
 					exists = yes
 					has_global_flag = roc_in_taiwan_flag
+					NOT = {
+						has_war_with = CHI
+					}
 				}
 			}
 		}

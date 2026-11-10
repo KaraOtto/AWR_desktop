@@ -1119,7 +1119,7 @@ leader_traits = {#军事
 
 	suspicious_tactics = { #疑兵战术
 		random = no
-		breakthrough_factor = 0.10
+		breakthrough_factor = 0.05
 	}
 
 	NFA_army = {#铁军之魂
@@ -1277,13 +1277,11 @@ leader_traits = {#军事
 		sprite = 8
 		army_speed_factor = 0.15
 		org_loss_when_moving = -0.30
-		breakthrough_factor = 0.10
-		army_attack_factor = 0.05
-		coordination_bonus = 0.05
-		land_reinforce_rate = 0.20
-		initiative_factor = 0.50
-
-		command_cap_increase = 10
+		breakthrough_factor = 0.075
+		army_attack_factor = 0.075
+		coordination_bonus = 0.15
+		land_reinforce_rate = 0.15
+		initiative_factor = 0.15
 
 		ai_will_do = {
 			factor = 3
@@ -1296,12 +1294,32 @@ leader_traits = {#军事
 	
 	army_speed_battlefield_2 = { #野战机动
 		sprite = 8
-		army_speed_factor = 0.05
-		org_loss_when_moving = -0.05
+		army_speed_factor = 0.10
+		org_loss_when_moving = -0.20
 		breakthrough_factor = 0.05
-		land_reinforce_rate = 0.02
+		army_attack_factor = 0.05
+		coordination_bonus = 0.10
+		land_reinforce_rate = 0.10
+		initiative_factor = 0.10
 
-		command_cap_increase = 20
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				command_power < 20
+			}
+		}
+	}
+
+	army_speed_battlefield_1 = { #野战机动
+		sprite = 8
+		army_speed_factor = 0.05
+		org_loss_when_moving = -0.10
+		breakthrough_factor = 0.025
+		army_attack_factor = 0.025
+		coordination_bonus = 0.05
+		land_reinforce_rate = 0.05
+		initiative_factor = 0.05
 
 		ai_will_do = {
 			factor = 3
