@@ -2,7 +2,7 @@ capital = 1
 
 ##########vvvvvvvvvvvvvvvvvvvvv###################	
 
-PLM = {
+MEN = {
 	add_country_leader_trait = difangshilipai
 
 }
@@ -28,7 +28,7 @@ SCG = {
 
 
 
-PLM = {
+MEN = {
 add_ideas = balance_idea_plm
 }
 
@@ -82,7 +82,10 @@ every_country = {
 			tag = SIK
 			tag = SHC
 			tag = XIA
-			tag = PLM
+			AND = {
+				tag = MEN
+				has_cosmetic_tag = MEN_PLM
+			}
 		}
 	}
 	set_country_flag = zhongguo  
@@ -95,12 +98,13 @@ every_country = {
 		OR = {
 			tag = JAP
 			tag = MAN
-			tag = MEN
+			AND = {
+				tag = MEN
+				NOT = { has_cosmetic_tag = MEN_PLM }
+			}
 			tag = RRC
 			tag = RFM
 			tag = JNC
-			tag = MEJ
-			tag = MAF
 			tag = ECA
 		}
 	}

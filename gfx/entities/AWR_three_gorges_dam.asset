@@ -1,4 +1,17 @@
 entity = {
-    clone = "building_dam"
     name = "building_three_gorges_dam"
+    # Use the vanilla mesh directly; building_dam is defined in a later entity file.
+    pdxmesh = "generic_dam_mesh"
+
+    default_state = "idle"
+    state = {
+        name = "idle"
+        animation = "idle"
+        animation_blend_time = 0.0
+        animation_speed = 1.0
+        looping = no
+        event = { time = 0 node = "water" particle = "water_surface_effect_straight_particle" keep_particle = yes trigger_once = yes }
+    }
+
+    scale = 0.7
 }
