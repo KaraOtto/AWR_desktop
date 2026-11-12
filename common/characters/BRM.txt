@@ -1,0 +1,640 @@
+characters={
+	BRM_archibald_cochrane = {
+		name = BRM_archibald_cochrane
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/BRM/Portrait_Burma_Archibald_Cochrane.dds"
+			}
+		}
+		country_leader = {
+			ideology = despotism
+			desc = BRM_Archibald_Cochrane_desc
+		}
+	}
+
+	BRM_Reginald_Dorman_Smith = {
+		name = BRM_Reginald_Dorman_Smith
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/BRM/Portrait_Burma_Reginald_Dorman-Smith.dds"
+			}
+		}
+		country_leader = {
+			ideology = despotism
+			desc = POLITICS_REGINALD_DORMAN
+		}
+	}
+
+	BRM_ba_maw={
+		name=BRM_ba_maw
+		portraits={
+			civilian = {
+				large = "gfx/leaders/BRM/Portrait_Burma_Ba_Maw.dds"
+			}
+			army={
+				large="gfx/leaders/BRM/Portrait_Burma_Ba_Maw_2.png"
+			}
+		}
+		country_leader = {
+			ideology = moderatism
+			desc = BRM_ba_maw_desc
+		}
+		country_leader = {
+			ideology = fascism_ideology
+			desc = BRM_ba_maw_desc_2
+		}
+		corps_commander={
+			traits={ politically_connected }
+			skill=2
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+
+	BRM_aung_san={
+		name=BRM_aung_san
+		portraits={
+			civilian={
+				small="GFX_idea_aung_san"
+			}
+		}
+		country_leader = {
+			ideology = marxism
+			desc = BRM_aung_san_desc
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_aung_san
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { socialist_idealist }
+	
+			on_add = {
+				#country_event = rcmpolitical.30
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = socialism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	BRM_u_saw = {
+		name = BRM_u_saw
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/BRM/Portrait_Burma_U_Saw.dds"
+			}
+		}
+		country_leader = {
+			ideology = populism
+			desc = BRM_u_saw_desc
+		}
+	}
+
+	BRM_myat_phaya_lat = {
+		name = BRM_myat_phaya_lat
+		portraits = {
+			civilian={
+				large = GFX_portrait_BRM_myat_phaya_lat
+			}
+		}
+		country_leader = {
+			ideology = despotism
+			traits = { konbuang_dynasty_descendant }
+			expire = "1956.1.1.1"
+			id = -1
+		}
+	}
+
+	############################## POLITICAL ##############################
+
+	BRM_u_nu={
+		name=BRM_u_nu
+		portraits={
+			civilian={
+				large="GFX_BRM_u_nu_big"
+				small="GFX_idea_BRM_u_nu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_u_nu
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { democratic_reformer }
+
+			on_add = {
+				#country_event = political.13
+			}	
+		
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+		
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	BRM_tin_tut={
+		name=BRM_tin_tut
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_tin_tut"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_tin_tut
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { backroom_backstabber }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	BRM_mahn_ba_khaing={
+		name=BRM_mahn_ba_khaing
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_mahn_ba_khaing"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_mahn_ba_khaing
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { captain_of_industry }
+
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+
+	BRM_tun_aung={
+		name=BRM_tun_aung
+		portraits={
+			civilian={
+				small="GFX_idea_generic_political_advisor_asia_1"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_tun_aung
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { fascist_demagogue }
+			
+			on_add = {
+				#country_event = political.7
+			}
+				
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	BRM_ba_cho={
+		name=BRM_ba_cho
+		portraits={
+			civilian={
+				small="GFX_idea_generic_political_advisor_asia_2"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_ba_cho
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { ideological_crusader }
+		}
+	}
+
+	BRM_than_tun={
+		name=BRM_than_tun
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_than_tun"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_u_nu
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { communist_revolutionary }	
+			
+			on_add = {
+				#country_event = political.1
+			}		
+			
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+
+		}
+	}
+
+	BRM_u_razak={
+		name=BRM_u_razak
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_u_razak"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_u_razak
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { silent_workhorse }	
+		}
+	}
+
+	BRM_aung_zan_wai={
+		name=BRM_aung_zan_wai
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_aung_zan_wai"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_aung_zan_wai
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { popular_figurehead }
+		}
+	}
+
+	BRM_thein_pe_myint={
+		name=BRM_thein_pe_myint
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_thein_pe_myint"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_thein_pe_myint
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { war_industrialist }
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	}
+
+	BRM_bo_mu_aung={
+		name=BRM_bo_mu_aung
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_bo_mu_aung"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_bo_mu_aung
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { quartermaster_general }
+
+			ai_will_do = {
+				factor = 3
+			}
+		}
+	}
+
+	BRM_ohn_maung={
+		name=BRM_ohn_maung
+		portraits={
+			civilian={
+				small="GFX_idea_BRM_ohn_maung"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BRM_ohn_maung
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { armaments_organizer }
+		}
+	}
+
+	BRM_kenneth_mcleod={
+		name=BRM_kenneth_mcleod
+		portraits={
+			army={
+				large="gfx/leaders/BRM/Portrait_Burma_Kenneth_Mcleod.dds"
+				small="GFX_idea_BRM_kenneth_mcleod"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRM_kenneth_mcleod_army_chief
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_chief_reform_2 }
+			cost = 100			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = BRM_kenneth_mcleod_theorist
+			ledger = army
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { military_theorist }
+			cost = 100				
+		}
+		advisor={
+			slot = high_command
+			idea_token = BRM_kenneth_mcleod_high_command
+			ledger = army
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_infantry_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}			
+		}
+		corps_commander={
+			traits={ cavalry_officer }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+
+	BRM_ne_win={
+		name=BRM_ne_win
+		portraits={
+			army={
+				large="gfx/leaders/BRM/Portrait_Burma_ne_win.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRM_ne_win
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_chief_drill_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		corps_commander={
+			traits={}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	
+	BRM_tin_mya={
+		name=BRM_tin_mya
+		portraits={
+			army={
+				small="GFX_idea_generic_army_asia_3"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRM_tin_mya
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_chief_offensive_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}	
+	}
+
+	BRM_bo_let_ya={
+		name=BRM_bo_let_ya
+		portraits={
+			army={
+				small="GFX_idea_BRM_bo_let_ya"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRM_bo_let_ya
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_chief_defensive_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	BRM_kyaw_zaw={
+		name=BRM_kyaw_zaw
+		portraits={
+			army={
+				small="GFX_idea_BRM_kyaw_zaw"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRM_kyaw_zaw
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { army_chief_morale_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}	
+	}	
+
+	BRM_john_henry_godfrey={
+		name=BRM_john_henry_godfrey
+		portraits={
+			navy={
+				large="gfx/leaders/BRM/Portrait_Burma_John_Henry_Godfrey.dds"
+				small="GFX_idea_BRM_john_henry_godfrey"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = BRM_john_henry_godfrey_n
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { navy_chief_commerce_raiding_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		advisor={		
+			slot = theorist
+			idea_token = BRM_john_henry_godfrey
+			ledger = navy
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = {
+				naval_theorist
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = BRM_john_henry_godfrey_h
+			ledger = navy
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { navy_anti_submarine_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		navy_leader={
+			traits={ navy_career_officer battleship_adherent gunnery_expert spotter }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			maneuvering_skill=3
+			coordination_skill=2
+		}
+	}
+
+	BRM_louis_mountbatten={
+		name=BRM_louis_mountbatten
+		portraits={
+			army={
+				small="GFX_idea_louis_mountbatten"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = BRM_louis_mountbatten
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { navy_chief_maneuver_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}	
+	}
+
+	BRM_jack_baldwin={
+		name=BRM_jack_baldwin
+		portraits={
+			army={
+				small="GFX_idea_BRM_jack_baldwin_a"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = BRM_jack_baldwin_a
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { air_chief_ground_support_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		advisor={		
+			slot = theorist
+			idea_token = BRM_jack_baldwin
+			ledger = air
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = {
+				air_warfare_theorist
+			}
+			cost = 100				
+		}
+		advisor={
+			slot = high_command
+			idea_token = BRM_jack_baldwin_h
+			ledger = air
+			allowed = {
+				original_tag = BRM
+			}			
+			traits = { air_close_air_support_2 }
+			cost = 100				
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+}
+
+
+
+

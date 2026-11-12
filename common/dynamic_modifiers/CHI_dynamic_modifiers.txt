@@ -18,19 +18,21 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	attrition = CHI_nra_army_attrition #陆军损耗
 	land_reinforce_rate = CHI_nra_army_land_reinforce_rate #增援率
 	land_night_attack = CHI_nra_army_land_night_attack #夜战攻击
-	INITIATIVE_FACTOR = CHI_nra_army_INITIATIVE_FACTOR #主动性
+	initiative_factor = CHI_nra_army_initiative_factor #主动性
 	coordination_bonus = CHI_nra_army_coordination_bonus #协同性
 	
 	terrain_penalty_reduction = CHI_nra_army_terrain_penalty_reduction #地形惩罚
 	combat_width_factor = CHI_nra_army_combat_width_factor #军队宽度
 	cas_damage_reduction = CHI_nra_army_cas_damage_reduction #近空支援造成伤害降低
 	experience_loss_factor = CHI_nra_army_experience_loss_factor #有经验的士兵的损失
+	casualty_trickleback = CHI_nra_army_casualty_trickleback #伤兵复原
+	army_strength_factor = CHI_nra_army_army_strength_factor #HP
 	war_stability_factor = CHI_nra_army_war_stability_factor #战争对稳定度惩罚修正
 	
 	#全体陆军
-	army_attack_factor = CHI_nra_army_army_attack_against_major_factor
-	army_defence_factor = CHI_nra_army_army_defence_against_major_factor
-	breakthrough_factor = CHI_nra_army_army_breakthrough_against_major_factor
+	army_attack_factor = CHI_nra_army_army_attack_factor
+	army_defence_factor = CHI_nra_army_army_defence_factor
+	breakthrough_factor = CHI_nra_army_army_breakthrough_factor
 	army_speed_factor = CHI_nra_army_army_speed_factor #陆军速度
 
 	#组织度
@@ -55,11 +57,11 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	planning_speed =  CHI_nra_army_planning_speed
 
 	#补给
-	SUPPLY_FACTOR =  CHI_nra_army_SUPPLY_FACTOR
-	SUPPLY_NODE_RANGE =  CHI_nra_army_SUPPLY_NODE_RANGE
+	supply_factor =  CHI_nra_army_supply_factor
+	supply_node_range =  CHI_nra_army_supply_node_range
 	supply_consumption_factor = CHI_nra_army_supply_consumption_factor #补给消耗
 	out_of_supply_factor = CHI_nra_army_out_of_supply_factor #补给耗尽惩罚
-	TRUCK_ATTRITION_FACTOR =  CHI_nra_army_TRUCK_ATTRITION_FACTOR
+	truck_attrition_factor =  CHI_nra_army_truck_attrition_factor
 	
 	#经验乘数
 	experience_gain_army =  CHI_nra_army_experience_gain_army
@@ -69,6 +71,7 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	
 	#学说
 	land_doctrine_cost_factor = CHI_nra_army_land_doctrine_cost_factor #陆军学说花费
+	land_mastery_gain_factor = CHI_nra_army_land_mastery_gain_factor
 	grand_battleplan_mastery_gain_factor = CHI_nra_army_grand_battleplan_mastery_gain_factor	#决战
 	mass_assault_mastery_gain_factor = CHI_nra_army_mass_assault_mastery_gain_factor	#人海
 	superior_firepower_mastery_gain_factor = CHI_nra_army_superior_firepower_mastery_gain_factor	#优火
@@ -78,7 +81,7 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	army_infantry_attack_factor =  CHI_nra_army_army_infantry_attack_factor
 	army_infantry_defence_factor =  CHI_nra_army_army_infantry_defence_factor
 	experience_gain_infantry_combat_factor =  CHI_nra_army_experience_gain_infantry_combat_factor #战斗中获取的步兵经验
-	modifier_unit_infantry_design_cost_factor =  CHI_nra_army_unit_infantry_design_cost_factor #步兵编制花费
+	unit_infantry_design_cost_factor =  CHI_nra_army_unit_infantry_design_cost_factor #步兵编制花费
 	
 	#骑兵
 	cavalry_attack_factor =  CHI_nra_army_cavalry_attack_factor
@@ -86,20 +89,20 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	
 	#装甲
 	army_armor_attack_factor = CHI_nra_army_army_armor_attack_factor #装甲攻击
-	ARMY_ARMOR_DEFENCE_FACTOR = CHI_nra_army_ARMY_ARMOR_DEFENCE_FACTOR #装甲防御
-	ARMY_ARMOR_SPEED_FACTOR = CHI_nra_army_ARMY_ARMOR_SPEED_FACTOR #装甲速度
-	modifier_unit_medium_armor_design_cost_factor =  CHI_nra_army_unit_medium_armor_design_cost_factor	#中坦设计花费
-	modifier_unit_modern_armor_design_cost_factor =  CHI_nra_army_unit_modern_armor_design_cost_factor	#现代坦克设计花费
+	army_armor_defence_factor = CHI_nra_army_army_armor_defence_factor #装甲防御
+	army_armor_speed_factor = CHI_nra_army_army_armor_speed_factor #装甲速度
+	unit_medium_armor_design_cost_factor =  CHI_nra_army_unit_medium_armor_design_cost_factor	#中坦编制花费
+	unit_modern_armor_design_cost_factor =  CHI_nra_army_unit_modern_armor_design_cost_factor	#现坦编制花费
 	
 	#摩托化
 	motorized_attack_factor =  CHI_nra_army_motorized_attack_factor
 	motorized_defence_factor =  CHI_nra_army_motorized_defence_factor
-	modifier_unit_motorized_design_cost_factor = CHI_nra_army_unit_motorized_design_cost_factor #摩托化编制花费
+	unit_motorized_design_cost_factor = CHI_nra_army_unit_motorized_design_cost_factor #摩托化编制花费
 
 	#机械化
 	mechanized_attack_factor =  CHI_nra_army_mechanized_attack_factor
 	mechanized_defence_factor =  CHI_nra_army_mechanized_defence_factor
-	modifier_unit_mechanized_design_cost_factor = CHI_nra_army_unit_mechanized_design_cost_factor #机械化编制花费
+	unit_mechanized_design_cost_factor = CHI_nra_army_unit_mechanized_design_cost_factor #机械化编制花费
 
 	#炮兵
 	army_artillery_attack_factor = CHI_nra_army_army_artillery_attack_factor #炮兵攻击
@@ -117,7 +120,7 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	#特种部队
 	special_forces_cap =  CHI_nra_army_special_forces_cap
 	modifier_army_sub_unit_category_special_forces_max_org_factor = CHI_nra_army_modifier_army_sub_unit_category_special_forces_max_org_factor	#组织度
-	SPECIAL_FORCES_TRAINING_TIME_FACTOR = CHI_nra_army_SPECIAL_FORCES_TRAINING_TIME_FACTOR
+	special_forces_training_time_factor = CHI_nra_army_special_forces_training_time_factor
 	SPECIAL_FORCES_ATTACK_FACTOR = CHI_nra_army_SPECIAL_FORCES_ATTACK_FACTOR
 	SPECIAL_FORCES_DEFENCE_FACTOR = CHI_nra_army_SPECIAL_FORCES_DEFENCE_FACTOR
 	SPECIAL_FORCES_NO_SUPPLY_GRACE = CHI_nra_army_SPECIAL_FORCES_NO_SUPPLY_GRACE
@@ -152,7 +155,7 @@ CHI_nra_army_dynamic_modifier = {	#国民革命军陆军
 	modifier_army_sub_unit_militia_max_org_factor = CHI_nra_army_modifier_army_sub_unit_militia_max_org_factor
 
 	#训练时间
-	MINIMUM_TRAINING_LEVEL = CHI_nra_army_MINIMUM_TRAINING_LEVEL
+	minimum_training_level = CHI_nra_army_minimum_training_level
 	training_time_factor = CHI_nra_army_training_time_factor
 	
 	#侦察
@@ -168,12 +171,162 @@ CHI_nra_air_dynamic_modifier = {
 	icon = GFX_idea_CHI_nra_air
 	enable = { tag = CHI }
 	remove_trigger = { always = no }
+
+	# 空军经验
+	experience_gain_air = CHI_nra_air_experience_gain_air					#每日空军经验获取
+	experience_gain_air_factor = CHI_nra_air_experience_gain_air_factor			#空军经验获取系数
+	air_training_xp_gain_factor = CHI_nra_air_air_training_xp_gain_factor			#空军训练经验获取
+	air_mission_xp_gain_factor = CHI_nra_air_air_mission_xp_gain_factor			#空军任务经验获取
+	air_wing_xp_loss_when_killed_factor = CHI_nra_air_air_wing_xp_loss_when_killed_factor	#飞机损失造成的联队经验损失
+	air_untrained_pilots_penalty_factor = CHI_nra_air_air_untrained_pilots_penalty_factor	#未训练飞行员惩罚
+
+	# 空军学说
+	air_doctrine_cost_factor = CHI_nra_air_air_doctrine_cost_factor				#空军学说花费
+
+	# 空军学说精通度
+	new_battlefield_support_mastery_gain_factor = CHI_nra_air_new_battlefield_support_mastery_gain_factor		#战场支援精通度获取
+	new_operational_integrity_mastery_gain_factor = CHI_nra_air_new_operational_integrity_mastery_gain_factor		#连续作战精通度获取
+	new_strategic_destruction_mastery_gain_factor = CHI_nra_air_new_strategic_destruction_mastery_gain_factor		#战略破坏精通度获取
+
+	# 飞机设计与人力
+	air_equipment_upgrade_xp_cost = CHI_nra_air_air_equipment_upgrade_xp_cost		#飞机设计经验花费
+	air_manpower_requirement_factor = CHI_nra_air_air_manpower_requirement_factor		#空军人力需求
+
+	# 飞机通用作战性能
+	air_attack_factor = CHI_nra_air_air_attack_factor					#空中攻击
+	air_defence_factor = CHI_nra_air_air_defence_factor				#空中防御
+	air_agility_factor = CHI_nra_air_air_agility_factor				#空中机动
+	air_maximum_speed_factor = CHI_nra_air_air_maximum_speed_factor			#飞机最大速度
+	air_range_factor = CHI_nra_air_air_range_factor					#飞机航程
+
+	# 空军侦测
+	air_detection = CHI_nra_air_air_detection						#空军侦测
+	air_superiority_detect_factor = CHI_nra_air_air_superiority_detect_factor		#制空任务侦测
+	air_interception_detect_factor = CHI_nra_air_air_interception_detect_factor		#截击任务侦测
+
+	# 空军任务效率
+	air_mission_efficiency = CHI_nra_air_air_mission_efficiency				#空军任务效率
+	air_superiority_efficiency = CHI_nra_air_air_superiority_efficiency			#制空任务效率
+	air_intercept_efficiency = CHI_nra_air_air_intercept_efficiency				#截击任务效率
+	air_escort_efficiency = CHI_nra_air_air_escort_efficiency				#空中护航效率
+	air_home_defence_factor = CHI_nra_air_air_home_defence_factor				#本土空中防御
+	air_power_projection_factor = CHI_nra_air_air_power_projection_factor			#空中力量投射
+
+	# 制空权
+	army_bonus_air_superiority_factor = CHI_nra_air_army_bonus_air_superiority_factor	#制空权对陆军作战加成
+
+	# 近距空中支援
+	ground_attack_factor = CHI_nra_air_ground_attack_factor				#对地攻击
+	air_bombing_targetting = CHI_nra_air_air_bombing_targetting				#对地轰炸瞄准
+	air_cas_efficiency = CHI_nra_air_air_cas_efficiency					#近距空中支援任务效率
+	air_cas_present_factor = CHI_nra_air_air_cas_present_factor				#近距空中支援对陆军作战效果
+	air_close_air_support_org_damage_factor = CHI_nra_air_air_close_air_support_org_damage_factor	#近距空中支援组织度伤害
+
+	# 战略轰炸
+	air_strategic_bomber_bombing_factor = CHI_nra_air_air_strategic_bomber_bombing_factor	#战略轰炸效率
+	air_strategic_bomber_night_penalty = CHI_nra_air_air_strategic_bomber_night_penalty	#战略轰炸夜间惩罚
+	strategic_bomb_visibility = CHI_nra_air_strategic_bomb_visibility			#战略轰炸机可见度
+
+	# 对海攻击
+	naval_strike_attack_factor = CHI_nra_air_naval_strike_attack_factor			#海军打击攻击
+	naval_strike_targetting_factor = CHI_nra_air_naval_strike_targetting_factor		#海军打击瞄准
+	air_nav_efficiency = CHI_nra_air_air_nav_efficiency					#海军打击任务效率
+	port_strike = CHI_nra_air_port_strike						#港口袭击伤害
+
+	# 空军王牌
+	air_ace_generation_chance_factor = CHI_nra_air_air_ace_generation_chance_factor	#空军王牌产生概率
+	air_ace_bonuses_factor = CHI_nra_air_air_ace_bonuses_factor				#王牌飞行员加成
+	ace_effectiveness_factor = CHI_nra_air_ace_effectiveness_factor				#王牌飞行员效果
+
+	# 夜间与天气作战
+	air_night_penalty = CHI_nra_air_air_night_penalty					#夜间空战惩罚
+	air_weather_penalty = CHI_nra_air_air_weather_penalty				#恶劣天气空战惩罚
+
+	# 空军事故
+	air_accidents_factor = CHI_nra_air_air_accidents_factor				#空军事故概率
+
+	# 空军后勤
+	air_fuel_consumption_factor = CHI_nra_air_air_fuel_consumption_factor			#空军燃油消耗
+
+	# 空中水雷作战
+	mines_planting_by_air_factor = CHI_nra_air_mines_planting_by_air_factor			#空中布雷效率
+	mines_sweeping_by_air_factor = CHI_nra_air_mines_sweeping_by_air_factor			#空中扫雷效率
 }
 
 CHI_nra_navy_dynamic_modifier = {
 	icon = GFX_idea_CHI_nra_navy
 	enable = { tag = CHI }
 	remove_trigger = { always = no }
+
+	# 海军经验
+	experience_gain_navy_factor = CHI_nra_navy_experience_gain_navy_factor					# 海军经验获取
+	experience_gain_navy_unit_factor = CHI_nra_navy_experience_gain_navy_unit_factor			# 舰艇经验获取
+	# 海军学说精通度
+	new_base_strike_mastery_gain_factor = CHI_nra_navy_new_base_strike_mastery_gain_factor		# 基地打击精通度获取
+	new_convoy_raiding_mastery_gain_factor = CHI_nra_navy_new_convoy_raiding_mastery_gain_factor	# 贸易阻断精通度获取
+	new_fleet_in_being_mastery_gain_factor = CHI_nra_navy_new_fleet_in_being_mastery_gain_factor	# 存在舰队精通度获取
+
+	# 海军维护与后勤
+	repair_speed_factor = CHI_nra_navy_repair_speed_factor					# 舰艇维修速度
+	naval_accidents_chance = CHI_nra_navy_naval_accidents_chance				# 海军事故概率
+	naval_supply_consumption_factor = CHI_nra_navy_naval_supply_consumption_factor		# 海军补给消耗
+	naval_morale_factor = CHI_nra_navy_naval_morale_factor					# 海军组织度恢复
+	naval_speed_factor = CHI_nra_navy_naval_speed_factor					# 舰艇航行速度
+	sortie_efficiency = CHI_nra_navy_sortie_efficiency					# 出击效率
+
+	# 两栖登陆作战
+	invasion_preparation = CHI_nra_navy_invasion_preparation				# 海军入侵准备时间
+	naval_invasion_capacity = CHI_nra_navy_naval_invasion_capacity			# 海军入侵容量
+	naval_invasion_penalty = CHI_nra_navy_naval_invasion_penalty				# 海军入侵惩罚
+	amphibious_invasion = CHI_nra_navy_amphibious_invasion					# 两栖登陆速度
+	amphibious_invasion_defence = CHI_nra_navy_amphibious_invasion_defence			# 两栖登陆防御
+
+	# 舰队侦察、部署与交战
+	naval_detection = CHI_nra_navy_naval_detection						# 海军侦察
+	ships_at_battle_start = CHI_nra_navy_ships_at_battle_start				# 战斗开始时参战舰艇比例
+	positioning = CHI_nra_navy_positioning							# 舰队阵位
+	screening_efficiency = CHI_nra_navy_screening_efficiency					# 屏卫效率
+	strike_force_movement_org_loss = CHI_nra_navy_strike_force_movement_org_loss			# 打击舰队移动组织度损失
+	naval_coordination = CHI_nra_navy_naval_coordination					# 海军协同
+
+	# 通用海军作战加成
+	naval_damage_factor = CHI_nra_navy_naval_damage_factor					# 海军伤害
+	naval_defense_factor = CHI_nra_navy_naval_defense_factor				# 海军防御
+	naval_hit_chance = CHI_nra_navy_naval_hit_chance					# 海军命中率
+	naval_critical_score_chance_factor = CHI_nra_navy_naval_critical_score_chance_factor		# 海军暴击概率
+
+
+	# 与舰队荣耀作战加成
+	naval_has_potf_in_combat_attack = CHI_nra_navy_naval_has_potf_in_combat_attack			# 舰队荣耀参战时海军攻击
+	naval_has_potf_in_combat_defense = CHI_nra_navy_naval_has_potf_in_combat_defense			# 舰队荣耀参战时海军防御
+
+	# 屏卫舰艇加成
+	navy_screen_attack_factor = CHI_nra_navy_navy_screen_attack_factor				# 屏卫舰攻击
+	navy_screen_defence_factor = CHI_nra_navy_navy_screen_defence_factor				# 屏卫舰防御
+
+	# 主力舰加成
+	navy_capital_ship_attack_factor = CHI_nra_navy_navy_capital_ship_attack_factor			# 主力舰攻击
+	navy_capital_ship_defence_factor = CHI_nra_navy_navy_capital_ship_defence_factor		# 主力舰防御
+
+	# 潜艇作战
+	navy_submarine_attack_factor = CHI_nra_navy_navy_submarine_attack_factor				# 潜艇攻击
+	sub_retreat_speed = CHI_nra_navy_sub_retreat_speed						# 潜艇撤退速度
+	naval_torpedo_cooldown_factor = CHI_nra_navy_naval_torpedo_cooldown_factor			# 鱼雷冷却时间
+
+	# 水雷作战
+	naval_mine_hit_chance = CHI_nra_navy_naval_mine_hit_chance					# 水雷命中概率
+	naval_mines_damage_factor = CHI_nra_navy_naval_mines_damage_factor				# 水雷伤害
+
+	# 航母舰载机
+	navy_carrier_air_agility_factor = CHI_nra_navy_navy_carrier_air_agility_factor			# 航母舰载机机动
+	navy_carrier_air_attack_factor = CHI_nra_navy_navy_carrier_air_attack_factor			# 航母舰载机攻击
+	navy_carrier_air_targetting_factor = CHI_nra_navy_navy_carrier_air_targetting_factor		# 航母舰载机瞄准
+	navy_carrier_air_agility_factor = CHI_nra_navy_navy_carrier_air_agility_factor
+
+	#航母
+	carrier_capacity_penalty_reduction = CHI_nra_navy_carrier_capacity_penalty_reduction	#航母超载
+	carrier_traffic = CHI_nra_navy_carrier_traffic	#航母起降能力
+	carrier_night_traffic = CHI_nra_navy_carrier_night_traffic	#航母夜间起降能力
 }
 
 CHI_power_blocs_national_government = {

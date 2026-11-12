@@ -253,169 +253,6 @@ ideas = {
 			}
 		}
 
-		CHI_army_corruption_000 = {	#派系林立的军队
-
-			picture = chi_army_corruption00
-
-			name = CHI_army_corruption_0
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			research_bonus = {				
-				marine_tech = -0.6
-				mountaineers_tech = -0.6
-				para_tech = -0.6
-			}
-			removal_cost = -1
-			modifier = {
-				army_defence_factor = -0.75
-				army_attack_factor = -0.75
-				#army_org_factor = -0.25
-				#army_morale_factor = -0.25
-				#mobilization_speed = -0.25
-				command_power_gain_mult = -0.2
-				experience_gain_army_factor = -0.35
-				special_forces_training_time_factor = 10
-				conscription_factor = -0.5
-				mobilization_speed = -0.5
-			}
-		}
-		CHI_army_corruption_00 = {	#派系林立的军队
-
-			picture = chi_army_corruption0
-
-			name = CHI_army_corruption_0
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			research_bonus = {				
-				marine_tech = -0.6
-				mountaineers_tech = -0.6
-				para_tech = -0.6
-			}
-			removal_cost = -1
-			modifier = {
-				army_defence_factor = -0.6
-				army_attack_factor = -0.6
-				#army_org_factor = -0.2
-				#army_morale_factor = -0.2
-				#mobilization_speed = -0.2
-				command_power_gain_mult = -0.15
-				experience_gain_army_factor = -0.3
-				special_forces_training_time_factor = 10
-				conscription_factor = -0.4
-				mobilization_speed = -0.4
-			}
-		}
-		CHI_army_corruption_0 = {	#派系林立的军队
-
-			picture = chi_army_corruption0
-
-			name = CHI_army_corruption_0
-
-			allowed = {
-				always = no
-			}
-			research_bonus = {				
-				marine_tech = -0.45
-				mountaineers_tech = -0.45
-				para_tech = -0.45
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-
-			removal_cost = -1
-		
-			modifier = {
-				army_defence_factor = -0.45
-				army_attack_factor = -0.45
-				#army_org_factor = -0.15
-				#army_morale_factor = -0.15
-				#mobilization_speed = -0.15
-				command_power_gain_mult = -0.1
-				experience_gain_army_factor = -0.25
-				special_forces_training_time_factor = 10
-				conscription_factor = -0.3
-				mobilization_speed = -0.3
-			}
-		}
-		CHI_army_corruption_1 = {	#派系林立的军队
-
-			picture = chi_army_corruption0
-
-			name = CHI_army_corruption_0
-
-			allowed = {
-				always = no
-			}
-			#
-			allowed_civil_war = {
-				always = yes
-			}
-			research_bonus = {				
-				marine_tech = -0.6
-				mountaineers_tech = -0.6
-				para_tech = -0.6
-			}
-			removal_cost = -1
-
-			modifier = {
-				army_defence_factor = -0.3
-				army_attack_factor = -0.3
-				#army_org_factor = -0.1
-				#army_morale_factor = -0.1
-				#mobilization_speed = -0.1
-				command_power_gain_mult = -0.05
-				experience_gain_army_factor = -0.2
-				special_forces_training_time_factor = 10
-				conscription_factor = -0.2
-				mobilization_speed = -0.2
-			}
-		}
-		CHI_army_corruption_2 = {	#派系林立的军队
-
-			picture = chi_army_corruption0
-
-			name = CHI_army_corruption_0
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			research_bonus = {				
-				marine_tech = -0.6
-				mountaineers_tech = -0.6
-				para_tech = -0.6
-			}
-			removal_cost = -1
-
-			modifier = {
-				army_defence_factor = -0.15
-				army_attack_factor = -0.15	
-				#army_org_factor = -0.05
-				#army_morale_factor = -0.05
-				#mobilization_speed = -0.05
-				#command_power_gain_mult = -0.05
-				experience_gain_army_factor = -0.15
-				special_forces_training_time_factor = 10
-				conscription_factor = -0.1
-				mobilization_speed = -0.1
-			}
-		}
 		CHI_army_corruption_3 = {	#无特种部队经验
 
 			picture = chi_army_corruption3
@@ -433,10 +270,6 @@ ideas = {
 				marine_tech = -0.6
 				mountaineers_tech = -0.6
 				para_tech = -0.6
-			}
-			modifier = {
-				special_forces_training_time_factor = 10
-				experience_gain_army_factor = -0.1
 			}
 		}
 
@@ -2644,6 +2477,102 @@ ideas = {	#腐败机制
 			modifier = {
 				trade_opinion_factor = 0.1
 				stability_factor = 0.10
+			}
+		}
+
+		CHI_illegal_regime = { #非法政权
+
+			picture = generic_purge
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.35	#MODDED
+				war_support_factor = -0.45	#MODDED
+				surrender_limit = -0.25	#MODDED
+			}
+		}
+
+		new_life = {	
+			picture = CHI_new_life
+			
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			removal_cost = -1
+			modifier = {		
+				consumer_goods_factor = -0.15
+				#fascism_acceptance = 15
+				neutrality_drift = 0.05 #0.02
+				drift_defence_factor = 0.2
+				conscription = 0.02
+				democratic_drift = -0.05				
+			}
+		}
+		new_life2 = {
+			name = new_life
+			picture = CHI_new_life
+			
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.3			
+				consumer_goods_factor = -0.3
+				neutrality_drift = 0.1 #0.02
+				drift_defence_factor = 0.5
+				conscription = 0.05
+				democratic_drift = -0.1				
+			}
+		}		
+
+		CHI_sov_pact = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				custom_modifier_tooltip = send_guns_by_a_massive_amount_CHI
+			}
+			allowed_civil_war = {
+				NOT = { has_government = fascism }
+			}
+			removal_cost = -1
+		}
+
+		agrarian_reform_idea = { #土地改革
+			allowed = {
+				always = no
+			}
+			picture = chi_tudigaige
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05 #guo
+				political_power_gain = 0.15
+				global_building_slots_factor = 0.25
+				consumer_goods_factor = 0.1
+				conscription = 0.01
+				weekly_manpower = 750
 			}
 		}
 	}

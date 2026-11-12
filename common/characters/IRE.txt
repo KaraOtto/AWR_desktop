@@ -4,7 +4,7 @@ characters={
 		name="Éamon de Valera"
 		portraits={
 			civilian={
-				large="gfx/leaders/IRE/r56_portrait_IRE_Eamon_De_Varela.dds"
+				large="gfx/leaders/IRE/Portrait_Ireland_Eamon_de_Valera.dds"
 			}
 		}
 		country_leader={
@@ -18,7 +18,7 @@ characters={
 		portraits={
 			civilian={
 				large="gfx/leaders/IRE/r56_portrait_IRE_WT_Cosgrave.dds"
-				small="gfx/interface/ideas/idea_w_t_cosgrove.dds"
+				small="gfx/leaders/IRE/idea_w_t_cosgrove.dds"
 			}
 		}
 		advisor={
@@ -48,11 +48,11 @@ characters={
 		name="Eoin O'Duffy"
 		portraits={
 			civilian={
-				large="gfx/leaders/IRE/Portrait_Ireland_Eoin_ODuffy.tga"
+				large="gfx/leaders/IRE/Portrait_Ireland_Eoin_ODuffy.dds"
 			}
 			army = {
-				large ="gfx/leaders/IRE/Portrait_Ireland_Eoin_ODuffy.tga"
-				small = "gfx/interface/ideas/idea_Ireland_Eoin_ODuffy.dds"
+				large ="gfx/leaders/IRE/Portrait_Ireland_Eoin_ODuffy.dds"
+				small = "gfx/leaders/IRE/idea_Ireland_Eoin_ODuffy.dds"
 			}
 		}
 		country_leader={
@@ -89,15 +89,27 @@ characters={
 	}
 
 	IRE_peadar_o_donnell={ # becomes leader of the IRA revolt if it occurs before aug 38
+		name="Peadar O'Donnell"
+		portraits={
+			civilian = {
+				large="gfx/leaders/IRE/Portrait_Ireland_Peadar_ODonnell.tga"
+				small="gfx/leaders/IRE/idea_peadar_o_donnel.dds"
+			}
+		}
+		country_leader = {
+			ideology=leninism
+			expire="1965.1.1.1"
+			id=-1
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = peadar_o_donnell
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					communist_revolutionary 
-				}
+				original_tag  = IRE
+			}
+			traits  = {
+				communist_revolutionary 
+			}
 			available = {
 				has_completed_focus = IRE_irish_workers_league
 				if = {
@@ -107,32 +119,32 @@ characters={
 			}
 			
 		}
-		name="Peadar O'Donnell"
-		portraits={
-			civilian = {
-				large="gfx/leaders/IRE/Portrait_Ireland_Peadar_ODonnell.tga"
-			}
-			army={
-				small="gfx/interface/ideas/idea_peadar_o_donnel.dds"
-			}
-		}
-		country_leader = {
-			ideology=leninism
-			expire="1965.1.1.1"
-			id=-1
-		}
 	}	
 
 	IRE_gearoid_o_cuinneagain={ # becomes leader of the IRA revolt if it occurs after aug 38
+		name="Gearóid Ó Cuinneagáin"
+		portraits={
+			civilian = {
+				large="gfx/leaders/IRE/Portrait_Ireland_Gearoid_O_Cuinneagain.tga"
+			}
+			army={
+				small="gfx/leaders/IRE/idea_gearoid_o_cuinneagain.dds"
+			}
+		}
+		country_leader = {
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+			id=-1
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = IRE_gearoid_o_cuinneagain
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					fascist_demagogue 
-				}
+				original_tag  = IRE
+			}
+			traits  = {
+				fascist_demagogue 
+			}
 			available = {
 				has_completed_focus = IRE_corporate_party
 				if = {
@@ -142,38 +154,24 @@ characters={
 			}
 			
 		}
-		name="Gearóid Ó Cuinneagáin"
-		portraits={
-			civilian = {
-				large="gfx/leaders/IRE/Portrait_Ireland_Gearoid_O_Cuinneagain.tga"
-			}
-			army={
-				small="gfx/interface/ideas/idea_gearoid_o_cuinneagain.dds"
-			}
-		}
-		country_leader = {
-			ideology=fascism_ideology
-			expire="1965.1.1.1"
-			id=-1
-		}
 	}	
 	IRE_frank_macdermot={
 		name="Frank MacDermot"
 		portraits={
 			civilian={
 				large="gfx/leaders/IRE/Portrait_Ireland_Frank_MacDermot.tga"
-				small="gfx/interface/ideas/idea_frank_macdermot.dds"
+				small="gfx/leaders/IRE/idea_frank_macdermot.dds"
 			}
 		}
 		advisor={
 			slot = political_advisor
 			idea_token = IRE_frank_macdermot
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					silent_workhorse 
-				}
+				original_tag  = IRE
+			}
+			traits  = {
+				silent_workhorse 
+			}
 		}
 		country_leader={
 			ideology=centrism
@@ -264,7 +262,7 @@ characters={
 			}
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Richard_Mulcahy.tga"
-				small="gfx/interface/ideas/idea_richard_james_mulcahy.dds"
+				small="gfx/leaders/IRE/idea_richard_james_mulcahy.dds"
 			}
 		}
 		advisor={
@@ -301,7 +299,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/portrait_Ireland_Michael_Costello.tga"
-				small="gfx/interface/ideas/idea_michael_joe_costello.dds"
+				small="gfx/leaders/IRE/idea_michael_joe_costello.dds"
 			}
 		}
 		advisor={
@@ -333,7 +331,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Hugo_MacNeill.tga"
-				small="gfx/interface/ideas/idea_Ireland_Hugo_MacNeill.dds"
+				small="gfx/leaders/IRE/idea_Ireland_Hugo_MacNeill.dds"
 			}
 		}
 		corps_commander={
@@ -351,7 +349,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Tom_Barry.tga"
-				small="gfx/interface/ideas/idea_Ireland_Tom_Barry.dds"
+				small="gfx/leaders/IRE/idea_Ireland_Tom_Barry.dds"
 			}
 		}
 		corps_commander={
@@ -373,7 +371,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_JJ_OConnell.tga"
-				small="gfx/interface/ideas/idea_Ireland_JJ_OConnell.dds"
+				small="gfx/leaders/IRE/idea_Ireland_JJ_OConnell.dds"
 			}
 		}
 		corps_commander={
@@ -389,28 +387,26 @@ characters={
 	}
 
 	IRE_dan_mckenna={ # KR has a new portrait, sans greatcoat & cigarette
-		advisor={
-			
-			
-			slot = high_command
-			idea_token = IRE_dan_mckenna
-			ledger = army
-				allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					army_regrouping_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Daniel McKenna"
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Daniel_McKenna.tga"
-				small="gfx/interface/ideas/idea_dan_mckenna.dds"
+				small="gfx/leaders/IRE/idea_dan_mckenna.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = IRE_dan_mckenna
+			ledger = army
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 		corps_commander={
@@ -431,7 +427,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Tom_Maguire.tga"
-				small="gfx/interface/ideas/idea_Ireland_Tom_Maguire.dds"
+				small="gfx/leaders/IRE/idea_Ireland_Tom_Maguire.dds"
 			}
 		}
 		corps_commander = {
@@ -452,26 +448,31 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/IRE/Portrait_Ireland_Daniel_Hogan.tga"
-				small="gfx/interface/ideas/idea_Ireland_Tom_Maguire.dds"
+				small="gfx/leaders/IRE/idea_Ireland_Daniel_Hogan.dds"
 			}
 		}
 	}	
 	IRE_s_muiris={ # ex royal navy officer & irish admiral
+		name="Seamus O'Muiris"
+		portraits={
+			army={
+				large="gfx/leaders/IRE/Portrait_Ireland_Seamus_OMuiris.tga"
+				small="gfx/leaders/IRE/idea_s_muiris.dds"
+			}
+		}
 		advisor={
-			
-			
 			slot = navy_chief
 			idea_token = IRE_s_muiris
 			allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					navy_chief_decisive_battle_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
+				original_tag = IRE
+			}
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 		navy_leader= {
 			traits = {
@@ -483,96 +484,89 @@ characters={
 			maneuvering_skill = 3
 			coordination_skill = 3
 		}
-		name="Seamus O'Muiris"
-		portraits={
-			army={
-				large="gfx/leaders/IRE/Portrait_Ireland_Seamus_OMuiris.tga"
-				small="gfx/interface/ideas/idea_s_muiris.dds"
-			}
-		}
 	}
 	
 	### Advisors
 	
 	
 	IRE_p_a_mulcahy={ # Patrick Anthony, Richard's brother. was an artilery commander, & Cmdr. Irish air corps from 1936-42.
-		advisor={
-			
-			
-			slot = air_chief
-			idea_token = IRE_p_a_mulcahy
-			allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					air_chief_ground_support_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Patrick Anthony Mulcahy"
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_p_a_mulcahy.dds"
+				small="gfx/leaders/IRE/idea_p_a_mulcahy.dds"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = IRE_p_a_mulcahy
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				air_chief_ground_support_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 	IRE_liam_archer={
-		advisor={
-			
-			
-			slot = army_chief
-			idea_token = IRE_liam_archer
-			allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					army_chief_offensive_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Liam Archer"
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_liam_archer.dds"
+				small="gfx/leaders/IRE/idea_liam_archer.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = IRE_liam_archer
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				army_chief_offensive_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 	IRE_a_t_lawlor={ # Colonel Anthonly Lawlor, Irish rebel who established the Irish maritime museum, and what was to become the Irish navy
-		advisor={
-			
-			
-			slot = high_command
-			idea_token = IRE_a_t_lawlor
-			ledger = navy
-				allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					navy_fleet_logistics_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Anthony T. Lawlor"
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_Ireland_a_t_lawlor.dds"
+				small="gfx/leaders/IRE/idea_Ireland_a_t_lawlor.dds"
 				large="gfx/leaders/IRE/Portrait_Ireland_a_t_lawlor.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = IRE_a_t_lawlor
+			ledger = navy
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				navy_fleet_logistics_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 	IRE_oscar_traynor={
+		name="Oscar Traynor"
+		portraits={
+			army={
+				small="gfx/leaders/IRE/idea_oscar_traynor.dds"
+				large="gfx/leaders/IRE/Portrait_Ireland_oscar_traynor.dds"
+			}
+		}
 		advisor={
 			cost = 100
-			
 			slot = theorist
 			idea_token = IRE_oscar_traynor
 			ledger = air
@@ -584,207 +578,192 @@ characters={
 					air_warfare_theorist
 				}
 		}
-		name="Oscar Traynor"
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_oscar_traynor.dds"
-				large="gfx/leaders/IRE/Portrait_Ireland_oscar_traynor.dds"
-			}
-		}
 	}
 	IRE_frank_fahy={
-		advisor={
-			
-			
-			slot = high_command
-			idea_token = IRE_frank_fahy
-			ledger = army
-				allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					army_commando_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Frank Fahy"
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_frank_fahy.dds"
+				small="gfx/leaders/IRE/idea_frank_fahy.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = IRE_frank_fahy
+			ledger = army
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				army_commando_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 	IRE_h_t_green={
-		advisor={
-			
-			
-			slot = air_chief
-			idea_token = IRE_h_t_green
-			allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					air_chief_safety_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="H.T. Green"
 		portraits={
 			army={
 				small="GFX_idea_generic_air_europe_1"
 			}
 		}
+		advisor={
+			slot = air_chief
+			idea_token = IRE_h_t_green
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				air_chief_safety_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
 	}
 	IRE_michael_brennan={
-		advisor={
-			
-			
-			slot = high_command
-			idea_token = IRE_michael_brennan
-			ledger = air
-				allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					air_bomber_interception_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="Michael Brennan"
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_michael_brennan.dds"
+				small="gfx/leaders/IRE/idea_michael_brennan.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = IRE_michael_brennan
+			ledger = air
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				air_bomber_interception_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 	}
 	IRE_john_byrne={
-		advisor={
-			
-			
-			slot = navy_chief
-			idea_token = IRE_john_byrne
-			allowed = {
-					original_tag = IRE
-				}
-				traits = {
-					navy_chief_naval_aviation_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 1.000
-				}
-		}
 		name="John O'Byrne"
 		portraits={
 			army={
 				small="GFX_idea_generic_navy_europe_1"
 			}
 		}
+		advisor={
+			slot = navy_chief
+			idea_token = IRE_john_byrne
+			allowed = {
+				original_tag = IRE
+			}
+			traits = {
+				navy_chief_naval_aviation_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
 	}
 	# political advisors
 	
 	IRE_sean_lemass={
-		advisor={
-			slot = political_advisor
-			idea_token = IRE_sean_lemass
-			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					captain_of_industry 
-				}
-		}
 		name="Seán Lemass"
 		portraits={
 			civilian = {
 				large="gfx/leaders/IRE/Portrait_Ireland_Sean_Lemass.tga"
 			}
 			army={
-				small="gfx/interface/ideas/idea_Sean_Lemmas.dds"
+				small="gfx/leaders/IRE/idea_Sean_Lemmas.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = IRE_sean_lemass
+			allowed  = {
+				original_tag  = IRE
+			}
+			traits  = {
+				captain_of_industry 
 			}
 		}
 	}
 	IRE_douglas_hyde={
+		name="Douglas Hyde"
+		portraits={
+			army={
+				small="gfx/leaders/IRE/idea_douglas_hyde.dds"
+			}
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = IRE_douglas_hyde
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					popular_figurehead 
-				}
-		}
-		name="Douglas Hyde"
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_douglas_hyde.dds"
+				original_tag  = IRE
+			}
+			traits  = {
+				popular_figurehead 
 			}
 		}
 	}
 	IRE_sean_ceallaigh={
-		advisor={
-			slot = political_advisor
-			idea_token = IRE_sean_ceallaigh
-			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					smooth_talking_charmer 
-				}
-		}
 		name="Seán T. O'Ceallaigh"
 		portraits={
 			civilian = {
 				large="gfx/leaders/IRE/Portrait_Ireland_sean_ceallaigh.tga"
 			}
 			army={
-				small="gfx/interface/ideas/idea_sean_ceallaigh.dds"
+				small="gfx/leaders/IRE/idea_sean_ceallaigh.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = IRE_sean_ceallaigh
+			allowed  = {
+				original_tag  = IRE
+			}
+			traits  = {
+				smooth_talking_charmer 
 			}
 		}
 	}
 	IRE_j_c_mcquaid={
+		name="J. C. McQuaid"
+		portraits={
+			army={
+				small="gfx/leaders/IRE/idea_j_c_mcquaid.dds"
+			}
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = IRE_j_c_mcquaid
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					backroom_backstabber 
-				}
-		}
-		name="J. C. McQuaid"
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_j_c_mcquaid.dds"
+				original_tag  = IRE
+			}
+			traits  = {
+				backroom_backstabber 
 			}
 		}
 	}
 	IRE_william_norton={
+		name="William Norton"
+		portraits={
+			army={
+				small="gfx/leaders/IRE/idea_william_norton.dds"
+			}
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = IRE_william_norton
 			allowed  = {
-					original_tag  = IRE
-				}
-				traits  = {
-					compassionate_gentleman 
-				}
-		}
-		name="William Norton"
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_william_norton.dds"
+				original_tag  = IRE
+			}
+			traits  = {
+				compassionate_gentleman 
 			}
 		}
 	}
