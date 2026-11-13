@@ -1925,7 +1925,7 @@ focus_tree = {
 			OR = {
 				has_global_flag = CHI_unite_PRC
 				CHI = { 
-					has_completed_focus = CHI_Truce_of_the_Civil_War 
+					has_completed_focus = CHI_negotiation_with_PRC
 				}
 				1091 = { 
 					is_controlled_by = ROOT 
@@ -8856,7 +8856,7 @@ focus_tree = {
 					complete_national_focus = PRC_xibaipo
 					complete_national_focus = PRC_contact_cheng_qian_focus				
 				}			
-				set_global_flag = PRC_civil_war_started #guo
+				set_global_flag = PRC_civil_war_started 
 				if = {
 					limit = {
 						has_country_leader = { 
@@ -9165,6 +9165,9 @@ focus_tree = {
 				days = 720
 			}
 		}
+		available = {
+			#
+		}
 	}
 
 	focus = {	#粉碎全面进攻
@@ -9261,17 +9264,47 @@ focus_tree = {
 				add_idea = China_civil_war_economy_idea_3
 			}
 
-			swap_ideas = {
-				remove_idea = PRC_jiefangjunlujun_tooltip_original
-				add_idea = PRC_jiefangjunlujun_tooltip_original_1
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_jiefangjunlujun_dynamic_modifier
+				}
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+
+				add_to_variable = {
+					PRC_jiefangjunlujun_army_defence_factor = 0.05
+				}
+
+				add_to_variable = {
+					PRC_jiefangjunlujun_army_org = 0.05
+				}
 			}
 
-			add_to_variable = {
-				PRC_jiefangjunlujun_army_defence_factor = 0.05
-			}
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_New_Red_Army_land_dynamic_modifier
+				}
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_land_tooltip_original
+					add_idea = PRC_New_Red_Army_land_tooltip_original_1
+				}
 
-			add_to_variable = {
-				PRC_jiefangjunlujun_army_org = 0.05
+				add_to_variable = {
+					PRC_New_Red_Army_land_army_defence_factor = 0.05
+				}
+
+				add_to_variable = {
+					PRC_New_Red_Army_land_army_org = 0.05
+				}
+			}
+		}
+
+		available = {
+			OR = {
+				has_dynamic_modifier = PRC_jiefangjunlujun_dynamic_modifier
+				has_dynamic_modifier = PRC_New_Red_Army_land_dynamic_modifier
 			}
 		}
 	}
@@ -9489,21 +9522,50 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			add_to_variable = {
-				ROOT.PRC_jiefangjunlujun_army_attack_factor = 0.05
+				
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_jiefangjunlujun_dynamic_modifier
+				}
+
+				add_to_variable = {
+					ROOT.PRC_jiefangjunlujun_army_attack_factor = 0.05
+				}
+
+				add_to_variable = {
+					ROOT.PRC_jiefangjunlujun_breakthrough_factor = 0.05
+				}
+
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
 			}
 
-			add_to_variable = {
-				ROOT.PRC_jiefangjunlujun_breakthrough_factor = 0.05
-			}
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_New_Red_Army_land_dynamic_modifier
+				}
+				
+				add_to_variable = {
+					ROOT.PRC_New_Red_Army_land_army_attack_factor = 0.05
+				}
 
-			swap_ideas = {
-				remove_idea = PRC_jiefangjunlujun_tooltip_original
-				add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				add_to_variable = {
+					ROOT.PRC_New_Red_Army_land_breakthrough_factor = 0.05
+				}
+
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_land_tooltip_original
+					add_idea = PRC_New_Red_Army_land_tooltip_original_1
+				}
 			}
 		}
 		available = {
-			has_completed_focus = PRC_PLA
+			OR = {
+				has_dynamic_modifier = PRC_jiefangjunlujun_dynamic_modifier
+				has_dynamic_modifier = PRC_New_Red_Army_land_dynamic_modifier
+			}
 		}
 	}
 
@@ -9790,24 +9852,56 @@ focus_tree = {
 		y = 7
 		completion_reward = {
 			
-			swap_ideas = {
-				remove_idea = PRC_jiefangjunlujun_tooltip_original
-				add_idea = PRC_jiefangjunlujun_tooltip_original_1
-			}
-			add_to_variable = {
-				PRC_jiefangjunlujun_army_attack_factor = 0.05
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_jiefangjunlujun_dynamic_modifier
+				}
+
+				swap_ideas = {
+					remove_idea = PRC_jiefangjunlujun_tooltip_original
+					add_idea = PRC_jiefangjunlujun_tooltip_original_1
+				}
+				add_to_variable = {
+					PRC_jiefangjunlujun_army_attack_factor = 0.05
+				}
+
+				add_to_variable = {
+					PRC_jiefangjunlujun_army_defence_factor = 0.05
+				}
+
+				add_to_variable = {
+					PRC_jiefangjunlujun_army_org = 0.05
+				}
+
+				add_to_variable = {
+					PRC_jiefangjunlujun_breakthrough_factor = 0.05
+				}
 			}
 
-			add_to_variable = {
-				PRC_jiefangjunlujun_army_defence_factor = 0.05
-			}
+			if = {
+				limit = {
+					has_dynamic_modifier = PRC_New_Red_Army_land_dynamic_modifier
+				}
 
-			add_to_variable = {
-				PRC_jiefangjunlujun_army_org = 0.05
-			}
+				swap_ideas = {
+					remove_idea = PRC_New_Red_Army_land_tooltip_original
+					add_idea = PRC_New_Red_Army_land_tooltip_original_1
+				}
+				add_to_variable = {
+					PRC_New_Red_Army_land_army_attack_factor = 0.05
+				}
 
-			add_to_variable = {
-				PRC_jiefangjunlujun_breakthrough_factor = 0.05
+				add_to_variable = {
+					PRC_New_Red_Army_land_army_defence_factor = 0.05
+				}
+
+				add_to_variable = {
+					PRC_New_Red_Army_land_army_org = 0.05
+				}
+
+				add_to_variable = {
+					PRC_New_Red_Army_land_breakthrough_factor = 0.05
+				}
 			}
 		}
 
@@ -10331,13 +10425,14 @@ focus_tree = {
 				category = artillery
 			}
 			
-			army_experience = 50
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
 				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
+
+			army_experience = 50
 			
 		}
 		available = {
@@ -10780,12 +10875,24 @@ focus_tree = {
 			}
 			 
 			#真正的动态修正 {  }#
-			add_to_variable = { PRC_jiefangjunlujun_max_dig_in = 10.0 }
-			add_to_variable = { PRC_jiefangjunlujun_land_reinforce_rate = 0.05 }
-			add_to_variable = { PRC_jiefangjunlujun_experience_loss_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_org_loss_at_low_org_factor = -0.25 }
-			add_to_variable = { PRC_jiefangjunlujun_dig_in_speed_factor = 0.10 }
-			add_to_variable = { PRC_jiefangjunlujun_army_morale_factor = 0.05 }
+			add_to_variable = { 
+				PRC_jiefangjunlujun_max_dig_in = 10.0 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_land_reinforce_rate = 0.05 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_experience_loss_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_org_loss_at_low_org_factor = -0.25 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_dig_in_speed_factor = 0.10 
+			}
+			add_to_variable = { 
+				PRC_jiefangjunlujun_army_morale_factor = 0.05 
+			}
 		}
 		available = {
 			#
