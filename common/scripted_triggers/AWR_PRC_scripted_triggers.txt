@@ -618,40 +618,57 @@ PRC_g_can_sabotage = { #可以破坏当地工业
 	}
 }
 
-PRC_g_can_view_map = { #允许查看游击队势力地图
+PRC_g_is_map_japanese_side = { #日本与其附属国的游击区情报权限
+	OR = {
+		tag = JAP
+		is_subject_of = JAP
+	}
+}
+
+PRC_g_can_view_map = { #调试模式可查看；正常模式按国策、归属与对日战争状态显示地图
 	OR = {
 		is_debug = yes
 		AND = {
-			has_global_flag = PRC_g_system_unlocked
 			OR = {
-				tag = PRC
-				tag = CHI
-				PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				has_global_flag = PRC_g_system_unlocked
+				PRC = {
+					has_completed_focus = PRC_partisan_offensive
+				}
+			}
+			OR = {
+				PRC_g_can_view_garrison = yes
+				PRC_g_can_view_goodwill = yes
 			}
 		}
 	}
 }
 
-PRC_g_can_view_support = { #仅中共可查看群众支持
-	tag = PRC
+PRC_g_can_view_support = { #中共及其附属国可查看群众支持
+	PRC_g_is_side = yes
 }
 
-PRC_g_can_view_garrison = { #中共与民国可查看反共驻军
+PRC_g_can_view_garrison = { #中共及附属、民国与正在抗日的军阀可查看反共驻军
 	OR = {
-		tag = PRC
-		tag = CHI
-	}
-}
-
-PRC_g_can_view_goodwill = { #中共与日方可查看亲善政策
-	OR = {
-		tag = PRC
+		PRC_g_is_side = yes
 		AND = {
 			NOT = {
-				tag = CHI
+				PRC_g_is_map_japanese_side = yes
 			}
-			PRC_g_is_japanese_side = yes #日本或其附属及盟友
+			OR = {
+				tag = CHI
+				AND = {
+					is_warlord = yes
+					has_war_with = JAP
+				}
+			}
 		}
+	}
+}
+
+PRC_g_can_view_goodwill = { #中共及附属、日本及附属可查看亲善与三光政策
+	OR = {
+		PRC_g_is_side = yes
+		PRC_g_is_map_japanese_side = yes
 	}
 }
 

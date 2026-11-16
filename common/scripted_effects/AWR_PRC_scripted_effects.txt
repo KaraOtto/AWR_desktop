@@ -4221,6 +4221,7 @@ PRC_g_postwar_transfer = { #抗战结束后的支持地区移交
 PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
 	if = {
 		limit = {
+			PRC_g_can_view_map = yes #失去查看权限时停止刷新查询
 			has_country_flag = PRC_g_query_open
 			has_variable = PRC_g_selected_state
 		}
@@ -4278,15 +4279,12 @@ PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
 			if = {
 				limit = {
 					PREV = {
-						PRC_g_can_view_support = yes #仅中共可查看群众支持
+						PRC_g_can_view_support = yes #中共及其附属国可查看群众支持
 					}
 				}
 				PREV = {
 					set_variable = {
 						PRC_g_query_support = 0 #查询：共产党群众支持；-1 表示无权查看
-					}
-					set_variable = {
-						PRC_g_query_three_alls = 0 #查询：三光政策；-1 表示无权查看
 					}
 					set_variable = {
 						PRC_g_query_warfare = 0 #查询：游击战等级；-1 表示无权查看
@@ -4304,18 +4302,6 @@ PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
 					PREV = {
 						set_variable = {
 							PRC_g_query_support = 1 #查询：共产党群众支持；-1 表示无权查看
-						}
-					}
-				}
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = PRC_g_three_alls
-						}
-					}
-					PREV = {
-						set_variable = {
-							PRC_g_query_three_alls = 1 #查询：三光政策；-1 表示无权查看
 						}
 					}
 				}
@@ -4343,12 +4329,15 @@ PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
 			if = {
 				limit = {
 					PREV = {
-						PRC_g_can_view_goodwill = yes #中共与日方可查看亲善政策
+						PRC_g_can_view_goodwill = yes #中共及附属、日本及附属可查看亲善与三光政策
 					}
 				}
 				PREV = {
 					set_variable = {
 						PRC_g_query_goodwill = 0 #查询：日本亲善政策；-1 表示无权查看
+					}
+					set_variable = {
+						PRC_g_query_three_alls = 0 #查询：三光政策；-1 表示无权查看
 					}
 				}
 				if = {
@@ -4363,11 +4352,23 @@ PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
 						}
 					}
 				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PRC_g_three_alls
+						}
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_three_alls = 1 #查询：三光政策；-1 表示无权查看
+						}
+					}
+				}
 			}
 			if = {
 				limit = {
 					PREV = {
-						PRC_g_can_view_garrison = yes #中共与民国可查看反共驻军
+						PRC_g_can_view_garrison = yes #中共及附属、民国与正在抗日的军阀可查看反共驻军
 					}
 				}
 				PREV = {
