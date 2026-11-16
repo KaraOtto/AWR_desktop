@@ -1220,3 +1220,164 @@ JAP_pacific_war_category = {	#太平洋战争
 	}
 }
 
+# >>> 游击队：日方反制游击队决议
+PRC_g_countermeasures = { #敌后治安与游击队反制
+	PRC_g_japanese_sweep = { #于[FROM.GetName]进行扫荡
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = JAP
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				PRC_g_china_state = yes #中国地区范围
+				controller = {
+					PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_goodwill
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_g_sweep_cooldown
+			}
+			FROM = {
+				PRC_g_state_active = yes #地区存在可运作的游击队活动
+			}
+		}
+		cost = 30
+		complete_effect = {
+			FROM = {
+				PRC_g_clear_state = yes #清除游击队活动、群众支持及游击战
+				add_resistance = 5
+			}
+			set_country_flag = {
+				flag = PRC_g_sweep_cooldown
+				days = 45
+			}
+		}
+		ai_will_do = {
+			factor = 30
+		}
+	}
+	PRC_g_japanese_three_alls = { #于[FROM.GetName]进行三光政策
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = JAP
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				PRC_g_china_state = yes #中国地区范围
+				controller = {
+					PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_goodwill
+					}
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_three_alls
+					}
+				}
+			}
+		}
+		available = {
+			command_power > 49
+			NOT = {
+				has_country_flag = PRC_g_three_alls_cooldown
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = PRC_g_cp50_cost
+		complete_effect = {
+			add_command_power = -50
+			FROM = {
+				PRC_g_three_alls_policy = yes #三光政策结算
+			}
+			set_country_flag = {
+				flag = PRC_g_three_alls_cooldown
+				days = 90
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	PRC_g_japanese_goodwill = { #在[FROM.GetName]执行亲善政策
+		icon = generic_political_discourse
+		allowed = {
+			original_tag = JAP
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				PRC_g_china_state = yes #中国地区范围
+				controller = {
+					PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_goodwill
+					}
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_three_alls
+					}
+				}
+			}
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		complete_effect = {
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = PRC_g_goodwill
+				}
+			}
+			PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	PRC_g_cancel_goodwill = { #取消[FROM.GetName]的亲善政策
+		icon = generic_political_discourse
+		allowed = {
+			original_tag = JAP
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = PRC_g_goodwill
+				}
+				controller = {
+					PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				}
+			}
+		}
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = PRC_g_goodwill
+				}
+			}
+			PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+# <<< 游击队：日方反制游击队决议

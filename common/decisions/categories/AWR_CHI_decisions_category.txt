@@ -4,7 +4,6 @@ China_government_reform_decisions = {
 		tag = CHI
 	}
 	visible = {
-		
 		OR = {
 			has_idea = China_weak_control_of_the_land
 			has_idea = China_weak_control_of_the_land_2
@@ -26,16 +25,15 @@ CHI_spy_family_NBIS_recharge_cat = {
 		original_tag = CHI
 	}
 	priority = 11
-
 }
 
 CHI_power_blocs_category = {
 	icon = GFX_decision_category_chi_power_blocs
-	allowed = { 
-		original_tag = CHI 
+	allowed = {
+		original_tag = CHI
 	}
-	visible = { 
-		original_tag = CHI 
+	visible = {
+		original_tag = CHI
 	}
 	visible_when_empty = yes
 	priority = 30
@@ -44,16 +42,22 @@ CHI_power_blocs_category = {
 
 CHI_corruption_category = {	#国民政府反腐行动
 	icon = generic_political_discourse
-	picture = GFX_decision_category_generic_political_actions
-	allowed = { 
-		original_tag = CHI 
+	allowed = {
+		original_tag = CHI
 	}
-	visible = { 
-		has_country_flag = CHI_corruption_initialized 
-		NOT = { 
-			has_country_flag = CHI_corruption_abolished 
-		} 
+	visible = {
+		has_country_flag = CHI_corruption_initialized
+		OR = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			check_variable = {
+				CHI_corruption_archive_portraits^num > 0
+			}
+		}
 	}
+	visible_when_empty = yes
+	scripted_gui = CHI_corruption_gui
 }
 
 CHI_against_warlord_category = {	#对抗军阀
@@ -79,8 +83,8 @@ attack_prc_area_plan = {	#戡乱动员令
 		is_ai = no
 		has_war_with = event_target:WTT_communist_china
 		has_global_flag = PRC_civil_war_started
-		not = { 
-			has_government = communism 
+		not = {
+			has_government = communism
 		}
 	}
 	priority = 999

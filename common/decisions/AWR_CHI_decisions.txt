@@ -291,78 +291,96 @@ CHI_corruption_category = {
 		icon = generic_army_support
 		cost = 50
 		days_remove = 45
-		available = { 
-			check_variable = { 
-				CHI_army_corruption > 0.10 
-			} 
+		available = {
+			check_variable = {
+				CHI_army_corruption > 0.10
+			}
 		}
-		complete_effect = { 
-			add_to_variable = { 
-				CHI_army_corruption = -0.10 
-			} 
-			CHI_corruption_clamp = yes 
-			add_stability = -0.01 
+		complete_effect = {
+			add_to_variable = {
+				CHI_army_corruption = -0.10
+			}
+			CHI_corruption_clamp = yes
+			CHI_corruption_gain_audit_integrity = yes
+			add_stability = -0.01
 		}
-		ai_will_do = { 
-			base = 10 
-			modifier = { 
-				add = 30 
-				check_variable = { 
-					CHI_army_corruption > 0.60 
-				} 
-			} 
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 30
+				check_variable = {
+					CHI_army_corruption > 0.60
+				}
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
 		}
 	}
 	CHI_corruption_audit_capital = {	#审计官僚资本
 		icon = generic_political_discourse
 		cost = 50
 		days_remove = 45
-		available = { 
-			check_variable = { 
-				CHI_capital_corruption > 0.10 
-			} 
+		available = {
+			check_variable = {
+				CHI_capital_corruption > 0.10
+			}
 		}
-		complete_effect = { 
-			add_to_variable = { 
-				CHI_capital_corruption = -0.10 
-			} 
-			CHI_corruption_clamp = yes 
-			add_stability = -0.01 
+		complete_effect = {
+			add_to_variable = {
+				CHI_capital_corruption = -0.10
+			}
+			CHI_corruption_clamp = yes
+			CHI_corruption_gain_audit_integrity = yes
+			add_stability = -0.01
 		}
-		ai_will_do = { 
-			base = 10 
-			modifier = { 
-				add = 30 
-				check_variable = { 
-					CHI_capital_corruption > 0.60 
-				} 
-			} 
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 30
+				check_variable = {
+					CHI_capital_corruption > 0.60
+				}
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
 		}
 	}
 	CHI_corruption_reorganize_bureaucracy = {	#整顿行政机关
 		icon = generic_political_discourse
 		cost = 50
 		days_remove = 45
-		available = { 
-			check_variable = { 
-				CHI_technocrat_corruption > 0.10 
-			} 
+		available = {
+			check_variable = {
+				CHI_technocrat_corruption > 0.10
+			}
 		}
-		complete_effect = { 
-			add_to_variable = { 
-				CHI_technocrat_corruption = -0.10 
-			} 
+		complete_effect = {
+			add_to_variable = {
+				CHI_technocrat_corruption = -0.10
+			}
 			CHI_corruption_clamp = yes
-			add_stability = -0.01 
+			CHI_corruption_gain_audit_integrity = yes
+			add_stability = -0.01
 		}
-		ai_will_do = { 
-			base = 10 
-			modifier = { 
-				add = 30 
-				check_variable = { 
-					CHI_technocrat_corruption > 0.60 
-				} 
-			} 
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 30
+				check_variable = {
+					CHI_technocrat_corruption > 0.60
+				}
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
 		}
 	}
 	CHI_corruption_finish_campaign = {	#完成制度化反腐
@@ -370,73 +388,99 @@ CHI_corruption_category = {
 		cost = 100
 		days_remove = 70
 		fire_only_once = yes
-		available = { 
-			check_variable = { 
-				CHI_army_corruption < 0.11 
-			} 
-			check_variable = { 
-				CHI_capital_corruption < 0.11 
-			} 
-			check_variable = { 
-				CHI_technocrat_corruption < 0.11 
-			} 
+		available = {
+			check_variable = {
+				CHI_army_corruption < 0.11
+			}
+			check_variable = {
+				CHI_capital_corruption < 0.11
+			}
+			check_variable = {
+				CHI_technocrat_corruption < 0.11
+			}
 		}
-		complete_effect = { 
-			CHI_end_corruption_system = yes 
+		complete_effect = {
+			CHI_end_corruption_system = yes
 		}
-		ai_will_do = { 
-			base = 100 
+		ai_will_do = {
+			base = 100
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_country_flag = CHI_corruption_debug
 		}
 	}
 
-	CHI_corruption_set_army_background = { 	#[调试] 元首军队背景
-		icon = generic_army_support 
-		cost = 0 
-		fire_only_once = no 
-		visible = { 
-			has_country_flag = CHI_corruption_debug 
-		} 
-		complete_effect = { 
-			clr_country_flag = CHI_corruption_leader_background_capital 
-			clr_country_flag = CHI_corruption_leader_background_technocrat 
-			set_country_flag = CHI_corruption_leader_background_army 
-		} 
+	CHI_corruption_set_army_background = {	#[调试] 元首军队背景
+		icon = generic_army_support
+		cost = 0
+		fire_only_once = no
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_country_flag = CHI_corruption_debug
+		}
+		complete_effect = {
+			clr_country_flag = CHI_corruption_leader_background_capital
+			clr_country_flag = CHI_corruption_leader_background_technocrat
+			set_country_flag = CHI_corruption_leader_background_army
+		}
 	}
-	CHI_corruption_set_capital_background = { #[调试] 元首官僚资本背景
-		icon = generic_political_discourse 
-		cost = 0 
-		fire_only_once = no 
-		visible = { 
-			has_country_flag = CHI_corruption_debug 
-		} 
-		complete_effect = { 
-			clr_country_flag = CHI_corruption_leader_background_army 
-			clr_country_flag = CHI_corruption_leader_background_technocrat 
-			set_country_flag = CHI_corruption_leader_background_capital 
-		} 
+	CHI_corruption_set_capital_background = {	#[调试] 元首官僚资本背景
+		icon = generic_political_discourse
+		cost = 0
+		fire_only_once = no
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_country_flag = CHI_corruption_debug
+		}
+		complete_effect = {
+			clr_country_flag = CHI_corruption_leader_background_army
+			clr_country_flag = CHI_corruption_leader_background_technocrat
+			set_country_flag = CHI_corruption_leader_background_capital
+		}
 	}
-	CHI_corruption_set_technocrat_background = { 	#[调试] 元首技术官僚背景
-		icon = generic_political_discourse cost = 0 
-		fire_only_once = no 
-		visible = { 
-			has_country_flag = CHI_corruption_debug 
-		} 
-		complete_effect = { 
-			clr_country_flag = CHI_corruption_leader_background_army 
-			clr_country_flag = CHI_corruption_leader_background_capital 
-			set_country_flag = CHI_corruption_leader_background_technocrat 
-		} 
+	CHI_corruption_set_technocrat_background = {	#[调试] 元首技术官僚背景
+		icon = generic_political_discourse
+		cost = 0
+		fire_only_once = no
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_country_flag = CHI_corruption_debug
+		}
+		complete_effect = {
+			clr_country_flag = CHI_corruption_leader_background_army
+			clr_country_flag = CHI_corruption_leader_background_capital
+			set_country_flag = CHI_corruption_leader_background_technocrat
+		}
 	}
-	CHI_corruption_test_minor = { #[调试] 检定军队腐败案件
-		icon = generic_political_discourse 
-		cost = 0 
-		fire_only_once = no 
-		visible = { 
-			has_country_flag = CHI_corruption_debug 
-		} 
-		complete_effect = { 
-			CHI_corruption_dispatch_army = yes 
-		} 
+	CHI_corruption_test_minor = {	#[调试] 检定军队腐败案件
+		icon = generic_political_discourse
+		cost = 0
+		fire_only_once = no
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_country_flag = CHI_corruption_debug
+		}
+		complete_effect = {
+			CHI_corruption_dispatch_army = yes
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+		}
 	}
 }
 
@@ -1343,3 +1387,160 @@ attack_prc_area_plan = {	#堪乱总动员
 		}
 	}
 }
+
+# >>> 游击队：国民政府反制游击队决议
+PRC_g_countermeasures = { #敌后治安与游击队反制
+	PRC_g_deploy_garrison = { #向[FROM.GetName]部署反共驻军
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_global_flag = PRC_g_system_unlocked
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				PRC_g_china_state = yes #中国地区范围
+				controller = {
+					OR = {
+						tag = CHI
+						is_subject_of = CHI
+					}
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_anticommunist_garrison
+					}
+				}
+			}
+		}
+		available = {
+			command_power > 49
+			check_variable = {
+				PRC_g_garrison_count < PRC_g_garrison_limit
+			}
+		}
+		cost = 50
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = PRC_g_cp50_cost
+		complete_effect = {
+			add_command_power = -50
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = PRC_g_anticommunist_garrison
+				}
+			}
+			PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	PRC_g_withdraw_garrison = { #撤回[FROM.GetName]反共驻军
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = CHI
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = PRC_g_anticommunist_garrison
+				}
+				controller = {
+					OR = {
+						tag = CHI
+						is_subject_of = CHI
+					}
+				}
+			}
+		}
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = PRC_g_anticommunist_garrison
+				}
+			}
+			PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	PRC_g_expel_guerrillas = { #驱逐[FROM.GetName]游击队
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = CHI
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = PRC_g_activity
+				}
+				controller = {
+					OR = {
+						tag = CHI
+						is_subject_of = CHI
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_g_expulsion_cooldown
+			}
+		}
+		cost = 50
+		complete_effect = {
+			FROM = {
+				PRC_g_clear_state = yes #清除游击队活动、群众支持及游击战
+			}
+			set_country_flag = {
+				flag = PRC_g_expulsion_cooldown
+				days = 60
+			}
+		}
+		ai_will_do = {
+			factor = 25
+		}
+	}
+	PRC_g_launch_wannan_incident = { #发动皖南事变
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_g_wannan_incident_done
+			}
+		}
+		available = {
+			has_war_with = JAP
+			NOT = {
+				has_war_with = PRC
+			}
+			any_state = {
+				OR = {
+					region = 165
+					region = 247
+				}
+				PRC_g_state_active = yes #地区存在可运作的游击队活动
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = PRC_g_wannan_incident_done
+			country_event = { #皖南事变
+				id = PRC_guerrilla.1
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
+# <<< 游击队：国民政府反制游击队决议

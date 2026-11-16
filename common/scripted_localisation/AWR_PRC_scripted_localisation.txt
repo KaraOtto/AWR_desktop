@@ -1,292 +1,3 @@
-####权利斗争
-defined_text = { # Country
-	name = Getinfiltrateoruprising
-	text = {
-		trigger = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-		localization_key = COMMIE_UPRISING_TOOLTIP_infiltrate
-	}
-	text = {
-		localization_key = COMMIE_UPRISING_TOOLTIP_uprising
-	}
-}
-
-defined_text = { # Country
-	name = Getwhetheritsneighbor
-	text = {
-		trigger = {
-			FROM.FROM = {
-				NOT = {
-					any_neighbor_state = {
-						AND = {
-							owner = {
-								tag = event_target:WTT_communist_china
-							}
-							controller = {
-								tag = event_target:WTT_communist_china
-							}
-						}
-					}
-				}
-			}
-		}
-		localization_key = COMMIE_UPRISING_TOOLTIP_not_a_neigbor_state
-	}
-}
-
-defined_text = { # Country
-	name = Getwhetheritscapital
-	text = {
-		trigger = {
-			is_capital = yes
-		}
-		localization_key = COMMIE_UPRISING_TOOLTIP_is_jap_puppet_capital
-	}
-
-}
-
-defined_text = { # Country
-	name = Getnotnatchi
-	text = {
-		trigger = {
-			NOT = {
-				owner = {
-					NOT = {
-						has_government = communism
-					}
-					OR = {
-						tag = CHI
-						is_warlord = yes
-					}
-				}
-			}
-		}
-		localization_key = COMMIE_UPRISING_TOOLTIP_not_nationalist
-	}
-
-}
-
-defined_text = { # Country
-	name = Getnopublicsupport
-	text = {
-		trigger = {
-			NOT = {
-				#has_state_flag = commie_amassed_support
-				is_core_of = event_target:WTT_communist_china
-			}
-		}
-		localization_key = COMMIE_UPRISING_TOOLTIP_no_public_support
-	}
-
-}
-
-#get infiltrate or uprising short
-defined_text = { # Country
-	name = Getinforupr
-	text = {
-		trigger = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-		localization_key = infiltrate_short
-	}
-	text = {
-		localization_key = uprising_short
-	}
-
-}
-#get infiltrate or uprising short no in
-defined_text = { # Country
-	name = Getinforuprnoin
-	text = {
-		trigger = {
-			is_controlled_by_jap_or_its_puppet = yes
-		}
-		localization_key = infiltrate_short
-	}
-	text = {
-		localization_key = uprising_short_no_in
-	}
-
-}
-#is_prepared?#PRC scope
-defined_text = { # Country
-	name = Getpreparedornot
-	text = {
-		trigger = {
-			has_idea = prepared_for_operation
-		}
-		localization_key = prepared_yes
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_idea = prepared_for_operation
-			}
-		}
-		localization_key = prepared_no
-	}
-
-}
-#anti-communism area
-defined_text = { # Country
-	name = anticommmunismornot
-	text = {
-		trigger = {
-			has_state_flag = we_will_help_the_legit_government
-		}
-		localization_key = anticommunism_yes
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_state_flag = we_will_help_the_legit_government
-			}
-		}
-		localization_key = anticommunism_no
-	}
-
-}
-
-#AMASS SUPPORT
-
-defined_text = { # Country #note
-	name = Getownernatorjap
-	text = {
-		trigger = {
-			is_owned_by_jap_or_its_puppet = yes
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_jap_owner
-	}
-	text = {
-		localization_key = COMMIE_SUPPORT_TOOLTIP_nationalist_owner
-	}
-}
-
-defined_text = { # Country
-	name = Getsupportavaiblility
-	text = {
-		trigger = {
-			NOT = {
-				has_political_power > 29
-			}
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_not_enough_pp
-	}
-	text = {
-		trigger = {
-			has_political_power > 29
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_enough_pp
-	}
-
-}
-
-defined_text = { # Country
-	name = GetIsAmassingSupportInProgress
-	text = {
-		trigger = {
-			has_active_mission = PRC_communist_amass_support_mission
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_has_amass_in_progress
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_active_mission = PRC_communist_amass_support_mission
-			}
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_no_amass_in_progress
-	}
-}
-
-defined_text = { # Country
-	name = Getalreadysupport
-	text = {
-		trigger = {
-			#has_state_flag = commie_amassed_support
-			is_core_of = event_target:WTT_communist_china
-		}
-		localization_key = COMMIE_SUPPORT_TOOLTIP_already_support
-	}
-
-}
-
-#VANDALISM
-defined_text = { # #command_power
-	name = Getvandalismavailablility
-	text = {
-		trigger = {
-			NOT = {
-				command_power > 29
-			}
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_not_enough_cp
-	}
-	text = {
-		trigger = {
-			command_power > 29
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_enough_cp
-	}
-
-}
-
-#public support
-defined_text = { # #command_power
-	name = Getvandalismnosupport
-	text = {
-		trigger = {
-			#has_state_flag = commie_amassed_support
-			is_core_of = event_target:WTT_communist_china
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_public_support
-	}
-	text = {
-		trigger = {
-			NOT = {
-				#has_state_flag = commie_amassed_support
-				is_core_of = event_target:WTT_communist_china
-			}
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_no_public_support
-	}
-}
-
-defined_text = { # Country #only vandal in Jap states
-	name = Getcontrollerjapornot
-	text = {
-		trigger = {
-			controller = {
-				OR = {
-					tag = JAP
-					is_subject_of = JAP
-				    has_war_with = event_target:WTT_communist_china  #MODDED
-				}
-			}
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_jap_owner
-	}
-	text = {
-		trigger = {
-			NOT = {
-				controller = {
-					#NOT = {
-					#	has_government = communism
-					#}
-					OR = {
-						tag = JAP
-						is_subject_of = JAP
-					    has_war_with = event_target:WTT_communist_china #MODDED
-					}
-				}
-			}
-		}
-		localization_key = COMMIE_VANDALISM_TOOLTIP_not_jap_owner
-	}
-}
-
-
 ####DARE TO DIE CORPS 30 xp or not
 defined_text = { # Country
 	name = Get30xpornot
@@ -486,59 +197,11 @@ defined_text = { # Country
 	}
 }
 
-defined_text = { # Country
-	name = GetDisperseorCrackdown
-	text = {
-		trigger = {
-			has_idea = CHI_communist_in_government
-		}
-		localization_key = RCM_communist_crackdown_decison_disperse
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_idea = CHI_communist_in_government
-			}
-		}
-		localization_key = RCM_communist_crackdown_decison_crackdown
-	}
-}
 
-defined_text = { # Country
-	name = GetCrackdownCatdesc
-	text = {
-		trigger = {
-			has_idea = CHI_communist_in_government
-		}
-		localization_key = RCM_communist_crackdown_desc_joingov
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_idea = CHI_communist_in_government
-			}
-		}
-		localization_key = RCM_communist_crackdown_desc_crackdown
-	}
-}
 
-defined_text = {
-	name = GetPartisanorProtest
-	text = {
-		trigger = {
-			has_idea = CHI_communist_in_government
-		}
-		localization_key = communist_protests_tt
-	}
-	text = {
-		trigger = {
-			NOT = {
-				has_idea = CHI_communist_in_government
-			}
-		}
-		localization_key = communist_partisan_activites_tt
-	}
-}
+
+
+
 
 defined_text = {
 	name = GetResetPressureFocus
@@ -2440,3 +2103,262 @@ defined_text = {
 		}
 	}
 }
+
+# >>> 游击队：游击队区域名称与查询状态
+defined_text = {
+	name = GetStrategicRegionName_242
+	text = {
+		localization_key = STRATEGICREGION_242
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_243
+	text = {
+		localization_key = STRATEGICREGION_243
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_155
+	text = {
+		localization_key = STRATEGICREGION_155
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_244
+	text = {
+		localization_key = STRATEGICREGION_244
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_245
+	text = {
+		localization_key = STRATEGICREGION_245
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_143
+	text = {
+		localization_key = STRATEGICREGION_143
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_144
+	text = {
+		localization_key = STRATEGICREGION_144
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_247
+	text = {
+		localization_key = STRATEGICREGION_247
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_165
+	text = {
+		localization_key = STRATEGICREGION_165
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_200
+	text = {
+		localization_key = STRATEGICREGION_200
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_246
+	text = {
+		localization_key = STRATEGICREGION_246
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_305
+	text = {
+		localization_key = STRATEGICREGION_305
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_250
+	text = {
+		localization_key = STRATEGICREGION_250
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_164
+	text = {
+		localization_key = STRATEGICREGION_164
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_249
+	text = {
+		localization_key = STRATEGICREGION_249
+	}
+}
+
+defined_text = {
+	name = GetStrategicRegionName_248
+	text = {
+		localization_key = STRATEGICREGION_248
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQueryactivity
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_activity = -1 #查询：游击队活动
+			}
+		}
+		localization_key = PRC_g_query_unknown
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_activity = 1 #查询：游击队活动
+			}
+		}
+		localization_key = PRC_g_query_yes
+	}
+	text = {
+		localization_key = PRC_g_query_no
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQuerysupport
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_support = -1 #查询：共产党群众支持；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_unknown
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_support = 1 #查询：共产党群众支持；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_yes
+	}
+	text = {
+		localization_key = PRC_g_query_no
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQuerygoodwill
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_goodwill = -1 #查询：日本亲善政策；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_unknown
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_goodwill = 1 #查询：日本亲善政策；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_yes
+	}
+	text = {
+		localization_key = PRC_g_query_no
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQuerygarrison
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_garrison = -1 #查询：反共驻军；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_unknown
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_garrison = 1 #查询：反共驻军；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_yes
+	}
+	text = {
+		localization_key = PRC_g_query_no
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQuerythreealls
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_three_alls = -1 #查询：三光政策；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_unknown
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_three_alls = 1 #查询：三光政策；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_yes
+	}
+	text = {
+		localization_key = PRC_g_query_no
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQueryWarfare
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_warfare > -1 #查询：游击战等级；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_warfare_value
+	}
+	text = {
+		localization_key = PRC_g_query_unknown
+	}
+}
+
+defined_text = {
+	name = GetPRCGuerrillaQueryDivisions
+	text = {
+		trigger = {
+			check_variable = {
+				PRC_g_query_divisions > -1 #查询：当地游击队师数量；-1 表示无权查看
+			}
+		}
+		localization_key = PRC_g_query_divisions_value
+	}
+	text = {
+		localization_key = PRC_g_query_unknown
+	}
+}
+# <<< 游击队：游击队区域名称与查询状态

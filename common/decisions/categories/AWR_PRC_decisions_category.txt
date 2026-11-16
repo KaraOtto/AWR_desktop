@@ -175,14 +175,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 
 }
 
-AWR_communist_infiltration = {	#游击队攻势
-	allowed = {
-		is_literally_china = yes
-	}
-	icon = infiltration
-	priority = 999
-	picture = GFX_decision_cat_picture_chi_infiltration
-}
+
 
 AWR_PRC_land_reform = {	#土地改革
 	allowed = {
@@ -480,6 +473,33 @@ PRC_SOV_diplomacy_category = {	#中苏外交
 	}
 }
 
+# >>> 游击队：游击队决议类别
+AWR_communist_infiltration = { #游击队攻势
+	allowed = {
+		original_tag = PRC
+	}
+	visible = {
+		PRC = {
+			has_completed_focus = PRC_partisan_offensive
+		}
+	}
+	icon = infiltration
+	priority = 999
+	picture = GFX_decision_cat_picture_chi_infiltration
+}
 
-
-
+PRC_g_countermeasures = { #敌后治安与游击队反制
+	allowed = {
+		OR = {
+			original_tag = CHI
+			original_tag = JAP
+		}
+	}
+	visible = {
+		has_global_flag = PRC_g_system_unlocked
+	}
+	icon = infiltration
+	priority = 998
+	picture = GFX_decision_cat_picture_chi_infiltration
+}
+# <<< 游击队：游击队决议类别

@@ -1,0 +1,53 @@
+CHI_corruption_current_group_protected = {
+	has_completed_focus = CHI_selective_anti_corruption
+	OR = {
+		AND = {
+			has_country_flag = CHI_corruption_leader_background_army
+			has_country_flag = CHI_corruption_group_army
+		}
+		AND = {
+			has_country_flag = CHI_corruption_leader_background_capital
+			has_country_flag = CHI_corruption_group_capital
+		}
+		AND = {
+			has_country_flag = CHI_corruption_leader_background_technocrat
+			has_country_flag = CHI_corruption_group_technocrat
+		}
+	}
+}
+
+CHI_corruption_needs_education = {
+	OR = {
+		CHI_has_corruption_trait = yes
+		has_trait = CHI_fears_the_leader_army
+		has_trait = CHI_fears_the_leader_navy
+		AND = {
+			NOT = {
+				has_character_flag = CHI_corruption_whitelist
+			}
+			NOT = {
+				has_trait = CHI_corruption_whitelist
+			}
+			NOT = {
+				has_trait = CHI_corruption_whitelist_advisor
+			}
+		}
+	}
+}
+
+CHI_corruption_secret_target_eligible = {
+	has_advisor_role = political_advisor
+	is_country_leader = no
+	NOT = {
+		has_character_flag = CHI_corruption_whitelist
+	}
+	NOT = {
+		has_trait = CHI_corruption_whitelist_advisor
+	}
+	NOT = {
+		has_trait = CHI_corruption_whitelist
+	}
+	NOT = {
+		has_trait = CHI_chosen_by_army
+	}
+}

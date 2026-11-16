@@ -1469,3 +1469,71 @@ on_actions = {
         }
     }
 }
+
+# >>> 游击队：游击队初始化与刷新
+on_actions = {
+	on_startup = {
+		effect = {
+			PRC = {
+				PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+				if = {
+					limit = {
+						has_completed_focus = PRC_partisan_offensive
+					}
+					set_global_flag = PRC_g_system_unlocked
+				}
+			}
+		}
+	}
+	on_daily_PRC = {
+		effect = {
+			if = {
+				limit = {
+					has_completed_focus = PRC_partisan_offensive
+				}
+				if = {
+					limit = {
+						has_war_with = JAP
+					}
+					set_country_flag = PRC_g_fought_japan
+				}
+				PRC_g_postwar_transfer = yes #抗战结束后的支持地区移交
+			}
+			PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+		}
+	}
+	on_daily = {
+		effect = {
+			every_country = {
+				limit = {
+					has_country_flag = PRC_g_query_open
+					has_country_flag = PRC_g_map_open
+				}
+				PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+			}
+		}
+	}
+	on_war_relation_added = {
+		effect = {
+			PRC = {
+				PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+			}
+		}
+	}
+	on_peace = {
+		effect = {
+			PRC = {
+				PRC_g_postwar_transfer = yes #抗战结束后的支持地区移交
+				PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			PRC = {
+				PRC_g_refresh_countermeasure_costs = yes #刷新反制措施的名额与工厂占用
+			}
+		}
+	}
+}
+# <<< 游击队：游击队初始化与刷新

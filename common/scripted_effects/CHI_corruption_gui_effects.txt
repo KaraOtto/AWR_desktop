@@ -1,0 +1,374 @@
+# Frames 1..101 correspond to 0..100%, matching the generated sprite strip.
+CHI_corruption_refresh_gui = {
+	set_variable = {
+		CHI_corruption_army_frame = CHI_army_corruption
+	}
+	set_variable = {
+		CHI_corruption_capital_frame = CHI_capital_corruption
+	}
+	set_variable = {
+		CHI_corruption_technocrat_frame = CHI_technocrat_corruption
+	}
+	multiply_variable = {
+		CHI_corruption_army_frame = 100
+	}
+	multiply_variable = {
+		CHI_corruption_capital_frame = 100
+	}
+	multiply_variable = {
+		CHI_corruption_technocrat_frame = 100
+	}
+	round_variable = CHI_corruption_army_frame
+	round_variable = CHI_corruption_capital_frame
+	round_variable = CHI_corruption_technocrat_frame
+	add_to_variable = {
+		CHI_corruption_army_frame = 1
+	}
+	add_to_variable = {
+		CHI_corruption_capital_frame = 1
+	}
+	add_to_variable = {
+		CHI_corruption_technocrat_frame = 1
+	}
+	clamp_variable = {
+		var = CHI_corruption_army_frame
+		min = 1
+		max = 101
+	}
+	clamp_variable = {
+		var = CHI_corruption_capital_frame
+		min = 1
+		max = 101
+	}
+	clamp_variable = {
+		var = CHI_corruption_technocrat_frame
+		min = 1
+		max = 101
+	}
+}
+
+CHI_corruption_archive_initialize = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = CHI_corruption_archive_initialized
+			}
+		}
+		set_country_flag = CHI_corruption_archive_initialized
+		set_variable = {
+			CHI_corruption_archive_page = 0
+		}
+		CHI_corruption_archive_refresh_page = yes
+	}
+	CHI_corruption_refresh_gui = yes
+}
+
+# The full archive persists. Only the eight display buffers are rebuilt on paging.
+CHI_corruption_archive_refresh_page = {
+	set_variable = {
+		CHI_corruption_archive_count = CHI_corruption_archive_portraits^num
+	}
+	set_variable = {
+		CHI_corruption_archive_last_page = 0
+	}
+	for_loop_effect = {
+		start = 8
+		end = CHI_corruption_archive_count
+		add = 8
+		value = CHI_corruption_page_count_index
+		add_to_variable = {
+			CHI_corruption_archive_last_page = 1
+		}
+	}
+	clamp_variable = {
+		var = CHI_corruption_archive_page
+		min = 0
+		max = CHI_corruption_archive_last_page
+	}
+	set_variable = {
+		CHI_corruption_archive_page_display = CHI_corruption_archive_page
+	}
+	add_to_variable = {
+		CHI_corruption_archive_page_display = 1
+	}
+	set_variable = {
+		CHI_corruption_archive_page_total = CHI_corruption_archive_last_page
+	}
+	add_to_variable = {
+		CHI_corruption_archive_page_total = 1
+	}
+	clear_array = CHI_corruption_page_portraits
+	clear_array = CHI_corruption_page_characters
+	clear_array = CHI_corruption_page_statuses
+	clear_array = CHI_corruption_page_groups
+	set_temp_variable = {
+		CHI_corruption_page_offset = CHI_corruption_archive_page
+	}
+	multiply_temp_variable = {
+		CHI_corruption_page_offset = 8
+	}
+	for_loop_effect = {
+		start = 0
+		end = 8
+		value = CHI_corruption_page_slot
+		set_temp_variable = {
+			CHI_corruption_source_index = CHI_corruption_archive_count
+		}
+		subtract_from_temp_variable = {
+			CHI_corruption_source_index = 1
+		}
+		subtract_from_temp_variable = {
+			CHI_corruption_source_index = CHI_corruption_page_offset
+		}
+		subtract_from_temp_variable = {
+			CHI_corruption_source_index = CHI_corruption_page_slot
+		}
+		if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_source_index > -0.5
+				}
+			}
+			add_to_array = {
+				array = CHI_corruption_page_portraits
+				value = CHI_corruption_archive_portraits^CHI_corruption_source_index
+			}
+			add_to_array = {
+				array = CHI_corruption_page_characters
+				value = CHI_corruption_archive_characters^CHI_corruption_source_index
+			}
+			add_to_array = {
+				array = CHI_corruption_page_statuses
+				value = CHI_corruption_archive_statuses^CHI_corruption_source_index
+			}
+			add_to_array = {
+				array = CHI_corruption_page_groups
+				value = CHI_corruption_archive_groups^CHI_corruption_source_index
+			}
+		}
+	}
+}
+
+# Called in character scope before retirement/removal. Country scope remains ROOT.
+# Status 1 = the harshest case outcome; 2 = dismissal; 3 = campaign purge.
+CHI_corruption_archive_character = {
+	if = {
+		limit = {
+			NOT = {
+				has_character_flag = CHI_corruption_archived
+			}
+		}
+		set_character_flag = CHI_corruption_archived
+		CHI_corruption_identify_archive_portrait = yes
+		set_variable = {
+			CHI_corruption_character_archive_index = ROOT.CHI_corruption_archive_portraits^num
+		}
+		ROOT = {
+			add_to_array = {
+				array = CHI_corruption_archive_characters
+				value = PREV
+			}
+			add_to_array = {
+				array = CHI_corruption_archive_portraits
+				value = PREV.CHI_corruption_portrait_id
+			}
+			add_to_array = {
+				array = CHI_corruption_archive_statuses
+				value = CHI_corruption_record_status
+			}
+			add_to_array = {
+				array = CHI_corruption_archive_groups
+				value = CHI_corruption_record_group
+			}
+			if = {
+				limit = {
+					check_variable = {
+						CHI_corruption_record_status = 1
+					}
+				}
+				add_to_variable = {
+					CHI_corruption_executed_count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						CHI_corruption_record_status = 2
+					}
+				}
+				add_to_variable = {
+					CHI_corruption_dismissed_count = 1
+				}
+			}
+			else = {
+				add_to_variable = {
+					CHI_corruption_purged_count = 1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				check_variable = {
+					CHI_corruption_record_status = 1
+				}
+			}
+		}
+		ROOT = {
+			set_temp_variable = {
+				CHI_corruption_upgrade_index = PREV.CHI_corruption_character_archive_index
+			}
+			set_temp_variable = {
+				CHI_corruption_old_status = CHI_corruption_archive_statuses^CHI_corruption_upgrade_index
+			}
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							CHI_corruption_old_status = 1
+						}
+					}
+				}
+				remove_from_array = {
+					array = CHI_corruption_archive_statuses
+					index = CHI_corruption_upgrade_index
+				}
+				add_to_array = {
+					array = CHI_corruption_archive_statuses
+					value = 1
+					index = CHI_corruption_upgrade_index
+				}
+				add_to_variable = {
+					CHI_corruption_executed_count = 1
+				}
+				if = {
+					limit = {
+						check_variable = {
+							CHI_corruption_old_status = 2
+						}
+					}
+					add_to_variable = {
+						CHI_corruption_dismissed_count = -1
+					}
+				}
+				else = {
+					add_to_variable = {
+						CHI_corruption_purged_count = -1
+					}
+				}
+			}
+		}
+	}
+	ROOT = {
+		set_variable = {
+			CHI_corruption_archive_page = 0
+		}
+		CHI_corruption_archive_refresh_page = yes
+	}
+}
+
+CHI_corruption_record_case_group = {
+	set_variable = {
+		CHI_corruption_record_group = 0
+	}
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_group_army
+		}
+		set_variable = {
+			CHI_corruption_record_group = 1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = CHI_corruption_group_capital
+		}
+		set_variable = {
+			CHI_corruption_record_group = 2
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = CHI_corruption_group_technocrat
+		}
+		set_variable = {
+			CHI_corruption_record_group = 3
+		}
+	}
+}
+
+CHI_corruption_record_execution = {
+	set_variable = {
+		CHI_corruption_record_status = 1
+	}
+	CHI_corruption_record_case_group = yes
+	event_target:CHI_corruption_target = {
+		CHI_corruption_archive_character = yes
+	}
+}
+CHI_corruption_record_dismissal = {
+	set_variable = {
+		CHI_corruption_record_status = 2
+	}
+	CHI_corruption_record_case_group = yes
+	event_target:CHI_corruption_target = {
+		CHI_corruption_archive_character = yes
+	}
+}
+
+CHI_corruption_record_military_purge = {
+	ROOT = {
+		set_variable = {
+			CHI_corruption_record_status = 3
+		}
+		set_variable = {
+			CHI_corruption_record_group = 1
+		}
+	}
+	CHI_corruption_archive_character = yes
+}
+CHI_corruption_record_purge = {
+	ROOT = {
+		set_variable = {
+			CHI_corruption_record_status = 3
+		}
+		set_variable = {
+			CHI_corruption_record_group = 0
+		}
+	}
+	if = {
+		limit = {
+			has_trait = capital_corruption
+		}
+		ROOT = {
+			set_variable = {
+				CHI_corruption_record_group = 2
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait = technocrat_corruption
+		}
+		ROOT = {
+			set_variable = {
+				CHI_corruption_record_group = 3
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = army_corruption
+				has_character_flag = CHI_loyalty_military_candidate
+			}
+		}
+		ROOT = {
+			set_variable = {
+				CHI_corruption_record_group = 1
+			}
+		}
+	}
+	CHI_corruption_archive_character = yes
+}

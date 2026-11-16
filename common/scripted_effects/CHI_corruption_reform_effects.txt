@@ -1,0 +1,969 @@
+# Reform progress supplements the existing corruption stock and monthly modifiers.
+CHI_corruption_integrity_clamp = {
+	clamp_variable = {
+		var = Institutional_Integrity
+		min = 0
+		max = 100
+	}
+}
+
+CHI_corruption_reform_initialize = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = CHI_corruption_reform_initialized
+			}
+		}
+		set_country_flag = CHI_corruption_reform_initialized
+		set_variable = {
+			Institutional_Integrity = 0
+		}
+	}
+}
+
+# Recover progress once for existing saves; never reset progress on load.
+CHI_corruption_reform_migrate = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = CHI_corruption_reform_migrated
+			}
+		}
+		set_country_flag = CHI_corruption_reform_migrated
+		if = {
+			limit = {
+				has_completed_focus = CHI_solve_our_internal_problem
+			}
+			set_country_flag = CHI_corruption_reform_initialized
+			CHI_corruption_recover_focus_integrity = yes
+		}
+	}
+	CHI_corruption_integrity_clamp = yes
+}
+
+CHI_corruption_gain_audit_integrity = {
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_reform_initialized
+		}
+		add_to_variable = {
+			Institutional_Integrity = 1
+		}
+		CHI_corruption_integrity_clamp = yes
+	}
+}
+
+CHI_corruption_record_handled_case = {
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_reform_initialized
+		}
+		if = {
+			limit = {
+				has_country_flag = CHI_corruption_campaign_case
+			}
+			add_to_variable = {
+				Institutional_Integrity = 5
+			}
+		}
+		else = {
+			add_to_variable = {
+				Institutional_Integrity = CHI_corruption_case_integrity
+			}
+		}
+		CHI_corruption_integrity_clamp = yes
+	}
+	clr_country_flag = CHI_corruption_campaign_case
+}
+
+CHI_corruption_start_central_campaign = {
+	set_country_flag = CHI_corruption_central_campaign
+	set_variable = {
+		CHI_corruption_campaign_elapsed = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_next = 22
+	}
+	set_variable = {
+		CHI_corruption_campaign_issued = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_group = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_total = 16
+	}
+	set_variable = {
+		CHI_corruption_campaign_interval = 22
+	}
+	activate_mission = CHI_corruption_central_campaign_mission
+}
+
+CHI_corruption_start_communist_campaign = {
+	set_country_flag = CHI_corruption_communist_campaign
+	set_variable = {
+		CHI_corruption_campaign_elapsed = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_next = 50
+	}
+	set_variable = {
+		CHI_corruption_campaign_issued = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_group = 0
+	}
+	set_variable = {
+		CHI_corruption_campaign_total = 6
+	}
+	set_variable = {
+		CHI_corruption_campaign_interval = 50
+	}
+	activate_mission = CHI_corruption_communist_campaign_mission
+}
+
+CHI_corruption_queue_minor = {
+	add_to_variable = {
+		CHI_corruption_pending_minor = 1
+	}
+}
+CHI_corruption_queue_medium = {
+	add_to_variable = {
+		CHI_corruption_pending_medium = 1
+	}
+}
+CHI_corruption_queue_severe = {
+	add_to_variable = {
+		CHI_corruption_pending_severe = 1
+	}
+}
+
+CHI_corruption_prepare_random = {
+	random_list = {
+		1 = {
+			CHI_corruption_prepare_army = yes
+		}
+		1 = {
+			CHI_corruption_prepare_capital = yes
+		}
+		1 = {
+			CHI_corruption_prepare_technocrat = yes
+		}
+	}
+}
+
+CHI_corruption_reform_daily = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = CHI_corruption_central_campaign
+				has_country_flag = CHI_corruption_communist_campaign
+			}
+		}
+		add_to_variable = {
+			CHI_corruption_campaign_elapsed = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = CHI_corruption_event_pending
+				}
+				check_variable = {
+					var = CHI_corruption_campaign_elapsed
+					value = CHI_corruption_campaign_next
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					CHI_corruption_campaign_issued < CHI_corruption_campaign_total
+				}
+			}
+			# Round-robin selection gives the communist campaign two cases per group.
+			if = {
+				limit = {
+					check_variable = {
+						CHI_corruption_campaign_group < 0.5
+					}
+				}
+				CHI_corruption_prepare_army = yes
+				set_variable = {
+					CHI_corruption_campaign_group = 1
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						CHI_corruption_campaign_group < 1.5
+					}
+				}
+				CHI_corruption_prepare_capital = yes
+				set_variable = {
+					CHI_corruption_campaign_group = 2
+				}
+			}
+			else = {
+				CHI_corruption_prepare_technocrat = yes
+				set_variable = {
+					CHI_corruption_campaign_group = 0
+				}
+			}
+			set_country_flag = CHI_corruption_campaign_case
+			add_to_variable = {
+				CHI_corruption_campaign_issued = 1
+			}
+			add_to_variable = {
+				CHI_corruption_campaign_next = CHI_corruption_campaign_interval
+			}
+			country_event = {
+				id = CHI_corruption.30
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_campaign_issued > CHI_corruption_campaign_total
+				}
+			}
+			# Defensive clamp for edited saves; normal completion is equality below.
+			set_variable = {
+				CHI_corruption_campaign_issued = CHI_corruption_campaign_total
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_campaign_issued = CHI_corruption_campaign_total
+				}
+			}
+			clr_country_flag = CHI_corruption_central_campaign
+			clr_country_flag = CHI_corruption_communist_campaign
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_pending_severe > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_pending_severe = -1
+			}
+			CHI_corruption_prepare_random = yes
+			country_event = {
+				id = CHI_corruption.30
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_pending_medium > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_pending_medium = -1
+			}
+			CHI_corruption_prepare_random = yes
+			country_event = {
+				id = CHI_corruption.20
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_pending_minor > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_pending_minor = -1
+			}
+			CHI_corruption_prepare_random = yes
+			country_event = {
+				id = CHI_corruption.10
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_audit_army_pending > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_audit_army_pending = -1
+			}
+			CHI_corruption_dispatch_army = yes
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_audit_capital_pending > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_audit_capital_pending = -1
+			}
+			CHI_corruption_dispatch_capital = yes
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					CHI_corruption_audit_technocrat_pending > 0
+				}
+			}
+			add_to_variable = {
+				CHI_corruption_audit_technocrat_pending = -1
+			}
+			CHI_corruption_dispatch_technocrat = yes
+		}
+	}
+}
+
+CHI_corruption_reduce_all_minor = {
+	add_to_variable = {
+		CHI_army_corruption = -0.15
+	}
+	add_to_variable = {
+		CHI_capital_corruption = -0.15
+	}
+	add_to_variable = {
+		CHI_technocrat_corruption = -0.15
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_reduce_all_medium = {
+	add_to_variable = {
+		CHI_army_corruption = -0.30
+	}
+	add_to_variable = {
+		CHI_capital_corruption = -0.30
+	}
+	add_to_variable = {
+		CHI_technocrat_corruption = -0.30
+	}
+	CHI_corruption_clamp = yes
+}
+CHI_corruption_reduce_all_inventory = {
+	add_to_variable = {
+		CHI_army_corruption = -0.20
+	}
+	add_to_variable = {
+		CHI_capital_corruption = -0.20
+	}
+	add_to_variable = {
+		CHI_technocrat_corruption = -0.20
+	}
+	CHI_corruption_clamp = yes
+}
+
+CHI_corruption_clean_unit_leader = {
+	remove_unit_leader_trait = CHI_arms_smuggling
+	remove_unit_leader_trait = CHI_ghost_payroll_1
+	remove_unit_leader_trait = CHI_ghost_payroll_2
+	remove_unit_leader_trait = CHI_ghost_payroll_3
+	remove_unit_leader_trait = CHI_army_graft_1
+	remove_unit_leader_trait = CHI_army_graft_2
+	remove_unit_leader_trait = CHI_army_graft_3
+	remove_unit_leader_trait = CHI_navy_graft
+	remove_unit_leader_trait = CHI_navy_kickback
+	remove_unit_leader_trait = CHI_fears_the_leader_army
+	remove_unit_leader_trait = CHI_fears_the_leader_navy
+}
+CHI_corruption_clean_advisor = {
+	remove_trait = {
+		slot = political_advisor
+		trait = CHI_chosen_by_army
+	}
+	remove_trait = {
+		slot = political_advisor
+		trait = army_corruption
+	}
+	remove_trait = {
+		slot = political_advisor
+		trait = capital_corruption
+	}
+	remove_trait = {
+		slot = political_advisor
+		trait = technocrat_corruption
+	}
+}
+# Called in character scope; the group belongs to the country owning the event.
+CHI_corruption_rehabilitate_character = {
+	if = {
+		limit = {
+			ROOT = {
+				has_country_flag = CHI_corruption_group_army
+			}
+		}
+		CHI_corruption_clean_unit_leader = yes
+	}
+	else = {
+		CHI_corruption_clean_advisor = yes
+	}
+}
+
+CHI_corruption_educate_one = {
+	random_character = {
+		limit = {
+			has_character_flag = CHI_corruption_education_candidate
+			NOT = {
+				has_character_flag = CHI_corruption_educated_this_session
+			}
+		}
+		set_character_flag = CHI_corruption_educated_this_session
+		if = {
+			limit = {
+				CHI_has_corruption_trait = no
+			}
+			set_character_flag = CHI_corruption_whitelist
+			if = {
+				limit = {
+					has_character_flag = CHI_corruption_education_military
+				}
+				add_unit_leader_trait = CHI_corruption_whitelist
+			}
+			else = {
+				add_trait = {
+					slot = political_advisor
+					trait = CHI_corruption_whitelist_advisor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = CHI_corruption_education_military
+			}
+			CHI_corruption_clean_unit_leader = yes
+		}
+		if = {
+			limit = {
+				has_advisor_role = political_advisor
+			}
+			CHI_corruption_clean_advisor = yes
+		}
+	}
+}
+CHI_corruption_finish_education = {
+	CHI_corruption_educate_one = yes
+	CHI_corruption_educate_one = yes
+	CHI_corruption_educate_one = yes
+	every_character = {
+		clr_character_flag = CHI_corruption_education_candidate
+		clr_character_flag = CHI_corruption_education_military
+		clr_character_flag = CHI_corruption_educated_this_session
+	}
+	add_to_variable = {
+		Institutional_Integrity = 5
+	}
+	CHI_corruption_integrity_clamp = yes
+	remove_ideas = CHI_corruption_fear_in_office
+}
+CHI_corruption_educate_military = {
+	every_unit_leader = {
+		limit = {
+			CHI_corruption_needs_education = yes
+		}
+		set_character_flag = CHI_corruption_education_candidate
+		set_character_flag = CHI_corruption_education_military
+	}
+	CHI_corruption_finish_education = yes
+}
+CHI_corruption_educate_administrators = {
+	every_character = {
+		limit = {
+			has_advisor_role = political_advisor
+			CHI_corruption_needs_education = yes
+		}
+		set_character_flag = CHI_corruption_education_candidate
+	}
+	CHI_corruption_finish_education = yes
+}
+
+CHI_corruption_shutdown_cleanup = {
+	clr_country_flag = CHI_corruption_secret_event_pending
+	clear_global_event_target = CHI_corruption_investigation_target
+	clr_country_flag = CHI_corruption_event_pending
+	clr_country_flag = CHI_corruption_campaign_case
+	clr_country_flag = CHI_corruption_central_campaign
+	clr_country_flag = CHI_corruption_communist_campaign
+	CHI_corruption_clear_incident_flags = yes
+	set_variable = {
+		CHI_army_corruption_coefficient_base = 0
+	}
+	set_variable = {
+		CHI_capital_corruption_coefficient_base = 0
+	}
+	set_variable = {
+		CHI_technocrat_corruption_coefficient_base = 0
+	}
+	set_variable = {
+		CHI_corruption_pending_minor = 0
+	}
+	set_variable = {
+		CHI_corruption_pending_medium = 0
+	}
+	set_variable = {
+		CHI_corruption_pending_severe = 0
+	}
+	set_variable = {
+		CHI_corruption_audit_army_pending = 0
+	}
+	set_variable = {
+		CHI_corruption_audit_capital_pending = 0
+	}
+	set_variable = {
+		CHI_corruption_audit_technocrat_pending = 0
+	}
+	remove_ideas = CHI_military_corruption_purge
+	remove_ideas = CHI_administrative_corruption_purge
+	remove_ideas = CHI_corruption_fear_in_office
+	remove_ideas = CHI_case_rectification_idea
+	remove_ideas = CHI_rectify_government_procurement_idea
+	every_unit_leader = {
+		CHI_corruption_clean_unit_leader = yes
+	}
+	every_character = {
+		limit = {
+			has_advisor_role = political_advisor
+		}
+		CHI_corruption_clean_advisor = yes
+	}
+	CHI_corruption_remove_reform_ideas = yes
+}
+
+# Secret investigation uses its own target, independent of ordinary corruption cases.
+CHI_corruption_secret_investigation = {
+	every_character = {
+		limit = {
+			CHI_corruption_secret_target_eligible = yes
+		}
+		set_character_flag = CHI_corruption_investigation_candidate
+	}
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_investigating_capital
+			any_character = {
+				has_character_flag = CHI_corruption_investigation_candidate
+				has_trait = capital_corruption
+			}
+		}
+		every_character = {
+			limit = {
+				NOT = {
+					has_trait = capital_corruption
+				}
+			}
+			clr_character_flag = CHI_corruption_investigation_candidate
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_flag = CHI_corruption_investigating_capital
+			}
+			any_character = {
+				has_character_flag = CHI_corruption_investigation_candidate
+				has_trait = technocrat_corruption
+			}
+		}
+		every_character = {
+			limit = {
+				NOT = {
+					has_trait = technocrat_corruption
+				}
+			}
+			clr_character_flag = CHI_corruption_investigation_candidate
+		}
+	}
+	else_if = {
+		limit = {
+			any_character = {
+				has_character_flag = CHI_corruption_investigation_candidate
+				CHI_has_corruption_trait = yes
+			}
+		}
+		every_character = {
+			limit = {
+				CHI_has_corruption_trait = no
+			}
+			clr_character_flag = CHI_corruption_investigation_candidate
+		}
+	}
+	random_character = {
+		limit = {
+			has_character_flag = CHI_corruption_investigation_candidate
+		}
+		save_global_event_target_as = CHI_corruption_investigation_target
+	}
+	every_character = {
+		clr_character_flag = CHI_corruption_investigation_candidate
+	}
+	set_country_flag = CHI_corruption_secret_event_pending
+	set_country_flag = CHI_corruption_event_pending
+	set_country_flag = {
+		flag = CHI_corruption_secret_cooldown
+		days = 30
+	}
+	country_event = {
+		id = CHI_corruption_reform.1
+	}
+}
+
+CHI_corruption_replace_bureaucratic_capital = {
+	CHI_power_blocs_replace_bureaucratic_capital = yes
+	set_country_flag = CHI_corruption_capital_abolished
+	set_variable = {
+		CHI_capital_corruption = 0
+	}
+	set_variable = {
+		CHI_capital_corruption_coefficient = 0
+	}
+	set_variable = {
+		CHI_capital_corruption_coefficient_base = 0
+	}
+	remove_ideas = CHI_capital_corruption_1
+	remove_ideas = CHI_capital_corruption_2
+	remove_ideas = CHI_capital_corruption_3
+	CHI_corruption_refresh_gui = yes
+}
+
+CHI_corruption_recover_focus_integrity = {
+	set_variable = {
+		CHI_corruption_recovered_integrity = 0
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_anti_monopoly_law
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_comprehensive_coverage_of_supervision
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_comprehensive_inventory_of_official_assets
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_confiscate_the_assets_of_corrupt_officials
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_crack_down_hard_on_corruption
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_establish_an_independent_supervisory_organ
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_establish_central_onvestigation
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_independent_auditing_of_state_owned_enterprises
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_integrity_education
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_interest_groups_are_publicly_registered
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_law_of_the_state_civil_servants
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 10
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_leadership_integrity_order
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_loyalty_means_intergrity
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_officials_property_and_interests_declaration
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_promote_rectification_through_cases
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_public_procurement_transparency_act
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_rectify_government_procurement
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 25
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_rectify_the_army
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_restore_government_order
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_second_four_one_two
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_secret_investigation
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_selective_anti_corruption
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 10
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_separate_from_party_government_and_property
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_special_inspection_department
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_take_over_the_control_institution
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 20
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_the_faction_is_above_the_system
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 10
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_the_fourth_right
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_the_system_is_above_the_faction
+		}
+		add_to_variable = {
+			CHI_corruption_recovered_integrity = 15
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Institutional_Integrity < CHI_corruption_recovered_integrity
+			}
+		}
+		set_variable = {
+			Institutional_Integrity = CHI_corruption_recovered_integrity
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_establish_central_onvestigation
+			NOT = {
+				has_completed_focus = CHI_stop_anti_corruption
+			}
+		}
+		CHI_corruption_start_central_campaign = yes
+	}
+	if = {
+		limit = {
+			has_completed_focus = CHI_crack_down_hard_on_corruption
+			NOT = {
+				has_completed_focus = CHI_clear_officials_and_polotics
+			}
+		}
+		CHI_corruption_start_communist_campaign = yes
+	}
+}
+
+CHI_corruption_remove_current_ideas = {
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_incident_navy_graft
+		}
+		remove_ideas = CHI_navy_corruption_graft_1
+		remove_ideas = CHI_navy_corruption_graft_2
+		remove_ideas = CHI_navy_corruption_graft_3
+	}
+
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_incident_navy_kickback
+		}
+		remove_ideas = CHI_navy_corruption_kickback_1
+		remove_ideas = CHI_navy_corruption_kickback_2
+		remove_ideas = CHI_navy_corruption_kickback_3
+	}
+
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_incident_air_graft
+		}
+		remove_ideas = CHI_air_corruption_graft_1
+		remove_ideas = CHI_air_corruption_graft_2
+		remove_ideas = CHI_air_corruption_graft_3
+	}
+
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_incident_air_kickback
+		}
+		remove_ideas = CHI_air_corruption_kickback_1
+		remove_ideas = CHI_air_corruption_kickback_2
+		remove_ideas = CHI_air_corruption_kickback_3
+	}
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_group_capital
+		}
+		remove_ideas = CHI_capital_corruption_1
+		remove_ideas = CHI_capital_corruption_2
+		remove_ideas = CHI_capital_corruption_3
+	}
+	if = {
+		limit = {
+			has_country_flag = CHI_corruption_group_technocrat
+		}
+		remove_ideas = CHI_technocrat_corruption_1
+		remove_ideas = CHI_technocrat_corruption_2
+		remove_ideas = CHI_technocrat_corruption_3
+	}
+}
+
+CHI_corruption_remove_reform_ideas = {
+	remove_ideas = CHI_anti_corruption_democracy_1
+	remove_ideas = CHI_anti_corruption_democracy_2
+	remove_ideas = CHI_anti_corruption_democracy_3
+	remove_ideas = CHI_anti_corruption_democracy_4
+	remove_ideas = CHI_anti_corruption_socialism_1
+	remove_ideas = CHI_anti_corruption_socialism_2
+	remove_ideas = CHI_anti_corruption_socialism_3
+	remove_ideas = CHI_anti_corruption_socialism_4
+	remove_ideas = CHI_anti_corruption_socialism_5
+	remove_ideas = CHI_anti_corruption_communism_1
+	remove_ideas = CHI_anti_corruption_communism_2
+	remove_ideas = CHI_anti_corruption_communism_3
+	remove_ideas = CHI_anti_corruption_neutrality_1
+	remove_ideas = CHI_anti_corruption_neutrality_2
+	remove_ideas = CHI_anti_corruption_neutrality_3
+	remove_ideas = CHI_anti_corruption_neutrality_4
+	remove_ideas = CHI_anti_corruption_militarism_1
+	remove_ideas = CHI_anti_corruption_militarism_2
+	remove_ideas = CHI_anti_corruption_facism_1
+	remove_ideas = CHI_anti_corruption_facism_2
+	remove_ideas = CHI_anti_corruption_neutrality_3_army
+	remove_ideas = CHI_anti_corruption_neutrality_3_capital
+	remove_ideas = CHI_anti_corruption_neutrality_3_technocrat
+}

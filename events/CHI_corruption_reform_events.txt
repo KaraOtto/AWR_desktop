@@ -1,0 +1,44 @@
+add_namespace = CHI_corruption_reform
+
+country_event = {
+	id = CHI_corruption_reform.1
+	title = CHI_corruption_reform.1.t
+	desc = CHI_corruption_reform.1.desc
+	picture = GFX_report_event_soviet_purge_politicians
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_country_flag = CHI_corruption_abolished
+		}
+	}
+	option = {
+		name = CHI_corruption_reform.1.a
+		event_target:CHI_corruption_investigation_target = {
+			add_trait = {
+				slot = political_advisor
+				trait = CHI_chosen_by_army
+			}
+		}
+		add_to_variable = {
+			Institutional_Integrity = 5
+		}
+		CHI_corruption_integrity_clamp = yes
+		if = {
+			limit = {
+				has_country_flag = CHI_corruption_investigating_capital
+			}
+			add_to_variable = {
+				CHI_corruption_secret_capital_count = 1
+			}
+		}
+		else = {
+			add_to_variable = {
+				CHI_corruption_secret_technocrat_count = 1
+			}
+		}
+		clr_country_flag = CHI_corruption_secret_event_pending
+		clr_country_flag = CHI_corruption_event_pending
+		clr_country_flag = CHI_corruption_investigating_capital
+		clear_global_event_target = CHI_corruption_investigation_target
+	}
+}

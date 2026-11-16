@@ -1,0 +1,136 @@
+defined_text = {
+	name = GetCHICorruptionPanelStatus
+	text = {
+		trigger = {
+			has_country_flag = CHI_corruption_abolished
+		}
+		localization_key = CHI_corruption_panel_completed
+	}
+	text = {
+		localization_key = CHI_corruption_panel_active
+	}
+}
+defined_text = {
+	name = GetCHIArmyCorruptionRisk
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_army_corruption < 0.41
+			}
+		}
+		localization_key = CHI_corruption_risk_low
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_army_corruption < 0.71
+			}
+		}
+		localization_key = CHI_corruption_risk_medium
+	}
+	text = {
+		localization_key = CHI_corruption_risk_high
+	}
+}
+defined_text = {
+	name = GetCHICapitalCorruptionRisk
+	text = {
+		trigger = {
+			has_country_flag = CHI_corruption_capital_abolished
+		}
+		localization_key = CHI_corruption_risk_abolished
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_capital_corruption < 0.41
+			}
+		}
+		localization_key = CHI_corruption_risk_low
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_capital_corruption < 0.71
+			}
+		}
+		localization_key = CHI_corruption_risk_medium
+	}
+	text = {
+		localization_key = CHI_corruption_risk_high
+	}
+}
+defined_text = {
+	name = GetCHITechnocratCorruptionRisk
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_technocrat_corruption < 0.41
+			}
+		}
+		localization_key = CHI_corruption_risk_low
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_technocrat_corruption < 0.71
+			}
+		}
+		localization_key = CHI_corruption_risk_medium
+	}
+	text = {
+		localization_key = CHI_corruption_risk_high
+	}
+}
+defined_text = {
+	name = GetCHICorruptionArchiveDisposition
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_corruption_page_statuses^CHI_corruption_archive_index = 1
+			}
+		}
+		localization_key = CHI_corruption_disposition_executed
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_corruption_page_statuses^CHI_corruption_archive_index = 2
+			}
+		}
+		localization_key = CHI_corruption_disposition_dismissed
+	}
+	text = {
+		localization_key = CHI_corruption_disposition_purged
+	}
+}
+defined_text = {
+	name = GetCHICorruptionArchiveGroup
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_corruption_page_groups^CHI_corruption_archive_index = 1
+			}
+		}
+		localization_key = CHI_corruption_army_label
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_corruption_page_groups^CHI_corruption_archive_index = 2
+			}
+		}
+		localization_key = CHI_corruption_capital_label
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				CHI_corruption_page_groups^CHI_corruption_archive_index = 3
+			}
+		}
+		localization_key = CHI_corruption_technocrat_label
+	}
+	text = {
+		localization_key = CHI_corruption_group_administration
+	}
+}

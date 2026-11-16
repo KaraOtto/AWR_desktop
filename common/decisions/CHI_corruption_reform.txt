@@ -1,0 +1,435 @@
+CHI_corruption_category = {
+	CHI_corruption_socialist_army_audit = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_interest_groups_are_publicly_registered
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 90
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			has_country_flag = CHI_corruption_abolished
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_army_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_socialist_technocrat_audit = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_interest_groups_are_publicly_registered
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 90
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			has_country_flag = CHI_corruption_abolished
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_technocrat_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_secret_capital = {
+		icon = generic_political_discourse
+		cost = 30
+		days_re_enable = 30
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_completed_focus = CHI_secret_investigation
+			NOT = {
+				has_completed_focus = CHI_second_four_one_two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_secret_event_pending
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_secret_cooldown
+			}
+			any_character = {
+				CHI_corruption_secret_target_eligible = yes
+			}
+		}
+		complete_effect = {
+			set_country_flag = CHI_corruption_investigating_capital
+			CHI_corruption_secret_investigation = yes
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	CHI_corruption_secret_technocrat = {
+		icon = generic_political_discourse
+		cost = 30
+		days_re_enable = 30
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_completed_focus = CHI_secret_investigation
+			NOT = {
+				has_completed_focus = CHI_second_four_one_two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_secret_event_pending
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_secret_cooldown
+			}
+			any_character = {
+				CHI_corruption_secret_target_eligible = yes
+			}
+		}
+		complete_effect = {
+			clr_country_flag = CHI_corruption_investigating_capital
+			CHI_corruption_secret_investigation = yes
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	CHI_corruption_army_audit_120 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_establish_an_independent_supervisory_organ
+			NOT = {
+				has_completed_focus = CHI_the_fourth_right
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 120
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_establish_an_independent_supervisory_organ
+				}
+				has_completed_focus = CHI_the_fourth_right
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_army_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_army_audit_90 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_the_fourth_right
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 90
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_the_fourth_right
+				}
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_army_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_capital_audit_120 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_establish_an_independent_supervisory_organ
+			NOT = {
+				has_completed_focus = CHI_the_fourth_right
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 120
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_establish_an_independent_supervisory_organ
+				}
+				has_completed_focus = CHI_the_fourth_right
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_capital_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_capital_audit_90 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_the_fourth_right
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 90
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_the_fourth_right
+				}
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_capital_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_technocrat_audit_120 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_establish_an_independent_supervisory_organ
+			NOT = {
+				has_completed_focus = CHI_the_fourth_right
+			}
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 120
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_establish_an_independent_supervisory_organ
+				}
+				has_completed_focus = CHI_the_fourth_right
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_technocrat_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_technocrat_audit_90 = {
+		icon = generic_political_discourse
+		activation = {
+			has_completed_focus = CHI_the_fourth_right
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+		days_mission_timeout = 90
+		available = {
+			always = no
+		}
+		is_good = yes
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_country_flag = CHI_corruption_abolished
+				NOT = {
+					has_completed_focus = CHI_the_fourth_right
+				}
+			}
+		}
+		timeout_effect = {
+			add_to_variable = {
+				CHI_corruption_audit_technocrat_pending = 1
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_central_campaign_mission = {
+		icon = generic_political_discourse
+		activation = {
+			always = no
+		}
+		days_mission_timeout = 360
+		available = {
+			always = no
+		}
+		fire_only_once = yes
+		is_good = yes
+		cancel_trigger = {
+			has_country_flag = CHI_corruption_abolished
+		}
+		timeout_effect = {
+			custom_effect_tooltip = CHI_corruption_campaign_timeout_tt
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_communist_campaign_mission = {
+		icon = generic_political_discourse
+		activation = {
+			always = no
+		}
+		days_mission_timeout = 300
+		available = {
+			always = no
+		}
+		fire_only_once = yes
+		is_good = yes
+		cancel_trigger = {
+			has_country_flag = CHI_corruption_abolished
+		}
+		timeout_effect = {
+			custom_effect_tooltip = CHI_corruption_campaign_timeout_tt
+		}
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+		}
+	}
+	CHI_corruption_educate_military = {
+		icon = generic_political_discourse
+		cost = 30
+		days_re_enable = 30
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_completed_focus = CHI_integrity_education
+		}
+		available = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+			any_unit_leader = {
+				CHI_corruption_needs_education = yes
+			}
+		}
+		complete_effect = {
+			CHI_corruption_educate_military = yes
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	CHI_corruption_educate_administrators = {
+		icon = generic_political_discourse
+		cost = 30
+		days_re_enable = 30
+		visible = {
+			NOT = {
+				has_country_flag = CHI_corruption_abolished
+			}
+			has_completed_focus = CHI_integrity_education
+		}
+		available = {
+			NOT = {
+				has_country_flag = CHI_corruption_event_pending
+			}
+			any_character = {
+				has_advisor_role = political_advisor
+				CHI_corruption_needs_education = yes
+			}
+		}
+		complete_effect = {
+			CHI_corruption_educate_administrators = yes
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+}

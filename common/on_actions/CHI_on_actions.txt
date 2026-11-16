@@ -1,29 +1,35 @@
-on_actions = {  #民国权力集团
+on_actions = {	#民国权力集团
 	on_startup = {
 		effect = {
 			CHI = {
 				if = {
-					limit = { 
-                        NOT = { 
-                            has_country_flag = CHI_power_blocs_initialized 
-                        } 
-                    }
+					limit = {
+						NOT = {
+							has_country_flag = CHI_power_blocs_initialized
+						}
+					}
 					CHI_power_blocs_initialize = yes
 				}
 				else = {
 					CHI_power_blocs_normalize_and_refresh = yes
 				}
 				if = {
-					limit = { 
-						NOT = { 
-							has_country_flag = CHI_corruption_initialized 
-						} 
+					limit = {
+						NOT = {
+							has_country_flag = CHI_corruption_initialized
+						}
 					}
 					CHI_corruption_initialize = yes
 				}
 
-				country_event = { id = AWR_CHI.4 days = 14 }
-				country_event = { id = AWR_CHI.6 days = 3 }
+				country_event = {
+					id = AWR_CHI.4
+					days = 14
+				}
+				country_event = {
+					id = AWR_CHI.6
+					days = 3
+				}
 			}
 		}
 	}
@@ -31,44 +37,41 @@ on_actions = {  #民国权力集团
 	on_monthly_CHI = {
 		effect = {
 			if = {
-				limit = { 
-                    has_country_flag = CHI_power_blocs_initialized 
-                }
+				limit = {
+					has_country_flag = CHI_power_blocs_initialized
+				}
 				CHI_power_blocs_normalize_and_refresh = yes
 			}
-			
 		}
 	}
 	# 兼容已开始的旧存档：在下一个游戏日补齐开局状态。
 	on_daily_CHI = {
 		effect = {
 			if = {
-				limit = { 
-                    NOT = { 
-                        has_country_flag = CHI_power_blocs_initialized 
-                    } 
+				limit = {
+					NOT = {
+						has_country_flag = CHI_power_blocs_initialized
+					}
 				}
 				CHI_power_blocs_initialize = yes
 			}
-			
 		}
 	}
-	
 }
 
 on_actions = {	#腐败
-
 	on_startup = {
 		effect = {
 			CHI = {
 				if = {
-					limit = { 
-						NOT = { 
-							has_country_flag = CHI_corruption_initialized 
-						} 
+					limit = {
+						NOT = {
+							has_country_flag = CHI_corruption_initialized
+						}
 					}
 					CHI_corruption_initialize = yes
 				}
+				CHI_corruption_reform_migrate = yes
 				CHI_corruption_monthly_update = yes
 			}
 		}
@@ -77,10 +80,10 @@ on_actions = {	#腐败
 	on_monthly_CHI = {
 		effect = {
 			if = {
-				limit = { 
-					NOT = { 
-						has_country_flag = CHI_corruption_initialized 
-					} 
+				limit = {
+					NOT = {
+						has_country_flag = CHI_corruption_initialized
+					}
 				}
 				CHI_corruption_initialize = yes
 			}
@@ -92,11 +95,12 @@ on_actions = {	#腐败
 			if = {
 				limit = {
 					has_country_flag = CHI_corruption_initialized
-					NOT = { 
-						has_country_flag = CHI_corruption_abolished 
+					NOT = {
+						has_country_flag = CHI_corruption_abolished
 					}
 				}
 
+				CHI_corruption_reform_migrate = yes
 				CHI_corruption_monthly_update = yes
 			}
 		}
@@ -107,11 +111,10 @@ on_actions = {	#腐败
 			if = {
 				limit = {
 					has_country_flag = CHI_corruption_initialized
-					NOT = { 
-						has_country_flag = CHI_corruption_abolished 
+					NOT = {
+						has_country_flag = CHI_corruption_abolished
 					}
 				}
-				
 
 				CHI_corruption_monthly_tick = yes
 			}
@@ -119,3 +122,54 @@ on_actions = {	#腐败
 	}
 }
 
+on_actions = {
+	on_daily_CHI = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = CHI_corruption_initialized
+					NOT = {
+						has_country_flag = CHI_corruption_abolished
+					}
+				}
+				CHI_corruption_reform_migrate = yes
+				CHI_corruption_reform_daily = yes
+			}
+		}
+	}
+}
+on_actions = {
+	on_startup = {
+		effect = {
+			CHI = {
+				if = {
+					limit = {
+						has_country_flag = CHI_corruption_initialized
+					}
+					CHI_corruption_archive_initialize = yes
+					CHI_corruption_archive_refresh_page = yes
+				}
+			}
+		}
+	}
+	on_daily_CHI = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = CHI_corruption_initialized
+				}
+				CHI_corruption_archive_initialize = yes
+			}
+		}
+	}
+}
+
+# >>> 游击队：反共驻军维护
+on_actions = {
+	on_daily_CHI = {
+		effect = {
+			PRC_g_refresh_garrison_count = yes #刷新反共驻军上限与部署数量
+		}
+	}
+}
+# <<< 游击队：反共驻军维护

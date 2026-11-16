@@ -1,0 +1,74 @@
+scripted_gui = {
+	CHI_corruption_gui = {
+		context_type = decision_category
+		window_name = "CHI_corruption_window"
+		visible = {
+			has_country_flag = CHI_corruption_initialized
+		}
+		dynamic_lists = {
+			CHI_corruption_archive_grid = {
+				array = CHI_corruption_page_portraits
+				index = CHI_corruption_archive_index
+				change_scope = no
+				entry_container = CHI_corruption_archive_entry
+			}
+		}
+		properties = {
+			CHI_corruption_army_bar = {
+				frame = CHI_corruption_army_frame
+			}
+			CHI_corruption_capital_bar = {
+				frame = CHI_corruption_capital_frame
+			}
+			CHI_corruption_technocrat_bar = {
+				frame = CHI_corruption_technocrat_frame
+			}
+			CHI_corruption_archive_portrait = {
+				image = "[GetCHICorruptionArchivePortrait]"
+			}
+			CHI_corruption_archive_small_portrait = {
+				image = "[GetCHICorruptionArchivePortrait]"
+			}
+			CHI_corruption_archive_disposition = {
+				frame = CHI_corruption_page_statuses^CHI_corruption_archive_index
+			}
+		}
+		triggers = {
+			CHI_corruption_archive_portrait_visible = {
+				CHI_corruption_archive_uses_small_portrait = no
+			}
+			CHI_corruption_archive_small_portrait_visible = {
+				CHI_corruption_archive_uses_small_portrait = yes
+			}
+			CHI_corruption_archive_empty_visible = {
+				check_variable = {
+					CHI_corruption_archive_count < 0.5
+				}
+			}
+			CHI_corruption_archive_prev_click_enabled = {
+				check_variable = {
+					CHI_corruption_archive_page > 0.5
+				}
+			}
+			CHI_corruption_archive_next_click_enabled = {
+				check_variable = {
+					CHI_corruption_archive_page < CHI_corruption_archive_last_page
+				}
+			}
+		}
+		effects = {
+			CHI_corruption_archive_prev_click = {
+				add_to_variable = {
+					CHI_corruption_archive_page = -1
+				}
+				CHI_corruption_archive_refresh_page = yes
+			}
+			CHI_corruption_archive_next_click = {
+				add_to_variable = {
+					CHI_corruption_archive_page = 1
+				}
+				CHI_corruption_archive_refresh_page = yes
+			}
+		}
+	}
+}

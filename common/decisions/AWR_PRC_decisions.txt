@@ -5071,861 +5071,7 @@ PRC_military_industrial_organization = {	#中国军工机构发展计划
 	}
 }
 
-AWR_communist_infiltration = {    #游击队攻势
-	send_in_the_partisans = {	#派遣游击队
-		icon = infiltrate_state
-		fire_only_once = no
-		days_remove = 90 
-		allowed = {
-			is_literally_china = yes
-		}
-		custom_cost_trigger = {
-			command_power > 29
-		}
-		visible = { 
-			tag = event_target:WTT_communist_china
-			has_country_flag = communist_infiltration
-			any_of_scopes = {
-				array = global.big_china
-				THIS = {
-					NOT = {
-						OR = {
-							AND = { 
-								controller = {
-									OR = {
-										tag = ROOT
-										has_government = communism
-									}
-								}
-								owner = {
-									NOT = {
-										OR = {
-											tag = event_target:WTT_current_china_leader
-											is_warlord = yes
-										}
-									}
-								}
-							}
-							owner = { 
-								OR = {
-									tag = ROOT
-									has_government = communism
-								}
-							}
-						}
-					}
-					or = { 
-						is_north_china_state_for_liberation = yes
-						state = 749
-						state = 1034
-					}
-					any_neighbor_state = {
-						OR = {
-							has_state_flag = commie_ridden_states
-							owner = {
-								tag = ROOT
-							}
-						}
-					}
-					NOT = {
-						has_state_flag = commie_ridden_states
-					}
-				}
-			}
-		}
-		available = { 
-			hidden_trigger = {
-				command_power > 29
-				command_power_daily > 0.2
-			}
-			has_equipment = {
-				infantry_equipment > 199
-			}
-			has_manpower > 2000
-		}
-		complete_effect = { 
-			hidden_effect = {
-				add_command_power = -30
-			}
-		}
-		
-		remove_effect = { 
-			
-			ROOT = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = -200
-				}
-				add_manpower = -2000
-			}
-			every_state = {
-				limit = {
-					NOT = {
-						OR = {
-							AND = { 
-								controller = {
-									OR = {
-										tag = ROOT
-										has_government = communism
-									}
-								}
-								owner = {
-									NOT = {
-										OR = {
-											tag = event_target:WTT_current_china_leader
-											is_warlord = yes
-										}
-									}
-								}
-							}
-							owner = { 
-								OR = {
-									tag = ROOT
-									has_government = communism
-								}
-							}
-						}
-					}
-					or = { 
-						is_north_china_state_for_liberation = yes
-						state = 749
-						state = 1034
-					}
-					any_neighbor_state = {
-						OR = {
-							has_state_flag = commie_ridden_states
-							owner = {
-								tag = ROOT
-							}
-						}
-					}
-					NOT = {
-						has_state_flag = commie_ridden_states
-					}
-				}
-				custom_effect_tooltip = commie_ridden_states_start_tt
-				hidden_effect = {
-					if = {
-						limit = {
-							has_global_flag = enable_commie_ridden_states_line
-						}
-						set_border_war = yes
-					}
-					set_state_flag = commie_ridden_states
-				}
-				if = {
-					limit = { 
-						has_resistance = yes 
-					}
-					add_compliance = -50 #guo
-				}
-				set_state_flag = PRC_dihoukangrigenjudi_flag
 
-			}
-			custom_effect_tooltip = communist_partisan_effect_tt
-
-		}
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-
-	PRC_dihoukangzhan_recruit_army = {	#开展征兵宣传
-	
-	    priority = 999
-
-		icon = generic_prepare_civil_war
-		
-		allowed = {
-			OR = {
-				TAG = event_target:WTT_communist_china
-				TAG = PRC
-            }
-		}
-		
-		target_trigger = {
-			FROM = {
-				or = { 
-					has_state_flag = commie_ridden_states 
-					is_core_of = root 
-				}
-				not = { 
-					is_controlled_by = ROOT 
-				}
-			}
-		}
-		state_target = yes
-		on_map_mode = map_and_decisions_view 
-		highlight_states = {
-	 		highlight_state_targets = { 
-				state = FROM 
-			} 
-			highlight_color_before_active = 3
-			highlight_color_while_active = 2
-		}
-
-		available = {
-			political_power_daily > 0.24
-			has_idea = propaganda_recruits
-		}
-
-		cost = 25
-
-		fire_only_once = no
-
-		days_remove = 30
-
-		modifier = {
-			political_power_cost = 0.25
-		}
-
-		visible = {
-		    has_war_with = JAP
-            has_government = communism
-			FROM = {
-				or = { 
-					has_state_flag = commie_ridden_states 
-					is_core_of = root 
-				}
-				not = { 
-					is_controlled_by = ROOT 
-				}
-			}
-		}
-
-		complete_effect = {
-		    #
-		}
-
-		remove_effect = {
-			FROM = {
-				add_manpower = -10000
-			}
-			ROOT = { 
-				add_manpower = 10000 
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 500
-				has_manpower < 20000
-			}
-			modifier = {
-				add = 9000
-				has_manpower < 10000
-			}
-		}
-	}
-
-	expand_shanxi_partisans = { #在山西发展游击队
-
-		icon = infiltrate_state
-
-		available = {
-			num_of_military_factories > 0
-			any_of_scopes = {
-				array = global.small_china
-				tooltip = small_china_tt
-				has_state_flag = commie_ridden_states
-                OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_245
-					    region = 245
-				    }
-				}
-			}
-			NOT = {
-				has_country_flag = PRC_expanding_partisans_flag
-			}
-		}
-
-
-		fire_only_once = no
-
-		days_remove = 15
-
-		days_re_enable = 30
-
-        modifier = {
-            industrial_capacity_factory = -0.1
-		}
-
-		visible = {
-			hidden_trigger = {
-                has_completed_focus = PRC_partisan_offensive
-			}
-			has_war_with = JAP
-			NOT = {
-                OR = {
-					has_completed_focus = PRC_A_New_Country
-					has_completed_focus = PRC_For_the_Soviets
-					has_completed_focus = PRC_Federal_Republic
-				}
-			}
-		}
-
-		cancel_if_not_visible = yes
-
-		complete_effect = {
-			set_country_flag = PRC_expanding_partisans_flag
-		}
-
-		remove_effect = {
-			random_list = {
-                40 = {
-					custom_effect_tooltip = we_get_1_division_tt
-					add_to_variable = { 
-						var = PRC_shanxi_partisans 
-						value = 1 
-					}
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_rifle 
-						value = 750 
-					} 
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_artillery 
-						value = 9 
-					} 
-				}
-				30 = {
-					custom_effect_tooltip = we_get_2_division_tt
-					add_to_variable = { 
-						var = PRC_shanxi_partisans 
-						value = 2 
-					}
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_rifle 
-						value = 1800 
-					}
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_artillery 
-						value = 18 
-					} 
-				}
-				20 = {
-					custom_effect_tooltip = we_get_3_division_tt
-					add_to_variable = { 
-						var = PRC_shanxi_partisans 
-						value = 3 
-					}
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_rifle 
-						value = 2250 
-					} 
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_artillery 
-						value = 27 
-					} 
-				}
-				10 = {
-					custom_effect_tooltip = we_get_4_division_tt
-					add_to_variable = { 
-						var = PRC_shanxi_partisans 
-						value = 4 
-					}
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_rifle 
-						value = 3000 
-					} 
-					add_to_variable = { 
-						var = PRC_shanxi_partisans_artillery 
-						value = 36 
-					} 
-				}
-			}
-			clr_country_flag = PRC_expanding_partisans_flag
-		}
-
-		ai_will_do = {
-			base = 5000
-		}
-	}
-
-	reorganize_shanxi_partisans = {	#整编山西游击队
-		icon = infiltrate_state
-		visible = {
-			has_completed_focus = PRC_partisan_offensive  
-		}
-		available = {
-		    check_variable = {
-				ROOT.PRC_shanxi_partisans > 0
-			}
-			any_owned_state = {
-			    is_fully_controlled_by = ROOT
-				OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_245
-					    region = 245
-				    }
-				}
-			} 
-			NOT = {
-				has_war_with = JAP
-			}	    
-		} 
-		cost = 0
-		days_remove = 20
-		fire_only_once = no
-		remove_effect = {
-		    country_event = AWR_PRC.240
-		}
-		ai_will_do = {
-			factor = 3000
-		}
-	}
-
-	expand_the_northern_China_partisans = { #在华北发展游击队
-
-		icon = infiltrate_state
-
-		available = {
-			num_of_military_factories > 0
-			any_of_scopes = {
-				array = global.small_china
-				tooltip = small_china_tt
-				has_state_flag = commie_ridden_states
-                OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_143
-					    region = 143
-				    }
-				}
-			}
-			NOT = {
-				has_country_flag = PRC_expanding_partisans_flag
-			}
-		}
-
-
-		fire_only_once = no
-
-		days_remove = 15
-
-		days_re_enable = 30
-
-        modifier = {
-            industrial_capacity_factory = -0.1
-		}
-
-		visible = {
-			hidden_trigger = {
-                has_completed_focus = PRC_partisan_offensive
-			}
-			has_war_with = JAP
-			NOT = {
-                OR = {
-					has_completed_focus = PRC_A_New_Country
-					has_completed_focus = PRC_For_the_Soviets
-					has_completed_focus = PRC_Federal_Republic
-				}
-			}
-		}
-
-		cancel_if_not_visible = yes
-
-		complete_effect = {
-			set_country_flag = PRC_expanding_partisans_flag
-		}
-
-		remove_effect = {
-			random_list = {
-                40 = {
-					custom_effect_tooltip = we_get_1_division_tt
-					add_to_variable = { 
-						var = PRC_northern_partisans 
-						value = 1 
-					}
-					add_to_variable = { 
-						var = PRC_northern_partisans_rifle 
-						value = 750 
-					} 
-					add_to_variable = { 
-						var = PRC_northern_partisans_artillery 
-						value = 9 
-					} 
-				}
-				30 = {
-					custom_effect_tooltip = we_get_2_division_tt
-					add_to_variable = { 
-						var = PRC_northern_partisans 
-						value = 2 
-					}
-					add_to_variable = { 
-						var = PRC_northern_partisans_rifle 
-						value = 1800 
-					}
-					add_to_variable = { 
-						var = PRC_northern_partisans_artillery 
-						value = 18 
-					} 
-				}
-				20 = {
-					custom_effect_tooltip = we_get_3_division_tt
-					add_to_variable = { 
-						var = PRC_northern_partisans 
-						value = 3 
-					}
-					add_to_variable = { 
-						var = PRC_northern_partisans_rifle 
-						value = 2250 
-					} 
-					add_to_variable = { 
-						var = PRC_northern_partisans_artillery 
-						value = 27 
-					} 
-				}
-				10 = {
-					custom_effect_tooltip = we_get_4_division_tt
-					add_to_variable = { 
-						var = PRC_northern_partisans 
-						value = 4 
-					}
-					add_to_variable = { 
-						var = PRC_northern_partisans_rifle 
-						value = 3000 
-					} 
-					add_to_variable = { 
-						var = PRC_northern_partisans_artillery 
-						value = 36 
-					} 
-				}
-			}
-			clr_country_flag = PRC_expanding_partisans_flag
-		}
-
-		ai_will_do = {
-			base = 5000
-		}
-	}
-
-	reorganize_the_northern_partisans = {	#整编华北游击队
-		icon = infiltrate_state
-		visible = {
-			has_completed_focus = PRC_partisan_offensive  
-		}
-		available = {
-		    check_variable = {
-				ROOT.PRC_northern_partisans > 0
-			}
-			any_owned_state = {
-			    is_fully_controlled_by = ROOT
-				OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_143
-					    region = 143
-				    }
-				}
-			} 
-			NOT = {
-				has_war_with = JAP
-			}	    
-		} 
-		cost = 0
-		days_remove = 20
-		fire_only_once = no
-		remove_effect = {
-		    country_event = AWR_PRC.241
-		}
-		ai_will_do = {
-			factor = 3000
-		}
-	}
-
-	expand_the_huadong_partisans = { #在华东发展游击队
-
-		icon = infiltrate_state
-
-		available = {
-			arms_factory > 0
-			any_of_scopes = {
-				array = global.small_china
-				tooltip = small_china_tt
-				has_state_flag = commie_ridden_states
-                OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_247
-					    region = 247
-				    }
-				}
-			}
-			NOT = {
-				has_country_flag = PRC_expanding_partisans_flag
-			}
-		}
-
-		fire_only_once = no
-
-		days_remove = 20
-
-		days_re_enable = 30
-
-		visible = {
-			hidden_trigger = {
-                has_completed_focus = PRC_partisan_offensive
-			}
-
-			NOT = {
-                OR = {
-					has_completed_focus = PRC_A_New_Country
-					has_completed_focus = PRC_For_the_Soviets
-					has_completed_focus = PRC_Federal_Republic
-				}
-			}
-		}
-
-		cancel_if_not_visible = yes
-
-		complete_effect = {
-			set_country_flag = PRC_expanding_partisans_flag
-		}
-
-		remove_effect = {
-			random_list = {
-				40 = {
-                    custom_effect_tooltip = we_get_1_division_tt
-					add_to_variable = { 
-						var = PRC_huadong_partisans 
-						value = 1 
-					}
-					add_to_variable = { 
-						var = PRC_huadong_partisans_rifle 
-						value = 800 
-					} 
-					add_to_variable = { 
-						var = PRC_huadong_partisans_artillery 
-						value = 9 
-					} 
-				}
-		        30 = {
-                    custom_effect_tooltip = we_get_2_division_tt
-					add_to_variable = { 
-						var = PRC_huadong_partisans 
-						value = 2 
-					}
-					add_to_variable = { 
-						var = PRC_huadong_partisans_rifle 
-						value = 1600 
-					} 
-					add_to_variable = { 
-						var = PRC_huadong_partisans_artillery 
-						value = 9 
-					} 
-				}
-				30 = { 
-                    custom_effect_tooltip = we_get_3_division_tt
-					add_to_variable = { 
-						var = PRC_huadong_partisans 
-						value = 3 
-					}
-					add_to_variable = { 
-						var = PRC_huadong_partisans_rifle 
-						value = 2400 
-					} 
-					add_to_variable = { 
-						var = PRC_huadong_partisans_artillery 
-						value = 9 
-					} 
-				}
-			}	
-			clr_country_flag = PRC_expanding_partisans_flag
-		}
-
-		ai_will_do = {
-			base = 1000
-		}
-	}
-
-    reorganize_the_huadong_partisans = {	#整编华东游击队
-		icon = infiltrate_state
-		visible = {
-			has_completed_focus = PRC_partisan_offensive  
-		}
-		available = {
-		    check_variable = {
-				ROOT.PRC_huadong_partisans > 0
-			}
-			any_owned_state = {
-			    is_fully_controlled_by = ROOT
-				OR = {
-				    custom_trigger_tooltip = {
-					    tooltip = is_in_strat_247
-					    region = 247
-				    }
-				}
-			} 
-			has_global_flag = CHI_no_longer_united_flag   
-		} 
-		cost = 0
-		days_remove = 10
-		fire_only_once = no
-		
-		remove_effect = {
-		    country_event = {
-				id = AWR_PRC.242
-			}
-		}
-		complete_effect = {
-			#
-		}
-		ai_will_do = {
-			factor = 3000
-		}
-	}
-
-	PRC_communist_amass_support_mission = {	# 获取民众支持
-		icon = generic_political_discourse
-		fire_only_once = no
-		days_mission_timeout = PRC_communist_amass_support_mission_time_zz
-		is_good = yes
-
-		allowed = {
-			is_literally_china = yes
-		}
-
-		available = {
-			has_event_target = amass_support_flag_temp
-
-			event_target:amass_support_flag_temp = {
-				NOT = {
-					has_state_flag = commie_ridden_states
-				}
-				NOT = {
-					is_controlled_by = ROOT
-				}
-			}
-		}
-
-		visible = {
-			NOT = {
-				has_country_flag = PRC_land_reform_in_the_whole_country
-			}
-		}
-
-		activation = {
-			always = no
-		}
-
-		timeout_effect = {
-
-			# 通知相关国家
-			hidden_effect = {
-
-				event_target:WTT_current_china_leader = {
-					country_event = {
-						id = AWR_PRC.254
-					}
-				}
-
-				JAP = {
-					country_event = {
-						id = AWR_PRC.254
-					}
-				}
-
-				event_target:WTT_communist_china = {
-					country_event = {
-						id = AWR_PRC.254
-					}
-				}
-			}
-
-
-			# 对目标州执行土地改革效果
-			if = {
-				limit = {
-					has_event_target = amass_support_flag_temp
-				}
-
-				event_target:amass_support_flag_temp = {
-
-					# 通知目标州拥有国
-					owner = {
-						if = {
-							limit = {
-								NOT = {
-									OR = {
-										tag = JAP
-										tag = event_target:WTT_current_china_leader
-										tag = event_target:WTT_communist_china
-									}
-								}
-							}
-
-							country_event = {
-								id = AWR_PRC.254
-							}
-						}
-					}
-
-
-					# ROOT 获得目标州核心
-					add_core_of = ROOT
-
-
-					# 土地改革动态修正
-					if = {
-						limit = {
-							has_state_flag = snl_PRC_dyn_land_reform_state_flag
-						}
-
-						add_dynamic_modifier = {
-							modifier = snl_PRC_dyn_land_reform_1
-							scope = event_target:WTT_communist_china
-						}
-					}
-
-
-					# 更新州标记
-					clr_state_flag = amass_support_flag_temp
-					set_state_flag = commie_amassed_support
-				}
-			}
-
-			# 如果正在进行政治斗争，则增加 ROOT 在目标州的政治支持
-			if = {
-				limit = {
-
-					has_event_target = amass_support_flag_temp
-
-					event_target:amass_support_flag_temp = {
-						WTT_is_potential_political_struggle_state = yes
-					}
-
-					has_country_flag = wtt_political_struggle
-				}
-
-				event_target:amass_support_flag_temp = {
-
-					# 增加 ROOT 在该州的政治支持
-					WTT_random_support_chance_increase_for_ROOT_in_state = yes
-
-					hidden_effect = {
-
-						# 重新计算该州政治支持
-						WTT_recalculate_state_support_for_ROOT = yes
-
-						# 重新计算整个政治斗争的总支持
-						WTT_political_struggle_recalculate_support = yes
-					}
-				}
-			}
-
-
-			# 清除临时全局 Event Target
-			if = {
-				limit = {
-					has_event_target = amass_support_flag_temp
-				}
-
-				event_target:amass_support_flag_temp = {
-					clear_global_event_target = amass_support_flag_temp
-				}
-			}
-		}
-	}
-}
 
 AWR_PRC_land_reform = {		#土地改革
 
@@ -6497,7 +5643,7 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				
 				NOT = { #guo
 					has_dynamic_modifier = { 
-						modifier = anti_partisan_area 
+						modifier = PRC_g_anticommunist_garrison 
 					}
 				}
 			}
@@ -6522,7 +5668,7 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 			}
 			NOT = { #guo
 				has_dynamic_modifier = { 
-					modifier = anti_partisan_area 
+					modifier = PRC_g_anticommunist_garrison 
 				}
 			}
 		}
@@ -6582,7 +5728,7 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 				add = 12000 #guo
 				FROM = { 
 					any_neighbor_state = { 
-						has_state_flag = commie_ridden_states 
+						PRC_g_state_active = yes 
 					} 
 				}
 			}
@@ -6592,7 +5738,7 @@ PRC_contest_in_northeast_cat = {	#苏联从中国东北撤军
 					any_neighbor_state = { 
 						is_core_of = event_target:WTT_communist_china 
 						not = { 
-							has_state_flag = we_will_help_the_legit_government 
+							has_dynamic_modifier = { modifier = PRC_g_anticommunist_garrison } 
 						} 
 					} 
 				}
@@ -6719,7 +5865,7 @@ PRC_request_SOV_aid_decision_cat = {	#请求苏联补给
 							state = 745 
 						}
 						NOT = { 
-							has_state_flag = we_will_help_the_legit_government 
+							has_dynamic_modifier = { modifier = PRC_g_anticommunist_garrison } 
 						}
 						is_fully_controlled_by = PREV.PREV
 						is_MAN_state_for_liberation = yes
@@ -11756,7 +10902,7 @@ PRC_civil_war_offensives = {	#内战攻势
 	start_liaoshen_campaign = {	#发动辽沈战役
 		icon = hol_draw_up_staff_plans
 		visible = {
-			has_completed_focus = PRC_liaoshen_campaign
+			has_completed_focus = PRC_Liaoshen_campaign
 			tag = PRC
 			716 = {
 				num_owned_neighbour_states = {
@@ -15568,9 +14714,13 @@ CHINA_recover_motherland = {	#中华民族领土问题
 		remove_effect = {
 			if = {
 				limit = {
-					every_state = {
-						is_core_of = TAN
-						is_controlled_by_ROOT_or_ally = yes
+					all_state = {
+						OR = {
+							NOT = {
+								is_core_of = TAN
+							}
+							is_controlled_by_ROOT_or_ally = yes
+						}
 					}
 				}
 				PRC = {
@@ -15581,11 +14731,17 @@ CHINA_recover_motherland = {	#中华民族领土问题
 
 			if = {
 				limit = {
-					every_state = {
-						is_core_of = TAN
-						is_controlled_by = {
-							tag = SOV
-							is_subject_of = SOV
+					all_state = {
+						OR = {
+							NOT = {
+								is_core_of = TAN
+							}
+							controller = {
+								OR = {
+									tag = SOV
+									is_subject_of = SOV
+								}
+							}
 						}
 					}
 				}
@@ -19158,6 +18314,7 @@ PRC_silver_dollar_war_category = {	#银元之战
 			else = {
 				add_timed_idea = {
 					idea = PRC_invocate_silver_dollar_1
+					days = 180
 				}
 			}
 		}
@@ -19693,14 +18850,16 @@ PRC_national_construction_plan_category = {	##国家建设计划
 
 		available = {
 			industrial_complex > 29
-			every_state = {
-				limit = {
-					OR = {
-						is_core_of = XSM
-						is_core_of = TIB
+			all_state = {
+				OR = {
+					NOT = {
+						OR = {
+							is_core_of = XSM
+							is_core_of = TIB
+						}
 					}
+					is_controlled_by_ROOT_or_ally = yes
 				}
-				is_controlled_by_ROOT_or_ally = yes
 			}
 		}
 
@@ -19983,7 +19142,7 @@ PRC_national_construction_plan_category = {	##国家建设计划
 		}
 
 		highlight_states = {
-			FROM = {
+			highlight_states_trigger = {
 				is_core_of = ROOT
 				NOT = {
 					has_state_category = metropolis
@@ -20040,18 +19199,18 @@ PRC_national_construction_plan_category = {	##国家建设计划
 		target_trigger = {
 			FROM = {
 				has_state_flag = candidate_direct_municipalities
-			}
-			NOT = {
-				has_state_category = megalopolis
+				NOT = {
+					has_state_category = megalopolis
+				}
 			}
 		}
 
 		highlight_states = {
-			FROM = {
+			highlight_states_trigger = {
 				has_state_flag = candidate_direct_municipalities
-			}
-			NOT = {
-				has_state_category = megalopolis
+				NOT = {
+					has_state_category = megalopolis
+				}
 			}
 		}
 
@@ -20092,3 +19251,2258 @@ PRC_national_construction_plan_category = {	##国家建设计划
 		}
 	}
 }
+
+# >>> 游击队：游击队攻势决议
+AWR_communist_infiltration = { #游击队攻势
+	PRC_g_dispatch_242 = { #向北满洲派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 242
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 242
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 242
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_242 = { #整编北满洲游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 242
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 242
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_242 = yes #汇总并整编北满洲游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_243 = { #向东满洲派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 243
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 243
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 243
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_243 = { #整编东满洲游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 243
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 243
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_243 = yes #汇总并整编东满洲游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_155 = { #向西满洲派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 155
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 155
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 155
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_155 = { #整编西满洲游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 155
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 155
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_155 = yes #汇总并整编西满洲游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_244 = { #向察哈尔派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 244
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 244
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 244
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_244 = { #整编察哈尔游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 244
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 244
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_244 = yes #汇总并整编察哈尔游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_245 = { #向山西派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 245
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 245
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 245
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_245 = { #整编山西游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 245
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 245
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_245 = yes #汇总并整编山西游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_143 = { #向华北派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 143
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 143
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 143
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_143 = { #整编华北游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 143
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 143
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_143 = yes #汇总并整编华北游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_144 = { #向陕甘宁派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 144
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 144
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 144
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_144 = { #整编陕甘宁游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 144
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 144
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_144 = yes #汇总并整编陕甘宁游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_247 = { #向中原派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 247
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 247
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 247
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_247 = { #整编中原游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 247
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 247
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_247 = yes #汇总并整编中原游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_165 = { #向华中派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 165
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 165
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 165
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_165 = { #整编华中游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 165
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 165
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_165 = yes #汇总并整编华中游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_200 = { #向青海派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 200
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 200
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 200
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_200 = { #整编青海游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 200
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 200
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_200 = yes #汇总并整编青海游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_246 = { #向川渝派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 246
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 246
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 246
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_246 = { #整编川渝游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 246
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 246
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_246 = yes #汇总并整编川渝游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_305 = { #向华东派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 305
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 305
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 305
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_305 = { #整编华东游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 305
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 305
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_305 = yes #汇总并整编华东游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_250 = { #向西康派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 250
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 250
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 250
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_250 = { #整编西康游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 250
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 250
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_250 = yes #汇总并整编西康游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_164 = { #向东南派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 164
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 164
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 164
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_164 = { #整编东南游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 164
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 164
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_164 = yes #汇总并整编东南游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_249 = { #向云贵派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 249
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 249
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 249
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_249 = { #整编云贵游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 249
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 249
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_249 = yes #汇总并整编云贵游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_dispatch_248 = { #向华南派遣游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			PRC_g_first_stage_controlled = yes #首批区域全部由中共及附属国控制
+		}
+		available = {
+			command_power > 29
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 199
+			}
+			any_state = {
+				region = 248
+				NOT = {
+					controller = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+			}
+			any_state = {
+				region = 248
+				any_neighbor_state = {
+					OR = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+						controller = {
+							PRC_g_is_side = yes #中共或其附属国
+						}
+					}
+				}
+			}
+		}
+		days_remove = 90
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = PRC_g_dispatch_cost
+		complete_effect = {
+			add_command_power = -30
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				every_state = {
+					limit = {
+						region = 248
+					}
+					PRC_g_add_activity = yes #在地区建立游击队活动
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PRC_g_reorganize_248 = { #整编华南游击队
+		icon = infiltrate_state
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_war_with = JAP
+			}
+			NOT = {
+				has_country_flag = PRC_g_assembly_busy
+			}
+			any_state = {
+				region = 248
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			any_owned_state = {
+				region = 248
+				is_fully_controlled_by = ROOT
+			}
+		}
+		days_remove = 20
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = PRC_g_assembly_busy
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_reorganize_region_248 = yes #汇总并整编华南游击队
+			}
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_assembly_busy
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	prepared_for_operation_decision = { #为行动做准备
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			PRC = {
+				has_completed_focus = PRC_partisan_offensive
+			}
+		}
+		available = {
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			NOT = {
+				has_idea = prepared_for_operation_3
+			}
+			any_state = {
+				PRC_g_state_active = yes #地区存在可运作的游击队活动
+			}
+		}
+		cost = 50
+		days_remove = 60
+		fire_only_once = no
+		cancel_trigger = {
+			NOT = {
+				PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				PRC_g_upgrade_preparation = yes #行动准备提升一级
+			}
+		}
+		ai_will_do = {
+			factor = 500
+		}
+	}
+	PRC_g_amass_support_mission = { #在[PRC_g_support_target.GetName]积累民众支持
+		icon = generic_political_discourse
+		allowed = {
+			original_tag = PRC
+		}
+		visible = {
+			has_country_flag = PRC_g_support_busy
+		}
+		activation = {
+			always = no
+		}
+		days_mission_timeout = PRC_communist_amass_support_mission_time_zz
+		is_good = yes
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				NOT = {
+					has_variable = PRC_g_support_state
+				}
+				var:PRC_g_support_state = {
+					NOT = {
+						PRC_g_state_active = yes #地区存在可运作的游击队活动
+					}
+				}
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = PRC_g_support_busy
+			set_country_flag = {
+				flag = PRC_g_support_cooldown
+				value = 1
+				days = 30
+			}
+			clear_variable = PRC_g_support_state
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_variable = PRC_g_support_state
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				var:PRC_g_support_state = {
+					if = {
+						limit = {
+							PRC_g_state_active = yes #地区存在可运作的游击队活动
+						}
+						PRC_g_finish_support = yes #完成群众支持任务
+					}
+				}
+			}
+			clr_country_flag = PRC_g_support_busy
+			set_country_flag = {
+				flag = PRC_g_support_cooldown
+				value = 1
+				days = 30
+			}
+			clear_variable = PRC_g_support_state
+		}
+	}
+	PRC_dihoukangzhan_recruit_army = {
+		icon = generic_prepare_civil_war
+		priority = 999
+		allowed = {
+			original_tag = PRC
+		}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		target_trigger = {
+			FROM = {
+				OR = {
+					PRC_g_state_active = yes #地区存在可运作的游击队活动
+					is_core_of = ROOT
+				}
+				NOT = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+		visible = {
+			has_war_with = JAP
+			PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+		}
+		available = {
+			political_power_daily > 0.24
+			has_idea = propaganda_recruits
+			FROM = {
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+			}
+		}
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		modifier = {
+			political_power_cost = 0.25
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+				}
+				NOT = {
+					has_war_with = JAP
+				}
+				FROM = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+					FROM = {
+						NOT = {
+							PRC_g_state_blocked = yes #地区被反制措施封锁
+						}
+					}
+				}
+				FROM = {
+					add_manpower = -10000
+				}
+				add_manpower = 10000
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 500
+				has_manpower < 20000
+			}
+			modifier = {
+				add = 9000
+				has_manpower < 10000
+			}
+		}
+	}
+}
+# <<< 游击队：游击队攻势决议

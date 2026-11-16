@@ -88,8 +88,8 @@ focus_tree = {
 		}
 		available = {
 			NOT = {
-				has_active_mission = RCM_border_conflict_prepare_next_offensive
-				has_active_mission = RCM_border_conflict_initiate_incident
+
+
 				has_border_war = yes
                 has_non_aggression_pact_with = SHX
 			}
@@ -1674,13 +1674,11 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
-			set_global_flag = PRC_partisan_offensive_focus_flag
+			set_global_flag = PRC_g_system_unlocked
 			unlock_decision_category_tooltip = AWR_communist_infiltration
 			custom_effect_tooltip = AWR_communist_infiltration_tt
 			add_command_power = 30
-			hidden_effect = {
-				set_country_flag = communist_infiltration
-			}
+			
 		}
 		available = {
 			has_war_with = JAP
@@ -1842,7 +1840,7 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
-			custom_effect_tooltip = PRC_Breaking_operations_tt_aazz	
+			custom_effect_tooltip = PRC_g_railway_experience_tt	
 			hidden_effect = {
 				if = {
 					limit = {
@@ -1874,6 +1872,7 @@ focus_tree = {
 		}
 		available_if_capitulated = yes
 		completion_reward = {
+			custom_effect_tooltip = PRC_g_mobile_experience_tt
 			add_command_power = 90					
 			if = {
 				limit = {
@@ -7771,8 +7770,7 @@ focus_tree = {
 			}
 			615 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root 
 					is_core_of = root 
 					is_core_of = SRR 
@@ -7781,8 +7779,7 @@ focus_tree = {
 			}
 			614 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root 
 					is_core_of = root 
 					is_core_of = SRR 
@@ -7791,8 +7788,7 @@ focus_tree = {
 			}
 			597 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root 
 					is_core_of = root 
 					is_core_of = SRR 
@@ -7801,8 +7797,7 @@ focus_tree = {
 			}
 			598 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root 
 					is_core_of = root 
 					is_core_of = SRR 
@@ -7811,8 +7806,7 @@ focus_tree = {
 			}
 			1077 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root 
 					is_core_of = root 
 					is_core_of = SRR 
@@ -8090,8 +8084,7 @@ focus_tree = {
 		available = {
 			615 = { 
 				or = { 
-					has_state_flag = commie_ridden_states 
-					has_state_flag = PRC_dihoukangrigenjudi_flag
+					PRC_g_state_active = yes
 					is_controlled_by = root is_core_of = root 
 				} 
 			}
@@ -9345,7 +9338,7 @@ focus_tree = {
 		y = 1
 
 		completion_reward = {
-			unlock_decision_tooltip = start_Liaoshen_campaign
+			unlock_decision_tooltip = start_liaoshen_campaign
 		}
 
 		available = {

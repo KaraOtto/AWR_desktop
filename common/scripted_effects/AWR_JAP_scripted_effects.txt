@@ -485,3 +485,82 @@ JAP_pacific_deactivate_system = {
 	clr_country_flag = JAP_pacific_okinawa_isolated
 	clr_country_flag = JAP_pacific_okinawa_blockaded
 }
+
+# >>> 游击队：扫荡政策与工厂占用
+PRC_g_three_alls_policy = { #三光政策结算
+	PRC_g_clear_state = yes #清除游击队活动、群众支持及游击战
+	add_compliance = -20
+	add_resistance = -20
+	set_temp_variable = {
+		PRC_g_population_loss_step = state_population_k #以原人口的百分之一为单位扣除，防止定点数溢出
+	}
+	multiply_temp_variable = {
+		PRC_g_population_loss_step = -10 #以原人口的百分之一为单位扣除，防止定点数溢出
+	}
+	for_loop_effect = {
+		start = 0
+		end = 30
+		add_manpower = var:PRC_g_population_loss_step
+	}
+	add_dynamic_modifier = {
+		modifier = PRC_g_three_alls
+		days = 60
+	}
+	JAP = {
+		news_event = {
+			id = JAP_china_incident.31
+			hours = 6
+		}
+	}
+}
+
+PRC_g_refresh_goodwill_cost = { #刷新亲善政策的民工占用
+	JAP = {
+		set_variable = {
+			PRC_g_goodwill_factory_cost = 0 #亲善政策占用的民工数量
+		}
+		every_state = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = PRC_g_goodwill
+				}
+			}
+			if = {
+				limit = {
+					controller = {
+						PRC_g_is_japanese_side = yes #日本或其附属及盟友
+					}
+				}
+				JAP = {
+					add_to_variable = {
+						PRC_g_goodwill_factory_cost = 5 #亲善政策占用的民工数量
+					}
+				}
+			}
+			else = {
+				remove_dynamic_modifier = {
+					modifier = PRC_g_goodwill
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_goodwill_factory_cost > 0 #亲善政策占用的民工数量
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_g_goodwill_factory_use
+			}
+		}
+		else_if = {
+			limit = {
+				has_dynamic_modifier = PRC_g_goodwill_factory_use
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_goodwill_factory_use
+			}
+		}
+	}
+}
+# <<< 游击队：扫荡政策与工厂占用

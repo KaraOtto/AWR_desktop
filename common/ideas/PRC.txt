@@ -2887,20 +2887,7 @@ ideas = {
 			}
 		}
 
-		prepared_for_operation = {	#为行动作准备
-			picture = prepared_for_operation
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = communism
-			}
 
-			removal_cost = -1
-			modifier = {
-				#
-			}
-		}
 
 		PRC_Field_army_high = {	#野战军
 			name = PRC_Field_army
@@ -6913,6 +6900,32 @@ ideas = {
 			}
 		}
 
+		PRC_comecon_puppet_industrialization = { #国际工业合作：受援方
+			name = PRC_comecon_sov_default
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			targeted_modifier = {
+				tag = PRC
+				cic_to_target_factor = 0.25
+				mic_to_target_factor = 0.25
+				extra_trade_to_target_factor = 0.25
+				trade_cost_for_target_factor = -0.50
+			}
+			modifier = {
+				consumer_goods_factor = -0.20
+				cic_to_overlord_factor = 0.25
+				mic_to_overlord_factor = 0.25
+				extra_trade_to_overlord_factor = 0.25
+				communism_drift = 0.05
+				autonomy_gain_trade_factor = -0.75
+				autonomy_manpower_share = -0.5
+				production_speed_buildings_factor = 0.20
+			}
+		}
+
 		PRC_comecon_sov_default = {	#世界人民大团结万岁
 			picture = generic_flexible_foreign_policy
 
@@ -6924,6 +6937,18 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor  = 0.15
+			}
+		}
+
+		PRC_comecon_sov_industrialization = { #国际工业合作：援助方
+			name = PRC_comecon_sov_default
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.25
 			}
 		}
 
@@ -7130,6 +7155,31 @@ ideas = {
 			}
 		}
 
+		prc_private_industry_support = { #生产性工商贷款
+			picture = prc_shanghai_credit_squeeze
+			allowed = {
+				original_tag = PRC
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				industrial_capacity_factory = 0.03
+			}
+		}
+
+		prc_shanghai_commercial_chill = { #强制查抄后的商业萧条
+			picture = prc_shanghai_credit_squeeze
+			allowed = {
+				original_tag = PRC
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.03
+				production_speed_industrial_complex_factor = -0.05
+				industrial_capacity_factory = -0.03
+			}
+		}
+
 		PRC_rice_poverty_in_shanghai = {	#上海粮荒
 			picture = PRC_rice_poverty_in_shanghai
 			modifier = {
@@ -7209,6 +7259,32 @@ ideas = {
 				command_power_gain_mult  = -0.15
 			}
 		}
+	
+		# >>> 游击队：行动准备精神
+		prepared_for_operation_1 = { #为行动做准备：一级
+			picture = prepared_for_operation
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		
+		prepared_for_operation_2 = { #为行动做准备：二级
+			picture = prepared_for_operation
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		
+		prepared_for_operation_3 = { #为行动做准备：三级
+			picture = prepared_for_operation
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		}
+		# <<< 游击队：行动准备精神
 	}
 
 	hidden_ideas = {

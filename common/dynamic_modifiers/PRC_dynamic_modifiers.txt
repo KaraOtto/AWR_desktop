@@ -1043,3 +1043,128 @@ PRC_coal_poverty = {	#缺煤
 	industrial_capacity_factory = -0.50
 	production_speed_buildings_factor = -0.50
 }
+
+# >>> 游击队：游击队地区修正
+PRC_g_activity = { #游击队活动
+	icon = GFX_idea_PRC_Trend_guerrilla_warfare
+	enable = {
+		always = yes
+	}
+}
+
+PRC_g_support = { #支持共产党
+	icon = GFX_idea_prepared_for_operation
+	enable = {
+		always = yes
+	}
+}
+
+PRC_g_support_hostile = { #共产党群众基础
+	enable = {
+		ROOT = {
+			PRC_g_state_supported = yes #地区支持共产党且未被封锁
+			controller = {
+				NOT = {
+					OR = {
+						PRC_g_is_side = yes #中共或其附属国
+						AND = {
+							is_in_faction_with = PRC
+							PRC = {
+								has_war_with = JAP
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	resistance_growth = 0.10 #抵抗度增长
+	compliance_growth = -0.10 #顺从度增长
+	local_factories = -0.20 #地区工厂
+}
+
+PRC_g_support_friendly = { #群众支援
+	enable = {
+		ROOT = {
+			PRC_g_state_supported = yes #地区支持共产党且未被封锁
+		}
+	}
+	attacker_modifier = yes
+	supply_consumption_factor = -0.15 #补给消耗
+	army_attack_factor = 0.05 #陆军进攻
+	breakthrough_factor = 0.05 #突破
+	army_intel_factor = 0.10 #陆军情报获取
+}
+
+PRC_g_warfare_1 = { #游击战：一级
+	enable = {
+		ROOT = {
+			PRC_g_state_active = yes #地区存在可运作的游击队活动
+			check_variable = {
+				PRC_g_warfare_level = 1 #当地游击战等级
+			}
+		}
+	}
+	attacker_modifier = yes
+	army_attack_factor = -0.05 #陆军进攻
+	army_defence_factor = -0.05 #陆军防御
+	breakthrough_factor = -0.05 #突破
+	dig_in_speed_factor = -0.10 #堑壕速度
+	max_dig_in_factor = -0.10 #堑壕上限
+}
+
+PRC_g_warfare_2 = { #游击战：二级
+	enable = {
+		ROOT = {
+			PRC_g_state_active = yes #地区存在可运作的游击队活动
+			check_variable = {
+				PRC_g_warfare_level = 2 #当地游击战等级
+			}
+		}
+	}
+	attacker_modifier = yes
+	army_attack_factor = -0.10 #陆军进攻
+	army_defence_factor = -0.10 #陆军防御
+	breakthrough_factor = -0.10 #突破
+	dig_in_speed_factor = -0.20 #堑壕速度
+	max_dig_in_factor = -0.20 #堑壕上限
+}
+
+PRC_g_warfare_3 = { #游击战：三级
+	enable = {
+		ROOT = {
+			PRC_g_state_active = yes #地区存在可运作的游击队活动
+			check_variable = {
+				PRC_g_warfare_level = 3 #当地游击战等级
+			}
+		}
+	}
+	attacker_modifier = yes
+	army_attack_factor = -0.15 #陆军进攻
+	army_defence_factor = -0.15 #陆军防御
+	breakthrough_factor = -0.15 #突破
+	dig_in_speed_factor = -0.30 #堑壕速度
+	max_dig_in_factor = -0.30 #堑壕上限
+}
+
+PRC_g_warfare_state_1 = { #游击战：一级
+	icon = GFX_idea_PRC_Trend_guerrilla_warfare
+	enable = {
+		always = yes
+	}
+}
+
+PRC_g_warfare_state_2 = { #游击战：二级
+	icon = GFX_idea_PRC_Trend_guerrilla_warfare
+	enable = {
+		always = yes
+	}
+}
+
+PRC_g_warfare_state_3 = { #游击战：三级
+	icon = GFX_idea_PRC_Trend_guerrilla_warfare
+	enable = {
+		always = yes
+	}
+}
+# <<< 游击队：游击队地区修正

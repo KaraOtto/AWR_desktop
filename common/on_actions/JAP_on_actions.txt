@@ -28,16 +28,7 @@ on_actions = {
 					limit = { date > 1939.1.1 JAP_cis_has_resistance_problem = yes }
 					random = { chance = 12 country_event = { id = JAP_china_incident.20 days = 1 } }
 				}
-				if = {
-					limit = {
-						date > 1940.1.1
-						JAP_cis_controls_north_china = yes
-						JAP_cis_policy_at_least_clear_villages = yes
-						JAP_cis_has_resistance_problem = yes
-						NOT = { has_country_flag = JAP_cis_three_alls_cooldown }
-					}
-					random = { chance = 7 country_event = { id = JAP_china_incident.30 days = 1 } }
-				}
+
 			}
 			else = {
 				if = {
@@ -139,3 +130,13 @@ on_actions = {
 		}
 	}
 }
+
+# >>> 游击队：亲善政策工厂占用维护
+on_actions = {
+	on_daily_JAP = {
+		effect = {
+			PRC_g_refresh_goodwill_cost = yes #刷新亲善政策的民工占用
+		}
+	}
+}
+# <<< 游击队：亲善政策工厂占用维护

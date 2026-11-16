@@ -139,30 +139,7 @@ country_event = {
 	}
 }
 
-# “三光”事件链同时要求历史时期、华北控制、抵抗及升级后的高压治安政策。
-# 该内容只通过自动事件触发，不作为可主动点击的决议。
-country_event = {
-	id = JAP_china_incident.30
-	title = JAP_china_incident.30.t
-	desc = JAP_china_incident.30.d
-	picture = GFX_report_event_japanese_soldiers_01
-	is_triggered_only = yes
-	option = {
-		name = JAP_china_incident.30.a
-		set_country_flag = { flag = JAP_cis_three_alls_cooldown days = 180 }
-		add_stability = -0.02
-		add_war_support = -0.01
-		597 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
-		614 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
-		1038 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
-		1039 = { add_resistance = 8 add_compliance = -5 add_dynamic_modifier = { modifier = JAP_cis_severe_local_destruction days = 1080 } }
-		every_country = {
-			limit = { is_major = yes NOT = { tag = JAP } }
-			add_opinion_modifier = { target = JAP modifier = JAP_cis_brutal_occupation_opinion }
-		}
-		news_event = { id = JAP_china_incident.31 hours = 6 }
-	}
-}
+
 
 news_event = {
 	id = JAP_china_incident.31

@@ -1247,7 +1247,6 @@ CPC_mao_zheng_feng_clamper = {
 
 PRC_general_portrait_change = {		#将军换头像
 	
-	remove_ideas = prepared_for_operation
 	
 	PRC_liu_shaoqi = {
 		set_portraits = {
@@ -3666,3 +3665,3369 @@ PRC_calculate_speculator_net_worth = {	#投机者资产计算
         capitalist_net_assets = capitalist_debt
     }
 }
+
+# >>> 游击队：游击队公共与整编效果
+PRC_g_upgrade_preparation = { #行动准备提升一级
+	if = {
+		limit = {
+			has_idea = prepared_for_operation_2
+		}
+		swap_ideas = {
+			remove_idea = prepared_for_operation_2
+			add_idea = prepared_for_operation_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = prepared_for_operation_1
+		}
+		swap_ideas = {
+			remove_idea = prepared_for_operation_1
+			add_idea = prepared_for_operation_2
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_idea = prepared_for_operation_3
+			}
+		}
+		add_ideas = prepared_for_operation_1
+	}
+}
+
+PRC_g_consume_preparation = { #消耗一级行动准备
+	if = {
+		limit = {
+			has_idea = prepared_for_operation_3
+		}
+		swap_ideas = {
+			remove_idea = prepared_for_operation_3
+			add_idea = prepared_for_operation_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = prepared_for_operation_2
+		}
+		swap_ideas = {
+			remove_idea = prepared_for_operation_2
+			add_idea = prepared_for_operation_1
+		}
+	}
+	else = {
+		remove_ideas = prepared_for_operation_1
+	}
+}
+
+PRC_g_record_action = { #结算行动准备与当地游击队师数量
+	PRC = {
+		PRC_g_consume_preparation = yes #消耗一级行动准备
+	}
+	add_to_variable = {
+		PRC_g_divisions = 1 #当地游击队师数量
+	}
+}
+
+PRC_g_add_activity = { #在地区建立游击队活动
+	if = {
+		limit = {
+			NOT = {
+				PRC_g_state_blocked = yes #地区被反制措施封锁
+			}
+		}
+		set_state_flag = PRC_g_tracked
+		if = {
+			limit = {
+				NOT = {
+					has_variable = PRC_g_divisions
+				}
+			}
+			set_variable = {
+				PRC_g_divisions = 0 #当地游击队师数量
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_variable = PRC_g_warfare_level
+				}
+			}
+			set_variable = {
+				PRC_g_warfare_level = 0 #当地游击战等级
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = PRC_g_activity
+		}
+	}
+}
+
+PRC_g_clear_state = { #清除游击队活动、群众支持及游击战
+	remove_dynamic_modifier = {
+		modifier = PRC_g_activity
+	}
+	remove_dynamic_modifier = {
+		modifier = PRC_g_support
+	}
+	remove_dynamic_modifier = {
+		modifier = PRC_g_support_hostile
+	}
+	remove_dynamic_modifier = {
+		modifier = PRC_g_warfare_state_1
+	}
+	remove_dynamic_modifier = {
+		modifier = PRC_g_warfare_state_2
+	}
+	remove_dynamic_modifier = {
+		modifier = PRC_g_warfare_state_3
+	}
+	set_variable = {
+		PRC_g_warfare_level = 0 #当地游击战等级
+	}
+	every_country = {
+		limit = {
+			has_country_flag = PRC_g_modifier_recipient
+		}
+		PREV = {
+			remove_dynamic_modifier = {
+				modifier = PRC_g_support_friendly
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_1
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_2
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_3
+				scope = PREV
+			}
+		}
+	}
+}
+
+PRC_g_begin_support = { #开始积累民众支持
+	if = {
+		limit = {
+			PRC_g_can_amass_support = yes #可以积累民众支持
+		}
+		PRC = {
+			set_variable = {
+				PRC_g_support_state = PREV #正在积累群众支持的地区
+			}
+			add_political_power = -25
+			set_country_flag = PRC_g_support_busy
+			activate_mission = PRC_g_amass_support_mission
+		}
+		sound_effect = justify_wargoals
+	}
+}
+
+PRC_g_finish_support = { #完成群众支持任务
+	set_state_flag = PRC_g_tracked
+	add_dynamic_modifier = {
+		modifier = PRC_g_support
+	}
+	add_dynamic_modifier = {
+		modifier = PRC_g_support_hostile
+	}
+	PRC = {
+		PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+		set_variable = {
+			PRC_g_notice_state = PREV #事件中显示名称的地区
+		}
+		country_event = { #[PRC_g_action_state.GetName]的群众支持
+			id = PRC_guerrilla.2
+		}
+	}
+}
+
+PRC_g_attack_army = { #游击队攻击敌军
+	if = {
+		limit = {
+			PRC_g_can_attack = yes #可以攻击当地敌军
+		}
+		PRC = {
+			add_command_power = -30
+		}
+		if = {
+			limit = {
+				PRC = {
+					has_completed_focus = PRC_mobile_warfare
+				}
+			}
+			damage_units = {
+				state = THIS
+				limit = {
+					has_war_with = PRC
+				}
+				org_damage = 0.20
+				str_damage = 0.20
+				ratio = yes
+				army = yes
+				navy = no
+			}
+		}
+		else_if = {
+			limit = {
+				PRC = {
+					has_completed_focus = PRC_Breaking_operations
+				}
+			}
+			damage_units = {
+				state = THIS
+				limit = {
+					has_war_with = PRC
+				}
+				org_damage = 0.15
+				str_damage = 0.15
+				ratio = yes
+				army = yes
+				navy = no
+			}
+		}
+		else = {
+			damage_units = {
+				state = THIS
+				limit = {
+					has_war_with = PRC
+				}
+				org_damage = 0.10
+				str_damage = 0.10
+				ratio = yes
+				army = yes
+				navy = no
+			}
+		}
+		PRC_g_record_action = yes #结算行动准备与当地游击队师数量
+		sound_effect = alert_naval_combat_sound
+	}
+}
+
+PRC_g_wage_war = { #开展或升级当地游击战
+	if = {
+		limit = {
+			PRC_g_can_wage_war = yes #可以开展当地游击战
+		}
+		PRC = {
+			add_political_power = -50
+			add_command_power = -50
+		}
+		add_to_variable = {
+			PRC_g_warfare_level = 1 #当地游击战等级
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_g_warfare_state_1
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_g_warfare_state_2
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_g_warfare_state_3
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_warfare_level = 3 #当地游击战等级
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_g_warfare_state_3
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					PRC_g_warfare_level = 2 #当地游击战等级
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_g_warfare_state_2
+			}
+		}
+		else = {
+			add_dynamic_modifier = {
+				modifier = PRC_g_warfare_state_1
+			}
+		}
+		PRC_g_record_action = yes #结算行动准备与当地游击队师数量
+		PRC = {
+			PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+		}
+		sound_effect = alert_naval_combat_sound
+	}
+}
+
+PRC_g_sabotage = { #破坏当地工业与基础设施
+	if = {
+		limit = {
+			PRC_g_can_sabotage = yes #可以破坏当地工业
+		}
+		PRC = {
+			add_command_power = -30
+		}
+		if = {
+			limit = {
+				PRC = {
+					has_completed_focus = PRC_mobile_warfare
+				}
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 5
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 5
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 5
+			}
+		}
+		else_if = {
+			limit = {
+				PRC = {
+					has_completed_focus = PRC_Breaking_operations
+				}
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 3
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 3
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 3
+			}
+		}
+		else = {
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 2
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 2
+			}
+		}
+		PRC_g_record_action = yes #结算行动准备与当地游击队师数量
+		sound_effect = alert_naval_combat_sound
+	}
+}
+
+PRC_g_uprise = { #发动地区起义
+	if = {
+		limit = {
+			PRC_g_can_uprise = yes #可以发动和平地区起义
+		}
+		PRC_g_record_action = yes #结算行动准备与当地游击队师数量
+		owner = {
+			set_variable = {
+				PRC_g_notice_state = PREV #事件中显示名称的地区
+			}
+			country_event = { #[PRC_g_action_state.GetName]发生共产党起义
+				id = PRC_guerrilla.3
+			}
+		}
+		every_possible_country = {
+			limit = {
+				NOT = {
+					tag = PRC
+				}
+				PREV = {
+					is_core_of = PREV
+				}
+			}
+			PREV = {
+				remove_core_of = PREV
+			}
+		}
+		add_core_of = PRC
+		PRC = {
+			transfer_state = PREV
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_g_support
+		}
+		remove_dynamic_modifier = {
+			modifier = PRC_g_support_hostile
+		}
+		PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+		PRC = {
+			PRC_g_refresh_scoped_modifiers = yes #按国家关系刷新地区战斗修正
+		}
+		sound_effect = enemy_declare_war
+	}
+}
+
+PRC_g_refresh_scoped_modifiers = { #按国家关系刷新地区战斗修正
+	every_country = {
+		limit = {
+			OR = {
+				PRC_g_is_side = yes #中共或其附属国
+				has_war_with = PRC
+				has_country_flag = PRC_g_modifier_recipient
+			}
+		}
+		set_country_flag = PRC_g_modifier_recipient
+		every_state = {
+			limit = {
+				has_state_flag = PRC_g_tracked
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_support_friendly
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_1
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_2
+				scope = PREV
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_g_warfare_3
+				scope = PREV
+			}
+			if = {
+				limit = {
+					PRC_g_state_supported = yes #地区支持共产党且未被封锁
+					PREV = {
+						PRC_g_is_side = yes #中共或其附属国
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_g_support_friendly
+					scope = PREV
+				}
+			}
+			if = {
+				limit = {
+					PRC_g_state_active = yes #地区存在可运作的游击队活动
+					PREV = {
+						has_war_with = PRC
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							PRC_g_warfare_level = 3 #当地游击战等级
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PRC_g_warfare_3
+						scope = PREV
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							PRC_g_warfare_level = 2 #当地游击战等级
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PRC_g_warfare_2
+						scope = PREV
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							PRC_g_warfare_level = 1 #当地游击战等级
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PRC_g_warfare_1
+						scope = PREV
+					}
+				}
+			}
+		}
+	}
+	PRC_g_refresh_open_queries = yes #刷新所有已打开的地块查询
+}
+
+PRC_g_refresh_countermeasure_costs = { #刷新反制措施的名额与工厂占用
+	PRC_g_refresh_garrison_count = yes #刷新反共驻军上限与部署数量
+	PRC_g_refresh_goodwill_cost = yes #刷新亲善政策的民工占用
+	PRC_g_refresh_open_queries = yes #刷新所有已打开的地块查询
+}
+
+PRC_g_postwar_transfer = { #抗战结束后的支持地区移交
+	if = {
+		limit = {
+			has_country_flag = PRC_g_fought_japan
+			NOT = {
+				has_country_flag = PRC_g_postwar_transferred
+			}
+			NOT = {
+				has_war_with = JAP
+			}
+			OR = {
+				has_global_flag = CHI_no_longer_united_flag
+				JAP = {
+					has_capitulated = yes
+				}
+				NOT = {
+					country_exists = JAP
+				}
+				CHI = {
+					NOT = {
+						has_war_with = JAP
+					}
+				}
+			}
+		}
+		every_state = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = PRC_g_support
+				}
+				PRC_g_china_state = yes #中国地区范围
+				NOT = {
+					PRC_g_state_blocked = yes #地区被反制措施封锁
+				}
+				controller = {
+					NOT = {
+						PRC_g_is_japanese_side = yes #日本或其附属及盟友
+					}
+				}
+			}
+			add_core_of = PRC
+			PRC = {
+				transfer_state = PREV
+			}
+		}
+		set_country_flag = PRC_g_postwar_transferred
+		country_event = { #敌后根据地归属确定
+			id = PRC_guerrilla.4
+		}
+	}
+}
+
+PRC_g_refresh_map_query = { #刷新所查询地区的当前状态
+	if = {
+		limit = {
+			has_country_flag = PRC_g_query_open
+			has_variable = PRC_g_selected_state
+		}
+		set_variable = {
+			PRC_g_query_activity = 0 #查询：游击队活动
+		}
+		set_variable = {
+			PRC_g_query_support = -1 #查询：共产党群众支持；-1 表示无权查看
+		}
+		set_variable = {
+			PRC_g_query_goodwill = -1 #查询：日本亲善政策；-1 表示无权查看
+		}
+		set_variable = {
+			PRC_g_query_garrison = -1 #查询：反共驻军；-1 表示无权查看
+		}
+		set_variable = {
+			PRC_g_query_three_alls = -1 #查询：三光政策；-1 表示无权查看
+		}
+		set_variable = {
+			PRC_g_query_warfare = -1 #查询：游击战等级；-1 表示无权查看
+		}
+		set_variable = {
+			PRC_g_query_divisions = -1 #查询：当地游击队师数量；-1 表示无权查看
+		}
+		var:PRC_g_selected_state = {
+			PREV = {
+				set_variable = {
+					PRC_g_query_owner = PREV.owner #查询：地区拥有者
+				}
+				set_variable = {
+					PRC_g_query_controller = PREV.controller #查询：地区控制者
+				}
+				set_variable = {
+					PRC_g_query_population = PREV.state_population_k #查询：地区人口，单位为千人
+				}
+				set_variable = {
+					PRC_g_query_resistance = PREV.resistance #查询：抵抗度
+				}
+				set_variable = {
+					PRC_g_query_compliance = PREV.compliance #查询：顺从度
+				}
+			}
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = PRC_g_activity
+					}
+				}
+				PREV = {
+					set_variable = {
+						PRC_g_query_activity = 1 #查询：游击队活动
+					}
+				}
+			}
+			if = {
+				limit = {
+					PREV = {
+						PRC_g_can_view_support = yes #仅中共可查看群众支持
+					}
+				}
+				PREV = {
+					set_variable = {
+						PRC_g_query_support = 0 #查询：共产党群众支持；-1 表示无权查看
+					}
+					set_variable = {
+						PRC_g_query_three_alls = 0 #查询：三光政策；-1 表示无权查看
+					}
+					set_variable = {
+						PRC_g_query_warfare = 0 #查询：游击战等级；-1 表示无权查看
+					}
+					set_variable = {
+						PRC_g_query_divisions = 0 #查询：当地游击队师数量；-1 表示无权查看
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PRC_g_support
+						}
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_support = 1 #查询：共产党群众支持；-1 表示无权查看
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PRC_g_three_alls
+						}
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_three_alls = 1 #查询：三光政策；-1 表示无权查看
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_variable = PRC_g_warfare_level
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_warfare = PREV.PRC_g_warfare_level #查询：游击战等级；-1 表示无权查看
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_variable = PRC_g_divisions
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_divisions = PREV.PRC_g_divisions #查询：当地游击队师数量；-1 表示无权查看
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					PREV = {
+						PRC_g_can_view_goodwill = yes #中共与日方可查看亲善政策
+					}
+				}
+				PREV = {
+					set_variable = {
+						PRC_g_query_goodwill = 0 #查询：日本亲善政策；-1 表示无权查看
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PRC_g_goodwill
+						}
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_goodwill = 1 #查询：日本亲善政策；-1 表示无权查看
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					PREV = {
+						PRC_g_can_view_garrison = yes #中共与民国可查看反共驻军
+					}
+				}
+				PREV = {
+					set_variable = {
+						PRC_g_query_garrison = 0 #查询：反共驻军；-1 表示无权查看
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PRC_g_anticommunist_garrison
+						}
+					}
+					PREV = {
+						set_variable = {
+							PRC_g_query_garrison = 1 #查询：反共驻军；-1 表示无权查看
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+PRC_g_refresh_open_queries = { #刷新所有已打开的地块查询
+	every_country = {
+		limit = {
+			has_country_flag = PRC_g_query_open
+			has_country_flag = PRC_g_map_open
+		}
+		PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+	}
+}
+
+PRC_g_spawn_army_242 = { #生成东北野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "东北野战军"
+				}
+			}
+			division_template = {
+				name = "东北野战军"
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"东北野战军\" division_template = \"东北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"东北野战军\" division_template = \"东北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_army_244 = { #生成华北野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "华北野战军"
+				}
+			}
+			division_template = {
+				name = "华北野战军"
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"华北野战军\" division_template = \"华北野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_army_245 = { #生成第一野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "第一野战军"
+				}
+			}
+			division_template = {
+				name = "第一野战军"
+				division_names_group = PRC_PLA_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"第一野战军\" division_template = \"第一野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_army_247 = { #生成中原野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "中原野战军"
+				}
+			}
+			division_template = {
+				name = "中原野战军"
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"中原野战军\" division_template = \"中原野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"中原野战军\" division_template = \"中原野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_army_305 = { #生成华东野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "华东野战军"
+				}
+			}
+			division_template = {
+				name = "华东野战军"
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"华东野战军\" division_template = \"华东野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_army_249 = { #生成华南野战军
+	PRC = {
+		if = {
+			limit = {
+				NOT = {
+					has_template = "华南野战军"
+				}
+			}
+			division_template = {
+				name = "华南野战军"
+				division_names_group = PRC_PLA_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			PRC = {
+				is_ai = yes
+			}
+		}
+		create_unit = {
+			division = "name = \"华南野战军\" division_template = \"华南野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 1"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+	else = {
+		create_unit = {
+			division = "name = \"华南野战军\" division_template = \"华南野战军\" start_experience_factor = 0.2 start_manpower_factor = 1 start_equipment_factor = 0.05"
+			count = var:PRC_g_divisions
+			owner = PRC
+		}
+	}
+}
+
+PRC_g_spawn_regional_divisions = { #按地区编制生成全部当地游击队师，随后清零
+	if = {
+		limit = {
+			check_variable = {
+				PRC_g_divisions > 0 #当地游击队师数量
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					region = 242
+					region = 243
+					region = 155
+				}
+			}
+			PRC_g_spawn_army_242 = yes #生成东北野战军
+		}
+		else_if = {
+			limit = {
+				OR = {
+					region = 244
+					region = 143
+				}
+			}
+			PRC_g_spawn_army_244 = yes #生成华北野战军
+		}
+		else_if = {
+			limit = {
+				OR = {
+					region = 245
+					region = 144
+					region = 200
+					region = 250
+				}
+			}
+			PRC_g_spawn_army_245 = yes #生成第一野战军
+		}
+		else_if = {
+			limit = {
+				OR = {
+					region = 247
+					region = 165
+					region = 246
+				}
+			}
+			PRC_g_spawn_army_247 = yes #生成中原野战军
+		}
+		else_if = {
+			limit = {
+				OR = {
+					region = 305
+					region = 164
+				}
+			}
+			PRC_g_spawn_army_305 = yes #生成华东野战军
+		}
+		else_if = {
+			limit = {
+				OR = {
+					region = 249
+					region = 248
+				}
+			}
+			PRC_g_spawn_army_249 = yes #生成华南野战军
+		}
+		else = {
+			PRC_g_spawn_army_244 = yes #生成华北野战军
+		}
+		PRC = {
+			set_temp_variable = {
+				PRC_g_rifles = PREV.PRC_g_divisions
+			}
+			multiply_temp_variable = {
+				PRC_g_rifles = 750
+			}
+			set_temp_variable = {
+				PRC_g_artillery = PREV.PRC_g_divisions
+			}
+			multiply_temp_variable = {
+				PRC_g_artillery = 9
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = var:PRC_g_rifles
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = var:PRC_g_artillery
+				producer = JAP
+			}
+		}
+		set_variable = {
+			PRC_g_divisions = 0 #当地游击队师数量
+		}
+	}
+}
+
+PRC_g_reorganize_region_242 = { #汇总并整编北满洲游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 242
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 242
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 242
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 242
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_243 = { #汇总并整编东满洲游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 243
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 243
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 243
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 243
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_155 = { #汇总并整编西满洲游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 155
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 155
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 155
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 155
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_244 = { #汇总并整编察哈尔游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 244
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 244
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 244
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 244
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_245 = { #汇总并整编山西游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 245
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 245
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 245
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 245
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_143 = { #汇总并整编华北游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 143
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 143
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 143
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 143
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_144 = { #汇总并整编陕甘宁游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 144
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 144
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 144
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 144
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_247 = { #汇总并整编中原游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 247
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 247
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 247
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 247
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_165 = { #汇总并整编华中游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 165
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 165
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 165
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 165
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_200 = { #汇总并整编青海游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 200
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 200
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 200
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 200
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_246 = { #汇总并整编川渝游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 246
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 246
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 246
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 246
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_305 = { #汇总并整编华东游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 305
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 305
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 305
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 305
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_250 = { #汇总并整编西康游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 250
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 250
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 250
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 250
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_164 = { #汇总并整编东南游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 164
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 164
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 164
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 164
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_249 = { #汇总并整编云贵游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 249
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 249
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 249
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 249
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_reorganize_region_248 = { #汇总并整编华南游击队
+	if = {
+		limit = {
+			any_owned_state = {
+				region = 248
+				is_fully_controlled_by = ROOT
+			}
+		}
+		set_variable = {
+			PRC_g_assembly_total = 0 #整编区域内的游击队师总数
+		}
+		every_state = {
+			limit = {
+				region = 248
+				check_variable = {
+					PRC_g_divisions > 0 #当地游击队师数量
+				}
+			}
+			PRC = {
+				add_to_variable = {
+					PRC_g_assembly_total = PREV.PRC_g_divisions #整编区域内的游击队师总数
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					PRC_g_assembly_total > 0 #整编区域内的游击队师总数
+				}
+			}
+			every_state = {
+				limit = {
+					region = 248
+				}
+				set_variable = {
+					PRC_g_divisions = 0 #当地游击队师数量
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					region = 248
+				}
+				prioritize = {
+					597
+					615
+					749
+				}
+				set_variable = {
+					PRC_g_divisions = PRC.PRC_g_assembly_total #当地游击队师数量
+				}
+				PRC_g_spawn_regional_divisions = yes #按地区编制生成全部当地游击队师，随后清零
+			}
+		}
+		clear_variable = PRC_g_assembly_total
+	}
+}
+
+PRC_g_query_select_283 = { #查询甘东南（283）
+	set_variable = {
+		PRC_g_selected_state = 283 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_287 = { #查询塔克拉玛干（287）
+	set_variable = {
+		PRC_g_selected_state = 287 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_322 = { #查询那曲（322）
+	set_variable = {
+		PRC_g_selected_state = 322 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_325 = { #查询滇北（325）
+	set_variable = {
+		PRC_g_selected_state = 325 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_326 = { #查询香港（326）
+	set_variable = {
+		PRC_g_selected_state = 326 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_328 = { #查询延边（328）
+	set_variable = {
+		PRC_g_selected_state = 328 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_329 = { #查询唐努图瓦（329）
+	set_variable = {
+		PRC_g_selected_state = 329 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_330 = { #查询乌兰巴托（330）
+	set_variable = {
+		PRC_g_selected_state = 330 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_434 = { #查询藏南（434）
+	set_variable = {
+		PRC_g_selected_state = 434 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_524 = { #查询台中（524）
+	set_variable = {
+		PRC_g_selected_state = 524 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_591 = { #查询海南（591）
+	set_variable = {
+		PRC_g_selected_state = 591 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_592 = { #查询广州（592）
+	set_variable = {
+		PRC_g_selected_state = 592 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_593 = { #查询粤东（593）
+	set_variable = {
+		PRC_g_selected_state = 593 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_594 = { #查询南宁（594）
+	set_variable = {
+		PRC_g_selected_state = 594 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_595 = { #查询闽南（595）
+	set_variable = {
+		PRC_g_selected_state = 595 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_596 = { #查询浙南（596）
+	set_variable = {
+		PRC_g_selected_state = 596 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_597 = { #查询鲁东（597）
+	set_variable = {
+		PRC_g_selected_state = 597 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_598 = { #查询苏北（598）
+	set_variable = {
+		PRC_g_selected_state = 598 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_599 = { #查询柳州（599）
+	set_variable = {
+		PRC_g_selected_state = 599 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_600 = { #查询赣南（600）
+	set_variable = {
+		PRC_g_selected_state = 600 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_601 = { #查询昌都（601）
+	set_variable = {
+		PRC_g_selected_state = 601 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_602 = { #查询湘南（602）
+	set_variable = {
+		PRC_g_selected_state = 602 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_603 = { #查询贵州（603）
+	set_variable = {
+		PRC_g_selected_state = 603 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_604 = { #查询格尔木（604）
+	set_variable = {
+		PRC_g_selected_state = 604 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_605 = { #查询重庆（605）
+	set_variable = {
+		PRC_g_selected_state = 605 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_606 = { #查询皖西（606）
+	set_variable = {
+		PRC_g_selected_state = 606 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_607 = { #查询豫东（607）
+	set_variable = {
+		PRC_g_selected_state = 607 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_608 = { #查询北平（608）
+	set_variable = {
+		PRC_g_selected_state = 608 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_609 = { #查询冀东（609）
+	set_variable = {
+		PRC_g_selected_state = 609 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_610 = { #查询热河（610）
+	set_variable = {
+		PRC_g_selected_state = 610 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_611 = { #查询察哈尔（611）
+	set_variable = {
+		PRC_g_selected_state = 611 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_612 = { #查询锡林郭勒（612）
+	set_variable = {
+		PRC_g_selected_state = 612 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_613 = { #查询沪西（613）
+	set_variable = {
+		PRC_g_selected_state = 613 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_614 = { #查询冀北（614）
+	set_variable = {
+		PRC_g_selected_state = 614 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_615 = { #查询晋中（615）
+	set_variable = {
+		PRC_g_selected_state = 615 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_616 = { #查询银川（616）
+	set_variable = {
+		PRC_g_selected_state = 616 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_617 = { #查询阿克苏（617）
+	set_variable = {
+		PRC_g_selected_state = 617 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_618 = { #查询阿勒泰（618）
+	set_variable = {
+		PRC_g_selected_state = 618 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_619 = { #查询莎车（619）
+	set_variable = {
+		PRC_g_selected_state = 619 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_620 = { #查询鄂北（620）
+	set_variable = {
+		PRC_g_selected_state = 620 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_621 = { #查询绥东（621）
+	set_variable = {
+		PRC_g_selected_state = 621 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_622 = { #查询定边-庆阳（622）
+	set_variable = {
+		PRC_g_selected_state = 622 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_714 = { #查询鄂伦春（714）
+	set_variable = {
+		PRC_g_selected_state = 714 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_715 = { #查询辽北（715）
+	set_variable = {
+		PRC_g_selected_state = 715 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_716 = { #查询辽宁（716）
+	set_variable = {
+		PRC_g_selected_state = 716 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_717 = { #查询牡丹江（717）
+	set_variable = {
+		PRC_g_selected_state = 717 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_728 = { #查询广州湾（728）
+	set_variable = {
+		PRC_g_selected_state = 728 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_729 = { #查询澳门（729）
+	set_variable = {
+		PRC_g_selected_state = 729 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_743 = { #查询青岛（743）
+	set_variable = {
+		PRC_g_selected_state = 743 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_744 = { #查询陕南（744）
+	set_variable = {
+		PRC_g_selected_state = 744 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_745 = { #查询大连（745）
+	set_variable = {
+		PRC_g_selected_state = 745 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_746 = { #查询伊克昭（746）
+	set_variable = {
+		PRC_g_selected_state = 746 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_747 = { #查询大理（747）
+	set_variable = {
+		PRC_g_selected_state = 747 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_748 = { #查询遵义（748）
+	set_variable = {
+		PRC_g_selected_state = 748 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_749 = { #查询皖南（749）
+	set_variable = {
+		PRC_g_selected_state = 749 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_750 = { #查询常德（750）
+	set_variable = {
+		PRC_g_selected_state = 750 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_751 = { #查询凉山（751）
+	set_variable = {
+		PRC_g_selected_state = 751 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_752 = { #查询甘孜（752）
+	set_variable = {
+		PRC_g_selected_state = 752 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_753 = { #查询川西（753）
+	set_variable = {
+		PRC_g_selected_state = 753 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_754 = { #查询海东（754）
+	set_variable = {
+		PRC_g_selected_state = 754 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_755 = { #查询海西（755）
+	set_variable = {
+		PRC_g_selected_state = 755 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_756 = { #查询酒泉（756）
+	set_variable = {
+		PRC_g_selected_state = 756 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_757 = { #查询日喀则（757）
+	set_variable = {
+		PRC_g_selected_state = 757 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_758 = { #查询阿里（758）
+	set_variable = {
+		PRC_g_selected_state = 758 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_759 = { #查询若羌（759）
+	set_variable = {
+		PRC_g_selected_state = 759 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_760 = { #查询达坂城（760）
+	set_variable = {
+		PRC_g_selected_state = 760 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_761 = { #查询呼伦贝尔（761）
+	set_variable = {
+		PRC_g_selected_state = 761 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_817 = { #查询戈壁（817）
+	set_variable = {
+		PRC_g_selected_state = 817 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_818 = { #查询科布多（818）
+	set_variable = {
+		PRC_g_selected_state = 818 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_819 = { #查询东方（819）
+	set_variable = {
+		PRC_g_selected_state = 819 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_820 = { #查询库苏古尔（820）
+	set_variable = {
+		PRC_g_selected_state = 820 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1032 = { #查询陕中（1032）
+	set_variable = {
+		PRC_g_selected_state = 1032 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1033 = { #查询钦州（1033）
+	set_variable = {
+		PRC_g_selected_state = 1033 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1034 = { #查询苏南（1034）
+	set_variable = {
+		PRC_g_selected_state = 1034 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1035 = { #查询南京（1035）
+	set_variable = {
+		PRC_g_selected_state = 1035 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1036 = { #查询武汉（1036）
+	set_variable = {
+		PRC_g_selected_state = 1036 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1037 = { #查询川南（1037）
+	set_variable = {
+		PRC_g_selected_state = 1037 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1038 = { #查询鲁中（1038）
+	set_variable = {
+		PRC_g_selected_state = 1038 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1039 = { #查询察南（1039）
+	set_variable = {
+		PRC_g_selected_state = 1039 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1040 = { #查询阿拉善（1040）
+	set_variable = {
+		PRC_g_selected_state = 1040 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1041 = { #查询川中（1041）
+	set_variable = {
+		PRC_g_selected_state = 1041 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1042 = { #查询和阗（1042）
+	set_variable = {
+		PRC_g_selected_state = 1042 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1043 = { #查询百灵庙（1043）
+	set_variable = {
+		PRC_g_selected_state = 1043 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1044 = { #查询吴忠—灵武（1044）
+	set_variable = {
+		PRC_g_selected_state = 1044 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1045 = { #查询盐池-预旺（1045）
+	set_variable = {
+		PRC_g_selected_state = 1045 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1046 = { #查询榆林（1046）
+	set_variable = {
+		PRC_g_selected_state = 1046 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1082 = { #查询晋西（1082）
+	set_variable = {
+		PRC_g_selected_state = 1082 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1083 = { #查询晋南（1083）
+	set_variable = {
+		PRC_g_selected_state = 1083 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1084 = { #查询绥远（1084）
+	set_variable = {
+		PRC_g_selected_state = 1084 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1085 = { #查询临河（1085）
+	set_variable = {
+		PRC_g_selected_state = 1085 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1086 = { #查询鄂尔多斯（1086）
+	set_variable = {
+		PRC_g_selected_state = 1086 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1087 = { #查询晋西北（1087）
+	set_variable = {
+		PRC_g_selected_state = 1087 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1088 = { #查询晋北（1088）
+	set_variable = {
+		PRC_g_selected_state = 1088 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1089 = { #查询神木—绥德（1089）
+	set_variable = {
+		PRC_g_selected_state = 1089 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1090 = { #查询瓦窑堡-延长（1090）
+	set_variable = {
+		PRC_g_selected_state = 1090 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1091 = { #查询陕北（1091）
+	set_variable = {
+		PRC_g_selected_state = 1091 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1092 = { #查询陇西北部（1092）
+	set_variable = {
+		PRC_g_selected_state = 1092 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1093 = { #查询关中（1093）
+	set_variable = {
+		PRC_g_selected_state = 1093 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1094 = { #查询额济纳（1094）
+	set_variable = {
+		PRC_g_selected_state = 1094 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1095 = { #查询河西走廊（1095）
+	set_variable = {
+		PRC_g_selected_state = 1095 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1096 = { #查询察东（1096）
+	set_variable = {
+		PRC_g_selected_state = 1096 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1097 = { #查询冀南（1097）
+	set_variable = {
+		PRC_g_selected_state = 1097 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1098 = { #查询豫北（1098）
+	set_variable = {
+		PRC_g_selected_state = 1098 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1099 = { #查询豫西（1099）
+	set_variable = {
+		PRC_g_selected_state = 1099 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1100 = { #查询豫南（1100）
+	set_variable = {
+		PRC_g_selected_state = 1100 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1101 = { #查询皖北（1101）
+	set_variable = {
+		PRC_g_selected_state = 1101 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1102 = { #查询皖东（1102）
+	set_variable = {
+		PRC_g_selected_state = 1102 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1103 = { #查询承德（1103）
+	set_variable = {
+		PRC_g_selected_state = 1103 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1104 = { #查询赤峰（1104）
+	set_variable = {
+		PRC_g_selected_state = 1104 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1105 = { #查询锦州（1105）
+	set_variable = {
+		PRC_g_selected_state = 1105 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1106 = { #查询长春（1106）
+	set_variable = {
+		PRC_g_selected_state = 1106 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1107 = { #查询白山（1107）
+	set_variable = {
+		PRC_g_selected_state = 1107 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1108 = { #查询霍林郭勒（1108）
+	set_variable = {
+		PRC_g_selected_state = 1108 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1109 = { #查询鸡西（1109）
+	set_variable = {
+		PRC_g_selected_state = 1109 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1110 = { #查询鹤岗（1110）
+	set_variable = {
+		PRC_g_selected_state = 1110 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1111 = { #查询大庆（1111）
+	set_variable = {
+		PRC_g_selected_state = 1111 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1112 = { #查询黑河（1112）
+	set_variable = {
+		PRC_g_selected_state = 1112 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1113 = { #查询大兴安岭（1113）
+	set_variable = {
+		PRC_g_selected_state = 1113 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1114 = { #查询沪东（1114）
+	set_variable = {
+		PRC_g_selected_state = 1114 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1115 = { #查询浙北（1115）
+	set_variable = {
+		PRC_g_selected_state = 1115 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1116 = { #查询赣东（1116）
+	set_variable = {
+		PRC_g_selected_state = 1116 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1117 = { #查询赣西（1117）
+	set_variable = {
+		PRC_g_selected_state = 1117 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1118 = { #查询闽北（1118）
+	set_variable = {
+		PRC_g_selected_state = 1118 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1119 = { #查询鄂东（1119）
+	set_variable = {
+		PRC_g_selected_state = 1119 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1120 = { #查询鄂南（1120）
+	set_variable = {
+		PRC_g_selected_state = 1120 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1121 = { #查询株洲（1121）
+	set_variable = {
+		PRC_g_selected_state = 1121 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1122 = { #查询湘北（1122）
+	set_variable = {
+		PRC_g_selected_state = 1122 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1123 = { #查询川东（1123）
+	set_variable = {
+		PRC_g_selected_state = 1123 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1124 = { #查询桂东（1124）
+	set_variable = {
+		PRC_g_selected_state = 1124 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1125 = { #查询粤北（1125）
+	set_variable = {
+		PRC_g_selected_state = 1125 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1126 = { #查询粤南（1126）
+	set_variable = {
+		PRC_g_selected_state = 1126 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1127 = { #查询鲁北（1127）
+	set_variable = {
+		PRC_g_selected_state = 1127 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1128 = { #查询鲁西（1128）
+	set_variable = {
+		PRC_g_selected_state = 1128 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1129 = { #查询滇南（1129）
+	set_variable = {
+		PRC_g_selected_state = 1129 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1130 = { #查询滇东（1130）
+	set_variable = {
+		PRC_g_selected_state = 1130 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1131 = { #查询滇西（1131）
+	set_variable = {
+		PRC_g_selected_state = 1131 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1140 = { #查询昆仑（1140）
+	set_variable = {
+		PRC_g_selected_state = 1140 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1141 = { #查询阿图什（1141）
+	set_variable = {
+		PRC_g_selected_state = 1141 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1142 = { #查询喀什（1142）
+	set_variable = {
+		PRC_g_selected_state = 1142 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1143 = { #查询吐鲁番（1143）
+	set_variable = {
+		PRC_g_selected_state = 1143 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1144 = { #查询乌鲁木齐（1144）
+	set_variable = {
+		PRC_g_selected_state = 1144 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1145 = { #查询昌吉（1145）
+	set_variable = {
+		PRC_g_selected_state = 1145 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1146 = { #查询塔城（1146）
+	set_variable = {
+		PRC_g_selected_state = 1146 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1147 = { #查询伊犁（1147）
+	set_variable = {
+		PRC_g_selected_state = 1147 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1148 = { #查询台南（1148）
+	set_variable = {
+		PRC_g_selected_state = 1148 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1149 = { #查询台北（1149）
+	set_variable = {
+		PRC_g_selected_state = 1149 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1150 = { #查询通金斯基（1150）
+	set_variable = {
+		PRC_g_selected_state = 1150 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1151 = { #查询捷斯—赫姆斯基（1151）
+	set_variable = {
+		PRC_g_selected_state = 1151 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1152 = { #查询乌兰固木（1152）
+	set_variable = {
+		PRC_g_selected_state = 1152 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1153 = { #查询哈密（1153）
+	set_variable = {
+		PRC_g_selected_state = 1153 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1154 = { #查询渝东（1154）
+	set_variable = {
+		PRC_g_selected_state = 1154 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1155 = { #查询康东（1155）
+	set_variable = {
+		PRC_g_selected_state = 1155 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1156 = { #查询康西（1156）
+	set_variable = {
+		PRC_g_selected_state = 1156 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1157 = { #查询柴达木（1157）
+	set_variable = {
+		PRC_g_selected_state = 1157 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1158 = { #查询玉树（1158）
+	set_variable = {
+		PRC_g_selected_state = 1158 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1159 = { #查询果洛（1159）
+	set_variable = {
+		PRC_g_selected_state = 1159 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1160 = { #查询哈尔滨（1160）
+	set_variable = {
+		PRC_g_selected_state = 1160 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1161 = { #查询长沙（1161）
+	set_variable = {
+		PRC_g_selected_state = 1161 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1162 = { #查询靖远-固原（1162）
+	set_variable = {
+		PRC_g_selected_state = 1162 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1163 = { #查询甘南（1163）
+	set_variable = {
+		PRC_g_selected_state = 1163 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1164 = { #查询吴起-保安（1164）
+	set_variable = {
+		PRC_g_selected_state = 1164 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1171 = { #查询崇左（1171）
+	set_variable = {
+		PRC_g_selected_state = 1171 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1172 = { #查询贵港（1172）
+	set_variable = {
+		PRC_g_selected_state = 1172 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1176 = { #查询天津（1176）
+	set_variable = {
+		PRC_g_selected_state = 1176 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+
+PRC_g_query_select_1177 = { #查询徐州（1177）
+	set_variable = {
+		PRC_g_selected_state = 1177 #当前查询的地区
+	}
+	set_country_flag = PRC_g_query_open
+	PRC_g_refresh_map_query = yes #刷新所查询地区的当前状态
+}
+# <<< 游击队：游击队公共与整编效果

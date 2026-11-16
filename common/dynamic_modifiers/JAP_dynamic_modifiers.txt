@@ -111,3 +111,43 @@ JAP_pacific_southern_route_disrupted_modifier = {
 	icon = GFX_modifiers_sabotaged_resource
 	state_resources_factor = -0.65
 }
+
+# >>> 游击队：游击队反制政策修正
+PRC_g_three_alls = { #三光政策
+	icon = GFX_modifiers_sabotaged_resource
+	enable = {
+		always = yes
+	}
+	resistance_growth = 0.10 #抵抗度增长
+	compliance_growth = -0.20 #顺从度增长
+}
+
+PRC_g_goodwill = { #亲善政策
+	icon = GFX_idea_prepared_for_operation
+	enable = {
+		ROOT = {
+			controller = {
+				PRC_g_is_japanese_side = yes #日本或其附属及盟友
+			}
+		}
+	}
+	remove_trigger = {
+		ROOT = {
+			NOT = {
+				controller = {
+					PRC_g_is_japanese_side = yes #日本或其附属及盟友
+				}
+			}
+		}
+	}
+	resistance_growth = -0.10 #抵抗度增长
+	compliance_growth = 0.10 #顺从度增长
+}
+
+PRC_g_goodwill_factory_use = { #亲善政策的工厂占用
+	enable = {
+		always = yes
+	}
+	civilian_factory_use = PRC_g_goodwill_factory_cost #占用民用工厂
+}
+# <<< 游击队：游击队反制政策修正

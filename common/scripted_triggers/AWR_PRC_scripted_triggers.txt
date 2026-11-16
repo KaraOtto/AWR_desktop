@@ -474,4 +474,226 @@ PRC_revolution_target_in_oceania = {
 	}
 }
 
+# >>> 游击队：游击队共用条件
+PRC_g_is_side = { #中共或其附属国
+	OR = {
+		tag = PRC
+		is_subject_of = PRC
+	}
+}
 
+PRC_g_is_japanese_side = { #日本或其附属及盟友
+	OR = {
+		tag = JAP
+		is_subject_of = JAP
+		is_in_faction_with = JAP
+	}
+}
+
+PRC_g_can_operate = { #中共已解锁且未暂停游击队活动
+	PRC = {
+		exists = yes
+		has_completed_focus = PRC_partisan_offensive
+		NOT = {
+			has_country_flag = PRC_g_suspended
+		}
+	}
+}
+
+PRC_g_state_blocked = { #地区被反制措施封锁
+	OR = {
+		has_dynamic_modifier = {
+			modifier = PRC_g_anticommunist_garrison
+		}
+		has_dynamic_modifier = {
+			modifier = PRC_g_three_alls
+		}
+		has_dynamic_modifier = {
+			modifier = PRC_g_goodwill
+		}
+	}
+}
+
+PRC_g_state_active = { #地区存在可运作的游击队活动
+	has_dynamic_modifier = {
+		modifier = PRC_g_activity
+	}
+	NOT = {
+		PRC_g_state_blocked = yes #地区被反制措施封锁
+	}
+}
+
+PRC_g_state_supported = { #地区支持共产党且未被封锁
+	PRC_g_state_active = yes #地区存在可运作的游击队活动
+	has_dynamic_modifier = {
+		modifier = PRC_g_support
+	}
+}
+
+PRC_g_has_preparation = { #拥有至少一级行动准备
+	OR = {
+		has_idea = prepared_for_operation_1
+		has_idea = prepared_for_operation_2
+		has_idea = prepared_for_operation_3
+	}
+}
+
+PRC_g_action_allowed = { #满足武装行动的共用前提
+	PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+	PRC_g_state_supported = yes #地区支持共产党且未被封锁
+	PRC = {
+		PRC_g_has_preparation = yes #拥有至少一级行动准备
+	}
+}
+
+PRC_g_can_amass_support = { #可以积累民众支持
+	PRC_g_can_operate = yes #中共已解锁且未暂停游击队活动
+	PRC_g_state_active = yes #地区存在可运作的游击队活动
+	NOT = {
+		has_dynamic_modifier = {
+			modifier = PRC_g_support
+		}
+	}
+	PRC = {
+		has_political_power > 24
+		NOT = {
+			has_country_flag = PRC_g_support_busy
+		}
+		NOT = {
+			has_country_flag = PRC_g_support_cooldown
+		}
+	}
+}
+
+PRC_g_can_attack = { #可以攻击当地敌军
+	PRC_g_action_allowed = yes #满足武装行动的共用前提
+	controller = {
+		has_war_with = PRC
+	}
+	PRC = {
+		command_power > 29
+	}
+}
+
+PRC_g_can_uprise = { #可以发动和平地区起义
+	PRC_g_action_allowed = yes #满足武装行动的共用前提
+	NOT = {
+		is_capital = yes
+	}
+	controller = {
+		NOT = {
+			OR = {
+				PRC_g_is_side = yes #中共或其附属国
+				has_war_with = PRC
+			}
+		}
+	}
+}
+
+PRC_g_can_wage_war = { #可以开展当地游击战
+	PRC_g_action_allowed = yes #满足武装行动的共用前提
+	NOT = {
+		is_capital = yes
+	}
+	check_variable = {
+		PRC_g_warfare_level < 3 #当地游击战等级
+	}
+	PRC = {
+		has_political_power > 49
+		command_power > 49
+	}
+}
+
+PRC_g_can_sabotage = { #可以破坏当地工业
+	PRC_g_action_allowed = yes #满足武装行动的共用前提
+	controller = {
+		OR = {
+			tag = JAP
+			is_subject_of = JAP
+			has_war_with = PRC
+		}
+	}
+	PRC = {
+		command_power > 29
+	}
+}
+
+PRC_g_can_view_map = { #允许查看游击队势力地图
+	OR = {
+		is_debug = yes
+		AND = {
+			has_global_flag = PRC_g_system_unlocked
+			OR = {
+				tag = PRC
+				tag = CHI
+				PRC_g_is_japanese_side = yes #日本或其附属及盟友
+			}
+		}
+	}
+}
+
+PRC_g_can_view_support = { #仅中共可查看群众支持
+	tag = PRC
+}
+
+PRC_g_can_view_garrison = { #中共与民国可查看反共驻军
+	OR = {
+		tag = PRC
+		tag = CHI
+	}
+}
+
+PRC_g_can_view_goodwill = { #中共与日方可查看亲善政策
+	OR = {
+		tag = PRC
+		AND = {
+			NOT = {
+				tag = CHI
+			}
+			PRC_g_is_japanese_side = yes #日本或其附属及盟友
+		}
+	}
+}
+
+PRC_g_first_stage_region = { #首批可渗透的战略区域
+	OR = {
+		region = 242
+		region = 243
+		region = 155
+		region = 244
+		region = 245
+		region = 143
+		region = 144
+		region = 247
+		region = 165
+	}
+}
+
+PRC_g_first_stage_controlled = { #首批区域全部由中共及附属国控制
+	NOT = {
+		any_state = {
+			PRC_g_first_stage_region = yes #首批可渗透的战略区域
+			NOT = {
+				controller = {
+					PRC_g_is_side = yes #中共或其附属国
+				}
+			}
+		}
+	}
+}
+
+PRC_g_china_state = { #中国地区范围
+	OR = {
+		has_state_flag = big_china_territory
+		is_core_of = CHI
+		is_core_of = PRC
+		is_core_of = SIK
+		is_core_of = TIB
+		is_core_of = MAN
+		is_core_of = MEN
+		is_core_of = MON
+		is_core_of = TAN
+		is_core_of = SND
+	}
+}
+# <<< 游击队：游击队共用条件
