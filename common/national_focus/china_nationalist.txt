@@ -2583,7 +2583,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {	#国民党第五次二中全会
 		id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 		icon = GFX_goal_CHI_GZZYZZB
 		cost = 3
@@ -2600,10 +2600,12 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		completion_reward = { }
+		completion_reward = { 
+			#
+		}
 	}
 
-	focus = {
+	focus = {#加强新生活运动
 		id = CHI_reinforce_new_life_movement
 		icon = GFX_focus_new_life_movement
 		cost = 5
@@ -2635,7 +2637,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#加强中央俱乐部
 		id = strengthen_cc
 		icon = GFX_focus_cc_clique
 		cost = 5
@@ -2679,7 +2681,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#成立中统局
 		id = found_cbis
 		icon = GFX_focus_jongtong
 		cost = 5
@@ -2732,7 +2734,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#强化国民党
 		id = strengthen_the_kmt
 		icon = GFX_focus_chi_jongtong_sectors
 		cost = 5
@@ -2808,7 +2810,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#政治教化
 		id = political_indoctrination
 		icon = GFX_focus_chi_party_net
 		cost = 5
@@ -2880,7 +2882,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#以党治国
 		id = CHI_yi_dang_zhi_guo_focus
 		icon = GFX_focus_yi_dang_zhi_guo
 		cost = 10.00
@@ -2950,7 +2952,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#强化复兴社
 		id = strengthen_bs
 		icon = GFX_focus_bs
 		cost = 5
@@ -2994,7 +2996,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#成立军统局
 		id = found_mbis
 		icon = GFX_focus_juntong
 		cost = 5
@@ -3082,7 +3084,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#别动队编组
 		id = CHI_commando_unit_organization
 		icon = GFX_goal_CHI_JSWYH
 		cost = 5
@@ -3102,7 +3104,7 @@ focus_tree = {
 		completion_reward = { }
 	}
 
-	focus = {
+	focus = {#间谍网
 		id = espionage_network
 		icon = GFX_goal_jiandiewang
 		cost = 5
@@ -3163,7 +3165,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#蓝衣社发动政变
 		id = CHI_axis_help_party_focus
 		icon = GFX_focus_CHI_lanyishe
 		cost = 5
@@ -3243,7 +3245,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#临时全国代表大会
 		id = centralizing_power
 		icon = GFX_goal_dangguo
 		cost = 3.6
@@ -3298,7 +3300,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#宪法起草委员会
 		id = CHI_constit_draft_focus
 		icon = GFX_focus_weiyuanhui
 		cost = 5
@@ -3362,7 +3364,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = {#国民参政会
 		id = CHI_national_political_council_focus
 		icon = GFX_focus_CHI_canzhenghui
 		cost = 5
@@ -3419,6 +3421,44 @@ focus_tree = {
 			set_variable = {
 				chi_constitutionalization_pressure = 0
 			}
+		}
+	}
+
+	focus = {	#为宪政做准备
+		id = CHI_prepare_for_constitionalization_focus
+		icon = GFX_focus_begin_demo
+		cost = 3.6
+		prerequisite = {
+			focus = CHI_institutional_reform_focus
+		}
+		mutually_exclusive = {
+			#focus = CHI_prepare_for_constitionalization_focus
+			focus = CHI_one_party_tutelage
+		}
+		x = 30
+		y = 0
+		ai_will_do = {
+			factor = 40
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			#add_ideas = new_culture
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_political_power = 75
+			add_stability = 0.05
+			set_variable = {
+				chi_constitutionalization_pressure = 0
+			}
+			custom_effect_tooltip = CHI_reset_constitutionalize_pressure
+			add_ideas = CHI_Defender_Legacy_of_DR_SunYatsen
+		}
+		available = {
+		}
+		bypass = {
 		}
 	}
 	
@@ -3596,7 +3636,7 @@ focus_tree = {
 	}
 		
 ## 戡乱战争 ##
-focus = {
+focus = {#戡乱总动员
 	id = CHI_neizhanzongdongyuan
 	icon = GFX_goal_CHI_ZXDZBYB
 	x = 56
@@ -3623,7 +3663,7 @@ focus = {
 	}
 }
 
-focus = {
+focus = {#指导战略部署
 	id = CHI_CCW_directing_our_operations
 	icon = GFX_focus_CHI_CCW_directing_our_operations
 	relative_position_id = CHI_neizhanzongdongyuan
@@ -3653,7 +3693,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#结束新生活运动
 	id = CHI_CCW_end_the_ko_hsin_movement
 	icon = GFX_goal_CHI_XDD
 	relative_position_id = CHI_CCW_directing_our_operations
@@ -3689,7 +3729,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#继续新生活运动
 	id = CHI_CCW_continue_the_ko_hsin_movement
 	icon = GFX_goal_CHI_YDZ
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3727,7 +3767,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#动员戡乱时期临时条款
 	id = CHI_CCW_temporary_provisions
 	icon = GFX_focus_CHI_50s_politics_reform
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3758,7 +3798,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#动员地主民兵
 	id = CHI_CCW_call_up_domestic_militias
 	icon = GFX_focus_CHI_CCW_call_up_domestic_militias
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3813,7 +3853,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#掀起反共高潮
 	id = CHI_CCW_anti_communist_crusade
 	icon = GFX_focus_CHI_CCW_anti_communist_crusade
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3847,7 +3887,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#动员起来剿匪
 	id = CHI_CCW_mobilize_to_suppress_bandits
 	icon = GFX_goal_YUN_army_expansion
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3892,7 +3932,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#请求美国介入
 	id = CHI_CCW_left_stranded
 	icon = GFX_goal_CHI_BFXC
 	relative_position_id = CHI_CCW_end_the_ko_hsin_movement
@@ -3930,7 +3970,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#东方闪电战
 	id = CHI_CCW_a_quick_and_swift_war
 	icon = GFX_focus_CHI_CCW_a_quick_and_swift_war
 	relative_position_id = CHI_CCW_directing_our_operations
@@ -3985,7 +4025,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#东北攻势
 	id = CHI_CCW_take_over_dongbei
 	icon = GFX_focus_CHI_CCW_take_over_dongbei
 	relative_position_id = CHI_CCW_a_quick_and_swift_war
@@ -4074,7 +4114,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#攻克延安
 	id = CHI_CCW_blitz_yenan
 	icon = GFX_focus_CHI_CCW_blitz_yenan
 	relative_position_id = CHI_CCW_a_quick_and_swift_war
@@ -4154,7 +4194,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#徐蚌会战
 	id = CHI_CCW_shantung_campaign
 	icon = GFX_focus_CHI_CCW_shantung_campaign
 	relative_position_id = CHI_CCW_a_quick_and_swift_war
@@ -4226,7 +4266,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#希望攻势
 	id = CHI_CCW_hopeh_campaign
 	icon = GFX_focus_CHI_CCW_hopeh_campaign
 	relative_position_id = CHI_CCW_a_quick_and_swift_war
@@ -4291,7 +4331,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#西北起义
 	id = CHI_CCW_northwest_insurgency
 	icon = GFX_focus_CHI_CCW_northwest_insurgency
 	relative_position_id = CHI_CCW_a_quick_and_swift_war
@@ -4363,7 +4403,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#武装起义者
 	id = CHI_CCW_arm_the_insurgents
 	icon = GFX_goal_YUN_arms_scavenging
 	relative_position_id = CHI_CCW_northwest_insurgency
@@ -4414,7 +4454,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#宣传马虎山
 	id = CHI_CCW_promote_ma_hushan
 	icon = GFX_focus_CHI_CCW_promote_ma_hushan
 	relative_position_id = CHI_CCW_northwest_insurgency
@@ -4507,7 +4547,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#经国的上海冒险
 	id = CHI_CCW_ching_kuos_shanghai_adventure
 	icon = GFX_focus_CHI_CCW_ching_kuos_shanghai_adventure
 	relative_position_id = CHI_CCW_directing_our_operations
@@ -4554,7 +4594,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#走为上计
 	id = CHI_CCW_the_retreat_to_taipei
 	icon = GFX_focus_CHI_CCW_the_retreat_to_taipei
 	relative_position_id = CHI_CCW_directing_our_operations
@@ -4587,7 +4627,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#战时征用
 	id = CHI_CCW_plunder_the_cities
 	icon = GFX_focus_BRA_utilize_security_law
 	relative_position_id = CHI_CCW_the_retreat_to_taipei
@@ -4636,7 +4676,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#征用黄金
 	id = CHI_CCW_seize_the_gold
 	icon = GFX_focus_usa_reestablish_the_gold_standard
 	relative_position_id = CHI_CCW_the_retreat_to_taipei
@@ -4676,7 +4716,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#进一步的货币转移
 	id = CHI_CCW_further_monetary_transfer
 	icon = GFX_focus_mex_privatisation
 	relative_position_id = CHI_CCW_seize_the_gold
@@ -4725,7 +4765,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#战略转进
 	id = CHI_CCW_fighting_retreat
 	icon = GFX_goal_YUN_dadao_march
 	relative_position_id = CHI_CCW_the_retreat_to_taipei
@@ -4758,7 +4798,7 @@ focus = {
 		}
 	}
 }
-focus = {
+focus = {#摧毁工业
 	id = CHI_CCW_destroy_industrial_sites
 	icon = GFX_focus_CHI_CCW_destroy_industrial_sites
 	relative_position_id = CHI_CCW_plunder_the_cities
@@ -4851,11 +4891,11 @@ focus = {
 
 
 #核心圈
-	focus = {
+	focus = {#党国核心集团
 		id = CHI_PEO  
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		cost = 5	
-		x = -14
+		x = 14
 		y = 5
 		relative_position_id = CHI_one_party_tutelage
 		prerequisite = {
@@ -4911,7 +4951,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导陈诚
 		id = CHI_chen_cheng1
 		icon = GFX_goal_chencheng	
 		x = -6
@@ -5002,7 +5042,7 @@ focus = {
 			}
 		}
 	}	
-	focus = {
+	focus = {#改良火炮
 		id = CHI_chen_cheng2
 		icon = GFX_focus_SWE_let_fly_all_guns
 		text_icon = GER_inner_circle_focus_style
@@ -5050,7 +5090,7 @@ focus = {
 			}			
 		}
 	}
-	focus = {
+	focus = {#建立德式新军
 		id = CHI_chen_cheng3
 		icon = GFX_focus_GER_appease_the_wehrmacht	
 		text_icon = GER_inner_circle_focus_style
@@ -5099,7 +5139,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导蒋经国
 		id = CHI_jiang_jingguo1
 		icon = GFX_goal_CHI_inner_jiangjingguo	
 		x = -4
@@ -5188,7 +5228,7 @@ focus = {
 			}	
 		}
 	}
-	focus = {
+	focus = {#减租减息
 		id = CHI_jiang_jingguo2
 		icon = GFX_focus_SOV_breadbasket_of_the_union	
 		text_icon = GER_inner_circle_focus_style
@@ -5236,7 +5276,7 @@ focus = {
 			}				
 		}
 	}
-	focus = {
+	focus = {#实行新政
 		id = CHI_jiang_jingguo3
 		icon = GFX_focus_generic_full_employment	
 		text_icon = GER_inner_circle_focus_style
@@ -5285,7 +5325,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导陈果夫
 		id = CHI_chen_guofu1
 		icon = GFX_goal_chenguofu
 		x = -2
@@ -5373,7 +5413,7 @@ focus = {
 			}
 		}
 	}
-	focus = {
+	focus = {#委员长至上
 		id = CHI_chen_guofu2
 		icon = GFX_focus_GER_expand_ss_security_duties	
 		text_icon = GER_inner_circle_focus_style
@@ -5421,7 +5461,7 @@ focus = {
 			}			
 		}
 	}
-	focus = {
+	focus = {#忠于领袖
 		id = CHI_chen_guofu3
 		icon = GFX_focus_generic_total_war	
 		text_icon = GER_inner_circle_focus_style
@@ -5470,7 +5510,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导戴笠
 		id = CHI_dai_li1
 		icon = GFX_goal_CHI_inner_daichunfeng
 		prerequisite = { focus = CHI_PEO }		
@@ -5558,7 +5598,7 @@ focus = {
 			}
 		}
 	}
-	focus = {
+	focus = {#隐蔽战线
 		id = CHI_dai_li2
 		icon = GFX_focus_generic_secret_service_agency
 		text_icon = GER_inner_circle_focus_style
@@ -5607,7 +5647,7 @@ focus = {
 			}			
 		}
 	}
-	focus = {
+	focus = {#捍卫党国
 		id = CHI_dai_li3
 		icon = GFX_goal_generic_intelligence_exchange
 		text_icon = GER_inner_circle_focus_style
@@ -5657,7 +5697,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导何应钦
 		id = CHI_he_yingqin1
 		icon = GFX_goal_heyingqin
 		prerequisite = { focus =  CHI_PEO }		
@@ -5745,7 +5785,7 @@ focus = {
 			}
 		}
 	}
-	focus = {
+	focus = {#国民革命军司令
 		id = CHI_he_yingqin2
 		icon = GFX_focus_secret_rearmament
 		text_icon = GER_inner_circle_focus_style
@@ -5793,7 +5833,7 @@ focus = {
 			}	
 		}
 	}
-	focus = {
+	focus = {#党国之军
 		id = CHI_he_yingqin3
 		icon = GFX_focus_CHL_departemento_de_las_tropas_nacistas_de_asalto
 		text_icon = GER_inner_circle_focus_style
@@ -5842,7 +5882,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导宋子文
 		id = CHI_song_ziwen1
 		icon = GFX_goal_CHI_inner_songziwen
 		prerequisite = { focus =  CHI_PEO }	
@@ -5931,7 +5971,7 @@ focus = {
 			}
 		}
 	}
-	focus = {
+	focus = {#扩大外交部
 		id = CHI_song_ziwen2
 		icon = GFX_goal_generic_improve_relations
 		text_icon = GER_inner_circle_focus_style
@@ -5980,7 +6020,7 @@ focus = {
 			}	
 		}
 	}
-	focus = {
+	focus = {#现代化外交
 		id = CHI_song_ziwen3
 		icon = GFX_focus_ARG_defense_and_democracy
 		text_icon = GER_inner_circle_focus_style
@@ -6030,7 +6070,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#全国领导孔祥熙
 		id = CHI_kong_xiangxi1
 		icon = GFX_goal_kongxiangxi
 		prerequisite = { focus =  CHI_PEO }		
@@ -6120,7 +6160,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#经济改革
 		id = CHI_kong_xiangxi2
 		icon = GFX_focus_usa_reestablish_the_gold_standard
 		text_icon = GER_inner_circle_focus_style
@@ -6171,7 +6211,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#促进市场
 		id = CHI_kong_xiangxi3
 		icon = GFX_focus_mex_privatisation
 		text_icon = GER_inner_circle_focus_style
@@ -6221,7 +6261,7 @@ focus = {
 		}
 	}
 
-	focus = {
+	focus = {#亲爱精诚
 		id = CHI_PEO2
 		icon = GFX_goal_CHI_ZSHPGMTXH
 		prerequisite = { focus =  CHI_chen_cheng3 }
@@ -7141,6 +7181,10 @@ focus = {
 			army_experience = 15
 			add_political_power = 50
 			unlock_decision_tooltip = CHI_army_reform
+			unlock_decision_tooltip = CHI_officer_corps_reform_1
+			unlock_decision_tooltip = CHI_rectify_warlord_conduct
+			unlock_decision_tooltip = CHI_eradicate_hooligan_habits
+			unlock_decision_tooltip = CHI_root_out_bandit_conduct
 		}
 	}
 
@@ -7170,11 +7214,76 @@ focus = {
 		}
 	}
 
+	focus = {	#全国性陆军重组
+		id = CHI_national_army_reorganization
+		icon = GFX_CHI_Chinese_National_Army
+		cost = 25
+		relative_position_id = CHI_nra_army
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = CHI_nra_army	#国民革命军陆军
+		}
+		available = {
+			NOT = {
+				has_country_flag = CHI_nra_army_factions_unifying	#正在团结各派军队
+			}
+		}
+		select_effect = {
+			add_timed_idea = {
+				idea = national_army_reorganization_idea
+				days = 175
+			}
+			add_stability = -0.25
+			add_war_support = -0.25
+		}
+		completion_reward = {
+			remove_ideas = national_army_reorganization_idea
+			add_stability = 0.30
+			add_war_support = 0.30
+			# 与战时团结决议共用标记，派系惩罚只能移除一次。
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = CHI_nra_army_factions_unified	#已消除派系林立的军队
+					}
+				}
+				custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+				add_to_variable = {
+					CHI_nra_army_army_attack_factor = 0.15
+					tooltip = army_attack_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_defence_factor = 0.15
+					tooltip = army_defence_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_breakthrough_factor = 0.15
+					tooltip = breakthrough_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_org_factor = 0.15
+					tooltip = army_org_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_coordination_bonus = 0.15
+					tooltip = coordination_bonus_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_initiative_factor = 0.15
+					tooltip = initiative_factor_tt
+				}
+				set_country_flag = CHI_nra_army_factions_unified	#已消除派系林立的军队
+				force_update_dynamic_modifier = yes
+			}
+		}
+	}
+
 	focus = {	#步兵整训方案
 		id = CHI_infantry_training_plan 
 		icon = GFX_focus_CHI_enforce_virtues
 		cost = 5
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = CHI_nra_army
 		prerequisite = {
@@ -7208,7 +7317,7 @@ focus = {
 		id = CHI_division_area_system #师管区体系
 		icon = GFX_goal_CHI_fangqv
 		cost = 5
-		x = -3
+		x = -2
 		y = 1
 		relative_position_id = CHI_infantry_training_plan
 		prerequisite = {
@@ -7317,7 +7426,7 @@ focus = {
 		id = CHI_armored_forces_preparatory_office #装甲兵筹备处
 		icon = GFX_focus_generic_tank_assembly
 		cost = 5
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = CHI_nra_army
 		prerequisite = {
@@ -7350,7 +7459,7 @@ focus = {
 		id = CHI_mechanization_school #机械化学校
 		icon = GFX_goal_CHI_JXH
 		cost = 5
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = CHI_armored_forces_preparatory_office
 		prerequisite = {
@@ -7455,7 +7564,7 @@ focus = {
 		id = CHI_ministry_of_operations #军令部
 		icon = GFX_goal_generic_position_armies
 		cost = 5
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = CHI_infantry_training_plan
 		prerequisite = {
@@ -7482,7 +7591,7 @@ focus = {
 		id = CHI_ministry_of_military_administration #军政部
 		icon = GFX_goal_CHI_JSWYH
 		cost = 5
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = CHI_armored_forces_preparatory_office
 		prerequisite = {
@@ -8590,7 +8699,9 @@ focus = {
 			FOCUS_FILTER_NAVY_XP
 		}
 
-		completion_reward = { }
+		completion_reward = { 
+			#
+		}
 	}
 
 	focus = {
@@ -8619,6 +8730,22 @@ focus = {
 		}
 
 		completion_reward = { }
+	}
+
+	focus = {	#国军重生
+		id = CHI_nra_army_rebirth
+		icon = GFX_focus_NRA
+		cost = 5
+		x = 95
+		y = 11
+
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
 	}
 
 	#外交线

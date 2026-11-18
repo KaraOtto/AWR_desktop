@@ -1501,6 +1501,7 @@ PRC_g_countermeasures = { #敌后治安与游击队反制
 			}
 			set_country_flag = {
 				flag = PRC_g_expulsion_cooldown
+				value = 1
 				days = 60
 			}
 		}
@@ -1544,3 +1545,928 @@ PRC_g_countermeasures = { #敌后治安与游击队反制
 	}
 }
 # <<< 游击队：国民政府反制游击队决议
+
+# >>> 国军改革：直接调整国民革命军陆军动态修正
+CHI_nra_army_reform_category = {	#国民革命军改革
+	CHI_unite_army_factions = {	#团结各派军队
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 100
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 100
+			}
+		}
+		custom_cost_text = CHI_nra_army_unite_cost
+		fire_only_once = yes
+		visible = {
+			has_war_with = JAP
+			NOT = {
+				has_completed_focus = CHI_national_army_reorganization	#全国性陆军重组
+			}
+			NOT = {
+				has_country_flag = CHI_nra_army_factions_unified	#已消除派系林立的军队
+			}
+		}
+		available = {
+			has_war_with = JAP
+			NOT = {
+				has_army_experience < 100
+			}
+			NOT = {
+				has_idea = national_army_reorganization_idea
+			}
+			NOT = {
+				focus_progress = {
+					focus = CHI_national_army_reorganization	#全国性陆军重组
+					progress > 0
+				}
+			}
+		}
+		days_remove = 180
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = CHI_nra_army_factions_unifying	#正在团结各派军队
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = CHI_nra_army_factions_unified	#已消除派系林立的军队
+					}
+					NOT = {
+						has_completed_focus = CHI_national_army_reorganization	#全国性陆军重组
+					}
+				}
+				custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+				add_to_variable = {
+					CHI_nra_army_army_attack_factor = 0.15
+					tooltip = army_attack_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_defence_factor = 0.15
+					tooltip = army_defence_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_breakthrough_factor = 0.15
+					tooltip = breakthrough_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_army_org_factor = 0.15
+					tooltip = army_org_factor_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_coordination_bonus = 0.15
+					tooltip = coordination_bonus_tt
+				}
+				add_to_variable = {
+					CHI_nra_army_initiative_factor = 0.15
+					tooltip = initiative_factor_tt
+				}
+				force_update_dynamic_modifier = yes
+				set_country_flag = CHI_nra_army_factions_unified	#已消除派系林立的军队
+			}
+			clr_country_flag = CHI_nra_army_factions_unifying	#清除标记：正在团结各派军队
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_army_reform = {	#陆军改革
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 60
+			}
+		}
+		custom_cost_text = CHI_army_reform_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			NOT = {
+				has_country_flag = CHI_nra_army_training_reform_1_done	#已完成军事改革：第一阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 60
+			}
+		}
+		complete_effect = {
+			army_experience = -60
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_training_time_factor = -0.1
+				tooltip = training_time_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_training = 0.1
+				tooltip = CHI_nra_army_max_training_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_dig_in_factor = 0.05
+				tooltip = max_dig_in_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_training_reform_1_done	#已完成军事改革：第一阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_army_reform_2 = {	#陆军改革2
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 120
+			}
+		}
+		custom_cost_text = CHI_army_reform_2_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_training_reform_1_done	#已完成军事改革：第一阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_training_reform_2_done	#已完成军事改革：第二阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 120
+			}
+		}
+		complete_effect = {
+			army_experience = -120
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_training_time_factor = -0.1
+				tooltip = training_time_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_training = 0.1
+				tooltip = CHI_nra_army_max_training_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_dig_in_factor = 0.05
+				tooltip = max_dig_in_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_training_reform_2_done	#已完成军事改革：第二阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_army_reform_3 = {	#陆军改革3
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 180
+			}
+		}
+		custom_cost_text = CHI_army_reform_3_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_training_reform_2_done	#已完成军事改革：第二阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_training_reform_3_done	#已完成军事改革：第三阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 180
+			}
+		}
+		complete_effect = {
+			army_experience = -180
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_training_time_factor = -0.1
+				tooltip = training_time_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_training = 0.1
+				tooltip = CHI_nra_army_max_training_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_dig_in_factor = 0.05
+				tooltip = max_dig_in_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.1
+				tooltip = coordination_bonus_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.1
+				tooltip = initiative_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_training_reform_3_done	#已完成军事改革：第三阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_army_reform_4 = {	#陆军改革4
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 240
+			}
+		}
+		custom_cost_text = CHI_army_reform_4_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_training_reform_3_done	#已完成军事改革：第三阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_training_reform_4_done	#已完成军事改革：第四阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 240
+			}
+		}
+		complete_effect = {
+			army_experience = -240
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_training_time_factor = -0.1
+				tooltip = training_time_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_training = 0.1
+				tooltip = CHI_nra_army_max_training_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_dig_in_factor = 0.05
+				tooltip = max_dig_in_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_training_reform_4_done	#已完成军事改革：第四阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_army_reform_5 = {	#陆军改革5
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 300
+			}
+		}
+		custom_cost_text = CHI_army_reform_5_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_training_reform_4_done	#已完成军事改革：第四阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_training_reform_5_done	#已完成军事改革：第五阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 300
+			}
+		}
+		complete_effect = {
+			army_experience = -300
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_training_time_factor = -0.1
+				tooltip = training_time_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_training = 0.1
+				tooltip = CHI_nra_army_max_training_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_dig_in_factor = 0.05
+				tooltip = max_dig_in_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_training_reform_5_done	#已完成军事改革：第五阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_officer_corps_reform_1 = {	#军官团改革：第一阶段
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 30
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 30
+			}
+		}
+		custom_cost_text = CHI_officer_corps_reform_1_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			NOT = {
+				has_country_flag = CHI_nra_army_officers_reform_1_done	#已完成军官团改革：第一阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 30
+			}
+		}
+		complete_effect = {
+			army_experience = -30
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_experience_gain_army_factor = 0.1
+				tooltip = experience_gain_army_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_land_mastery_gain_factor = 0.1
+				tooltip = CHI_nra_army_mastery_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_planning_speed = 0.05
+				tooltip = planning_speed_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_planning = 0.05
+				tooltip = max_planning_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_officers_reform_1_done	#已完成军官团改革：第一阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_officer_corps_reform_2 = {	#军官团改革：第二阶段
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 60
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 60
+			}
+		}
+		custom_cost_text = CHI_officer_corps_reform_2_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_officers_reform_1_done	#已完成军官团改革：第一阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_officers_reform_2_done	#已完成军官团改革：第二阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 60
+			}
+		}
+		complete_effect = {
+			army_experience = -60
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_experience_gain_army_factor = 0.1
+				tooltip = experience_gain_army_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_land_mastery_gain_factor = 0.1
+				tooltip = CHI_nra_army_mastery_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_planning_speed = 0.05
+				tooltip = planning_speed_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_planning = 0.05
+				tooltip = max_planning_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_officers_reform_2_done	#已完成军官团改革：第二阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_officer_corps_reform_3 = {	#军官团改革：第三阶段
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 90
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 90
+			}
+		}
+		custom_cost_text = CHI_officer_corps_reform_3_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_officers_reform_2_done	#已完成军官团改革：第二阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_officers_reform_3_done	#已完成军官团改革：第三阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 90
+			}
+		}
+		complete_effect = {
+			army_experience = -90
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_experience_gain_army_factor = 0.1
+				tooltip = experience_gain_army_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_land_mastery_gain_factor = 0.1
+				tooltip = CHI_nra_army_mastery_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_planning_speed = 0.05
+				tooltip = planning_speed_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_planning = 0.05
+				tooltip = max_planning_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_officers_reform_3_done	#已完成军官团改革：第三阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_officer_corps_reform_4 = {	#军官团改革：第四阶段
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 120
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 120
+			}
+		}
+		custom_cost_text = CHI_officer_corps_reform_4_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_officers_reform_3_done	#已完成军官团改革：第三阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_officers_reform_4_done	#已完成军官团改革：第四阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 120
+			}
+		}
+		complete_effect = {
+			army_experience = -120
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_experience_gain_army_factor = 0.1
+				tooltip = experience_gain_army_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_land_mastery_gain_factor = 0.1
+				tooltip = CHI_nra_army_mastery_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_planning_speed = 0.05
+				tooltip = planning_speed_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_planning = 0.05
+				tooltip = max_planning_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_officers_reform_4_done	#已完成军官团改革：第四阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_officer_corps_reform_5 = {	#军官团改革：第五阶段
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 150
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 150
+			}
+		}
+		custom_cost_text = CHI_officer_corps_reform_5_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_country_flag = CHI_nra_army_officers_reform_4_done	#已完成军官团改革：第四阶段
+			NOT = {
+				has_country_flag = CHI_nra_army_officers_reform_5_done	#已完成军官团改革：第五阶段
+			}
+		}
+		available = {
+			NOT = {
+				has_army_experience < 150
+			}
+		}
+		complete_effect = {
+			army_experience = -150
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_experience_gain_army_factor = 0.1
+				tooltip = experience_gain_army_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_land_mastery_gain_factor = 0.1
+				tooltip = CHI_nra_army_mastery_change_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_planning_speed = 0.05
+				tooltip = planning_speed_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_max_planning = 0.05
+				tooltip = max_planning_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_nra_army_officers_reform_5_done	#已完成军官团改革：第五阶段
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_rectify_warlord_conduct = {	#整肃军阀作风
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 100
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 50
+			}
+		}
+		custom_cost_text = CHI_rectify_warlord_conduct_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			NOT = {
+				has_country_flag = CHI_rectify_warlord_conduct_done	#已整肃军阀作风
+			}
+		}
+		available = {
+			check_variable = {
+				CHI_army_corruption < 0.30
+			}
+			NOT = {
+				has_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			}
+			NOT = {
+				has_idea = CHI_nra_army_reform_pain
+			}
+			NOT = {
+				command_power < 50
+			}
+		}
+		days_remove = 120
+		complete_effect = {
+			add_command_power = -50
+			set_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			add_timed_idea = {
+				idea = CHI_nra_army_reform_pain	#改革的阵痛
+				days = 120
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_initiative_factor = 0.05
+				tooltip = initiative_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_coordination_bonus = 0.05
+				tooltip = coordination_bonus_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_rectify_warlord_conduct_done	#已整肃军阀作风
+			clr_country_flag = CHI_nra_army_discipline_reform_in_progress	#清除标记：正在整顿军队作风
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_eradicate_hooligan_habits = {	#革除流氓习气
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				has_army_experience < 100
+			}
+		}
+		custom_cost_text = CHI_eradicate_hooligan_habits_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			NOT = {
+				has_country_flag = CHI_eradicate_hooligan_habits_done	#已革除流氓习气
+			}
+		}
+		available = {
+			check_variable = {
+				CHI_army_corruption < 0.30
+			}
+			NOT = {
+				has_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			}
+			NOT = {
+				has_idea = CHI_nra_army_reform_pain
+			}
+			NOT = {
+				has_army_experience < 100
+			}
+		}
+		days_remove = 120
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			add_timed_idea = {
+				idea = CHI_nra_army_reform_pain	#改革的阵痛
+				days = 120
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_army_org_factor = 0.05
+				tooltip = army_org_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_morale_factor = 0.05
+				tooltip = army_morale_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_eradicate_hooligan_habits_done	#已革除流氓习气
+			clr_country_flag = CHI_nra_army_discipline_reform_in_progress	#清除标记：正在整顿军队作风
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	CHI_root_out_bandit_conduct = {	#根除兵匪作风
+		icon = generic_army_support
+		allowed = {
+			original_tag = CHI
+		}
+		cost = 0
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		custom_cost_text = CHI_root_out_bandit_conduct_cost
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			NOT = {
+				has_country_flag = CHI_root_out_bandit_conduct_done	#已根除兵匪作风
+			}
+		}
+		available = {
+			check_variable = {
+				CHI_army_corruption < 0.30
+			}
+			NOT = {
+				has_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			}
+			NOT = {
+				has_idea = CHI_nra_army_reform_pain
+			}
+			NOT = {
+				command_power < 100
+			}
+		}
+		days_remove = 120
+		complete_effect = {
+			add_command_power = -100
+			set_country_flag = CHI_nra_army_discipline_reform_in_progress	#正在整顿军队作风
+			add_timed_idea = {
+				idea = CHI_nra_army_reform_pain	#改革的阵痛
+				days = 120
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = CHI_nra_army_dynamic_modifier_tt
+			add_to_variable = {
+				CHI_nra_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_to_variable = {
+				CHI_nra_army_supply_consumption_factor = 0.05
+				tooltip = supply_consumption_factor_tt
+			}
+			force_update_dynamic_modifier = yes
+			set_country_flag = CHI_root_out_bandit_conduct_done	#已根除兵匪作风
+			clr_country_flag = CHI_nra_army_discipline_reform_in_progress	#清除标记：正在整顿军队作风
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+}
+# <<< 国军改革：直接调整国民革命军陆军动态修正

@@ -89,3 +89,22 @@ attack_prc_area_plan = {	#戡乱动员令
 	}
 	priority = 999
 }
+
+# 国军改革
+CHI_nra_army_reform_category = {	#国民革命军改革
+	icon = generic_army_support
+	picture = GFX_decision_cat_picture_chi_army_reform
+	allowed = {
+		original_tag = CHI
+	}
+	visible = {
+		has_dynamic_modifier = {
+			modifier = CHI_nra_army_dynamic_modifier	#国民革命军陆军
+		}
+		OR = {
+			has_completed_focus = CHI_reorganize_nra	#改组国民革命军
+			has_war_with = JAP
+		}
+	}
+	priority = 20
+}
