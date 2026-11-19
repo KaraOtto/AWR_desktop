@@ -2546,7 +2546,7 @@ focus_tree = {
 			focus = CHI_prepare_for_constitionalization_focus
 			focus = CHI_support_kmt_opposition_focus
 		}
-		x = 40
+		x = 50
 		y = 0
 
 		ai_will_do = {
@@ -2612,9 +2612,9 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_one_party_tutelage
 		}
-		x = 5
+		x = 0
 		y = 1
-		relative_position_id = CHI_one_party_tutelage
+		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 
 		ai_will_do = {
 			factor = 80
@@ -2644,7 +2644,7 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 		}
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 
@@ -2738,12 +2738,12 @@ focus_tree = {
 		id = strengthen_the_kmt
 		icon = GFX_focus_chi_jongtong_sectors
 		cost = 5
+		relative_position_id = found_cbis
 		prerequisite = {
-			focus = strengthen_cc
+			focus = found_cbis
 		}
 		x = -1
-		y = 2
-		relative_position_id = strengthen_cc
+		y = 1
 
 		ai_will_do = {
 			factor = 10
@@ -2817,8 +2817,11 @@ focus_tree = {
 		prerequisite = {
 			focus = strengthen_cc
 		}
-		x = 1
-		y = 2
+		prerequisite = {
+			focus = strengthen_bs
+		}
+		x = 4
+		y = 1
 		relative_position_id = strengthen_cc
 
 		ai_will_do = {
@@ -2882,22 +2885,64 @@ focus_tree = {
 		}
 	}
 
+	focus = {	#成立三民主义青年团
+		id = CHI_establish_Youth_League_of_the_Three_Principles_of_the_People
+		icon = GFX_focus_CHI_establish_Youth_League_of_the_Three_Principles_of_the_People
+		cost = 5
+		relative_position_id = found_cbis
+		prerequisite = {
+			focus = found_cbis
+		}
+		mutually_exclusive = {
+			focus = CHI_expand_the_influence_of_Blue_Shirt_Party
+		}
+		x = 1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#党团统一
+		id = CHI_unity_of_the_party_and_youth_league
+		icon = GFX_focus_CHI_unity_of_the_party_and_youth_league
+		cost = 5
+		relative_position_id = found_cbis
+		prerequisite = {
+			focus = strengthen_the_kmt
+		}
+		prerequisite = {
+			focus = CHI_establish_Youth_League_of_the_Three_Principles_of_the_People
+		}
+		
+		x = 0
+		y = 2
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
 	focus = {#以党治国
 		id = CHI_yi_dang_zhi_guo_focus
 		icon = GFX_focus_yi_dang_zhi_guo
 		cost = 10.00
+
 		prerequisite = {
-			focus = found_cbis
+			focus = CHI_unity_of_the_party_and_youth_league
 		}
 		prerequisite = {
 			focus = centralizing_power
 		}
-		mutually_exclusive = {
-			focus = CHI_axis_help_party_focus
-		}
+		
 		x = 0
-		y = 2
-		relative_position_id = found_cbis
+		y = 1
+		relative_position_id = CHI_unity_of_the_party_and_youth_league
 
 		ai_will_do = {
 			factor = 100
@@ -2959,7 +3004,7 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 		}
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = CHI_fifth_plenary_session_of_the_second_KMT_central_committee
 
@@ -2996,7 +3041,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {#成立军统局
+	focus = {	#成立军统局
 		id = found_mbis
 		icon = GFX_focus_juntong
 		cost = 5
@@ -3091,8 +3136,8 @@ focus_tree = {
 		prerequisite = {
 			focus = strengthen_bs
 		}
-		x = -1
-		y = 2
+		x = -2
+		y = 1
 		relative_position_id = strengthen_bs
 
 		ai_will_do = {
@@ -3111,8 +3156,8 @@ focus_tree = {
 		prerequisite = {
 			focus = strengthen_bs
 		}
-		x = 1
-		y = 2
+		x = 2
+		y = 1
 		relative_position_id = strengthen_bs
 
 		ai_will_do = {
@@ -3165,21 +3210,87 @@ focus_tree = {
 		}
 	}
 
+	focus = {	#扩大蓝衣社影响
+		id = CHI_expand_the_influence_of_Blue_Shirt_Party
+		icon = GFX_focus_CHI_expand_the_influence_of_Blue_Shirt_Party
+		cost = 5
+		relative_position_id = found_mbis
+		prerequisite = {
+			focus = found_mbis
+		}
+		x = 0
+		y = 1
+		mutually_exclusive = {
+			focus = CHI_establish_Youth_League_of_the_Three_Principles_of_the_People
+		}
+		completion_reward = { 
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#推行领袖原则
+		id = CHI_promote_leadership_reasons
+		icon = GFX_focus_CHI_promote_leadership_reasons
+		cost = 5
+		relative_position_id = CHI_expand_the_influence_of_Blue_Shirt_Party
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = CHI_expand_the_influence_of_Blue_Shirt_Party
+		}
+
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+
+	}
+
+	focus = {	#建立准军事青年组织
+		id = CHI_establish_paramilitary_youth_organizations
+		icon = GFX_focus_CHI_establish_paramilitary_youth_organizations
+		cost = 5
+		relative_position_id = CHI_expand_the_influence_of_Blue_Shirt_Party
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = CHI_expand_the_influence_of_Blue_Shirt_Party
+		}
+
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+
+	}
+
 	focus = {#蓝衣社发动政变
 		id = CHI_axis_help_party_focus
 		icon = GFX_focus_CHI_lanyishe
 		cost = 5
+		
+		prerequisite = {
+			focus = CHI_establish_paramilitary_youth_organizations
+		}
+		prerequisite = {
+			focus = CHI_promote_leadership_reasons
+		}
 		prerequisite = {
 			focus = centralizing_power
 		}
-		prerequisite = {
-			focus = found_mbis
-		}
-		mutually_exclusive = {
-			focus = CHI_yi_dang_zhi_guo_focus
-		}
+		
 		x = 0
-		y = 2
+		y = 3
 		relative_position_id = found_mbis
 
 		ai_will_do = {
@@ -3195,16 +3306,18 @@ focus_tree = {
 			hidden_effect = {
 				set_cosmetic_tag = CHI_BS #change to ROC flag
 			}
-			country_event = { id = rcmchina.375 }
-				add_stability = 0.25
-				add_ideas = chi_defeat_jap111
-				set_politics = {
-					ruling_party = fascism
-					elections_allowed = no
-				}
-				set_rule = {
-					can_send_volunteers = yes
-				}
+			country_event = { 
+				id = rcmchina.375 
+			}
+			add_stability = 0.25
+			add_ideas = chi_defeat_jap111
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			set_rule = {
+				can_send_volunteers = yes
+			}
 		}
 		available = {
 			NOT = {
@@ -3250,14 +3363,12 @@ focus_tree = {
 		icon = GFX_goal_dangguo
 		cost = 3.6
 		prerequisite = {
-			focus = strengthen_cc
+			focus = political_indoctrination
 		}
-		prerequisite = {
-			focus = strengthen_bs
-		}
-		x = -2
-		y = 1
-		relative_position_id = strengthen_bs
+
+		x = 0
+		y = 2
+		relative_position_id = political_indoctrination
 
 		ai_will_do = {
 			factor = 10
@@ -3307,7 +3418,7 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_one_party_tutelage
 		}
-		x = -5
+		x = -10
 		y = 1
 		relative_position_id = CHI_one_party_tutelage
 
@@ -6700,7 +6811,7 @@ focus = {#摧毁工业
 	focus = { #黄金十年的尾声
 		id = CHI_the_end_of_the_golden_decade
 		icon = GFX_focus_GER_wirtschaftswunder
-		x = 67
+		x = 77
 		y = 0
 		cost = 1
 
@@ -7344,7 +7455,7 @@ focus = {#摧毁工业
 		id = CHI_reorganize_nra
 		icon = GFX_focus_NRA
 		cost = 3
-		x = 95
+		x = 105
 		y = 0
 
 		ai_will_do = {
