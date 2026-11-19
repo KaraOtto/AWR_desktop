@@ -1932,7 +1932,7 @@ characters = {
 		name = SOV_vasily_blyukher
 		portraits = {
 			army = {
-				small = "GFX_portrait_SOV_blyukher_small" #"gfx/interface/ideas/idea_SOV_blyukher.dds"
+				small = "GFX_portrait_SOV_blyukher_small"
 				large = "GFX_portrait_SOV_blyukher"
 			}
 		}
@@ -5094,5 +5094,247 @@ characters = {
 	
 		}
 
+	}
+
+	SOV_kalashnikov= {
+		name=SOV_kalashnikov
+
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/idea_kalashnikov.dds"
+			}
+		}
+		allowed_civil_war = {
+			OR = { 
+				SOV_advisor_is_aligned_centre = yes 
+			}
+			has_government = communism
+		}
+		advisor = {
+			cost = 150
+			slot = theorist
+			idea_token = kalashnikov
+			ledger = army
+			allowed = {
+				original_tag = SOV
+			}
+			available = {
+
+			}
+
+			research_bonus = {
+				infantry_weapons = 0.25
+			}
+			traits = {
+				sov_revolutionary_small_arms_designer
+			}
+			ai_will_do = {
+			factor = 200
+			}
+		}		
+	}
+	SOV_Andrei_Andreyev = {
+		name=SOV_Andrei_Andreyev
+
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/SOV_Andrei_Andreyev.png"
+			}
+		}
+		allowed_civil_war = {
+			OR = { 
+				SOV_advisor_is_aligned_centre = yes 
+			}
+			has_government = communism
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Andrei_Andreyev
+			allowed = {
+				original_tag = SOV
+			}
+			
+			visible = {
+
+			}
+			available = {
+			has_country_leader = { ruling_only = yes character = SOV_iosif_stalin }
+			}
+			
+			traits = {
+				SOV_supreme_central_secretary
+			}
+			ai_will_do = {
+			factor = 50
+			}
+		}
+	}
+	SOV_Zhdanov = {
+		name=SOV_Zhdanov
+
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/SOV_Andrey_Zdanov.png"
+			}
+		}
+        allowed_civil_war = {
+			OR = { 
+				SOV_advisor_is_aligned_centre = yes 
+			}
+			has_government = communism
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Zhdanov
+			allowed = {
+				original_tag = SOV
+			}
+			
+			visible = {
+
+			}
+			available = {
+			has_country_leader = { ruling_only = yes character = SOV_iosif_stalin }
+			}
+			
+			traits = {
+				Heir_to_the_steel_dogma
+			}
+           
+			ai_will_do = {
+			factor = 500
+			}
+		}
+	}	
+	SOV_Malenkov = {
+		name=SOV_Malenkov
+
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/SOV_Georgy_Malenkov.png"
+			}
+		}
+        allowed_civil_war = {
+			OR = { 
+				SOV_advisor_is_aligned_centre = yes 
+			}
+			has_government = communism
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Malenkov
+			allowed = {
+				original_tag = SOV
+			}
+			
+			visible = {
+				NOT = {
+					has_character_flag = SOV_character_purged_flag 
+				}
+			}
+			available = {
+			has_country_leader = { ruling_only = yes character = SOV_iosif_stalin }
+			}
+			
+			traits = {
+				chairman_of_the_council_of_ministers
+			}
+			ai_will_do = {
+			factor = 0
+			}
+		}
+	}
+	SOV_Ordzhonikidze = {
+		name=SOV_Ordzhonikidze
+		portraits = {
+			army = {
+				small =  "gfx/leaders/SOV/SOV_Sergo_Ordzhonikidze.png"
+			}
+		}
+		allowed_civil_war = {
+			OR = { 
+				SOV_advisor_is_aligned_centre = yes 
+			}
+			has_government = communism
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Ordzhonikidze
+			allowed = {
+				original_tag = SOV
+			}
+			
+			visible = {
+	
+			}
+			available = {
+				has_country_leader = { ruling_only = yes character = SOV_iosif_stalin }
+			}
+			traits = {
+				SOV_founder_of_heavy_industry
+			}
+			ai_will_do = {
+			factor = 500
+			}
+		}
+	}
+	SOV_Viktor_Abakumov = {
+		name=SOV_Viktor_Abakumov
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/SOV_Viktor_Abakumov.png"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Viktor_Abakumov
+			name = SOV_Viktor_Abakumov
+			allowed = {
+				original_tag = SOV
+			}
+			visible = {
+				
+			}
+			available = { 
+				has_completed_focus = SOV_nkvd_primacy
+			}
+
+			traits = {
+				bloody_against_spy_worker
+			}
+			ai_will_do = {
+				factor = 200
+			}
+		}
+	}
+	SOV_Dmitri_Ustinov = {
+		name=SOV_Dmitri_Ustinov
+		portraits = {
+			army = {
+				small = "gfx/leaders/SOV/SOV_Dmitri_Ustinov.png"
+            }
+        }
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_Dmitri_Ustinov
+			name = SOV_Dmitri_Ustinov
+			allowed = {
+				original_tag = SOV
+			}
+			visible = {
+				
+			}
+			available = { 
+
+			}
+
+			traits = { committee_of_the_arms_industry }
+			ai_will_do = {
+			factor = 3
+			}
+		}
 	}
 }
