@@ -3784,7 +3784,7 @@ focus_tree = {
 			focus = CHI_the_real_sanminism
 		}
 		relative_position_id = CHI_the_real_sanminism
-		x = -3
+		x = -5
 		y = 1
 		ai_will_do = {
 			factor = 10
@@ -3803,7 +3803,7 @@ focus_tree = {
 	focus = {	#推行平均地权
 		id = georgist_tax_reform
 		icon = GFX_focus_pingjundiquan
-		cost = 7.15
+		cost = 5
 		prerequisite = {
 			focus = CHI_minshengism_focus
 		}
@@ -3825,24 +3825,276 @@ focus_tree = {
 			}
 		}
 		available = {
+			#
 		}
 		bypass = {
+			#
 		}
 	}
-	focus = {	#生产分配社会化
-		id = health_care_program
-		icon = GFX_focus_sanming-socialism
-		cost = 7.15
+
+	focus = {	#市场经济主导
+		id = CHI_dominated_by_the_market_economy
+		icon = GFX_focus_CHI_dominated_by_the_market_economy
+		cost = 5
 		prerequisite = {
 			focus = georgist_tax_reform
 		}
 		relative_position_id = georgist_tax_reform
+		mutually_exclusive = {
+			focus = CHI_state_owned_economy_dominates
+		}
+		x = 2
+		y = 1
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#取消经济特许
+		id = CHI_cancel_the_economic_concession
+		icon = GFX_focus_CHI_cancel_the_economic_concession
+		cost = 5
+		prerequisite = {
+			focus = CHI_dominated_by_the_market_economy
+		}
+		relative_position_id = CHI_dominated_by_the_market_economy
+		x = -1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#拆分垄断企业
+		id = CHI_split_up_monopolistic_enterprises
+		icon = GFX_focus_CHI_split_up_monopolistic_enterprises
+		cost = 5
+		prerequisite = {
+			focus = CHI_cancel_the_economic_concession
+		}
+		relative_position_id = CHI_cancel_the_economic_concession
 		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#完善市场经济法
+		id = CHI_improve_the_market_economy_law
+		icon = GFX_focus_CHI_improve_the_market_economy_law
+		cost = 5
+		prerequisite = {
+			focus = CHI_dominated_by_the_market_economy
+		}
+		relative_position_id = CHI_dominated_by_the_market_economy
+		x = 1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			has_completed_focus = CHI_anti_monopoly_law
+		}
+	}
+
+	focus = {	#扶持中小企业
+		id = CHI_support_small_enterprises
+		icon = GFX_focus_CHI_support_small_enterprises
+		cost = 5
+		prerequisite = {
+			focus = CHI_improve_the_market_economy_law
+		}
+		relative_position_id = CHI_improve_the_market_economy_law
+		x = 0
+		y = 1
+
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#竞争性市场经济体制
+		id = CHI_competitive_market_economy_system
+		icon = GFX_focus_CHI_competitive_market_economy_system
+		cost = 5
+		relative_position_id = CHI_dominated_by_the_market_economy
+		prerequisite = {
+			focus = CHI_split_up_monopolistic_enterprises
+		}
+		prerequisite = {
+			focus = CHI_support_small_enterprises
+		}
+		x = 0
+		y = 3
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国营经济主导
+		id = CHI_state_owned_economy_dominates
+		icon = GFX_focus_CHI_state_owned_economy_dominates
+		cost = 5
+		prerequisite = {
+			focus = georgist_tax_reform
+		}
+		relative_position_id = georgist_tax_reform
+		mutually_exclusive = {
+			focus = CHI_dominated_by_the_market_economy
+		}
+		x = -2
+		y = 1
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#央行国有化
+		id = CHI_nationalization_of_Central_Bank
+		icon = GFX_focus_CHI_nationalization_of_Central_Bank
+		cost = 5
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = CHI_state_owned_economy_dominates
+		}
+		relative_position_id = CHI_state_owned_economy_dominates
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#收回开采权
+		id = CHI_reclaim_the_right_to_exploit_strategic_resources
+		icon = GFX_focus_CHI_reclaim_the_right_to_exploit_strategic_resources
+		cost = 5
+		prerequisite = {
+			focus = CHI_state_owned_economy_dominates
+		}
+		relative_position_id = CHI_state_owned_economy_dominates
+		x = -1
+		y = 2
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#实施国家工业发展计划
+		id = CHI_implement_the_national_industrial_development_plan
+		icon = GFX_focus_CHI_implement_the_national_industrial_development_plan
+		cost = 5
+		prerequisite = {
+			focus = CHI_state_owned_economy_dominates
+		}
+		relative_position_id = CHI_state_owned_economy_dominates
+		x = 1
+		y = 2
+		completion_reward = { 
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国家资本主义体制
+		id = CHI_state_capitalism_system
+		icon = GFX_focus_CHI_state_capitalism_system
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = CHI_nationalization_of_Central_Bank
+		prerequisite = {
+			focus = CHI_nationalization_of_Central_Bank
+		}
+		prerequisite = {
+			focus = CHI_reclaim_the_right_to_exploit_strategic_resources
+		}
+		prerequisite = {
+			focus = CHI_implement_the_national_industrial_development_plan
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#十大建设
+		id = CHI_TEN_Major_Construction_Projects
+		icon = GFX_focus_CHI_TEN_Major_Construction_Projects
+		cost = 5
+		x = 0
+		y = 5
+		prerequisite = {
+			focus = CHI_competitive_market_economy_system
+		}
+		prerequisite = {
+			focus = CHI_state_capitalism_system
+		}
+		relative_position_id = georgist_tax_reform
+
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	
+	focus = {	#生产分配社会化
+		id = health_care_program
+		icon = GFX_focus_sanming-socialism
+		cost = 5
+		prerequisite = {
+			focus = CHI_TEN_Major_Construction_Projects
+		}
+		relative_position_id = CHI_TEN_Major_Construction_Projects
+
+		mutually_exclusive = {
+			focus = CHI_opening_up_focus
+		}
+		mutually_exclusive = {
+			focus = CHI_protect_local_enterprises
+		}
+		x = -2
 		y = 1
 		ai_will_do = {
 			factor = 20
 		}
 		search_filters = { FOCUS_FILTER_MANPOWER }
+
+
 		completion_reward = {
 			swap_ideas = {
 				add_idea = CHI_minshengism3
@@ -3853,18 +4105,26 @@ focus_tree = {
 			num_of_factories > 45
 		}
 		bypass = {
+			#
 		}
 	}
+
 	focus = {	#开放与利用外资
 		id = CHI_opening_up_focus
 		icon = GFX_focus_opening_up
-		cost = 10.00
+		cost = 5
 		prerequisite = {
+			focus = CHI_TEN_Major_Construction_Projects
+		}
+		relative_position_id = CHI_TEN_Major_Construction_Projects
+		x = 2
+		y = 1
+		mutually_exclusive = {
 			focus = health_care_program
 		}
-		relative_position_id = health_care_program
-		x = 0
-		y = 1
+		mutually_exclusive = {
+			focus = CHI_protect_local_enterprises
+		}
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 10
@@ -3886,6 +4146,41 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {	#保护本土企业
+		id = CHI_protect_local_enterprises
+		icon = GFX_focus_CHI_protect_local_enterprises
+		cost = 5
+		prerequisite = {
+			focus = CHI_TEN_Major_Construction_Projects
+		}
+		relative_position_id = CHI_TEN_Major_Construction_Projects
+		mutually_exclusive = {
+			focus = health_care_program
+		}
+		mutually_exclusive = {
+			focus = CHI_opening_up_focus
+		}
+		x = 0
+		y = 1
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			#
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			#
+		}
+
+		available = {
+			#
+		}
+	}
+
 	focus = {	#民权主义
 		id = CHI_minquanism_focus
 		icon = GFX_focus_minquanzhuyi
@@ -3894,7 +4189,7 @@ focus_tree = {
 			focus = CHI_the_real_sanminism
 		}
 		relative_position_id = CHI_the_real_sanminism
-		x = 3
+		x = 5
 		y = 1
 		ai_will_do = {
 			factor = 10
@@ -3918,6 +4213,565 @@ focus_tree = {
 		bypass = {
 		}
 	}
+	#这里注意到时候做出五权的决议
+	focus = {	#落实权能区分	
+		id = CHI_politics_and_governance_focus
+		icon = GFX_focus_quanneng
+		cost = 5
+		prerequisite = {
+			focus = CHI_minquanism_focus
+		}
+		relative_position_id = CHI_minquanism_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.15
+			add_political_power = 220
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#终止动员戡乱
+		id = CHI_stop_civil_war_law
+		icon = GFX_focus_CHI_stop_civil_war_law
+		cost = 5
+		relative_position_id = CHI_politics_and_governance_focus
+		prerequisite = {
+			focus = CHI_politics_and_governance_focus
+		}
+		mutually_exclusive = {
+			focus = CHI_maintain_civil_war_law
+		}
+		x = -2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#统一中国
+		}
+	}
+
+	focus = {	#还政于民
+		id = CHI_return_power_to_the_people
+		icon = GFX_focus_CHI_return_power_to_the_people
+		cost = 5
+		prerequisite = {
+			focus = CHI_stop_civil_war_law
+		}
+		relative_position_id = CHI_stop_civil_war_law
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	#民主化第一阶段
+	focus = {	#保障人民自由
+		id = CHI_guarantee_people_freedom
+		icon = GFX_focus_CHI_guarantee_people_freedom
+		cost = 3
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = CHI_return_power_to_the_people
+		}
+		relative_position_id = CHI_return_power_to_the_people
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#确立司法独立
+		id = CHI_establish_judicial_independence
+		icon = GFX_focus_CHI_establish_judicial_independence
+		cost = 3
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = CHI_return_power_to_the_people
+		}
+		relative_position_id = CHI_return_power_to_the_people
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#军队国家化
+		id = CHI_nationalization_of_the_millitary
+		icon = GFX_focus_CHI_nationalization_of_the_millitary
+		cost = 4
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = CHI_return_power_to_the_people
+		}
+		relative_position_id = CHI_return_power_to_the_people
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	#民主化第二阶段
+	focus = {	#开放政党政治
+		id = CHI_open_party_politics
+		icon = GFX_focus_CHI_open_party_politics
+		cost = 2
+		relative_position_id = CHI_establish_judicial_independence
+		prerequisite = {
+			focus = CHI_guarantee_people_freedom
+		}
+		prerequisite = {
+			focus = CHI_establish_judicial_independence
+		}
+		prerequisite = {
+			focus = CHI_nationalization_of_the_millitary
+		}
+		x = -3
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#开放政党政治
+		id = CHI_expand_grassroots_elections
+		icon = GFX_focus_CHI_expand_grassroots_elections
+		cost = 2
+		relative_position_id = CHI_establish_judicial_independence
+		prerequisite = {
+			focus = CHI_guarantee_people_freedom
+		}
+		prerequisite = {
+			focus = CHI_establish_judicial_independence
+		}
+		prerequisite = {
+			focus = CHI_nationalization_of_the_millitary
+		}
+		x = -1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#修订选举法
+		id = CHI_revise_the_electoral_law
+		icon = GFX_focus_CHI_revise_the_electoral_law
+		cost = 2
+		relative_position_id = CHI_establish_judicial_independence
+		prerequisite = {
+			focus = CHI_guarantee_people_freedom
+		}
+		prerequisite = {
+			focus = CHI_establish_judicial_independence
+		}
+		prerequisite = {
+			focus = CHI_nationalization_of_the_millitary
+		}
+		x = 1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#确保新闻自由
+		id = CHI_the_fourth_right_two
+		icon = GFX_focus_CHI_the_fourth_right
+		cost = 2
+		relative_position_id = CHI_establish_judicial_independence
+		prerequisite = {
+			focus = CHI_guarantee_people_freedom
+		}
+		prerequisite = {
+			focus = CHI_establish_judicial_independence
+		}
+		prerequisite = {
+			focus = CHI_nationalization_of_the_millitary
+		}
+		x = 3
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+		bypass = {
+			has_completed_focus = CHI_the_fourth_right
+		}
+	}
+
+	focus = {	#党政分离
+		id = CHI_separate_the_government_from_the_KMT
+		icon = GFX_focus_CHI_separate_the_government_from_the_KMT
+		cost = 5
+		relative_position_id = CHI_establish_judicial_independence
+		prerequisite = {
+			focus = CHI_open_party_politics
+		}
+		prerequisite = {
+			focus = CHI_expand_grassroots_elections
+		}
+		prerequisite = {
+			focus = CHI_revise_the_electoral_law
+		}
+		prerequisite = {
+			focus = CHI_the_fourth_right_two
+		}
+
+		x = 0
+		y = 2
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#第一次全国大选
+		id = CHI_the_first_national_general_election
+		icon = GFX_focus_CHI_the_first_national_general_election
+			cost = 10.00
+		prerequisite = {
+			focus = CHI_separate_the_government_from_the_KMT
+		}
+		relative_position_id = CHI_separate_the_government_from_the_KMT
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#民主灯塔
+		id = CHI_lighthouse_of_democracy_focus
+		icon = GFX_focus_demo_dengta
+		cost = 10.00
+		prerequisite = {
+			focus = CHI_the_first_national_general_election
+		}
+		relative_position_id = CHI_the_first_national_general_election
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		select_effect = {
+			set_country_flag = { flag = no_election_event_for_now_flag value = 1 days = 80 }
+			country_event = rcmchina_nomination_convention.1
+			set_country_flag = election_about_to_start
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = -50
+			add_ideas = CHI_Shanchuanzhuangli			
+			country_event = rcmchina_elections.0
+			custom_effect_tooltip = election_result_depends_on_popularity_tt
+			if = {
+				limit = {
+					has_idea = CHI_communist_in_government
+				}
+				custom_effect_tooltip = communist_will_end_you_tt
+			}
+			#set_politics = {
+			#	ruling_party = democratic
+			#	elections_allowed = yes
+			#}
+			#remove_ideas = the_blueshirts #todo: institutionalize BS decisions
+			#remove_ideas = central_club #todo: institutionalize CC decisions
+			unlock_decision_category_tooltip = RCM_remove_CC_and_BS
+			set_rule = {
+				can_send_volunteers = yes
+			}
+			if = {
+				limit = {
+					has_completed_focus = CHI_prepare_for_constitionalization_focus
+				}
+				add_timed_idea = {
+					days = 365
+					idea = CHI_will_of_sun_yat_sen
+				}
+			}
+			custom_effect_tooltip = CHI_yichudebuff_tt			
+			hidden_effect = {			
+			remove_ideas = CHI_neiluan1
+			remove_ideas = chi_baifeidaixing
+			remove_ideas = chi_fuyuanwenti	
+			}			
+		}
+		cancel_if_invalid = no
+		available = {
+			if = {
+				limit = {
+					has_country_flag = election_about_to_start
+				}
+				has_country_flag = nomination_process_is_done
+			}
+		}
+		cancel = {
+			#
+		}
+	}
+
+	focus = {	#维持动员戡乱
+		id = CHI_maintain_civil_war_law
+		icon = GFX_focus_CHI_maintain_civil_war_law
+		cost = 5
+		relative_position_id = CHI_politics_and_governance_focus
+		prerequisite = {
+			focus = CHI_politics_and_governance_focus
+		}
+		mutually_exclusive = {
+			focus = CHI_stop_civil_war_law
+		}
+		x = 2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#统一中国
+		}
+	}
+
+	focus = {	#改造国民党
+		id = CHI_reform_KMT
+		icon = GFX_focus_CHI_reform_KMT
+		cost = 5
+		prerequisite = {
+			focus = CHI_maintain_civil_war_law
+		}
+		relative_position_id = CHI_maintain_civil_war_law
+		x = 3
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#改组中央机构
+		id = CHI_reorganize_the_central_institutions
+		icon = GFX_focus_CHI_reorganize_the_central_institutions
+		cost = 3
+		relative_position_id = CHI_reform_KMT
+		prerequisite = {
+			focus = CHI_reform_KMT
+		}
+		x = -2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#整肃党纪
+		id = CHI_rectify_KMT_disciplince
+		icon = GFX_focus_CHI_rectify_KMT_disciplince
+		cost = 4
+		relative_position_id = CHI_reform_KMT
+		prerequisite = {
+			focus = CHI_reform_KMT
+		}
+		x = 0
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#确立民主集中制
+		id = CHI_establish_democratic_centralism
+		icon = GFX_focus_CHI_establish_democratic_centralism
+		cost = 3
+		relative_position_id = CHI_reform_KMT
+		prerequisite = {
+			focus = CHI_reform_KMT
+		}
+		x = 2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#军服从党
+		id = CHI_army_hear_from_KMT
+		icon = GFX_focus_CHI_army_hear_from_KMT
+		cost = 5
+		relative_position_id = CHI_establish_democratic_centralism
+		prerequisite = {
+			focus = CHI_establish_democratic_centralism
+		}
+		prerequisite = {
+			focus = CHI_yi_dang_zhi_guo_focus
+		}
+		x = 2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#重建国民党基层组织
+		id = CHI_rebuild_KMT_grassroots_organizations
+		icon = GFX_focus_CHI_rebuild_KMT_grassroots_organizations
+		relative_position_id = CHI_rectify_KMT_disciplince
+		prerequisite = {
+			focus = CHI_reorganize_the_central_institutions
+		}
+		prerequisite = {
+			focus = CHI_rectify_KMT_disciplince
+		}
+		prerequisite = {
+			focus = CHI_establish_democratic_centralism
+		}
+		x = -1
+		y = 1
+		cost = 5
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#发展新党员
+		id = CHI_develop_new_KMT_members
+		icon = GFX_focus_CHI_develop_new_KMT_members
+		relative_position_id = CHI_rectify_KMT_disciplince
+		prerequisite = {
+			focus = CHI_reorganize_the_central_institutions
+		}
+		prerequisite = {
+			focus = CHI_rectify_KMT_disciplince
+		}
+		prerequisite = {
+			focus = CHI_establish_democratic_centralism
+		}
+		x = 1
+		y = 1
+		cost = 5
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#推动党内民主
+		id = CHI_push_democracy_in_KMT
+		icon = GFX_focus_CHI_push_democracy_in_KMT
+		cost = 5
+		prerequisite = {
+			focus = CHI_rebuild_KMT_grassroots_organizations
+		}
+		prerequisite = {
+			focus = CHI_develop_new_KMT_members
+		}
+		prerequisite = {
+			focus = CHI_army_hear_from_KMT
+		}
+		relative_position_id = CHI_rectify_KMT_disciplince
+		mutually_exclusive = {
+			focus = CHI_follow_the_KMT_leader
+		}
+		x = 0
+		y = 2
+		cost = 5
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#坚持蒋中正的领导
+		id = CHI_follow_the_KMT_leader
+		icon = GFX_focus_CHI_follow_the_KMT_leader
+		cost = 5
+		prerequisite = {
+			focus = CHI_rebuild_KMT_grassroots_organizations
+		}
+		prerequisite = {
+			focus = CHI_develop_new_KMT_members
+		}
+		prerequisite = {
+			focus = CHI_army_hear_from_KMT
+		}
+		relative_position_id = CHI_rectify_KMT_disciplince
+		mutually_exclusive = {
+			focus = CHI_push_democracy_in_KMT
+		}
+		x = 2
+		y = 2
+		cost = 5
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#党国体制
+		id = CHI_party_state_systom
+		icon = GFX_focus_CHI_party_state_systom
+		cost = 5
+		prerequisite = {
+			focus = CHI_push_democracy_in_KMT
+			focus = CHI_follow_the_KMT_leader
+		}
+		relative_position_id = CHI_push_democracy_in_KMT
+		x = 1
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
 	focus = {	#民族主义
 		id = CHI_minzuism_focus
 		icon = GFX_focus_minzuism
@@ -3945,59 +4799,118 @@ focus_tree = {
 		bypass = {
 		}
 	}
-	focus = {	#落实权能区分
-		id = CHI_politics_and_governance_focus
-		icon = GFX_focus_quanneng
+
+	focus = {	#民族独立
+		id = CHI_national_independence
+		icon = GFX_focus_CHI_national_independence
 		cost = 5
 		prerequisite = {
-			focus = CHI_minquanism_focus
+			focus = CHI_minzuism_focus
 		}
-		relative_position_id = CHI_minquanism_focus
-		x = 0
+		relative_position_id = CHI_minzuism_focus
+		x = -2
 		y = 1
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		search_filters = { FOCUS_FILTER_STABILITY }
-		completion_reward = {
-			add_stability = 0.15
-			add_political_power = 220
+		completion_reward = { 
+			#
 		}
 		available = {
 			#
 		}
 	}
-	focus = {	#建构国族
-		id = CHI_chinese_national_focus
-		icon = GFX_focus_chinese_national
-		cost = 7.15
+
+	focus = {	#民族独立
+		id = CHI_national_equality
+		icon = GFX_focus_CHI_national_equality
+		cost = 5
 		prerequisite = {
 			focus = CHI_minzuism_focus
 		}
 		relative_position_id = CHI_minzuism_focus
 		x = 0
 		y = 1
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国家统一
+		id = CHI_national_unification
+		icon = GFX_focus_CHI_national_unification
+		cost = 5
+		prerequisite = {
+			focus = CHI_minzuism_focus
+		}
+		relative_position_id = CHI_minzuism_focus
+		x = 2
+		y = 1
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#建构国族
+		id = CHI_chinese_national_focus
+		icon = GFX_focus_chinese_national
+		cost = 5
+		prerequisite = {
+			focus = CHI_national_independence
+		}
+		prerequisite = {
+			focus = CHI_national_equality
+		}
+		relative_position_id = CHI_national_equality
+		x = -1
+		y = 1
+		search_filters = { 
+			#
+		}
 		completion_reward = {
 			add_ideas = CHI_chinese_national
 		}
 	}
+
 	focus = {	#再探中华文化
 		id = CHI_chinese_culture_focus
 		icon = GFX_focus_chinese_cultural
 		cost = 5.00
 		prerequisite = {
-			focus = CHI_chinese_national_focus
+			focus = CHI_national_unification
 		}
-		relative_position_id = CHI_chinese_national_focus
-		x = 0
+		relative_position_id = CHI_national_unification
+		x = -1
 		y = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 50
 			add_ideas = CHI_chinese_culture
 			set_country_flag = RCM_admin_reforms_decision_flag
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#中华儿女最伟大
+		id = CHI_Chinese_are_the_best
+		icon = GFX_focus_CHI_Chinese_are_the_best
+		cost = 5
+		relative_position_id = CHI_national_equality
+		prerequisite = {
+			focus = CHI_chinese_national_focus
+		}
+		prerequisite = {
+			focus = CHI_chinese_culture_focus
+		}
+		x = 0
+		y = 2
+		completion_reward = { 
+			#
 		}
 		available = {
 			#
