@@ -2931,7 +2931,7 @@ focus_tree = {
 	focus = {#以党治国
 		id = CHI_yi_dang_zhi_guo_focus
 		icon = GFX_focus_yi_dang_zhi_guo
-		cost = 10.00
+		cost = 5.00
 
 		prerequisite = {
 			focus = CHI_unity_of_the_party_and_youth_league
@@ -3417,6 +3417,7 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = CHI_one_party_tutelage
+			focus = CHI_prepare_for_constitionalization_focus
 		}
 		x = -10
 		y = 1
@@ -3748,6 +3749,258 @@ focus_tree = {
 		available = {
 		}
 		bypass = {
+		}
+	}
+
+	focus = {	#真正落实三民主义
+		id = CHI_the_real_sanminism
+		icon = GFX_focus_sanminism
+		cost = 5
+		prerequisite = {
+			focus = CHI_prepare_for_constitionalization_focus
+		}
+		relative_position_id = CHI_prepare_for_constitionalization_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = sanmin_doctrine
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+	focus = {	#民生主义
+		id = CHI_minshengism_focus
+		icon = GFX_focus_minshengism
+		cost = 5
+		prerequisite = {
+			focus = CHI_the_real_sanminism
+		}
+		relative_position_id = CHI_the_real_sanminism
+		x = -3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		#search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = CHI_minshengism
+		}
+		available = {
+			#
+		}
+		bypass = {
+			#
+		}
+	}
+	focus = {	#推行平均地权
+		id = georgist_tax_reform
+		icon = GFX_focus_pingjundiquan
+		cost = 7.15
+		prerequisite = {
+			focus = CHI_minshengism_focus
+		}
+		relative_position_id = CHI_minshengism_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 20
+		}
+		#search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = CHI_minshengism2
+				remove_idea = CHI_minshengism
+			}
+			add_timed_idea = {
+				idea = CHI_equalization_of_land_ownership
+				days = 365
+			}
+		}
+		available = {
+		}
+		bypass = {
+		}
+	}
+	focus = {	#生产分配社会化
+		id = health_care_program
+		icon = GFX_focus_sanming-socialism
+		cost = 7.15
+		prerequisite = {
+			focus = georgist_tax_reform
+		}
+		relative_position_id = georgist_tax_reform
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 20
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = CHI_minshengism3
+				remove_idea = CHI_minshengism2
+			}
+		}
+		available = {
+			num_of_factories > 45
+		}
+		bypass = {
+		}
+	}
+	focus = {	#开放与利用外资
+		id = CHI_opening_up_focus
+		icon = GFX_focus_opening_up
+		cost = 10.00
+		prerequisite = {
+			focus = health_care_program
+		}
+		relative_position_id = health_care_program
+		x = 0
+		y = 1
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			#
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 2
+			add_ideas = CHI_industrial_plan #实业计划
+
+			add_tech_bonus = {
+				name = SOV_industrial_modernization
+				ahead_reduction = 2
+				bonus = 1.0
+				uses = 3
+				category = industry
+			}
+		}
+	}
+	focus = {	#民权主义
+		id = CHI_minquanism_focus
+		icon = GFX_focus_minquanzhuyi
+		cost = 7.15
+		prerequisite = {
+			focus = CHI_the_real_sanminism
+		}
+		relative_position_id = CHI_the_real_sanminism
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = CHI_minquanism
+		}
+		available = {
+			if = {
+				limit = {
+					JAP = {
+						is_subject = no
+					}
+				}
+				NOT = {
+					is_in_faction_with = JAP
+				}
+			}
+		}
+		bypass = {
+		}
+	}
+	focus = {	#民族主义
+		id = CHI_minzuism_focus
+		icon = GFX_focus_minzuism
+		cost = 7.15
+		prerequisite = {
+			focus = CHI_the_real_sanminism
+		}
+		relative_position_id = CHI_the_real_sanminism
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = CHI_Minzuism
+			set_rule = {#guo
+				can_declare_war_on_same_ideology = yes
+			    can_puppet = yes
+			    can_only_justify_war_on_threat_country = no
+			}
+		}
+		available = {
+		}
+		bypass = {
+		}
+	}
+	focus = {	#落实权能区分
+		id = CHI_politics_and_governance_focus
+		icon = GFX_focus_quanneng
+		cost = 5
+		prerequisite = {
+			focus = CHI_minquanism_focus
+		}
+		relative_position_id = CHI_minquanism_focus
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.15
+			add_political_power = 220
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#建构国族
+		id = CHI_chinese_national_focus
+		icon = GFX_focus_chinese_national
+		cost = 7.15
+		prerequisite = {
+			focus = CHI_minzuism_focus
+		}
+		relative_position_id = CHI_minzuism_focus
+		x = 0
+		y = 1
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = CHI_chinese_national
+		}
+	}
+	focus = {	#再探中华文化
+		id = CHI_chinese_culture_focus
+		icon = GFX_focus_chinese_cultural
+		cost = 5.00
+		prerequisite = {
+			focus = CHI_chinese_national_focus
+		}
+		relative_position_id = CHI_chinese_national_focus
+		x = 0
+		y = 1
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = CHI_chinese_culture
+			set_country_flag = RCM_admin_reforms_decision_flag
+		}
+		available = {
+			#
 		}
 	}
 	
@@ -6621,11 +6874,12 @@ focus = {#摧毁工业
 		}
 
 		completion_reward = {
+			#
 		}
 	}
 
-	focus = {
-		id = CHI_higher_education_reorganization #高等教育整顿
+	focus = {	##高等教育整顿
+		id = CHI_higher_education_reorganization 
 		icon = GFX_focus_PRC_reestablish_moscow_sun_yat_sen_university
 		cost = 5
 		x = 1
@@ -9025,8 +9279,10 @@ focus = {#摧毁工业
 		id = CHI_nra_army_rebirth
 		icon = GFX_focus_NRA
 		cost = 5
-		x = 95
-		y = 11
+		x = 0
+		y = 1
+
+		relative_position_id = CHI_the_homeland
 
 		completion_reward = {
 			#
