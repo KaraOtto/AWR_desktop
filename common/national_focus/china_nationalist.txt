@@ -18,6 +18,37 @@ focus_tree = {
 		position = { x = 1000 y = 2000 }
 	}
 
+	shortcut = {
+		name = CHI_historical_shortcut
+		target = CHI_yi_dang_zhi_guo_focus
+		scroll_wheel_factor = 0.90
+	}
+	shortcut = {
+		name = CHI_democracy_shortcut
+		target = CHI_lighthouse_of_democracy_focus
+		scroll_wheel_factor = 0.85
+	}
+	shortcut = {
+		name = CHI_fascism_army_shortcut
+		target = CHI_axis_help_party_focus
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = CHI_prepare_war_for_JAP_shortcut
+		target = CHI_prepare_ready_to_against_JAP
+		scroll_wheel_factor = 0.75
+	}
+	shortcut = {
+		name = CHI_industry_shortcut
+		target = CHI_the_end_of_the_golden_decade
+		scroll_wheel_factor = 0.70
+	}
+	shortcut = {
+		name = CHI_army_shortcut
+		target = CHI_reorganize_nra
+		scroll_wheel_factor = 0.65
+	}
+
 	focus = {	#安内
 		id = CHI_pacify_the_interior
 		icon = GFX_focus_CHI_pacify_the_interior
@@ -2539,14 +2570,10 @@ focus_tree = {
 		id = CHI_one_party_tutelage
 		icon = GFX_focus_CHI_chongbaichiangkaishen
 		cost = 3.6
-		prerequisite = {
-			focus = CHI_institutional_reform_focus
-		}
 		mutually_exclusive = {
 			focus = CHI_prepare_for_constitionalization_focus
-			focus = CHI_support_kmt_opposition_focus
 		}
-		x = 50
+		x = 55
 		y = 0
 
 		ai_will_do = {
@@ -2554,6 +2581,7 @@ focus_tree = {
 		}
 
 		available = {
+			#
 		}
 
 		search_filters = {
@@ -2942,7 +2970,7 @@ focus_tree = {
 			focus = centralizing_power
 		}
 		
-		x = 0
+		x = -4
 		y = 1
 		relative_position_id = CHI_unity_of_the_party_and_youth_league
 
@@ -3010,7 +3038,7 @@ focus_tree = {
 			focus = CHI_declare_martial_law_focus
 		}
 		relative_position_id = CHI_yi_dang_zhi_guo_focus
-		x = 0
+		x = 4
 		y = 1
 		ai_will_do = {
 			factor = 100
@@ -3077,7 +3105,7 @@ focus_tree = {
 			focus = CHI_end_political_tutelage_focus
 		}
 		relative_position_id = CHI_yi_dang_zhi_guo_focus
-		x = 2
+		x = 0
 		y = 1
 		ai_will_do = {
 			factor = 100
@@ -3518,7 +3546,7 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_axis_help_party_focus
 		}
-		x = 2
+		x = 4
 		y = 1
 		completion_reward = { 
 			#
@@ -4007,7 +4035,7 @@ focus_tree = {
 		id = CHI_reback_sanmin_military_rule
 		icon = GFX_focus_CHI_reback_sanmin_military_rule
 		cost = 5
-		x = 0
+		x = -6
 		y = 1
 		relative_position_id = CHI_establish_the_supreme_millitary_and_political_council
 		prerequisite = {
@@ -4039,11 +4067,504 @@ focus_tree = {
 		}
 	}
 
+	focus = {	#民族军事复兴
+		id = CHI_army_nationalism
+		icon = GFX_focus_CHI_army_nationalism
+		cost = 5
+		x = 4
+		y = 1
+		relative_position_id = CHI_sanmin_rules_redefines
+		prerequisite = {
+			focus = CHI_sanmin_rules_redefines
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#鼓励青年参军
+		id = CHI_encourage_young_people_to_join_the_military
+		icon = GFX_focus_CHI_encourage_young_people_to_join_the_military
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_army_nationalism
+		prerequisite = {
+			focus = CHI_army_nationalism
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#多多益善
+		id = CHI_more_army
+		icon = GFX_focus_CHI_more_army
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_encourage_young_people_to_join_the_military
+		prerequisite = {
+			focus = CHI_encourage_young_people_to_join_the_military
+		}
+		mutually_exclusive = {
+			focus = CHI_sharper_army
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#优中选优
+		id = CHI_sharper_army
+		icon = GFX_focus_CHI_sharper_army
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_encourage_young_people_to_join_the_military
+		prerequisite = {
+			focus = CHI_encourage_young_people_to_join_the_military
+		}
+		mutually_exclusive = {
+			focus = CHI_more_army
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#继续国民革命事业
+		id = CHI_continue_Chinese_revolution
+		icon = GFX_focus_CHI_continue_Chinese_revolution
+		x = 0
+		y = 2
+		relative_position_id = CHI_encourage_young_people_to_join_the_military
+		prerequisite = {
+			focus = CHI_more_army
+			focus = CHI_sharper_army
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#统一中国
+		id = CHI_unify_China
+		icon = GFX_focus_CHI_unify_China
+		x = 0
+		y = 1
+		relative_position_id = CHI_continue_Chinese_revolution
+		prerequisite = {
+			focus = CHI_continue_Chinese_revolution
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#收复失地
+		id = CHI_recover_the_lost_territory
+		icon = GFX_focus_CHI_recover_the_lost_territory
+		x = 0
+		y = 1
+		relative_position_id = CHI_unify_China
+		prerequisite = {
+			focus = CHI_unify_China
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#确保国家生存空间
+		id = CHI_ensure_China_living_space
+		icon = GFX_focus_CHI_ensure_China_living_space
+		x = 0
+		y = 1
+		relative_position_id = CHI_recover_the_lost_territory
+		prerequisite = {
+			focus = CHI_recover_the_lost_territory
+		}
+		completion_reward = { 
+			#成立新阵营
+		}
+		available = {
+			#
+		}
+		bypass = {
+			is_in_faction = yes
+		}
+	}
+
+	focus = {	#军政保障民权
+		id = CHI_army_minquanism_focus
+		icon = GFX_focus_CHI_army_minquanism_focus
+		cost = 5
+		x = -4
+		y = 1
+		relative_position_id = CHI_sanmin_rules_redefines
+		prerequisite = {
+			focus = CHI_sanmin_rules_redefines
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#巩固最高军政委员会地位
+		id = CHI_consolidate_the_position_of_the_supreme_millitary_and_political_council
+		icon = GFX_focus_CHI_consolidate_the_position_of_the_supreme_millitary_and_political_council
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_army_minquanism_focus
+		prerequisite = {
+			focus = CHI_army_minquanism_focus
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#接管国家宣传部
+		id = CHI_overtake_national_publicity_department
+		icon = GFX_focus_CHI_overtake_national_publicity_department
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_consolidate_the_position_of_the_supreme_millitary_and_political_council
+		prerequisite = {
+			focus = CHI_consolidate_the_position_of_the_supreme_millitary_and_political_council
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#有国才有家
+		id = CHI_state_above_home
+		icon = GFX_focus_CHI_state_above_home
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = CHI_overtake_national_publicity_department
+		prerequisite = {
+			focus = CHI_overtake_national_publicity_department
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#华夏至危时刻
+		id = CHI_the_most_dangerous_moment_of_China
+		icon = GFX_focus_CHI_the_most_dangerous_moment_of_China
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_overtake_national_publicity_department
+		prerequisite = {
+			focus = CHI_overtake_national_publicity_department
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#军乃国民之盾
+		id = CHI_army_is_the_shield_of_the_people
+		icon = GFX_focus_CHI_army_is_the_shield_of_the_people
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = CHI_overtake_national_publicity_department
+		prerequisite = {
+			focus = CHI_overtake_national_publicity_department
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#军队参政合理化
+		id = CHI_rationalization_of_military_participation_in_politics
+		icon = GFX_focus_CHI_rationalization_of_military_participation_in_politics
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_most_dangerous_moment_of_China
+		prerequisite = {
+			focus = CHI_state_above_home
+		}
+		prerequisite = {
+			focus = CHI_the_most_dangerous_moment_of_China
+		}
+		prerequisite = {
+			focus = CHI_army_is_the_shield_of_the_people
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#结束非常时期
+		id = CHI_stop_special_policy
+		icon = GFX_focus_CHI_stop_special_policy
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_most_dangerous_moment_of_China
+		prerequisite = {
+			focus = CHI_state_above_home
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			has_war = no
+		}
+	}
+
+	focus = {	#推进社会去政治化
+		id = CHI_promote_the_depoliticization_of_society
+		icon = GFX_focus_CHI_promote_the_depoliticization_of_society
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_stop_special_policy
+		prerequisite = {
+			focus = CHI_stop_special_policy
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#以民生巩固军政
+		id = CHI_consolidate_the_military_government_by_livelihood
+		icon = GFX_focus_CHI_consolidate_the_military_government_by_livelihood
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_promote_the_depoliticization_of_society
+		prerequisite = {
+			focus = CHI_promote_the_depoliticization_of_society
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#国防经济建设
+		id = CHI_army_minshengism_focus
+		icon = GFX_focus_CHI_army_minshengism_focus
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_sanmin_rules_redefines
+		prerequisite = {
+			focus = CHI_sanmin_rules_redefines
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#全民动员令
+		id = CHI_national_mobilization_order
+		icon = GFX_focus_CHI_national_mobilization_order
+		cost = 1
+		x = -2
+		y = 1
+		relative_position_id = CHI_army_minshengism_focus
+		prerequisite = {
+			focus = CHI_army_minshengism_focus
+		}
+		completion_reward = { 
+			add_ideas = tot_economic_mobilisation
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#扩大国营经济
+		id = CHI_expand_state_owned_economy
+		icon = GFX_focus_CHI_expand_state_owned_economy
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_army_minshengism_focus
+		prerequisite = {
+			focus = CHI_army_minshengism_focus
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#军事优先
+		id = CHI_military_priority
+		icon = GFX_focus_CHI_military_priority
+		cost = 1
+		x = 2
+		y = 1
+		relative_position_id = CHI_army_minshengism_focus
+		prerequisite = {
+			focus = CHI_army_minshengism_focus
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#优化补给线
+		id = CHI_optimize_the_supply_line
+		icon = GFX_focus_CHI_optimize_the_supply_line
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = CHI_expand_state_owned_economy
+		prerequisite = {
+			focus = CHI_expand_state_owned_economy
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+	focus = {	#提升军械生产
+		id = CHI_enhance_the_production_of_military_equipment
+		icon = GFX_CHI_enhance_the_production_of_military_equipment
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = CHI_expand_state_owned_economy
+		prerequisite = {
+			focus = CHI_expand_state_owned_economy
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#专注军工建设
+		id = CHI_focus_on_building_army_factory
+		icon = GFX_focus_CHI_focus_on_building_army_factory
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = CHI_expand_state_owned_economy
+		prerequisite = {
+			focus = CHI_optimize_the_supply_line
+			focus = CHI_enhance_the_production_of_military_equipment
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#培养工人技能
+		id = CHI_cultivate_workers_skills
+		icon = GFX_focus_CHI_cultivate_workers_skills
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_focus_on_building_army_factory
+		prerequisite = {
+			focus = CHI_focus_on_building_army_factory
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
+	focus = {	#实行配给制
+		id = CHI_implement_the_rationing_system
+		icon = GFX_focus_CHI_implement_the_rationing_system
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = CHI_cultivate_workers_skills
+		prerequisite = {
+			focus = CHI_cultivate_workers_skills
+		}
+		completion_reward = { 
+			#
+		}
+		available = {
+			#
+		}
+	}
+
 	focus = {	#改造文官体系
 		id = CHI_rebuild_civil_serve_system
 		icon = GFX_focus_CHI_rebuild_civil_serve_system
 		cost = 5
-		x = -6
+		x = 0
 		y = 1
 		relative_position_id = CHI_establish_the_supreme_millitary_and_political_council
 		prerequisite = {
@@ -5382,7 +5903,7 @@ focus_tree = {
 		prerequisite = {
 			focus = CHI_yi_dang_zhi_guo_focus
 		}
-		x = 2
+		x = 1
 		y = 1
 		completion_reward = { 
 			#
@@ -5836,7 +6357,7 @@ focus = {#戡乱总动员
 	id = CHI_neizhanzongdongyuan
 	icon = GFX_goal_CHI_ZXDZBYB
 	x = 75
-	y = 13
+	y = 16
 	cost = 1
 
 	ai_will_do = {
@@ -7091,8 +7612,8 @@ focus = {#摧毁工业
 		id = CHI_PEO  
 		icon = GFX_focus_GER_ally_chiang_kai_shek
 		cost = 5	
-		x = 25
-		y = 6
+		x = 15
+		y = 1
 		relative_position_id = CHI_one_party_tutelage
 		prerequisite = {
 			focus = CHI_one_party_tutelage
@@ -8728,6 +9249,7 @@ focus = {#摧毁工业
 		}
 
 		available = {
+			#
 		}
 
 		search_filters = {
@@ -10959,7 +11481,7 @@ focus = {#摧毁工业
 		icon = GFX_goal_kmt_china
 		cost = 1
 		x = 30
-		y = 13
+		y = 16
 
 		ai_will_do = {
 			factor = 50
