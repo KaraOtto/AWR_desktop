@@ -1,0 +1,25 @@
+on_actions = {
+	# Newly released countries and civil-war tags also receive the selected soft caps.
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_game_rule = {
+							rule = AWR_country_limits
+							option = UNLIMITED
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						NOT = {
+							has_variable = AI_army_num_divisions
+						}
+					}
+					AWR_apply_country_limits = yes
+				}
+			}
+		}
+	}
+}

@@ -811,8 +811,8 @@ country_event = {	#王稼祥宣布共产国际指示精神
 			hidden_effect = {
 				prc_mao_zedong = {
 					set_portraits = {
-						army={
-							large="GFX_PRC_Mao_Zedong_young"
+						army = {
+							large = "GFX_PRC_Mao_Zedong_young"
 						}
 					}
 				}
@@ -875,11 +875,11 @@ country_event = {	#王稼祥宣布共产国际指示精神
 		promote_character = prc_mao_zedong
 		hidden_effect = {
 			prc_mao_zedong = {
-				set_portraits = {
-					army={
-						large="GFX_PRC_Mao_Zedong_young"
+					set_portraits = {
+						army = {
+							large = "GFX_PRC_Mao_Zedong_young"
+						}
 					}
-				}
 			}
 		}
 			unlock_decision_tooltip = PRC_Rectification_Movement_in_advance
@@ -942,8 +942,8 @@ country_event = {	#王稼祥宣布共产国际指示精神
 			hidden_effect = {
 				prc_mao_zedong = {
 					set_portraits = {
-						army={
-							large="GFX_PRC_Mao_Zedong_young"
+						army = {
+							large = "GFX_PRC_Mao_Zedong_young"
 						}
 					}
 					if = {
@@ -2128,8 +2128,8 @@ country_event = { #毛泽东在保安
 		
 		prc_mao_zedong = {
 			set_portraits = {
-				army={
-					large= GFX_Army_PRC_mao_zedong
+				army = {
+					large = GFX_Army_PRC_mao_zedong
 				}
 			}
 		}
@@ -2439,7 +2439,7 @@ country_event = { #大西北联盟
 			state = 744
 			remember_old_capital = no
 		}
-		set_cosmetic_tag = PRC_minzhu			
+		set_cosmetic_tag = PRC_minzhu
 	}	
 }
 
@@ -3184,7 +3184,7 @@ country_event = {	#沿用国号
 	is_triggered_only = yes
 	option = {
 		name = AWR_PRC.63.a
-		set_cosmetic_tag = CHI_warlord_leader_communism	
+		set_cosmetic_tag = CHI_warlord_leader_communism
 		ai_chance = { 
 		    factor = 100
 		}	
@@ -3306,8 +3306,8 @@ country_event = {	#中央党校开学典礼
 				}
 				prc_mao_zedong = {
 					set_portraits = {
-						army={
-						large = "GFX_Mao_Zedong_yanan_1940"
+						army = {
+							large = "GFX_Mao_Zedong_yanan_1940"
 						}
 					}
 				}
@@ -3948,8 +3948,8 @@ country_event = {	#毛泽东被任命为中央政治局主席
 				}		
 				prc_mao_zedong = {
 					set_portraits = {
-						army={
-							large="GFX_PRC_Mao_Zedong_jiefangzhanzheng"
+						army = {
+							large = "GFX_PRC_Mao_Zedong_jiefangzhanzheng"
 						}
 					}
 				}
@@ -4688,8 +4688,8 @@ country_event = {	#《在中国共产党第七届中央委员会第二次全体�
 				}
 				prc_mao_zedong = {
 					set_portraits = {
-						army={
-							large="GFX_PRC_Mao_Zedong_jiefangzhanzheng"
+						army = {
+							large = "GFX_PRC_Mao_Zedong_jiefangzhanzheng"
 						}
 					}
 				}
@@ -5417,7 +5417,10 @@ country_event = {	#论解放区战场#
 	immediate = {
 		if = {
 			limit = {
-				has_global_flag = be_high
+				has_game_rule = {
+					rule = AWR_PRC_values
+					option = HIGH
+				}
 			}
 			add_timed_idea = {
 				idea = PRC_idea_lunjiefangquzhanchang_high

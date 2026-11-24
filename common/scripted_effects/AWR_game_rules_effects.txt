@@ -1,0 +1,869 @@
+# Global, one-shot initialization; multiplayer clients do not select conflicting settings.
+AWR_initialize_game_rules = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = AWR_game_rules_initialized
+			}
+		}
+		set_global_flag = AWR_game_rules_initialized
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = AWR_country_limits
+					option = UNLIMITED
+				}
+			}
+			set_global_flag = No_ai_restriction
+		}
+		else = {
+			clr_global_flag = No_ai_restriction
+			every_country = {
+				AWR_apply_country_limits = yes
+			}
+		}
+		PRC = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_PRC_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_PRC_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_PRC_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_PRC_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_PRC_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_PRC_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_PRC_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_PRC_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_PRC_ai_difficulty_very_hard
+			}
+		}
+		CHI = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_CHI_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_CHI_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_CHI_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_CHI_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_CHI_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_CHI_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_CHI_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_CHI_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_CHI_ai_difficulty_very_hard
+			}
+		}
+		JAP = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_JAP_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_JAP_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_JAP_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_JAP_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_JAP_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_JAP_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_JAP_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_JAP_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_JAP_ai_difficulty_very_hard
+			}
+		}
+		SOV = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_SOV_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_SOV_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_SOV_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_SOV_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_SOV_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_SOV_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_SOV_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_SOV_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_SOV_ai_difficulty_very_hard
+			}
+		}
+		GER = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_GER_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_GER_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_GER_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_GER_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_GER_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_GER_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_GER_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_GER_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_GER_ai_difficulty_very_hard
+			}
+		}
+		USA = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_USA_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_USA_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_USA_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_USA_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_USA_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_USA_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_USA_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_USA_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_USA_ai_difficulty_very_hard
+			}
+		}
+		ITA = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ITA_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ITA_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_ITA_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ITA_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_ITA_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ITA_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_ITA_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ITA_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_ITA_ai_difficulty_very_hard
+			}
+		}
+		ENG = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ENG_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ENG_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_ENG_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ENG_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_ENG_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ENG_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_ENG_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_ENG_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_ENG_ai_difficulty_very_hard
+			}
+		}
+		FRA = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_FRA_values
+						option = HIGH
+					}
+				}
+				set_country_flag = AWR_values_high
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = AI_idea_be_high
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_FRA_ai_difficulty
+						option = EASY
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_easy
+				set_global_flag = AWR_FRA_ai_difficulty_easy
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_FRA_ai_difficulty
+						option = NORMAL
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_normal
+				set_global_flag = AWR_FRA_ai_difficulty_normal
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_FRA_ai_difficulty
+						option = HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_hard
+				set_global_flag = AWR_FRA_ai_difficulty_hard
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = AWR_FRA_ai_difficulty
+						option = VERY_HARD
+					}
+				}
+				set_country_flag = AWR_ai_difficulty_very_hard
+				set_global_flag = AWR_FRA_ai_difficulty_very_hard
+			}
+		}
+		AWR_apply_japan_ai_difficulty = yes
+		
+	}
+}
+
+AWR_apply_country_limits = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_country_limits
+				option = LIMIT_900
+			}
+		}
+		set_variable = {
+			AI_army_num_divisions = 900
+		}
+		set_variable = {
+			AI_aircraft_num_divisions = 20000
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_country_limits
+				option = LIMIT_600
+			}
+		}
+		set_variable = {
+			AI_army_num_divisions = 600
+		}
+		set_variable = {
+			AI_aircraft_num_divisions = 10000
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_country_limits
+				option = LIMIT_300
+			}
+		}
+		set_variable = {
+			AI_army_num_divisions = 300
+		}
+		set_variable = {
+			AI_aircraft_num_divisions = 5000
+		}
+	}
+}
+
+AWR_apply_japan_ai_difficulty = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_JAP_ai_difficulty
+				option = EASY
+			}
+		}
+		set_global_flag = japan_easy
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_JAP_ai_difficulty
+				option = NORMAL
+			}
+		}
+		set_global_flag = japan_normal
+		if = {
+			limit = {
+				JAP = {
+					is_ai = yes
+				}
+			}
+
+			JAP = { #guo
+				if = {
+					limit = {
+						JAP = {
+							is_ai = yes
+						}
+					}
+					division_template = { #甲种师团
+						name = "甲种师团"
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 1 y = 3 }
+
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+							infantry = { x = 2 y = 3 }
+
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+
+							light_armor = { x = 4 y = 0 }
+						}
+						support = {
+							artillery = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+							rangers_support = { x = 0 y = 2 }
+						}
+					}
+					capital_scope = { #甲种师团数
+						create_unit = {
+							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 start_equipment_factor = 1"
+							owner = JAP
+							count = 6
+						}
+					}
+				}
+			}
+
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_JAP_ai_difficulty
+				option = HARD
+			}
+		}
+		set_global_flag = japan_difficult
+		if = {
+			limit = {
+				JAP = {
+					is_ai = yes
+				}
+			}
+
+			JAP = {
+				add_ideas = balance_idea_japan_buff
+			}
+			JAP = {
+				if = {
+					limit = {
+						JAP = {
+							is_ai = yes
+						}
+					}
+					division_template = { #甲种师团
+						name = "甲种师团"
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 1 y = 3 }
+
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+							infantry = { x = 2 y = 3 }
+
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+
+							light_armor = { x = 4 y = 0 }
+						}
+						support = {
+							artillery = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+							rangers_support = { x = 0 y = 2 }
+						}
+					}
+
+					capital_scope = { #甲种师团火星兵
+						create_unit = {
+							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 start_equipment_factor = 1"
+							owner = JAP
+							count = 12
+						}
+					}
+				}
+			}
+
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = AWR_JAP_ai_difficulty
+				option = VERY_HARD
+			}
+		}
+		set_global_flag = japan_very_difficult
+		if = {
+			limit = {
+				JAP = {
+					is_ai = yes
+				}
+			}
+
+			JAP = {
+				add_ideas = balance_idea_japan_buff2
+				add_ideas = jap_juexingji
+			}
+			JAP = { #guo
+				if = {
+					limit = {
+						JAP = {
+							is_ai = yes
+						}
+					}
+					division_template = { #甲种师团
+						name = "甲种师团"
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 1 y = 3 }
+
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+							infantry = { x = 2 y = 3 }
+
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+
+							light_armor = { x = 4 y = 0 }
+						}
+						support = {
+							artillery = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+							rangers_support = { x = 0 y = 2 }
+						}
+					}
+
+					capital_scope = { #甲种师团火星兵
+						create_unit = {
+							division = "name = \"甲种师团\" division_template = \"甲种师团\" start_experience_factor = 0.75 start_equipment_factor = 1"
+							owner = JAP
+							count = 24
+						}
+					}
+				}
+			}
+
+		}
+	}
+}
+
+AWR_show_country_startup_advice = {
+	if = {
+		limit = {
+			tag = PRC
+			date < 1939.1.1
+		}
+		country_event = {
+			id = start_events.2
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				tag = CHI
+				is_warlord = yes
+			}
+		}
+		country_event = {
+			id = start_events.3
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				tag = JAP
+				is_subject_of = JAP
+			}
+		}
+		country_event = {
+			id = start_events.4
+		}
+	}
+	else_if = {
+		limit = {
+			tag = GER
+		}
+		country_event = {
+			id = start_events.5
+		}
+	}
+	else_if = {
+		limit = {
+			tag = SOV
+		}
+		country_event = {
+			id = start_events.6
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				tag = USA
+				tag = ENG
+				tag = FRA
+			}
+		}
+		country_event = {
+			id = start_events.7
+		}
+	}
+	else_if = {
+		limit = {
+			tag = ITA
+		}
+		country_event = {
+			id = start_events.8
+		}
+	}
+}
